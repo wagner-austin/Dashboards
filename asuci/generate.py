@@ -18,64 +18,76 @@ from pathlib import Path
 import requests
 
 
-def fetch_attendance_data(session):
-    """Fetch attendance from Google Sheets."""
-    url = "https://docs.google.com/spreadsheets/d/1QacWHjtA3dm7VY3TufJlR4BQdmsgAn_65HKO1fBy2lM/export?format=csv&gid=20496714"
-    response = session.get(url, timeout=30)
-    rows = list(csv.reader(StringIO(response.text)))
-
-    header = rows[0]
-    dates = header[4:]
+def fetch_senators_playwright():
+    """Fetch current senators from ASUCI website."""
+    from playwright.sync_api import sync_playwright
 
     senators = []
-    for row in rows[1:]:
-        if len(row) < 4 or not row[0].strip() or row[0].upper() == "VACANT":
-            continue
+    leadership = []
 
-        attendance = {}
-        for i, date in enumerate(dates):
-            if i + 4 < len(row) and date.strip():
-                attendance[date] = row[i + 4].strip()
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
 
-        senators.append({
-            "name": row[0].strip(),
-            "position": row[1].strip() if len(row) > 1 else "",
-            "total_absences": int(row[2]) if len(row) > 2 and row[2].isdigit() else 0,
-            "unexcused_absences": int(row[3]) if len(row) > 3 and row[3].isdigit() else 0,
-            "attendance": attendance
-        })
+        page.goto("https://asuci.uci.edu/senate/", wait_until="networkidle")
+        page.wait_for_timeout(2000)
 
-    return {"dates": dates, "senators": senators}
+        # Get all text content and parse senator info
+        body = page.query_selector("body")
+        text = body.inner_text()
 
+        lines = text.split("\n")
+        i = 0
+        in_leadership = False
+        in_senators = False
 
-def fetch_voting_data(session):
-    """Fetch voting from Google Sheets."""
-    url = "https://docs.google.com/spreadsheets/d/1PNrJ_R4OciirArTRydzoo4m68LM4kF1nIpLHWKLRzwo/export?format=csv&gid=270245718"
-    response = session.get(url, timeout=30)
-    rows = list(csv.reader(StringIO(response.text)))
+        while i < len(lines):
+            line = lines[i].strip()
 
-    votes = []
-    if len(rows) >= 6:
-        vote_dates = rows[0][2:]
-        items = rows[1][2:]
-        motions = rows[2][2:]
-        firsts = rows[3][2:]
-        seconds = rows[4][2:]
-        objections = rows[5][2:]
-
-        for i, date in enumerate(vote_dates):
-            if not date.strip():
+            if "SENATE LEADERSHIP" in line:
+                in_leadership = True
+                in_senators = False
+                i += 1
                 continue
-            votes.append({
-                "date": date.strip(),
-                "item": items[i].strip() if i < len(items) else "",
-                "motion": motions[i].strip() if i < len(motions) else "",
-                "first": firsts[i].strip() if i < len(firsts) else "",
-                "second": seconds[i].strip() if i < len(seconds) else "",
-                "objections": objections[i].strip() if i < len(objections) else ""
-            })
+            elif line == "SENATORS":
+                in_leadership = False
+                in_senators = True
+                i += 1
+                continue
+            elif "STAFF TO THE SENATE" in line:
+                break
 
-    return votes
+            # Look for senator pattern: Name on one line, Position on next, email after
+            if (in_leadership or in_senators) and line and not line.endswith("@asuci.uci.edu"):
+                name = line
+                position = ""
+                email = ""
+
+                if i + 1 < len(lines):
+                    next_line = lines[i + 1].strip()
+                    if next_line and not next_line.endswith("@asuci.uci.edu"):
+                        position = next_line
+                        if i + 2 < len(lines) and lines[i + 2].strip().endswith("@asuci.uci.edu"):
+                            email = lines[i + 2].strip()
+                            i += 2
+                        else:
+                            i += 1
+                    elif next_line.endswith("@asuci.uci.edu"):
+                        email = next_line
+                        i += 1
+
+                if name and position and "Vacant" not in name:
+                    senator = {"name": name, "position": position, "email": email}
+                    if in_leadership:
+                        leadership.append(senator)
+                    else:
+                        senators.append(senator)
+
+            i += 1
+
+        browser.close()
+
+    return {"leadership": leadership, "senators": senators}
 
 
 def fetch_meeting_links_playwright():
@@ -138,19 +150,9 @@ def generate_html(data: dict) -> str:
     """Generate the complete HTML dashboard."""
 
     # Calculate stats
-    num_senators = len(data["attendance"]["senators"])
-    num_dates = len(data["attendance"]["dates"])
+    num_leadership = len(data["senators"].get("leadership", []))
+    num_senators = len(data["senators"].get("senators", []))
     total_agendas = sum(len(v) for v in data["meeting_links"].get("agendas", {}).values())
-
-    # Calculate average attendance
-    total_present = 0
-    total_meetings = 0
-    for s in data["attendance"]["senators"]:
-        for status in s["attendance"].values():
-            total_meetings += 1
-            if "present" in status.lower():
-                total_present += 1
-    avg_attendance = round((total_present / total_meetings) * 100) if total_meetings > 0 else 0
 
     # Convert data to JSON for embedding
     data_json = json.dumps(data, ensure_ascii=False)
@@ -354,6 +356,18 @@ def generate_html(data: dict) -> str:
         .dataTables_wrapper .dataTables_filter,
         .dataTables_wrapper .dataTables_info,
         .dataTables_wrapper .dataTables_paginate {{ font-size: 0.85rem; }}
+        .senator-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }}
+        .senator-card {{
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            padding: 1rem;
+        }}
+        .senator-card .name {{ font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem; }}
+        .senator-card .position {{ font-size: 0.85rem; color: var(--primary); }}
+        .senator-card .email {{ font-size: 0.75rem; color: var(--gray-600); margin-top: 0.25rem; }}
+        .senator-card .email a {{ color: var(--gray-600); text-decoration: none; }}
+        .senator-card .email a:hover {{ color: var(--primary); }}
         @media (max-width: 768px) {{
             .tabs {{ padding: 0.5rem 1rem; }}
             .tab {{ padding: 0.5rem 0.75rem; font-size: 0.8rem; }}
@@ -373,7 +387,6 @@ def generate_html(data: dict) -> str:
             <button class="tab active" onclick="showTab('overview')">Overview</button>
             <button class="tab" onclick="showTab('meetings')">Meetings</button>
             <button class="tab" onclick="showTab('senators')">Senators</button>
-            <button class="tab" onclick="showTab('voting')">Voting</button>
             <button class="tab" onclick="showTab('resources')">Resources</button>
         </div>
     </div>
@@ -436,21 +449,11 @@ def generate_html(data: dict) -> str:
     </div>
 
     <div id="senators" class="tab-content">
-        <h2>Current Senators</h2>
-        <div class="alert alert-info">Data pulled from official ASUCI Google Sheets.</div>
-        <table id="senators-table" class="display" style="width:100%">
-            <thead><tr><th>Name</th><th>Position</th><th>Total Absences</th><th>Unexcused</th><th>Status</th></tr></thead>
-            <tbody id="senators-tbody"></tbody>
-        </table>
-    </div>
-
-    <div id="voting" class="tab-content">
-        <h2>Voting Records</h2>
-        <p style="margin-bottom:1rem;color:var(--gray-600)">Record of motions and votes from Senate meetings.</p>
-        <table id="voting-table" class="display" style="width:100%">
-            <thead><tr><th>Date</th><th>Item</th><th>Motion</th><th>First</th><th>Second</th><th>Objections</th></tr></thead>
-            <tbody id="voting-tbody"></tbody>
-        </table>
+        <h2>2025-2026 Senate</h2>
+        <h3 style="margin-top:1.5rem;margin-bottom:1rem;color:var(--gray-700)">Leadership</h3>
+        <div id="leadership-grid" class="senator-grid"></div>
+        <h3 style="margin-top:2rem;margin-bottom:1rem;color:var(--gray-700)">Senators</h3>
+        <div id="senators-grid" class="senator-grid"></div>
     </div>
 
     <div id="resources" class="tab-content">
@@ -557,26 +560,21 @@ def generate_html(data: dict) -> str:
             }});
             recentEl.innerHTML = recentHtml || '<p>No recent meetings found</p>';
 
-            // Senators table
-            const senTbody = document.getElementById('senators-tbody');
-            let senHtml = '';
-            DATA.attendance.senators.forEach(s => {{
-                let badge = '<span class="badge badge-present">Good</span>';
-                if (s.unexcused_absences >= 3) badge = '<span class="badge badge-absent">At Risk</span>';
-                else if (s.unexcused_absences >= 2) badge = '<span class="badge badge-excused">Warning</span>';
-                senHtml += '<tr><td>' + s.name + '</td><td>' + s.position + '</td><td>' + s.total_absences + '</td><td>' + s.unexcused_absences + '</td><td>' + badge + '</td></tr>';
-            }});
-            senTbody.innerHTML = senHtml;
-            $('#senators-table').DataTable({{ paging: false, order: [[3, 'desc']] }});
-
-            // Voting table
-            const voteTbody = document.getElementById('voting-tbody');
-            let voteHtml = '';
-            DATA.voting.forEach(v => {{
-                voteHtml += '<tr><td>' + v.date + '</td><td>' + v.item + '</td><td>' + v.motion + '</td><td>' + v.first + '</td><td>' + v.second + '</td><td>' + v.objections + '</td></tr>';
-            }});
-            voteTbody.innerHTML = voteHtml || '<tr><td colspan="6">No voting records</td></tr>';
-            if (DATA.voting.length > 0) $('#voting-table').DataTable({{ paging: false, order: [[0, 'asc']] }});
+            // Senators grid
+            function renderSenators(senators, containerId) {{
+                const container = document.getElementById(containerId);
+                let html = '';
+                senators.forEach(s => {{
+                    html += '<div class="senator-card">' +
+                        '<div class="name">' + s.name + '</div>' +
+                        '<div class="position">' + s.position + '</div>' +
+                        (s.email ? '<div class="email"><a href="mailto:' + s.email + '">' + s.email + '</a></div>' : '') +
+                    '</div>';
+                }});
+                container.innerHTML = html || '<p>No senators found</p>';
+            }}
+            renderSenators(DATA.senators.leadership || [], 'leadership-grid');
+            renderSenators(DATA.senators.senators || [], 'senators-grid');
 
             // Meetings table - default to current year
             loadYear('25-26');
@@ -624,16 +622,11 @@ def main(quick_mode=False):
     session = requests.Session()
     session.headers.update({"User-Agent": "Mozilla/5.0"})
 
-    # Fetch attendance
-    print("\n[*] Fetching attendance data...")
-    attendance = fetch_attendance_data(session)
-    print(f"    Senators: {len(attendance['senators'])}")
-    print(f"    Meeting dates: {len(attendance['dates'])}")
-
-    # Fetch voting
-    print("\n[*] Fetching voting data...")
-    voting = fetch_voting_data(session)
-    print(f"    Votes: {len(voting)}")
+    # Fetch senators from website
+    print("\n[*] Fetching current senators...")
+    senators = fetch_senators_playwright()
+    print(f"    Leadership: {len(senators.get('leadership', []))}")
+    print(f"    Senators: {len(senators.get('senators', []))}")
 
     # Fetch meeting links
     if quick_mode:
@@ -648,8 +641,7 @@ def main(quick_mode=False):
     # Compile data
     data = {
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "attendance": attendance,
-        "voting": voting,
+        "senators": senators,
         "meeting_links": meeting_links,
     }
 
