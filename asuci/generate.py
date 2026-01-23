@@ -389,12 +389,10 @@ def generate_html(data: dict) -> str:
         .senator-card .photo {{
             width: 120px;
             height: 150px;
-            border-radius: 8px;
             object-fit: cover;
             object-position: top;
             margin: 0 auto 0.75rem;
             display: block;
-            border: 2px solid var(--gray-200);
         }}
         .senator-card .name {{ font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem; }}
         .senator-card .position {{ font-size: 0.85rem; color: var(--primary); }}
