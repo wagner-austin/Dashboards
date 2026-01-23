@@ -5,8 +5,6 @@ on:
     # Run daily at 6 AM UTC (10 PM PST / 11 PM PDT)
     - cron: '0 6 * * *'
   workflow_dispatch:  # Allow manual trigger
-  push:
-    branches: [main]
 
 permissions:
   contents: write

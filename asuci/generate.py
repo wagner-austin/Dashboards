@@ -19,71 +19,79 @@ import requests
 
 
 def fetch_senators_playwright():
-    """Fetch current senators from ASUCI website."""
+    """Fetch current senators from ASUCI website with photos."""
     from playwright.sync_api import sync_playwright
+    import re
 
     senators = []
     leadership = []
+
+    # Leadership positions to identify
+    leadership_titles = [
+        "senate president", "president pro tempore", "senate parliamentarian",
+        "senate secretary", "senate historian", "senate sergeant"
+    ]
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
         page.goto("https://asuci.uci.edu/senate/", wait_until="networkidle")
+        page.wait_for_timeout(3000)
+
+        # Scroll to load lazy content
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         page.wait_for_timeout(2000)
 
-        # Get all text content and parse senator info
-        body = page.query_selector("body")
-        text = body.inner_text()
+        # Find all fusion-text elements that contain ASUCI emails
+        text_elements = page.query_selector_all(".fusion-text")
 
-        lines = text.split("\n")
-        i = 0
-        in_leadership = False
-        in_senators = False
+        for text_el in text_elements:
+            try:
+                html = text_el.inner_html()
+                text = text_el.inner_text()
 
-        while i < len(lines):
-            line = lines[i].strip()
+                # Check if this element has an ASUCI email
+                if "@asuci.uci.edu" not in text:
+                    continue
 
-            if "SENATE LEADERSHIP" in line:
-                in_leadership = True
-                in_senators = False
-                i += 1
-                continue
-            elif line == "SENATORS":
-                in_leadership = False
-                in_senators = True
-                i += 1
-                continue
-            elif "STAFF TO THE SENATE" in line:
-                break
+                # Parse the text - typically "Name\nPosition\nemail"
+                lines = [l.strip() for l in text.split("\n") if l.strip()]
+                if len(lines) < 2:
+                    continue
 
-            # Look for senator pattern: Name on one line, Position on next, email after
-            if (in_leadership or in_senators) and line and not line.endswith("@asuci.uci.edu"):
-                name = line
+                name = lines[0]
                 position = ""
                 email = ""
 
-                if i + 1 < len(lines):
-                    next_line = lines[i + 1].strip()
-                    if next_line and not next_line.endswith("@asuci.uci.edu"):
-                        position = next_line
-                        if i + 2 < len(lines) and lines[i + 2].strip().endswith("@asuci.uci.edu"):
-                            email = lines[i + 2].strip()
-                            i += 2
-                        else:
-                            i += 1
-                    elif next_line.endswith("@asuci.uci.edu"):
-                        email = next_line
-                        i += 1
+                for line in lines[1:]:
+                    if "@asuci.uci.edu" in line:
+                        email = line
+                    elif not position:
+                        position = line
 
-                if name and position and "Vacant" not in name:
-                    senator = {"name": name, "position": position, "email": email}
-                    if in_leadership:
-                        leadership.append(senator)
-                    else:
-                        senators.append(senator)
+                if not name or "Vacant" in name:
+                    continue
 
-            i += 1
+                # Find associated image - look in the parent column
+                parent = text_el.evaluate_handle("el => el.closest('.fusion-layout-column')")
+                photo = ""
+                if parent:
+                    img = parent.as_element().query_selector("img")
+                    if img:
+                        photo = img.get_attribute("src") or img.get_attribute("data-orig-src") or ""
+
+                senator = {"name": name, "position": position, "email": email, "photo": photo}
+
+                # Check if this is a leadership position
+                is_leader = any(title in position.lower() for title in leadership_titles)
+                if is_leader:
+                    leadership.append(senator)
+                else:
+                    senators.append(senator)
+
+            except Exception:
+                continue
 
         browser.close()
 
@@ -356,16 +364,26 @@ def generate_html(data: dict) -> str:
         .dataTables_wrapper .dataTables_filter,
         .dataTables_wrapper .dataTables_info,
         .dataTables_wrapper .dataTables_paginate {{ font-size: 0.85rem; }}
-        .senator-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }}
+        .senator-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }}
         .senator-card {{
             background: var(--gray-50);
             border: 1px solid var(--gray-200);
             border-radius: 10px;
             padding: 1rem;
+            text-align: center;
+        }}
+        .senator-card .photo {{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 0.75rem;
+            display: block;
+            border: 3px solid var(--primary-light);
         }}
         .senator-card .name {{ font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem; }}
         .senator-card .position {{ font-size: 0.85rem; color: var(--primary); }}
-        .senator-card .email {{ font-size: 0.75rem; color: var(--gray-600); margin-top: 0.25rem; }}
+        .senator-card .email {{ font-size: 0.75rem; color: var(--gray-600); margin-top: 0.5rem; }}
         .senator-card .email a {{ color: var(--gray-600); text-decoration: none; }}
         .senator-card .email a:hover {{ color: var(--primary); }}
         @media (max-width: 768px) {{
@@ -566,6 +584,7 @@ def generate_html(data: dict) -> str:
                 let html = '';
                 senators.forEach(s => {{
                     html += '<div class="senator-card">' +
+                        (s.photo ? '<img class="photo" src="' + s.photo + '" alt="' + s.name + '">' : '') +
                         '<div class="name">' + s.name + '</div>' +
                         '<div class="position">' + s.position + '</div>' +
                         (s.email ? '<div class="email"><a href="mailto:' + s.email + '">' + s.email + '</a></div>' : '') +
