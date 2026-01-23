@@ -95,7 +95,21 @@ def fetch_senators_playwright():
 
         browser.close()
 
-    return {"leadership": leadership, "senators": senators}
+    # Deduplicate by email - keep first occurrence (usually the more important role)
+    seen_emails = set()
+    deduped_leadership = []
+    for s in leadership:
+        if s["email"] and s["email"] not in seen_emails:
+            seen_emails.add(s["email"])
+            deduped_leadership.append(s)
+
+    deduped_senators = []
+    for s in senators:
+        if s["email"] and s["email"] not in seen_emails:
+            seen_emails.add(s["email"])
+            deduped_senators.append(s)
+
+    return {"leadership": deduped_leadership, "senators": deduped_senators}
 
 
 def fetch_meeting_links_playwright():
@@ -373,13 +387,13 @@ def generate_html(data: dict) -> str:
             text-align: center;
         }}
         .senator-card .photo {{
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
             object-fit: cover;
             margin: 0 auto 0.75rem;
             display: block;
-            border: 3px solid var(--primary-light);
+            border: 2px solid var(--gray-200);
         }}
         .senator-card .name {{ font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem; }}
         .senator-card .position {{ font-size: 0.85rem; color: var(--primary); }}
