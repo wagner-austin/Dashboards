@@ -389,9 +389,14 @@ def generate_html(data: dict) -> str:
         .senator-card .photo {{
             width: 120px;
             height: 150px;
-            object-fit: contain;
+            object-fit: cover;
+            object-position: top;
             margin: 0 auto 0.75rem;
             display: block;
+        }}
+        .senator-card .photo.placeholder {{
+            object-fit: contain;
+            object-position: center;
         }}
         .senator-card .name {{ font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem; }}
         .senator-card .position {{ font-size: 0.85rem; color: var(--primary); }}
@@ -596,7 +601,7 @@ def generate_html(data: dict) -> str:
                 let html = '';
                 senators.forEach(s => {{
                     html += '<div class="senator-card">' +
-                        (s.photo ? '<img class="photo" src="' + s.photo + '" alt="' + s.name + '">' : '') +
+                        (s.photo ? '<img class="photo' + (s.photo.includes('senate-logo') ? ' placeholder' : '') + '" src="' + s.photo + '" alt="' + s.name + '">' : '') +
                         '<div class="name">' + s.name + '</div>' +
                         '<div class="position">' + s.position + '</div>' +
                         (s.email ? '<div class="email"><a href="mailto:' + s.email + '">' + s.email + '</a></div>' : '') +
