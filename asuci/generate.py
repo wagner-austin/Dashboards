@@ -388,9 +388,10 @@ def generate_html(data: dict) -> str:
         }}
         .senator-card .photo {{
             width: 120px;
-            height: 120px;
-            border-radius: 10px;
+            height: 150px;
+            border-radius: 8px;
             object-fit: cover;
+            object-position: top;
             margin: 0 auto 0.75rem;
             display: block;
             border: 2px solid var(--gray-200);
