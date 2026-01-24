@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metabolomics Analysis Plan</title>
+    <style>
+        :root {
+            --primary: #2d6a4f;
+            --primary-light: #d8f3dc;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--gray-100);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1b4332 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .header h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .header p { opacity: 0.9; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--gray-200);
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        .section h3 {
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem;
+            color: var(--gray-800);
+        }
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        .tag {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .sample-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        .sample-table th, .sample-table td {
+            border: 1px solid var(--gray-200);
+            padding: 0.5rem;
+            text-align: left;
+        }
+        .sample-table th {
+            background: var(--gray-50);
+            font-weight: 600;
+        }
+        .status {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .status.todo { background: #fef3c7; color: #92400e; }
+        .status.in-progress { background: #dbeafe; color: #1e40af; }
+        .status.done { background: #d1fae5; color: #065f46; }
+        .tool-link {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .tool-link:hover { text-decoration: underline; }
+        code {
+            background: var(--gray-100);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+        .note {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Metabolomics Analysis Plan</h1>
+        <p>Drought Effects on Coastal Sage Scrub Metabolomics</p>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Project Overview</h2>
+            <p>Analysis of metabolomics data from coastal sage scrub plants under different water treatments. Focus on identifying compounds that are enhanced or suppressed by drought conditions in leaves and roots.</p>
+
+            <div class="note">
+                <strong>Data Scope:</strong> Using Emily's data only. Jaycee's data excluded from current analysis.
+            </div>
+
+            <h3>Key Variables</h3>
+            <ul>
+                <li><strong>Organs:</strong> Leaves (L) vs Roots (R)</li>
+                <li><strong>Treatments:</strong> Drought, Watered/Irrigated, Ambient</li>
+                <li><strong>Sites:</strong> Loma Ridge, EcoPreserve</li>
+                <li><strong>Species:</strong> Artemisia, Xeric, Mesic</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Sample Assignments (Emily)</h2>
+            <p style="margin-bottom:1rem; color:var(--gray-600);">Data file: <code>Emily_Data_Pruned_Labeled.xlsx</code></p>
+
+            <h3>Leaves (L) - 12 samples</h3>
+            <table class="sample-table">
+                <thead>
+                    <tr>
+                        <th>Treatment</th>
+                        <th>Samples</th>
+                        <th>n</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag" style="background:#fecaca;color:#991b1b;">Drought</span></td>
+                        <td>BL, CL, EL, GL</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag" style="background:#e5e7eb;color:#374151;">Ambient</span></td>
+                        <td>IL, JL, LL, ML</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag" style="background:#bfdbfe;color:#1e40af;">Watered</span></td>
+                        <td>OL, PL, RL, TL</td>
+                        <td>4</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Roots (R) - 11 samples</h3>
+            <table class="sample-table">
+                <thead>
+                    <tr>
+                        <th>Treatment</th>
+                        <th>Samples</th>
+                        <th>n</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag" style="background:#fecaca;color:#991b1b;">Drought</span></td>
+                        <td>AR, DR, ER, GR</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag" style="background:#e5e7eb;color:#374151;">Ambient</span></td>
+                        <td>HR, IR, JR, MR</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag" style="background:#bfdbfe;color:#1e40af;">Watered</span></td>
+                        <td>RR, SR, TR</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Analysis Pipeline</h2>
+
+            <h3>1. Data Cleaning</h3>
+            <span class="status done">Done</span>
+            <ul>
+                <li><s>Filter out blank peaks (peaks in blank but not sample)</s></li>
+                <li><s>Flag peaks: only in sample, only in blank, in both</s></li>
+                <li>Flags in Excel: <code>Sample Only</code>, <code>Blank Only</code>, <code>Both >90%</code></li>
+            </ul>
+            <div class="note">
+                <strong>Results:</strong><br>
+                Sample Only: 7,560 peaks (32.7%) - usable for analysis<br>
+                Blank Only: 1,879 peaks (8.1%) - contamination, exclude<br>
+                Both >90%: 5,720 peaks (24.7%) - ambiguous
+            </div>
+
+            <h3>2. Chemical Richness</h3>
+            <span class="status todo">To Do</span>
+            <ul>
+                <li>Count number of peaks observed per sample type</li>
+                <li>Calculate standard error: <code>std / sqrt(n)</code></li>
+                <li>Create bar graphs with error bars (8 categories)</li>
+                <li>Separate tables for EcoPreserve and Loma Ridge</li>
+            </ul>
+
+            <h3>3. Chemical Diversity (Shannon Index)</h3>
+            <span class="status todo">To Do</span>
+            <ul>
+                <li>Calculate abundance (integrated values for all compounds)</li>
+                <li>Calculate proportion of each compound</li>
+                <li>Shannon Diversity: <code>H = -&Sigma;(p &times; ln(p))</code></li>
+                <li>Higher H = more diverse</li>
+                <li>Create sheet: abundance &rarr; proportion &rarr; p*ln(p) &rarr; Sum &rarr; H</li>
+            </ul>
+
+            <h3>4. Venn Diagrams</h3>
+            <span class="status todo">To Do</span>
+            <ul>
+                <li>Peaks shared between treatment groups (Drought vs Watered vs Ambient)</li>
+                <li>Peaks shared between organs (Leaves vs Roots)</li>
+                <li>Peaks shared between different shrub species</li>
+                <li>Peaks shared between seed sources</li>
+                <li>Python: <code>matplotlib_venn.venn2()</code> / <code>venn3()</code> or <code>upsetplot</code></li>
+            </ul>
+
+            <h3>5. Molecular Formula Analysis</h3>
+            <span class="status todo">To Do</span>
+            <ul>
+                <li>Input exact masses into <a href="https://chemcalc.org" class="tool-link">chemcalc.org</a></li>
+                <li>Get estimated molecular formulas</li>
+                <li>Calculate oxygen to carbon (O:C) ratio</li>
+                <li>Calculate degrees of unsaturation (rings + double bonds)</li>
+                <li>Focus on top 5 masses by relative abundance</li>
+            </ul>
+
+            <h3>6. Multivariate Analysis (PCA)</h3>
+            <span class="status todo">To Do</span>
+            <ul>
+                <li>Use subset of compounds representing 80% of total signal</li>
+                <li>Plot cumulative % signal vs compounds (ranked by abundance)</li>
+                <li>Normalize with <code>sklearn.preprocessing.StandardScaler</code> or Hellinger transform</li>
+                <li>PCA with <code>sklearn.decomposition.PCA</code></li>
+                <li>Group by organ and/or water treatment</li>
+                <li>Create biplots with <code>matplotlib</code></li>
+            </ul>
+
+            <h3>7. Differential Analysis</h3>
+            <span class="status todo">To Do</span>
+            <ul>
+                <li>Calculate fold changes within samples</li>
+                <li>Calculate fold changes between drought and controls</li>
+                <li>Calculate p-values for significance</li>
+                <li>Identify peaks most different between water vs drought</li>
+                <li>Flag induced defense compounds (only appear in drought)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Tools & Resources</h2>
+            <ul>
+                <li><strong>Python:</strong> All analysis and visualization</li>
+                <li><strong>MetaboAnalyst:</strong> Peak analysis (~5000 peaks max, optional)</li>
+                <li><strong>chemcalc.org:</strong> Mass to molecular formula</li>
+                <li><strong>Progenesis:</strong> Data processing at MS facility</li>
+            </ul>
+
+            <h3>Python Libraries</h3>
+            <table class="sample-table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Library</th>
+                        <th>Install</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data manipulation</td>
+                        <td><code>pandas</code>, <code>numpy</code></td>
+                        <td><code>pip install pandas numpy</code></td>
+                    </tr>
+                    <tr>
+                        <td>Visualization</td>
+                        <td><code>matplotlib</code>, <code>seaborn</code></td>
+                        <td><code>pip install matplotlib seaborn</code></td>
+                    </tr>
+                    <tr>
+                        <td>Venn diagrams</td>
+                        <td><code>matplotlib-venn</code></td>
+                        <td><code>pip install matplotlib-venn</code></td>
+                    </tr>
+                    <tr>
+                        <td>UpSet plots</td>
+                        <td><code>upsetplot</code></td>
+                        <td><code>pip install upsetplot</code></td>
+                    </tr>
+                    <tr>
+                        <td>PCA / Multivariate</td>
+                        <td><code>scikit-learn</code></td>
+                        <td><code>pip install scikit-learn</code></td>
+                    </tr>
+                    <tr>
+                        <td>Statistical tests</td>
+                        <td><code>scipy.stats</code></td>
+                        <td><code>pip install scipy</code></td>
+                    </tr>
+                    <tr>
+                        <td>Shannon diversity</td>
+                        <td><code>scipy.stats.entropy</code></td>
+                        <td>(included in scipy)</td>
+                    </tr>
+                    <tr>
+                        <td>Molecular mass/formula</td>
+                        <td><code>molmass</code></td>
+                        <td><code>pip install molmass</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Quick Install</h3>
+            <code style="display:block; background:#1f2937; color:#f9fafb; padding:1rem; border-radius:6px; margin-top:0.5rem;">pip install pandas numpy matplotlib seaborn matplotlib-venn upsetplot scikit-learn scipy molmass</code>
+        </div>
+
+        <div class="section">
+            <h2>Deliverables</h2>
+            <ol>
+                <li>Chemical richness bar graphs (with error bars) for each site</li>
+                <li>Chemical diversity (Shannon H) comparison plots</li>
+                <li>Venn diagrams: treatments, organs, species</li>
+                <li>PCA plots showing composition differences</li>
+                <li>List of significantly different compounds (fold change + p-value)</li>
+                <li>Top compounds by % of total signal</li>
+                <li>Molecular formula analysis for top masses</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Questions to Resolve</h2>
+            <ul>
+                <li>Which compounds to focus on? (Too many to analyze all)</li>
+                <li>Threshold for "top compounds" - <strong>80% of signal</strong> (confirmed)</li>
+                <li>Which authentic standards are available for validation?</li>
+                <li>Use normalized or unnormalized signals for analyses?</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
