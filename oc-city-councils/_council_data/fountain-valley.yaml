@@ -1,89 +1,115 @@
-# Fountain Valley City Council
-# Last updated: 2026-01-24
-
-city: "fountain-valley"
-city_name: "Fountain Valley"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: fountain-valley
+city_name: Fountain Valley
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://www.fountainvalley.gov"
-council_url: "https://www.fountainvalley.gov/156/City-Council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://www.fountainvalley.gov
+council_url: https://www.fountainvalley.gov/156/City-Council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "Ted Bui"
-    position: "Mayor"
-    district: null
-    email: "Ted.Bui@fountainvalley.gov"
-    phone: "628-266-8888"
-    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=54"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Jim Cunneen"
-    position: "Mayor Pro Tem"
-    district: null
-    email: "Jim.Cunneen@fountainvalley.gov"
-    phone: "714-593-4403"
-    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=178"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Patrick Harper"
-    position: "Councilmember"
-    district: null
-    email: "patrick.harper@fountainvalley.gov"
-    phone: "714-593-4403"
-    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=153"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Kim Constantine"
-    position: "Councilmember"
-    district: null
-    email: "kim.constantine@fountainvalley.gov"
-    phone: "714-593-4403"
-    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=152"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Glenn Grandis"
-    position: "Councilmember"
-    district: null
-    email: "Glenn.Grandis@fountainvalley.gov"
-    phone: "714-593-4403"
-    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=55"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Ted Bui
+  position: Mayor
+  district: null
+  email: Ted.Bui@fountainvalley.gov
+  phone: 714-593-4400
+  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=54
+  photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19450
+  bio: A long-time resident of Orange County, Ted is known for his dedication to fostering a safe and vibrant city. He has
+    worked tirelessly to ensure fiscal responsibility, support local businesses, and promote initiatives that enhance the
+    quality of life for all residents. Ted believes in transparent governance and actively engages with constituents to address
+    their concerns. His leadership style is characterized by collaboration, integrity, and a forward-thinking approach. Ted’s
+    efforts are driven by a desire to build a stronger, more inclusive community for future generations.
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=54
+- name: Jim Cunneen
+  position: Mayor Pro Tem
+  district: null
+  email: Jim.Cunneen@fountainvalley.gov
+  phone: 714-593-4494
+  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=178
+  photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19452
+  bio: Jim Cunneen is currently serving in his first four-year term on the Fountain Valley City Council after being elected
+    in 2022.  Prior to this , he served two consecutive four-year terms on the Fountain Valley School District Board of Trustees,
+    including serving as President in 2018.  He previously has served on the FV Planning Commission, Community Foundation,
+    Housing and Community Development Board, and chaired the General Plan Advisory Committee. Mr. Cunneen has worked as a
+    Civil Engineer and Regional Manager in SoCal for over 36 years.  He is a graduate of California State University Long
+    Beach and American College of Law, where he is seeking admission into the California State Bar.  His consulting work has
+    included many key projects such as the OCTA I-405, John Wayne Airport and the ARTIC projects.  Mr. Cunneen has been married
+    to his educator wife and Fountain Valley native, Marilyn, for over 30 years. They have lived in the same home on La Marmota
+    Avenue for nearly 29 years and greatly enjoy their close-nit neighborhood and city area.  They have five children who
+    were all born at Fountain Valley Regional Hospital and attended Cox Elementary, Masuda Middle, and Fountain Valley High
+    Schools. He is passionate about volunteering and regularly gives time in the Fountain Valley Rotary Club, local civic
+    groups and committees, is a Fourth Degree Knight of Columbus, and sings in a choir at Holy Spirit Catholic Church.  Mr.
+    Cunneen enjoys local and regional governance involvement, challenges, and ultimately endeavors to be helpful to his community.
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=178
+- name: Glenn Grandis
+  position: Councilmember
+  district: null
+  email: Glenn.Grandis@fountainvalley.gov
+  phone: 714-593-4494
+  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=55
+  photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19451
+  bio: Glenn Grandis is a dedicated and engaged member of the Fountain Valley community, with a residency spanning 44 years.
+    His roots in the city run deep, having attended Fountain Valley High School, where he began his strong connection to the
+    local community. One of Glenn's significant contributions is his long-standing involvement with the Fountain Valley Kiwanis
+    Club. For an impressive 44 years, he has been an active member, showcasing a commitment to service and a desire to make
+    a positive impact on the lives of others. Glenn holds the distinction of being a founding director of the Fountain Valley
+    Community Foundation. This organization plays a crucial role in supporting various community initiatives and projects,
+    further highlighting his commitment to enhancing the overall well-being of Fountain Valley. Glenn is married and together
+    with his wife Mary, have a combined 5 children and 2 dogs!
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=55
+- name: Kim Constantine
+  position: Councilmember
+  district: null
+  email: kim.constantine@fountainvalley.gov
+  phone: 714-593-4494
+  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=152
+  photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19449
+  bio: Kim was born in Allentown, Pennsylvania.  After living for a while in Lebanon and Australia, her family moved to California.
+     She’s lived in Fountain Valley for many years and is a member of several local organizations. One of her most proud moments
+    was in 2011 at the Fountain Valley Chamber of Commerce Board Installation Luncheon, when she was named Ambassador-of-the
+    Year.  Within minutes, she was the first person in the Chamber’s 45-year history to be nominated from the floor.  When
+    the votes were tallied from that day’s election, she was elected to the Board.  It meant so much that the members had
+    faith in her.  Kim served four years as a Director.  At that time, she knew she wanted to serve her community as a City
+    Council Member and began laying the groundwork for her first campaign in 2014.  She ran again in 2016 and remained persistent
+    and highly visible. Kim enjoys staying abreast of City matters, cooking, and traveling… to Europe, especially.
+  term_start: 2014
+  term_end: 2018
+  website: null
+  instagram: null
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=152
+- name: Patrick Harper
+  position: Councilmember
+  district: null
+  email: patrick.harper@fountainvalley.gov
+  phone: 714-593-4494
+  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=153
+  photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19453
+  bio: Patrick Harper was elected to the Fountain Valley City Council in November of 2018 and was appointed Mayor in 2021.
+    Orange County's City Selection Committee reappointed Harper as a city council representative to the OCTA Board of Directors
+    in January 2023. Harper has lived in Fountain Valley since 2010 and has three sons attending local middle and high schools.
+    He has been a long time member of the Fountain Valley Chamber of Commerce and served on the Board of Directors from 2012
+    to 2014. Prior to election to the City Council, he served as member and chair of the Fountain Valley Planning Commission
+    from 2014 to 2018. Council member Harper grew up in Northern California in Marin County and migrated to Santa Barbara
+    in 1980, where he attended college at UC Santa Barbara and received a Bachelor of Arts degree in Business Economics. After
+    college, he moved to Los Angeles and worked as an auditor in public accounting, as well as holding executive finance positions
+    at various publicly traded and private companies. Since moving to Fountain Valley, he founded and operates a tax and accounting
+    practice with his wife Hang Harper.
+  term_start: 2018
+  term_end: 2022
+  website: null
+  instagram: null
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=153

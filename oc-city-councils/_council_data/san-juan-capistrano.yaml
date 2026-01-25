@@ -1,89 +1,63 @@
-# San Juan Capistrano City Council
-# Last updated: 2026-01-24
-
-city: "san-juan-capistrano"
-city_name: "San Juan Capistrano"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: san-juan-capistrano
+city_name: San Juan Capistrano
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://sanjuancapistrano.org"
-council_url: "https://sanjuancapistrano.org/318/City-Council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://sanjuancapistrano.org
+council_url: https://sanjuancapistrano.org/318/City-Council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "Derek Reeve"
-    position: "Mayor"
-    district: null
-    email: "dreeve@sanjuancapistrano.org"
-    phone: "(949) 493-1171"
-    city_profile: "https://sanjuancapistrano.org/318/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Howard Hart"
-    position: "Mayor Pro Tem"
-    district: null
-    email: "hhart@sanjuancapistrano.org"
-    phone: "(949) 493-1171"
-    city_profile: "https://sanjuancapistrano.org/318/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Sergio Farias"
-    position: "Councilmember"
-    district: null
-    email: "sfarias@sanjuancapistrano.org"
-    phone: "(949) 493-1171"
-    city_profile: "https://sanjuancapistrano.org/318/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "John Taylor"
-    position: "Councilmember"
-    district: null
-    email: "jtaylor@sanjuancapistrano.org"
-    phone: "(949) 493-1171"
-    city_profile: "https://sanjuancapistrano.org/318/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Troy Bourne"
-    position: "Councilmember"
-    district: null
-    email: "tbourne@sanjuancapistrano.org"
-    phone: "(949) 493-1171"
-    city_profile: "https://sanjuancapistrano.org/318/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: John Campbell
+  position: Mayor
+  district: District 3
+  email: jcampbell@sanjuancapistrano.org
+  phone: 949-493-1171
+  city_page: https://sanjuancapistrano.org/directory.aspx?eid=47
+  term_end: 2026
+- name: John Taylor
+  position: Mayor Pro Tem
+  district: District 4
+  email: jtaylor@sanjuancapistrano.org
+  phone: 949-493-1171
+  city_profile: https://sanjuancapistrano.org/318/City-Council
+  photo_url: null
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://sanjuancapistrano.org/directory.aspx?eid=51
+- name: Howard Hart
+  position: Councilmember
+  district: District 5
+  email: hhart@sanjuancapistrano.org
+  phone: 949-493-1171
+  city_profile: https://sanjuancapistrano.org/318/City-Council
+  photo_url: null
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://sanjuancapistrano.org/directory.aspx?eid=48
+- name: Sergio Farias
+  position: Councilmember
+  district: District 1
+  email: sfarias@sanjuancapistrano.org
+  phone: 949-493-1171
+  city_profile: https://sanjuancapistrano.org/318/City-Council
+  photo_url: null
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://sanjuancapistrano.org/directory.aspx?eid=50
+- name: Troy A. Bourne
+  position: Councilmember
+  district: District 2
+  email: tbourne@sanjuancapistrano.org
+  phone: 949-493-1171
+  city_page: https://sanjuancapistrano.org/directory.aspx?eid=49

@@ -1,89 +1,76 @@
-# Cypress City Council
-# Last updated: 2026-01-24
-
-city: "cypress"
-city_name: "Cypress"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: cypress
+city_name: Cypress
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://www.cypressca.org"
-council_url: "https://www.cypressca.org/government/city-council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://www.cypressca.org
+council_url: https://www.cypressca.org/government/city-council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "David Burke"
-    position: "Mayor"
-    district: null
-    email: "dburke@cypressca.org"
-    phone: "714-229-6699"
-    city_profile: "https://www.cypressca.org/government/city-council/council-member-david-burke"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Leo Medrano"
-    position: "Mayor Pro Tem"
-    district: "District 4"
-    email: "lmedrano@cypressca.org"
-    phone: "714-229-6699"
-    city_profile: "https://www.cypressca.org/government/city-council/council-member-leo-medrano"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Kyle Chang"
-    position: "Councilmember"
-    district: "District 3"
-    email: "kchang@cypressca.org"
-    phone: "714-229-6699"
-    city_profile: "https://www.cypressca.org/government/city-council/council-member-kyle-change"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Bonnie Peat"
-    position: "Councilmember"
-    district: null
-    email: "bpeat@cypressca.org"
-    phone: "714-229-6699"
-    city_profile: "https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Rachel Strong Carnahan"
-    position: "Councilmember"
-    district: "District 5"
-    email: "rstrong@cypressca.org"
-    phone: "714-229-6699"
-    city_profile: "https://www.cypressca.org/government/city-council/council-member-rachel-strong"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Leo Medrano
+  position: Mayor
+  district: District 4
+  email: lmedrano@cypressca.org
+  phone: 714-229-6699
+  city_profile: https://www.cypressca.org/government/city-council/council-member-leo-medrano
+  photo_url: https://www.cypressca.org/home/showpublishedimage/12826/638726243326730000
+  bio: null
+  term_start: null
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.cypressca.org/government/city-council/council-member-leo-medrano
+- name: Kyle Chang
+  position: Mayor Pro Tem
+  district: District 3
+  email: kchang@cypressca.org
+  phone: 714-229-6699
+  city_profile: https://www.cypressca.org/government/city-council/council-member-kyle-change
+  photo_url: null
+  bio: null
+  term_start: null
+  term_end: 2028
+  website: https://votekylechang.com/
+  instagram: https://www.instagram.com/kylechangoc/
+  city_page: https://www.cypressca.org/government/city-council/council-member-kyle-change
+- name: Bonnie Peat
+  position: Councilmember
+  district: null
+  email: bpeat@cypressca.org
+  phone: 714-229-6699
+  city_profile: https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat
+  photo_url: https://www.cypressca.org/home/showpublishedimage/10176/638091266228000000
+  bio: null
+  term_start: null
+  term_end: 2026
+  website: https://bonniepeatforcypress.com/
+  instagram: null
+  city_page: https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat
+- name: David Burke
+  position: Councilmember
+  district: null
+  email: dburke@cypressca.org
+  phone: 714-229-6699
+  city_profile: https://www.cypressca.org/government/city-council/council-member-david-burke
+  photo_url: https://www.cypressca.org/home/showpublishedimage/10178/638091266025670000
+  bio: null
+  term_start: null
+  term_end: 2026
+  website: https://www.davidburkeforcypress.com/
+  instagram: null
+  city_page: https://www.cypressca.org/government/city-council/council-member-david-burke
+- name: Rachel Strong Carnahan
+  position: Councilmember
+  district: District 5
+  email: rstrongcarnahan@cypressca.org
+  phone: 714-229-6699
+  city_profile: https://www.cypressca.org/government/city-council/council-member-rachel-strong
+  photo_url: https://www.cypressca.org/home/showpublishedimage/14531/639041920579870000
+  bio: null
+  term_start: null
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.cypressca.org/government/city-council/council-member-rachel-strong

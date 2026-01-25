@@ -1,54 +1,149 @@
-city: "santa-ana"
-last_updated: "2026-01-24"
-next_election: "2026-11-03"
+city: santa-ana
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
 seats_up: []
-
 members:
-  - name: "Valerie Amezcua"
-    position: "Mayor"
-    district: "At-Large"
-    email: "vamezcua@santa-ana.org"
-    phone: "(714) 647-5200"
-    city_page: "https://www.santa-ana.org/city-council/"
-
-  - name: "David Penaloza"
-    position: "Mayor Pro Tem"
-    district: "Ward 2"
-    email: "dpenaloza@santa-ana.org"
-    phone: "(714) 647-5200"
-    city_page: "https://www.santa-ana.org/city-council/"
-
-  - name: "Johnathan Ryan Hernandez"
-    position: "Councilmember"
-    district: "Ward 1"
-    email: "jhernandez@santa-ana.org"
-    phone: "(714) 647-5200"
-    city_page: "https://www.santa-ana.org/city-council/"
-
-  - name: "Jessie Lopez"
-    position: "Councilmember"
-    district: "Ward 3"
-    email: "jlopez@santa-ana.org"
-    phone: "(714) 647-5200"
-    city_page: "https://www.santa-ana.org/city-council/"
-
-  - name: "Phil Bacerra"
-    position: "Councilmember"
-    district: "Ward 4"
-    email: "pbacerra@santa-ana.org"
-    phone: "(714) 647-5200"
-    city_page: "https://www.santa-ana.org/city-council/"
-
-  - name: "Thai Viet Phan"
-    position: "Councilmember"
-    district: "Ward 5"
-    email: "tvphan@santa-ana.org"
-    phone: "(714) 647-5200"
-    city_page: "https://www.santa-ana.org/city-council/"
-
-  - name: "Benjamin Vazquez"
-    position: "Councilmember"
-    district: "Ward 6"
-    email: "bvazquez@santa-ana.org"
-    phone: "(714) 647-5200"
-    city_page: "https://www.santa-ana.org/city-council/"
+- name: Valerie Amezcua
+  position: Mayor
+  district: At-Large
+  email: vamezcua@santa-ana.org
+  phone: (714) 647-6900
+  city_page: https://www.santa-ana.org/city-council/
+  bio: Mayor Amezcua is the first female Mayor in the City of Santa Ana’s 153-year history. Mayor Amezcua has served as a
+    member of the Santa Ana Unified School District (SAUSD) Governing Board since 2014. She has served as the Board’s President
+    or Vice President for five of the past eight years. Over the course of her two terms on the School Board, she has implemented
+    common sense reforms to improve graduation rates, increase campus safety and expand parent involvement. She is a strong
+    advocate for community health access, and played a key role in the expansion of mental health services throughout SAUSD.
+    She also led the effort to get additional training for SAUSD Police Officers to improve relationships with students and
+    community members, implementing a positive community-based approach to campus safety. Mayor Amezcua is a mentor, a bridge
+    builder, and a collaborator who understands the value of partnerships to the long-term success of our neighborhoods and
+    community-at-large. Having achieved progress in her efforts on behalf of Santa Ana’s youth, Mayor Amezcua brings her leadership,
+    vision, and passion for public service to the work of city government. She is committed to creating a more prosperous
+    and sustainable future for Orange County’s second most populated city.
+  photo_url: https://storage.googleapis.com/proudcity/santaanaca/uploads/2023/02/Valerie-Amezcua-2022-Portrait-Compressed.jpg
+- name: Benjamin Vazquez
+  position: Mayor Pro Tem
+  district: Ward 6
+  email: bvazquez@santa-ana.org
+  phone: (714) 647-6900
+  city_page: https://www.santa-ana.org/city-council/
+  bio: Councilmember Vazquez is a teacher at Valley High School, a cultural worker at El Centro Cultural de México, and a
+    proud homeowner in the Heninger Park neighborhood. Councilmember Vazquez is fully invested in his community and in the
+    future of Santa Ana. He was born to working class immigrant parents and was raised on Center Street. Councilmember Vazquez
+    attended Santa Ana Unified School District schools, Santa Ana College, earned a Bachelor’s degree at Cal State Long Beach,
+    and a Master’s degree from UCLA. Councilmember Vazquez is now proudly working alongside four siblings and two nieces at
+    Santa Ana Unified School District. Giving back to Santa Ana youth and community is not just his passion—it is a shared
+    family goal. As a member of the City Council, Councilmember Vazquez’s focus will be on making sure our limited citywide
+    resources benefit working class families and improve quality of life for all Santa Ana residents. Our City budgets, policies,
+    and resources need to be centered on nurturing the families and communities of our city, instead of special interest groups.
+    Councilmember Vazquez believes that our City’s plan and budgets need to reflect a vision that prioritizes working class
+    families.
+  photo_url: https://storage.googleapis.com/proudcity/santaanaca/2025/05/Benjamin-Vazquez-2025-Portrait-240x300-1.jpg
+- name: David Penaloza
+  position: Councilmember
+  district: Ward 2
+  email: dpenaloza@santa-ana.org
+  phone: (714) 647-6900
+  city_page: https://www.santa-ana.org/city-council/
+  bio: Councilmember David Penaloza, born and raised in Santa Ana, is a lifetime resident of the city. A product of the Santa
+    Ana Unified School District, he attended Washington Elementary (1999), MacArthur Fundamental (2002), and Saddleback High
+    School (2006). After attending Santa Ana College, he was accepted to California State University, Los Angeles and graduated
+    in 2011 with a Bachelor of Arts degree in English. Councilmember Penaloza remains active in his community by supporting
+    Santa Ana youth through his volunteer work at his local church. During his college career, Councilmember Penaloza overcame
+    several obstacles, including paying tuition and supporting his mother financially. While in college, he took acting classes
+    as a hobby, which eventually led him to be booked on numerous national commercials. His success qualified him membership
+    into SAG-AFTRA, the most distinguished performers’ union in the world. In 2008, Councilmember Penaloza worked as a part-time
+    office clerk at Color Science, Inc., a local company specializing in compounding raw materials and resins to produce plastic.
+    He was a key player in the ISO accreditation of the company, which allowed him to move up to his current position as Senior
+    Regulatory Engineer. In 2018, Councilmember Penaloza was inspired by the students he was tutoring and the neglect he witnessed
+    firsthand in Santa Ana. Penaloza had a strong desire to give back to the only place he has called home. For these reasons,
+    he decided to run for Santa Ana City Council. Personally knocking on over 6,000 doors throughout Santa Ana, Councilmember
+    Penaloza won 27 percent of the vote in a crowded field of six candidates, earning him a seat on the Santa Ana City Council
+    to represent Ward 2. He was sworn in on December 11, 2018.
+  photo_url: https://storage.googleapis.com/proudcity/santaanaca/uploads/2020/07/David-Penaloza-scaled.jpg
+  term_end: 2018
+- name: Jessie Lopez
+  position: Councilmember
+  district: Ward 3
+  email: jessielopez@santa-ana.org
+  phone: (714) 647-6900
+  city_page: https://www.santa-ana.org/city-council/
+  bio: Born and raised in Santa Ana, Jessie experienced her upbringing in a working-class household. Jessie and her siblings
+    attended Hoover Elementary, Willard Intermediate and Santa Ana High School. Jessie continued her post-secondary educational
+    career by pursuing an A.A. at Santa Ana College and a B.A. in Sociology at California State University, Long Beach. Throughout
+    her time in college, Jessie worked two jobs to support herself financially through school. As an undergraduate student,
+    she helped organize students and led campaigns to address sexual assault on campus and supported efforts in making higher
+    education more accessible for individuals such as herself. She continued her advocacy alongside community groups in her
+    hometown to fight for equity, accountability and transparency. Jessie now works as a community health worker where she
+    works towards improving the quality of life and health of low-income, uninsured, under-served people, regardless of status,
+    in her community. In March 2020, Jessie was elected by the working families of the 68th Assembly District to help represent
+    their concerns as a central committee member within the Democratic Party of Orange County. Jessie is honored to represent
+    Ward 3 and to serve the community that raised her. She is a firm believer in civic engagement, the right to equal treatment
+    and opportunity, and is passionate about empowering community participation. Jessie is an advocate for all Santa Ana families, and
+    with a demonstrated record of community leadership, she will provide effective representation for Santa Ana. Jessie Lopez
+    is an advocate and organizer at heart.
+  photo_url: https://storage.googleapis.com/proudcity/santaanaca/uploads/2020/12/Jessie-Lopez-Headshot.jpg
+- name: Johnathan Ryan Hernandez
+  position: Councilmember
+  district: Ward 1
+  email: jryanhernandez@santa-ana.org
+  phone: (714) 647-6900
+  city_page: https://www.santa-ana.org/city-council/
+  bio: Councilmember Johnathan Ryan Hernandez was born and raised in Santa Ana and is a lifetime resident of the Artesia Pilar
+    neighborhood. He is proud of his family’s deep roots in Santa Ana and is honored to raise his daughter in the very community
+    his family has called home for five generations and counting. Councilmember Hernandez is a product of Santa Ana Unified
+    School District (SAUSD) education system and attended Fremont Elementary, Spurgeon Intermediate, and Santa Ana High School.
+    He was raised by the combined effort of a hard-working single mother and his grandparents. Councilmember Hernandez’s grandfather,
+    Enrique was a member of the Laborers International Union, Local 652 and was an upstanding member for over 43 years. His
+    grandparents, Enrique and Indelisa, migrated to Santa Ana from Guadalajara, Mexico in the late 1950s. Councilmember Hernandez
+    grew up in Artesia Pilar amidst a challenging decade for the neighborhood in the 1990s. Born in the summer of ‘92, he
+    lived houses away from El Salvador Park and was a witness to numerous tragedies. Like many multi-generational Chicano
+    families, he saw his family members and friends fall through the cracks and end up in the prison system. As a result of
+    his upbringing by the age of 14 Councilmember Hernandez began to organize political events with youth in his community.
+    By the time he was 23, he began working with youth in the community, offering boxing, music, and art programs to at-promise
+    youth. In 2015, Councilmember Hernandez was part of The Mixed Martial Arts Association (MMAFA), a collective of Mixed
+    Martial Arts (MMA) athletes that worked to introduce legislation that would extend protections from the sport of boxing
+    to the sport of MMA. In May 2015, a bill was introduced to Congress by Markwayne Mullin, a politician and former mixed
+    martial artist, to extend the Ali Act to MMA.
+  photo_url: https://storage.googleapis.com/proudcity/santaanaca/uploads/2020/12/Johnathan-Ryan-Hernandez.png
+  term_end: 2015
+- name: Phil Bacerra
+  position: Councilmember
+  district: Ward 4
+  email: pbacerra@santa-ana.org
+  phone: (714) 647-6900
+  city_page: https://www.santa-ana.org/city-council/
+  bio: Councilmember Phil Bacerra was elected to the Santa Ana City Council in November 2019 to represent Ward 4 . Councilmember
+    Bacerra is the son of a union grocery store manager and a waitress. He was born and raised in Orange County, where he
+    attended local schools and worked as a busboy at his uncle’s restaurant in Santa Ana – Pop’s Cafe. Graduating from the
+    University of Southern California with a Bachelor of Science degree in Urban Planning, Councilmember Bacerra went on to
+    work for various city government agencies, including the city of Los Angeles. He has been using that city government experience
+    to help small businesses succeed and increase access to high-quality housing.
+  photo_url: https://storage.googleapis.com/proudcity/santaanaca/2025/05/Phil-Bacerra-2025-Portrait-240x300-1.jpg
+  term_start: 2019
+  term_end: 2023
+- name: Thai Viet Phan
+  position: Councilmember
+  district: Ward 5
+  email: tphan@santa-ana.org
+  phone: (714) 647-6900
+  city_page: https://www.santa-ana.org/city-council/
+  bio: Councilmember Thai Viet Phan is proud to be the first Vietnamese American and first Asian woman to serve as a Santa
+    Ana Councilmember. She was born near a refugee camp in Thailand after her parents fled the devastation of the Vietnam
+    War. They settled in Santa Ana in 1989 after months of living in camps in Thailand and the Philippines. Tragically, her
+    father succumbed to brain cancer soon after arriving in the States. Councilmember Phan’s mother worked as a babysitter
+    watching neighborhood kids, and they lived in garages and make-shift bedrooms with other families to make ends meet. Like
+    many first-generation immigrant families fleeing conflict and oppression, they were no strangers to poverty. Despite the
+    struggle of growing up with few resources and reliant on the social safety net, Councilmember Phan excelled in the classroom.
+    She attended local public schools—all in the Garden Grove Unified School District, including Morningside, Hazard, Heritage,
+    Skylark, and Simmons Elementary Schools and was the first in her family to graduate high school (Los Amigos High School—2006).
+    She completed her Bachelor of Arts in Communication Studies at the University of California Los Angeles and later graduated
+    from the University of Southern California with a dual Law/Master of Public Policy degree. Throughout college and graduate
+    school, Councilmember Phan worked multiple part-time jobs to supplement her student loans and afford housing and tuition,
+    including serving burgers as an In-N-Out Burger Associate for six years. Today, Thai works as a City Attorney and provides
+    legal advice and counsel to cities and other public agencies throughout Southern California. She previously served as
+    a member of the Santa Ana Planning Commission, where she advised the City Council and helped oversee an array of critical
+    issues, including housing, land use, and small business development. Thai currently serves on the Board of Directors of
+    both the Vietnamese American Bar Association of Southern California and the Heritage Museum of Orange County. She also
+    serves on the Leadership, Equity, Advocacy, & Diversity Advisory Board for the Rancho Santiago Community College District.
+  photo_url: https://storage.googleapis.com/proudcity/santaanaca/2025/05/Thai-Viet-Phan-2025-Portrait-240x300-1.jpg

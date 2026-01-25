@@ -1,89 +1,110 @@
-# Placentia City Council
-# Last updated: 2026-01-24
-
-city: "placentia"
-city_name: "Placentia"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: placentia
+city_name: Placentia
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://www.placentia.org"
-council_url: "https://www.placentia.org/268/Mayor-City-Council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://www.placentia.org
+council_url: https://www.placentia.org/268/Mayor-City-Council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "Chad P. Wanke"
-    position: "Mayor"
-    district: "District 4"
-    email: "chad@chadwanke.com"
-    phone: "(714) 993-8186"
-    city_profile: "https://www.placentia.org/268/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Jeremy B. Yamaguchi"
-    position: "Mayor Pro Tem"
-    district: "District 3"
-    email: "jeremy@jeremyyamaguchi.com"
-    phone: "(714) 993-8186"
-    city_profile: "https://www.placentia.org/268/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Thomas Hummer"
-    position: "Councilmember"
-    district: "District 1"
-    email: "thummer@placentia.org"
-    phone: "(714) 993-8186"
-    city_profile: "https://www.placentia.org/268/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Kevin Kirwin"
-    position: "Councilmember"
-    district: "District 2"
-    email: "kkirwin@placentia.org"
-    phone: "(714) 993-8186"
-    city_profile: "https://www.placentia.org/268/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Ward Smith"
-    position: "Councilmember"
-    district: "District 5"
-    email: "wsmith@placentia.org"
-    phone: "(714) 993-8186"
-    city_profile: "https://www.placentia.org/268/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Kevin Kirwin
+  position: Mayor
+  district: District 2
+  email: kkirwin@placentia.org
+  phone: (714) 961-0283
+  city_profile: https://www.placentia.org/268/Mayor-City-Council
+  photo_url: https://www.placentia.org/ImageRepository/Document?documentID=10080
+  bio: Councilmember Kevin Kirwin and his family moved to Placentia in 1968 when he was 3 years old. He grew up here, went
+    to three great schools, Brookhaven, Tuffree, and El Dorado, played sports, and had many great teachers, great neighbors,
+    and great coaches who helped shape his life in Placentia. As an adult, Kevin and his wife chose to raise their family
+    here so they could enjoy the same experiences he had growing up. Living in Placentia is a privilege that he does not take
+    lightly. Professionally, Kevin owns and operates a company that specializes in online safety training for industry.
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.placentia.org/674/Councilmember-Kevin-Kirwin-District-2
+- bio: Mayor Chad Wanke was born in Anaheim and has lived his entire life in North Orange County. He currently resides in
+    Placentia with his wife, Leonie, and their four young children. He graduated from Cal State Fullerton with a Bachelor
+    of Arts in Geography and a Minor in Anthropology. Chad has extensive experience in both the private and public sectors
+    with an emphasis on land use, business administration and government affairs. As the Chairman and President of Orbis Capital
+    Chad directs all company activities. He personally manages key business transactions and portfolios for Orbis clients.
+    On behalf of the corporation, he holds California real estate Broker and Corporate Officer licenses. Chad is a Partner
+    at Third Encore Studios in North Hollywood and manages all of the company's Orange County activities. Third Encore is
+    the largest rehearsal studio company in the United States and is the entertainment industry leader. In 2008 Chad was elected
+    as the Placentia City Treasurer and served in that position until he was elected to the City Council in 2010. He was reelected
+    to the City Council in 2014, receiving the highest number of votes that year. His fellow Council Members elected him Mayor
+    in both 2014 and 2017. Chad is an active Orange County community leader representing the Orange County Fourth District
+    as a member and past Chairman of the Orange County Waste Management Commission, member of the Orange County Sanitation
+    District Board of Directors and Chairman of the Administration Committee for the Sanitation District, he is also a Federal
+    Emergency Management Agency trained CERT (Community Emergency Response Team) member
+  name: Chad P Wanke
+  position: Mayor Pro Tem
+  email: chad@chadwanke.com
+  phone: (714) 961-0283
+  photo_url: https://www.placentia.org/ImageRepository/Document?documentID=7707
+  term_start: 2010
+  term_end: 2010
+- bio: Mayor Pro Tem Jeremy Yamaguchi is one of the youngest elected officials in the State of California and the youngest
+    in Orange County history. He was elected in November 2008 at the age of 19 to the Placentia City Council for a term of
+    four years. Mr. Yamaguchi ran in a race with six candidates for three open seats in which he received the highest total
+    vote count. He holds an extensive background in community affairs and volunteer work. Some of his involvements include
+    Placentia Neighborhood Watch, Placentia Heritage Parade & Festival, Placentia Cultural Arts Commission, Placentia Chamber
+    of Commerce, Placentia Police Department, and the Boy Scouts of America. The Placentia Chamber of Commerce honored Mr.
+    Yamaguchi as the Citizen of the Year in 2006 for his volunteer efforts in the community, the youngest to receive the honor
+    in history. He also received the Presidential Gold Volunteer Service Award from a nomination by the Disneyland Resort.
+    In 2009, Mr. Yamaguchi was honored by the Center for Asian Americans United for Self-Empowerment (CAUSE) with the prestigious
+    Rising Star Award. Mr. Yamaguchi graduated from Placentia's El Dorado High School in 2007 with numerous honors and distinctions,
+    including a historic record of three thousand community service hours. He recently graduated from California State University
+    Fullerton (CSUF) Cum Lade with a Bachelor of Arts in Political Science. On campus, Mr. Yamaguchi was an officer of the
+    Pi Sigma Alpha Political Science Honor Society, a member of the CSUF Pre-law society, and the Phi Beta Delta honor society
+    for international scholars. He now owns and manages his own production company in North Orange County.
+  name: Jeremy B Yamaguchi
+  position: Councilmember
+  email: jeremy@jeremyyamaguchi.com
+  phone: (714) 961-0283
+  photo_url: https://www.placentia.org/ImageRepository/Document?documentID=7546
+  term_start: 2008
+  term_end: 2009
+- name: Thomas Hummer
+  position: Councilmember
+  district: District 1
+  email: thummer@placentia.org
+  phone: (714) 961-0283
+  city_profile: https://www.placentia.org/268/Mayor-City-Council
+  photo_url: https://www.placentia.org/ImageRepository/Document?documentID=14591
+  bio: Councilmember Thomas Hummer moved to Placentia with his family in 1971. He attended PYLUSD schools Brookhaven Elementary,
+    Tuffree Jr. High, and El Dorado High School. His experience as a child and adolescent in Placentia was instrumental in
+    shaping who he is today. From having great neighborhood and community friends to very inspirational teachers and coaches
+    throughout all three schools, all have played a part in his positive upbringing here. As a young adult, he moved away
+    from Placentia for a while, but this town has always been considered his home. My parents still live here, and he has
+    always felt lucky to have grown up here. He moved back to Placentia in 2020 to be close to his aging parents. Professionally,
+    he has been an educator since 2005. He has taught Jr. High and High School, where he also coached Football and Soccer,
+    and most recently, he has worked for Five Keys Charter School, where he works with at-risk minors and adults to earn their
+    High School Diploma or GED.
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.placentia.org/721/Councilmember-Thomas-Hummer-District-1
+- bio: Councilmember Ward Smith has been a Placentia resident for most of his life. In 1965, the Smith family moved from the
+    City of Los Angeles to the bedroom community of Placentia. As a student, Ward attended Golden and Brookhaven Elementary
+    schools, Tuffree Jr. High and El Dorado High School. He graduated from Fullerton Community College with an Associate of
+    Arts degree in Police Science and later earned a Bachelor of Science degree from the University of La Verne. In 1981,
+    after attending the police academy at Golden West College, Ward joined the Placentia Police Department. He worked for
+    the department for 35 years, serving the community in nearly every law enforcement assignment. He rose through the ranks
+    from Patrol Officer to Chief of Police before retiring in 2016. Upon his retirement, Ward ran for Placentia City Council
+    and was elected in November of 2016. Currently, he serves as the City's elected representative for City Council District
+    5. Ward is serving as the City Council liaison to the Southern California Association of Governments and is the chairperson
+    for the Community Advisory Board for Bridges at Kraemer Homeless Navigation Center. He enjoys working with other council
+    members and City staff as they cohesively continue to address issues, solve problems, and move Placentia toward a bright,
+    sustainable future.
+  name: Ward L Smith
+  position: Councilmember
+  email: wsmith@placentia.org
+  phone: (714) 961-0283
+  photo_url: https://www.placentia.org/ImageRepository/Document?documentID=10077
+  term_start: 2016
+  term_end: 2016

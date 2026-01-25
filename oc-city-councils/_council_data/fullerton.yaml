@@ -1,30 +1,44 @@
-city: "fullerton"
-last_updated: "2026-01-24"
-next_election: "2026-11-03"
+city: fullerton
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
 seats_up: []
-
 members:
-  - name: "Fred Jung"
-    position: "Mayor"
-    district: "District 1"
-    city_page: "https://www.cityoffullerton.com/government/city-council"
-
-  - name: "Shana Charles"
-    position: "Mayor Pro Tem"
-    district: "District 3"
-    city_page: "https://www.cityoffullerton.com/government/city-council"
-
-  - name: "Nick Dunlap"
-    position: "Councilmember"
-    district: "District 2"
-    city_page: "https://www.cityoffullerton.com/government/city-council"
-
-  - name: "Jamie Valencia"
-    position: "Councilmember"
-    district: "District 4"
-    city_page: "https://www.cityoffullerton.com/government/city-council"
-
-  - name: "Ahmad Zahra"
-    position: "Councilmember"
-    district: "District 5"
-    city_page: "https://www.cityoffullerton.com/government/city-council"
+- name: Fred Jung
+  position: Mayor
+  district: District 1
+  city_page: https://www.cityoffullerton.com/government/city-council
+  email: fred.jung@cityoffullerton.com
+  phone: 714.738.6300
+  photo_url: https://www.cityoffullerton.com/home/showpublishedimage/7826/638960543315970000
+  term_start: 2024
+  term_end: 2028
+- name: Nicholas Dunlap
+  position: Mayor Pro Tem
+  district: District 2
+  email: nicholas.dunlap@cityoffullerton.com
+  phone: 714.738.6300
+  city_page: https://www.cityoffullerton.com/government/city-council/mayor-pro-tem-nicholas-dunlap
+  photo_url: https://www.cityoffullerton.com/home/showpublishedimage/8680/638960545199230000
+  term_start: 2020
+  term_end: 2028
+- name: Ahmad Zahra
+  position: Councilmember
+  email: AhmadZ@cityoffullerton.com
+  phone: 714.738.6300
+  photo_url: https://www.cityoffullerton.com/home/showpublishedimage/7806/638732629311070000
+  term_start: 2018
+  term_end: 2026
+- name: Jamie Valencia
+  position: Councilmember
+  district: District 4
+  city_page: https://www.cityoffullerton.com/government/city-council
+  email: jamie.valencia@cityoffullerton.com
+  phone: 714.738.6300
+  photo_url: https://www.cityoffullerton.com/home/showpublishedimage/7814/638732629363500000
+  term_start: 2024
+  term_end: 2028
+- name: Shana Charles
+  position: Councilmember
+  email: shana.charles@cityoffullerton.com
+  phone: 714.738.6300
+  photo_url: https://www.cityoffullerton.com/home/showpublishedimage/7822/638732629409370000

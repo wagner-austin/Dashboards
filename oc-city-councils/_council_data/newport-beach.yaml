@@ -1,47 +1,58 @@
-city: "newport-beach"
-last_updated: "2026-01-24"
-next_election: "2026-11-03"
+city: newport-beach
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
 seats_up: []
-
 members:
-  - name: "Joe Stapleton"
-    position: "Mayor"
-    district: "District 1"
-    email: "jstapleton@newportbeachca.gov"
-    city_page: "https://www.newportbeachca.gov/government/city-council"
+- name: Lauren Kleiman (2026)
+  position: Mayor Pro Tem
+  district: District 6
+  email: lkleiman@newportbeachca.gov
+  phone: 949-644-3309
+  term_start: 2022
+  term_end: 2026
+- name: 'Pro Tem Noah Blom (2028*)
 
-  - name: "Noah Blom"
-    position: "Mayor Pro Tem"
-    district: "District 5"
-    email: "nblom@newportbeachca.gov"
-    city_page: "https://www.newportbeachca.gov/government/city-council"
+    Empty heading'
+  position: Mayor Pro Tem
+  district: District 5
+  email: nblom@newportbeachca.gov
+  phone: 949-644-3309
+  term_start: 2020
+  term_end: 2024
+- name: Erik Weigand (2026)
+  position: Councilmember
+  district: District 3
+  email: eweigand@newportbeachca.gov
+  phone: 949-644-3309
+  term_start: 2022
+  term_end: 2026
+- name: 'Joe Stapleton (2026)
 
-  - name: "Michelle Barto"
-    position: "Councilmember"
-    district: "District 2"
-    email: "mbarto@newportbeachca.gov"
-    city_page: "https://www.newportbeachca.gov/government/city-council"
-
-  - name: "Erik Weigand"
-    position: "Councilmember"
-    district: "District 3"
-    email: "eweigand@newportbeachca.gov"
-    city_page: "https://www.newportbeachca.gov/government/city-council"
-
-  - name: "Robyn Grant"
-    position: "Councilmember"
-    district: "District 4"
-    email: "rgrant@newportbeachca.gov"
-    city_page: "https://www.newportbeachca.gov/government/city-council"
-
-  - name: "Lauren Kleiman"
-    position: "Councilmember"
-    district: "District 6"
-    email: "lkleiman@newportbeachca.gov"
-    city_page: "https://www.newportbeachca.gov/government/city-council"
-
-  - name: "Sara Weber"
-    position: "Councilmember"
-    district: "District 7"
-    email: "sweber@newportbeachca.gov"
-    city_page: "https://www.newportbeachca.gov/government/city-council"
+    Empty heading'
+  position: Councilmember
+  district: District 1
+  email: jstapleton@newportbeachca.gov
+  phone: 949-644-3309
+  term_start: 2022
+  term_end: 2026
+- name: Michelle Barto (2028)
+  position: Councilmember
+  district: District 2
+  email: mbarto@newportbeachca.gov
+  phone: 949-644-3309
+  term_start: 2024
+  term_end: 2028
+- name: Robyn Grant (2026)
+  position: Councilmember
+  district: District 4
+  email: rgrant@newportbeachca.gov
+  phone: 949-644-3309
+  term_start: 2022
+  term_end: 2026
+- name: Sara Weber (2028)
+  position: Councilmember
+  district: District 7
+  email: sweber@newportbeachca.gov
+  phone: 949-644-3309
+  term_start: 2024
+  term_end: 2028

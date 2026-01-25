@@ -1,117 +1,148 @@
-# Garden Grove City Council
-# Last updated: 2026-01-24
-
-city: "garden-grove"
-city_name: "Garden Grove"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: garden-grove
+city_name: Garden Grove
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://ggcity.org"
-council_url: "https://ggcity.org/city-council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://ggcity.org
+council_url: https://ggcity.org/city-council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "Stephanie Klopfenstein"
-    position: "Mayor"
-    district: "Citywide"
-    email: "stephaniek@ggcity.org"
-    phone: "(714) 741-5104"
-    city_profile: "https://ggcity.org/city-council/stephanie-klopfenstein"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "George S. Brietigam III"
-    position: "Mayor Pro Tem"
-    district: "District 1"
-    email: "georgeb@ggcity.org"
-    phone: "(714) 741-5104"
-    city_profile: "https://ggcity.org/city-council/george-brietigam"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Phillip Nguyen"
-    position: "Councilmember"
-    district: "District 2"
-    email: "phillipn@ggcity.org"
-    phone: "(714) 741-5104"
-    city_profile: "https://ggcity.org/city-council/phillip-nguyen"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Cindy Ngoc Tran"
-    position: "Councilmember"
-    district: "District 3"
-    email: "cindyt@ggcity.org"
-    phone: "(714) 741-5104"
-    city_profile: "https://ggcity.org/city-council/cindy-tran"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Joe DoVinh"
-    position: "Councilmember"
-    district: "District 4"
-    email: "joed@ggcity.org"
-    phone: "(714) 741-5104"
-    city_profile: "https://ggcity.org/city-council/joe-dovinh"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Yesenia MuÃ±eton"
-    position: "Councilmember"
-    district: "District 5"
-    email: "yeseniam@ggcity.org"
-    phone: "(714) 741-5104"
-    city_profile: "https://ggcity.org/city-council/yesenia-muneton"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Ariana Arestegui"
-    position: "Councilmember"
-    district: "District 6"
-    email: "arianaa@ggcity.org"
-    phone: "(714) 741-5104"
-    city_profile: "https://ggcity.org/city-council/ariana-arestegui"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Stephanie Klopfenstein
+  position: Mayor
+  district: Citywide
+  email: stephaniek@ggcity.org
+  phone: (714) 741-5104
+  city_profile: https://ggcity.org/city-council/stephanie-klopfenstein
+  photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2025-01/mayor_stephanie_klopfenstein.jpg?itok=YdMRUkng
+  bio: In 2024, Stephanie Klopfenstein became Garden Grove's first elected female mayor. Prior to becoming mayor, she served
+    as the District 5 councilmember since 2016. Born and raised in Garden Grove, her family roots trace back to the town’s
+    early beginnings in the late 1800’s. A proud product of the Garden Grove Unified School District, Council Member Klopfenstein
+    spent time traveling and working abroad in radio broadcasting. Drawn back to her deep ancestral roots and desire to give
+    back to her city, she returned to Garden Grove. Following studies at Concordia University, she married and began a career
+    in marketing. She values time spent with her husband and young daughter, exploring the Eastern Sierra, cooking, and enjoying
+    a good book.
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://ggcity.org/city-council/stephanie-klopfenstein
+- name: George S. Brietigam III
+  position: Mayor Pro Tem
+  district: District 1
+  email: georgeb@ggcity.org
+  phone: (714) 741-5104
+  city_profile: https://ggcity.org/city-council/george-brietigam
+  photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2019-03/george-brietigam.jpg?itok=2SfCVcc4
+  bio: On November 6, 2018, George S. Brietigam III was elected to the Garden Grove City Council. Prior to that, he had formerly
+    served for 20 years as a volunteer City Commissioner. He served as Chairman for the City's Planning Commission, as well
+    as the City of Garden Grove’s Neighborhood Improvement and Conservation Commission (Chair), Sanitary District Advisory
+    Commission (Chair), Traffic Commission and Youth Commission. He also served as a judge for the Garden Grove Pride contest.
+    From 1985 to 1989, he served in the United States Coast Guard as a Petty Officer. After being Honorably Discharged, Council
+    Member Brietigam was hired by the Los Angeles Police Department, where he retired after 34 years. During his tenure with
+    the Los Angeles Police Department, Council Member Brietigam served 10 years as an elected Delegate to the Los Angeles
+    Police Protective League. A strong supporter of community involvement, Council Member Brietigam became a member of Garden
+    Grove Masonic Lodge in 2012. He also served as Cub Master, Scout Master, District Vice Chairman and District Chairman
+    for our Garden Grove children with the Boy Scouts of America. He Coached for the West Garden Grove Softball league and
+    coached Garden Grove Travel Softball and Basketball Teams. Council Member Brietigam also served as either President or
+    Vice President for the Pacifica High School Swim Boosters, Basketball Boosters and Track & Field Boosters.
+  term_start: 2018
+  term_end: 2022
+  website: null
+  instagram: null
+  city_page: https://ggcity.org/city-council/george-brietigam
+- name: Ariana Arestegui
+  position: Councilmember
+  district: District 6
+  email: arianaa@ggcity.org
+  phone: (714) 741-5104
+  city_profile: https://ggcity.org/city-council/ariana-arestegui
+  photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2025-01/aristegui.jpg?itok=EyLlH4Rr
+  bio: Born and raised in Garden Grove, Ariana Arestegui was elected to the Garden Grove City Council in 2024. She has long
+    been committed to public service in the City of Garden Grove, having served on the Garden Grove Police Department Chief’s
+    Advisory Council, the Garden Grove Planning Commission, and the Garden Grove Parks, Recreation, and Arts Commission. As
+    a paralegal and campaign finance professional, Council Member Arestegui has worked as both a legal assistant and a law
+    clerk, most recently as the campaign finance director for Kim Nguyen for Congress. She has also served as the executive
+    director of the Democratic Foundation of Orange County. An admitted “Swiftie,” she enjoys spending time with her three
+    dogs and participating in outdoor activities such as fishing, hiking, camping, and gardening. She is proud to be the first
+    LGBTQ+ elected female in Garden Grove.
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://ggcity.org/city-council/ariana-arestegui
+- name: Cindy Ngoc Tran
+  position: Councilmember
+  district: District 3
+  email: cindyt@ggcity.org
+  phone: (714) 741-5104
+  city_profile: https://ggcity.org/city-council/cindy-tran
+  photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2023-01/cindy.jpg?itok=E1BbH5ac
+  bio: Cindy Ngoc Tran was elected to the city council in 2022. Born in Vietnam, she has been a Garden Grove resident since
+    2009. After five years of active duty with the United States Navy, Council Member Tran began a career with the Boeing
+    Company, working on the Delta IV Heavy Load Rocket program. As a board member to Boeing's Young Engineering Team, she
+    received the outstanding achievement of Young Engineer of the Year award. Council Member Tran has dedicated her time and
+    effort towards enhancing the lives of local and international Vietnamese communities. She is the school principal of Our
+    Lady of La Vang Church and has held numerous community service titles, including vice chairman of the Vietnamese American
+    Federation of Southern California and chairman of the Overseas Vietnamese Women's Association. She also serves as the
+    chairman of the Society of Women Engineers.
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://ggcity.org/city-council/cindy-tran
+- name: Joe DoVinh
+  position: Councilmember
+  district: District 4
+  email: joed@ggcity.org
+  phone: (714) 741-5104
+  city_profile: https://ggcity.org/city-council/joe-dovinh
+  photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2023-01/0n4a1706.jpg?itok=MGoTobSr
+  bio: Dr. Joseph T. DoVinh, JD was elected to the city council in 2022. Prior to joining the city council, he served the
+    City of Garden Grove as a planning commissioner from 2012 to 2013. In April 1975, his family was evacuated from war-torn
+    central Vietnam during the “Fall of Saigon” as part of the first-wave of evacuees. Processed as refugees through the United
+    States Marine Base Camp Pendleton in San Diego, California, his family was subsequently sponsored by a judge’s family
+    to Washington state where he grew up. Council Member DoVinh attended the University of Washington, earning a Bachelor’s
+    degree in Political Science while serving as president of the Vietnamese Student Association, from 1989 to 1990. He was
+    also director of the Asian Commission of the Associated Students of University of Washington (ASUW). After graduating
+    from the University of Washington, Council Member DoVinh passed the State of Washington Certified Interpreter Exam and
+    served as an interpreter for state and federal courts.
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://ggcity.org/city-council/joe-dovinh
+- name: Phillip Nguyen
+  position: Councilmember
+  district: District 2
+  email: phillipn@ggcity.org
+  phone: (714) 741-5104
+  city_profile: https://ggcity.org/city-council/phillip-nguyen
+  photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2025-01/pnguyen.jpg?itok=nuxppIu5
+  bio: From Vietnam who fled the war-torn country as a teenager, Council Member Nguyen arrived in the United States, living
+    in a military refugee camp in Pennsylvania. There he was adopted by an American family then relocated to Florida, where
+    he finished high school. As a young adult, he moved across the country, relocating to California in search of better job
+    opportunities. Council Member Nguyen has worked as a Public Accountant and Tax Consultant since 1996, and also teaches
+    language at Temple. He previously was an Engineer at Allen Bradley Company & Rockwell International for 10 years, and
+    a broker/agent for NP Phillip Company in both real estate and insurance.
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://ggcity.org/city-council/phillip-nguyen
+- bio: Yesenia Muñeton was elected to the city council in 2024, and is the first Latina to represent District 5. Born and
+    raised in Garden Grove, Council Member Muñeton attended Skylark Elementary, Doig Intermediate, and Santiago High School.
+    She went on to earn a bachelor’s degree from CSU Fullerton and a Master of Arts from Chapman University. She is the first
+    in her family to receive a college degree. Council Member Muñeton is passionate about educational equity and believes
+    in the power of quality education to uplift future generations. As a dedicated elementary school teacher and former long-time
+    lead instructor for the Boys and Girls Club in Garden Grove, she has built strong connections across the city and made
+    a lasting impact on local youth and families. Together with her husband Walter and their two children, Council Member
+    Muñeton and her family enjoy spending their free time outdoors, serving their community, and trying new Garden Grove restaurants.
+  name: Yesenia Muñeton
+  position: Councilmember
+  email: yeseniam@ggcity.org
+  phone: (714) 741-5104
+  photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2025-01/ymuneton.jpg?itok=mCU21BsW
+  term_start: 2024
+  term_end: 2028

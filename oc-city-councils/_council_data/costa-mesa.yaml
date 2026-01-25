@@ -1,54 +1,63 @@
-city: "costa-mesa"
-last_updated: "2026-01-24"
-next_election: "2026-11-03"
+city: costa-mesa
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
 seats_up: []
-
 members:
-  - name: "John Stephens"
-    position: "Mayor"
-    district: "At-Large"
-    email: "john.stephens@costamesaca.gov"
-    phone: "(714) 337-1872"
-    city_page: "https://www.costamesaca.gov/government/mayor-city-council/mayor-john-stephens"
-
-  - name: "Manuel Chavez"
-    position: "Mayor Pro Tem"
-    district: "District 4"
-    email: "manuel.chavez@costamesaca.gov"
-    phone: "(949) 274-2305"
-    city_page: "https://www.costamesaca.gov/government/mayor-city-council/mayor-pro-tem-manuel-chavez"
-
-  - name: "Mike Buley"
-    position: "Councilmember"
-    district: "District 1"
-    email: "mike.buley@costamesaca.gov"
-    phone: "(714) 754-5107"
-    city_page: "https://www.costamesaca.gov/government/mayor-city-council/council-member-mike-buley"
-
-  - name: "Loren Gameros"
-    position: "Councilmember"
-    district: "District 2"
-    email: "loren.gameros@costamesaca.gov"
-    phone: "(714) 754-5107"
-    city_page: "https://www.costamesaca.gov/government/mayor-city-council/council-member-loren-gameros"
-
-  - name: "Andrea Marr"
-    position: "Councilmember"
-    district: "District 3"
-    email: "andrea.marr@costamesaca.gov"
-    phone: "(714) 754-5107"
-    city_page: "https://www.costamesaca.gov/government/mayor-city-council/council-member-andrea-marr"
-
-  - name: "Arlis Reynolds"
-    position: "Councilmember"
-    district: "District 5"
-    email: "arlis.reynolds@costamesaca.gov"
-    phone: "(714) 754-5107"
-    city_page: "https://www.costamesaca.gov/government/mayor-city-council/council-member-arlis-reynolds"
-
-  - name: "Jeff Pettis"
-    position: "Councilmember"
-    district: "District 6"
-    email: "jeff.pettis@costamesaca.gov"
-    phone: "(714) 754-5107"
-    city_page: "https://www.costamesaca.gov/government/mayor-city-council/council-member-jeff-pettis"
+- name: John Stephens
+  position: Mayor
+  district: At-Large
+  email: John.Stephens@costamesaca.gov
+  phone: (714) 337-1872
+  city_page: https://www.costamesaca.gov/government/mayor-city-council/mayor-john-stephens
+  photo_url: https://www.costamesaca.gov/home/showpublishedimage/18192/637789805555630000
+  term_start: 2024
+  term_end: 2020
+- name: Manuel Chavez
+  position: Mayor Pro Tem
+  district: District 4
+  email: Manuel.Chavez@costamesaca.gov
+  phone: (949) 274-2305
+  city_page: https://www.costamesaca.gov/government/mayor-city-council/mayor-pro-tem-manuel-chavez
+  photo_url: https://www.costamesaca.gov/home/showpublishedimage/24111/638732302613630000
+  term_start: 2024
+  term_end: 2026
+- name: Andrea Marr
+  position: Councilmember
+  district: District 3
+  email: Andrea.Marr@costamesaca.gov
+  phone: (714) 754-5107
+  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-andrea-marr
+  term_start: 2018
+  term_end: 2026
+- name: Arlis Reynolds
+  position: Councilmember
+  district: District 5
+  email: Arlis.Reynolds@costamesaca.gov
+  phone: (714) 754-5107
+  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-arlis-reynolds
+  photo_url: https://www.costamesaca.gov/home/showpublishedimage/15983/637460647341370000
+  term_start: 2018
+  term_end: 2026
+- name: Jeff Pettis
+  position: Councilmember
+  district: District 6
+  email: jeff.pettis@costamesaca.gov
+  phone: (714) 754-5107
+  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-jeff-pettis
+  term_end: 2028
+- name: Loren Gameros
+  position: Councilmember
+  district: District 2
+  email: LGameros@costamesaca.gov
+  phone: (714) 754-5107
+  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-loren-gameros
+  photo_url: https://www.costamesaca.gov/home/showpublishedimage/15977/637460647316500000
+  term_end: 2024
+- name: Mike Buley
+  position: Councilmember
+  district: District 1
+  email: mike.buley@costamesaca.gov
+  phone: (714) 754-5107
+  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-mike-buley
+  photo_url: https://www.costamesaca.gov/home/showpublishedimage/24115/638732319597200000
+  term_end: 1985

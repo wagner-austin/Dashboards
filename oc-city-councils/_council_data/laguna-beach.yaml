@@ -1,89 +1,76 @@
-# Laguna Beach City Council
-# Last updated: 2026-01-24
-
-city: "laguna-beach"
-city_name: "Laguna Beach"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: laguna-beach
+city_name: Laguna Beach
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://www.lagunabeachcity.net"
-council_url: "https://www.lagunabeachcity.net/government/departments/city-council/contact-city-council"
-email: "citycouncil@lagunabeachcity.net"
-phone: ""
-instagram: ""
-
-# Council members
+website: https://www.lagunabeachcity.net
+council_url: https://www.lagunabeachcity.net/government/departments/city-council/contact-city-council
+email: citycouncil@lagunabeachcity.net
+phone: ''
+instagram: ''
 members:
-  - name: "Mark Orgill"
-    position: "Mayor"
-    district: null
-    email: null
-    phone: "(949) 463-4821"
-    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Hallie Jones"
-    position: "Mayor Pro Tem"
-    district: null
-    email: null
-    phone: "(949) 992-5419"
-    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Sue Kempf"
-    position: "Councilmember"
-    district: null
-    email: null
-    phone: "(949) 439-3001"
-    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Alex Rounaghi"
-    position: "Councilmember"
-    district: null
-    email: null
-    phone: "(949) 395-1275"
-    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Bob Whalen"
-    position: "Councilmember"
-    district: null
-    email: null
-    phone: "(949) 497-0796"
-    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Bob Whalen
+  position: Mayor
+  district: null
+  email: bwhalen@lagunabeachcity.net
+  phone: 949-497-3311
+  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126
+  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4706/638067135619970000
+  bio: null
+  term_start: 2012
+  term_end: 2024
+  website: null
+  instagram: null
+  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126
+- name: Mark Orgill
+  position: Mayor
+  district: null
+  email: morgill@lagunabeachcity.net
+  phone: 949-497-3311
+  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126
+  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4694/638064498925070000
+  bio: null
+  term_start: 2022
+  term_end: 1984
+  website: null
+  instagram: null
+  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126
+- name: Sue Kempf
+  position: Mayor
+  district: null
+  email: skempf@lagunabeachcity.net
+  phone: (949) 439-3001
+  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126
+  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/5560/638453363123100000
+  bio: null
+  term_start: 2018
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126
+- name: Hallie Jones
+  position: Mayor Pro Tem
+  district: null
+  email: hjones@lagunabeachcity.net
+  phone: 949-497-3311
+  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126
+  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/6128/638693684199500000
+  bio: null
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126
+- name: Alex Rounaghi
+  position: Councilmember
+  district: null
+  email: arounaghi@lagunabeachcity.net
+  phone: (949) 395-1275
+  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126
+  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4692/638694573774830000
+  bio: null
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126

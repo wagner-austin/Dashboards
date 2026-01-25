@@ -1,40 +1,43 @@
-city: "huntington-beach"
-last_updated: "2026-01-24"
-next_election: "2026-11-03"
+city: huntington-beach
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
 seats_up: []
-
 members:
-  - name: "Pat Burns"
-    position: "Mayor"
-    district: "At-Large"
-    email: "pburns@huntingtonbeachca.gov"
-
-  - name: "Butch Twining"
-    position: "Mayor Pro Tem"
-    district: "At-Large"
-    email: "btwining@huntingtonbeachca.gov"
-
-  - name: "Casey McKeon"
-    position: "Councilmember"
-    district: "At-Large"
-    email: "cmckeon@huntingtonbeachca.gov"
-
-  - name: "Gracey Larrea-Van Der Mark"
-    position: "Councilmember"
-    district: "At-Large"
-    email: "glarrea@huntingtonbeachca.gov"
-
-  - name: "Andrew Gruel"
-    position: "Councilmember"
-    district: "At-Large"
-    email: "agruel@huntingtonbeachca.gov"
-
-  - name: "Don Kennedy"
-    position: "Councilmember"
-    district: "At-Large"
-    email: "dkennedy@huntingtonbeachca.gov"
-
-  - name: "Chad Williams"
-    position: "Councilmember"
-    district: "At-Large"
-    email: "cwilliams@huntingtonbeachca.gov"
+- name: Casey Mc Keon
+  position: Mayor
+  email: Casey.McKeon@surfcity-hb.org
+  phone: (714) 536-5511
+- name: Butch Twining
+  position: Mayor Pro Tem
+  district: At-Large
+  email: Butch.Twining@surfcity-hb.org
+  phone: (714) 536-5511
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+- name: Andrew Gruel
+  position: Councilmember
+  district: At-Large
+  email: Andrew.Gruel@surfcity-hb.org
+  phone: (714) 536-5511
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+- name: Chad Williams
+  position: Councilmember
+  district: At-Large
+  email: Chad.Williams@surfcity-hb.org
+  phone: (714) 536-5511
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+- name: Don Kennedy
+  position: Councilmember
+  district: At-Large
+  email: Don.Kennedy@surfcity-hb.org
+  phone: (714) 536-5511
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+- name: Gracey Van Der Mark
+  position: Councilmember
+  email: Gracey.VanDerMark@surfcity-hb.org
+  phone: (714) 536-5511
+- name: Pat Burns
+  position: Councilmember
+  district: At-Large
+  email: Pat.Burns@surfcity-hb.org
+  phone: (714) 536-5511
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php

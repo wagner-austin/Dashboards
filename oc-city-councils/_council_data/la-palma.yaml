@@ -1,89 +1,67 @@
-# La Palma City Council
-# Last updated: 2026-01-24
-
-city: "la-palma"
-city_name: "La Palma"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: la-palma
+city_name: La Palma
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://www.lapalmaca.gov"
-council_url: "https://www.lapalmaca.gov/66/City-Council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://www.lapalmaca.gov
+council_url: https://www.lapalmaca.gov/66/City-Council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "Nitesh P. Patel"
-    position: "Mayor"
-    district: "At-Large"
-    email: null
-    phone: "(714) 690-3334"
-    city_profile: "https://www.lapalmaca.gov/716"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Debbie S. Baker"
-    position: "Mayor Pro Tem"
-    district: "District 1"
-    email: null
-    phone: "(714) 690-3334"
-    city_profile: "https://www.lapalmaca.gov/714"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Mark I. Waldman"
-    position: "Councilmember"
-    district: "District 5"
-    email: null
-    phone: "(714) 690-3334"
-    city_profile: "https://www.lapalmaca.gov/717"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Janet Keo Conklin"
-    position: "Councilmember"
-    district: "At-Large"
-    email: null
-    phone: "(714) 690-3334"
-    city_profile: "https://www.lapalmaca.gov/735"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Vikesh P. Patel"
-    position: "Councilmember"
-    district: "District 3"
-    email: null
-    phone: "(714) 690-3334"
-    city_profile: "https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Nitesh P. Patel
+  position: Mayor
+  district: At-Large
+  email: citycouncil@lapalmaca.gov
+  phone: 714-690-3334
+  city_profile: https://www.lapalmaca.gov/716
+  photo_url: null
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.lapalmaca.gov/716
+- name: Debbie S. Baker
+  position: Mayor Pro Tem
+  district: District 1
+  email: citycouncil@lapalmaca.gov
+  phone: 714-690-3334
+  city_profile: https://www.lapalmaca.gov/714
+  photo_url: null
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.lapalmaca.gov/714
+- name: Janet Keo
+  position: Councilmember
+  email: citycouncil@lapalmaca.gov
+  phone: 714-690-3334
+- name: Mark I. Waldman
+  position: Councilmember
+  district: District 5
+  email: citycouncil@lapalmaca.gov
+  phone: 714-690-3334
+  city_profile: https://www.lapalmaca.gov/717
+  photo_url: null
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.lapalmaca.gov/717
+- name: Vikesh P. Patel
+  position: Councilmember
+  district: District 3
+  email: citycouncil@lapalmaca.gov
+  phone: 714-690-3334
+  city_profile: https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member
+  photo_url: null
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member

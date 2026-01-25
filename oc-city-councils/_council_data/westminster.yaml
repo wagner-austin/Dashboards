@@ -1,89 +1,79 @@
-# Westminster City Council
-# Last updated: 2026-01-24
-
-city: "westminster"
-city_name: "Westminster"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
-next_election: null
-seats_up: []
-
-# City info
-website: "https://www.westminster-ca.gov"
-council_url: "https://www.westminster-ca.gov/government/mayor-and-city-council-members"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+city: westminster
+city_name: Westminster
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
+seats_up:
+- Mayor (At-Large)
+- District 1
+- District 4
+website: https://www.westminster-ca.gov
+council_url: https://www.westminster-ca.gov/government/mayor-and-city-council-members
+general_email: eComments@westminster-ca.gov
+phone: (714) 548-3178
+instagram: null
 members:
-  - name: "Chi Charlie Nguyen"
-    position: "Mayor"
-    district: "At-Large"
-    email: "ccnguyen@westminster-ca.gov"
-    phone: "(714) 548-3178"
-    city_profile: "https://www.westminster-ca.gov/government/mayor-and-city-council-members/mayor-chi-charlie-nguyen"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Carlos Manzo"
-    position: "Vice Mayor"
-    district: "District 2"
-    email: "cmanzo@westminster-ca.gov"
-    phone: "(714) 548-3178"
-    city_profile: "https://www.westminster-ca.gov/government/mayor-and-city-council-members"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Amy Phan West"
-    position: "Councilmember"
-    district: "District 1"
-    email: "aphanwest@westminster-ca.gov"
-    phone: "(714) 548-3178"
-    city_profile: "https://www.westminster-ca.gov/government/mayor-and-city-council-members"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Mark Nguyen"
-    position: "Councilmember"
-    district: "District 3"
-    email: "mnguyen@westminster-ca.gov"
-    phone: "(714) 548-3178"
-    city_profile: "https://www.westminster-ca.gov/government/mayor-and-city-council-members"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Tai Do"
-    position: "Councilmember"
-    district: "District 4"
-    email: "tdo@westminster-ca.gov"
-    phone: "(714) 548-3178"
-    city_profile: "https://www.westminster-ca.gov/government/mayor-and-city-council-members"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Chi Charlie Nguyen
+  position: Mayor
+  district: At-Large
+  email: ccnguyen@westminster-ca.gov
+  phone: (714) 898-3311
+  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members/mayor-chi-charlie-nguyen
+  photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4694/638701392192800000
+  bio: null
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/mayor-chi-charlie-nguyen
+- name: NamQuan Nguyen
+  position: Vice Mayor
+  district: District 4
+  email: NNguyen@westminster-ca.gov
+  phone: (714) 898-3311
+  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members/vice-mayor-namquan-nguyen-district-4
+  photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4696/638701392206430000
+  bio: null
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/vice-mayor-namquan-nguyen-district-4
+- name: Amy Phan West
+  position: Councilmember
+  district: District 1
+  email: APhanWest@westminster-ca.gov
+  phone: (714) 898-3311
+  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-amy-phan-west-district-1
+  photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4688/638701077054570000
+  bio: null
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-amy-phan-west-district-1
+- name: Carlos Manzo
+  position: Councilmember
+  district: District 2
+  email: CManzo@Westminster-CA.gov
+  phone: (714) 898-3311
+  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-carlos-manzo-district-2
+  photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4690/638701077070770000
+  bio: null
+  term_start: 2020
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-carlos-manzo-district-2
+- name: Mark Nguyen
+  position: Councilmember
+  district: District 3
+  email: mnguyen@westminster-ca.gov
+  phone: (714) 898-3311
+  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members
+  photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4680/638700392461200000
+  bio: null
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members

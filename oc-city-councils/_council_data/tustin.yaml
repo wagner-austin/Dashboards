@@ -1,89 +1,102 @@
-# Tustin City Council
-# Last updated: 2026-01-24
-
-city: "tustin"
-city_name: "Tustin"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
-next_election: null
+city: tustin
+city_name: Tustin
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
 seats_up: []
-
-# City info
-website: "https://www.tustinca.org"
-council_url: "https://www.tustinca.org/482/City-Council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://www.tustinca.org
+council_url: https://www.tustinca.org/482/City-Council
+general_email: CityCouncil@tustinca.org
+phone: 714-573-3012
+instagram: null
 members:
-  - name: "Austin Lumbard"
-    position: "Mayor"
-    district: null
-    email: "ALumbard@tustinca.org"
-    phone: "714-573-3012"
-    city_profile: "https://www.tustinca.org/499/Mayor-Austin-Lumbard"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Ray Schnell"
-    position: "Mayor Pro Tem"
-    district: null
-    email: "rschnell@tustinca.org"
-    phone: "714-573-3012"
-    city_profile: "https://www.tustinca.org/1396/Council-Member-Ray-Schnell"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Ryan Gallagher"
-    position: "Councilmember"
-    district: null
-    email: "rgallagher@tustinca.org"
-    phone: "714-573-3012"
-    city_profile: "https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Lee K. Fink"
-    position: "Councilmember"
-    district: null
-    email: "lfink@tustinca.org"
-    phone: "714-573-3012"
-    city_profile: "https://www.tustinca.org/1208/Council-Member-Lee-K-Fink"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "John Nielsen"
-    position: "Councilmember"
-    district: null
-    email: "jnielsen@tustinca.org"
-    phone: "714-573-3012"
-    city_profile: "https://www.tustinca.org/493/Council-Member-John-Nielsen"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Austin Lumbard
+  position: Mayor
+  district: null
+  email: ALumbard@tustinca.org
+  phone: 714-573-3000
+  city_profile: https://www.tustinca.org/499/Mayor-Austin-Lumbard
+  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=8794
+  bio: 'Mayor Austin Lumbard, elected to City Council in 2018 and elected as Mayor in 2022, was born and raised in Orange
+    County and is a long-time Tustin resident.  His priorities while on City Council include: Mayor Lumbard has served the
+    community in a variety of roles.  He currently represents Tustin on the Orange County Fire Authority and is an alternate
+    representative to the Orange County Sanitation District and the Water Advisory Committee of Orange County.  Mayor Lumbard
+    previously served on the Foothill/Eastern Transportation Corridor Agencies, the Newport Bay Watershed Executive Committee,
+    the Santa Ana River Flood Protection Agency, and the Airport Land Use Commission for Orange County. Prior to being elected
+    to City Council, Mayor Lumbard served six years on Tustin’s Planning Commission, twice as Commission Chair.  He also served
+    for many years as a reserve deputy with the Orange County Sheriff’s Department.  This experience helped shape his passion
+    for keeping all Tustin residents safe.'
+  term_start: 2018
+  term_end: 2022
+  website: null
+  instagram: null
+  city_page: https://www.tustinca.org/499/Mayor-Austin-Lumbard
+- name: Ray Schnell
+  position: Mayor Pro Tem
+  district: null
+  email: rschnell@tustinca.org
+  phone: 714-573-3000
+  city_profile: https://www.tustinca.org/1396/Council-Member-Ray-Schnell
+  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=8793
+  bio: 'Mayor Pro Tem Ray Schnell, elected to office in November 2022, has lived in Orange County for 20 years and is a long-time
+    Tustin resident. His priorities while on City Council include keeping Tustin: Accountable (honest, ethical, and transparent
+    government) Affordable & Prosperous (preserving the economic vitality of Tustin.'
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.tustinca.org/1396/Council-Member-Ray-Schnell
+- name: Ryan Gallagher
+  position: Mayor Pro Tem
+  district: null
+  email: rgallagher@tustinca.org
+  phone: 714-573-3000
+  city_profile: https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher
+  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16360
+  bio: Mayor Pro Tem Ryan Gallagher, elected to City Council in 2020, was born and raised in Southern California and is a
+    passionate advocate for fiscally responsible government, innovation, and supporting a vibrant local community in Tustin.
+    His priorities while on City Council include Mayor Pro Tem Gallagher represents the City of Tustin as Vice-Chair of the
+    Orange County Sanitation District Board, and also serves as a member of the Water Advisory Committee of Orange County
+    and Newport Bay Watershed Executive Committee (alternate). Prior to joining the City Council, Ryan proudly served the
+    community through his role on the Tustin Planning Commission.
+  term_start: 2020
+  term_end: 2019
+  website: null
+  instagram: null
+  city_page: https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher
+- name: John Nielsen
+  position: Councilmember
+  district: null
+  email: jnielsen@tustinca.org
+  phone: 714-573-3000
+  city_profile: https://www.tustinca.org/493/Council-Member-John-Nielsen
+  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16355
+  bio: Council Member John Nielsen was elected to the City Council originally in 2008, was re-elected in 2012 and served through
+    2016. He also served as Mayor in 2012 and in 2016. During this time on the City Council John served as the Chairman of
+    the Board of Directors of the Orange County Sanitation District from 2015 to 2016, and on the Board from 2010 to 2016.
+    He also served as Regional Council Member for District 17 representing the Cities of Tustin, Orange and Villa Park on
+    the Board for the Southern California Association of Governments from 2009 to 2016. John also served on the Board of Directors
+    for the Orange County Fire Authority in 2010. Prior to being elected to the City Council he served on the Tustin Planning
+    Commission from 2002 to 2008. Subsequent to his service on the Tustin City Council John was elected to the Board of Directors
+    for the East Orange County Water District representing District 4 in 2022. In November of 2024 Council Member Nielsen
+    was again elected to the Tustin City Council representing District 2.
+  term_start: 2008
+  term_end: 2016
+  website: null
+  instagram: null
+  city_page: https://www.tustinca.org/493/Council-Member-John-Nielsen
+- name: Lee K. Fink
+  position: Councilmember
+  district: null
+  email: lfink@tustinca.org
+  phone: 714-573-3000
+  city_profile: https://www.tustinca.org/1208/Council-Member-Lee-K-Fink
+  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16153
+  bio: 'Council Member Lee Fink, elected in November 2024, is a Tustin native, attorney, and longtime community volunteer.
+    His priorities on the City Council focus on: Developing the Local Economy for the Future, including providing abundant
+    housing and business development in Tustin Keeping the community safe and healthy, including ensuring public safety, addressing
+    homelessness, and'
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.tustinca.org/1208/Council-Member-Lee-K-Fink

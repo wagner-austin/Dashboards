@@ -1,89 +1,124 @@
-# Mission Viejo City Council
-# Last updated: 2026-01-24
-
-city: "mission-viejo"
-city_name: "Mission Viejo"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: mission-viejo
+city_name: Mission Viejo
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://cityofmissionviejo.org"
-council_url: "https://www.cityofmissionviejo.org/government/city-council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://cityofmissionviejo.org
+council_url: https://www.cityofmissionviejo.org/government/city-council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "Wendy Bucknum"
-    position: "Mayor"
-    district: "District 5"
-    email: "wbucknum@cityofmissionviejo.org"
-    phone: "949-470-3050"
-    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-wendy-bucknum"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Brian Goodell"
-    position: "Mayor Pro Tem"
-    district: "District 2"
-    email: "bgoodell@cityofmissionviejo.org"
-    phone: "949-470-3050"
-    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-brian-goodell"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Bob Ruesch"
-    position: "Councilmember"
-    district: "District 1"
-    email: "rruesch@cityofmissionviejo.org"
-    phone: "949-470-3050"
-    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Cynthia Vasquez"
-    position: "Councilmember"
-    district: "District 3"
-    email: "cvasquez@cityofmissionviejo.org"
-    phone: "949-470-3050"
-    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Trish Kelley"
-    position: "Councilmember"
-    district: "District 4"
-    email: "tkelley@cityofmissionviejo.org"
-    phone: "949-470-3050"
-    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Trish Kelley
+  position: Mayor
+  district: District 4
+  email: tkelley@cityofmissionviejo.org
+  phone: 949-470-3050
+  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley
+  photo_url: https://www.cityofmissionviejo.org/sites/default/files/Trish-Kelley.jpg
+  bio: Trish Kelley was originally elected to the Mission Viejo City Council in November 2002.  She has served as Mayor in
+    2005, 2008, 2010, 2014, 2021 and 2024.  Trish believes that quality of life, public safety, economic development, and
+    transportation are the primary concerns of our residents and works hard to preserve and enhance those areas. During her
+    years of service on the City Council, Trish has successfully promoted many programs and improvements to enhance the quality
+    of life in Mission Viejo.  She advanced the expansion of the Norman P. Murray Community and Senior Center, the renovations
+    of Montanoso and Sierra Recreation Centers and the Marguerite Tennis Center and the Marguerite Aquatics Center, the addition
+    of three new parks, and she spearheaded the effort to bring a senior transportation program to Mission Viejo.  She supported
+    road-widening projects on Crown Valley, Alicia, and Oso Parkways and various signal and road improvements city-wide.  Trish
+    continues to promote the regular renovations of our City parks, to provide updated equipment and enhancements for the
+    enjoyment of our residents.  She also supported the City's purchase of Oso Creek Golf Course to preserve over 100 acres
+    of open space and to save and improve a beloved asset in Mission Viejo. In 2003, Trish led the City Council to establish
+    Mission Viejo as a City of Character.   She helped to develop a city-wide character program, which focuses on a different
+    character quality each month.  She wrote the curriculum, which is provided to the City's 25 schools, various City facilities,
+    and featured on the City website.  The program has received awards at the state and national levels.   Trish has been
+    a presenter at state and national conferences, teaching other organizations how to bring similar character programs to
+    their communities.
+  term_start: 2002
+  term_end: 2006
+  website: null
+  instagram: null
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley
+- name: Wendy Bucknum
+  position: Mayor
+  district: District 5
+  email: wbucknum@cityofmissionviejo.org
+  phone: 949-470-3050
+  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/councilmember-wendy-bucknum
+  photo_url: https://www.cityofmissionviejo.org/sites/default/files/wendy-bucknum.jpg
+  bio: Mayor Wendy Bucknum was initially elected to serve as a member of the Mission Viejo City Council in 2014. She brings
+    a wealth of practical business experience, a long history of community involvement, and a solid record of volunteerism
+    in our schools, community, and youth sports programs. Mayor Bucknum has a strong business background from her 30+ years
+    serving in the community association and development industry and is a champion for City policies that are fair, understandable,
+    cost effective, and good for the economy. She is a mom who values partnerships with schools to give Mission Viejo youth
+    a meaningful educational experience and safe place to learn. As an active volunteer she understands the unique needs of
+    kids, families, and seniors, and supports programs to serve all. Wendy’s primary goals are to maintain and enhance Mission
+    Viejo’s public safety record, create a healthy local business economy, streamline governmental processes, preserve parks,
+    trails and open spaces, to protect Mission Viejo’s schools and neighborhoods, and to maintain and enhance city infrastructure
+    and the community facilities Mission Viejo residents use and enjoy.
+  term_start: 2014
+  term_end: 2018
+  website: null
+  instagram: null
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/councilmember-wendy-bucknum
+- name: Brian Goodell
+  position: Mayor Pro Tem
+  district: District 2
+  email: bgoodell@cityofmissionviejo.org
+  phone: 949-470-3050
+  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/councilmember-brian-goodell
+  photo_url: https://www.cityofmissionviejo.org/sites/default/files/bgoodell-web.jpg
+  bio: 'Brian Goodell is a native Californian who moved to Mission Viejo in 1968 with his family. He graduated from Linda
+    Vista Elementary School, La Paz Intermediate, Mission Viejo High School, and UCLA. Brian was a member of the world-famous
+    Mission Viejo Nadadores swim team and became the first Olympic Gold Medalist from Mission Viejo, breaking two world records
+    while winning two Gold Medals at the 1976 Olympic Games in Montreal. He was inducted into the International Swimming Hall
+    of Fame, the UCLA Athletics Hall of Fame, the Orange County Sports Hall of Fame, and the Saddleback Valley Unified School
+    District Hall of Fame. Brian won the Congressional Gold Medal of Achievement as a member of the 1980 USA Olympic Men’s
+    Swimming Team that boycotted the 1980 Moscow Olympics. The citizens elected Brian to the Mission Viejo City Council in
+    2016, and he has served as a council member, Mayor Pro Tem, and Mayor in 2020, and he was re-elected to serve as Mayor
+    in 2023. Brian led the city with distinction during the outbreak of the COVID-19 Pandemic. Notable accomplishments under
+    Brian’s leadership include: Acquiring the Oso Creek Golf Course and open space,'
+  term_start: 2016
+  term_end: 2020
+  website: null
+  instagram: null
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/councilmember-brian-goodell
+- name: Bob Ruesch
+  position: Councilmember
+  district: District 1
+  email: rruesch@cityofmissionviejo.org
+  phone: 949-470-3050
+  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch
+  photo_url: https://www.cityofmissionviejo.org/sites/default/files/Bob-Ruesch-Headshot.jpg
+  bio: Robert “Bob” Ruesch came to Mission Viejo in 1994 with his wife Debbie to find a safer and better place to raise their
+    family. Bob & Debbie have two adult children, daughter Kate who resides in Spain with her family, and their son Andrew
+    who resides in Mar Vista with his family. They have three grandsons, Luke, Zach, and Walter. Bob was a leader in the Boy
+    Scouts of America for over twenty years, helping many young men including his son obtain the rank of Eagle. He has been
+    part of a faith-based study for over twenty-five years. Bob’s career has taken many paths. As an entrepreneur, he started
+    five businesses and has held many executive level positions in the private sector. Bob served on a Presidential Task Force
+    for the Reagan Presidency. Bob is a well-established authority on marketing, an accomplished pilot, rock climbing instructor,
+    and motorsport racer.
+  term_start: null
+  term_end: 2022
+  website: null
+  instagram: null
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch
+- name: Cynthia Vasquez
+  position: Councilmember
+  district: District 3
+  email: cvasquez@cityofmissionviejo.org
+  phone: 949-470-3050
+  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez
+  photo_url: https://www.cityofmissionviejo.org/sites/default/files/Cynthia-Vasquez-Headshot.jpg
+  bio: Cynthia Vasquez, MBA, was elected to the Mission Viejo City Council in November 2022 for a four-year term.  She is
+    the first representative for District 3 in the City’s inaugural district elections.  Her priorities focus on public safety,
+    enhancing quality of life, fiscal responsibility, and driving economic development. Cynthia has demonstrated a strong
+    commitment to public safety and traffic management.  Her initiatives include advocating for intersection improvements
+    throughout Mission Viejo, including the installation of a refuge lane on Marguerite Parkway at La Sierra Drive (2026).
+    She also advocates for lower speed limits near schools, increasing crossing guards, adding marked crosswalks near parks
+    and schools, and installing a protective fence around Napoli Park (2023).  Additionally, Cynthia supports expanding the
+    free Mission Viejo shuttle service to assist students and parents, reduce traffic congestion, and improve access to community
+    events.  She maintains communication with local schools and residents to ensure ongoing collaboration.
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez

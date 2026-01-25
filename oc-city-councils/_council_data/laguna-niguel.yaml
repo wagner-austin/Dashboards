@@ -1,89 +1,114 @@
-# Laguna Niguel City Council
-# Last updated: 2026-01-24
-
-city: "laguna-niguel"
-city_name: "Laguna Niguel"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: laguna-niguel
+city_name: Laguna Niguel
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://www.cityoflagunaniguel.org"
-council_url: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://www.cityoflagunaniguel.org
+council_url: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "Gene Johns"
-    position: "Mayor"
-    district: null
-    email: "GJohns@cityoflagunaniguel.org"
-    phone: "(949) 362-4300"
-    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Kelly Jennings"
-    position: "Mayor Pro Tem"
-    district: null
-    email: "KJennings@cityoflagunaniguel.org"
-    phone: "(949) 362-4300"
-    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Ray Gennawey"
-    position: "Councilmember"
-    district: null
-    email: "RGennawey@cityoflagunaniguel.org"
-    phone: "(949) 362-4300"
-    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Stephanie Oddo"
-    position: "Councilmember"
-    district: null
-    email: "SOddo@cityoflagunaniguel.org"
-    phone: "(949) 362-4300"
-    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Stephanie Winstead"
-    position: "Councilmember"
-    district: null
-    email: "SWinstead@cityoflagunaniguel.org"
-    phone: "(949) 362-4300"
-    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Gene Johns
+  position: Mayor
+  district: null
+  email: GJohns@cityoflagunaniguel.org
+  phone: 949-425-5151
+  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24725
+  bio: Mayor Gene Johns was appointed to the City Council on June 14, 2023, and was reappointed in November 2024 for a four-year
+    term. He was selected to serve as Mayor on November 18, 2025. Currently, Mayor Johns is Council Liaison to the Traffic
+    & Transportation Commission, Military Support Committee, and Orange County Mosquito and Vector Control. Mayor Johns served
+    over 31 years as a Deputy Sheriff with the Los Angeles County Sheriff’s Department, in which 24 of those years, he served
+    as cross-designated Task Force Officer assigned to the United States Drug Enforcement Administration (DEA). He commanded
+    a Task Force Group nationally recognized for disrupting and dismantling drug cartel operations. His expertise has been
+    nationally recognized and was often called upon to instruct various law enforcement agencies throughout the nation. Mayor
+    Johns retired in Laguna Niguel seven years ago, and since retirement, has sought opportunities to volunteer in civic and
+    community organizations in the city. He is an active member of the Laguna Niguel Chamber of Commerce, Niguel Botanical
+    Preserve, and Laguna Niguel Lions Club.
+  term_start: 2025
+  term_end: 2029
+  website: null
+  instagram: null
+  city_page: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+- name: Kelly Jennings
+  position: Mayor Pro Tem
+  district: null
+  email: kjennings@cityoflagunaniguel.org
+  phone: 949-425-5151
+  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=20328
+  bio: Mayor Pro Tem Kelly Jennings was first elected to the City Council on November 3, 2020 for a four-year term, and was
+    appointed in November 2024 for a four-year term. On March 7, 2023, Mayor Pro Tem Kelly Jennings was selected as Mayor,
+    and on November 7, 2023, she was reaffirmed to continue as Mayor for a one-year term. On November 18, 2025, she was selected
+    to serve as Mayor Pro Tem. Currently, Mayor Pro Tem Jennings is Council Liaison to the Parks, Recreation & Senior Commission,
+    Investment Banking & Audit Committee, City/CDBG Grant Sub Committee, Youth Committee, Orange County Fire Authority Executive
+    Committee, Orange County Fire Authority Legislative & Public Affairs Committee, and South Orange County Watershed Management
+    Area Executive Committee. Mayor Pro Tem Kelly Jennings is passionate about public service and loves giving back to the
+    Laguna Niguel community. She is the Community Life Director for Mission Lutheran Church in Laguna Niguel, where she oversees
+    the church’s operations including its work with six global and five regional charities. Kelly previously served as the
+    elected Director for the Moulton Niguel Water District and as a Commissioner for the Santiago Aqueduct Commission. Kelly
+    has been a longtime member of the Laguna Niguel Chamber of Commerce and promotes local small business success by serving
+    as a Chamber Ambassador. She also serves as a Director of Sustain Southern California, which advances sustainability and
+    economic growth through innovation, collaboration and education.
+  term_start: 2020
+  term_end: 2024
+  website: null
+  instagram: null
+  city_page: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+- name: Ray Gennawey
+  position: Councilmember
+  district: null
+  email: RGennawey@cityoflagunaniguel.org
+  phone: 949-425-5151
+  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=23959
+  bio: 'Council Member Ray Gennawey was elected to City Council on November 8, 2022, for a four-year term, and selected to
+    serve as Mayor on December 3, 2024. Currently, Ray is Council Liaison to the City/CDBG Grant Sub-Committee, Investment,
+    Banking & Audit Committee, Youth Committee, and California Joint Powers Insurance Authority. Council Member Ray Gennawey
+    is an Orange County Deputy District Attorney, where he is specially assigned to the Human Trafficking Unit and the Orange
+    County Human Trafficking Task Force. Over the course of his career, Ray has prosecuted murderers, gangsters, child abusers,
+    and third-strikers. Ray currently leads a team of law enforcement professionals with the OC GRIP (Gang Reduction and Intervention
+    Partnership), working extensively with young students in at-risk neighborhoods to set them on a path to a brighter future.
+    Ray is dedicated to serving our community, and is a passionate advocate of:'
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+- name: Stephanie Oddo
+  position: Councilmember
+  district: null
+  email: SOddo@cityoflagunaniguel.org
+  phone: 949-425-5151
+  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=23960
+  bio: Council Member Stephanie Oddo was elected to the Laguna Niguel City Council on November 8, 2022 for a four-year term.
+    On April 18, 2023, Council Member Oddo was selected to serve as Mayor Pro Tem, and on November 7, 2023,  she was reaffirmed
+    to continue as Mayor Pro Tem. Laguna Niguel Parks, Recreation, and Senior Commission Transportation Corridor Agency, San
+    Joaquin Hills (The Toll Roads) (Vice Chair)
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+- name: Stephanie Winstead
+  position: Councilmember
+  district: null
+  email: SWinstead@cityoflagunaniguel.org
+  phone: 949-425-5151
+  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24627
+  bio: Council Member Stephanie Winstead was appointed to the City Council on May 10, 2023, and was reappointed in November
+    2024 for a four-year term. Currently, Stephanie is Council Liaison to the Traffic & Transportation Commission, Military
+    Support Committee, Orange County Public Library Advisory Board, and Capistrano Unified School District. Council Member
+    Winstead has over a decade of experience serving the City of Laguna Niguel.  Examples of her service include serving on
+    the City’s Traffic and Transportation Commission, Parks and Recreation Commission, Military Support Committee, and the
+    Investment, Banking and Audit Committee. Additionally, she has served as the Chair of the Chamber of Commerce Board of
+    Directors in 2019.  Professionally, Winstead is an estate planning attorney and is the founder and president of Winstead
+    Law Group, APC located in Laguna Niguel.
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.cityoflagunaniguel.org/396/Mayor-City-Council

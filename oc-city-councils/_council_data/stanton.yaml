@@ -1,89 +1,76 @@
-# Stanton City Council
-# Last updated: 2026-01-24
-
-city: "stanton"
-city_name: "Stanton"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: stanton
+city_name: Stanton
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://www.stantonca.gov"
-council_url: "https://www.stantonca.gov/government/city_council.php"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://www.stantonca.gov
+council_url: https://www.stantonca.gov/government/city_council.php
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "David J. Shawver"
-    position: "Mayor"
-    district: "At-Large"
-    email: "DShawver@StantonCA.gov"
-    phone: "(714) 379-9222"
-    city_profile: "https://www.stantonca.gov/government/city_council.php"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Gary Taylor"
-    position: "Mayor Pro Tem"
-    district: "District 3"
-    email: "GTaylor@StantonCA.gov"
-    phone: "(714) 379-9222"
-    city_profile: "https://www.stantonca.gov/government/city_council.php"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Donald Torres"
-    position: "Councilmember"
-    district: "District 1"
-    email: "DTorres@StantonCA.gov"
-    phone: "(714) 379-9222"
-    city_profile: "https://www.stantonca.gov/government/city_council.php"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Victor Barrios"
-    position: "Councilmember"
-    district: "District 2"
-    email: "VBarrios@StantonCA.gov"
-    phone: "(714) 379-9222"
-    city_profile: "https://www.stantonca.gov/government/city_council.php"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "John D. Warren"
-    position: "Councilmember"
-    district: "District 4"
-    email: "JOHNWarren@StantonCA.gov"
-    phone: "(714) 379-9222"
-    city_profile: "https://www.stantonca.gov/government/city_council.php"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: David J. Shawver
+  position: Mayor
+  district: At-Large
+  email: DShawver@StantonCA.gov
+  phone: (714) 379-9222
+  city_profile: https://www.stantonca.gov/government/city_council.php
+  photo_url: revize_photo_gallery/Government/City Council/David Shawver.jpg?t=202505230901400
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.stantonca.gov/government/bio-dshawver.php
+- name: Gary Taylor
+  position: Mayor Pro Tem
+  district: District 3
+  email: GTaylor@StantonCA.gov
+  phone: (714) 379-9222
+  city_profile: https://www.stantonca.gov/government/city_council.php
+  photo_url: revize_photo_gallery/Government/City Council/Gary Taylor.jpg?t=202505230901430
+  bio: null
+  term_start: 2018
+  term_end: 2022
+  website: null
+  instagram: null
+  city_page: https://www.stantonca.gov/government/bio-gtaylor.php
+- name: Donald Torres
+  position: Councilmember
+  district: District 1
+  email: DTorres@StantonCA.gov
+  phone: (714) 379-9222
+  city_profile: https://www.stantonca.gov/government/city_council.php
+  photo_url: null
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.stantonca.gov/government/city_council.php
+- name: John D. Warren
+  position: Councilmember
+  district: District 4
+  email: JOHNWarren@StantonCA.gov
+  phone: (714) 379-9222
+  city_profile: https://www.stantonca.gov/government/city_council.php
+  photo_url: JDWarren2 - Copy.jpg?t=202505230901480
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.stantonca.gov/government/bio_for_john_d_warren.php
+- name: Victor Barrios
+  position: Councilmember
+  district: District 2
+  email: VBarrios@StantonCA.gov
+  phone: (714) 379-9222
+  city_profile: https://www.stantonca.gov/government/city_council.php
+  photo_url: V.Barrios.jpg?t=202508251920020
+  bio: null
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://www.stantonca.gov/government/bio_for_victor_barrios.php

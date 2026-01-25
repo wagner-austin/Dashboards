@@ -1,35 +1,83 @@
-city: "aliso-viejo"
-last_updated: "2026-01-24"
-next_election: "2026-11-03"
+city: aliso-viejo
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
 seats_up: []
-
 members:
-  - name: "Max Duncan"
-    position: "Mayor"
-    district: "District 2"
-    phone: "949-425-2510"
-    city_page: "https://avcity.org/223/Mayor-Max-Duncan"
-
-  - name: "Mike Munzing"
-    position: "Mayor Pro Tem"
-    district: "At-Large"
-    phone: "949-425-2510"
-    city_page: "https://avcity.org/224/Mayor-Pro-Tem-Mike-Munzing"
-
-  - name: "Tiffany Ackley"
-    position: "Councilmember"
-    district: "At-Large"
-    phone: "949-425-2510"
-    city_page: "https://avcity.org/225/Councilmember-Tiffany-Ackley"
-
-  - name: "Garrett Dwyer"
-    position: "Councilmember"
-    district: "At-Large"
-    phone: "949-425-2510"
-    city_page: "https://avcity.org/226/Councilmember-Garrett-Dwyer"
-
-  - name: "Tim Zandbergen"
-    position: "Councilmember"
-    district: "At-Large"
-    phone: "949-425-2510"
-    city_page: "https://avcity.org/227/Councilmember-Tim-Zandbergen"
+- name: Max Duncan
+  position: Mayor
+  district: District 2
+  phone: 949-425-3899
+  city_page: https://avcity.org/294/Mayor-Max-Duncan
+  photo_url: https://avcity.org/ImageRepository/Document?documentID=4118
+  bio: Max Duncan was elected at to the Aliso Viejo City Council in 2022 for a four-year term and currently serves as Mayor
+    Pro Tem for 2025. Max is the first representative of Aliso Viejo’s 2nd District. This district includes the neighborhoods
+    near Canyon View Park, Westridge Park, Oak Park, Soka University and more. Max graduated from the University of Phoenix
+    in 2004 with a Bachelor of Science in Business Information Systems. A self-proclaimed “techie” since he was a child, Max
+    spent his youth taking apart electronics to see how they worked, and by the age of nine was writing code and running one
+    of Orange County’s first online chat rooms. This passion led Max to a long and accomplished career in the technology field.
+    In addition to starting multiple businesses, he has also worked as an engineer for various tech companies.
+  term_start: 2022
+  term_end: 2026
+  email: mduncan@avcity.org
+- name: Mike Munzing
+  position: Mayor Pro Tem
+  district: At-Large
+  phone: 949-425-3899
+  city_page: https://avcity.org/292/Mayor-Pro-Tem-Mike-Munzing
+  photo_url: https://avcity.org/ImageRepository/Document?documentID=4054
+  bio: Mike Munzing was first elected to the Aliso Viejo City Council in 2012 and was reelected in 2016, 2020 and 2024. He
+    has served as Mayor in 2016, 2020 and 2024. Mike currently serves as Mayor Pro Tem for 2026 and previously held the position
+    in 2015, 2019, and 2023. Mike was re-elected to city council in November 2024, to represent Aliso Viejo’s 5th District.
+    He is the first council representative of District 5, which encompasses the area south of Pacific Park Drive to Wood Canyon
+    Drive between Boundary Oak and Alicia Parkway and includes the neighborhoods near Hillview Park, Aliso Niguel High School
+    and more. Mike grew up in Orange, Calif. as the youngest of four children and the son of a pastor. He worked full time
+    to put himself through college and holds a BS Degree from California State University, Fullerton with a dual-major in
+    Real Estate Finance and Industrial Marketing.
+  term_start: 2024
+  term_end: 2028
+  email: mmunzing@avcity.org
+- name: Garrett Dwyer
+  position: Councilmember
+  district: At-Large
+  phone: 949-425-3899
+  city_page: https://avcity.org/295/Councilmember-Garrett-Dwyer
+  photo_url: https://avcity.org/ImageRepository/Document?documentID=4478
+  bio: Garrett Dwyer was appointed in 2025 to represent the 3rd District of the Aliso Viejo City Council. This district includes
+    our Town Center and The Commons, Grand Park, Woodfield Park, and communities surrounded by Alicia Parkway, Pacific Park
+    Drive and State Route 73. Garrett and his wife moved to Aliso Viejo in 2004 to build their family and quickly became enamored
+    with the city. From the quality of the schools and parks to the safety of the streets, Garrett knew this was his place
+    to plant roots. As his family has grown with kids and dogs and cats, so has Garrett's service to our community. There's
+    a good chance you've seen him serving as either a PTA treasurer, soccer coach, AYSO board member, substitute instructor
+    at church, HOA board member, or YMCA Adventure Guides Expedition Navigator.
+  term_end: 2026
+  email: GDwyer@AVCity.org
+- name: Tiffany Ackley
+  position: Councilmember
+  district: At-Large
+  phone: 949-425-3899
+  city_page: https://avcity.org/293/Councilmember-Tiffany-Ackley
+  photo_url: https://avcity.org/ImageRepository/Document?documentID=456
+  bio: Tiffany Ackley was first elected to the Aliso Viejo City Council in 2018 for a four-year term, then reelected in 2022.
+    She currently serves as Mayor for 2025 and previously served as Mayor in 2021, and as Mayor Pro Tem in 2020 and 2024.
+    Tiffany is the first representative of Aliso Viejo’s 4th District, which encompasses the area directly west of Moulton
+    Parkway and includes the neighborhoods near Iglesia Community Park, Glenwood Park, Aliso Viejo Ranch and more. Tiffany
+    has called South Orange County home since 1980, having attended local public schools from elementary level to high school.
+    When it came time to settle down, her family knew where they wanted to live–Aliso Viejo.
+  term_start: 2022
+  term_end: 2026
+  email: tackley@avcity.org
+- name: Tim Zandbergen
+  position: Councilmember
+  district: At-Large
+  phone: 949-425-3899
+  city_page: https://avcity.org/291/Councilmember-Tim-Zandbergen
+  photo_url: https://avcity.org/ImageRepository/Document?documentID=4053
+  bio: Tim Zandbergen was elected to city council in November 2024 for a four-year term. Tim is the first representative of Aliso
+    Viejo’s 1st District. District 1 includes the area north of the 73 Toll Road, between El Toro Road and Cedarbrook and
+    includes the neighborhoods near Hummingbird Park, Brookline Park, Wingspan Park, Pinewood Park and more. A longtime Aliso
+    Viejo resident and small business owner, Tim has been involved in the community through various volunteer efforts and
+    leadership roles with his HOA board of directors. In addition to his normal city council responsibilities, Tim will represent the City as
+    an alternate member of the San Joaquin Hills Transportation Corridor Agency Board of Directors.
+  term_start: 2024
+  term_end: 2028
+  email: tzandbergen@avcity.org

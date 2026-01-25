@@ -1,40 +1,95 @@
-city: "anaheim"
-last_updated: "2026-01-24"
-next_election: "2026-11-03"
+city: anaheim
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
 seats_up: []
-
 members:
-  - name: "Ashleigh Aitken"
-    position: "Mayor"
-    district: "At-Large"
-    city_page: "https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken"
-
-  - name: "Carlos A. Leon"
-    position: "Mayor Pro Tem"
-    district: "District 2"
-    city_page: "https://www.anaheim.net/2314/Mayor-Pro-Tem-Carlos-A-Leon"
-
-  - name: "Ryan Balius"
-    position: "Councilmember"
-    district: "District 1"
-    city_page: "https://www.anaheim.net/3522/Council-Member-Ryan-Balius"
-
-  - name: "Natalie Rubalcava"
-    position: "Councilmember"
-    district: "District 3"
-    city_page: "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava"
-
-  - name: "Norma Campos Kurtz"
-    position: "Councilmember"
-    district: "District 4"
-    city_page: "https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz"
-
-  - name: "Kristen Maahs"
-    position: "Councilmember"
-    district: "District 5"
-    city_page: "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs"
-
-  - name: "Natalie Meeks"
-    position: "Councilmember"
-    district: "District 6"
-    city_page: "https://www.anaheim.net/173/City-Council"
+- bio: Ashleigh Aitken was elected as the 48th mayor of Anaheim in November 2022. She is the first woman mayor in Anaheim’s
+    167-year history. Mayor Aitken represents all Anaheim residents, neighborhoods and businesses on the City Council, alongside
+    six members elected by districts. As mayor, Aitken lead a series of 2023 transparency reforms at City Hall and is also
+    focused on enhancing public safety, expanding affordable housing and growing Anaheim’s economy by supporting our visitor
+    industry and streamlining processes to expand and attract new industries.
+  name: Ashleigh E. Aitken
+  position: Mayor
+  email: aaitken@anaheim.net
+  phone: (714) 765-5098
+  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58010
+  term_start: 2022
+  term_end: 2026
+- name: Carlos A. Leon
+  position: Mayor Pro Tem
+  district: District 2
+  city_page: https://www.anaheim.net/2314/Mayor-Pro-Tem-Carlos-A-Leon
+  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58081
+  bio: Carlos A. Leon represents District 2 in west Anaheim and serves as mayor pro tem on the Anaheim City Council. Council
+    Member Leon was elected to the City Council in November 2022 and selected to serve as mayor pro tem for 2026 by his Council
+    colleagues. As mayor pro tem, Leon chairs City Council meetings and represents the city as a whole as needed.
+  term_start: 2022
+  term_end: 2026
+  email: cleon@anaheim.net
+  phone: (714) 765-5164
+- name: Kristen Maahs
+  position: Councilmember
+  district: District 5
+  city_page: https://www.anaheim.net/3521/Council-Member-Kristen-Maahs
+  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58009
+  bio: Kristen Maahs was elected to the Anaheim City Council in November 2024, representing District 5 in central-east Anaheim.
+    A fourth-generation Anaheim resident, Maahs is focused funding and equipping Anaheim’s police and firefighters, addressing
+    homelessness with compassion and impact and promoting a strong economy through support of startups, existing Anaheim businesses
+    and those new to our city. Maahs also looks to build on Anaheim’s extensive reforms for transparency and accountability
+    while ensuring public money is spent efficiently with a focus on public services.
+  term_start: 2024
+  term_end: 2028
+  email: kmaahs@anaheim.net
+  phone: (714) 765-5164
+- bio: Natalie Meeks was elected to the Anaheim City Council in November 2022, representing District 6 in east Anaheim. Before
+    joining the City Council, Meeks served on Anaheim’s Planning Commission from 2019 to late 2022, including as chair in
+    2021 and 2022. On the Council, Meeks is focused on safety and quality of life issues through adding officers to the Anaheim
+    Police Department, reducing crime, addressing homelessness, improving fire evacuation in Anaheim Hills and expanding and
+    building on the area’s parks, trails and libraries.
+  name: Natalie Meeks
+  position: Councilmember
+  email: nmeeks@anaheim.net
+  phone: (714) 765-5040
+  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58063
+  term_start: 2022
+  term_end: 2026
+- name: Natalie Rubalcava
+  position: Councilmember
+  district: District 3
+  city_page: https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava
+  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58060
+  bio: Natalie Rubalcava was elected to the Anaheim City Council in November 2022, representing District 3 in central Anaheim.
+    in 2023, Rubalcava served as mayor pro tem, representing the city at large at community and other events. Before joining
+    the Council, Rubalcava served on the Anaheim Housing and Community Development Commission from June to December 2022.
+    Earlier, she served on the city’s Community Services Board from 2004 to 2014, including as chair in 2009.
+  term_start: 2022
+  term_end: 2026
+  email: nrubalcava@anaheim.net
+  phone: (714) 765-5057
+- name: Norma Campos Kurtz
+  position: Councilmember
+  district: District 4
+  city_page: https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz
+  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58023
+  bio: Norma Campos Kurtz was elected to the Anaheim City Council representing District 4 in 2024 after first being appointed
+    to fill a vacancy in the district in 2023. In 2024 she has served as mayor pro tem, chairing City Council meetings as
+    needed and helping to represent the city at community and other events. As Council member for District 4 in central-south
+    Anaheim, Campos Kurtz represents neighborhoods at the southern end of downtown as well as around The Anaheim Resort.
+  term_start: 2024
+  term_end: 2028
+  email: nkurtz@anaheim.net
+  phone: (714) 765-5014
+- name: Ryan Balius
+  position: Councilmember
+  district: District 1
+  city_page: https://www.anaheim.net/3522/Council-Member-Ryan-Balius
+  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=57980
+  bio: Ryan Balius was elected to the Anaheim City Council in November 2024, representing District 1 in west Anaheim. A 25-year
+    resident of west Anaheim, Balius is focused on advancing the ongoing rebuilding of Beach Boulevard with continued police
+    enforcement, more potential motel closures and redevelopment with homes, businesses and public spaces. District 1, which
+    goes from north Brookhurst Street to Anaheim’s western city lines with Buena Park, Cypress and Stanton, is home to neighborhoods,
+    businesses, parks, schools, a library and Anaheim’s 1.5-mile stretch of Beach Boulevard.
+  term_start: 2024
+  term_end: 2028
+  email: rbalius@anaheim.net
+  phone: (714) 765-5047

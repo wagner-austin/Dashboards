@@ -1,93 +1,158 @@
-city: "irvine"
-last_updated: "2025-01-24"
-next_election: "2026-11-03"
+city: irvine
+last_updated: '2026-01-25'
+next_election: '2026-11-03'
 seats_up:
-  - "Mayor"
-  - "District 1"
-  - "District 5"
-  - "At-Large"
-
+- Mayor
+- District 1
+- District 5
+- At-Large
 members:
-  - name: "Larry Agran"
-    position: "Mayor"
-    district: "At-Large"
-    photo_url: "https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg"
-    email: "LarryAgran@cityofirvine.org"
-    bio: "First served on Irvine City Council 1978-1990, including six years as Mayor. Elected Mayor in 2024 for his eighth nonconsecutive term. Harvard Law School graduate."
-    term_start: 2024
-    term_end: 2026
-    website: "https://mayorlarryagran.org"
-    city_page: "https://cityofirvine.org/city-council/mayor-larry-agran"
-    instagram: "https://www.instagram.com/mayorlarryagran"
-
-  - name: "James Mai"
-    position: "Vice Mayor"
-    district: "District 3"
-    photo_url: "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg"
-    email: "JamesMai@cityofirvine.org"
-    bio: "Vice Mayor representing District 3 on the Irvine City Council."
-    term_start: 2022
-    term_end: 2026
-    website: null
-    city_page: "https://cityofirvine.org/city-council/vice-mayor-james-mai-district-3"
-    instagram: "https://www.instagram.com/vicemayormai"
-
-  - name: "Melinda Liu"
-    position: "Councilmember"
-    district: "District 1"
-    photo_url: "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg"
-    email: "MelindaLiu@cityofirvine.org"
-    bio: "Councilmember representing District 1."
-    term_start: 2024
-    term_end: 2026
-    website: "https://www.melindaliuirvine.com"
-    city_page: "https://cityofirvine.org/city-council/councilmember-melinda-liu-district-1"
-    instagram: "https://www.instagram.com/melindaliu_official"
-
-  - name: "William Go"
-    position: "Councilmember"
-    district: "District 2"
-    photo_url: "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg"
-    email: "WilliamGo@cityofirvine.org"
-    bio: "Councilmember representing District 2."
-    term_start: 2022
-    term_end: 2026
-    website: null
-    city_page: "https://cityofirvine.org/city-council/councilmember-william-go-district-2"
-    instagram: "https://www.instagram.com/williamgoirvine"
-
-  - name: "Mike Carroll"
-    position: "Councilmember"
-    district: "District 4"
-    photo_url: "https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png"
-    email: "MikeCarroll@cityofirvine.org"
-    bio: "Serving second term on City Council. Vice Chairman of the Great Park. Corporate attorney, OCTA Board Member, and New York Times bestselling author."
-    term_start: 2022
-    term_end: 2026
-    website: null
-    city_page: "https://cityofirvine.org/city-council/councilmember-mike-carroll-district-4"
-    instagram: "https://www.instagram.com/mikecarrollcouncilmember"
-
-  - name: "Betty Martinez Franco"
-    position: "Councilmember"
-    district: "District 5"
-    photo_url: "https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg"
-    email: "BettyMartinezFranco@cityofirvine.org"
-    bio: "Councilmember representing District 5."
-    term_start: 2024
-    term_end: 2026
-    website: null
-    city_page: "https://cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5"
-    instagram: "https://www.instagram.com/councilmemberbettymartinez"
-
-  - name: "Kathleen Treseder"
-    position: "Councilmember"
-    district: "At-Large"
-    photo_url: "https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg"
-    email: "KathleenTreseder@cityofirvine.org"
-    bio: "At-Large Councilmember on the Irvine City Council."
-    term_start: 2024
-    term_end: 2026
-    website: null
-    city_page: "https://cityofirvine.org/city-council/councilmember-kathleen-treseder-large"
-    instagram: "https://www.instagram.com/councilmemberkathleentreseder"
+- name: Larry Agran
+  position: Mayor
+  district: At-Large
+  photo_url: https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg
+  email: LarryAgran@cityofirvine.org
+  bio: Larry Agran graduated Phi Beta Kappa from the University of California at Berkeley in 1966, majoring in history and
+    economics. In 1969, he graduated with honors from Harvard Law School, where he specialized in public interest law. Larry
+    has served as Legal Counsel to the California State Senate Committee on Health and Welfare. He has taught legislation
+    and public policy at the UCLA School of Law and the Paul Merage School of Business at UC Irvine. Larry Agran first served
+    on the Irvine City Council from 1978 to 1990, including six years as Mayor. Under his leadership, Irvine received national
+    recognition for its pioneering programs in child care, affordable housing, recycling, and open space preservation.
+  term_start: 2024
+  term_end: 2026
+  website: https://mayorlarryagran.org
+  city_page: https://cityofirvine.org/city-council/mayor-larry-agran
+  instagram: https://www.instagram.com/mayorlarryagran
+  phone: 949-724-6000
+- name: James Mai
+  position: Vice Mayor
+  district: District 3
+  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg
+  email: JamesMai@cityofirvine.org
+  bio: James Mai was elected as the inaugural Councilmember for District 3 and was subsequently selected by his City Council
+    colleagues to serve as Vice Mayor. His election marks a historic milestone, reflecting Irvine’s rich diversity, as he
+    became the first Vietnamese American to hold elected office in the city. With over two decades of business leadership,
+    James brings extensive expertise in strategy, innovation, and growth. His career spans a broad range of industries and
+    international markets, earning him a reputation as a dynamic and results-driven entrepreneur. He has successfully launched
+    and managed organizations with a global presence, demonstrating resilience and adaptability in navigating complex and
+    emerging markets. As Managing Partner of Bristol & Bates, a management consulting firm specializing in business development
+    and technology strategies, James has delivered transformative solutions to organizations worldwide. His proficiency in
+    strategic operations, brand development, marketing, and technology has enabled businesses to scale efficiently and expand
+    their impact. His professional portfolio includes operations across North America, Europe, and Asia, as well as founding
+    an Irvine-based executive search firm in 2004.
+  term_start: 2022
+  term_end: 2026
+  website: null
+  city_page: https://cityofirvine.org/city-council/vice-mayor-james-mai-district-3
+  instagram: https://www.instagram.com/vicemayormai
+  phone: 949-724-6000
+- name: Betty Martinez Franco
+  position: Councilmember
+  district: District 5
+  photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg
+  email: bettymartinez@cityofirvine.org
+  bio: Councilmember Betty Martinez Franco is a proud, longtime resident of Irvine, an entrepreneur, and a public servant
+    representing Council District 5. In a historic victory, she became the first Latina and first Mexican immigrant elected
+    to the Irvine City Council, in a city where Latinos represent the third-largest demographic group. Originally from Mexico,
+    Councilmember Martinez Franco immigrated to the United States over 30 years ago. Her journey is one of determination and
+    perseverance, beginning with humble roots working in apple fields, hotel housekeeping, and childcare. As a survivor of
+    domestic violence, she sought refuge at Human Options. This nonprofit organization helped her secure stable and affordable
+    housing in Irvine –– where she began to rebuild her life with her two daughters. Betty’s determination led her to pursue
+    higher education options. She earned an Associate's degree from Orange Coast College, a Bachelor’s degree in Communications
+    from California State University, Fullerton, a Master’s degree in Public Administration, and a Graduate Certificate in
+    City and County Management from USC Price School of Public Policy.
+  term_start: 2024
+  term_end: 2026
+  website: null
+  city_page: https://cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5
+  instagram: https://www.instagram.com/councilmemberbettymartinez
+  phone: 949-724-6000
+- name: Kathleen Treseder
+  position: Councilmember
+  district: At-Large
+  photo_url: https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg
+  email: KathleenTreseder@cityofirvine.org
+  bio: Meet Councilmember Kathleen Treseder, PhD - At-Large Councilmember Kathleen Treseder, PhD is the Howard A. Schneiderman
+    Endowed Chair and Professor at University of California Irvine. She leads an internationally recognized research program
+    studying how climate change affects endangered ecosystems and our society. She received her PhD from Stanford University
+    and has been elected a Fellow of the American Association for the Advancement of Science, the American Academy of Microbiology,
+    and the Ecological Society of America. She was recently honored with the 2024 Robert H. MacArthur Award from the Ecological
+    Society of America. This prestigious award is bestowed upon an established ecologist in mid-career who has made significant
+    contributions to the field of ecology, with the expectation of continuing to produce outstanding ecological research.
+    In 2022, she received the Marsh Award for Climate Change Research from the British Ecological Society. She has published
+    over 120 articles in scientific journals. Councilmember Treseder’s research has been featured on the BBC and NPR and in
+    numerous publications, including Discover Magazine, The Orange County Register, and Harper’s Bazaar.
+  term_start: 2024
+  term_end: 2026
+  website: null
+  city_page: https://cityofirvine.org/city-council/councilmember-kathleen-treseder-large
+  instagram: https://www.instagram.com/councilmemberkathleentreseder
+  phone: 949-724-6000
+- name: Melinda Liu
+  position: Councilmember
+  district: District 1
+  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg
+  email: MelindaLiu@cityofirvine.org
+  bio: Councilmember Melinda Liu is a long-time Northwood resident with her multigenerational family in Irvine. She holds
+    a Bachelor of Arts degree in Political Science from the University of California in Berkeley and a Juris Doctor degree
+    from Southwestern University School Law in Los Angeles, California. Professionally, she is a licensed attorney by the
+    California Bar, a licensed Real Estate Broker in the State of California, and a certified Mediator. Born in Taipei, Taiwan,
+    Councilmember Liu moved to Los Angeles with her family as a teenager. In Irvine’s first district City Council election,
+    she made history as the first Taiwan-born Chinese-American woman who is fluent in Mandarin to be elected to Irvine City
+    Council. Throughout her legal career, Councilmember Liu has worked extensively with immigrant communities and small businesses.
+    She started working in immigration law during law school under the mentorship of prominent immigration attorneys. Then,
+    she gained insights and experiences serving small businesses in transactions, litigations, and complex government regulations
+    in private practice and the Small Business Administration. Currently, Councilmember Liu runs her solo estate planning
+    business where she helps families make estate plans with empathy and knowledge. Since high school, Councilmember Liu has
+    been an active community volunteer and leader who’s been recognized by many organizations. A passionate advocate for her
+    community, Councilmember Liu has spent years acting as a volunteer and leader at local athletic, education, and charitable
+    organizations. Specifically, she served as the President of Irvine Chinese School Parent Teacher Organization, Board Member
+    of Northwood High School Athletic Booster Club and PTSA, and a volunteer mediator at the Orange County Superior Court.
+  term_start: 2024
+  term_end: 2026
+  website: https://www.melindaliuirvine.com
+  city_page: https://cityofirvine.org/city-council/councilmember-melinda-liu-district-1
+  instagram: https://www.instagram.com/melindaliu_official
+  phone: 949-724-6000
+- name: Mike Carroll
+  position: Councilmember
+  district: District 4
+  photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png
+  email: MikeCarroll@cityofirvine.org
+  bio: Councilmember Mike Carroll is serving his second 4-year term on the Irvine City Council. Appointed in 2019 on a bi-partisan
+    basis to fill a vacancy, in 2020 he was elected to a four-year term and then re-elected in 2024, where he received the
+    highest number of votes in the City’s history. With over 318,000 residents, Irvine is the second largest city in Orange
+    County, California, the sixth largest county in the United States. Irvine is a multi-award-winning master-planned community.
+    It is the most diversely integrated city and has been the safest city in America for nearly 20 years in a row. Carroll
+    is also Vice Chairman of the Great Park, the largest under-development municipal park in the nation. Spanning 1,300 acres
+    and hosting 6 million annual visits, the Great Park’s 500 acres completed to date embrace recreation, competitive sports,
+    parkland, and the environment. As a salute to our veterans, the Great Park honors the memory of the former Marine Corps
+    Air Station El Toro. The Great Park is setting the gold standard for park design, and upon completion, it will be a national
+    treasure among the great metropolitan parks of the world.
+  term_start: 2022
+  term_end: 2026
+  website: null
+  city_page: https://cityofirvine.org/city-council/councilmember-mike-carroll-district-4
+  instagram: https://www.instagram.com/mikecarrollcouncilmember
+  phone: 949-724-6000
+- name: William Go
+  position: Councilmember
+  district: District 2
+  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg
+  email: WilliamGo@cityofirvine.org
+  bio: 'William Go was elected to the Irvine City Council in 2024 as the first Councilmember to represent District 2 and the
+    first Chinese Filipino American to serve on the Council. William is also Chairman of the Great Park, currently the nation’s
+    largest municipal park under development. Covering 1,300 acres and welcoming approximately 6 million visitors each year,
+    the 500 acres already completed feature a dynamic mix of recreational spaces, competitive sports facilities, preserved
+    parkland, and environmental stewardship. In tribute to our veterans, the Great Park thoughtfully preserves and honors
+    the legacy of the former Marine Corps Air Station El Toro. By establishing a new benchmark for innovative park design,
+    the Great Park is poised to become a world-class metropolitan treasure upon full completion. William and his family immigrated
+    to the United States when he was a child. Raised alongside his four siblings by their mother, William saw her work tirelessly
+    to provide for their family, instilling in him the values of hard work and perseverance. Born in the Philippines to a
+    mother of Chinese descent, he speaks three languages: English, Tagalog, and Chinese.'
+  term_start: 2022
+  term_end: 2026
+  website: null
+  city_page: https://cityofirvine.org/city-council/councilmember-william-go-district-2
+  instagram: https://www.instagram.com/williamgoirvine
+  phone: 949-724-6000

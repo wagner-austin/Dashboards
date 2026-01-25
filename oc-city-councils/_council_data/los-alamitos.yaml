@@ -1,89 +1,119 @@
-# Los Alamitos City Council
-# Last updated: 2026-01-24
-
-city: "los-alamitos"
-city_name: "Los Alamitos"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: los-alamitos
+city_name: Los Alamitos
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://cityoflosalamitos.org"
-council_url: "https://cityoflosalamitos.org/165/City-Council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://cityoflosalamitos.org
+council_url: https://cityoflosalamitos.org/165/City-Council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "Tanya Doby"
-    position: "Mayor"
-    district: null
-    email: "tdoby@cityoflosalamitos.org"
-    phone: "562-431-3538 ext. 220"
-    city_profile: "https://cityoflosalamitos.org/165/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Jordan Nefulda"
-    position: "Mayor Pro Tem"
-    district: null
-    email: "jnefulda@cityoflosalamitos.org"
-    phone: "562-431-3538 ext. 220"
-    city_profile: "https://cityoflosalamitos.org/165/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Gary Loe"
-    position: "Councilmember"
-    district: "District 2"
-    email: "Gloe@cityoflosalamitos.org"
-    phone: "562-431-3538 ext. 220"
-    city_profile: "https://cityoflosalamitos.org/165/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Shelley Hasselbrink"
-    position: "Councilmember"
-    district: "District 4"
-    email: "shasselbrink@cityoflosalamitos.org"
-    phone: "562-431-3538 ext. 220"
-    city_profile: "https://cityoflosalamitos.org/165/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Emily Hibard"
-    position: "Councilmember"
-    district: "District 5"
-    email: "ehibard@cityoflosalamitos.org"
-    phone: "562-431-3538 ext. 220"
-    city_profile: "https://cityoflosalamitos.org/165/City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: Shelley Hasselbrink
+  position: Mayor
+  district: District 4
+  email: shasselbrink@cityoflosalamitos.org
+  phone: 562-431-3538
+  city_profile: https://cityoflosalamitos.org/165/City-Council
+  photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=2385
+  bio: Shelley Hasselbrink was first elected to the Los Alamitos City Council in 2014 and has proudly served as Mayor in 2017,
+    2022, and 2025. She brings a strong background in business and leadership to her role, holding a Bachelor of Science degree
+    from the University of Redlands and an MBA from Pepperdine University. She is currently pursuing doctoral studies in Organizational
+    Development at Grand Canyon University. Professionally, Shelley serves as Controller for Mason West, a seismic engineering
+    and fabrication company headquartered in Placentia with offices across California. Her 35-year career includes leadership
+    roles at CBS Television, WTC Consulting, and CI Solutions, providing her with extensive experience in administration,
+    sales, business development, and finance. This professional expertise helps guide her commitment to making fiscally responsible
+    decisions on behalf of the City of Los Alamitos. Shelley is also active in regional governance. She serves on the Board
+    of Directors, Executive Committee, and Budget & Finance Committee for the Orange County Fire Authority, where she was
+    honored to serve as Board Chair in 2020. She currently represents Los Alamitos on the Orange County Airport Land Use Commission
+    (ALUC) and serves on the League of California Cities Community Services Policy Committee.
+  term_start: 2014
+  term_end: 2018
+  website: null
+  instagram: null
+  city_page: https://cityoflosalamitos.org/165/City-Council
+- name: Emily Hibard
+  position: Councilmember
+  district: District 5
+  email: ehibard@cityoflosalamitos.org
+  phone: 562-431-3538
+  city_profile: https://cityoflosalamitos.org/165/City-Council
+  photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=2388
+  bio: Emily Hibard grew up in Downey, and attended Azusa Pacific University, where she earned a Bachelor of Arts degree in
+    Political Science. She later earned a Master's degree in Public Administration (MPA) from California State University
+    at Northridge. Additionally, she studied Modern Political Thought at the University of Oxford, St. Edmund Hall, and was
+    a member of the Oxford Union. She works in manufacturing, media, and music, and is a member of the Recording Academy Los
+    Angeles Chapter (Grammy Awards). Emily is a lifelong athlete and enjoys volleyball, pickleball, hiking, camping, overlanding,
+    beach cruising, SCUBA diving, and sailing. She has climbed Mount Kilimanjaro, and has kayaked in both Antarctica and the
+    Arctic Ocean.
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://cityoflosalamitos.org/165/City-Council
+- name: Gary Loe
+  position: Councilmember
+  district: District 2
+  email: Gloe@cityoflosalamitos.org
+  phone: 562-431-3538
+  city_profile: https://cityoflosalamitos.org/165/City-Council
+  photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=4436
+  bio: Gary, a lifelong resident of Los Alamitos, has deep roots in the community. He attended Hopkinson Elementary (Raiders)
+    and Oak Middle School (Trojans) and graduated from Los Alamitos High School (Griffins).  Alongside his wife, Marie, he
+    raised four children who also proudly attended the same schools within the Los Alamitos Unified School District. His educational
+    background is in Finance, earning a bachelor’s degree from CSUDH (Toros) and an MBA from Pepperdine University (Waves).
+    Professionally, Gary works in financial services and brings 30 years of leadership, integrity, and strategic thinking
+    to both his career and community service.
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://cityoflosalamitos.org/165/City-Council
+- name: Jordan Nefulda
+  position: Councilmember
+  district: null
+  email: jnefulda@cityoflosalamitos.org
+  phone: 562-431-3538
+  city_profile: https://cityoflosalamitos.org/165/City-Council
+  photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=2384
+  bio: Mr. Nefulda earned his Bachelor’s in Business Administration from California State University, Long Beach, and his
+    Juris Doctorate from Chapman University Fowler School of Law. While he always envisioned a career in law, he didn’t initially
+    expect to become a Family Law Lawyer. His passion for public service grew from a desire to keep Los Alamitos a thriving
+    and desirable place to live. Before serving as Mayor and Councilmember, Mr. Nefulda contributed to his community as a
+    member of the Los Alamitos Parks, Recreation, and Cultural Arts Commission and began his public service journey by joining
+    the United States Army. As Mayor and Councilmember, Mr. Nefulda takes pride in supporting the growth and retention of
+    the Los Alamitos Police Department. He emphasizes the Council’s dedication to ensuring proper allocation of Measure Y
+    sales tax funds, which supports essential services like public safety, parks, and infrastructure projects. Looking ahead,
+    Mr. Nefulda aims to enhance community integration and expand services through partnerships with the Joint Forces Training
+    Base. Mr. Nefulda’s role as Mayor has allowed him to build strong connections with community members, city leaders, and
+    the business sector. Yet, his greatest pride is his family. Despite the demands of his law practice and public duties,
+    being a devoted Husband and Father is his first priority.
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://cityoflosalamitos.org/165/City-Council
+- name: Tanya Doby
+  position: Councilmember
+  district: null
+  email: tdoby@cityoflosalamitos.org
+  phone: 562-431-3538
+  city_profile: https://cityoflosalamitos.org/165/City-Council
+  photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=2386
+  bio: Tanya Doby has distinguished herself as a leader in Los Alamitos, earning recognition as a 2023 Woman of Distinction
+    by both the State Senate and Assembly and Woman of the Year for her assembly district in 2024. Her journey began with
+    an appointment to the Los Alamitos City Council in 2019, followed by a resounding election to her first full term in 2020,
+    supported by her extensive community involvement and volunteerism. With a robust background in human resources and personnel
+    development spanning over 20 years, Tanya has brought invaluable skills to her role. She is known for her engaging leadership
+    style and commitment to policies that are equitable, efficient, and fiscally responsible. Under her stewardship, Los Alamitos
+    has rebuilt its law enforcement team and strengthened its overall management structure, achieving a fully staffed and
+    funded public safety operation for the first time in nearly a decade. Tanya Doby's dedication to partnerships extends
+    to her role as a founding member of an interagency working group with the Los Alamitos School District. This collaborative
+    effort focuses on enhancing educational opportunities and ensuring safe environments for local children. Notable joint
+    ventures include initiatives to improve school safety and the introduction of a new aquatics program hosted at the local
+    high school.
+  term_start: null
+  term_end: null
+  website: null
+  instagram: null
+  city_page: https://cityoflosalamitos.org/165/City-Council

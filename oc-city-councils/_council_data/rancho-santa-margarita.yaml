@@ -1,89 +1,98 @@
-# Rancho Santa Margarita City Council
-# Last updated: 2026-01-24
-
-city: "rancho-santa-margarita"
-city_name: "Rancho Santa Margarita"
-last_updated: "2026-01-24"
-
-# Election info (fill in)
+city: rancho-santa-margarita
+city_name: Rancho Santa Margarita
+last_updated: '2026-01-25'
 next_election: null
 seats_up: []
-
-# City info
-website: "https://www.cityofrsm.org"
-council_url: "https://www.cityofrsm.org/160/Mayor-City-Council"
-email: ""
-phone: ""
-instagram: ""
-
-# Council members
+website: https://www.cityofrsm.org
+council_url: https://www.cityofrsm.org/160/Mayor-City-Council
+email: ''
+phone: ''
+instagram: ''
 members:
-  - name: "L. Anthony Beall"
-    position: "Mayor"
-    district: null
-    email: "tbeall@cityofrsm.org"
-    phone: "949-635-1800, ext. 6310"
-    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Anne D. Figueroa"
-    position: "Mayor Pro Tem"
-    district: null
-    email: "afigueroa@cityofrsm.org"
-    phone: "949-635-1800, ext. 6310"
-    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Brad McGirr"
-    position: "Councilmember"
-    district: null
-    email: "bmcgirr@cityofrsm.org"
-    phone: "949-635-1800, ext. 6310"
-    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Jerry Holloway"
-    position: "Councilmember"
-    district: null
-    email: "jholloway@cityofrsm.org"
-    phone: "949-635-1800, ext. 6310"
-    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
-
-  - name: "Keri Lynn Baert"
-    position: "Councilmember"
-    district: "District 3"
-    email: "kbaert@cityofrsm.org"
-    phone: "949-635-1800, ext. 6310"
-    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
-    # Rich data (fill in)
-    photo_url: null
-    bio: null
-    term_start: null
-    term_end: null
-    website: null
-    instagram: null
+- name: L. Anthony Beall
+  position: Mayor
+  district: null
+  email: tbeall@cityofrsm.org
+  phone: 949-635-1800
+  city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
+  photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12201
+  bio: 'Tony is a licensed attorney and has been practicing law in California for 25 years. As a real estate transactional
+    attorney, he has developed an in-depth knowledge and special expertise in legal matters relating to public and private
+    financing, as well as the real estate development and land-use planning process. Tony is an attorney with the international
+    law firm of Troutman Pepper Locke and has practiced law in some of the largest and most sophisticated private law firms
+    in the State of California. He has also served as Chief Counsel for one of the largest providers of multifamily financing
+    throughout the United States. As a law school graduate and as a Political Science major, Tony developed a thorough understanding
+    and respect for our governmental institutions and the manner in which they were designed to function for the benefit of
+    all citizens. Tony has received diplomas from: City Council Member for Rancho Santa Margarita since 2004'
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.cityofrsm.org/Directory.aspx?EID=9
+- name: Anne D. Figueroa
+  position: Mayor Pro Tem
+  district: null
+  email: afigueroa@cityofrsm.org
+  phone: 949-635-1800
+  city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
+  photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=3823
+  bio: Anne Figueroa is a 27-year resident of Rancho Santa Margarita. She and her husband, Dan, raised their three children
+    here in our city while they attended both public and private schools. Anne has owned her own design business for the past
+    29 years and has won numerous design awards. Anne served as a Rancho Santa Margarita Planning Commissioner for three years
+    and also served as Planning Commissioner Chair for one year.  Anne was elected to the Rancho Santa Margarita City Council
+    in November 2018. Anne served as Mayor Pro Tempore in 2021 and as Mayor in 2022. Anne is also currently serving as the
+    District Director for Assemblywoman Kate Sanchez of the 71st Assembly District, State of California.
+  term_start: 2018
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.cityofrsm.org/Directory.aspx?EID=44
+- name: Bradley J. McGirr
+  position: Councilmember
+  email: bmcgirr@cityofrsm.org
+  phone: 949-635-1800
+  city_page: https://www.cityofrsm.org/Directory.aspx?EID=8
+  bio: After years of service to the community, Brad was appointed to the Rancho Santa Margarita Planning Commission in December
+    2009 and served as the Vice Chair in 2012. He was also appointed as a member of the City’s Economic Development Committee
+    and the Business Attraction Working Group. On November 6, 2012, Brad was elected to the Rancho Santa Margarita City Council,
+    serving as Mayor Pro Tempore in 2014 and as Mayor in 2015. Brad again served as Mayor in 2020 and guided our city in this
+    capacity at the height of the COVID pandemic. Brad was our city’s Mayor Pro Tempore in 2024 and 2025 and proudly serves
+    as a member of the Board of Directors for the Orange County Fire Authority.
+  photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12199
+  term_start: 2014
+  term_end: 2026
+- name: Jerry Holloway
+  position: Councilmember
+  district: null
+  email: jholloway@cityofrsm.org
+  phone: 949-635-1800
+  city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
+  photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentId=11120
+  bio: Dean of Students - Santa Margarita Catholic High School Social Studies Teacher - Santa Margarita Catholic High School
+    Administration of Justice Instructor - Irvine Valley College
+  term_start: null
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.cityofrsm.org/Directory.aspx?EID=11
+- name: Keri Lynn Baert
+  position: Councilmember
+  district: District 3
+  email: kbaert@cityofrsm.org
+  phone: 949-635-1800 x. 6310
+  city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
+  photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12200
+  bio: Keri has been a resident of Rancho Santa Margarita since 2002 and has dedicated herself to serving the community through
+    various volunteer roles. She has been actively involved with local organizations and has supported her children’s education
+    by volunteering in school parent organizations, scouting groups, and sports teams. Her work with the PTA sparked a deep
+    passion for advocacy, leading her to travel to Sacramento to engage with lawmakers on issues such as student mental health
+    and school funding. In January 2020, Keri authored a resolution at the California State PTA convention that called for
+    enhanced mental health services for youth, including increasing the number of school counselors at every level. Her tireless
+    volunteer efforts have earned her several accolades, including the Presidential Service Gold Award, the Fourth District
+    PTA Advocacy Award, and the SVUSD Community Volunteer Recognition Award. Trabuco Hills PTSA - President, EVP, VP of Advocacy
+    Rancho Santa Margarita Intermediate PTSO - President, Executive Board Member
+  term_start: null
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.cityofrsm.org/Directory.aspx?EID=70
