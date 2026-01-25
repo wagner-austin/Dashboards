@@ -1,0 +1,71 @@
+{
+  "website": "https://avcity.org",
+  "council_url": "https://avcity.org/222/City-Council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Max Duncan",
+      "position": "Mayor",
+      "district": "District 2",
+      "email": "mduncan@avcity.org",
+      "phone": "949-425-2510",
+      "website": null,
+      "city_profile": "https://avcity.org/294/Mayor-Max-Duncan",
+      "instagram": null
+    },
+    {
+      "name": "Mike Munzing",
+      "position": "Mayor Pro Tem",
+      "district": "District 5",
+      "email": "mmunzing@avcity.org",
+      "phone": "949-425-2510",
+      "website": null,
+      "city_profile": "https://avcity.org/292/Mayor-Pro-Tem-Mike-Munzing",
+      "instagram": null
+    },
+    {
+      "name": "Tiffany Ackley",
+      "position": "Councilmember",
+      "district": null,
+      "email": "tackley@avcity.org",
+      "phone": "949-425-2510",
+      "website": null,
+      "city_profile": "https://avcity.org/293/Councilmember-Tiffany-Ackley",
+      "instagram": null
+    },
+    {
+      "name": "Garrett Dwyer",
+      "position": "Councilmember",
+      "district": null,
+      "email": "GDwyer@AVCity.org",
+      "phone": "949-425-2510",
+      "website": null,
+      "city_profile": "https://avcity.org/295/Councilmember-Garrett-Dwyer",
+      "instagram": null
+    },
+    {
+      "name": "Tim Zandbergen",
+      "position": "Councilmember",
+      "district": null,
+      "email": "tzandbergen@avcity.org",
+      "phone": "949-425-2510",
+      "website": null,
+      "city_profile": "https://avcity.org/291/Councilmember-Tim-Zandbergen",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://avcity.org/129/Agendas-Minutes",
+    "method": "Email the City Council",
+    "notes": "Meetings 1st and 3rd Wednesday at 7pm"
+  },
+  "clerk_contact": {
+    "phone": "949-425-2510",
+    "email": null
+  },
+  "notes": [
+    "Data verified January 2026 from official site"
+  ],
+  "city_name": "Aliso Viejo",
+  "slug": "aliso-viejo"
+}

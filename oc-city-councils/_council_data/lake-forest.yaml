@@ -1,0 +1,89 @@
+# Lake Forest City Council
+# Last updated: 2026-01-24
+
+city: "lake-forest"
+city_name: "Lake Forest"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.lakeforestca.gov"
+council_url: "https://www.lakeforestca.gov/city_government/city_council/index.php"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Robert PequeÃ±o"
+    position: "Mayor"
+    district: "District 5"
+    email: "rpequeno@lakeforestca.gov"
+    phone: "(949) 461-3400"
+    city_profile: "https://www.lakeforestca.gov/city_government/city_council/index.php"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Doug Cirbo"
+    position: "Mayor Pro Tem"
+    district: "District 1"
+    email: "dcirbo@lakeforestca.gov"
+    phone: "(949) 461-3400"
+    city_profile: "https://www.lakeforestca.gov/city_government/city_council/index.php"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Mark Tettemer"
+    position: "Councilmember"
+    district: "District 4"
+    email: "mtettemer@lakeforestca.gov"
+    phone: "(949) 461-3400"
+    city_profile: "https://www.lakeforestca.gov/city_government/city_council/index.php"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Scott Voigts"
+    position: "Councilmember"
+    district: "District 3"
+    email: "svoigts@lakeforestca.gov"
+    phone: "(949) 461-3400"
+    city_profile: "https://www.lakeforestca.gov/city_government/city_council/index.php"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Benjamin Yu"
+    position: "Councilmember"
+    district: "District 2"
+    email: "byu@lakeforestca.gov"
+    phone: "(949) 461-3400"
+    city_profile: "https://www.lakeforestca.gov/city_government/city_council/index.php"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

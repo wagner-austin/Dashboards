@@ -1,0 +1,73 @@
+{
+  "website": "https://cityofmissionviejo.org",
+  "council_url": "https://www.cityofmissionviejo.org/government/city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Wendy Bucknum",
+      "position": "Mayor",
+      "district": "District 5",
+      "email": "wbucknum@cityofmissionviejo.org",
+      "phone": "949-470-3050",
+      "website": null,
+      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-wendy-bucknum",
+      "instagram": null
+    },
+    {
+      "name": "Brian Goodell",
+      "position": "Mayor Pro Tem",
+      "district": "District 2",
+      "email": "bgoodell@cityofmissionviejo.org",
+      "phone": "949-470-3050",
+      "website": null,
+      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-brian-goodell",
+      "instagram": null
+    },
+    {
+      "name": "Bob Ruesch",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "rruesch@cityofmissionviejo.org",
+      "phone": "949-470-3050",
+      "website": null,
+      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch",
+      "instagram": null
+    },
+    {
+      "name": "Cynthia Vasquez",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "cvasquez@cityofmissionviejo.org",
+      "phone": "949-470-3050",
+      "website": null,
+      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez",
+      "instagram": null
+    },
+    {
+      "name": "Trish Kelley",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "tkelley@cityofmissionviejo.org",
+      "phone": "949-470-3050",
+      "website": null,
+      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.cityofmissionviejo.org/government/city-council",
+    "method": "Email cityclerk@cityofmissionviejo.org",
+    "notes": "Meetings 2nd and 4th Tuesday at 6pm. 200 Civic Center, Mission Viejo, CA 92691"
+  },
+  "clerk_contact": {
+    "phone": "949-470-3050",
+    "email": "cityclerk@cityofmissionviejo.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "By-district elections",
+    "Individual emails confirmed from city website"
+  ],
+  "city_name": "Mission Viejo",
+  "slug": "mission-viejo"
+}

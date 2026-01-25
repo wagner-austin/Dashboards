@@ -1,0 +1,117 @@
+# Garden Grove City Council
+# Last updated: 2026-01-24
+
+city: "garden-grove"
+city_name: "Garden Grove"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://ggcity.org"
+council_url: "https://ggcity.org/city-council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Stephanie Klopfenstein"
+    position: "Mayor"
+    district: "Citywide"
+    email: "stephaniek@ggcity.org"
+    phone: "(714) 741-5104"
+    city_profile: "https://ggcity.org/city-council/stephanie-klopfenstein"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "George S. Brietigam III"
+    position: "Mayor Pro Tem"
+    district: "District 1"
+    email: "georgeb@ggcity.org"
+    phone: "(714) 741-5104"
+    city_profile: "https://ggcity.org/city-council/george-brietigam"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Phillip Nguyen"
+    position: "Councilmember"
+    district: "District 2"
+    email: "phillipn@ggcity.org"
+    phone: "(714) 741-5104"
+    city_profile: "https://ggcity.org/city-council/phillip-nguyen"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Cindy Ngoc Tran"
+    position: "Councilmember"
+    district: "District 3"
+    email: "cindyt@ggcity.org"
+    phone: "(714) 741-5104"
+    city_profile: "https://ggcity.org/city-council/cindy-tran"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Joe DoVinh"
+    position: "Councilmember"
+    district: "District 4"
+    email: "joed@ggcity.org"
+    phone: "(714) 741-5104"
+    city_profile: "https://ggcity.org/city-council/joe-dovinh"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Yesenia MuÃ±eton"
+    position: "Councilmember"
+    district: "District 5"
+    email: "yeseniam@ggcity.org"
+    phone: "(714) 741-5104"
+    city_profile: "https://ggcity.org/city-council/yesenia-muneton"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Ariana Arestegui"
+    position: "Councilmember"
+    district: "District 6"
+    email: "arianaa@ggcity.org"
+    phone: "(714) 741-5104"
+    city_profile: "https://ggcity.org/city-council/ariana-arestegui"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

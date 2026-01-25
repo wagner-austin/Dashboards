@@ -1,0 +1,89 @@
+# San Clemente City Council
+# Last updated: 2026-01-24
+
+city: "san-clemente"
+city_name: "San Clemente"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.sanclemente.gov"
+council_url: "https://www.sanclemente.gov/government/city-council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Rick Loeffler"
+    position: "Mayor"
+    district: null
+    email: "LoefflerR@san-clemente.org"
+    phone: "949-702-8235"
+    city_profile: "https://www.sanclemente.gov/government/city-council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Steve Knoblock"
+    position: "Mayor Pro Tem"
+    district: null
+    email: "KnoblockS@san-clemente.org"
+    phone: "949-361-8322"
+    city_profile: "https://www.sanclemente.gov/government/city-council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Victor Cabral"
+    position: "Councilmember"
+    district: null
+    email: "CabralV@san-clemente.org"
+    phone: "949-361-8322"
+    city_profile: "https://www.sanclemente.gov/government/city-council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Mark Enmeier"
+    position: "Councilmember"
+    district: null
+    email: "EnmeierM@san-clemente.org"
+    phone: "949-361-8322"
+    city_profile: "https://www.sanclemente.gov/government/city-council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Zhen Wu"
+    position: "Councilmember"
+    district: null
+    email: "WuZ@san-clemente.org"
+    phone: "949-361-8322"
+    city_profile: "https://www.sanclemente.gov/government/city-council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

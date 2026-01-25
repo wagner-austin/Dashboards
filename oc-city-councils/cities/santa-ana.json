@@ -1,0 +1,94 @@
+{
+  "website": "https://www.santa-ana.org",
+  "council_url": "https://www.santa-ana.org/city-council-members/",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Valerie Amezcua",
+      "position": "Mayor",
+      "district": "At-Large",
+      "email": "vamezcua@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "website": null,
+      "city_profile": "https://www.santa-ana.org/valerie-amezcua/",
+      "instagram": null
+    },
+    {
+      "name": "Benjamin Vazquez",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": "bvazquez@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "website": null,
+      "city_profile": "https://www.santa-ana.org/city-council-members/",
+      "instagram": null
+    },
+    {
+      "name": "Thai Viet Phan",
+      "position": "Councilmember",
+      "district": null,
+      "email": "tphan@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "website": null,
+      "city_profile": "https://www.santa-ana.org/city-council-members/",
+      "instagram": null
+    },
+    {
+      "name": "Jessie Lopez",
+      "position": "Councilmember",
+      "district": null,
+      "email": "jessielopez@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "website": null,
+      "city_profile": "https://www.santa-ana.org/city-council-members/",
+      "instagram": null
+    },
+    {
+      "name": "Phil Bacerra",
+      "position": "Councilmember",
+      "district": null,
+      "email": "pbacerra@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "website": null,
+      "city_profile": "https://www.santa-ana.org/city-council-members/",
+      "instagram": null
+    },
+    {
+      "name": "Johnathan Ryan Hernandez",
+      "position": "Councilmember",
+      "district": null,
+      "email": "jryanhernandez@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "website": null,
+      "city_profile": "https://www.santa-ana.org/city-council-members/",
+      "instagram": null
+    },
+    {
+      "name": "David Penaloza",
+      "position": "Councilmember",
+      "district": null,
+      "email": "dpenaloza@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "website": null,
+      "city_profile": "https://www.santa-ana.org/city-council-members/",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.santa-ana.org/departments/city-council/",
+    "method": "Online form or email councilmembers",
+    "notes": "City Hall 8th Floor, 20 Civic Center Plaza, Santa Ana, CA 92701"
+  },
+  "clerk_contact": {
+    "phone": "(714) 647-6900",
+    "email": null
+  },
+  "notes": [
+    "Data verified January 2026",
+    "County seat of Orange County",
+    "7-member council by ward",
+    "First woman mayor elected 2022"
+  ],
+  "city_name": "Santa Ana",
+  "slug": "santa-ana"
+}

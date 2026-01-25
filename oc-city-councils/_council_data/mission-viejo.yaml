@@ -1,0 +1,89 @@
+# Mission Viejo City Council
+# Last updated: 2026-01-24
+
+city: "mission-viejo"
+city_name: "Mission Viejo"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://cityofmissionviejo.org"
+council_url: "https://www.cityofmissionviejo.org/government/city-council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Wendy Bucknum"
+    position: "Mayor"
+    district: "District 5"
+    email: "wbucknum@cityofmissionviejo.org"
+    phone: "949-470-3050"
+    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-wendy-bucknum"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Brian Goodell"
+    position: "Mayor Pro Tem"
+    district: "District 2"
+    email: "bgoodell@cityofmissionviejo.org"
+    phone: "949-470-3050"
+    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-brian-goodell"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Bob Ruesch"
+    position: "Councilmember"
+    district: "District 1"
+    email: "rruesch@cityofmissionviejo.org"
+    phone: "949-470-3050"
+    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Cynthia Vasquez"
+    position: "Councilmember"
+    district: "District 3"
+    email: "cvasquez@cityofmissionviejo.org"
+    phone: "949-470-3050"
+    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Trish Kelley"
+    position: "Councilmember"
+    district: "District 4"
+    email: "tkelley@cityofmissionviejo.org"
+    phone: "949-470-3050"
+    city_profile: "https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

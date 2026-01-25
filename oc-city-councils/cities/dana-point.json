@@ -1,0 +1,74 @@
+{
+  "website": "https://www.danapoint.org",
+  "council_url": "https://www.danapoint.org/department/city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "John Gabbard",
+      "position": "Mayor",
+      "district": "District 1",
+      "email": "jgabbard@danapoint.org",
+      "phone": "(949) 248-3500",
+      "website": null,
+      "city_profile": "https://www.danapoint.org/City-Government/City-Council/John-Gabbard",
+      "instagram": null
+    },
+    {
+      "name": "Mike Frost",
+      "position": "Mayor Pro Tem",
+      "district": "District 4",
+      "email": "mfrost@danapoint.org",
+      "phone": "(949) 248-3500",
+      "website": null,
+      "city_profile": "https://www.danapoint.org/City-Government/City-Council/Mike-Frost",
+      "instagram": null
+    },
+    {
+      "name": "Matthew Pagano",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "mpagano@danapoint.org",
+      "phone": "(949) 248-3500",
+      "website": null,
+      "city_profile": "https://www.danapoint.org/City-Government/City-Council/Matthew-Pagano",
+      "instagram": null
+    },
+    {
+      "name": "Jamey M. Federico",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "jfederico@danapoint.org",
+      "phone": "(949) 248-3500",
+      "website": null,
+      "city_profile": "https://www.danapoint.org/City-Government/City-Council/Jamey-M.-Federico",
+      "instagram": null
+    },
+    {
+      "name": "Michael Villar",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "mvillar@danapoint.org",
+      "phone": "(949) 248-3500",
+      "website": null,
+      "city_profile": "https://www.danapoint.org/City-Government/City-Council/Michael-Villar",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.danapoint.org/department/city-council/meetings-agendas-minutes",
+    "method": "Email comment@danapoint.org",
+    "notes": "Meetings 1st and 3rd Tuesday at 6pm, City Hall, 33282 Golden Lantern"
+  },
+  "clerk_contact": {
+    "phone": "(949) 248-3500",
+    "email": "comment@danapoint.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "By-district elections",
+    "Two-term limit for elected officials",
+    "City Clerk: Shayna Sharke"
+  ],
+  "city_name": "Dana Point",
+  "slug": "dana-point"
+}

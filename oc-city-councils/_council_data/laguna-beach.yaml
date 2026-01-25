@@ -1,0 +1,89 @@
+# Laguna Beach City Council
+# Last updated: 2026-01-24
+
+city: "laguna-beach"
+city_name: "Laguna Beach"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.lagunabeachcity.net"
+council_url: "https://www.lagunabeachcity.net/government/departments/city-council/contact-city-council"
+email: "citycouncil@lagunabeachcity.net"
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Mark Orgill"
+    position: "Mayor"
+    district: null
+    email: null
+    phone: "(949) 463-4821"
+    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Hallie Jones"
+    position: "Mayor Pro Tem"
+    district: null
+    email: null
+    phone: "(949) 992-5419"
+    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Sue Kempf"
+    position: "Councilmember"
+    district: null
+    email: null
+    phone: "(949) 439-3001"
+    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Alex Rounaghi"
+    position: "Councilmember"
+    district: null
+    email: null
+    phone: "(949) 395-1275"
+    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Bob Whalen"
+    position: "Councilmember"
+    district: null
+    email: null
+    phone: "(949) 497-0796"
+    city_profile: "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

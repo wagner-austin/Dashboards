@@ -1,0 +1,89 @@
+# Laguna Woods City Council
+# Last updated: 2026-01-24
+
+city: "laguna-woods"
+city_name: "Laguna Woods"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.cityoflagunawoods.org"
+council_url: "https://www.cityoflagunawoods.org/city-council/"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Annie McCary"
+    position: "Mayor"
+    district: null
+    email: "amccary@cityoflagunawoods.org"
+    phone: "(949) 639-0500"
+    city_profile: "https://www.cityoflagunawoods.org/city-council/"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Pearl Lee"
+    position: "Mayor Pro Tem"
+    district: null
+    email: "plee@cityoflagunawoods.org"
+    phone: "(949) 639-0500"
+    city_profile: "https://www.cityoflagunawoods.org/city-council/"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Cynthia Conners"
+    position: "Councilmember"
+    district: null
+    email: "cconners@cityoflagunawoods.org"
+    phone: "(949) 639-0500"
+    city_profile: "https://www.cityoflagunawoods.org/city-council/"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Shari L. Horne"
+    position: "Councilmember"
+    district: null
+    email: "shorne@cityoflagunawoods.org"
+    phone: "(949) 639-0500"
+    city_profile: "https://www.cityoflagunawoods.org/city-council/"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Carol Moore"
+    position: "Councilmember"
+    district: null
+    email: "cmoore@cityoflagunawoods.org"
+    phone: "(949) 639-0500"
+    city_profile: "https://www.cityoflagunawoods.org/city-council/"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

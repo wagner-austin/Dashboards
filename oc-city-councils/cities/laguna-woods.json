@@ -1,0 +1,72 @@
+{
+  "website": "https://www.cityoflagunawoods.org",
+  "council_url": "https://www.cityoflagunawoods.org/city-council/",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Annie McCary",
+      "position": "Mayor",
+      "district": null,
+      "email": "amccary@cityoflagunawoods.org",
+      "phone": "(949) 639-0500",
+      "website": null,
+      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+      "instagram": null
+    },
+    {
+      "name": "Pearl Lee",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": "plee@cityoflagunawoods.org",
+      "phone": "(949) 639-0500",
+      "website": null,
+      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+      "instagram": null
+    },
+    {
+      "name": "Cynthia Conners",
+      "position": "Councilmember",
+      "district": null,
+      "email": "cconners@cityoflagunawoods.org",
+      "phone": "(949) 639-0500",
+      "website": null,
+      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+      "instagram": null
+    },
+    {
+      "name": "Shari L. Horne",
+      "position": "Councilmember",
+      "district": null,
+      "email": "shorne@cityoflagunawoods.org",
+      "phone": "(949) 639-0500",
+      "website": null,
+      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+      "instagram": null
+    },
+    {
+      "name": "Carol Moore",
+      "position": "Councilmember",
+      "district": null,
+      "email": "cmoore@cityoflagunawoods.org",
+      "phone": "(949) 639-0500",
+      "website": null,
+      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.cityoflagunawoods.org/city-council/",
+    "method": "Email cityhall@cityoflagunawoods.org",
+    "notes": "Meetings 3rd Wednesday at 2pm at 24264 El Toro Road"
+  },
+  "clerk_contact": {
+    "phone": "(949) 639-0500",
+    "email": "cityhall@cityoflagunawoods.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "At-large elections"
+  ],
+  "city_name": "Laguna Woods",
+  "slug": "laguna-woods"
+}

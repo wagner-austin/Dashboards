@@ -1,0 +1,76 @@
+{
+  "website": "https://www.lagunabeachcity.net",
+  "council_url": "https://www.lagunabeachcity.net/government/departments/city-council/contact-city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Mark Orgill",
+      "position": "Mayor",
+      "district": null,
+      "email": null,
+      "phone": "(949) 463-4821",
+      "website": null,
+      "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126",
+      "instagram": null
+    },
+    {
+      "name": "Hallie Jones",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": null,
+      "phone": "(949) 992-5419",
+      "website": null,
+      "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126",
+      "instagram": null
+    },
+    {
+      "name": "Sue Kempf",
+      "position": "Councilmember",
+      "district": null,
+      "email": null,
+      "phone": "(949) 439-3001",
+      "website": null,
+      "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126",
+      "instagram": null
+    },
+    {
+      "name": "Alex Rounaghi",
+      "position": "Councilmember",
+      "district": null,
+      "email": null,
+      "phone": "(949) 395-1275",
+      "website": null,
+      "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126",
+      "instagram": null
+    },
+    {
+      "name": "Bob Whalen",
+      "position": "Councilmember",
+      "district": null,
+      "email": null,
+      "phone": "(949) 497-0796",
+      "website": null,
+      "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.lagunabeachcity.net/live-here/city-council/meetings-agendas-and-minutes",
+    "method": "Email citycouncil@lagunabeachcity.net",
+    "notes": "Meetings 2nd and 4th Tuesday at 5pm at 505 Forest Avenue"
+  },
+  "clerk_contact": {
+    "phone": "(949) 497-3311",
+    "email": "amckay@lagunabeachcity.net"
+  },
+  "general_council_email": "citycouncil@lagunabeachcity.net",
+  "notes": [
+    "Data verified January 2026",
+    "At-large elections",
+    "No individual emails - use general council email",
+    "Individual phone numbers verified via Playwright"
+  ],
+  "email": "citycouncil@lagunabeachcity.net",
+  "city_name": "Laguna Beach",
+  "slug": "laguna-beach"
+}

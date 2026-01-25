@@ -1,0 +1,89 @@
+# Laguna Hills City Council
+# Last updated: 2026-01-24
+
+city: "laguna-hills"
+city_name: "Laguna Hills"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.lagunahillsca.gov"
+council_url: "https://www.lagunahillsca.gov/129/City-Council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Don Caskey"
+    position: "Mayor"
+    district: null
+    email: "dcaskey@lagunahillsca.gov"
+    phone: "(949) 707-2600"
+    city_profile: "https://www.lagunahillsca.gov/527/Don-Caskey-Mayor"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Jared Mathis"
+    position: "Mayor Pro Tem"
+    district: null
+    email: "jmathis@lagunahillsca.gov"
+    phone: "(949) 707-2600"
+    city_profile: "https://www.lagunahillsca.gov/447/Jared-Mathis-Mayor-Pro-Tempore"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Erica Pezold"
+    position: "Councilmember"
+    district: null
+    email: "epezold@lagunahillsca.gov"
+    phone: "(949) 707-2600"
+    city_profile: "https://www.lagunahillsca.gov/475/Erica-Pezold"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Joshua Sweeney"
+    position: "Councilmember"
+    district: null
+    email: "jsweeney@lagunahillsca.gov"
+    phone: "(949) 707-2600"
+    city_profile: "https://www.lagunahillsca.gov/234/Joshua-Sweeney"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Dave Wheeler"
+    position: "Councilmember"
+    district: null
+    email: "dwheeler@lagunahillsca.gov"
+    phone: "(949) 707-2600"
+    city_profile: "https://www.lagunahillsca.gov/476/Dave-Wheeler"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

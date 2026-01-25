@@ -1,0 +1,89 @@
+# La Habra City Council
+# Last updated: 2026-01-24
+
+city: "la-habra"
+city_name: "La Habra"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.lahabraca.gov"
+council_url: "https://www.lahabraca.gov/153/City-Council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Jose Medrano"
+    position: "Mayor"
+    district: null
+    email: null
+    phone: "(562) 383-4022"
+    city_profile: "https://www.lahabraca.gov/DocumentCenter/View/15731/Medrano-2026-Bio"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "James Gomez"
+    position: "Mayor Pro Tem"
+    district: null
+    email: null
+    phone: "(562) 383-4022"
+    city_profile: "https://www.lahabraca.gov/153/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Rose Espinoza"
+    position: "Councilmember"
+    district: null
+    email: null
+    phone: "(562) 383-4022"
+    city_profile: "https://www.lahabraca.gov/DocumentCenter/View/15733/Rose-Espinoza-2026-Bio"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Daren Nigsarian"
+    position: "Councilmember"
+    district: null
+    email: null
+    phone: "(562) 383-4022"
+    city_profile: "https://www.lahabraca.gov/DocumentCenter/View/15732/Nigsarian-2026-Bio"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Delwin Lampkin"
+    position: "Councilmember"
+    district: null
+    email: null
+    phone: "(562) 383-4022"
+    city_profile: "https://www.lahabraca.gov/DocumentCenter/View/15683/Delwin-Lampkin-2025"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

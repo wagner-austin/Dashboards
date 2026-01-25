@@ -1,0 +1,89 @@
+# Cypress City Council
+# Last updated: 2026-01-24
+
+city: "cypress"
+city_name: "Cypress"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.cypressca.org"
+council_url: "https://www.cypressca.org/government/city-council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "David Burke"
+    position: "Mayor"
+    district: null
+    email: "dburke@cypressca.org"
+    phone: "714-229-6699"
+    city_profile: "https://www.cypressca.org/government/city-council/council-member-david-burke"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Leo Medrano"
+    position: "Mayor Pro Tem"
+    district: "District 4"
+    email: "lmedrano@cypressca.org"
+    phone: "714-229-6699"
+    city_profile: "https://www.cypressca.org/government/city-council/council-member-leo-medrano"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Kyle Chang"
+    position: "Councilmember"
+    district: "District 3"
+    email: "kchang@cypressca.org"
+    phone: "714-229-6699"
+    city_profile: "https://www.cypressca.org/government/city-council/council-member-kyle-change"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Bonnie Peat"
+    position: "Councilmember"
+    district: null
+    email: "bpeat@cypressca.org"
+    phone: "714-229-6699"
+    city_profile: "https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Rachel Strong Carnahan"
+    position: "Councilmember"
+    district: "District 5"
+    email: "rstrong@cypressca.org"
+    phone: "714-229-6699"
+    city_profile: "https://www.cypressca.org/government/city-council/council-member-rachel-strong"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

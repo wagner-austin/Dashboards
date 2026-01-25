@@ -1,0 +1,89 @@
+# Dana Point City Council
+# Last updated: 2026-01-24
+
+city: "dana-point"
+city_name: "Dana Point"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.danapoint.org"
+council_url: "https://www.danapoint.org/department/city-council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "John Gabbard"
+    position: "Mayor"
+    district: "District 1"
+    email: "jgabbard@danapoint.org"
+    phone: "(949) 248-3500"
+    city_profile: "https://www.danapoint.org/City-Government/City-Council/John-Gabbard"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Mike Frost"
+    position: "Mayor Pro Tem"
+    district: "District 4"
+    email: "mfrost@danapoint.org"
+    phone: "(949) 248-3500"
+    city_profile: "https://www.danapoint.org/City-Government/City-Council/Mike-Frost"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Matthew Pagano"
+    position: "Councilmember"
+    district: "District 2"
+    email: "mpagano@danapoint.org"
+    phone: "(949) 248-3500"
+    city_profile: "https://www.danapoint.org/City-Government/City-Council/Matthew-Pagano"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Jamey M. Federico"
+    position: "Councilmember"
+    district: "District 3"
+    email: "jfederico@danapoint.org"
+    phone: "(949) 248-3500"
+    city_profile: "https://www.danapoint.org/City-Government/City-Council/Jamey-M.-Federico"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Michael Villar"
+    position: "Councilmember"
+    district: "District 5"
+    email: "mvillar@danapoint.org"
+    phone: "(949) 248-3500"
+    city_profile: "https://www.danapoint.org/City-Government/City-Council/Michael-Villar"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

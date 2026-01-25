@@ -1,0 +1,72 @@
+{
+  "website": "https://www.fountainvalley.gov",
+  "council_url": "https://www.fountainvalley.gov/156/City-Council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Ted Bui",
+      "position": "Mayor",
+      "district": null,
+      "email": "Ted.Bui@fountainvalley.gov",
+      "phone": "628-266-8888",
+      "website": null,
+      "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=54",
+      "instagram": null
+    },
+    {
+      "name": "Jim Cunneen",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": "Jim.Cunneen@fountainvalley.gov",
+      "phone": "714-593-4403",
+      "website": null,
+      "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=178",
+      "instagram": null
+    },
+    {
+      "name": "Patrick Harper",
+      "position": "Councilmember",
+      "district": null,
+      "email": "patrick.harper@fountainvalley.gov",
+      "phone": "714-593-4403",
+      "website": null,
+      "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=153",
+      "instagram": null
+    },
+    {
+      "name": "Kim Constantine",
+      "position": "Councilmember",
+      "district": null,
+      "email": "kim.constantine@fountainvalley.gov",
+      "phone": "714-593-4403",
+      "website": null,
+      "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=152",
+      "instagram": null
+    },
+    {
+      "name": "Glenn Grandis",
+      "position": "Councilmember",
+      "district": null,
+      "email": "Glenn.Grandis@fountainvalley.gov",
+      "phone": "714-593-4403",
+      "website": null,
+      "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=55",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.fountainvalley.gov/AgendaCenter/City-Council-2",
+    "method": "Attend meeting or contact City Clerk",
+    "notes": "City Hall: 10200 Slater Avenue, Fountain Valley, CA 92708"
+  },
+  "clerk_contact": {
+    "phone": "714-593-4400",
+    "email": null
+  },
+  "notes": [
+    "Data verified January 2026",
+    "Website is fountainvalley.gov (not .org)"
+  ],
+  "city_name": "Fountain Valley",
+  "slug": "fountain-valley"
+}

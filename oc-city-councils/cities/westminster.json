@@ -1,0 +1,73 @@
+{
+  "website": "https://www.westminster-ca.gov",
+  "council_url": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Chi Charlie Nguyen",
+      "position": "Mayor",
+      "district": "At-Large",
+      "email": "ccnguyen@westminster-ca.gov",
+      "phone": "(714) 548-3178",
+      "website": null,
+      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members/mayor-chi-charlie-nguyen",
+      "instagram": null
+    },
+    {
+      "name": "Carlos Manzo",
+      "position": "Vice Mayor",
+      "district": "District 2",
+      "email": "cmanzo@westminster-ca.gov",
+      "phone": "(714) 548-3178",
+      "website": null,
+      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+      "instagram": null
+    },
+    {
+      "name": "Amy Phan West",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "aphanwest@westminster-ca.gov",
+      "phone": "(714) 548-3178",
+      "website": null,
+      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+      "instagram": null
+    },
+    {
+      "name": "Mark Nguyen",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "mnguyen@westminster-ca.gov",
+      "phone": "(714) 548-3178",
+      "website": null,
+      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+      "instagram": null
+    },
+    {
+      "name": "Tai Do",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "tdo@westminster-ca.gov",
+      "phone": "(714) 548-3178",
+      "website": null,
+      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+    "method": "Email eComments@westminster-ca.gov",
+    "notes": "8200 Westminster Blvd, Westminster, CA 92683"
+  },
+  "clerk_contact": {
+    "phone": "(714) 548-3178",
+    "email": "eComments@westminster-ca.gov"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "By-district with at-large Mayor",
+    "Home of Little Saigon"
+  ],
+  "city_name": "Westminster",
+  "slug": "westminster"
+}

@@ -1,0 +1,78 @@
+{
+  "website": "https://www.anaheim.net",
+  "council_url": "https://www.anaheim.net/2527/Agendas",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Ashleigh Aitken",
+      "position": "Mayor",
+      "district": "At-Large",
+      "email": "aaitken@anaheim.net",
+      "phone": "(714) 765-4311",
+      "website": null,
+      "city_profile": "https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken",
+      "instagram": null
+    },
+    {
+      "name": "Carlos A. Leon",
+      "position": "Mayor Pro Tem",
+      "district": "District 3",
+      "email": "cleon@anaheim.net",
+      "phone": "(714) 765-4311",
+      "website": null,
+      "city_profile": "https://www.anaheim.net/2314/Mayor-Pro-Tem-Carlos-A-Leon",
+      "instagram": null
+    },
+    {
+      "name": "Ryan Balius",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "rbalius@anaheim.net",
+      "phone": "(714) 765-4311",
+      "website": null,
+      "city_profile": "https://www.anaheim.net/3522/Council-Member-Ryan-Balius",
+      "instagram": null
+    },
+    {
+      "name": "Natalie Rubalcava",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "nrubalcava@anaheim.net",
+      "phone": "(714) 765-4311",
+      "website": null,
+      "city_profile": "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava",
+      "instagram": null
+    },
+    {
+      "name": "Norma Campos Kurtz",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "nkurtz@anaheim.net",
+      "phone": "(714) 765-4311",
+      "website": null,
+      "city_profile": "https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz",
+      "instagram": null
+    },
+    {
+      "name": "Kristen Maahs",
+      "position": "Councilmember",
+      "district": "District 6",
+      "email": "kmaahs@anaheim.net",
+      "phone": "(714) 765-4311",
+      "website": null,
+      "city_profile": "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.anaheim.net/2527/Agendas",
+    "method": "City Council Agendas",
+    "notes": null
+  },
+  "notes": [
+    "Main council page broken - using individual member URLs",
+    "Data from STATUS.md notes January 2026"
+  ],
+  "city_name": "Anaheim",
+  "slug": "anaheim"
+}

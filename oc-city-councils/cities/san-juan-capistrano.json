@@ -1,0 +1,72 @@
+{
+  "website": "https://sanjuancapistrano.org",
+  "council_url": "https://sanjuancapistrano.org/318/City-Council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Derek Reeve",
+      "position": "Mayor",
+      "district": null,
+      "email": "dreeve@sanjuancapistrano.org",
+      "phone": "(949) 493-1171",
+      "website": null,
+      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Howard Hart",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": "hhart@sanjuancapistrano.org",
+      "phone": "(949) 493-1171",
+      "website": null,
+      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Sergio Farias",
+      "position": "Councilmember",
+      "district": null,
+      "email": "sfarias@sanjuancapistrano.org",
+      "phone": "(949) 493-1171",
+      "website": null,
+      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+      "instagram": null
+    },
+    {
+      "name": "John Taylor",
+      "position": "Councilmember",
+      "district": null,
+      "email": "jtaylor@sanjuancapistrano.org",
+      "phone": "(949) 493-1171",
+      "website": null,
+      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Troy Bourne",
+      "position": "Councilmember",
+      "district": null,
+      "email": "tbourne@sanjuancapistrano.org",
+      "phone": "(949) 493-1171",
+      "website": null,
+      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://sanjuancapistrano.org/318/City-Council",
+    "method": "Contact City Clerk",
+    "notes": "32400 Paseo Adelanto, San Juan Capistrano, CA 92675"
+  },
+  "clerk_contact": {
+    "phone": "(949) 493-1171",
+    "email": "cityclerk@sanjuancapistrano.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "At-large elections"
+  ],
+  "city_name": "San Juan Capistrano",
+  "slug": "san-juan-capistrano"
+}

@@ -1,0 +1,93 @@
+{
+  "website": "https://ggcity.org",
+  "council_url": "https://ggcity.org/city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Stephanie Klopfenstein",
+      "position": "Mayor",
+      "district": "Citywide",
+      "email": "stephaniek@ggcity.org",
+      "phone": "(714) 741-5104",
+      "website": null,
+      "city_profile": "https://ggcity.org/city-council/stephanie-klopfenstein",
+      "instagram": null
+    },
+    {
+      "name": "George S. Brietigam III",
+      "position": "Mayor Pro Tem",
+      "district": "District 1",
+      "email": "georgeb@ggcity.org",
+      "phone": "(714) 741-5104",
+      "website": null,
+      "city_profile": "https://ggcity.org/city-council/george-brietigam",
+      "instagram": null
+    },
+    {
+      "name": "Phillip Nguyen",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "phillipn@ggcity.org",
+      "phone": "(714) 741-5104",
+      "website": null,
+      "city_profile": "https://ggcity.org/city-council/phillip-nguyen",
+      "instagram": null
+    },
+    {
+      "name": "Cindy Ngoc Tran",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "cindyt@ggcity.org",
+      "phone": "(714) 741-5104",
+      "website": null,
+      "city_profile": "https://ggcity.org/city-council/cindy-tran",
+      "instagram": null
+    },
+    {
+      "name": "Joe DoVinh",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "joed@ggcity.org",
+      "phone": "(714) 741-5104",
+      "website": null,
+      "city_profile": "https://ggcity.org/city-council/joe-dovinh",
+      "instagram": null
+    },
+    {
+      "name": "Yesenia MuÃ±eton",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "yeseniam@ggcity.org",
+      "phone": "(714) 741-5104",
+      "website": null,
+      "city_profile": "https://ggcity.org/city-council/yesenia-muneton",
+      "instagram": null
+    },
+    {
+      "name": "Ariana Arestegui",
+      "position": "Councilmember",
+      "district": "District 6",
+      "email": "arianaa@ggcity.org",
+      "phone": "(714) 741-5104",
+      "website": null,
+      "city_profile": "https://ggcity.org/city-council/ariana-arestegui",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://ggcity.org/city-council/meetings-participation",
+    "method": "Submit to City Clerk's Office",
+    "notes": "Meetings 2nd and 4th Tuesday. Mail to City Clerk, P.O. Box 3070, Garden Grove, CA 92482-3070"
+  },
+  "clerk_contact": {
+    "phone": "(714) 741-5043",
+    "email": "cityclerk@ggcity.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "7-member council with directly elected Mayor",
+    "By-district elections for districts 1-6"
+  ],
+  "city_name": "Garden Grove",
+  "slug": "garden-grove"
+}

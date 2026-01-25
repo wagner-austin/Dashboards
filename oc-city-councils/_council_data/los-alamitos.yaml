@@ -1,0 +1,89 @@
+# Los Alamitos City Council
+# Last updated: 2026-01-24
+
+city: "los-alamitos"
+city_name: "Los Alamitos"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://cityoflosalamitos.org"
+council_url: "https://cityoflosalamitos.org/165/City-Council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Tanya Doby"
+    position: "Mayor"
+    district: null
+    email: "tdoby@cityoflosalamitos.org"
+    phone: "562-431-3538 ext. 220"
+    city_profile: "https://cityoflosalamitos.org/165/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Jordan Nefulda"
+    position: "Mayor Pro Tem"
+    district: null
+    email: "jnefulda@cityoflosalamitos.org"
+    phone: "562-431-3538 ext. 220"
+    city_profile: "https://cityoflosalamitos.org/165/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Gary Loe"
+    position: "Councilmember"
+    district: "District 2"
+    email: "Gloe@cityoflosalamitos.org"
+    phone: "562-431-3538 ext. 220"
+    city_profile: "https://cityoflosalamitos.org/165/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Shelley Hasselbrink"
+    position: "Councilmember"
+    district: "District 4"
+    email: "shasselbrink@cityoflosalamitos.org"
+    phone: "562-431-3538 ext. 220"
+    city_profile: "https://cityoflosalamitos.org/165/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Emily Hibard"
+    position: "Councilmember"
+    district: "District 5"
+    email: "ehibard@cityoflosalamitos.org"
+    phone: "562-431-3538 ext. 220"
+    city_profile: "https://cityoflosalamitos.org/165/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

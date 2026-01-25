@@ -1,0 +1,72 @@
+{
+  "website": "https://www.cityofbrea.gov",
+  "council_url": "https://www.cityofbrea.gov/511/City-Council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Cecilia Hupp",
+      "position": "Mayor",
+      "district": null,
+      "email": "ceciliah@cityofbrea.gov",
+      "phone": "714-990-7704",
+      "website": null,
+      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=3",
+      "instagram": null
+    },
+    {
+      "name": "Marty Simonoff",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": "martys@cityofbrea.gov",
+      "phone": "714-990-7702",
+      "website": null,
+      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=6",
+      "instagram": null
+    },
+    {
+      "name": "Christine Marick",
+      "position": "Councilmember",
+      "district": null,
+      "email": "christinem@cityofbrea.gov",
+      "phone": "714-990-7700",
+      "website": null,
+      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=4",
+      "instagram": null
+    },
+    {
+      "name": "Blair Stewart",
+      "position": "Councilmember",
+      "district": null,
+      "email": "blairs@cityofbrea.gov",
+      "phone": "714-990-7703",
+      "website": null,
+      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=2",
+      "instagram": null
+    },
+    {
+      "name": "Steven Vargas",
+      "position": "Councilmember",
+      "district": null,
+      "email": "stevenv@cityofbrea.gov",
+      "phone": "714-990-7701",
+      "website": null,
+      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=5",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.cityofbrea.gov/agendacenter",
+    "method": "Contact City Clerk",
+    "notes": "Meetings 1st and 3rd Tuesday at 7pm. City Clerk: (714) 990-7756"
+  },
+  "clerk_contact": {
+    "phone": "714-990-7756",
+    "email": null
+  },
+  "notes": [
+    "Data verified January 2026 from official site",
+    "At-large elections"
+  ],
+  "city_name": "Brea",
+  "slug": "brea"
+}

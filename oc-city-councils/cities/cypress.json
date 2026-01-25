@@ -1,0 +1,73 @@
+{
+  "website": "https://www.cypressca.org",
+  "council_url": "https://www.cypressca.org/government/city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "David Burke",
+      "position": "Mayor",
+      "district": null,
+      "email": "dburke@cypressca.org",
+      "phone": "714-229-6699",
+      "website": "https://www.davidburkeforcypress.com/",
+      "city_profile": "https://www.cypressca.org/government/city-council/council-member-david-burke",
+      "instagram": null
+    },
+    {
+      "name": "Leo Medrano",
+      "position": "Mayor Pro Tem",
+      "district": "District 4",
+      "email": "lmedrano@cypressca.org",
+      "phone": "714-229-6699",
+      "website": null,
+      "city_profile": "https://www.cypressca.org/government/city-council/council-member-leo-medrano",
+      "instagram": null
+    },
+    {
+      "name": "Kyle Chang",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "kchang@cypressca.org",
+      "phone": "714-229-6699",
+      "website": "https://votekylechang.com/",
+      "city_profile": "https://www.cypressca.org/government/city-council/council-member-kyle-change",
+      "instagram": "https://www.instagram.com/kylechangoc/"
+    },
+    {
+      "name": "Bonnie Peat",
+      "position": "Councilmember",
+      "district": null,
+      "email": "bpeat@cypressca.org",
+      "phone": "714-229-6699",
+      "website": "https://bonniepeatforcypress.com/",
+      "city_profile": "https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat",
+      "instagram": null
+    },
+    {
+      "name": "Rachel Strong Carnahan",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "rstrong@cypressca.org",
+      "phone": "714-229-6699",
+      "website": null,
+      "city_profile": "https://www.cypressca.org/government/city-council/council-member-rachel-strong",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.cypressca.org/government/city-council-meetings",
+    "method": "Email citycouncil@cypressca.org or call 714-229-6699",
+    "notes": "Meetings 2nd and 4th Monday at 7pm. Council Chambers at 5275 Orange Avenue."
+  },
+  "clerk_contact": {
+    "phone": "714-229-6685",
+    "email": "afarnell@cypressca.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "By-district elections since 2024",
+    "City Clerk: Alisha Farnell"
+  ],
+  "city_name": "Cypress",
+  "slug": "cypress"
+}

@@ -1,0 +1,73 @@
+{
+  "website": "https://villapark.org",
+  "council_url": "https://villapark.org/council-and-committees/city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Jordan Wu",
+      "position": "Mayor",
+      "district": null,
+      "email": "jwu@villapark.org",
+      "phone": "(714) 998-1500",
+      "website": null,
+      "city_profile": "https://villapark.org/council-and-committees/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Robert Frackelton",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": "rfrackelton@villapark.org",
+      "phone": "(714) 998-1500",
+      "website": null,
+      "city_profile": "https://villapark.org/council-and-committees/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Nicol Jones",
+      "position": "Councilmember",
+      "district": null,
+      "email": "njones@villapark.org",
+      "phone": "(714) 998-1500",
+      "website": null,
+      "city_profile": "https://villapark.org/council-and-committees/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Kelly McBride",
+      "position": "Councilmember",
+      "district": null,
+      "email": "kmcbride@villapark.org",
+      "phone": "(714) 998-1500",
+      "website": null,
+      "city_profile": "https://villapark.org/council-and-committees/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Crystal Miles",
+      "position": "Councilmember",
+      "district": null,
+      "email": "cmiles@villapark.org",
+      "phone": "(714) 998-1500",
+      "website": null,
+      "city_profile": "https://villapark.org/council-and-committees/city-council",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://villapark.org/council-and-committees/city-council",
+    "method": "Email council members or attend meeting",
+    "notes": "17855 Santiago Blvd, Villa Park, CA 92861"
+  },
+  "clerk_contact": {
+    "phone": "(714) 998-1500",
+    "email": "info@villapark.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "Smallest city in OC by population",
+    "Individual emails but GENERIC PHONE - needs verification"
+  ],
+  "city_name": "Villa Park",
+  "slug": "villa-park"
+}

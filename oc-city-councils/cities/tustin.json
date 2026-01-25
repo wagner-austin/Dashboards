@@ -1,0 +1,72 @@
+{
+  "website": "https://www.tustinca.org",
+  "council_url": "https://www.tustinca.org/482/City-Council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Austin Lumbard",
+      "position": "Mayor",
+      "district": null,
+      "email": "ALumbard@tustinca.org",
+      "phone": "714-573-3012",
+      "website": null,
+      "city_profile": "https://www.tustinca.org/499/Mayor-Austin-Lumbard",
+      "instagram": null
+    },
+    {
+      "name": "Ray Schnell",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": "rschnell@tustinca.org",
+      "phone": "714-573-3012",
+      "website": null,
+      "city_profile": "https://www.tustinca.org/1396/Council-Member-Ray-Schnell",
+      "instagram": null
+    },
+    {
+      "name": "Ryan Gallagher",
+      "position": "Councilmember",
+      "district": null,
+      "email": "rgallagher@tustinca.org",
+      "phone": "714-573-3012",
+      "website": null,
+      "city_profile": "https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher",
+      "instagram": null
+    },
+    {
+      "name": "Lee K. Fink",
+      "position": "Councilmember",
+      "district": null,
+      "email": "lfink@tustinca.org",
+      "phone": "714-573-3012",
+      "website": null,
+      "city_profile": "https://www.tustinca.org/1208/Council-Member-Lee-K-Fink",
+      "instagram": null
+    },
+    {
+      "name": "John Nielsen",
+      "position": "Councilmember",
+      "district": null,
+      "email": "jnielsen@tustinca.org",
+      "phone": "714-573-3012",
+      "website": null,
+      "city_profile": "https://www.tustinca.org/493/Council-Member-John-Nielsen",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.tustinca.org/482/City-Council",
+    "method": "Email council members directly",
+    "notes": "300 Centennial Way, Tustin, CA 92780"
+  },
+  "clerk_contact": {
+    "phone": "714-573-3000",
+    "email": "CityCouncil@tustinca.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "Individual emails confirmed from city website profile pages"
+  ],
+  "city_name": "Tustin",
+  "slug": "tustin"
+}

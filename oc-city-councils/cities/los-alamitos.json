@@ -1,0 +1,72 @@
+{
+  "website": "https://cityoflosalamitos.org",
+  "council_url": "https://cityoflosalamitos.org/165/City-Council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Tanya Doby",
+      "position": "Mayor",
+      "district": null,
+      "email": "tdoby@cityoflosalamitos.org",
+      "phone": "562-431-3538 ext. 220",
+      "website": null,
+      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Jordan Nefulda",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": "jnefulda@cityoflosalamitos.org",
+      "phone": "562-431-3538 ext. 220",
+      "website": null,
+      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Gary Loe",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "Gloe@cityoflosalamitos.org",
+      "phone": "562-431-3538 ext. 220",
+      "website": null,
+      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Shelley Hasselbrink",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "shasselbrink@cityoflosalamitos.org",
+      "phone": "562-431-3538 ext. 220",
+      "website": null,
+      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Emily Hibard",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "ehibard@cityoflosalamitos.org",
+      "phone": "562-431-3538 ext. 220",
+      "website": null,
+      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://cityoflosalamitos.org/AgendaCenter/City-Council-5",
+    "method": "Email cityclerk@cityoflosalamitos.org",
+    "notes": "Meetings 3rd Monday at 6pm. 3191 Katella Ave, Los Alamitos, CA 90720"
+  },
+  "clerk_contact": {
+    "phone": "562-431-3538",
+    "email": "cityclerk@cityoflosalamitos.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "By-district elections"
+  ],
+  "city_name": "Los Alamitos",
+  "slug": "los-alamitos"
+}

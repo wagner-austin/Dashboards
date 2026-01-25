@@ -1,0 +1,89 @@
+# Seal Beach City Council
+# Last updated: 2026-01-24
+
+city: "seal-beach"
+city_name: "Seal Beach"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.sealbeachca.gov"
+council_url: "https://www.sealbeachca.gov/Government/City-Council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Lisa Landau"
+    position: "Mayor"
+    district: "District 3"
+    email: "llandau@sealbeachca.gov"
+    phone: "(562) 431-2527 x1503"
+    city_profile: "https://www.sealbeachca.gov/Government/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Nathan Steele"
+    position: "Mayor Pro Tem"
+    district: "District 5"
+    email: "nsteele@sealbeachca.gov"
+    phone: "(562) 431-2527 x1505"
+    city_profile: "https://www.sealbeachca.gov/Government/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Joe Kalmick"
+    position: "Councilmember"
+    district: "District 1"
+    email: "jkalmick@sealbeachca.gov"
+    phone: "(562) 431-2527 x1501"
+    city_profile: "https://www.sealbeachca.gov/Government/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Ben Wong"
+    position: "Councilmember"
+    district: "District 2"
+    email: "bwong@sealbeachca.gov"
+    phone: "(562) 431-2527 x1502"
+    city_profile: "https://www.sealbeachca.gov/Government/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Patty Senecal"
+    position: "Councilmember"
+    district: "District 4"
+    email: "psenecal@sealbeachca.gov"
+    phone: "(562) 431-2527 x1504"
+    city_profile: "https://www.sealbeachca.gov/Government/City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

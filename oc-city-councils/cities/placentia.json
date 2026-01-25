@@ -1,0 +1,73 @@
+{
+  "website": "https://www.placentia.org",
+  "council_url": "https://www.placentia.org/268/Mayor-City-Council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Chad P. Wanke",
+      "position": "Mayor",
+      "district": "District 4",
+      "email": "chad@chadwanke.com",
+      "phone": "(714) 993-8186",
+      "website": null,
+      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Jeremy B. Yamaguchi",
+      "position": "Mayor Pro Tem",
+      "district": "District 3",
+      "email": "jeremy@jeremyyamaguchi.com",
+      "phone": "(714) 993-8186",
+      "website": null,
+      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Thomas Hummer",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "thummer@placentia.org",
+      "phone": "(714) 993-8186",
+      "website": null,
+      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Kevin Kirwin",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "kkirwin@placentia.org",
+      "phone": "(714) 993-8186",
+      "website": null,
+      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+      "instagram": null
+    },
+    {
+      "name": "Ward Smith",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "wsmith@placentia.org",
+      "phone": "(714) 993-8186",
+      "website": null,
+      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.placentia.org/268/Mayor-City-Council",
+    "method": "Contact City Clerk",
+    "notes": "401 E. Chapman Ave., Placentia, CA 92870. Meetings 1st and 3rd Tuesday at 7pm"
+  },
+  "clerk_contact": {
+    "phone": "(714) 993-8231",
+    "email": "rramirez@placentia.org"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "By-district elections",
+    "Mayor/Mayor Pro Tem use personal campaign emails"
+  ],
+  "city_name": "Placentia",
+  "slug": "placentia"
+}

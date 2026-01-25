@@ -1,0 +1,21 @@
+{
+  "description": "Orange County City Council Contact Data",
+  "last_updated": "2026-01-24",
+  "cities_count": 34,
+  "cities_complete": 34,
+  "data_fields": [
+    "email",
+    "phone",
+    "website",
+    "city_profile",
+    "instagram",
+    "public_comment"
+  ],
+  "urls_verified": "2026-01-24",
+  "cities_needing_review": [
+    "La Habra - generic council email only (verified)",
+    "La Palma - generic council email only (verified)",
+    "Laguna Beach - generic council email only (verified), has individual phones"
+  ],
+  "verification_notes": "All 34 cities audited Jan 2026. 31 have individual emails. 3 genuinely don't publish individual emails."
+}

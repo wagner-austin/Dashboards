@@ -1,0 +1,73 @@
+{
+  "website": "https://www.sanclemente.gov",
+  "council_url": "https://www.sanclemente.gov/government/city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Rick Loeffler",
+      "position": "Mayor",
+      "district": null,
+      "email": "LoefflerR@san-clemente.org",
+      "phone": "949-702-8235",
+      "website": null,
+      "city_profile": "https://www.sanclemente.gov/government/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Steve Knoblock",
+      "position": "Mayor Pro Tem",
+      "district": null,
+      "email": "KnoblockS@san-clemente.org",
+      "phone": "949-361-8322",
+      "website": null,
+      "city_profile": "https://www.sanclemente.gov/government/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Victor Cabral",
+      "position": "Councilmember",
+      "district": null,
+      "email": "CabralV@san-clemente.org",
+      "phone": "949-361-8322",
+      "website": null,
+      "city_profile": "https://www.sanclemente.gov/government/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Mark Enmeier",
+      "position": "Councilmember",
+      "district": null,
+      "email": "EnmeierM@san-clemente.org",
+      "phone": "949-361-8322",
+      "website": null,
+      "city_profile": "https://www.sanclemente.gov/government/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Zhen Wu",
+      "position": "Councilmember",
+      "district": null,
+      "email": "WuZ@san-clemente.org",
+      "phone": "949-361-8322",
+      "website": null,
+      "city_profile": "https://www.sanclemente.gov/government/city-council",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.sanclemente.gov/AgendaCenter/City-Council-13",
+    "method": "Email to council members or attend meeting",
+    "notes": "Meetings 1st and 3rd Tuesday at 5:30pm. 910 Calle Negocio, San Clemente, CA 92673"
+  },
+  "clerk_contact": {
+    "phone": "949-361-8322",
+    "email": null
+  },
+  "notes": [
+    "Data verified January 2026",
+    "At-large elections",
+    "Website redirects to sanclemente.gov"
+  ],
+  "city_name": "San Clemente",
+  "slug": "san-clemente"
+}

@@ -1,0 +1,89 @@
+# Rancho Santa Margarita City Council
+# Last updated: 2026-01-24
+
+city: "rancho-santa-margarita"
+city_name: "Rancho Santa Margarita"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.cityofrsm.org"
+council_url: "https://www.cityofrsm.org/160/Mayor-City-Council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "L. Anthony Beall"
+    position: "Mayor"
+    district: null
+    email: "tbeall@cityofrsm.org"
+    phone: "949-635-1800, ext. 6310"
+    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Anne D. Figueroa"
+    position: "Mayor Pro Tem"
+    district: null
+    email: "afigueroa@cityofrsm.org"
+    phone: "949-635-1800, ext. 6310"
+    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Brad McGirr"
+    position: "Councilmember"
+    district: null
+    email: "bmcgirr@cityofrsm.org"
+    phone: "949-635-1800, ext. 6310"
+    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Jerry Holloway"
+    position: "Councilmember"
+    district: null
+    email: "jholloway@cityofrsm.org"
+    phone: "949-635-1800, ext. 6310"
+    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Keri Lynn Baert"
+    position: "Councilmember"
+    district: "District 3"
+    email: "kbaert@cityofrsm.org"
+    phone: "949-635-1800, ext. 6310"
+    city_profile: "https://www.cityofrsm.org/160/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

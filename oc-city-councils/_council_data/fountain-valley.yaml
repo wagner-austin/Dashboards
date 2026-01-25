@@ -1,0 +1,89 @@
+# Fountain Valley City Council
+# Last updated: 2026-01-24
+
+city: "fountain-valley"
+city_name: "Fountain Valley"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.fountainvalley.gov"
+council_url: "https://www.fountainvalley.gov/156/City-Council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Ted Bui"
+    position: "Mayor"
+    district: null
+    email: "Ted.Bui@fountainvalley.gov"
+    phone: "628-266-8888"
+    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=54"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Jim Cunneen"
+    position: "Mayor Pro Tem"
+    district: null
+    email: "Jim.Cunneen@fountainvalley.gov"
+    phone: "714-593-4403"
+    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=178"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Patrick Harper"
+    position: "Councilmember"
+    district: null
+    email: "patrick.harper@fountainvalley.gov"
+    phone: "714-593-4403"
+    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=153"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Kim Constantine"
+    position: "Councilmember"
+    district: null
+    email: "kim.constantine@fountainvalley.gov"
+    phone: "714-593-4403"
+    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=152"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Glenn Grandis"
+    position: "Councilmember"
+    district: null
+    email: "Glenn.Grandis@fountainvalley.gov"
+    phone: "714-593-4403"
+    city_profile: "https://www.fountainvalley.gov/Directory.aspx?EID=55"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

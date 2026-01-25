@@ -1,0 +1,71 @@
+{
+  "website": "https://www.buenapark.com",
+  "council_url": "https://www.buenapark.com/city_departments/city_council/council_members.php",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Connor Traut",
+      "position": "Mayor",
+      "district": "District 5",
+      "email": "ctraut@buenapark.com",
+      "phone": "714-562-3500",
+      "website": null,
+      "city_profile": null,
+      "instagram": null
+    },
+    {
+      "name": "Lamiya Hoque",
+      "position": "Vice Mayor",
+      "district": "District 4",
+      "email": "lhoque@buenapark.com",
+      "phone": "714-562-3500",
+      "website": null,
+      "city_profile": null,
+      "instagram": null
+    },
+    {
+      "name": "Carlos Franco",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "cfranco@buenapark.com",
+      "phone": "714-562-3500",
+      "website": null,
+      "city_profile": null,
+      "instagram": null
+    },
+    {
+      "name": "Susan Sonne",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "ssonne@buenapark.com",
+      "phone": "714-562-3500",
+      "website": null,
+      "city_profile": null,
+      "instagram": null
+    },
+    {
+      "name": "Joyce Ahn",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "jahn@buenapark.com",
+      "phone": "714-562-3500",
+      "website": null,
+      "city_profile": null,
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.buenapark.com/city_departments/city_council/council_agenda.php",
+    "method": "Council Agenda",
+    "notes": "Meetings 2nd & 4th Tuesday at 5pm"
+  },
+  "clerk_contact": {
+    "phone": "714-562-3754",
+    "email": "city@buenapark.com"
+  },
+  "notes": [
+    "Data verified January 2026 from official site"
+  ],
+  "city_name": "Buena Park",
+  "slug": "buena-park"
+}

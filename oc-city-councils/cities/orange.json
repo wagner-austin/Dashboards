@@ -1,0 +1,94 @@
+{
+  "website": "https://www.cityoforange.org",
+  "council_url": "https://www.cityoforange.org/our-city/local-government/city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Dan Slater",
+      "position": "Mayor",
+      "district": "At-Large",
+      "email": "dan@danslater.com",
+      "phone": "(714) 744-2211",
+      "website": null,
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/mayor-dan-slater",
+      "instagram": null
+    },
+    {
+      "name": "Denis Bilodeau",
+      "position": "Mayor Pro Tem",
+      "district": "District 4",
+      "email": "dbilodeau@cityoforange.org",
+      "phone": "(714) 744-2225",
+      "website": null,
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Arianna Barrios",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "abarrios@cityoforange.org",
+      "phone": "(714) 744-2225",
+      "website": null,
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Jon Dumitru",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "jdumitru@cityoforange.org",
+      "phone": "(714) 744-2225",
+      "website": null,
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Kathy Tavoularis",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "ktavoularis@cityoforange.org",
+      "phone": "(714) 744-2225",
+      "website": null,
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "instagram": null
+    },
+    {
+      "name": "Ana Gutierrez",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "anagutierrez@cityoforange.org",
+      "phone": "(714) 744-2225",
+      "website": null,
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "instagram": null
+    },
+    {
+      "name": "John Gyllenhammer",
+      "position": "Councilmember",
+      "district": "District 6",
+      "email": "jgyllenhammer@cityoforange.org",
+      "phone": "(714) 744-2225",
+      "website": null,
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.cityoforange.org/our-city/local-government/city-council/city-council-meetings",
+    "method": "eComment via city agenda page",
+    "notes": "300 E. Chapman Ave., Orange, CA 92866"
+  },
+  "clerk_contact": {
+    "phone": "(714) 744-5500",
+    "email": null
+  },
+  "notes": [
+    "Data verified January 2026 via Firefox Playwright",
+    "7-member council with directly elected Mayor",
+    "Individual emails from mailto links on council page",
+    "Mayor uses personal email dan@danslater.com"
+  ],
+  "city_name": "Orange",
+  "slug": "orange"
+}

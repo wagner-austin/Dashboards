@@ -1,0 +1,72 @@
+{
+  "website": "https://www.stantonca.gov",
+  "council_url": "https://www.stantonca.gov/government/city_council.php",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "David J. Shawver",
+      "position": "Mayor",
+      "district": "At-Large",
+      "email": "DShawver@StantonCA.gov",
+      "phone": "(714) 379-9222",
+      "website": null,
+      "city_profile": "https://www.stantonca.gov/government/city_council.php",
+      "instagram": null
+    },
+    {
+      "name": "Gary Taylor",
+      "position": "Mayor Pro Tem",
+      "district": "District 3",
+      "email": "GTaylor@StantonCA.gov",
+      "phone": "(714) 379-9222",
+      "website": null,
+      "city_profile": "https://www.stantonca.gov/government/city_council.php",
+      "instagram": null
+    },
+    {
+      "name": "Donald Torres",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "DTorres@StantonCA.gov",
+      "phone": "(714) 379-9222",
+      "website": null,
+      "city_profile": "https://www.stantonca.gov/government/city_council.php",
+      "instagram": null
+    },
+    {
+      "name": "Victor Barrios",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "VBarrios@StantonCA.gov",
+      "phone": "(714) 379-9222",
+      "website": null,
+      "city_profile": "https://www.stantonca.gov/government/city_council.php",
+      "instagram": null
+    },
+    {
+      "name": "John D. Warren",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "JOHNWarren@StantonCA.gov",
+      "phone": "(714) 379-9222",
+      "website": null,
+      "city_profile": "https://www.stantonca.gov/government/city_council.php",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.stantonca.gov/government/city_council.php",
+    "method": "Email council members",
+    "notes": "7800 Katella Avenue, Stanton, CA 90680"
+  },
+  "clerk_contact": {
+    "phone": "(714) 379-9222",
+    "email": null
+  },
+  "notes": [
+    "Data verified January 2026",
+    "By-district elections with at-large Mayor"
+  ],
+  "city_name": "Stanton",
+  "slug": "stanton"
+}

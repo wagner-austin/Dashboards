@@ -1,0 +1,89 @@
+# Laguna Niguel City Council
+# Last updated: 2026-01-24
+
+city: "laguna-niguel"
+city_name: "Laguna Niguel"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.cityoflagunaniguel.org"
+council_url: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Gene Johns"
+    position: "Mayor"
+    district: null
+    email: "GJohns@cityoflagunaniguel.org"
+    phone: "(949) 362-4300"
+    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Kelly Jennings"
+    position: "Mayor Pro Tem"
+    district: null
+    email: "KJennings@cityoflagunaniguel.org"
+    phone: "(949) 362-4300"
+    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Ray Gennawey"
+    position: "Councilmember"
+    district: null
+    email: "RGennawey@cityoflagunaniguel.org"
+    phone: "(949) 362-4300"
+    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Stephanie Oddo"
+    position: "Councilmember"
+    district: null
+    email: "SOddo@cityoflagunaniguel.org"
+    phone: "(949) 362-4300"
+    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Stephanie Winstead"
+    position: "Councilmember"
+    district: null
+    email: "SWinstead@cityoflagunaniguel.org"
+    phone: "(949) 362-4300"
+    city_profile: "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null

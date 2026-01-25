@@ -1,0 +1,72 @@
+{
+  "website": "https://www.cityoffullerton.com",
+  "council_url": "https://www.cityoffullerton.com/government/city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Fred Jung",
+      "position": "Mayor",
+      "district": "District 1",
+      "email": "fred.jung@cityoffullerton.com",
+      "phone": "(714) 738-6311",
+      "website": null,
+      "city_profile": "https://www.cityoffullerton.com/government/city-council/mayor-fred-jung",
+      "instagram": null
+    },
+    {
+      "name": "Nicholas Dunlap",
+      "position": "Mayor Pro Tem",
+      "district": "District 2",
+      "email": "nicholas.dunlap@cityoffullerton.com",
+      "phone": "(714) 738-6311",
+      "website": null,
+      "city_profile": "https://www.cityoffullerton.com/government/city-council/mayor-pro-tem-nicholas-dunlap",
+      "instagram": null
+    },
+    {
+      "name": "Dr. Shana Charles",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "shana.charles@cityoffullerton.com",
+      "phone": "(714) 738-6311",
+      "website": null,
+      "city_profile": "https://www.cityoffullerton.com/government/city-council/council-member-shana-charles",
+      "instagram": null
+    },
+    {
+      "name": "Jamie Valencia",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "jamie.valencia@cityoffullerton.com",
+      "phone": "(714) 738-6311",
+      "website": null,
+      "city_profile": "https://www.cityoffullerton.com/government/city-council/council-member-jamie-valencia",
+      "instagram": null
+    },
+    {
+      "name": "Dr. Ahmad Zahra",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "ahmadz@cityoffullerton.com",
+      "phone": "(714) 738-6311",
+      "website": null,
+      "city_profile": "https://www.cityoffullerton.com/government/city-council/council-member-ahmad-zahra",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.cityoffullerton.com/government/city-council/city-council-meetings",
+    "method": "Email CouncilMembers@cityoffullerton.com",
+    "notes": "Meetings 1st and 3rd Tuesday at 5:30pm at City Hall, 303 W. Commonwealth Ave."
+  },
+  "clerk_contact": {
+    "phone": "(714) 738-6350",
+    "email": "cityclerksoffice@cityoffullerton.com"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "By-district elections"
+  ],
+  "city_name": "Fullerton",
+  "slug": "fullerton"
+}

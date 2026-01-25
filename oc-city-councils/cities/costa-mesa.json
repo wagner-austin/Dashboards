@@ -1,0 +1,92 @@
+{
+  "website": "https://www.costamesaca.gov",
+  "council_url": "https://www.costamesaca.gov/government/mayor-city-council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "John Stephens",
+      "position": "Mayor",
+      "district": "At-Large",
+      "email": "john.stephens@costamesaca.gov",
+      "phone": "(714) 337-1872",
+      "website": null,
+      "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/mayor-john-stephens",
+      "instagram": null
+    },
+    {
+      "name": "Manuel Chavez",
+      "position": "Mayor Pro Tem",
+      "district": "District 4",
+      "email": "manuel.chavez@costamesaca.gov",
+      "phone": "(949) 274-2305",
+      "website": null,
+      "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/mayor-pro-tem-manuel-chavez",
+      "instagram": null
+    },
+    {
+      "name": "Mike Buley",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "mike.buley@costamesaca.gov",
+      "phone": "(714) 754-5107",
+      "website": null,
+      "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-mike-buley",
+      "instagram": null
+    },
+    {
+      "name": "Loren Gameros",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "loren.gameros@costamesaca.gov",
+      "phone": "(714) 754-5107",
+      "website": null,
+      "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-loren-gameros",
+      "instagram": null
+    },
+    {
+      "name": "Andrea Marr",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "andrea.marr@costamesaca.gov",
+      "phone": "(714) 754-5107",
+      "website": null,
+      "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-andrea-marr",
+      "instagram": null
+    },
+    {
+      "name": "Arlis Reynolds",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "arlis.reynolds@costamesaca.gov",
+      "phone": "(714) 754-5107",
+      "website": null,
+      "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-arlis-reynolds",
+      "instagram": null
+    },
+    {
+      "name": "Jeff Pettis",
+      "position": "Councilmember",
+      "district": "District 6",
+      "email": "jeff.pettis@costamesaca.gov",
+      "phone": "(714) 754-5107",
+      "website": null,
+      "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-jeff-pettis",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.costamesaca.gov/government/mayor-city-council/council-contact-information",
+    "method": "Email or call Constituent Services",
+    "notes": "Contact (714) 754-5105 or constituentservices@costamesaca.gov"
+  },
+  "clerk_contact": {
+    "phone": "(714) 754-5105",
+    "email": "constituentservices@costamesaca.gov"
+  },
+  "notes": [
+    "Data verified January 2026",
+    "7-member council with directly elected Mayor"
+  ],
+  "city_name": "Costa Mesa",
+  "slug": "costa-mesa"
+}

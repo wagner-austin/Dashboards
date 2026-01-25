@@ -1,0 +1,74 @@
+{
+  "website": "https://www.lapalmaca.gov",
+  "council_url": "https://www.lapalmaca.gov/66/City-Council",
+  "status": "complete",
+  "council_members": [
+    {
+      "name": "Nitesh P. Patel",
+      "position": "Mayor",
+      "district": "At-Large",
+      "email": null,
+      "phone": "(714) 690-3334",
+      "website": null,
+      "city_profile": "https://www.lapalmaca.gov/716",
+      "instagram": null
+    },
+    {
+      "name": "Debbie S. Baker",
+      "position": "Mayor Pro Tem",
+      "district": "District 1",
+      "email": null,
+      "phone": "(714) 690-3334",
+      "website": null,
+      "city_profile": "https://www.lapalmaca.gov/714",
+      "instagram": null
+    },
+    {
+      "name": "Mark I. Waldman",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": null,
+      "phone": "(714) 690-3334",
+      "website": null,
+      "city_profile": "https://www.lapalmaca.gov/717",
+      "instagram": null
+    },
+    {
+      "name": "Janet Keo Conklin",
+      "position": "Councilmember",
+      "district": "At-Large",
+      "email": null,
+      "phone": "(714) 690-3334",
+      "website": null,
+      "city_profile": "https://www.lapalmaca.gov/735",
+      "instagram": null
+    },
+    {
+      "name": "Vikesh P. Patel",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": null,
+      "phone": "(714) 690-3334",
+      "website": null,
+      "city_profile": "https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member",
+      "instagram": null
+    }
+  ],
+  "public_comment": {
+    "url": "https://www.lapalmaca.gov/72/Agendas-and-Minutes",
+    "method": "Attend meeting or contact City Clerk",
+    "notes": "Meetings 1st Tuesday at 6:30pm at 7822 Walker Street"
+  },
+  "clerk_contact": {
+    "phone": "(714) 690-3334",
+    "email": "citycouncil@lapalmaca.gov"
+  },
+  "general_council_email": "citycouncil@lapalmaca.gov",
+  "notes": [
+    "Data verified January 2026",
+    "Transitioned to district elections in 2024",
+    "No individual emails published"
+  ],
+  "city_name": "La Palma",
+  "slug": "la-palma"
+}

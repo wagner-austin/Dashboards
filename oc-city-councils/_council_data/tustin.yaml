@@ -1,0 +1,89 @@
+# Tustin City Council
+# Last updated: 2026-01-24
+
+city: "tustin"
+city_name: "Tustin"
+last_updated: "2026-01-24"
+
+# Election info (fill in)
+next_election: null
+seats_up: []
+
+# City info
+website: "https://www.tustinca.org"
+council_url: "https://www.tustinca.org/482/City-Council"
+email: ""
+phone: ""
+instagram: ""
+
+# Council members
+members:
+  - name: "Austin Lumbard"
+    position: "Mayor"
+    district: null
+    email: "ALumbard@tustinca.org"
+    phone: "714-573-3012"
+    city_profile: "https://www.tustinca.org/499/Mayor-Austin-Lumbard"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Ray Schnell"
+    position: "Mayor Pro Tem"
+    district: null
+    email: "rschnell@tustinca.org"
+    phone: "714-573-3012"
+    city_profile: "https://www.tustinca.org/1396/Council-Member-Ray-Schnell"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Ryan Gallagher"
+    position: "Councilmember"
+    district: null
+    email: "rgallagher@tustinca.org"
+    phone: "714-573-3012"
+    city_profile: "https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "Lee K. Fink"
+    position: "Councilmember"
+    district: null
+    email: "lfink@tustinca.org"
+    phone: "714-573-3012"
+    city_profile: "https://www.tustinca.org/1208/Council-Member-Lee-K-Fink"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
+
+  - name: "John Nielsen"
+    position: "Councilmember"
+    district: null
+    email: "jnielsen@tustinca.org"
+    phone: "714-573-3012"
+    city_profile: "https://www.tustinca.org/493/Council-Member-John-Nielsen"
+    # Rich data (fill in)
+    photo_url: null
+    bio: null
+    term_start: null
+    term_end: null
+    website: null
+    instagram: null
