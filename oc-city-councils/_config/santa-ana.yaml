@@ -1,0 +1,41 @@
+city:
+  name: "Santa Ana"
+  slug: "santa-ana"
+  website: "https://www.santa-ana.org"
+  population: 318663
+
+theme:
+  primary_color: "#003366"
+  primary_dark: "#002244"
+
+council:
+  count: 7
+  structure: "district"
+
+meetings:
+  schedule: "1st and 3rd Tuesday"
+  time: "5:30 PM"
+  location:
+    name: "Council Chamber"
+    address: "22 Civic Center Plaza, Santa Ana, CA 92701"
+  zoom:
+    url: "https://us02web.zoom.us/j/315965149"
+    meeting_id: "315 965 149"
+    passcode: ""
+
+scraping:
+  system: "granicus"
+  granicus:
+    subdomain: "santaana"
+    view_id: 2
+    filter_text: "CITY COUNCIL"
+
+links:
+  meeting_archive: "https://santaana.granicus.com/ViewPublisher.php?view_id=2"
+  ecomment: "https://www.santa-ana.org/cc/city-meetings"
+  council_page: "https://www.santa-ana.org/city-council/"
+
+contact:
+  clerk_name: "Jennifer L. Hall"
+  clerk_phone: "(714) 647-6520"
+  clerk_email: "cityclerk@santa-ana.org"

@@ -1,0 +1,40 @@
+city: "orange"
+last_updated: "2026-01-24"
+next_election: "2026-11-03"
+seats_up: []
+
+members:
+  - name: "Dan Slater"
+    position: "Mayor"
+    district: "At-Large"
+    city_page: "https://www.cityoforange.org/our-city/local-government/city-council"
+
+  - name: "Denis Bilodeau"
+    position: "Mayor Pro Tem"
+    district: "District 4"
+    city_page: "https://www.cityoforange.org/our-city/local-government/city-council"
+
+  - name: "Arianna Barrios"
+    position: "Councilmember"
+    district: "District 1"
+    city_page: "https://www.cityoforange.org/our-city/local-government/city-council"
+
+  - name: "Jon Dumitru"
+    position: "Councilmember"
+    district: "District 2"
+    city_page: "https://www.cityoforange.org/our-city/local-government/city-council"
+
+  - name: "Kathy Tavoularis"
+    position: "Councilmember"
+    district: "District 3"
+    city_page: "https://www.cityoforange.org/our-city/local-government/city-council"
+
+  - name: "Ana Gutierrez"
+    position: "Councilmember"
+    district: "District 5"
+    city_page: "https://www.cityoforange.org/our-city/local-government/city-council"
+
+  - name: "John Gyllenhammer"
+    position: "Councilmember"
+    district: "District 6"
+    city_page: "https://www.cityoforange.org/our-city/local-government/city-council"

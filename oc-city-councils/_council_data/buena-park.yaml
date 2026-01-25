@@ -1,0 +1,35 @@
+city: "buena-park"
+last_updated: "2026-01-24"
+next_election: "2026-11-03"
+seats_up: []
+
+members:
+  - name: "Connor Traut"
+    position: "Mayor"
+    district: "District 5"
+    email: "ctraut@buenapark.com"
+    phone: "714-562-3500"
+
+  - name: "Lamiya Hoque"
+    position: "Vice Mayor"
+    district: "District 4"
+    email: "lhoque@buenapark.com"
+    phone: "714-562-3500"
+
+  - name: "Joyce Ahn"
+    position: "Councilmember"
+    district: "District 1"
+    email: "jahn@buenapark.com"
+    phone: "714-562-3500"
+
+  - name: "Carlos Franco"
+    position: "Councilmember"
+    district: "District 2"
+    email: "cfranco@buenapark.com"
+    phone: "714-562-3500"
+
+  - name: "Susan Sonne"
+    position: "Councilmember"
+    district: "District 3"
+    email: "ssonne@buenapark.com"
+    phone: "714-562-3500"

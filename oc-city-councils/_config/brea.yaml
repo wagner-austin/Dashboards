@@ -1,0 +1,33 @@
+city:
+  name: "Brea"
+  slug: "brea"
+  website: "https://www.cityofbrea.net"
+  population: 47325
+
+theme:
+  primary_color: "#003366"
+  primary_dark: "#002244"
+
+council:
+  count: 5
+  structure: "at-large"
+
+meetings:
+  schedule: "1st and 3rd Tuesday"
+  time: "7:00 PM"
+  location:
+    name: "Council Chambers"
+    address: "1 Civic Center Circle, Brea, CA 92821"
+  zoom: null
+
+scraping:
+  system: "manual"
+
+links:
+  meeting_archive: "https://www.ci.brea.ca.us/agendacenter"
+  ecomment: "https://www.ci.brea.ca.us/agendacenter"
+  council_page: "https://www.ci.brea.ca.us/511/City-Council"
+
+contact:
+  clerk_phone: "714-990-7756"
+  clerk_email: null

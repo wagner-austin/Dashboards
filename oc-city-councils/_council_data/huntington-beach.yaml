@@ -1,0 +1,40 @@
+city: "huntington-beach"
+last_updated: "2026-01-24"
+next_election: "2026-11-03"
+seats_up: []
+
+members:
+  - name: "Pat Burns"
+    position: "Mayor"
+    district: "At-Large"
+    email: "pburns@huntingtonbeachca.gov"
+
+  - name: "Butch Twining"
+    position: "Mayor Pro Tem"
+    district: "At-Large"
+    email: "btwining@huntingtonbeachca.gov"
+
+  - name: "Casey McKeon"
+    position: "Councilmember"
+    district: "At-Large"
+    email: "cmckeon@huntingtonbeachca.gov"
+
+  - name: "Gracey Larrea-Van Der Mark"
+    position: "Councilmember"
+    district: "At-Large"
+    email: "glarrea@huntingtonbeachca.gov"
+
+  - name: "Andrew Gruel"
+    position: "Councilmember"
+    district: "At-Large"
+    email: "agruel@huntingtonbeachca.gov"
+
+  - name: "Don Kennedy"
+    position: "Councilmember"
+    district: "At-Large"
+    email: "dkennedy@huntingtonbeachca.gov"
+
+  - name: "Chad Williams"
+    position: "Councilmember"
+    district: "At-Large"
+    email: "cwilliams@huntingtonbeachca.gov"

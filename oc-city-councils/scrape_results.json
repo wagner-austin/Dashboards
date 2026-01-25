@@ -1,0 +1,1431 @@
+{
+  "scrape_date": "2026-01-24T19:28:40.888864",
+  "browser": "firefox",
+  "stealth_mode": true,
+  "cities_scraped": [
+    "Aliso Viejo",
+    "Anaheim",
+    "Brea",
+    "La Habra",
+    "La Palma",
+    "Laguna Beach",
+    "Laguna Hills",
+    "Mission Viejo",
+    "Orange",
+    "Tustin"
+  ],
+  "results": {
+    "Aliso Viejo": {
+      "city": "Aliso Viejo",
+      "platform": "civicplus",
+      "scrape_time": "2026-01-24T19:28:42.129507",
+      "pages_visited": [
+        {
+          "url": "https://avcity.org/222/City-Council",
+          "type": "council_main",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "City-council@avcity.org"
+          ],
+          "phones": [
+            "949-425-3899",
+            "949-425-2510",
+            "949-425-2500"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:28:42.129507"
+        },
+        {
+          "url": "https://avcity.org/Directory.aspx?did=1",
+          "type": "directory",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:28:45.348843"
+        },
+        {
+          "url": "https://avcity.org/294/Mayor-Max-Duncan",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "mduncan@avcity.org"
+          ],
+          "phones": [
+            "949-425-3899",
+            "949-425-2510",
+            "949-425-2500"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:28:45.870135"
+        },
+        {
+          "url": "https://avcity.org/292/Mayor-Pro-Tem-Mike-Munzing",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "mmunzing@avcity.org"
+          ],
+          "phones": [
+            "949-425-3899",
+            "949-425-2510",
+            "949-425-2500"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:28:48.489136"
+        },
+        {
+          "url": "https://avcity.org/293/Councilmember-Tiffany-Ackley",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "tackley@avcity.org"
+          ],
+          "phones": [
+            "949-425-3899",
+            "949-425-2510",
+            "949-425-2500"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:28:51.003650"
+        },
+        {
+          "url": "https://avcity.org/295/Councilmember-Garrett-Dwyer",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "GDwyer@AVCity.org"
+          ],
+          "phones": [
+            "949-425-3899",
+            "949-425-2510",
+            "949-425-2500"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:28:53.580323"
+        },
+        {
+          "url": "https://avcity.org/291/Councilmember-Tim-Zandbergen",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "tzandbergen@avcity.org"
+          ],
+          "phones": [
+            "949-425-3899",
+            "949-425-2510",
+            "949-425-2500"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:28:56.100901"
+        }
+      ],
+      "council_members": [
+        {
+          "name": "Max Duncan",
+          "position": "Mayor",
+          "district": null,
+          "email": "mduncan@avcity.org",
+          "phone": "949-425-3899",
+          "city_profile": "https://avcity.org/294/Mayor-Max-Duncan"
+        },
+        {
+          "name": "Mike Munzing",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "mmunzing@avcity.org",
+          "phone": "949-425-3899",
+          "city_profile": "https://avcity.org/292/Mayor-Pro-Tem-Mike-Munzing"
+        },
+        {
+          "name": "Tiffany Ackley",
+          "position": "Councilmember",
+          "district": null,
+          "email": "tackley@avcity.org",
+          "phone": "949-425-3899",
+          "city_profile": "https://avcity.org/293/Councilmember-Tiffany-Ackley"
+        },
+        {
+          "name": "Garrett Dwyer",
+          "position": "Councilmember",
+          "district": null,
+          "email": "GDwyer@AVCity.org",
+          "phone": "949-425-3899",
+          "city_profile": "https://avcity.org/295/Councilmember-Garrett-Dwyer"
+        },
+        {
+          "name": "Tim Zandbergen",
+          "position": "Councilmember",
+          "district": null,
+          "email": "tzandbergen@avcity.org",
+          "phone": "949-425-3899",
+          "city_profile": "https://avcity.org/291/Councilmember-Tim-Zandbergen"
+        }
+      ],
+      "emails_found": [
+        "City-council@avcity.org",
+        "mduncan@avcity.org",
+        "mmunzing@avcity.org",
+        "tackley@avcity.org",
+        "GDwyer@AVCity.org",
+        "tzandbergen@avcity.org"
+      ],
+      "phones_found": [
+        "949-425-3899",
+        "949-425-2510",
+        "949-425-2500"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 6,
+      "pages_failed": 1
+    },
+    "Anaheim": {
+      "city": "Anaheim",
+      "platform": "civicplus_custom",
+      "scrape_time": "2026-01-24T19:29:00.280880",
+      "pages_visited": [
+        {
+          "url": "https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken",
+          "type": "member_Ashleigh Aitken",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "aaitken@anaheim.net",
+            "bballinas@anaheim.net"
+          ],
+          "phones": [
+            "(714) 765-5247",
+            "(714) 765-5164",
+            "(714) 765-5098",
+            "(714) 765-4311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:00.280880"
+        },
+        {
+          "url": "https://www.anaheim.net/2314/Mayor-Pro-Tem-Carlos-A-Leon",
+          "type": "member_Carlos A. Leon",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "MMoreno1@anaheim.net",
+            "cleon@anaheim.net",
+            "agomez3@anaheim.net",
+            "ktran4@anaheim.net"
+          ],
+          "phones": [
+            "(714) 765-5247",
+            "(714) 765-5164",
+            "(714) 765-4311",
+            "(714) 765-5032"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:02.966655"
+        },
+        {
+          "url": "https://www.anaheim.net/3522/Council-Member-Ryan-Balius",
+          "type": "member_Ryan Balius",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "rbalius@anaheim.net",
+            "SVANNHA@ANAHEIM.NET",
+            "RCAREY@ANAHEIM.NET"
+          ],
+          "phones": [
+            "(714) 765-5247",
+            "(714) 765-5164",
+            "(714) 765-5047",
+            "(714) 765-4311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:05.492963"
+        },
+        {
+          "url": "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava",
+          "type": "member_Natalie Rubalcava",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "vsandoval@anaheim.net",
+            "dhernandez6@anaheim.net",
+            "nrubalcava@anaheim.net"
+          ],
+          "phones": [
+            "(714) 765-5247",
+            "(714) 765-5164",
+            "(714) 765-4311",
+            "(714) 765-5057"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:07.999983"
+        },
+        {
+          "url": "https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz",
+          "type": "member_Norma Campos Kurtz",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "rmendoza@anaheim.net",
+            "ttait@anaheim.net",
+            "nkurtz@anaheim.net",
+            "nvillafana@anaheim.net"
+          ],
+          "phones": [
+            "(714) 765-5247",
+            "(714) 765-5164",
+            "(714) 765-5014",
+            "(714) 765-4311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:10.503289"
+        },
+        {
+          "url": "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs",
+          "type": "member_Kristen Maahs",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "kmaahs@anaheim.net",
+            "nbartash@anaheim.net",
+            "mvaldespino@anaheim.net",
+            "JRMelendrez@anaheim.net"
+          ],
+          "phones": [
+            "(714) 765-5247",
+            "(714) 765-5164",
+            "(714) 765-4311",
+            "(714) 765-4377"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:13.027607"
+        }
+      ],
+      "council_members": [
+        {
+          "name": "Ashleigh Aitken",
+          "position": "Mayor",
+          "district": "At-Large",
+          "email": "aaitken@anaheim.net",
+          "phone": "(714) 765-5247",
+          "city_profile": "https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken"
+        },
+        {
+          "name": "Carlos A. Leon",
+          "position": "Mayor Pro Tem",
+          "district": "District 3",
+          "email": "cleon@anaheim.net",
+          "phone": "(714) 765-5247",
+          "city_profile": "https://www.anaheim.net/2314/Mayor-Pro-Tem-Carlos-A-Leon"
+        },
+        {
+          "name": "Ryan Balius",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "rbalius@anaheim.net",
+          "phone": "(714) 765-5247",
+          "city_profile": "https://www.anaheim.net/3522/Council-Member-Ryan-Balius"
+        },
+        {
+          "name": "Natalie Rubalcava",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "nrubalcava@anaheim.net",
+          "phone": "(714) 765-5247",
+          "city_profile": "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava"
+        },
+        {
+          "name": "Norma Campos Kurtz",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "nkurtz@anaheim.net",
+          "phone": "(714) 765-5247",
+          "city_profile": "https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz"
+        },
+        {
+          "name": "Kristen Maahs",
+          "position": "Councilmember",
+          "district": "District 6",
+          "email": "kmaahs@anaheim.net",
+          "phone": "(714) 765-5247",
+          "city_profile": "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs"
+        }
+      ],
+      "emails_found": [
+        "aaitken@anaheim.net",
+        "bballinas@anaheim.net",
+        "MMoreno1@anaheim.net",
+        "cleon@anaheim.net",
+        "agomez3@anaheim.net",
+        "ktran4@anaheim.net",
+        "rbalius@anaheim.net",
+        "SVANNHA@ANAHEIM.NET",
+        "RCAREY@ANAHEIM.NET",
+        "vsandoval@anaheim.net",
+        "dhernandez6@anaheim.net",
+        "nrubalcava@anaheim.net",
+        "rmendoza@anaheim.net",
+        "ttait@anaheim.net",
+        "nkurtz@anaheim.net",
+        "nvillafana@anaheim.net",
+        "kmaahs@anaheim.net",
+        "nbartash@anaheim.net",
+        "mvaldespino@anaheim.net",
+        "JRMelendrez@anaheim.net"
+      ],
+      "phones_found": [
+        "(714) 765-5247",
+        "(714) 765-5164",
+        "(714) 765-5098",
+        "(714) 765-4311",
+        "(714) 765-5032",
+        "(714) 765-5047",
+        "(714) 765-5057",
+        "(714) 765-5014",
+        "(714) 765-4377"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 6,
+      "pages_failed": 0
+    },
+    "Brea": {
+      "city": "Brea",
+      "platform": "civicplus",
+      "scrape_time": "2026-01-24T19:29:15.526280",
+      "pages_visited": [
+        {
+          "url": "https://www.cityofbrea.gov/511/City-Council",
+          "type": "council_main",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [
+            "(714) 990-7756",
+            "714-990-7600"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:15.526794"
+        },
+        {
+          "url": "https://www.cityofbrea.gov/Directory.aspx?did=2",
+          "type": "directory",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:29:18.632860"
+        },
+        {
+          "url": "https://www.cityofbrea.gov/514/Mayors-Youth-Award",
+          "type": "discovered_member",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "mayorsaward@cityofbrea.gov"
+          ],
+          "phones": [
+            "714-990-7600",
+            "(714) 990-7798"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:20.825124"
+        }
+      ],
+      "council_members": [
+        {
+          "name": "Christine Marick",
+          "position": "Mayor",
+          "district": null,
+          "email": null,
+          "phone": "(714) 990-7756",
+          "city_profile": null
+        },
+        {
+          "name": "Cecilia Hupp",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": null,
+          "phone": "(714) 990-7756",
+          "city_profile": null
+        },
+        {
+          "name": "Steven Vargas",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "(714) 990-7756",
+          "city_profile": null
+        },
+        {
+          "name": "Marty Simonoff",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "(714) 990-7756",
+          "city_profile": null
+        },
+        {
+          "name": "Glenn Parker",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "(714) 990-7756",
+          "city_profile": null
+        }
+      ],
+      "emails_found": [
+        "mayorsaward@cityofbrea.gov"
+      ],
+      "phones_found": [
+        "(714) 990-7756",
+        "714-990-7600",
+        "(714) 990-7798"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 2,
+      "pages_failed": 1
+    },
+    "La Habra": {
+      "city": "La Habra",
+      "platform": "civicplus",
+      "scrape_time": "2026-01-24T19:29:23.432540",
+      "pages_visited": [
+        {
+          "url": "https://www.lahabraca.gov/153/City-Council",
+          "type": "council_main",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "CityCouncil@lahabraca.gov"
+          ],
+          "phones": [
+            "562-383-4000",
+            "(562) 383-4022",
+            "562-383-4474"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:23.432540"
+        },
+        {
+          "url": "https://www.lahabraca.gov/Directory.aspx?did=7",
+          "type": "directory",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "JHenderson@lahabraca.gov",
+            "awalsten@lahabraca.gov",
+            "Jkasondra@lahabraca.gov",
+            "lramirez@lahabraca.gov",
+            "Lramirez@lahabraca.gov",
+            "Anluna@lahabraca.gov",
+            "vmartinez@lahabraca.gov",
+            "Dgonzalez@lahabraca.gov",
+            "DHernandez@lahabraca.gov"
+          ],
+          "phones": [
+            "800-611-1911",
+            "562-383-4474",
+            "562-383-4000",
+            "562-383-4152",
+            "562-383-4160",
+            "562-383-4170",
+            "562-383-4155",
+            "562-383-4151",
+            "(562) 383-4170",
+            "562-383-4163",
+            "562-694-3730",
+            "562-383-5179",
+            "562-383-4164",
+            "562-383-4156",
+            "562-383-4157",
+            "562-383-4476",
+            "562-383-4161",
+            "562-383-4497",
+            "562-383-4070",
+            "562-383-4174"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:27.225839"
+        }
+      ],
+      "council_members": [
+        {
+          "name": "Jose Medrano",
+          "position": "Mayor",
+          "district": null,
+          "email": null,
+          "phone": "562-383-4000",
+          "city_profile": null
+        },
+        {
+          "name": "James Gomez",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": null,
+          "phone": "562-383-4000",
+          "city_profile": null
+        },
+        {
+          "name": "Rose Espinoza",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "562-383-4000",
+          "city_profile": null
+        },
+        {
+          "name": "Daren Nigsarian",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "562-383-4000",
+          "city_profile": null
+        },
+        {
+          "name": "Delwin Lampkin",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "562-383-4000",
+          "city_profile": null
+        }
+      ],
+      "emails_found": [
+        "CityCouncil@lahabraca.gov",
+        "JHenderson@lahabraca.gov",
+        "awalsten@lahabraca.gov",
+        "Jkasondra@lahabraca.gov",
+        "lramirez@lahabraca.gov",
+        "Lramirez@lahabraca.gov",
+        "Anluna@lahabraca.gov",
+        "vmartinez@lahabraca.gov",
+        "Dgonzalez@lahabraca.gov",
+        "DHernandez@lahabraca.gov"
+      ],
+      "phones_found": [
+        "562-383-4000",
+        "(562) 383-4022",
+        "562-383-4474",
+        "800-611-1911",
+        "562-383-4152",
+        "562-383-4160",
+        "562-383-4170",
+        "562-383-4155",
+        "562-383-4151",
+        "(562) 383-4170",
+        "562-383-4163",
+        "562-694-3730",
+        "562-383-5179",
+        "562-383-4164",
+        "562-383-4156",
+        "562-383-4157",
+        "562-383-4476",
+        "562-383-4161",
+        "562-383-4497",
+        "562-383-4070",
+        "562-383-4174"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 2,
+      "pages_failed": 0
+    },
+    "La Palma": {
+      "city": "La Palma",
+      "platform": "civicplus",
+      "scrape_time": "2026-01-24T19:29:32.324824",
+      "pages_visited": [
+        {
+          "url": "https://www.lapalmaca.gov/66/City-Council",
+          "type": "council_main",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "citycouncil@lapalmaca.gov"
+          ],
+          "phones": [
+            "714-690-3334"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:32.324824"
+        },
+        {
+          "url": "https://www.lapalmaca.gov/Directory.aspx?did=3",
+          "type": "directory",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "administration@lapalmaca.gov",
+            "cwilkerson@laplamaca.gov",
+            "crystalw@cityoflapalma.org"
+          ],
+          "phones": [
+            "714-690-3333",
+            "714-690-3300",
+            "714-690-3330"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:35.625299"
+        },
+        {
+          "url": "https://www.lapalmaca.gov/716/Nitesh-Patel-Mayor",
+          "type": "discovered_member",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:40.228355"
+        },
+        {
+          "url": "https://www.lapalmaca.gov/714/Debbie-Baker-Mayor-Pro-Tem",
+          "type": "discovered_member",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:43.418582"
+        },
+        {
+          "url": "https://www.lapalmaca.gov/735/Janet-Keo-Conklin-Council-Member",
+          "type": "discovered_member",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:46.089991"
+        },
+        {
+          "url": "https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member",
+          "type": "discovered_member",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:48.792216"
+        },
+        {
+          "url": "https://www.lapalmaca.gov/717/Mark-Waldman-Council-Member",
+          "type": "discovered_member",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:51.488803"
+        },
+        {
+          "url": "https://www.cityoflapalma.org/800/Vikesh-Patel-Council-Member",
+          "type": "discovered_member",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:54.187548"
+        }
+      ],
+      "council_members": [
+        {
+          "name": "Nitesh Patel",
+          "position": "Mayor",
+          "district": null,
+          "email": null,
+          "phone": "714-690-3334",
+          "city_profile": null
+        },
+        {
+          "name": "Debbie Baker",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": null,
+          "phone": "714-690-3334",
+          "city_profile": null
+        },
+        {
+          "name": "Mark Waldman",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "714-690-3334",
+          "city_profile": null
+        },
+        {
+          "name": "Vikesh Patel",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "714-690-3334",
+          "city_profile": null
+        },
+        {
+          "name": "Janet Keo Conklin",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "714-690-3334",
+          "city_profile": null
+        }
+      ],
+      "emails_found": [
+        "citycouncil@lapalmaca.gov",
+        "administration@lapalmaca.gov",
+        "cwilkerson@laplamaca.gov",
+        "crystalw@cityoflapalma.org"
+      ],
+      "phones_found": [
+        "714-690-3334",
+        "714-690-3333",
+        "714-690-3300",
+        "714-690-3330"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 8,
+      "pages_failed": 0
+    },
+    "Laguna Beach": {
+      "city": "Laguna Beach",
+      "platform": "granicus",
+      "scrape_time": "2026-01-24T19:29:57.335643",
+      "pages_visited": [
+        {
+          "url": "https://www.lagunabeachcity.net/live-here/city-council",
+          "type": "council",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "citycouncil@lagunabeachcity.net"
+          ],
+          "phones": [
+            "949-497-3311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:29:57.335643"
+        },
+        {
+          "url": "https://www.lagunabeachcity.net/government/departments/city-council/contact-city-council",
+          "type": "contact",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "CityCouncil@lagunabeachcity.net"
+          ],
+          "phones": [
+            "(949) 395-1275",
+            "(949) 992-5419",
+            "(949) 463-4821",
+            "(949) 497-0796",
+            "949-497-3311",
+            "(949) 439-3001",
+            "(949) 497-3311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:00.390861"
+        },
+        {
+          "url": "https://www.lagunabeachcity.net/government/departments/city-council",
+          "type": "directory",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "citycouncil@lagunabeachcity.net"
+          ],
+          "phones": [
+            "949-497-3311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:02.734554"
+        },
+        {
+          "url": "https://www.lagunabeachcity.net/government/departments/city-council/alex-rounaghi",
+          "type": "member_Alex Rounaghi",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "arounaghi@lagunabeachcity.net"
+          ],
+          "phones": [
+            "(949) 395-1275",
+            "949-497-3311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:05.074339"
+        },
+        {
+          "url": "https://www.lagunabeachcity.net/government/departments/city-council/mark-orgill",
+          "type": "member_Mark Orgill",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "morgill@lagunabeachcity.net"
+          ],
+          "phones": [
+            "(949) 463-4821",
+            "949-497-3311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:07.433952"
+        },
+        {
+          "url": "https://www.lagunabeachcity.net/government/departments/city-council/bob-whalen",
+          "type": "member_Bob Whalen",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "bwhalen@lagunabeachcity.net"
+          ],
+          "phones": [
+            "(949) 497-0796",
+            "949-497-3311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:09.717117"
+        },
+        {
+          "url": "https://www.lagunabeachcity.net/government/departments/city-council/sue-kempf",
+          "type": "member_Sue Kempf",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "skempf@lagunabeachcity.net"
+          ],
+          "phones": [
+            "(949) 439-3001",
+            "949-497-3311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:12.532556"
+        },
+        {
+          "url": "https://www.lagunabeachcity.net/government/departments/city-council/hallie-jones",
+          "type": "member_Hallie Jones",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "hjones@lagunabeachcity.net"
+          ],
+          "phones": [
+            "(949) 992-5419",
+            "949-497-3311"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:15.336759"
+        }
+      ],
+      "council_members": [
+        {
+          "name": "Alex Rounaghi",
+          "position": "Mayor",
+          "district": null,
+          "email": "arounaghi@lagunabeachcity.net",
+          "phone": "(949) 395-1275",
+          "city_profile": "https://www.lagunabeachcity.net/government/departments/city-council/alex-rounaghi"
+        },
+        {
+          "name": "Mark Orgill",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "morgill@lagunabeachcity.net",
+          "phone": "(949) 463-4821",
+          "city_profile": "https://www.lagunabeachcity.net/government/departments/city-council/mark-orgill"
+        },
+        {
+          "name": "Bob Whalen",
+          "position": "Councilmember",
+          "district": null,
+          "email": "bwhalen@lagunabeachcity.net",
+          "phone": "(949) 497-0796",
+          "city_profile": "https://www.lagunabeachcity.net/government/departments/city-council/bob-whalen"
+        },
+        {
+          "name": "Sue Kempf",
+          "position": "Councilmember",
+          "district": null,
+          "email": "skempf@lagunabeachcity.net",
+          "phone": "(949) 439-3001",
+          "city_profile": "https://www.lagunabeachcity.net/government/departments/city-council/sue-kempf"
+        },
+        {
+          "name": "Hallie Jones",
+          "position": "Councilmember",
+          "district": null,
+          "email": "hjones@lagunabeachcity.net",
+          "phone": "(949) 992-5419",
+          "city_profile": "https://www.lagunabeachcity.net/government/departments/city-council/hallie-jones"
+        }
+      ],
+      "emails_found": [
+        "citycouncil@lagunabeachcity.net",
+        "CityCouncil@lagunabeachcity.net",
+        "arounaghi@lagunabeachcity.net",
+        "morgill@lagunabeachcity.net",
+        "bwhalen@lagunabeachcity.net",
+        "skempf@lagunabeachcity.net",
+        "hjones@lagunabeachcity.net"
+      ],
+      "phones_found": [
+        "949-497-3311",
+        "(949) 395-1275",
+        "(949) 992-5419",
+        "(949) 463-4821",
+        "(949) 497-0796",
+        "(949) 439-3001",
+        "(949) 497-3311"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 8,
+      "pages_failed": 0
+    },
+    "Laguna Hills": {
+      "city": "Laguna Hills",
+      "platform": "civicplus",
+      "scrape_time": "2026-01-24T19:30:18.061574",
+      "pages_visited": [
+        {
+          "url": "https://www.lagunahillsca.gov/129/City-Council",
+          "type": "council_main",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "ccouncil@lagunahillsCA.gov"
+          ],
+          "phones": [
+            "949-707-2610",
+            "949-707-2600"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:18.061574"
+        },
+        {
+          "url": "https://www.lagunahillsca.gov/Directory.aspx?did=1",
+          "type": "directory",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:30:21.533868"
+        },
+        {
+          "url": "https://www.lagunahillsca.gov/527/Don-Caskey-Mayor",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "dcaskey@lagunahillsca.gov"
+          ],
+          "phones": [
+            "949-707-2600"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:22.340926"
+        },
+        {
+          "url": "https://www.lagunahillsca.gov/447/Jared-Mathis-Mayor-Pro-Tempore",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "jmathis@lagunahillsca.gov"
+          ],
+          "phones": [
+            "949-707-2600"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:25.118460"
+        },
+        {
+          "url": "https://www.lagunahillsca.gov/475/Erica-Pezold",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "epezold@lagunahillsca.gov"
+          ],
+          "phones": [
+            "949-707-2600"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:27.934472"
+        },
+        {
+          "url": "https://www.lagunahillsca.gov/234/Joshua-Sweeney",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "jsweeney@lagunahillsca.gov",
+            "dsedgwick@lagunahillsca.go"
+          ],
+          "phones": [
+            "949-707-2600"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:30.677654"
+        },
+        {
+          "url": "https://www.lagunahillsca.gov/476/Dave-Wheeler",
+          "type": "member_page",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "dwheeler@lagunahillsca.gov"
+          ],
+          "phones": [
+            "949-707-2600"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:33.422969"
+        }
+      ],
+      "council_members": [
+        {
+          "name": "Don Caskey",
+          "position": "Mayor",
+          "district": null,
+          "email": "dcaskey@lagunahillsca.gov",
+          "phone": "949-707-2610",
+          "city_profile": "https://www.lagunahillsca.gov/527/Don-Caskey-Mayor"
+        },
+        {
+          "name": "Jared Mathis",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "jmathis@lagunahillsca.gov",
+          "phone": "949-707-2610",
+          "city_profile": "https://www.lagunahillsca.gov/447/Jared-Mathis-Mayor-Pro-Tempore"
+        },
+        {
+          "name": "Erica Pezold",
+          "position": "Councilmember",
+          "district": null,
+          "email": "epezold@lagunahillsca.gov",
+          "phone": "949-707-2610",
+          "city_profile": "https://www.lagunahillsca.gov/475/Erica-Pezold"
+        },
+        {
+          "name": "Joshua Sweeney",
+          "position": "Councilmember",
+          "district": null,
+          "email": "jsweeney@lagunahillsca.gov",
+          "phone": "949-707-2610",
+          "city_profile": "https://www.lagunahillsca.gov/234/Joshua-Sweeney"
+        },
+        {
+          "name": "Dave Wheeler",
+          "position": "Councilmember",
+          "district": null,
+          "email": "dwheeler@lagunahillsca.gov",
+          "phone": "949-707-2610",
+          "city_profile": "https://www.lagunahillsca.gov/476/Dave-Wheeler"
+        }
+      ],
+      "emails_found": [
+        "ccouncil@lagunahillsCA.gov",
+        "dcaskey@lagunahillsca.gov",
+        "jmathis@lagunahillsca.gov",
+        "epezold@lagunahillsca.gov",
+        "jsweeney@lagunahillsca.gov",
+        "dsedgwick@lagunahillsca.go",
+        "dwheeler@lagunahillsca.gov"
+      ],
+      "phones_found": [
+        "949-707-2610",
+        "949-707-2600"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 6,
+      "pages_failed": 1
+    },
+    "Mission Viejo": {
+      "city": "Mission Viejo",
+      "platform": "custom",
+      "scrape_time": "2026-01-24T19:30:38.094467",
+      "pages_visited": [
+        {
+          "url": "https://www.cityofmissionviejo.org/government/city-council",
+          "type": "council_main",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "citycouncil@cityofmissionviejo.org"
+          ],
+          "phones": [
+            "949-470-3050"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:38.094467"
+        },
+        {
+          "url": "https://www.cityofmissionviejo.org/contacts",
+          "type": "contacts",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:30:40.461608"
+        }
+      ],
+      "council_members": [],
+      "emails_found": [
+        "citycouncil@cityofmissionviejo.org"
+      ],
+      "phones_found": [
+        "949-470-3050"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 1,
+      "pages_failed": 1
+    },
+    "Orange": {
+      "city": "Orange",
+      "platform": "custom_cms",
+      "scrape_time": "2026-01-24T19:30:40.876730",
+      "pages_visited": [
+        {
+          "url": "https://www.cityoforange.org/our-city/local-government/city-council",
+          "type": "council_main",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "councilinfo@cityoforange.org",
+            "jgyllenhammer@cityoforange.org",
+            "abarrios@cityoforange.org",
+            "ktavoularis@cityoforange.org",
+            "dbilodeau@cityoforange.org",
+            "jdumitru@cityoforange.org",
+            "anagutierrez@cityoforange.org"
+          ],
+          "phones": [
+            "(714) 744-5523",
+            "(714) 744-2211",
+            "(714) 744-2225"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:40.876730"
+        },
+        {
+          "url": "https://www.cityoforange.org/our-city/local-government/city-council/mayor-dan-slater",
+          "type": "member_Dan Slater",
+          "status": "success",
+          "http_code": 200,
+          "emails": [
+            "dan@danslater.com"
+          ],
+          "phones": [
+            "(714) 744-5523",
+            "(714) 744-2211",
+            "(714) 744-2225"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:43.643189"
+        },
+        {
+          "url": "https://www.cityoforange.org/our-city/local-government/city-council/mayor-pro-tem-denis-bilodeau",
+          "type": "member_Denis Bilodeau",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:30:46.010202"
+        },
+        {
+          "url": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-arianna-barrios",
+          "type": "member_Arianna Barrios",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:30:47.042290"
+        },
+        {
+          "url": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-jon-dumitru",
+          "type": "member_Jon Dumitru",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:30:47.882267"
+        },
+        {
+          "url": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-kathy-tavoularis",
+          "type": "member_Kathy Tavoularis",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:30:48.693599"
+        },
+        {
+          "url": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-ana-gutierrez",
+          "type": "member_Ana Gutierrez",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:30:49.599263"
+        },
+        {
+          "url": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-john-gyllenhammer",
+          "type": "member_John Gyllenhammer",
+          "status": "http_error",
+          "http_code": 404,
+          "emails": [],
+          "phones": [],
+          "error": "HTTP 404",
+          "timestamp": "2026-01-24T19:30:50.395485"
+        }
+      ],
+      "council_members": [
+        {
+          "name": "Dan Slater",
+          "position": "Mayor",
+          "district": "At-Large",
+          "email": "dan@danslater.com",
+          "phone": "(714) 744-5523",
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/mayor-dan-slater"
+        },
+        {
+          "name": "Denis Bilodeau",
+          "position": "Mayor Pro Tem",
+          "district": "District 4",
+          "email": "dbilodeau@cityoforange.org",
+          "phone": "(714) 744-5523",
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/mayor-pro-tem-denis-bilodeau"
+        },
+        {
+          "name": "Arianna Barrios",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "abarrios@cityoforange.org",
+          "phone": "(714) 744-5523",
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-arianna-barrios"
+        },
+        {
+          "name": "Jon Dumitru",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "jdumitru@cityoforange.org",
+          "phone": "(714) 744-5523",
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-jon-dumitru"
+        },
+        {
+          "name": "Kathy Tavoularis",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "ktavoularis@cityoforange.org",
+          "phone": "(714) 744-5523",
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-kathy-tavoularis"
+        },
+        {
+          "name": "Ana Gutierrez",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "anagutierrez@cityoforange.org",
+          "phone": "(714) 744-5523",
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-ana-gutierrez"
+        },
+        {
+          "name": "John Gyllenhammer",
+          "position": "Councilmember",
+          "district": "District 6",
+          "email": "jgyllenhammer@cityoforange.org",
+          "phone": "(714) 744-5523",
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/council-member-john-gyllenhammer"
+        }
+      ],
+      "emails_found": [
+        "councilinfo@cityoforange.org",
+        "jgyllenhammer@cityoforange.org",
+        "abarrios@cityoforange.org",
+        "ktavoularis@cityoforange.org",
+        "dbilodeau@cityoforange.org",
+        "jdumitru@cityoforange.org",
+        "anagutierrez@cityoforange.org",
+        "dan@danslater.com"
+      ],
+      "phones_found": [
+        "(714) 744-5523",
+        "(714) 744-2211",
+        "(714) 744-2225"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 2,
+      "pages_failed": 6
+    },
+    "Tustin": {
+      "city": "Tustin",
+      "platform": "civicplus",
+      "scrape_time": "2026-01-24T19:30:51.156622",
+      "pages_visited": [
+        {
+          "url": "https://www.tustinca.org/168/City-Council",
+          "type": "council",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [
+            "714-573-3000"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:51.156622"
+        },
+        {
+          "url": "https://www.tustinca.org/Directory.aspx?did=12",
+          "type": "directory",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [
+            "714-573-3000",
+            "714-372-8272"
+          ],
+          "error": null,
+          "timestamp": "2026-01-24T19:30:54.422952"
+        }
+      ],
+      "council_members": [],
+      "emails_found": [],
+      "phones_found": [
+        "714-573-3000",
+        "714-372-8272"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 2,
+      "pages_failed": 0
+    }
+  },
+  "summary": {
+    "total_cities": 10,
+    "successful": 10,
+    "failed": 0,
+    "total_emails_found": 64,
+    "total_pages_visited": 53
+  }
+}

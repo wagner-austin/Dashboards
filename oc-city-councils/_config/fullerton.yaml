@@ -1,0 +1,38 @@
+city:
+  name: "Fullerton"
+  slug: "fullerton"
+  website: "https://www.cityoffullerton.com"
+  population: 139640
+
+theme:
+  primary_color: "#1a5632"
+  primary_dark: "#0f3a20"
+
+council:
+  count: 5
+  structure: "district"
+
+meetings:
+  schedule: "1st and 3rd Tuesday"
+  time: "5:30 PM"
+  location:
+    name: "City Council Chambers"
+    address: "303 W. Commonwealth Avenue, Fullerton, CA 92832"
+  zoom: null
+
+scraping:
+  system: "granicus"
+  granicus:
+    subdomain: "fullerton"
+    view_id: 2
+    filter_text: "CITY COUNCIL"
+
+links:
+  meeting_archive: "https://fullerton.granicus.com/ViewPublisher.php?view_id=2"
+  ecomment: "https://fullerton.legistar.com/"
+  council_page: "https://www.cityoffullerton.com/government/city-council"
+
+contact:
+  clerk_name: "Lucinda Williams"
+  clerk_phone: "(714) 738-6350"
+  clerk_email: "cityclerksoffice@cityoffullerton.com"

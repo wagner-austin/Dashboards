@@ -1,0 +1,35 @@
+city: "aliso-viejo"
+last_updated: "2026-01-24"
+next_election: "2026-11-03"
+seats_up: []
+
+members:
+  - name: "Max Duncan"
+    position: "Mayor"
+    district: "District 2"
+    phone: "949-425-2510"
+    city_page: "https://avcity.org/223/Mayor-Max-Duncan"
+
+  - name: "Mike Munzing"
+    position: "Mayor Pro Tem"
+    district: "At-Large"
+    phone: "949-425-2510"
+    city_page: "https://avcity.org/224/Mayor-Pro-Tem-Mike-Munzing"
+
+  - name: "Tiffany Ackley"
+    position: "Councilmember"
+    district: "At-Large"
+    phone: "949-425-2510"
+    city_page: "https://avcity.org/225/Councilmember-Tiffany-Ackley"
+
+  - name: "Garrett Dwyer"
+    position: "Councilmember"
+    district: "At-Large"
+    phone: "949-425-2510"
+    city_page: "https://avcity.org/226/Councilmember-Garrett-Dwyer"
+
+  - name: "Tim Zandbergen"
+    position: "Councilmember"
+    district: "At-Large"
+    phone: "949-425-2510"
+    city_page: "https://avcity.org/227/Councilmember-Tim-Zandbergen"

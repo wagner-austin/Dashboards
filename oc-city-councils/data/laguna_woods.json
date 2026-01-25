@@ -1,0 +1,22 @@
+{
+  "city": "Laguna Woods",
+  "website": "https://www.cityoflagunawoods.org",
+  "council_url": "https://www.cityoflagunawoods.org/government/city-council",
+  "scraped_at": "2026-01-24T17:43:40.806448",
+  "status": "needs_verification",
+  "council_members": [
+    {
+      "name": "City Council",
+      "position": "Vice Mayor",
+      "district": null,
+      "email": "amccary@cityoflagunawoods.org",
+      "phone": null,
+      "website": "https://www.fppc.ca.gov/",
+      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+      "instagram": null,
+      "photo": "https://www.cityoflagunawoods.org/wp-content/themes/website/assets/images/bg-wave-bottom.png"
+    }
+  ],
+  "public_comment": null,
+  "notes": []
+}

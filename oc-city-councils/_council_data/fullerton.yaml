@@ -1,0 +1,30 @@
+city: "fullerton"
+last_updated: "2026-01-24"
+next_election: "2026-11-03"
+seats_up: []
+
+members:
+  - name: "Fred Jung"
+    position: "Mayor"
+    district: "District 1"
+    city_page: "https://www.cityoffullerton.com/government/city-council"
+
+  - name: "Shana Charles"
+    position: "Mayor Pro Tem"
+    district: "District 3"
+    city_page: "https://www.cityoffullerton.com/government/city-council"
+
+  - name: "Nick Dunlap"
+    position: "Councilmember"
+    district: "District 2"
+    city_page: "https://www.cityoffullerton.com/government/city-council"
+
+  - name: "Jamie Valencia"
+    position: "Councilmember"
+    district: "District 4"
+    city_page: "https://www.cityoffullerton.com/government/city-council"
+
+  - name: "Ahmad Zahra"
+    position: "Councilmember"
+    district: "District 5"
+    city_page: "https://www.cityoffullerton.com/government/city-council"

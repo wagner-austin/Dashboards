@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=yes">
+    <title>{{ city.name }} City Council Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <style>
+        :root {
+            --primary: {{ theme.primary_color | default('#0066a1') }};
+            --primary-dark: {{ theme.primary_dark | default('#004d7a') }};
+            --primary-light: #e8f4fc;
+            --accent: #4da6d9;
+            --accent-light: #d9eef8;
+            --success: #16a34a;
+            --success-light: #dcfce7;
+            --warning: #ca8a04;
+            --warning-light: #fef3c7;
+            --danger: #dc2626;
+            --danger-light: #fee2e2;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: linear-gradient(135deg, #e8f4fc 0%, #f0f7fc 50%, #e0f0f8 100%);
+            min-height: 100vh;
+        }
+        .header-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header h1 { font-size: 1.5rem; }
+        .header .subtitle { font-size: 0.9rem; opacity: 0.9; margin-top: 0.25rem; }
+        .tabs {
+            display: flex;
+            gap: 0.25rem;
+            background: white;
+            padding: 0.5rem 2rem;
+            border-bottom: 1px solid var(--gray-200);
+            overflow-x: auto;
+        }
+        .tab {
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            border: none;
+            background: var(--accent-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            border-radius: 6px 6px 0 0;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .tab:hover { background: var(--primary-light); }
+        .tab.active {
+            color: var(--primary-dark);
+            border-bottom: 3px solid var(--primary);
+            background: white;
+        }
+        .tab-content {
+            display: none;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            min-height: calc(100vh - 150px);
+        }
+        .tab-content.active { display: block; }
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,102,161,0.15); }
+        .card.highlight { background: linear-gradient(135deg, var(--primary-light) 0%, #c8e6dc 100%); border-color: var(--primary); }
+        .card.gold { background: linear-gradient(135deg, var(--accent-light) 0%, #fff3cc 100%); border-color: var(--accent); }
+        .card h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-600); margin-bottom: 0.25rem; }
+        .card .value { font-size: 2rem; font-weight: 700; color: var(--gray-900); }
+        .card .subtext { font-size: 0.75rem; color: var(--gray-600); }
+        h2 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--gray-800); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; display: inline-block; }
+        h3 { font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--gray-700); }
+        .section { margin-bottom: 2rem; }
+        .alert { padding: 1rem; border-radius: 8px; margin: 1rem 0; font-size: 0.9rem; }
+        .alert-info { background: var(--primary-light); border-left: 4px solid var(--primary); color: var(--primary-dark); }
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .link-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: var(--gray-800);
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .link-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,102,161,0.2); transform: translateY(-3px); }
+        .link-card h4 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1rem; }
+        .link-card p { font-size: 0.85rem; margin: 0; color: var(--gray-600); }
+        .next-meeting-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,87,63,0.3);
+        }
+        .next-meeting-banner h3 { color: var(--accent); margin: 0 0 0.5rem 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
+        .next-meeting-banner .date { font-size: 1.5rem; font-weight: 700; }
+        .next-meeting-banner .location { opacity: 0.9; font-size: 0.9rem; margin-top: 0.25rem; }
+        .next-meeting-banner .zoom-btn {
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 0.85rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .next-meeting-banner .zoom-btn:hover { background: #6bb8e0; transform: scale(1.05); }
+        .recent-meetings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
+        .meeting-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.2s;
+        }
+        .meeting-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,102,161,0.15); }
+        .meeting-card .meeting-date { font-weight: 700; font-size: 1.1rem; color: var(--gray-900); margin-bottom: 0.25rem; }
+        .meeting-card .meeting-type { font-size: 0.85rem; color: var(--gray-600); margin-bottom: 0.5rem; }
+        .meeting-card .meeting-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .meeting-card .meeting-links a {
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            background: var(--primary-light);
+            border-radius: 4px;
+        }
+        .meeting-card .meeting-links a:hover { background: var(--primary); color: white; }
+        table.dataTable { font-size: 0.85rem; }
+        table.dataTable thead th { background: var(--primary); color: white; }
+        table.dataTable tbody tr:hover { background: var(--primary-light) !important; }
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate { font-size: 0.85rem; }
+        .refresh-time { font-size: 0.75rem; color: var(--gray-600); text-align: right; padding: 1rem 2rem; background: var(--gray-100); }
+        .council-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+        .council-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .council-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,102,161,0.15); }
+        .council-card .photo {
+            width: 140px;
+            height: 175px;
+            object-fit: cover;
+            object-position: top;
+            margin: 0 auto 1rem;
+            display: block;
+            border-radius: 8px;
+        }
+        .council-card .name { font-weight: 700; color: var(--gray-900); margin-bottom: 0.25rem; font-size: 1.1rem; }
+        .council-card .position { font-size: 0.9rem; color: var(--primary); font-weight: 500; }
+        .council-card .district { font-size: 0.8rem; color: var(--gray-600); margin-top: 0.25rem; }
+        .council-card .email { font-size: 0.75rem; color: var(--gray-600); margin-top: 0.75rem; }
+        .council-card .email a { color: var(--gray-600); text-decoration: none; }
+        .council-card .email a:hover { color: var(--primary); }
+        .council-card .social-links { display: flex; gap: 0.5rem; margin-top: 0.75rem; justify-content: center; flex-wrap: wrap; }
+        .council-card .social-links a {
+            display: inline-flex; align-items: center; gap: 0.25rem;
+            font-size: 0.7rem; color: #fff; text-decoration: none;
+            padding: 0.25rem 0.5rem; border-radius: 4px; transition: opacity 0.2s;
+        }
+        .council-card .social-links a:hover { opacity: 0.85; }
+        .council-card .social-links .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .council-card .social-links .website { background: var(--primary); }
+        .council-card .social-links .city-page { background: var(--gray-600); }
+        .agenda-list { list-style: none; }
+        .agenda-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .agenda-item:hover { background: var(--gray-50); }
+        .agenda-item .number { font-weight: 600; color: var(--primary); min-width: 3rem; }
+        .agenda-item .title { color: var(--gray-800); }
+        @media (max-width: 768px) {
+            .tabs { padding: 0.5rem 1rem; }
+            .tab { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
+            .tab-content { padding: 1rem; }
+            .summary-cards { grid-template-columns: repeat(2, 1fr); }
+            .next-meeting-banner { flex-direction: column; text-align: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="header">
+            <h1>{{ city.name }} City Council Dashboard</h1>
+            <div class="subtitle">City of {{ city.name }}, California - Meeting Tracker</div>
+        </div>
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('overview')">Overview</button>
+            <button class="tab" onclick="showTab('meetings')">Meetings</button>
+            <button class="tab" onclick="showTab('council')">Council Members</button>
+            <button class="tab" onclick="showTab('resources')">Resources</button>
+        </div>
+    </div>
+
+    <div id="overview" class="tab-content active">
+        <div class="next-meeting-banner">
+            <div>
+                <h3>Next Meeting</h3>
+                <div class="date" id="next-meeting-date">Loading...</div>
+                <div class="location">{{ meetings.location.name }}, {{ meetings.location.address }}</div>
+            </div>
+            {% if meetings.zoom %}
+            <div style="text-align: right;">
+                <a href="{{ meetings.zoom.url }}" target="_blank" class="zoom-btn">Join via Zoom</a>
+                <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.9;">Meeting ID: {{ meetings.zoom.meeting_id }} &nbsp;|&nbsp; Passcode: {{ meetings.zoom.passcode }}</div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Recent Meetings</h2>
+            <div id="recent-meetings" class="recent-meetings-grid"></div>
+        </div>
+
+        <div class="section">
+            <h2>Quick Links</h2>
+            <div class="links-grid">
+                {% if links.meeting_archive %}
+                <a href="{{ links.meeting_archive }}" target="_blank" class="link-card">
+                    <h4>Meeting Archive</h4>
+                    <p>View all past meetings, agendas, minutes, and videos</p>
+                </a>
+                {% endif %}
+                {% if links.ecomment %}
+                <a href="{{ links.ecomment }}" target="_blank" class="link-card">
+                    <h4>Submit eComment</h4>
+                    <p>Submit public comments on agenda items</p>
+                </a>
+                {% endif %}
+                {% if links.council_page %}
+                <a href="{{ links.council_page }}" target="_blank" class="link-card">
+                    <h4>City Council</h4>
+                    <p>Council member profiles and contact info</p>
+                </a>
+                {% endif %}
+                {% if city.website %}
+                <a href="{{ city.website }}" target="_blank" class="link-card">
+                    <h4>City Website</h4>
+                    <p>Official {{ city.name }} city website</p>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div id="meetings" class="tab-content">
+        <h2>Meeting Archive</h2>
+        <p style="margin-bottom:1rem;color:var(--gray-600)">All City Council meetings with agendas, minutes, and video recordings.</p>
+        <table id="meetings-table" class="display" style="width:100%">
+            <thead><tr><th>Date</th><th>Meeting Type</th><th>Agenda</th><th>Minutes</th><th>Video</th></tr></thead>
+            <tbody id="meetings-tbody"></tbody>
+        </table>
+    </div>
+
+    <div id="council" class="tab-content">
+        <h2>City Council</h2>
+        <p style="margin-bottom:1.5rem;color:var(--gray-600)">{{ city.name }} City Council has {{ council.count }} members{% if council.structure == 'district' %}: a Mayor and {{ council.count - 1 }} Councilmembers by district{% elif council.structure == 'at-large' %} elected at-large{% endif %}.</p>
+        <div id="council-grid" class="council-grid"></div>
+    </div>
+
+    <div id="resources" class="tab-content">
+        <h2>City Resources</h2>
+        <div class="section">
+            <h3>Meeting Information</h3>
+            <div class="links-grid">
+                {% if links.meeting_archive %}
+                <a href="{{ links.meeting_archive }}" target="_blank" class="link-card">
+                    <h4>Meeting Schedule</h4>
+                    <p>{{ meetings.schedule }} at {{ meetings.time }}</p>
+                </a>
+                <a href="{{ links.meeting_archive }}" target="_blank" class="link-card">
+                    <h4>Agendas</h4>
+                    <p>Current and archived meeting agendas</p>
+                </a>
+                <a href="{{ links.meeting_archive }}" target="_blank" class="link-card">
+                    <h4>Video Archive</h4>
+                    <p>Watch recorded meetings</p>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="section">
+            <h3>Public Participation</h3>
+            <div class="links-grid">
+                {% if links.ecomment %}
+                <a href="{{ links.ecomment }}" target="_blank" class="link-card">
+                    <h4>eComment System</h4>
+                    <p>Submit written comments on agenda items</p>
+                </a>
+                {% endif %}
+                {% if links.council_page %}
+                <a href="{{ links.council_page }}" target="_blank" class="link-card">
+                    <h4>Contact the Council</h4>
+                    <p>Email or call your representatives</p>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="alert alert-info" style="margin-top:2rem">
+            <strong>Regular Meetings:</strong> {{ meetings.schedule }} at {{ meetings.time }}<br>
+            <strong>Location:</strong> {{ meetings.location.name }}, {{ meetings.location.address }}<br>
+            {% if meetings.zoom %}
+            <strong>Zoom:</strong> Meeting ID {{ meetings.zoom.meeting_id }} | Passcode {{ meetings.zoom.passcode }}<br>
+            {% endif %}
+            {% if contact.clerk_phone or contact.clerk_email %}
+            <br><em>Contact City Clerk's Office: {% if contact.clerk_phone %}{{ contact.clerk_phone }}{% endif %}{% if contact.clerk_phone and contact.clerk_email %} | {% endif %}{% if contact.clerk_email %}{{ contact.clerk_email }}{% endif %}</em>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="refresh-time">Data generated: {{ generated_at }}</div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        const DATA = {{ data_json | safe }};
+        const MEETING_SCHEDULE = {{ meeting_schedule_json | safe }};
+
+        function showTab(id) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function getNextMeeting() {
+            const schedule = MEETING_SCHEDULE.schedule.toLowerCase();
+            const time = MEETING_SCHEDULE.time;
+
+            // Parse schedule like "2nd and 4th Tuesday"
+            const weekdayMap = {
+                'monday': 1, 'tuesday': 2, 'wednesday': 3, 'thursday': 4,
+                'friday': 5, 'saturday': 6, 'sunday': 0
+            };
+
+            let weekday = null;
+            for (const [name, num] of Object.entries(weekdayMap)) {
+                if (schedule.includes(name)) {
+                    weekday = num;
+                    break;
+                }
+            }
+
+            if (weekday === null) return 'Check schedule';
+
+            // Parse ordinals
+            const ordinalMap = {'1st': 1, '2nd': 2, '3rd': 3, '4th': 4, '5th': 5};
+            const occurrences = [];
+            for (const [ordinal, n] of Object.entries(ordinalMap)) {
+                if (schedule.includes(ordinal)) {
+                    occurrences.push(n);
+                }
+            }
+
+            if (occurrences.length === 0) return 'Check schedule';
+
+            function getNthWeekday(year, month, weekday, n) {
+                let count = 0;
+                for (let day = 1; day <= 31; day++) {
+                    const date = new Date(year, month, day);
+                    if (date.getMonth() !== month) break;
+                    if (date.getDay() === weekday) {
+                        count++;
+                        if (count === n) return date;
+                    }
+                }
+                return null;
+            }
+
+            const now = new Date();
+            let year = now.getFullYear();
+            let month = now.getMonth();
+
+            // Check current month and next 2 months
+            for (let i = 0; i < 3; i++) {
+                for (const n of occurrences.sort((a, b) => a - b)) {
+                    const meetingDate = getNthWeekday(year, month, weekday, n);
+                    if (meetingDate && meetingDate >= now) {
+                        return meetingDate.toLocaleDateString('en-US', {
+                            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                        }) + ' at ' + time;
+                    }
+                }
+                month++;
+                if (month > 11) {
+                    month = 0;
+                    year++;
+                }
+            }
+
+            return 'Check schedule';
+        }
+
+        function parseDate(dateStr) {
+            const parsed = new Date(dateStr);
+            return isNaN(parsed.getTime()) ? 0 : parsed.getTime();
+        }
+
+        function init() {
+            document.getElementById('next-meeting-date').textContent = getNextMeeting();
+
+            // Recent meetings
+            const recentEl = document.getElementById('recent-meetings');
+            const meetings = (DATA.meetings || []).slice(0, 8);
+            let recentHtml = '';
+
+            meetings.forEach(m => {
+                recentHtml += '<div class="meeting-card">' +
+                    '<div class="meeting-date">' + m.date + '</div>' +
+                    '<div class="meeting-type">' + m.name + '</div>' +
+                    '<div class="meeting-links">' +
+                        (m.agenda_url ? '<a href="' + m.agenda_url + '" target="_blank">Agenda</a>' : '') +
+                        (m.minutes_url ? '<a href="' + m.minutes_url + '" target="_blank">Minutes</a>' : '') +
+                        (m.video_url ? '<a href="' + m.video_url + '" target="_blank">Video</a>' : '') +
+                    '</div>' +
+                '</div>';
+            });
+            recentEl.innerHTML = recentHtml || '<p>No recent meetings found</p>';
+
+            // Council members grid
+            const councilEl = document.getElementById('council-grid');
+            let councilHtml = '';
+            (DATA.council_members || []).forEach(m => {
+                let socialLinks = '<div class="social-links">';
+                if (m.instagram) {
+                    socialLinks += '<a href="' + m.instagram + '" target="_blank" class="instagram">Instagram</a>';
+                }
+                if (m.website) {
+                    socialLinks += '<a href="' + m.website + '" target="_blank" class="website">Website</a>';
+                }
+                if (m.city_page) {
+                    socialLinks += '<a href="' + m.city_page + '" target="_blank" class="city-page">City Page</a>';
+                }
+                socialLinks += '</div>';
+
+                const photoUrl = m.photo_url || m.photo || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="175" viewBox="0 0 140 175"><rect fill="%23ddd" width="140" height="175"/><text x="70" y="95" text-anchor="middle" fill="%23999" font-size="14">No Photo</text></svg>';
+
+                councilHtml += '<div class="council-card">' +
+                    '<img class="photo" src="' + photoUrl + '" alt="' + m.name + '">' +
+                    '<div class="name">' + m.name + '</div>' +
+                    '<div class="position">' + m.position + '</div>' +
+                    '<div class="district">' + (m.district || '') + '</div>' +
+                    '<div class="email"><a href="mailto:' + m.email + '">' + m.email + '</a></div>' +
+                    socialLinks +
+                '</div>';
+            });
+            councilEl.innerHTML = councilHtml || '<p>Council member data not available</p>';
+
+            // Meetings table
+            const tbody = document.getElementById('meetings-tbody');
+            let tableHtml = '';
+            (DATA.meetings || []).forEach(m => {
+                const timestamp = parseDate(m.date);
+                tableHtml += '<tr>' +
+                    '<td data-order="' + timestamp + '">' + m.date + '</td>' +
+                    '<td>' + m.name + '</td>' +
+                    '<td>' + (m.agenda_url ? '<a href="' + m.agenda_url + '" target="_blank">View</a>' : '-') + '</td>' +
+                    '<td>' + (m.minutes_url ? '<a href="' + m.minutes_url + '" target="_blank">View</a>' : '-') + '</td>' +
+                    '<td>' + (m.video_url ? '<a href="' + m.video_url + '" target="_blank">Watch</a>' : '-') + '</td>' +
+                '</tr>';
+            });
+            tbody.innerHTML = tableHtml || '<tr><td colspan="5">No meetings found</td></tr>';
+
+            if (DATA.meetings && DATA.meetings.length > 0) {
+                $('#meetings-table').DataTable({
+                    paging: true,
+                    pageLength: 25,
+                    order: [[0, 'desc']]
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

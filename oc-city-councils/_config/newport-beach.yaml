@@ -1,0 +1,38 @@
+city:
+  name: "Newport Beach"
+  slug: "newport-beach"
+  website: "https://www.newportbeachca.gov"
+  population: 85239
+
+theme:
+  primary_color: "#00548e"
+  primary_dark: "#003d66"
+
+council:
+  count: 7
+  structure: "district"
+
+meetings:
+  schedule: "2nd and 4th Tuesday"
+  time: "4:00 PM"
+  location:
+    name: "City Council Chambers"
+    address: "100 Civic Center Drive, Newport Beach, CA 92660"
+  zoom: null
+
+scraping:
+  system: "granicus"
+  granicus:
+    subdomain: "newportbeach"
+    view_id: 44
+    filter_text: "CITY COUNCIL"
+
+links:
+  meeting_archive: "https://newportbeach.granicus.com/ViewPublisher.php?view_id=44"
+  ecomment: "https://www.newportbeachca.gov/government/departments/city-clerk/city-council-meetings"
+  council_page: "https://www.newportbeachca.gov/government/city-council"
+
+contact:
+  clerk_name: "Lena Shumway"
+  clerk_phone: "(949) 644-3005"
+  clerk_email: "cityclerk@newportbeachca.gov"

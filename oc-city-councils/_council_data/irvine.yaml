@@ -1,0 +1,93 @@
+city: "irvine"
+last_updated: "2025-01-24"
+next_election: "2026-11-03"
+seats_up:
+  - "Mayor"
+  - "District 1"
+  - "District 5"
+  - "At-Large"
+
+members:
+  - name: "Larry Agran"
+    position: "Mayor"
+    district: "At-Large"
+    photo_url: "https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg"
+    email: "LarryAgran@cityofirvine.org"
+    bio: "First served on Irvine City Council 1978-1990, including six years as Mayor. Elected Mayor in 2024 for his eighth nonconsecutive term. Harvard Law School graduate."
+    term_start: 2024
+    term_end: 2026
+    website: "https://mayorlarryagran.org"
+    city_page: "https://cityofirvine.org/city-council/mayor-larry-agran"
+    instagram: "https://www.instagram.com/mayorlarryagran"
+
+  - name: "James Mai"
+    position: "Vice Mayor"
+    district: "District 3"
+    photo_url: "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg"
+    email: "JamesMai@cityofirvine.org"
+    bio: "Vice Mayor representing District 3 on the Irvine City Council."
+    term_start: 2022
+    term_end: 2026
+    website: null
+    city_page: "https://cityofirvine.org/city-council/vice-mayor-james-mai-district-3"
+    instagram: "https://www.instagram.com/vicemayormai"
+
+  - name: "Melinda Liu"
+    position: "Councilmember"
+    district: "District 1"
+    photo_url: "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg"
+    email: "MelindaLiu@cityofirvine.org"
+    bio: "Councilmember representing District 1."
+    term_start: 2024
+    term_end: 2026
+    website: "https://www.melindaliuirvine.com"
+    city_page: "https://cityofirvine.org/city-council/councilmember-melinda-liu-district-1"
+    instagram: "https://www.instagram.com/melindaliu_official"
+
+  - name: "William Go"
+    position: "Councilmember"
+    district: "District 2"
+    photo_url: "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg"
+    email: "WilliamGo@cityofirvine.org"
+    bio: "Councilmember representing District 2."
+    term_start: 2022
+    term_end: 2026
+    website: null
+    city_page: "https://cityofirvine.org/city-council/councilmember-william-go-district-2"
+    instagram: "https://www.instagram.com/williamgoirvine"
+
+  - name: "Mike Carroll"
+    position: "Councilmember"
+    district: "District 4"
+    photo_url: "https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png"
+    email: "MikeCarroll@cityofirvine.org"
+    bio: "Serving second term on City Council. Vice Chairman of the Great Park. Corporate attorney, OCTA Board Member, and New York Times bestselling author."
+    term_start: 2022
+    term_end: 2026
+    website: null
+    city_page: "https://cityofirvine.org/city-council/councilmember-mike-carroll-district-4"
+    instagram: "https://www.instagram.com/mikecarrollcouncilmember"
+
+  - name: "Betty Martinez Franco"
+    position: "Councilmember"
+    district: "District 5"
+    photo_url: "https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg"
+    email: "BettyMartinezFranco@cityofirvine.org"
+    bio: "Councilmember representing District 5."
+    term_start: 2024
+    term_end: 2026
+    website: null
+    city_page: "https://cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5"
+    instagram: "https://www.instagram.com/councilmemberbettymartinez"
+
+  - name: "Kathleen Treseder"
+    position: "Councilmember"
+    district: "At-Large"
+    photo_url: "https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg"
+    email: "KathleenTreseder@cityofirvine.org"
+    bio: "At-Large Councilmember on the Irvine City Council."
+    term_start: 2024
+    term_end: 2026
+    website: null
+    city_page: "https://cityofirvine.org/city-council/councilmember-kathleen-treseder-large"
+    instagram: "https://www.instagram.com/councilmemberkathleentreseder"

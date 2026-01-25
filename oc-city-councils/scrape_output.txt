@@ -1,0 +1,7 @@
+
+============================================================
+Scraping: Dana Point
+URL: https://www.danapoint.org/government/city-council
+============================================================
+
+[1] Loading council page...

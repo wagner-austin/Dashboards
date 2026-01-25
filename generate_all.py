@@ -12,7 +12,8 @@ ROOT = Path(__file__).parent
 
 DASHBOARDS = [
     "asuci",
-    "irvine-city-council",
+    "oc-cities",
+    # "irvine-city-council",  # Deprecated - now part of oc-cities
     # Add new dashboards here:
     # "metabolomics",
 ]

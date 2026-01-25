@@ -1,0 +1,40 @@
+city: "anaheim"
+last_updated: "2026-01-24"
+next_election: "2026-11-03"
+seats_up: []
+
+members:
+  - name: "Ashleigh Aitken"
+    position: "Mayor"
+    district: "At-Large"
+    city_page: "https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken"
+
+  - name: "Carlos A. Leon"
+    position: "Mayor Pro Tem"
+    district: "District 2"
+    city_page: "https://www.anaheim.net/2314/Mayor-Pro-Tem-Carlos-A-Leon"
+
+  - name: "Ryan Balius"
+    position: "Councilmember"
+    district: "District 1"
+    city_page: "https://www.anaheim.net/3522/Council-Member-Ryan-Balius"
+
+  - name: "Natalie Rubalcava"
+    position: "Councilmember"
+    district: "District 3"
+    city_page: "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava"
+
+  - name: "Norma Campos Kurtz"
+    position: "Councilmember"
+    district: "District 4"
+    city_page: "https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz"
+
+  - name: "Kristen Maahs"
+    position: "Councilmember"
+    district: "District 5"
+    city_page: "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs"
+
+  - name: "Natalie Meeks"
+    position: "Councilmember"
+    district: "District 6"
+    city_page: "https://www.anaheim.net/173/City-Council"

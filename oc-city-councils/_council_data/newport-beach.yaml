@@ -1,0 +1,47 @@
+city: "newport-beach"
+last_updated: "2026-01-24"
+next_election: "2026-11-03"
+seats_up: []
+
+members:
+  - name: "Joe Stapleton"
+    position: "Mayor"
+    district: "District 1"
+    email: "jstapleton@newportbeachca.gov"
+    city_page: "https://www.newportbeachca.gov/government/city-council"
+
+  - name: "Noah Blom"
+    position: "Mayor Pro Tem"
+    district: "District 5"
+    email: "nblom@newportbeachca.gov"
+    city_page: "https://www.newportbeachca.gov/government/city-council"
+
+  - name: "Michelle Barto"
+    position: "Councilmember"
+    district: "District 2"
+    email: "mbarto@newportbeachca.gov"
+    city_page: "https://www.newportbeachca.gov/government/city-council"
+
+  - name: "Erik Weigand"
+    position: "Councilmember"
+    district: "District 3"
+    email: "eweigand@newportbeachca.gov"
+    city_page: "https://www.newportbeachca.gov/government/city-council"
+
+  - name: "Robyn Grant"
+    position: "Councilmember"
+    district: "District 4"
+    email: "rgrant@newportbeachca.gov"
+    city_page: "https://www.newportbeachca.gov/government/city-council"
+
+  - name: "Lauren Kleiman"
+    position: "Councilmember"
+    district: "District 6"
+    email: "lkleiman@newportbeachca.gov"
+    city_page: "https://www.newportbeachca.gov/government/city-council"
+
+  - name: "Sara Weber"
+    position: "Councilmember"
+    district: "District 7"
+    email: "sweber@newportbeachca.gov"
+    city_page: "https://www.newportbeachca.gov/government/city-council"

@@ -1,0 +1,40 @@
+city: "brea"
+last_updated: "2026-01-24"
+next_election: "2026-11-03"
+seats_up: []
+
+members:
+  - name: "Cecilia Hupp"
+    position: "Mayor"
+    district: "At-Large"
+    email: "ceciliah@ci.brea.ca.us"
+    phone: "714-990-7704"
+    city_page: "https://www.ci.brea.ca.us/Directory.aspx?EID=3"
+
+  - name: "Marty Simonoff"
+    position: "Mayor Pro Tem"
+    district: "At-Large"
+    email: "martys@ci.brea.ca.us"
+    phone: "714-990-7702"
+    city_page: "https://www.ci.brea.ca.us/Directory.aspx?EID=6"
+
+  - name: "Christine Marick"
+    position: "Councilmember"
+    district: "At-Large"
+    email: "christinem@ci.brea.ca.us"
+    phone: "714-990-7700"
+    city_page: "https://www.ci.brea.ca.us/Directory.aspx?EID=4"
+
+  - name: "Blair Stewart"
+    position: "Councilmember"
+    district: "At-Large"
+    email: "blairs@ci.brea.ca.us"
+    phone: "714-990-7703"
+    city_page: "https://www.ci.brea.ca.us/Directory.aspx?EID=2"
+
+  - name: "Steven Vargas"
+    position: "Councilmember"
+    district: "At-Large"
+    email: "stevenv@ci.brea.ca.us"
+    phone: "714-990-7701"
+    city_page: "https://www.ci.brea.ca.us/Directory.aspx?EID=5"
