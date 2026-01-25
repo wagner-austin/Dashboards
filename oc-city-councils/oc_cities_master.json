@@ -14,11 +14,11 @@
     ],
     "urls_verified": "2026-01-24",
     "cities_needing_review": [
-      "Tustin - GENERIC EMAIL only",
-      "Mission Viejo - GENERIC EMAIL only",
-      "Villa Park - GENERIC PHONE",
-      "Orange - emails blocked by 403"
-    ]
+      "La Habra - generic council email only (verified)",
+      "La Palma - generic council email only (verified)",
+      "Laguna Beach - generic council email only (verified), has individual phones"
+    ],
+    "verification_notes": "All 34 cities audited Jan 2026. 31 have individual emails. 3 genuinely don't publish individual emails."
   },
   "cities": {
     "Aliso Viejo": {
@@ -33,17 +33,17 @@
           "email": "mduncan@avcity.org",
           "phone": "949-425-2510",
           "website": null,
-          "city_profile": "https://avcity.org/223/Mayor-Max-Duncan",
+          "city_profile": "https://avcity.org/294/Mayor-Max-Duncan",
           "instagram": null
         },
         {
           "name": "Mike Munzing",
           "position": "Mayor Pro Tem",
-          "district": null,
+          "district": "District 5",
           "email": "mmunzing@avcity.org",
           "phone": "949-425-2510",
           "website": null,
-          "city_profile": "https://avcity.org/224/Mayor-Pro-Tem-Mike-Munzing",
+          "city_profile": "https://avcity.org/292/Mayor-Pro-Tem-Mike-Munzing",
           "instagram": null
         },
         {
@@ -53,7 +53,7 @@
           "email": "tackley@avcity.org",
           "phone": "949-425-2510",
           "website": null,
-          "city_profile": "https://avcity.org/225/Councilmember-Tiffany-Ackley",
+          "city_profile": "https://avcity.org/293/Councilmember-Tiffany-Ackley",
           "instagram": null
         },
         {
@@ -63,7 +63,7 @@
           "email": "GDwyer@AVCity.org",
           "phone": "949-425-2510",
           "website": null,
-          "city_profile": "https://avcity.org/226/Councilmember-Garrett-Dwyer",
+          "city_profile": "https://avcity.org/295/Councilmember-Garrett-Dwyer",
           "instagram": null
         },
         {
@@ -73,7 +73,7 @@
           "email": "tzandbergen@avcity.org",
           "phone": "949-425-2510",
           "website": null,
-          "city_profile": "https://avcity.org/227/Councilmember-Tim-Zandbergen",
+          "city_profile": "https://avcity.org/291/Councilmember-Tim-Zandbergen",
           "instagram": null
         }
       ],
@@ -98,7 +98,7 @@
         {
           "name": "Ashleigh Aitken",
           "position": "Mayor",
-          "district": null,
+          "district": "At-Large",
           "email": "aaitken@anaheim.net",
           "phone": "(714) 765-4311",
           "website": null,
@@ -108,7 +108,7 @@
         {
           "name": "Carlos A. Leon",
           "position": "Mayor Pro Tem",
-          "district": null,
+          "district": "District 3",
           "email": "cleon@anaheim.net",
           "phone": "(714) 765-4311",
           "website": null,
@@ -118,7 +118,7 @@
         {
           "name": "Ryan Balius",
           "position": "Councilmember",
-          "district": null,
+          "district": "District 1",
           "email": "rbalius@anaheim.net",
           "phone": "(714) 765-4311",
           "website": null,
@@ -128,7 +128,7 @@
         {
           "name": "Natalie Rubalcava",
           "position": "Councilmember",
-          "district": null,
+          "district": "District 4",
           "email": "nrubalcava@anaheim.net",
           "phone": "(714) 765-4311",
           "website": null,
@@ -138,7 +138,7 @@
         {
           "name": "Norma Campos Kurtz",
           "position": "Councilmember",
-          "district": null,
+          "district": "District 5",
           "email": "nkurtz@anaheim.net",
           "phone": "(714) 765-4311",
           "website": null,
@@ -148,7 +148,7 @@
         {
           "name": "Kristen Maahs",
           "position": "Councilmember",
-          "district": null,
+          "district": "District 6",
           "email": "kmaahs@anaheim.net",
           "phone": "(714) 765-4311",
           "website": null,
@@ -734,7 +734,7 @@
           "instagram": null
         },
         {
-          "name": "Yesenia Muñeton",
+          "name": "Yesenia Mu\u00c3\u00b1eton",
           "position": "Councilmember",
           "district": "District 5",
           "email": "yeseniam@ggcity.org",
@@ -1188,7 +1188,8 @@
         "At-large elections",
         "No individual emails - use general council email",
         "Individual phone numbers verified via Playwright"
-      ]
+      ],
+      "email": "citycouncil@lagunabeachcity.net"
     },
     "Laguna Hills": {
       "website": "https://www.lagunahillsca.gov",
@@ -1407,7 +1408,7 @@
       "status": "complete",
       "council_members": [
         {
-          "name": "Robert Pequeño",
+          "name": "Robert Peque\u00c3\u00b1o",
           "position": "Mayor",
           "district": "District 5",
           "email": "rpequeno@lakeforestca.gov",
@@ -1713,8 +1714,8 @@
           "name": "Dan Slater",
           "position": "Mayor",
           "district": "At-Large",
-          "email": null,
-          "phone": "(714) 744-5500",
+          "email": "dan@danslater.com",
+          "phone": "(714) 744-2211",
           "website": null,
           "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/mayor-dan-slater",
           "instagram": null
@@ -1723,8 +1724,8 @@
           "name": "Denis Bilodeau",
           "position": "Mayor Pro Tem",
           "district": "District 4",
-          "email": null,
-          "phone": "(714) 744-5500",
+          "email": "dbilodeau@cityoforange.org",
+          "phone": "(714) 744-2225",
           "website": null,
           "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
           "instagram": null
@@ -1733,8 +1734,8 @@
           "name": "Arianna Barrios",
           "position": "Councilmember",
           "district": "District 1",
-          "email": null,
-          "phone": "(714) 744-5500",
+          "email": "abarrios@cityoforange.org",
+          "phone": "(714) 744-2225",
           "website": null,
           "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
           "instagram": null
@@ -1743,8 +1744,8 @@
           "name": "Jon Dumitru",
           "position": "Councilmember",
           "district": "District 2",
-          "email": null,
-          "phone": "(714) 744-5500",
+          "email": "jdumitru@cityoforange.org",
+          "phone": "(714) 744-2225",
           "website": null,
           "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
           "instagram": null
@@ -1753,8 +1754,8 @@
           "name": "Kathy Tavoularis",
           "position": "Councilmember",
           "district": "District 3",
-          "email": null,
-          "phone": "(714) 744-5500",
+          "email": "ktavoularis@cityoforange.org",
+          "phone": "(714) 744-2225",
           "website": null,
           "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
           "instagram": null
@@ -1763,8 +1764,8 @@
           "name": "Ana Gutierrez",
           "position": "Councilmember",
           "district": "District 5",
-          "email": null,
-          "phone": "(714) 744-5500",
+          "email": "anagutierrez@cityoforange.org",
+          "phone": "(714) 744-2225",
           "website": null,
           "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
           "instagram": null
@@ -1773,8 +1774,8 @@
           "name": "John Gyllenhammer",
           "position": "Councilmember",
           "district": "District 6",
-          "email": null,
-          "phone": "(714) 744-5500",
+          "email": "jgyllenhammer@cityoforange.org",
+          "phone": "(714) 744-2225",
           "website": null,
           "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
           "instagram": null
@@ -1790,9 +1791,10 @@
         "email": null
       },
       "notes": [
-        "Data verified January 2026",
+        "Data verified January 2026 via Firefox Playwright",
         "7-member council with directly elected Mayor",
-        "Individual emails on website profiles - site blocks web fetch"
+        "Individual emails from mailto links on council page",
+        "Mayor uses personal email dan@danslater.com"
       ]
     },
     "Placentia": {
