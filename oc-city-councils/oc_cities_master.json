@@ -1,0 +1,2597 @@
+{
+  "_metadata": {
+    "description": "Orange County City Council Contact Data",
+    "last_updated": "2026-01-24",
+    "cities_count": 34,
+    "cities_complete": 34,
+    "data_fields": [
+      "email",
+      "phone",
+      "website",
+      "city_profile",
+      "instagram",
+      "public_comment"
+    ],
+    "urls_verified": "2026-01-24",
+    "cities_needing_review": [
+      "Tustin - GENERIC EMAIL only",
+      "Mission Viejo - GENERIC EMAIL only",
+      "Villa Park - GENERIC PHONE",
+      "Orange - emails blocked by 403"
+    ]
+  },
+  "cities": {
+    "Aliso Viejo": {
+      "website": "https://avcity.org",
+      "council_url": "https://avcity.org/222/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Max Duncan",
+          "position": "Mayor",
+          "district": "District 2",
+          "email": "mduncan@avcity.org",
+          "phone": "949-425-2510",
+          "website": null,
+          "city_profile": "https://avcity.org/223/Mayor-Max-Duncan",
+          "instagram": null
+        },
+        {
+          "name": "Mike Munzing",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "mmunzing@avcity.org",
+          "phone": "949-425-2510",
+          "website": null,
+          "city_profile": "https://avcity.org/224/Mayor-Pro-Tem-Mike-Munzing",
+          "instagram": null
+        },
+        {
+          "name": "Tiffany Ackley",
+          "position": "Councilmember",
+          "district": null,
+          "email": "tackley@avcity.org",
+          "phone": "949-425-2510",
+          "website": null,
+          "city_profile": "https://avcity.org/225/Councilmember-Tiffany-Ackley",
+          "instagram": null
+        },
+        {
+          "name": "Garrett Dwyer",
+          "position": "Councilmember",
+          "district": null,
+          "email": "GDwyer@AVCity.org",
+          "phone": "949-425-2510",
+          "website": null,
+          "city_profile": "https://avcity.org/226/Councilmember-Garrett-Dwyer",
+          "instagram": null
+        },
+        {
+          "name": "Tim Zandbergen",
+          "position": "Councilmember",
+          "district": null,
+          "email": "tzandbergen@avcity.org",
+          "phone": "949-425-2510",
+          "website": null,
+          "city_profile": "https://avcity.org/227/Councilmember-Tim-Zandbergen",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://avcity.org/129/Agendas-Minutes",
+        "method": "Email the City Council",
+        "notes": "Meetings 1st and 3rd Wednesday at 7pm"
+      },
+      "clerk_contact": {
+        "phone": "949-425-2510",
+        "email": null
+      },
+      "notes": [
+        "Data verified January 2026 from official site"
+      ]
+    },
+    "Anaheim": {
+      "website": "https://www.anaheim.net",
+      "council_url": "https://www.anaheim.net/2527/Agendas",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Ashleigh Aitken",
+          "position": "Mayor",
+          "district": null,
+          "email": "aaitken@anaheim.net",
+          "phone": "(714) 765-4311",
+          "website": null,
+          "city_profile": "https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken",
+          "instagram": null
+        },
+        {
+          "name": "Carlos A. Leon",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "cleon@anaheim.net",
+          "phone": "(714) 765-4311",
+          "website": null,
+          "city_profile": "https://www.anaheim.net/2314/Mayor-Pro-Tem-Carlos-A-Leon",
+          "instagram": null
+        },
+        {
+          "name": "Ryan Balius",
+          "position": "Councilmember",
+          "district": null,
+          "email": "rbalius@anaheim.net",
+          "phone": "(714) 765-4311",
+          "website": null,
+          "city_profile": "https://www.anaheim.net/3522/Council-Member-Ryan-Balius",
+          "instagram": null
+        },
+        {
+          "name": "Natalie Rubalcava",
+          "position": "Councilmember",
+          "district": null,
+          "email": "nrubalcava@anaheim.net",
+          "phone": "(714) 765-4311",
+          "website": null,
+          "city_profile": "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava",
+          "instagram": null
+        },
+        {
+          "name": "Norma Campos Kurtz",
+          "position": "Councilmember",
+          "district": null,
+          "email": "nkurtz@anaheim.net",
+          "phone": "(714) 765-4311",
+          "website": null,
+          "city_profile": "https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz",
+          "instagram": null
+        },
+        {
+          "name": "Kristen Maahs",
+          "position": "Councilmember",
+          "district": null,
+          "email": "kmaahs@anaheim.net",
+          "phone": "(714) 765-4311",
+          "website": null,
+          "city_profile": "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.anaheim.net/2527/Agendas",
+        "method": "City Council Agendas",
+        "notes": null
+      },
+      "notes": [
+        "Main council page broken - using individual member URLs",
+        "Data from STATUS.md notes January 2026"
+      ]
+    },
+    "Brea": {
+      "website": "https://www.cityofbrea.gov",
+      "council_url": "https://www.cityofbrea.gov/511/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Cecilia Hupp",
+          "position": "Mayor",
+          "district": null,
+          "email": "ceciliah@cityofbrea.gov",
+          "phone": "714-990-7704",
+          "website": null,
+          "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=3",
+          "instagram": null
+        },
+        {
+          "name": "Marty Simonoff",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "martys@cityofbrea.gov",
+          "phone": "714-990-7702",
+          "website": null,
+          "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=6",
+          "instagram": null
+        },
+        {
+          "name": "Christine Marick",
+          "position": "Councilmember",
+          "district": null,
+          "email": "christinem@cityofbrea.gov",
+          "phone": "714-990-7700",
+          "website": null,
+          "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=4",
+          "instagram": null
+        },
+        {
+          "name": "Blair Stewart",
+          "position": "Councilmember",
+          "district": null,
+          "email": "blairs@cityofbrea.gov",
+          "phone": "714-990-7703",
+          "website": null,
+          "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=2",
+          "instagram": null
+        },
+        {
+          "name": "Steven Vargas",
+          "position": "Councilmember",
+          "district": null,
+          "email": "stevenv@cityofbrea.gov",
+          "phone": "714-990-7701",
+          "website": null,
+          "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=5",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.cityofbrea.gov/agendacenter",
+        "method": "Contact City Clerk",
+        "notes": "Meetings 1st and 3rd Tuesday at 7pm. City Clerk: (714) 990-7756"
+      },
+      "clerk_contact": {
+        "phone": "714-990-7756",
+        "email": null
+      },
+      "notes": [
+        "Data verified January 2026 from official site",
+        "At-large elections"
+      ]
+    },
+    "Buena Park": {
+      "website": "https://www.buenapark.com",
+      "council_url": "https://www.buenapark.com/city_departments/city_council/council_members.php",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Connor Traut",
+          "position": "Mayor",
+          "district": "District 5",
+          "email": "ctraut@buenapark.com",
+          "phone": "714-562-3500",
+          "website": null,
+          "city_profile": null,
+          "instagram": null
+        },
+        {
+          "name": "Lamiya Hoque",
+          "position": "Vice Mayor",
+          "district": "District 4",
+          "email": "lhoque@buenapark.com",
+          "phone": "714-562-3500",
+          "website": null,
+          "city_profile": null,
+          "instagram": null
+        },
+        {
+          "name": "Carlos Franco",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "cfranco@buenapark.com",
+          "phone": "714-562-3500",
+          "website": null,
+          "city_profile": null,
+          "instagram": null
+        },
+        {
+          "name": "Susan Sonne",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "ssonne@buenapark.com",
+          "phone": "714-562-3500",
+          "website": null,
+          "city_profile": null,
+          "instagram": null
+        },
+        {
+          "name": "Joyce Ahn",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "jahn@buenapark.com",
+          "phone": "714-562-3500",
+          "website": null,
+          "city_profile": null,
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.buenapark.com/city_departments/city_council/council_agenda.php",
+        "method": "Council Agenda",
+        "notes": "Meetings 2nd & 4th Tuesday at 5pm"
+      },
+      "clerk_contact": {
+        "phone": "714-562-3754",
+        "email": "city@buenapark.com"
+      },
+      "notes": [
+        "Data verified January 2026 from official site"
+      ]
+    },
+    "Costa Mesa": {
+      "website": "https://www.costamesaca.gov",
+      "council_url": "https://www.costamesaca.gov/government/mayor-city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "John Stephens",
+          "position": "Mayor",
+          "district": "At-Large",
+          "email": "john.stephens@costamesaca.gov",
+          "phone": "(714) 337-1872",
+          "website": null,
+          "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/mayor-john-stephens",
+          "instagram": null
+        },
+        {
+          "name": "Manuel Chavez",
+          "position": "Mayor Pro Tem",
+          "district": "District 4",
+          "email": "manuel.chavez@costamesaca.gov",
+          "phone": "(949) 274-2305",
+          "website": null,
+          "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/mayor-pro-tem-manuel-chavez",
+          "instagram": null
+        },
+        {
+          "name": "Mike Buley",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "mike.buley@costamesaca.gov",
+          "phone": "(714) 754-5107",
+          "website": null,
+          "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-mike-buley",
+          "instagram": null
+        },
+        {
+          "name": "Loren Gameros",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "loren.gameros@costamesaca.gov",
+          "phone": "(714) 754-5107",
+          "website": null,
+          "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-loren-gameros",
+          "instagram": null
+        },
+        {
+          "name": "Andrea Marr",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "andrea.marr@costamesaca.gov",
+          "phone": "(714) 754-5107",
+          "website": null,
+          "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-andrea-marr",
+          "instagram": null
+        },
+        {
+          "name": "Arlis Reynolds",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "arlis.reynolds@costamesaca.gov",
+          "phone": "(714) 754-5107",
+          "website": null,
+          "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-arlis-reynolds",
+          "instagram": null
+        },
+        {
+          "name": "Jeff Pettis",
+          "position": "Councilmember",
+          "district": "District 6",
+          "email": "jeff.pettis@costamesaca.gov",
+          "phone": "(714) 754-5107",
+          "website": null,
+          "city_profile": "https://www.costamesaca.gov/government/mayor-city-council/council-member-jeff-pettis",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.costamesaca.gov/government/mayor-city-council/council-contact-information",
+        "method": "Email or call Constituent Services",
+        "notes": "Contact (714) 754-5105 or constituentservices@costamesaca.gov"
+      },
+      "clerk_contact": {
+        "phone": "(714) 754-5105",
+        "email": "constituentservices@costamesaca.gov"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "7-member council with directly elected Mayor"
+      ]
+    },
+    "Cypress": {
+      "website": "https://www.cypressca.org",
+      "council_url": "https://www.cypressca.org/government/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "David Burke",
+          "position": "Mayor",
+          "district": null,
+          "email": "dburke@cypressca.org",
+          "phone": "714-229-6699",
+          "website": "https://www.davidburkeforcypress.com/",
+          "city_profile": "https://www.cypressca.org/government/city-council/council-member-david-burke",
+          "instagram": null
+        },
+        {
+          "name": "Leo Medrano",
+          "position": "Mayor Pro Tem",
+          "district": "District 4",
+          "email": "lmedrano@cypressca.org",
+          "phone": "714-229-6699",
+          "website": null,
+          "city_profile": "https://www.cypressca.org/government/city-council/council-member-leo-medrano",
+          "instagram": null
+        },
+        {
+          "name": "Kyle Chang",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "kchang@cypressca.org",
+          "phone": "714-229-6699",
+          "website": "https://votekylechang.com/",
+          "city_profile": "https://www.cypressca.org/government/city-council/council-member-kyle-change",
+          "instagram": "https://www.instagram.com/kylechangoc/"
+        },
+        {
+          "name": "Bonnie Peat",
+          "position": "Councilmember",
+          "district": null,
+          "email": "bpeat@cypressca.org",
+          "phone": "714-229-6699",
+          "website": "https://bonniepeatforcypress.com/",
+          "city_profile": "https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat",
+          "instagram": null
+        },
+        {
+          "name": "Rachel Strong Carnahan",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "rstrong@cypressca.org",
+          "phone": "714-229-6699",
+          "website": null,
+          "city_profile": "https://www.cypressca.org/government/city-council/council-member-rachel-strong",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.cypressca.org/government/city-council-meetings",
+        "method": "Email citycouncil@cypressca.org or call 714-229-6699",
+        "notes": "Meetings 2nd and 4th Monday at 7pm. Council Chambers at 5275 Orange Avenue."
+      },
+      "clerk_contact": {
+        "phone": "714-229-6685",
+        "email": "afarnell@cypressca.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district elections since 2024",
+        "City Clerk: Alisha Farnell"
+      ]
+    },
+    "Dana Point": {
+      "website": "https://www.danapoint.org",
+      "council_url": "https://www.danapoint.org/department/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "John Gabbard",
+          "position": "Mayor",
+          "district": "District 1",
+          "email": "jgabbard@danapoint.org",
+          "phone": "(949) 248-3500",
+          "website": null,
+          "city_profile": "https://www.danapoint.org/City-Government/City-Council/John-Gabbard",
+          "instagram": null
+        },
+        {
+          "name": "Mike Frost",
+          "position": "Mayor Pro Tem",
+          "district": "District 4",
+          "email": "mfrost@danapoint.org",
+          "phone": "(949) 248-3500",
+          "website": null,
+          "city_profile": "https://www.danapoint.org/City-Government/City-Council/Mike-Frost",
+          "instagram": null
+        },
+        {
+          "name": "Matthew Pagano",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "mpagano@danapoint.org",
+          "phone": "(949) 248-3500",
+          "website": null,
+          "city_profile": "https://www.danapoint.org/City-Government/City-Council/Matthew-Pagano",
+          "instagram": null
+        },
+        {
+          "name": "Jamey M. Federico",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "jfederico@danapoint.org",
+          "phone": "(949) 248-3500",
+          "website": null,
+          "city_profile": "https://www.danapoint.org/City-Government/City-Council/Jamey-M.-Federico",
+          "instagram": null
+        },
+        {
+          "name": "Michael Villar",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "mvillar@danapoint.org",
+          "phone": "(949) 248-3500",
+          "website": null,
+          "city_profile": "https://www.danapoint.org/City-Government/City-Council/Michael-Villar",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.danapoint.org/department/city-council/meetings-agendas-minutes",
+        "method": "Email comment@danapoint.org",
+        "notes": "Meetings 1st and 3rd Tuesday at 6pm, City Hall, 33282 Golden Lantern"
+      },
+      "clerk_contact": {
+        "phone": "(949) 248-3500",
+        "email": "comment@danapoint.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district elections",
+        "Two-term limit for elected officials",
+        "City Clerk: Shayna Sharke"
+      ]
+    },
+    "Fountain Valley": {
+      "website": "https://www.fountainvalley.gov",
+      "council_url": "https://www.fountainvalley.gov/156/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Ted Bui",
+          "position": "Mayor",
+          "district": null,
+          "email": "Ted.Bui@fountainvalley.gov",
+          "phone": "628-266-8888",
+          "website": null,
+          "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=54",
+          "instagram": null
+        },
+        {
+          "name": "Jim Cunneen",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "Jim.Cunneen@fountainvalley.gov",
+          "phone": "714-593-4403",
+          "website": null,
+          "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=178",
+          "instagram": null
+        },
+        {
+          "name": "Patrick Harper",
+          "position": "Councilmember",
+          "district": null,
+          "email": "patrick.harper@fountainvalley.gov",
+          "phone": "714-593-4403",
+          "website": null,
+          "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=153",
+          "instagram": null
+        },
+        {
+          "name": "Kim Constantine",
+          "position": "Councilmember",
+          "district": null,
+          "email": "kim.constantine@fountainvalley.gov",
+          "phone": "714-593-4403",
+          "website": null,
+          "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=152",
+          "instagram": null
+        },
+        {
+          "name": "Glenn Grandis",
+          "position": "Councilmember",
+          "district": null,
+          "email": "Glenn.Grandis@fountainvalley.gov",
+          "phone": "714-593-4403",
+          "website": null,
+          "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=55",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.fountainvalley.gov/AgendaCenter/City-Council-2",
+        "method": "Attend meeting or contact City Clerk",
+        "notes": "City Hall: 10200 Slater Avenue, Fountain Valley, CA 92708"
+      },
+      "clerk_contact": {
+        "phone": "714-593-4400",
+        "email": null
+      },
+      "notes": [
+        "Data verified January 2026",
+        "Website is fountainvalley.gov (not .org)"
+      ]
+    },
+    "Fullerton": {
+      "website": "https://www.cityoffullerton.com",
+      "council_url": "https://www.cityoffullerton.com/government/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Fred Jung",
+          "position": "Mayor",
+          "district": "District 1",
+          "email": "fred.jung@cityoffullerton.com",
+          "phone": "(714) 738-6311",
+          "website": null,
+          "city_profile": "https://www.cityoffullerton.com/government/city-council/mayor-fred-jung",
+          "instagram": null
+        },
+        {
+          "name": "Nicholas Dunlap",
+          "position": "Mayor Pro Tem",
+          "district": "District 2",
+          "email": "nicholas.dunlap@cityoffullerton.com",
+          "phone": "(714) 738-6311",
+          "website": null,
+          "city_profile": "https://www.cityoffullerton.com/government/city-council/mayor-pro-tem-nicholas-dunlap",
+          "instagram": null
+        },
+        {
+          "name": "Dr. Shana Charles",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "shana.charles@cityoffullerton.com",
+          "phone": "(714) 738-6311",
+          "website": null,
+          "city_profile": "https://www.cityoffullerton.com/government/city-council/council-member-shana-charles",
+          "instagram": null
+        },
+        {
+          "name": "Jamie Valencia",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "jamie.valencia@cityoffullerton.com",
+          "phone": "(714) 738-6311",
+          "website": null,
+          "city_profile": "https://www.cityoffullerton.com/government/city-council/council-member-jamie-valencia",
+          "instagram": null
+        },
+        {
+          "name": "Dr. Ahmad Zahra",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "ahmadz@cityoffullerton.com",
+          "phone": "(714) 738-6311",
+          "website": null,
+          "city_profile": "https://www.cityoffullerton.com/government/city-council/council-member-ahmad-zahra",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.cityoffullerton.com/government/city-council/city-council-meetings",
+        "method": "Email CouncilMembers@cityoffullerton.com",
+        "notes": "Meetings 1st and 3rd Tuesday at 5:30pm at City Hall, 303 W. Commonwealth Ave."
+      },
+      "clerk_contact": {
+        "phone": "(714) 738-6350",
+        "email": "cityclerksoffice@cityoffullerton.com"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district elections"
+      ]
+    },
+    "Garden Grove": {
+      "website": "https://ggcity.org",
+      "council_url": "https://ggcity.org/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Stephanie Klopfenstein",
+          "position": "Mayor",
+          "district": "Citywide",
+          "email": "stephaniek@ggcity.org",
+          "phone": "(714) 741-5104",
+          "website": null,
+          "city_profile": "https://ggcity.org/city-council/stephanie-klopfenstein",
+          "instagram": null
+        },
+        {
+          "name": "George S. Brietigam III",
+          "position": "Mayor Pro Tem",
+          "district": "District 1",
+          "email": "georgeb@ggcity.org",
+          "phone": "(714) 741-5104",
+          "website": null,
+          "city_profile": "https://ggcity.org/city-council/george-brietigam",
+          "instagram": null
+        },
+        {
+          "name": "Phillip Nguyen",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "phillipn@ggcity.org",
+          "phone": "(714) 741-5104",
+          "website": null,
+          "city_profile": "https://ggcity.org/city-council/phillip-nguyen",
+          "instagram": null
+        },
+        {
+          "name": "Cindy Ngoc Tran",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "cindyt@ggcity.org",
+          "phone": "(714) 741-5104",
+          "website": null,
+          "city_profile": "https://ggcity.org/city-council/cindy-tran",
+          "instagram": null
+        },
+        {
+          "name": "Joe DoVinh",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "joed@ggcity.org",
+          "phone": "(714) 741-5104",
+          "website": null,
+          "city_profile": "https://ggcity.org/city-council/joe-dovinh",
+          "instagram": null
+        },
+        {
+          "name": "Yesenia Muñeton",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "yeseniam@ggcity.org",
+          "phone": "(714) 741-5104",
+          "website": null,
+          "city_profile": "https://ggcity.org/city-council/yesenia-muneton",
+          "instagram": null
+        },
+        {
+          "name": "Ariana Arestegui",
+          "position": "Councilmember",
+          "district": "District 6",
+          "email": "arianaa@ggcity.org",
+          "phone": "(714) 741-5104",
+          "website": null,
+          "city_profile": "https://ggcity.org/city-council/ariana-arestegui",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://ggcity.org/city-council/meetings-participation",
+        "method": "Submit to City Clerk's Office",
+        "notes": "Meetings 2nd and 4th Tuesday. Mail to City Clerk, P.O. Box 3070, Garden Grove, CA 92482-3070"
+      },
+      "clerk_contact": {
+        "phone": "(714) 741-5043",
+        "email": "cityclerk@ggcity.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "7-member council with directly elected Mayor",
+        "By-district elections for districts 1-6"
+      ]
+    },
+    "Huntington Beach": {
+      "website": "https://www.huntingtonbeachca.gov",
+      "council_url": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Casey McKeon",
+          "position": "Mayor",
+          "district": null,
+          "email": "casey.mckeon@huntingtonbeachca.gov",
+          "phone": "(714) 536-5553",
+          "website": null,
+          "city_profile": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Butch Twining",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "butch.twining@huntingtonbeachca.gov",
+          "phone": "(714) 536-5553",
+          "website": null,
+          "city_profile": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Pat Burns",
+          "position": "Councilmember",
+          "district": null,
+          "email": "pat.burns@huntingtonbeachca.gov",
+          "phone": "(714) 536-5553",
+          "website": null,
+          "city_profile": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Don Kennedy",
+          "position": "Councilmember",
+          "district": null,
+          "email": "don.kennedy@huntingtonbeachca.gov",
+          "phone": "(714) 536-5553",
+          "website": null,
+          "city_profile": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Gracey Larrea-Van Der Mark",
+          "position": "Councilmember",
+          "district": null,
+          "email": "gracey.larrea@huntingtonbeachca.gov",
+          "phone": "(714) 536-5553",
+          "website": null,
+          "city_profile": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Chad Williams",
+          "position": "Councilmember",
+          "district": null,
+          "email": "chad.williams@huntingtonbeachca.gov",
+          "phone": "(714) 536-5553",
+          "website": null,
+          "city_profile": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Andrew Gruel",
+          "position": "Councilmember",
+          "district": null,
+          "email": "andrew.gruel@huntingtonbeachca.gov",
+          "phone": "(714) 536-5553",
+          "website": null,
+          "city_profile": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://huntingtonbeachca.gov/government/city_council/contact_city_council.php",
+        "method": "Email supplementalcomm@huntingtonbeachca.gov",
+        "notes": "Written comments by 9am day of meeting. Meetings 1st and 3rd Tuesday at 4pm."
+      },
+      "clerk_contact": {
+        "phone": "(714) 536-5553",
+        "email": "supplementalcomm@huntingtonbeachca.gov"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "7-member council",
+        "At-large elections"
+      ]
+    },
+    "Irvine": {
+      "website": "https://www.cityofirvine.org",
+      "council_url": "https://www.cityofirvine.org/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Larry Agran",
+          "position": "Mayor",
+          "district": "At-Large",
+          "email": "LarryAgran@cityofirvine.org",
+          "phone": null,
+          "website": "https://mayorlarryagran.org",
+          "city_profile": "https://cityofirvine.org/city-council/mayor-larry-agran",
+          "instagram": "https://www.instagram.com/mayorlarryagran",
+          "photo": "https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg"
+        },
+        {
+          "name": "James Mai",
+          "position": "Vice Mayor",
+          "district": "District 3",
+          "email": "JamesMai@cityofirvine.org",
+          "phone": null,
+          "website": null,
+          "city_profile": "https://cityofirvine.org/city-council/vice-mayor-james-mai-district-3",
+          "instagram": "https://www.instagram.com/vicemayormai",
+          "photo": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg"
+        },
+        {
+          "name": "Melinda Liu",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "MelindaLiu@cityofirvine.org",
+          "phone": null,
+          "website": "https://www.melindaliuirvine.com",
+          "city_profile": "https://cityofirvine.org/city-council/councilmember-melinda-liu-district-1",
+          "instagram": "https://www.instagram.com/melindaliu_official",
+          "photo": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg"
+        },
+        {
+          "name": "William Go",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "WilliamGo@cityofirvine.org",
+          "phone": null,
+          "website": null,
+          "city_profile": "https://cityofirvine.org/city-council/councilmember-william-go-district-2",
+          "instagram": "https://www.instagram.com/williamgoirvine",
+          "photo": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg"
+        },
+        {
+          "name": "Mike Carroll",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "MikeCarroll@cityofirvine.org",
+          "phone": null,
+          "website": null,
+          "city_profile": "https://cityofirvine.org/city-council/councilmember-mike-carroll-district-4",
+          "instagram": "https://www.instagram.com/mikecarrollcouncilmember",
+          "photo": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png"
+        },
+        {
+          "name": "Betty Martinez Franco",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "BettyMartinezFranco@cityofirvine.org",
+          "phone": null,
+          "website": null,
+          "city_profile": "https://cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5",
+          "instagram": "https://www.instagram.com/councilmemberbettymartinez",
+          "photo": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg"
+        },
+        {
+          "name": "Kathleen Treseder",
+          "position": "Councilmember",
+          "district": "At-Large",
+          "email": "KathleenTreseder@cityofirvine.org",
+          "phone": null,
+          "website": null,
+          "city_profile": "https://cityofirvine.org/city-council/councilmember-kathleen-treseder-large",
+          "instagram": "https://www.instagram.com/councilmemberkathleentreseder",
+          "photo": "https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg"
+        }
+      ],
+      "public_comment": {
+        "url": "https://irvine.granicusideas.com/meetings",
+        "method": "eComment system via Granicus",
+        "notes": "Submit written comments on agenda items before or during meeting"
+      },
+      "meeting_info": {
+        "schedule": "2nd and 4th Tuesdays at 4:00 PM",
+        "location": "City Council Chamber, 1 Civic Center Plaza, Irvine, CA 92606",
+        "zoom": {
+          "url": "https://www.zoomgov.com/j/1600434844",
+          "meeting_id": "160 043 4844",
+          "passcode": "272906"
+        },
+        "phone": [
+          "669-254-5252",
+          "669-216-1590"
+        ],
+        "tv": "ICTV (Cox Channel 30, AT&T U-verse Channel 99)",
+        "archive": "https://irvine.granicus.com/ViewPublisher.php?view_id=68"
+      },
+      "clerk_contact": {
+        "phone": "(949) 724-6205",
+        "email": "irvinecitycouncil@cityofirvine.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "7-member council since March 2024"
+      ],
+      "url_status": "error",
+      "url_error": "Page.goto: Navigation to \"https://www.cityofirvine.org/city-council\" is interrupted by another navigation to \"https://www.huntingtonbeachca.gov/government/elected_officials/city_council/\"\nCall log:\n  "
+    },
+    "La Habra": {
+      "website": "https://www.lahabraca.gov",
+      "council_url": "https://www.lahabraca.gov/153/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Jose Medrano",
+          "position": "Mayor",
+          "district": null,
+          "email": null,
+          "phone": "(562) 383-4022",
+          "website": null,
+          "city_profile": "https://www.lahabraca.gov/DocumentCenter/View/15731/Medrano-2026-Bio",
+          "instagram": null
+        },
+        {
+          "name": "James Gomez",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": null,
+          "phone": "(562) 383-4022",
+          "website": null,
+          "city_profile": "https://www.lahabraca.gov/153/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Rose Espinoza",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "(562) 383-4022",
+          "website": null,
+          "city_profile": "https://www.lahabraca.gov/DocumentCenter/View/15733/Rose-Espinoza-2026-Bio",
+          "instagram": null
+        },
+        {
+          "name": "Daren Nigsarian",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "(562) 383-4022",
+          "website": null,
+          "city_profile": "https://www.lahabraca.gov/DocumentCenter/View/15732/Nigsarian-2026-Bio",
+          "instagram": null
+        },
+        {
+          "name": "Delwin Lampkin",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "(562) 383-4022",
+          "website": null,
+          "city_profile": "https://www.lahabraca.gov/DocumentCenter/View/15683/Delwin-Lampkin-2025",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://lahabraca.gov/AgendaCenter/City-Council-2",
+        "method": "Email cc@lahabraca.gov",
+        "notes": "Meetings at 6:30pm at 100 E. La Habra Blvd"
+      },
+      "clerk_contact": {
+        "phone": "(562) 383-4022",
+        "email": "CityCouncil@lahabraca.gov"
+      },
+      "general_council_email": "CityCouncil@lahabraca.gov",
+      "notes": [
+        "Data verified January 2026",
+        "No individual emails published - use general council email"
+      ]
+    },
+    "La Palma": {
+      "website": "https://www.lapalmaca.gov",
+      "council_url": "https://www.lapalmaca.gov/66/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Nitesh P. Patel",
+          "position": "Mayor",
+          "district": "At-Large",
+          "email": null,
+          "phone": "(714) 690-3334",
+          "website": null,
+          "city_profile": "https://www.lapalmaca.gov/716",
+          "instagram": null
+        },
+        {
+          "name": "Debbie S. Baker",
+          "position": "Mayor Pro Tem",
+          "district": "District 1",
+          "email": null,
+          "phone": "(714) 690-3334",
+          "website": null,
+          "city_profile": "https://www.lapalmaca.gov/714",
+          "instagram": null
+        },
+        {
+          "name": "Mark I. Waldman",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": null,
+          "phone": "(714) 690-3334",
+          "website": null,
+          "city_profile": "https://www.lapalmaca.gov/717",
+          "instagram": null
+        },
+        {
+          "name": "Janet Keo Conklin",
+          "position": "Councilmember",
+          "district": "At-Large",
+          "email": null,
+          "phone": "(714) 690-3334",
+          "website": null,
+          "city_profile": "https://www.lapalmaca.gov/735",
+          "instagram": null
+        },
+        {
+          "name": "Vikesh P. Patel",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": null,
+          "phone": "(714) 690-3334",
+          "website": null,
+          "city_profile": "https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.lapalmaca.gov/72/Agendas-and-Minutes",
+        "method": "Attend meeting or contact City Clerk",
+        "notes": "Meetings 1st Tuesday at 6:30pm at 7822 Walker Street"
+      },
+      "clerk_contact": {
+        "phone": "(714) 690-3334",
+        "email": "citycouncil@lapalmaca.gov"
+      },
+      "general_council_email": "citycouncil@lapalmaca.gov",
+      "notes": [
+        "Data verified January 2026",
+        "Transitioned to district elections in 2024",
+        "No individual emails published"
+      ]
+    },
+    "Laguna Beach": {
+      "website": "https://www.lagunabeachcity.net",
+      "council_url": "https://www.lagunabeachcity.net/government/departments/city-council/contact-city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Mark Orgill",
+          "position": "Mayor",
+          "district": null,
+          "email": null,
+          "phone": "(949) 463-4821",
+          "website": null,
+          "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126",
+          "instagram": null
+        },
+        {
+          "name": "Hallie Jones",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": null,
+          "phone": "(949) 992-5419",
+          "website": null,
+          "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126",
+          "instagram": null
+        },
+        {
+          "name": "Sue Kempf",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "(949) 439-3001",
+          "website": null,
+          "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126",
+          "instagram": null
+        },
+        {
+          "name": "Alex Rounaghi",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "(949) 395-1275",
+          "website": null,
+          "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126",
+          "instagram": null
+        },
+        {
+          "name": "Bob Whalen",
+          "position": "Councilmember",
+          "district": null,
+          "email": null,
+          "phone": "(949) 497-0796",
+          "website": null,
+          "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.lagunabeachcity.net/live-here/city-council/meetings-agendas-and-minutes",
+        "method": "Email citycouncil@lagunabeachcity.net",
+        "notes": "Meetings 2nd and 4th Tuesday at 5pm at 505 Forest Avenue"
+      },
+      "clerk_contact": {
+        "phone": "(949) 497-3311",
+        "email": "amckay@lagunabeachcity.net"
+      },
+      "general_council_email": "citycouncil@lagunabeachcity.net",
+      "notes": [
+        "Data verified January 2026",
+        "At-large elections",
+        "No individual emails - use general council email",
+        "Individual phone numbers verified via Playwright"
+      ]
+    },
+    "Laguna Hills": {
+      "website": "https://www.lagunahillsca.gov",
+      "council_url": "https://www.lagunahillsca.gov/129/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Don Caskey",
+          "position": "Mayor",
+          "district": null,
+          "email": "dcaskey@lagunahillsca.gov",
+          "phone": "(949) 707-2600",
+          "website": null,
+          "city_profile": "https://www.lagunahillsca.gov/527/Don-Caskey-Mayor",
+          "instagram": null
+        },
+        {
+          "name": "Jared Mathis",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "jmathis@lagunahillsca.gov",
+          "phone": "(949) 707-2600",
+          "website": null,
+          "city_profile": "https://www.lagunahillsca.gov/447/Jared-Mathis-Mayor-Pro-Tempore",
+          "instagram": null
+        },
+        {
+          "name": "Erica Pezold",
+          "position": "Councilmember",
+          "district": null,
+          "email": "epezold@lagunahillsca.gov",
+          "phone": "(949) 707-2600",
+          "website": null,
+          "city_profile": "https://www.lagunahillsca.gov/475/Erica-Pezold",
+          "instagram": null
+        },
+        {
+          "name": "Joshua Sweeney",
+          "position": "Councilmember",
+          "district": null,
+          "email": "jsweeney@lagunahillsca.gov",
+          "phone": "(949) 707-2600",
+          "website": null,
+          "city_profile": "https://www.lagunahillsca.gov/234/Joshua-Sweeney",
+          "instagram": null
+        },
+        {
+          "name": "Dave Wheeler",
+          "position": "Councilmember",
+          "district": null,
+          "email": "dwheeler@lagunahillsca.gov",
+          "phone": "(949) 707-2600",
+          "website": null,
+          "city_profile": "https://www.lagunahillsca.gov/476/Dave-Wheeler",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.lagunahillsca.gov/129/City-Council",
+        "method": "Contact City Clerk",
+        "notes": "City Hall at 24035 El Toro Road, Laguna Hills, CA 92653"
+      },
+      "clerk_contact": {
+        "phone": "(949) 707-2600",
+        "email": "jlee@lagunahillsca.gov"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "Individual emails from profile pages",
+        "Two consecutive term limit"
+      ]
+    },
+    "Laguna Niguel": {
+      "website": "https://www.cityoflagunaniguel.org",
+      "council_url": "https://www.cityoflagunaniguel.org/396/Mayor-City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Gene Johns",
+          "position": "Mayor",
+          "district": null,
+          "email": "GJohns@cityoflagunaniguel.org",
+          "phone": "(949) 362-4300",
+          "website": null,
+          "city_profile": "https://www.cityoflagunaniguel.org/396/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Kelly Jennings",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "KJennings@cityoflagunaniguel.org",
+          "phone": "(949) 362-4300",
+          "website": null,
+          "city_profile": "https://www.cityoflagunaniguel.org/396/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Ray Gennawey",
+          "position": "Councilmember",
+          "district": null,
+          "email": "RGennawey@cityoflagunaniguel.org",
+          "phone": "(949) 362-4300",
+          "website": null,
+          "city_profile": "https://www.cityoflagunaniguel.org/396/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Stephanie Oddo",
+          "position": "Councilmember",
+          "district": null,
+          "email": "SOddo@cityoflagunaniguel.org",
+          "phone": "(949) 362-4300",
+          "website": null,
+          "city_profile": "https://www.cityoflagunaniguel.org/396/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Stephanie Winstead",
+          "position": "Councilmember",
+          "district": null,
+          "email": "SWinstead@cityoflagunaniguel.org",
+          "phone": "(949) 362-4300",
+          "website": null,
+          "city_profile": "https://www.cityoflagunaniguel.org/396/Mayor-City-Council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.cityoflagunaniguel.org/AgendaCenter",
+        "method": "Email cityclerk@cityoflagunaniguel.org",
+        "notes": "Meetings 1st and 3rd Tuesday at 7pm at 30111 Crown Valley Parkway"
+      },
+      "clerk_contact": {
+        "phone": "(949) 362-4300",
+        "email": "cityclerk@cityoflagunaniguel.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "Individual emails confirmed from directory"
+      ]
+    },
+    "Laguna Woods": {
+      "website": "https://www.cityoflagunawoods.org",
+      "council_url": "https://www.cityoflagunawoods.org/city-council/",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Annie McCary",
+          "position": "Mayor",
+          "district": null,
+          "email": "amccary@cityoflagunawoods.org",
+          "phone": "(949) 639-0500",
+          "website": null,
+          "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+          "instagram": null
+        },
+        {
+          "name": "Pearl Lee",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "plee@cityoflagunawoods.org",
+          "phone": "(949) 639-0500",
+          "website": null,
+          "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+          "instagram": null
+        },
+        {
+          "name": "Cynthia Conners",
+          "position": "Councilmember",
+          "district": null,
+          "email": "cconners@cityoflagunawoods.org",
+          "phone": "(949) 639-0500",
+          "website": null,
+          "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+          "instagram": null
+        },
+        {
+          "name": "Shari L. Horne",
+          "position": "Councilmember",
+          "district": null,
+          "email": "shorne@cityoflagunawoods.org",
+          "phone": "(949) 639-0500",
+          "website": null,
+          "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+          "instagram": null
+        },
+        {
+          "name": "Carol Moore",
+          "position": "Councilmember",
+          "district": null,
+          "email": "cmoore@cityoflagunawoods.org",
+          "phone": "(949) 639-0500",
+          "website": null,
+          "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.cityoflagunawoods.org/city-council/",
+        "method": "Email cityhall@cityoflagunawoods.org",
+        "notes": "Meetings 3rd Wednesday at 2pm at 24264 El Toro Road"
+      },
+      "clerk_contact": {
+        "phone": "(949) 639-0500",
+        "email": "cityhall@cityoflagunawoods.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "At-large elections"
+      ]
+    },
+    "Lake Forest": {
+      "website": "https://www.lakeforestca.gov",
+      "council_url": "https://www.lakeforestca.gov/city_government/city_council/index.php",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Robert Pequeño",
+          "position": "Mayor",
+          "district": "District 5",
+          "email": "rpequeno@lakeforestca.gov",
+          "phone": "(949) 461-3400",
+          "website": null,
+          "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Doug Cirbo",
+          "position": "Mayor Pro Tem",
+          "district": "District 1",
+          "email": "dcirbo@lakeforestca.gov",
+          "phone": "(949) 461-3400",
+          "website": null,
+          "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Mark Tettemer",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "mtettemer@lakeforestca.gov",
+          "phone": "(949) 461-3400",
+          "website": null,
+          "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Scott Voigts",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "svoigts@lakeforestca.gov",
+          "phone": "(949) 461-3400",
+          "website": null,
+          "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
+          "instagram": null
+        },
+        {
+          "name": "Benjamin Yu",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "byu@lakeforestca.gov",
+          "phone": "(949) 461-3400",
+          "website": null,
+          "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.lakeforestca.gov/city_government/city_council/index.php",
+        "method": "Email council@lakeforestca.gov",
+        "notes": "25550 Commercentre Drive, Suite 100, Lake Forest, CA 92630"
+      },
+      "clerk_contact": {
+        "phone": "(949) 461-3400",
+        "email": "council@lakeforestca.gov"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district elections"
+      ]
+    },
+    "Los Alamitos": {
+      "website": "https://cityoflosalamitos.org",
+      "council_url": "https://cityoflosalamitos.org/165/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Tanya Doby",
+          "position": "Mayor",
+          "district": null,
+          "email": "tdoby@cityoflosalamitos.org",
+          "phone": "562-431-3538 ext. 220",
+          "website": null,
+          "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Jordan Nefulda",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "jnefulda@cityoflosalamitos.org",
+          "phone": "562-431-3538 ext. 220",
+          "website": null,
+          "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Gary Loe",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "Gloe@cityoflosalamitos.org",
+          "phone": "562-431-3538 ext. 220",
+          "website": null,
+          "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Shelley Hasselbrink",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "shasselbrink@cityoflosalamitos.org",
+          "phone": "562-431-3538 ext. 220",
+          "website": null,
+          "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Emily Hibard",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "ehibard@cityoflosalamitos.org",
+          "phone": "562-431-3538 ext. 220",
+          "website": null,
+          "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://cityoflosalamitos.org/AgendaCenter/City-Council-5",
+        "method": "Email cityclerk@cityoflosalamitos.org",
+        "notes": "Meetings 3rd Monday at 6pm. 3191 Katella Ave, Los Alamitos, CA 90720"
+      },
+      "clerk_contact": {
+        "phone": "562-431-3538",
+        "email": "cityclerk@cityoflosalamitos.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district elections"
+      ]
+    },
+    "Mission Viejo": {
+      "website": "https://cityofmissionviejo.org",
+      "council_url": "https://www.cityofmissionviejo.org/government/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Wendy Bucknum",
+          "position": "Mayor",
+          "district": "District 5",
+          "email": "wbucknum@cityofmissionviejo.org",
+          "phone": "949-470-3050",
+          "website": null,
+          "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-wendy-bucknum",
+          "instagram": null
+        },
+        {
+          "name": "Brian Goodell",
+          "position": "Mayor Pro Tem",
+          "district": "District 2",
+          "email": "bgoodell@cityofmissionviejo.org",
+          "phone": "949-470-3050",
+          "website": null,
+          "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-brian-goodell",
+          "instagram": null
+        },
+        {
+          "name": "Bob Ruesch",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "rruesch@cityofmissionviejo.org",
+          "phone": "949-470-3050",
+          "website": null,
+          "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch",
+          "instagram": null
+        },
+        {
+          "name": "Cynthia Vasquez",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "cvasquez@cityofmissionviejo.org",
+          "phone": "949-470-3050",
+          "website": null,
+          "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez",
+          "instagram": null
+        },
+        {
+          "name": "Trish Kelley",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "tkelley@cityofmissionviejo.org",
+          "phone": "949-470-3050",
+          "website": null,
+          "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.cityofmissionviejo.org/government/city-council",
+        "method": "Email cityclerk@cityofmissionviejo.org",
+        "notes": "Meetings 2nd and 4th Tuesday at 6pm. 200 Civic Center, Mission Viejo, CA 92691"
+      },
+      "clerk_contact": {
+        "phone": "949-470-3050",
+        "email": "cityclerk@cityofmissionviejo.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district elections",
+        "Individual emails confirmed from city website"
+      ]
+    },
+    "Newport Beach": {
+      "website": "https://www.newportbeachca.gov",
+      "council_url": "https://www.newportbeachca.gov/government/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Lauren Kleiman",
+          "position": "Mayor",
+          "district": "District 6",
+          "email": "lkleiman@newportbeachca.gov",
+          "phone": "949-644-3004",
+          "website": null,
+          "city_profile": "https://www.newportbeachca.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Joe Stapleton",
+          "position": "Mayor Pro Tem",
+          "district": "District 1",
+          "email": "jstapleton@newportbeachca.gov",
+          "phone": "949-644-3004",
+          "website": null,
+          "city_profile": "https://www.newportbeachca.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Michelle Barto",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "mbarto@newportbeachca.gov",
+          "phone": "949-644-3004",
+          "website": null,
+          "city_profile": "https://www.newportbeachca.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Erik Weigand",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "eweigand@newportbeachca.gov",
+          "phone": "949-644-3004",
+          "website": null,
+          "city_profile": "https://www.newportbeachca.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Robyn Grant",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "rgrant@newportbeachca.gov",
+          "phone": "949-644-3004",
+          "website": null,
+          "city_profile": "https://www.newportbeachca.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Noah Blom",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "nblom@newportbeachca.gov",
+          "phone": "949-644-3004",
+          "website": null,
+          "city_profile": "https://www.newportbeachca.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Sara J. Weber",
+          "position": "Councilmember",
+          "district": "District 7",
+          "email": "sweber@newportbeachca.gov",
+          "phone": "949-644-3004",
+          "website": null,
+          "city_profile": "https://www.newportbeachca.gov/government/city-council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.newportbeachca.gov/government/city-council",
+        "method": "Email citycouncil@newportbeachca.gov",
+        "notes": "100 Civic Center Drive, Newport Beach"
+      },
+      "clerk_contact": {
+        "phone": "949-644-3005",
+        "email": "citycouncil@newportbeachca.gov"
+      },
+      "general_council_email": "citycouncil@newportbeachca.gov",
+      "notes": [
+        "Data verified January 2026",
+        "7-member council by district",
+        "Two consecutive term limit"
+      ]
+    },
+    "Orange": {
+      "website": "https://www.cityoforange.org",
+      "council_url": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Dan Slater",
+          "position": "Mayor",
+          "district": "At-Large",
+          "email": null,
+          "phone": "(714) 744-5500",
+          "website": null,
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/mayor-dan-slater",
+          "instagram": null
+        },
+        {
+          "name": "Denis Bilodeau",
+          "position": "Mayor Pro Tem",
+          "district": "District 4",
+          "email": null,
+          "phone": "(714) 744-5500",
+          "website": null,
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Arianna Barrios",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": null,
+          "phone": "(714) 744-5500",
+          "website": null,
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Jon Dumitru",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": null,
+          "phone": "(714) 744-5500",
+          "website": null,
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Kathy Tavoularis",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": null,
+          "phone": "(714) 744-5500",
+          "website": null,
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Ana Gutierrez",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": null,
+          "phone": "(714) 744-5500",
+          "website": null,
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "John Gyllenhammer",
+          "position": "Councilmember",
+          "district": "District 6",
+          "email": null,
+          "phone": "(714) 744-5500",
+          "website": null,
+          "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.cityoforange.org/our-city/local-government/city-council/city-council-meetings",
+        "method": "eComment via city agenda page",
+        "notes": "300 E. Chapman Ave., Orange, CA 92866"
+      },
+      "clerk_contact": {
+        "phone": "(714) 744-5500",
+        "email": null
+      },
+      "notes": [
+        "Data verified January 2026",
+        "7-member council with directly elected Mayor",
+        "Individual emails on website profiles - site blocks web fetch"
+      ]
+    },
+    "Placentia": {
+      "website": "https://www.placentia.org",
+      "council_url": "https://www.placentia.org/268/Mayor-City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Chad P. Wanke",
+          "position": "Mayor",
+          "district": "District 4",
+          "email": "chad@chadwanke.com",
+          "phone": "(714) 993-8186",
+          "website": null,
+          "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Jeremy B. Yamaguchi",
+          "position": "Mayor Pro Tem",
+          "district": "District 3",
+          "email": "jeremy@jeremyyamaguchi.com",
+          "phone": "(714) 993-8186",
+          "website": null,
+          "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Thomas Hummer",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "thummer@placentia.org",
+          "phone": "(714) 993-8186",
+          "website": null,
+          "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Kevin Kirwin",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "kkirwin@placentia.org",
+          "phone": "(714) 993-8186",
+          "website": null,
+          "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Ward Smith",
+          "position": "Councilmember",
+          "district": "District 5",
+          "email": "wsmith@placentia.org",
+          "phone": "(714) 993-8186",
+          "website": null,
+          "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.placentia.org/268/Mayor-City-Council",
+        "method": "Contact City Clerk",
+        "notes": "401 E. Chapman Ave., Placentia, CA 92870. Meetings 1st and 3rd Tuesday at 7pm"
+      },
+      "clerk_contact": {
+        "phone": "(714) 993-8231",
+        "email": "rramirez@placentia.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district elections",
+        "Mayor/Mayor Pro Tem use personal campaign emails"
+      ]
+    },
+    "Rancho Santa Margarita": {
+      "website": "https://www.cityofrsm.org",
+      "council_url": "https://www.cityofrsm.org/160/Mayor-City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "L. Anthony Beall",
+          "position": "Mayor",
+          "district": null,
+          "email": "tbeall@cityofrsm.org",
+          "phone": "949-635-1800, ext. 6310",
+          "website": null,
+          "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Anne D. Figueroa",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "afigueroa@cityofrsm.org",
+          "phone": "949-635-1800, ext. 6310",
+          "website": null,
+          "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Brad McGirr",
+          "position": "Councilmember",
+          "district": null,
+          "email": "bmcgirr@cityofrsm.org",
+          "phone": "949-635-1800, ext. 6310",
+          "website": null,
+          "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Jerry Holloway",
+          "position": "Councilmember",
+          "district": null,
+          "email": "jholloway@cityofrsm.org",
+          "phone": "949-635-1800, ext. 6310",
+          "website": null,
+          "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Keri Lynn Baert",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "kbaert@cityofrsm.org",
+          "phone": "949-635-1800, ext. 6310",
+          "website": null,
+          "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.cityofrsm.org/187/General-Meeting-Information",
+        "method": "Email City Clerk adiaz@cityofrsm.org",
+        "notes": "22112 El Paseo, Rancho Santa Margarita, CA 92688"
+      },
+      "clerk_contact": {
+        "phone": "(949) 635-1806",
+        "email": "adiaz@cityofrsm.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "Individual emails from directory"
+      ]
+    },
+    "San Clemente": {
+      "website": "https://www.sanclemente.gov",
+      "council_url": "https://www.sanclemente.gov/government/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Rick Loeffler",
+          "position": "Mayor",
+          "district": null,
+          "email": "LoefflerR@san-clemente.org",
+          "phone": "949-702-8235",
+          "website": null,
+          "city_profile": "https://www.sanclemente.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Steve Knoblock",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "KnoblockS@san-clemente.org",
+          "phone": "949-361-8322",
+          "website": null,
+          "city_profile": "https://www.sanclemente.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Victor Cabral",
+          "position": "Councilmember",
+          "district": null,
+          "email": "CabralV@san-clemente.org",
+          "phone": "949-361-8322",
+          "website": null,
+          "city_profile": "https://www.sanclemente.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Mark Enmeier",
+          "position": "Councilmember",
+          "district": null,
+          "email": "EnmeierM@san-clemente.org",
+          "phone": "949-361-8322",
+          "website": null,
+          "city_profile": "https://www.sanclemente.gov/government/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Zhen Wu",
+          "position": "Councilmember",
+          "district": null,
+          "email": "WuZ@san-clemente.org",
+          "phone": "949-361-8322",
+          "website": null,
+          "city_profile": "https://www.sanclemente.gov/government/city-council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.sanclemente.gov/AgendaCenter/City-Council-13",
+        "method": "Email to council members or attend meeting",
+        "notes": "Meetings 1st and 3rd Tuesday at 5:30pm. 910 Calle Negocio, San Clemente, CA 92673"
+      },
+      "clerk_contact": {
+        "phone": "949-361-8322",
+        "email": null
+      },
+      "notes": [
+        "Data verified January 2026",
+        "At-large elections",
+        "Website redirects to sanclemente.gov"
+      ]
+    },
+    "San Juan Capistrano": {
+      "website": "https://sanjuancapistrano.org",
+      "council_url": "https://sanjuancapistrano.org/318/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Derek Reeve",
+          "position": "Mayor",
+          "district": null,
+          "email": "dreeve@sanjuancapistrano.org",
+          "phone": "(949) 493-1171",
+          "website": null,
+          "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Howard Hart",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "hhart@sanjuancapistrano.org",
+          "phone": "(949) 493-1171",
+          "website": null,
+          "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Sergio Farias",
+          "position": "Councilmember",
+          "district": null,
+          "email": "sfarias@sanjuancapistrano.org",
+          "phone": "(949) 493-1171",
+          "website": null,
+          "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "John Taylor",
+          "position": "Councilmember",
+          "district": null,
+          "email": "jtaylor@sanjuancapistrano.org",
+          "phone": "(949) 493-1171",
+          "website": null,
+          "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Troy Bourne",
+          "position": "Councilmember",
+          "district": null,
+          "email": "tbourne@sanjuancapistrano.org",
+          "phone": "(949) 493-1171",
+          "website": null,
+          "city_profile": "https://sanjuancapistrano.org/318/City-Council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://sanjuancapistrano.org/318/City-Council",
+        "method": "Contact City Clerk",
+        "notes": "32400 Paseo Adelanto, San Juan Capistrano, CA 92675"
+      },
+      "clerk_contact": {
+        "phone": "(949) 493-1171",
+        "email": "cityclerk@sanjuancapistrano.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "At-large elections"
+      ]
+    },
+    "Santa Ana": {
+      "website": "https://www.santa-ana.org",
+      "council_url": "https://www.santa-ana.org/city-council-members/",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Valerie Amezcua",
+          "position": "Mayor",
+          "district": "At-Large",
+          "email": "vamezcua@santa-ana.org",
+          "phone": "(714) 647-6900",
+          "website": null,
+          "city_profile": "https://www.santa-ana.org/valerie-amezcua/",
+          "instagram": null
+        },
+        {
+          "name": "Benjamin Vazquez",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "bvazquez@santa-ana.org",
+          "phone": "(714) 647-6900",
+          "website": null,
+          "city_profile": "https://www.santa-ana.org/city-council-members/",
+          "instagram": null
+        },
+        {
+          "name": "Thai Viet Phan",
+          "position": "Councilmember",
+          "district": null,
+          "email": "tphan@santa-ana.org",
+          "phone": "(714) 647-6900",
+          "website": null,
+          "city_profile": "https://www.santa-ana.org/city-council-members/",
+          "instagram": null
+        },
+        {
+          "name": "Jessie Lopez",
+          "position": "Councilmember",
+          "district": null,
+          "email": "jessielopez@santa-ana.org",
+          "phone": "(714) 647-6900",
+          "website": null,
+          "city_profile": "https://www.santa-ana.org/city-council-members/",
+          "instagram": null
+        },
+        {
+          "name": "Phil Bacerra",
+          "position": "Councilmember",
+          "district": null,
+          "email": "pbacerra@santa-ana.org",
+          "phone": "(714) 647-6900",
+          "website": null,
+          "city_profile": "https://www.santa-ana.org/city-council-members/",
+          "instagram": null
+        },
+        {
+          "name": "Johnathan Ryan Hernandez",
+          "position": "Councilmember",
+          "district": null,
+          "email": "jryanhernandez@santa-ana.org",
+          "phone": "(714) 647-6900",
+          "website": null,
+          "city_profile": "https://www.santa-ana.org/city-council-members/",
+          "instagram": null
+        },
+        {
+          "name": "David Penaloza",
+          "position": "Councilmember",
+          "district": null,
+          "email": "dpenaloza@santa-ana.org",
+          "phone": "(714) 647-6900",
+          "website": null,
+          "city_profile": "https://www.santa-ana.org/city-council-members/",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.santa-ana.org/departments/city-council/",
+        "method": "Online form or email councilmembers",
+        "notes": "City Hall 8th Floor, 20 Civic Center Plaza, Santa Ana, CA 92701"
+      },
+      "clerk_contact": {
+        "phone": "(714) 647-6900",
+        "email": null
+      },
+      "notes": [
+        "Data verified January 2026",
+        "County seat of Orange County",
+        "7-member council by ward",
+        "First woman mayor elected 2022"
+      ]
+    },
+    "Seal Beach": {
+      "website": "https://www.sealbeachca.gov",
+      "council_url": "https://www.sealbeachca.gov/Government/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Lisa Landau",
+          "position": "Mayor",
+          "district": "District 3",
+          "email": "llandau@sealbeachca.gov",
+          "phone": "(562) 431-2527 x1503",
+          "website": null,
+          "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Nathan Steele",
+          "position": "Mayor Pro Tem",
+          "district": "District 5",
+          "email": "nsteele@sealbeachca.gov",
+          "phone": "(562) 431-2527 x1505",
+          "website": null,
+          "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Joe Kalmick",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "jkalmick@sealbeachca.gov",
+          "phone": "(562) 431-2527 x1501",
+          "website": null,
+          "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Ben Wong",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "bwong@sealbeachca.gov",
+          "phone": "(562) 431-2527 x1502",
+          "website": null,
+          "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Patty Senecal",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "psenecal@sealbeachca.gov",
+          "phone": "(562) 431-2527 x1504",
+          "website": null,
+          "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.sealbeachca.gov/Government/City-Council",
+        "method": "Email council members",
+        "notes": "By-district council"
+      },
+      "clerk_contact": {
+        "phone": "(562) 431-2527",
+        "email": null
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district elections"
+      ]
+    },
+    "Stanton": {
+      "website": "https://www.stantonca.gov",
+      "council_url": "https://www.stantonca.gov/government/city_council.php",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "David J. Shawver",
+          "position": "Mayor",
+          "district": "At-Large",
+          "email": "DShawver@StantonCA.gov",
+          "phone": "(714) 379-9222",
+          "website": null,
+          "city_profile": "https://www.stantonca.gov/government/city_council.php",
+          "instagram": null
+        },
+        {
+          "name": "Gary Taylor",
+          "position": "Mayor Pro Tem",
+          "district": "District 3",
+          "email": "GTaylor@StantonCA.gov",
+          "phone": "(714) 379-9222",
+          "website": null,
+          "city_profile": "https://www.stantonca.gov/government/city_council.php",
+          "instagram": null
+        },
+        {
+          "name": "Donald Torres",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "DTorres@StantonCA.gov",
+          "phone": "(714) 379-9222",
+          "website": null,
+          "city_profile": "https://www.stantonca.gov/government/city_council.php",
+          "instagram": null
+        },
+        {
+          "name": "Victor Barrios",
+          "position": "Councilmember",
+          "district": "District 2",
+          "email": "VBarrios@StantonCA.gov",
+          "phone": "(714) 379-9222",
+          "website": null,
+          "city_profile": "https://www.stantonca.gov/government/city_council.php",
+          "instagram": null
+        },
+        {
+          "name": "John D. Warren",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "JOHNWarren@StantonCA.gov",
+          "phone": "(714) 379-9222",
+          "website": null,
+          "city_profile": "https://www.stantonca.gov/government/city_council.php",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.stantonca.gov/government/city_council.php",
+        "method": "Email council members",
+        "notes": "7800 Katella Avenue, Stanton, CA 90680"
+      },
+      "clerk_contact": {
+        "phone": "(714) 379-9222",
+        "email": null
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district elections with at-large Mayor"
+      ]
+    },
+    "Tustin": {
+      "website": "https://www.tustinca.org",
+      "council_url": "https://www.tustinca.org/482/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Austin Lumbard",
+          "position": "Mayor",
+          "district": null,
+          "email": "ALumbard@tustinca.org",
+          "phone": "714-573-3012",
+          "website": null,
+          "city_profile": "https://www.tustinca.org/499/Mayor-Austin-Lumbard",
+          "instagram": null
+        },
+        {
+          "name": "Ray Schnell",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "rschnell@tustinca.org",
+          "phone": "714-573-3012",
+          "website": null,
+          "city_profile": "https://www.tustinca.org/1396/Council-Member-Ray-Schnell",
+          "instagram": null
+        },
+        {
+          "name": "Ryan Gallagher",
+          "position": "Councilmember",
+          "district": null,
+          "email": "rgallagher@tustinca.org",
+          "phone": "714-573-3012",
+          "website": null,
+          "city_profile": "https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher",
+          "instagram": null
+        },
+        {
+          "name": "Lee K. Fink",
+          "position": "Councilmember",
+          "district": null,
+          "email": "lfink@tustinca.org",
+          "phone": "714-573-3012",
+          "website": null,
+          "city_profile": "https://www.tustinca.org/1208/Council-Member-Lee-K-Fink",
+          "instagram": null
+        },
+        {
+          "name": "John Nielsen",
+          "position": "Councilmember",
+          "district": null,
+          "email": "jnielsen@tustinca.org",
+          "phone": "714-573-3012",
+          "website": null,
+          "city_profile": "https://www.tustinca.org/493/Council-Member-John-Nielsen",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.tustinca.org/482/City-Council",
+        "method": "Email council members directly",
+        "notes": "300 Centennial Way, Tustin, CA 92780"
+      },
+      "clerk_contact": {
+        "phone": "714-573-3000",
+        "email": "CityCouncil@tustinca.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "Individual emails confirmed from city website profile pages"
+      ]
+    },
+    "Villa Park": {
+      "website": "https://villapark.org",
+      "council_url": "https://villapark.org/council-and-committees/city-council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Jordan Wu",
+          "position": "Mayor",
+          "district": null,
+          "email": "jwu@villapark.org",
+          "phone": "(714) 998-1500",
+          "website": null,
+          "city_profile": "https://villapark.org/council-and-committees/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Robert Frackelton",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "rfrackelton@villapark.org",
+          "phone": "(714) 998-1500",
+          "website": null,
+          "city_profile": "https://villapark.org/council-and-committees/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Nicol Jones",
+          "position": "Councilmember",
+          "district": null,
+          "email": "njones@villapark.org",
+          "phone": "(714) 998-1500",
+          "website": null,
+          "city_profile": "https://villapark.org/council-and-committees/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Kelly McBride",
+          "position": "Councilmember",
+          "district": null,
+          "email": "kmcbride@villapark.org",
+          "phone": "(714) 998-1500",
+          "website": null,
+          "city_profile": "https://villapark.org/council-and-committees/city-council",
+          "instagram": null
+        },
+        {
+          "name": "Crystal Miles",
+          "position": "Councilmember",
+          "district": null,
+          "email": "cmiles@villapark.org",
+          "phone": "(714) 998-1500",
+          "website": null,
+          "city_profile": "https://villapark.org/council-and-committees/city-council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://villapark.org/council-and-committees/city-council",
+        "method": "Email council members or attend meeting",
+        "notes": "17855 Santiago Blvd, Villa Park, CA 92861"
+      },
+      "clerk_contact": {
+        "phone": "(714) 998-1500",
+        "email": "info@villapark.org"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "Smallest city in OC by population",
+        "Individual emails but GENERIC PHONE - needs verification"
+      ]
+    },
+    "Westminster": {
+      "website": "https://www.westminster-ca.gov",
+      "council_url": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Chi Charlie Nguyen",
+          "position": "Mayor",
+          "district": "At-Large",
+          "email": "ccnguyen@westminster-ca.gov",
+          "phone": "(714) 548-3178",
+          "website": null,
+          "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members/mayor-chi-charlie-nguyen",
+          "instagram": null
+        },
+        {
+          "name": "Carlos Manzo",
+          "position": "Vice Mayor",
+          "district": "District 2",
+          "email": "cmanzo@westminster-ca.gov",
+          "phone": "(714) 548-3178",
+          "website": null,
+          "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+          "instagram": null
+        },
+        {
+          "name": "Amy Phan West",
+          "position": "Councilmember",
+          "district": "District 1",
+          "email": "aphanwest@westminster-ca.gov",
+          "phone": "(714) 548-3178",
+          "website": null,
+          "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+          "instagram": null
+        },
+        {
+          "name": "Mark Nguyen",
+          "position": "Councilmember",
+          "district": "District 3",
+          "email": "mnguyen@westminster-ca.gov",
+          "phone": "(714) 548-3178",
+          "website": null,
+          "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+          "instagram": null
+        },
+        {
+          "name": "Tai Do",
+          "position": "Councilmember",
+          "district": "District 4",
+          "email": "tdo@westminster-ca.gov",
+          "phone": "(714) 548-3178",
+          "website": null,
+          "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
+        "method": "Email eComments@westminster-ca.gov",
+        "notes": "8200 Westminster Blvd, Westminster, CA 92683"
+      },
+      "clerk_contact": {
+        "phone": "(714) 548-3178",
+        "email": "eComments@westminster-ca.gov"
+      },
+      "notes": [
+        "Data verified January 2026",
+        "By-district with at-large Mayor",
+        "Home of Little Saigon"
+      ]
+    },
+    "Yorba Linda": {
+      "website": "https://www.yorbalindaca.gov",
+      "council_url": "https://www.yorbalindaca.gov/149/City-Council",
+      "status": "complete",
+      "council_members": [
+        {
+          "name": "Carlos Rodriguez",
+          "position": "Mayor",
+          "district": null,
+          "email": "crodriguez@yorbalindaca.gov",
+          "phone": "714-961-7110",
+          "website": null,
+          "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Peggy Huang",
+          "position": "Mayor Pro Tem",
+          "district": null,
+          "email": "phuang@yorbalindaca.gov",
+          "phone": "714-961-7110",
+          "website": null,
+          "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Tara Campbell",
+          "position": "Councilmember",
+          "district": null,
+          "email": "tcampbell@yorbalindaca.gov",
+          "phone": "714-961-7110",
+          "website": null,
+          "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Janice Lim",
+          "position": "Councilmember",
+          "district": null,
+          "email": "jlim@yorbalindaca.gov",
+          "phone": "714-961-7110",
+          "website": null,
+          "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
+          "instagram": null
+        },
+        {
+          "name": "Shivinder Singh",
+          "position": "Councilmember",
+          "district": null,
+          "email": "ssingh@yorbalindaca.gov",
+          "phone": "714-961-7110",
+          "website": null,
+          "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
+          "instagram": null
+        }
+      ],
+      "public_comment": {
+        "url": "https://www.yorbalindaca.gov/149/City-Council",
+        "method": "Email city_council@yorbalindaca.gov",
+        "notes": "4845 Casa Loma Avenue, Yorba Linda, CA 92886"
+      },
+      "clerk_contact": {
+        "phone": "714-961-7100",
+        "email": "city_council@yorbalindaca.gov"
+      },
+      "general_council_email": "city_council@yorbalindaca.gov",
+      "notes": [
+        "Data verified January 2026",
+        "Birthplace of Richard Nixon",
+        "Individual emails verified"
+      ]
+    }
+  }
+}
