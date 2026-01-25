@@ -1,0 +1,45 @@
+{
+  "scrape_date": "2026-01-25T00:28:36.253049",
+  "browser": "firefox",
+  "stealth_mode": true,
+  "cities_scraped": [
+    "San Juan Capistrano"
+  ],
+  "results": {
+    "San Juan Capistrano": {
+      "city": "San Juan Capistrano",
+      "platform": "civicplus",
+      "scrape_time": "2026-01-25T00:28:37.411983",
+      "pages_visited": [
+        {
+          "url": "https://sanjuancapistrano.org/318/City-Council",
+          "type": "council_main",
+          "status": "success",
+          "http_code": 200,
+          "emails": [],
+          "phones": [
+            "949-493-1171"
+          ],
+          "error": null,
+          "timestamp": "2026-01-25T00:28:37.411983"
+        }
+      ],
+      "council_members": [],
+      "emails_found": [],
+      "phones_found": [
+        "949-493-1171"
+      ],
+      "errors": [],
+      "status": "success",
+      "pages_success": 1,
+      "pages_failed": 0
+    }
+  },
+  "summary": {
+    "total_cities": 1,
+    "successful": 1,
+    "failed": 0,
+    "total_emails_found": 0,
+    "total_pages_visited": 1
+  }
+}
