@@ -8,70 +8,63 @@
       "position": "Mayor",
       "district": "At-Large",
       "email": "dan@danslater.com",
-      "phone": "(714) 744-2211",
-      "website": null,
-      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/mayor-dan-slater",
-      "instagram": null
+      "phone": "(714) 744-5523",
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "photo_url": null
     },
     {
       "name": "Denis Bilodeau",
       "position": "Mayor Pro Tem",
       "district": "District 4",
       "email": "dbilodeau@cityoforange.org",
-      "phone": "(714) 744-2225",
-      "website": null,
+      "phone": "(714) 744-5523",
       "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "instagram": null
-    },
-    {
-      "name": "Arianna Barrios",
-      "position": "Councilmember",
-      "district": "District 1",
-      "email": "abarrios@cityoforange.org",
-      "phone": "(714) 744-2225",
-      "website": null,
-      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "instagram": null
-    },
-    {
-      "name": "Jon Dumitru",
-      "position": "Councilmember",
-      "district": "District 2",
-      "email": "jdumitru@cityoforange.org",
-      "phone": "(714) 744-2225",
-      "website": null,
-      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "instagram": null
-    },
-    {
-      "name": "Kathy Tavoularis",
-      "position": "Councilmember",
-      "district": "District 3",
-      "email": "ktavoularis@cityoforange.org",
-      "phone": "(714) 744-2225",
-      "website": null,
-      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Ana Gutierrez",
       "position": "Councilmember",
       "district": "District 5",
       "email": "anagutierrez@cityoforange.org",
-      "phone": "(714) 744-2225",
-      "website": null,
+      "phone": "(714) 744-5523",
       "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "instagram": null
+      "photo_url": null
+    },
+    {
+      "name": "Arianna Barrios",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "abarrios@cityoforange.org",
+      "phone": "(714) 744-5523",
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "photo_url": null
     },
     {
       "name": "John Gyllenhammer",
       "position": "Councilmember",
       "district": "District 6",
       "email": "jgyllenhammer@cityoforange.org",
-      "phone": "(714) 744-2225",
-      "website": null,
+      "phone": "(714) 744-5523",
       "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "instagram": null
+      "photo_url": null
+    },
+    {
+      "name": "Jon Dumitru",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "jdumitru@cityoforange.org",
+      "phone": "(714) 744-5523",
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "photo_url": null
+    },
+    {
+      "name": "Kathy Tavoularis",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "ktavoularis@cityoforange.org",
+      "phone": "(714) 744-5523",
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
+      "photo_url": null
     }
   ],
   "public_comment": {
@@ -90,5 +83,6 @@
     "Mayor uses personal email dan@danslater.com"
   ],
   "city_name": "Orange",
-  "slug": "orange"
+  "slug": "orange",
+  "last_updated": "2026-01-25"
 }

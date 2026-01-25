@@ -8,77 +8,63 @@
       "position": "Mayor",
       "district": "At-Large",
       "email": "LarryAgran@cityofirvine.org",
-      "phone": null,
-      "website": "https://mayorlarryagran.org",
+      "phone": "949-724-6000",
       "city_profile": "https://cityofirvine.org/city-council/mayor-larry-agran",
-      "instagram": "https://www.instagram.com/mayorlarryagran",
-      "photo": "https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg"
+      "photo_url": "https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg"
     },
     {
       "name": "James Mai",
       "position": "Vice Mayor",
       "district": "District 3",
       "email": "JamesMai@cityofirvine.org",
-      "phone": null,
-      "website": null,
+      "phone": "949-724-6000",
       "city_profile": "https://cityofirvine.org/city-council/vice-mayor-james-mai-district-3",
-      "instagram": "https://www.instagram.com/vicemayormai",
-      "photo": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg"
-    },
-    {
-      "name": "Melinda Liu",
-      "position": "Councilmember",
-      "district": "District 1",
-      "email": "MelindaLiu@cityofirvine.org",
-      "phone": null,
-      "website": "https://www.melindaliuirvine.com",
-      "city_profile": "https://cityofirvine.org/city-council/councilmember-melinda-liu-district-1",
-      "instagram": "https://www.instagram.com/melindaliu_official",
-      "photo": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg"
-    },
-    {
-      "name": "William Go",
-      "position": "Councilmember",
-      "district": "District 2",
-      "email": "WilliamGo@cityofirvine.org",
-      "phone": null,
-      "website": null,
-      "city_profile": "https://cityofirvine.org/city-council/councilmember-william-go-district-2",
-      "instagram": "https://www.instagram.com/williamgoirvine",
-      "photo": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg"
-    },
-    {
-      "name": "Mike Carroll",
-      "position": "Councilmember",
-      "district": "District 4",
-      "email": "MikeCarroll@cityofirvine.org",
-      "phone": null,
-      "website": null,
-      "city_profile": "https://cityofirvine.org/city-council/councilmember-mike-carroll-district-4",
-      "instagram": "https://www.instagram.com/mikecarrollcouncilmember",
-      "photo": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png"
+      "photo_url": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg"
     },
     {
       "name": "Betty Martinez Franco",
       "position": "Councilmember",
       "district": "District 5",
-      "email": "BettyMartinezFranco@cityofirvine.org",
-      "phone": null,
-      "website": null,
+      "email": "bettymartinez@cityofirvine.org",
+      "phone": "949-724-6000",
       "city_profile": "https://cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5",
-      "instagram": "https://www.instagram.com/councilmemberbettymartinez",
-      "photo": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg"
+      "photo_url": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg"
     },
     {
       "name": "Kathleen Treseder",
       "position": "Councilmember",
       "district": "At-Large",
       "email": "KathleenTreseder@cityofirvine.org",
-      "phone": null,
-      "website": null,
+      "phone": "949-724-6000",
       "city_profile": "https://cityofirvine.org/city-council/councilmember-kathleen-treseder-large",
-      "instagram": "https://www.instagram.com/councilmemberkathleentreseder",
-      "photo": "https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg"
+      "photo_url": "https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg"
+    },
+    {
+      "name": "Melinda Liu",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "MelindaLiu@cityofirvine.org",
+      "phone": "949-724-6000",
+      "city_profile": "https://cityofirvine.org/city-council/councilmember-melinda-liu-district-1",
+      "photo_url": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg"
+    },
+    {
+      "name": "Mike Carroll",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "MikeCarroll@cityofirvine.org",
+      "phone": "949-724-6000",
+      "city_profile": "https://cityofirvine.org/city-council/councilmember-mike-carroll-district-4",
+      "photo_url": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png"
+    },
+    {
+      "name": "William Go",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "WilliamGo@cityofirvine.org",
+      "phone": "949-724-6000",
+      "city_profile": "https://cityofirvine.org/city-council/councilmember-william-go-district-2",
+      "photo_url": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg"
     }
   ],
   "public_comment": {
@@ -112,5 +98,6 @@
   "url_status": "error",
   "url_error": "Page.goto: Navigation to \"https://www.cityofirvine.org/city-council\" is interrupted by another navigation to \"https://www.huntingtonbeachca.gov/government/elected_officials/city_council/\"\nCall log:\n  ",
   "city_name": "Irvine",
-  "slug": "irvine"
+  "slug": "irvine",
+  "last_updated": "2026-01-25"
 }

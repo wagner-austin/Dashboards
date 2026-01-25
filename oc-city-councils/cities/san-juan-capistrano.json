@@ -1,57 +1,54 @@
 {
+  "city_name": "San Juan Capistrano",
+  "slug": "san-juan-capistrano",
   "website": "https://sanjuancapistrano.org",
   "council_url": "https://sanjuancapistrano.org/318/City-Council",
   "status": "complete",
   "council_members": [
     {
-      "name": "Derek Reeve",
+      "name": "John Campbell",
       "position": "Mayor",
-      "district": null,
-      "email": "dreeve@sanjuancapistrano.org",
-      "phone": "(949) 493-1171",
-      "website": null,
-      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
-      "instagram": null
+      "district": "District 3",
+      "email": "jcampbell@sanjuancapistrano.org",
+      "phone": "949-493-1171",
+      "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=47",
+      "photo_url": null
+    },
+    {
+      "name": "John Taylor",
+      "position": "Mayor Pro Tem",
+      "district": "District 4",
+      "email": "jtaylor@sanjuancapistrano.org",
+      "phone": "949-493-1171",
+      "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=51",
+      "photo_url": null
     },
     {
       "name": "Howard Hart",
-      "position": "Mayor Pro Tem",
-      "district": null,
+      "position": "Councilmember",
+      "district": "District 5",
       "email": "hhart@sanjuancapistrano.org",
-      "phone": "(949) 493-1171",
-      "website": null,
-      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
-      "instagram": null
+      "phone": "949-493-1171",
+      "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=48",
+      "photo_url": null
     },
     {
       "name": "Sergio Farias",
       "position": "Councilmember",
-      "district": null,
+      "district": "District 1",
       "email": "sfarias@sanjuancapistrano.org",
-      "phone": "(949) 493-1171",
-      "website": null,
-      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
-      "instagram": null
+      "phone": "949-493-1171",
+      "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=50",
+      "photo_url": null
     },
     {
-      "name": "John Taylor",
+      "name": "Troy A. Bourne",
       "position": "Councilmember",
-      "district": null,
-      "email": "jtaylor@sanjuancapistrano.org",
-      "phone": "(949) 493-1171",
-      "website": null,
-      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
-      "instagram": null
-    },
-    {
-      "name": "Troy Bourne",
-      "position": "Councilmember",
-      "district": null,
+      "district": "District 2",
       "email": "tbourne@sanjuancapistrano.org",
-      "phone": "(949) 493-1171",
-      "website": null,
-      "city_profile": "https://sanjuancapistrano.org/318/City-Council",
-      "instagram": null
+      "phone": "949-493-1171",
+      "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=49",
+      "photo_url": null
     }
   ],
   "public_comment": {
@@ -65,8 +62,8 @@
   },
   "notes": [
     "Data verified January 2026",
-    "At-large elections"
+    "By-district elections",
+    "Mayor/Mayor Pro Tem selected by council each December"
   ],
-  "city_name": "San Juan Capistrano",
-  "slug": "san-juan-capistrano"
+  "last_updated": "2026-01-25"
 }

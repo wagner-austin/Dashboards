@@ -1,57 +1,54 @@
 {
+  "city_name": "Placentia",
+  "slug": "placentia",
   "website": "https://www.placentia.org",
   "council_url": "https://www.placentia.org/268/Mayor-City-Council",
   "status": "complete",
   "council_members": [
     {
-      "name": "Chad P. Wanke",
+      "name": "Kevin Kirwin",
       "position": "Mayor",
-      "district": "District 4",
-      "email": "chad@chadwanke.com",
-      "phone": "(714) 993-8186",
-      "website": null,
-      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
-      "instagram": null
+      "district": "District 2",
+      "email": "kkirwin@placentia.org",
+      "phone": "(714) 961-0283",
+      "city_profile": "https://www.placentia.org/674/Councilmember-Kevin-Kirwin-District-2",
+      "photo_url": "https://www.placentia.org/ImageRepository/Document?documentID=10080"
     },
     {
-      "name": "Jeremy B. Yamaguchi",
+      "name": "Chad P Wanke",
       "position": "Mayor Pro Tem",
-      "district": "District 3",
+      "district": null,
+      "email": "chad@chadwanke.com",
+      "phone": "(714) 961-0283",
+      "city_profile": null,
+      "photo_url": "https://www.placentia.org/ImageRepository/Document?documentID=7707"
+    },
+    {
+      "name": "Jeremy B Yamaguchi",
+      "position": "Councilmember",
+      "district": null,
       "email": "jeremy@jeremyyamaguchi.com",
-      "phone": "(714) 993-8186",
-      "website": null,
-      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
-      "instagram": null
+      "phone": "(714) 961-0283",
+      "city_profile": null,
+      "photo_url": "https://www.placentia.org/ImageRepository/Document?documentID=7546"
     },
     {
       "name": "Thomas Hummer",
       "position": "Councilmember",
       "district": "District 1",
       "email": "thummer@placentia.org",
-      "phone": "(714) 993-8186",
-      "website": null,
-      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
-      "instagram": null
+      "phone": "(714) 961-0283",
+      "city_profile": "https://www.placentia.org/721/Councilmember-Thomas-Hummer-District-1",
+      "photo_url": "https://www.placentia.org/ImageRepository/Document?documentID=14591"
     },
     {
-      "name": "Kevin Kirwin",
+      "name": "Ward L Smith",
       "position": "Councilmember",
-      "district": "District 2",
-      "email": "kkirwin@placentia.org",
-      "phone": "(714) 993-8186",
-      "website": null,
-      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
-      "instagram": null
-    },
-    {
-      "name": "Ward Smith",
-      "position": "Councilmember",
-      "district": "District 5",
+      "district": null,
       "email": "wsmith@placentia.org",
-      "phone": "(714) 993-8186",
-      "website": null,
-      "city_profile": "https://www.placentia.org/268/Mayor-City-Council",
-      "instagram": null
+      "phone": "(714) 961-0283",
+      "city_profile": null,
+      "photo_url": "https://www.placentia.org/ImageRepository/Document?documentID=10077"
     }
   ],
   "public_comment": {
@@ -68,6 +65,5 @@
     "By-district elections",
     "Mayor/Mayor Pro Tem use personal campaign emails"
   ],
-  "city_name": "Placentia",
-  "slug": "placentia"
+  "last_updated": "2026-01-25"
 }

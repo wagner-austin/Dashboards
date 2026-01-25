@@ -4,64 +4,67 @@
   "status": "complete",
   "council_members": [
     {
-      "name": "Ashleigh Aitken",
+      "name": "Ashleigh E. Aitken",
       "position": "Mayor",
-      "district": "At-Large",
+      "district": null,
       "email": "aaitken@anaheim.net",
-      "phone": "(714) 765-4311",
-      "website": null,
-      "city_profile": "https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken",
-      "instagram": null
+      "phone": "(714) 765-5098",
+      "city_profile": null,
+      "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58010"
     },
     {
       "name": "Carlos A. Leon",
       "position": "Mayor Pro Tem",
-      "district": "District 3",
+      "district": "District 2",
       "email": "cleon@anaheim.net",
-      "phone": "(714) 765-4311",
-      "website": null,
+      "phone": "(714) 765-5164",
       "city_profile": "https://www.anaheim.net/2314/Mayor-Pro-Tem-Carlos-A-Leon",
-      "instagram": null
+      "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58081"
+    },
+    {
+      "name": "Kristen Maahs",
+      "position": "Councilmember",
+      "district": "District 5",
+      "email": "kmaahs@anaheim.net",
+      "phone": "(714) 765-5164",
+      "city_profile": "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs",
+      "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58009"
+    },
+    {
+      "name": "Natalie Meeks",
+      "position": "Councilmember",
+      "district": null,
+      "email": "nmeeks@anaheim.net",
+      "phone": "(714) 765-5040",
+      "city_profile": null,
+      "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58063"
+    },
+    {
+      "name": "Natalie Rubalcava",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "nrubalcava@anaheim.net",
+      "phone": "(714) 765-5057",
+      "city_profile": "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava",
+      "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58060"
+    },
+    {
+      "name": "Norma Campos Kurtz",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "nkurtz@anaheim.net",
+      "phone": "(714) 765-5014",
+      "city_profile": "https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz",
+      "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58023"
     },
     {
       "name": "Ryan Balius",
       "position": "Councilmember",
       "district": "District 1",
       "email": "rbalius@anaheim.net",
-      "phone": "(714) 765-4311",
-      "website": null,
+      "phone": "(714) 765-5047",
       "city_profile": "https://www.anaheim.net/3522/Council-Member-Ryan-Balius",
-      "instagram": null
-    },
-    {
-      "name": "Natalie Rubalcava",
-      "position": "Councilmember",
-      "district": "District 4",
-      "email": "nrubalcava@anaheim.net",
-      "phone": "(714) 765-4311",
-      "website": null,
-      "city_profile": "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava",
-      "instagram": null
-    },
-    {
-      "name": "Norma Campos Kurtz",
-      "position": "Councilmember",
-      "district": "District 5",
-      "email": "nkurtz@anaheim.net",
-      "phone": "(714) 765-4311",
-      "website": null,
-      "city_profile": "https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz",
-      "instagram": null
-    },
-    {
-      "name": "Kristen Maahs",
-      "position": "Councilmember",
-      "district": "District 6",
-      "email": "kmaahs@anaheim.net",
-      "phone": "(714) 765-4311",
-      "website": null,
-      "city_profile": "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs",
-      "instagram": null
+      "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=57980"
     }
   ],
   "public_comment": {
@@ -74,5 +77,6 @@
     "Data from STATUS.md notes January 2026"
   ],
   "city_name": "Anaheim",
-  "slug": "anaheim"
+  "slug": "anaheim",
+  "last_updated": "2026-01-25"
 }

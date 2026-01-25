@@ -1,4 +1,6 @@
 {
+  "city_name": "Stanton",
+  "slug": "stanton",
   "website": "https://www.stantonca.gov",
   "council_url": "https://www.stantonca.gov/government/city_council.php",
   "status": "complete",
@@ -9,9 +11,8 @@
       "district": "At-Large",
       "email": "DShawver@StantonCA.gov",
       "phone": "(714) 379-9222",
-      "website": null,
-      "city_profile": "https://www.stantonca.gov/government/city_council.php",
-      "instagram": null
+      "city_profile": "https://www.stantonca.gov/government/bio-dshawver.php",
+      "photo_url": "revize_photo_gallery/Government/City Council/David Shawver.jpg?t=202505230901400"
     },
     {
       "name": "Gary Taylor",
@@ -19,9 +20,8 @@
       "district": "District 3",
       "email": "GTaylor@StantonCA.gov",
       "phone": "(714) 379-9222",
-      "website": null,
-      "city_profile": "https://www.stantonca.gov/government/city_council.php",
-      "instagram": null
+      "city_profile": "https://www.stantonca.gov/government/bio-gtaylor.php",
+      "photo_url": "revize_photo_gallery/Government/City Council/Gary Taylor.jpg?t=202505230901430"
     },
     {
       "name": "Donald Torres",
@@ -29,19 +29,8 @@
       "district": "District 1",
       "email": "DTorres@StantonCA.gov",
       "phone": "(714) 379-9222",
-      "website": null,
       "city_profile": "https://www.stantonca.gov/government/city_council.php",
-      "instagram": null
-    },
-    {
-      "name": "Victor Barrios",
-      "position": "Councilmember",
-      "district": "District 2",
-      "email": "VBarrios@StantonCA.gov",
-      "phone": "(714) 379-9222",
-      "website": null,
-      "city_profile": "https://www.stantonca.gov/government/city_council.php",
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "John D. Warren",
@@ -49,9 +38,17 @@
       "district": "District 4",
       "email": "JOHNWarren@StantonCA.gov",
       "phone": "(714) 379-9222",
-      "website": null,
-      "city_profile": "https://www.stantonca.gov/government/city_council.php",
-      "instagram": null
+      "city_profile": "https://www.stantonca.gov/government/bio_for_john_d_warren.php",
+      "photo_url": "JDWarren2 - Copy.jpg?t=202505230901480"
+    },
+    {
+      "name": "Victor Barrios",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "VBarrios@StantonCA.gov",
+      "phone": "(714) 379-9222",
+      "city_profile": "https://www.stantonca.gov/government/bio_for_victor_barrios.php",
+      "photo_url": "V.Barrios.jpg?t=202508251920020"
     }
   ],
   "public_comment": {
@@ -65,8 +62,8 @@
   },
   "notes": [
     "Data verified January 2026",
-    "By-district elections with at-large Mayor"
+    "By-district elections with at-large Mayor",
+    "Individual emails verified"
   ],
-  "city_name": "Stanton",
-  "slug": "stanton"
+  "last_updated": "2026-01-25"
 }

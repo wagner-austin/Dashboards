@@ -7,51 +7,46 @@
       "name": "Nitesh P. Patel",
       "position": "Mayor",
       "district": "At-Large",
-      "email": null,
-      "phone": "(714) 690-3334",
-      "website": null,
+      "email": "citycouncil@lapalmaca.gov",
+      "phone": "714-690-3334",
       "city_profile": "https://www.lapalmaca.gov/716",
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Debbie S. Baker",
       "position": "Mayor Pro Tem",
       "district": "District 1",
-      "email": null,
-      "phone": "(714) 690-3334",
-      "website": null,
+      "email": "citycouncil@lapalmaca.gov",
+      "phone": "714-690-3334",
       "city_profile": "https://www.lapalmaca.gov/714",
-      "instagram": null
+      "photo_url": null
+    },
+    {
+      "name": "Janet Keo",
+      "position": "Councilmember",
+      "district": null,
+      "email": "citycouncil@lapalmaca.gov",
+      "phone": "714-690-3334",
+      "city_profile": null,
+      "photo_url": null
     },
     {
       "name": "Mark I. Waldman",
       "position": "Councilmember",
       "district": "District 5",
-      "email": null,
-      "phone": "(714) 690-3334",
-      "website": null,
+      "email": "citycouncil@lapalmaca.gov",
+      "phone": "714-690-3334",
       "city_profile": "https://www.lapalmaca.gov/717",
-      "instagram": null
-    },
-    {
-      "name": "Janet Keo Conklin",
-      "position": "Councilmember",
-      "district": "At-Large",
-      "email": null,
-      "phone": "(714) 690-3334",
-      "website": null,
-      "city_profile": "https://www.lapalmaca.gov/735",
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Vikesh P. Patel",
       "position": "Councilmember",
       "district": "District 3",
-      "email": null,
-      "phone": "(714) 690-3334",
-      "website": null,
+      "email": "citycouncil@lapalmaca.gov",
+      "phone": "714-690-3334",
       "city_profile": "https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member",
-      "instagram": null
+      "photo_url": null
     }
   ],
   "public_comment": {
@@ -70,5 +65,6 @@
     "No individual emails published"
   ],
   "city_name": "La Palma",
-  "slug": "la-palma"
+  "slug": "la-palma",
+  "last_updated": "2026-01-25"
 }

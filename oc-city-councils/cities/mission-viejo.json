@@ -4,14 +4,22 @@
   "status": "complete",
   "council_members": [
     {
+      "name": "Trish Kelley",
+      "position": "Mayor",
+      "district": "District 4",
+      "email": "tkelley@cityofmissionviejo.org",
+      "phone": "949-470-3050",
+      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley",
+      "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/Trish-Kelley.jpg"
+    },
+    {
       "name": "Wendy Bucknum",
       "position": "Mayor",
       "district": "District 5",
       "email": "wbucknum@cityofmissionviejo.org",
       "phone": "949-470-3050",
-      "website": null,
       "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-wendy-bucknum",
-      "instagram": null
+      "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/wendy-bucknum.jpg"
     },
     {
       "name": "Brian Goodell",
@@ -19,9 +27,8 @@
       "district": "District 2",
       "email": "bgoodell@cityofmissionviejo.org",
       "phone": "949-470-3050",
-      "website": null,
       "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-brian-goodell",
-      "instagram": null
+      "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/bgoodell-web.jpg"
     },
     {
       "name": "Bob Ruesch",
@@ -29,9 +36,8 @@
       "district": "District 1",
       "email": "rruesch@cityofmissionviejo.org",
       "phone": "949-470-3050",
-      "website": null,
       "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch",
-      "instagram": null
+      "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/Bob-Ruesch-Headshot.jpg"
     },
     {
       "name": "Cynthia Vasquez",
@@ -39,19 +45,8 @@
       "district": "District 3",
       "email": "cvasquez@cityofmissionviejo.org",
       "phone": "949-470-3050",
-      "website": null,
       "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez",
-      "instagram": null
-    },
-    {
-      "name": "Trish Kelley",
-      "position": "Councilmember",
-      "district": "District 4",
-      "email": "tkelley@cityofmissionviejo.org",
-      "phone": "949-470-3050",
-      "website": null,
-      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley",
-      "instagram": null
+      "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/Cynthia-Vasquez-Headshot.jpg"
     }
   ],
   "public_comment": {
@@ -69,5 +64,6 @@
     "Individual emails confirmed from city website"
   ],
   "city_name": "Mission Viejo",
-  "slug": "mission-viejo"
+  "slug": "mission-viejo",
+  "last_updated": "2026-01-25"
 }

@@ -1,4 +1,6 @@
 {
+  "city_name": "Santa Ana",
+  "slug": "santa-ana",
   "website": "https://www.santa-ana.org",
   "council_url": "https://www.santa-ana.org/city-council-members/",
   "status": "complete",
@@ -9,69 +11,62 @@
       "district": "At-Large",
       "email": "vamezcua@santa-ana.org",
       "phone": "(714) 647-6900",
-      "website": null,
-      "city_profile": "https://www.santa-ana.org/valerie-amezcua/",
-      "instagram": null
+      "city_profile": "https://www.santa-ana.org/city-council/",
+      "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/uploads/2023/02/Valerie-Amezcua-2022-Portrait-Compressed.jpg"
     },
     {
       "name": "Benjamin Vazquez",
       "position": "Mayor Pro Tem",
-      "district": null,
+      "district": "Ward 6",
       "email": "bvazquez@santa-ana.org",
       "phone": "(714) 647-6900",
-      "website": null,
-      "city_profile": "https://www.santa-ana.org/city-council-members/",
-      "instagram": null
-    },
-    {
-      "name": "Thai Viet Phan",
-      "position": "Councilmember",
-      "district": null,
-      "email": "tphan@santa-ana.org",
-      "phone": "(714) 647-6900",
-      "website": null,
-      "city_profile": "https://www.santa-ana.org/city-council-members/",
-      "instagram": null
-    },
-    {
-      "name": "Jessie Lopez",
-      "position": "Councilmember",
-      "district": null,
-      "email": "jessielopez@santa-ana.org",
-      "phone": "(714) 647-6900",
-      "website": null,
-      "city_profile": "https://www.santa-ana.org/city-council-members/",
-      "instagram": null
-    },
-    {
-      "name": "Phil Bacerra",
-      "position": "Councilmember",
-      "district": null,
-      "email": "pbacerra@santa-ana.org",
-      "phone": "(714) 647-6900",
-      "website": null,
-      "city_profile": "https://www.santa-ana.org/city-council-members/",
-      "instagram": null
-    },
-    {
-      "name": "Johnathan Ryan Hernandez",
-      "position": "Councilmember",
-      "district": null,
-      "email": "jryanhernandez@santa-ana.org",
-      "phone": "(714) 647-6900",
-      "website": null,
-      "city_profile": "https://www.santa-ana.org/city-council-members/",
-      "instagram": null
+      "city_profile": "https://www.santa-ana.org/city-council/",
+      "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/2025/05/Benjamin-Vazquez-2025-Portrait-240x300-1.jpg"
     },
     {
       "name": "David Penaloza",
       "position": "Councilmember",
-      "district": null,
+      "district": "Ward 2",
       "email": "dpenaloza@santa-ana.org",
       "phone": "(714) 647-6900",
-      "website": null,
-      "city_profile": "https://www.santa-ana.org/city-council-members/",
-      "instagram": null
+      "city_profile": "https://www.santa-ana.org/city-council/",
+      "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/uploads/2020/07/David-Penaloza-scaled.jpg"
+    },
+    {
+      "name": "Jessie Lopez",
+      "position": "Councilmember",
+      "district": "Ward 3",
+      "email": "jessielopez@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "city_profile": "https://www.santa-ana.org/city-council/",
+      "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/uploads/2020/12/Jessie-Lopez-Headshot.jpg"
+    },
+    {
+      "name": "Johnathan Ryan Hernandez",
+      "position": "Councilmember",
+      "district": "Ward 1",
+      "email": "jryanhernandez@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "city_profile": "https://www.santa-ana.org/city-council/",
+      "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/uploads/2020/12/Johnathan-Ryan-Hernandez.png"
+    },
+    {
+      "name": "Phil Bacerra",
+      "position": "Councilmember",
+      "district": "Ward 4",
+      "email": "pbacerra@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "city_profile": "https://www.santa-ana.org/city-council/",
+      "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/2025/05/Phil-Bacerra-2025-Portrait-240x300-1.jpg"
+    },
+    {
+      "name": "Thai Viet Phan",
+      "position": "Councilmember",
+      "district": "Ward 5",
+      "email": "tphan@santa-ana.org",
+      "phone": "(714) 647-6900",
+      "city_profile": "https://www.santa-ana.org/city-council/",
+      "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/2025/05/Thai-Viet-Phan-2025-Portrait-240x300-1.jpg"
     }
   ],
   "public_comment": {
@@ -86,9 +81,8 @@
   "notes": [
     "Data verified January 2026",
     "County seat of Orange County",
-    "7-member council by ward",
+    "7-member council by ward with at-large Mayor",
     "First woman mayor elected 2022"
   ],
-  "city_name": "Santa Ana",
-  "slug": "santa-ana"
+  "last_updated": "2026-01-25"
 }

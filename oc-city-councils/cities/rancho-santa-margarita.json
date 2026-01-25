@@ -1,4 +1,6 @@
 {
+  "city_name": "Rancho Santa Margarita",
+  "slug": "rancho-santa-margarita",
   "website": "https://www.cityofrsm.org",
   "council_url": "https://www.cityofrsm.org/160/Mayor-City-Council",
   "status": "complete",
@@ -8,50 +10,45 @@
       "position": "Mayor",
       "district": null,
       "email": "tbeall@cityofrsm.org",
-      "phone": "949-635-1800, ext. 6310",
-      "website": null,
-      "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
-      "instagram": null
+      "phone": "949-635-1800",
+      "city_profile": "https://www.cityofrsm.org/Directory.aspx?EID=9",
+      "photo_url": "https://www.cityofrsm.org/ImageRepository/Document?documentID=12201"
     },
     {
       "name": "Anne D. Figueroa",
       "position": "Mayor Pro Tem",
       "district": null,
       "email": "afigueroa@cityofrsm.org",
-      "phone": "949-635-1800, ext. 6310",
-      "website": null,
-      "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
-      "instagram": null
+      "phone": "949-635-1800",
+      "city_profile": "https://www.cityofrsm.org/Directory.aspx?EID=44",
+      "photo_url": "https://www.cityofrsm.org/ImageRepository/Document?documentID=3823"
     },
     {
-      "name": "Brad McGirr",
+      "name": "Bradley J. McGirr",
       "position": "Councilmember",
       "district": null,
       "email": "bmcgirr@cityofrsm.org",
-      "phone": "949-635-1800, ext. 6310",
-      "website": null,
-      "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
-      "instagram": null
+      "phone": "949-635-1800",
+      "city_profile": "https://www.cityofrsm.org/Directory.aspx?EID=8",
+      "photo_url": "https://www.cityofrsm.org/ImageRepository/Document?documentID=12199"
     },
     {
       "name": "Jerry Holloway",
       "position": "Councilmember",
       "district": null,
       "email": "jholloway@cityofrsm.org",
-      "phone": "949-635-1800, ext. 6310",
-      "website": null,
-      "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
-      "instagram": null
+      "phone": "949-635-1800",
+      "city_profile": "https://www.cityofrsm.org/Directory.aspx?EID=11",
+      "photo_url": "https://www.cityofrsm.org/ImageRepository/Document?documentId=11120"
     },
     {
       "name": "Keri Lynn Baert",
       "position": "Councilmember",
       "district": "District 3",
       "email": "kbaert@cityofrsm.org",
-      "phone": "949-635-1800, ext. 6310",
-      "website": null,
-      "city_profile": "https://www.cityofrsm.org/160/Mayor-City-Council",
-      "instagram": null
+      "phone": "949-635-1800 x. 6310",
+      "city_profile": "https://www.cityofrsm.org/Directory.aspx?EID=70",
+      "photo_url": "https://www.cityofrsm.org/ImageRepository/Document?documentID=12200"
     }
   ],
   "public_comment": {
@@ -67,6 +64,5 @@
     "Data verified January 2026",
     "Individual emails from directory"
   ],
-  "city_name": "Rancho Santa Margarita",
-  "slug": "rancho-santa-margarita"
+  "last_updated": "2026-01-25"
 }

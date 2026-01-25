@@ -1,4 +1,6 @@
 {
+  "city_name": "Westminster",
+  "slug": "westminster",
   "website": "https://www.westminster-ca.gov",
   "council_url": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
   "status": "complete",
@@ -8,50 +10,45 @@
       "position": "Mayor",
       "district": "At-Large",
       "email": "ccnguyen@westminster-ca.gov",
-      "phone": "(714) 548-3178",
-      "website": null,
+      "phone": "(714) 898-3311",
       "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members/mayor-chi-charlie-nguyen",
-      "instagram": null
+      "photo_url": "https://www.westminster-ca.gov/home/showpublishedimage/4694/638701392192800000"
     },
     {
-      "name": "Carlos Manzo",
+      "name": "NamQuan Nguyen",
       "position": "Vice Mayor",
-      "district": "District 2",
-      "email": "cmanzo@westminster-ca.gov",
-      "phone": "(714) 548-3178",
-      "website": null,
-      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
-      "instagram": null
+      "district": "District 4",
+      "email": "NNguyen@westminster-ca.gov",
+      "phone": "(714) 898-3311",
+      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members/vice-mayor-namquan-nguyen-district-4",
+      "photo_url": "https://www.westminster-ca.gov/home/showpublishedimage/4696/638701392206430000"
     },
     {
       "name": "Amy Phan West",
       "position": "Councilmember",
       "district": "District 1",
-      "email": "aphanwest@westminster-ca.gov",
-      "phone": "(714) 548-3178",
-      "website": null,
-      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
-      "instagram": null
+      "email": "APhanWest@westminster-ca.gov",
+      "phone": "(714) 898-3311",
+      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-amy-phan-west-district-1",
+      "photo_url": "https://www.westminster-ca.gov/home/showpublishedimage/4688/638701077054570000"
+    },
+    {
+      "name": "Carlos Manzo",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "CManzo@Westminster-CA.gov",
+      "phone": "(714) 898-3311",
+      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-carlos-manzo-district-2",
+      "photo_url": "https://www.westminster-ca.gov/home/showpublishedimage/4690/638701077070770000"
     },
     {
       "name": "Mark Nguyen",
       "position": "Councilmember",
       "district": "District 3",
       "email": "mnguyen@westminster-ca.gov",
-      "phone": "(714) 548-3178",
-      "website": null,
+      "phone": "(714) 898-3311",
       "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
-      "instagram": null
-    },
-    {
-      "name": "Tai Do",
-      "position": "Councilmember",
-      "district": "District 4",
-      "email": "tdo@westminster-ca.gov",
-      "phone": "(714) 548-3178",
-      "website": null,
-      "city_profile": "https://www.westminster-ca.gov/government/mayor-and-city-council-members",
-      "instagram": null
+      "photo_url": "https://www.westminster-ca.gov/home/showpublishedimage/4680/638700392461200000"
     }
   ],
   "public_comment": {
@@ -61,13 +58,14 @@
   },
   "clerk_contact": {
     "phone": "(714) 548-3178",
-    "email": "eComments@westminster-ca.gov"
+    "email": "ldoan@westminster-ca.gov",
+    "name": "Linh Doan"
   },
   "notes": [
     "Data verified January 2026",
     "By-district with at-large Mayor",
-    "Home of Little Saigon"
+    "Home of Little Saigon",
+    "Individual emails verified via Firefox stealth scrape"
   ],
-  "city_name": "Westminster",
-  "slug": "westminster"
+  "last_updated": "2026-01-25"
 }

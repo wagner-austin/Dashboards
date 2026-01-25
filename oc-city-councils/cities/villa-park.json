@@ -1,4 +1,6 @@
 {
+  "city_name": "Villa Park",
+  "slug": "villa-park",
   "website": "https://villapark.org",
   "council_url": "https://villapark.org/council-and-committees/city-council",
   "status": "complete",
@@ -9,9 +11,8 @@
       "district": null,
       "email": "jwu@villapark.org",
       "phone": "(714) 998-1500",
-      "website": null,
-      "city_profile": "https://villapark.org/council-and-committees/city-council",
-      "instagram": null
+      "city_profile": "https://villapark.org/Council-and-Committees/City-Council/Jordan-Wu-Bio",
+      "photo_url": null
     },
     {
       "name": "Robert Frackelton",
@@ -19,29 +20,8 @@
       "district": null,
       "email": "rfrackelton@villapark.org",
       "phone": "(714) 998-1500",
-      "website": null,
-      "city_profile": "https://villapark.org/council-and-committees/city-council",
-      "instagram": null
-    },
-    {
-      "name": "Nicol Jones",
-      "position": "Councilmember",
-      "district": null,
-      "email": "njones@villapark.org",
-      "phone": "(714) 998-1500",
-      "website": null,
-      "city_profile": "https://villapark.org/council-and-committees/city-council",
-      "instagram": null
-    },
-    {
-      "name": "Kelly McBride",
-      "position": "Councilmember",
-      "district": null,
-      "email": "kmcbride@villapark.org",
-      "phone": "(714) 998-1500",
-      "website": null,
-      "city_profile": "https://villapark.org/council-and-committees/city-council",
-      "instagram": null
+      "city_profile": "https://villapark.org/Council-and-Committees/City-Council/Robert-Frackelton-Bio",
+      "photo_url": null
     },
     {
       "name": "Crystal Miles",
@@ -49,9 +29,26 @@
       "district": null,
       "email": "cmiles@villapark.org",
       "phone": "(714) 998-1500",
-      "website": null,
-      "city_profile": "https://villapark.org/council-and-committees/city-council",
-      "instagram": null
+      "city_profile": "https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio",
+      "photo_url": null
+    },
+    {
+      "name": "Kelly McBride",
+      "position": "Councilmember",
+      "district": null,
+      "email": "kmcbride@villapark.org",
+      "phone": "(714) 998-1500",
+      "city_profile": "https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio",
+      "photo_url": null
+    },
+    {
+      "name": "Nicol Jones",
+      "position": "Councilmember",
+      "district": null,
+      "email": "njones@villapark.org",
+      "phone": "(714) 998-1500",
+      "city_profile": "https://villapark.org/Council-and-Committees/City-Council/Nicol-Jones-Bio",
+      "photo_url": null
     }
   ],
   "public_comment": {
@@ -66,8 +63,8 @@
   "notes": [
     "Data verified January 2026",
     "Smallest city in OC by population",
-    "Individual emails but GENERIC PHONE - needs verification"
+    "Individual emails verified",
+    "At-large elections (no districts)"
   ],
-  "city_name": "Villa Park",
-  "slug": "villa-park"
+  "last_updated": "2026-01-25"
 }

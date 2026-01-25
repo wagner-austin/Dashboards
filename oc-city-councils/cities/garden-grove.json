@@ -9,9 +9,8 @@
       "district": "Citywide",
       "email": "stephaniek@ggcity.org",
       "phone": "(714) 741-5104",
-      "website": null,
       "city_profile": "https://ggcity.org/city-council/stephanie-klopfenstein",
-      "instagram": null
+      "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2025-01/mayor_stephanie_klopfenstein.jpg?itok=YdMRUkng"
     },
     {
       "name": "George S. Brietigam III",
@@ -19,49 +18,8 @@
       "district": "District 1",
       "email": "georgeb@ggcity.org",
       "phone": "(714) 741-5104",
-      "website": null,
       "city_profile": "https://ggcity.org/city-council/george-brietigam",
-      "instagram": null
-    },
-    {
-      "name": "Phillip Nguyen",
-      "position": "Councilmember",
-      "district": "District 2",
-      "email": "phillipn@ggcity.org",
-      "phone": "(714) 741-5104",
-      "website": null,
-      "city_profile": "https://ggcity.org/city-council/phillip-nguyen",
-      "instagram": null
-    },
-    {
-      "name": "Cindy Ngoc Tran",
-      "position": "Councilmember",
-      "district": "District 3",
-      "email": "cindyt@ggcity.org",
-      "phone": "(714) 741-5104",
-      "website": null,
-      "city_profile": "https://ggcity.org/city-council/cindy-tran",
-      "instagram": null
-    },
-    {
-      "name": "Joe DoVinh",
-      "position": "Councilmember",
-      "district": "District 4",
-      "email": "joed@ggcity.org",
-      "phone": "(714) 741-5104",
-      "website": null,
-      "city_profile": "https://ggcity.org/city-council/joe-dovinh",
-      "instagram": null
-    },
-    {
-      "name": "Yesenia MuÃ±eton",
-      "position": "Councilmember",
-      "district": "District 5",
-      "email": "yeseniam@ggcity.org",
-      "phone": "(714) 741-5104",
-      "website": null,
-      "city_profile": "https://ggcity.org/city-council/yesenia-muneton",
-      "instagram": null
+      "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2019-03/george-brietigam.jpg?itok=2SfCVcc4"
     },
     {
       "name": "Ariana Arestegui",
@@ -69,9 +27,44 @@
       "district": "District 6",
       "email": "arianaa@ggcity.org",
       "phone": "(714) 741-5104",
-      "website": null,
       "city_profile": "https://ggcity.org/city-council/ariana-arestegui",
-      "instagram": null
+      "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2025-01/aristegui.jpg?itok=EyLlH4Rr"
+    },
+    {
+      "name": "Cindy Ngoc Tran",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "cindyt@ggcity.org",
+      "phone": "(714) 741-5104",
+      "city_profile": "https://ggcity.org/city-council/cindy-tran",
+      "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2023-01/cindy.jpg?itok=E1BbH5ac"
+    },
+    {
+      "name": "Joe DoVinh",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "joed@ggcity.org",
+      "phone": "(714) 741-5104",
+      "city_profile": "https://ggcity.org/city-council/joe-dovinh",
+      "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2023-01/0n4a1706.jpg?itok=MGoTobSr"
+    },
+    {
+      "name": "Phillip Nguyen",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "phillipn@ggcity.org",
+      "phone": "(714) 741-5104",
+      "city_profile": "https://ggcity.org/city-council/phillip-nguyen",
+      "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2025-01/pnguyen.jpg?itok=nuxppIu5"
+    },
+    {
+      "name": "Yesenia Muñeton",
+      "position": "Councilmember",
+      "district": null,
+      "email": "yeseniam@ggcity.org",
+      "phone": "(714) 741-5104",
+      "city_profile": null,
+      "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2025-01/ymuneton.jpg?itok=mCU21BsW"
     }
   ],
   "public_comment": {
@@ -89,5 +82,6 @@
     "By-district elections for districts 1-6"
   ],
   "city_name": "Garden Grove",
-  "slug": "garden-grove"
+  "slug": "garden-grove",
+  "last_updated": "2026-01-25"
 }

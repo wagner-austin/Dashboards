@@ -1,4 +1,6 @@
 {
+  "city_name": "San Clemente",
+  "slug": "san-clemente",
   "website": "https://www.sanclemente.gov",
   "council_url": "https://www.sanclemente.gov/government/city-council",
   "status": "complete",
@@ -8,50 +10,45 @@
       "position": "Mayor",
       "district": null,
       "email": "LoefflerR@san-clemente.org",
-      "phone": "949-702-8235",
-      "website": null,
-      "city_profile": "https://www.sanclemente.gov/government/city-council",
-      "instagram": null
+      "phone": "949-361-8200",
+      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=58",
+      "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
     },
     {
       "name": "Steve Knoblock",
       "position": "Mayor Pro Tem",
       "district": null,
       "email": "KnoblockS@san-clemente.org",
-      "phone": "949-361-8322",
-      "website": null,
-      "city_profile": "https://www.sanclemente.gov/government/city-council",
-      "instagram": null
-    },
-    {
-      "name": "Victor Cabral",
-      "position": "Councilmember",
-      "district": null,
-      "email": "CabralV@san-clemente.org",
-      "phone": "949-361-8322",
-      "website": null,
-      "city_profile": "https://www.sanclemente.gov/government/city-council",
-      "instagram": null
+      "phone": "949-361-8200",
+      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=57",
+      "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
     },
     {
       "name": "Mark Enmeier",
       "position": "Councilmember",
       "district": null,
       "email": "EnmeierM@san-clemente.org",
-      "phone": "949-361-8322",
-      "website": null,
-      "city_profile": "https://www.sanclemente.gov/government/city-council",
-      "instagram": null
+      "phone": "949-361-8200",
+      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=56",
+      "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
+    },
+    {
+      "name": "Victor Cabral",
+      "position": "Councilmember",
+      "district": null,
+      "email": "CabralV@san-clemente.org",
+      "phone": "949-361-8200",
+      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=55",
+      "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
     },
     {
       "name": "Zhen Wu",
       "position": "Councilmember",
       "district": null,
       "email": "WuZ@san-clemente.org",
-      "phone": "949-361-8322",
-      "website": null,
-      "city_profile": "https://www.sanclemente.gov/government/city-council",
-      "instagram": null
+      "phone": "949-361-8200",
+      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=59",
+      "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
     }
   ],
   "public_comment": {
@@ -60,14 +57,13 @@
     "notes": "Meetings 1st and 3rd Tuesday at 5:30pm. 910 Calle Negocio, San Clemente, CA 92673"
   },
   "clerk_contact": {
-    "phone": "949-361-8322",
+    "phone": "(949) 361-8322",
     "email": null
   },
   "notes": [
     "Data verified January 2026",
     "At-large elections",
-    "Website redirects to sanclemente.gov"
+    "Website: sanclemente.gov (redirects from san-clemente.org)"
   ],
-  "city_name": "San Clemente",
-  "slug": "san-clemente"
+  "last_updated": "2026-01-25"
 }

@@ -4,54 +4,49 @@
   "status": "complete",
   "council_members": [
     {
-      "name": "Tanya Doby",
-      "position": "Mayor",
-      "district": null,
-      "email": "tdoby@cityoflosalamitos.org",
-      "phone": "562-431-3538 ext. 220",
-      "website": null,
-      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
-      "instagram": null
-    },
-    {
-      "name": "Jordan Nefulda",
-      "position": "Mayor Pro Tem",
-      "district": null,
-      "email": "jnefulda@cityoflosalamitos.org",
-      "phone": "562-431-3538 ext. 220",
-      "website": null,
-      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
-      "instagram": null
-    },
-    {
-      "name": "Gary Loe",
-      "position": "Councilmember",
-      "district": "District 2",
-      "email": "Gloe@cityoflosalamitos.org",
-      "phone": "562-431-3538 ext. 220",
-      "website": null,
-      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
-      "instagram": null
-    },
-    {
       "name": "Shelley Hasselbrink",
-      "position": "Councilmember",
+      "position": "Mayor",
       "district": "District 4",
       "email": "shasselbrink@cityoflosalamitos.org",
-      "phone": "562-431-3538 ext. 220",
-      "website": null,
+      "phone": "562-431-3538",
       "city_profile": "https://cityoflosalamitos.org/165/City-Council",
-      "instagram": null
+      "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=2385"
     },
     {
       "name": "Emily Hibard",
       "position": "Councilmember",
       "district": "District 5",
       "email": "ehibard@cityoflosalamitos.org",
-      "phone": "562-431-3538 ext. 220",
-      "website": null,
+      "phone": "562-431-3538",
       "city_profile": "https://cityoflosalamitos.org/165/City-Council",
-      "instagram": null
+      "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=2388"
+    },
+    {
+      "name": "Gary Loe",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "Gloe@cityoflosalamitos.org",
+      "phone": "562-431-3538",
+      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=4436"
+    },
+    {
+      "name": "Jordan Nefulda",
+      "position": "Councilmember",
+      "district": null,
+      "email": "jnefulda@cityoflosalamitos.org",
+      "phone": "562-431-3538",
+      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=2384"
+    },
+    {
+      "name": "Tanya Doby",
+      "position": "Councilmember",
+      "district": null,
+      "email": "tdoby@cityoflosalamitos.org",
+      "phone": "562-431-3538",
+      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=2386"
     }
   ],
   "public_comment": {
@@ -68,5 +63,6 @@
     "By-district elections"
   ],
   "city_name": "Los Alamitos",
-  "slug": "los-alamitos"
+  "slug": "los-alamitos",
+  "last_updated": "2026-01-25"
 }

@@ -4,14 +4,13 @@
   "status": "complete",
   "council_members": [
     {
-      "name": "Robert PequeÃ±o",
+      "name": "Robert Pequeno",
       "position": "Mayor",
-      "district": "District 5",
+      "district": null,
       "email": "rpequeno@lakeforestca.gov",
       "phone": "(949) 461-3400",
-      "website": null,
-      "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
-      "instagram": null
+      "city_profile": null,
+      "photo_url": null
     },
     {
       "name": "Doug Cirbo",
@@ -19,29 +18,8 @@
       "district": "District 1",
       "email": "dcirbo@lakeforestca.gov",
       "phone": "(949) 461-3400",
-      "website": null,
       "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
-      "instagram": null
-    },
-    {
-      "name": "Mark Tettemer",
-      "position": "Councilmember",
-      "district": "District 4",
-      "email": "mtettemer@lakeforestca.gov",
-      "phone": "(949) 461-3400",
-      "website": null,
-      "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
-      "instagram": null
-    },
-    {
-      "name": "Scott Voigts",
-      "position": "Councilmember",
-      "district": "District 3",
-      "email": "svoigts@lakeforestca.gov",
-      "phone": "(949) 461-3400",
-      "website": null,
-      "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Benjamin Yu",
@@ -49,9 +27,26 @@
       "district": "District 2",
       "email": "byu@lakeforestca.gov",
       "phone": "(949) 461-3400",
-      "website": null,
       "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
-      "instagram": null
+      "photo_url": null
+    },
+    {
+      "name": "Mark Tettemer",
+      "position": "Councilmember",
+      "district": "District 4",
+      "email": "mtettemer@lakeforestca.gov",
+      "phone": "(949) 461-3400",
+      "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
+      "photo_url": null
+    },
+    {
+      "name": "Scott Voigts",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "svoigts@lakeforestca.gov",
+      "phone": "(949) 461-3400",
+      "city_profile": "https://www.lakeforestca.gov/city_government/city_council/index.php",
+      "photo_url": null
     }
   ],
   "public_comment": {
@@ -68,5 +63,6 @@
     "By-district elections"
   ],
   "city_name": "Lake Forest",
-  "slug": "lake-forest"
+  "slug": "lake-forest",
+  "last_updated": "2026-01-25"
 }

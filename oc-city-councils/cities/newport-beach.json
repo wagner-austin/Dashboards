@@ -1,77 +1,72 @@
 {
+  "city_name": "Newport Beach",
+  "slug": "newport-beach",
   "website": "https://www.newportbeachca.gov",
   "council_url": "https://www.newportbeachca.gov/government/city-council",
   "status": "complete",
   "council_members": [
     {
-      "name": "Lauren Kleiman",
-      "position": "Mayor",
+      "name": "Lauren Kleiman (2026)",
+      "position": "Mayor Pro Tem",
       "district": "District 6",
       "email": "lkleiman@newportbeachca.gov",
-      "phone": "949-644-3004",
-      "website": null,
-      "city_profile": "https://www.newportbeachca.gov/government/city-council",
-      "instagram": null
+      "phone": "949-644-3309",
+      "city_profile": null,
+      "photo_url": null
     },
     {
-      "name": "Joe Stapleton",
+      "name": "Pro Tem Noah Blom (2028*)\nEmpty heading",
       "position": "Mayor Pro Tem",
-      "district": "District 1",
-      "email": "jstapleton@newportbeachca.gov",
-      "phone": "949-644-3004",
-      "website": null,
-      "city_profile": "https://www.newportbeachca.gov/government/city-council",
-      "instagram": null
+      "district": "District 5",
+      "email": "nblom@newportbeachca.gov",
+      "phone": "949-644-3309",
+      "city_profile": null,
+      "photo_url": null
     },
     {
-      "name": "Michelle Barto",
-      "position": "Councilmember",
-      "district": "District 2",
-      "email": "mbarto@newportbeachca.gov",
-      "phone": "949-644-3004",
-      "website": null,
-      "city_profile": "https://www.newportbeachca.gov/government/city-council",
-      "instagram": null
-    },
-    {
-      "name": "Erik Weigand",
+      "name": "Erik Weigand (2026)",
       "position": "Councilmember",
       "district": "District 3",
       "email": "eweigand@newportbeachca.gov",
-      "phone": "949-644-3004",
-      "website": null,
-      "city_profile": "https://www.newportbeachca.gov/government/city-council",
-      "instagram": null
+      "phone": "949-644-3309",
+      "city_profile": null,
+      "photo_url": null
     },
     {
-      "name": "Robyn Grant",
+      "name": "Joe Stapleton (2026)\nEmpty heading",
+      "position": "Councilmember",
+      "district": "District 1",
+      "email": "jstapleton@newportbeachca.gov",
+      "phone": "949-644-3309",
+      "city_profile": null,
+      "photo_url": null
+    },
+    {
+      "name": "Michelle Barto (2028)",
+      "position": "Councilmember",
+      "district": "District 2",
+      "email": "mbarto@newportbeachca.gov",
+      "phone": "949-644-3309",
+      "city_profile": null,
+      "photo_url": null
+    },
+    {
+      "name": "Robyn Grant (2026)",
       "position": "Councilmember",
       "district": "District 4",
       "email": "rgrant@newportbeachca.gov",
-      "phone": "949-644-3004",
-      "website": null,
-      "city_profile": "https://www.newportbeachca.gov/government/city-council",
-      "instagram": null
+      "phone": "949-644-3309",
+      "city_profile": null,
+      "photo_url": null
     },
     {
-      "name": "Noah Blom",
-      "position": "Councilmember",
-      "district": "District 5",
-      "email": "nblom@newportbeachca.gov",
-      "phone": "949-644-3004",
-      "website": null,
-      "city_profile": "https://www.newportbeachca.gov/government/city-council",
-      "instagram": null
-    },
-    {
-      "name": "Sara J. Weber",
+      "name": "Sara Weber (2028)",
       "position": "Councilmember",
       "district": "District 7",
       "email": "sweber@newportbeachca.gov",
-      "phone": "949-644-3004",
-      "website": null,
-      "city_profile": "https://www.newportbeachca.gov/government/city-council",
-      "instagram": null
+      "phone": "949-644-3309",
+      "city_profile": null,
+      "photo_url": null
     }
   ],
   "public_comment": {
@@ -80,15 +75,15 @@
     "notes": "100 Civic Center Drive, Newport Beach"
   },
   "clerk_contact": {
-    "phone": "949-644-3005",
+    "phone": "(949) 644-3005",
     "email": "citycouncil@newportbeachca.gov"
   },
   "general_council_email": "citycouncil@newportbeachca.gov",
   "notes": [
     "Data verified January 2026",
     "7-member council by district",
+    "Mayor/MPT rotate annually - Joe Stapleton is 2025 Mayor",
     "Two consecutive term limit"
   ],
-  "city_name": "Newport Beach",
-  "slug": "newport-beach"
+  "last_updated": "2026-01-25"
 }

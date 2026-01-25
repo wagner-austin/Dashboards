@@ -4,54 +4,49 @@
   "status": "complete",
   "council_members": [
     {
+      "name": "Bob Whalen",
+      "position": "Mayor",
+      "district": null,
+      "email": "bwhalen@lagunabeachcity.net",
+      "phone": "949-497-3311",
+      "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126",
+      "photo_url": "https://www.lagunabeachcity.net/home/showpublishedimage/4706/638067135619970000"
+    },
+    {
       "name": "Mark Orgill",
       "position": "Mayor",
       "district": null,
-      "email": null,
-      "phone": "(949) 463-4821",
-      "website": null,
+      "email": "morgill@lagunabeachcity.net",
+      "phone": "949-497-3311",
       "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126",
-      "instagram": null
+      "photo_url": "https://www.lagunabeachcity.net/home/showpublishedimage/4694/638064498925070000"
+    },
+    {
+      "name": "Sue Kempf",
+      "position": "Mayor",
+      "district": null,
+      "email": "skempf@lagunabeachcity.net",
+      "phone": "(949) 439-3001",
+      "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126",
+      "photo_url": "https://www.lagunabeachcity.net/home/showpublishedimage/5560/638453363123100000"
     },
     {
       "name": "Hallie Jones",
       "position": "Mayor Pro Tem",
       "district": null,
-      "email": null,
-      "phone": "(949) 992-5419",
-      "website": null,
+      "email": "hjones@lagunabeachcity.net",
+      "phone": "949-497-3311",
       "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126",
-      "instagram": null
-    },
-    {
-      "name": "Sue Kempf",
-      "position": "Councilmember",
-      "district": null,
-      "email": null,
-      "phone": "(949) 439-3001",
-      "website": null,
-      "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126",
-      "instagram": null
+      "photo_url": "https://www.lagunabeachcity.net/home/showpublishedimage/6128/638693684199500000"
     },
     {
       "name": "Alex Rounaghi",
       "position": "Councilmember",
       "district": null,
-      "email": null,
+      "email": "arounaghi@lagunabeachcity.net",
       "phone": "(949) 395-1275",
-      "website": null,
       "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126",
-      "instagram": null
-    },
-    {
-      "name": "Bob Whalen",
-      "position": "Councilmember",
-      "district": null,
-      "email": null,
-      "phone": "(949) 497-0796",
-      "website": null,
-      "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126",
-      "instagram": null
+      "photo_url": "https://www.lagunabeachcity.net/home/showpublishedimage/4692/638694573774830000"
     }
   ],
   "public_comment": {
@@ -72,5 +67,6 @@
   ],
   "email": "citycouncil@lagunabeachcity.net",
   "city_name": "Laguna Beach",
-  "slug": "laguna-beach"
+  "slug": "laguna-beach",
+  "last_updated": "2026-01-25"
 }

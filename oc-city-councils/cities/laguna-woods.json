@@ -9,9 +9,8 @@
       "district": null,
       "email": "amccary@cityoflagunawoods.org",
       "phone": "(949) 639-0500",
-      "website": null,
       "city_profile": "https://www.cityoflagunawoods.org/city-council/",
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Pearl Lee",
@@ -19,29 +18,8 @@
       "district": null,
       "email": "plee@cityoflagunawoods.org",
       "phone": "(949) 639-0500",
-      "website": null,
       "city_profile": "https://www.cityoflagunawoods.org/city-council/",
-      "instagram": null
-    },
-    {
-      "name": "Cynthia Conners",
-      "position": "Councilmember",
-      "district": null,
-      "email": "cconners@cityoflagunawoods.org",
-      "phone": "(949) 639-0500",
-      "website": null,
-      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
-      "instagram": null
-    },
-    {
-      "name": "Shari L. Horne",
-      "position": "Councilmember",
-      "district": null,
-      "email": "shorne@cityoflagunawoods.org",
-      "phone": "(949) 639-0500",
-      "website": null,
-      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Carol Moore",
@@ -49,9 +27,26 @@
       "district": null,
       "email": "cmoore@cityoflagunawoods.org",
       "phone": "(949) 639-0500",
-      "website": null,
       "city_profile": "https://www.cityoflagunawoods.org/city-council/",
-      "instagram": null
+      "photo_url": null
+    },
+    {
+      "name": "Cynthia Conners",
+      "position": "Councilmember",
+      "district": null,
+      "email": "cconners@cityoflagunawoods.org",
+      "phone": "(949) 639-0500",
+      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+      "photo_url": null
+    },
+    {
+      "name": "Shari L. Horne",
+      "position": "Councilmember",
+      "district": null,
+      "email": "shorne@cityoflagunawoods.org",
+      "phone": "(949) 639-0500",
+      "city_profile": "https://www.cityoflagunawoods.org/city-council/",
+      "photo_url": null
     }
   ],
   "public_comment": {
@@ -68,5 +63,6 @@
     "At-large elections"
   ],
   "city_name": "Laguna Woods",
-  "slug": "laguna-woods"
+  "slug": "laguna-woods",
+  "last_updated": "2026-01-25"
 }

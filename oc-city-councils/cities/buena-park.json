@@ -9,9 +9,8 @@
       "district": "District 5",
       "email": "ctraut@buenapark.com",
       "phone": "714-562-3500",
-      "website": null,
       "city_profile": null,
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Lamiya Hoque",
@@ -19,9 +18,8 @@
       "district": "District 4",
       "email": "lhoque@buenapark.com",
       "phone": "714-562-3500",
-      "website": null,
       "city_profile": null,
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Carlos Franco",
@@ -29,19 +27,8 @@
       "district": "District 2",
       "email": "cfranco@buenapark.com",
       "phone": "714-562-3500",
-      "website": null,
       "city_profile": null,
-      "instagram": null
-    },
-    {
-      "name": "Susan Sonne",
-      "position": "Councilmember",
-      "district": "District 3",
-      "email": "ssonne@buenapark.com",
-      "phone": "714-562-3500",
-      "website": null,
-      "city_profile": null,
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Joyce Ahn",
@@ -49,9 +36,17 @@
       "district": "District 1",
       "email": "jahn@buenapark.com",
       "phone": "714-562-3500",
-      "website": null,
       "city_profile": null,
-      "instagram": null
+      "photo_url": null
+    },
+    {
+      "name": "Susan Sonne",
+      "position": "Councilmember",
+      "district": "District 3",
+      "email": "ssonne@buenapark.com",
+      "phone": "714-562-3500",
+      "city_profile": null,
+      "photo_url": null
     }
   ],
   "public_comment": {
@@ -67,5 +62,6 @@
     "Data verified January 2026 from official site"
   ],
   "city_name": "Buena Park",
-  "slug": "buena-park"
+  "slug": "buena-park",
+  "last_updated": "2026-01-25"
 }

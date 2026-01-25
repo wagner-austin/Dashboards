@@ -1,6 +1,8 @@
 {
+  "city_name": "Yorba Linda",
+  "slug": "yorba-linda",
   "website": "https://www.yorbalindaca.gov",
-  "council_url": "https://www.yorbalindaca.gov/149/City-Council",
+  "council_url": "https://www.yorbalindaca.gov/190/City-Council",
   "status": "complete",
   "council_members": [
     {
@@ -8,54 +10,49 @@
       "position": "Mayor",
       "district": null,
       "email": "crodriguez@yorbalindaca.gov",
-      "phone": "714-961-7110",
-      "website": null,
-      "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
-      "instagram": null
+      "phone": "714-961-7100",
+      "city_profile": "https://www.yorbalindaca.gov/746/Council-Member-Carlos-Rodriguez",
+      "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8530"
     },
     {
       "name": "Peggy Huang",
       "position": "Mayor Pro Tem",
       "district": null,
       "email": "phuang@yorbalindaca.gov",
-      "phone": "714-961-7110",
-      "website": null,
-      "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
-      "instagram": null
-    },
-    {
-      "name": "Tara Campbell",
-      "position": "Councilmember",
-      "district": null,
-      "email": "tcampbell@yorbalindaca.gov",
-      "phone": "714-961-7110",
-      "website": null,
-      "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
-      "instagram": null
+      "phone": "714-961-7100",
+      "city_profile": "https://www.yorbalindaca.gov/194/Council-Member-Peggy-Huang",
+      "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8532"
     },
     {
       "name": "Janice Lim",
       "position": "Councilmember",
       "district": null,
       "email": "jlim@yorbalindaca.gov",
-      "phone": "714-961-7110",
-      "website": null,
-      "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
-      "instagram": null
+      "phone": "714-961-7100",
+      "city_profile": "https://www.yorbalindaca.gov/195/Council-Member-Janice-Lim",
+      "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8521"
     },
     {
       "name": "Shivinder Singh",
       "position": "Councilmember",
       "district": null,
       "email": "ssingh@yorbalindaca.gov",
-      "phone": "714-961-7110",
-      "website": null,
-      "city_profile": "https://www.yorbalindaca.gov/149/City-Council",
-      "instagram": null
+      "phone": "714-961-7100",
+      "city_profile": "https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh",
+      "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8533"
+    },
+    {
+      "name": "Tara Campbell",
+      "position": "Councilmember",
+      "district": null,
+      "email": "tcampbell@yorbalindaca.gov",
+      "phone": "714-961-7100",
+      "city_profile": "https://www.yorbalindaca.gov/744/Mayor-Tara-Campbell",
+      "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8534"
     }
   ],
   "public_comment": {
-    "url": "https://www.yorbalindaca.gov/149/City-Council",
+    "url": "https://www.yorbalindaca.gov/190/City-Council",
     "method": "Email city_council@yorbalindaca.gov",
     "notes": "4845 Casa Loma Avenue, Yorba Linda, CA 92886"
   },
@@ -69,6 +66,5 @@
     "Birthplace of Richard Nixon",
     "Individual emails verified"
   ],
-  "city_name": "Yorba Linda",
-  "slug": "yorba-linda"
+  "last_updated": "2026-01-25"
 }

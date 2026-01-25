@@ -9,49 +9,44 @@
       "district": "District 3",
       "email": "llandau@sealbeachca.gov",
       "phone": "(562) 431-2527 x1503",
-      "website": null,
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
-      "instagram": null
+      "photo_url": null
     },
     {
-      "name": "Nathan Steele",
+      "name": "Ben Wong",
       "position": "Mayor Pro Tem",
-      "district": "District 5",
-      "email": "nsteele@sealbeachca.gov",
-      "phone": "(562) 431-2527 x1505",
-      "website": null,
+      "district": "District 2",
+      "email": "bwong@sealbeachca.gov",
+      "phone": "(562) 431-2527 x1503",
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Joe Kalmick",
       "position": "Councilmember",
       "district": "District 1",
       "email": "jkalmick@sealbeachca.gov",
-      "phone": "(562) 431-2527 x1501",
-      "website": null,
+      "phone": "(562) 431-2527 x1503",
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
-      "instagram": null
+      "photo_url": null
     },
     {
-      "name": "Ben Wong",
+      "name": "Nathan Steele",
       "position": "Councilmember",
-      "district": "District 2",
-      "email": "bwong@sealbeachca.gov",
-      "phone": "(562) 431-2527 x1502",
-      "website": null,
+      "district": "District 5",
+      "email": "nsteele@sealbeachca.gov",
+      "phone": "(562) 431-2527 x1503",
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
-      "instagram": null
+      "photo_url": null
     },
     {
       "name": "Patty Senecal",
       "position": "Councilmember",
       "district": "District 4",
       "email": "psenecal@sealbeachca.gov",
-      "phone": "(562) 431-2527 x1504",
-      "website": null,
+      "phone": "(562) 431-2527 x1503",
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
-      "instagram": null
+      "photo_url": null
     }
   ],
   "public_comment": {
@@ -68,5 +63,6 @@
     "By-district elections"
   ],
   "city_name": "Seal Beach",
-  "slug": "seal-beach"
+  "slug": "seal-beach",
+  "last_updated": "2026-01-25"
 }

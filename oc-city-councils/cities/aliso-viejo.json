@@ -8,50 +8,45 @@
       "position": "Mayor",
       "district": "District 2",
       "email": "mduncan@avcity.org",
-      "phone": "949-425-2510",
-      "website": null,
+      "phone": "949-425-3899",
       "city_profile": "https://avcity.org/294/Mayor-Max-Duncan",
-      "instagram": null
+      "photo_url": "https://avcity.org/ImageRepository/Document?documentID=4118"
     },
     {
       "name": "Mike Munzing",
       "position": "Mayor Pro Tem",
-      "district": "District 5",
+      "district": "At-Large",
       "email": "mmunzing@avcity.org",
-      "phone": "949-425-2510",
-      "website": null,
+      "phone": "949-425-3899",
       "city_profile": "https://avcity.org/292/Mayor-Pro-Tem-Mike-Munzing",
-      "instagram": null
-    },
-    {
-      "name": "Tiffany Ackley",
-      "position": "Councilmember",
-      "district": null,
-      "email": "tackley@avcity.org",
-      "phone": "949-425-2510",
-      "website": null,
-      "city_profile": "https://avcity.org/293/Councilmember-Tiffany-Ackley",
-      "instagram": null
+      "photo_url": "https://avcity.org/ImageRepository/Document?documentID=4054"
     },
     {
       "name": "Garrett Dwyer",
       "position": "Councilmember",
-      "district": null,
+      "district": "At-Large",
       "email": "GDwyer@AVCity.org",
-      "phone": "949-425-2510",
-      "website": null,
+      "phone": "949-425-3899",
       "city_profile": "https://avcity.org/295/Councilmember-Garrett-Dwyer",
-      "instagram": null
+      "photo_url": "https://avcity.org/ImageRepository/Document?documentID=4478"
+    },
+    {
+      "name": "Tiffany Ackley",
+      "position": "Councilmember",
+      "district": "At-Large",
+      "email": "tackley@avcity.org",
+      "phone": "949-425-3899",
+      "city_profile": "https://avcity.org/293/Councilmember-Tiffany-Ackley",
+      "photo_url": "https://avcity.org/ImageRepository/Document?documentID=456"
     },
     {
       "name": "Tim Zandbergen",
       "position": "Councilmember",
-      "district": null,
+      "district": "At-Large",
       "email": "tzandbergen@avcity.org",
-      "phone": "949-425-2510",
-      "website": null,
+      "phone": "949-425-3899",
       "city_profile": "https://avcity.org/291/Councilmember-Tim-Zandbergen",
-      "instagram": null
+      "photo_url": "https://avcity.org/ImageRepository/Document?documentID=4053"
     }
   ],
   "public_comment": {
@@ -67,5 +62,6 @@
     "Data verified January 2026 from official site"
   ],
   "city_name": "Aliso Viejo",
-  "slug": "aliso-viejo"
+  "slug": "aliso-viejo",
+  "last_updated": "2026-01-25"
 }

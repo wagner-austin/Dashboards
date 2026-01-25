@@ -4,34 +4,22 @@
   "status": "complete",
   "council_members": [
     {
-      "name": "David Burke",
-      "position": "Mayor",
-      "district": null,
-      "email": "dburke@cypressca.org",
-      "phone": "714-229-6699",
-      "website": "https://www.davidburkeforcypress.com/",
-      "city_profile": "https://www.cypressca.org/government/city-council/council-member-david-burke",
-      "instagram": null
-    },
-    {
       "name": "Leo Medrano",
-      "position": "Mayor Pro Tem",
+      "position": "Mayor",
       "district": "District 4",
       "email": "lmedrano@cypressca.org",
       "phone": "714-229-6699",
-      "website": null,
       "city_profile": "https://www.cypressca.org/government/city-council/council-member-leo-medrano",
-      "instagram": null
+      "photo_url": "https://www.cypressca.org/home/showpublishedimage/12826/638726243326730000"
     },
     {
       "name": "Kyle Chang",
-      "position": "Councilmember",
+      "position": "Mayor Pro Tem",
       "district": "District 3",
       "email": "kchang@cypressca.org",
       "phone": "714-229-6699",
-      "website": "https://votekylechang.com/",
       "city_profile": "https://www.cypressca.org/government/city-council/council-member-kyle-change",
-      "instagram": "https://www.instagram.com/kylechangoc/"
+      "photo_url": null
     },
     {
       "name": "Bonnie Peat",
@@ -39,19 +27,26 @@
       "district": null,
       "email": "bpeat@cypressca.org",
       "phone": "714-229-6699",
-      "website": "https://bonniepeatforcypress.com/",
       "city_profile": "https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat",
-      "instagram": null
+      "photo_url": "https://www.cypressca.org/home/showpublishedimage/10176/638091266228000000"
+    },
+    {
+      "name": "David Burke",
+      "position": "Councilmember",
+      "district": null,
+      "email": "dburke@cypressca.org",
+      "phone": "714-229-6699",
+      "city_profile": "https://www.cypressca.org/government/city-council/council-member-david-burke",
+      "photo_url": "https://www.cypressca.org/home/showpublishedimage/10178/638091266025670000"
     },
     {
       "name": "Rachel Strong Carnahan",
       "position": "Councilmember",
       "district": "District 5",
-      "email": "rstrong@cypressca.org",
+      "email": "rstrongcarnahan@cypressca.org",
       "phone": "714-229-6699",
-      "website": null,
       "city_profile": "https://www.cypressca.org/government/city-council/council-member-rachel-strong",
-      "instagram": null
+      "photo_url": "https://www.cypressca.org/home/showpublishedimage/14531/639041920579870000"
     }
   ],
   "public_comment": {
@@ -69,5 +64,6 @@
     "City Clerk: Alisha Farnell"
   ],
   "city_name": "Cypress",
-  "slug": "cypress"
+  "slug": "cypress",
+  "last_updated": "2026-01-25"
 }

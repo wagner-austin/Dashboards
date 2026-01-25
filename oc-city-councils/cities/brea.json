@@ -6,52 +6,47 @@
     {
       "name": "Cecilia Hupp",
       "position": "Mayor",
-      "district": null,
+      "district": "At-Large",
       "email": "ceciliah@cityofbrea.gov",
-      "phone": "714-990-7704",
-      "website": null,
-      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=3",
-      "instagram": null
+      "phone": "714-990-7600",
+      "city_profile": "https://www.ci.brea.ca.us/Directory.aspx?EID=3",
+      "photo_url": "https://www.cityofbrea.gov/ImageRepository/Document?documentId=13261"
     },
     {
       "name": "Marty Simonoff",
       "position": "Mayor Pro Tem",
-      "district": null,
+      "district": "At-Large",
       "email": "martys@cityofbrea.gov",
-      "phone": "714-990-7702",
-      "website": null,
-      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=6",
-      "instagram": null
-    },
-    {
-      "name": "Christine Marick",
-      "position": "Councilmember",
-      "district": null,
-      "email": "christinem@cityofbrea.gov",
-      "phone": "714-990-7700",
-      "website": null,
-      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=4",
-      "instagram": null
+      "phone": "714-990-7600",
+      "city_profile": "https://www.ci.brea.ca.us/Directory.aspx?EID=6",
+      "photo_url": "https://www.cityofbrea.gov/ImageRepository/Document?documentId=12582"
     },
     {
       "name": "Blair Stewart",
       "position": "Councilmember",
-      "district": null,
+      "district": "At-Large",
       "email": "blairs@cityofbrea.gov",
-      "phone": "714-990-7703",
-      "website": null,
-      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=2",
-      "instagram": null
+      "phone": "714-990-7600",
+      "city_profile": "https://www.ci.brea.ca.us/Directory.aspx?EID=2",
+      "photo_url": "https://www.cityofbrea.gov/ImageRepository/Document?documentId=13955"
+    },
+    {
+      "name": "Christine Marick",
+      "position": "Councilmember",
+      "district": "At-Large",
+      "email": "christinem@cityofbrea.gov",
+      "phone": "714-990-7600",
+      "city_profile": "https://www.ci.brea.ca.us/Directory.aspx?EID=4",
+      "photo_url": "https://www.cityofbrea.gov/ImageRepository/Document?documentId=12584"
     },
     {
       "name": "Steven Vargas",
       "position": "Councilmember",
-      "district": null,
+      "district": "At-Large",
       "email": "stevenv@cityofbrea.gov",
-      "phone": "714-990-7701",
-      "website": null,
-      "city_profile": "https://www.cityofbrea.gov/Directory.aspx?EID=5",
-      "instagram": null
+      "phone": "714-990-7600",
+      "city_profile": "https://www.ci.brea.ca.us/Directory.aspx?EID=5",
+      "photo_url": "https://www.cityofbrea.gov/ImageRepository/Document?documentId=11690"
     }
   ],
   "public_comment": {
@@ -68,5 +63,6 @@
     "At-large elections"
   ],
   "city_name": "Brea",
-  "slug": "brea"
+  "slug": "brea",
+  "last_updated": "2026-01-25"
 }
