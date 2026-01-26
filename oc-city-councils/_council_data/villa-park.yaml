@@ -1,6 +1,6 @@
 city: villa-park
 city_name: Villa Park
-last_updated: '2026-01-25'
+last_updated: '2026-01-26'
 website: https://villapark.org
 council_url: https://villapark.org/council-and-committees/city-council
 general_email: info@villapark.org
@@ -13,7 +13,7 @@ members:
   email: jwu@villapark.org
   phone: (714) 998-1500
   city_profile: https://villapark.org/Council-and-Committees/City-Council/Jordan-Wu-Bio
-  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2025/villapark25-group.jpg?ver=CMaHoALwuzBnadfKmNo1TQ%3d%3d
+  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/JordanWu-2024-villaparkcitycouncil43297--retouched.jpg?ver=6ICLYQmCmPSdstJNQnYBBg%3d%3d
   bio: null
   term_start: 2022
   term_end: 2026
@@ -33,32 +33,6 @@ members:
   website: null
   instagram: null
   city_page: https://villapark.org/Council-and-Committees/City-Council/Robert-Frackelton-Bio
-- name: Crystal Miles
-  position: Councilmember
-  district: null
-  email: cmiles@villapark.org
-  phone: (714) 998-1500
-  city_profile: https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio
-  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Miles-2024-villaparkcitycouncil43416--retouched.jpg?ver=Y18dsDaPXyl1OfV3aRiwFg%3d%3d
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio
-- name: Kelly McBride
-  position: Councilmember
-  district: null
-  email: kmcbride@villapark.org
-  phone: (714) 998-1500
-  city_profile: https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio
-  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Kelly-2024-villaparkcitycouncil43380--retouched.jpg?ver=UQLZMUTZcuqyXxz-OuW9Rw%3d%3d
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio
 - name: Nicol Jones
   position: Councilmember
   district: null
@@ -72,6 +46,32 @@ members:
   website: null
   instagram: null
   city_page: https://villapark.org/Council-and-Committees/City-Council/Nicol-Jones-Bio
+- name: Kelly McBride
+  position: Councilmember
+  district: null
+  email: kmcbride@villapark.org
+  phone: (714) 998-1500
+  city_profile: https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio
+  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Kelly-2024-villaparkcitycouncil43380--retouched.jpg?ver=UQLZMUTZcuqyXxz-OuW9Rw%3d%3d
+  bio: null
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio
+- name: Crystal Miles
+  position: Councilmember
+  district: null
+  email: cmiles@villapark.org
+  phone: (714) 998-1500
+  city_profile: https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio
+  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Miles-2024-villaparkcitycouncil43416--retouched.jpg?ver=Y18dsDaPXyl1OfV3aRiwFg%3d%3d
+  bio: null
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio
 meetings:
   schedule: 4th Tuesday
   time: 6:30 PM
@@ -80,19 +80,30 @@ meetings:
     address: 17855 Santiago Boulevard
     city_state_zip: Villa Park, CA 92861
 portals:
-  agenda_center: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes
+  agenda_center: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=780&view=gridview&pageSize=10
+  video_archive: https://villapark.org/Council-and-Committees/Council-Meeting-Videos/LCmid/667/sort-desc/datecreated
+  live_stream: https://villapark.org
+  youtube: https://youtube.com/@cityofvillapark
+broadcast:
+  cable_channels:
+  - provider: Spectrum
+    channel: '3'
+  - provider: AT&T U-verse
+    channel: '99'
 clerk:
-  title: City Clerk
+  name: Steve Franks
+  title: City Manager/City Clerk
   phone: (714) 998-1500
-  email: info@villapark.org
+  email: sfranks@villapark.org
 public_comment:
   in_person: true
   remote_live: false
   ecomment: false
   written_email: true
-  time_limit: 3 minutes per speaker
+  time_limit: 5 minutes per speaker
   email: info@villapark.org
   deadline: 3:00 PM on meeting day
+  notes: Speaker's card required; agenda available 4:00 PM Friday prior to meeting
 council:
   size: 5
   districts: 0
