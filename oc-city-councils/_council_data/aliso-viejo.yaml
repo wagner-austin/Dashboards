@@ -101,14 +101,15 @@ broadcast:
 clerk:
   title: City Clerk's Office
   phone: (949) 425-2510
-  email: City-council@avcity.org
+  email: city-clerk@avcity.org
 public_comment:
   in_person: true
   remote_live: false
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  email: City-council@avcity.org
+  email: community-input@avcity.org
+  notes: General public comment allowed at beginning of meetings
 council:
   size: 5
   districts: 5
