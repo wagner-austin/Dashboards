@@ -280,9 +280,7 @@
             const pc = c.public_comment || {};
             document.getElementById('commentInfo').innerHTML =
                 row('Email', pc.email ? `<a href="mailto:${pc.email}">${pc.email}</a>` : '') +
-                row('Deadline', pc.deadline) +
-                row('In Person', pc.in_person ? 'Yes' : pc.in_person === false ? 'No' : '') +
-                row('Remote', pc.remote_live ? 'Yes' : pc.remote_live === false ? 'No' : '');
+                row('Deadline', pc.deadline);
 
             // Elections
             const el = c.elections || {};
