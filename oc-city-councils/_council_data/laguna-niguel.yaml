@@ -118,8 +118,8 @@ meetings:
     address: 30111 Crown Valley Parkway
     city_state_zip: Laguna Niguel, CA 92677
 portals:
-  granicus: null
-  ecomment: null
+  agendas: http://ca-lagunaniguel4.civicplus.com/914/Agendas
+  youtube: https://www.youtube.com/channel/UCvIGnIDVe7Puu8OgTTCCdFg
   live_stream: https://www.youtube.com/cityoflagunaniguel
 broadcast:
   cable_channels:
@@ -128,17 +128,21 @@ broadcast:
   - provider: AT&T U-Verse
     channel: '99'
   live_stream: https://www.youtube.com/cityoflagunaniguel
+  rebroadcast: 6:00 PM daily following each meeting
 clerk:
   title: City Clerk's Office
-  phone: (949) 362-4373
-  email: council@cityoflagunaniguel.org
+  phone: (949) 362-4301
+  fax: (949) 362-4340
+  email: cityclerk@cityoflagunaniguel.org
 public_comment:
   in_person: true
   remote_live: false
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  email: council@cityoflagunaniguel.org
+  email: cityclerk@cityoflagunaniguel.org
+  speaker_card: "Request to Speak" form required
+  notes: No action taken on items not on agenda
 council:
   size: 5
   districts: 0
@@ -148,7 +152,6 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - Councilmember
-  - Councilmember
+  - 2 at-large seats
   term_length: 4
   election_system: at-large
