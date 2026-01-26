@@ -117,9 +117,12 @@ meetings:
 portals:
   granicus: https://costamesa.granicus.com/ViewPublisher.php?view_id=5
 clerk:
-  title: City Clerk's Office
+  name: Brenda Green
+  title: City Clerk
   phone: (714) 754-5225
-  email: cityclerk@costamesaca.gov
+  direct_phone: (714) 754-5221
+  email: brenda.green@costamesaca.gov
+  address: 77 Fair Drive, Costa Mesa, CA 92626
 public_comment:
   in_person: true
   remote_live: true
@@ -128,6 +131,7 @@ public_comment:
   time_limit: 3 minutes per speaker
   email: cityclerk@costamesaca.gov
   deadline: 12:00 PM day of meeting
+  notes: Comments provided to council, made public, and part of meeting record
 council:
   size: 7
   districts: 0
