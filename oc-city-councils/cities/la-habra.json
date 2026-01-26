@@ -9,8 +9,8 @@
       "district": null,
       "email": "CityCouncil@lahabraca.gov",
       "phone": "562-383-4000",
-      "city_profile": "https://www.lahabraca.gov/DocumentCenter/View/15731/Medrano-2026-Bio",
-      "photo_url": null
+      "city_profile": "https://www.lahabraca.gov/153/City-Council",
+      "photo_url": "https://www.lahabraca.gov/ImageRepository/Document?documentId=15728"
     },
     {
       "name": "James Gomez",
@@ -19,7 +19,7 @@
       "email": "CityCouncil@lahabraca.gov",
       "phone": "562-383-4000",
       "city_profile": "https://www.lahabraca.gov/153/City-Council",
-      "photo_url": null
+      "photo_url": "https://www.lahabraca.gov/ImageRepository/Document?documentID=15729"
     },
     {
       "name": "Daren Nigsarian",
@@ -27,8 +27,8 @@
       "district": null,
       "email": "CityCouncil@lahabraca.gov",
       "phone": "562-383-4000",
-      "city_profile": "https://www.lahabraca.gov/DocumentCenter/View/15732/Nigsarian-2026-Bio",
-      "photo_url": null
+      "city_profile": "https://www.lahabraca.gov/153/City-Council",
+      "photo_url": "https://www.lahabraca.gov/ImageRepository/Document?documentID=12381"
     },
     {
       "name": "Delwin Lampkin",
@@ -36,8 +36,8 @@
       "district": null,
       "email": "CityCouncil@lahabraca.gov",
       "phone": "562-383-4000",
-      "city_profile": "https://www.lahabraca.gov/DocumentCenter/View/15683/Delwin-Lampkin-2025",
-      "photo_url": null
+      "city_profile": "https://www.lahabraca.gov/153/City-Council",
+      "photo_url": "https://www.lahabraca.gov/ImageRepository/Document?documentId=15202"
     },
     {
       "name": "Rose Espinoza",
@@ -45,8 +45,8 @@
       "district": null,
       "email": "CityCouncil@lahabraca.gov",
       "phone": "562-383-4000",
-      "city_profile": "https://www.lahabraca.gov/DocumentCenter/View/15733/Rose-Espinoza-2026-Bio",
-      "photo_url": null
+      "city_profile": "https://www.lahabraca.gov/153/City-Council",
+      "photo_url": "https://www.lahabraca.gov/ImageRepository/Document?documentID=12382"
     }
   ],
   "public_comment": {
@@ -65,5 +65,58 @@
   ],
   "city_name": "La Habra",
   "slug": "la-habra",
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "website": "https://www.lahabraca.gov",
+    "council_url": "https://www.lahabraca.gov/153/City-Council",
+    "meeting_schedule": "1st and 3rd Mondays",
+    "meeting_time": "6:30 PM",
+    "meeting_location": {
+      "name": "Council Chamber",
+      "address": "100 E. La Habra Boulevard",
+      "city_state_zip": "La Habra, CA 90631"
+    },
+    "zoom": {},
+    "phone_numbers": [],
+    "tv_channels": [
+      {
+        "provider": "Local Cable",
+        "channel": "3"
+      }
+    ],
+    "live_stream": "https://www.lahabraca.gov/356/Archived-Council-Videos",
+    "clerk": {
+      "title": "City Clerk",
+      "phone": "(562) 383-4030",
+      "email": "cc@lahabraca.gov"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": false,
+      "ecomment": false,
+      "written_email": true,
+      "time_limit": "3 minutes per speaker",
+      "email": "cc@lahabraca.gov",
+      "deadline": "5:00 PM on meeting day"
+    },
+    "portals": {
+      "agenda_center": "https://www.lahabraca.gov/AgendaCenter/City-Council-2",
+      "live_stream": "https://www.lahabraca.gov/356/Archived-Council-Videos"
+    },
+    "council": {
+      "size": 5,
+      "districts": 0,
+      "at_large": 5,
+      "mayor_elected": false,
+      "expanded_date": null
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "At-Large (3 seats)"
+      ],
+      "term_length": 4,
+      "election_system": "at-large"
+    }
+  }
 }

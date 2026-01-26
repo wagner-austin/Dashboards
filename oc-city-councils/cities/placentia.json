@@ -11,25 +11,25 @@
       "district": "District 2",
       "email": "kkirwin@placentia.org",
       "phone": "(714) 961-0283",
-      "city_profile": "https://www.placentia.org/674/Councilmember-Kevin-Kirwin-District-2",
+      "city_profile": "https://www.placentia.org/674/Mayor-Kevin-Kirwin-District-2",
       "photo_url": "https://www.placentia.org/ImageRepository/Document?documentID=10080"
     },
     {
       "name": "Chad P Wanke",
       "position": "Mayor Pro Tem",
-      "district": null,
+      "district": "District 4",
       "email": "chad@chadwanke.com",
       "phone": "(714) 961-0283",
-      "city_profile": null,
+      "city_profile": "https://www.placentia.org/448/Mayor-Pro-Tem-Chad-P-Wanke-District-4",
       "photo_url": "https://www.placentia.org/ImageRepository/Document?documentID=7707"
     },
     {
       "name": "Jeremy B Yamaguchi",
       "position": "Councilmember",
-      "district": null,
+      "district": "District 3",
       "email": "jeremy@jeremyyamaguchi.com",
       "phone": "(714) 961-0283",
-      "city_profile": null,
+      "city_profile": "https://www.placentia.org/353/Councilmember-Jeremy-B-Yamaguchi-Distric",
       "photo_url": "https://www.placentia.org/ImageRepository/Document?documentID=7546"
     },
     {
@@ -44,10 +44,10 @@
     {
       "name": "Ward L Smith",
       "position": "Councilmember",
-      "district": null,
+      "district": "District 5",
       "email": "wsmith@placentia.org",
       "phone": "(714) 961-0283",
-      "city_profile": null,
+      "city_profile": "https://www.placentia.org/720/Councilmember-Ward-L-Smith-District-5",
       "photo_url": "https://www.placentia.org/ImageRepository/Document?documentID=10077"
     }
   ],
@@ -65,5 +65,2793 @@
     "By-district elections",
     "Mayor/Mayor Pro Tem use personal campaign emails"
   ],
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "meetings": [
+    {
+      "name": "Placentia City Council Meeting - Cancelled January 27, 2026 - 07:00 PM Agenda",
+      "date": "January 27, 2026",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&event_id=8203",
+      "minutes_url": null,
+      "video_url": null,
+      "event_id": "8203"
+    },
+    {
+      "name": "Placentia City Council Meeting Jan 13, 2026 Agenda Packet Video",
+      "date": "January 13, 2026",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=686",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/686?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 16, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=678",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/678?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 2, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=677",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/677?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 18, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=676",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/676?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 4, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=674",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/674?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 21, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=673",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/673?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 7, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=670",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/670?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council - Special Meeting",
+      "date": "September 29, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=667",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/667?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 16, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=663",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/663?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 2, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=661",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/661?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 15, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=658",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/658?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 1, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=656",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/656?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 17, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=654",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/654?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 3, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=652",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/652?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 20, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=650",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/650?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 6, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=648",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/648?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 15, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=647",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/647?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 1, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=646",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/646?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 18, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=645",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/645?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 18, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=643",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=643&doc_id=85966d9b-f64c-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/643?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 4, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=641",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=641&doc_id=74aea505-f64c-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/641?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 14, 2025",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=635",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=635&doc_id=5ceef25a-f64c-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/635?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 17, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=633",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=633&doc_id=bdfe8c8e-f64c-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/633?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 3, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=632",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=632&doc_id=c46dbe09-f651-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/632?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 19, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=631",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=631&doc_id=dc5780f5-f651-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/631?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 5, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=629",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=629&doc_id=d6727d06-f64c-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/629?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Special Meeting",
+      "date": "October 28, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=627",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=627&doc_id=3b572b13-f652-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/627?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 15, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=626",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=626&doc_id=51680437-f652-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/626?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Special Meeting",
+      "date": "October 3, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=624",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/624?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 1, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=623",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=623&doc_id=2002576c-f652-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/623?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 17, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=620",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=620&doc_id=a4e02971-f652-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/620?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 3, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=614",
+      "minutes_url": "https://placentia.granicus.com/MinutesViewer.php?view_id=4&clip_id=614&doc_id=bdf0c035-f652-11f0-bb28-005056a89546",
+      "video_url": "https://placentia.granicus.com/player/clip/614?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 31, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=612",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/612?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 31, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=613",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/613?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 16, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=611",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/611?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 2, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=606",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/606?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 27, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=605",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/605?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 18, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=604",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/604?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 4, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=603",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/603?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 21, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=601",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/601?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 7, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=599",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/599?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Study Session",
+      "date": "April 16, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=586",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/586?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 16, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=587",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/587?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 19, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=584",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/584?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 5, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=580",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/580?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 20, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=579",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/579?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 6, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=577",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/577?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Special Meeting",
+      "date": "January 23, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=575",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/575?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 23, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=576",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/576?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 9, 2024",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=574",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/574?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 5, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=573",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/573?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 21, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=572",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/572?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 7, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=570",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/570?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 17, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=567",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/567?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 3, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=565",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/565?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 19, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=563",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/563?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 5, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=561",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/561?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 26, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=560",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/560?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 25, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=559",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/559?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 11, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=558",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/558?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 20, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=557",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/557?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 6, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=555",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/555?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 16, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=554",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/554?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 2, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=552",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/552?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 18, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=551",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/551?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 4, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=549",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/549?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 21, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=548",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/548?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 7, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=547",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/547?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 21, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=546",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/546?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 7, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=544",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/544?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 24, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=543",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/543?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 10, 2023",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=542",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/542?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 6, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=540",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/540?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 15, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=539",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/539?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Special Meeting",
+      "date": "October 20, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=537",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/537?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 18, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=536",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/536?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 4, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=534",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/534?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Special Placentia City Council Meeting",
+      "date": "September 27, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=533",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/533?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 20, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=532",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/532?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 6, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=530",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/530?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 19, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=529",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/529?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 5, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=527",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/527?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 21, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=526",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/526?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 7, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=524",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/524?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 17, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=523",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/523?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia Special City Council Meeting",
+      "date": "May 10, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=521",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/521?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 3, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=520",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/520?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 19, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=519",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/519?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "April 12, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=516",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/516?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 5, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=514",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/514?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 15, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=508",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/508?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia Special City Council Meeting - City Council Retreat",
+      "date": "March 10, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=513",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/513?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 1, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=505",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/505?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "February 16, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=504",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/504?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 15, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=502",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/502?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "February 10, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=501",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/501?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 1, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=499",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/499?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "January 19, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=496",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/496?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 18, 2022",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=495",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/495?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 7, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=492",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/492?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 16, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=487",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/487?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 2, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=485",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/485?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 19, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=483",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/483?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Special City Council Meeting 101221",
+      "date": "October 12, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=482",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/482?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 5, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=476",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/476?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 21, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=473",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/473?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 7, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=471",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/471?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 20, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=467",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/467?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 6, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=464",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/464?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 15, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=462",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/462?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 1, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=460",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/460?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "May 25, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=458",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/458?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 18, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=456",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/456?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 4, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=453",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/453?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 20, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=451",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/451?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 6, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=449",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/449?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 16, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=447",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/447?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 2, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=445",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/445?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 16, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=440",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/440?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 2, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=437",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/437?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 26, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=435",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/435?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 12, 2021",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=434",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/434?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 15, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=431",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/431?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 1, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=427",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/427?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 17, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=420",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/420?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 3, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=408",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/408?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 20, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=406",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/406?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 6, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=401",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/401?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 15, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=400",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/400?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 1, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=399",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/399?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "August 11, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=396",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/396?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 21, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=395",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/395?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 7, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=394",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/394?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Special Meeting",
+      "date": "June 23, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=393",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/393?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 16, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=392",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/392?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 2, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=390",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/390?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 19, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=389",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/389?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 5, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=387",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/387?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 21, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=386",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/386?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 7, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=385",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/385?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Special Meeting",
+      "date": "March 24, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=384",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/384?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 17, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=383",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/383?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 3, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=380",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/380?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 18, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=379",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/379?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 4, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=377",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/377?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 14, 2020",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=374",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/374?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 17, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=373",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/373?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 3, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=371",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/371?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 19, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=370",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/370?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 5, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=368",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/368?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 15, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=367",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/367?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 1, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=366",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/366?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 24, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=364",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/364?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 10, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=363",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/363?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 23, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=361",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/361?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 9, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=360",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/360?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 18, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=358",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/358?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 4, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=356",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/356?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 21, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=355",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/355?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 7, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=353",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/353?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 16, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=352",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/352?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 2, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=349",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/349?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 19, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=348",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/348?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 5, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=346",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/346?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 19, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=345",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/345?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 5, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=343",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/343?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 15, 2019",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=342",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/342?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 18, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=341",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/341?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 4, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=340",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/340?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 13, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=337",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/337?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 16, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=335",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/335?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 2, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=334",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/334?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 11, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=333",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/333?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 24, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=332",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/332?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 10, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=331",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/331?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 19, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=329",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/329?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 5, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=327",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/327?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 15, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=326",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/326?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 1, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=324",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/324?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 17, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=321",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/321?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 3, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=318",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/318?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 20, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=317",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/317?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 6, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=313",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/313?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 20, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=311",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/311?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 6, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=309",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/309?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 23, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=308",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/308?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 16, 2018",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=307",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/307?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 19, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=306",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/306?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 5, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=304",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/304?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 21, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=303",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/303?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 7, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=302",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/302?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 17, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=292",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/292?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 3, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=288",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/288?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 19, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=285",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/285?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 12, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=297",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/297?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 18, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=283",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/283?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 11, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=282",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/282?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 20, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=281",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/281?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 6, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=279",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/279?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 16, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=278",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/278?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 2, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=276",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/276?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 18, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=275",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/275?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 4, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=274",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/274?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 21, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=273",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/273?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 7, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=271",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/271?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 21, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=270",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/270?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 7, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=268",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/268?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 17, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=267",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/267?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Adjourned Regular Placentia City Council Meeting",
+      "date": "January 10, 2017",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=266",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/266?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Adjourned Regular Placentia City Council Meeting",
+      "date": "December 13, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=265",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/265?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 6, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=264",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/264?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 15, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=263",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/263?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 1, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=261",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/261?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 18, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=260",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/260?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 4, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=257",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/257?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 20, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=251",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/251?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 6, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=249",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/249?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 19, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=246",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/246?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 12, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=244",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/244?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 21, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=242",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/242?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 7, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=241",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/241?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 17, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=240",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/240?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 3, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=238",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/238?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 19, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=237",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/237?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 5, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=235",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/235?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 15, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=234",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/234?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 1, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=232",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/232?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 16, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=227",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/227?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 2, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=225",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/225?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 19, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=224",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/224?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 12, 2016",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=223",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/223?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 15, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=222",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/222?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 1, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=220",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/220?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 17, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=219",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/219?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 3, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=217",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/217?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 20, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=215",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/215?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 6, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=214",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/214?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 15, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=213",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/213?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 1, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=211",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/211?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 21, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=208",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/208?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 7, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=206",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/206?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 16, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=205",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/205?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 2, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=204",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/204?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 19, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=203",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/203?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 5, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=201",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/201?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 7, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=197",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/197?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 17, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=196",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/196?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 3, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=194",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/194?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 17, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=193",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/193?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 3, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=191",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/191?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 20, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=190",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/190?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Study Session",
+      "date": "January 13, 2015",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=189",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/189?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 16, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=188",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/188?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Study Session",
+      "date": "December 9, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=187",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/187?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 2, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=186",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/186?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Special Meeting",
+      "date": "November 25, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=184",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/184?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 18, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=183",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/183?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 4, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=182",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/182?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 21, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=181",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/181?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 7, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=179",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/179?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 16, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=178",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/178?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "August 19, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=176",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/176?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "August 5, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=173",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/173?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia Adjourned City Council Meeting",
+      "date": "July 22, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=172",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/172?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 15, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=171",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/171?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 17, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=170",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/170?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Adjourned Meeting",
+      "date": "June 10, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=169",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/169?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 3, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=168",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/168?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Study Session",
+      "date": "May 27, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=166",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/166?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 20, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=165",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/165?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia Adjourned City Council Meeting",
+      "date": "May 12, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=164",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/164?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 6, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=163",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/163?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 15, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=162",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/162?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 1, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=161",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/161?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Study Session",
+      "date": "March 25, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=159",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/159?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 18, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=157",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/157?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 4, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=160",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/160?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 18, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=154",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/154?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 4, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=153",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/153?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 21, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=152",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/152?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 7, 2014",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=144",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/144?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 17, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=143",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/143?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 3, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=142",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/142?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 19, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=141",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/141?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 5, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=140",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/140?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 15, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=138",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/138?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 1, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=137",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/137?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 17, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=135",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/135?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Executive Session",
+      "date": "September 3, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=139",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/139?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "August 20, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=133",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/133?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 16, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=131",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/131?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 18, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=130",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/130?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 11, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=128",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/128?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 4, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=126",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/126?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 28, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=125",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/125?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 21, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=124",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/124?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 15, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=123",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/123?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 7, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=122",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/122?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Study Session",
+      "date": "April 30, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=121",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/121?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 16, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=120",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/120?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 2, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=119",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/119?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 5, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=118",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/118?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 19, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=117",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/117?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 5, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=116",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/116?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 15, 2013",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=115",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/115?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 18, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=114",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/114?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 4, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=113",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/113?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 20, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=111",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/111?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 16, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=110",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/110?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 2, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=109",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/109?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 18, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=108",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/108?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "August 21, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=107",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/107?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "August 7, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=106",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/106?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 17, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=99",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/99?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 19, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=97",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/97?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Study Session",
+      "date": "June 12, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=96",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/96?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 5, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=95",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/95?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 15, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=92",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/92?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Joint Study Session of the Placentia City Council and Financial Audit Oversight Committee",
+      "date": "May 7, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=90",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/90?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "May 1, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=89",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/89?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 17, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=88",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/88?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "April 3, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=87",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/87?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 27, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=84",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/84?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 20, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=82",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/82?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "March 6, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=79",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/79?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 21, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=78",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/78?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "February 7, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=75",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/75?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 24, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=73",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/73?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "January 17, 2012",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=70",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/70?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 20, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=68",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/68?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "December 6, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=67",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/67?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "November 15, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=66",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/66?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 18, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=65",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/65?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "October 4, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=64",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/64?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "September 20, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=59",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/59?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "August 16, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=57",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/57?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Study Session",
+      "date": "August 2, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=41",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/41?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "August 2, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=40",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/40?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "July 19, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=35",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/35?view_id=4",
+      "event_id": null
+    },
+    {
+      "name": "Placentia City Council Meeting",
+      "date": "June 28, 2011",
+      "agenda_url": "https://placentia.granicus.com/AgendaViewer.php?view_id=4&clip_id=30",
+      "minutes_url": null,
+      "video_url": "https://placentia.granicus.com/player/clip/30?view_id=4",
+      "event_id": null
+    }
+  ],
+  "city_info": {
+    "website": "https://www.placentia.org",
+    "council_url": "https://www.placentia.org/268/Mayor-City-Council",
+    "meeting_schedule": "1st and 3rd Tuesdays",
+    "meeting_time": "7:00 PM",
+    "meeting_location": {
+      "name": "City Council Chambers",
+      "address": "401 E. Chapman Avenue",
+      "city_state_zip": "Placentia, CA 92870"
+    },
+    "zoom": {},
+    "phone_numbers": [],
+    "tv_channels": [
+      {
+        "provider": "AT&T U-Verse",
+        "channel": "99"
+      },
+      {
+        "provider": "Spectrum",
+        "channel": "3"
+      }
+    ],
+    "live_stream": "https://placentia.granicus.com/ViewPublisher.php?view_id=4",
+    "clerk": {
+      "title": "City Clerk's Office",
+      "phone": "(714) 993-8117",
+      "email": null
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": false,
+      "ecomment": true,
+      "written_email": true,
+      "time_limit": "3 minutes per speaker",
+      "email": null
+    },
+    "portals": {
+      "granicus": "https://placentia.granicus.com/ViewPublisher.php?view_id=4",
+      "ecomment": null,
+      "live_stream": "https://placentia.granicus.com/ViewPublisher.php?view_id=4"
+    },
+    "council": {
+      "size": 5,
+      "districts": 5,
+      "at_large": 0,
+      "mayor_elected": false,
+      "expanded_date": null
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "District 1",
+        "District 5"
+      ],
+      "term_length": 4,
+      "election_system": "by-district"
+    }
+  }
 }

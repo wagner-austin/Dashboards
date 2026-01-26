@@ -12,7 +12,7 @@
       "email": "jwu@villapark.org",
       "phone": "(714) 998-1500",
       "city_profile": "https://villapark.org/Council-and-Committees/City-Council/Jordan-Wu-Bio",
-      "photo_url": null
+      "photo_url": "https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2025/villapark25-group.jpg?ver=CMaHoALwuzBnadfKmNo1TQ%3d%3d"
     },
     {
       "name": "Robert Frackelton",
@@ -21,7 +21,7 @@
       "email": "rfrackelton@villapark.org",
       "phone": "(714) 998-1500",
       "city_profile": "https://villapark.org/Council-and-Committees/City-Council/Robert-Frackelton-Bio",
-      "photo_url": null
+      "photo_url": "https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Frackelton-2024-villaparkcitycouncil43322--retouched.jpg?ver=gZKhLn3Pl7KY3QB4jm4eTQ%3d%3d"
     },
     {
       "name": "Crystal Miles",
@@ -30,7 +30,7 @@
       "email": "cmiles@villapark.org",
       "phone": "(714) 998-1500",
       "city_profile": "https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio",
-      "photo_url": null
+      "photo_url": "https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Miles-2024-villaparkcitycouncil43416--retouched.jpg?ver=Y18dsDaPXyl1OfV3aRiwFg%3d%3d"
     },
     {
       "name": "Kelly McBride",
@@ -48,7 +48,7 @@
       "email": "njones@villapark.org",
       "phone": "(714) 998-1500",
       "city_profile": "https://villapark.org/Council-and-Committees/City-Council/Nicol-Jones-Bio",
-      "photo_url": null
+      "photo_url": "https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/2024 Jones.jpg?ver=NOVq8QqYJd3vICxLHZlxWw%3d%3d"
     }
   ],
   "public_comment": {
@@ -66,5 +66,57 @@
     "Individual emails verified",
     "At-large elections (no districts)"
   ],
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "meeting_schedule": "4th Tuesday",
+    "meeting_time": "6:30 PM",
+    "meeting_location": {
+      "name": "Council Chambers",
+      "address": "17855 Santiago Boulevard",
+      "city_state_zip": "Villa Park, CA 92861"
+    },
+    "zoom": {},
+    "phone_numbers": [
+      {
+        "type": "City Hall",
+        "number": "(714) 998-1500"
+      }
+    ],
+    "tv_channels": [],
+    "live_stream": null,
+    "clerk": {
+      "title": "City Clerk",
+      "phone": "(714) 998-1500",
+      "email": "info@villapark.org"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": false,
+      "ecomment": false,
+      "written_email": true,
+      "time_limit": "3 minutes per speaker",
+      "email": "info@villapark.org",
+      "deadline": "3:00 PM on meeting day"
+    },
+    "portals": {
+      "agenda_center": "https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes"
+    },
+    "council": {
+      "size": 5,
+      "districts": 0,
+      "at_large": 5,
+      "mayor_elected": false,
+      "expanded_date": null,
+      "notes": "All members elected at-large"
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "At-Large (3 seats)"
+      ],
+      "term_length": 4,
+      "election_system": "at-large",
+      "term_limits": "Two full terms"
+    }
+  }
 }

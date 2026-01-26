@@ -8,46 +8,46 @@
     {
       "name": "Rick Loeffler",
       "position": "Mayor",
-      "district": null,
+      "district": "District 3",
       "email": "LoefflerR@san-clemente.org",
-      "phone": "949-361-8200",
-      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=58",
+      "phone": "949-702-8235",
+      "city_profile": "https://www.sanclemente.gov/Directory.aspx?EID=58",
       "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
     },
     {
       "name": "Steve Knoblock",
       "position": "Mayor Pro Tem",
-      "district": null,
+      "district": "At-Large",
       "email": "KnoblockS@san-clemente.org",
       "phone": "949-361-8200",
-      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=57",
+      "city_profile": "https://www.sanclemente.gov/Directory.aspx?EID=57",
       "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
     },
     {
       "name": "Mark Enmeier",
       "position": "Councilmember",
-      "district": null,
+      "district": "At-Large",
       "email": "EnmeierM@san-clemente.org",
       "phone": "949-361-8200",
-      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=56",
+      "city_profile": "https://www.sanclemente.gov/Directory.aspx?EID=56",
       "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
     },
     {
       "name": "Victor Cabral",
       "position": "Councilmember",
-      "district": null,
+      "district": "At-Large",
       "email": "CabralV@san-clemente.org",
       "phone": "949-361-8200",
-      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=55",
+      "city_profile": "https://www.sanclemente.gov/Directory.aspx?EID=55",
       "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
     },
     {
       "name": "Zhen Wu",
       "position": "Councilmember",
-      "district": null,
+      "district": "District 4",
       "email": "WuZ@san-clemente.org",
       "phone": "949-361-8200",
-      "city_profile": "https://www.san-clemente.org/Directory.aspx?EID=59",
+      "city_profile": "https://www.sanclemente.gov/Directory.aspx?EID=59",
       "photo_url": "https://www.sanclemente.gov/ImageRepository/Document?documentId=91"
     }
   ],
@@ -65,5 +65,60 @@
     "At-large elections",
     "Website: sanclemente.gov (redirects from san-clemente.org)"
   ],
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "meeting_schedule": "1st and 3rd Tuesdays",
+    "meeting_time": "5:30 PM",
+    "meeting_location": {
+      "name": "City Council Chambers",
+      "address": "910 Calle Negocio, 2nd Floor",
+      "city_state_zip": "San Clemente, CA 92673"
+    },
+    "zoom": {},
+    "phone_numbers": [],
+    "tv_channels": [
+      {
+        "provider": "Cox",
+        "channel": "854"
+      }
+    ],
+    "live_stream": "https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ",
+    "clerk": {
+      "name": "Laura Campagnolo",
+      "title": "City Clerk",
+      "phone": "(949) 361-8301",
+      "email": "campagnolol@san-clemente.org"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": false,
+      "ecomment": false,
+      "written_email": true,
+      "time_limit": "3 minutes per speaker",
+      "email": "campagnolol@san-clemente.org"
+    },
+    "portals": {
+      "agenda_center": "https://www.sanclemente.gov/AgendaCenter/City-Council-13",
+      "youtube": "https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ",
+      "live_stream": "https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ"
+    },
+    "council": {
+      "size": 5,
+      "districts": 4,
+      "at_large": 1,
+      "mayor_elected": true,
+      "expanded_date": null,
+      "notes": "4 districts + at-large mayor (2-year terms starting 2026)"
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "Mayor (At-Large)",
+        "District 1",
+        "District 2"
+      ],
+      "term_length": 4,
+      "election_system": "mixed"
+    }
+  }
 }

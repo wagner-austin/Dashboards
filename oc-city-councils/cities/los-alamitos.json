@@ -9,43 +9,25 @@
       "district": "District 4",
       "email": "shasselbrink@cityoflosalamitos.org",
       "phone": "562-431-3538",
-      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "city_profile": "https://cityoflosalamitos.org/320/Shelley-Hasselbrink",
       "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=2385"
-    },
-    {
-      "name": "Emily Hibard",
-      "position": "Councilmember",
-      "district": "District 5",
-      "email": "ehibard@cityoflosalamitos.org",
-      "phone": "562-431-3538",
-      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
-      "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=2388"
-    },
-    {
-      "name": "Gary Loe",
-      "position": "Councilmember",
-      "district": "District 2",
-      "email": "Gloe@cityoflosalamitos.org",
-      "phone": "562-431-3538",
-      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
-      "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=4436"
     },
     {
       "name": "Jordan Nefulda",
       "position": "Councilmember",
-      "district": null,
+      "district": "District 3",
       "email": "jnefulda@cityoflosalamitos.org",
       "phone": "562-431-3538",
-      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "city_profile": "https://cityoflosalamitos.org/323/Jordan-Nefulda",
       "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=2384"
     },
     {
       "name": "Tanya Doby",
       "position": "Councilmember",
-      "district": null,
+      "district": "District 1",
       "email": "tdoby@cityoflosalamitos.org",
       "phone": "562-431-3538",
-      "city_profile": "https://cityoflosalamitos.org/165/City-Council",
+      "city_profile": "https://cityoflosalamitos.org/321/Tanya-Doby",
       "photo_url": "https://cityoflosalamitos.org/ImageRepository/Document?documentID=2386"
     }
   ],
@@ -64,5 +46,63 @@
   ],
   "city_name": "Los Alamitos",
   "slug": "los-alamitos",
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "website": "https://cityoflosalamitos.org",
+    "council_url": "https://cityoflosalamitos.org/165/City-Council",
+    "meeting_schedule": "3rd Monday",
+    "meeting_time": "6:00 PM",
+    "meeting_location": {
+      "name": "Council Chamber, City Hall",
+      "address": "3191 Katella Avenue",
+      "city_state_zip": "Los Alamitos, CA 90720"
+    },
+    "zoom": {},
+    "phone_numbers": [],
+    "tv_channels": [
+      {
+        "provider": "Local Cable",
+        "channel": "3"
+      }
+    ],
+    "live_stream": "https://www.youtube.com/@cityoflosal",
+    "clerk": {
+      "name": "Windmera Quintanar, MMC",
+      "title": "City Clerk",
+      "phone": "(562) 431-3538 ext. 220",
+      "email": "cityclerk@cityoflosalamitos.org"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": false,
+      "ecomment": false,
+      "written_email": true,
+      "time_limit": "5 minutes per speaker",
+      "email": "cityclerk@cityoflosalamitos.org",
+      "deadline": "3:00 PM on meeting day",
+      "subject_line": "COUNCIL PUBLIC COMMENT"
+    },
+    "portals": {
+      "agenda_center": "https://cityoflosalamitos.org/129/Agendas-Minutes",
+      "youtube": "https://www.youtube.com/@cityoflosal",
+      "tv": "https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3",
+      "live_stream": "https://www.youtube.com/@cityoflosal"
+    },
+    "council": {
+      "size": 5,
+      "districts": 5,
+      "at_large": 0,
+      "mayor_elected": false,
+      "expanded_date": null
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "District 4",
+        "District 5"
+      ],
+      "term_length": 4,
+      "election_system": "by-district"
+    }
+  }
 }

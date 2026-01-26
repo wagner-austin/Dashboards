@@ -6,7 +6,7 @@
     {
       "name": "Trish Kelley",
       "position": "Mayor",
-      "district": "District 4",
+      "district": "At-Large",
       "email": "tkelley@cityofmissionviejo.org",
       "phone": "949-470-3050",
       "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley",
@@ -14,35 +14,35 @@
     },
     {
       "name": "Wendy Bucknum",
-      "position": "Mayor",
-      "district": "District 5",
+      "position": "Mayor Pro Tem",
+      "district": "At-Large",
       "email": "wbucknum@cityofmissionviejo.org",
       "phone": "949-470-3050",
-      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-wendy-bucknum",
+      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/wendy-bucknum",
       "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/wendy-bucknum.jpg"
-    },
-    {
-      "name": "Brian Goodell",
-      "position": "Mayor Pro Tem",
-      "district": "District 2",
-      "email": "bgoodell@cityofmissionviejo.org",
-      "phone": "949-470-3050",
-      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/councilmember-brian-goodell",
-      "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/bgoodell-web.jpg"
     },
     {
       "name": "Bob Ruesch",
       "position": "Councilmember",
-      "district": "District 1",
+      "district": "At-Large",
       "email": "rruesch@cityofmissionviejo.org",
       "phone": "949-470-3050",
       "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch",
       "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/Bob-Ruesch-Headshot.jpg"
     },
     {
+      "name": "Brian Goodell",
+      "position": "Councilmember",
+      "district": "At-Large",
+      "email": "bgoodell@cityofmissionviejo.org",
+      "phone": "949-470-3050",
+      "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/brian-goodell",
+      "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/bgoodell-web.jpg"
+    },
+    {
       "name": "Cynthia Vasquez",
       "position": "Councilmember",
-      "district": "District 3",
+      "district": "At-Large",
       "email": "cvasquez@cityofmissionviejo.org",
       "phone": "949-470-3050",
       "city_profile": "https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez",
@@ -65,5 +65,3385 @@
   ],
   "city_name": "Mission Viejo",
   "slug": "mission-viejo",
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "meetings": [
+    {
+      "name": "City Council Summary",
+      "date": "January 13, 2026",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2495",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2495",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2495?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 9, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2493",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2493",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2493?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 11, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2491",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2491",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2491?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 28, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2489",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2489",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2489?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 14, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2487",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2487",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2487?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 23, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2485",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2485",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2485?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 9, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2476",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2476",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2476?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 26, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2469",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2469",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2469?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 8, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2453",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2453",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2453?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 24, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2452",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2452",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2452?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 10, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2451",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2451",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2451?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 27, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2449",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2449",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2449?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 13, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2445",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2445",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2445?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 22, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2443",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2443",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2443?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 8, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2436",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2436",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2436?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 25, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2430",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2430",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2430?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 11, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2427",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2427",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2427?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 25, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2424",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2424",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2424?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 11, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2422",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2422",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2422?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 28, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2420",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2420",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2420?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 14, 2025",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2418",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2418",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2418?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 10, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2411",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2411",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2411?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 12, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2409",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2409",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2409?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 22, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2407",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2407",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2407?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 8, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2403",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2403",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2403?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 24, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2401",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2401",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2401?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 10, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2396",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2396",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2396?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 27, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2395",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2395",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2395?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 9, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2389",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2389",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2389?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 25, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2387",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2387",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2387?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 11, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2384",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2384",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2384?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 28, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2380",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2380",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2380?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 14, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2378",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2378",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2378?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 23, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2371",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2371",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2371?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "April 12, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2370",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2370",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2370?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "April 11, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2369",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2369",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2369?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 9, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2365",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2365",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2365?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 26, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2358",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2358",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2358?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 12, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2332",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2332",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2332?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 27, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2326",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2326",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2326?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 13, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2322",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2322",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2322?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 23, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2321",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2321",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2321?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 9, 2024",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2317",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2317",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2317?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 12, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2316",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2316",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2316?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 14, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2313",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2313",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2313?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 24, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2312",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2312",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2312?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 10, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2310",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2310",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2310?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 26, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2309",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2309",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2309?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 12, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2308",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2308",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2308?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 22, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2306",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2306",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2306?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 11, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2293",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2293",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2293?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 27, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2291",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2291",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2291?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 13, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2288",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2288",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2288?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 23, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2286",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2286",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2286?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 9, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2280",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2280",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2280?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 25, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2278",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2278",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2278?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 11, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2274",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2274",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2274?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 28, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2269",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2269",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2269?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 14, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2267",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2267",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2267?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 28, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2266",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2266",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2266?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 14, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2261",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2261",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2261?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 24, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2259",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2259",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2259?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 10, 2023",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2255",
+      "minutes_url": null,
+      "video_url": "https://missionviejo.granicus.com/player/clip/2255?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 13, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2253",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2253",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2253?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 13, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2254",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2254",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2254?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 8, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2251",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2251",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2251?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 25, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2250",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2250",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2250?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 27, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2245",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2245",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2245?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 13, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2234",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2234",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2234?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 23, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2233",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2233",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2233?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 12, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2226",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2226",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2226?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 28, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2219",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2219",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2219?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "June 16, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2218",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2218",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2218?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 14, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2217",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2217",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2217?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 24, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2212",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2212",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2212?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 10, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2210",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2210",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2210?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 26, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2209",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2209",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2209?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 12, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2204",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2204",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2204?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 22, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2198",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2198",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2198?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 8, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2196",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2196",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2196?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 22, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2195",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2195",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2195?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 8, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2193",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2193",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2193?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 25, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2192",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2192",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2192?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 11, 2022",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2191",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2191",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2191?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 14, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2190",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2190",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2190?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 9, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2188",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2188",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2188?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 26, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2187",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2187",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2187?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 12, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2185",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2185",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2185?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 28, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2184",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2184",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2184?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 14, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2178",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2178",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2178?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 24, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2173",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2173",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2173?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 13, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2155",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2155",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2155?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 22, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2148",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2148",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2148?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 8, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2142",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2142",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2142?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 25, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2139",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2139",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2139?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 11, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2136",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2136",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2136?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 27, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2134",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2134",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2134?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 13, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2132",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2132",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2132?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "Joint City Council-P&T Commission Housing Element ZOOM Workshop",
+      "date": "March 31, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2131",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2131",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2131?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "March 31, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2130",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2130",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2130?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 23, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2129",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2129",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2129?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 9, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2127",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2127",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2127?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 23, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2122",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2122",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2122?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 9, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2120",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2120",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2120?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 26, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2118",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2118",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2118?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 12, 2021",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2116",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2116",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2116?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 8, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2111",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2111",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2111?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 10, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2109",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2109",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2109?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 13, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2107",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2107",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2107?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 8, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2101",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2101",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2101?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 25, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2089",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2089",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2089?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 14, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2087",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2087",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2087?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 23, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2086",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2086",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2086?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 9, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2083",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2083",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2083?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 26, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2082",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2082",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2082?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 12, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2081",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2081",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2081?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 28, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2078",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2078",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2078?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 14, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2077",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2077",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2077?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 24, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2076",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2076",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2076?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 10, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2075",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2075",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2075?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 25, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2073",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2073",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2073?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 11, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2069",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2069",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2069?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 28, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2067",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2067",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2067?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 14, 2020",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2065",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2065",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2065?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 10, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2063",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2063",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2063?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 12, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2058",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2058",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2058?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 22, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2054",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2054",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2054?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Adjourned",
+      "date": "October 14, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2053",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2053",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2053?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 8, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2052",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2052",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2052?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 24, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2051",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2051",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2051?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 10, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2047",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2047",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2047?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 27, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2036",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2036",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2036?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special and Regular Meeting",
+      "date": "July 9, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2029",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2029",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2029?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 25, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2025",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2025",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2025?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 11, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2024",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2024",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2024?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 28, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2019",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2019",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2019?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 14, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2016",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2016",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2016?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 23, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2014",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2014",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2014?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 9, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2009",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2009",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2009?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 26, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2007",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2007",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2007?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 12, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2004",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2004",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2004?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 26, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=2002",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=2002",
+      "video_url": "https://missionviejo.granicus.com/player/clip/2002?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 12, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1998",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1998",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1998?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 22, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1984",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1984",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1984?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 8, 2019",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1980",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1980",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1980?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 11, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1962",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1962",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1962?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 27, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1961",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1961",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1961?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 13, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1958",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1958",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1958?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 23, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1926",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1926",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1926?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 9, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1925",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1925",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1925?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 25, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1921",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1921",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1921?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 11, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1912",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1912",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1912?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 28, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1911",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1911",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1911?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 10, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1905",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1905",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1905?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 26, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1899",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1899",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1899?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 12, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1894",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1894",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1894?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 22, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1888",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1888",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1888?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 8, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1880",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1880",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1880?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 24, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1879",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1879",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1879?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 10, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1873",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1873",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1873?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 27, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1867",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1867",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1867?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 13, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1864",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1864",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1864?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 27, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1859",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1859",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1859?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 13, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1857",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1857",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1857?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 23, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1840",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1840",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1840?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 9, 2018",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1832",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1832",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1832?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 12, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1830",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1830",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1830?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 28, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1828",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1828",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1828?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 14, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1815",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1815",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1815?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 24, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1811",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1811",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1811?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 10, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1803",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1803",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1803?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 26, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1802",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1802",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1802?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 12, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1787",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1787",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1787?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 22, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1783",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1783",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1783?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 11, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1776",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1776",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1776?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 27, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1774",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1774",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1774?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 13, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1770",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1770",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1770?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 23, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1768",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1768",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1768?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 9, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1761",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1761",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1761?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 25, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1760",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1760",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1760?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 11, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1757",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1757",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1757?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 28, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1752",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1752",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1752?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 14, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1742",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1742",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1742?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 28, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1733",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1733",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1733?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 14, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1729",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1729",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1729?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Budget Workshop",
+      "date": "February 2, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1727",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1727",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1727?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 24, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1726",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1726",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1726?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 10, 2017",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1713",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1713",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1713?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 13, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1712",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1712",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1712?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 22, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1708",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1708",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1708?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 8, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1704",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1704",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1704?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 25, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1702",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1702",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1702?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 12, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1693",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1693",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1693?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 27, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1690",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1690",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1690?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 13, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1686",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1686",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1686?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 23, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1678",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1678",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1678?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "July 26, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1658",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1658",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1658?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 12, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1655",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1655",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1655?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 28, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1654",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1654",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1654?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 14, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1653",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1653",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1653?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 24, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1650",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1650",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1650?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 10, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1642",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1642",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1642?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 26, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1640",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1640",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1640?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 12, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1636",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1636",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1636?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 22, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1625",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1625",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1625?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 8, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1614",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1614",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1614?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 23, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1612",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1612",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1612?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 9, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1606",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1606",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1606?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 26, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1601",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1601",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1601?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 12, 2016",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1576",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1576",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1576?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 8, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1566",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1566",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1566?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 10, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1559",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1559",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1559?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 27, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1558",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1558",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1558?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 13, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1533",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1533",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1533?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 22, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1532",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1532",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1532?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 8, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1529",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1529",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1529?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 25, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1504",
+      "minutes_url": null,
+      "video_url": "https://missionviejo.granicus.com/player/clip/1504?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 6, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1497",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1497",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1497?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 15, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1493",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1493",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1493?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 1, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1482",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1482",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1482?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 18, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1478",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1478",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1478?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 4, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1468",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1468",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1468?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 20, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1463",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1463",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1463?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 6, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1462",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1462",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1462?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 16, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1453",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1453",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1453?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 2, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1449",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1449",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1449?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 16, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1445",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1445",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1445?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 2, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1437",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1437",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1437?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 19, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1431",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1431",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1431?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Workshop",
+      "date": "January 16, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1430",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1430",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1430?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 5, 2015",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1429",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1429",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1429?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 1, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1409",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1409",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1409?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 17, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1404",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1404",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1404?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 3, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1402",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1402",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1402?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 20, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1391",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1391",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1391?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 6, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1389",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1389",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1389?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 15, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1387",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1387",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1387?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 2, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1378",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1378",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1378?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 18, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1376",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1376",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1376?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 7, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1369",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1369",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1369?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 16, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1362",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1362",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1362?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 2, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1349",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1349",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1349?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 19, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1344",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1344",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1344?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 5, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1339",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1339",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1339?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 21, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1337",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1337",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1337?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 7, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1330",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1330",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1330?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 17, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1310",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1310",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1310?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 3, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1304",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1304",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1304?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 17, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1296",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1296",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1296?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 3, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1287",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1287",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1287?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 20, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1277",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1277",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1277?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 6, 2014",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1272",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1272",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1272?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 2, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1266",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1266",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1266?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 18, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1262",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1262",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1262?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 4, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1241",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1241",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1241?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 21, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1228",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1228",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1228?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 7, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1081",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1081",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1081?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 16, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1045",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1045",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1045?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 3, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1032",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1032",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1032?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 19, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1021",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1021",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1021?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "Special City Council Meeting",
+      "date": "July 22, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1013",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1013",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1013?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 1, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=1000",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=1000",
+      "video_url": "https://missionviejo.granicus.com/player/clip/1000?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 17, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=987",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=987",
+      "video_url": "https://missionviejo.granicus.com/player/clip/987?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 3, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=973",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=973",
+      "video_url": "https://missionviejo.granicus.com/player/clip/973?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 20, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=964",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=964",
+      "video_url": "https://missionviejo.granicus.com/player/clip/964?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 6, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=961",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=961",
+      "video_url": "https://missionviejo.granicus.com/player/clip/961?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 15, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=948",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=948",
+      "video_url": "https://missionviejo.granicus.com/player/clip/948?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 1, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=941",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=941",
+      "video_url": "https://missionviejo.granicus.com/player/clip/941?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 18, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=938",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=938",
+      "video_url": "https://missionviejo.granicus.com/player/clip/938?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 4, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=935",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=935",
+      "video_url": "https://missionviejo.granicus.com/player/clip/935?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 18, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=930",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=930",
+      "video_url": "https://missionviejo.granicus.com/player/clip/930?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 4, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=926",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=926",
+      "video_url": "https://missionviejo.granicus.com/player/clip/926?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 21, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=910",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=910",
+      "video_url": "https://missionviejo.granicus.com/player/clip/910?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 7, 2013",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=902",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=902",
+      "video_url": "https://missionviejo.granicus.com/player/clip/902?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "December 21, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=898",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=898",
+      "video_url": "https://missionviejo.granicus.com/player/clip/898?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 3, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=890",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=890",
+      "video_url": "https://missionviejo.granicus.com/player/clip/890?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 19, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=882",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=882",
+      "video_url": "https://missionviejo.granicus.com/player/clip/882?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 5, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=877",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=877",
+      "video_url": "https://missionviejo.granicus.com/player/clip/877?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 15, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=867",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=867",
+      "video_url": "https://missionviejo.granicus.com/player/clip/867?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 1, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=853",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=853",
+      "video_url": "https://missionviejo.granicus.com/player/clip/853?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 17, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=838",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=838",
+      "video_url": "https://missionviejo.granicus.com/player/clip/838?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 4, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=820",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=820",
+      "video_url": "https://missionviejo.granicus.com/player/clip/820?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 20, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=816",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=816",
+      "video_url": "https://missionviejo.granicus.com/player/clip/816?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "July 13, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=788",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=788",
+      "video_url": "https://missionviejo.granicus.com/player/clip/788?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 2, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=778",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=778",
+      "video_url": "https://missionviejo.granicus.com/player/clip/778?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 18, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=761",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=761",
+      "video_url": "https://missionviejo.granicus.com/player/clip/761?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 4, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=749",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=749",
+      "video_url": "https://missionviejo.granicus.com/player/clip/749?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 21, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=745",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=745",
+      "video_url": "https://missionviejo.granicus.com/player/clip/745?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 7, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=742",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=742",
+      "video_url": "https://missionviejo.granicus.com/player/clip/742?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 16, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=734",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=734",
+      "video_url": "https://missionviejo.granicus.com/player/clip/734?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 2, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=728",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=728",
+      "video_url": "https://missionviejo.granicus.com/player/clip/728?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 19, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=721",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=721",
+      "video_url": "https://missionviejo.granicus.com/player/clip/721?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 5, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=718",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=718",
+      "video_url": "https://missionviejo.granicus.com/player/clip/718?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 20, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=704",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=704",
+      "video_url": "https://missionviejo.granicus.com/player/clip/704?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 6, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=701",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=701",
+      "video_url": "https://missionviejo.granicus.com/player/clip/701?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 25, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=697",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=697",
+      "video_url": "https://missionviejo.granicus.com/player/clip/697?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 16, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=692",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=692",
+      "video_url": "https://missionviejo.granicus.com/player/clip/692?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 3, 2012",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=688",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=688",
+      "video_url": "https://missionviejo.granicus.com/player/clip/688?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 5, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=679",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=679",
+      "video_url": "https://missionviejo.granicus.com/player/clip/679?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 21, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=676",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=676",
+      "video_url": "https://missionviejo.granicus.com/player/clip/676?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 7, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=666",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=666",
+      "video_url": "https://missionviejo.granicus.com/player/clip/666?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 17, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=654",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=654",
+      "video_url": "https://missionviejo.granicus.com/player/clip/654?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "October 7, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=655",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=655",
+      "video_url": "https://missionviejo.granicus.com/player/clip/655?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 3, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=651",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=651",
+      "video_url": "https://missionviejo.granicus.com/player/clip/651?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting - Oso Creek Trail Tour",
+      "date": "September 19, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=650",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=650",
+      "video_url": "https://missionviejo.granicus.com/player/clip/650?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 19, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=648",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=648",
+      "video_url": "https://missionviejo.granicus.com/player/clip/648?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 6, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=645",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=645",
+      "video_url": "https://missionviejo.granicus.com/player/clip/645?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 15, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=640",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=640",
+      "video_url": "https://missionviejo.granicus.com/player/clip/640?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Special Meeting",
+      "date": "August 3, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=638",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=638",
+      "video_url": "https://missionviejo.granicus.com/player/clip/638?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 5, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=629",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=629",
+      "video_url": "https://missionviejo.granicus.com/player/clip/629?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 20, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=626",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=626",
+      "video_url": "https://missionviejo.granicus.com/player/clip/626?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Budget Workshop",
+      "date": "June 15, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=622",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=622",
+      "video_url": "https://missionviejo.granicus.com/player/clip/622?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 6, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=617",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=617",
+      "video_url": "https://missionviejo.granicus.com/player/clip/617?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 16, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=613",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=613",
+      "video_url": "https://missionviejo.granicus.com/player/clip/613?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 2, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=610",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=610",
+      "video_url": "https://missionviejo.granicus.com/player/clip/610?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 18, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=608",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=608",
+      "video_url": "https://missionviejo.granicus.com/player/clip/608?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 4, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=605",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=605",
+      "video_url": "https://missionviejo.granicus.com/player/clip/605?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 21, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=603",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=603",
+      "video_url": "https://missionviejo.granicus.com/player/clip/603?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 7, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=593",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=593",
+      "video_url": "https://missionviejo.granicus.com/player/clip/593?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 21, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=582",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=582",
+      "video_url": "https://missionviejo.granicus.com/player/clip/582?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 7, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=573",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=573",
+      "video_url": "https://missionviejo.granicus.com/player/clip/573?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 17, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=559",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=559",
+      "video_url": "https://missionviejo.granicus.com/player/clip/559?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 3, 2011",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=553",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=553",
+      "video_url": "https://missionviejo.granicus.com/player/clip/553?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 6, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=522",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=522",
+      "video_url": "https://missionviejo.granicus.com/player/clip/522?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 15, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=519",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=519",
+      "video_url": "https://missionviejo.granicus.com/player/clip/519?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 1, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=516",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=516",
+      "video_url": "https://missionviejo.granicus.com/player/clip/516?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 18, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=513",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=513",
+      "video_url": "https://missionviejo.granicus.com/player/clip/513?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 4, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=511",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=511",
+      "video_url": "https://missionviejo.granicus.com/player/clip/511?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 20, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=504",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=504",
+      "video_url": "https://missionviejo.granicus.com/player/clip/504?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 7, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=502",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=502",
+      "video_url": "https://missionviejo.granicus.com/player/clip/502?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 16, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=498",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=498",
+      "video_url": "https://missionviejo.granicus.com/player/clip/498?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 6, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=496",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=496",
+      "video_url": "https://missionviejo.granicus.com/player/clip/496?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 21, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=494",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=494",
+      "video_url": "https://missionviejo.granicus.com/player/clip/494?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 7, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=485",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=485",
+      "video_url": "https://missionviejo.granicus.com/player/clip/485?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 17, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=479",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=479",
+      "video_url": "https://missionviejo.granicus.com/player/clip/479?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 3, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=477",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=477",
+      "video_url": "https://missionviejo.granicus.com/player/clip/477?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 19, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=475",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=475",
+      "video_url": "https://missionviejo.granicus.com/player/clip/475?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 5, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=435",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=435",
+      "video_url": "https://missionviejo.granicus.com/player/clip/435?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 15, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=426",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=426",
+      "video_url": "https://missionviejo.granicus.com/player/clip/426?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 1, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=419",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=419",
+      "video_url": "https://missionviejo.granicus.com/player/clip/419?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 15, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=417",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=417",
+      "video_url": "https://missionviejo.granicus.com/player/clip/417?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 1, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=411",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=411",
+      "video_url": "https://missionviejo.granicus.com/player/clip/411?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 18, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=409",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=409",
+      "video_url": "https://missionviejo.granicus.com/player/clip/409?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 4, 2010",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=408",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=408",
+      "video_url": "https://missionviejo.granicus.com/player/clip/408?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 7, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=405",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=405",
+      "video_url": "https://missionviejo.granicus.com/player/clip/405?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 16, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=400",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=400",
+      "video_url": "https://missionviejo.granicus.com/player/clip/400?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 2, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=398",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=398",
+      "video_url": "https://missionviejo.granicus.com/player/clip/398?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 19, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=392",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=392",
+      "video_url": "https://missionviejo.granicus.com/player/clip/392?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 5, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=375",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=375",
+      "video_url": "https://missionviejo.granicus.com/player/clip/375?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 21, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=372",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=372",
+      "video_url": "https://missionviejo.granicus.com/player/clip/372?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 8, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=369",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=369",
+      "video_url": "https://missionviejo.granicus.com/player/clip/369?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 20, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=366",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=366",
+      "video_url": "https://missionviejo.granicus.com/player/clip/366?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 6, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=364",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=364",
+      "video_url": "https://missionviejo.granicus.com/player/clip/364?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Workshop",
+      "date": "June 22, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=361",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=361",
+      "video_url": "https://missionviejo.granicus.com/player/clip/361?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 15, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=355",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=355",
+      "video_url": "https://missionviejo.granicus.com/player/clip/355?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 1, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=347",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=347",
+      "video_url": "https://missionviejo.granicus.com/player/clip/347?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 18, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=340",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=340",
+      "video_url": "https://missionviejo.granicus.com/player/clip/340?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 4, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=328",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=328",
+      "video_url": "https://missionviejo.granicus.com/player/clip/328?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 20, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=300",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=300",
+      "video_url": "https://missionviejo.granicus.com/player/clip/300?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 6, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=299",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=299",
+      "video_url": "https://missionviejo.granicus.com/player/clip/299?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 16, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=294",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=294",
+      "video_url": "https://missionviejo.granicus.com/player/clip/294?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 2, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=291",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=291",
+      "video_url": "https://missionviejo.granicus.com/player/clip/291?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Workshop",
+      "date": "February 24, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=289",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=289",
+      "video_url": "https://missionviejo.granicus.com/player/clip/289?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 16, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=284",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=284",
+      "video_url": "https://missionviejo.granicus.com/player/clip/284?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 2, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=282",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=282",
+      "video_url": "https://missionviejo.granicus.com/player/clip/282?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 19, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=278",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=278",
+      "video_url": "https://missionviejo.granicus.com/player/clip/278?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 5, 2009",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=264",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=264",
+      "video_url": "https://missionviejo.granicus.com/player/clip/264?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Workshop",
+      "date": "December 15, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=298",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=298",
+      "video_url": "https://missionviejo.granicus.com/player/clip/298?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 1, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=255",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=255",
+      "video_url": "https://missionviejo.granicus.com/player/clip/255?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 17, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=251",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=251",
+      "video_url": "https://missionviejo.granicus.com/player/clip/251?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 3, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=238",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=238",
+      "video_url": "https://missionviejo.granicus.com/player/clip/238?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 20, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=232",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=232",
+      "video_url": "https://missionviejo.granicus.com/player/clip/232?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 6, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=219",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=219",
+      "video_url": "https://missionviejo.granicus.com/player/clip/219?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 15, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=210",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=210",
+      "video_url": "https://missionviejo.granicus.com/player/clip/210?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 2, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=203",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=203",
+      "video_url": "https://missionviejo.granicus.com/player/clip/203?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 18, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=202",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=202",
+      "video_url": "https://missionviejo.granicus.com/player/clip/202?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 7, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=194",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=194",
+      "video_url": "https://missionviejo.granicus.com/player/clip/194?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Workshop",
+      "date": "June 30, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=192",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=192",
+      "video_url": "https://missionviejo.granicus.com/player/clip/192?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 16, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=188",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=188",
+      "video_url": "https://missionviejo.granicus.com/player/clip/188?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 2, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=187",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=187",
+      "video_url": "https://missionviejo.granicus.com/player/clip/187?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 19, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=177",
+      "minutes_url": null,
+      "video_url": "https://missionviejo.granicus.com/player/clip/177?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 5, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=167",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=167",
+      "video_url": "https://missionviejo.granicus.com/player/clip/167?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 21, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=164",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=164",
+      "video_url": "https://missionviejo.granicus.com/player/clip/164?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 7, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=157",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=157",
+      "video_url": "https://missionviejo.granicus.com/player/clip/157?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 17, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=149",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=149",
+      "video_url": "https://missionviejo.granicus.com/player/clip/149?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 3, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=146",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=146",
+      "video_url": "https://missionviejo.granicus.com/player/clip/146?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 18, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=141",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=141",
+      "video_url": "https://missionviejo.granicus.com/player/clip/141?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 4, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=138",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=138",
+      "video_url": "https://missionviejo.granicus.com/player/clip/138?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 21, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=135",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=135",
+      "video_url": "https://missionviejo.granicus.com/player/clip/135?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 7, 2008",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=132",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=132",
+      "video_url": "https://missionviejo.granicus.com/player/clip/132?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 3, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=122",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=122",
+      "video_url": "https://missionviejo.granicus.com/player/clip/122?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 19, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=119",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=119",
+      "video_url": "https://missionviejo.granicus.com/player/clip/119?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 5, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=127",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=127",
+      "video_url": "https://missionviejo.granicus.com/player/clip/127?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 15, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=113",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=113",
+      "video_url": "https://missionviejo.granicus.com/player/clip/113?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "October 1, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=110",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=110",
+      "video_url": "https://missionviejo.granicus.com/player/clip/110?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 17, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=106",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=106",
+      "video_url": "https://missionviejo.granicus.com/player/clip/106?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "September 4, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=103",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=103",
+      "video_url": "https://missionviejo.granicus.com/player/clip/103?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "August 20, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=100",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=100",
+      "video_url": "https://missionviejo.granicus.com/player/clip/100?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "July 2, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=92",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=92",
+      "video_url": "https://missionviejo.granicus.com/player/clip/92?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Workshop",
+      "date": "June 19, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=89",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=89",
+      "video_url": "https://missionviejo.granicus.com/player/clip/89?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 18, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=87",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=87",
+      "video_url": "https://missionviejo.granicus.com/player/clip/87?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "June 4, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=86",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=86",
+      "video_url": "https://missionviejo.granicus.com/player/clip/86?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 21, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=74",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=74",
+      "video_url": "https://missionviejo.granicus.com/player/clip/74?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "May 7, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=70",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=70",
+      "video_url": "https://missionviejo.granicus.com/player/clip/70?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 16, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=56",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=56",
+      "video_url": "https://missionviejo.granicus.com/player/clip/56?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "April 2, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=53",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=53",
+      "video_url": "https://missionviejo.granicus.com/player/clip/53?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 19, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=50",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=50",
+      "video_url": "https://missionviejo.granicus.com/player/clip/50?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "March 5, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=47",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=47",
+      "video_url": "https://missionviejo.granicus.com/player/clip/47?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 19, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=41",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=41",
+      "video_url": "https://missionviejo.granicus.com/player/clip/41?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "February 5, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=38",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=38",
+      "video_url": "https://missionviejo.granicus.com/player/clip/38?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Workshop",
+      "date": "January 29, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=35",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=35",
+      "video_url": "https://missionviejo.granicus.com/player/clip/35?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 15, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=32",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=32",
+      "video_url": "https://missionviejo.granicus.com/player/clip/32?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "January 2, 2007",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=29",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=29",
+      "video_url": "https://missionviejo.granicus.com/player/clip/29?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "December 4, 2006",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=26",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=26",
+      "video_url": "https://missionviejo.granicus.com/player/clip/26?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 20, 2006",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=18",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=18",
+      "video_url": "https://missionviejo.granicus.com/player/clip/18?view_id=12",
+      "event_id": null
+    },
+    {
+      "name": "City Council Meeting",
+      "date": "November 6, 2006",
+      "agenda_url": "https://missionviejo.granicus.com/AgendaViewer.php?view_id=12&clip_id=11",
+      "minutes_url": "https://missionviejo.granicus.com/MinutesViewer.php?view_id=12&clip_id=11",
+      "video_url": "https://missionviejo.granicus.com/player/clip/11?view_id=12",
+      "event_id": null
+    }
+  ],
+  "city_info": {
+    "website": "https://www.cityofmissionviejo.org",
+    "council_url": "https://www.cityofmissionviejo.org/government/city-council",
+    "meeting_schedule": "1st and 3rd Mondays",
+    "meeting_time": "5:00 PM",
+    "meeting_location": {
+      "name": "City Hall Council Chamber",
+      "address": "200 Civic Center",
+      "city_state_zip": "Mission Viejo, CA 92691"
+    },
+    "zoom": {},
+    "phone_numbers": [],
+    "tv_channels": [],
+    "live_stream": "https://missionviejo.granicus.com/ViewPublisher.php?view_id=12",
+    "clerk": {
+      "title": "City Clerk's Office",
+      "phone": "(949) 470-3050",
+      "email": "citycouncil@cityofmissionviejo.org"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": false,
+      "ecomment": true,
+      "written_email": true,
+      "time_limit": "3 minutes per speaker",
+      "email": "citycouncil@cityofmissionviejo.org"
+    },
+    "portals": {
+      "granicus": "https://missionviejo.granicus.com/ViewPublisher.php?view_id=12",
+      "ecomment": "https://dms.cityofmissionviejo.org/OnBaseAgendaOnline",
+      "live_stream": "https://missionviejo.granicus.com/ViewPublisher.php?view_id=12"
+    },
+    "council": {
+      "size": 5,
+      "districts": 0,
+      "at_large": 5,
+      "mayor_elected": false,
+      "expanded_date": null
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "Mayor",
+        "Mayor Pro Tem",
+        "Councilmember"
+      ],
+      "term_length": 4,
+      "election_system": "at-large"
+    }
+  }
 }

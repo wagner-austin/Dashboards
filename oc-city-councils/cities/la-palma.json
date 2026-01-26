@@ -9,8 +9,8 @@
       "district": "At-Large",
       "email": "citycouncil@lapalmaca.gov",
       "phone": "714-690-3334",
-      "city_profile": "https://www.lapalmaca.gov/716",
-      "photo_url": null
+      "city_profile": "https://www.lapalmaca.gov/66/City-Council",
+      "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=13971"
     },
     {
       "name": "Debbie S. Baker",
@@ -18,17 +18,17 @@
       "district": "District 1",
       "email": "citycouncil@lapalmaca.gov",
       "phone": "714-690-3334",
-      "city_profile": "https://www.lapalmaca.gov/714",
-      "photo_url": null
+      "city_profile": "https://www.lapalmaca.gov/66/City-Council",
+      "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=13972"
     },
     {
       "name": "Janet Keo",
       "position": "Councilmember",
-      "district": null,
+      "district": "At-Large",
       "email": "citycouncil@lapalmaca.gov",
       "phone": "714-690-3334",
-      "city_profile": null,
-      "photo_url": null
+      "city_profile": "https://www.lapalmaca.gov/66/City-Council",
+      "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=12391"
     },
     {
       "name": "Mark I. Waldman",
@@ -36,8 +36,8 @@
       "district": "District 5",
       "email": "citycouncil@lapalmaca.gov",
       "phone": "714-690-3334",
-      "city_profile": "https://www.lapalmaca.gov/717",
-      "photo_url": null
+      "city_profile": "https://www.lapalmaca.gov/66/City-Council",
+      "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=13973"
     },
     {
       "name": "Vikesh P. Patel",
@@ -45,8 +45,8 @@
       "district": "District 3",
       "email": "citycouncil@lapalmaca.gov",
       "phone": "714-690-3334",
-      "city_profile": "https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member",
-      "photo_url": null
+      "city_profile": "https://www.lapalmaca.gov/66/City-Council",
+      "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=13971"
     }
   ],
   "public_comment": {
@@ -66,5 +66,54 @@
   ],
   "city_name": "La Palma",
   "slug": "la-palma",
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "website": "https://www.lapalmaca.gov",
+    "council_url": "https://www.lapalmaca.gov/66/City-Council",
+    "meeting_schedule": "1st Tuesday",
+    "meeting_time": "6:30 PM",
+    "meeting_location": {
+      "name": "La Palma Civic Center",
+      "address": "7822 Walker Street",
+      "city_state_zip": "La Palma, CA 90623"
+    },
+    "zoom": {},
+    "phone_numbers": [],
+    "tv_channels": [],
+    "live_stream": "https://www.lapalmaca.gov/72/Agendas-and-Minutes",
+    "clerk": {
+      "name": "Kimberly Kenney",
+      "title": "City Clerk",
+      "phone": "(714) 690-3334",
+      "email": "Kimberlyk@cityoflapalma.org"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": false,
+      "ecomment": false,
+      "written_email": true,
+      "time_limit": "5 minutes per speaker",
+      "email": "Kimberlyk@cityoflapalma.org",
+      "deadline": "5:00 PM on meeting day"
+    },
+    "portals": {
+      "agenda_center": "https://www.lapalmaca.gov/72/Agendas-and-Minutes",
+      "live_stream": "https://www.lapalmaca.gov/72/Agendas-and-Minutes"
+    },
+    "council": {
+      "size": 5,
+      "districts": 3,
+      "at_large": 2,
+      "mayor_elected": false,
+      "expanded_date": null
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "At-Large (2 seats)"
+      ],
+      "term_length": 4,
+      "election_system": "mixed"
+    }
+  }
 }

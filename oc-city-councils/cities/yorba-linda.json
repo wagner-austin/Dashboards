@@ -10,7 +10,7 @@
       "position": "Mayor",
       "district": null,
       "email": "crodriguez@yorbalindaca.gov",
-      "phone": "714-961-7100",
+      "phone": "714-961-7110",
       "city_profile": "https://www.yorbalindaca.gov/746/Council-Member-Carlos-Rodriguez",
       "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8530"
     },
@@ -19,7 +19,7 @@
       "position": "Mayor Pro Tem",
       "district": null,
       "email": "phuang@yorbalindaca.gov",
-      "phone": "714-961-7100",
+      "phone": "714-961-7110",
       "city_profile": "https://www.yorbalindaca.gov/194/Council-Member-Peggy-Huang",
       "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8532"
     },
@@ -28,7 +28,7 @@
       "position": "Councilmember",
       "district": null,
       "email": "jlim@yorbalindaca.gov",
-      "phone": "714-961-7100",
+      "phone": "714-961-7110",
       "city_profile": "https://www.yorbalindaca.gov/195/Council-Member-Janice-Lim",
       "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8521"
     },
@@ -37,7 +37,7 @@
       "position": "Councilmember",
       "district": null,
       "email": "ssingh@yorbalindaca.gov",
-      "phone": "714-961-7100",
+      "phone": "714-961-7110",
       "city_profile": "https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh",
       "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8533"
     },
@@ -46,7 +46,7 @@
       "position": "Councilmember",
       "district": null,
       "email": "tcampbell@yorbalindaca.gov",
-      "phone": "714-961-7100",
+      "phone": "714-961-7110",
       "city_profile": "https://www.yorbalindaca.gov/744/Mayor-Tara-Campbell",
       "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8534"
     }
@@ -66,5 +66,63 @@
     "Birthplace of Richard Nixon",
     "Individual emails verified"
   ],
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "meeting_schedule": "1st and 3rd Tuesdays",
+    "meeting_time": "6:30 PM",
+    "meeting_location": {
+      "name": "City Council Chambers",
+      "address": "4845 Casa Loma Avenue",
+      "city_state_zip": "Yorba Linda, CA 92886"
+    },
+    "zoom": {},
+    "phone_numbers": [],
+    "tv_channels": [
+      {
+        "provider": "Local Cable",
+        "channel": "3"
+      },
+      {
+        "provider": "AT&T U-Verse",
+        "channel": "99"
+      }
+    ],
+    "live_stream": "https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7",
+    "clerk": {
+      "title": "City Clerk",
+      "phone": "(714) 961-7100",
+      "email": "cityclerk@yorbalindaca.gov"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": false,
+      "ecomment": false,
+      "written_email": true,
+      "time_limit": "5 minutes per speaker",
+      "email": "cityclerk@yorbalindaca.gov",
+      "notes": "Include full name, city of residence, phone number, and agenda item"
+    },
+    "portals": {
+      "agenda_center": "https://www.yorbalindaca.gov/197/Council-Meeting-Agendas-Minutes",
+      "granicus": "https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7",
+      "live_stream": "https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7"
+    },
+    "council": {
+      "size": 5,
+      "districts": 0,
+      "at_large": 5,
+      "mayor_elected": false,
+      "expanded_date": null,
+      "notes": "All members elected at-large"
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "At-Large (2 seats)"
+      ],
+      "term_length": 4,
+      "election_system": "at-large",
+      "term_limits": "Three consecutive 4-year terms"
+    }
+  }
 }

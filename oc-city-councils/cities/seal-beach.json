@@ -10,7 +10,7 @@
       "email": "llandau@sealbeachca.gov",
       "phone": "(562) 431-2527 x1503",
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
-      "photo_url": null
+      "photo_url": "https://www.sealbeachca.gov/portals/0/Documents/128021.jpeg?ver=2023-03-30-084054-510"
     },
     {
       "name": "Ben Wong",
@@ -19,14 +19,14 @@
       "email": "bwong@sealbeachca.gov",
       "phone": "(562) 431-2527 x1503",
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
-      "photo_url": null
+      "photo_url": "https://www.sealbeachca.gov/portals/0/Images/Government/City%20Council/Wong_c.jpg?ver=2024-12-10-141231-117"
     },
     {
       "name": "Joe Kalmick",
       "position": "Councilmember",
       "district": "District 1",
       "email": "jkalmick@sealbeachca.gov",
-      "phone": "(562) 431-2527 x1503",
+      "phone": "(562) 431-2527 x1505",
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
       "photo_url": null
     },
@@ -35,18 +35,18 @@
       "position": "Councilmember",
       "district": "District 5",
       "email": "nsteele@sealbeachca.gov",
-      "phone": "(562) 431-2527 x1503",
+      "phone": "(562) 431-2527 x1502",
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
-      "photo_url": null
+      "photo_url": "https://www.sealbeachca.gov/portals/0/Documents/Councilman%20Steele.jpg?ver=2023-03-27-111034-577"
     },
     {
       "name": "Patty Senecal",
       "position": "Councilmember",
       "district": "District 4",
       "email": "psenecal@sealbeachca.gov",
-      "phone": "(562) 431-2527 x1503",
+      "phone": "(562) 431-2527 x1501",
       "city_profile": "https://www.sealbeachca.gov/Government/City-Council",
-      "photo_url": null
+      "photo_url": "https://www.sealbeachca.gov/portals/0/Images/Government/City%20Council/Senecal_2025_c.jpg?ver=2024-12-10-141231-117"
     }
   ],
   "public_comment": {
@@ -64,5 +64,58 @@
   ],
   "city_name": "Seal Beach",
   "slug": "seal-beach",
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "city_name": "Seal Beach",
+    "website": "https://www.sealbeachca.gov",
+    "council_url": "https://www.sealbeachca.gov/Government/City-Council",
+    "meeting_schedule": "2nd and 4th Mondays",
+    "meeting_time": "5:00 PM",
+    "meeting_location": {
+      "name": "City Council Chambers",
+      "address": "211 Eighth Street",
+      "city_state_zip": "Seal Beach, CA 90740"
+    },
+    "clerk": {
+      "phone": "(562) 431-2527",
+      "hours": "8:00 a.m. to 5:00 p.m.",
+      "title": "City Clerk's Office",
+      "address": "211 Eighth Street, Seal Beach, CA 90740"
+    },
+    "public_comment": {
+      "in_person": true
+    },
+    "broadcast": {
+      "sbtv_phone": "(562) 596-1404",
+      "sbtv_email": "sbtv03@gmail.com"
+    },
+    "portals": {
+      "agendas_minutes": "https://www.sealbeachca.gov/Government/Agendas-Notices-Meeting-Videos",
+      "e_records": "http://pubrec.sealbeachca.gov/WebLink8/",
+      "public_records": "https://cityofsealbeach.nextrequest.com"
+    },
+    "tv_channels": [
+      {
+        "provider": "SBTV",
+        "channel": "3"
+      }
+    ],
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "District 1",
+        "District 3",
+        "District 5"
+      ],
+      "term_length": 4,
+      "election_system": "district"
+    },
+    "council": {
+      "size": 5,
+      "districts": 5,
+      "at_large": 0,
+      "mayor_elected": false,
+      "mayor_rotation": "Selected by council annually"
+    }
+  }
 }

@@ -12,25 +12,25 @@
       "email": "jcampbell@sanjuancapistrano.org",
       "phone": "949-493-1171",
       "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=47",
-      "photo_url": null
+      "photo_url": "https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022"
     },
     {
       "name": "John Taylor",
       "position": "Mayor Pro Tem",
-      "district": "District 4",
+      "district": "District 5",
       "email": "jtaylor@sanjuancapistrano.org",
       "phone": "949-493-1171",
       "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=51",
-      "photo_url": null
+      "photo_url": "https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022"
     },
     {
       "name": "Howard Hart",
       "position": "Councilmember",
-      "district": "District 5",
+      "district": "District 4",
       "email": "hhart@sanjuancapistrano.org",
       "phone": "949-493-1171",
       "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=48",
-      "photo_url": null
+      "photo_url": "https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022"
     },
     {
       "name": "Sergio Farias",
@@ -39,7 +39,7 @@
       "email": "sfarias@sanjuancapistrano.org",
       "phone": "949-493-1171",
       "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=50",
-      "photo_url": null
+      "photo_url": "https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022"
     },
     {
       "name": "Troy A. Bourne",
@@ -48,7 +48,7 @@
       "email": "tbourne@sanjuancapistrano.org",
       "phone": "949-493-1171",
       "city_profile": "https://sanjuancapistrano.org/directory.aspx?eid=49",
-      "photo_url": null
+      "photo_url": "https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022"
     }
   ],
   "public_comment": {
@@ -65,5 +65,63 @@
     "By-district elections",
     "Mayor/Mayor Pro Tem selected by council each December"
   ],
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "website": "https://sanjuancapistrano.org",
+    "council_url": "https://sanjuancapistrano.org/318/City-Council",
+    "meeting_schedule": "1st and 3rd Tuesdays",
+    "meeting_time": "5:00 PM",
+    "meeting_location": {
+      "name": "City Council Chamber",
+      "address": "32400 Paseo Adelanto",
+      "city_state_zip": "San Juan Capistrano, CA 92675"
+    },
+    "zoom": {},
+    "phone_numbers": [
+      {
+        "type": "Public Comment Line",
+        "number": "(949) 493-1172"
+      }
+    ],
+    "tv_channels": [],
+    "live_stream": "https://sjc.granicus.com/ViewPublisher.php?view_id=3",
+    "clerk": {
+      "name": "Maria Morris",
+      "title": "City Clerk",
+      "phone": "(949) 443-6310",
+      "email": "cityclerk@sanjuancapistrano.org"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": true,
+      "ecomment": false,
+      "written_email": true,
+      "time_limit": "3 minutes per speaker",
+      "email": "cityclerk@sanjuancapistrano.org",
+      "phone": "(949) 493-1172",
+      "notes": "Call public comment line at start of meeting to be placed in queue"
+    },
+    "portals": {
+      "agenda_center": "https://sanjuancapistrano.org/189/Public-Meetings",
+      "granicus": "https://sjc.granicus.com/ViewPublisher.php?view_id=3",
+      "live_stream": "https://sjc.granicus.com/ViewPublisher.php?view_id=3"
+    },
+    "council": {
+      "size": 5,
+      "districts": 5,
+      "at_large": 0,
+      "mayor_elected": false,
+      "expanded_date": null,
+      "notes": "By-district elections since 2016"
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "District 2",
+        "District 3"
+      ],
+      "term_length": 4,
+      "election_system": "by-district"
+    }
+  }
 }

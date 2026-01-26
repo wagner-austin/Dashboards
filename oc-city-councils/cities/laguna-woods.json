@@ -10,7 +10,7 @@
       "email": "amccary@cityoflagunawoods.org",
       "phone": "(949) 639-0500",
       "city_profile": "https://www.cityoflagunawoods.org/city-council/",
-      "photo_url": null
+      "photo_url": "https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/McCary_Annie-2024e-236x300.jpg"
     },
     {
       "name": "Pearl Lee",
@@ -19,7 +19,7 @@
       "email": "plee@cityoflagunawoods.org",
       "phone": "(949) 639-0500",
       "city_profile": "https://www.cityoflagunawoods.org/city-council/",
-      "photo_url": null
+      "photo_url": "https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Lee_Pearl-2024e-236x300.jpg"
     },
     {
       "name": "Carol Moore",
@@ -28,7 +28,7 @@
       "email": "cmoore@cityoflagunawoods.org",
       "phone": "(949) 639-0500",
       "city_profile": "https://www.cityoflagunawoods.org/city-council/",
-      "photo_url": null
+      "photo_url": "https://www.cityoflagunawoods.org/data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20236%20300'%3E%3C/svg%3E"
     },
     {
       "name": "Cynthia Conners",
@@ -64,5 +64,61 @@
   ],
   "city_name": "Laguna Woods",
   "slug": "laguna-woods",
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "website": "https://www.cityoflagunawoods.org",
+    "council_url": "https://www.cityoflagunawoods.org/city-council/",
+    "meeting_schedule": "3rd Wednesday",
+    "meeting_time": "2:00 PM",
+    "meeting_location": {
+      "name": "City Hall",
+      "address": "24264 El Toro Road",
+      "city_state_zip": "Laguna Woods, CA 92637"
+    },
+    "zoom": {
+      "note": "Zoom available for viewing and public comment (see agenda for details)"
+    },
+    "phone_numbers": [],
+    "tv_channels": [
+      {
+        "provider": "Local Cable",
+        "channel": "31"
+      }
+    ],
+    "live_stream": "https://www.youtube.com/@cityoflagunawoods",
+    "clerk": {
+      "title": "City Clerk",
+      "phone": "(949) 639-0500",
+      "email": "cityhall@cityoflagunawoods.org"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": true,
+      "ecomment": false,
+      "written_email": true,
+      "time_limit": "3 minutes per speaker",
+      "email": "cityhall@cityoflagunawoods.org",
+      "deadline": "2:00 PM on meeting day"
+    },
+    "portals": {
+      "agenda_center": "https://www.cityoflagunawoods.org/current-agendas/",
+      "youtube": "https://www.youtube.com/@cityoflagunawoods",
+      "live_stream": "https://www.youtube.com/@cityoflagunawoods"
+    },
+    "council": {
+      "size": 5,
+      "districts": 0,
+      "at_large": 5,
+      "mayor_elected": false,
+      "expanded_date": null
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "At-Large (2 seats)"
+      ],
+      "term_length": 4,
+      "election_system": "at-large"
+    }
+  }
 }

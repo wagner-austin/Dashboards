@@ -8,63 +8,63 @@
       "position": "Mayor",
       "district": "At-Large",
       "email": "dan@danslater.com",
-      "phone": "(714) 744-5523",
-      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "photo_url": null
+      "phone": "(714) 744-2211",
+      "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council/mayor-dan-slater",
+      "photo_url": "https://www.cityoforange.org/home/showpublishedimage/4276/638090214365300000"
     },
     {
       "name": "Denis Bilodeau",
       "position": "Mayor Pro Tem",
       "district": "District 4",
       "email": "dbilodeau@cityoforange.org",
-      "phone": "(714) 744-5523",
+      "phone": "(714) 744-2211",
       "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "photo_url": null
+      "photo_url": "https://www.cityoforange.org/home/showpublishedimage/4262/638088790152230000"
     },
     {
       "name": "Ana Gutierrez",
       "position": "Councilmember",
       "district": "District 5",
       "email": "anagutierrez@cityoforange.org",
-      "phone": "(714) 744-5523",
+      "phone": "(714) 744-2211",
       "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "photo_url": null
+      "photo_url": "https://www.cityoforange.org/home/showpublishedimage/2176/638695101520570000"
     },
     {
       "name": "Arianna Barrios",
       "position": "Councilmember",
       "district": "District 1",
       "email": "abarrios@cityoforange.org",
-      "phone": "(714) 744-5523",
+      "phone": "(714) 744-2211",
       "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "photo_url": null
+      "photo_url": "https://www.cityoforange.org/home/showpublishedimage/2178/638088789806430000"
     },
     {
       "name": "John Gyllenhammer",
       "position": "Councilmember",
       "district": "District 6",
       "email": "jgyllenhammer@cityoforange.org",
-      "phone": "(714) 744-5523",
+      "phone": "(714) 744-2211",
       "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "photo_url": null
+      "photo_url": "https://www.cityoforange.org/home/showpublishedimage/4264/638695101297800000"
     },
     {
       "name": "Jon Dumitru",
       "position": "Councilmember",
       "district": "District 2",
       "email": "jdumitru@cityoforange.org",
-      "phone": "(714) 744-5523",
+      "phone": "(714) 744-2211",
       "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "photo_url": null
+      "photo_url": "https://www.cityoforange.org/home/showpublishedimage/2182/637776775870170000"
     },
     {
       "name": "Kathy Tavoularis",
       "position": "Councilmember",
       "district": "District 3",
       "email": "ktavoularis@cityoforange.org",
-      "phone": "(714) 744-5523",
+      "phone": "(714) 744-2211",
       "city_profile": "https://www.cityoforange.org/our-city/local-government/city-council",
-      "photo_url": null
+      "photo_url": "https://www.cityoforange.org/home/showpublishedimage/2184/637776775876700000"
     }
   ],
   "public_comment": {
@@ -84,5 +84,2181 @@
   ],
   "city_name": "Orange",
   "slug": "orange",
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "meetings": [
+    {
+      "name": "Orange City Council January 27, 2026 - 06:00 PM Agenda",
+      "date": "January 27, 2026",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&event_id=1574",
+      "minutes_url": null,
+      "video_url": null,
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 27, 2025 01h 48m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 27, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=897",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/897?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 13, 2025 02h 59m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "May 13, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=894",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=894",
+      "video_url": "https://cityoforange.granicus.com/player/clip/894?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 28, 2024 07h 17m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "May 28, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=824",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=824",
+      "video_url": "https://cityoforange.granicus.com/player/clip/824?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 14, 2024 06h 01m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "May 14, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=821",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=821",
+      "video_url": "https://cityoforange.granicus.com/player/clip/821?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 23, 2023 02h 08m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "May 23, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=735",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=735",
+      "video_url": "https://cityoforange.granicus.com/player/clip/735?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 9, 2023 05h 38m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "May 9, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=733",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=733",
+      "video_url": "https://cityoforange.granicus.com/player/clip/733?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 10, 2022 01h 31m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "May 10, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=663",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=663",
+      "video_url": "https://cityoforange.granicus.com/player/clip/663?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 11, 2021 03h 12m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "May 11, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=575",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=575",
+      "video_url": "https://cityoforange.granicus.com/player/clip/575?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting May 26, 2020 02h 18m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 26, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=433",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/433?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting May 20, 2020 00h 39m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 20, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=426",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/426?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting May 12, 2020 00h 28m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 12, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=424",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/424?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting May 5, 2020 01h 12m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 5, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=423",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/423?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting May 14, 2019 01h 32m Agenda Video MP4 Video",
+      "date": "May 14, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=358",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/358?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting 5-8-18 May 15, 2018 01h 19m Agenda Video MP4 Video",
+      "date": "May 15, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=330",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/330?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 9, 2017 01h 49m Agenda Video MP4 Video",
+      "date": "May 9, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=296",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/296?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 10, 2016 03h 11m Agenda Video MP4 Video",
+      "date": "May 10, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=266",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/266?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 12, 2015 02h 42m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 12, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=214",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/214?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 13, 2014 04h 51m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 13, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=163",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/163?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 28, 2013 01h 34m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 28, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=122",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/122?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 14, 2013 01h 30m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 14, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=120",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/120?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council May 8, 2012 01h 49m Agenda Video MP3 Audio MP4 Video",
+      "date": "May 8, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=74",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/74?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "Orange City Council Jan 13, 2026 04h 17m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jan 13, 2026",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=965",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/965?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "Orange City Council Dec 9, 2025 03h 16m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Dec 9, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=961",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=961",
+      "video_url": "https://cityoforange.granicus.com/player/clip/961?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "Orange City Council Nov 12, 2025 01h 56m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Nov 12, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=957",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=957",
+      "video_url": "https://cityoforange.granicus.com/player/clip/957?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "Orange City Council Oct 28, 2025 03h 19m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Oct 28, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=950",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=950",
+      "video_url": "https://cityoforange.granicus.com/player/clip/950?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "Orange City Council Oct 14, 2025 01h 09m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Oct 14, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=945",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=945",
+      "video_url": "https://cityoforange.granicus.com/player/clip/945?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "Orange City Council Sep 23, 2025 02h 08m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Sep 23, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=937",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=937",
+      "video_url": "https://cityoforange.granicus.com/player/clip/937?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "Orange City Council - Regular Session Sep 9, 2025 04h 24m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Sep 9, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=932",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=932",
+      "video_url": "https://cityoforange.granicus.com/player/clip/932?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 26, 2025 01h 41m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 26, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=916",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=916",
+      "video_url": "https://cityoforange.granicus.com/player/clip/916?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 12, 2025 03h 56m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 12, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=912",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=912",
+      "video_url": "https://cityoforange.granicus.com/player/clip/912?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 22, 2025 05h 16m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jul 22, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=909",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=909",
+      "video_url": "https://cityoforange.granicus.com/player/clip/909?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 24, 2025 02h 57m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 24, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=905",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=905",
+      "video_url": "https://cityoforange.granicus.com/player/clip/905?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council 6:00 PM Regular Session Jun 10, 2025 02h 05m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 10, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=900",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=900",
+      "video_url": "https://cityoforange.granicus.com/player/clip/900?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 22, 2025 01h 32m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Apr 22, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=890",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=890",
+      "video_url": "https://cityoforange.granicus.com/player/clip/890?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 8, 2025 03h 28m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Apr 8, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=885",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=885",
+      "video_url": "https://cityoforange.granicus.com/player/clip/885?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 25, 2025 02h 16m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 25, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=883",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=883",
+      "video_url": "https://cityoforange.granicus.com/player/clip/883?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 11, 2025 03h 25m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 11, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=881",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=881",
+      "video_url": "https://cityoforange.granicus.com/player/clip/881?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Joint Meeting with the Industrial Development Authority of the City of Orange Feb 25,",
+      "date": "Feb 25, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=879",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=879",
+      "video_url": "https://cityoforange.granicus.com/player/clip/879?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 11, 2025 01h 14m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Feb 11, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=876",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=876",
+      "video_url": "https://cityoforange.granicus.com/player/clip/876?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 28, 2025 03h 16m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jan 28, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=873",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=873",
+      "video_url": "https://cityoforange.granicus.com/player/clip/873?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Joint Meeting with the Successor Agency to the Orange Redevelopment Agency Jan 14, 20",
+      "date": "Jan 14, 2025",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=870",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=870",
+      "video_url": "https://cityoforange.granicus.com/player/clip/870?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 10, 2024 01h 10m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Dec 10, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=869",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=869",
+      "video_url": "https://cityoforange.granicus.com/player/clip/869?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 26, 2024 01h 49m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Nov 26, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=867",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=867",
+      "video_url": "https://cityoforange.granicus.com/player/clip/867?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Joint Meeting with the Industrial Development Authority of the City of Orange Nov 12,",
+      "date": "Nov 12, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=864",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=864",
+      "video_url": "https://cityoforange.granicus.com/player/clip/864?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 22, 2024 01h 19m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Oct 22, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=860",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=860",
+      "video_url": "https://cityoforange.granicus.com/player/clip/860?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 8, 2024 02h 03m Agenda Minutes Video MP4 Video",
+      "date": "Oct 8, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=855",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=855",
+      "video_url": "https://cityoforange.granicus.com/player/clip/855?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 24, 2024 00h 38m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Sep 24, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=851",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=851",
+      "video_url": "https://cityoforange.granicus.com/player/clip/851?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 10, 2024 03h 22m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Sep 10, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=847",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=847",
+      "video_url": "https://cityoforange.granicus.com/player/clip/847?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 27, 2024 02h 13m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 27, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=845",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=845",
+      "video_url": "https://cityoforange.granicus.com/player/clip/845?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 13, 2024 01h 51m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 13, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=842",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=842",
+      "video_url": "https://cityoforange.granicus.com/player/clip/842?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 23, 2024 01h 56m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jul 23, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=838",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=838",
+      "video_url": "https://cityoforange.granicus.com/player/clip/838?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Special Meeting Jun 28, 2024 02h 13m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 28, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=836",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=836",
+      "video_url": "https://cityoforange.granicus.com/player/clip/836?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 25, 2024 05h 23m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 25, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=835",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=835",
+      "video_url": "https://cityoforange.granicus.com/player/clip/835?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Special Meeting Jun 11, 2024 02h 01m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 11, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=831",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=831",
+      "video_url": "https://cityoforange.granicus.com/player/clip/831?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 11, 2024 02h 35m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 11, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=832",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=832",
+      "video_url": "https://cityoforange.granicus.com/player/clip/832?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 5, 2024 00h 41m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 5, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=830",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=830",
+      "video_url": "https://cityoforange.granicus.com/player/clip/830?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Special Meeting - Strategic Planning Session Apr 30, 2024 01h 48m Agenda Minutes Video ",
+      "date": "Apr 30, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=819",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=819",
+      "video_url": "https://cityoforange.granicus.com/player/clip/819?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 23, 2024 01h 22m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Apr 23, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=815",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=815",
+      "video_url": "https://cityoforange.granicus.com/player/clip/815?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Budget Study Session Apr 16, 2024 01h 01m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Apr 16, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=814",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=814",
+      "video_url": "https://cityoforange.granicus.com/player/clip/814?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 9, 2024 00h 47m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Apr 9, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=809",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=809",
+      "video_url": "https://cityoforange.granicus.com/player/clip/809?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 26, 2024 02h 33m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 26, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=806",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=806",
+      "video_url": "https://cityoforange.granicus.com/player/clip/806?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Budget Study Session Mar 21, 2024 00h 56m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 21, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=805",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=805",
+      "video_url": "https://cityoforange.granicus.com/player/clip/805?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 12, 2024 03h 21m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 12, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=799",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=799",
+      "video_url": "https://cityoforange.granicus.com/player/clip/799?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Special Meeting Mar 11, 2024 01h 24m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 11, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=801",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=801",
+      "video_url": "https://cityoforange.granicus.com/player/clip/801?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 27, 2024 03h 11m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Feb 27, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=796",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=796",
+      "video_url": "https://cityoforange.granicus.com/player/clip/796?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 13, 2024 03h 16m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Feb 13, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=793",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=793",
+      "video_url": "https://cityoforange.granicus.com/player/clip/793?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 23, 2024 01h 17m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jan 23, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=790",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=790",
+      "video_url": "https://cityoforange.granicus.com/player/clip/790?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 9, 2024 03h 08m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jan 9, 2024",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=781",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=781",
+      "video_url": "https://cityoforange.granicus.com/player/clip/781?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 12, 2023 02h 10m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Dec 12, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=779",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=779",
+      "video_url": "https://cityoforange.granicus.com/player/clip/779?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 28, 2023 01h 35m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Nov 28, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=776",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=776",
+      "video_url": "https://cityoforange.granicus.com/player/clip/776?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 14, 2023 02h 55m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Nov 14, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=774",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=774",
+      "video_url": "https://cityoforange.granicus.com/player/clip/774?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Adjourned Regular Meeting Oct 30, 2023 00h 08m Agenda Minutes Video MP3 Audio MP4 Vid",
+      "date": "Oct 30, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=771",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=771",
+      "video_url": "https://cityoforange.granicus.com/player/clip/771?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 24, 2023 02h 51m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Oct 24, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=769",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=769",
+      "video_url": "https://cityoforange.granicus.com/player/clip/769?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 10, 2023 01h 46m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Oct 10, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=764",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=764",
+      "video_url": "https://cityoforange.granicus.com/player/clip/764?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Adjourned Regular Meeting Oct 3, 2023 01h 40m Agenda Minutes Video MP3 Audio MP4 Vide",
+      "date": "Oct 3, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=762",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=762",
+      "video_url": "https://cityoforange.granicus.com/player/clip/762?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 26, 2023 01h 11m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Sep 26, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=760",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=760",
+      "video_url": "https://cityoforange.granicus.com/player/clip/760?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 12, 2023 02h 02m Agenda Minutes Video MP4 Video",
+      "date": "Sep 12, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=758",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=758",
+      "video_url": "https://cityoforange.granicus.com/player/clip/758?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 22, 2023 04h 19m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 22, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=754",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=754",
+      "video_url": "https://cityoforange.granicus.com/player/clip/754?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 8, 2023 01h 13m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 8, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=750",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=750",
+      "video_url": "https://cityoforange.granicus.com/player/clip/750?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 25, 2023 02h 08m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jul 25, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=747",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=747",
+      "video_url": "https://cityoforange.granicus.com/player/clip/747?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 11, 2023 02h 25m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jul 11, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=744",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=744",
+      "video_url": "https://cityoforange.granicus.com/player/clip/744?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 27, 2023 02h 05m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 27, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=742",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=742",
+      "video_url": "https://cityoforange.granicus.com/player/clip/742?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 13, 2023 02h 55m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 13, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=738",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=738",
+      "video_url": "https://cityoforange.granicus.com/player/clip/738?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Adjourned Regular Meeting Jun 6, 2023 01h 55m Agenda Minutes Video MP3 Audio MP4 Vide",
+      "date": "Jun 6, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=736",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=736",
+      "video_url": "https://cityoforange.granicus.com/player/clip/736?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 25, 2023 01h 29m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Apr 25, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=729",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=729",
+      "video_url": "https://cityoforange.granicus.com/player/clip/729?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 11, 2023 03h 44m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Apr 11, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=724",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=724",
+      "video_url": "https://cityoforange.granicus.com/player/clip/724?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 28, 2023 04h 43m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 28, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=722",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=722",
+      "video_url": "https://cityoforange.granicus.com/player/clip/722?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 14, 2023 03h 35m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 14, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=720",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=720",
+      "video_url": "https://cityoforange.granicus.com/player/clip/720?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - 6:00 PM Regular Session Feb 14, 2023 03h 40m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Feb 14, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=716",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=716",
+      "video_url": "https://cityoforange.granicus.com/player/clip/716?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Special Meeting Feb 10, 2023 00h 02m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Feb 10, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=715",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=715",
+      "video_url": "https://cityoforange.granicus.com/player/clip/715?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Special Meeting Jan 23, 2023 00h 59m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jan 23, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=708",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=708",
+      "video_url": "https://cityoforange.granicus.com/player/clip/708?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 10, 2023 03h 43m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jan 10, 2023",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=706",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=706",
+      "video_url": "https://cityoforange.granicus.com/player/clip/706?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Special Meeting Dec 15, 2022 00h 56m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Dec 15, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=703",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=703",
+      "video_url": "https://cityoforange.granicus.com/player/clip/703?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 13, 2022 02h 26m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Dec 13, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=702",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=702",
+      "video_url": "https://cityoforange.granicus.com/player/clip/702?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Adjourned Regular Meeting Nov 15, 2022 05h 06m Agenda Minutes Video MP3 Audio MP4 Vid",
+      "date": "Nov 15, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=698",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=698",
+      "video_url": "https://cityoforange.granicus.com/player/clip/698?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 11, 2022 03h 11m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Oct 11, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=689",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=689",
+      "video_url": "https://cityoforange.granicus.com/player/clip/689?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 13, 2022 03h 11m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Sep 13, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=682",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=682",
+      "video_url": "https://cityoforange.granicus.com/player/clip/682?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 9, 2022 03h 41m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 9, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=678",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=678",
+      "video_url": "https://cityoforange.granicus.com/player/clip/678?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 12, 2022 04h 24m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jul 12, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=672",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=672",
+      "video_url": "https://cityoforange.granicus.com/player/clip/672?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 14, 2022 03h 45m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 14, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=668",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=668",
+      "video_url": "https://cityoforange.granicus.com/player/clip/668?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Adjourned Regular Meeting Apr 26, 2022 02h 44m Agenda Minutes Video MP3 Audio MP4 Vid",
+      "date": "Apr 26, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=658",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=658",
+      "video_url": "https://cityoforange.granicus.com/player/clip/658?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 12, 2022 01h 48m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Apr 12, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=656",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=656",
+      "video_url": "https://cityoforange.granicus.com/player/clip/656?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Adjourned Regular Meeting Mar 22, 2022 02h 05m Agenda Minutes Video MP3 Audio MP4 Vid",
+      "date": "Mar 22, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=653",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=653",
+      "video_url": "https://cityoforange.granicus.com/player/clip/653?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 8, 2022 02h 24m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 8, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=649",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=649",
+      "video_url": "https://cityoforange.granicus.com/player/clip/649?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 8, 2022 04h 19m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Feb 8, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=643",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=643",
+      "video_url": "https://cityoforange.granicus.com/player/clip/643?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 11, 2022 01h 17m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jan 11, 2022",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=640",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=640",
+      "video_url": "https://cityoforange.granicus.com/player/clip/640?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 14, 2021 04h 08m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Dec 14, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=636",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=636",
+      "video_url": "https://cityoforange.granicus.com/player/clip/636?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 9, 2021 02h 55m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Nov 9, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=630",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=630",
+      "video_url": "https://cityoforange.granicus.com/player/clip/630?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 13, 2021 04h 13m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Oct 13, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=623",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=623",
+      "video_url": "https://cityoforange.granicus.com/player/clip/623?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 14, 2021 03h 51m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Sep 14, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=617",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=617",
+      "video_url": "https://cityoforange.granicus.com/player/clip/617?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 10, 2021 05h 34m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 10, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=607",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=607",
+      "video_url": "https://cityoforange.granicus.com/player/clip/607?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 13, 2021 05h 32m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jul 13, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=599",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=599",
+      "video_url": "https://cityoforange.granicus.com/player/clip/599?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 8, 2021 04h 12m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jun 8, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=585",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=585",
+      "video_url": "https://cityoforange.granicus.com/player/clip/585?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Adjourned Regular Meeting Apr 27, 2021 01h 45m Agenda Minutes Video MP3 Audio MP4 Vid",
+      "date": "Apr 27, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=573",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=573",
+      "video_url": "https://cityoforange.granicus.com/player/clip/573?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 13, 2021 05h 32m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Apr 13, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=567",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=567",
+      "video_url": "https://cityoforange.granicus.com/player/clip/567?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Adjourned Regular Meeting Mar 23, 2021 02h 02m Agenda Minutes Video MP3 Audio MP4 Vid",
+      "date": "Mar 23, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=560",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=560",
+      "video_url": "https://cityoforange.granicus.com/player/clip/560?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 9, 2021 03h 00m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Mar 9, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=558",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=558",
+      "video_url": "https://cityoforange.granicus.com/player/clip/558?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Adjourned Regular Meeting Feb 23, 2021 04h 52m Agenda Minutes Video MP3 Audio MP4 Vid",
+      "date": "Feb 23, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=555",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=555",
+      "video_url": "https://cityoforange.granicus.com/player/clip/555?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council - Special Meeting Feb 16, 2021 00h 30m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Feb 16, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=552",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=552",
+      "video_url": "https://cityoforange.granicus.com/player/clip/552?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 9, 2021 05h 09m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Feb 9, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=550",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=550",
+      "video_url": "https://cityoforange.granicus.com/player/clip/550?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 12, 2021 04h 36m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Jan 12, 2021",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=546",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=546",
+      "video_url": "https://cityoforange.granicus.com/player/clip/546?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 8, 2020 02h 44m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Dec 8, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=540",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=540",
+      "video_url": "https://cityoforange.granicus.com/player/clip/540?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 1, 2020 00h 21m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Dec 1, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=537",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=537",
+      "video_url": "https://cityoforange.granicus.com/player/clip/537?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 17, 2020 00h 06m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Nov 17, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=536",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=536",
+      "video_url": "https://cityoforange.granicus.com/player/clip/536?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 10, 2020 03h 50m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Nov 10, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=534",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=534",
+      "video_url": "https://cityoforange.granicus.com/player/clip/534?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 13, 2020 01h 31m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Oct 13, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=527",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=527",
+      "video_url": "https://cityoforange.granicus.com/player/clip/527?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 8, 2020 02h 49m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Sep 8, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=502",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=502",
+      "video_url": "https://cityoforange.granicus.com/player/clip/502?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 25, 2020 01h 59m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 25, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=499",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=499",
+      "video_url": "https://cityoforange.granicus.com/player/clip/499?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 11, 2020 00h 38m Agenda Minutes Video MP3 Audio MP4 Video",
+      "date": "Aug 11, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=494",
+      "minutes_url": "https://cityoforange.granicus.com/MinutesViewer.php?view_id=2&clip_id=494",
+      "video_url": "https://cityoforange.granicus.com/player/clip/494?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jul 28, 2020 01h 01m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jul 28, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=485",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/485?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jul 14, 2020 01h 44m Agenda Video MP4 Video",
+      "date": "Jul 14, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=476",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/476?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jul 2, 2020 01h 12m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jul 2, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=465",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/465?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jun 23, 2020 00h 57m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jun 23, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=461",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/461?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jun 9, 2020 02h 41m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jun 9, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=451",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/451?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Apr 14, 2020 02h 27m Agenda Video MP3 Audio MP4 Video",
+      "date": "Apr 14, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=420",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/420?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Mar 10, 2020 01h 22m Agenda Video MP3 Audio MP4 Video",
+      "date": "Mar 10, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=415",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/415?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Feb 11, 2020 04h 37m Agenda Video MP3 Audio MP4 Video",
+      "date": "Feb 11, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=386",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/386?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jan 14, 2020 02h 41m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jan 14, 2020",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=384",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/384?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Dec 10, 2019 02h 52m Agenda Video MP4 Video",
+      "date": "Dec 10, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=382",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/382?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Nov 12, 2019 00h 39m Agenda Video MP3 Audio MP4 Video",
+      "date": "Nov 12, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=379",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/379?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Oct 22, 2019 03h 28m Agenda Video MP3 Audio MP4 Video",
+      "date": "Oct 22, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=377",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/377?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Oct 8, 2019 03h 08m Agenda Video MP4 Video",
+      "date": "Oct 8, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=375",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/375?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Sep 24, 2019 04h 31m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 24, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=373",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/373?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Sep 10, 2019 04h 22m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 10, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=371",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/371?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Aug 27, 2019 01h 17m Agenda Video MP3 Audio MP4 Video",
+      "date": "Aug 27, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=370",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/370?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Aug 13, 2019 02h 15m Agenda Video MP3 Audio MP4 Video",
+      "date": "Aug 13, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=368",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/368?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council meeting Jul 23, 2019 00h 59m Agenda Video MP4 Video",
+      "date": "Jul 23, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=365",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/365?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jul 9, 2019 00h 47m Agenda Video MP4 Video",
+      "date": "Jul 9, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=362",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/362?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jun 11, 2019 01h 37m Agenda Video MP4 Video",
+      "date": "Jun 11, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=359",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/359?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Apr 9, 2019 00h 50m Agenda Video MP4 Video",
+      "date": "Apr 9, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=352",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/352?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Mar 12, 2019 01h 58m Agenda Video MP4 Video",
+      "date": "Mar 12, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=350",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/350?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Feb 12, 2019 03h 07m Agenda Video MP4 Video",
+      "date": "Feb 12, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=348",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/348?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jan 22, 2019 01h 17m Agenda Video MP4 Video",
+      "date": "Jan 22, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=347",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/347?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jan 8, 2019 03h 45m Agenda Video MP4 Video",
+      "date": "Jan 8, 2019",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=346",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/346?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Dec 11, 2018 04h 49m Agenda Video MP4 Video",
+      "date": "Dec 11, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=345",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/345?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Nov 13, 2018 03h 58m Agenda Video MP4 Video",
+      "date": "Nov 13, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=343",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/343?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Oct 9, 2018 03h 16m Agenda Video MP4 Video",
+      "date": "Oct 9, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=341",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/341?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Sep 11, 2018 02h 13m Agenda Video MP4 Video",
+      "date": "Sep 11, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=339",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/339?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council meeting 8-14-18 Aug 16, 2018 03h 29m Agenda Video MP4 Video",
+      "date": "Aug 16, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=337",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/337?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council meeting 7-10-18 Jul 11, 2018 01h 13m Agenda Video MP4 Video",
+      "date": "Jul 11, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=336",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/336?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting 6-12-18 Jun 19, 2018 04h 11m Agenda Video MP4 Video",
+      "date": "Jun 19, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=334",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/334?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Apr 10, 2018 06h 06m Agenda Video MP4 Video",
+      "date": "Apr 10, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=329",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/329?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Mar 13, 2018 02h 28m Agenda Video MP4 Video",
+      "date": "Mar 13, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=325",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/325?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Feb 13, 2018 02h 51m Agenda Video MP4 Video",
+      "date": "Feb 13, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=323",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/323?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Meeting Jan 9, 2018 01h 50m Agenda Video MP4 Video",
+      "date": "Jan 9, 2018",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=320",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/320?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 12, 2017 04h 22m Agenda Video MP4 Video",
+      "date": "Dec 12, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=318",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/318?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 14, 2017 03h 07m Agenda Video MP4 Video",
+      "date": "Nov 14, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=315",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/315?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 24, 2017 03h 51m Agenda Video MP4 Video",
+      "date": "Oct 24, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=313",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/313?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 26, 2017 03h 09m Agenda Video MP4 Video",
+      "date": "Sep 26, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=311",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/311?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 12, 2017 01h 53m Agenda Video MP4 Video",
+      "date": "Sep 12, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=309",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/309?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 29, 2017 00h 01m Agenda Video MP4 Video",
+      "date": "Aug 29, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=307",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/307?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 8, 2017 02h 25m Agenda Video MP4 Video",
+      "date": "Aug 8, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=305",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/305?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Special Meeting Closed Session Jul 25, 2017 00h 00m Agenda Video MP4 Video",
+      "date": "Jul 25, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=303",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/303?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 11, 2017 01h 31m Agenda Video MP4 Video",
+      "date": "Jul 11, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=301",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/301?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 13, 2017 04h 25m Agenda Video MP4 Video",
+      "date": "Jun 13, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=299",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/299?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 11, 2017 04h 19m Agenda Video MP4 Video",
+      "date": "Apr 11, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=293",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/293?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 14, 2017 01h 15m Agenda Video MP4 Video",
+      "date": "Mar 14, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=291",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/291?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 14, 2017 01h 24m Agenda Video MP4 Video",
+      "date": "Feb 14, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=288",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/288?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 10, 2017 01h 06m Agenda Video MP4 Video",
+      "date": "Jan 10, 2017",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=285",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/285?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 13, 2016 02h 54m Agenda Video MP4 Video",
+      "date": "Dec 13, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=283",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/283?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oath of Office Dec 6, 2016 01h 07m Agenda Video MP4 Video",
+      "date": "Dec 6, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=282",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/282?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council (11-8-16 Meeting Cancelled) Nov 9, 2016 02h 40m Agenda Video MP4 Video",
+      "date": "Nov 9, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=280",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/280?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 11, 2016 03h 11m Agenda Video MP4 Video",
+      "date": "Oct 11, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=278",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/278?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 13, 2016 01h 40m Agenda Video MP4 Video",
+      "date": "Sep 13, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=275",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/275?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 9, 2016 00h 48m Agenda Video MP4 Video",
+      "date": "Aug 9, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=272",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/272?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 12, 2016 02h 20m Agenda Video MP4 Video",
+      "date": "Jul 12, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=271",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/271?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 14, 2016 01h 41m Agenda Video MP4 Video",
+      "date": "Jun 14, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=269",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/269?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 12, 2016 03h 43m Agenda Video MP4 Video",
+      "date": "Apr 12, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=264",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/264?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 8, 2016 01h 59m Agenda Video MP4 Video",
+      "date": "Mar 8, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=262",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/262?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 9, 2016 02h 06m Agenda Video MP4 Video",
+      "date": "Feb 9, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=261",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/261?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 12, 2016 03h 30m Agenda Video MP4 Video",
+      "date": "Jan 12, 2016",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=259",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/259?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 8, 2015 02h 32m Agenda Video MP4 Video",
+      "date": "Dec 8, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=258",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/258?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 10, 2015 04h 21m Agenda Video MP4 Video",
+      "date": "Nov 10, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=255",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/255?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 13, 2015 04h 01m Agenda Video MP4 Video",
+      "date": "Oct 13, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=252",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/252?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 8, 2015 00h 47m Agenda Video MP4 Video",
+      "date": "Sep 8, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=248",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/248?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 11, 2015 02h 18m Agenda Video MP4 Video",
+      "date": "Aug 11, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=246",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/246?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 14, 2015 02h 03m Agenda Video MP4 Video",
+      "date": "Jul 14, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=243",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/243?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 9, 2015 03h 37m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jun 9, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=217",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/217?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 14, 2015 02h 50m Agenda Video MP3 Audio MP4 Video",
+      "date": "Apr 14, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=211",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/211?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 10, 2015 03h 41m Agenda Video MP3 Audio MP4 Video",
+      "date": "Mar 10, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=208",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/208?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 10, 2015 03h 52m Agenda Video MP3 Audio MP4 Video",
+      "date": "Feb 10, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=204",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/204?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 13, 2015 01h 45m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jan 13, 2015",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=188",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/188?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 9, 2014 01h 11m Agenda Video MP3 Audio MP4 Video",
+      "date": "Dec 9, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=184",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/184?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City of Orange City Council - 12-2-14 Dec 2, 2014 01h 26m Agenda Video MP3 Audio MP4 Video",
+      "date": "Dec 2, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=183",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/183?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 25, 2014 02h 04m Agenda Video MP3 Audio MP4 Video",
+      "date": "Nov 25, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=180",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/180?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 14, 2014 01h 05m Agenda Video MP3 Audio MP4 Video",
+      "date": "Oct 14, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=176",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/176?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 9, 2014 01h 35m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 9, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=173",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/173?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 12, 2014 01h 19m Agenda Video MP3 Audio MP4 Video",
+      "date": "Aug 12, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=171",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/171?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 8, 2014 02h 22m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jul 8, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=168",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/168?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 10, 2014 05h 11m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jun 10, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=165",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/165?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 8, 2014 02h 49m Agenda Video MP3 Audio MP4 Video",
+      "date": "Apr 8, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=161",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/161?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 11, 2014 01h 29m Agenda Video MP3 Audio MP4 Video",
+      "date": "Mar 11, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=159",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/159?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 11, 2014 02h 49m Agenda Video MP3 Audio MP4 Video",
+      "date": "Feb 11, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=156",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/156?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 14, 2014 02h 41m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jan 14, 2014",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=152",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/152?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 10, 2013 01h 01m Agenda Video MP3 Audio MP4 Video",
+      "date": "Dec 10, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=149",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/149?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 26, 2013 01h 10m Agenda Video MP3 Audio MP4 Video",
+      "date": "Nov 26, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=147",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/147?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 12, 2013 01h 40m Agenda Video MP3 Audio MP4 Video",
+      "date": "Nov 12, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=143",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/143?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 22, 2013 02h 00m Agenda Video MP3 Audio MP4 Video",
+      "date": "Oct 22, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=141",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/141?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 8, 2013 01h 17m Agenda Video MP3 Audio MP4 Video",
+      "date": "Oct 8, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=139",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/139?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 24, 2013 01h 21m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 24, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=137",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/137?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 10, 2013 00h 36m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 10, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=132",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/132?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 27, 2013 01h 49m Agenda Video MP3 Audio MP4 Video",
+      "date": "Aug 27, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=131",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/131?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 13, 2013 00h 47m Agenda Video MP3 Audio MP4 Video",
+      "date": "Aug 13, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=129",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/129?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 23, 2013 00h 37m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jul 23, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=127",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/127?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 9, 2013 00h 28m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jul 9, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=126",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/126?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 25, 2013 02h 39m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jun 25, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=125",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/125?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 11, 2013 03h 48m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jun 11, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=123",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/123?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 23, 2013 03h 11m Agenda Video MP3 Audio MP4 Video",
+      "date": "Apr 23, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=116",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/116?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 26, 2013 02h 54m Agenda Video MP3 Audio MP4 Video",
+      "date": "Mar 26, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=113",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/113?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 12, 2013 01h 31m Agenda Video MP3 Audio MP4 Video",
+      "date": "Mar 12, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=111",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/111?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 26, 2013 00h 26m Agenda Video MP3 Audio MP4 Video",
+      "date": "Feb 26, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=109",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/109?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 12, 2013 02h 46m Agenda Video MP3 Audio MP4 Video",
+      "date": "Feb 12, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=108",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/108?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 22, 2013 04h 32m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jan 22, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=106",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/106?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 8, 2013 00h 28m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jan 8, 2013",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=104",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/104?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 11, 2012 01h 15m Agenda Video MP3 Audio MP4 Video",
+      "date": "Dec 11, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=101",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/101?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 4, 2012 02h 38m Agenda Video MP3 Audio MP4 Video",
+      "date": "Dec 4, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=100",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/100?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 27, 2012 02h 28m Agenda Video MP3 Audio MP4 Video",
+      "date": "Nov 27, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=98",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/98?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 13, 2012 00h 29m Agenda Video MP3 Audio MP4 Video",
+      "date": "Nov 13, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=96",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/96?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 23, 2012 00h 29m Agenda Video MP3 Audio MP4 Video",
+      "date": "Oct 23, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=94",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/94?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 9, 2012 00h 46m Agenda Video MP3 Audio MP4 Video",
+      "date": "Oct 9, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=92",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/92?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 25, 2012 01h 09m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 25, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=90",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/90?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 11, 2012 00h 56m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 11, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=88",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/88?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 28, 2012 01h 16m Agenda Video MP3 Audio MP4 Video",
+      "date": "Aug 28, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=86",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/86?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 14, 2012 01h 42m Agenda Video MP3 Audio MP4 Video",
+      "date": "Aug 14, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=84",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/84?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 24, 2012 00h 59m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jul 24, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=82",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/82?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jul 10, 2012 01h 06m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jul 10, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=81",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/81?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 26, 2012 04h 52m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jun 26, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=79",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/79?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jun 12, 2012 01h 47m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jun 12, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=78",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/78?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 24, 2012 00h 49m Agenda Video MP3 Audio MP4 Video",
+      "date": "Apr 24, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=72",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/72?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Apr 10, 2012 01h 01m Agenda Video MP3 Audio MP4 Video",
+      "date": "Apr 10, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=71",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/71?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 27, 2012 02h 10m Agenda Video MP3 Audio MP4 Video",
+      "date": "Mar 27, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=69",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/69?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Mar 13, 2012 00h 33m Agenda Video MP3 Audio MP4 Video",
+      "date": "Mar 13, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=68",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/68?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 28, 2012 01h 09m Agenda Video MP3 Audio MP4 Video",
+      "date": "Feb 28, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=65",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/65?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Feb 14, 2012 02h 23m Agenda Video MP3 Audio MP4 Video",
+      "date": "Feb 14, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=63",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/63?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 24, 2012 00h 51m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jan 24, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=61",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/61?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Jan 10, 2012 00h 44m Agenda Video MP3 Audio MP4 Video",
+      "date": "Jan 10, 2012",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=60",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/60?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Dec 13, 2011 05h 11m Agenda Video MP3 Audio MP4 Video",
+      "date": "Dec 13, 2011",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=58",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/58?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 22, 2011 00h 42m Agenda Video MP3 Audio MP4 Video",
+      "date": "Nov 22, 2011",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=57",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/57?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Nov 8, 2011 00h 32m Agenda Video MP3 Audio MP4 Video",
+      "date": "Nov 8, 2011",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=55",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/55?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 25, 2011 02h 22m Agenda Video MP3 Audio MP4 Video",
+      "date": "Oct 25, 2011",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=53",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/53?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Oct 11, 2011 00h 28m Agenda Video MP3 Audio MP4 Video",
+      "date": "Oct 11, 2011",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=51",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/51?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 27, 2011 02h 16m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 27, 2011",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=47",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/47?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Sep 13, 2011 00h 31m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 13, 2011",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=30",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/30?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Special Meetings 2011 Sep 6, 2011 00h 50m Agenda Video MP3 Audio MP4 Video",
+      "date": "Sep 6, 2011",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=28",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/28?view_id=2",
+      "source": "granicus"
+    },
+    {
+      "name": "City Council Aug 23, 2011 03h 17m Agenda Video MP3 Audio MP4 Video",
+      "date": "Aug 23, 2011",
+      "agenda_url": "https://cityoforange.granicus.com/AgendaViewer.php?view_id=2&clip_id=23",
+      "minutes_url": null,
+      "video_url": "https://cityoforange.granicus.com/player/clip/23?view_id=2",
+      "source": "granicus"
+    }
+  ],
+  "city_info": {
+    "city_name": "Orange",
+    "website": "https://www.cityoforange.org",
+    "council_url": "https://www.cityoforange.org/our-city/local-government/city-council",
+    "meeting_schedule": "2nd and 4th Tuesdays",
+    "meeting_time": "7:00 PM",
+    "meeting_location": {
+      "name": "City Council Chamber",
+      "address": "300 E. Chapman Avenue",
+      "city_state_zip": "Orange, CA 92866"
+    },
+    "clerk": {
+      "title": "City Clerk's Office",
+      "phone": "(714) 744-5500",
+      "email": "cityclerk@cityoforange.org"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": true,
+      "written_email": true,
+      "ecomment": true,
+      "time_limit": "3 minutes per speaker",
+      "email": "cityclerk@cityoforange.org"
+    },
+    "portals": {
+      "granicus": "https://cityoforange.granicus.com/ViewPublisher.php?view_id=2"
+    },
+    "council": {
+      "size": 7,
+      "districts": 6,
+      "at_large": 1,
+      "mayor_elected": true,
+      "term_length": 4
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "Mayor",
+        "District 1",
+        "District 4",
+        "District 5"
+      ],
+      "election_system": "by-district",
+      "term_length": 4
+    }
+  }
 }

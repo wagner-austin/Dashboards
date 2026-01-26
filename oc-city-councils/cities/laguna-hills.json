@@ -65,5 +65,57 @@
   ],
   "city_name": "Laguna Hills",
   "slug": "laguna-hills",
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "website": "https://www.lagunahillsca.gov",
+    "council_url": "https://www.lagunahillsca.gov/129/City-Council",
+    "meeting_schedule": "2nd and 4th Tuesdays",
+    "meeting_time": "7:00 PM",
+    "meeting_location": {
+      "name": "Council Chamber",
+      "address": "24035 El Toro Road",
+      "city_state_zip": "Laguna Hills, CA 92653"
+    },
+    "zoom": {},
+    "phone_numbers": [],
+    "tv_channels": [],
+    "live_stream": "https://lagunahillsca.iqm2.com/Citizens/default.aspx",
+    "clerk": {
+      "name": "Jennifer Lee, CMC",
+      "title": "City Clerk",
+      "phone": "(949) 707-2630",
+      "email": "jlee@lagunahillsca.gov"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": false,
+      "ecomment": false,
+      "written_email": true,
+      "time_limit": "3 minutes per speaker",
+      "email": "publiccomments@lagunahillsCA.gov",
+      "deadline": "5:00 PM on meeting day"
+    },
+    "portals": {
+      "agenda_center": "https://lagunahillsca.portal.civicclerk.com/",
+      "live_stream": "https://lagunahillsca.iqm2.com/Citizens/default.aspx"
+    },
+    "council": {
+      "size": 5,
+      "districts": 0,
+      "at_large": 5,
+      "mayor_elected": false,
+      "expanded_date": null,
+      "notes": "Transitioning to by-district elections in 2026"
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "District 1",
+        "District 2",
+        "District 4"
+      ],
+      "term_length": 4,
+      "election_system": "at-large"
+    }
+  }
 }

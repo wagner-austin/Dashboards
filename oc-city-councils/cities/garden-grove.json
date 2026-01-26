@@ -60,10 +60,10 @@
     {
       "name": "Yesenia Muñeton",
       "position": "Councilmember",
-      "district": null,
+      "district": "District 5",
       "email": "yeseniam@ggcity.org",
       "phone": "(714) 741-5104",
-      "city_profile": null,
+      "city_profile": "https://ggcity.org/city-council/yesenia-muneton",
       "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2025-01/ymuneton.jpg?itok=mCU21BsW"
     }
   ],
@@ -83,5 +83,50 @@
   ],
   "city_name": "Garden Grove",
   "slug": "garden-grove",
-  "last_updated": "2026-01-25"
+  "last_updated": "2026-01-25",
+  "city_info": {
+    "city_name": "Garden Grove",
+    "website": "https://ggcity.org",
+    "council_url": "https://ggcity.org/city-council",
+    "meeting_schedule": "2nd and 4th Tuesdays",
+    "meeting_time": "5:30 PM",
+    "meeting_location": {
+      "name": "City Council Chamber",
+      "address": "11300 Stanford Avenue",
+      "city_state_zip": "Garden Grove, CA 92840"
+    },
+    "clerk": {
+      "title": "City Clerk's Office",
+      "phone": "(714) 741-5040",
+      "email": "cityclerk@ggcity.org"
+    },
+    "public_comment": {
+      "in_person": true,
+      "remote_live": true,
+      "written_email": true,
+      "ecomment": true,
+      "time_limit": "3 minutes per speaker",
+      "email": "cityclerk@ggcity.org"
+    },
+    "portals": {
+      "granicus": "https://gardengrove.granicus.com/ViewPublisher.php?view_id=1"
+    },
+    "council": {
+      "size": 7,
+      "districts": 6,
+      "at_large": 1,
+      "mayor_elected": true,
+      "term_length": 4
+    },
+    "elections": {
+      "next_election": "2026-11-03",
+      "seats_up": [
+        "District 1",
+        "District 3",
+        "District 4"
+      ],
+      "election_system": "by-district",
+      "term_length": 4
+    }
+  }
 }
