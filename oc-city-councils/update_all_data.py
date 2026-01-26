@@ -94,30 +94,57 @@ def merge_member_data(existing, scraped):
     merged = existing.copy() if existing else {}
 
     # Fields from scraper
+    # Note: add_council_member stores profile URL as 'city_profile'
     scraped_fields = {
         'name': scraped.get('name'),
         'position': scraped.get('position'),
         'district': scraped.get('district'),
         'email': scraped.get('email'),
         'phone': scraped.get('phone'),
-        'city_page': scraped.get('profile_url'),
+        'city_page': scraped.get('city_profile') or scraped.get('profile_url'),
         'photo_url': scraped.get('photo_url'),
         'term_start': scraped.get('term_start'),
         'term_end': scraped.get('term_end'),
+        'website': scraped.get('website'),
+        'instagram': scraped.get('instagram'),
     }
 
-    # Bio handling - use scraped if we don't have one or it's longer
+    # Bio handling - use scraped if we don't have one or existing looks like junk
     scraped_bio = scraped.get('bio', '')
-    existing_bio = merged.get('bio', '')
-    if scraped_bio and (not existing_bio or len(scraped_bio) > len(existing_bio)):
-        merged['bio'] = scraped_bio
+    existing_bio = merged.get('bio', '') or ''
+
+    # Detect junk bio patterns
+    junk_patterns = [
+        'ballotpedia', 'tax deductible', '501(c)', 'charitable nonprofit',
+        'donate', 'contribution', '$500', 'maximum per person', 'contact me directly',
+        'sign up', 'terms of use', 'privacy policy', 'newsletter', 'subscribe',
+        'bread clip', 'salt down', 'side hustles', 'newsroom guidelines',
+        'around the web', 'facebook\n', 'twitter\n', 'reddit\n'
+    ]
+    existing_is_junk = any(junk.lower() in existing_bio.lower() for junk in junk_patterns)
+
+    if scraped_bio:
+        # Use scraped if existing is empty, junk, or shorter
+        if not existing_bio or existing_is_junk or len(scraped_bio) > len(existing_bio):
+            merged['bio'] = scraped_bio
+    elif existing_is_junk:
+        # Clear out junk bios even if we don't have a replacement
+        merged['bio'] = None
 
     # Update fields - scraped takes precedence for contact info, preserve curated for others
     for field, value in scraped_fields.items():
         if value is not None:
-            # Always update dynamic fields
-            if field in ['email', 'phone', 'position', 'district']:
+            # Always update dynamic fields (contact info, profile URLs, term dates, social links)
+            if field in ['email', 'phone', 'position', 'district', 'city_page', 'term_start', 'term_end', 'website', 'instagram']:
                 merged[field] = value
+            # Special handling for photo_url: update if scraped is absolute and existing is relative
+            elif field == 'photo_url':
+                existing_photo = merged.get('photo_url', '')
+                if not existing_photo:
+                    merged[field] = value
+                elif value.startswith('http') and not existing_photo.startswith('http'):
+                    # Replace relative URL with absolute URL
+                    merged[field] = value
             # Only update static fields if not already set
             elif not merged.get(field):
                 merged[field] = value
@@ -158,7 +185,9 @@ async def update_city(page, city_name, slug, scraper_class):
         return None
 
     members = result.get('council_members', [])
-    print(f"    Found {len(members)} members")
+    meetings = result.get('meetings', [])
+    city_info = result.get('city_info', {})
+    print(f"    Found {len(members)} members, {len(meetings)} meetings")
 
     # Load existing data
     json_path = CITIES_DIR / f"{slug}.json"
@@ -209,17 +238,74 @@ async def update_city(page, city_name, slug, scraper_class):
         }
         for m in new_members
     ]
+    # Add meetings if scraped
+    if meetings:
+        json_data['meetings'] = meetings
+    # Add city_info if scraped
+    if city_info:
+        json_data['city_info'] = city_info
     save_json(json_path, json_data)
 
     # Update YAML
     yaml_data = existing_yaml.copy()
     yaml_data['city'] = slug
     yaml_data['last_updated'] = datetime.now().strftime('%Y-%m-%d')
-    if 'next_election' not in yaml_data:
-        yaml_data['next_election'] = None
-    if 'seats_up' not in yaml_data:
-        yaml_data['seats_up'] = []
+    # Remove old top-level election fields (now in elections section)
+    yaml_data.pop('next_election', None)
+    yaml_data.pop('seats_up', None)
     yaml_data['members'] = new_members
+    # Merge city_info into YAML (meetings, portals, clerk, public_comment, etc.)
+    if city_info:
+        # Top-level fields
+        if city_info.get('city_name'):
+            yaml_data['city_name'] = city_info['city_name']
+        if city_info.get('website'):
+            yaml_data['website'] = city_info['website']
+        if city_info.get('council_url'):
+            yaml_data['council_url'] = city_info['council_url']
+
+        # Meetings section
+        if city_info.get('meeting_schedule'):
+            yaml_data.setdefault('meetings', {})['schedule'] = city_info['meeting_schedule']
+        if city_info.get('meeting_time'):
+            yaml_data.setdefault('meetings', {})['time'] = city_info['meeting_time']
+        if city_info.get('meeting_location'):
+            yaml_data.setdefault('meetings', {})['location'] = city_info['meeting_location']
+        if city_info.get('zoom'):
+            yaml_data.setdefault('meetings', {})['remote'] = {
+                'zoom_url': city_info['zoom'].get('url'),
+                'zoom_id': city_info['zoom'].get('meeting_id'),
+                'zoom_passcode': city_info['zoom'].get('passcode'),
+            }
+            if city_info.get('phone_numbers'):
+                yaml_data['meetings']['remote']['phone_numbers'] = city_info['phone_numbers']
+
+        # Portals
+        if city_info.get('portals'):
+            yaml_data['portals'] = city_info['portals']
+
+        # Broadcast
+        if city_info.get('tv_channels'):
+            yaml_data.setdefault('broadcast', {})['cable_channels'] = city_info['tv_channels']
+        if city_info.get('live_stream'):
+            yaml_data.setdefault('broadcast', {})['live_stream'] = city_info['live_stream']
+
+        # Clerk
+        if city_info.get('clerk'):
+            yaml_data['clerk'] = city_info['clerk']
+
+        # Public comment
+        if city_info.get('public_comment'):
+            yaml_data['public_comment'] = city_info['public_comment']
+
+        # Council structure
+        if city_info.get('council'):
+            yaml_data['council'] = city_info['council']
+
+        # Elections
+        if city_info.get('elections'):
+            yaml_data['elections'] = city_info['elections']
+
     save_yaml(yaml_path, yaml_data)
 
     print(f"    Saved: {len(new_members)} members, {emails} emails")
