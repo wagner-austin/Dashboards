@@ -22,9 +22,12 @@ broadcast:
     channel: '99'
   live_stream: https://www.anaheim.net/councilvideos
 clerk:
-  title: City Clerk's Office
+  name: Theresa Bass, CMC
+  title: City Clerk
   phone: (714) 765-5166
-  email: cityclerk@anaheim.net
+  fax: (714) 765-4105
+  email: tbass@anaheim.net
+  address: 200 S. Anaheim Boulevard, 2nd Floor, Room 217, Anaheim, CA 92805
 public_comment:
   email: publiccomment@anaheim.net
   deadline: 2 hours prior to meeting
@@ -32,6 +35,22 @@ public_comment:
   remote_live: false
   ecomment: false
   written_email: true
+  time_limit: 3 minutes per speaker
+  speaker_card: required (name and contact optional)
+  periods:
+    - type: First Public Comment
+      scope: Agenda items (except public hearings), then non-agenda if time remains
+      max_duration: 90 minutes
+    - type: Second Public Comment
+      scope: Non-agenda speakers not heard during first period
+      timing: After Report on Closed Session Items
+  public_hearing_limits:
+    applicant_initial: 20 minutes
+    applicant_rebuttal: 10 minutes
+    noticed_area_residents: 10 minutes
+    general_public: 3 minutes
+    legislative_matters: 5 minutes
+  notes: Comments posted on City website and made part of official public record. Speakers may be removed for profane language or disruptive behavior (AMC 1.12.017).
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -51,7 +70,7 @@ members:
 - name: Ashleigh E. Aitken
   position: Mayor
   email: aaitken@anaheim.net
-  phone: (714) 765-4311
+  phone: (714) 765-5247
   city_page: https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken
   photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58010
   bio: Ashleigh Aitken was elected as the 48th mayor of Anaheim in November 2022. She is the first woman mayor in Anaheim’s
@@ -65,7 +84,7 @@ members:
   position: Mayor Pro Tem
   district: District 2
   email: cleon@anaheim.net
-  phone: (714) 765-5032
+  phone: (714) 765-5247
   city_page: https://www.anaheim.net/2314/Council-Member-Carlos-A-Leon
   photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58081
   bio: Carlos A. Leon represents District 2 in west Anaheim and serves as mayor pro tem on the Anaheim City Council. Council
@@ -77,7 +96,7 @@ members:
   position: Councilmember
   district: District 5
   email: kmaahs@anaheim.net
-  phone: (714) 765-4377
+  phone: (714) 765-5247
   city_page: https://www.anaheim.net/3521/Council-Member-Kristen-Maahs
   photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58009
   bio: Kristen Maahs was elected to the Anaheim City Council in November 2024, representing District 5 in central-east Anaheim.
@@ -91,7 +110,7 @@ members:
   position: Councilmember
   district: District 6
   email: nmeeks@anaheim.net
-  phone: (714) 765-5040
+  phone: (714) 765-5247
   city_page: https://www.anaheim.net/5175/Council-Member-Natalie-Meeks
   photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58063
   bio: Natalie Meeks was elected to the Anaheim City Council in November 2022, representing District 6 in east Anaheim. Before
@@ -105,7 +124,7 @@ members:
   position: Councilmember
   district: District 3
   email: nrubalcava@anaheim.net
-  phone: (714) 765-4311
+  phone: (714) 765-5247
   city_page: https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava
   photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58060
   bio: Natalie Rubalcava was elected to the Anaheim City Council in November 2022, representing District 3 in central Anaheim.
@@ -118,7 +137,7 @@ members:
   position: Councilmember
   district: District 4
   email: nkurtz@anaheim.net
-  phone: (714) 765-4311
+  phone: (714) 765-5247
   city_page: https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz
   photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58023
   bio: Norma Campos Kurtz was elected to the Anaheim City Council representing District 4 in 2024 after first being appointed
@@ -131,7 +150,7 @@ members:
   position: Councilmember
   district: District 1
   email: rbalius@anaheim.net
-  phone: (714) 765-5047
+  phone: (714) 765-5247
   city_page: https://www.anaheim.net/3522/Council-Member-Ryan-Balius
   photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=57980
   bio: Ryan Balius was elected to the Anaheim City Council in November 2024, representing District 1 in west Anaheim. A 25-year
