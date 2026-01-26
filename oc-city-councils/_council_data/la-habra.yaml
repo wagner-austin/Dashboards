@@ -41,8 +41,8 @@ members:
   city_profile: https://www.lahabraca.gov/DocumentCenter/View/15732/Nigsarian-2026-Bio
   photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=12381
   bio: null
-  term_start: 2022
-  term_end: 2026
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.lahabraca.gov/153/City-Council
@@ -80,17 +80,26 @@ meetings:
     address: 100 E. La Habra Boulevard
     city_state_zip: La Habra, CA 90631
 portals:
-  agenda_center: https://www.lahabraca.gov/AgendaCenter/City-Council-2
+  destiny: https://destinyhosted.com/agenda_publish.cfm?id=52422
+  video_archive: https://www.lahabraca.gov/356/Archived-Council-Videos
   live_stream: https://www.lahabraca.gov/356/Archived-Council-Videos
 broadcast:
   cable_channels:
-  - provider: Local Cable
+  - provider: Government Access
     channel: '3'
   live_stream: https://www.lahabraca.gov/356/Archived-Council-Videos
+  rebroadcast: 6:30 PM Tuesday-Friday following each meeting
+agendas:
+  available: Thursday preceding meetings
+  online: https://destinyhosted.com/agenda_publish.cfm?id=52422
 clerk:
+  name: Rhonda J. Barone, CMC
   title: City Clerk
+  assistant: Kenia Lopez, CMC
   phone: (562) 383-4030
+  fax: (562) 383-4474
   email: cc@lahabraca.gov
+  address: 110 E. La Habra Boulevard, La Habra, CA 90631
 public_comment:
   in_person: true
   remote_live: false
@@ -99,6 +108,7 @@ public_comment:
   time_limit: 3 minutes per speaker
   email: cc@lahabraca.gov
   deadline: 5:00 PM on meeting day
+  notes: Written comments printed and provided to City Council prior to meeting. Chamber opens at 6:00 PM.
 council:
   size: 5
   districts: 0
