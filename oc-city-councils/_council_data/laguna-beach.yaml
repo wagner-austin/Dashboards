@@ -21,10 +21,10 @@ members:
   instagram: null
   city_page: https://www.lagunabeachcity.net/government/departments/city-council/mark-orgill
 - name: Bob Whalen
-  position: Mayor Pro Tem
+  position: Councilmember
   district: At-Large
   email: bwhalen@lagunabeachcity.net
-  phone: 949-497-3311
+  phone: (949) 497-0796
   city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126
   photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4706/638067135619970000
   bio: null
@@ -47,10 +47,10 @@ members:
   instagram: null
   city_page: https://www.lagunabeachcity.net/government/departments/city-council/alex-rounaghi
 - name: Hallie Jones
-  position: Councilmember
+  position: Mayor Pro Tem
   district: At-Large
   email: hjones@lagunabeachcity.net
-  phone: 949-497-3311
+  phone: (949) 992-5419
   city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126
   photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/6128/638693684199500000
   bio: null
@@ -63,7 +63,7 @@ members:
   position: Councilmember
   district: At-Large
   email: skempf@lagunabeachcity.net
-  phone: 949-497-3311
+  phone: (949) 439-3001
   city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126
   photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/5560/638453363123100000
   bio: null
@@ -81,19 +81,29 @@ meetings:
     city_state_zip: Laguna Beach, CA 92651
 portals:
   granicus: https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3
-  ecomment: https://www.lagunabeachcity.net/live-here/city-council/meetings-agendas-and-minutes
-  live_stream: https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3
+  agendas: https://www.lagunabeachcity.net/live-here/city-council/meetings-agendas-and-minutes
+  online_comment: https://www.lagunabeachcity.net/government/departments/city-council/online-comment-form
+  comment_form_pdf: https://www.lagunabeachcity.net/home/showpublisheddocument/16742/638326140977270000
+  youtube: https://www.youtube.com/@CityofLagunaBeachCA/streams
+  live_stream: https://www.youtube.com/@CityofLagunaBeachCA/streams
 clerk:
   title: City Clerk's Office
   phone: (949) 497-0705
   email: cityclerk@lagunabeachcity.net
+  direct_email: amckay@lagunabeachcity.net
+  address: 505 Forest Avenue, Laguna Beach, CA 92651
 public_comment:
   in_person: true
   remote_live: false
   ecomment: true
   written_email: true
   time_limit: 3 minutes per speaker
-  email: cityclerk@lagunabeachcity.net
+  email: amckay@lagunabeachcity.net
+  deadlines:
+    - "3:00 PM day before: linked to agenda with review time"
+    - "12:00 PM day of: provided to council but may not have review time"
+    - "After 12:00 PM: included in record but not linked to agenda"
+  notes: Written comments NOT read aloud. Comments posted on city website - do not include personal info.
 council:
   size: 5
   districts: 0
@@ -103,8 +113,7 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - Councilmember
-  - Councilmember
+  - 2 at-large seats
   term_length: 4
   election_system: at-large
 broadcast:
