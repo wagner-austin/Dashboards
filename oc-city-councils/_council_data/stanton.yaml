@@ -1,6 +1,6 @@
 city: stanton
 city_name: Stanton
-last_updated: '2026-01-25'
+last_updated: '2026-01-26'
 website: https://www.stantonca.gov
 council_url: https://www.stantonca.gov/government/city_council.php
 email: ''
@@ -42,7 +42,7 @@ members:
   bio: Mr. Gary Taylor grew up in Anaheim and attended local schools. He graduated from Cal State Fullerton with a BA and
     later from Webster University in Irvine with a MA in Management. Mr. Taylor, his wife Lynne, and two sons moved to Stanton
     in 1985. He served on the Stanton Planning Commission from June of 2012 and was elected to the City Council to serve District
-    3 in November of 2018. Mr. Taylor’s priorities include improving public safety, promoting the development of Beach Boulevard,
+    3 in November of 2018. Mr. Taylor's priorities include improving public safety, promoting the development of Beach Boulevard,
     and listening to and being responsive to Stanton residents.
   term_start: 2022
   term_end: 2026
@@ -62,27 +62,6 @@ members:
   website: null
   instagram: null
   city_page: https://www.stantonca.gov/government/city_council.php
-- name: John D. Warren
-  position: Councilmember
-  district: District 4
-  email: JOHNWarren@StantonCA.gov
-  phone: (714) 379-9222
-  city_profile: https://www.stantonca.gov/government/city_council.php
-  photo_url: https://www.stantonca.gov/JDWarren2 - Copy.jpg?t=202505230901480
-  bio: John Douglas Warren is a third-generation Stanton resident and a proud graduate of local public schools, having attended
-    Bryant Elementary, Alamitos Intermediate, and Rancho Alamitos High School. His commitment to public service began with
-    his Eagle Scout project, marking the start of a lasting dedication to his hometown. John earned a degree in Political
-    Science from Cypress College and later graduated Magna Cum Laude from California State University, Fullerton (CSUF) with
-    a Bachelor’s in Public Administration, where he was also inducted into Pi Alpha Alpha and Pi Sigma Alpha, the national
-    honor societies for Public Administration and Political Science. His early civic involvement in Stanton included serving
-    on the Stanton 60th Anniversary Committee and the Car Show Committee, helping foster community spirit through public events.
-    He later served eight years on the Parks, Recreation, and Community Services Commission, including five years as Chair,
-    contributing to Stanton’s quality-of-life programs and recreational planning.
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-  city_page: https://www.stantonca.gov/government/bio_for_john_d_warren.php
 - name: Victor Barrios
   position: Councilmember
   district: District 2
@@ -103,9 +82,31 @@ members:
   website: null
   instagram: null
   city_page: https://www.stantonca.gov/government/bio_for_victor_barrios.php
+- name: John D. Warren
+  position: Councilmember
+  district: District 4
+  email: JOHNWarren@StantonCA.gov
+  phone: (714) 379-9222
+  city_profile: https://www.stantonca.gov/government/city_council.php
+  photo_url: https://www.stantonca.gov/JDWarren2 - Copy.jpg?t=202505230901480
+  bio: John Douglas Warren is a third-generation Stanton resident and a proud graduate of local public schools, having attended
+    Bryant Elementary, Alamitos Intermediate, and Rancho Alamitos High School. His commitment to public service began with
+    his Eagle Scout project, marking the start of a lasting dedication to his hometown. John earned a degree in Political
+    Science from Cypress College and later graduated Magna Cum Laude from California State University, Fullerton (CSUF) with
+    a Bachelor's in Public Administration, where he was also inducted into Pi Alpha Alpha and Pi Sigma Alpha, the national
+    honor societies for Public Administration and Political Science. His early civic involvement in Stanton included serving
+    on the Stanton 60th Anniversary Committee and the Car Show Committee, helping foster community spirit through public events.
+    He later served eight years on the Parks, Recreation, and Community Services Commission, including five years as Chair,
+    contributing to Stanton's quality-of-life programs and recreational planning.
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.stantonca.gov/government/bio_for_john_d_warren.php
 meetings:
   schedule: 2nd and 4th Tuesdays
-  time: 6:30PM
+  time: 6:30 PM
+  schedule_notes: No meeting on 4th Tuesday of December
   location:
     name: City Council Chambers
     address: 7800 Katella Avenue
@@ -118,17 +119,21 @@ meetings:
     - 669-444-9171
 portals:
   agenda_center: https://www.stantonca.gov/government/agendas___minutes/city_council.php
+  youtube: https://youtube.com/@cityofstanton
 clerk:
-  phone: (714) 379-9222
+  name: Patricia Vazquez
   title: City Clerk
+  phone: (714) 890-4245
+  email: PVazquez@StantonCA.gov
 public_comment:
   in_person: true
   remote_live: true
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  email: pvazquez@stantonca.gov
+  email: PVazquez@StantonCA.gov
   deadline: 5:00 PM on meeting day
+  notes: Request to Speak card required; emailed comments not read aloud but included in record until meeting closes
 council:
   size: 5
   districts: 4
