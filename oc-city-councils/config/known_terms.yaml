@@ -1,0 +1,90 @@
+metadata:
+  description: Council member term data from Ballotpedia
+  generated: '2026-01-25T20:34:04.176980'
+  source: Ballotpedia.org
+  cities_count: 3
+cities:
+  anaheim:
+    members:
+      ryan balius:
+        district: District 1
+        term_start: 2024
+        term_end: 2028
+      carlos leon:
+        district: District 2
+        term_start: 2022
+        term_end: 2026
+      natalie rubalcava:
+        district: District 3
+        term_start: 2022
+        term_end: 2026
+      norma campos kurtz:
+        district: District 4
+        term_start: 2023
+        term_end: 2028
+      kristen maahs:
+        district: District 5
+        term_start: 2024
+        term_end: 2028
+      natalie meeks:
+        district: District 6
+        term_start: 2022
+        term_end: 2026
+    last_updated: '2026-01-25'
+    source: https://ballotpedia.org/Anaheim,_California
+  irvine:
+    members:
+      kathleen treseder:
+        district: null
+        term_start: 2022
+        term_end: 2026
+      melinda liu:
+        district: District 1
+        term_start: 2024
+        term_end: 2026
+      william go:
+        district: District 2
+        term_start: 2024
+        term_end: 2028
+      james mai:
+        district: District 3
+        term_start: 2024
+        term_end: 2028
+      mike carroll:
+        district: District 4
+        term_start: 2024
+        term_end: 2028
+      betty martinez franco:
+        district: District 5
+        term_start: 2025
+        term_end: 2026
+    last_updated: '2026-01-25'
+    source: https://ballotpedia.org/Irvine,_California
+  santa_ana:
+    members:
+      thai viet phan:
+        district: Ward 1
+        term_start: 2020
+        term_end: 2028
+      ben vazquez:
+        district: Ward 2
+        term_start: 2022
+        term_end: 2026
+      jessie lopez:
+        district: Ward 3
+        term_start: 2020
+        term_end: 2028
+      phil bacerra:
+        district: Ward 4
+        term_start: 2019
+        term_end: 2026
+      johnathan hernandez:
+        district: Ward 5
+        term_start: 2020
+        term_end: 2028
+      david penaloza:
+        district: Ward 6
+        term_start: 2022
+        term_end: 2026
+    last_updated: '2026-01-25'
+    source: https://ballotpedia.org/Santa_Ana,_California
