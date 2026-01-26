@@ -1,18 +1,18 @@
 city: lake-forest
 city_name: Lake Forest
-last_updated: '2026-01-25'
+last_updated: '2026-01-26'
 website: https://www.lakeforestca.gov
 council_url: https://www.lakeforestca.gov/city_government/city_council/index.php
-email: ''
-phone: ''
+email: council@lakeforestca.gov
+phone: (949) 461-3400
 instagram: ''
 members:
 - name: Robert Pequeño
   position: Mayor
   district: District 5
   email: rpequeno@lakeforestca.gov
-  phone: (949) 461-3400
-  city_page: https://www.lakeforestca.gov/city_government/city_council/index.php
+  phone: (949) 461-3425
+  city_page: https://www.lakeforestca.gov/business_detail_T5_R11.php
   term_start: 2024
   term_end: 2028
   photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Mayor-Pro-Tem-Robert-Peque%C3%B1o.jpg?t=202508141138220
@@ -20,8 +20,8 @@ members:
   position: Mayor Pro Tem
   district: District 1
   email: dcirbo@lakeforestca.gov
-  phone: (949) 461-3400
-  city_page: https://www.lakeforestca.gov/city_government/city_council/index.php
+  phone: (949) 461-3425
+  city_page: https://www.lakeforestca.gov/business_detail_T5_R12.php
   term_start: 2024
   term_end: 2028
   photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Council-Member-Doug-Cirbo.jpg?t=202508141138140
@@ -29,8 +29,8 @@ members:
   position: Councilmember
   district: District 2
   email: byu@lakeforestca.gov
-  phone: (949) 461-3400
-  city_page: https://www.lakeforestca.gov/city_government/city_council/index.php
+  phone: (949) 461-3425
+  city_page: https://www.lakeforestca.gov/business_detail_T5_R14.php
   term_start: 2022
   term_end: 2026
   photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Council-Member-Benjamin-Yu.jpg?t=202508141138140
@@ -38,8 +38,8 @@ members:
   position: Councilmember
   district: District 4
   email: mtettemer@lakeforestca.gov
-  phone: (949) 461-3400
-  city_page: https://www.lakeforestca.gov/city_government/city_council/index.php
+  phone: (949) 461-3425
+  city_page: https://www.lakeforestca.gov/business_detail_T5_R13.php
   term_start: 2022
   term_end: 2026
   photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Council-Member-Mark-Tettemer.png?t=202508141138140
@@ -47,38 +47,44 @@ members:
   position: Councilmember
   district: District 3
   email: svoigts@lakeforestca.gov
-  phone: (949) 461-3400
-  city_page: https://www.lakeforestca.gov/city_government/city_council/index.php
+  phone: (949) 461-3425
+  city_page: https://www.lakeforestca.gov/business_detail_T5_R10.php
   term_start: 2022
   term_end: 2026
   photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Mayor-Scott-Voigts.jpg?t=202508141138170
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 6:30 PM
+  closed_session_time: 5:30 PM
   location:
     name: City Council Chambers
     address: 100 Civic Center Drive
     city_state_zip: Lake Forest, CA 92630
+  agenda_availability: 72 hours prior (Friday before Tuesday meetings)
 portals:
   agenda_center: https://www.lakeforestca.gov/city_government/agendas_and_minutes/index.php
   youtube: https://www.youtube.com/@CityofLakeForestCA1991
   facebook: https://www.facebook.com/lakeforestca
-  live_stream: https://www.youtube.com/@CityofLakeForestCA1991
+  live_stream: https://www.facebook.com/lakeforestca
 broadcast:
-  live_stream: https://www.youtube.com/@CityofLakeForestCA1991
+  live_stream: https://www.facebook.com/lakeforestca
+  platform: Facebook Live
 clerk:
-  name: Lisa Berglund
-  title: City Clerk
-  phone: (949) 461-3400
+  name: Thy Merritt
+  title: Acting City Clerk
+  phone: (949) 461-3420
   email: council@lakeforestca.gov
 public_comment:
   in_person: true
-  remote_live: false
+  remote_live: true
+  remote_live_method: Facebook Live comments with "COMMENT TO COUNCIL:" prefix
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
+  overall_limit: 30 minutes for public comment period
   email: council@lakeforestca.gov
   deadline: 5:00 PM on meeting day
+  notes: Comments via Facebook Live must begin with "COMMENT TO COUNCIL:" in all caps to be read aloud
 council:
   size: 5
   districts: 5
