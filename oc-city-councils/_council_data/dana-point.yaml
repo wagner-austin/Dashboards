@@ -104,16 +104,19 @@ broadcast:
 clerk:
   name: Shayna Sharke
   title: City Clerk
-  phone: (949) 248-3506
-  email: comment@danapoint.org
+  phone: (949) 248-3505
+  email: ssharke@danapoint.org
+  address: 33282 Golden Lantern, Dana Point, CA 92629
 public_comment:
   in_person: true
   remote_live: false
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
+  total_time_limit: 15 minutes for public comment period
   email: comment@danapoint.org
   deadline: 4:00 PM on meeting day
+  notes: Comments not read aloud but included in record. Include "Public Comment" and meeting date in subject line.
 council:
   size: 5
   districts: 5
