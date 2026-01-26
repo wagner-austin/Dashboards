@@ -1,6 +1,6 @@
 city: san-juan-capistrano
 city_name: San Juan Capistrano
-last_updated: '2026-01-25'
+last_updated: '2026-01-26'
 website: https://sanjuancapistrano.org
 council_url: https://sanjuancapistrano.org/318/City-Council
 email: ''
@@ -11,33 +11,33 @@ members:
   position: Mayor
   district: District 3
   email: jcampbell@sanjuancapistrano.org
-  phone: 949-493-1171
+  phone: 949-443-6375
   city_page: https://sanjuancapistrano.org/directory.aspx?eid=47
   term_end: 2026
   term_start: 2022
-  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=2882
 - name: John Taylor
   position: Mayor Pro Tem
-  district: District 5
+  district: District 4
   email: jtaylor@sanjuancapistrano.org
-  phone: 949-493-1171
+  phone: 949-443-6375
   city_profile: https://sanjuancapistrano.org/318/City-Council
-  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=1467
   bio: null
-  term_start: 2024
-  term_end: 2028
+  term_start: 2018
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://sanjuancapistrano.org/directory.aspx?eid=51
 - name: Howard Hart
   position: Councilmember
-  district: District 4
+  district: District 5
   email: hhart@sanjuancapistrano.org
-  phone: 949-493-1171
+  phone: 949-443-6375
   city_profile: https://sanjuancapistrano.org/318/City-Council
-  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=1470
   bio: null
-  term_start: 2024
+  term_start: 2020
   term_end: 2028
   website: null
   instagram: null
@@ -46,11 +46,11 @@ members:
   position: Councilmember
   district: District 1
   email: sfarias@sanjuancapistrano.org
-  phone: 949-493-1171
+  phone: 949-443-6375
   city_profile: https://sanjuancapistrano.org/318/City-Council
-  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=1468
   bio: null
-  term_start: 2024
+  term_start: 2016
   term_end: 2028
   website: null
   instagram: null
@@ -59,38 +59,42 @@ members:
   position: Councilmember
   district: District 2
   email: tbourne@sanjuancapistrano.org
-  phone: 949-493-1171
+  phone: 949-443-6375
   city_page: https://sanjuancapistrano.org/directory.aspx?eid=49
-  term_start: 2022
+  term_start: 2018
   term_end: 2026
-  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=1469
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 5:00 PM
+  closed_session_time: 3:00 PM
   location:
     name: City Council Chamber
     address: 32400 Paseo Adelanto
     city_state_zip: San Juan Capistrano, CA 92675
 portals:
-  agenda_center: https://sanjuancapistrano.org/189/Public-Meetings
+  agenda_center: https://www.sanjuancapistrano.org/189/Public-Meetings
   granicus: https://sjc.granicus.com/ViewPublisher.php?view_id=3
-  live_stream: https://sjc.granicus.com/ViewPublisher.php?view_id=3
+  live_stream: https://www.sanjuancapistrano.org/189/Public-Meetings
+  video_archive: https://www.sanjuancapistrano.org/189/Public-Meetings
 broadcast:
-  live_stream: https://sjc.granicus.com/ViewPublisher.php?view_id=3
+  live_stream: https://www.sanjuancapistrano.org/189/Public-Meetings
 clerk:
-  name: Maria Morris
+  name: Christy Jakl
   title: City Clerk
   phone: (949) 443-6310
-  email: cityclerk@sanjuancapistrano.org
+  email: cjakl@sanjuancapistrano.org
 public_comment:
   in_person: true
-  remote_live: true
+  remote_live: false
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  email: cityclerk@sanjuancapistrano.org
-  phone: (949) 493-1172
-  notes: Call public comment line at start of meeting to be placed in queue
+  email: cjakl@sanjuancapistrano.org
+  email_alt: cityclerk@sanjuancapistrano.org
+  phone: (949) 443-6310
+  deadline: 1 hour prior to meeting
+  notes: Submit Request to Speak form to City Clerk; view meeting online at granicus link
 council:
   size: 5
   districts: 5
