@@ -126,21 +126,23 @@ members:
   city_page: https://www.lagunahillsca.gov/234/Joshua-Sweeney
 meetings:
   schedule: 2nd and 4th Tuesdays
-  time: 7:00 PM
+  time: 6:00 PM
   location:
     name: Council Chamber
     address: 24035 El Toro Road
     city_state_zip: Laguna Hills, CA 92653
 portals:
-  agenda_center: https://lagunahillsca.portal.civicclerk.com/
-  live_stream: https://lagunahillsca.iqm2.com/Citizens/default.aspx
+  civicclerk: https://lagunahillsca.portal.civicclerk.com/
+  agendas: https://lagunahillsca.portal.civicclerk.com/
+  live_stream: https://lagunahillsca.portal.civicclerk.com/
 broadcast:
-  live_stream: https://lagunahillsca.iqm2.com/Citizens/default.aspx
+  live_stream: https://lagunahillsca.portal.civicclerk.com/
 clerk:
   name: Jennifer Lee, CMC
   title: City Clerk
   phone: (949) 707-2630
   email: jlee@lagunahillsca.gov
+  address: 24035 El Toro Road, Laguna Hills, CA 92653
 public_comment:
   in_person: true
   remote_live: false
