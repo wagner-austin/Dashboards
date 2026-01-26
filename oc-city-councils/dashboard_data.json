@@ -94,7 +94,7 @@
     "clerk": {
       "title": "City Clerk's Office",
       "phone": "(949) 425-2510",
-      "email": "City-council@avcity.org"
+      "email": "city-clerk@avcity.org"
     },
     "public_comment": {
       "in_person": true,
@@ -102,7 +102,8 @@
       "ecomment": false,
       "written_email": true,
       "time_limit": "3 minutes per speaker",
-      "email": "City-council@avcity.org"
+      "email": "community-input@avcity.org",
+      "notes": "General public comment allowed at beginning of meetings"
     },
     "council": {
       "size": 5,
@@ -158,9 +159,12 @@
       "live_stream": "https://www.anaheim.net/councilvideos"
     },
     "clerk": {
-      "title": "City Clerk's Office",
+      "name": "Theresa Bass, CMC",
+      "title": "City Clerk",
       "phone": "(714) 765-5166",
-      "email": "cityclerk@anaheim.net"
+      "fax": "(714) 765-4105",
+      "email": "tbass@anaheim.net",
+      "address": "200 S. Anaheim Boulevard, 2nd Floor, Room 217, Anaheim, CA 92805"
     },
     "public_comment": {
       "email": "publiccomment@anaheim.net",
@@ -168,7 +172,29 @@
       "in_person": true,
       "remote_live": false,
       "ecomment": false,
-      "written_email": true
+      "written_email": true,
+      "time_limit": "3 minutes per speaker",
+      "speaker_card": "required (name and contact optional)",
+      "periods": [
+        {
+          "type": "First Public Comment",
+          "scope": "Agenda items (except public hearings), then non-agenda if time remains",
+          "max_duration": "90 minutes"
+        },
+        {
+          "type": "Second Public Comment",
+          "scope": "Non-agenda speakers not heard during first period",
+          "timing": "After Report on Closed Session Items"
+        }
+      ],
+      "public_hearing_limits": {
+        "applicant_initial": "20 minutes",
+        "applicant_rebuttal": "10 minutes",
+        "noticed_area_residents": "10 minutes",
+        "general_public": "3 minutes",
+        "legislative_matters": "5 minutes"
+      },
+      "notes": "Comments posted on City website and made part of official public record. Speakers may be removed for profane language or disruptive behavior (AMC 1.12.017)."
     },
     "elections": {
       "next_election": "2026-11-03",
@@ -193,7 +219,7 @@
         "name": "Ashleigh E. Aitken",
         "position": "Mayor",
         "email": "aaitken@anaheim.net",
-        "phone": "(714) 765-4311",
+        "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58010",
         "bio": "Ashleigh Aitken was elected as the 48th mayor of Anaheim in November 2022. She is the first woman mayor in Anaheim\u2019s 167-year history. Mayor Aitken represents all Anaheim residents, neighborhoods and businesses on the City Council, alongside six members elected by districts. As mayor, Aitken lead a series of 2023 transparency reforms at City Hall and is also focused on enhancing public safety, expanding affordable housing and growing Anaheim\u2019s economy by supporting our visitor industry and streamlining processes to expand and attract new industries.",
@@ -205,7 +231,7 @@
         "position": "Mayor Pro Tem",
         "district": "District 2",
         "email": "cleon@anaheim.net",
-        "phone": "(714) 765-5032",
+        "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/2314/Council-Member-Carlos-A-Leon",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58081",
         "bio": "Carlos A. Leon represents District 2 in west Anaheim and serves as mayor pro tem on the Anaheim City Council. Council Member Leon was elected to the City Council in November 2022 and selected to serve as mayor pro tem for 2026 by his Council colleagues. As mayor pro tem, Leon chairs\u00a0City Council meetings and represents the city as a whole as needed.",
@@ -217,7 +243,7 @@
         "position": "Councilmember",
         "district": "District 5",
         "email": "kmaahs@anaheim.net",
-        "phone": "(714) 765-4377",
+        "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58009",
         "bio": "Kristen Maahs was elected to the Anaheim City Council in November 2024, representing District 5 in central-east Anaheim. A fourth-generation Anaheim resident, Maahs is focused funding and equipping Anaheim\u2019s police and firefighters, addressing homelessness with compassion and impact and promoting a strong economy through support of startups, existing Anaheim businesses and those new to our city. Maahs also looks to build on Anaheim\u2019s extensive reforms for transparency and accountability while ensuring public money is spent efficiently with a focus on public services.",
@@ -229,7 +255,7 @@
         "position": "Councilmember",
         "district": "District 6",
         "email": "nmeeks@anaheim.net",
-        "phone": "(714) 765-5040",
+        "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/5175/Council-Member-Natalie-Meeks",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58063",
         "bio": "Natalie Meeks was elected to the Anaheim City Council in November 2022, representing District 6 in east Anaheim. Before joining the City Council, Meeks served on Anaheim\u2019s Planning Commission from 2019 to late 2022, including as chair in 2021 and 2022. On the Council, Meeks is focused on safety and quality of life issues through adding officers to the Anaheim Police Department, reducing crime, addressing homelessness, improving fire evacuation in Anaheim Hills and expanding and building on the area\u2019s parks, trails and libraries.",
@@ -241,7 +267,7 @@
         "position": "Councilmember",
         "district": "District 3",
         "email": "nrubalcava@anaheim.net",
-        "phone": "(714) 765-4311",
+        "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58060",
         "bio": "Natalie Rubalcava was elected to the Anaheim City Council in November 2022, representing District 3 in central Anaheim. in 2023, Rubalcava served as mayor pro tem, representing the city at large at community and other events. Before joining the Council, Rubalcava served on the Anaheim Housing and Community Development Commission from June to December 2022. Earlier, she served on the city\u2019s Community Services Board from 2004 to 2014, including as chair in 2009.",
@@ -253,7 +279,7 @@
         "position": "Councilmember",
         "district": "District 4",
         "email": "nkurtz@anaheim.net",
-        "phone": "(714) 765-4311",
+        "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58023",
         "bio": "Norma Campos Kurtz was elected to the Anaheim City Council representing District 4 in 2024 after first being appointed to fill a vacancy in the district in 2023. In 2024 she has served as mayor pro tem, chairing City Council meetings as needed and helping to represent the city at community and other events. As Council member for District 4 in central-south Anaheim, Campos Kurtz represents neighborhoods at the southern end of downtown as well as around The Anaheim Resort.",
@@ -265,7 +291,7 @@
         "position": "Councilmember",
         "district": "District 1",
         "email": "rbalius@anaheim.net",
-        "phone": "(714) 765-5047",
+        "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/3522/Council-Member-Ryan-Balius",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=57980",
         "bio": "Ryan Balius was elected to the Anaheim City Council in November 2024, representing District 1 in west Anaheim. A 25-year resident of west Anaheim, Balius is focused on advancing the ongoing rebuilding of Beach Boulevard with continued police enforcement, more potential motel closures and redevelopment with homes, businesses and public spaces. District 1, which goes from north Brookhurst Street to Anaheim\u2019s western city lines with Buena Park, Cypress and Stanton, is home to neighborhoods, businesses, parks, schools, a library and Anaheim\u2019s 1.5-mile stretch of Beach Boulevard.",
@@ -367,17 +393,20 @@
       "live_stream": "https://www.cityofbrea.gov/812/Government-Access-Channel"
     },
     "clerk": {
-      "title": "City Clerk's Office",
+      "name": "Victoria Popescu",
+      "title": "City Clerk",
       "phone": "(714) 990-7756",
-      "email": "cityclerksgroup@cityofbrea.net"
+      "email": "cityclerksgroup@cityofbrea.gov",
+      "address": "1 Civic Center Circle, Brea, CA 92821"
     },
     "public_comment": {
       "in_person": true,
-      "remote_live": false,
+      "remote_live": true,
+      "remote_platform": "Zoom",
       "ecomment": false,
       "written_email": true,
       "time_limit": "3 minutes per speaker",
-      "email": "cityclerksgroup@cityofbrea.net"
+      "email": "cityclerksgroup@cityofbrea.gov"
     },
     "council": {
       "size": 5,
@@ -636,9 +665,12 @@
       "granicus": "https://costamesa.granicus.com/ViewPublisher.php?view_id=5"
     },
     "clerk": {
-      "title": "City Clerk's Office",
+      "name": "Brenda Green",
+      "title": "City Clerk",
       "phone": "(714) 754-5225",
-      "email": "cityclerk@costamesaca.gov"
+      "direct_phone": "(714) 754-5221",
+      "email": "brenda.green@costamesaca.gov",
+      "address": "77 Fair Drive, Costa Mesa, CA 92626"
     },
     "public_comment": {
       "in_person": true,
@@ -647,7 +679,8 @@
       "ecomment": true,
       "time_limit": "3 minutes per speaker",
       "email": "cityclerk@costamesaca.gov",
-      "deadline": "12:00 PM day of meeting"
+      "deadline": "12:00 PM day of meeting",
+      "notes": "Comments provided to council, made public, and part of meeting record"
     },
     "council": {
       "size": 7,
@@ -680,7 +713,7 @@
         "position": "Mayor",
         "district": "District 4",
         "email": "lmedrano@cypressca.org",
-        "phone": "(714) 229-6700",
+        "phone": "(714) 229-6699",
         "city_profile": "https://www.cypressca.org/government/city-council/council-member-leo-medrano",
         "photo_url": "https://www.cypressca.org/home/showpublishedimage/12826/638726243326730000",
         "bio": "Leo Medrano is a Navy veteran, engineer, and finance expert serving his first term on the Cypress City Council. He previously served as a Cypress City Commissioner. A native Southern Californian, his mother was a public school employee and his father was a U.S. Postal Service letter carrier and Navy veteran. He has worked as a Serial-Startup CFO, former U.S. Naval Officer, and former investment banker. His priorities include enhancing public safety, promoting fiscal responsibility, and fostering community engagement.",
@@ -695,7 +728,7 @@
         "position": "Mayor Pro Tem",
         "district": "District 3",
         "email": "kchang@cypressca.org",
-        "phone": "(714) 229-6700",
+        "phone": "(714) 229-6699",
         "city_profile": "https://www.cypressca.org/government/city-council/council-member-kyle-chang",
         "photo_url": "https://www.cypressca.org/home/showpublishedimage/12830/638726219857670000",
         "bio": "Dr. Kyle Chang is a public health statistician with a Ph.D. in Social Psychology from UC Irvine and B.A. degrees in Psychology from UT Austin and Literary Criticism from U of Houston. He has over 20 years of experience working with government agencies and nonprofits, including work as a caseworker for Children's Protective Services, therapist with children with autism, and researcher of children's health. He worked at Riverside County DPSS and Orange County Health Care Agency's Mental Health Services Act office. He represents Cypress on the Bridges at Kraemer Place Community Advisory Board. He is a husband and father of two.",
@@ -710,7 +743,7 @@
         "position": "Councilmember",
         "district": "District 1",
         "email": "bpeat@cypressca.org",
-        "phone": "(714) 229-6700",
+        "phone": "(714) 229-6699",
         "city_profile": "https://www.cypressca.org/government/city-council/council-member-bonnie-peat",
         "photo_url": "https://www.cypressca.org/home/showpublishedimage/10176/638091266228000000",
         "bio": "Bonnie Peat is a retired aerospace executive with 35 years of leadership experience at Parker Hannifin Corporation. She serves on the Board of Directors for Novaria Group, an aerospace company. She holds a B.A. in Business Administration-Finance from CSU Fullerton and an A.A. from Cypress College, where she was named 2022 Alumnus of the Year. She served on the Cypress School District Board of Trustees from 2018-2022, twice as President. A 50-year Cypress resident, she grew up on a dairy farm when Cypress was known as Dairy City. She represents Cypress on the Orange County Sanitation District.",
@@ -725,7 +758,7 @@
         "position": "Councilmember",
         "district": "District 2",
         "email": "dburke@cypressca.org",
-        "phone": "(714) 229-6700",
+        "phone": "(714) 229-6699",
         "city_profile": "https://www.cypressca.org/government/city-council/council-member-david-burke",
         "photo_url": "https://www.cypressca.org/home/showpublishedimage/10178/638091266025670000",
         "bio": "David Burke is a native Southern Californian and son of two public school teachers. He holds a B.A. in Political Science and J.D. from UCLA. He worked with the U.S. House Committee on Ways and Means, the U.S. Department of Justice Antitrust Division, and clerked for two LA Superior Court judges. In 2016, he founded Citizens Take Action, a nonprofit working to get big money out of politics. In 2022, he authored a report card on campaign finance laws in OC municipal government. He serves on the Cypress Community Festival board and volunteers at Second Harvest Food Bank. He served as Mayor in 2025.",
@@ -740,7 +773,7 @@
         "position": "Councilmember",
         "district": "District 5",
         "email": "rstrongcarnahan@cypressca.org",
-        "phone": "(714) 229-6700",
+        "phone": "(714) 229-6699",
         "city_profile": "https://www.cypressca.org/government/city-council/council-member-rachel-strong-carnahan",
         "photo_url": "https://www.cypressca.org/home/showpublishedimage/14531/639041920579870000",
         "bio": "Rachel Strong Carnahan is a former Senior Citizens Commissioner and 2022 City Council candidate. She has 18 years of experience as a youth mentor and is a small business owner at Strong Dance Studios. She was appointed to fill the vacant District 5 seat in November 2025 after the resignation of Scott Minikus. Her priorities include recruiting an excellent city manager, paying down pension debt, reimagining green spaces with teens in mind, and building a city that values diversity and inclusion. She raises her children in Cypress and calls herself a \"hometown girl.\"",
@@ -917,8 +950,9 @@
     "clerk": {
       "name": "Shayna Sharke",
       "title": "City Clerk",
-      "phone": "(949) 248-3506",
-      "email": "comment@danapoint.org"
+      "phone": "(949) 248-3505",
+      "email": "ssharke@danapoint.org",
+      "address": "33282 Golden Lantern, Dana Point, CA 92629"
     },
     "public_comment": {
       "in_person": true,
@@ -926,8 +960,10 @@
       "ecomment": false,
       "written_email": true,
       "time_limit": "3 minutes per speaker",
+      "total_time_limit": "15 minutes for public comment period",
       "email": "comment@danapoint.org",
-      "deadline": "4:00 PM on meeting day"
+      "deadline": "4:00 PM on meeting day",
+      "notes": "Comments not read aloud but included in record. Include \"Public Comment\" and meeting date in subject line."
     },
     "council": {
       "size": 5,
@@ -962,7 +998,7 @@
         "position": "Mayor",
         "district": null,
         "email": "Ted.Bui@fountainvalley.gov",
-        "phone": "714-593-4400",
+        "phone": "(628) 266-8888",
         "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=54",
         "photo_url": "https://www.fountainvalley.gov/ImageRepository/Document?documentId=19450",
         "bio": "A long-time resident of Orange County, Ted is known for his dedication to fostering a safe and vibrant city. He has worked tirelessly to ensure fiscal responsibility, support local businesses, and promote initiatives that enhance the quality of life for all residents. Ted believes in transparent governance and actively engages with constituents to address their concerns. His leadership style is characterized by collaboration, integrity, and a forward-thinking approach. Ted\u2019s efforts are driven by a desire to build a stronger, more inclusive community for future generations.",
@@ -974,10 +1010,10 @@
       },
       {
         "name": "Jim Cunneen",
-        "position": "Mayor Pro Tem",
+        "position": "Vice Mayor",
         "district": null,
         "email": "Jim.Cunneen@fountainvalley.gov",
-        "phone": "714-593-4400",
+        "phone": "(714) 593-4403",
         "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=178",
         "photo_url": "https://www.fountainvalley.gov/ImageRepository/Document?documentId=19452",
         "bio": "Jim Cunneen is currently serving in his first four-year term on the Fountain Valley City Council after being elected in 2022. \u00a0Prior to this , he served two consecutive four-year terms on the Fountain Valley School District Board of Trustees, including serving as President in 2018. \u00a0He previously has served on the FV Planning Commission, Community Foundation, Housing and Community Development Board, and chaired the General Plan Advisory Committee. Mr. Cunneen has worked as a Civil Engineer and Regional Manager in SoCal for over 36 years. \u00a0He is a graduate of California State University Long Beach and American College of Law, where he is seeking admission into the California State Bar. \u00a0His consulting work has included many key projects such as the OCTA I-405, John Wayne Airport and the ARTIC projects. \u00a0Mr. Cunneen has been married to his educator wife and Fountain Valley native, Marilyn, for over 30 years. They have lived in the same home on La Marmota Avenue for nearly 29 years and greatly enjoy their close-nit neighborhood and city area. \u00a0They have five children who were all born at Fountain Valley Regional Hospital and attended Cox Elementary, Masuda Middle, and Fountain Valley High Schools. He is passionate about volunteering and regularly gives time in the Fountain Valley Rotary Club, local civic groups and committees, is a Fourth Degree Knight of Columbus, and sings in a choir at Holy Spirit Catholic Church. \u00a0Mr. Cunneen enjoys local and regional governance involvement, challenges, and ultimately endeavors to be helpful to his community.",
@@ -992,7 +1028,7 @@
         "position": "Councilmember",
         "district": null,
         "email": "Glenn.Grandis@fountainvalley.gov",
-        "phone": "714-593-4400",
+        "phone": "(714) 593-4403",
         "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=55",
         "photo_url": "https://www.fountainvalley.gov/ImageRepository/Document?documentId=19451",
         "bio": "Glenn Grandis\u00a0is a dedicated and engaged member of the Fountain Valley community, with a residency spanning 44 years. His roots in the city run deep, having attended Fountain Valley High School, where he began his strong connection to the local community. One of Glenn's significant contributions is his long-standing involvement with the Fountain Valley Kiwanis Club. For an impressive 44 years, he has been an active member, showcasing a commitment to service and a desire to make a positive impact on the lives of others. Glenn holds the distinction of being a founding director of the Fountain Valley Community Foundation. This organization plays a crucial role in supporting various community initiatives and projects, further highlighting his commitment to enhancing the overall well-being of Fountain Valley. Glenn is married and together with his wife Mary, have a combined 5 children and 2 dogs!",
@@ -1007,7 +1043,7 @@
         "position": "Councilmember",
         "district": null,
         "email": "kim.constantine@fountainvalley.gov",
-        "phone": "714-593-4400",
+        "phone": "(714) 593-4403",
         "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=152",
         "photo_url": "https://www.fountainvalley.gov/ImageRepository/Document?documentId=19449",
         "bio": "Kim was born in Allentown, Pennsylvania. \u00a0After living for a while in Lebanon and Australia, her family moved to California. \u00a0She\u2019s lived in Fountain Valley for many years and is a member of several local organizations. One of her most proud moments was in 2011 at the Fountain Valley Chamber of Commerce Board Installation Luncheon, when she was named Ambassador-of-the Year. \u00a0Within minutes, she was the first person in the Chamber\u2019s 45-year history to be nominated from the floor. \u00a0When the votes were tallied from that day\u2019s election, she was elected to the Board. \u00a0It meant so much that the members had faith in her. \u00a0Kim served four years as a Director. \u00a0At that time, she knew she wanted to serve her community as a City Council Member and began laying the groundwork for her first campaign in 2014. \u00a0She ran again in 2016 and remained persistent and highly visible. Kim enjoys staying abreast of City matters, cooking, and traveling\u2026 to Europe, especially.",
@@ -1022,7 +1058,7 @@
         "position": "Councilmember",
         "district": null,
         "email": "patrick.harper@fountainvalley.gov",
-        "phone": "714-593-4400",
+        "phone": "(714) 593-4403",
         "city_profile": "https://www.fountainvalley.gov/Directory.aspx?EID=153",
         "photo_url": "https://www.fountainvalley.gov/ImageRepository/Document?documentId=19453",
         "bio": "Patrick Harper was elected to the Fountain Valley City Council in November of 2018 and was appointed Mayor in 2021. Orange County's City Selection Committee reappointed Harper as a city council representative to the OCTA Board of Directors in January 2023. Harper has lived in Fountain Valley since 2010 and has three sons attending local middle and high schools. He has been a long time member of the Fountain Valley Chamber of Commerce and served on the Board of Directors from 2012 to 2014. Prior to election to the City Council, he served as member and chair of the Fountain Valley Planning Commission from 2014 to 2018. Council member Harper grew up in Northern California in Marin County and migrated to Santa Barbara in 1980, where he attended college at UC Santa Barbara and received a Bachelor of Arts degree in Business Economics. After college, he moved to Los Angeles and worked as an auditor in public accounting, as well as holding executive finance positions at various publicly traded and private companies. Since moving to Fountain Valley, he founded and operates a tax and accounting practice with his wife Hang Harper.",
@@ -1063,8 +1099,9 @@
     "clerk": {
       "name": "Rick Miller",
       "title": "City Clerk",
-      "phone": "(714) 593-4400",
-      "email": "Rick.Miller@fountainvalley.org"
+      "phone": "(714) 593-4445",
+      "fax": "(714) 593-4494",
+      "email": "Rick.Miller@fountainvalley.gov"
     },
     "public_comment": {
       "in_person": true,
@@ -1072,7 +1109,7 @@
       "ecomment": false,
       "written_email": true,
       "time_limit": "3 minutes per speaker",
-      "email": "Rick.Miller@fountainvalley.org"
+      "email": "Rick.Miller@fountainvalley.gov"
     },
     "council": {
       "size": 5,
@@ -1100,7 +1137,7 @@
         "district": "District 1",
         "city_page": "https://www.cityoffullerton.com/government/city-council/mayor-fred-jung",
         "email": "fred.jung@cityoffullerton.com",
-        "phone": "714.738.6300",
+        "phone": "(714) 738-6311",
         "photo_url": "https://www.cityoffullerton.com/home/showpublishedimage/7826/638960543315970000",
         "term_start": 2024,
         "term_end": 2028
@@ -1110,17 +1147,17 @@
         "position": "Mayor Pro Tem",
         "district": "District 2",
         "email": "nicholas.dunlap@cityoffullerton.com",
-        "phone": "714.738.6300",
+        "phone": "(714) 738-6311",
         "city_page": "https://www.cityoffullerton.com/government/city-council/mayor-pro-tem-nicholas-dunlap",
         "photo_url": "https://www.cityoffullerton.com/home/showpublishedimage/8680/638960545199230000",
-        "term_start": 2020,
+        "term_start": 2024,
         "term_end": 2028
       },
       {
         "name": "Ahmad Zahra",
         "position": "Councilmember",
         "email": "AhmadZ@cityoffullerton.com",
-        "phone": "714.738.6300",
+        "phone": "(714) 738-6311",
         "city_page": "https://www.cityoffullerton.com/government/city-council/council-member-ahmad-zahra",
         "photo_url": "https://www.cityoffullerton.com/home/showpublishedimage/7806/638732629311070000",
         "district": "District 5",
@@ -1133,7 +1170,7 @@
         "district": "District 4",
         "city_page": "https://www.cityoffullerton.com/government/city-council/council-member-jamie-valencia",
         "email": "jamie.valencia@cityoffullerton.com",
-        "phone": "714.738.6300",
+        "phone": "(714) 738-6311",
         "photo_url": "https://www.cityoffullerton.com/home/showpublishedimage/7814/638732629363500000",
         "term_start": 2024,
         "term_end": 2028
@@ -1142,7 +1179,7 @@
         "name": "Shana Charles",
         "position": "Councilmember",
         "email": "shana.charles@cityoffullerton.com",
-        "phone": "714.738.6300",
+        "phone": "(714) 738-6311",
         "city_page": "https://www.cityoffullerton.com/government/city-council/council-member-shana-charles",
         "photo_url": "https://www.cityoffullerton.com/home/showpublishedimage/7822/638732629409370000",
         "district": "District 3",
@@ -1184,7 +1221,8 @@
     "clerk": {
       "title": "City Clerk's Office",
       "phone": "(714) 738-6350",
-      "email": "cityclerksoffice@cityoffullerton.com"
+      "email": "cityclerksoffice@cityoffullerton.com",
+      "direct_email": "lucindaw@cityoffullerton.com"
     },
     "public_comment": {
       "in_person": true,
@@ -1192,7 +1230,9 @@
       "written_email": true,
       "email": "CouncilMembers@cityoffullerton.com",
       "time_limit": "3 minutes per speaker",
-      "ecomment": true
+      "ecomment": true,
+      "subject_format": "\"CITY COUNCIL MEETING CORRESPONDENCE - ITEM #\" or \"NON-AGENDA ITEM\"",
+      "notes": "Correspondence becomes part of official record and posted online with supplemental materials"
     },
     "council": {
       "size": 5,
@@ -1334,11 +1374,24 @@
       }
     },
     "portals": {
-      "granicus": "https://gardengrove.granicus.com/ViewPublisher.php?view_id=1"
+      "granicus": "https://gardengrove.granicus.com/ViewPublisher.php?view_id=1",
+      "agendas": "https://agendasuite.org/iip/gardengrove",
+      "live_stream": "https://ggtv3-live.ggcity.org",
+      "video_archive": "https://ggcity.org/ggtv3/videos"
+    },
+    "broadcast": {
+      "cable_channels": [
+        {
+          "provider": "GGTV",
+          "channel": "3"
+        }
+      ],
+      "live_stream": "https://ggtv3-live.ggcity.org"
     },
     "clerk": {
-      "title": "City Clerk's Office",
-      "phone": "(714) 741-5040",
+      "name": "Liz Vasquez",
+      "title": "City Clerk",
+      "phone": "(714) 741-5043",
       "email": "cityclerk@ggcity.org"
     },
     "public_comment": {
@@ -1347,7 +1400,10 @@
       "written_email": true,
       "ecomment": true,
       "time_limit": "3 minutes per speaker",
-      "email": "cityclerk@ggcity.org"
+      "email": "cityclerk@ggcity.org",
+      "deadline": "3:00 PM on meeting day",
+      "speaker_card": "required (submit to City Clerk)",
+      "notes": "Include agenda item in email subject line. Comments after deadline distributed after meeting."
     },
     "council": {
       "size": 7,
@@ -1375,8 +1431,8 @@
         "name": "Casey Mc Keon",
         "position": "Mayor",
         "email": "Casey.McKeon@surfcity-hb.org",
-        "phone": "(714) 536-5511",
-        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+        "phone": "(714) 536-5553",
+        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b0",
         "photo_url": "https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/CaseyMcKeon-Circle-Headshot-2025.png?t=202412041253560",
         "term_start": 2022,
         "term_end": 2026
@@ -1386,8 +1442,8 @@
         "position": "Mayor Pro Tem",
         "district": "At-Large",
         "email": "Butch.Twining@surfcity-hb.org",
-        "phone": "(714) 536-5511",
-        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+        "phone": "(714) 536-5553",
+        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b1",
         "photo_url": "https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/ButchTwining-Circle-Headshot.png?t=202412041237520",
         "term_start": 2024,
         "term_end": 2028
@@ -1397,8 +1453,8 @@
         "position": "Councilmember",
         "district": "At-Large",
         "email": "Andrew.Gruel@surfcity-hb.org",
-        "phone": "(714) 536-5511",
-        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+        "phone": "(714) 536-5553",
+        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b6",
         "photo_url": "https://www.huntingtonbeachca.gov/AndrewGruel-Circle-Headshot.png?t=202504211504120",
         "term_start": 2025,
         "term_end": 2026
@@ -1408,8 +1464,8 @@
         "position": "Councilmember",
         "district": "At-Large",
         "email": "Chad.Williams@surfcity-hb.org",
-        "phone": "(714) 536-5511",
-        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+        "phone": "(714) 536-5553",
+        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b5",
         "photo_url": "https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/ChadWilliams-Circle-Headshot.png?t=202412041232150",
         "term_start": 2024,
         "term_end": 2028
@@ -1419,8 +1475,8 @@
         "position": "Councilmember",
         "district": "At-Large",
         "email": "Don.Kennedy@surfcity-hb.org",
-        "phone": "(714) 536-5511",
-        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+        "phone": "(714) 536-5553",
+        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b3",
         "photo_url": "https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/Don Kennedy-Circle-Headshot.png?t=202412041244530",
         "term_start": 2024,
         "term_end": 2028
@@ -1429,8 +1485,8 @@
         "name": "Gracey Van Der Mark",
         "position": "Councilmember",
         "email": "Gracey.VanDerMark@surfcity-hb.org",
-        "phone": "(714) 536-5511",
-        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+        "phone": "(714) 536-5553",
+        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b4",
         "photo_url": "https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/GraceyVDM-Circle-Headshot.png?t=202408281742520",
         "term_start": 2022,
         "term_end": 2026
@@ -1440,8 +1496,8 @@
         "position": "Councilmember",
         "district": "At-Large",
         "email": "Pat.Burns@surfcity-hb.org",
-        "phone": "(714) 536-5511",
-        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
+        "phone": "(714) 536-5553",
+        "city_page": "https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b2",
         "photo_url": "https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/PatBurns-Circle-Headshot-2025.png?t=202412041247230",
         "term_start": 2022,
         "term_end": 2026
@@ -1462,25 +1518,45 @@
     "portals": {
       "granicus": "https://huntingtonbeach.granicus.com/ViewPublisher.php?view_id=9",
       "legistar": "https://huntingtonbeach.legistar.com/",
-      "live_stream": "https://reflect-huntingtonbeach.cablecast.tv/CablecastPublicSite/?channel=1",
-      "video_archive": "https://huntingtonbeach.granicus.com/ViewPublisher.php?view_id=9"
+      "live_stream": "https://huntingtonbeach.granicus.com/MediaPlayer.php?publish_id=34",
+      "video_archive": "https://reflect-huntingtonbeach.cablecast.tv/internetchannel/gallery/5?channel=1",
+      "youtube": "https://youtube.com/@cityofhb"
     },
     "broadcast": {
-      "live_stream": "https://reflect-huntingtonbeach.cablecast.tv/CablecastPublicSite/?channel=1"
+      "cable_channels": [
+        {
+          "provider": "HBTV",
+          "channel": "3"
+        }
+      ],
+      "live_stream": "https://huntingtonbeach.granicus.com/MediaPlayer.php?publish_id=34",
+      "social_media": [
+        "Facebook",
+        "X",
+        "YouTube"
+      ],
+      "rebroadcast": "Daily at 6:00 PM on HBTV"
     },
     "clerk": {
-      "title": "City Clerk's Office",
+      "name": "Lisa Lane Barnes",
+      "title": "City Clerk",
       "phone": "(714) 536-5227",
-      "email": "cityclerk@surfcity-hb.org"
+      "fax": "(714) 374-1557",
+      "email": "lisalane.barnes@surfcity-hb.org",
+      "address": "2000 Main Street, Huntington Beach, CA 92648"
     },
     "public_comment": {
       "in_person": true,
       "remote_live": false,
       "written_email": true,
-      "email": "SupplementalComm@Surfcity-hb.org",
+      "email": "SupplementalComm@SurfCity-hb.org",
+      "council_email": "City.Council@surfcity-hb.org",
       "time_limit": "3 minutes per speaker",
-      "deadline": "Written comments by 9:00 AM day of meeting",
-      "ecomment": false
+      "signup": "Begins 30 minutes prior to meeting start",
+      "deadline": "9:00 AM day of meeting",
+      "early_deadline": "5:00 PM Monday prior (for distribution, posting, and announcement)",
+      "ecomment": false,
+      "notes": "Supplemental communications are public record. Late submissions included in administrative record only."
     },
     "council": {
       "size": 7,
@@ -1524,7 +1600,8 @@
     },
     "portals": {
       "granicus": "https://irvine.granicus.com/ViewPublisher.php?view_id=68",
-      "ecomment": "https://irvine.granicusideas.com/meetings",
+      "ecomment": "https://irvine.granicusideas.com/meetings?scope=upcoming",
+      "ecomment_live": "https://irvine.granicusideas.com/meetings?scope=past",
       "live_stream": "https://legacy.cityofirvine.org/cityhall/citymanager/pio/ictv/default.asp"
     },
     "broadcast": {
@@ -1537,17 +1614,21 @@
       "live_stream": "https://legacy.cityofirvine.org/cityhall/citymanager/pio/ictv/default.asp"
     },
     "clerk": {
-      "title": "City Clerk's Office",
-      "phone": "949-724-6233",
-      "email": "irvinecitycouncil@cityofirvine.org"
+      "name": "Carl Petersen",
+      "title": "City Clerk",
+      "phone": "(949) 724-6205",
+      "email": "clerk@cityofirvine.org"
     },
     "public_comment": {
       "in_person": true,
       "remote_live": true,
+      "remote_platform": "Zoom",
       "ecomment": true,
       "written_email": true,
-      "time_limit": "3 minutes per speaker",
-      "email": "irvinecitycouncil@cityofirvine.org"
+      "time_limit": "3 minutes per speaker (5 minutes for agendized items)",
+      "email": "irvinecitycouncil@cityofirvine.org",
+      "ecomment_deadline": "2 hours prior to meeting",
+      "notes": "Electronic kiosk available at chamber entrance for speaker registration"
     },
     "elections": {
       "next_election": "2026-11-03",
@@ -1714,8 +1795,8 @@
         "city_profile": "https://www.lahabraca.gov/DocumentCenter/View/15732/Nigsarian-2026-Bio",
         "photo_url": "https://www.lahabraca.gov/ImageRepository/Document?documentID=12381",
         "bio": null,
-        "term_start": 2022,
-        "term_end": 2026,
+        "term_start": 2024,
+        "term_end": 2028,
         "website": null,
         "instagram": null,
         "city_page": "https://www.lahabraca.gov/153/City-Council"
@@ -1761,22 +1842,32 @@
       }
     },
     "portals": {
-      "agenda_center": "https://www.lahabraca.gov/AgendaCenter/City-Council-2",
+      "destiny": "https://destinyhosted.com/agenda_publish.cfm?id=52422",
+      "video_archive": "https://www.lahabraca.gov/356/Archived-Council-Videos",
       "live_stream": "https://www.lahabraca.gov/356/Archived-Council-Videos"
     },
     "broadcast": {
       "cable_channels": [
         {
-          "provider": "Local Cable",
+          "provider": "Government Access",
           "channel": "3"
         }
       ],
-      "live_stream": "https://www.lahabraca.gov/356/Archived-Council-Videos"
+      "live_stream": "https://www.lahabraca.gov/356/Archived-Council-Videos",
+      "rebroadcast": "6:30 PM Tuesday-Friday following each meeting"
+    },
+    "agendas": {
+      "available": "Thursday preceding meetings",
+      "online": "https://destinyhosted.com/agenda_publish.cfm?id=52422"
     },
     "clerk": {
+      "name": "Rhonda J. Barone, CMC",
       "title": "City Clerk",
+      "assistant": "Kenia Lopez, CMC",
       "phone": "(562) 383-4030",
-      "email": "cc@lahabraca.gov"
+      "fax": "(562) 383-4474",
+      "email": "cc@lahabraca.gov",
+      "address": "110 E. La Habra Boulevard, La Habra, CA 90631"
     },
     "public_comment": {
       "in_person": true,
@@ -1785,7 +1876,8 @@
       "written_email": true,
       "time_limit": "3 minutes per speaker",
       "email": "cc@lahabraca.gov",
-      "deadline": "5:00 PM on meeting day"
+      "deadline": "5:00 PM on meeting day",
+      "notes": "Written comments printed and provided to City Council prior to meeting. Chamber opens at 6:00 PM."
     },
     "council": {
       "size": 5,
@@ -1809,8 +1901,8 @@
     "last_updated": "2026-01-25",
     "website": "https://www.lapalmaca.gov",
     "council_url": "https://www.lapalmaca.gov/66/City-Council",
-    "email": "",
-    "phone": "",
+    "email": "citycouncil@lapalmaca.gov",
+    "phone": "(714) 690-3334",
     "instagram": "",
     "members": [
       {
@@ -1819,7 +1911,7 @@
         "district": "At-Large",
         "email": "citycouncil@lapalmaca.gov",
         "phone": "714-690-3334",
-        "city_profile": "https://www.lapalmaca.gov/716",
+        "city_profile": "https://www.lapalmaca.gov/716/Nitesh-Patel-Mayor",
         "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=13971",
         "bio": null,
         "term_start": 2022,
@@ -1834,7 +1926,7 @@
         "district": "District 1",
         "email": "citycouncil@lapalmaca.gov",
         "phone": "714-690-3334",
-        "city_profile": "https://www.lapalmaca.gov/714",
+        "city_profile": "https://www.lapalmaca.gov/714/Debbie-Baker-Mayor-Pro-Tem",
         "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=13972",
         "bio": null,
         "term_start": 2024,
@@ -1844,11 +1936,12 @@
         "city_page": "https://www.lapalmaca.gov/66/City-Council"
       },
       {
-        "name": "Janet Keo",
+        "name": "Janet Keo Conklin",
         "position": "Councilmember",
         "email": "citycouncil@lapalmaca.gov",
         "phone": "714-690-3334",
         "district": "At-Large",
+        "city_profile": "https://www.lapalmaca.gov/735/Janet-Keo-Conklin-Council-Member",
         "city_page": "https://www.lapalmaca.gov/66/City-Council",
         "term_start": 2022,
         "term_end": 2026,
@@ -1860,7 +1953,7 @@
         "district": "District 5",
         "email": "citycouncil@lapalmaca.gov",
         "phone": "714-690-3334",
-        "city_profile": "https://www.lapalmaca.gov/717",
+        "city_profile": "https://www.lapalmaca.gov/717/Mark-Waldman-Council-Member",
         "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=13973",
         "bio": null,
         "term_start": 2024,
@@ -1876,7 +1969,7 @@
         "email": "citycouncil@lapalmaca.gov",
         "phone": "714-690-3334",
         "city_profile": "https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member",
-        "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=13971",
+        "photo_url": "https://www.lapalmaca.gov/ImageRepository/Document?documentId=13426",
         "bio": null,
         "term_start": 2024,
         "term_end": 2028,
@@ -1889,23 +1982,27 @@
       "schedule": "1st Tuesday",
       "time": "6:30 PM",
       "location": {
-        "name": "La Palma Civic Center",
+        "name": "Council Chambers, City Hall",
         "address": "7822 Walker Street",
         "city_state_zip": "La Palma, CA 90623"
       }
     },
     "portals": {
-      "agenda_center": "https://www.lapalmaca.gov/72/Agendas-and-Minutes",
-      "live_stream": "https://www.lapalmaca.gov/72/Agendas-and-Minutes"
+      "agendas": "https://www.lapalmaca.gov/72/Agendas-and-Minutes",
+      "audio_archive": "https://www.lapalmaca.gov/72/Agendas-and-Minutes"
     },
     "broadcast": {
-      "live_stream": "https://www.lapalmaca.gov/72/Agendas-and-Minutes"
+      "audio_stream": "https://www.lapalmaca.gov/72/Agendas-and-Minutes",
+      "video": false,
+      "notes": "Audio only - no video live stream"
     },
     "clerk": {
-      "name": "Kimberly Kenney",
-      "title": "City Clerk",
+      "name": "Norma Alley",
+      "title": "City Clerk/Executive Assistant",
       "phone": "(714) 690-3334",
-      "email": "Kimberlyk@cityoflapalma.org"
+      "email": "nalley@lapalmaca.gov",
+      "office_email": "cityclerk@lapalmaca.gov",
+      "address": "7822 Walker Street, La Palma, CA 90623"
     },
     "public_comment": {
       "in_person": true,
@@ -1913,8 +2010,8 @@
       "ecomment": false,
       "written_email": true,
       "time_limit": "5 minutes per speaker",
-      "email": "Kimberlyk@cityoflapalma.org",
-      "deadline": "5:00 PM on meeting day"
+      "email": "cityclerk@lapalmaca.gov",
+      "notes": "Non-agenda items only during public comment. Agenda items referred to staff or placed on future agenda."
     },
     "council": {
       "size": 5,
@@ -1959,10 +2056,10 @@
       },
       {
         "name": "Bob Whalen",
-        "position": "Mayor Pro Tem",
+        "position": "Councilmember",
         "district": "At-Large",
         "email": "bwhalen@lagunabeachcity.net",
-        "phone": "949-497-3311",
+        "phone": "(949) 497-0796",
         "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126",
         "photo_url": "https://www.lagunabeachcity.net/home/showpublishedimage/4706/638067135619970000",
         "bio": null,
@@ -1989,10 +2086,10 @@
       },
       {
         "name": "Hallie Jones",
-        "position": "Councilmember",
+        "position": "Mayor Pro Tem",
         "district": "At-Large",
         "email": "hjones@lagunabeachcity.net",
-        "phone": "949-497-3311",
+        "phone": "(949) 992-5419",
         "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126",
         "photo_url": "https://www.lagunabeachcity.net/home/showpublishedimage/6128/638693684199500000",
         "bio": null,
@@ -2007,7 +2104,7 @@
         "position": "Councilmember",
         "district": "At-Large",
         "email": "skempf@lagunabeachcity.net",
-        "phone": "949-497-3311",
+        "phone": "(949) 439-3001",
         "city_profile": "https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126",
         "photo_url": "https://www.lagunabeachcity.net/home/showpublishedimage/5560/638453363123100000",
         "bio": null,
@@ -2029,13 +2126,18 @@
     },
     "portals": {
       "granicus": "https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3",
-      "ecomment": "https://www.lagunabeachcity.net/live-here/city-council/meetings-agendas-and-minutes",
-      "live_stream": "https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3"
+      "agendas": "https://www.lagunabeachcity.net/live-here/city-council/meetings-agendas-and-minutes",
+      "online_comment": "https://www.lagunabeachcity.net/government/departments/city-council/online-comment-form",
+      "comment_form_pdf": "https://www.lagunabeachcity.net/home/showpublisheddocument/16742/638326140977270000",
+      "youtube": "https://www.youtube.com/@CityofLagunaBeachCA/streams",
+      "live_stream": "https://www.youtube.com/@CityofLagunaBeachCA/streams"
     },
     "clerk": {
       "title": "City Clerk's Office",
       "phone": "(949) 497-0705",
-      "email": "cityclerk@lagunabeachcity.net"
+      "email": "cityclerk@lagunabeachcity.net",
+      "direct_email": "amckay@lagunabeachcity.net",
+      "address": "505 Forest Avenue, Laguna Beach, CA 92651"
     },
     "public_comment": {
       "in_person": true,
@@ -2043,7 +2145,13 @@
       "ecomment": true,
       "written_email": true,
       "time_limit": "3 minutes per speaker",
-      "email": "cityclerk@lagunabeachcity.net"
+      "email": "amckay@lagunabeachcity.net",
+      "deadlines": [
+        "3:00 PM day before: linked to agenda with review time",
+        "12:00 PM day of: provided to council but may not have review time",
+        "After 12:00 PM: included in record but not linked to agenda"
+      ],
+      "notes": "Written comments NOT read aloud. Comments posted on city website - do not include personal info."
     },
     "council": {
       "size": 5,
@@ -2055,8 +2163,7 @@
     "elections": {
       "next_election": "2026-11-03",
       "seats_up": [
-        "Councilmember",
-        "Councilmember"
+        "2 at-large seats"
       ],
       "term_length": 4,
       "election_system": "at-large"
@@ -2153,7 +2260,7 @@
     ],
     "meetings": {
       "schedule": "2nd and 4th Tuesdays",
-      "time": "7:00 PM",
+      "time": "6:00 PM",
       "location": {
         "name": "Council Chamber",
         "address": "24035 El Toro Road",
@@ -2161,17 +2268,19 @@
       }
     },
     "portals": {
-      "agenda_center": "https://lagunahillsca.portal.civicclerk.com/",
-      "live_stream": "https://lagunahillsca.iqm2.com/Citizens/default.aspx"
+      "civicclerk": "https://lagunahillsca.portal.civicclerk.com/",
+      "agendas": "https://lagunahillsca.portal.civicclerk.com/",
+      "live_stream": "https://lagunahillsca.portal.civicclerk.com/"
     },
     "broadcast": {
-      "live_stream": "https://lagunahillsca.iqm2.com/Citizens/default.aspx"
+      "live_stream": "https://lagunahillsca.portal.civicclerk.com/"
     },
     "clerk": {
       "name": "Jennifer Lee, CMC",
       "title": "City Clerk",
-      "phone": "(949) 707-2630",
-      "email": "jlee@lagunahillsca.gov"
+      "phone": "(949) 707-2635",
+      "email": "jlee@lagunahillsca.gov",
+      "address": "24035 El Toro Road, Laguna Hills, CA 92653"
     },
     "public_comment": {
       "in_person": true,
@@ -2179,8 +2288,10 @@
       "ecomment": false,
       "written_email": true,
       "time_limit": "3 minutes per speaker",
-      "email": "publiccomments@lagunahillsCA.gov",
-      "deadline": "5:00 PM on meeting day"
+      "email": "jlee@lagunahillsca.gov",
+      "deadline": "2 hours prior to meeting",
+      "speaker_card": "Pink \"Request to Speak\" form (voluntary)",
+      "notes": "Email subject must include name and agenda item number. Clerk announces sender name and subject but does NOT read comments aloud. Text/social media comments not accepted."
     },
     "council": {
       "size": 5,
