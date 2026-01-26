@@ -155,9 +155,18 @@ meetings:
     city_state_zip: Garden Grove, CA 92840
 portals:
   granicus: https://gardengrove.granicus.com/ViewPublisher.php?view_id=1
+  agendas: https://agendasuite.org/iip/gardengrove
+  live_stream: https://ggtv3-live.ggcity.org
+  video_archive: https://ggcity.org/ggtv3/videos
+broadcast:
+  cable_channels:
+  - provider: GGTV
+    channel: '3'
+  live_stream: https://ggtv3-live.ggcity.org
 clerk:
-  title: City Clerk's Office
-  phone: (714) 741-5040
+  name: Liz Vasquez
+  title: City Clerk
+  phone: (714) 741-5043
   email: cityclerk@ggcity.org
 public_comment:
   in_person: true
@@ -166,6 +175,9 @@ public_comment:
   ecomment: true
   time_limit: 3 minutes per speaker
   email: cityclerk@ggcity.org
+  deadline: 3:00 PM on meeting day
+  speaker_card: required (submit to City Clerk)
+  notes: Include agenda item in email subject line. Comments after deadline distributed after meeting.
 council:
   size: 7
   districts: 6
