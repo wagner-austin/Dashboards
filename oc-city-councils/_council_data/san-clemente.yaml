@@ -1,6 +1,6 @@
 city: san-clemente
 city_name: San Clemente
-last_updated: '2026-01-25'
+last_updated: '2026-01-26'
 website: https://www.sanclemente.gov
 council_url: https://www.sanclemente.gov/government/city-council
 email: ''
@@ -24,7 +24,7 @@ members:
   position: Mayor Pro Tem
   district: At-Large
   email: KnoblockS@san-clemente.org
-  phone: 949-361-8200
+  phone: 949-361-8322
   city_profile: https://www.sanclemente.gov/government/city-council
   photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
   bio: null
@@ -37,7 +37,7 @@ members:
   position: Councilmember
   district: At-Large
   email: EnmeierM@san-clemente.org
-  phone: 949-361-8200
+  phone: 949-361-8322
   city_profile: https://www.sanclemente.gov/government/city-council
   photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
   bio: null
@@ -50,7 +50,7 @@ members:
   position: Councilmember
   district: At-Large
   email: CabralV@san-clemente.org
-  phone: 949-361-8200
+  phone: 949-361-8322
   city_profile: https://www.sanclemente.gov/government/city-council
   photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
   bio: null
@@ -63,7 +63,7 @@ members:
   position: Councilmember
   district: District 4
   email: WuZ@san-clemente.org
-  phone: 949-361-8200
+  phone: 949-361-8322
   city_profile: https://www.sanclemente.gov/government/city-council
   photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
   bio: null
@@ -74,32 +74,37 @@ members:
   city_page: https://www.sanclemente.gov/Directory.aspx?EID=59
 meetings:
   schedule: 1st and 3rd Tuesdays
-  time: 5:30 PM
+  time: 6:00 PM
+  closed_session_time: 5:00 PM
   location:
-    name: City Council Chambers
-    address: 910 Calle Negocio, 2nd Floor
-    city_state_zip: San Clemente, CA 92673
+    name: City Hall
+    address: 100 Avenida Presidio
+    city_state_zip: San Clemente, CA 92672
 portals:
-  agenda_center: https://www.sanclemente.gov/AgendaCenter/City-Council-13
-  youtube: https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ
-  live_stream: https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ
+  agenda_center: https://www.sanclemente.gov/agendacenter
+  youtube: https://youtube.com/@cityofsanclementevideos
+  live_stream: https://youtube.com/@cityofsanclementevideos
 broadcast:
   cable_channels:
   - provider: Cox
     channel: '854'
-  live_stream: https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ
+  live_stream: https://youtube.com/@cityofsanclementevideos
+  rebroadcast: Saturdays 12 PM, Thursdays 2 PM
 clerk:
   name: Laura Campagnolo
   title: City Clerk
   phone: (949) 361-8301
-  email: campagnolol@san-clemente.org
+  email: CityClerk@san-clemente.org
+  address: 910 Calle Negocio, San Clemente, CA 92673
 public_comment:
   in_person: true
   remote_live: false
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  email: campagnolol@san-clemente.org
+  total_time: 30 minutes for oral communications Part 1
+  email: CityClerk@san-clemente.org
+  deadline: 4:00 PM on meeting day
 council:
   size: 5
   districts: 4
