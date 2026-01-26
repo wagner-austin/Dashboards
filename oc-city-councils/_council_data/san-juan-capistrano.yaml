@@ -1,8 +1,6 @@
 city: san-juan-capistrano
 city_name: San Juan Capistrano
 last_updated: '2026-01-25'
-next_election: null
-seats_up: []
 website: https://sanjuancapistrano.org
 council_url: https://sanjuancapistrano.org/318/City-Council
 email: ''
@@ -16,29 +14,31 @@ members:
   phone: 949-493-1171
   city_page: https://sanjuancapistrano.org/directory.aspx?eid=47
   term_end: 2026
+  term_start: 2022
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
 - name: John Taylor
   position: Mayor Pro Tem
-  district: District 4
+  district: District 5
   email: jtaylor@sanjuancapistrano.org
   phone: 949-493-1171
   city_profile: https://sanjuancapistrano.org/318/City-Council
-  photo_url: null
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://sanjuancapistrano.org/directory.aspx?eid=51
 - name: Howard Hart
   position: Councilmember
-  district: District 5
+  district: District 4
   email: hhart@sanjuancapistrano.org
   phone: 949-493-1171
   city_profile: https://sanjuancapistrano.org/318/City-Council
-  photo_url: null
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://sanjuancapistrano.org/directory.aspx?eid=48
@@ -48,10 +48,10 @@ members:
   email: sfarias@sanjuancapistrano.org
   phone: 949-493-1171
   city_profile: https://sanjuancapistrano.org/318/City-Council
-  photo_url: null
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://sanjuancapistrano.org/directory.aspx?eid=50
@@ -61,3 +61,47 @@ members:
   email: tbourne@sanjuancapistrano.org
   phone: 949-493-1171
   city_page: https://sanjuancapistrano.org/directory.aspx?eid=49
+  term_start: 2022
+  term_end: 2026
+  photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=5022
+meetings:
+  schedule: 1st and 3rd Tuesdays
+  time: 5:00 PM
+  location:
+    name: City Council Chamber
+    address: 32400 Paseo Adelanto
+    city_state_zip: San Juan Capistrano, CA 92675
+portals:
+  agenda_center: https://sanjuancapistrano.org/189/Public-Meetings
+  granicus: https://sjc.granicus.com/ViewPublisher.php?view_id=3
+  live_stream: https://sjc.granicus.com/ViewPublisher.php?view_id=3
+broadcast:
+  live_stream: https://sjc.granicus.com/ViewPublisher.php?view_id=3
+clerk:
+  name: Maria Morris
+  title: City Clerk
+  phone: (949) 443-6310
+  email: cityclerk@sanjuancapistrano.org
+public_comment:
+  in_person: true
+  remote_live: true
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: cityclerk@sanjuancapistrano.org
+  phone: (949) 493-1172
+  notes: Call public comment line at start of meeting to be placed in queue
+council:
+  size: 5
+  districts: 5
+  at_large: 0
+  mayor_elected: false
+  expanded_date: null
+  notes: By-district elections since 2016
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - District 2
+  - District 3
+  term_length: 4
+  election_system: by-district

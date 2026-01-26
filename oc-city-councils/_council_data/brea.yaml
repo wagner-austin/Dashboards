@@ -1,14 +1,12 @@
 city: brea
 last_updated: '2026-01-25'
-next_election: '2026-11-03'
-seats_up: []
 members:
 - name: Cecilia Hupp
   position: Mayor
-  district: At-Large
+  district: District 1
   email: ceciliah@cityofbrea.gov
-  phone: 714-990-7600
-  city_page: https://www.ci.brea.ca.us/Directory.aspx?EID=3
+  phone: 714-990-7704
+  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=3
   bio: Mayor Cecilia Hupp was elected to the Brea City Council in November 2014, and re-elected in 2018 and 2022. She previously
     served as Mayor in 2017, during Brea’s Centennial Year, and in 2022. During her service on the City Council, Mayor Hupp
     has championed housing and community development and advocates for affordable housing opportunities for senior citizens.
@@ -23,14 +21,14 @@ members:
     trust fund account to assist with the City’s employee retirement obligations. Additionally, she judiciously approved a
     25% fiscal reserve policy for the City of Brea’s annual budget.
   photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=13261
-  term_start: 2014
-  term_end: 2018
+  term_start: 2022
+  term_end: 2026
 - name: Marty Simonoff
   position: Mayor Pro Tem
-  district: At-Large
+  district: District 2
   email: martys@cityofbrea.gov
-  phone: 714-990-7600
-  city_page: https://www.ci.brea.ca.us/Directory.aspx?EID=6
+  phone: 714-990-7702
+  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=6
   bio: Mayor Pro Tem Marty Simonoff is currently serving his eighth term on the Brea City Council. He was first elected in
     November 1996. Mayor Pro Tem Simonoff was re-elected in 2000, 2004, 2008, 2012, 2016, 2020 and 2024. He previously served
     as Mayor in 1999, 2002, 2007, 2015, 2020 and 2023. Mayor Pro Tem Simonoff’s professional experience includes a career
@@ -45,14 +43,14 @@ members:
     on the Orange County Council of Governments (OCCOG) and is a Regional Representative on the board for the Southern California
     Association of Governments (SCAG), he serves as an Ex-Officio Member of the Metrolink Board of Directors.
   photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=12582
-  term_start: 1996
-  term_end: 2000
+  term_start: 2024
+  term_end: 2028
 - name: Blair Stewart
   position: Councilmember
-  district: At-Large
+  district: District 3
   email: blairs@cityofbrea.gov
-  phone: 714-990-7600
-  city_page: https://www.ci.brea.ca.us/Directory.aspx?EID=2
+  phone: 714-990-7703
+  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=2
   bio: Council Member Blair Stewart was elected to the Brea City Council in November 2022 and served as Mayor in 2025. He
     is currently serving on the City's Development Committee, the Wildlife Corridor Conservation Authority, and the Hillside
     Open Space Education Coalition. Regionally, Council Member Stewart was elected to serve as the 2nd Vice President of the
@@ -69,14 +67,14 @@ members:
     Board located in Brea. Council Member Stewart is a father to two adult daughters and currently lives with his 8-year-old
     German Schnauzer.
   photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=13955
-  term_start: 2022
-  term_end: 1999
+  term_start: 2024
+  term_end: 2028
 - name: Christine Marick
   position: Councilmember
-  district: At-Large
+  district: District 4
   email: christinem@cityofbrea.gov
-  phone: 714-990-7600
-  city_page: https://www.ci.brea.ca.us/Directory.aspx?EID=4
+  phone: 714-990-7700
+  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=4
   bio: Council Member Christine Marick was first elected in 2012, and re-elected in 2016, 2020 and 2024. She has served as
     Mayor in 2016, 2019, and 2024. Prior to her election to the City Council, she served on the City's Planning Commission.
     Council Member Marick currently serves on the City’s Investment Advisory Committee, Orange County Sanitation District,
@@ -90,14 +88,14 @@ members:
     shopping and dining, and convenient location. They now appreciate Brea’s high level of community services and citizen
     involvement as well as the high quality schools.
   photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=12584
-  term_start: 2012
-  term_end: 2016
+  term_start: 2024
+  term_end: 2028
 - name: Steven Vargas
   position: Councilmember
-  district: At-Large
+  district: District 5
   email: stevenv@cityofbrea.gov
-  phone: 714-990-7600
-  city_page: https://www.ci.brea.ca.us/Directory.aspx?EID=5
+  phone: 714-990-7701
+  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=5
   bio: Council Member Steven Vargas was most recently elected to the Brea City Council in November 2014, re-elected in 2018
     and 2022, and served as Mayor in 2021. He also previously served on the City Council from 1998-2002. Council Member Vargas
     holds a Bachelor’s Degree in Science, Technology from Excelsior College of New York. He is currently a member of the League
@@ -113,5 +111,49 @@ members:
     President, Placentia Boys & Girls Club; previous District Executive for Cub Scout Pack 820; former Commander, Brea Veterans
     of Foreign Wars Post 5384; and current Adjutant of the Brea American Legion Post 181.
   photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=11690
-  term_start: 2014
-  term_end: 2018
+  term_start: 2022
+  term_end: 2026
+meetings:
+  schedule: 1st and 3rd Tuesdays
+  time: 7:00 PM
+  location:
+    name: City Council Chambers
+    address: 1 Civic Center Circle
+    city_state_zip: Brea, CA 92821
+portals:
+  granicus: null
+  ecomment: null
+  live_stream: https://www.cityofbrea.gov/812/Government-Access-Channel
+broadcast:
+  cable_channels:
+  - provider: Spectrum
+    channel: '3'
+  - provider: AT&T U-Verse
+    channel: '99'
+  live_stream: https://www.cityofbrea.gov/812/Government-Access-Channel
+clerk:
+  title: City Clerk's Office
+  phone: (714) 990-7756
+  email: cityclerksgroup@cityofbrea.net
+public_comment:
+  in_person: true
+  remote_live: false
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: cityclerksgroup@cityofbrea.net
+council:
+  size: 5
+  districts: 5
+  at_large: 0
+  mayor_elected: false
+  expanded_date: null
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - District 1
+  - District 5
+  term_length: 4
+  election_system: by-district
+website: https://www.cityofbrea.gov
+council_url: https://www.cityofbrea.gov/511/City-Council

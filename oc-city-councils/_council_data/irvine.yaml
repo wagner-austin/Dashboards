@@ -1,17 +1,67 @@
 city: irvine
+city_name: Irvine
+website: https://www.cityofirvine.org
+council_url: https://www.cityofirvine.org/city-council
 last_updated: '2026-01-25'
-next_election: '2026-11-03'
-seats_up:
-- Mayor
-- District 1
-- District 5
-- At-Large
+meetings:
+  schedule: 2nd and 4th Tuesdays
+  time: 4 PM
+  location:
+    name: City Council Chamber
+    address: 1 Civic Center Plaza
+    city_state_zip: Irvine, CA 92606
+  remote:
+    zoom_url: https://www.zoomgov.com/j/1600434844
+    zoom_id: 160-043-4844
+    zoom_passcode: '272906'
+    phone_numbers:
+    - 669-254-5252
+    - 669-216-1590
+portals:
+  granicus: https://irvine.granicus.com/ViewPublisher.php?view_id=68
+  ecomment: https://irvine.granicusideas.com/meetings
+  live_stream: https://legacy.cityofirvine.org/cityhall/citymanager/pio/ictv/default.asp
+broadcast:
+  cable_channels:
+  - provider: Cox
+    channel: '30'
+  live_stream: https://legacy.cityofirvine.org/cityhall/citymanager/pio/ictv/default.asp
+clerk:
+  title: City Clerk's Office
+  phone: 949-724-6233
+  email: irvinecitycouncil@cityofirvine.org
+public_comment:
+  in_person: true
+  remote_live: true
+  ecomment: true
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: irvinecitycouncil@cityofirvine.org
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - Mayor
+  - District 1
+  - District 5
+  - At-Large
+  term_length: 4
+  election_system: mixed
+council:
+  size: 7
+  districts: 6
+  at_large: 1
+  mayor_elected: true
+  expanded_date: 2024-03
 members:
 - name: Larry Agran
   position: Mayor
   district: At-Large
-  photo_url: https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg
   email: LarryAgran@cityofirvine.org
+  phone: 949-724-6000
+  city_page: https://www.cityofirvine.org/city-council/mayor-larry-agran
+  website: https://mayorlarryagran.org
+  instagram: https://www.instagram.com/mayorlarryagran
+  photo_url: https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg
   bio: Larry Agran graduated Phi Beta Kappa from the University of California at Berkeley in 1966, majoring in history and
     economics. In 1969, he graduated with honors from Harvard Law School, where he specialized in public interest law. Larry
     has served as Legal Counsel to the California State Senate Committee on Health and Welfare. He has taught legislation
@@ -20,15 +70,15 @@ members:
     recognition for its pioneering programs in child care, affordable housing, recycling, and open space preservation.
   term_start: 2024
   term_end: 2026
-  website: https://mayorlarryagran.org
-  city_page: https://cityofirvine.org/city-council/mayor-larry-agran
-  instagram: https://www.instagram.com/mayorlarryagran
-  phone: 949-724-6000
+  first_elected: 1978
 - name: James Mai
   position: Vice Mayor
   district: District 3
-  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg
   email: JamesMai@cityofirvine.org
+  phone: 949-724-6000
+  city_page: https://www.cityofirvine.org/city-council/vice-mayor-james-mai-district-3
+  instagram: https://www.instagram.com/vicemayormai
+  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg
   bio: James Mai was elected as the inaugural Councilmember for District 3 and was subsequently selected by his City Council
     colleagues to serve as Vice Mayor. His election marks a historic milestone, reflecting Irvine’s rich diversity, as he
     became the first Vietnamese American to hold elected office in the city. With over two decades of business leadership,
@@ -42,15 +92,14 @@ members:
     an Irvine-based executive search firm in 2004.
   term_start: 2022
   term_end: 2026
-  website: null
-  city_page: https://cityofirvine.org/city-council/vice-mayor-james-mai-district-3
-  instagram: https://www.instagram.com/vicemayormai
-  phone: 949-724-6000
 - name: Betty Martinez Franco
   position: Councilmember
   district: District 5
-  photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg
   email: bettymartinez@cityofirvine.org
+  phone: 949-724-6000
+  city_page: https://www.cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5
+  instagram: https://www.instagram.com/councilmemberbettymartinez
+  photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg
   bio: Councilmember Betty Martinez Franco is a proud, longtime resident of Irvine, an entrepreneur, and a public servant
     representing Council District 5. In a historic victory, she became the first Latina and first Mexican immigrant elected
     to the Irvine City Council, in a city where Latinos represent the third-largest demographic group. Originally from Mexico,
@@ -63,15 +112,14 @@ members:
     City and County Management from USC Price School of Public Policy.
   term_start: 2024
   term_end: 2026
-  website: null
-  city_page: https://cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5
-  instagram: https://www.instagram.com/councilmemberbettymartinez
-  phone: 949-724-6000
 - name: Kathleen Treseder
   position: Councilmember
   district: At-Large
-  photo_url: https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg
   email: KathleenTreseder@cityofirvine.org
+  phone: 949-724-6000
+  city_page: https://www.cityofirvine.org/city-council/councilmember-kathleen-treseder-large
+  instagram: https://www.instagram.com/councilmemberkathleentreseder
+  photo_url: https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg
   bio: Meet Councilmember Kathleen Treseder, PhD - At-Large Councilmember Kathleen Treseder, PhD is the Howard A. Schneiderman
     Endowed Chair and Professor at University of California Irvine. She leads an internationally recognized research program
     studying how climate change affects endangered ecosystems and our society. She received her PhD from Stanford University
@@ -84,15 +132,15 @@ members:
     numerous publications, including Discover Magazine, The Orange County Register, and Harper’s Bazaar.
   term_start: 2024
   term_end: 2026
-  website: null
-  city_page: https://cityofirvine.org/city-council/councilmember-kathleen-treseder-large
-  instagram: https://www.instagram.com/councilmemberkathleentreseder
-  phone: 949-724-6000
 - name: Melinda Liu
   position: Councilmember
   district: District 1
-  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg
   email: MelindaLiu@cityofirvine.org
+  phone: 949-724-6000
+  city_page: https://www.cityofirvine.org/city-council/councilmember-melinda-liu-district-1
+  website: https://www.melindaliuirvine.com
+  instagram: https://www.instagram.com/melindaliu_official
+  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg
   bio: Councilmember Melinda Liu is a long-time Northwood resident with her multigenerational family in Irvine. She holds
     a Bachelor of Arts degree in Political Science from the University of California in Berkeley and a Juris Doctor degree
     from Southwestern University School Law in Los Angeles, California. Professionally, she is a licensed attorney by the
@@ -110,15 +158,14 @@ members:
     of Northwood High School Athletic Booster Club and PTSA, and a volunteer mediator at the Orange County Superior Court.
   term_start: 2024
   term_end: 2026
-  website: https://www.melindaliuirvine.com
-  city_page: https://cityofirvine.org/city-council/councilmember-melinda-liu-district-1
-  instagram: https://www.instagram.com/melindaliu_official
-  phone: 949-724-6000
 - name: Mike Carroll
   position: Councilmember
   district: District 4
-  photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png
   email: MikeCarroll@cityofirvine.org
+  phone: 949-724-6000
+  city_page: https://www.cityofirvine.org/city-council/councilmember-mike-carroll-district-4
+  instagram: https://www.instagram.com/mikecarrollcouncilmember
+  photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png
   bio: Councilmember Mike Carroll is serving his second 4-year term on the Irvine City Council. Appointed in 2019 on a bi-partisan
     basis to fill a vacancy, in 2020 he was elected to a four-year term and then re-elected in 2024, where he received the
     highest number of votes in the City’s history. With over 318,000 residents, Irvine is the second largest city in Orange
@@ -129,17 +176,17 @@ members:
     parkland, and the environment. As a salute to our veterans, the Great Park honors the memory of the former Marine Corps
     Air Station El Toro. The Great Park is setting the gold standard for park design, and upon completion, it will be a national
     treasure among the great metropolitan parks of the world.
-  term_start: 2022
-  term_end: 2026
-  website: null
-  city_page: https://cityofirvine.org/city-council/councilmember-mike-carroll-district-4
-  instagram: https://www.instagram.com/mikecarrollcouncilmember
-  phone: 949-724-6000
+  term_start: 2024
+  term_end: 2028
+  first_elected: 2019
 - name: William Go
   position: Councilmember
   district: District 2
-  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg
   email: WilliamGo@cityofirvine.org
+  phone: 949-724-6000
+  city_page: https://www.cityofirvine.org/city-council/councilmember-william-go-district-2
+  instagram: https://www.instagram.com/williamgoirvine
+  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg
   bio: 'William Go was elected to the Irvine City Council in 2024 as the first Councilmember to represent District 2 and the
     first Chinese Filipino American to serve on the Council. William is also Chairman of the Great Park, currently the nation’s
     largest municipal park under development. Covering 1,300 acres and welcoming approximately 6 million visitors each year,
@@ -150,9 +197,5 @@ members:
     to the United States when he was a child. Raised alongside his four siblings by their mother, William saw her work tirelessly
     to provide for their family, instilling in him the values of hard work and perseverance. Born in the Philippines to a
     mother of Chinese descent, he speaks three languages: English, Tagalog, and Chinese.'
-  term_start: 2022
-  term_end: 2026
-  website: null
-  city_page: https://cityofirvine.org/city-council/councilmember-william-go-district-2
-  instagram: https://www.instagram.com/williamgoirvine
-  phone: 949-724-6000
+  term_start: 2024
+  term_end: 2028

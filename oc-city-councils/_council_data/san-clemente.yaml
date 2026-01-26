@@ -1,8 +1,6 @@
 city: san-clemente
 city_name: San Clemente
 last_updated: '2026-01-25'
-next_election: null
-seats_up: []
 website: https://www.sanclemente.gov
 council_url: https://www.sanclemente.gov/government/city-council
 email: ''
@@ -11,66 +9,109 @@ instagram: ''
 members:
 - name: Rick Loeffler
   position: Mayor
-  district: null
+  district: District 3
   email: LoefflerR@san-clemente.org
-  phone: 949-361-8200
+  phone: 949-702-8235
   city_profile: https://www.sanclemente.gov/government/city-council
   photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.san-clemente.org/Directory.aspx?EID=58
+  city_page: https://www.sanclemente.gov/Directory.aspx?EID=58
 - name: Steve Knoblock
   position: Mayor Pro Tem
-  district: null
+  district: At-Large
   email: KnoblockS@san-clemente.org
   phone: 949-361-8200
   city_profile: https://www.sanclemente.gov/government/city-council
   photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.san-clemente.org/Directory.aspx?EID=57
+  city_page: https://www.sanclemente.gov/Directory.aspx?EID=57
 - name: Mark Enmeier
   position: Councilmember
-  district: null
+  district: At-Large
   email: EnmeierM@san-clemente.org
   phone: 949-361-8200
   city_profile: https://www.sanclemente.gov/government/city-council
   photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.san-clemente.org/Directory.aspx?EID=56
+  city_page: https://www.sanclemente.gov/Directory.aspx?EID=56
 - name: Victor Cabral
   position: Councilmember
-  district: null
+  district: At-Large
   email: CabralV@san-clemente.org
   phone: 949-361-8200
   city_profile: https://www.sanclemente.gov/government/city-council
   photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.san-clemente.org/Directory.aspx?EID=55
+  city_page: https://www.sanclemente.gov/Directory.aspx?EID=55
 - name: Zhen Wu
   position: Councilmember
-  district: null
+  district: District 4
   email: WuZ@san-clemente.org
   phone: 949-361-8200
   city_profile: https://www.sanclemente.gov/government/city-council
   photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.san-clemente.org/Directory.aspx?EID=59
+  city_page: https://www.sanclemente.gov/Directory.aspx?EID=59
+meetings:
+  schedule: 1st and 3rd Tuesdays
+  time: 5:30 PM
+  location:
+    name: City Council Chambers
+    address: 910 Calle Negocio, 2nd Floor
+    city_state_zip: San Clemente, CA 92673
+portals:
+  agenda_center: https://www.sanclemente.gov/AgendaCenter/City-Council-13
+  youtube: https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ
+  live_stream: https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ
+broadcast:
+  cable_channels:
+  - provider: Cox
+    channel: '854'
+  live_stream: https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ
+clerk:
+  name: Laura Campagnolo
+  title: City Clerk
+  phone: (949) 361-8301
+  email: campagnolol@san-clemente.org
+public_comment:
+  in_person: true
+  remote_live: false
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: campagnolol@san-clemente.org
+council:
+  size: 5
+  districts: 4
+  at_large: 1
+  mayor_elected: true
+  expanded_date: null
+  notes: 4 districts + at-large mayor (2-year terms starting 2026)
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - Mayor (At-Large)
+  - District 1
+  - District 2
+  term_length: 4
+  election_system: mixed

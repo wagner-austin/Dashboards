@@ -1,8 +1,6 @@
 city: rancho-santa-margarita
 city_name: Rancho Santa Margarita
 last_updated: '2026-01-25'
-next_election: null
-seats_up: []
 website: https://www.cityofrsm.org
 council_url: https://www.cityofrsm.org/160/Mayor-City-Council
 email: ''
@@ -11,7 +9,7 @@ instagram: ''
 members:
 - name: L. Anthony Beall
   position: Mayor
-  district: null
+  district: At-Large
   email: tbeall@cityofrsm.org
   phone: 949-635-1800
   city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
@@ -31,7 +29,7 @@ members:
   city_page: https://www.cityofrsm.org/Directory.aspx?EID=9
 - name: Anne D. Figueroa
   position: Mayor Pro Tem
-  district: null
+  district: District 1
   email: afigueroa@cityofrsm.org
   phone: 949-635-1800
   city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
@@ -42,7 +40,7 @@ members:
     and also served as Planning Commissioner Chair for one year.  Anne was elected to the Rancho Santa Margarita City Council
     in November 2018. Anne served as Mayor Pro Tempore in 2021 and as Mayor in 2022. Anne is also currently serving as the
     District Director for Assemblywoman Kate Sanchez of the 71st Assembly District, State of California.
-  term_start: 2018
+  term_start: 2022
   term_end: 2026
   website: null
   instagram: null
@@ -59,18 +57,19 @@ members:
     capacity at the height of the COVID pandemic. Brad was our city’s Mayor Pro Tempore in 2024 and 2025 and proudly serves
     as a member of the Board of Directors for the Orange County Fire Authority.
   photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12199
-  term_start: 2014
+  term_start: 2022
   term_end: 2026
+  district: District 4
 - name: Jerry Holloway
   position: Councilmember
-  district: null
+  district: District 2
   email: jholloway@cityofrsm.org
   phone: 949-635-1800
   city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
   photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentId=11120
   bio: Dean of Students - Santa Margarita Catholic High School Social Studies Teacher - Santa Margarita Catholic High School
     Administration of Justice Instructor - Irvine Valley College
-  term_start: null
+  term_start: 2022
   term_end: 2026
   website: null
   instagram: null
@@ -79,7 +78,7 @@ members:
   position: Councilmember
   district: District 3
   email: kbaert@cityofrsm.org
-  phone: 949-635-1800 x. 6310
+  phone: 949-635-1800
   city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
   photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12200
   bio: Keri has been a resident of Rancho Santa Margarita since 2002 and has dedicated herself to serving the community through
@@ -91,8 +90,50 @@ members:
     volunteer efforts have earned her several accolades, including the Presidential Service Gold Award, the Fourth District
     PTA Advocacy Award, and the SVUSD Community Volunteer Recognition Award. Trabuco Hills PTSA - President, EVP, VP of Advocacy
     Rancho Santa Margarita Intermediate PTSO - President, Executive Board Member
-  term_start: null
+  term_start: 2024
   term_end: 2028
   website: null
   instagram: null
   city_page: https://www.cityofrsm.org/Directory.aspx?EID=70
+meetings:
+  schedule: 2nd and 4th Wednesdays
+  time: 7:00 PM
+  location:
+    name: City Hall
+    address: 22112 El Paseo
+    city_state_zip: Rancho Santa Margarita, CA 92688
+portals:
+  agenda_center: https://www.cityofrsm.org/129/Agendas-Minutes
+  granicus: https://cityofrsm.granicus.com/
+  live_stream: https://cityofrsm.granicus.com/
+broadcast:
+  live_stream: https://cityofrsm.granicus.com/
+clerk:
+  name: Amy Diaz
+  title: City Clerk
+  phone: (949) 635-1806
+  email: adiaz@cityofrsm.org
+public_comment:
+  in_person: true
+  remote_live: false
+  ecomment: true
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: adiaz@cityofrsm.org
+  deadline: 4:30 PM on meeting day
+  notes: Audio streaming only (no video)
+council:
+  size: 5
+  districts: 4
+  at_large: 1
+  mayor_elected: true
+  expanded_date: null
+  notes: 4 districts + directly elected at-large mayor (2024)
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - District 1
+  - District 2
+  - District 4
+  term_length: 4
+  election_system: mixed

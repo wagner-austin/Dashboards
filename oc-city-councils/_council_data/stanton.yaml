@@ -1,8 +1,6 @@
 city: stanton
 city_name: Stanton
 last_updated: '2026-01-25'
-next_election: null
-seats_up: []
 website: https://www.stantonca.gov
 council_url: https://www.stantonca.gov/government/city_council.php
 email: ''
@@ -15,10 +13,22 @@ members:
   email: DShawver@StantonCA.gov
   phone: (714) 379-9222
   city_profile: https://www.stantonca.gov/government/city_council.php
-  photo_url: revize_photo_gallery/Government/City Council/David Shawver.jpg?t=202505230901400
-  bio: null
-  term_start: null
-  term_end: null
+  photo_url: https://www.stantonca.gov/revize_photo_gallery/Government/City Council/David Shawver.jpg?t=202505230901400
+  bio: Mayor David John Shawver has lived in the Stanton community for 47 years, where he and his wife Jennifer raised their
+    family of David, Matthew, Stephanie, Katrina and Joseph. Today three still live in Stanton and the grandkids attend local
+    schools. Mayor Shawver attended the University of the Pacific on an athletic scholarship playing both football and baseball.
+    After earning a Bachelor of Arts degree in Kinesiology, with minors in Geology and Education, he was awarded an academic
+    graduate fellowship teaching at the university and received his master’s degree in Kinesiology, with a minor in Education.
+    Mayor Shawver has taught for 42 years in the Long Beach Unified School District, at Long Beach City College, and Hope
+    International University in Fullerton. In addition, he has coached football, wrestling, baseball, girls’ softball, girls'
+    cross country, and was the medical athletic trainer at both the high school and collegiate levels. Mayor Shawver currently
+    serves Stanton as Vice-Chair of the Orange County Sanitation District (OCSD), Executive Board Member of the Orange County
+    Fire Authority (OCFA), Board Member and Past Chairman of Orange County Waste & Recycling (OCWR), Past Chairman and Board
+    Member of the Public Cable Television Authority (PCTA), Chairman of the Stanton Oversight Board on Redevelopment, and
+    Member of the Stanton Development Committee, Public Finance Committee, and Public Housing Authority. He also represents
+    Stanton on the Association of California Cities
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.stantonca.gov/government/bio-dshawver.php
@@ -28,10 +38,14 @@ members:
   email: GTaylor@StantonCA.gov
   phone: (714) 379-9222
   city_profile: https://www.stantonca.gov/government/city_council.php
-  photo_url: revize_photo_gallery/Government/City Council/Gary Taylor.jpg?t=202505230901430
-  bio: null
-  term_start: 2018
-  term_end: 2022
+  photo_url: https://www.stantonca.gov/revize_photo_gallery/Government/City Council/Gary Taylor.jpg?t=202505230901430
+  bio: Mr. Gary Taylor grew up in Anaheim and attended local schools. He graduated from Cal State Fullerton with a BA and
+    later from Webster University in Irvine with a MA in Management. Mr. Taylor, his wife Lynne, and two sons moved to Stanton
+    in 1985. He served on the Stanton Planning Commission from June of 2012 and was elected to the City Council to serve District
+    3 in November of 2018. Mr. Taylor’s priorities include improving public safety, promoting the development of Beach Boulevard,
+    and listening to and being responsive to Stanton residents.
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.stantonca.gov/government/bio-gtaylor.php
@@ -41,10 +55,10 @@ members:
   email: DTorres@StantonCA.gov
   phone: (714) 379-9222
   city_profile: https://www.stantonca.gov/government/city_council.php
-  photo_url: null
+  photo_url: https://www.stantonca.gov/Document_center/City Council/Untitled design (17).png?t=202505230902200
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.stantonca.gov/government/city_council.php
@@ -54,10 +68,18 @@ members:
   email: JOHNWarren@StantonCA.gov
   phone: (714) 379-9222
   city_profile: https://www.stantonca.gov/government/city_council.php
-  photo_url: JDWarren2 - Copy.jpg?t=202505230901480
-  bio: null
-  term_start: null
-  term_end: null
+  photo_url: https://www.stantonca.gov/JDWarren2 - Copy.jpg?t=202505230901480
+  bio: John Douglas Warren is a third-generation Stanton resident and a proud graduate of local public schools, having attended
+    Bryant Elementary, Alamitos Intermediate, and Rancho Alamitos High School. His commitment to public service began with
+    his Eagle Scout project, marking the start of a lasting dedication to his hometown. John earned a degree in Political
+    Science from Cypress College and later graduated Magna Cum Laude from California State University, Fullerton (CSUF) with
+    a Bachelor’s in Public Administration, where he was also inducted into Pi Alpha Alpha and Pi Sigma Alpha, the national
+    honor societies for Public Administration and Political Science. His early civic involvement in Stanton included serving
+    on the Stanton 60th Anniversary Committee and the Car Show Committee, helping foster community spirit through public events.
+    He later served eight years on the Parks, Recreation, and Community Services Commission, including five years as Chair,
+    contributing to Stanton’s quality-of-life programs and recreational planning.
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.stantonca.gov/government/bio_for_john_d_warren.php
@@ -67,10 +89,58 @@ members:
   email: VBarrios@StantonCA.gov
   phone: (714) 379-9222
   city_profile: https://www.stantonca.gov/government/city_council.php
-  photo_url: V.Barrios.jpg?t=202508251920020
-  bio: null
-  term_start: null
-  term_end: null
+  photo_url: https://www.stantonca.gov/V.Barrios.jpg?t=202508251920020
+  bio: Victor Barrios was born in the City of Stanton, and he attended local schools in the area. He has a Bachelor of Science
+    in Kinesiology from Cal State Fullerton, Masters in Special Education from National University, Credential Ed Specialist
+    Credential and a Single Subject Credential. He has taught multiple subjects throughout his teaching career while making
+    sure he meets the needs of all his students. He spent his first ten years of teaching for the Anaheim Union High School
+    District. Currently he is teaching Special Education Classes for high school students. As a teacher he promotes perseverance
+    and motivates his students to be a productive citizen in their community. He has also been active in his community, for
+    many years in the city and surrounding areas he coaches baseball, basketball, softball and soccer. He has met many great
+    young men and women through coaching and teaching, while having a positive impact on their lives.
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.stantonca.gov/government/bio_for_victor_barrios.php
+meetings:
+  schedule: 2nd and 4th Tuesdays
+  time: 6:30PM
+  location:
+    name: City Council Chambers
+    address: 7800 Katella Avenue
+    city_state_zip: Stanton, CA 90680
+  remote:
+    zoom_url: https://us02web.zoom.us/j/84528780625?pwd=kMyEtwVcsndZFIkYaaPvseeu35XqBf.1
+    zoom_id: 845-2878-0625
+    zoom_passcode: null
+    phone_numbers:
+    - 669-444-9171
+portals:
+  agenda_center: https://www.stantonca.gov/government/agendas___minutes/city_council.php
+clerk:
+  phone: (714) 379-9222
+  title: City Clerk
+public_comment:
+  in_person: true
+  remote_live: true
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: pvazquez@stantonca.gov
+  deadline: 5:00 PM on meeting day
+council:
+  size: 5
+  districts: 4
+  at_large: 1
+  mayor_elected: true
+  notes: Mayor elected at-large; council members by district
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - Mayor (At-Large)
+  - District 1
+  - District 3
+  term_length: 4
+  election_system: mixed
+  term_limits: Two 4-year terms (Measure RR 2016)

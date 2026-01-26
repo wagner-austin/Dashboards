@@ -1,61 +1,104 @@
 city: orange
 last_updated: '2026-01-25'
-next_election: '2026-11-03'
-seats_up: []
 members:
 - name: Dan Slater
   position: Mayor
   district: At-Large
-  city_page: https://www.cityoforange.org/our-city/local-government/city-council
+  city_page: https://www.cityoforange.org/our-city/local-government/city-council/mayor-dan-slater
   email: dan@danslater.com
-  phone: (714) 744-5523
+  phone: (714) 744-2211
   term_start: 2024
   term_end: 2026
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/4276/638090214365300000
 - name: Denis Bilodeau
   position: Mayor Pro Tem
   district: District 4
   city_page: https://www.cityoforange.org/our-city/local-government/city-council
   email: dbilodeau@cityoforange.org
-  phone: (714) 744-5523
+  phone: (714) 744-2211
   term_start: 2022
   term_end: 2026
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/4262/638088790152230000
 - name: Ana Gutierrez
   position: Councilmember
   district: District 5
   city_page: https://www.cityoforange.org/our-city/local-government/city-council
   email: anagutierrez@cityoforange.org
-  phone: (714) 744-5523
+  phone: (714) 744-2211
   term_start: 2024
   term_end: 2028
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/2176/638695101520570000
 - name: Arianna Barrios
   position: Councilmember
   district: District 1
   city_page: https://www.cityoforange.org/our-city/local-government/city-council
   email: abarrios@cityoforange.org
-  phone: (714) 744-5523
+  phone: (714) 744-2211
   term_start: 2022
   term_end: 2026
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/2178/638088789806430000
 - name: John Gyllenhammer
   position: Councilmember
   district: District 6
   city_page: https://www.cityoforange.org/our-city/local-government/city-council
   email: jgyllenhammer@cityoforange.org
-  phone: (714) 744-5523
+  phone: (714) 744-2211
   term_start: 2022
   term_end: 2026
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/4264/638695101297800000
 - name: Jon Dumitru
   position: Councilmember
   district: District 2
   city_page: https://www.cityoforange.org/our-city/local-government/city-council
   email: jdumitru@cityoforange.org
-  phone: (714) 744-5523
+  phone: (714) 744-2211
   term_start: 2024
   term_end: 2028
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/2182/637776775870170000
 - name: Kathy Tavoularis
   position: Councilmember
   district: District 3
   city_page: https://www.cityoforange.org/our-city/local-government/city-council
   email: ktavoularis@cityoforange.org
-  phone: (714) 744-5523
+  phone: (714) 744-2211
   term_start: 2024
   term_end: 2028
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/2184/637776775876700000
+city_name: Orange
+website: https://www.cityoforange.org
+council_url: https://www.cityoforange.org/our-city/local-government/city-council
+meetings:
+  schedule: 2nd and 4th Tuesdays
+  time: 7:00 PM
+  location:
+    name: City Council Chamber
+    address: 300 E. Chapman Avenue
+    city_state_zip: Orange, CA 92866
+portals:
+  granicus: https://cityoforange.granicus.com/ViewPublisher.php?view_id=2
+clerk:
+  title: City Clerk's Office
+  phone: (714) 744-5500
+  email: cityclerk@cityoforange.org
+public_comment:
+  in_person: true
+  remote_live: true
+  written_email: true
+  ecomment: true
+  time_limit: 3 minutes per speaker
+  email: cityclerk@cityoforange.org
+council:
+  size: 7
+  districts: 6
+  at_large: 1
+  mayor_elected: true
+  term_length: 4
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - Mayor
+  - District 1
+  - District 4
+  - District 5
+  election_system: by-district
+  term_length: 4

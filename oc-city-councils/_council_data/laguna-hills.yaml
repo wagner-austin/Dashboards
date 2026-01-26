@@ -1,8 +1,6 @@
 city: laguna-hills
 city_name: Laguna Hills
 last_updated: '2026-01-25'
-next_election: null
-seats_up: []
 website: https://www.lagunahillsca.gov
 council_url: https://www.lagunahillsca.gov/129/City-Council
 email: ''
@@ -28,8 +26,8 @@ members:
     for the State of California. Don was the architect-in-charge for the design of the Laguna Hills Civic Center in 2007 and
     brings specific goals and objectives to his role on City Council.  Among them are: Help the City Council with the successful
     completion of the Urban Village'
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.lagunahillsca.gov/527/Don-Caskey-Mayor
@@ -54,8 +52,8 @@ members:
     every state in the nation. Jared grew up on a ranch created from the incremental sale of Moulton Ranch. Jared inherited
     a pioneer spirit from his great-grandparents Lewis and Nellie Gail Moulton.  Jared moved into Laguna Hills in 2013 with
     his wife and three daughters.
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.lagunahillsca.gov/447/Jared-Mathis-Mayor-Pro-Tempore
@@ -76,8 +74,8 @@ members:
     currently serves as a Laguna Hills City Councilmember and was previously a Traffic Commissioner for the city.  He has
     been involved with church including benevolence programs and fed the homeless for many years at a local food pantry.  He
     was involved with his children’s sports and was picked as Fan of the Week by the Hawks.
-  term_start: null
-  term_end: null
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.lagunahillsca.gov/476/Dave-Wheeler
@@ -100,8 +98,8 @@ members:
     she also structured a partnership with the Chamber of Commerce that included office space at the Civic Center. She filled
     the Community Center with activities during the winter holiday months and brought Movies in the Park to city residents.
     In addition, Erica felt it essential to revitalize the LH on the hillside and championed the idea to the Council.
-  term_start: null
-  term_end: null
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.lagunahillsca.gov/475/Erica-Pezold
@@ -121,8 +119,48 @@ members:
     servant is rooted in the belief that leadership is about service. I believe in the principles of servant leadership—listening
     first, putting others’ needs before my own, and acting with humility and integrity. Public officials should never forget
     that they are here to serve the people, and I strive to embody that responsibility in every decision I make.
-  term_start: null
-  term_end: null
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.lagunahillsca.gov/234/Joshua-Sweeney
+meetings:
+  schedule: 2nd and 4th Tuesdays
+  time: 7:00 PM
+  location:
+    name: Council Chamber
+    address: 24035 El Toro Road
+    city_state_zip: Laguna Hills, CA 92653
+portals:
+  agenda_center: https://lagunahillsca.portal.civicclerk.com/
+  live_stream: https://lagunahillsca.iqm2.com/Citizens/default.aspx
+broadcast:
+  live_stream: https://lagunahillsca.iqm2.com/Citizens/default.aspx
+clerk:
+  name: Jennifer Lee, CMC
+  title: City Clerk
+  phone: (949) 707-2630
+  email: jlee@lagunahillsca.gov
+public_comment:
+  in_person: true
+  remote_live: false
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: publiccomments@lagunahillsCA.gov
+  deadline: 5:00 PM on meeting day
+council:
+  size: 5
+  districts: 0
+  at_large: 5
+  mayor_elected: false
+  expanded_date: null
+  notes: Transitioning to by-district elections in 2026
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - District 1
+  - District 2
+  - District 4
+  term_length: 4
+  election_system: at-large

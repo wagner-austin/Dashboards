@@ -1,7 +1,5 @@
 city: costa-mesa
 last_updated: '2026-01-25'
-next_election: '2026-11-03'
-seats_up: []
 members:
 - name: John Stephens
   position: Mayor
@@ -11,53 +9,134 @@ members:
   city_page: https://www.costamesaca.gov/government/mayor-city-council/mayor-john-stephens
   photo_url: https://www.costamesaca.gov/home/showpublishedimage/18192/637789805555630000
   term_start: 2024
-  term_end: 2020
+  term_end: 2028
+  bio: John Stephens was born in Pasadena and raised in San Gabriel. He earned his B.A. in Business Administration and Marketing
+    from Cal Poly Pomona (Magna Cum Laude, 1986) and his law degree from UC Davis Law School in 1989. He founded Stephens Friedland
+    LLP in 2006, named the Veterans Legal Institute Law Firm of the Year in 2019. A Costa Mesa resident since 1989, he was first
+    elected to City Council in 2016 and has been mayor since March 2021. He is Chair of the Association of California Cities-OC
+    Homelessness Task Force and a founding member of the Costa Mesa Early Childhood Coalition. He lives in Mesa Verde with his
+    wife Amy and has four children.
 - name: Manuel Chavez
   position: Mayor Pro Tem
-  district: District 4
+  district: At-Large
   email: Manuel.Chavez@costamesaca.gov
   phone: (949) 274-2305
   city_page: https://www.costamesaca.gov/government/mayor-city-council/mayor-pro-tem-manuel-chavez
   photo_url: https://www.costamesaca.gov/home/showpublishedimage/24111/638732302613630000
-  term_start: 2024
+  term_start: 2022
   term_end: 2026
+  bio: Manuel Chavez was first elected in 2018, becoming the youngest council member in Costa Mesa history at age 23 and the
+    first Latino elected to the Costa Mesa City Council. Growing up in Westside Costa Mesa, he attended Pomona Elementary, TeWinkle
+    Middle School, and Estancia High School. He earned two B.A. degrees from UC Irvine in Political Science and Religious Studies.
+    He works as Outreach and Programs Manager at Save Our Youth, a local nonprofit serving students in the Newport-Mesa Unified
+    School District. He serves on OCTA's Community Advisory Committee and as a Board Member for the Coastal Corridor Alliance.
 - name: Andrea Marr
   position: Councilmember
-  district: District 3
+  district: At-Large
   email: Andrea.Marr@costamesaca.gov
-  phone: (714) 754-5107
+  phone: (714) 754-5105
   city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-andrea-marr
-  term_start: 2018
+  photo_url: https://www.costamesaca.gov/home/showpublishedimage/18194/637789805565630000
+  term_start: 2022
   term_end: 2026
+  bio: Andrea Marr is a graduate of the U.S. Naval Academy, nominated by Vice President Al Gore, where she earned a degree in
+    Aerospace Engineering. She also holds an M.S. in Engineering Management from Old Dominion University. During her Navy service,
+    she qualified as a nuclear reactor operator and served as Gunnery and Ordinance Officer. After the Navy, she volunteered in
+    Nicaragua installing solar panels. A 2013 White House Champion of Change for her work in energy as a veteran, she is a licensed
+    professional engineer and Director at Willdan Group. First elected to District 3 in 2018, she previously served on the City's
+    Cultural Art Committee and Bikeway and Walkability Committee. She lives in Costa Mesa with her husband Scott.
 - name: Arlis Reynolds
   position: Councilmember
-  district: District 5
+  district: At-Large
   email: Arlis.Reynolds@costamesaca.gov
   phone: (714) 754-5107
   city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-arlis-reynolds
   photo_url: https://www.costamesaca.gov/home/showpublishedimage/15983/637460647341370000
-  term_start: 2018
+  term_start: 2022
   term_end: 2026
+  bio: Arlis Reynolds grew up in the Freedom Homes neighborhood of Westside Costa Mesa and attended local schools including Pomona
+    Elementary, TeWinkle Middle School, and Estancia High School, where she captained varsity volleyball and soccer. She earned
+    a B.S. in Mechanical Engineering from MIT and is a member of the Executive MBA Program at UCI Paul Merage School of Business.
+    First elected in 2018 as the first person to represent District 5, she was re-elected in 2022. She helped organize community
+    efforts for a 380-acre public nature park at Banning Ranch. Her priorities include public safety, walkable neighborhoods,
+    and enhancing local parks. She lives in Freedom Homes with her dog Zoe and cat Peanut.
 - name: Jeff Pettis
   position: Councilmember
-  district: District 6
+  district: At-Large
   email: jeff.pettis@costamesaca.gov
   phone: (714) 754-5107
   city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-jeff-pettis
+  photo_url: https://www.costamesaca.gov/home/showpublishedimage/24138/638748836709970000
+  term_start: 2024
   term_end: 2028
+  bio: Jeff Pettis is Deputy Chief Nurse of Mental Health at the Long Beach VA Medical Center. Born and raised in Newport Beach,
+    he started his career in the corporate world with Frito-Lay and a major auto group before becoming a registered nurse. He
+    and his wife Kerry have lived in Costa Mesa's Mesa Verde neighborhood for 13 years, where they raised their three daughters
+    Hannah, Madi, and Charlotte. First elected to District 6 in 2024, his focus areas include addressing homelessness, promoting
+    fiscal responsibility, enhancing public safety, and preserving the residential character of Costa Mesa.
 - name: Loren Gameros
   position: Councilmember
-  district: District 2
+  district: At-Large
   email: LGameros@costamesaca.gov
   phone: (714) 754-5107
   city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-loren-gameros
   photo_url: https://www.costamesaca.gov/home/showpublishedimage/15977/637460647316500000
-  term_end: 2024
+  term_end: 2028
+  term_start: 2024
+  bio: Loren Gameros is a 40-year resident of Costa Mesa who attended Bear Street Elementary and TeWinkle Middle School. He started
+    his career in the 1980s as a cabinetmaker and staircase builder at a local woodshop. He brings two decades of experience with
+    the Operating Engineers Training Trust Local 12, where he teaches building inspection to apprentices and journeypersons. His
+    experience includes 16 years as an accredited teacher through Rio Hondo College and Santiago Canyon College career programs.
+    In 2020, he became the first person elected to represent Costa Mesa City Council District 2. He was re-elected in 2024. He
+    lives in Costa Mesa with his wife Heather, son Kyle, and daughter Presley.
 - name: Mike Buley
   position: Councilmember
-  district: District 1
+  district: At-Large
   email: mike.buley@costamesaca.gov
   phone: (714) 754-5107
   city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-mike-buley
   photo_url: https://www.costamesaca.gov/home/showpublishedimage/24115/638732319597200000
-  term_end: 1985
+  term_end: 2028
+  term_start: 2024
+  bio: Mike Buley is a civil litigation trial attorney with over 32 years of experience, the last 25 years as owner of his own
+    firm with offices in Newport Beach. He and his wife Adriana moved to Costa Mesa's Mesa Verde neighborhood 21 years ago and
+    raised three children there. His practice has included complex business, real estate, and contract dispute matters, working
+    with City Attorneys and the California Attorney General's Office. He has served the community as a volunteer on St. John the
+    Baptist School's Finance Committee and coached basketball and softball. Elected to District 1 in 2024, his focus areas include
+    managing development, crime, homelessness, and budgetary issues impacting quality of life.
+city_name: Costa Mesa
+website: https://www.costamesaca.gov
+council_url: https://www.costamesaca.gov/government/mayor-city-council
+meetings:
+  schedule: 1st and 3rd Tuesdays
+  time: 6:00 PM
+  location:
+    name: City Hall Council Chamber
+    address: 77 Fair Drive
+    city_state_zip: Costa Mesa, CA 92626
+portals:
+  granicus: https://costamesa.granicus.com/ViewPublisher.php?view_id=5
+clerk:
+  title: City Clerk's Office
+  phone: (714) 754-5225
+  email: cityclerk@costamesaca.gov
+public_comment:
+  in_person: true
+  remote_live: true
+  written_email: true
+  ecomment: true
+  time_limit: 3 minutes per speaker
+  email: cityclerk@costamesaca.gov
+  deadline: 12:00 PM day of meeting
+council:
+  size: 7
+  districts: 0
+  at_large: 7
+  mayor_elected: false
+  term_length: 4
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - 3 at-large seats
+  election_system: at-large
+  term_length: 4

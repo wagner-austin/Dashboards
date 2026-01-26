@@ -1,8 +1,6 @@
 city: fountain-valley
 city_name: Fountain Valley
 last_updated: '2026-01-25'
-next_election: null
-seats_up: []
 website: https://www.fountainvalley.gov
 council_url: https://www.fountainvalley.gov/156/City-Council
 email: ''
@@ -21,8 +19,8 @@ members:
     quality of life for all residents. Ted believes in transparent governance and actively engages with constituents to address
     their concerns. His leadership style is characterized by collaboration, integrity, and a forward-thinking approach. Ted’s
     efforts are driven by a desire to build a stronger, more inclusive community for future generations.
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.fountainvalley.gov/Directory.aspx?EID=54
@@ -30,7 +28,7 @@ members:
   position: Mayor Pro Tem
   district: null
   email: Jim.Cunneen@fountainvalley.gov
-  phone: 714-593-4494
+  phone: 714-593-4400
   city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=178
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19452
   bio: Jim Cunneen is currently serving in his first four-year term on the Fountain Valley City Council after being elected
@@ -55,7 +53,7 @@ members:
   position: Councilmember
   district: null
   email: Glenn.Grandis@fountainvalley.gov
-  phone: 714-593-4494
+  phone: 714-593-4400
   city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=55
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19451
   bio: Glenn Grandis is a dedicated and engaged member of the Fountain Valley community, with a residency spanning 44 years.
@@ -66,8 +64,8 @@ members:
     Community Foundation. This organization plays a crucial role in supporting various community initiatives and projects,
     further highlighting his commitment to enhancing the overall well-being of Fountain Valley. Glenn is married and together
     with his wife Mary, have a combined 5 children and 2 dogs!
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.fountainvalley.gov/Directory.aspx?EID=55
@@ -75,7 +73,7 @@ members:
   position: Councilmember
   district: null
   email: kim.constantine@fountainvalley.gov
-  phone: 714-593-4494
+  phone: 714-593-4400
   city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=152
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19449
   bio: Kim was born in Allentown, Pennsylvania.  After living for a while in Lebanon and Australia, her family moved to California.
@@ -86,8 +84,8 @@ members:
     faith in her.  Kim served four years as a Director.  At that time, she knew she wanted to serve her community as a City
     Council Member and began laying the groundwork for her first campaign in 2014.  She ran again in 2016 and remained persistent
     and highly visible. Kim enjoys staying abreast of City matters, cooking, and traveling… to Europe, especially.
-  term_start: 2014
-  term_end: 2018
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.fountainvalley.gov/Directory.aspx?EID=152
@@ -95,7 +93,7 @@ members:
   position: Councilmember
   district: null
   email: patrick.harper@fountainvalley.gov
-  phone: 714-593-4494
+  phone: 714-593-4400
   city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=153
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19453
   bio: Patrick Harper was elected to the Fountain Valley City Council in November of 2018 and was appointed Mayor in 2021.
@@ -108,8 +106,51 @@ members:
     college, he moved to Los Angeles and worked as an auditor in public accounting, as well as holding executive finance positions
     at various publicly traded and private companies. Since moving to Fountain Valley, he founded and operates a tax and accounting
     practice with his wife Hang Harper.
-  term_start: 2018
-  term_end: 2022
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.fountainvalley.gov/Directory.aspx?EID=153
+meetings:
+  schedule: 1st and 3rd Tuesdays
+  time: 6:00 PM
+  location:
+    name: Council Chambers, City Hall
+    address: 10200 Slater Avenue
+    city_state_zip: Fountain Valley, CA 92708
+  remote:
+    zoom_url: https://bit.ly/4kDYQHD
+    zoom_id: 851 5107 5391
+    zoom_passcode: '883147'
+portals:
+  agenda_center: https://www.fountainvalley.gov/AgendaCenter/City-Council-2
+  live_stream: https://www.fountainvalley.gov/213/Watch-FV-Television
+broadcast:
+  cable_channels:
+  - provider: Local Cable
+    channel: '3'
+  live_stream: https://www.fountainvalley.gov/213/Watch-FV-Television
+clerk:
+  name: Rick Miller
+  title: City Clerk
+  phone: (714) 593-4400
+  email: Rick.Miller@fountainvalley.org
+public_comment:
+  in_person: true
+  remote_live: true
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: Rick.Miller@fountainvalley.org
+council:
+  size: 5
+  districts: 0
+  at_large: 5
+  mayor_elected: false
+  expanded_date: null
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - At-Large (3 seats)
+  term_length: 4
+  election_system: at-large

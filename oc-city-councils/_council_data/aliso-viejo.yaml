@@ -1,7 +1,5 @@
 city: aliso-viejo
 last_updated: '2026-01-25'
-next_election: '2026-11-03'
-seats_up: []
 members:
 - name: Max Duncan
   position: Mayor
@@ -21,7 +19,7 @@ members:
   email: mduncan@avcity.org
 - name: Mike Munzing
   position: Mayor Pro Tem
-  district: At-Large
+  district: District 5
   phone: 949-425-3899
   city_page: https://avcity.org/292/Mayor-Pro-Tem-Mike-Munzing
   photo_url: https://avcity.org/ImageRepository/Document?documentID=4054
@@ -38,7 +36,7 @@ members:
   email: mmunzing@avcity.org
 - name: Garrett Dwyer
   position: Councilmember
-  district: At-Large
+  district: District 3
   phone: 949-425-3899
   city_page: https://avcity.org/295/Councilmember-Garrett-Dwyer
   photo_url: https://avcity.org/ImageRepository/Document?documentID=4478
@@ -49,11 +47,12 @@ members:
     to plant roots. As his family has grown with kids and dogs and cats, so has Garrett's service to our community. There's
     a good chance you've seen him serving as either a PTA treasurer, soccer coach, AYSO board member, substitute instructor
     at church, HOA board member, or YMCA Adventure Guides Expedition Navigator.
-  term_end: 2026
+  term_end: 2028
   email: GDwyer@AVCity.org
+  term_start: 2025
 - name: Tiffany Ackley
   position: Councilmember
-  district: At-Large
+  district: District 4
   phone: 949-425-3899
   city_page: https://avcity.org/293/Councilmember-Tiffany-Ackley
   photo_url: https://avcity.org/ImageRepository/Document?documentID=456
@@ -68,7 +67,7 @@ members:
   email: tackley@avcity.org
 - name: Tim Zandbergen
   position: Councilmember
-  district: At-Large
+  district: District 1
   phone: 949-425-3899
   city_page: https://avcity.org/291/Councilmember-Tim-Zandbergen
   photo_url: https://avcity.org/ImageRepository/Document?documentID=4053
@@ -81,3 +80,47 @@ members:
   term_start: 2024
   term_end: 2028
   email: tzandbergen@avcity.org
+meetings:
+  schedule: 1st and 3rd Wednesdays
+  time: 7:00 PM
+  location:
+    name: City Hall Council Chambers
+    address: 12 Journey, Suite 100
+    city_state_zip: Aliso Viejo, CA 92656
+portals:
+  granicus: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
+  ecomment: null
+  live_stream: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
+broadcast:
+  cable_channels:
+  - provider: Cox
+    channel: '851'
+  - provider: AT&T U-Verse
+    channel: '99'
+  live_stream: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
+clerk:
+  title: City Clerk's Office
+  phone: (949) 425-2510
+  email: City-council@avcity.org
+public_comment:
+  in_person: true
+  remote_live: false
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: City-council@avcity.org
+council:
+  size: 5
+  districts: 5
+  at_large: 0
+  mayor_elected: false
+  expanded_date: null
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - District 2
+  - District 4
+  term_length: 4
+  election_system: by-district
+website: https://avcity.org
+council_url: https://avcity.org/222/City-Council

@@ -1,56 +1,54 @@
 city: laguna-beach
 city_name: Laguna Beach
 last_updated: '2026-01-25'
-next_election: null
-seats_up: []
 website: https://www.lagunabeachcity.net
-council_url: https://www.lagunabeachcity.net/government/departments/city-council/contact-city-council
+council_url: https://www.lagunabeachcity.net/government/departments/city-council
 email: citycouncil@lagunabeachcity.net
 phone: ''
 instagram: ''
 members:
-- name: Bob Whalen
+- name: Mark Orgill
   position: Mayor
-  district: null
+  district: At-Large
+  email: morgill@lagunabeachcity.net
+  phone: (949) 463-4821
+  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126
+  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4694/638064498925070000
+  bio: null
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/mark-orgill
+- name: Bob Whalen
+  position: Mayor Pro Tem
+  district: At-Large
   email: bwhalen@lagunabeachcity.net
   phone: 949-497-3311
   city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126
   photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4706/638067135619970000
   bio: null
-  term_start: 2012
-  term_end: 2024
-  website: null
-  instagram: null
-  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126
-- name: Mark Orgill
-  position: Mayor
-  district: null
-  email: morgill@lagunabeachcity.net
-  phone: 949-497-3311
-  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126
-  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4694/638064498925070000
-  bio: null
   term_start: 2022
-  term_end: 1984
-  website: null
-  instagram: null
-  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126
-- name: Sue Kempf
-  position: Mayor
-  district: null
-  email: skempf@lagunabeachcity.net
-  phone: (949) 439-3001
-  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126
-  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/5560/638453363123100000
-  bio: null
-  term_start: 2018
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/bob-whalen
+- name: Alex Rounaghi
+  position: Councilmember
+  district: At-Large
+  email: arounaghi@lagunabeachcity.net
+  phone: (949) 395-1275
+  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126
+  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4692/638694573774830000
+  bio: null
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/alex-rounaghi
 - name: Hallie Jones
-  position: Mayor Pro Tem
-  district: null
+  position: Councilmember
+  district: At-Large
   email: hjones@lagunabeachcity.net
   phone: 949-497-3311
   city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126
@@ -60,17 +58,54 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126
-- name: Alex Rounaghi
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/hallie-jones
+- name: Sue Kempf
   position: Councilmember
-  district: null
-  email: arounaghi@lagunabeachcity.net
-  phone: (949) 395-1275
-  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126
-  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4692/638694573774830000
+  district: At-Large
+  email: skempf@lagunabeachcity.net
+  phone: 949-497-3311
+  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126
+  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/5560/638453363123100000
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/sue-kempf
+meetings:
+  schedule: 2nd and 4th Tuesdays
+  time: 5:00 PM
+  location:
+    name: Council Chambers
+    address: 505 Forest Avenue
+    city_state_zip: Laguna Beach, CA 92651
+portals:
+  granicus: https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3
+  ecomment: https://www.lagunabeachcity.net/live-here/city-council/meetings-agendas-and-minutes
+  live_stream: https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3
+clerk:
+  title: City Clerk's Office
+  phone: (949) 497-0705
+  email: cityclerk@lagunabeachcity.net
+public_comment:
+  in_person: true
+  remote_live: false
+  ecomment: true
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: cityclerk@lagunabeachcity.net
+council:
+  size: 5
+  districts: 0
+  at_large: 5
+  mayor_elected: false
+  expanded_date: null
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - Councilmember
+  - Councilmember
+  term_length: 4
+  election_system: at-large
+broadcast:
+  live_stream: https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3

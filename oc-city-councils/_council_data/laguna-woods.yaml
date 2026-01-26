@@ -1,8 +1,6 @@
 city: laguna-woods
 city_name: Laguna Woods
 last_updated: '2026-01-25'
-next_election: null
-seats_up: []
 website: https://www.cityoflagunawoods.org
 council_url: https://www.cityoflagunawoods.org/city-council/
 email: ''
@@ -15,10 +13,10 @@ members:
   email: amccary@cityoflagunawoods.org
   phone: (949) 639-0500
   city_profile: https://www.cityoflagunawoods.org/city-council/
-  photo_url: null
+  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/McCary_Annie-2024e-236x300.jpg
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.cityoflagunawoods.org/city-council/
@@ -28,10 +26,10 @@ members:
   email: plee@cityoflagunawoods.org
   phone: (949) 639-0500
   city_profile: https://www.cityoflagunawoods.org/city-council/
-  photo_url: null
+  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Lee_Pearl-2024e-236x300.jpg
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.cityoflagunawoods.org/city-council/
@@ -41,10 +39,10 @@ members:
   email: cmoore@cityoflagunawoods.org
   phone: (949) 639-0500
   city_profile: https://www.cityoflagunawoods.org/city-council/
-  photo_url: null
+  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Moore_Carol-2024e-236x300.jpg
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
   city_page: https://www.cityoflagunawoods.org/city-council/
@@ -54,10 +52,10 @@ members:
   email: cconners@cityoflagunawoods.org
   phone: (949) 639-0500
   city_profile: https://www.cityoflagunawoods.org/city-council/
-  photo_url: null
+  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/02/Conners_Cynthia-2024e-236x300.jpg
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.cityoflagunawoods.org/city-council/
@@ -67,10 +65,54 @@ members:
   email: shorne@cityoflagunawoods.org
   phone: (949) 639-0500
   city_profile: https://www.cityoflagunawoods.org/city-council/
-  photo_url: null
+  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/02/Horne_Shari-2024e-236x300.jpg
   bio: null
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
   city_page: https://www.cityoflagunawoods.org/city-council/
+meetings:
+  schedule: 3rd Wednesday
+  time: 2:00 PM
+  location:
+    name: City Hall
+    address: 24264 El Toro Road
+    city_state_zip: Laguna Woods, CA 92637
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+portals:
+  agenda_center: https://www.cityoflagunawoods.org/current-agendas/
+  youtube: https://www.youtube.com/@cityoflagunawoods
+  live_stream: https://www.youtube.com/@cityoflagunawoods
+broadcast:
+  cable_channels:
+  - provider: Local Cable
+    channel: '31'
+  live_stream: https://www.youtube.com/@cityoflagunawoods
+clerk:
+  title: City Clerk
+  phone: (949) 639-0500
+  email: cityhall@cityoflagunawoods.org
+public_comment:
+  in_person: true
+  remote_live: true
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+  email: cityhall@cityoflagunawoods.org
+  deadline: 2:00 PM on meeting day
+council:
+  size: 5
+  districts: 0
+  at_large: 5
+  mayor_elected: false
+  expanded_date: null
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - At-Large (2 seats)
+  term_length: 4
+  election_system: at-large

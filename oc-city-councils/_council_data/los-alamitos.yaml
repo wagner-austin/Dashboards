@@ -1,8 +1,6 @@
 city: los-alamitos
 city_name: Los Alamitos
 last_updated: '2026-01-25'
-next_election: null
-seats_up: []
 website: https://cityoflosalamitos.org
 council_url: https://cityoflosalamitos.org/165/City-Council
 email: ''
@@ -10,7 +8,7 @@ phone: ''
 instagram: ''
 members:
 - name: Shelley Hasselbrink
-  position: Mayor
+  position: Councilmember
   district: District 4
   email: shasselbrink@cityoflosalamitos.org
   phone: 562-431-3538
@@ -27,51 +25,14 @@ members:
     of Directors, Executive Committee, and Budget & Finance Committee for the Orange County Fire Authority, where she was
     honored to serve as Board Chair in 2020. She currently represents Los Alamitos on the Orange County Airport Land Use Commission
     (ALUC) and serves on the League of California Cities Community Services Policy Committee.
-  term_start: 2014
-  term_end: 2018
+  term_start: 2022
+  term_end: 2026
   website: null
   instagram: null
-  city_page: https://cityoflosalamitos.org/165/City-Council
-- name: Emily Hibard
-  position: Councilmember
-  district: District 5
-  email: ehibard@cityoflosalamitos.org
-  phone: 562-431-3538
-  city_profile: https://cityoflosalamitos.org/165/City-Council
-  photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=2388
-  bio: Emily Hibard grew up in Downey, and attended Azusa Pacific University, where she earned a Bachelor of Arts degree in
-    Political Science. She later earned a Master's degree in Public Administration (MPA) from California State University
-    at Northridge. Additionally, she studied Modern Political Thought at the University of Oxford, St. Edmund Hall, and was
-    a member of the Oxford Union. She works in manufacturing, media, and music, and is a member of the Recording Academy Los
-    Angeles Chapter (Grammy Awards). Emily is a lifelong athlete and enjoys volleyball, pickleball, hiking, camping, overlanding,
-    beach cruising, SCUBA diving, and sailing. She has climbed Mount Kilimanjaro, and has kayaked in both Antarctica and the
-    Arctic Ocean.
-  term_start: null
-  term_end: null
-  website: null
-  instagram: null
-  city_page: https://cityoflosalamitos.org/165/City-Council
-- name: Gary Loe
-  position: Councilmember
-  district: District 2
-  email: Gloe@cityoflosalamitos.org
-  phone: 562-431-3538
-  city_profile: https://cityoflosalamitos.org/165/City-Council
-  photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=4436
-  bio: Gary, a lifelong resident of Los Alamitos, has deep roots in the community. He attended Hopkinson Elementary (Raiders)
-    and Oak Middle School (Trojans) and graduated from Los Alamitos High School (Griffins).  Alongside his wife, Marie, he
-    raised four children who also proudly attended the same schools within the Los Alamitos Unified School District. His educational
-    background is in Finance, earning a bachelor’s degree from CSUDH (Toros) and an MBA from Pepperdine University (Waves).
-    Professionally, Gary works in financial services and brings 30 years of leadership, integrity, and strategic thinking
-    to both his career and community service.
-  term_start: null
-  term_end: null
-  website: null
-  instagram: null
-  city_page: https://cityoflosalamitos.org/165/City-Council
+  city_page: https://cityoflosalamitos.org/320/Shelley-Hasselbrink
 - name: Jordan Nefulda
-  position: Councilmember
-  district: null
+  position: Mayor Pro Tem
+  district: District 3
   email: jnefulda@cityoflosalamitos.org
   phone: 562-431-3538
   city_profile: https://cityoflosalamitos.org/165/City-Council
@@ -88,14 +49,14 @@ members:
     Base. Mr. Nefulda’s role as Mayor has allowed him to build strong connections with community members, city leaders, and
     the business sector. Yet, his greatest pride is his family. Despite the demands of his law practice and public duties,
     being a devoted Husband and Father is his first priority.
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
-  city_page: https://cityoflosalamitos.org/165/City-Council
+  city_page: https://cityoflosalamitos.org/323/Jordan-Nefulda
 - name: Tanya Doby
-  position: Councilmember
-  district: null
+  position: Mayor
+  district: District 1
   email: tdoby@cityoflosalamitos.org
   phone: 562-431-3538
   city_profile: https://cityoflosalamitos.org/165/City-Council
@@ -112,8 +73,86 @@ members:
     effort focuses on enhancing educational opportunities and ensuring safe environments for local children. Notable joint
     ventures include initiatives to improve school safety and the introduction of a new aquatics program hosted at the local
     high school.
-  term_start: null
-  term_end: null
+  term_start: 2024
+  term_end: 2028
   website: null
   instagram: null
-  city_page: https://cityoflosalamitos.org/165/City-Council
+  city_page: https://cityoflosalamitos.org/321/Tanya-Doby
+- name: Gary Loe
+  position: Councilmember
+  district: District 2
+  email: gloe@cityoflosalamitos.org
+  phone: 562-431-3538
+  city_profile: https://cityoflosalamitos.org/630/Gary-Loe
+  photo_url: null
+  bio: Gary Loe is a lifelong Los Alamitos resident who attended Hopkinson Elementary, Oak Middle School, and Los Alamitos High
+    School. He earned a B.A. in Finance from CSUDH and an MBA from Pepperdine University. He works in financial services as a
+    Foreign Exchange Trader at California Bank & Trust, bringing 30 years of leadership experience. For over 17 years, he served
+    on the Los Alamitos Planning Commission. He and his wife Marie raised four children who attended Los Alamitos schools. His
+    priorities include recreation, education, public safety, and city services.
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://cityoflosalamitos.org/630/Gary-Loe
+- name: Emily Hibard
+  position: Councilmember
+  district: District 5
+  email: ehibard@cityoflosalamitos.org
+  phone: 562-431-3538
+  city_profile: https://cityoflosalamitos.org/496/Emily-Hibard
+  photo_url: null
+  bio: Emily Hibard, MPA was elected in 2022 and represents Rossmoor Highlands, Parkewood, Apartment Row, and the Joint Forces
+    Training Base. She earned a B.A. in Political Science from Azusa Pacific University and an MPA from CSU Northridge. She also
+    studied Modern Political Thought at Oxford University. Before being elected, she served on the Studio City Neighborhood Council
+    and Los Alamitos Cable Television Commission. She works in manufacturing, media, and music, owns a commercial recording studio,
+    and is a member of the Recording Academy Los Angeles Chapter. Her family owns a manufacturing company started in 1949.
+  term_start: 2022
+  term_end: 2026
+  website: https://emilyserves.com/
+  instagram: null
+  city_page: https://cityoflosalamitos.org/496/Emily-Hibard
+meetings:
+  schedule: 3rd Monday
+  time: 6:00 PM
+  location:
+    name: Council Chamber, City Hall
+    address: 3191 Katella Avenue
+    city_state_zip: Los Alamitos, CA 90720
+portals:
+  agenda_center: https://cityoflosalamitos.org/129/Agendas-Minutes
+  youtube: https://www.youtube.com/@cityoflosal
+  tv: https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3
+  live_stream: https://www.youtube.com/@cityoflosal
+broadcast:
+  cable_channels:
+  - provider: Local Cable
+    channel: '3'
+  live_stream: https://www.youtube.com/@cityoflosal
+clerk:
+  name: Windmera Quintanar, MMC
+  title: City Clerk
+  phone: (562) 431-3538 ext. 220
+  email: cityclerk@cityoflosalamitos.org
+public_comment:
+  in_person: true
+  remote_live: false
+  ecomment: false
+  written_email: true
+  time_limit: 5 minutes per speaker
+  email: cityclerk@cityoflosalamitos.org
+  deadline: 3:00 PM on meeting day
+  subject_line: COUNCIL PUBLIC COMMENT
+council:
+  size: 5
+  districts: 5
+  at_large: 0
+  mayor_elected: false
+  expanded_date: null
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - District 4
+  - District 5
+  term_length: 4
+  election_system: by-district
