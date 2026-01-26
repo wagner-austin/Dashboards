@@ -41,8 +41,9 @@ members:
   city_profile: https://www.cityoflagunawoods.org/city-council/
   photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Moore_Carol-2024e-236x300.jpg
   bio: null
-  term_start: 2022
+  term_start: 2014
   term_end: 2026
+  first_elected: 2014
   website: null
   instagram: null
   city_page: https://www.cityoflagunawoods.org/city-council/
@@ -56,6 +57,8 @@ members:
   bio: null
   term_start: 2024
   term_end: 2028
+  first_appointed: 2009
+  first_elected: 2012
   website: null
   instagram: null
   city_page: https://www.cityoflagunawoods.org/city-council/
@@ -69,6 +72,7 @@ members:
   bio: null
   term_start: 2024
   term_end: 2028
+  first_appointed: 2014
   website: null
   instagram: null
   city_page: https://www.cityoflagunawoods.org/city-council/
@@ -80,11 +84,15 @@ meetings:
     address: 24264 El Toro Road
     city_state_zip: Laguna Woods, CA 92637
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
+    zoom_phone:
+    - (669) 444-9171
+    - (346) 248-7799
+    zoom_id: 873 1726 2653
+    zoom_passcode: '104459'
+    notes: View only - public comments NOT accepted via Zoom
 portals:
-  agenda_center: https://www.cityoflagunawoods.org/current-agendas/
+  meetings: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
+  email_notifications: https://www.cityoflagunawoods.org/email-notifications
   youtube: https://www.youtube.com/@cityoflagunawoods
   live_stream: https://www.youtube.com/@cityoflagunawoods
 broadcast:
@@ -93,17 +101,20 @@ broadcast:
     channel: '31'
   live_stream: https://www.youtube.com/@cityoflagunawoods
 clerk:
-  title: City Clerk
+  title: City Clerk's Office
   phone: (949) 639-0500
+  tty: (949) 639-0535
   email: cityhall@cityoflagunawoods.org
+  address: 24264 El Toro Road, Laguna Woods, CA 92637
 public_comment:
   in_person: true
-  remote_live: true
+  remote_live: false
   ecomment: false
   written_email: true
-  time_limit: 3 minutes per speaker
+  time_limit: 3 minutes per speaker per agenda item
   email: cityhall@cityoflagunawoods.org
-  deadline: 2:00 PM on meeting day
+  speaker_card: Submit to City staff or proceed to podium
+  notes: Public comments NOT accepted via Zoom, YouTube, or cable TV - in person only
 council:
   size: 5
   districts: 0
