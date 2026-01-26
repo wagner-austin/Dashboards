@@ -80,7 +80,7 @@ public_comment:
   email: CouncilMembers@cityoffullerton.com
   time_limit: 3 minutes per speaker
   ecomment: true
-  subject_format: "CITY COUNCIL MEETING CORRESPONDENCE - ITEM #" or "NON-AGENDA ITEM"
+  subject_format: '"CITY COUNCIL MEETING CORRESPONDENCE - ITEM #" or "NON-AGENDA ITEM"'
   notes: Correspondence becomes part of official record and posted online with supplemental materials
 council:
   size: 5
