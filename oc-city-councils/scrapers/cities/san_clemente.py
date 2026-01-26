@@ -15,9 +15,39 @@ class SanClementeScraper(BaseScraper):
     CITY_DOMAIN = "san-clemente.org"
     BASE_URL = "https://www.sanclemente.gov"
     COUNCIL_URL = "https://www.sanclemente.gov/159/City-Council"
+    YOUTUBE_CHANNEL = "https://www.youtube.com/channel/UCMJuEbFMmHeG8RBe-m6s7JQ"
+    AGENDAS_URL = "https://www.sanclemente.gov/AgendaCenter/City-Council-13"
+
+    # Known term dates - San Clemente transitioned to 4 districts + at-large mayor in 2024
+    # Districts 3, 4 elected 2024 (term ends 2028)
+    # Districts 1, 2 + Mayor at-large election 2026
+    # Pre-2024 at-large members (Knoblock, Cabral, Enmeier) serving until 2026
+    KNOWN_TERMS = {
+        "rick loeffler": {"district": "District 3", "term_start": 2024, "term_end": 2028},
+        "zhen wu": {"district": "District 4", "term_start": 2024, "term_end": 2028},
+        "steve knoblock": {"district": "At-Large", "term_start": 2022, "term_end": 2026},
+        "victor cabral": {"district": "At-Large", "term_start": 2022, "term_end": 2026},
+        "mark enmeier": {"district": "At-Large", "term_start": 2022, "term_end": 2026},
+    }
+
+    def get_member_info(self, name):
+        """Get district and term info for a member."""
+        name_lower = name.lower().strip()
+        for known_name, info in self.KNOWN_TERMS.items():
+            if known_name in name_lower or name_lower in known_name:
+                return info
+            # Check last name match
+            known_last = known_name.split()[-1]
+            if known_last in name_lower:
+                return info
+        return None
 
     def get_urls(self):
-        return {"council": self.COUNCIL_URL}
+        return {
+            "council": self.COUNCIL_URL,
+            "youtube": self.YOUTUBE_CHANNEL,
+            "agendas": self.AGENDAS_URL,
+        }
 
     async def discover_members(self):
         """Discover council members from Directory.aspx links."""
@@ -86,6 +116,60 @@ class SanClementeScraper(BaseScraper):
             pass
         return "Councilmember"
 
+    async def scrape_city_info(self):
+        """Scrape city-level info matching Irvine's structure."""
+        city_info = {
+            "website": self.BASE_URL,
+            "council_url": self.COUNCIL_URL,
+            "meeting_schedule": "1st and 3rd Tuesdays",
+            "meeting_time": "5:30 PM",
+            "meeting_location": {
+                "name": "City Council Chambers",
+                "address": "910 Calle Negocio, 2nd Floor",
+                "city_state_zip": "San Clemente, CA 92673"
+            },
+            "zoom": {},  # No Zoom - in-person only
+            "phone_numbers": [],
+            "tv_channels": [
+                {"provider": "Cox", "channel": "854"}
+            ],
+            "live_stream": self.YOUTUBE_CHANNEL,
+            "clerk": {
+                "name": "Laura Campagnolo",
+                "title": "City Clerk",
+                "phone": "(949) 361-8301",
+                "email": "campagnolol@san-clemente.org"
+            },
+            "public_comment": {
+                "in_person": True,
+                "remote_live": False,  # No Zoom public comment
+                "ecomment": False,
+                "written_email": True,
+                "time_limit": "3 minutes per speaker",
+                "email": "campagnolol@san-clemente.org"
+            },
+            "portals": {
+                "agenda_center": self.AGENDAS_URL,
+                "youtube": self.YOUTUBE_CHANNEL,
+                "live_stream": self.YOUTUBE_CHANNEL,
+            },
+            "council": {
+                "size": 5,
+                "districts": 4,  # 4 districts + at-large mayor
+                "at_large": 1,  # Mayor is at-large (starting 2026)
+                "mayor_elected": True,  # At-large mayor starting 2026 (2-year terms)
+                "expanded_date": None,
+                "notes": "4 districts + at-large mayor (2-year terms starting 2026)"
+            },
+            "elections": {
+                "next_election": "2026-11-03",
+                "seats_up": ["Mayor (At-Large)", "District 1", "District 2"],
+                "term_length": 4,  # 4 years for council, 2 years for mayor
+                "election_system": "mixed"
+            }
+        }
+        return city_info
+
     async def scrape(self):
         print(f"\n  Scraping {self.CITY_NAME}")
 
@@ -117,12 +201,22 @@ class SanClementeScraper(BaseScraper):
                         member["name"], result["emails"], self.CITY_DOMAIN
                     )
 
+                # Get district and term info from KNOWN_TERMS
+                member_info = self.get_member_info(member["name"])
+                if member_info:
+                    district = member_info.get("district")
+                    term_start = member_info.get("term_start") or term_start
+                    term_end = member_info.get("term_end") or term_end
+                else:
+                    district = None
+
                 result_phones = result.get("phones", [])
                 member_phone = result_phones[0] if result_phones else (main_phones[0] if main_phones else None)
 
                 self.add_council_member(
                     name=member["name"],
                     position=position,
+                    district=district,
                     email=member_email,
                     phone=member_phone,
                     profile_url=member["url"],
@@ -132,11 +226,21 @@ class SanClementeScraper(BaseScraper):
                     term_end=term_end,
                 )
             else:
+                # Get term info even if page visit failed
+                member_info = self.get_member_info(member["name"])
                 self.add_council_member(
                     name=member["name"],
                     position="Councilmember",
                     profile_url=member["url"],
+                    district=member_info.get("district") if member_info else None,
+                    term_start=member_info.get("term_start") if member_info else None,
+                    term_end=member_info.get("term_end") if member_info else None,
                 )
 
         self.match_emails_to_members(city_domain=self.CITY_DOMAIN)
+
+        # Scrape city-level info
+        city_info = await self.scrape_city_info()
+        self.results["city_info"] = city_info
+
         return self.get_results()

@@ -3,21 +3,103 @@ Brea City Council Scraper
 Dynamically discovers council members from website.
 """
 import re
+from datetime import datetime
 from urllib.parse import urljoin
 from ..base import BaseScraper
 
 
 class BreaScraper(BaseScraper):
-    """Brea - CivicPlus platform with Directory.aspx pattern."""
+    """Brea - CivicPlus platform with Directory.aspx pattern + Swagit meetings."""
 
     CITY_NAME = "Brea"
     PLATFORM = "civicplus"
     CITY_DOMAIN = "cityofbrea.gov"
     BASE_URL = "https://www.cityofbrea.gov"
     COUNCIL_URL = "https://www.cityofbrea.gov/511/City-Council"
+    MEETINGS_URL = "https://www.cityofbrea.gov/509/Meeting-Agendas-Minutes"
+    SWAGIT_URL = "https://breaca.new.swagit.com/videos"
+
+    # Known term dates - Brea has 5 by-district seats, 4-year staggered terms
+    KNOWN_TERMS = {
+        "cecilia hupp": {"district": "District 1", "term_start": 2022, "term_end": 2026},
+        "marty simonoff": {"district": "District 2", "term_start": 2024, "term_end": 2028},
+        "blair stewart": {"district": "District 3", "term_start": 2024, "term_end": 2028},
+        "christine marick": {"district": "District 4", "term_start": 2024, "term_end": 2028},
+        "steven vargas": {"district": "District 5", "term_start": 2022, "term_end": 2026},
+    }
+
+    def get_member_info(self, name):
+        """Get district and term info for a member."""
+        name_lower = name.lower().strip()
+        for known_name, info in self.KNOWN_TERMS.items():
+            if known_name in name_lower or name_lower in known_name:
+                return info
+            # Check last name match
+            known_last = known_name.split()[-1]
+            if known_last in name_lower:
+                return info
+        return None
 
     def get_urls(self):
-        return {"council": self.COUNCIL_URL}
+        return {
+            "council": self.COUNCIL_URL,
+            "meetings": self.MEETINGS_URL,
+            "swagit": self.SWAGIT_URL,
+        }
+
+    async def scrape_city_info(self):
+        """Scrape city-level info matching Irvine's structure."""
+        city_info = {
+            "website": self.BASE_URL,
+            "council_url": self.COUNCIL_URL,
+            "meeting_schedule": "1st and 3rd Tuesdays",
+            "meeting_time": "7:00 PM",
+            "meeting_location": {
+                "name": "City Council Chambers",
+                "address": "1 Civic Center Circle",
+                "city_state_zip": "Brea, CA 92821"
+            },
+            "zoom": {},
+            "phone_numbers": [],
+            "tv_channels": [
+                {"provider": "Spectrum", "channel": "3"},
+                {"provider": "AT&T U-Verse", "channel": "99"}
+            ],
+            "live_stream": self.SWAGIT_URL,
+            "clerk": {
+                "title": "City Clerk's Office",
+                "phone": "(714) 990-7756",
+                "email": None
+            },
+            "public_comment": {
+                "in_person": True,
+                "remote_live": False,
+                "ecomment": False,
+                "written_email": True,
+                "time_limit": "3 minutes per speaker",
+                "email": None
+            },
+            "portals": {
+                "granicus": None,
+                "ecomment": None,
+                "live_stream": self.SWAGIT_URL,
+            },
+            "council": {
+                "size": 5,
+                "districts": 5,
+                "at_large": 0,
+                "mayor_elected": False,
+                "expanded_date": None
+            },
+            "elections": {
+                "next_election": "2026-11-03",
+                "seats_up": ["District 1", "District 5"],
+                "term_length": 4,
+                "election_system": "by-district"
+            }
+        }
+
+        return city_info
 
     async def discover_members(self):
         """
@@ -192,9 +274,19 @@ class BreaScraper(BaseScraper):
                 print(f"      Photo: {'Found' if photo_url else 'Not found'}")
                 print(f"      Email: {member_email or 'Not found'}")
 
+                # Always use KNOWN_TERMS for district/term data
+                member_info = self.get_member_info(member["name"])
+                if member_info:
+                    district = member_info.get("district")
+                    term_start = member_info.get("term_start")
+                    term_end = member_info.get("term_end")
+                else:
+                    district = None
+
                 self.add_council_member(
                     name=member["name"],
                     position=position,
+                    district=district,
                     email=member_email,
                     phone=member_phone,
                     profile_url=member["url"],
@@ -204,13 +296,22 @@ class BreaScraper(BaseScraper):
                     term_end=term_end,
                 )
             else:
-                # Page failed, add with basic info
+                # Page failed, add with basic info from KNOWN_TERMS
+                member_info = self.get_member_info(member["name"])
                 self.add_council_member(
                     name=member["name"],
                     position="Councilmember",
                     profile_url=member["url"],
+                    district=member_info.get("district") if member_info else None,
+                    term_start=member_info.get("term_start") if member_info else None,
+                    term_end=member_info.get("term_end") if member_info else None,
                 )
 
         # Final email matching pass
         self.match_emails_to_members(city_domain=self.CITY_DOMAIN)
+
+        # Scrape city-level info
+        city_info = await self.scrape_city_info()
+        self.results["city_info"] = city_info
+
         return self.get_results()

@@ -3,21 +3,52 @@ Dana Point City Council Scraper
 Dynamically discovers council members from website.
 """
 import re
+from datetime import datetime
 from urllib.parse import urljoin
 from ..base import BaseScraper
 
 
 class DanaPointScraper(BaseScraper):
-    """Dana Point - Granicus platform."""
+    """Dana Point - Granicus platform with YouTube video archives."""
 
     CITY_NAME = "Dana Point"
     PLATFORM = "granicus"
     CITY_DOMAIN = "danapoint.org"
     BASE_URL = "https://www.danapoint.org"
     COUNCIL_URL = "https://www.danapoint.org/department/city-council"
+    YOUTUBE_CHANNEL = "https://www.youtube.com/channel/UCdNW_5KL2Q7lC-DFHUyFr7A"
+    AGENDAS_URL = "https://www.danapoint.org/department/city-council/meetings-agendas-minutes"
+
+    # Known term dates - Dana Point uses by-district elections
+    # Districts 1, 2, 3 appointed 2022 (term ends 2026)
+    # Districts 4, 5 elected 2020, re-elected 2024 (term ends 2028)
+    KNOWN_TERMS = {
+        "john gabbard": {"district": "District 1", "term_start": 2022, "term_end": 2026},
+        "matthew pagano": {"district": "District 2", "term_start": 2022, "term_end": 2026},
+        "jamey m. federico": {"district": "District 3", "term_start": 2022, "term_end": 2026},
+        "jamey federico": {"district": "District 3", "term_start": 2022, "term_end": 2026},
+        "mike frost": {"district": "District 4", "term_start": 2024, "term_end": 2028},
+        "michael villar": {"district": "District 5", "term_start": 2024, "term_end": 2028},
+    }
+
+    def get_member_info(self, name):
+        """Get district and term info for a member."""
+        name_lower = name.lower().strip()
+        for known_name, info in self.KNOWN_TERMS.items():
+            if known_name in name_lower or name_lower in known_name:
+                return info
+            # Check last name match
+            known_last = known_name.split()[-1]
+            if known_last in name_lower:
+                return info
+        return None
 
     def get_urls(self):
-        return {"council": self.COUNCIL_URL}
+        return {
+            "council": self.COUNCIL_URL,
+            "youtube": self.YOUTUBE_CHANNEL,
+            "agendas": self.AGENDAS_URL,
+        }
 
     async def discover_members(self):
         """
@@ -89,6 +120,60 @@ class DanaPointScraper(BaseScraper):
 
         return members
 
+    async def scrape_city_info(self):
+        """Scrape city-level info matching Irvine's structure."""
+        city_info = {
+            "website": self.BASE_URL,
+            "council_url": self.COUNCIL_URL,
+            "meeting_schedule": "1st and 3rd Tuesdays",
+            "meeting_time": "6:00 PM",
+            "meeting_location": {
+                "name": "Council Chamber, City Hall",
+                "address": "33282 Golden Lantern, Suite 210",
+                "city_state_zip": "Dana Point, CA 92629"
+            },
+            "zoom": {},  # No Zoom - YouTube/TV only
+            "phone_numbers": [],
+            "tv_channels": [
+                {"provider": "Cox", "channel": "855"}
+            ],
+            "live_stream": self.YOUTUBE_CHANNEL,
+            "clerk": {
+                "name": "Shayna Sharke",
+                "title": "City Clerk",
+                "phone": "(949) 248-3506",
+                "email": "comment@danapoint.org"
+            },
+            "public_comment": {
+                "in_person": True,
+                "remote_live": False,  # No Zoom public comment
+                "ecomment": False,
+                "written_email": True,
+                "time_limit": "3 minutes per speaker",
+                "email": "comment@danapoint.org",
+                "deadline": "4:00 PM on meeting day"
+            },
+            "portals": {
+                "youtube": self.YOUTUBE_CHANNEL,
+                "agendas": self.AGENDAS_URL,
+                "live_stream": self.YOUTUBE_CHANNEL,
+            },
+            "council": {
+                "size": 5,
+                "districts": 5,
+                "at_large": 0,
+                "mayor_elected": False,  # Mayor rotates among council
+                "expanded_date": None
+            },
+            "elections": {
+                "next_election": "2026-11-03",
+                "seats_up": ["District 1", "District 2", "District 3"],
+                "term_length": 4,
+                "election_system": "by-district"
+            }
+        }
+        return city_info
+
     async def scrape(self):
         print(f"\n  Scraping {self.CITY_NAME}")
 
@@ -137,6 +222,13 @@ class DanaPointScraper(BaseScraper):
                 if district_match:
                     district = f"District {district_match.group(1)}"
 
+                # Use KNOWN_TERMS for reliable district/term data
+                member_info = self.get_member_info(member["name"])
+                if member_info:
+                    district = member_info.get("district") or district
+                    term_start = member_info.get("term_start") or term_start
+                    term_end = member_info.get("term_end") or term_end
+
                 # Detect position from page content (first 1000 chars)
                 first_part = text_lower[:1000]
                 if "mayor pro tem" in first_part:
@@ -173,11 +265,21 @@ class DanaPointScraper(BaseScraper):
                     term_end=term_end,
                 )
             else:
+                # Get term info even if page visit failed
+                member_info = self.get_member_info(member["name"])
                 self.add_council_member(
                     name=member["name"],
                     position=member["position"],
                     profile_url=member["url"],
+                    district=member_info.get("district") if member_info else None,
+                    term_start=member_info.get("term_start") if member_info else None,
+                    term_end=member_info.get("term_end") if member_info else None,
                 )
 
         self.match_emails_to_members(city_domain=self.CITY_DOMAIN)
+
+        # Scrape city-level info
+        city_info = await self.scrape_city_info()
+        self.results["city_info"] = city_info
+
         return self.get_results()

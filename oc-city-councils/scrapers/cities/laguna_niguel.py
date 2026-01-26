@@ -8,16 +8,94 @@ from ..base import BaseScraper
 
 
 class LagunaNiguelScraper(BaseScraper):
-    """Laguna Niguel - CivicPlus with individual profile pages."""
+    """Laguna Niguel - CivicPlus with individual profile pages + YouTube video archive."""
 
     CITY_NAME = "Laguna Niguel"
     PLATFORM = "civicplus"
     CITY_DOMAIN = "cityoflagunaniguel.org"
     BASE_URL = "https://www.cityoflagunaniguel.org"
     COUNCIL_URL = "https://www.cityoflagunaniguel.org/396/Mayor-City-Council"
+    YOUTUBE_URL = "https://www.youtube.com/cityoflagunaniguel"
+
+    # Known term dates - Laguna Niguel has 5 at-large seats, 4-year staggered terms
+    KNOWN_TERMS = {
+        "gene johns": {"district": "At-Large", "term_start": 2024, "term_end": 2028},
+        "kelly jennings": {"district": "At-Large", "term_start": 2024, "term_end": 2028},
+        "ray gennawey": {"district": "At-Large", "term_start": 2022, "term_end": 2026},
+        "stephanie oddo": {"district": "At-Large", "term_start": 2022, "term_end": 2026},
+        "stephanie winstead": {"district": "At-Large", "term_start": 2024, "term_end": 2028},
+    }
+
+    def get_member_info(self, name):
+        """Get district and term info for a member."""
+        name_lower = name.lower().strip()
+        for known_name, info in self.KNOWN_TERMS.items():
+            if known_name in name_lower or name_lower in known_name:
+                return info
+            # Check last name match
+            known_last = known_name.split()[-1]
+            if known_last in name_lower:
+                return info
+        return None
 
     def get_urls(self):
-        return {"council": self.COUNCIL_URL}
+        return {
+            "council": self.COUNCIL_URL,
+            "youtube": self.YOUTUBE_URL,
+        }
+
+    async def scrape_city_info(self):
+        """Scrape city-level info matching Irvine's structure."""
+        city_info = {
+            "website": self.BASE_URL,
+            "council_url": self.COUNCIL_URL,
+            "meeting_schedule": "1st and 3rd Tuesdays",
+            "meeting_time": "7:00 PM",
+            "meeting_location": {
+                "name": "Council Chambers",
+                "address": "30111 Crown Valley Parkway",
+                "city_state_zip": "Laguna Niguel, CA 92677"
+            },
+            "zoom": {},
+            "phone_numbers": [],
+            "tv_channels": [
+                {"provider": "Cox", "channel": "853"},
+                {"provider": "AT&T U-Verse", "channel": "99"}
+            ],
+            "live_stream": self.YOUTUBE_URL,
+            "clerk": {
+                "title": "City Clerk's Office",
+                "phone": "(949) 362-4373",
+                "email": "council@cityoflagunaniguel.org"
+            },
+            "public_comment": {
+                "in_person": True,
+                "remote_live": False,
+                "ecomment": False,
+                "written_email": True,
+                "time_limit": "3 minutes per speaker",
+                "email": "council@cityoflagunaniguel.org"
+            },
+            "portals": {
+                "granicus": None,
+                "ecomment": None,
+                "live_stream": self.YOUTUBE_URL,
+            },
+            "council": {
+                "size": 5,
+                "districts": 0,
+                "at_large": 5,
+                "mayor_elected": False,
+                "expanded_date": None
+            },
+            "elections": {
+                "next_election": "2026-11-03",
+                "seats_up": ["Councilmember", "Councilmember"],
+                "term_length": 4,
+                "election_system": "at-large"
+            }
+        }
+        return city_info
 
     async def discover_members(self):
         """Discover council members from the main council page."""
@@ -102,7 +180,18 @@ class LagunaNiguelScraper(BaseScraper):
             data = await self.scrape_member_page(
                 member, self.BASE_URL, self.CITY_DOMAIN, main_phones
             )
+            # Always use KNOWN_TERMS for district/term data
+            member_info = self.get_member_info(data.get("name", member["name"]))
+            if member_info:
+                data["district"] = member_info.get("district")
+                data["term_start"] = member_info.get("term_start")
+                data["term_end"] = member_info.get("term_end")
             self.add_council_member(**data)
 
         self.match_emails_to_members(city_domain=self.CITY_DOMAIN)
+
+        # Scrape city-level info
+        city_info = await self.scrape_city_info()
+        self.results["city_info"] = city_info
+
         return self.get_results()

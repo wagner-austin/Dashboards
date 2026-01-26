@@ -4,6 +4,7 @@ Dynamically discovers council members from website.
 Note: May return 403 to direct requests - use Firefox with Playwright.
 """
 import re
+from datetime import datetime
 from urllib.parse import urljoin
 from ..base import BaseScraper
 
@@ -16,9 +17,33 @@ class CostaMesaScraper(BaseScraper):
     CITY_DOMAIN = "costamesaca.gov"
     BASE_URL = "https://www.costamesaca.gov"
     COUNCIL_URL = "https://www.costamesaca.gov/government/mayor-city-council"
+    GRANICUS_URL = "https://costamesa.granicus.com/ViewPublisher.php?view_id=5"
+
+    # Known term dates for Costa Mesa council members (at-large, 4-year staggered terms)
+    # 2022 elected -> 2026, 2024 elected -> 2028
+    KNOWN_TERMS = {
+        "john stephens": {"district": "At-Large", "term_start": 2024, "term_end": 2028},
+        "manuel chavez": {"district": "At-Large", "term_start": 2022, "term_end": 2026},
+        "andrea marr": {"district": "At-Large", "term_start": 2022, "term_end": 2026},
+        "arlis reynolds": {"district": "At-Large", "term_start": 2022, "term_end": 2026},
+        "jeff pettis": {"district": "At-Large", "term_start": 2024, "term_end": 2028},
+        "loren gameros": {"district": "At-Large", "term_start": 2024, "term_end": 2028},
+        "mike buley": {"district": "At-Large", "term_start": 2024, "term_end": 2028},
+    }
+
+    def get_member_info(self, name):
+        """Get district and term info for a member."""
+        name_lower = name.lower().strip()
+        for known_name, info in self.KNOWN_TERMS.items():
+            if known_name in name_lower or name_lower in known_name:
+                return info
+        return None
 
     def get_urls(self):
-        return {"council": self.COUNCIL_URL}
+        return {
+            "council": self.COUNCIL_URL,
+            "granicus": self.GRANICUS_URL,
+        }
 
     async def discover_members(self):
         """
@@ -197,6 +222,13 @@ class CostaMesaScraper(BaseScraper):
                 print(f"      District: {district or 'Not found'}")
                 print(f"      Email: {member_email or 'Not found'}")
 
+                # Always use KNOWN_TERMS for term/district data
+                member_info = self.get_member_info(member["name"])
+                if member_info:
+                    district = member_info.get("district")
+                    term_start = member_info.get("term_start")
+                    term_end = member_info.get("term_end")
+
                 self.add_council_member(
                     name=member["name"],
                     position=position,
@@ -210,13 +242,169 @@ class CostaMesaScraper(BaseScraper):
                     term_end=term_end,
                 )
             else:
-                # Page failed, add with basic info
+                # Page failed, add with basic info from KNOWN_TERMS
+                member_info = self.get_member_info(member["name"])
                 self.add_council_member(
                     name=member["name"],
                     position=member["position"],
                     profile_url=member["url"],
+                    district=member_info.get("district") if member_info else None,
+                    term_start=member_info.get("term_start") if member_info else None,
+                    term_end=member_info.get("term_end") if member_info else None,
                 )
 
         # Final email matching pass
         self.match_emails_to_members(city_domain=self.CITY_DOMAIN)
+
+        # Scrape city-level info
+        city_info = await self.scrape_city_info()
+        self.results["city_info"] = city_info
+
+        # Scrape meetings from Granicus
+        meetings = await self.scrape_meetings()
+        self.results["meetings"] = meetings
+
         return self.get_results()
+
+    async def scrape_city_info(self):
+        """Scrape city-level info."""
+        city_info = {
+            "city_name": self.CITY_NAME,
+            "website": self.BASE_URL,
+            "council_url": self.COUNCIL_URL,
+            "meeting_schedule": "1st and 3rd Tuesdays",
+            "meeting_time": "6:00 PM",
+            "meeting_location": {
+                "name": "City Hall Council Chamber",
+                "address": "77 Fair Drive",
+                "city_state_zip": "Costa Mesa, CA 92626"
+            },
+            "clerk": {
+                "title": "City Clerk's Office",
+                "phone": "(714) 754-5225",
+                "email": "cityclerk@costamesaca.gov"
+            },
+            "public_comment": {
+                "in_person": True,
+                "remote_live": True,
+                "written_email": True,
+                "ecomment": True,
+                "time_limit": "3 minutes per speaker",
+            },
+            "portals": {
+                "granicus": self.GRANICUS_URL,
+            },
+            "council": {
+                "size": 7,
+                "districts": 0,
+                "at_large": 7,
+                "mayor_elected": False,  # Rotates among council
+                "term_length": 4,
+            },
+            "elections": {
+                "next_election": "2026-11-03",
+                "seats_up": ["3 at-large seats"],
+                "election_system": "at-large",
+                "term_length": 4,
+            }
+        }
+        return city_info
+
+    async def scrape_meetings(self):
+        """Scrape meeting data from Granicus portal."""
+        meetings = []
+        seen_keys = set()
+
+        print("    Scraping meetings from Granicus...")
+
+        try:
+            await self.page.goto(self.GRANICUS_URL, timeout=60000, wait_until="networkidle")
+            await self.page.wait_for_timeout(2000)
+
+            for _ in range(5):
+                await self.page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                await self.page.wait_for_timeout(500)
+
+            agenda_links = await self.page.query_selector_all('a[href*="AgendaViewer"]')
+            print(f"      Found {len(agenda_links)} agenda links")
+
+            for link in agenda_links:
+                try:
+                    row = await link.evaluate_handle("el => el.closest('tr')")
+                    if not row:
+                        continue
+
+                    row_el = row.as_element()
+                    if not row_el:
+                        continue
+
+                    row_text = await row_el.inner_text()
+
+                    # Filter for City Council meetings
+                    row_upper = row_text.upper()
+                    if "CITY COUNCIL" not in row_upper:
+                        continue
+
+                    # Parse date
+                    row_text_clean = row_text.replace('\xa0', ' ')
+                    date_match = re.search(r"([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})", row_text_clean)
+                    if not date_match:
+                        continue
+
+                    date_str = f"{date_match.group(1)} {date_match.group(2)}, {date_match.group(3)}"
+
+                    lines = [l.strip() for l in row_text.split('\n') if l.strip()]
+                    name_text = "City Council Meeting"
+                    for line in lines:
+                        if "council" in line.lower():
+                            name_text = re.sub(r'\s+', ' ', line).strip()[:100]
+                            break
+
+                    agenda_url = await link.get_attribute("href")
+                    if agenda_url and agenda_url.startswith("//"):
+                        agenda_url = "https:" + agenda_url
+
+                    minutes_link = await row_el.query_selector('a[href*="MinutesViewer"]')
+                    minutes_url = None
+                    if minutes_link:
+                        minutes_url = await minutes_link.get_attribute("href")
+                        if minutes_url and minutes_url.startswith("//"):
+                            minutes_url = "https:" + minutes_url
+
+                    video_url = None
+                    if agenda_url:
+                        clip_match = re.search(r"clip_id=(\d+)", agenda_url)
+                        if clip_match:
+                            video_url = f"https://costamesa.granicus.com/player/clip/{clip_match.group(1)}?view_id=5"
+
+                    key = f"{date_str}|{agenda_url}"
+                    if key in seen_keys:
+                        continue
+                    seen_keys.add(key)
+
+                    meetings.append({
+                        "name": name_text,
+                        "date": date_str,
+                        "agenda_url": agenda_url,
+                        "minutes_url": minutes_url,
+                        "video_url": video_url,
+                        "source": "granicus"
+                    })
+
+                except Exception:
+                    continue
+
+            def parse_date(date_str):
+                try:
+                    return datetime.strptime(date_str, "%B %d, %Y")
+                except ValueError:
+                    return datetime.min
+
+            meetings.sort(key=lambda m: parse_date(m["date"]), reverse=True)
+            print(f"      Found {len(meetings)} City Council meetings")
+
+        except Exception as e:
+            self.results["errors"].append(f"scrape_meetings: {str(e)}")
+            print(f"      ERROR: {str(e)}")
+
+        return meetings

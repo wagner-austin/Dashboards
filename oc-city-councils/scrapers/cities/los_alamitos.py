@@ -15,9 +15,40 @@ class LosAlamitosScraper(BaseScraper):
     CITY_DOMAIN = "cityoflosalamitos.org"
     BASE_URL = "https://cityoflosalamitos.org"
     COUNCIL_URL = "https://cityoflosalamitos.org/165/City-Council"
+    YOUTUBE_CHANNEL = "https://www.youtube.com/@cityoflosal"
+    TV_URL = "https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3"
+    AGENDAS_URL = "https://cityoflosalamitos.org/129/Agendas-Minutes"
+
+    # Known term dates - Los Alamitos uses by-district elections
+    # Districts 1, 2, 3 elected 2024 (term ends 2028)
+    # Districts 4, 5 elected 2022 (term ends 2026)
+    KNOWN_TERMS = {
+        "tanya doby": {"district": "District 1", "term_start": 2024, "term_end": 2028},
+        "jordan nefulda": {"district": "District 3", "term_start": 2024, "term_end": 2028},
+        "gary loe": {"district": "District 2", "term_start": 2024, "term_end": 2028},
+        "shelley hasselbrink": {"district": "District 4", "term_start": 2022, "term_end": 2026},
+        "emily hibard": {"district": "District 5", "term_start": 2022, "term_end": 2026},
+    }
+
+    def get_member_info(self, name):
+        """Get district and term info for a member."""
+        name_lower = name.lower().strip()
+        for known_name, info in self.KNOWN_TERMS.items():
+            if known_name in name_lower or name_lower in known_name:
+                return info
+            # Check last name match
+            known_last = known_name.split()[-1]
+            if known_last in name_lower:
+                return info
+        return None
 
     def get_urls(self):
-        return {"council": self.COUNCIL_URL}
+        return {
+            "council": self.COUNCIL_URL,
+            "youtube": self.YOUTUBE_CHANNEL,
+            "tv": self.TV_URL,
+            "agendas": self.AGENDAS_URL,
+        }
 
     async def discover_members(self):
         """
@@ -95,6 +126,62 @@ class LosAlamitosScraper(BaseScraper):
 
         return members
 
+    async def scrape_city_info(self):
+        """Scrape city-level info matching Irvine's structure."""
+        city_info = {
+            "website": self.BASE_URL,
+            "council_url": self.COUNCIL_URL,
+            "meeting_schedule": "3rd Monday",
+            "meeting_time": "6:00 PM",
+            "meeting_location": {
+                "name": "Council Chamber, City Hall",
+                "address": "3191 Katella Avenue",
+                "city_state_zip": "Los Alamitos, CA 90720"
+            },
+            "zoom": {},  # No Zoom - TV and YouTube streaming only
+            "phone_numbers": [],
+            "tv_channels": [
+                {"provider": "Local Cable", "channel": "3"}
+            ],
+            "live_stream": self.YOUTUBE_CHANNEL,
+            "clerk": {
+                "name": "Windmera Quintanar, MMC",
+                "title": "City Clerk",
+                "phone": "(562) 431-3538 ext. 220",
+                "email": "cityclerk@cityoflosalamitos.org"
+            },
+            "public_comment": {
+                "in_person": True,
+                "remote_live": False,  # No Zoom participation
+                "ecomment": False,
+                "written_email": True,
+                "time_limit": "5 minutes per speaker",
+                "email": "cityclerk@cityoflosalamitos.org",
+                "deadline": "3:00 PM on meeting day",
+                "subject_line": "COUNCIL PUBLIC COMMENT"
+            },
+            "portals": {
+                "agenda_center": self.AGENDAS_URL,
+                "youtube": self.YOUTUBE_CHANNEL,
+                "tv": self.TV_URL,
+                "live_stream": self.YOUTUBE_CHANNEL,
+            },
+            "council": {
+                "size": 5,
+                "districts": 5,
+                "at_large": 0,
+                "mayor_elected": False,  # Mayor selected by council annually
+                "expanded_date": None
+            },
+            "elections": {
+                "next_election": "2026-11-03",
+                "seats_up": ["District 4", "District 5"],
+                "term_length": 4,
+                "election_system": "by-district"
+            }
+        }
+        return city_info
+
     async def scrape(self):
         print(f"\n  Scraping {self.CITY_NAME}")
 
@@ -139,12 +226,22 @@ class LosAlamitosScraper(BaseScraper):
                 elif "mayor" in first_500 and "pro tem" not in first_500:
                     position = "Mayor"
 
+                # Get district and term info from KNOWN_TERMS
+                member_info = self.get_member_info(member["name"])
+                if member_info:
+                    district = member_info.get("district")
+                    term_start = member_info.get("term_start") or term_start
+                    term_end = member_info.get("term_end") or term_end
+                else:
+                    district = None
+
                 result_phones = result.get("phones", [])
                 member_phone = result_phones[0] if result_phones else (main_phones[0] if main_phones else None)
 
                 self.add_council_member(
                     name=member["name"],
                     position=position,
+                    district=district,
                     email=member_email,
                     phone=member_phone,
                     profile_url=member["url"],
@@ -154,11 +251,21 @@ class LosAlamitosScraper(BaseScraper):
                     term_end=term_end,
                 )
             else:
+                # Get term info even if page visit failed
+                member_info = self.get_member_info(member["name"])
                 self.add_council_member(
                     name=member["name"],
                     position=member["position"],
                     profile_url=member["url"],
+                    district=member_info.get("district") if member_info else None,
+                    term_start=member_info.get("term_start") if member_info else None,
+                    term_end=member_info.get("term_end") if member_info else None,
                 )
 
         self.match_emails_to_members(city_domain=self.CITY_DOMAIN)
+
+        # Scrape city-level info
+        city_info = await self.scrape_city_info()
+        self.results["city_info"] = city_info
+
         return self.get_results()
