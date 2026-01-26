@@ -141,11 +141,9 @@
             padding: 1.25rem;
             text-align: center;
             transition: all 0.2s;
-            text-decoration: none;
-            display: block;
-            color: inherit;
+            cursor: pointer;
         }
-        .council-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,102,161,0.15); cursor: pointer; }
+        .council-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,102,161,0.15); }
         .council-card .photo {
             width: 140px;
             height: 175px;
@@ -160,6 +158,8 @@
         .council-card .position { font-size: 0.9rem; color: var(--primary); font-weight: 500; }
         .council-card .district { font-size: 0.8rem; color: var(--gray-600); margin-top: 0.25rem; }
         .council-card .contact-info { font-size: 0.75rem; color: var(--gray-600); margin-top: 0.75rem; }
+        .council-card .contact-info a { color: var(--primary); text-decoration: none; }
+        .council-card .contact-info a:hover { text-decoration: underline; }
         .hidden { display: none; }
     </style>
 </head>
@@ -294,16 +294,16 @@
             document.getElementById('members').innerHTML = (c.members || []).map(mem => {
                 const profileUrl = mem.city_page || c.council_url || '#';
                 return `
-                <a class="council-card" href="${profileUrl}" target="_blank">
+                <div class="council-card" onclick="window.open('${profileUrl}', '_blank')">
                     ${mem.photo_url ? `<img class="photo" src="${mem.photo_url}" alt="${mem.name}" loading="lazy" onerror="this.style.visibility='hidden'">` : '<div class="photo"></div>'}
                     <div class="name">${mem.name}</div>
                     <div class="position">${mem.position}</div>
                     ${mem.district ? `<div class="district">${mem.district}</div>` : ''}
                     <div class="contact-info">
-                        ${mem.email ? `<span>${mem.email}</span>` : ''}
-                        ${mem.phone ? `<br><span>${mem.phone}</span>` : ''}
+                        ${mem.email ? `<a href="mailto:${mem.email}" onclick="event.stopPropagation()">${mem.email}</a>` : ''}
+                        ${mem.phone ? `<br><a href="tel:${mem.phone.replace(/[^0-9+]/g, '')}" onclick="event.stopPropagation()">${mem.phone}</a>` : ''}
                     </div>
-                </a>
+                </div>
             `}).join('');
         }
 
