@@ -1,6 +1,6 @@
 city: tustin
 city_name: Tustin
-last_updated: '2026-01-25'
+last_updated: '2026-01-26'
 website: https://www.tustinca.org
 council_url: https://www.tustinca.org/482/City-Council
 general_email: CityCouncil@tustinca.org
@@ -11,7 +11,7 @@ members:
   position: Mayor
   district: At-Large
   email: ALumbard@tustinca.org
-  phone: 714-573-3000
+  phone: 714-573-3012
   city_profile: https://www.tustinca.org/499/Mayor-Austin-Lumbard
   photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=8794
   bio: 'Mayor Austin Lumbard, elected to City Council in 2018 and elected as Mayor in 2022, was born and raised in Orange
@@ -32,7 +32,7 @@ members:
   position: Mayor Pro Tem
   district: At-Large
   email: rschnell@tustinca.org
-  phone: 714-573-3000
+  phone: 714-573-3012
   city_profile: https://www.tustinca.org/1396/Council-Member-Ray-Schnell
   photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=8793
   bio: 'Mayor Pro Tem Ray Schnell, elected to office in November 2022, has lived in Orange County for 20 years and is a long-time
@@ -47,7 +47,7 @@ members:
   position: Councilmember
   district: At-Large
   email: jnielsen@tustinca.org
-  phone: 714-573-3000
+  phone: 714-573-3012
   city_profile: https://www.tustinca.org/493/Council-Member-John-Nielsen
   photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16355
   bio: Council Member John Nielsen was elected to the City Council originally in 2008, was re-elected in 2012 and served through
@@ -68,7 +68,7 @@ members:
   position: Councilmember
   district: At-Large
   email: lfink@tustinca.org
-  phone: 714-573-3000
+  phone: 714-573-3012
   city_profile: https://www.tustinca.org/1208/Council-Member-Lee-K-Fink
   photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16153
   bio: 'Council Member Lee Fink, elected in November 2024, is a Tustin native, attorney, and longtime community volunteer.
@@ -84,7 +84,7 @@ members:
   position: Councilmember
   district: At-Large
   email: rgallagher@tustinca.org
-  phone: 714-573-3000
+  phone: 714-573-3012
   city_profile: https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher
   photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16360
   bio: Mayor Pro Tem Ryan Gallagher, elected to City Council in 2020, was born and raised in Southern California and is a
@@ -101,6 +101,7 @@ members:
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 6:00 PM
+  closed_session_time: 4:30 PM
   location:
     name: City Hall Council Chamber
     address: 300 Centennial Way
@@ -112,13 +113,16 @@ meetings:
     phone_numbers:
     - 669-900-6833
 portals:
+  agenda_center: https://www.tustinca.org/282/Meetings-Agendas
   granicus: https://tustin.granicus.com/ViewPublisher.php?view_id=5
-  ecomment: null
-  live_stream: null
+  ecomment: https://tustin.granicusideas.com/meetings?scope=upcoming
+  video_archive: https://www.tustinca.org/282/Meetings-Agendas
 clerk:
-  title: City Clerk's Office
+  name: Erica Yasuda
+  title: City Clerk
   phone: (714) 573-3025
-  email: CityCouncil@tustinca.org
+  direct: (714) 573-3027
+  email: cityclerk@tustinca.org
 public_comment:
   in_person: true
   remote_live: true
@@ -126,6 +130,7 @@ public_comment:
   written_email: true
   time_limit: 3 minutes per speaker
   email: CityCouncil@tustinca.org
+  notes: Submit Request to Speak form electronically; *6 to unmute, *9 to raise hand on phone
 council:
   size: 5
   districts: 0
