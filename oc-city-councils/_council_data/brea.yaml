@@ -132,16 +132,19 @@ broadcast:
     channel: '99'
   live_stream: https://www.cityofbrea.gov/812/Government-Access-Channel
 clerk:
-  title: City Clerk's Office
+  name: Victoria Popescu
+  title: City Clerk
   phone: (714) 990-7756
-  email: cityclerksgroup@cityofbrea.net
+  email: cityclerksgroup@cityofbrea.gov
+  address: 1 Civic Center Circle, Brea, CA 92821
 public_comment:
   in_person: true
-  remote_live: false
+  remote_live: true
+  remote_platform: Zoom
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  email: cityclerksgroup@cityofbrea.net
+  email: cityclerksgroup@cityofbrea.gov
 council:
   size: 5
   districts: 5
