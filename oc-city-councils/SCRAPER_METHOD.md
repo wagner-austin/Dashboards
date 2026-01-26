@@ -291,6 +291,69 @@ SCRAPERS = {
 }
 ```
 
+## Granicus Meeting Scraping
+
+For cities with Granicus portals, scrapers can extract meeting archives with agendas, minutes, and video links.
+
+### Adding Meeting Scraping
+
+```python
+class CityNameScraper(BaseScraper):
+    GRANICUS_URL = "https://cityname.granicus.com/ViewPublisher.php?view_id=XX"
+
+    async def scrape_meetings(self, granicus_url=None):
+        """Scrape meeting data from Granicus portal."""
+        meetings = []
+        url = granicus_url or self.GRANICUS_URL
+
+        await self.page.goto(url, timeout=60000, wait_until="networkidle")
+        await self.page.wait_for_timeout(2000)
+
+        # Scroll to load lazy content
+        for _ in range(10):
+            await self.page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            await self.page.wait_for_timeout(500)
+
+        # Find agenda links (each represents a meeting)
+        agenda_links = await self.page.query_selector_all('a[href*="AgendaViewer"]')
+
+        for link in agenda_links:
+            row = await link.evaluate_handle("el => el.closest('tr')")
+            # Extract date, name, agenda_url, minutes_url, video_url from row
+            # ...
+            meetings.append({
+                "name": name,
+                "date": date_str,
+                "agenda_url": agenda_url,
+                "minutes_url": minutes_url,
+                "video_url": video_url,
+            })
+
+        return meetings
+
+    async def scrape(self):
+        # ... scrape council members ...
+
+        # Scrape meetings from Granicus
+        meetings = await self.scrape_meetings()
+        self.results["meetings"] = meetings
+
+        return self.get_results()
+```
+
+### Video URLs
+
+The scraper extracts video player URLs (not MP4 downloads):
+- Pattern: `https://{domain}/player/clip/{clip_id}?view_id=XX`
+- Extract `clip_id` from the agenda URL parameter
+
+### Reference Implementation
+
+See `scrapers/cities/irvine.py` for a complete implementation with:
+- Dynamic member discovery
+- Rich member data extraction (photos, bios, terms)
+- Granicus meeting scraping (604+ meetings)
+
 ## Debugging Tips
 
 1. **Print page text** to understand structure:
