@@ -4,8 +4,8 @@ members:
 - name: Casey Mc Keon
   position: Mayor
   email: Casey.McKeon@surfcity-hb.org
-  phone: (714) 536-5511
-  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+  phone: (714) 536-5553
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b0
   photo_url: https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/CaseyMcKeon-Circle-Headshot-2025.png?t=202412041253560
   term_start: 2022
   term_end: 2026
@@ -13,8 +13,8 @@ members:
   position: Mayor Pro Tem
   district: At-Large
   email: Butch.Twining@surfcity-hb.org
-  phone: (714) 536-5511
-  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+  phone: (714) 536-5553
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b1
   photo_url: https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/ButchTwining-Circle-Headshot.png?t=202412041237520
   term_start: 2024
   term_end: 2028
@@ -22,8 +22,8 @@ members:
   position: Councilmember
   district: At-Large
   email: Andrew.Gruel@surfcity-hb.org
-  phone: (714) 536-5511
-  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+  phone: (714) 536-5553
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b6
   photo_url: https://www.huntingtonbeachca.gov/AndrewGruel-Circle-Headshot.png?t=202504211504120
   term_start: 2025
   term_end: 2026
@@ -31,8 +31,8 @@ members:
   position: Councilmember
   district: At-Large
   email: Chad.Williams@surfcity-hb.org
-  phone: (714) 536-5511
-  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+  phone: (714) 536-5553
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b5
   photo_url: https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/ChadWilliams-Circle-Headshot.png?t=202412041232150
   term_start: 2024
   term_end: 2028
@@ -40,16 +40,16 @@ members:
   position: Councilmember
   district: At-Large
   email: Don.Kennedy@surfcity-hb.org
-  phone: (714) 536-5511
-  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+  phone: (714) 536-5553
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b3
   photo_url: https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/Don Kennedy-Circle-Headshot.png?t=202412041244530
   term_start: 2024
   term_end: 2028
 - name: Gracey Van Der Mark
   position: Councilmember
   email: Gracey.VanDerMark@surfcity-hb.org
-  phone: (714) 536-5511
-  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+  phone: (714) 536-5553
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b4
   photo_url: https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/GraceyVDM-Circle-Headshot.png?t=202408281742520
   term_start: 2022
   term_end: 2026
@@ -57,8 +57,8 @@ members:
   position: Councilmember
   district: At-Large
   email: Pat.Burns@surfcity-hb.org
-  phone: (714) 536-5511
-  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php
+  phone: (714) 536-5553
+  city_page: https://www.huntingtonbeachca.gov/government/city_council/index.php#collapse1610b2
   photo_url: https://www.huntingtonbeachca.gov/Images/Government/City Council/Headshot/PatBurns-Circle-Headshot-2025.png?t=202412041247230
   term_start: 2022
   term_end: 2026
@@ -75,22 +75,38 @@ meetings:
 portals:
   granicus: https://huntingtonbeach.granicus.com/ViewPublisher.php?view_id=9
   legistar: https://huntingtonbeach.legistar.com/
-  live_stream: https://reflect-huntingtonbeach.cablecast.tv/CablecastPublicSite/?channel=1
-  video_archive: https://huntingtonbeach.granicus.com/ViewPublisher.php?view_id=9
+  live_stream: https://huntingtonbeach.granicus.com/MediaPlayer.php?publish_id=34
+  video_archive: https://reflect-huntingtonbeach.cablecast.tv/internetchannel/gallery/5?channel=1
+  youtube: https://youtube.com/@cityofhb
 broadcast:
-  live_stream: https://reflect-huntingtonbeach.cablecast.tv/CablecastPublicSite/?channel=1
+  cable_channels:
+  - provider: HBTV
+    channel: '3'
+  live_stream: https://huntingtonbeach.granicus.com/MediaPlayer.php?publish_id=34
+  social_media:
+  - Facebook
+  - X
+  - YouTube
+  rebroadcast: Daily at 6:00 PM on HBTV
 clerk:
-  title: City Clerk's Office
+  name: Lisa Lane Barnes
+  title: City Clerk
   phone: (714) 536-5227
-  email: cityclerk@surfcity-hb.org
+  fax: (714) 374-1557
+  email: lisalane.barnes@surfcity-hb.org
+  address: 2000 Main Street, Huntington Beach, CA 92648
 public_comment:
   in_person: true
   remote_live: false
   written_email: true
-  email: SupplementalComm@Surfcity-hb.org
+  email: SupplementalComm@SurfCity-hb.org
+  council_email: City.Council@surfcity-hb.org
   time_limit: 3 minutes per speaker
-  deadline: Written comments by 9:00 AM day of meeting
+  signup: Begins 30 minutes prior to meeting start
+  deadline: 9:00 AM day of meeting
+  early_deadline: 5:00 PM Monday prior (for distribution, posting, and announcement)
   ecomment: false
+  notes: Supplemental communications are public record. Late submissions included in administrative record only.
 council:
   size: 7
   districts: 0
