@@ -19,7 +19,8 @@ meetings:
     - 669-216-1590
 portals:
   granicus: https://irvine.granicus.com/ViewPublisher.php?view_id=68
-  ecomment: https://irvine.granicusideas.com/meetings
+  ecomment: https://irvine.granicusideas.com/meetings?scope=upcoming
+  ecomment_live: https://irvine.granicusideas.com/meetings?scope=past
   live_stream: https://legacy.cityofirvine.org/cityhall/citymanager/pio/ictv/default.asp
 broadcast:
   cable_channels:
@@ -27,16 +28,20 @@ broadcast:
     channel: '30'
   live_stream: https://legacy.cityofirvine.org/cityhall/citymanager/pio/ictv/default.asp
 clerk:
-  title: City Clerk's Office
-  phone: 949-724-6233
-  email: irvinecitycouncil@cityofirvine.org
+  name: Carl Petersen
+  title: City Clerk
+  phone: (949) 724-6205
+  email: clerk@cityofirvine.org
 public_comment:
   in_person: true
   remote_live: true
+  remote_platform: Zoom
   ecomment: true
   written_email: true
-  time_limit: 3 minutes per speaker
+  time_limit: 3 minutes per speaker (5 minutes for agendized items)
   email: irvinecitycouncil@cityofirvine.org
+  ecomment_deadline: 2 hours prior to meeting
+  notes: Electronic kiosk available at chamber entrance for speaker registration
 elections:
   next_election: '2026-11-03'
   seats_up:
