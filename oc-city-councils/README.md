@@ -1,12 +1,12 @@
 # Orange County City Councils
 
-Contact information for all 34 Orange County city council members, with automated scraping to keep data current.
+Contact information and meeting archives for all 34 Orange County city councils, with automated scraping to keep data current.
 
 ## Quick Start
 
 ```bash
 # Install dependencies
-pip install playwright pyyaml
+pip install playwright pyyaml pdfplumber requests
 playwright install firefox
 
 # Update all city data (runs scrapers, updates JSON + YAML)
@@ -15,6 +15,9 @@ python update_all_data.py
 # Update a specific city
 python update_all_data.py --city "Anaheim"
 
+# Rebuild dashboard after YAML changes
+python build_dashboard.py
+
 # Test all scrapers without saving
 python test_all_scrapers.py
 ```
@@ -22,16 +25,31 @@ python test_all_scrapers.py
 ## Data Coverage
 
 - **34 cities** with full council data
-- **186 council members** tracked
-- **186/186 emails** (100% coverage)
+- **~190 council members** tracked
+- **100% public comment email coverage** - every city has clerk/public comment contact info
+- **Meeting schedules and locations** for all cities
+- **Election info** - next election dates and seats up
+- **Meeting archives** with agendas, minutes, and video links (for Granicus cities)
 - Dynamic discovery - automatically adapts when council members change
+
+### Public Comment Info (per city)
+
+Each city YAML includes:
+- Public comment email address
+- City clerk contact (phone + email)
+- Meeting schedule (day, time, location)
+- Submission deadline
+- Options: in-person, remote/Zoom, eComment portal, written email
 
 ## Project Structure
 
 ```
 oc-city-councils/
 ├── update_all_data.py       # Main script - runs scrapers, updates data
+├── build_dashboard.py       # Build dashboard JSON from YAML files
 ├── test_all_scrapers.py     # Test all scrapers
+├── dashboard.html           # Interactive dashboard (reads dashboard_data.json)
+├── dashboard_data.json      # Generated from YAML files (run build_dashboard.py)
 ├── scrapers/
 │   ├── __init__.py          # Exports all scrapers + SCRAPERS registry
 │   ├── base.py              # BaseScraper with core extraction methods
@@ -46,6 +64,20 @@ oc-city-councils/
 │   ├── aliso-viejo.yaml
 │   └── ...
 └── _archive/                 # Deprecated code (for reference)
+```
+
+## Dashboard
+
+Open `dashboard.html` in a browser to view an interactive dashboard with:
+- City selector dropdown
+- Quick links (website, council page, agendas, live stream)
+- Meeting info, clerk contact, public comment details
+- Council member cards with photos and contact info
+
+**Important:** The dashboard reads from `dashboard_data.json`, which is generated from the YAML files. After editing YAML files, rebuild the dashboard:
+
+```bash
+python build_dashboard.py
 ```
 
 ## How It Works
@@ -75,6 +107,11 @@ For each council member, scrapers extract:
 - Photo URL
 - Bio text
 - Term dates
+
+For cities with Granicus portals, scrapers also extract:
+- Meeting archives (agendas, minutes, video links)
+- Meeting dates and names
+- Direct links to video player (not downloads)
 
 ### Two Data Formats
 
@@ -154,11 +191,43 @@ Then add to `scrapers/cities/__init__.py` and `scrapers/__init__.py`.
 
 ```yaml
 city: anaheim
+city_name: Anaheim
 last_updated: '2026-01-25'
-next_election: '2026-11-03'
+website: https://www.anaheim.net
+council_url: https://www.anaheim.net/173/City-Council
+
+meetings:
+  schedule: 1st and 3rd Tuesdays
+  time: 5:00 PM
+  location:
+    name: Council Chamber
+    address: 200 S. Anaheim Blvd
+    city_state_zip: Anaheim, CA 92805
+
+clerk:
+  title: City Clerk's Office
+  phone: (714) 765-5166
+  email: cityclerk@anaheim.net
+
+public_comment:
+  email: publiccomment@anaheim.net
+  deadline: 2 hours prior to meeting
+  in_person: true
+  remote_live: false
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+
+elections:
+  next_election: '2026-11-03'
+  seats_up: [Mayor, District 3, District 5]
+  term_length: 4
+  election_system: by-district
+
 members:
 - name: Ashleigh E. Aitken
   position: Mayor
+  district: Citywide
   email: aaitken@anaheim.net
   phone: (714) 765-5164
   photo_url: https://...
@@ -171,20 +240,31 @@ members:
 
 ```json
 {
-  "city_name": "Anaheim",
-  "slug": "anaheim",
+  "city_name": "Irvine",
+  "slug": "irvine",
   "last_updated": "2026-01-25",
   "council_members": [
     {
-      "name": "Ashleigh E. Aitken",
+      "name": "Larry Agran",
       "position": "Mayor",
-      "email": "aaitken@anaheim.net",
-      "phone": "(714) 765-5164",
+      "email": "LarryAgran@cityofirvine.org",
+      "phone": "949-724-6000",
       "city_profile": "https://..."
+    }
+  ],
+  "meetings": [
+    {
+      "name": "CITY COUNCIL REGULAR MEETING",
+      "date": "January 14, 2025",
+      "agenda_url": "https://irvine.granicus.com/AgendaViewer.php?...",
+      "minutes_url": "https://irvine.granicus.com/MinutesViewer.php?...",
+      "video_url": "https://irvine.granicus.com/player/clip/7000?view_id=68"
     }
   ]
 }
 ```
+
+See [SCHEMA.md](SCHEMA.md) for the complete YAML schema with all available fields.
 
 ## Troubleshooting
 
@@ -219,6 +299,8 @@ python -c "from scrapers import SCRAPERS; print(len(SCRAPERS))"
 - Python 3.11+
 - `playwright` - Browser automation
 - `pyyaml` - YAML file handling
+- `pdfplumber` - PDF parsing (for extracting Zoom info from city PDFs)
+- `requests` - HTTP requests
 
 ## License
 
