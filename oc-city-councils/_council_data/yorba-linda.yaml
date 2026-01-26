@@ -1,6 +1,6 @@
 city: yorba-linda
 city_name: Yorba Linda
-last_updated: '2026-01-25'
+last_updated: '2026-01-26'
 website: https://www.yorbalindaca.gov
 council_url: https://www.yorbalindaca.gov/190/City-Council
 general_email: city_council@yorbalindaca.gov
@@ -53,55 +53,6 @@ members:
   website: null
   instagram: null
   city_page: https://www.yorbalindaca.gov/194/Council-Member-Peggy-Huang
-- name: Janice Lim
-  position: Councilmember
-  district: null
-  email: jlim@yorbalindaca.gov
-  phone: 714-961-7110
-  city_profile: https://www.yorbalindaca.gov/195/Council-Member-Janice-Lim
-  photo_url: https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8521
-  bio: Councilwoman Janice Lim is a seasoned public servant and community advocate with over 20 years of volunteer experience.
-    Committed to preserving the charm and beauty of the city, she brings a unique blend of business acumen, architectural
-    insight, and civic dedication to her role. Councilwoman Lim began her professional journey with a successful career as
-    a senior financial analyst, contributing to major investment projects such as the Century Plaza Towers in Century City
-    and Vista Del Verde in Yorba Linda. After establishing herself in the financial sector, she ventured into entrepreneurship,
-    launching her own small business and collaborating on innovative projects, including a pioneering app that connects social
-    media influencers with brick-and-mortar retailers. Before stepping into public service, Lim also worked as an Account
-    Coordinator for Lancaster Group USA, where she led efforts to introduce designer fragrances to Southern California’s retail
-    market. During her postgraduate studies, she served as an Assistant Faculty member in USC’s Marshall School of Business,
-    Department of Finance & Business Economics.
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-  city_page: https://www.yorbalindaca.gov/195/Council-Member-Janice-Lim
-- name: Shivinder Singh
-  position: Councilmember
-  district: null
-  email: ssingh@yorbalindaca.gov
-  phone: 714-961-7110
-  city_profile: https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh
-  photo_url: https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8533
-  bio: Councilmember Shivinder Singh has been a dedicated public servant on Yorba Linda City Commissions since 2017. He began
-    as a Traffic Commissioner and transitioned to the Planning Commission, where he served as Chair in 2024. A devoted family
-    man and servant leader, Councilmember Singh is passionate about making a meaningful and lasting impact in his community.
-    Leveraging extensive expertise in business and technology, including Artificial Intelligence, Active Transportation, and
-    Intelligent Transportation Systems, he brings decades of proven leadership to preserve and enhance Yorba Linda’s legacy
-    as the “Land of Gracious Living.” Councilmember Singh currently serves as the Chief of the Transportation Management Systems
-    Maintenance Engineering Division for the State of California in Orange County. With over 25 years of distinguished state
-    service, he has played a pivotal role in advancing new technologies, as well as designing, constructing, and maintaining
-    Intelligent Transportation Systems across Southern California's freeways and streets, including in San Bernardino, Riverside,
-    Los Angeles, and Orange Counties. His efforts have ensured the safe, efficient, and effective movement of traffic, people,
-    and goods. Councilmember Singh has actively contributed to securing funding and grants for Capital Improvement projects
-    and collaborated with 34 cities in Orange County and organizations like OCTA, SANBAG, and RCTC. His work on Business Continuity
-    Plans (BCP) has been instrumental in securing resources for California's Transportation program, focusing on Intelligent
-    Transportation and Connected Autonomous Vehicle initiatives statewide—showcasing his commitment to innovation and progress
-    in the transportation field.
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-  city_page: https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh
 - name: Tara Campbell
   position: Councilmember
   district: null
@@ -123,9 +74,59 @@ members:
   website: null
   instagram: null
   city_page: https://www.yorbalindaca.gov/744/Mayor-Tara-Campbell
+- name: Janice Lim
+  position: Councilmember
+  district: null
+  email: jlim@yorbalindaca.gov
+  phone: 714-961-7110
+  city_profile: https://www.yorbalindaca.gov/195/Council-Member-Janice-Lim
+  photo_url: https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8521
+  bio: Councilwoman Janice Lim is a seasoned public servant and community advocate with over 20 years of volunteer experience.
+    Committed to preserving the charm and beauty of the city, she brings a unique blend of business acumen, architectural
+    insight, and civic dedication to her role. Councilwoman Lim began her professional journey with a successful career as
+    a senior financial analyst, contributing to major investment projects such as the Century Plaza Towers in Century City
+    and Vista Del Verde in Yorba Linda. After establishing herself in the financial sector, she ventured into entrepreneurship,
+    launching her own small business and collaborating on innovative projects, including a pioneering app that connects social
+    media influencers with brick-and-mortar retailers. Before stepping into public service, Lim also worked as an Account
+    Coordinator for Lancaster Group USA, where she led efforts to introduce designer fragrances to Southern California's retail
+    market. During her postgraduate studies, she served as an Assistant Faculty member in USC's Marshall School of Business,
+    Department of Finance & Business Economics.
+  term_start: 2022
+  term_end: 2026
+  website: null
+  instagram: null
+  city_page: https://www.yorbalindaca.gov/195/Council-Member-Janice-Lim
+- name: Shivinder Singh
+  position: Councilmember
+  district: null
+  email: ssingh@yorbalindaca.gov
+  phone: 714-961-7110
+  city_profile: https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh
+  photo_url: https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8533
+  bio: Councilmember Shivinder Singh has been a dedicated public servant on Yorba Linda City Commissions since 2017. He began
+    as a Traffic Commissioner and transitioned to the Planning Commission, where he served as Chair in 2024. A devoted family
+    man and servant leader, Councilmember Singh is passionate about making a meaningful and lasting impact in his community.
+    Leveraging extensive expertise in business and technology, including Artificial Intelligence, Active Transportation, and
+    Intelligent Transportation Systems, he brings decades of proven leadership to preserve and enhance Yorba Linda's legacy
+    as the "Land of Gracious Living." Councilmember Singh currently serves as the Chief of the Transportation Management Systems
+    Maintenance Engineering Division for the State of California in Orange County. With over 25 years of distinguished state
+    service, he has played a pivotal role in advancing new technologies, as well as designing, constructing, and maintaining
+    Intelligent Transportation Systems across Southern California's freeways and streets, including in San Bernardino, Riverside,
+    Los Angeles, and Orange Counties. His efforts have ensured the safe, efficient, and effective movement of traffic, people,
+    and goods. Councilmember Singh has actively contributed to securing funding and grants for Capital Improvement projects
+    and collaborated with 34 cities in Orange County and organizations like OCTA, SANBAG, and RCTC. His work on Business Continuity
+    Plans (BCP) has been instrumental in securing resources for California's Transportation program, focusing on Intelligent
+    Transportation and Connected Autonomous Vehicle initiatives statewide—showcasing his commitment to innovation and progress
+    in the transportation field.
+  term_start: 2024
+  term_end: 2028
+  website: null
+  instagram: null
+  city_page: https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 6:30 PM
+  closed_session_time: 5:00 PM
   location:
     name: City Council Chambers
     address: 4845 Casa Loma Avenue
@@ -133,7 +134,8 @@ meetings:
 portals:
   agenda_center: https://www.yorbalindaca.gov/197/Council-Meeting-Agendas-Minutes
   granicus: https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7
-  live_stream: https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7
+  live_stream: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
+  video_archive: https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7
 broadcast:
   cable_channels:
   - provider: Local Cable
@@ -142,17 +144,19 @@ broadcast:
     channel: '99'
   live_stream: https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7
 clerk:
+  name: Marcia Brown
   title: City Clerk
-  phone: (714) 961-7100
+  phone: (714) 961-7150
   email: cityclerk@yorbalindaca.gov
+  email_alt: mbrown@yorbalindaca.gov
 public_comment:
   in_person: true
-  remote_live: false
+  remote_live: true
   ecomment: false
   written_email: true
   time_limit: 5 minutes per speaker
   email: cityclerk@yorbalindaca.gov
-  notes: Include full name, city of residence, phone number, and agenda item
+  notes: Public Comment Card required; Zoom available for hybrid meetings; email subject must state "Written Public Comments"
 council:
   size: 5
   districts: 0
