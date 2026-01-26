@@ -3,8 +3,8 @@ city_name: La Palma
 last_updated: '2026-01-25'
 website: https://www.lapalmaca.gov
 council_url: https://www.lapalmaca.gov/66/City-Council
-email: ''
-phone: ''
+email: citycouncil@lapalmaca.gov
+phone: (714) 690-3334
 instagram: ''
 members:
 - name: Nitesh P. Patel
@@ -12,7 +12,7 @@ members:
   district: At-Large
   email: citycouncil@lapalmaca.gov
   phone: 714-690-3334
-  city_profile: https://www.lapalmaca.gov/716
+  city_profile: https://www.lapalmaca.gov/716/Nitesh-Patel-Mayor
   photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13971
   bio: null
   term_start: 2022
@@ -25,7 +25,7 @@ members:
   district: District 1
   email: citycouncil@lapalmaca.gov
   phone: 714-690-3334
-  city_profile: https://www.lapalmaca.gov/714
+  city_profile: https://www.lapalmaca.gov/714/Debbie-Baker-Mayor-Pro-Tem
   photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13972
   bio: null
   term_start: 2024
@@ -33,11 +33,12 @@ members:
   website: null
   instagram: null
   city_page: https://www.lapalmaca.gov/66/City-Council
-- name: Janet Keo
+- name: Janet Keo Conklin
   position: Councilmember
   email: citycouncil@lapalmaca.gov
   phone: 714-690-3334
   district: At-Large
+  city_profile: https://www.lapalmaca.gov/735/Janet-Keo-Conklin-Council-Member
   city_page: https://www.lapalmaca.gov/66/City-Council
   term_start: 2022
   term_end: 2026
@@ -47,7 +48,7 @@ members:
   district: District 5
   email: citycouncil@lapalmaca.gov
   phone: 714-690-3334
-  city_profile: https://www.lapalmaca.gov/717
+  city_profile: https://www.lapalmaca.gov/717/Mark-Waldman-Council-Member
   photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13973
   bio: null
   term_start: 2024
@@ -61,7 +62,7 @@ members:
   email: citycouncil@lapalmaca.gov
   phone: 714-690-3334
   city_profile: https://www.lapalmaca.gov/800/Vikesh-Patel-Council-Member
-  photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13971
+  photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13426
   bio: null
   term_start: 2024
   term_end: 2028
@@ -72,27 +73,31 @@ meetings:
   schedule: 1st Tuesday
   time: 6:30 PM
   location:
-    name: La Palma Civic Center
+    name: Council Chambers, City Hall
     address: 7822 Walker Street
     city_state_zip: La Palma, CA 90623
 portals:
-  agenda_center: https://www.lapalmaca.gov/72/Agendas-and-Minutes
-  live_stream: https://www.lapalmaca.gov/72/Agendas-and-Minutes
+  agendas: https://www.lapalmaca.gov/72/Agendas-and-Minutes
+  audio_archive: https://www.lapalmaca.gov/72/Agendas-and-Minutes
 broadcast:
-  live_stream: https://www.lapalmaca.gov/72/Agendas-and-Minutes
+  audio_stream: https://www.lapalmaca.gov/72/Agendas-and-Minutes
+  video: false
+  notes: Audio only - no video live stream
 clerk:
-  name: Kimberly Kenney
-  title: City Clerk
+  name: Norma Alley
+  title: City Clerk/Executive Assistant
   phone: (714) 690-3334
-  email: Kimberlyk@cityoflapalma.org
+  email: nalley@lapalmaca.gov
+  office_email: cityclerk@lapalmaca.gov
+  address: 7822 Walker Street, La Palma, CA 90623
 public_comment:
   in_person: true
   remote_live: false
   ecomment: false
   written_email: true
   time_limit: 5 minutes per speaker
-  email: Kimberlyk@cityoflapalma.org
-  deadline: 5:00 PM on meeting day
+  email: cityclerk@lapalmaca.gov
+  notes: Non-agenda items only during public comment. Agenda items referred to staff or placed on future agenda.
 council:
   size: 5
   districts: 3
