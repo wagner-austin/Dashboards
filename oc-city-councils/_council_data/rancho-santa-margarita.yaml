@@ -1,6 +1,6 @@
 city: rancho-santa-margarita
 city_name: Rancho Santa Margarita
-last_updated: '2026-01-25'
+last_updated: '2026-01-26'
 website: https://www.cityofrsm.org
 council_url: https://www.cityofrsm.org/160/Mayor-City-Council
 email: ''
@@ -11,7 +11,7 @@ members:
   position: Mayor
   district: At-Large
   email: tbeall@cityofrsm.org
-  phone: 949-635-1800
+  phone: 949-635-1800, ext. 6310
   city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
   photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12201
   bio: 'Tony is a licensed attorney and has been practicing law in California for 25 years. As a real estate transactional
@@ -31,7 +31,7 @@ members:
   position: Mayor Pro Tem
   district: District 1
   email: afigueroa@cityofrsm.org
-  phone: 949-635-1800
+  phone: 949-635-1800, ext. 6310
   city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
   photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=3823
   bio: Anne Figueroa is a 27-year resident of Rancho Santa Margarita. She and her husband, Dan, raised their three children
@@ -48,7 +48,7 @@ members:
 - name: Bradley J. McGirr
   position: Councilmember
   email: bmcgirr@cityofrsm.org
-  phone: 949-635-1800
+  phone: 949-635-1800, ext. 6310
   city_page: https://www.cityofrsm.org/Directory.aspx?EID=8
   bio: After years of service to the community, Brad was appointed to the Rancho Santa Margarita Planning Commission in December
     2009 and served as the Vice Chair in 2012. He was also appointed as a member of the City’s Economic Development Committee
@@ -64,9 +64,9 @@ members:
   position: Councilmember
   district: District 2
   email: jholloway@cityofrsm.org
-  phone: 949-635-1800
+  phone: 949-635-1800, ext. 6310
   city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
-  photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentId=11120
+  photo_url: https://www.cityofrsm.org/images/CityDirectory/8/Jerry%20Holloway.jpg
   bio: Dean of Students - Santa Margarita Catholic High School Social Studies Teacher - Santa Margarita Catholic High School
     Administration of Justice Instructor - Irvine Valley College
   term_start: 2022
@@ -78,7 +78,7 @@ members:
   position: Councilmember
   district: District 3
   email: kbaert@cityofrsm.org
-  phone: 949-635-1800
+  phone: 949-635-1800, ext. 6310
   city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
   photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12200
   bio: Keri has been a resident of Rancho Santa Margarita since 2002 and has dedicated herself to serving the community through
@@ -104,6 +104,7 @@ meetings:
     city_state_zip: Rancho Santa Margarita, CA 92688
 portals:
   agenda_center: https://www.cityofrsm.org/129/Agendas-Minutes
+  ecomment: https://www.cityofrsm.org/forms.aspx?FID=102
   granicus: https://cityofrsm.granicus.com/
   live_stream: https://cityofrsm.granicus.com/
 broadcast:
