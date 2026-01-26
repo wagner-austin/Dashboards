@@ -1,5 +1,5 @@
 city: orange
-last_updated: '2026-01-25'
+last_updated: '2026-01-26'
 members:
 - name: Dan Slater
   position: Mayor
@@ -19,6 +19,33 @@ members:
   term_start: 2022
   term_end: 2026
   photo_url: https://www.cityoforange.org/home/showpublishedimage/4262/638088790152230000
+- name: Arianna Barrios
+  position: Councilmember
+  district: District 1
+  city_page: https://www.cityoforange.org/our-city/local-government/city-council/councilmember-arianna-barrios
+  email: abarrios@cityoforange.org
+  phone: (714) 744-2211
+  term_start: 2022
+  term_end: 2026
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/2178/638088789806430000
+- name: Jon Dumitru
+  position: Councilmember
+  district: District 2
+  city_page: https://www.cityoforange.org/our-city/local-government/city-council/councilmember-jon-dumitru
+  email: jdumitru@cityoforange.org
+  phone: (714) 744-2211
+  term_start: 2024
+  term_end: 2028
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/2182/637776775870170000
+- name: Kathy Tavoularis
+  position: Councilmember
+  district: District 3
+  city_page: https://www.cityoforange.org/our-city/local-government/city-council/councilmember-kathy-tavoularis
+  email: ktavoularis@cityoforange.org
+  phone: (714) 744-2211
+  term_start: 2024
+  term_end: 2028
+  photo_url: https://www.cityoforange.org/home/showpublishedimage/2184/637776775876700000
 - name: Ana Gutierrez
   position: Councilmember
   district: District 5
@@ -28,65 +55,56 @@ members:
   term_start: 2024
   term_end: 2028
   photo_url: https://www.cityoforange.org/home/showpublishedimage/2176/638695101520570000
-- name: Arianna Barrios
-  position: Councilmember
-  district: District 1
-  city_page: https://www.cityoforange.org/our-city/local-government/city-council
-  email: abarrios@cityoforange.org
-  phone: (714) 744-2211
-  term_start: 2022
-  term_end: 2026
-  photo_url: https://www.cityoforange.org/home/showpublishedimage/2178/638088789806430000
 - name: John Gyllenhammer
   position: Councilmember
   district: District 6
-  city_page: https://www.cityoforange.org/our-city/local-government/city-council
+  city_page: https://www.cityoforange.org/our-city/local-government/city-council/councilmember-john-gyllenhammer
   email: jgyllenhammer@cityoforange.org
   phone: (714) 744-2211
   term_start: 2022
   term_end: 2026
   photo_url: https://www.cityoforange.org/home/showpublishedimage/4264/638695101297800000
-- name: Jon Dumitru
-  position: Councilmember
-  district: District 2
-  city_page: https://www.cityoforange.org/our-city/local-government/city-council
-  email: jdumitru@cityoforange.org
-  phone: (714) 744-2211
-  term_start: 2024
-  term_end: 2028
-  photo_url: https://www.cityoforange.org/home/showpublishedimage/2182/637776775870170000
-- name: Kathy Tavoularis
-  position: Councilmember
-  district: District 3
-  city_page: https://www.cityoforange.org/our-city/local-government/city-council
-  email: ktavoularis@cityoforange.org
-  phone: (714) 744-2211
-  term_start: 2024
-  term_end: 2028
-  photo_url: https://www.cityoforange.org/home/showpublishedimage/2184/637776775876700000
 city_name: Orange
 website: https://www.cityoforange.org
 council_url: https://www.cityoforange.org/our-city/local-government/city-council
 meetings:
   schedule: 2nd and 4th Tuesdays
-  time: 7:00 PM
+  time: 6:00 PM
+  closed_session_time: 5:00 PM
   location:
     name: City Council Chamber
     address: 300 E. Chapman Avenue
     city_state_zip: Orange, CA 92866
 portals:
+  agenda_center: https://cityoforange.legistar.com/Calendar.aspx
   granicus: https://cityoforange.granicus.com/ViewPublisher.php?view_id=2
+  video_archive: https://cityoforange.legistar.com/Page.aspx?M=Z
+  live_stream: https://www.cityoforange.org/residents/orange-tv3-live
+  ecomment: https://cityoforange.granicusideas.com/meetings
+broadcast:
+  cable_channels:
+  - provider: Spectrum
+    channel: '3'
+  - provider: AT&T U-verse
+    channel: '99'
+  live_stream: https://www.cityoforange.org/residents/orange-tv3-live
+  tv_channel: Discover Orange
 clerk:
-  title: City Clerk's Office
+  name: Pamela Coleman, CMC
+  title: City Clerk Services Director
+  deputy: Jennifer Connally, CMC
   phone: (714) 744-5500
-  email: cityclerk@cityoforange.org
+  fax: (714) 744-5515
+  email: clerkinfo@cityoforange.org
 public_comment:
   in_person: true
-  remote_live: true
+  remote_live: false
   written_email: true
   ecomment: true
   time_limit: 3 minutes per speaker
-  email: cityclerk@cityoforange.org
+  email: CCpubliccomment@cityoforange.org
+  ecomment_url: https://cityoforange.granicusideas.com/meetings
+  deadline: 3:00 PM on meeting day
 council:
   size: 7
   districts: 6
