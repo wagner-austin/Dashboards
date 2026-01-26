@@ -11,7 +11,7 @@ members:
   position: Mayor
   district: null
   email: Ted.Bui@fountainvalley.gov
-  phone: 714-593-4400
+  phone: (628) 266-8888
   city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=54
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19450
   bio: A long-time resident of Orange County, Ted is known for his dedication to fostering a safe and vibrant city. He has
@@ -25,10 +25,10 @@ members:
   instagram: null
   city_page: https://www.fountainvalley.gov/Directory.aspx?EID=54
 - name: Jim Cunneen
-  position: Mayor Pro Tem
+  position: Vice Mayor
   district: null
   email: Jim.Cunneen@fountainvalley.gov
-  phone: 714-593-4400
+  phone: (714) 593-4403
   city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=178
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19452
   bio: Jim Cunneen is currently serving in his first four-year term on the Fountain Valley City Council after being elected
@@ -53,7 +53,7 @@ members:
   position: Councilmember
   district: null
   email: Glenn.Grandis@fountainvalley.gov
-  phone: 714-593-4400
+  phone: (714) 593-4403
   city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=55
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19451
   bio: Glenn Grandis is a dedicated and engaged member of the Fountain Valley community, with a residency spanning 44 years.
@@ -73,7 +73,7 @@ members:
   position: Councilmember
   district: null
   email: kim.constantine@fountainvalley.gov
-  phone: 714-593-4400
+  phone: (714) 593-4403
   city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=152
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19449
   bio: Kim was born in Allentown, Pennsylvania.  After living for a while in Lebanon and Australia, her family moved to California.
@@ -93,7 +93,7 @@ members:
   position: Councilmember
   district: null
   email: patrick.harper@fountainvalley.gov
-  phone: 714-593-4400
+  phone: (714) 593-4403
   city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=153
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19453
   bio: Patrick Harper was elected to the Fountain Valley City Council in November of 2018 and was appointed Mayor in 2021.
@@ -133,15 +133,16 @@ broadcast:
 clerk:
   name: Rick Miller
   title: City Clerk
-  phone: (714) 593-4400
-  email: Rick.Miller@fountainvalley.org
+  phone: (714) 593-4445
+  fax: (714) 593-4494
+  email: Rick.Miller@fountainvalley.gov
 public_comment:
   in_person: true
   remote_live: true
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  email: Rick.Miller@fountainvalley.org
+  email: Rick.Miller@fountainvalley.gov
 council:
   size: 5
   districts: 0
