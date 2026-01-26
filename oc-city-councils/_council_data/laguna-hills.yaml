@@ -140,7 +140,7 @@ broadcast:
 clerk:
   name: Jennifer Lee, CMC
   title: City Clerk
-  phone: (949) 707-2630
+  phone: (949) 707-2635
   email: jlee@lagunahillsca.gov
   address: 24035 El Toro Road, Laguna Hills, CA 92653
 public_comment:
@@ -149,8 +149,10 @@ public_comment:
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  email: publiccomments@lagunahillsCA.gov
-  deadline: 5:00 PM on meeting day
+  email: jlee@lagunahillsca.gov
+  deadline: 2 hours prior to meeting
+  speaker_card: Pink "Request to Speak" form (voluntary)
+  notes: Email subject must include name and agenda item number. Clerk announces sender name and subject but does NOT read comments aloud. Text/social media comments not accepted.
 council:
   size: 5
   districts: 0
