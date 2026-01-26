@@ -1,81 +1,101 @@
 city: newport-beach
-last_updated: '2026-01-25'
+city_name: Newport Beach
+last_updated: '2026-01-26'
+website: https://www.newportbeachca.gov
+council_url: https://www.newportbeachca.gov/government/city-council
+email: citycouncil@newportbeachca.gov
+phone: (949) 644-3004
+instagram: ''
 members:
-- name: Joe Stapleton
+- name: Lauren Kleiman
   position: Mayor
-  district: District 4
-  email: jstapleton@newportbeachca.gov
-  phone: 949-644-3309
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-1
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61366/638073902344500000
+  district: District 6
+  email: lkleiman@newportbeachca.gov
+  phone: (949) 644-3004
+  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-6
+  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/69680/639025910187630000
   term_start: 2022
   term_end: 2026
 - name: Noah Blom
   position: Mayor Pro Tem
-  district: District 2
+  district: District 5
   email: nblom@newportbeachca.gov
-  phone: 949-644-3309
+  phone: (949) 644-3004
   city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-5
   photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61370/638073902352530000
+  term_start: 2024
+  term_end: 2028
+  notes: 2023 Mayor; term limit reached
+- name: Joe Stapleton
+  position: Councilmember
+  district: District 1
+  email: jstapleton@newportbeachca.gov
+  phone: (949) 644-3004
+  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-1
+  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61366/638073902344500000
+  term_start: 2022
+  term_end: 2026
+  notes: 2025 Mayor
+- name: Michelle Barto
+  position: Councilmember
+  district: District 2
+  email: mbarto@newportbeachca.gov
+  phone: (949) 644-3004
+  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-2
+  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/66048/638696179075330000
   term_start: 2024
   term_end: 2028
 - name: Erik Weigand
   position: Councilmember
   district: District 3
   email: eweigand@newportbeachca.gov
-  phone: 949-644-3309
+  phone: (949) 644-3004
   city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-3
   photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61364/638073902340330000
   term_start: 2022
   term_end: 2026
-- name: Lauren Kleiman
-  position: Councilmember
-  district: District 1
-  email: lkleiman@newportbeachca.gov
-  phone: 949-644-3309
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-6
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/69680/639025910187630000
-  term_start: 2022
-  term_end: 2026
-- name: Michelle Barto
-  position: Councilmember
-  district: District 5
-  email: mbarto@newportbeachca.gov
-  phone: 949-644-3309
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-2
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/66048/638696179075330000
-  term_start: 2024
-  term_end: 2028
 - name: Robyn Grant
   position: Councilmember
-  district: District 6
+  district: District 4
   email: rgrant@newportbeachca.gov
-  phone: 949-644-3309
+  phone: (949) 644-3004
   city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-4
   photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61372/638073902356470000
   term_start: 2022
   term_end: 2026
-- name: Sara Weber
+- name: Sara J. Weber
   position: Councilmember
   district: District 7
   email: sweber@newportbeachca.gov
-  phone: 949-644-3309
+  phone: (949) 644-3004
   city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-7
   photo_url: https://www.newportbeachca.gov/home/showpublishedimage/69660/639016589436300000
   term_start: 2024
   term_end: 2028
-city_name: Newport Beach
-website: https://www.newportbeachca.gov
-council_url: https://www.newportbeachca.gov/government/city-council
 meetings:
   schedule: 2nd and 4th Tuesdays
+  study_session_time: 4:00 PM
   time: 4:00 PM
+  dark_meetings: One meeting in August and December
   location:
     name: City Council Chambers
     address: 100 Civic Center Drive
     city_state_zip: Newport Beach, CA 92660
+  agenda_availability: 72 hours prior; packets available Thursday before meeting
 portals:
+  agenda_center: https://www.newportbeachca.gov/government/data-hub/agendas-minutes
+  youtube: https://youtube.com/playlist?list=PLzorGOSnQ7c2sblNcOnptOUb9K2cYuoj0
+  video_archive: https://ecms.newportbeachca.gov/Web/Browse.aspx?startid=691512&cnb=CityCouncil&cr=1
   granicus: https://newportbeach.granicus.com/ViewPublisher.php?view_id=10
+  live_stream: https://www.newportbeachca.gov/government/departments/public-information-office/nbtv/nbtv-live
+broadcast:
+  cable_channels:
+  - provider: Spectrum
+    channel: '3'
+  - provider: Cox
+    channel: '852'
+  rebroadcast: Sundays at 4:00 PM, Mondays at 12:00 PM, Tuesdays at 4:00 PM
+  live_stream: https://www.newportbeachca.gov/government/departments/public-information-office/nbtv/nbtv-live
 clerk:
   title: City Clerk's Office
   phone: (949) 644-3005
@@ -87,6 +107,8 @@ public_comment:
   ecomment: true
   time_limit: 3 minutes per speaker
   email: cityclerk@newportbeachca.gov
+  deadline: Monday at 5:00 PM before meeting (included in agenda packet)
+  late_deadline: 2:00 PM on meeting day (provided in hard copy)
 council:
   size: 7
   districts: 7
