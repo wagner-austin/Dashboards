@@ -2832,9 +2832,8 @@
     },
     "portals": {
       "agendas": "https://cityoflosalamitos.org/129/Agendas-Minutes",
-      "live_stream": "https://www.youtube.com/@cityoflosal",
-      "youtube": "https://www.youtube.com/@cityoflosal",
-      "tv": "https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3"
+      "live_stream": "https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3",
+      "youtube": "https://www.youtube.com/@cityoflosal"
     },
     "broadcast": {
       "cable_channels": [

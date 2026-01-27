@@ -114,9 +114,8 @@ meetings:
     city_state_zip: Los Alamitos, CA 90720
 portals:
   agendas: https://cityoflosalamitos.org/129/Agendas-Minutes
-  live_stream: https://www.youtube.com/@cityoflosal
+  live_stream: https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3
   youtube: https://www.youtube.com/@cityoflosal
-  tv: https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3
 broadcast:
   cable_channels:
   - provider: Local Cable
