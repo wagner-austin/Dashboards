@@ -1,18 +1,15 @@
 city: los-alamitos
 city_name: Los Alamitos
-last_updated: '2026-01-26'
 website: https://cityoflosalamitos.org
 council_url: https://cityoflosalamitos.org/165/City-Council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-26'
 members:
 - name: Tanya Doby
   position: Mayor
   district: District 1
   email: tdoby@cityoflosalamitos.org
   phone: (562) 431-3538 ext. 220
-  city_profile: https://cityoflosalamitos.org/165/City-Council
+  city_page: https://cityoflosalamitos.org/321/Tanya-Doby
   photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=2386
   bio: Tanya Doby has distinguished herself as a leader in Los Alamitos, earning recognition as a 2023 Woman of Distinction
     by both the State Senate and Assembly and Woman of the Year for her assembly district in 2024. Her journey began with
@@ -30,13 +27,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://cityoflosalamitos.org/321/Tanya-Doby
 - name: Jordan Nefulda
   position: Mayor Pro Tem
   district: District 3
   email: jnefulda@cityoflosalamitos.org
   phone: (562) 431-3538 ext. 220
-  city_profile: https://cityoflosalamitos.org/165/City-Council
+  city_page: https://cityoflosalamitos.org/323/Jordan-Nefulda
   photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=2384
   bio: Mr. Nefulda earned his Bachelor's in Business Administration from California State University, Long Beach, and his
     Juris Doctorate from Chapman University Fowler School of Law. While he always envisioned a career in law, he didn't initially
@@ -54,30 +50,28 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://cityoflosalamitos.org/323/Jordan-Nefulda
 - name: Gary Loe
   position: Councilmember
   district: District 2
   email: gloe@cityoflosalamitos.org
   phone: (562) 431-3538 ext. 220
-  city_profile: https://cityoflosalamitos.org/630/Gary-Loe
+  city_page: https://cityoflosalamitos.org/630/Gary-Loe
   photo_url: null
-  bio: Gary Loe is a lifelong Los Alamitos resident who attended Hopkinson Elementary, Oak Middle School, and Los Alamitos High
-    School. He earned a B.A. in Finance from CSUDH and an MBA from Pepperdine University. He works in financial services as a
-    Foreign Exchange Trader at California Bank & Trust, bringing 30 years of leadership experience. For over 17 years, he served
-    on the Los Alamitos Planning Commission. He and his wife Marie raised four children who attended Los Alamitos schools. His
-    priorities include recreation, education, public safety, and city services.
+  bio: Gary Loe is a lifelong Los Alamitos resident who attended Hopkinson Elementary, Oak Middle School, and Los Alamitos
+    High School. He earned a B.A. in Finance from CSUDH and an MBA from Pepperdine University. He works in financial services
+    as a Foreign Exchange Trader at California Bank & Trust, bringing 30 years of leadership experience. For over 17 years,
+    he served on the Los Alamitos Planning Commission. He and his wife Marie raised four children who attended Los Alamitos
+    schools. His priorities include recreation, education, public safety, and city services.
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://cityoflosalamitos.org/630/Gary-Loe
 - name: Shelley Hasselbrink
   position: Councilmember
   district: District 4
   email: shasselbrink@cityoflosalamitos.org
   phone: (562) 431-3538 ext. 220
-  city_profile: https://cityoflosalamitos.org/165/City-Council
+  city_page: https://cityoflosalamitos.org/320/Shelley-Hasselbrink
   photo_url: https://cityoflosalamitos.org/ImageRepository/Document?documentID=2385
   bio: Shelley Hasselbrink was first elected to the Los Alamitos City Council in 2014 and has proudly served as Mayor in 2017,
     2022, and 2025. She brings a strong background in business and leadership to her role, holding a Bachelor of Science degree
@@ -94,24 +88,23 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://cityoflosalamitos.org/320/Shelley-Hasselbrink
 - name: Emily Hibard
   position: Councilmember
   district: District 5
   email: ehibard@cityoflosalamitos.org
   phone: (562) 431-3538 ext. 220
-  city_profile: https://cityoflosalamitos.org/496/Emily-Hibard
+  city_page: https://cityoflosalamitos.org/496/Emily-Hibard
   photo_url: null
   bio: Emily Hibard, MPA was elected in 2022 and represents Rossmoor Highlands, Parkewood, Apartment Row, and the Joint Forces
-    Training Base. She earned a B.A. in Political Science from Azusa Pacific University and an MPA from CSU Northridge. She also
-    studied Modern Political Thought at Oxford University. Before being elected, she served on the Studio City Neighborhood Council
-    and Los Alamitos Cable Television Commission. She works in manufacturing, media, and music, owns a commercial recording studio,
-    and is a member of the Recording Academy Los Angeles Chapter. Her family owns a manufacturing company started in 1949.
+    Training Base. She earned a B.A. in Political Science from Azusa Pacific University and an MPA from CSU Northridge. She
+    also studied Modern Political Thought at Oxford University. Before being elected, she served on the Studio City Neighborhood
+    Council and Los Alamitos Cable Television Commission. She works in manufacturing, media, and music, owns a commercial
+    recording studio, and is a member of the Recording Academy Los Angeles Chapter. Her family owns a manufacturing company
+    started in 1949.
   term_start: 2022
   term_end: 2026
   website: https://emilyserves.com/
   instagram: null
-  city_page: https://cityoflosalamitos.org/496/Emily-Hibard
 meetings:
   schedule: 3rd Monday
   time: 6:00 PM
@@ -120,10 +113,10 @@ meetings:
     address: 3191 Katella Avenue
     city_state_zip: Los Alamitos, CA 90720
 portals:
-  agenda_center: https://cityoflosalamitos.org/129/Agendas-Minutes
+  agendas: https://cityoflosalamitos.org/129/Agendas-Minutes
+  live_stream: https://www.youtube.com/@cityoflosal
   youtube: https://www.youtube.com/@cityoflosal
   tv: https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3
-  live_stream: https://www.youtube.com/@cityoflosal
 broadcast:
   cable_channels:
   - provider: Local Cable
@@ -156,3 +149,6 @@ elections:
   - District 5
   term_length: 4
   election_system: by-district
+email: ''
+phone: ''
+instagram: ''
