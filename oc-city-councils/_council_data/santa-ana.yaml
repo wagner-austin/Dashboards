@@ -177,7 +177,7 @@ portals:
   live_stream: https://www.santa-ana.org/agendas-and-minutes/
   video_archive: https://santaana.granicus.com/ViewPublisher.php?view_id=2
   youtube: https://youtube.com/@cityofsantaanavideos
-  ecomment: mailto:eComment@santa-ana.org
+  ecomment: null
   primegov: https://santa-ana.primegov.com/Portal/Meeting
 broadcast:
   cable_channels:
