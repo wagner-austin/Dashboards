@@ -1,18 +1,15 @@
 city: fountain-valley
 city_name: Fountain Valley
-last_updated: '2026-01-25'
 website: https://www.fountainvalley.gov
 council_url: https://www.fountainvalley.gov/156/City-Council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-25'
 members:
 - name: Ted Bui
   position: Mayor
-  district: null
+  district: At-Large
   email: Ted.Bui@fountainvalley.gov
   phone: (628) 266-8888
-  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=54
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=54
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19450
   bio: A long-time resident of Orange County, Ted is known for his dedication to fostering a safe and vibrant city. He has
     worked tirelessly to ensure fiscal responsibility, support local businesses, and promote initiatives that enhance the
@@ -23,13 +20,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=54
 - name: Jim Cunneen
   position: Vice Mayor
-  district: null
+  district: At-Large
   email: Jim.Cunneen@fountainvalley.gov
   phone: (714) 593-4403
-  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=178
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=178
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19452
   bio: Jim Cunneen is currently serving in his first four-year term on the Fountain Valley City Council after being elected
     in 2022.  Prior to this , he served two consecutive four-year terms on the Fountain Valley School District Board of Trustees,
@@ -48,13 +44,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=178
 - name: Glenn Grandis
   position: Councilmember
-  district: null
+  district: At-Large
   email: Glenn.Grandis@fountainvalley.gov
   phone: (714) 593-4403
-  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=55
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=55
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19451
   bio: Glenn Grandis is a dedicated and engaged member of the Fountain Valley community, with a residency spanning 44 years.
     His roots in the city run deep, having attended Fountain Valley High School, where he began his strong connection to the
@@ -68,13 +63,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=55
 - name: Kim Constantine
   position: Councilmember
-  district: null
+  district: At-Large
   email: kim.constantine@fountainvalley.gov
   phone: (714) 593-4403
-  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=152
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=152
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19449
   bio: Kim was born in Allentown, Pennsylvania.  After living for a while in Lebanon and Australia, her family moved to California.
      She’s lived in Fountain Valley for many years and is a member of several local organizations. One of her most proud moments
@@ -88,13 +82,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=152
 - name: Patrick Harper
   position: Councilmember
-  district: null
+  district: At-Large
   email: patrick.harper@fountainvalley.gov
   phone: (714) 593-4403
-  city_profile: https://www.fountainvalley.gov/Directory.aspx?EID=153
+  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=153
   photo_url: https://www.fountainvalley.gov/ImageRepository/Document?documentId=19453
   bio: Patrick Harper was elected to the Fountain Valley City Council in November of 2018 and was appointed Mayor in 2021.
     Orange County's City Selection Committee reappointed Harper as a city council representative to the OCTA Board of Directors
@@ -110,7 +103,6 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.fountainvalley.gov/Directory.aspx?EID=153
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 6:00 PM
@@ -123,7 +115,7 @@ meetings:
     zoom_id: 851 5107 5391
     zoom_passcode: '883147'
 portals:
-  agenda_center: https://www.fountainvalley.gov/AgendaCenter/City-Council-2
+  agendas: https://www.fountainvalley.gov/AgendaCenter/City-Council-2
   live_stream: https://www.fountainvalley.gov/213/Watch-FV-Television
 broadcast:
   cable_channels:
@@ -155,3 +147,6 @@ elections:
   - At-Large (3 seats)
   term_length: 4
   election_system: at-large
+email: ''
+phone: ''
+instagram: ''
