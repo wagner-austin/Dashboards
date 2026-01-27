@@ -1,90 +1,83 @@
 city: dana-point
 city_name: Dana Point
-last_updated: '2026-01-25'
 website: https://www.danapoint.org
 council_url: https://www.danapoint.org/department/city-council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-25'
 members:
 - name: John Gabbard
   position: Mayor
   district: District 1
   email: jgabbard@danapoint.org
   phone: (949) 248-3500
-  city_profile: https://www.danapoint.org/City-Government/City-Council/John-Gabbard
+  city_page: https://www.danapoint.org/City-Government/City-Council/John-Gabbard
   photo_url: https://www.danapoint.org/files/assets/city/v/3/city-council/images/gabbard-2.jpg?dimension=pageimage&w=480
-  bio: John Gabbard was born in Kokomo, Indiana and raised in rural farmlands. He earned a bachelor's from Wilmington College and
-    an MBA from USC. He served in the Marine Corps from 1988-2005, with deployments including Operations Joint Endeavor, Assured
-    Response, Quick Response, Southern Watch and Enduring Freedom. He moved to Dana Point in 2005 and served as HOA President at
-    Point Monarch and VP of the Niguel Shores Men's Club. He served on the Planning Commission in 2021, became chair in 2022, and
-    was sworn into City Council in 2023. His priorities include public safety and supporting local businesses.
+  bio: John Gabbard was born in Kokomo, Indiana and raised in rural farmlands. He earned a bachelor's from Wilmington College
+    and an MBA from USC. He served in the Marine Corps from 1988-2005, with deployments including Operations Joint Endeavor,
+    Assured Response, Quick Response, Southern Watch and Enduring Freedom. He moved to Dana Point in 2005 and served as HOA
+    President at Point Monarch and VP of the Niguel Shores Men's Club. He served on the Planning Commission in 2021, became
+    chair in 2022, and was sworn into City Council in 2023. His priorities include public safety and supporting local businesses.
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.danapoint.org/City-Government/City-Council/John-Gabbard
 - name: Mike Frost
   position: Mayor Pro Tem
   district: District 4
   email: mfrost@danapoint.org
   phone: (949) 248-3500
-  city_profile: https://www.danapoint.org/City-Government/City-Council/Mike-Frost
+  city_page: https://www.danapoint.org/City-Government/City-Council/Mike-Frost
   photo_url: https://www.danapoint.org/files/assets/city/v/4/city-council/images/frost-2.jpg?dimension=pageimage&w=480
   bio: Mike Frost and his family have lived in Lantern Village since 2009. He began serving on the Lantern Village Association
     Community Board in 2010. In 2013, he started serving on the City's Traffic Improvement Sub-Committee analyzing high-impact
-    traffic issues. He has served on the City's Financial Review Committee since 2019. He was first elected to City Council in
-    2020 and served as Mayor in 2023. His professional background is in finance and accounting. He and his wife Heidi were married
-    at the Ocean Institute in 2011 and have two children who attend local schools.
+    traffic issues. He has served on the City's Financial Review Committee since 2019. He was first elected to City Council
+    in 2020 and served as Mayor in 2023. His professional background is in finance and accounting. He and his wife Heidi were
+    married at the Ocean Institute in 2011 and have two children who attend local schools.
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.danapoint.org/City-Government/City-Council/Mike-Frost
 - name: Jamey M. Federico
   position: Councilmember
   district: District 3
   email: jfederico@danapoint.org
   phone: (949) 248-3500
-  city_profile: https://www.danapoint.org/City-Government/City-Council/Jamey-M.-Federico
+  city_page: https://www.danapoint.org/City-Government/City-Council/Jamey-M.-Federico
   photo_url: https://www.danapoint.org/files/assets/city/v/5/city-council/images/federico-2.jpg?dimension=pageimage&w=480
-  bio: Jamey Federico was elected to the Dana Point City Council on November 4, 2018 and sworn in on December 6, 2018. He served
-    nearly 22 years in the U.S. Marine Corps, first as an infantry officer and later as an AH-1Z Cobra attack helicopter pilot,
-    completing four combat tours in Iraq and Afghanistan. He retired as a Lieutenant Colonel in 2017.
+  bio: Jamey Federico was elected to the Dana Point City Council on November 4, 2018 and sworn in on December 6, 2018. He
+    served nearly 22 years in the U.S. Marine Corps, first as an infantry officer and later as an AH-1Z Cobra attack helicopter
+    pilot, completing four combat tours in Iraq and Afghanistan. He retired as a Lieutenant Colonel in 2017.
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.danapoint.org/City-Government/City-Council/Jamey-M.-Federico
 - name: Matthew Pagano
   position: Councilmember
   district: District 2
   email: mpagano@danapoint.org
   phone: (949) 248-3500
-  city_profile: https://www.danapoint.org/City-Government/City-Council/Matthew-Pagano
+  city_page: https://www.danapoint.org/City-Government/City-Council/Matthew-Pagano
   photo_url: https://www.danapoint.org/files/assets/city/v/5/city-council/images/pagano-2.jpg?dimension=pageimage&w=480
-  bio: Matthew Pagano was born and raised in Dana Point. He attended R.H. Dana Elementary, Marco Forester Middle School, and Dana
-    Hills High School along with his wife. They have four children who attend St. Edwards Parish School. He served as Mayor in 2025.
+  bio: Matthew Pagano was born and raised in Dana Point. He attended R.H. Dana Elementary, Marco Forester Middle School, and
+    Dana Hills High School along with his wife. They have four children who attend St. Edwards Parish School. He served as
+    Mayor in 2025.
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.danapoint.org/City-Government/City-Council/Matthew-Pagano
 - name: Michael Villar
   position: Councilmember
   district: District 5
   email: mvillar@danapoint.org
   phone: (949) 248-3500
-  city_profile: https://www.danapoint.org/City-Government/City-Council/Michael-Villar
+  city_page: https://www.danapoint.org/City-Government/City-Council/Michael-Villar
   photo_url: https://www.danapoint.org/files/assets/city/v/11/city-council/images/villar-3.jpg?dimension=pageimage&w=480
-  bio: Michael Villar is a longtime Capo Beach resident, a retired USMC helicopter pilot and commissioned officer, and is currently
-    a Lean Director in the construction industry. He earned his undergraduate degree in Sociology from UCLA and his master's degree
-    in Computer Science from the Naval Postgraduate School. He was elected in 2024.
+  bio: Michael Villar is a longtime Capo Beach resident, a retired USMC helicopter pilot and commissioned officer, and is
+    currently a Lean Director in the construction industry. He earned his undergraduate degree in Sociology from UCLA and
+    his master's degree in Computer Science from the Naval Postgraduate School. He was elected in 2024.
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.danapoint.org/City-Government/City-Council/Michael-Villar
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 6:00 PM
@@ -93,9 +86,9 @@ meetings:
     address: 33282 Golden Lantern, Suite 210
     city_state_zip: Dana Point, CA 92629
 portals:
-  youtube: https://www.youtube.com/channel/UCdNW_5KL2Q7lC-DFHUyFr7A
   agendas: https://www.danapoint.org/department/city-council/meetings-agendas-minutes
   live_stream: https://www.youtube.com/channel/UCdNW_5KL2Q7lC-DFHUyFr7A
+  youtube: https://www.youtube.com/channel/UCdNW_5KL2Q7lC-DFHUyFr7A
 broadcast:
   cable_channels:
   - provider: Cox
@@ -131,3 +124,6 @@ elections:
   - District 3
   term_length: 4
   election_system: by-district
+email: ''
+phone: ''
+instagram: ''
