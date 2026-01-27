@@ -1,18 +1,15 @@
 city: garden-grove
 city_name: Garden Grove
-last_updated: '2026-01-25'
 website: https://ggcity.org
 council_url: https://ggcity.org/city-council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-25'
 members:
 - name: Stephanie Klopfenstein
   position: Mayor
   district: Citywide
   email: stephaniek@ggcity.org
   phone: (714) 741-5104
-  city_profile: https://ggcity.org/city-council/stephanie-klopfenstein
+  city_page: https://ggcity.org/city-council/stephanie-klopfenstein
   photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2025-01/mayor_stephanie_klopfenstein.jpg?itok=YdMRUkng
   bio: In 2024, Stephanie Klopfenstein became Garden Grove's first elected female mayor. Prior to becoming mayor, she served
     as the District 5 councilmember since 2016. Born and raised in Garden Grove, her family roots trace back to the town’s
@@ -25,13 +22,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://ggcity.org/city-council/stephanie-klopfenstein
 - name: George S. Brietigam III
   position: Mayor Pro Tem
   district: District 1
   email: georgeb@ggcity.org
   phone: (714) 741-5104
-  city_profile: https://ggcity.org/city-council/george-brietigam
+  city_page: https://ggcity.org/city-council/george-brietigam
   photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2019-03/george-brietigam.jpg?itok=2SfCVcc4
   bio: On November 6, 2018, George S. Brietigam III was elected to the Garden Grove City Council. Prior to that, he had formerly
     served for 20 years as a volunteer City Commissioner. He served as Chairman for the City's Planning Commission, as well
@@ -49,13 +45,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://ggcity.org/city-council/george-brietigam
 - name: Ariana Arestegui
   position: Councilmember
   district: District 6
   email: arianaa@ggcity.org
   phone: (714) 741-5104
-  city_profile: https://ggcity.org/city-council/ariana-arestegui
+  city_page: https://ggcity.org/city-council/ariana-arestegui
   photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2025-01/aristegui.jpg?itok=EyLlH4Rr
   bio: Born and raised in Garden Grove, Ariana Arestegui was elected to the Garden Grove City Council in 2024. She has long
     been committed to public service in the City of Garden Grove, having served on the Garden Grove Police Department Chief’s
@@ -69,13 +64,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://ggcity.org/city-council/ariana-arestegui
 - name: Cindy Ngoc Tran
   position: Councilmember
   district: District 3
   email: cindyt@ggcity.org
   phone: (714) 741-5104
-  city_profile: https://ggcity.org/city-council/cindy-tran
+  city_page: https://ggcity.org/city-council/cindy-tran
   photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2023-01/cindy.jpg?itok=E1BbH5ac
   bio: Cindy Ngoc Tran was elected to the city council in 2022. Born in Vietnam, she has been a Garden Grove resident since
     2009. After five years of active duty with the United States Navy, Council Member Tran began a career with the Boeing
@@ -89,13 +83,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://ggcity.org/city-council/cindy-tran
 - name: Joe DoVinh
   position: Councilmember
   district: District 4
   email: joed@ggcity.org
   phone: (714) 741-5104
-  city_profile: https://ggcity.org/city-council/joe-dovinh
+  city_page: https://ggcity.org/city-council/joe-dovinh
   photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2023-01/0n4a1706.jpg?itok=MGoTobSr
   bio: Dr. Joseph T. DoVinh, JD was elected to the city council in 2022. Prior to joining the city council, he served the
     City of Garden Grove as a planning commissioner from 2012 to 2013. In April 1975, his family was evacuated from war-torn
@@ -110,13 +103,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://ggcity.org/city-council/joe-dovinh
 - name: Phillip Nguyen
   position: Councilmember
   district: District 2
   email: phillipn@ggcity.org
   phone: (714) 741-5104
-  city_profile: https://ggcity.org/city-council/phillip-nguyen
+  city_page: https://ggcity.org/city-council/phillip-nguyen
   photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2025-01/pnguyen.jpg?itok=nuxppIu5
   bio: From Vietnam who fled the war-torn country as a teenager, Council Member Nguyen arrived in the United States, living
     in a military refugee camp in Pennsylvania. There he was adopted by an American family then relocated to Florida, where
@@ -128,8 +120,14 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://ggcity.org/city-council/phillip-nguyen
-- bio: Yesenia Muñeton was elected to the city council in 2024, and is the first Latina to represent District 5. Born and
+- name: Yesenia Muñeton
+  position: Councilmember
+  district: District 5
+  email: yeseniam@ggcity.org
+  phone: (714) 741-5104
+  city_page: https://ggcity.org/city-council/yesenia-muneton
+  photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2025-01/ymuneton.jpg?itok=mCU21BsW
+  bio: Yesenia Muñeton was elected to the city council in 2024, and is the first Latina to represent District 5. Born and
     raised in Garden Grove, Council Member Muñeton attended Skylark Elementary, Doig Intermediate, and Santiago High School.
     She went on to earn a bachelor’s degree from CSU Fullerton and a Master of Arts from Chapman University. She is the first
     in her family to receive a college degree. Council Member Muñeton is passionate about educational equity and believes
@@ -137,15 +135,8 @@ members:
     lead instructor for the Boys and Girls Club in Garden Grove, she has built strong connections across the city and made
     a lasting impact on local youth and families. Together with her husband Walter and their two children, Council Member
     Muñeton and her family enjoy spending their free time outdoors, serving their community, and trying new Garden Grove restaurants.
-  name: Yesenia Muñeton
-  position: Councilmember
-  email: yeseniam@ggcity.org
-  phone: (714) 741-5104
-  photo_url: https://ggcity.org/sites/default/files/styles/medium/public/2025-01/ymuneton.jpg?itok=mCU21BsW
   term_start: 2024
   term_end: 2028
-  district: District 5
-  city_page: https://ggcity.org/city-council/yesenia-muneton
 meetings:
   schedule: 2nd and 4th Tuesdays
   time: 5:30 PM
@@ -154,7 +145,6 @@ meetings:
     address: 11300 Stanford Avenue
     city_state_zip: Garden Grove, CA 92840
 portals:
-  granicus: https://gardengrove.granicus.com/ViewPublisher.php?view_id=1
   agendas: https://agendasuite.org/iip/gardengrove
   live_stream: https://ggtv3-live.ggcity.org
   video_archive: https://ggcity.org/ggtv3/videos
@@ -192,3 +182,6 @@ elections:
   - District 4
   election_system: by-district
   term_length: 4
+email: ''
+phone: ''
+instagram: ''
