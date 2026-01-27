@@ -1,19 +1,15 @@
 city: seal-beach
 city_name: Seal Beach
-last_updated: '2026-01-26'
 website: https://www.sealbeachca.gov
 council_url: https://www.sealbeachca.gov/Government/City-Council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-26'
 members:
 - name: Lisa Landau
   position: Mayor
   district: District 3
   email: llandau@sealbeachca.gov
   phone: (562) 431-2527 x1503
-  phone_alt: (714) 656-8000
-  city_profile: https://www.sealbeachca.gov/Government/City-Council
+  city_page: https://www.sealbeachca.gov/Government/City-Council
   photo_url: https://www.sealbeachca.gov/portals/0/Documents/128021.jpeg?ver=2023-03-30-084054-510
   bio: Finished his Leo career at 17 yrs. old with the most community service hours ever served in the 20-year history of
     the Leo program in Seal Beach. The Seal Beach Chamber of Commerce provides a healthy environment to sustain, promote,
@@ -22,14 +18,13 @@ members:
   term_end: 2026
   website: https://lisaforsealbeach.com
   instagram: null
-  city_page: https://www.sealbeachca.gov/Government/City-Council
+  phone_alt: (714) 656-8000
 - name: Ben Wong
   position: Mayor Pro Tem
   district: District 2
   email: bwong@sealbeachca.gov
   phone: (562) 431-2527 x1502
-  phone_alt: (714) 655-4415
-  city_profile: https://www.sealbeachca.gov/Government/City-Council
+  city_page: https://www.sealbeachca.gov/Government/City-Council
   photo_url: https://www.sealbeachca.gov/portals/0/Images/Government/City%20Council/Wong_c.jpg?ver=2024-12-10-141231-117
   bio: is a crime." I strongly support law enforcement in keeping our community safe and protecting businesses from shoplifting.
     Well-balanced Budget We need to find new streams of revenue by encouraging businesses to continue to invest in Seal Beach
@@ -38,49 +33,46 @@ members:
   term_end: 2028
   website: https://sealbeachben.com
   instagram: null
-  city_page: https://www.sealbeachca.gov/Government/City-Council
+  phone_alt: (714) 655-4415
 - name: Joe Kalmick
   position: Councilmember
   district: District 1
   email: jkalmick@sealbeachca.gov
   phone: (562) 431-2527 x1501
-  phone_alt: (562) 397-4124
-  city_profile: https://www.sealbeachca.gov/Government/City-Council
+  city_page: https://www.sealbeachca.gov/Government/City-Council
   photo_url: https://www.sealbeachca.gov/LinkClick.aspx?fileticket=13AaEF_cf6A%3d&portalid=0
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.sealbeachca.gov/Government/City-Council
+  phone_alt: (562) 397-4124
 - name: Patty Senecal
   position: Councilmember
   district: District 4
   email: psenecal@sealbeachca.gov
   phone: (562) 431-2527 x1504
-  phone_alt: (310) 773-1913
-  city_profile: https://www.sealbeachca.gov/Government/City-Council
+  city_page: https://www.sealbeachca.gov/Government/City-Council
   photo_url: https://www.sealbeachca.gov/portals/0/Images/Government/City%20Council/Senecal_2025_c.jpg?ver=2024-12-10-141231-117
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.sealbeachca.gov/Government/City-Council
+  phone_alt: (310) 773-1913
 - name: Nathan Steele
   position: Councilmember
   district: District 5
   email: nsteele@sealbeachca.gov
   phone: (562) 431-2527 x1505
-  phone_alt: (714) 474-1272
-  city_profile: https://www.sealbeachca.gov/Government/City-Council
+  city_page: https://www.sealbeachca.gov/Government/City-Council
   photo_url: https://www.sealbeachca.gov/portals/0/Documents/Councilman%20Steele.jpg?ver=2023-03-27-111034-577
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.sealbeachca.gov/Government/City-Council
+  phone_alt: (714) 474-1272
 meetings:
   schedule: 2nd and 4th Mondays
   time: 7:00 PM
@@ -90,9 +82,9 @@ meetings:
     address: 211 Eighth Street
     city_state_zip: Seal Beach, CA 90740
 portals:
-  agenda_center: https://www.sealbeachca.gov/Government/Agendas-Notices-Meeting-Videos/Council-Commission-Meetings
-  minutes: http://pubrec.sealbeachca.gov/WebLink/Browse.aspx?startid=1990
+  agendas: https://www.sealbeachca.gov/Government/Agendas-Notices-Meeting-Videos/Council-Commission-Meetings
   youtube: https://youtube.com/@cityofsealbeachcouncilchambers
+  minutes: http://pubrec.sealbeachca.gov/WebLink/Browse.aspx?startid=1990
   e_records: http://pubrec.sealbeachca.gov/WebLink8/
   public_records: https://cityofsealbeach.nextrequest.com
 broadcast:
@@ -129,3 +121,6 @@ elections:
   - District 5
   term_length: 4
   election_system: district
+email: ''
+phone: ''
+instagram: ''
