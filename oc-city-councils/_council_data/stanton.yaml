@@ -1,18 +1,15 @@
 city: stanton
 city_name: Stanton
-last_updated: '2026-01-26'
 website: https://www.stantonca.gov
 council_url: https://www.stantonca.gov/government/city_council.php
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-26'
 members:
 - name: David J. Shawver
   position: Mayor
   district: At-Large
   email: DShawver@StantonCA.gov
   phone: (714) 379-9222
-  city_profile: https://www.stantonca.gov/government/city_council.php
+  city_page: https://www.stantonca.gov/government/bio-dshawver.php
   photo_url: https://www.stantonca.gov/revize_photo_gallery/Government/City Council/David Shawver.jpg?t=202505230901400
   bio: Mayor David John Shawver has lived in the Stanton community for 47 years, where he and his wife Jennifer raised their
     family of David, Matthew, Stephanie, Katrina and Joseph. Today three still live in Stanton and the grandkids attend local
@@ -31,13 +28,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.stantonca.gov/government/bio-dshawver.php
 - name: Gary Taylor
   position: Mayor Pro Tem
   district: District 3
   email: GTaylor@StantonCA.gov
   phone: (714) 379-9222
-  city_profile: https://www.stantonca.gov/government/city_council.php
+  city_page: https://www.stantonca.gov/government/bio-gtaylor.php
   photo_url: https://www.stantonca.gov/revize_photo_gallery/Government/City Council/Gary Taylor.jpg?t=202505230901430
   bio: Mr. Gary Taylor grew up in Anaheim and attended local schools. He graduated from Cal State Fullerton with a BA and
     later from Webster University in Irvine with a MA in Management. Mr. Taylor, his wife Lynne, and two sons moved to Stanton
@@ -48,26 +44,24 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.stantonca.gov/government/bio-gtaylor.php
 - name: Donald Torres
   position: Councilmember
   district: District 1
   email: DTorres@StantonCA.gov
   phone: (714) 379-9222
-  city_profile: https://www.stantonca.gov/government/city_council.php
+  city_page: https://www.stantonca.gov/government/city_council.php
   photo_url: https://www.stantonca.gov/Document_center/City Council/Untitled design (17).png?t=202505230902200
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.stantonca.gov/government/city_council.php
 - name: Victor Barrios
   position: Councilmember
   district: District 2
   email: VBarrios@StantonCA.gov
   phone: (714) 379-9222
-  city_profile: https://www.stantonca.gov/government/city_council.php
+  city_page: https://www.stantonca.gov/government/bio_for_victor_barrios.php
   photo_url: https://www.stantonca.gov/V.Barrios.jpg?t=202508251920020
   bio: Victor Barrios was born in the City of Stanton, and he attended local schools in the area. He has a Bachelor of Science
     in Kinesiology from Cal State Fullerton, Masters in Special Education from National University, Credential Ed Specialist
@@ -81,13 +75,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.stantonca.gov/government/bio_for_victor_barrios.php
 - name: John D. Warren
   position: Councilmember
   district: District 4
   email: JOHNWarren@StantonCA.gov
   phone: (714) 379-9222
-  city_profile: https://www.stantonca.gov/government/city_council.php
+  city_page: https://www.stantonca.gov/government/bio_for_john_d_warren.php
   photo_url: https://www.stantonca.gov/JDWarren2 - Copy.jpg?t=202505230901480
   bio: John Douglas Warren is a third-generation Stanton resident and a proud graduate of local public schools, having attended
     Bryant Elementary, Alamitos Intermediate, and Rancho Alamitos High School. His commitment to public service began with
@@ -102,10 +95,10 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.stantonca.gov/government/bio_for_john_d_warren.php
 meetings:
   schedule: 2nd and 4th Tuesdays
   time: 6:30 PM
+  closed_session_time: 5:30 PM
   schedule_notes: No meeting on 4th Tuesday of December
   location:
     name: City Council Chambers
@@ -118,8 +111,13 @@ meetings:
     phone_numbers:
     - 669-444-9171
 portals:
-  agenda_center: https://www.stantonca.gov/government/agendas___minutes/city_council.php
-  youtube: https://youtube.com/@cityofstanton
+  agendas: https://www.stantonca.gov/government/agendas___minutes/city_council.php
+  live_stream: https://us02web.zoom.us/j/84528780625?pwd=kMyEtwVcsndZFIkYaaPvseeu35XqBf.1
+  youtube: https://www.youtube.com/@CityofStanton
+broadcast:
+  cable_channels: []
+  live_stream: https://us02web.zoom.us/j/84528780625?pwd=kMyEtwVcsndZFIkYaaPvseeu35XqBf.1
+  notes: No cable TV; meetings streamed via Zoom and archived on YouTube
 clerk:
   name: Patricia Vazquez
   title: City Clerk
@@ -149,3 +147,6 @@ elections:
   term_length: 4
   election_system: mixed
   term_limits: Two 4-year terms (Measure RR 2016)
+email: ''
+phone: ''
+instagram: ''
