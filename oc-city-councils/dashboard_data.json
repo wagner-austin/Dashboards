@@ -9,12 +9,12 @@
       {
         "name": "Max Duncan",
         "position": "Mayor",
-        "district": "District 2",
+        "district": "At-Large",
         "email": "mduncan@avcity.org",
         "phone": "(949) 425-3899",
         "city_page": "https://avcity.org/294/Mayor-Max-Duncan",
         "photo_url": "https://avcity.org/ImageRepository/Document?documentID=4118",
-        "bio": "Max Duncan was elected at to the Aliso Viejo City Council in 2022 for a four-year term and currently serves as Mayor Pro Tem for 2025. Max is the first representative of Aliso Viejo’s 2nd District. This district includes the neighborhoods near Canyon View Park, Westridge Park, Oak Park, Soka University and more. Max graduated from the University of Phoenix in 2004 with a Bachelor of Science in Business Information Systems. A self-proclaimed “techie” since he was a child, Max spent his youth taking apart electronics to see how they worked, and by the age of nine was writing code and running one of Orange County’s first online chat rooms. This passion led Max to a long and accomplished career in the technology field. In addition to starting multiple businesses, he has also worked as an engineer for various tech companies.",
+        "bio": "Max Duncan was elected at to the Aliso Viejo City Council in 2022 for a four-year term and currently serves as Mayor Pro Tem for 2025. Max is the first representative of Aliso Viejo\u2019s 2nd District. This district includes the neighborhoods near Canyon View Park, Westridge Park, Oak Park, Soka University and more. Max graduated from the University of Phoenix in 2004 with a Bachelor of Science in Business Information Systems. A self-proclaimed \u201ctechie\u201d since he was a child, Max spent his youth taking apart electronics to see how they worked, and by the age of nine was writing code and running one of Orange County\u2019s first online chat rooms. This passion led Max to a long and accomplished career in the technology field. In addition to starting multiple businesses, he has also worked as an engineer for various tech companies.",
         "term_start": 2022,
         "term_end": 2026
       },
@@ -26,7 +26,7 @@
         "phone": "(949) 425-3899",
         "city_page": "https://avcity.org/292/Mayor-Pro-Tem-Mike-Munzing",
         "photo_url": "https://avcity.org/ImageRepository/Document?documentID=4054",
-        "bio": "Mike Munzing was first elected to the Aliso Viejo City Council in 2012 and was reelected in 2016, 2020 and 2024. He has served as Mayor in 2016, 2020 and 2024. Mike currently serves as Mayor Pro Tem for 2026 and previously held the position in 2015, 2019, and 2023. Mike was re-elected to city council in November 2024, to represent Aliso Viejo’s 5th District. He is the first council representative of District 5, which encompasses the area south of Pacific Park Drive to Wood Canyon Drive between Boundary Oak and Alicia Parkway and includes the neighborhoods near Hillview Park, Aliso Niguel High School and more. Mike grew up in Orange, Calif. as the youngest of four children and the son of a pastor. He worked full time to put himself through college and holds a BS Degree from California State University, Fullerton with a dual-major in Real Estate Finance and Industrial Marketing.",
+        "bio": "Mike Munzing was first elected to the Aliso Viejo City Council in 2012 and was reelected in 2016, 2020 and 2024. He has served as Mayor in 2016, 2020 and 2024. Mike currently serves as Mayor Pro Tem for 2026 and previously held the position in 2015, 2019, and 2023. Mike was re-elected to city council in November 2024, to represent Aliso Viejo\u2019s 5th District. He is the first council representative of District 5, which encompasses the area south of Pacific Park Drive to Wood Canyon Drive between Boundary Oak and Alicia Parkway and includes the neighborhoods near Hillview Park, Aliso Niguel High School and more. Mike grew up in Orange, Calif. as the youngest of four children and the son of a pastor. He worked full time to put himself through college and holds a BS Degree from California State University, Fullerton with a dual-major in Real Estate Finance and Industrial Marketing.",
         "term_start": 2024,
         "term_end": 2028
       },
@@ -40,17 +40,17 @@
         "photo_url": "https://avcity.org/ImageRepository/Document?documentID=4478",
         "bio": "Garrett Dwyer was appointed in 2025 to represent the 3rd District of the Aliso Viejo City Council. This district includes our Town Center and The Commons, Grand Park, Woodfield Park, and communities surrounded by Alicia Parkway, Pacific Park Drive and State Route 73. Garrett and his wife moved to Aliso Viejo in 2004 to build their family and quickly became enamored with the city. From the quality of the schools and parks to the safety of the streets, Garrett knew this was his place to plant roots. As his family has grown with kids and dogs and cats, so has Garrett's service to our community. There's a good chance you've seen him serving as either a PTA treasurer, soccer coach, AYSO board member, substitute instructor at church, HOA board member, or YMCA Adventure Guides Expedition Navigator.",
         "term_start": 2025,
-        "term_end": 2028
+        "term_end": 2026
       },
       {
         "name": "Tiffany Ackley",
         "position": "Councilmember",
-        "district": "District 4",
+        "district": "At-Large",
         "email": "tackley@avcity.org",
         "phone": "(949) 425-3899",
         "city_page": "https://avcity.org/293/Councilmember-Tiffany-Ackley",
         "photo_url": "https://avcity.org/ImageRepository/Document?documentID=456",
-        "bio": "Tiffany Ackley was first elected to the Aliso Viejo City Council in 2018 for a four-year term, then reelected in 2022. She currently serves as Mayor for 2025 and previously served as Mayor in 2021, and as Mayor Pro Tem in 2020 and 2024. Tiffany is the first representative of Aliso Viejo’s 4th District, which encompasses the area directly west of Moulton Parkway and includes the neighborhoods near Iglesia Community Park, Glenwood Park, Aliso Viejo Ranch and more. Tiffany has called South Orange County home since 1980, having attended local public schools from elementary level to high school. When it came time to settle down, her family knew where they wanted to live–Aliso Viejo.",
+        "bio": "Tiffany Ackley was first elected to the Aliso Viejo City Council in 2018 for a four-year term, then reelected in 2022. She currently serves as Mayor for 2025 and previously served as Mayor in 2021, and as Mayor Pro Tem in 2020 and 2024. Tiffany is the first representative of Aliso Viejo\u2019s 4th District, which encompasses the area directly west of Moulton Parkway and includes the neighborhoods near Iglesia Community Park, Glenwood Park, Aliso Viejo Ranch and more. Tiffany has called South Orange County home since 1980, having attended local public schools from elementary level to high school. When it came time to settle down, her family knew where they wanted to live\u2013Aliso Viejo.",
         "term_start": 2022,
         "term_end": 2026
       },
@@ -62,7 +62,7 @@
         "phone": "(949) 425-3899",
         "city_page": "https://avcity.org/291/Councilmember-Tim-Zandbergen",
         "photo_url": "https://avcity.org/ImageRepository/Document?documentID=4053",
-        "bio": "Tim Zandbergen was elected to city council in November 2024 for a four-year term. Tim is the first representative of Aliso Viejo’s 1st District. District 1 includes the area north of the 73 Toll Road, between El Toro Road and Cedarbrook and includes the neighborhoods near Hummingbird Park, Brookline Park, Wingspan Park, Pinewood Park and more. A longtime Aliso Viejo resident and small business owner, Tim has been involved in the community through various volunteer efforts and leadership roles with his HOA board of directors. In addition to his normal city council responsibilities, Tim will represent the City as an alternate member of the San Joaquin Hills Transportation Corridor Agency Board of Directors.",
+        "bio": "Tim Zandbergen was elected to city council in November 2024\u00a0for a four-year term.\u00a0Tim\u00a0is the first representative of\u00a0Aliso Viejo\u2019s\u00a01st\u00a0District. District\u00a01\u00a0includes the area\u00a0north\u00a0of\u00a0the 73\u00a0Toll\u00a0Road,\u00a0between\u00a0El Toro Road\u00a0and\u00a0Cedarbrook\u00a0and includes the\u00a0neighborhoods\u00a0near Hummingbird Park, Brookline Park,\u00a0Wingspan Park, Pinewood Park and more. A longtime Aliso Viejo resident\u00a0and small business owner, Tim has been involved in the community through various volunteer efforts and leadership roles with his HOA board of directors. In addition to his normal city council responsibilities, Tim will\u00a0represent\u00a0the\u00a0City\u00a0as an alternate member of the San Joaquin Hills Transportation Corridor Agency\u00a0Board of Directors.",
         "term_start": 2024,
         "term_end": 2028
       }
@@ -112,19 +112,20 @@
     },
     "council": {
       "size": 5,
-      "districts": 5,
-      "at_large": 0,
+      "districts": 3,
+      "at_large": 2,
       "mayor_elected": false,
-      "expanded_date": null
+      "expanded_date": null,
+      "notes": "Districts 1, 3, 5 are by-district; 2 seats are at-large"
     },
     "elections": {
       "next_election": "2026-11-03",
       "seats_up": [
-        "District 2",
-        "District 4"
+        "At-Large (2 seats)",
+        "District 3 (filling vacancy)"
       ],
       "term_length": 4,
-      "election_system": "by-district"
+      "election_system": "mixed"
     }
   },
   {
@@ -142,7 +143,7 @@
         "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58010",
-        "bio": "Ashleigh Aitken was elected as the 48th mayor of Anaheim in November 2022. She is the first woman mayor in Anaheim’s 167-year history. Mayor Aitken represents all Anaheim residents, neighborhoods and businesses on the City Council, alongside six members elected by districts. As mayor, Aitken lead a series of 2023 transparency reforms at City Hall and is also focused on enhancing public safety, expanding affordable housing and growing Anaheim’s economy by supporting our visitor industry and streamlining processes to expand and attract new industries.",
+        "bio": "Ashleigh Aitken was elected as the 48th mayor of Anaheim in November 2022. She is the first woman mayor in Anaheim\u2019s 167-year history. Mayor Aitken represents all Anaheim residents, neighborhoods and businesses on the City Council, alongside six members elected by districts. As mayor, Aitken lead a series of 2023 transparency reforms at City Hall and is also focused on enhancing public safety, expanding affordable housing and growing Anaheim\u2019s economy by supporting our visitor industry and streamlining processes to expand and attract new industries.",
         "term_start": 2022,
         "term_end": 2026
       },
@@ -154,7 +155,7 @@
         "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/2314/Council-Member-Carlos-A-Leon",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58081",
-        "bio": "Carlos A. Leon represents District 2 in west Anaheim and serves as mayor pro tem on the Anaheim City Council. Council Member Leon was elected to the City Council in November 2022 and selected to serve as mayor pro tem for 2026 by his Council colleagues. As mayor pro tem, Leon chairs City Council meetings and represents the city as a whole as needed.",
+        "bio": "Carlos A. Leon represents District 2 in west Anaheim and serves as mayor pro tem on the Anaheim City Council. Council Member Leon was elected to the City Council in November 2022 and selected to serve as mayor pro tem for 2026 by his Council colleagues. As mayor pro tem, Leon chairs\u00a0City Council meetings and represents the city as a whole as needed.",
         "term_start": 2022,
         "term_end": 2026
       },
@@ -166,7 +167,7 @@
         "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/3521/Council-Member-Kristen-Maahs",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58009",
-        "bio": "Kristen Maahs was elected to the Anaheim City Council in November 2024, representing District 5 in central-east Anaheim. A fourth-generation Anaheim resident, Maahs is focused funding and equipping Anaheim’s police and firefighters, addressing homelessness with compassion and impact and promoting a strong economy through support of startups, existing Anaheim businesses and those new to our city. Maahs also looks to build on Anaheim’s extensive reforms for transparency and accountability while ensuring public money is spent efficiently with a focus on public services.",
+        "bio": "Kristen Maahs was elected to the Anaheim City Council in November 2024, representing District 5 in central-east Anaheim. A fourth-generation Anaheim resident, Maahs is focused funding and equipping Anaheim\u2019s police and firefighters, addressing homelessness with compassion and impact and promoting a strong economy through support of startups, existing Anaheim businesses and those new to our city. Maahs also looks to build on Anaheim\u2019s extensive reforms for transparency and accountability while ensuring public money is spent efficiently with a focus on public services.",
         "term_start": 2024,
         "term_end": 2028
       },
@@ -178,7 +179,7 @@
         "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/5175/Council-Member-Natalie-Meeks",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58063",
-        "bio": "Natalie Meeks was elected to the Anaheim City Council in November 2022, representing District 6 in east Anaheim. Before joining the City Council, Meeks served on Anaheim’s Planning Commission from 2019 to late 2022, including as chair in 2021 and 2022. On the Council, Meeks is focused on safety and quality of life issues through adding officers to the Anaheim Police Department, reducing crime, addressing homelessness, improving fire evacuation in Anaheim Hills and expanding and building on the area’s parks, trails and libraries.",
+        "bio": "Natalie Meeks was elected to the Anaheim City Council in November 2022, representing District 6 in east Anaheim. Before joining the City Council, Meeks served on Anaheim\u2019s Planning Commission from 2019 to late 2022, including as chair in 2021 and 2022. On the Council, Meeks is focused on safety and quality of life issues through adding officers to the Anaheim Police Department, reducing crime, addressing homelessness, improving fire evacuation in Anaheim Hills and expanding and building on the area\u2019s parks, trails and libraries.",
         "term_start": 2022,
         "term_end": 2026
       },
@@ -190,7 +191,7 @@
         "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=58060",
-        "bio": "Natalie Rubalcava was elected to the Anaheim City Council in November 2022, representing District 3 in central Anaheim. in 2023, Rubalcava served as mayor pro tem, representing the city at large at community and other events. Before joining the Council, Rubalcava served on the Anaheim Housing and Community Development Commission from June to December 2022. Earlier, she served on the city’s Community Services Board from 2004 to 2014, including as chair in 2009.",
+        "bio": "Natalie Rubalcava was elected to the Anaheim City Council in November 2022, representing District 3 in central Anaheim. in 2023, Rubalcava served as mayor pro tem, representing the city at large at community and other events. Before joining the Council, Rubalcava served on the Anaheim Housing and Community Development Commission from June to December 2022. Earlier, she served on the city\u2019s Community Services Board from 2004 to 2014, including as chair in 2009.",
         "term_start": 2022,
         "term_end": 2026
       },
@@ -214,13 +215,13 @@
         "phone": "(714) 765-5247",
         "city_page": "https://www.anaheim.net/3522/Council-Member-Ryan-Balius",
         "photo_url": "https://www.anaheim.net/ImageRepository/Document?documentID=57980",
-        "bio": "Ryan Balius was elected to the Anaheim City Council in November 2024, representing District 1 in west Anaheim. A 25-year resident of west Anaheim, Balius is focused on advancing the ongoing rebuilding of Beach Boulevard with continued police enforcement, more potential motel closures and redevelopment with homes, businesses and public spaces. District 1, which goes from north Brookhurst Street to Anaheim’s western city lines with Buena Park, Cypress and Stanton, is home to neighborhoods, businesses, parks, schools, a library and Anaheim’s 1.5-mile stretch of Beach Boulevard.",
+        "bio": "Ryan Balius was elected to the Anaheim City Council in November 2024, representing District 1 in west Anaheim. A 25-year resident of west Anaheim, Balius is focused on advancing the ongoing rebuilding of Beach Boulevard with continued police enforcement, more potential motel closures and redevelopment with homes, businesses and public spaces. District 1, which goes from north Brookhurst Street to Anaheim\u2019s western city lines with Buena Park, Cypress and Stanton, is home to neighborhoods, businesses, parks, schools, a library and Anaheim\u2019s 1.5-mile stretch of Beach Boulevard.",
         "term_start": 2024,
         "term_end": 2028
       }
     ],
     "meetings": {
-      "schedule": "1st and 3rd Tuesdays",
+      "schedule": "Irregularly on Tuesdays (check calendar)",
       "time": "5:00 PM",
       "location": {
         "name": "Council Chamber",
@@ -313,31 +314,31 @@
       {
         "name": "Cecilia Hupp",
         "position": "Mayor",
-        "district": "District 1",
+        "district": "At-Large",
         "email": "ceciliah@cityofbrea.gov",
         "phone": "(714) 990-7704",
         "city_page": "https://www.cityofbrea.gov/Directory.aspx?EID=3",
         "photo_url": "https://www.cityofbrea.gov/ImageRepository/Document?documentId=13261",
-        "bio": "Mayor Cecilia Hupp was elected to the Brea City Council in November 2014, and re-elected in 2018 and 2022. She previously served as Mayor in 2017, during Brea’s Centennial Year, and in 2022. During her service on the City Council, Mayor Hupp has championed housing and community development and advocates for affordable housing opportunities for senior citizens. Mayor Hupp has surveyed the progress of innovative, mixed-use developments at La Floresta, Brea Place, and Central Park Village. She has presided over the conversion of repurposed railroad tracks into a 50-acre linear, multi-use trail, known as the Tracks at Brea, as well as the construction of the 57 Freeway/Lambert Road Interchange. Mayor Hupp has also overseen the implementation of two regional homeless Navigation Centers, in partnership with North Orange County Cities, and approved Brea’s first workforce-housing project. In doing so, Mayor Hupp seeks team-building to achieve mutually-beneficial goals. Mayor Hupp considers herself a fiscal conservative, who believes in prudent spending, as well as transparency in government. While in office, she has lobbied both the state and federal levels over issues such as paramedic tax reform, local control, and pension reform. Mayor Hupp exudes fiscal resourcefulness through having established a $10 million PARS irrevocable trust fund account to assist with the City’s employee retirement obligations. Additionally, she judiciously approved a 25% fiscal reserve policy for the City of Brea’s annual budget.",
+        "bio": "Mayor Cecilia Hupp was elected to the Brea City Council in November 2014, and re-elected in 2018 and 2022. She previously served as Mayor in 2017, during Brea\u2019s Centennial Year, and in 2022. During her service on the City Council, Mayor Hupp has championed housing and community development and advocates for affordable housing opportunities for senior citizens. Mayor Hupp has surveyed the progress of innovative, mixed-use developments at La Floresta, Brea Place, and Central Park Village. She has presided over the conversion of repurposed railroad tracks into a 50-acre linear, multi-use trail, known as the Tracks at Brea, as well as the construction of the 57 Freeway/Lambert Road Interchange. Mayor Hupp has also overseen the implementation of two regional homeless Navigation Centers, in partnership with North Orange County Cities, and approved Brea\u2019s first workforce-housing project. In doing so, Mayor Hupp seeks team-building to achieve mutually-beneficial goals. Mayor Hupp considers herself a fiscal conservative, who believes in prudent spending, as well as transparency in government. While in office, she has lobbied both the state and federal levels over issues such as paramedic tax reform, local control, and pension reform. Mayor Hupp exudes fiscal resourcefulness through having established a $10 million PARS irrevocable trust fund account to assist with the City\u2019s employee retirement obligations. Additionally, she judiciously approved a 25% fiscal reserve policy for the City of Brea\u2019s annual budget.",
         "term_start": 2022,
         "term_end": 2026
       },
       {
         "name": "Marty Simonoff",
         "position": "Mayor Pro Tem",
-        "district": "District 2",
+        "district": "At-Large",
         "email": "martys@cityofbrea.gov",
         "phone": "(714) 990-7702",
         "city_page": "https://www.cityofbrea.gov/Directory.aspx?EID=6",
         "photo_url": "https://www.cityofbrea.gov/ImageRepository/Document?documentId=12582",
-        "bio": "Mayor Pro Tem Marty Simonoff is currently serving his eighth term on the Brea City Council. He was first elected in November 1996. Mayor Pro Tem Simonoff was re-elected in 2000, 2004, 2008, 2012, 2016, 2020 and 2024. He previously served as Mayor in 1999, 2002, 2007, 2015, 2020 and 2023. Mayor Pro Tem Simonoff’s professional experience includes a career in law enforcement. He retired in 1991 as a Police Captain with the City of Huntington Park. Mayor Pro Tem Simonoff holds a Bachelor of Arts Degree in Political Science from Whittier College, California. Though Mayor Pro Tem Simonoff is retired from public safety, he has maintained a strong interest in all aspects of public safety. He is beginning his 29th year as a member of the National League of Cities' Public Safety and Crime Prevention Policy and Steering Committee, having served as chair in 2006. He is also a 28-year member of the League of California Cities' Public Safety and Crime Prevention Policy Committee and Steering Committee, having served three terms as chair. Mayor Pro Tem Simonoff is a past member of the League of California Cities Board of Directors and served on the board from 2004-2010. He is past president of the Orange County Division of the League of California Cities. Mayor Pro Tem Simonoff also represents the City regionally on the Orange County Council of Governments (OCCOG) and is a Regional Representative on the board for the Southern California Association of Governments (SCAG), he serves as an Ex-Officio Member of the Metrolink Board of Directors.",
+        "bio": "Mayor Pro Tem Marty Simonoff is currently serving his eighth term on the Brea City Council. He was first elected in November 1996. Mayor Pro Tem Simonoff was re-elected in 2000, 2004, 2008, 2012, 2016, 2020 and 2024. He previously served as Mayor in 1999, 2002, 2007, 2015, 2020 and 2023. Mayor Pro Tem Simonoff\u2019s professional experience includes a career in law enforcement. He retired in 1991 as a Police Captain with the City of Huntington Park. Mayor Pro Tem Simonoff holds a Bachelor of Arts Degree in Political Science from Whittier College, California. Though Mayor Pro Tem Simonoff is retired from public safety, he has maintained a strong interest in all aspects of public safety. He is beginning his 29th year as a member of the National League of Cities' Public Safety and Crime Prevention Policy and Steering Committee, having served as chair in 2006. He is also a 28-year member of the League of California Cities' Public Safety and Crime Prevention Policy Committee and Steering Committee, having served three terms as chair. Mayor Pro Tem Simonoff is a past member of the League of California Cities Board of Directors and served on the board from 2004-2010. He is past president of the Orange County Division of the League of California Cities. Mayor Pro Tem Simonoff also represents the City regionally on the Orange County Council of Governments (OCCOG) and is a Regional Representative on the board for the Southern California Association of Governments (SCAG), he serves as an Ex-Officio Member of the Metrolink Board of Directors.",
         "term_start": 2024,
         "term_end": 2028
       },
       {
         "name": "Blair Stewart",
         "position": "Councilmember",
-        "district": "District 3",
+        "district": "At-Large",
         "email": "blairs@cityofbrea.gov",
         "phone": "(714) 990-7703",
         "city_page": "https://www.cityofbrea.gov/Directory.aspx?EID=2",
@@ -349,24 +350,24 @@
       {
         "name": "Christine Marick",
         "position": "Councilmember",
-        "district": "District 4",
+        "district": "At-Large",
         "email": "christinem@cityofbrea.gov",
         "phone": "(714) 990-7700",
         "city_page": "https://www.cityofbrea.gov/Directory.aspx?EID=4",
         "photo_url": "https://www.cityofbrea.gov/ImageRepository/Document?documentId=12584",
-        "bio": "Council Member Christine Marick was first elected in 2012, and re-elected in 2016, 2020 and 2024. She has served as Mayor in 2016, 2019, and 2024. Prior to her election to the City Council, she served on the City's Planning Commission. Council Member Marick currently serves on the City’s Investment Advisory Committee, Orange County Sanitation District, Orange County Public Library Advisory Board, Orange County Status of Women and Girls Commission, and the 4th District Representative on the Orange County Waste Management Commission. For the League of California Cities, Council Member Marick serves on the Revenue and Taxation Policy Committee. Born and raised in Washington, DC, Council Member Marick earned her Bachelor of Science degree from Georgetown University and her MBA from the UCLA Anderson School of Management. Council Member Marick has worked in diverse industries, including government, educational services, and investment management. She is currently the Chief Professional Officer for the Boys & Girls Clubs of Brea-Placentia-Yorba Linda. Council Member Marick has called Brea home since 2003. She and her husband were initially drawn to Brea for its hometown feel, abundant shopping and dining, and convenient location. They now appreciate Brea’s high level of community services and citizen involvement as well as the high quality schools.",
+        "bio": "Council Member Christine Marick was first elected in 2012, and re-elected in 2016, 2020 and 2024. She has served as Mayor in 2016, 2019, and 2024. Prior to her election to the City Council, she served on the City's Planning Commission. Council Member Marick currently serves on the City\u2019s Investment Advisory Committee, Orange County Sanitation District, Orange County Public Library Advisory Board, Orange County Status of Women and Girls Commission, and the 4th District Representative on the Orange County Waste Management Commission. For the League of California Cities, Council Member Marick serves on the Revenue and Taxation Policy Committee. Born and raised in Washington, DC, Council Member Marick earned her Bachelor of Science degree from Georgetown University and her MBA from the UCLA Anderson School of Management. Council Member Marick has worked in diverse industries, including government, educational services, and investment management. She is currently the Chief Professional Officer for the Boys & Girls Clubs of Brea-Placentia-Yorba Linda. Council Member Marick has called Brea home since 2003. She and her husband were initially drawn to Brea for its hometown feel, abundant shopping and dining, and convenient location. They now appreciate Brea\u2019s high level of community services and citizen involvement as well as the high quality schools.",
         "term_start": 2024,
         "term_end": 2028
       },
       {
         "name": "Steven Vargas",
         "position": "Councilmember",
-        "district": "District 5",
+        "district": "At-Large",
         "email": "stevenv@cityofbrea.gov",
         "phone": "(714) 990-7701",
         "city_page": "https://www.cityofbrea.gov/Directory.aspx?EID=5",
         "photo_url": "https://www.cityofbrea.gov/ImageRepository/Document?documentId=11690",
-        "bio": "Council Member Steven Vargas was most recently elected to the Brea City Council in November 2014, re-elected in 2018 and 2022, and served as Mayor in 2021. He also previously served on the City Council from 1998-2002. Council Member Vargas holds a Bachelor’s Degree in Science, Technology from Excelsior College of New York. He is currently a member of the League of California Cities Transportation, Communications & Public Works Policy Committee; the Orange County City Selection Committee; and a member of the North Orange County Cities Joint Powers Authority. Council Member Vargas also serves as a Member of the City’s Development Committee and is an alternate on the Orange County Sanitation District, as well as the Investment Advisory Committee. He previously served the County of Orange as a Third District Executive Assistant, and at the federal level, as an Outreach Coordinator for Puerto Rico Federal Affairs Administration (PRFAA). Council Member Vargas is a member of the United States Navy Reserve (USNR) and holds the rank of Lieutenant Commander, Civil Engineering Corps. He has been activated for military service five times since 9/11, including a one-year deployment to Iraq, Al-Asad, and Falluja, during the 2008-09 surge. Council Member Vargas loves to be involved in the community and serve others. As an engaged volunteer, he has held leadership positions in numerous non-profit organizations over the years including former President, Placentia Boys & Girls Club; previous District Executive for Cub Scout Pack 820; former Commander, Brea Veterans of Foreign Wars Post 5384; and current Adjutant of the Brea American Legion Post 181.",
+        "bio": "Council Member Steven Vargas was most recently\u00a0elected to the Brea City Council in November 2014, re-elected in 2018 and 2022, and served as Mayor in 2021. He also previously served on the City Council from 1998-2002. Council Member Vargas holds a Bachelor\u2019s Degree in Science, Technology from Excelsior College of New York. He is currently a member of the League of California Cities Transportation, Communications & Public Works Policy Committee; the Orange County City Selection Committee; and a member of the North Orange County Cities Joint Powers Authority. Council Member Vargas also serves as a Member of the City\u2019s Development Committee and is an alternate on the Orange County Sanitation District, as well as the Investment Advisory Committee. He previously served the County of Orange as a Third District Executive Assistant, and at the federal level, as an Outreach Coordinator for Puerto Rico Federal Affairs Administration (PRFAA). Council Member Vargas is a member of the United States Navy Reserve (USNR) and holds the rank of Lieutenant Commander, Civil Engineering Corps. He has been activated for military service five times since 9/11, including a one-year deployment to Iraq, Al-Asad, and Falluja, during the 2008-09 surge. Council Member Vargas loves to be involved in the community and serve others. As an engaged volunteer, he has held leadership positions in numerous non-profit organizations over the years including former President, Placentia Boys & Girls Club; previous District Executive for Cub Scout Pack 820; former Commander, Brea Veterans of Foreign Wars Post 5384; and current Adjutant of the Brea American Legion Post 181.",
         "term_start": 2022,
         "term_end": 2026
       }
@@ -417,19 +418,19 @@
     },
     "council": {
       "size": 5,
-      "districts": 5,
-      "at_large": 0,
+      "districts": 0,
+      "at_large": 5,
       "mayor_elected": false,
-      "expanded_date": null
+      "expanded_date": null,
+      "notes": "City Council voted April 2022 not to proceed with by-district elections"
     },
     "elections": {
       "next_election": "2026-11-03",
       "seats_up": [
-        "District 1",
-        "District 5"
+        "At-Large (2 seats)"
       ],
       "term_length": 4,
-      "election_system": "by-district"
+      "election_system": "at-large"
     }
   },
   {
@@ -574,19 +575,19 @@
       {
         "name": "John Stephens",
         "position": "Mayor",
-        "district": "At-Large",
+        "district": "Citywide",
         "email": "John.Stephens@costamesaca.gov",
         "phone": "(714) 337-1872",
         "city_page": "https://www.costamesaca.gov/government/mayor-city-council/mayor-john-stephens",
         "photo_url": "https://www.costamesaca.gov/home/showpublishedimage/18192/637789805555630000",
         "bio": "John Stephens was born in Pasadena and raised in San Gabriel. He earned his B.A. in Business Administration and Marketing from Cal Poly Pomona (Magna Cum Laude, 1986) and his law degree from UC Davis Law School in 1989. He founded Stephens Friedland LLP in 2006, named the Veterans Legal Institute Law Firm of the Year in 2019. A Costa Mesa resident since 1989, he was first elected to City Council in 2016 and has been mayor since March 2021. He is Chair of the Association of California Cities-OC Homelessness Task Force and a founding member of the Costa Mesa Early Childhood Coalition. He lives in Mesa Verde with his wife Amy and has four children.",
         "term_start": 2024,
-        "term_end": 2028
+        "term_end": 2026
       },
       {
         "name": "Manuel Chavez",
         "position": "Mayor Pro Tem",
-        "district": "At-Large",
+        "district": "District 4",
         "email": "Manuel.Chavez@costamesaca.gov",
         "phone": "(949) 274-2305",
         "city_page": "https://www.costamesaca.gov/government/mayor-city-council/mayor-pro-tem-manuel-chavez",
@@ -598,7 +599,7 @@
       {
         "name": "Andrea Marr",
         "position": "Councilmember",
-        "district": "At-Large",
+        "district": "District 3",
         "email": "Andrea.Marr@costamesaca.gov",
         "phone": "(714) 754-5105",
         "city_page": "https://www.costamesaca.gov/government/mayor-city-council/council-member-andrea-marr",
@@ -610,7 +611,7 @@
       {
         "name": "Arlis Reynolds",
         "position": "Councilmember",
-        "district": "At-Large",
+        "district": "District 5",
         "email": "Arlis.Reynolds@costamesaca.gov",
         "phone": "(714) 754-5107",
         "city_page": "https://www.costamesaca.gov/government/mayor-city-council/council-member-arlis-reynolds",
@@ -622,7 +623,7 @@
       {
         "name": "Jeff Pettis",
         "position": "Councilmember",
-        "district": "At-Large",
+        "district": "District 6",
         "email": "jeff.pettis@costamesaca.gov",
         "phone": "(714) 754-5107",
         "city_page": "https://www.costamesaca.gov/government/mayor-city-council/council-member-jeff-pettis",
@@ -634,7 +635,7 @@
       {
         "name": "Loren Gameros",
         "position": "Councilmember",
-        "district": "At-Large",
+        "district": "District 2",
         "email": "LGameros@costamesaca.gov",
         "phone": "(714) 754-5107",
         "city_page": "https://www.costamesaca.gov/government/mayor-city-council/council-member-loren-gameros",
@@ -646,7 +647,7 @@
       {
         "name": "Mike Buley",
         "position": "Councilmember",
-        "district": "At-Large",
+        "district": "District 1",
         "email": "mike.buley@costamesaca.gov",
         "phone": "(714) 754-5107",
         "city_page": "https://www.costamesaca.gov/government/mayor-city-council/council-member-mike-buley",
@@ -712,17 +713,21 @@
     },
     "council": {
       "size": 7,
-      "districts": 0,
-      "at_large": 7,
-      "mayor_elected": false,
+      "districts": 6,
+      "at_large": 1,
+      "mayor_elected": true,
+      "mayor_term": 2,
       "term_length": 4
     },
     "elections": {
       "next_election": "2026-11-03",
       "seats_up": [
-        "3 at-large seats"
+        "Mayor",
+        "District 3",
+        "District 4",
+        "District 5"
       ],
-      "election_system": "at-large",
+      "election_system": "mixed",
       "term_length": 4
     }
   },
@@ -736,7 +741,7 @@
       {
         "name": "Leo Medrano",
         "position": "Mayor",
-        "district": "District 4",
+        "district": "At-Large",
         "email": "lmedrano@cypressca.org",
         "phone": "(714) 229-6699",
         "city_page": "https://www.cypressca.org/government/city-council/council-member-leo-medrano",
@@ -750,7 +755,7 @@
       {
         "name": "Kyle Chang",
         "position": "Mayor Pro Tem",
-        "district": "District 3",
+        "district": "At-Large",
         "email": "kchang@cypressca.org",
         "phone": "(714) 229-6699",
         "city_page": "https://www.cypressca.org/government/city-council/council-member-kyle-change",
@@ -764,7 +769,7 @@
       {
         "name": "Bonnie Peat",
         "position": "Councilmember",
-        "district": "District 1",
+        "district": "At-Large",
         "email": "bpeat@cypressca.org",
         "phone": "(714) 229-6699",
         "city_page": "https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat",
@@ -778,7 +783,7 @@
       {
         "name": "David Burke",
         "position": "Councilmember",
-        "district": "District 2",
+        "district": "At-Large",
         "email": "dburke@cypressca.org",
         "phone": "(714) 229-6699",
         "city_page": "https://www.cypressca.org/government/city-council/council-member-david-burke",
@@ -792,7 +797,7 @@
       {
         "name": "Rachel Strong Carnahan",
         "position": "Councilmember",
-        "district": "District 5",
+        "district": "At-Large",
         "email": "rstrongcarnahan@cypressca.org",
         "phone": "(714) 229-6699",
         "city_page": "https://www.cypressca.org/government/city-council/council-member-rachel-strong-carnahan",
@@ -807,6 +812,7 @@
     "meetings": {
       "schedule": "2nd and 4th Mondays",
       "time": "6:00 PM",
+      "schedule_change": "Changing to 2nd and 4th Tuesdays (Ordinance 1223, adopted Jan 2026)",
       "location": {
         "name": "Council Chambers",
         "address": "5275 Orange Avenue",
@@ -842,20 +848,19 @@
     },
     "council": {
       "size": 5,
-      "districts": 5,
-      "at_large": 0,
+      "districts": 0,
+      "at_large": 5,
       "mayor_elected": false,
-      "expanded_date": null
+      "expanded_date": null,
+      "notes": "City is considering by-district elections but currently at-large"
     },
     "elections": {
       "next_election": "2026-11-03",
       "seats_up": [
-        "District 1",
-        "District 2",
-        "District 5"
+        "At-Large (3 seats)"
       ],
       "term_length": 4,
-      "election_system": "by-district"
+      "election_system": "at-large"
     },
     "email": "",
     "phone": "",
@@ -1009,13 +1014,13 @@
     "members": [
       {
         "name": "Ted Bui",
-        "position": "Mayor",
+        "position": "Councilmember",
         "district": "At-Large",
         "email": "Ted.Bui@fountainvalley.gov",
         "phone": "(628) 266-8888",
         "city_page": "https://www.fountainvalley.gov/Directory.aspx?EID=54",
         "photo_url": "https://www.fountainvalley.gov/ImageRepository/Document?documentId=19450",
-        "bio": "A long-time resident of Orange County, Ted is known for his dedication to fostering a safe and vibrant city. He has worked tirelessly to ensure fiscal responsibility, support local businesses, and promote initiatives that enhance the quality of life for all residents. Ted believes in transparent governance and actively engages with constituents to address their concerns. His leadership style is characterized by collaboration, integrity, and a forward-thinking approach. Ted’s efforts are driven by a desire to build a stronger, more inclusive community for future generations.",
+        "bio": "A long-time resident of Orange County, Ted is known for his dedication to fostering a safe and vibrant city. He has worked tirelessly to ensure fiscal responsibility, support local businesses, and promote initiatives that enhance the quality of life for all residents. Ted believes in transparent governance and actively engages with constituents to address their concerns. His leadership style is characterized by collaboration, integrity, and a forward-thinking approach. Ted\u2019s efforts are driven by a desire to build a stronger, more inclusive community for future generations.",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -1023,13 +1028,13 @@
       },
       {
         "name": "Jim Cunneen",
-        "position": "Vice Mayor",
+        "position": "Mayor",
         "district": "At-Large",
         "email": "Jim.Cunneen@fountainvalley.gov",
         "phone": "(714) 593-4403",
         "city_page": "https://www.fountainvalley.gov/Directory.aspx?EID=178",
         "photo_url": "https://www.fountainvalley.gov/ImageRepository/Document?documentId=19452",
-        "bio": "Jim Cunneen is currently serving in his first four-year term on the Fountain Valley City Council after being elected in 2022.  Prior to this , he served two consecutive four-year terms on the Fountain Valley School District Board of Trustees, including serving as President in 2018.  He previously has served on the FV Planning Commission, Community Foundation, Housing and Community Development Board, and chaired the General Plan Advisory Committee. Mr. Cunneen has worked as a Civil Engineer and Regional Manager in SoCal for over 36 years.  He is a graduate of California State University Long Beach and American College of Law, where he is seeking admission into the California State Bar.  His consulting work has included many key projects such as the OCTA I-405, John Wayne Airport and the ARTIC projects.  Mr. Cunneen has been married to his educator wife and Fountain Valley native, Marilyn, for over 30 years. They have lived in the same home on La Marmota Avenue for nearly 29 years and greatly enjoy their close-nit neighborhood and city area.  They have five children who were all born at Fountain Valley Regional Hospital and attended Cox Elementary, Masuda Middle, and Fountain Valley High Schools. He is passionate about volunteering and regularly gives time in the Fountain Valley Rotary Club, local civic groups and committees, is a Fourth Degree Knight of Columbus, and sings in a choir at Holy Spirit Catholic Church.  Mr. Cunneen enjoys local and regional governance involvement, challenges, and ultimately endeavors to be helpful to his community.",
+        "bio": "Jim Cunneen is currently serving in his first four-year term on the Fountain Valley City Council after being elected in 2022. \u00a0Prior to this , he served two consecutive four-year terms on the Fountain Valley School District Board of Trustees, including serving as President in 2018. \u00a0He previously has served on the FV Planning Commission, Community Foundation, Housing and Community Development Board, and chaired the General Plan Advisory Committee. Mr. Cunneen has worked as a Civil Engineer and Regional Manager in SoCal for over 36 years. \u00a0He is a graduate of California State University Long Beach and American College of Law, where he is seeking admission into the California State Bar. \u00a0His consulting work has included many key projects such as the OCTA I-405, John Wayne Airport and the ARTIC projects. \u00a0Mr. Cunneen has been married to his educator wife and Fountain Valley native, Marilyn, for over 30 years. They have lived in the same home on La Marmota Avenue for nearly 29 years and greatly enjoy their close-nit neighborhood and city area. \u00a0They have five children who were all born at Fountain Valley Regional Hospital and attended Cox Elementary, Masuda Middle, and Fountain Valley High Schools. He is passionate about volunteering and regularly gives time in the Fountain Valley Rotary Club, local civic groups and committees, is a Fourth Degree Knight of Columbus, and sings in a choir at Holy Spirit Catholic Church. \u00a0Mr. Cunneen enjoys local and regional governance involvement, challenges, and ultimately endeavors to be helpful to his community.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -1043,7 +1048,7 @@
         "phone": "(714) 593-4403",
         "city_page": "https://www.fountainvalley.gov/Directory.aspx?EID=55",
         "photo_url": "https://www.fountainvalley.gov/ImageRepository/Document?documentId=19451",
-        "bio": "Glenn Grandis is a dedicated and engaged member of the Fountain Valley community, with a residency spanning 44 years. His roots in the city run deep, having attended Fountain Valley High School, where he began his strong connection to the local community. One of Glenn's significant contributions is his long-standing involvement with the Fountain Valley Kiwanis Club. For an impressive 44 years, he has been an active member, showcasing a commitment to service and a desire to make a positive impact on the lives of others. Glenn holds the distinction of being a founding director of the Fountain Valley Community Foundation. This organization plays a crucial role in supporting various community initiatives and projects, further highlighting his commitment to enhancing the overall well-being of Fountain Valley. Glenn is married and together with his wife Mary, have a combined 5 children and 2 dogs!",
+        "bio": "Glenn Grandis\u00a0is a dedicated and engaged member of the Fountain Valley community, with a residency spanning 44 years. His roots in the city run deep, having attended Fountain Valley High School, where he began his strong connection to the local community. One of Glenn's significant contributions is his long-standing involvement with the Fountain Valley Kiwanis Club. For an impressive 44 years, he has been an active member, showcasing a commitment to service and a desire to make a positive impact on the lives of others. Glenn holds the distinction of being a founding director of the Fountain Valley Community Foundation. This organization plays a crucial role in supporting various community initiatives and projects, further highlighting his commitment to enhancing the overall well-being of Fountain Valley. Glenn is married and together with his wife Mary, have a combined 5 children and 2 dogs!",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -1057,7 +1062,7 @@
         "phone": "(714) 593-4403",
         "city_page": "https://www.fountainvalley.gov/Directory.aspx?EID=152",
         "photo_url": "https://www.fountainvalley.gov/ImageRepository/Document?documentId=19449",
-        "bio": "Kim was born in Allentown, Pennsylvania.  After living for a while in Lebanon and Australia, her family moved to California.  She’s lived in Fountain Valley for many years and is a member of several local organizations. One of her most proud moments was in 2011 at the Fountain Valley Chamber of Commerce Board Installation Luncheon, when she was named Ambassador-of-the Year.  Within minutes, she was the first person in the Chamber’s 45-year history to be nominated from the floor.  When the votes were tallied from that day’s election, she was elected to the Board.  It meant so much that the members had faith in her.  Kim served four years as a Director.  At that time, she knew she wanted to serve her community as a City Council Member and began laying the groundwork for her first campaign in 2014.  She ran again in 2016 and remained persistent and highly visible. Kim enjoys staying abreast of City matters, cooking, and traveling… to Europe, especially.",
+        "bio": "Kim was born in Allentown, Pennsylvania. \u00a0After living for a while in Lebanon and Australia, her family moved to California. \u00a0She\u2019s lived in Fountain Valley for many years and is a member of several local organizations. One of her most proud moments was in 2011 at the Fountain Valley Chamber of Commerce Board Installation Luncheon, when she was named Ambassador-of-the Year. \u00a0Within minutes, she was the first person in the Chamber\u2019s 45-year history to be nominated from the floor. \u00a0When the votes were tallied from that day\u2019s election, she was elected to the Board. \u00a0It meant so much that the members had faith in her. \u00a0Kim served four years as a Director. \u00a0At that time, she knew she wanted to serve her community as a City Council Member and began laying the groundwork for her first campaign in 2014. \u00a0She ran again in 2016 and remained persistent and highly visible. Kim enjoys staying abreast of City matters, cooking, and traveling\u2026 to Europe, especially.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -1065,7 +1070,7 @@
       },
       {
         "name": "Patrick Harper",
-        "position": "Councilmember",
+        "position": "Vice Mayor",
         "district": "At-Large",
         "email": "patrick.harper@fountainvalley.gov",
         "phone": "(714) 593-4403",
@@ -1209,7 +1214,8 @@
     ],
     "meetings": {
       "schedule": "1st and 3rd Tuesdays",
-      "time": "5:30 PM",
+      "time": "6:30 PM",
+      "closed_session_time": "5:00 PM",
       "location": {
         "name": "Council Chamber",
         "address": "303 W. Commonwealth Ave.",
@@ -1283,7 +1289,7 @@
         "phone": "(714) 741-5104",
         "city_page": "https://ggcity.org/city-council/stephanie-klopfenstein",
         "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2025-01/mayor_stephanie_klopfenstein.jpg?itok=YdMRUkng",
-        "bio": "In 2024, Stephanie Klopfenstein became Garden Grove's first elected female mayor. Prior to becoming mayor, she served as the District 5 councilmember since 2016. Born and raised in Garden Grove, her family roots trace back to the town’s early beginnings in the late 1800’s. A proud product of the Garden Grove Unified School District, Council Member Klopfenstein spent time traveling and working abroad in radio broadcasting. Drawn back to her deep ancestral roots and desire to give back to her city, she returned to Garden Grove. Following studies at Concordia University, she married and began a career in marketing. She values time spent with her husband and young daughter, exploring the Eastern Sierra, cooking, and enjoying a good book.",
+        "bio": "In 2024, Stephanie Klopfenstein became Garden Grove's first elected female mayor. Prior to becoming mayor, she served as the District 5 councilmember since 2016. Born and raised in Garden Grove, her family roots trace back to the town\u2019s early beginnings in the late 1800\u2019s. A proud product of the Garden Grove Unified School District, Council Member Klopfenstein spent time traveling and working abroad in radio broadcasting. Drawn back to her deep ancestral roots and desire to give back to her city, she returned to Garden Grove. Following studies at Concordia University, she married and began a career in marketing. She values time spent with her husband and young daughter, exploring the Eastern Sierra, cooking, and enjoying a good book.",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -1297,7 +1303,7 @@
         "phone": "(714) 741-5104",
         "city_page": "https://ggcity.org/city-council/george-brietigam",
         "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2019-03/george-brietigam.jpg?itok=2SfCVcc4",
-        "bio": "On November 6, 2018, George S. Brietigam III was elected to the Garden Grove City Council. Prior to that, he had formerly served for 20 years as a volunteer City Commissioner. He served as Chairman for the City's Planning Commission, as well as the City of Garden Grove’s Neighborhood Improvement and Conservation Commission (Chair), Sanitary District Advisory Commission (Chair), Traffic Commission and Youth Commission. He also served as a judge for the Garden Grove Pride contest. From 1985 to 1989, he served in the United States Coast Guard as a Petty Officer. After being Honorably Discharged, Council Member Brietigam was hired by the Los Angeles Police Department, where he retired after 34 years. During his tenure with the Los Angeles Police Department, Council Member Brietigam served 10 years as an elected Delegate to the Los Angeles Police Protective League. A strong supporter of community involvement, Council Member Brietigam became a member of Garden Grove Masonic Lodge in 2012. He also served as Cub Master, Scout Master, District Vice Chairman and District Chairman for our Garden Grove children with the Boy Scouts of America. He Coached for the West Garden Grove Softball league and coached Garden Grove Travel Softball and Basketball Teams. Council Member Brietigam also served as either President or Vice President for the Pacifica High School Swim Boosters, Basketball Boosters and Track & Field Boosters.",
+        "bio": "On November 6, 2018, George S. Brietigam III was elected to the Garden Grove City Council. Prior to that, he had formerly served for 20 years as a volunteer City Commissioner. He served as Chairman for the City's Planning Commission, as well as the City of Garden Grove\u2019s Neighborhood Improvement and Conservation Commission (Chair), Sanitary District Advisory Commission (Chair), Traffic Commission and Youth Commission. He also served as a judge for the Garden Grove Pride contest. From 1985 to 1989, he served in the United States Coast Guard as a Petty Officer. After being Honorably Discharged, Council Member Brietigam was hired by the Los Angeles Police Department, where he retired after 34 years. During his tenure with the Los Angeles Police Department, Council Member Brietigam served 10 years as an elected Delegate to the Los Angeles Police Protective League. A strong supporter of community involvement, Council Member Brietigam became a member of Garden Grove Masonic Lodge in 2012. He also served as Cub Master, Scout Master, District Vice Chairman and District Chairman for our Garden Grove children with the Boy Scouts of America. He Coached for the West Garden Grove Softball league and coached Garden Grove Travel Softball and Basketball Teams. Council Member Brietigam also served as either President or Vice President for the Pacifica High School Swim Boosters, Basketball Boosters and Track & Field Boosters.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -1311,7 +1317,7 @@
         "phone": "(714) 741-5104",
         "city_page": "https://ggcity.org/city-council/ariana-arestegui",
         "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2025-01/aristegui.jpg?itok=EyLlH4Rr",
-        "bio": "Born and raised in Garden Grove, Ariana Arestegui was elected to the Garden Grove City Council in 2024. She has long been committed to public service in the City of Garden Grove, having served on the Garden Grove Police Department Chief’s Advisory Council, the Garden Grove Planning Commission, and the Garden Grove Parks, Recreation, and Arts Commission. As a paralegal and campaign finance professional, Council Member Arestegui has worked as both a legal assistant and a law clerk, most recently as the campaign finance director for Kim Nguyen for Congress. She has also served as the executive director of the Democratic Foundation of Orange County. An admitted “Swiftie,” she enjoys spending time with her three dogs and participating in outdoor activities such as fishing, hiking, camping, and gardening. She is proud to be the first LGBTQ+ elected female in Garden Grove.",
+        "bio": "Born and raised in Garden Grove, Ariana Arestegui was elected to the Garden Grove City Council in 2024. She has long been committed to public service in the City of Garden Grove, having served on the Garden Grove Police Department Chief\u2019s Advisory Council, the Garden Grove Planning Commission, and the Garden Grove Parks, Recreation, and Arts Commission. As a paralegal and campaign finance professional, Council Member Arestegui has worked as both a legal assistant and a law clerk, most recently as the campaign finance director for Kim Nguyen for Congress. She has also served as the executive director of the Democratic Foundation of Orange County. An admitted \u201cSwiftie,\u201d she enjoys spending time with her three dogs and participating in outdoor activities such as fishing, hiking, camping, and gardening. She is proud to be the first LGBTQ+ elected female in Garden Grove.",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -1339,7 +1345,7 @@
         "phone": "(714) 741-5104",
         "city_page": "https://ggcity.org/city-council/joe-dovinh",
         "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2023-01/0n4a1706.jpg?itok=MGoTobSr",
-        "bio": "Dr. Joseph T. DoVinh, JD was elected to the city council in 2022. Prior to joining the city council, he served the City of Garden Grove as a planning commissioner from 2012 to 2013. In April 1975, his family was evacuated from war-torn central Vietnam during the “Fall of Saigon” as part of the first-wave of evacuees. Processed as refugees through the United States Marine Base Camp Pendleton in San Diego, California, his family was subsequently sponsored by a judge’s family to Washington state where he grew up. Council Member DoVinh attended the University of Washington, earning a Bachelor’s degree in Political Science while serving as president of the Vietnamese Student Association, from 1989 to 1990. He was also director of the Asian Commission of the Associated Students of University of Washington (ASUW). After graduating from the University of Washington, Council Member DoVinh passed the State of Washington Certified Interpreter Exam and served as an interpreter for state and federal courts.",
+        "bio": "Dr. Joseph T. DoVinh, JD was elected to the city council in 2022. Prior to joining the city council, he served the City of Garden Grove as a planning commissioner from 2012 to 2013. In April 1975, his family was evacuated from war-torn central Vietnam during the \u201cFall of Saigon\u201d as part of the first-wave of evacuees. Processed as refugees through the United States Marine Base Camp Pendleton in San Diego, California, his family was subsequently sponsored by a judge\u2019s family to Washington state where he grew up. Council Member DoVinh attended the University of Washington, earning a Bachelor\u2019s degree in Political Science while serving as president of the Vietnamese Student Association, from 1989 to 1990. He was also director of the Asian Commission of the Associated Students of University of Washington (ASUW). After graduating from the University of Washington, Council Member DoVinh passed the State of Washington Certified Interpreter Exam and served as an interpreter for state and federal courts.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -1360,21 +1366,21 @@
         "instagram": null
       },
       {
-        "name": "Yesenia Muñeton",
+        "name": "Yesenia Mu\u00f1eton",
         "position": "Councilmember",
         "district": "District 5",
         "email": "yeseniam@ggcity.org",
         "phone": "(714) 741-5104",
         "city_page": "https://ggcity.org/city-council/yesenia-muneton",
         "photo_url": "https://ggcity.org/sites/default/files/styles/medium/public/2025-01/ymuneton.jpg?itok=mCU21BsW",
-        "bio": "Yesenia Muñeton was elected to the city council in 2024, and is the first Latina to represent District 5. Born and raised in Garden Grove, Council Member Muñeton attended Skylark Elementary, Doig Intermediate, and Santiago High School. She went on to earn a bachelor’s degree from CSU Fullerton and a Master of Arts from Chapman University. She is the first in her family to receive a college degree. Council Member Muñeton is passionate about educational equity and believes in the power of quality education to uplift future generations. As a dedicated elementary school teacher and former long-time lead instructor for the Boys and Girls Club in Garden Grove, she has built strong connections across the city and made a lasting impact on local youth and families. Together with her husband Walter and their two children, Council Member Muñeton and her family enjoy spending their free time outdoors, serving their community, and trying new Garden Grove restaurants.",
+        "bio": "Yesenia Mu\u00f1eton was elected to the city council in 2024, and is the first Latina to represent District 5. Born and raised in Garden Grove, Council Member Mu\u00f1eton attended Skylark Elementary, Doig Intermediate, and Santiago High School. She went on to earn a bachelor\u2019s degree from CSU Fullerton and a Master of Arts from Chapman University. She is the first in her family to receive a college degree. Council Member Mu\u00f1eton is passionate about educational equity and believes in the power of quality education to uplift future generations. As a dedicated elementary school teacher and former long-time lead instructor for the Boys and Girls Club in Garden Grove, she has built strong connections across the city and made a lasting impact on local youth and families. Together with her husband Walter and their two children, Council Member Mu\u00f1eton and her family enjoy spending their free time outdoors, serving their community, and trying new Garden Grove restaurants.",
         "term_start": 2024,
         "term_end": 2028
       }
     ],
     "meetings": {
       "schedule": "2nd and 4th Tuesdays",
-      "time": "5:30 PM",
+      "time": "6:30 PM",
       "location": {
         "name": "City Council Chamber",
         "address": "11300 Stanford Avenue",
@@ -1501,7 +1507,7 @@
         "term_end": 2028
       },
       {
-        "name": "Gracey Van Der Mark",
+        "name": "Gracey Larrea-Van Der Mark",
         "position": "Councilmember",
         "district": "At-Large",
         "email": "Gracey.VanDerMark@surfcity-hb.org",
@@ -1580,7 +1586,7 @@
       "size": 7,
       "districts": 0,
       "at_large": 7,
-      "mayor_elected": true,
+      "mayor_elected": false,
       "term_length": 4
     },
     "elections": {
@@ -1622,7 +1628,7 @@
         "phone": "(949) 724-6000",
         "city_page": "https://www.cityofirvine.org/city-council/vice-mayor-james-mai-district-3",
         "photo_url": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg",
-        "bio": "James Mai was elected as the inaugural Councilmember for District 3 and was subsequently selected by his City Council colleagues to serve as Vice Mayor. His election marks a historic milestone, reflecting Irvine’s rich diversity, as he became the first Vietnamese American to hold elected office in the city. With over two decades of business leadership, James brings extensive expertise in strategy, innovation, and growth. His career spans a broad range of industries and international markets, earning him a reputation as a dynamic and results-driven entrepreneur. He has successfully launched and managed organizations with a global presence, demonstrating resilience and adaptability in navigating complex and emerging markets. As Managing Partner of Bristol & Bates, a management consulting firm specializing in business development and technology strategies, James has delivered transformative solutions to organizations worldwide. His proficiency in strategic operations, brand development, marketing, and technology has enabled businesses to scale efficiently and expand their impact. His professional portfolio includes operations across North America, Europe, and Asia, as well as founding an Irvine-based executive search firm in 2004.",
+        "bio": "James Mai was elected as the inaugural Councilmember for District 3 and was subsequently selected by his City Council colleagues to serve as Vice Mayor. His election marks a historic milestone, reflecting Irvine\u2019s rich diversity, as he became the first Vietnamese American to hold elected office in the city. With over two decades of business\u00a0leadership, James brings extensive expertise in strategy, innovation, and growth. His career spans a broad range of industries and international markets, earning him a reputation as a dynamic and results-driven entrepreneur. He has successfully launched and managed organizations with a global presence, demonstrating resilience and adaptability in navigating complex and emerging markets. As Managing Partner of Bristol & Bates, a management consulting firm specializing in business development and technology strategies, James has delivered transformative solutions to organizations worldwide. His proficiency in strategic operations, brand development, marketing, and technology has enabled businesses to scale efficiently and expand their impact. His professional portfolio includes operations across North America, Europe, and Asia, as well as founding an Irvine-based executive search firm in 2004.",
         "term_start": 2022,
         "term_end": 2026,
         "instagram": "https://www.instagram.com/vicemayormai"
@@ -1635,7 +1641,7 @@
         "phone": "(949) 724-6000",
         "city_page": "https://www.cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5",
         "photo_url": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg",
-        "bio": "Councilmember Betty Martinez Franco is a proud, longtime resident of Irvine, an entrepreneur, and a public servant representing Council District 5. In a historic victory, she became the first Latina and first Mexican immigrant elected to the Irvine City Council, in a city where Latinos represent the third-largest demographic group. Originally from Mexico, Councilmember Martinez Franco immigrated to the United States over 30 years ago. Her journey is one of determination and perseverance, beginning with humble roots working in apple fields, hotel housekeeping, and childcare. As a survivor of domestic violence, she sought refuge at Human Options. This nonprofit organization helped her secure stable and affordable housing in Irvine –– where she began to rebuild her life with her two daughters. Betty’s determination led her to pursue higher education options. She earned an Associate's degree from Orange Coast College, a Bachelor’s degree in Communications from California State University, Fullerton, a Master’s degree in Public Administration, and a Graduate Certificate in City and County Management from USC Price School of Public Policy.",
+        "bio": "Councilmember Betty Martinez Franco is a proud, longtime resident of Irvine, an entrepreneur, and a public servant representing Council District 5. In a historic victory, she became the first Latina and first Mexican immigrant elected to the Irvine City Council, in a city where Latinos represent the third-largest demographic group. Originally from Mexico, Councilmember Martinez Franco immigrated to the United States over 30 years ago. Her journey is one of determination and perseverance, beginning with humble roots working in apple fields, hotel housekeeping, and childcare. As a survivor of domestic violence, she sought refuge at Human Options. This nonprofit organization helped her secure stable and affordable housing in Irvine \u2013\u2013 where she began to rebuild her life with her two daughters. Betty\u2019s determination led her to pursue higher education options. She earned an Associate's degree from Orange Coast College, a Bachelor\u2019s degree in Communications from California State University, Fullerton, a Master\u2019s degree in Public Administration, and a Graduate Certificate in City and County Management from USC Price School of Public Policy.",
         "term_start": 2024,
         "term_end": 2026,
         "instagram": "https://www.instagram.com/councilmemberbettymartinez"
@@ -1648,7 +1654,7 @@
         "phone": "(949) 724-6000",
         "city_page": "https://www.cityofirvine.org/city-council/councilmember-kathleen-treseder-large",
         "photo_url": "https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg",
-        "bio": "Meet Councilmember Kathleen Treseder, PhD - At-Large Councilmember Kathleen Treseder, PhD is the Howard A. Schneiderman Endowed Chair and Professor at University of California Irvine. She leads an internationally recognized research program studying how climate change affects endangered ecosystems and our society. She received her PhD from Stanford University and has been elected a Fellow of the American Association for the Advancement of Science, the American Academy of Microbiology, and the Ecological Society of America. She was recently honored with the 2024 Robert H. MacArthur Award from the Ecological Society of America. This prestigious award is bestowed upon an established ecologist in mid-career who has made significant contributions to the field of ecology, with the expectation of continuing to produce outstanding ecological research. In 2022, she received the Marsh Award for Climate Change Research from the British Ecological Society. She has published over 120 articles in scientific journals. Councilmember Treseder’s research has been featured on the BBC and NPR and in numerous publications, including Discover Magazine, The Orange County Register, and Harper’s Bazaar.",
+        "bio": "Meet Councilmember Kathleen Treseder, PhD -\u00a0At-Large Councilmember Kathleen Treseder, PhD is the Howard A. Schneiderman Endowed Chair and Professor at University of California Irvine. She leads an internationally recognized research program studying how climate change affects endangered ecosystems and our society. She received her PhD from Stanford University and has been elected a Fellow of the American Association for the Advancement of Science, the American Academy of Microbiology, and the Ecological Society of America. She was recently honored with the 2024 Robert H. MacArthur Award from the Ecological Society of America. This prestigious award is bestowed upon an established ecologist in mid-career who has made significant contributions to the field of ecology, with the expectation of continuing to produce outstanding ecological research. In 2022, she received the Marsh Award for Climate Change Research from the British Ecological Society. She has published over 120 articles in scientific journals. Councilmember Treseder\u2019s research has been featured on the BBC and NPR and in numerous publications, including Discover Magazine, The Orange County Register, and Harper\u2019s Bazaar.",
         "term_start": 2024,
         "term_end": 2026,
         "instagram": "https://www.instagram.com/councilmemberkathleentreseder"
@@ -1661,7 +1667,7 @@
         "phone": "(949) 724-6000",
         "city_page": "https://www.cityofirvine.org/city-council/councilmember-melinda-liu-district-1",
         "photo_url": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg",
-        "bio": "Councilmember Melinda Liu is a long-time Northwood resident with her multigenerational family in Irvine. She holds a Bachelor of Arts degree in Political Science from the University of California in Berkeley and a Juris Doctor degree from Southwestern University School Law in Los Angeles, California. Professionally, she is a licensed attorney by the California Bar, a licensed Real Estate Broker in the State of California, and a certified Mediator. Born in Taipei, Taiwan, Councilmember Liu moved to Los Angeles with her family as a teenager. In Irvine’s first district City Council election, she made history as the first Taiwan-born Chinese-American woman who is fluent in Mandarin to be elected to Irvine City Council. Throughout her legal career, Councilmember Liu has worked extensively with immigrant communities and small businesses. She started working in immigration law during law school under the mentorship of prominent immigration attorneys. Then, she gained insights and experiences serving small businesses in transactions, litigations, and complex government regulations in private practice and the Small Business Administration. Currently, Councilmember Liu runs her solo estate planning business where she helps families make estate plans with empathy and knowledge. Since high school, Councilmember Liu has been an active community volunteer and leader who’s been recognized by many organizations. A passionate advocate for her community, Councilmember Liu has spent years acting as a volunteer and leader at local athletic, education, and charitable organizations. Specifically, she served as the President of Irvine Chinese School Parent Teacher Organization, Board Member of Northwood High School Athletic Booster Club and PTSA, and a volunteer mediator at the Orange County Superior Court.",
+        "bio": "Councilmember Melinda Liu is a long-time Northwood resident with her multigenerational family in Irvine. She holds a Bachelor of Arts degree in Political Science from the University of California in Berkeley and a Juris Doctor degree from Southwestern University School Law in Los Angeles, California. Professionally, she is a licensed attorney by the California Bar, a licensed Real Estate Broker in the State of California, and a certified Mediator. Born in Taipei, Taiwan, Councilmember Liu moved to Los Angeles with her family as a teenager. In Irvine\u2019s first district City Council election, she made history as the first Taiwan-born Chinese-American woman who is fluent in Mandarin to be elected to Irvine City Council. Throughout her legal career, Councilmember Liu has worked extensively with immigrant communities and small businesses. She started working in immigration law during law school under the mentorship of prominent immigration attorneys. Then, she gained insights and experiences serving small businesses in transactions, litigations, and complex government regulations in private practice and the Small Business Administration. Currently, Councilmember Liu runs her solo estate planning business where she helps families make estate plans with empathy and knowledge. Since high school, Councilmember Liu has been an active community volunteer and leader who\u2019s been recognized by many organizations. A passionate advocate for her community, Councilmember Liu has spent years acting as a volunteer and leader at local athletic, education, and charitable organizations. Specifically, she served as the President of Irvine Chinese School Parent Teacher Organization, Board Member of Northwood High School Athletic Booster Club and PTSA, and a volunteer mediator at the Orange County Superior Court.",
         "term_start": 2024,
         "term_end": 2026,
         "website": "https://www.melindaliuirvine.com",
@@ -1675,7 +1681,7 @@
         "phone": "(949) 724-6000",
         "city_page": "https://www.cityofirvine.org/city-council/councilmember-mike-carroll-district-4",
         "photo_url": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png",
-        "bio": "Councilmember Mike Carroll is serving his second 4-year term on the Irvine City Council. Appointed in 2019 on a bi-partisan basis to fill a vacancy, in 2020 he was elected to a four-year term and then re-elected in 2024, where he received the highest number of votes in the City’s history. With over 318,000 residents, Irvine is the second largest city in Orange County, California, the sixth largest county in the United States. Irvine is a multi-award-winning master-planned community. It is the most diversely integrated city and has been the safest city in America for nearly 20 years in a row. Carroll is also Vice Chairman of the Great Park, the largest under-development municipal park in the nation. Spanning 1,300 acres and hosting 6 million annual visits, the Great Park’s 500 acres completed to date embrace recreation, competitive sports, parkland, and the environment. As a salute to our veterans, the Great Park honors the memory of the former Marine Corps Air Station El Toro. The Great Park is setting the gold standard for park design, and upon completion, it will be a national treasure among the great metropolitan parks of the world.",
+        "bio": "Councilmember Mike Carroll is serving his second 4-year term on the Irvine City Council. Appointed in 2019 on a bi-partisan basis to fill a vacancy, in 2020 he was elected to a four-year term and then re-elected in 2024, where he received the highest number of votes in the City\u2019s history. With over 318,000 residents, Irvine is the second largest city in Orange County, California, the sixth largest county in the United States. Irvine is a multi-award-winning master-planned community. It is the most diversely integrated city and has been the safest city in America for nearly 20 years in a row. Carroll is also Vice Chairman of the Great Park, the largest under-development municipal park in the nation. Spanning 1,300 acres and hosting 6 million annual visits, the Great Park\u2019s 500 acres completed to date embrace recreation, competitive sports, parkland, and the environment. As a salute to our veterans, the Great Park honors the memory of the former Marine Corps Air Station El Toro. The Great Park is setting the gold standard for park design, and upon completion, it will be a national treasure among the great metropolitan parks of the world.",
         "term_start": 2024,
         "term_end": 2028,
         "instagram": "https://www.instagram.com/mikecarrollcouncilmember",
@@ -1689,7 +1695,7 @@
         "phone": "(949) 724-6000",
         "city_page": "https://www.cityofirvine.org/city-council/councilmember-william-go-district-2",
         "photo_url": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg",
-        "bio": "William Go was elected to the Irvine City Council in 2024 as the first Councilmember to represent District 2 and the first Chinese Filipino American to serve on the Council. William is also Chairman of the Great Park, currently the nation’s largest municipal park under development. Covering 1,300 acres and welcoming approximately 6 million visitors each year, the 500 acres already completed feature a dynamic mix of recreational spaces, competitive sports facilities, preserved parkland, and environmental stewardship. In tribute to our veterans, the Great Park thoughtfully preserves and honors the legacy of the former Marine Corps Air Station El Toro. By establishing a new benchmark for innovative park design, the Great Park is poised to become a world-class metropolitan treasure upon full completion. William and his family immigrated to the United States when he was a child. Raised alongside his four siblings by their mother, William saw her work tirelessly to provide for their family, instilling in him the values of hard work and perseverance. Born in the Philippines to a mother of Chinese descent, he speaks three languages: English, Tagalog, and Chinese.",
+        "bio": "William Go was elected to the Irvine City Council in 2024 as the first Councilmember to represent District 2 and the first Chinese Filipino American to serve on the Council. William is also\u00a0Chairman of the Great Park, currently the nation\u2019s largest municipal park under development. Covering 1,300 acres and welcoming approximately 6 million visitors each year, the 500 acres already completed feature a dynamic mix of recreational spaces, competitive sports facilities, preserved parkland, and environmental stewardship. In tribute to our veterans, the Great Park thoughtfully preserves and honors the legacy of the former Marine Corps Air Station El Toro. By establishing a new benchmark for innovative park design, the Great Park is poised to become a world-class metropolitan treasure upon full completion. William and his family immigrated to the United States when he was a child. Raised alongside his four siblings by their mother, William saw her work tirelessly to provide for their family, instilling in him the values of hard work and perseverance. Born in the Philippines to a mother of Chinese descent, he speaks three languages: English, Tagalog, and Chinese.",
         "term_start": 2024,
         "term_end": 2028,
         "instagram": "https://www.instagram.com/williamgoirvine"
@@ -1697,7 +1703,7 @@
     ],
     "meetings": {
       "schedule": "2nd and 4th Tuesdays",
-      "time": "4 PM",
+      "time": "4\u00a0PM",
       "location": {
         "name": "City Council Chamber",
         "address": "1 Civic Center Plaza",
@@ -1747,8 +1753,8 @@
     },
     "council": {
       "size": 7,
-      "districts": 6,
-      "at_large": 1,
+      "districts": 5,
+      "at_large": 2,
       "mayor_elected": true,
       "expanded_date": "2024-03"
     },
@@ -2200,7 +2206,7 @@
         "phone": "(949) 707-2600",
         "city_page": "https://www.lagunahillsca.gov/527/Don-Caskey-Mayor",
         "photo_url": "https://www.lagunahillsca.gov/ImageRepository/Document?documentID=6613",
-        "bio": "Don is a Fellow in the American Institute of Architects and has BA and MUD degrees in Architecture and Urban Planning & Design from USC. At age 27 Don started his firm in Orange County as Coleman/Caskey Architects then sold after 21 years to nationally based architectural/engineering firm Carter Burgess and subsequently to international-based Jacobs Engineering. Don then became the Associate Vice Chancellor of Administration and University Architect for the University of California, Riverside. He has served on several professional Boards at the local, State and National level, including the Association of University Architects. In retirement, Don remains a recognized leader in the design and construction profession and brings those specific credentials to the City of Laguna Hills at a time when they are needed most. Don previously served on the Parks and Recreation Commission and is currently an appointed member of the Laguna Hills City Council. He is a five-year member of his HOA’s Emergency Preparedness Committee and is a certified Post-Disaster Safety Assessment Evaluator for the State of California. Don was the architect-in-charge for the design of the Laguna Hills Civic Center in 2007 and brings specific goals and objectives to his role on City Council.  Among them are: Help the City Council with the successful completion of the Urban Village",
+        "bio": "Don is a Fellow in the American Institute of Architects and has BA and MUD degrees in Architecture and Urban Planning & Design from USC. At age 27 Don started his firm in Orange County as Coleman/Caskey Architects then sold after 21 years to nationally based architectural/engineering firm Carter Burgess and subsequently to international-based Jacobs Engineering. Don then became the Associate Vice Chancellor of Administration and University Architect for the University of California, Riverside. He has served on several professional Boards at the local, State and National level, including the Association of University Architects. In retirement, Don remains a recognized leader in the design and construction profession and brings those specific credentials to the City of Laguna Hills at a time when they are needed most. Don previously served on the Parks and Recreation Commission and is currently an appointed member of the Laguna Hills City Council. He is a five-year member of his HOA\u2019s Emergency Preparedness Committee and is a certified Post-Disaster Safety Assessment Evaluator for the State of California. Don was the architect-in-charge for the design of the Laguna Hills Civic Center in 2007 and brings specific goals and objectives to his role on City Council. \u00a0Among them are: Help the City Council with the successful completion of the Urban Village",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -2214,7 +2220,7 @@
         "phone": "(949) 707-2600",
         "city_page": "https://www.lagunahillsca.gov/447/Jared-Mathis-Mayor-Pro-Tempore",
         "photo_url": "https://www.lagunahillsca.gov/ImageRepository/Document?documentID=8874",
-        "bio": "As CEO of Moulton Company Jared Mathis, manages a global real estate portfolio consisting of industrial, residential and commercial retail properties. Moulton Company has roots and real estate holdings in Orange County dating back to 1874 with its headquarters located in Laguna Hills. Jared is President of Moulton Museum bringing the history of Orange County to life and honoring the pioneer spirit. Jared is also co-owner of Moulton Farms, maintaining a presence in their original family business of farming and ranching. Jared serves as Board Co-Chair of Laguna Playhouse and Chair of the Board of Trustees for Laguna College of Art+Design. He serves on the boards of California Rangeland Trust, Chapman University Board of Governors, Aliso Viejo Ranch Foundation and 4-M Water District in Maxwell, CA. He is also an active member of the Laguna Hills, Laguna Beach and Dana Point Chambers of Commerce.  Along with his wife Kate, Jared is a Life Member of Saddleback Area Historical Society and members of UCI's Claire Trevor Society. They are proud and active supporters of Valencia Elementary PTA, Girl Scouts, National Charity League, The Drake Gives/Save the Music, Laguna Art Museum, LHHS Football and Crystal Cove Conservancy.  Over the past 25 years, Jared has worked with or served on boards with non-profit organizations in every state in the nation. Jared grew up on a ranch created from the incremental sale of Moulton Ranch. Jared inherited a pioneer spirit from his great-grandparents Lewis and Nellie Gail Moulton.  Jared moved into Laguna Hills in 2013 with his wife and three daughters.",
+        "bio": "As CEO of Moulton Company Jared Mathis, manages a global real estate portfolio consisting of industrial, residential and commercial retail properties. Moulton Company has roots and real estate holdings in Orange County dating back to 1874 with its headquarters located in Laguna Hills. Jared is President of Moulton Museum bringing the history of Orange County to life and honoring the pioneer spirit. Jared is also co-owner of Moulton Farms, maintaining a presence in their original family business of farming and ranching. Jared serves as Board Co-Chair of Laguna Playhouse and Chair of the Board of Trustees for Laguna College of Art+Design. He serves on the boards of California Rangeland Trust, Chapman University Board of Governors, Aliso Viejo Ranch Foundation and 4-M Water District in Maxwell, CA. He is also an active member of the Laguna Hills, Laguna Beach and Dana Point Chambers of Commerce. \u00a0Along with his wife Kate, Jared is a Life Member of Saddleback Area Historical Society and members of UCI's Claire Trevor Society. They are proud and active supporters of Valencia Elementary PTA, Girl Scouts, National Charity League, The Drake Gives/Save the Music, Laguna Art Museum, LHHS Football and Crystal Cove Conservancy. \u00a0Over the past 25 years, Jared has worked with or served on boards with non-profit organizations in every state in the nation. Jared grew up on a ranch created from the incremental sale of Moulton Ranch. Jared inherited a pioneer spirit from his great-grandparents Lewis and Nellie Gail Moulton. \u00a0Jared moved into Laguna Hills in 2013 with his wife and three daughters.",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -2228,7 +2234,7 @@
         "phone": "(949) 707-2600",
         "city_page": "https://www.lagunahillsca.gov/476/Dave-Wheeler",
         "photo_url": "https://www.lagunahillsca.gov/ImageRepository/Document?documentID=4265",
-        "bio": "Dave is a 33-year resident of Laguna Hills.  He was educated at Marietta College and Columbia University in New York and holds three degrees in Physics and Engineering. He graduated with honors from both schools and was president of the Columbia University academic honor society.  For 14 years at Boeing, Dave worked as a rocket scientist for Boeing with the U.S. Navy.   For another 13 years, Dave worked as a space scientist with NASA in Safety building the United States Space Station working to protect our astronauts’ lives and the Space Program.   He holds 4 patents. Dave and wife Nancie have been married over 40 years and have raised two children.   Both children graduated from Laguna Hills High School and both played sports for the Hawks.  One is now a medical doctor and the other is completing a doctoral program. Dave currently serves as a Laguna Hills City Councilmember and was previously a Traffic Commissioner for the city.  He has been involved with church including benevolence programs and fed the homeless for many years at a local food pantry.  He was involved with his children’s sports and was picked as Fan of the Week by the Hawks.",
+        "bio": "Dave is a 33-year resident of Laguna Hills. \u00a0He was educated at Marietta College and Columbia University in New York and holds three degrees in Physics and Engineering. He graduated with honors from both schools and was president of the Columbia University academic honor society. \u00a0For 14 years at Boeing, Dave worked as a rocket scientist for Boeing with the U.S. Navy. \u00a0 For another 13 years, Dave worked as a space scientist with NASA in Safety building the United States Space Station working to protect our astronauts\u2019 lives and the Space Program. \u00a0 He holds 4 patents. Dave and wife Nancie have been married over 40 years and have raised two children. \u00a0 Both children graduated from Laguna Hills High School and both played sports for the Hawks. \u00a0One is now a medical doctor and the other is completing a doctoral program. Dave currently serves as a Laguna Hills City Councilmember and was previously a Traffic Commissioner for the city. \u00a0He has been involved with church including benevolence programs and fed the homeless for many years at a local food pantry. \u00a0He was involved with his children\u2019s sports and was picked as Fan of the Week by the Hawks.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -2256,7 +2262,7 @@
         "phone": "(949) 707-2600",
         "city_page": "https://www.lagunahillsca.gov/234/Joshua-Sweeney",
         "photo_url": "https://www.lagunahillsca.gov/ImageRepository/Document?documentID=7623",
-        "bio": "As the Mayor of Laguna Hills, I am honored to serve the city I love and call home. Laguna Hills is not just where I live—it’s where I’ve built my life, my family, and my future. I am committed to making sure that every resident feels valued and that our city continues to thrive as a safe, vibrant, and inclusive community. Even though Laguna Hills is not a large city, I strongly believe we can and should have a powerful presence. Far too often, smaller cities are overshadowed by larger ones and overlooked in Sacramento and Washington, D.C. I am determined to ensure that Laguna Hills’ voice is heard, advocating for our community’s needs and fighting for the city I hold so dear to my heart. My philosophy as a public servant is rooted in the belief that leadership is about service. I believe in the principles of servant leadership—listening first, putting others’ needs before my own, and acting with humility and integrity. Public officials should never forget that they are here to serve the people, and I strive to embody that responsibility in every decision I make.",
+        "bio": "As the Mayor of Laguna Hills, I am honored to serve the city I love and call home. Laguna Hills is not just where I live\u2014it\u2019s where I\u2019ve built my life, my family, and my future. I am committed to making sure that every resident feels valued and that our city continues to thrive as a safe, vibrant, and inclusive community. Even though Laguna Hills is not a large city, I strongly believe we can and should have a powerful presence. Far too often, smaller cities are overshadowed by larger ones and overlooked in Sacramento and Washington, D.C. I am determined to ensure that Laguna Hills\u2019 voice is heard, advocating for our community\u2019s needs and fighting for the city I hold so dear to my heart. My philosophy as a public servant is rooted in the belief that leadership is about service. I believe in the principles of servant leadership\u2014listening first, putting others\u2019 needs before my own, and acting with humility and integrity. Public officials should never forget that they are here to serve the people, and I strive to embody that responsibility in every decision I make.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -2333,12 +2339,12 @@
       {
         "name": "Gene Johns",
         "position": "Mayor",
-        "district": "At-Large",
+        "district": "District 5",
         "email": "GJohns@cityoflagunaniguel.org",
         "phone": "(949) 362-4373",
         "city_page": "https://www.cityoflagunaniguel.org/1576/Mayor-Gene-Johns",
         "photo_url": "https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24725",
-        "bio": "Mayor Gene Johns was appointed to the City Council on June 14, 2023, and was reappointed in November 2024 for a four-year term. He was selected to serve as Mayor on November 18, 2025. Currently, Mayor Johns is Council Liaison to the Traffic & Transportation Commission, Military Support Committee, and Orange County Mosquito and Vector Control. Mayor Johns served over 31 years as a Deputy Sheriff with the Los Angeles County Sheriff’s Department, in which 24 of those years, he served as cross-designated Task Force Officer assigned to the United States Drug Enforcement Administration (DEA). He commanded a Task Force Group nationally recognized for disrupting and dismantling drug cartel operations. His expertise has been nationally recognized and was often called upon to instruct various law enforcement agencies throughout the nation. Mayor Johns retired in Laguna Niguel seven years ago, and since retirement, has sought opportunities to volunteer in civic and community organizations in the city. He is an active member of the Laguna Niguel Chamber of Commerce, Niguel Botanical Preserve, and Laguna Niguel Lions Club.",
+        "bio": "Mayor Gene Johns was appointed to the City Council on June 14, 2023, and was reappointed in November 2024 for a four-year term. He was selected to serve as Mayor on November 18, 2025. Currently, Mayor Johns is Council Liaison to the Traffic & Transportation Commission, Military Support Committee, and Orange County Mosquito and Vector Control. Mayor Johns served over 31 years as a Deputy Sheriff with the Los Angeles County Sheriff\u2019s Department, in which 24 of those years, he served as cross-designated Task Force Officer assigned to the United States Drug Enforcement Administration (DEA). He commanded a Task Force Group nationally recognized for disrupting and dismantling drug cartel operations. His expertise has been nationally recognized and was often called upon to instruct various law enforcement agencies throughout the nation. Mayor Johns retired in Laguna Niguel seven years ago, and since retirement, has sought opportunities to volunteer in civic and community organizations in the city. He is an active member of the Laguna Niguel Chamber of Commerce, Niguel Botanical Preserve, and Laguna Niguel Lions Club.",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -2347,12 +2353,12 @@
       {
         "name": "Kelly Jennings",
         "position": "Mayor Pro Tem",
-        "district": "At-Large",
+        "district": "District 1",
         "email": "KJennings@cityoflagunaniguel.org",
         "phone": "(949) 362-4373",
         "city_page": "https://www.cityoflagunaniguel.org/838/Mayor-Pro-Tem-Kelly-Jennings",
         "photo_url": "https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=20328",
-        "bio": "Mayor Pro Tem Kelly Jennings was first elected to the City Council on November 3, 2020 for a four-year term, and was appointed in November 2024 for a four-year term. On March 7, 2023, Mayor Pro Tem Kelly Jennings was selected as Mayor, and on November 7, 2023, she was reaffirmed to continue as Mayor for a one-year term. On November 18, 2025, she was selected to serve as Mayor Pro Tem. Currently, Mayor Pro Tem Jennings is Council Liaison to the Parks, Recreation & Senior Commission, Investment Banking & Audit Committee, City/CDBG Grant Sub Committee, Youth Committee, Orange County Fire Authority Executive Committee, Orange County Fire Authority Legislative & Public Affairs Committee, and South Orange County Watershed Management Area Executive Committee. Mayor Pro Tem Kelly Jennings is passionate about public service and loves giving back to the Laguna Niguel community. She is the Community Life Director for Mission Lutheran Church in Laguna Niguel, where she oversees the church’s operations including its work with six global and five regional charities. Kelly previously served as the elected Director for the Moulton Niguel Water District and as a Commissioner for the Santiago Aqueduct Commission. Kelly has been a longtime member of the Laguna Niguel Chamber of Commerce and promotes local small business success by serving as a Chamber Ambassador. She also serves as a Director of Sustain Southern California, which advances sustainability and economic growth through innovation, collaboration and education.",
+        "bio": "Mayor Pro Tem Kelly Jennings was first elected to the City Council on November 3, 2020 for a four-year term, and was appointed in November 2024 for a four-year term. On March 7, 2023, Mayor Pro Tem Kelly Jennings was selected as Mayor, and on November 7, 2023, she was reaffirmed to continue as Mayor for a one-year term. On November 18, 2025, she was selected to serve as Mayor Pro Tem. Currently, Mayor Pro Tem Jennings is Council Liaison to the Parks, Recreation & Senior Commission, Investment Banking & Audit Committee, City/CDBG Grant Sub Committee, Youth Committee, Orange County Fire Authority Executive Committee, Orange County Fire Authority Legislative & Public Affairs Committee, and South Orange County Watershed Management Area Executive Committee. Mayor Pro Tem Kelly Jennings is passionate about public service and loves giving back to the Laguna Niguel community. She is the Community Life Director for Mission Lutheran Church in Laguna Niguel, where she oversees the church\u2019s operations including its work with six global and five regional charities. Kelly previously served as the elected Director for the Moulton Niguel Water District and as a Commissioner for the Santiago Aqueduct Commission. Kelly has been a longtime member of the Laguna Niguel Chamber of Commerce and promotes local small business success by serving as a Chamber Ambassador. She also serves as a Director of Sustain Southern California, which advances sustainability and economic growth through innovation, collaboration and education.",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -2380,7 +2386,7 @@
         "phone": "(949) 362-4373",
         "city_page": "https://www.cityoflagunaniguel.org/1542/Council-Member-Stephanie-Oddo",
         "photo_url": "https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=23960",
-        "bio": "Council Member Stephanie Oddo was elected to the Laguna Niguel City Council on November 8, 2022 for a four-year term. On April 18, 2023, Council Member Oddo was selected to serve as Mayor Pro Tem, and on November 7, 2023,  she was reaffirmed to continue as Mayor Pro Tem. Laguna Niguel Parks, Recreation, and Senior Commission Transportation Corridor Agency, San Joaquin Hills (The Toll Roads) (Vice Chair)",
+        "bio": "Council Member Stephanie Oddo was elected to the Laguna Niguel City Council on November 8, 2022 for a four-year term. On April 18, 2023, Council Member Oddo was selected to serve as Mayor Pro Tem, and on November 7, 2023, \u00a0she was reaffirmed to continue as Mayor Pro Tem. Laguna Niguel Parks, Recreation, and Senior Commission Transportation Corridor Agency, San Joaquin Hills (The Toll Roads) (Vice Chair)",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -2389,12 +2395,12 @@
       {
         "name": "Stephanie Winstead",
         "position": "Councilmember",
-        "district": "At-Large",
+        "district": "District 3",
         "email": "SWinstead@cityoflagunaniguel.org",
         "phone": "(949) 362-4373",
         "city_page": "https://www.cityoflagunaniguel.org/1573/Council-Member-Stephanie-Winstead",
         "photo_url": "https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24627",
-        "bio": "Council Member Stephanie Winstead was appointed to the City Council on May 10, 2023, and was reappointed in November 2024 for a four-year term. Currently, Stephanie is Council Liaison to the Traffic & Transportation Commission, Military Support Committee, Orange County Public Library Advisory Board, and Capistrano Unified School District. Council Member Winstead has over a decade of experience serving the City of Laguna Niguel.  Examples of her service include serving on the City’s Traffic and Transportation Commission, Parks and Recreation Commission, Military Support Committee, and the Investment, Banking and Audit Committee. Additionally, she has served as the Chair of the Chamber of Commerce Board of Directors in 2019.  Professionally, Winstead is an estate planning attorney and is the founder and president of Winstead Law Group, APC located in Laguna Niguel.",
+        "bio": "Council Member Stephanie Winstead was appointed to the City Council on May 10, 2023, and was reappointed in November 2024 for a four-year term. Currently, Stephanie is Council Liaison to the Traffic & Transportation Commission, Military Support Committee, Orange County Public Library Advisory Board, and Capistrano Unified School District. Council Member Winstead has over a decade of experience serving the City of Laguna Niguel. \u00a0Examples of her service include serving on the City\u2019s Traffic and Transportation Commission, Parks and Recreation Commission, Military Support Committee, and the Investment, Banking and Audit Committee. Additionally, she has served as the Chair of the Chamber of Commerce Board of Directors in 2019. \u00a0Professionally, Winstead is an estate planning attorney and is the founder and president of Winstead Law Group, APC located in Laguna Niguel.",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -2447,18 +2453,20 @@
     },
     "council": {
       "size": 5,
-      "districts": 0,
-      "at_large": 5,
+      "districts": 5,
+      "at_large": 0,
       "mayor_elected": false,
-      "expanded_date": null
+      "expanded_date": null,
+      "notes": "Transitioned to by-district elections in 2024. Districts 2 and 4 first elections in 2026."
     },
     "elections": {
       "next_election": "2026-11-03",
       "seats_up": [
-        "2 at-large seats"
+        "District 2",
+        "District 4"
       ],
       "term_length": 4,
-      "election_system": "at-large"
+      "election_system": "by-district"
     },
     "email": "",
     "phone": "",
@@ -2624,7 +2632,7 @@
     "last_updated": "2026-01-26",
     "members": [
       {
-        "name": "Robert Pequeño",
+        "name": "Robert Peque\u00f1o",
         "position": "Mayor",
         "district": "District 5",
         "email": "rpequeno@lakeforestca.gov",
@@ -2885,31 +2893,45 @@
     "city_name": "Mission Viejo",
     "website": "https://www.cityofmissionviejo.org",
     "council_url": "https://www.cityofmissionviejo.org/government/city-council",
-    "last_updated": "2026-01-26",
+    "last_updated": "2026-01-27",
     "members": [
       {
-        "name": "Trish Kelley",
+        "name": "Wendy Bucknum",
         "position": "Mayor",
-        "district": "At-Large",
-        "email": "tkelley@cityofmissionviejo.org",
+        "district": "District 5",
+        "email": "wbucknum@cityofmissionviejo.org",
         "phone": "(949) 470-3050",
-        "city_page": "https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley",
-        "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/Trish-Kelley.jpg",
-        "bio": "Trish Kelley was originally elected to the Mission Viejo City Council in November 2002.  She has served as Mayor in 2005, 2008, 2010, 2014, 2021 and 2024.  Trish believes that quality of life, public safety, economic development, and transportation are the primary concerns of our residents and works hard to preserve and enhance those areas. During her years of service on the City Council, Trish has successfully promoted many programs and improvements to enhance the quality of life in Mission Viejo.  She advanced the expansion of the Norman P. Murray Community and Senior Center, the renovations of Montanoso and Sierra Recreation Centers and the Marguerite Tennis Center and the Marguerite Aquatics Center, the addition of three new parks, and she spearheaded the effort to bring a senior transportation program to Mission Viejo.  She supported road-widening projects on Crown Valley, Alicia, and Oso Parkways and various signal and road improvements city-wide.  Trish continues to promote the regular renovations of our City parks, to provide updated equipment and enhancements for the enjoyment of our residents.  She also supported the City's purchase of Oso Creek Golf Course to preserve over 100 acres of open space and to save and improve a beloved asset in Mission Viejo. In 2003, Trish led the City Council to establish Mission Viejo as a City of Character.   She helped to develop a city-wide character program, which focuses on a different character quality each month.  She wrote the curriculum, which is provided to the City's 25 schools, various City facilities, and featured on the City website.  The program has received awards at the state and national levels.   Trish has been a presenter at state and national conferences, teaching other organizations how to bring similar character programs to their communities.",
+        "city_page": "https://www.cityofmissionviejo.org/departments/city-manager/wendy-bucknum",
+        "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/wendy-bucknum.jpg",
+        "bio": "Mayor Wendy Bucknum was initially elected to serve as a member of the Mission Viejo City Council in 2014. She brings a wealth of practical business experience, a long history of community involvement, and a solid record of volunteerism in our schools, community, and youth sports programs. Mayor Bucknum has a strong business background from her 30+ years serving in the community association and development industry and is a champion for City policies that are fair, understandable, cost effective, and good for the economy. She is a mom who values partnerships with schools to give Mission Viejo youth a meaningful educational experience and safe place to learn. As an active volunteer she understands the unique needs of kids, families, and seniors, and supports programs to serve all. Wendy's primary goals are to maintain and enhance Mission Viejo's public safety record, create a healthy local business economy, streamline governmental processes, preserve parks, trails and open spaces, to protect Mission Viejo's schools and neighborhoods, and to maintain and enhance city infrastructure and the community facilities Mission Viejo residents use and enjoy.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
         "instagram": null
       },
       {
-        "name": "Wendy Bucknum",
+        "name": "Brian Goodell",
         "position": "Mayor Pro Tem",
-        "district": "At-Large",
-        "email": "wbucknum@cityofmissionviejo.org",
+        "district": "District 2",
+        "email": "bgoodell@cityofmissionviejo.org",
         "phone": "(949) 470-3050",
-        "city_page": "https://www.cityofmissionviejo.org/departments/city-manager/wendy-bucknum",
-        "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/wendy-bucknum.jpg",
-        "bio": "Mayor Wendy Bucknum was initially elected to serve as a member of the Mission Viejo City Council in 2014. She brings a wealth of practical business experience, a long history of community involvement, and a solid record of volunteerism in our schools, community, and youth sports programs. Mayor Bucknum has a strong business background from her 30+ years serving in the community association and development industry and is a champion for City policies that are fair, understandable, cost effective, and good for the economy. She is a mom who values partnerships with schools to give Mission Viejo youth a meaningful educational experience and safe place to learn. As an active volunteer she understands the unique needs of kids, families, and seniors, and supports programs to serve all. Wendy’s primary goals are to maintain and enhance Mission Viejo’s public safety record, create a healthy local business economy, streamline governmental processes, preserve parks, trails and open spaces, to protect Mission Viejo’s schools and neighborhoods, and to maintain and enhance city infrastructure and the community facilities Mission Viejo residents use and enjoy.",
+        "city_page": "https://www.cityofmissionviejo.org/departments/city-manager/brian-goodell",
+        "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/bgoodell-web.jpg",
+        "bio": "Brian Goodell is a native Californian who moved to Mission Viejo in 1968 with his family. He graduated from Linda Vista Elementary School, La Paz Intermediate, Mission Viejo High School, and UCLA. Brian was a member of the world-famous Mission Viejo Nadadores swim team and became the first Olympic Gold Medalist from Mission Viejo, breaking two world records while winning two Gold Medals at the 1976 Olympic Games in Montreal. He was inducted into the International Swimming Hall of Fame, the UCLA Athletics Hall of Fame, the Orange County Sports Hall of Fame, and the Saddleback Valley Unified School District Hall of Fame. Brian won the Congressional Gold Medal of Achievement as a member of the 1980 USA Olympic Men's Swimming Team that boycotted the 1980 Moscow Olympics. The citizens elected Brian to the Mission Viejo City Council in 2016, and he has served as a council member, Mayor Pro Tem, and Mayor in 2020, and he was re-elected to serve as Mayor in 2023. Brian led the city with distinction during the outbreak of the COVID-19 Pandemic.",
+        "term_start": 2024,
+        "term_end": 2028,
+        "website": null,
+        "instagram": null
+      },
+      {
+        "name": "Trish Kelley",
+        "position": "Councilmember",
+        "district": "District 4",
+        "email": "tkelley@cityofmissionviejo.org",
+        "phone": "(949) 470-3050",
+        "city_page": "https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley",
+        "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/Trish-Kelley.jpg",
+        "bio": "Trish Kelley was originally elected to the Mission Viejo City Council in November 2002. She has served as Mayor in 2005, 2008, 2010, 2014, 2021 and 2024. Trish believes that quality of life, public safety, economic development, and transportation are the primary concerns of our residents and works hard to preserve and enhance those areas. During her years of service on the City Council, Trish has successfully promoted many programs and improvements to enhance the quality of life in Mission Viejo. She advanced the expansion of the Norman P. Murray Community and Senior Center, the renovations of Montanoso and Sierra Recreation Centers and the Marguerite Tennis Center and the Marguerite Aquatics Center, the addition of three new parks, and she spearheaded the effort to bring a senior transportation program to Mission Viejo. In 2003, Trish led the City Council to establish Mission Viejo as a City of Character.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -2918,40 +2940,26 @@
       {
         "name": "Bob Ruesch",
         "position": "Councilmember",
-        "district": "At-Large",
+        "district": "District 1",
         "email": "rruesch@cityofmissionviejo.org",
         "phone": "(949) 470-3050",
         "city_page": "https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch",
         "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/Bob-Ruesch-Headshot.jpg",
-        "bio": "Robert “Bob” Ruesch came to Mission Viejo in 1994 with his wife Debbie to find a safer and better place to raise their family. Bob & Debbie have two adult children, daughter Kate who resides in Spain with her family, and their son Andrew who resides in Mar Vista with his family. They have three grandsons, Luke, Zach, and Walter. Bob was a leader in the Boy Scouts of America for over twenty years, helping many young men including his son obtain the rank of Eagle. He has been part of a faith-based study for over twenty-five years. Bob’s career has taken many paths. As an entrepreneur, he started five businesses and has held many executive level positions in the private sector. Bob served on a Presidential Task Force for the Reagan Presidency. Bob is a well-established authority on marketing, an accomplished pilot, rock climbing instructor, and motorsport racer.",
+        "bio": "Robert \"Bob\" Ruesch came to Mission Viejo in 1994 with his wife Debbie to find a safer and better place to raise their family. Bob & Debbie have two adult children, daughter Kate who resides in Spain with her family, and their son Andrew who resides in Mar Vista with his family. They have three grandsons, Luke, Zach, and Walter. Bob was a leader in the Boy Scouts of America for over twenty years, helping many young men including his son obtain the rank of Eagle. He has been part of a faith-based study for over twenty-five years. Bob's career has taken many paths. As an entrepreneur, he started five businesses and has held many executive level positions in the private sector. Bob served on a Presidential Task Force for the Reagan Presidency. Bob is a well-established authority on marketing, an accomplished pilot, rock climbing instructor, and motorsport racer.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
         "instagram": null
       },
       {
-        "name": "Brian Goodell",
-        "position": "Councilmember",
-        "district": "At-Large",
-        "email": "bgoodell@cityofmissionviejo.org",
-        "phone": "(949) 470-3050",
-        "city_page": "https://www.cityofmissionviejo.org/departments/city-manager/brian-goodell",
-        "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/bgoodell-web.jpg",
-        "bio": "Brian Goodell is a native Californian who moved to Mission Viejo in 1968 with his family. He graduated from Linda Vista Elementary School, La Paz Intermediate, Mission Viejo High School, and UCLA. Brian was a member of the world-famous Mission Viejo Nadadores swim team and became the first Olympic Gold Medalist from Mission Viejo, breaking two world records while winning two Gold Medals at the 1976 Olympic Games in Montreal. He was inducted into the International Swimming Hall of Fame, the UCLA Athletics Hall of Fame, the Orange County Sports Hall of Fame, and the Saddleback Valley Unified School District Hall of Fame. Brian won the Congressional Gold Medal of Achievement as a member of the 1980 USA Olympic Men’s Swimming Team that boycotted the 1980 Moscow Olympics. The citizens elected Brian to the Mission Viejo City Council in 2016, and he has served as a council member, Mayor Pro Tem, and Mayor in 2020, and he was re-elected to serve as Mayor in 2023. Brian led the city with distinction during the outbreak of the COVID-19 Pandemic. Notable accomplishments under Brian’s leadership include: Acquiring the Oso Creek Golf Course and open space,",
-        "term_start": 2024,
-        "term_end": 2028,
-        "website": null,
-        "instagram": null
-      },
-      {
         "name": "Cynthia Vasquez",
         "position": "Councilmember",
-        "district": "At-Large",
+        "district": "District 3",
         "email": "cvasquez@cityofmissionviejo.org",
         "phone": "(949) 470-3050",
         "city_page": "https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez",
         "photo_url": "https://www.cityofmissionviejo.org/sites/default/files/Cynthia-Vasquez-Headshot.jpg",
-        "bio": "Cynthia Vasquez, MBA, was elected to the Mission Viejo City Council in November 2022 for a four-year term.  She is the first representative for District 3 in the City’s inaugural district elections.  Her priorities focus on public safety, enhancing quality of life, fiscal responsibility, and driving economic development. Cynthia has demonstrated a strong commitment to public safety and traffic management.  Her initiatives include advocating for intersection improvements throughout Mission Viejo, including the installation of a refuge lane on Marguerite Parkway at La Sierra Drive (2026). She also advocates for lower speed limits near schools, increasing crossing guards, adding marked crosswalks near parks and schools, and installing a protective fence around Napoli Park (2023).  Additionally, Cynthia supports expanding the free Mission Viejo shuttle service to assist students and parents, reduce traffic congestion, and improve access to community events.  She maintains communication with local schools and residents to ensure ongoing collaboration.",
+        "bio": "Cynthia Vasquez, MBA, was elected to the Mission Viejo City Council in November 2022 for a four-year term. She is the first representative for District 3 in the City's inaugural district elections. Her priorities focus on public safety, enhancing quality of life, fiscal responsibility, and driving economic development. Cynthia has demonstrated a strong commitment to public safety and traffic management. Her initiatives include advocating for intersection improvements throughout Mission Viejo, including the installation of a refuge lane on Marguerite Parkway at La Sierra Drive (2026). She also advocates for lower speed limits near schools, increasing crossing guards, adding marked crosswalks near parks and schools, and installing a protective fence around Napoli Park (2023).",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -3006,20 +3014,20 @@
     },
     "council": {
       "size": 5,
-      "districts": 0,
-      "at_large": 5,
+      "districts": 5,
+      "at_large": 0,
       "mayor_elected": false,
       "expanded_date": null
     },
     "elections": {
       "next_election": "2026-11-03",
       "seats_up": [
-        "Mayor",
-        "Mayor Pro Tem",
-        "Councilmember"
+        "District 1",
+        "District 4",
+        "District 5"
       ],
       "term_length": 4,
-      "election_system": "at-large"
+      "election_system": "by-district"
     },
     "email": "",
     "phone": "",
@@ -3341,7 +3349,7 @@
         "Mayor",
         "District 1",
         "District 4",
-        "District 5"
+        "District 6"
       ],
       "election_system": "by-district",
       "term_length": 4
@@ -3503,12 +3511,12 @@
       {
         "name": "Anne D. Figueroa",
         "position": "Mayor Pro Tem",
-        "district": "District 1",
+        "district": "At-Large",
         "email": "afigueroa@cityofrsm.org",
         "phone": "949-635-1800, ext. 6310",
         "city_page": "https://www.cityofrsm.org/Directory.aspx?EID=44",
         "photo_url": "https://www.cityofrsm.org/ImageRepository/Document?documentID=3823",
-        "bio": "Anne Figueroa is a 27-year resident of Rancho Santa Margarita. She and her husband, Dan, raised their three children here in our city while they attended both public and private schools. Anne has owned her own design business for the past 29 years and has won numerous design awards. Anne served as a Rancho Santa Margarita Planning Commissioner for three years and also served as Planning Commissioner Chair for one year.  Anne was elected to the Rancho Santa Margarita City Council in November 2018. Anne served as Mayor Pro Tempore in 2021 and as Mayor in 2022. Anne is also currently serving as the District Director for Assemblywoman Kate Sanchez of the 71st Assembly District, State of California.",
+        "bio": "Anne Figueroa\u00a0is a 27-year resident of Rancho Santa Margarita. She and her husband, Dan, raised their three children here in our city while they attended both public and private schools. Anne has owned her own design business for the past 29 years and has won numerous design awards. Anne served as a Rancho Santa Margarita Planning Commissioner for three years and also served as Planning Commissioner Chair for one year. \u00a0Anne was elected to the Rancho Santa Margarita City Council in November 2018. Anne served as Mayor Pro Tempore in 2021 and as Mayor in 2022. Anne is also currently serving as the District Director for Assemblywoman Kate Sanchez of the 71st Assembly District, State of California.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -3517,19 +3525,19 @@
       {
         "name": "Bradley J. McGirr",
         "position": "Councilmember",
-        "district": "District 4",
+        "district": "At-Large",
         "email": "bmcgirr@cityofrsm.org",
         "phone": "949-635-1800, ext. 6310",
         "city_page": "https://www.cityofrsm.org/Directory.aspx?EID=8",
         "photo_url": "https://www.cityofrsm.org/ImageRepository/Document?documentID=12199",
-        "bio": "After years of service to the community, Brad was appointed to the Rancho Santa Margarita Planning Commission in December 2009 and served as the Vice Chair in 2012. He was also appointed as a member of the City’s Economic Development Committee and the Business Attraction Working Group. On November 6, 2012, Brad was elected to the Rancho Santa Margarita City Council, serving as Mayor Pro Tempore in 2014 and as Mayor in 2015. Brad again served as Mayor in 2020 and guided our city in this capacity at the height of the COVID pandemic. Brad was our city’s Mayor Pro Tempore in 2024 and 2025 and proudly serves as a member of the Board of Directors for the Orange County Fire Authority.",
+        "bio": "After years of service to the community, Brad was appointed to the Rancho Santa Margarita Planning Commission in December 2009 and served as the Vice Chair in 2012. He was also appointed as a member of the City\u2019s Economic Development Committee and the Business Attraction Working Group. On November 6, 2012, Brad was elected to the Rancho Santa Margarita City Council, serving as Mayor Pro Tempore in 2014 and as Mayor in 2015. Brad again served as Mayor in 2020 and guided our city in this capacity at the height of the COVID pandemic. Brad was our city\u2019s Mayor Pro Tempore in 2024 and 2025 and proudly serves as a member of the Board of Directors for the Orange County Fire Authority.",
         "term_start": 2022,
         "term_end": 2026
       },
       {
         "name": "Jerry Holloway",
         "position": "Councilmember",
-        "district": "District 2",
+        "district": "At-Large",
         "email": "jholloway@cityofrsm.org",
         "phone": "949-635-1800, ext. 6310",
         "city_page": "https://www.cityofrsm.org/Directory.aspx?EID=11",
@@ -3548,7 +3556,7 @@
         "phone": "949-635-1800, ext. 6310",
         "city_page": "https://www.cityofrsm.org/Directory.aspx?EID=70",
         "photo_url": "https://www.cityofrsm.org/ImageRepository/Document?documentID=12200",
-        "bio": "Keri has been a resident of Rancho Santa Margarita since 2002 and has dedicated herself to serving the community through various volunteer roles. She has been actively involved with local organizations and has supported her children’s education by volunteering in school parent organizations, scouting groups, and sports teams. Her work with the PTA sparked a deep passion for advocacy, leading her to travel to Sacramento to engage with lawmakers on issues such as student mental health and school funding. In January 2020, Keri authored a resolution at the California State PTA convention that called for enhanced mental health services for youth, including increasing the number of school counselors at every level. Her tireless volunteer efforts have earned her several accolades, including the Presidential Service Gold Award, the Fourth District PTA Advocacy Award, and the SVUSD Community Volunteer Recognition Award. Trabuco Hills PTSA - President, EVP, VP of Advocacy Rancho Santa Margarita Intermediate PTSO - President, Executive Board Member",
+        "bio": "Keri has been a resident of Rancho Santa Margarita since 2002 and has dedicated herself to serving the community through various volunteer roles. She has been actively involved with local organizations and has supported her children\u2019s education by volunteering in school parent organizations, scouting groups, and sports teams. Her work with the PTA sparked a deep passion for advocacy, leading her to travel to Sacramento to engage with lawmakers on issues such as student mental health and school funding. In January 2020, Keri authored a resolution at the California State PTA convention that called for enhanced mental health services for youth, including increasing the number of school counselors at every level. Her tireless volunteer efforts have earned her several accolades, including the Presidential Service Gold Award, the Fourth District PTA Advocacy Award, and the SVUSD Community Volunteer Recognition Award. Trabuco Hills PTSA - President, EVP, VP of Advocacy Rancho Santa Margarita Intermediate PTSO - President, Executive Board Member",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -3591,18 +3599,16 @@
     },
     "council": {
       "size": 5,
-      "districts": 4,
-      "at_large": 1,
-      "mayor_elected": true,
+      "districts": 1,
+      "at_large": 4,
+      "mayor_elected": false,
       "expanded_date": null,
-      "notes": "4 districts + directly elected at-large mayor (2024)"
+      "notes": "Only District 3 is by-district; other seats are at-large"
     },
     "elections": {
       "next_election": "2026-11-03",
       "seats_up": [
-        "District 1",
-        "District 2",
-        "District 4"
+        "3 seats (mixed)"
       ],
       "term_length": 4,
       "election_system": "mixed"
@@ -3621,7 +3627,7 @@
       {
         "name": "Rick Loeffler",
         "position": "Mayor",
-        "district": "District 3",
+        "district": "At-Large",
         "email": "LoefflerR@san-clemente.org",
         "phone": "(949) 702-8235",
         "city_page": "https://www.sanclemente.gov/Directory.aspx?EID=58",
@@ -3677,7 +3683,7 @@
       {
         "name": "Zhen Wu",
         "position": "Councilmember",
-        "district": "District 4",
+        "district": "At-Large",
         "email": "WuZ@san-clemente.org",
         "phone": "(949) 361-8322",
         "city_page": "https://www.sanclemente.gov/Directory.aspx?EID=59",
@@ -3691,8 +3697,8 @@
     ],
     "meetings": {
       "schedule": "1st and 3rd Tuesdays",
-      "time": "6:00 PM",
-      "closed_session_time": "5:00 PM",
+      "time": "5:30 PM",
+      "closed_session_time": "4:30 PM",
       "location": {
         "name": "City Hall",
         "address": "100 Avenida Presidio",
@@ -3732,21 +3738,22 @@
     },
     "council": {
       "size": 5,
-      "districts": 4,
-      "at_large": 1,
-      "mayor_elected": true,
+      "districts": 0,
+      "at_large": 5,
+      "mayor_elected": false,
       "expanded_date": null,
-      "notes": "4 districts + at-large mayor (2-year terms starting 2026)"
+      "notes": "Currently all at-large; 4 districts + elected mayor begin November 2026"
     },
     "elections": {
       "next_election": "2026-11-03",
       "seats_up": [
-        "Mayor (At-Large)",
+        "Mayor (new elected position)",
         "District 1",
         "District 2"
       ],
       "term_length": 4,
-      "election_system": "mixed"
+      "election_system": "at-large",
+      "notes": "Transitioning to by-district with elected mayor in 2026"
     },
     "email": "",
     "phone": "",
@@ -3922,7 +3929,7 @@
         "phone": "(714) 647-6900",
         "city_page": "https://www.santa-ana.org/contacts/thai-viet-phan/",
         "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/2025/05/Thai-Viet-Phan-2025-Portrait-240x300-1.jpg",
-        "bio": "Councilmember Thai Viet Phan is proud to be the first Vietnamese American and first Asian woman to serve as a Santa Ana Councilmember. She was born near a refugee camp in Thailand after her parents fled the devastation of the Vietnam War. They settled in Santa Ana in 1989 after months of living in camps in Thailand and the Philippines. Tragically, her father succumbed to brain cancer soon after arriving in the States. Councilmember Phan's mother worked as a babysitter watching neighborhood kids, and they lived in garages and make-shift bedrooms with other families to make ends meet. Like many first-generation immigrant families fleeing conflict and oppression, they were no strangers to poverty. Despite the struggle of growing up with few resources and reliant on the social safety net, Councilmember Phan excelled in the classroom. She attended local public schools—all in the Garden Grove Unified School District, including Morningside, Hazard, Heritage, Skylark, and Simmons Elementary Schools and was the first in her family to graduate high school (Los Amigos High School—2006). She completed her Bachelor of Arts in Communication Studies at the University of California Los Angeles and later graduated from the University of Southern California with a dual Law/Master of Public Policy degree. Throughout college and graduate school, Councilmember Phan worked multiple part-time jobs to supplement her student loans and afford housing and tuition, including serving burgers as an In-N-Out Burger Associate for six years. Today, Thai works as a City Attorney and provides legal advice and counsel to cities and other public agencies throughout Southern California. She previously served as a member of the Santa Ana Planning Commission, where she advised the City Council and helped oversee an array of critical issues, including housing, land use, and small business development. Thai currently serves on the Board of Directors of both the Vietnamese American Bar Association of Southern California and the Heritage Museum of Orange County. She also serves on the Leadership, Equity, Advocacy, & Diversity Advisory Board for the Rancho Santiago Community College District.",
+        "bio": "Councilmember Thai Viet Phan is proud to be the first Vietnamese American and first Asian woman to serve as a Santa Ana Councilmember. She was born near a refugee camp in Thailand after her parents fled the devastation of the Vietnam War. They settled in Santa Ana in 1989 after months of living in camps in Thailand and the Philippines. Tragically, her father succumbed to brain cancer soon after arriving in the States. Councilmember Phan's mother worked as a babysitter watching neighborhood kids, and they lived in garages and make-shift bedrooms with other families to make ends meet. Like many first-generation immigrant families fleeing conflict and oppression, they were no strangers to poverty. Despite the struggle of growing up with few resources and reliant on the social safety net, Councilmember Phan excelled in the classroom. She attended local public schools\u2014all in the Garden Grove Unified School District, including Morningside, Hazard, Heritage, Skylark, and Simmons Elementary Schools and was the first in her family to graduate high school (Los Amigos High School\u20142006). She completed her Bachelor of Arts in Communication Studies at the University of California Los Angeles and later graduated from the University of Southern California with a dual Law/Master of Public Policy degree. Throughout college and graduate school, Councilmember Phan worked multiple part-time jobs to supplement her student loans and afford housing and tuition, including serving burgers as an In-N-Out Burger Associate for six years. Today, Thai works as a City Attorney and provides legal advice and counsel to cities and other public agencies throughout Southern California. She previously served as a member of the Santa Ana Planning Commission, where she advised the City Council and helped oversee an array of critical issues, including housing, land use, and small business development. Thai currently serves on the Board of Directors of both the Vietnamese American Bar Association of Southern California and the Heritage Museum of Orange County. She also serves on the Leadership, Equity, Advocacy, & Diversity Advisory Board for the Rancho Santiago Community College District.",
         "term_start": 2024,
         "term_end": 2028
       },
@@ -3934,7 +3941,7 @@
         "phone": "(714) 647-6900",
         "city_page": "https://www.santa-ana.org/contacts/benjamin-vazquez/",
         "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/2025/05/Benjamin-Vazquez-2025-Portrait-240x300-1.jpg",
-        "bio": "Councilmember Vazquez is a teacher at Valley High School, a cultural worker at El Centro Cultural de Mexico, and a proud homeowner in the Heninger Park neighborhood. Councilmember Vazquez is fully invested in his community and in the future of Santa Ana. He was born to working class immigrant parents and was raised on Center Street. Councilmember Vazquez attended Santa Ana Unified School District schools, Santa Ana College, earned a Bachelor's degree at Cal State Long Beach, and a Master's degree from UCLA. Councilmember Vazquez is now proudly working alongside four siblings and two nieces at Santa Ana Unified School District. Giving back to Santa Ana youth and community is not just his passion—it is a shared family goal. As a member of the City Council, Councilmember Vazquez's focus will be on making sure our limited citywide resources benefit working class families and improve quality of life for all Santa Ana residents. Our City budgets, policies, and resources need to be centered on nurturing the families and communities of our city, instead of special interest groups. Councilmember Vazquez believes that our City's plan and budgets need to reflect a vision that prioritizes working class families.",
+        "bio": "Councilmember Vazquez is a teacher at Valley High School, a cultural worker at El Centro Cultural de Mexico, and a proud homeowner in the Heninger Park neighborhood. Councilmember Vazquez is fully invested in his community and in the future of Santa Ana. He was born to working class immigrant parents and was raised on Center Street. Councilmember Vazquez attended Santa Ana Unified School District schools, Santa Ana College, earned a Bachelor's degree at Cal State Long Beach, and a Master's degree from UCLA. Councilmember Vazquez is now proudly working alongside four siblings and two nieces at Santa Ana Unified School District. Giving back to Santa Ana youth and community is not just his passion\u2014it is a shared family goal. As a member of the City Council, Councilmember Vazquez's focus will be on making sure our limited citywide resources benefit working class families and improve quality of life for all Santa Ana residents. Our City budgets, policies, and resources need to be centered on nurturing the families and communities of our city, instead of special interest groups. Councilmember Vazquez believes that our City's plan and budgets need to reflect a vision that prioritizes working class families.",
         "term_start": 2022,
         "term_end": 2026
       },
@@ -3958,7 +3965,7 @@
         "phone": "(714) 647-6900",
         "city_page": "https://www.santa-ana.org/contacts/phil-bacerra/",
         "photo_url": "https://storage.googleapis.com/proudcity/santaanaca/2025/05/Phil-Bacerra-2025-Portrait-240x300-1.jpg",
-        "bio": "Councilmember Phil Bacerra was elected to the Santa Ana City Council in November 2019 to represent Ward 4. Councilmember Bacerra is the son of a union grocery store manager and a waitress. He was born and raised in Orange County, where he attended local schools and worked as a busboy at his uncle's restaurant in Santa Ana – Pop's Cafe. Graduating from the University of Southern California with a Bachelor of Science degree in Urban Planning, Councilmember Bacerra went on to work for various city government agencies, including the city of Los Angeles. He has been using that city government experience to help small businesses succeed and increase access to high-quality housing.",
+        "bio": "Councilmember Phil Bacerra was elected to the Santa Ana City Council in November 2019 to represent Ward 4. Councilmember Bacerra is the son of a union grocery store manager and a waitress. He was born and raised in Orange County, where he attended local schools and worked as a busboy at his uncle's restaurant in Santa Ana \u2013 Pop's Cafe. Graduating from the University of Southern California with a Bachelor of Science degree in Urban Planning, Councilmember Bacerra went on to work for various city government agencies, including the city of Los Angeles. He has been using that city government experience to help small businesses succeed and increase access to high-quality housing.",
         "term_start": 2022,
         "term_end": 2026
       },
@@ -4214,7 +4221,7 @@
         "phone": "(714) 379-9222",
         "city_page": "https://www.stantonca.gov/government/bio-dshawver.php",
         "photo_url": "https://www.stantonca.gov/revize_photo_gallery/Government/City Council/David Shawver.jpg?t=202505230901400",
-        "bio": "Mayor David John Shawver has lived in the Stanton community for 47 years, where he and his wife Jennifer raised their family of David, Matthew, Stephanie, Katrina and Joseph. Today three still live in Stanton and the grandkids attend local schools. Mayor Shawver attended the University of the Pacific on an athletic scholarship playing both football and baseball. After earning a Bachelor of Arts degree in Kinesiology, with minors in Geology and Education, he was awarded an academic graduate fellowship teaching at the university and received his master’s degree in Kinesiology, with a minor in Education. Mayor Shawver has taught for 42 years in the Long Beach Unified School District, at Long Beach City College, and Hope International University in Fullerton. In addition, he has coached football, wrestling, baseball, girls’ softball, girls' cross country, and was the medical athletic trainer at both the high school and collegiate levels. Mayor Shawver currently serves Stanton as Vice-Chair of the Orange County Sanitation District (OCSD), Executive Board Member of the Orange County Fire Authority (OCFA), Board Member and Past Chairman of Orange County Waste & Recycling (OCWR), Past Chairman and Board Member of the Public Cable Television Authority (PCTA), Chairman of the Stanton Oversight Board on Redevelopment, and Member of the Stanton Development Committee, Public Finance Committee, and Public Housing Authority. He also represents Stanton on the Association of California Cities",
+        "bio": "Mayor David John Shawver has lived in the Stanton community for 47 years, where he and his wife Jennifer raised their family of David, Matthew, Stephanie, Katrina and Joseph. Today three still live in Stanton and the grandkids attend local schools. Mayor Shawver attended the University of the Pacific on an athletic scholarship playing both football and baseball. After earning a Bachelor of Arts degree in Kinesiology, with minors in Geology and Education, he was awarded an academic graduate fellowship teaching at the university and received his master\u2019s degree in Kinesiology, with a minor in Education. Mayor Shawver has taught for 42 years in the Long Beach Unified School District, at Long Beach City College, and Hope International University in Fullerton. In addition, he has coached football, wrestling, baseball, girls\u2019 softball, girls' cross country, and was the medical athletic trainer at both the high school and collegiate levels. Mayor Shawver currently serves Stanton as Vice-Chair of the Orange County Sanitation District (OCSD), Executive Board Member of the Orange County Fire Authority (OCFA), Board Member and Past Chairman of Orange County Waste & Recycling (OCWR), Past Chairman and Board Member of the Public Cable Television Authority (PCTA), Chairman of the Stanton Oversight Board on Redevelopment, and Member of the Stanton Development Committee, Public Finance Committee, and Public Housing Authority. He also represents Stanton on the Association of California Cities",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -4359,7 +4366,7 @@
         "phone": "(714) 573-3012",
         "city_page": "https://www.tustinca.org/499/Mayor-Austin-Lumbard",
         "photo_url": "https://www.tustinca.org/ImageRepository/Document?documentID=8794",
-        "bio": "Mayor Austin Lumbard, elected to City Council in 2018 and elected as Mayor in 2022, was born and raised in Orange County and is a long-time Tustin resident.  His priorities while on City Council include: Mayor Lumbard has served the community in a variety of roles.  He currently represents Tustin on the Orange County Fire Authority and is an alternate representative to the Orange County Sanitation District and the Water Advisory Committee of Orange County.  Mayor Lumbard previously served on the Foothill/Eastern Transportation Corridor Agencies, the Newport Bay Watershed Executive Committee, the Santa Ana River Flood Protection Agency, and the Airport Land Use Commission for Orange County. Prior to being elected to City Council, Mayor Lumbard served six years on Tustin’s Planning Commission, twice as Commission Chair.  He also served for many years as a reserve deputy with the Orange County Sheriff’s Department.  This experience helped shape his passion for keeping all Tustin residents safe.",
+        "bio": "Mayor Austin Lumbard, elected to City Council in 2018 and elected as Mayor in 2022, was born and raised in Orange County and is a long-time Tustin resident. \u00a0His priorities while on City Council include: Mayor Lumbard has served the community in a variety of roles. \u00a0He currently represents Tustin on the Orange County Fire Authority and is an alternate representative to the Orange County Sanitation District and the Water Advisory Committee of Orange County. \u00a0Mayor Lumbard previously served on the Foothill/Eastern Transportation Corridor Agencies, the Newport Bay Watershed Executive Committee, the Santa Ana River Flood Protection Agency, and the Airport Land Use Commission for Orange County. Prior to being elected to City Council, Mayor Lumbard served six years on Tustin\u2019s Planning Commission, twice as Commission Chair. \u00a0He also served for many years as a reserve deputy with the Orange County Sheriff\u2019s Department. \u00a0This experience helped shape his passion for keeping all Tustin residents safe.",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
@@ -4415,7 +4422,7 @@
         "phone": "(714) 573-3012",
         "city_page": "https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher",
         "photo_url": "https://www.tustinca.org/ImageRepository/Document?documentID=16360",
-        "bio": "Mayor Pro Tem Ryan Gallagher, elected to City Council in 2020, was born and raised in Southern California and is a passionate advocate for fiscally responsible government, innovation, and supporting a vibrant local community in Tustin. His priorities while on City Council include Mayor Pro Tem Gallagher represents the City of Tustin as Vice-Chair of the Orange County Sanitation District Board, and also serves as a member of the Water Advisory Committee of Orange County and Newport Bay Watershed Executive Committee (alternate). Prior to joining the City Council, Ryan proudly served the community through his role on the Tustin Planning Commission.",
+        "bio": "Mayor Pro Tem Ryan Gallagher, elected to City Council in 2020, was born and raised in Southern\u00a0California and is a passionate advocate for fiscally responsible government, innovation, and supporting a vibrant local community in Tustin. His priorities while on City Council include Mayor Pro Tem Gallagher represents the City of Tustin as Vice-Chair of the Orange County Sanitation District Board, and also serves as a member of the Water Advisory Committee of Orange County and Newport Bay Watershed Executive Committee (alternate). Prior to joining the City Council, Ryan proudly served the community through his role on the Tustin Planning Commission.",
         "term_start": 2022,
         "term_end": 2026,
         "website": null,
@@ -4852,7 +4859,7 @@
         "phone": "(714) 961-7110",
         "city_page": "https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh",
         "photo_url": "https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8533",
-        "bio": "Councilmember Shivinder Singh has been a dedicated public servant on Yorba Linda City Commissions since 2017. He began as a Traffic Commissioner and transitioned to the Planning Commission, where he served as Chair in 2024. A devoted family man and servant leader, Councilmember Singh is passionate about making a meaningful and lasting impact in his community. Leveraging extensive expertise in business and technology, including Artificial Intelligence, Active Transportation, and Intelligent Transportation Systems, he brings decades of proven leadership to preserve and enhance Yorba Linda's legacy as the \"Land of Gracious Living.\" Councilmember Singh currently serves as the Chief of the Transportation Management Systems Maintenance Engineering Division for the State of California in Orange County. With over 25 years of distinguished state service, he has played a pivotal role in advancing new technologies, as well as designing, constructing, and maintaining Intelligent Transportation Systems across Southern California's freeways and streets, including in San Bernardino, Riverside, Los Angeles, and Orange Counties. His efforts have ensured the safe, efficient, and effective movement of traffic, people, and goods. Councilmember Singh has actively contributed to securing funding and grants for Capital Improvement projects and collaborated with 34 cities in Orange County and organizations like OCTA, SANBAG, and RCTC. His work on Business Continuity Plans (BCP) has been instrumental in securing resources for California's Transportation program, focusing on Intelligent Transportation and Connected Autonomous Vehicle initiatives statewide—showcasing his commitment to innovation and progress in the transportation field.",
+        "bio": "Councilmember Shivinder Singh has been a dedicated public servant on Yorba Linda City Commissions since 2017. He began as a Traffic Commissioner and transitioned to the Planning Commission, where he served as Chair in 2024. A devoted family man and servant leader, Councilmember Singh is passionate about making a meaningful and lasting impact in his community. Leveraging extensive expertise in business and technology, including Artificial Intelligence, Active Transportation, and Intelligent Transportation Systems, he brings decades of proven leadership to preserve and enhance Yorba Linda's legacy as the \"Land of Gracious Living.\" Councilmember Singh currently serves as the Chief of the Transportation Management Systems Maintenance Engineering Division for the State of California in Orange County. With over 25 years of distinguished state service, he has played a pivotal role in advancing new technologies, as well as designing, constructing, and maintaining Intelligent Transportation Systems across Southern California's freeways and streets, including in San Bernardino, Riverside, Los Angeles, and Orange Counties. His efforts have ensured the safe, efficient, and effective movement of traffic, people, and goods. Councilmember Singh has actively contributed to securing funding and grants for Capital Improvement projects and collaborated with 34 cities in Orange County and organizations like OCTA, SANBAG, and RCTC. His work on Business Continuity Plans (BCP) has been instrumental in securing resources for California's Transportation program, focusing on Intelligent Transportation and Connected Autonomous Vehicle initiatives statewide\u2014showcasing his commitment to innovation and progress in the transportation field.",
         "term_start": 2024,
         "term_end": 2028,
         "website": null,
