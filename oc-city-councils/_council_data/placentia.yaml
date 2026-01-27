@@ -1,17 +1,15 @@
 city: placentia
 city_name: Placentia
-last_updated: '2026-01-26'
 website: https://www.placentia.org
 council_url: https://www.placentia.org/268/Mayor-City-Council
-email: ''
-phone: (714) 993-8117
-instagram: ''
+last_updated: '2026-01-26'
 members:
 - name: Chad P. Wanke
   position: Mayor
   district: District 4
   email: chad@chadwanke.com
   phone: (714) 993-8186
+  city_page: https://www.placentia.org/448/Mayor-Chad-P-Wanke-District-4
   photo_url: https://www.placentia.org/ImageRepository/Document?documentID=7616
   bio: Mayor Chad Wanke was born in Anaheim and has lived his entire life in North Orange County. He currently resides in
     Placentia with his wife, Leonie, and their four young children. He graduated from Cal State Fullerton with a Bachelor
@@ -29,12 +27,12 @@ members:
     Emergency Management Agency trained CERT (Community Emergency Response Team) member
   term_start: 2024
   term_end: 2028
-  city_page: https://www.placentia.org/448/Mayor-Chad-P-Wanke-District-4
 - name: Jeremy B. Yamaguchi
   position: Mayor Pro Tem
   district: District 3
   email: jeremy@jeremyyamaguchi.com
   phone: (714) 993-8186
+  city_page: https://www.placentia.org/353/Councilmember-Jeremy-B-Yamaguchi-Distric
   photo_url: https://www.placentia.org/ImageRepository/Document?documentID=7546
   bio: Mayor Pro Tem Jeremy Yamaguchi is one of the youngest elected officials in the State of California and the youngest
     in Orange County history. He was elected in November 2008 at the age of 19 to the Placentia City Council for a term of
@@ -52,12 +50,12 @@ members:
     for international scholars. He now owns and manages his own production company in North Orange County.
   term_start: 2024
   term_end: 2028
-  city_page: https://www.placentia.org/353/Councilmember-Jeremy-B-Yamaguchi-Distric
 - name: Thomas Hummer
   position: Councilmember
   district: District 1
   email: thummer@placentia.org
   phone: (714) 993-8186
+  city_page: https://www.placentia.org/721/Councilmember-Thomas-Hummer-District-1
   photo_url: https://www.placentia.org/ImageRepository/Document?documentID=14591
   bio: Councilmember Thomas Hummer moved to Placentia with his family in 1971. He attended PYLUSD schools Brookhaven Elementary,
     Tuffree Jr. High, and El Dorado High School. His experience as a child and adolescent in Placentia was instrumental in
@@ -70,12 +68,12 @@ members:
     High School Diploma or GED.
   term_start: 2022
   term_end: 2026
-  city_page: https://www.placentia.org/721/Councilmember-Thomas-Hummer-District-1
 - name: Kevin Kirwin
   position: Councilmember
   district: District 2
   email: kkirwin@placentia.org
   phone: (714) 993-8186
+  city_page: https://www.placentia.org/674/Mayor-Kevin-Kirwin-District-2
   photo_url: https://www.placentia.org/ImageRepository/Document?documentID=10080
   bio: Councilmember Kevin Kirwin and his family moved to Placentia in 1968 when he was 3 years old. He grew up here, went
     to three great schools, Brookhaven, Tuffree, and El Dorado, played sports, and had many great teachers, great neighbors,
@@ -84,12 +82,12 @@ members:
     lightly. Professionally, Kevin owns and operates a company that specializes in online safety training for industry.
   term_start: 2024
   term_end: 2028
-  city_page: https://www.placentia.org/674/Mayor-Kevin-Kirwin-District-2
 - name: Ward L. Smith
   position: Councilmember
   district: District 5
   email: wsmith@placentia.org
   phone: (714) 993-8186
+  city_page: https://www.placentia.org/720/Councilmember-Ward-L-Smith-District-5
   photo_url: https://www.placentia.org/ImageRepository/Document?documentID=10077
   bio: Councilmember Ward Smith has been a Placentia resident for most of his life. In 1965, the Smith family moved from the
     City of Los Angeles to the bedroom community of Placentia. As a student, Ward attended Golden and Brookhaven Elementary
@@ -105,7 +103,6 @@ members:
     sustainable future.
   term_start: 2022
   term_end: 2026
-  city_page: https://www.placentia.org/720/Councilmember-Ward-L-Smith-District-5
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 7:00 PM
@@ -115,11 +112,10 @@ meetings:
     address: 401 E. Chapman Avenue
     city_state_zip: Placentia, CA 92870
 portals:
-  agenda_center: https://portal.laserfiche.com/portal/Welcome.aspx?repo=r-d37070b7
-  video_archive: https://www.placentia.org/667/City-Council-Meeting-Archives
-  granicus: https://placentia.granicus.com/ViewPublisher.php?view_id=4
-  ecomment: null
+  agendas: https://portal.laserfiche.com/portal/Welcome.aspx?repo=r-d37070b7
   live_stream: https://placentia.granicus.com/ViewPublisher.php?view_id=4
+  video_archive: https://www.placentia.org/667/City-Council-Meeting-Archives
+  ecomment: null
 broadcast:
   cable_channels:
   - provider: AT&T U-Verse
@@ -153,3 +149,6 @@ elections:
   - District 5
   term_length: 4
   election_system: by-district
+email: ''
+phone: (714) 993-8117
+instagram: ''
