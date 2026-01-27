@@ -1,25 +1,26 @@
 city: buena-park
+city_name: Buena Park
+website: https://www.buenapark.com
+council_url: https://www.buenapark.com/city_departments/city_council/council_members.php
 last_updated: '2026-01-25'
 members:
 - name: Connor Traut
   position: Mayor
   district: District 5
   email: ctraut@buenapark.com
-  phone: 714-562-3500
+  phone: (714) 562-3500
   city_page: https://www.buenapark.com/city_departments/city_council/council_members.php
-  term_start: 2022
-  term_end: 2026
   photo_url: https://www.buenapark.com/Connor Traut - Favorite.jpg?t=202502041220410
   bio: Elected to the Buena Park City Council in November 2018 Re-elected to the Buena Park City Council in November 2022
     Elected to the Centralia Elementary School District Board of Trustees in November 2014
+  term_start: 2022
+  term_end: 2026
 - name: Lamiya Hoque
   position: Vice Mayor
   district: District 4
   email: lhoque@buenapark.com
-  phone: 714-562-3500
+  phone: (714) 562-3500
   city_page: https://www.buenapark.com/city_departments/city_council/council_members.php
-  term_start: 2024
-  term_end: 2028
   photo_url: https://www.buenapark.com/Lamiya Hoque  Cropped.jpg?t=202512101818460
   bio: Lamiya Hoque is a lifelong resident of Buena Park and a product of local public schools, graduating from Centralia
     Elementary School and Oxford Academy. She holds a B.A. in environmental policy from California State University Long Beach,
@@ -28,47 +29,49 @@ members:
     the city's Volunteer Opportunities and Leadership for Teens program. In 2020, she was elected to the Centralia Elementary
     School District Board of Trustees. She also served on the Community Services Commission for the City of Buena Park. She
     teaches Leadership, Ethics, and Philosophy of Helping at Chapman University.
+  term_start: 2024
+  term_end: 2028
 - name: Carlos Franco
   position: Councilmember
   district: District 2
   email: cfranco@buenapark.com
-  phone: 714-562-3500
+  phone: (714) 562-3500
   city_page: https://www.buenapark.com/city_departments/city_council/council_members.php
-  term_start: 2024
-  term_end: 2026
   photo_url: https://www.buenapark.com/Carlos Franco.jpeg?t=202502041216170
   bio: Carlos Franco is a lifelong Buena Park resident, community leader, and founder of Culture-Fluent, an advertising agency.
     He holds a B.A. from California State University-Fullerton. Franco has a proven track record of service through community
     involvement with Buena Park Rotary, Buena Park Sister City Foundation, and as a former City Commissioner. He is fluent
     in Spanish and knows some Korean, as he regularly visits Korea through the Buena Park Sister City Foundation. Previously,
     as a Host at Buena Park Cable Foundation, he guided viewers through local events and interviewed community leaders.
+  term_start: 2024
+  term_end: 2026
 - name: Joyce Ahn
   position: Councilmember
   district: District 1
   email: jahn@buenapark.com
-  phone: 714-562-3500
+  phone: (714) 562-3500
   city_page: https://www.buenapark.com/city_departments/city_council/council_members.php
-  term_start: 2022
-  term_end: 2026
   photo_url: https://www.buenapark.com/departments/City Clerks/Joyce Ahn update photo 2025.jpg?t=202512101820430
   bio: Joyce Ahn is a 20-year resident of Buena Park representing District 1. First elected November 8, 2022 and sworn in
-    December 13, 2022. She brings 35+ years of diverse leadership experience, including professional corporate experience in
-    technology sales as Vice President of Sales, federal government experience as a 2020 Census Field Manager focused on
+    December 13, 2022. She brings 35+ years of diverse leadership experience, including professional corporate experience
+    in technology sales as Vice President of Sales, federal government experience as a 2020 Census Field Manager focused on
     hard-to-count populations, and two decades of community leadership. She has served as President of Sunny Hills Foundation
     for Education and President of the OC Korean-US Citizens League, and previously served on Buena Park's Cultural and Fine
-    Arts Commission. She also worked as a healthcare advisor helping eligible seniors access the Medi-Cal PACE healthcare program.
-    She holds a Bachelor of Science in Marketing and International Business from Woodbury University.
+    Arts Commission. She also worked as a healthcare advisor helping eligible seniors access the Medi-Cal PACE healthcare
+    program. She holds a Bachelor of Science in Marketing and International Business from Woodbury University.
+  term_start: 2022
+  term_end: 2026
 - name: Susan Sonne
   position: Councilmember
   district: District 3
   email: ssonne@buenapark.com
-  phone: 714-562-3500
+  phone: (714) 562-3500
   city_page: https://www.buenapark.com/city_departments/city_council/council_members.php
-  term_start: 2024
-  term_end: 2028
   photo_url: https://www.buenapark.com/Susan Sonne - IMG_5608_resized.jpg?t=202502051747340
   bio: Re-elected to City Countil November 5, 2024 and took office on December 10, 2024 First elected November 3, 2020, and
     took office December 8, 2020 Member of the Buena Park Collaborative (2015-present)
+  term_start: 2024
+  term_end: 2028
 meetings:
   schedule: 2nd and 4th Tuesdays
   time: 5:00 PM
@@ -81,9 +84,9 @@ meetings:
     zoom_id: null
     zoom_passcode: null
 portals:
-  cablecast: https://buenapark.cablecast.tv/
-  agendalink: https://horizon.agendalink.app/engage/buenaparkca/agendas
+  agendas: https://horizon.agendalink.app/engage/buenaparkca/agendas
   live_stream: https://buenapark.cablecast.tv/watch-now?site=1
+  cablecast: https://buenapark.cablecast.tv/
 broadcast:
   cable_channels:
   - provider: Spectrum
@@ -117,5 +120,3 @@ elections:
   - District 5
   term_length: 4
   election_system: by-district
-website: https://www.buenapark.com
-council_url: https://www.buenapark.com/city_departments/city_council/council_members.php
