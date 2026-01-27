@@ -97,11 +97,11 @@ meetings:
     city_state_zip: Rancho Santa Margarita, CA 92688
 portals:
   agendas: https://www.cityofrsm.org/129/Agendas-Minutes
-  live_stream: https://cityofrsm.granicus.com/
-  video_archive: https://cityofrsm.granicus.com/
+  live_stream: https://www.cityofrsm.org/129/Agendas-Minutes
+  video_archive: https://www.cityofrsm.org/129/Agendas-Minutes
   ecomment: https://www.cityofrsm.org/forms.aspx?FID=102
 broadcast:
-  live_stream: https://cityofrsm.granicus.com/
+  live_stream: https://www.cityofrsm.org/129/Agendas-Minutes
 clerk:
   name: Amy Diaz
   title: City Clerk
