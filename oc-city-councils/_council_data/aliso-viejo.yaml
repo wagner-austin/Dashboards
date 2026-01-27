@@ -1,10 +1,14 @@
 city: aliso-viejo
+city_name: Aliso Viejo
+website: https://avcity.org
+council_url: https://avcity.org/222/City-Council
 last_updated: '2026-01-25'
 members:
 - name: Max Duncan
   position: Mayor
   district: District 2
-  phone: 949-425-3899
+  email: mduncan@avcity.org
+  phone: (949) 425-3899
   city_page: https://avcity.org/294/Mayor-Max-Duncan
   photo_url: https://avcity.org/ImageRepository/Document?documentID=4118
   bio: Max Duncan was elected at to the Aliso Viejo City Council in 2022 for a four-year term and currently serves as Mayor
@@ -16,11 +20,11 @@ members:
     In addition to starting multiple businesses, he has also worked as an engineer for various tech companies.
   term_start: 2022
   term_end: 2026
-  email: mduncan@avcity.org
 - name: Mike Munzing
   position: Mayor Pro Tem
   district: District 5
-  phone: 949-425-3899
+  email: mmunzing@avcity.org
+  phone: (949) 425-3899
   city_page: https://avcity.org/292/Mayor-Pro-Tem-Mike-Munzing
   photo_url: https://avcity.org/ImageRepository/Document?documentID=4054
   bio: Mike Munzing was first elected to the Aliso Viejo City Council in 2012 and was reelected in 2016, 2020 and 2024. He
@@ -33,11 +37,11 @@ members:
     Real Estate Finance and Industrial Marketing.
   term_start: 2024
   term_end: 2028
-  email: mmunzing@avcity.org
 - name: Garrett Dwyer
   position: Councilmember
   district: District 3
-  phone: 949-425-3899
+  email: GDwyer@AVCity.org
+  phone: (949) 425-3899
   city_page: https://avcity.org/295/Councilmember-Garrett-Dwyer
   photo_url: https://avcity.org/ImageRepository/Document?documentID=4478
   bio: Garrett Dwyer was appointed in 2025 to represent the 3rd District of the Aliso Viejo City Council. This district includes
@@ -47,13 +51,13 @@ members:
     to plant roots. As his family has grown with kids and dogs and cats, so has Garrett's service to our community. There's
     a good chance you've seen him serving as either a PTA treasurer, soccer coach, AYSO board member, substitute instructor
     at church, HOA board member, or YMCA Adventure Guides Expedition Navigator.
-  term_end: 2028
-  email: GDwyer@AVCity.org
   term_start: 2025
+  term_end: 2028
 - name: Tiffany Ackley
   position: Councilmember
   district: District 4
-  phone: 949-425-3899
+  email: tackley@avcity.org
+  phone: (949) 425-3899
   city_page: https://avcity.org/293/Councilmember-Tiffany-Ackley
   photo_url: https://avcity.org/ImageRepository/Document?documentID=456
   bio: Tiffany Ackley was first elected to the Aliso Viejo City Council in 2018 for a four-year term, then reelected in 2022.
@@ -64,11 +68,11 @@ members:
     When it came time to settle down, her family knew where they wanted to live–Aliso Viejo.
   term_start: 2022
   term_end: 2026
-  email: tackley@avcity.org
 - name: Tim Zandbergen
   position: Councilmember
   district: District 1
-  phone: 949-425-3899
+  email: tzandbergen@avcity.org
+  phone: (949) 425-3899
   city_page: https://avcity.org/291/Councilmember-Tim-Zandbergen
   photo_url: https://avcity.org/ImageRepository/Document?documentID=4053
   bio: Tim Zandbergen was elected to city council in November 2024 for a four-year term. Tim is the first representative of Aliso
@@ -79,7 +83,6 @@ members:
     an alternate member of the San Joaquin Hills Transportation Corridor Agency Board of Directors.
   term_start: 2024
   term_end: 2028
-  email: tzandbergen@avcity.org
 meetings:
   schedule: 1st and 3rd Wednesdays
   time: 7:00 PM
@@ -88,9 +91,10 @@ meetings:
     address: 12 Journey, Suite 100
     city_state_zip: Aliso Viejo, CA 92656
 portals:
-  granicus: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
-  ecomment: null
+  agendas: https://avcity.org/129/Agendas-Minutes
   live_stream: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
+  video_archive: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
+  ecomment: null
 broadcast:
   cable_channels:
   - provider: Cox
@@ -99,9 +103,10 @@ broadcast:
     channel: '99'
   live_stream: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
 clerk:
-  title: City Clerk's Office
+  title: Interim City Clerk
   phone: (949) 425-2510
   email: city-clerk@avcity.org
+  name: Kathy Bailor
 public_comment:
   in_person: true
   remote_live: false
@@ -123,5 +128,3 @@ elections:
   - District 4
   term_length: 4
   election_system: by-district
-website: https://avcity.org
-council_url: https://avcity.org/222/City-Council
