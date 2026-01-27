@@ -6,7 +6,7 @@ last_updated: '2026-01-25'
 members:
 - name: Max Duncan
   position: Mayor
-  district: District 2
+  district: At-Large
   email: mduncan@avcity.org
   phone: (949) 425-3899
   city_page: https://avcity.org/294/Mayor-Max-Duncan
@@ -52,10 +52,10 @@ members:
     a good chance you've seen him serving as either a PTA treasurer, soccer coach, AYSO board member, substitute instructor
     at church, HOA board member, or YMCA Adventure Guides Expedition Navigator.
   term_start: 2025
-  term_end: 2028
+  term_end: 2026
 - name: Tiffany Ackley
   position: Councilmember
-  district: District 4
+  district: At-Large
   email: tackley@avcity.org
   phone: (949) 425-3899
   city_page: https://avcity.org/293/Councilmember-Tiffany-Ackley
@@ -117,14 +117,15 @@ public_comment:
   notes: General public comment allowed at beginning of meetings
 council:
   size: 5
-  districts: 5
-  at_large: 0
+  districts: 3
+  at_large: 2
   mayor_elected: false
   expanded_date: null
+  notes: Districts 1, 3, 5 are by-district; 2 seats are at-large
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - District 2
-  - District 4
+  - At-Large (2 seats)
+  - District 3 (filling vacancy)
   term_length: 4
-  election_system: by-district
+  election_system: mixed

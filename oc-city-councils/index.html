@@ -196,10 +196,12 @@
                         <h4>Public Comment</h4>
                         <dl id="commentInfo"></dl>
                     </div>
+                    <!-- Hidden for now - election data needs verification
                     <div class="info-card">
                         <h4>Elections</h4>
                         <dl id="electionInfo"></dl>
                     </div>
+                    -->
                 </div>
             </div>
 
@@ -287,11 +289,11 @@
                 row('Deadline', pc.deadline) +
                 row('Notes', pc.notes);
 
-            // Elections
-            const el = c.elections || {};
-            document.getElementById('electionInfo').innerHTML =
-                row('Next Election', el.next_election) +
-                row('Seats Up', el.seats_up?.length ? el.seats_up.join(', ') : '');
+            // Elections - hidden for now, data needs verification
+            // const el = c.elections || {};
+            // document.getElementById('electionInfo').innerHTML =
+            //     row('Next Election', el.next_election) +
+            //     row('Seats Up', el.seats_up?.length ? el.seats_up.join(', ') : '');
 
             // Council Members
             document.getElementById('members').innerHTML = (c.members || []).map(mem => {
@@ -312,6 +314,6 @@
 
         init();
     </script>
-    <div style="position:fixed;bottom:8px;right:12px;font-size:11px;color:#999;font-family:monospace;">v1.0.0</div>
+    <div style="position:fixed;bottom:8px;right:12px;font-size:11px;color:#999;font-family:monospace;">v1.0.1</div>
 </body>
 </html>

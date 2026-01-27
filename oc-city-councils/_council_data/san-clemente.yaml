@@ -6,7 +6,7 @@ last_updated: '2026-01-26'
 members:
 - name: Rick Loeffler
   position: Mayor
-  district: District 3
+  district: At-Large
   email: LoefflerR@san-clemente.org
   phone: (949) 702-8235
   city_page: https://www.sanclemente.gov/Directory.aspx?EID=58
@@ -54,7 +54,7 @@ members:
   instagram: null
 - name: Zhen Wu
   position: Councilmember
-  district: District 4
+  district: At-Large
   email: WuZ@san-clemente.org
   phone: (949) 361-8322
   city_page: https://www.sanclemente.gov/Directory.aspx?EID=59
@@ -66,8 +66,8 @@ members:
   instagram: null
 meetings:
   schedule: 1st and 3rd Tuesdays
-  time: 6:00 PM
-  closed_session_time: 5:00 PM
+  time: 5:30 PM
+  closed_session_time: 4:30 PM
   location:
     name: City Hall
     address: 100 Avenida Presidio
@@ -98,19 +98,20 @@ public_comment:
   deadline: 4:00 PM on meeting day
 council:
   size: 5
-  districts: 4
-  at_large: 1
-  mayor_elected: true
+  districts: 0
+  at_large: 5
+  mayor_elected: false
   expanded_date: null
-  notes: 4 districts + at-large mayor (2-year terms starting 2026)
+  notes: Currently all at-large; 4 districts + elected mayor begin November 2026
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - Mayor (At-Large)
+  - Mayor (new elected position)
   - District 1
   - District 2
   term_length: 4
-  election_system: mixed
+  election_system: at-large
+  notes: Transitioning to by-district with elected mayor in 2026
 email: ''
 phone: ''
 instagram: ''

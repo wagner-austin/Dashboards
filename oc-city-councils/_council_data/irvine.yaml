@@ -191,8 +191,8 @@ public_comment:
   notes: Electronic kiosk available at chamber entrance for speaker registration
 council:
   size: 7
-  districts: 6
-  at_large: 1
+  districts: 5
+  at_large: 2
   mayor_elected: true
   expanded_date: 2024-03
 elections:

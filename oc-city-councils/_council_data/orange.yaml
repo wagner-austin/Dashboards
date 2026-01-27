@@ -123,6 +123,6 @@ elections:
   - Mayor
   - District 1
   - District 4
-  - District 5
+  - District 6
   election_system: by-district
   term_length: 4

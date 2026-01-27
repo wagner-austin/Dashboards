@@ -6,7 +6,7 @@ last_updated: '2026-01-25'
 members:
 - name: Cecilia Hupp
   position: Mayor
-  district: District 1
+  district: At-Large
   email: ceciliah@cityofbrea.gov
   phone: (714) 990-7704
   city_page: https://www.cityofbrea.gov/Directory.aspx?EID=3
@@ -28,7 +28,7 @@ members:
   term_end: 2026
 - name: Marty Simonoff
   position: Mayor Pro Tem
-  district: District 2
+  district: At-Large
   email: martys@cityofbrea.gov
   phone: (714) 990-7702
   city_page: https://www.cityofbrea.gov/Directory.aspx?EID=6
@@ -50,7 +50,7 @@ members:
   term_end: 2028
 - name: Blair Stewart
   position: Councilmember
-  district: District 3
+  district: At-Large
   email: blairs@cityofbrea.gov
   phone: (714) 990-7703
   city_page: https://www.cityofbrea.gov/Directory.aspx?EID=2
@@ -74,7 +74,7 @@ members:
   term_end: 2028
 - name: Christine Marick
   position: Councilmember
-  district: District 4
+  district: At-Large
   email: christinem@cityofbrea.gov
   phone: (714) 990-7700
   city_page: https://www.cityofbrea.gov/Directory.aspx?EID=4
@@ -95,7 +95,7 @@ members:
   term_end: 2028
 - name: Steven Vargas
   position: Councilmember
-  district: District 5
+  district: At-Large
   email: stevenv@cityofbrea.gov
   phone: (714) 990-7701
   city_page: https://www.cityofbrea.gov/Directory.aspx?EID=5
@@ -151,14 +151,14 @@ public_comment:
   email: cityclerksgroup@cityofbrea.gov
 council:
   size: 5
-  districts: 5
-  at_large: 0
+  districts: 0
+  at_large: 5
   mayor_elected: false
   expanded_date: null
+  notes: City Council voted April 2022 not to proceed with by-district elections
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - District 1
-  - District 5
+  - At-Large (2 seats)
   term_length: 4
-  election_system: by-district
+  election_system: at-large

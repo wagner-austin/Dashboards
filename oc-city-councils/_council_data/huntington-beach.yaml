@@ -54,7 +54,7 @@ members:
   bio: ''
   term_start: 2024
   term_end: 2028
-- name: Gracey Van Der Mark
+- name: Gracey Larrea-Van Der Mark
   position: Councilmember
   district: At-Large
   email: Gracey.VanDerMark@surfcity-hb.org
@@ -119,7 +119,7 @@ council:
   size: 7
   districts: 0
   at_large: 7
-  mayor_elected: true
+  mayor_elected: false
   term_length: 4
 elections:
   next_election: '2026-11-03'

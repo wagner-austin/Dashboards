@@ -56,7 +56,8 @@ members:
   term_end: 2026
 meetings:
   schedule: 1st and 3rd Tuesdays
-  time: 5:30 PM
+  time: 6:30 PM
+  closed_session_time: 5:00 PM
   location:
     name: Council Chamber
     address: 303 W. Commonwealth Ave.

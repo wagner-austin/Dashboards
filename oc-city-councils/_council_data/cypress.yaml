@@ -6,7 +6,7 @@ last_updated: '2026-01-25'
 members:
 - name: Leo Medrano
   position: Mayor
-  district: District 4
+  district: At-Large
   email: lmedrano@cypressca.org
   phone: (714) 229-6699
   city_page: https://www.cypressca.org/government/city-council/council-member-leo-medrano
@@ -22,7 +22,7 @@ members:
   instagram: null
 - name: Kyle Chang
   position: Mayor Pro Tem
-  district: District 3
+  district: At-Large
   email: kchang@cypressca.org
   phone: (714) 229-6699
   city_page: https://www.cypressca.org/government/city-council/council-member-kyle-change
@@ -39,7 +39,7 @@ members:
   instagram: https://www.instagram.com/kylechangoc/
 - name: Bonnie Peat
   position: Councilmember
-  district: District 1
+  district: At-Large
   email: bpeat@cypressca.org
   phone: (714) 229-6699
   city_page: https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat
@@ -55,7 +55,7 @@ members:
   instagram: null
 - name: David Burke
   position: Councilmember
-  district: District 2
+  district: At-Large
   email: dburke@cypressca.org
   phone: (714) 229-6699
   city_page: https://www.cypressca.org/government/city-council/council-member-david-burke
@@ -71,7 +71,7 @@ members:
   instagram: null
 - name: Rachel Strong Carnahan
   position: Councilmember
-  district: District 5
+  district: At-Large
   email: rstrongcarnahan@cypressca.org
   phone: (714) 229-6699
   city_page: https://www.cypressca.org/government/city-council/council-member-rachel-strong-carnahan
@@ -88,6 +88,7 @@ members:
 meetings:
   schedule: 2nd and 4th Mondays
   time: 6:00 PM
+  schedule_change: Changing to 2nd and 4th Tuesdays (Ordinance 1223, adopted Jan 2026)
   location:
     name: Council Chambers
     address: 5275 Orange Avenue
@@ -114,18 +115,17 @@ public_comment:
   deadline: 3:00 PM on meeting day
 council:
   size: 5
-  districts: 5
-  at_large: 0
+  districts: 0
+  at_large: 5
   mayor_elected: false
   expanded_date: null
+  notes: City is considering by-district elections but currently at-large
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - District 1
-  - District 2
-  - District 5
+  - At-Large (3 seats)
   term_length: 4
-  election_system: by-district
+  election_system: at-large
 email: ''
 phone: ''
 instagram: ''

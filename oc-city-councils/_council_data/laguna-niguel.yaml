@@ -6,7 +6,7 @@ last_updated: '2026-01-25'
 members:
 - name: Gene Johns
   position: Mayor
-  district: At-Large
+  district: District 5
   email: GJohns@cityoflagunaniguel.org
   phone: (949) 362-4373
   city_page: https://www.cityoflagunaniguel.org/1576/Mayor-Gene-Johns
@@ -27,7 +27,7 @@ members:
   instagram: null
 - name: Kelly Jennings
   position: Mayor Pro Tem
-  district: At-Large
+  district: District 1
   email: KJennings@cityoflagunaniguel.org
   phone: (949) 362-4373
   city_page: https://www.cityoflagunaniguel.org/838/Mayor-Pro-Tem-Kelly-Jennings
@@ -85,7 +85,7 @@ members:
   instagram: null
 - name: Stephanie Winstead
   position: Councilmember
-  district: At-Large
+  district: District 3
   email: SWinstead@cityoflagunaniguel.org
   phone: (949) 362-4373
   city_page: https://www.cityoflagunaniguel.org/1573/Council-Member-Stephanie-Winstead
@@ -137,16 +137,18 @@ public_comment:
   notes: No action taken on items not on agenda
 council:
   size: 5
-  districts: 0
-  at_large: 5
+  districts: 5
+  at_large: 0
   mayor_elected: false
   expanded_date: null
+  notes: Transitioned to by-district elections in 2024. Districts 2 and 4 first elections in 2026.
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - 2 at-large seats
+  - District 2
+  - District 4
   term_length: 4
-  election_system: at-large
+  election_system: by-district
 email: ''
 phone: ''
 instagram: ''

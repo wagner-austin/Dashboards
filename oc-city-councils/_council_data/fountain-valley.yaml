@@ -5,7 +5,7 @@ council_url: https://www.fountainvalley.gov/156/City-Council
 last_updated: '2026-01-25'
 members:
 - name: Ted Bui
-  position: Mayor
+  position: Councilmember
   district: At-Large
   email: Ted.Bui@fountainvalley.gov
   phone: (628) 266-8888
@@ -21,7 +21,7 @@ members:
   website: null
   instagram: null
 - name: Jim Cunneen
-  position: Vice Mayor
+  position: Mayor
   district: At-Large
   email: Jim.Cunneen@fountainvalley.gov
   phone: (714) 593-4403
@@ -83,7 +83,7 @@ members:
   website: null
   instagram: null
 - name: Patrick Harper
-  position: Councilmember
+  position: Vice Mayor
   district: At-Large
   email: patrick.harper@fountainvalley.gov
   phone: (714) 593-4403

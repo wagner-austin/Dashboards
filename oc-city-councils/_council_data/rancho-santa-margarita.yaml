@@ -25,7 +25,7 @@ members:
   instagram: null
 - name: Anne D. Figueroa
   position: Mayor Pro Tem
-  district: District 1
+  district: At-Large
   email: afigueroa@cityofrsm.org
   phone: 949-635-1800, ext. 6310
   city_page: https://www.cityofrsm.org/Directory.aspx?EID=44
@@ -42,7 +42,7 @@ members:
   instagram: null
 - name: Bradley J. McGirr
   position: Councilmember
-  district: District 4
+  district: At-Large
   email: bmcgirr@cityofrsm.org
   phone: 949-635-1800, ext. 6310
   city_page: https://www.cityofrsm.org/Directory.aspx?EID=8
@@ -57,7 +57,7 @@ members:
   term_end: 2026
 - name: Jerry Holloway
   position: Councilmember
-  district: District 2
+  district: At-Large
   email: jholloway@cityofrsm.org
   phone: 949-635-1800, ext. 6310
   city_page: https://www.cityofrsm.org/Directory.aspx?EID=11
@@ -118,17 +118,15 @@ public_comment:
   notes: Audio streaming only (no video)
 council:
   size: 5
-  districts: 4
-  at_large: 1
-  mayor_elected: true
+  districts: 1
+  at_large: 4
+  mayor_elected: false
   expanded_date: null
-  notes: 4 districts + directly elected at-large mayor (2024)
+  notes: Only District 3 is by-district; other seats are at-large
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - District 1
-  - District 2
-  - District 4
+  - 3 seats (mixed)
   term_length: 4
   election_system: mixed
 email: ''
