@@ -1,13 +1,17 @@
 city: fullerton
+city_name: Fullerton
+website: https://www.cityoffullerton.com
+council_url: https://www.cityoffullerton.com/government/city-council
 last_updated: '2026-01-25'
 members:
 - name: Fred Jung
   position: Mayor
   district: District 1
-  city_page: https://www.cityoffullerton.com/government/city-council/mayor-fred-jung
   email: fred.jung@cityoffullerton.com
   phone: (714) 738-6311
+  city_page: https://www.cityoffullerton.com/government/city-council/mayor-fred-jung
   photo_url: https://www.cityoffullerton.com/home/showpublishedimage/7826/638960543315970000
+  bio: ''
   term_start: 2024
   term_end: 2028
 - name: Nicholas Dunlap
@@ -17,38 +21,39 @@ members:
   phone: (714) 738-6311
   city_page: https://www.cityoffullerton.com/government/city-council/mayor-pro-tem-nicholas-dunlap
   photo_url: https://www.cityoffullerton.com/home/showpublishedimage/8680/638960545199230000
+  bio: ''
   term_start: 2024
   term_end: 2028
 - name: Ahmad Zahra
   position: Councilmember
+  district: District 5
   email: AhmadZ@cityoffullerton.com
   phone: (714) 738-6311
   city_page: https://www.cityoffullerton.com/government/city-council/council-member-ahmad-zahra
   photo_url: https://www.cityoffullerton.com/home/showpublishedimage/7806/638732629311070000
-  district: District 5
+  bio: ''
   term_start: 2018
   term_end: 2026
 - name: Jamie Valencia
   position: Councilmember
   district: District 4
-  city_page: https://www.cityoffullerton.com/government/city-council/council-member-jamie-valencia
   email: jamie.valencia@cityoffullerton.com
   phone: (714) 738-6311
+  city_page: https://www.cityoffullerton.com/government/city-council/council-member-jamie-valencia
   photo_url: https://www.cityoffullerton.com/home/showpublishedimage/7814/638732629363500000
+  bio: ''
   term_start: 2024
   term_end: 2028
 - name: Shana Charles
   position: Councilmember
+  district: District 3
   email: shana.charles@cityoffullerton.com
   phone: (714) 738-6311
   city_page: https://www.cityoffullerton.com/government/city-council/council-member-shana-charles
   photo_url: https://www.cityoffullerton.com/home/showpublishedimage/7822/638732629409370000
-  district: District 3
+  bio: ''
   term_start: 2022
   term_end: 2026
-city_name: Fullerton
-website: https://www.cityoffullerton.com
-council_url: https://www.cityoffullerton.com/government/city-council
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 5:30 PM
@@ -57,9 +62,9 @@ meetings:
     address: 303 W. Commonwealth Ave.
     city_state_zip: Fullerton, CA 92832
 portals:
-  granicus: https://fullerton.granicus.com/ViewPublisher.php?view_id=2
-  legistar: https://fullerton.legistar.com/
+  agendas: https://fullerton.legistar.com/
   live_stream: https://www.cityoffullerton.com/ftv3
+  video_archive: https://fullerton.granicus.com/ViewPublisher.php?view_id=2
   district_map: https://www.cityoffullerton.com/government/departments/city-clerk/elections/find-my-district
 broadcast:
   cable_channels:
