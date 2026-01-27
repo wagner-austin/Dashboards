@@ -2,13 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orange County City Council Contacts</title>
+    <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=yes">
+    <title>OC City Councils</title>
     <style>
         :root {
-            --primary: #1e40af;
-            --primary-light: #dbeafe;
-            --accent: #f59e0b;
+            --primary: #0066a1;
+            --primary-dark: #004d7a;
+            --primary-light: #e8f4fc;
+            --accent: #4da6d9;
+            --accent-light: #d9eef8;
+            --success: #16a34a;
+            --success-light: #dcfce7;
+            --warning: #ca8a04;
+            --warning-light: #fef3c7;
+            --danger: #dc2626;
+            --danger-light: #fee2e2;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
             --gray-200: #e5e7eb;
@@ -16,900 +24,294 @@
             --gray-700: #374151;
             --gray-800: #1f2937;
             --gray-900: #111827;
-            --success: #059669;
-            --success-light: #d1fae5;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-size: 1.3rem;
             line-height: 1.6;
             color: var(--gray-800);
-            background: var(--gray-50);
+            background: linear-gradient(135deg, #e8f4fc 0%, #f0f7fc 50%, #e0f0f8 100%);
+            min-height: 100vh;
+        }
+        .header-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
         }
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 2rem;
-            text-align: center;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-        .header .subtitle { opacity: 0.9; }
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
+        .header h1 { font-size: 1.5rem; }
+        .header .subtitle { font-size: 0.9rem; opacity: 0.9; margin-top: 0.25rem; }
+        .select-bar {
+            background: var(--gray-100);
+            padding: 0.75rem 2rem;
+            border-bottom: 1px solid var(--gray-200);
         }
-        .stat {
-            text-align: center;
+        .select-bar select {
+            font-size: 0.95rem;
             padding: 0.5rem 1rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-        }
-        .stat-value { font-size: 1.5rem; font-weight: 700; }
-        .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .toc {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .toc h2 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary); }
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 0.5rem;
-        }
-        .toc-item {
-            padding: 0.5rem;
-            text-decoration: none;
-            color: var(--gray-700);
+            border: 2px solid var(--primary);
             border-radius: 6px;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .toc-item:hover { background: var(--primary-light); }
-        .toc-item .status {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        .toc-item .status.complete { background: var(--success); }
-        .toc-item .status.pending { background: var(--accent); }
-        .toc-item .status.error { background: #dc2626; }
-        .city-section {
             background: white;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            cursor: pointer;
+            min-width: 220px;
+            font-weight: 500;
+            color: var(--gray-800);
         }
-        .city-header {
-            background: var(--primary);
-            color: white;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .city-header h2 { font-size: 1.25rem; }
-        .city-header .links { display: flex; gap: 0.75rem; }
-        .city-header a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 0.35rem 0.75rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 4px;
-            transition: background 0.2s;
-        }
-        .city-header a:hover { background: rgba(255,255,255,0.25); }
-        .city-content { padding: 1.5rem; }
-        .public-comment {
-            background: var(--success-light);
-            border-left: 4px solid var(--success);
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 0 8px 8px 0;
-        }
-        .public-comment h4 { color: var(--success); margin-bottom: 0.25rem; }
-        .public-comment a { color: var(--success); }
-        .members-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-        .member-card {
-            border: 1px solid var(--gray-200);
-            border-radius: 8px;
-            padding: 1rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .member-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .member-card .name { font-weight: 600; font-size: 1.1rem; color: var(--gray-900); }
-        .member-card .position { color: var(--primary); font-size: 0.9rem; }
-        .member-card .district { color: var(--gray-600); font-size: 0.85rem; margin-bottom: 0.75rem; }
-        .member-card .contact { font-size: 0.85rem; }
-        .member-card .contact a {
-            color: var(--gray-700);
-            text-decoration: none;
-            display: block;
-            padding: 0.25rem 0;
-        }
-        .member-card .contact a:hover { color: var(--primary); }
-        .member-card .social { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
-        .member-card .social a {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
-            background: var(--gray-100);
-            border-radius: 4px;
-            color: var(--gray-700);
-            text-decoration: none;
-        }
-        .member-card .social a:hover { background: var(--primary-light); color: var(--primary); }
-        .member-card .social .instagram { background: linear-gradient(45deg, #f09433, #dc2743); color: white; }
-        .no-data {
-            color: var(--gray-600);
-            font-style: italic;
-            padding: 1rem;
-            text-align: center;
-            background: var(--gray-100);
-            border-radius: 8px;
-        }
-        .footer {
-            text-align: center;
+        .select-bar select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+        .content {
             padding: 2rem;
-            color: var(--gray-600);
-            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            min-height: calc(100vh - 100px);
         }
-        @media (max-width: 768px) {
-            .container { padding: 1rem; }
-            .city-header { flex-direction: column; align-items: flex-start; }
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,102,161,0.15); }
+        .card h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-600); margin-bottom: 0.25rem; }
+        .card .value { font-size: 2rem; font-weight: 700; color: var(--gray-900); }
+        .card .subtext { font-size: 0.75rem; color: var(--gray-600); }
+        h2 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--gray-800); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; display: inline-block; }
+        h3 { font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--gray-700); }
+        .section { margin-bottom: 2rem; }
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .link-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: var(--gray-800);
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .link-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,102,161,0.2); transform: translateY(-3px); }
+        .link-card h4 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1rem; }
+        .link-card p { font-size: 0.85rem; margin: 0; color: var(--gray-600); }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .info-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .info-card h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-600); margin-bottom: 0.75rem; }
+        .info-row { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--gray-100); }
+        .info-row:last-child { border-bottom: none; }
+        .info-row dt { color: var(--gray-600); }
+        .info-row dd { color: var(--gray-900); font-weight: 500; }
+        .info-row dd a { color: var(--primary); text-decoration: none; }
+        .info-row dd a:hover { text-decoration: underline; }
+        .council-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+        .council-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .council-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,102,161,0.15); }
+        .council-card .photo {
+            width: 140px;
+            height: 175px;
+            object-fit: cover;
+            object-position: top;
+            margin: 0 auto 1rem;
+            display: block;
+            border-radius: 8px;
+            background: var(--gray-200);
+        }
+        .council-card .name { font-weight: 700; color: var(--gray-900); margin-bottom: 0.25rem; font-size: 1.1rem; }
+        .council-card .position { font-size: 0.9rem; color: var(--primary); font-weight: 500; }
+        .council-card .district { font-size: 0.8rem; color: var(--gray-600); margin-top: 0.25rem; }
+        .council-card .contact-info { font-size: 0.75rem; color: var(--gray-600); margin-top: 0.75rem; }
+        .council-card .contact-info a { color: var(--primary); text-decoration: none; }
+        .council-card .contact-info a:hover { text-decoration: underline; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Orange County City Council Contacts</h1>
-        <div class="subtitle">How to Contact Your Local Representatives</div>
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-value">34</div>
-                <div class="stat-label">Cities</div>
+    <div class="header-container">
+        <div class="header">
+            <h1>OC City Councils</h1>
+            <div class="subtitle" id="subtitle">Orange County, California</div>
+        </div>
+        <div class="select-bar">
+            <select id="citySelect"></select>
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="mainContent" class="hidden">
+            <div class="section">
+                <h2>Quick Links</h2>
+                <div class="links-grid" id="links"></div>
             </div>
-            <div class="stat">
-                <div class="stat-value">1</div>
-                <div class="stat-label">Complete</div>
+
+            <div class="section">
+                <h2>Information</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Meetings</h4>
+                        <dl id="meetingInfo"></dl>
+                    </div>
+                    <div class="info-card">
+                        <h4>City Clerk</h4>
+                        <dl id="clerkInfo"></dl>
+                    </div>
+                    <div class="info-card">
+                        <h4>Public Comment</h4>
+                        <dl id="commentInfo"></dl>
+                    </div>
+                    <div class="info-card">
+                        <h4>Elections</h4>
+                        <dl id="electionInfo"></dl>
+                    </div>
+                </div>
             </div>
-            <div class="stat">
-                <div class="stat-value">8</div>
-                <div class="stat-label">Council Members</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">8</div>
-                <div class="stat-label">With Email</div>
+
+            <div class="section">
+                <h2>Council Members</h2>
+                <div class="council-grid" id="members"></div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="toc">
-            <h2>All Orange County Cities</h2>
-            <div class="toc-grid">
-                <a href="#aliso-viejo" class="toc-item">
-                    <span class="status pending"></span>
-                    Aliso Viejo
-                </a>
-                <a href="#anaheim" class="toc-item">
-                    <span class="status pending"></span>
-                    Anaheim
-                </a>
-                <a href="#brea" class="toc-item">
-                    <span class="status pending"></span>
-                    Brea
-                </a>
-                <a href="#buena-park" class="toc-item">
-                    <span class="status pending"></span>
-                    Buena Park
-                </a>
-                <a href="#costa-mesa" class="toc-item">
-                    <span class="status pending"></span>
-                    Costa Mesa
-                </a>
-                <a href="#cypress" class="toc-item">
-                    <span class="status pending"></span>
-                    Cypress
-                </a>
-                <a href="#dana-point" class="toc-item">
-                    <span class="status pending"></span>
-                    Dana Point
-                </a>
-                <a href="#fountain-valley" class="toc-item">
-                    <span class="status pending"></span>
-                    Fountain Valley
-                </a>
-                <a href="#fullerton" class="toc-item">
-                    <span class="status pending"></span>
-                    Fullerton
-                </a>
-                <a href="#garden-grove" class="toc-item">
-                    <span class="status pending"></span>
-                    Garden Grove
-                </a>
-                <a href="#huntington-beach" class="toc-item">
-                    <span class="status pending"></span>
-                    Huntington Beach
-                </a>
-                <a href="#irvine" class="toc-item">
-                    <span class="status complete"></span>
-                    Irvine
-                </a>
-                <a href="#la-habra" class="toc-item">
-                    <span class="status pending"></span>
-                    La Habra
-                </a>
-                <a href="#la-palma" class="toc-item">
-                    <span class="status pending"></span>
-                    La Palma
-                </a>
-                <a href="#laguna-beach" class="toc-item">
-                    <span class="status pending"></span>
-                    Laguna Beach
-                </a>
-                <a href="#laguna-hills" class="toc-item">
-                    <span class="status pending"></span>
-                    Laguna Hills
-                </a>
-                <a href="#laguna-niguel" class="toc-item">
-                    <span class="status pending"></span>
-                    Laguna Niguel
-                </a>
-                <a href="#laguna-woods" class="toc-item">
-                    <span class="status pending"></span>
-                    Laguna Woods
-                </a>
-                <a href="#lake-forest" class="toc-item">
-                    <span class="status pending"></span>
-                    Lake Forest
-                </a>
-                <a href="#los-alamitos" class="toc-item">
-                    <span class="status pending"></span>
-                    Los Alamitos
-                </a>
-                <a href="#mission-viejo" class="toc-item">
-                    <span class="status pending"></span>
-                    Mission Viejo
-                </a>
-                <a href="#newport-beach" class="toc-item">
-                    <span class="status pending"></span>
-                    Newport Beach
-                </a>
-                <a href="#orange" class="toc-item">
-                    <span class="status pending"></span>
-                    Orange
-                </a>
-                <a href="#placentia" class="toc-item">
-                    <span class="status pending"></span>
-                    Placentia
-                </a>
-                <a href="#rancho-santa-margarita" class="toc-item">
-                    <span class="status pending"></span>
-                    Rancho Santa Margarita
-                </a>
-                <a href="#san-clemente" class="toc-item">
-                    <span class="status pending"></span>
-                    San Clemente
-                </a>
-                <a href="#san-juan-capistrano" class="toc-item">
-                    <span class="status pending"></span>
-                    San Juan Capistrano
-                </a>
-                <a href="#santa-ana" class="toc-item">
-                    <span class="status pending"></span>
-                    Santa Ana
-                </a>
-                <a href="#seal-beach" class="toc-item">
-                    <span class="status pending"></span>
-                    Seal Beach
-                </a>
-                <a href="#stanton" class="toc-item">
-                    <span class="status pending"></span>
-                    Stanton
-                </a>
-                <a href="#tustin" class="toc-item">
-                    <span class="status pending"></span>
-                    Tustin
-                </a>
-                <a href="#villa-park" class="toc-item">
-                    <span class="status pending"></span>
-                    Villa Park
-                </a>
-                <a href="#westminster" class="toc-item">
-                    <span class="status pending"></span>
-                    Westminster
-                </a>
-                <a href="#yorba-linda" class="toc-item">
-                    <span class="status pending"></span>
-                    Yorba Linda
-                </a>
-            </div>
-        </div>
+    <script>
+        let cities = [];
 
-        <div class="city-section" id="aliso-viejo">
-            <div class="city-header">
-                <h2>Aliso Viejo</h2>
-                <div class="links">
-                    <a href="https://avcity.org" target="_blank">City Website</a>
-                    <a href="https://avcity.org/222/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+        async function init() {
+            const res = await fetch('dashboard_data.json?v=' + Date.now());
+            cities = await res.json();
+            const select = document.getElementById('citySelect');
 
-        <div class="city-section" id="anaheim">
-            <div class="city-header">
-                <h2>Anaheim</h2>
-                <div class="links">
-                    <a href="https://www.anaheim.net" target="_blank">City Website</a>
-                    <a href="https://www.anaheim.net/158/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+            cities.forEach((c, i) => {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = c.city_name;
+                select.appendChild(opt);
+            });
+            select.addEventListener('change', () => showCity(select.value));
+            if (cities.length) showCity(0);
+        }
 
-        <div class="city-section" id="brea">
-            <div class="city-header">
-                <h2>Brea</h2>
-                <div class="links">
-                    <a href="https://www.cityofbrea.gov" target="_blank">City Website</a>
-                    <a href="https://www.cityofbrea.gov/511/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+        function linkCard(url, title, desc) {
+            return url ? `<a href="${url}" target="_blank" class="link-card"><h4>${title}</h4><p>${desc}</p></a>` : '';
+        }
 
-        <div class="city-section" id="buena-park">
-            <div class="city-header">
-                <h2>Buena Park</h2>
-                <div class="links">
-                    <a href="https://www.buenapark.com" target="_blank">City Website</a>
-                    <a href="https://www.buenapark.com/city_departments/city_council/council_members.php" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+        function row(label, value) {
+            return value ? `<div class="info-row"><dt>${label}</dt><dd>${value}</dd></div>` : '';
+        }
 
-        <div class="city-section" id="costa-mesa">
-            <div class="city-header">
-                <h2>Costa Mesa</h2>
-                <div class="links">
-                    <a href="https://www.costamesaca.gov" target="_blank">City Website</a>
-                    <a href="https://www.costamesaca.gov/citycouncil" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+        function showCity(idx) {
+            document.getElementById('mainContent').classList.remove('hidden');
+            const c = cities[idx];
 
-        <div class="city-section" id="cypress">
-            <div class="city-header">
-                <h2>Cypress</h2>
-                <div class="links">
-                    <a href="https://www.cypressca.org" target="_blank">City Website</a>
-                    <a href="https://www.cypressca.org/government/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+            document.getElementById('subtitle').textContent = c.city_name + ', California';
 
-        <div class="city-section" id="dana-point">
-            <div class="city-header">
-                <h2>Dana Point</h2>
-                <div class="links">
-                    <a href="https://www.danapoint.org" target="_blank">City Website</a>
-                    <a href="https://www.danapoint.org/departments/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+            // Links - deduplicate
+            const urls = new Set();
+            const links = [];
+            const addLink = (url, title, desc) => {
+                if (url && !urls.has(url)) {
+                    urls.add(url);
+                    links.push(linkCard(url, title, desc));
+                }
+            };
+            addLink(c.website, 'City Website', 'Official city homepage');
+            addLink(c.council_url, 'Council Page', 'Council member information and contact');
+            addLink(c.portals?.agendas, 'Agendas & Minutes', 'View meeting agendas and minutes');
+            addLink(c.portals?.live_stream, 'Watch Meetings', 'Live stream and meeting videos');
+            addLink(c.portals?.video_archive, 'Video Archive', 'Past meeting recordings');
+            addLink(c.portals?.youtube, 'YouTube', 'City YouTube channel');
+            addLink(c.portals?.ecomment, 'eComment', 'Submit public comment online');
+            document.getElementById('links').innerHTML = links.join('');
 
-        <div class="city-section" id="fountain-valley">
-            <div class="city-header">
-                <h2>Fountain Valley</h2>
-                <div class="links">
-                    <a href="https://www.fountainvalley.org" target="_blank">City Website</a>
-                    <a href="https://www.fountainvalley.org/148/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+            // Meetings
+            const m = c.meetings || {};
+            const loc = m.location || {};
+            const fullAddr = [loc.name, loc.address, loc.city_state_zip].filter(Boolean).join(', ');
+            const mapsUrl = fullAddr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddr)}` : '';
+            document.getElementById('meetingInfo').innerHTML =
+                row('Schedule', m.schedule) +
+                row('Time', m.time) +
+                row('Location', loc.name) +
+                row('Address', loc.address ? (mapsUrl ? `<a href="${mapsUrl}" target="_blank">${loc.address}</a>` : loc.address) : '');
 
-        <div class="city-section" id="fullerton">
-            <div class="city-header">
-                <h2>Fullerton</h2>
-                <div class="links">
-                    <a href="https://www.cityoffullerton.com" target="_blank">City Website</a>
-                    <a href="https://www.cityoffullerton.com/government/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+            // Clerk
+            const cl = c.clerk || {};
+            document.getElementById('clerkInfo').innerHTML =
+                row('Name', cl.name) +
+                row('Title', cl.title) +
+                row('Phone', cl.phone ? `<a href="tel:${cl.phone.replace(/[^0-9+]/g, '')}">${cl.phone}</a>` : '') +
+                row('Email', cl.email ? `<a href="mailto:${cl.email}">${cl.email}</a>` : '');
 
-        <div class="city-section" id="garden-grove">
-            <div class="city-header">
-                <h2>Garden Grove</h2>
-                <div class="links">
-                    <a href="https://ggcity.org" target="_blank">City Website</a>
-                    <a href="https://ggcity.org/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+            // Public Comment
+            const pc = c.public_comment || {};
+            document.getElementById('commentInfo').innerHTML =
+                row('Email', pc.email ? `<a href="mailto:${pc.email}">${pc.email}</a>` : '') +
+                row('Time Limit', pc.time_limit) +
+                row('Deadline', pc.deadline) +
+                row('Notes', pc.notes);
 
-        <div class="city-section" id="huntington-beach">
-            <div class="city-header">
-                <h2>Huntington Beach</h2>
-                <div class="links">
-                    <a href="https://www.huntingtonbeachca.gov" target="_blank">City Website</a>
-                    <a href="https://www.huntingtonbeachca.gov/citycouncil" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
+            // Elections
+            const el = c.elections || {};
+            document.getElementById('electionInfo').innerHTML =
+                row('Next Election', el.next_election) +
+                row('Seats Up', el.seats_up?.length ? el.seats_up.join(', ') : '');
 
-        <div class="city-section" id="irvine">
-            <div class="city-header">
-                <h2>Irvine</h2>
-                <div class="links">
-                    <a href="https://www.cityofirvine.org" target="_blank">City Website</a>
-                    <a href="https://www.cityofirvine.org/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="public-comment">
-                    <h4>Submit Public Comments</h4>
-                    <a href="https://irvine.granicusideas.com/meetings" target="_blank">eComment system via Granicus</a>
-                    <div>Submit written comments on agenda items before or during meeting</div>
-                </div>
-                <div class="members-grid">
-                    <div class="member-card">
-                        <div class="name">Larry Agran</div>
-                        <div class="position">Mayor</div>
-                        <div class="district">At-Large</div>
-                        <div class="contact">
-                            <a href="mailto:LarryAgran@cityofirvine.org">LarryAgran@cityofirvine.org</a>
-                            
-                        </div>
-                        <div class="social">
-                            <a href="https://cityofirvine.org/city-council/mayor-larry-agran" target="_blank">City Profile</a>
-                            <a href="https://mayorlarryagran.org" target="_blank">Website</a>
-                            <a href="https://www.instagram.com/mayorlarryagran" target="_blank" class="instagram">Instagram</a>
-                        </div>
-                    </div>
-                    <div class="member-card">
-                        <div class="name">James Mai</div>
-                        <div class="position">Vice Mayor</div>
-                        <div class="district">District 3</div>
-                        <div class="contact">
-                            <a href="mailto:JamesMai@cityofirvine.org">JamesMai@cityofirvine.org</a>
-                            
-                        </div>
-                        <div class="social">
-                            <a href="https://cityofirvine.org/city-council/vice-mayor-james-mai-district-3" target="_blank">City Profile</a>
-                            
-                            <a href="https://www.instagram.com/vicemayormai" target="_blank" class="instagram">Instagram</a>
-                        </div>
-                    </div>
-                    <div class="member-card">
-                        <div class="name">Melinda Liu</div>
-                        <div class="position">Councilmember</div>
-                        <div class="district">District 1</div>
-                        <div class="contact">
-                            <a href="mailto:MelindaLiu@cityofirvine.org">MelindaLiu@cityofirvine.org</a>
-                            
-                        </div>
-                        <div class="social">
-                            <a href="https://cityofirvine.org/city-council/councilmember-melinda-liu-district-1" target="_blank">City Profile</a>
-                            <a href="https://www.melindaliuirvine.com" target="_blank">Website</a>
-                            <a href="https://www.instagram.com/melindaliu_official" target="_blank" class="instagram">Instagram</a>
-                        </div>
-                    </div>
-                    <div class="member-card">
-                        <div class="name">William Go</div>
-                        <div class="position">Councilmember</div>
-                        <div class="district">District 2</div>
-                        <div class="contact">
-                            <a href="mailto:WilliamGo@cityofirvine.org">WilliamGo@cityofirvine.org</a>
-                            
-                        </div>
-                        <div class="social">
-                            <a href="https://cityofirvine.org/city-council/councilmember-william-go-district-2" target="_blank">City Profile</a>
-                            
-                            <a href="https://www.instagram.com/williamgoirvine" target="_blank" class="instagram">Instagram</a>
-                        </div>
-                    </div>
-                    <div class="member-card">
-                        <div class="name">Mike Carroll</div>
-                        <div class="position">Councilmember</div>
-                        <div class="district">District 4</div>
-                        <div class="contact">
-                            <a href="mailto:MikeCarroll@cityofirvine.org">MikeCarroll@cityofirvine.org</a>
-                            
-                        </div>
-                        <div class="social">
-                            <a href="https://cityofirvine.org/city-council/councilmember-mike-carroll-district-4" target="_blank">City Profile</a>
-                            
-                            <a href="https://www.instagram.com/mikecarrollcouncilmember" target="_blank" class="instagram">Instagram</a>
-                        </div>
-                    </div>
-                    <div class="member-card">
-                        <div class="name">Betty Martinez Franco</div>
-                        <div class="position">Councilmember</div>
-                        <div class="district">District 5</div>
-                        <div class="contact">
-                            <a href="mailto:BettyMartinezFranco@cityofirvine.org">BettyMartinezFranco@cityofirvine.org</a>
-                            
-                        </div>
-                        <div class="social">
-                            <a href="https://cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5" target="_blank">City Profile</a>
-                            
-                            <a href="https://www.instagram.com/councilmemberbettymartinez" target="_blank" class="instagram">Instagram</a>
-                        </div>
-                    </div>
-                    <div class="member-card">
-                        <div class="name">Kathleen Treseder</div>
-                        <div class="position">Councilmember</div>
-                        <div class="district">At-Large</div>
-                        <div class="contact">
-                            <a href="mailto:KathleenTreseder@cityofirvine.org">KathleenTreseder@cityofirvine.org</a>
-                            
-                        </div>
-                        <div class="social">
-                            <a href="https://cityofirvine.org/city-council/councilmember-kathleen-treseder-large" target="_blank">City Profile</a>
-                            
-                            <a href="https://www.instagram.com/councilmemberkathleentreseder" target="_blank" class="instagram">Instagram</a>
-                        </div>
+            // Council Members
+            document.getElementById('members').innerHTML = (c.members || []).map(mem => {
+                const profileUrl = mem.city_page || c.council_url || '#';
+                return `
+                <div class="council-card" onclick="window.open('${profileUrl}', '_blank')">
+                    ${mem.photo_url ? `<img class="photo" src="${mem.photo_url}" alt="${mem.name}" loading="lazy" onerror="this.style.visibility='hidden'">` : '<div class="photo"></div>'}
+                    <div class="name">${mem.name}</div>
+                    <div class="position">${mem.position}</div>
+                    ${mem.district ? `<div class="district">${mem.district}</div>` : ''}
+                    <div class="contact-info">
+                        ${mem.email ? `<a href="mailto:${mem.email}" onclick="event.stopPropagation()">${mem.email}</a>` : ''}
+                        ${mem.phone ? `<br><a href="tel:${mem.phone.replace(/[^0-9+]/g, '')}" onclick="event.stopPropagation()">${mem.phone}</a>` : ''}
                     </div>
                 </div>
-            </div>
-        </div>
+            `}).join('');
+        }
 
-        <div class="city-section" id="la-habra">
-            <div class="city-header">
-                <h2>La Habra</h2>
-                <div class="links">
-                    <a href="https://www.lahabraca.gov" target="_blank">City Website</a>
-                    <a href="https://www.lahabraca.gov/153/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="la-palma">
-            <div class="city-header">
-                <h2>La Palma</h2>
-                <div class="links">
-                    <a href="https://www.lapalmaca.gov" target="_blank">City Website</a>
-                    <a href="https://www.lapalmaca.gov/66/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="laguna-beach">
-            <div class="city-header">
-                <h2>Laguna Beach</h2>
-                <div class="links">
-                    <a href="https://www.lagunabeachcity.net" target="_blank">City Website</a>
-                    <a href="https://www.lagunabeachcity.net/live-here/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="laguna-hills">
-            <div class="city-header">
-                <h2>Laguna Hills</h2>
-                <div class="links">
-                    <a href="https://www.lagunahillsca.gov" target="_blank">City Website</a>
-                    <a href="https://www.lagunahillsca.gov/129/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="laguna-niguel">
-            <div class="city-header">
-                <h2>Laguna Niguel</h2>
-                <div class="links">
-                    <a href="https://www.cityoflagunaniguel.org" target="_blank">City Website</a>
-                    <a href="https://www.cityoflagunaniguel.org/106/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="laguna-woods">
-            <div class="city-header">
-                <h2>Laguna Woods</h2>
-                <div class="links">
-                    <a href="https://www.cityoflagunawoods.org" target="_blank">City Website</a>
-                    <a href="https://www.cityoflagunawoods.org/government/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="members-grid">
-                    <div class="member-card">
-                        <div class="name">City Council</div>
-                        <div class="position">Vice Mayor</div>
-                        <div class="district">&nbsp;</div>
-                        <div class="contact">
-                            <a href="mailto:amccary@cityoflagunawoods.org">amccary@cityoflagunawoods.org</a>
-                            
-                        </div>
-                        <div class="social">
-                            <a href="https://www.cityoflagunawoods.org/city-council/" target="_blank">City Profile</a>
-                            <a href="https://www.fppc.ca.gov/" target="_blank">Website</a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="city-section" id="lake-forest">
-            <div class="city-header">
-                <h2>Lake Forest</h2>
-                <div class="links">
-                    <a href="https://www.lakeforestca.gov" target="_blank">City Website</a>
-                    <a href="https://www.lakeforestca.gov/citycouncil" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="los-alamitos">
-            <div class="city-header">
-                <h2>Los Alamitos</h2>
-                <div class="links">
-                    <a href="https://cityoflosalamitos.org" target="_blank">City Website</a>
-                    <a href="https://cityoflosalamitos.org/165/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="mission-viejo">
-            <div class="city-header">
-                <h2>Mission Viejo</h2>
-                <div class="links">
-                    <a href="https://cityofmissionviejo.org" target="_blank">City Website</a>
-                    <a href="https://cityofmissionviejo.org/government/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="newport-beach">
-            <div class="city-header">
-                <h2>Newport Beach</h2>
-                <div class="links">
-                    <a href="https://www.newportbeachca.gov" target="_blank">City Website</a>
-                    <a href="https://www.newportbeachca.gov/government/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="orange">
-            <div class="city-header">
-                <h2>Orange</h2>
-                <div class="links">
-                    <a href="https://www.cityoforange.org" target="_blank">City Website</a>
-                    <a href="https://www.cityoforange.org/citycouncil" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="placentia">
-            <div class="city-header">
-                <h2>Placentia</h2>
-                <div class="links">
-                    <a href="https://www.placentia.org" target="_blank">City Website</a>
-                    <a href="https://www.placentia.org/268/Mayor-City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="rancho-santa-margarita">
-            <div class="city-header">
-                <h2>Rancho Santa Margarita</h2>
-                <div class="links">
-                    <a href="https://www.cityofrsm.org" target="_blank">City Website</a>
-                    <a href="https://www.cityofrsm.org/160/Mayor-City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="san-clemente">
-            <div class="city-header">
-                <h2>San Clemente</h2>
-                <div class="links">
-                    <a href="https://www.san-clemente.org" target="_blank">City Website</a>
-                    <a href="https://www.san-clemente.org/government/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="san-juan-capistrano">
-            <div class="city-header">
-                <h2>San Juan Capistrano</h2>
-                <div class="links">
-                    <a href="https://sanjuancapistrano.org" target="_blank">City Website</a>
-                    <a href="https://sanjuancapistrano.org/318/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="santa-ana">
-            <div class="city-header">
-                <h2>Santa Ana</h2>
-                <div class="links">
-                    <a href="https://www.santa-ana.org" target="_blank">City Website</a>
-                    <a href="https://www.santa-ana.org/city-council/" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="seal-beach">
-            <div class="city-header">
-                <h2>Seal Beach</h2>
-                <div class="links">
-                    <a href="https://www.sealbeachca.gov" target="_blank">City Website</a>
-                    <a href="https://www.sealbeachca.gov/Government/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="stanton">
-            <div class="city-header">
-                <h2>Stanton</h2>
-                <div class="links">
-                    <a href="https://www.stantonca.gov" target="_blank">City Website</a>
-                    <a href="https://www.stantonca.gov/government/city_council.php" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="tustin">
-            <div class="city-header">
-                <h2>Tustin</h2>
-                <div class="links">
-                    <a href="https://www.tustinca.org" target="_blank">City Website</a>
-                    <a href="https://www.tustinca.org/168/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="villa-park">
-            <div class="city-header">
-                <h2>Villa Park</h2>
-                <div class="links">
-                    <a href="https://villapark.org" target="_blank">City Website</a>
-                    <a href="https://villapark.org/council-and-committees/city-council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="westminster">
-            <div class="city-header">
-                <h2>Westminster</h2>
-                <div class="links">
-                    <a href="https://www.westminster-ca.gov" target="_blank">City Website</a>
-                    <a href="https://www.westminster-ca.gov/government/mayor-and-city-council-members" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-        <div class="city-section" id="yorba-linda">
-            <div class="city-header">
-                <h2>Yorba Linda</h2>
-                <div class="links">
-                    <a href="https://www.yorbalindaca.gov" target="_blank">City Website</a>
-                    <a href="https://www.yorbalindaca.gov/149/City-Council" target="_blank">City Council</a>
-                </div>
-            </div>
-            <div class="city-content">
-                <div class="no-data">Data collection pending</div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="footer">
-        <p>Data collected: 2026-01-24 17:52:53</p>
-        <p>Data may not be complete - verify contact information on official city websites.</p>
-    </div>
+        init();
+    </script>
+    <div style="position:fixed;bottom:8px;right:12px;font-size:11px;color:#999;font-family:monospace;">v1.0.0</div>
 </body>
 </html>
