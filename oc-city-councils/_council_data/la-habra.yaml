@@ -1,77 +1,69 @@
 city: la-habra
 city_name: La Habra
-last_updated: '2026-01-25'
 website: https://www.lahabraca.gov
 council_url: https://www.lahabraca.gov/153/City-Council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-25'
 members:
 - name: Jose Medrano
   position: Mayor
-  district: null
+  district: At-Large
   email: CityCouncil@lahabraca.gov
-  phone: 562-383-4000
-  city_profile: https://www.lahabraca.gov/DocumentCenter/View/15731/Medrano-2026-Bio
+  phone: (562) 383-4000
+  city_page: https://www.lahabraca.gov/153/City-Council
   photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentId=15728
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.lahabraca.gov/153/City-Council
 - name: James Gomez
   position: Mayor Pro Tem
-  district: null
+  district: At-Large
   email: CityCouncil@lahabraca.gov
-  phone: 562-383-4000
-  city_profile: https://www.lahabraca.gov/153/City-Council
+  phone: (562) 383-4000
+  city_page: https://www.lahabraca.gov/153/City-Council
   photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=15729
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.lahabraca.gov/153/City-Council
 - name: Daren Nigsarian
   position: Councilmember
-  district: null
+  district: At-Large
   email: CityCouncil@lahabraca.gov
-  phone: 562-383-4000
-  city_profile: https://www.lahabraca.gov/DocumentCenter/View/15732/Nigsarian-2026-Bio
+  phone: (562) 383-4000
+  city_page: https://www.lahabraca.gov/153/City-Council
   photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=12381
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.lahabraca.gov/153/City-Council
 - name: Delwin Lampkin
   position: Councilmember
-  district: null
+  district: At-Large
   email: CityCouncil@lahabraca.gov
-  phone: 562-383-4000
-  city_profile: https://www.lahabraca.gov/DocumentCenter/View/15683/Delwin-Lampkin-2025
+  phone: (562) 383-4000
+  city_page: https://www.lahabraca.gov/153/City-Council
   photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentId=15202
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.lahabraca.gov/153/City-Council
 - name: Rose Espinoza
   position: Councilmember
-  district: null
+  district: At-Large
   email: CityCouncil@lahabraca.gov
-  phone: 562-383-4000
-  city_profile: https://www.lahabraca.gov/DocumentCenter/View/15733/Rose-Espinoza-2026-Bio
+  phone: (562) 383-4000
+  city_page: https://www.lahabraca.gov/153/City-Council
   photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=12382
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.lahabraca.gov/153/City-Council
 meetings:
   schedule: 1st and 3rd Mondays
   time: 6:30 PM
@@ -80,18 +72,15 @@ meetings:
     address: 100 E. La Habra Boulevard
     city_state_zip: La Habra, CA 90631
 portals:
-  destiny: https://destinyhosted.com/agenda_publish.cfm?id=52422
-  video_archive: https://www.lahabraca.gov/356/Archived-Council-Videos
+  agendas: https://destinyhosted.com/agenda_publish.cfm?id=52422
   live_stream: https://www.lahabraca.gov/356/Archived-Council-Videos
+  video_archive: https://www.lahabraca.gov/356/Archived-Council-Videos
 broadcast:
   cable_channels:
   - provider: Government Access
     channel: '3'
   live_stream: https://www.lahabraca.gov/356/Archived-Council-Videos
   rebroadcast: 6:30 PM Tuesday-Friday following each meeting
-agendas:
-  available: Thursday preceding meetings
-  online: https://destinyhosted.com/agenda_publish.cfm?id=52422
 clerk:
   name: Rhonda J. Barone, CMC
   title: City Clerk
@@ -121,3 +110,9 @@ elections:
   - At-Large (3 seats)
   term_length: 4
   election_system: at-large
+email: ''
+phone: ''
+instagram: ''
+agendas:
+  available: Thursday preceding meetings
+  online: https://destinyhosted.com/agenda_publish.cfm?id=52422
