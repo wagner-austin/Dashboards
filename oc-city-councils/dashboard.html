@@ -214,7 +214,7 @@
         let cities = [];
 
         async function init() {
-            const res = await fetch('dashboard_data.json');
+            const res = await fetch('dashboard_data.json?v=' + Date.now());
             cities = await res.json();
             const select = document.getElementById('citySelect');
 
@@ -254,8 +254,9 @@
             addLink(c.website, 'City Website', 'Official city homepage');
             addLink(c.council_url, 'Council Page', 'Council member information and contact');
             addLink(c.portals?.agendas, 'Agendas & Minutes', 'View meeting agendas and minutes');
-            addLink(c.portals?.live_stream || c.broadcast?.live_stream, 'Watch Meetings', 'Live stream and meeting videos');
-            addLink(c.portals?.granicus, 'Video Archive', 'Past meeting recordings');
+            addLink(c.portals?.live_stream, 'Watch Meetings', 'Live stream and meeting videos');
+            addLink(c.portals?.video_archive, 'Video Archive', 'Past meeting recordings');
+            addLink(c.portals?.youtube, 'YouTube', 'City YouTube channel');
             addLink(c.portals?.ecomment, 'eComment', 'Submit public comment online');
             document.getElementById('links').innerHTML = links.join('');
 
@@ -273,6 +274,8 @@
             // Clerk
             const cl = c.clerk || {};
             document.getElementById('clerkInfo').innerHTML =
+                row('Name', cl.name) +
+                row('Title', cl.title) +
                 row('Phone', cl.phone ? `<a href="tel:${cl.phone.replace(/[^0-9+]/g, '')}">${cl.phone}</a>` : '') +
                 row('Email', cl.email ? `<a href="mailto:${cl.email}">${cl.email}</a>` : '');
 
@@ -280,7 +283,9 @@
             const pc = c.public_comment || {};
             document.getElementById('commentInfo').innerHTML =
                 row('Email', pc.email ? `<a href="mailto:${pc.email}">${pc.email}</a>` : '') +
-                row('Deadline', pc.deadline);
+                row('Time Limit', pc.time_limit) +
+                row('Deadline', pc.deadline) +
+                row('Notes', pc.notes);
 
             // Elections
             const el = c.elections || {};
