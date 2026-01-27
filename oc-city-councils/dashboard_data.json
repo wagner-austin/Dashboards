@@ -2973,8 +2973,7 @@
     "portals": {
       "agendas": "https://www.cityofmissionviejo.org/departments/agenda-minutes-videos",
       "live_stream": "https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true",
-      "video_archive": "https://missionviejo.granicus.com/ViewPublisher.php?view_id=12",
-      "ecomment": "https://dms.cityofmissionviejo.org/OnBaseAgendaOnline"
+      "video_archive": "https://missionviejo.granicus.com/ViewPublisher.php?view_id=12"
     },
     "broadcast": {
       "cable_channels": [
