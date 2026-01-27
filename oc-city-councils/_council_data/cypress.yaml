@@ -1,97 +1,90 @@
 city: cypress
 city_name: Cypress
-last_updated: '2026-01-25'
 website: https://www.cypressca.org
 council_url: https://www.cypressca.org/government/city-council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-25'
 members:
 - name: Leo Medrano
   position: Mayor
   district: District 4
   email: lmedrano@cypressca.org
   phone: (714) 229-6699
-  city_profile: https://www.cypressca.org/government/city-council/council-member-leo-medrano
+  city_page: https://www.cypressca.org/government/city-council/council-member-leo-medrano
   photo_url: https://www.cypressca.org/home/showpublishedimage/12826/638726243326730000
-  bio: Leo Medrano is a Navy veteran, engineer, and finance expert serving his first term on the Cypress City Council. He previously
-    served as a Cypress City Commissioner. A native Southern Californian, his mother was a public school employee and his father
-    was a U.S. Postal Service letter carrier and Navy veteran. He has worked as a Serial-Startup CFO, former U.S. Naval Officer,
-    and former investment banker. His priorities include enhancing public safety, promoting fiscal responsibility, and fostering
-    community engagement.
+  bio: Leo Medrano is a Navy veteran, engineer, and finance expert serving his first term on the Cypress City Council. He
+    previously served as a Cypress City Commissioner. A native Southern Californian, his mother was a public school employee
+    and his father was a U.S. Postal Service letter carrier and Navy veteran. He has worked as a Serial-Startup CFO, former
+    U.S. Naval Officer, and former investment banker. His priorities include enhancing public safety, promoting fiscal responsibility,
+    and fostering community engagement.
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.cypressca.org/government/city-council/council-member-leo-medrano
 - name: Kyle Chang
   position: Mayor Pro Tem
   district: District 3
   email: kchang@cypressca.org
   phone: (714) 229-6699
-  city_profile: https://www.cypressca.org/government/city-council/council-member-kyle-chang
+  city_page: https://www.cypressca.org/government/city-council/council-member-kyle-change
   photo_url: https://www.cypressca.org/home/showpublishedimage/12830/638726219857670000
-  bio: Dr. Kyle Chang is a public health statistician with a Ph.D. in Social Psychology from UC Irvine and B.A. degrees in Psychology
-    from UT Austin and Literary Criticism from U of Houston. He has over 20 years of experience working with government agencies
-    and nonprofits, including work as a caseworker for Children's Protective Services, therapist with children with autism, and
-    researcher of children's health. He worked at Riverside County DPSS and Orange County Health Care Agency's Mental Health Services
-    Act office. He represents Cypress on the Bridges at Kraemer Place Community Advisory Board. He is a husband and father of two.
+  bio: Dr. Kyle Chang is a public health statistician with a Ph.D. in Social Psychology from UC Irvine and B.A. degrees in
+    Psychology from UT Austin and Literary Criticism from U of Houston. He has over 20 years of experience working with government
+    agencies and nonprofits, including work as a caseworker for Children's Protective Services, therapist with children with
+    autism, and researcher of children's health. He worked at Riverside County DPSS and Orange County Health Care Agency's
+    Mental Health Services Act office. He represents Cypress on the Bridges at Kraemer Place Community Advisory Board. He
+    is a husband and father of two.
   term_start: 2024
   term_end: 2028
   website: https://votekylechang.com/
   instagram: https://www.instagram.com/kylechangoc/
-  city_page: https://www.cypressca.org/government/city-council/council-member-kyle-change
 - name: Bonnie Peat
   position: Councilmember
   district: District 1
   email: bpeat@cypressca.org
   phone: (714) 229-6699
-  city_profile: https://www.cypressca.org/government/city-council/council-member-bonnie-peat
+  city_page: https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat
   photo_url: https://www.cypressca.org/home/showpublishedimage/10176/638091266228000000
-  bio: Bonnie Peat is a retired aerospace executive with 35 years of leadership experience at Parker Hannifin Corporation. She serves
-    on the Board of Directors for Novaria Group, an aerospace company. She holds a B.A. in Business Administration-Finance from
-    CSU Fullerton and an A.A. from Cypress College, where she was named 2022 Alumnus of the Year. She served on the Cypress School
-    District Board of Trustees from 2018-2022, twice as President. A 50-year Cypress resident, she grew up on a dairy farm when
-    Cypress was known as Dairy City. She represents Cypress on the Orange County Sanitation District.
+  bio: Bonnie Peat is a retired aerospace executive with 35 years of leadership experience at Parker Hannifin Corporation.
+    She serves on the Board of Directors for Novaria Group, an aerospace company. She holds a B.A. in Business Administration-Finance
+    from CSU Fullerton and an A.A. from Cypress College, where she was named 2022 Alumnus of the Year. She served on the Cypress
+    School District Board of Trustees from 2018-2022, twice as President. A 50-year Cypress resident, she grew up on a dairy
+    farm when Cypress was known as Dairy City. She represents Cypress on the Orange County Sanitation District.
   term_start: 2022
   term_end: 2026
   website: https://bonniepeatforcypress.com/
   instagram: null
-  city_page: https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat
 - name: David Burke
   position: Councilmember
   district: District 2
   email: dburke@cypressca.org
   phone: (714) 229-6699
-  city_profile: https://www.cypressca.org/government/city-council/council-member-david-burke
+  city_page: https://www.cypressca.org/government/city-council/council-member-david-burke
   photo_url: https://www.cypressca.org/home/showpublishedimage/10178/638091266025670000
   bio: David Burke is a native Southern Californian and son of two public school teachers. He holds a B.A. in Political Science
-    and J.D. from UCLA. He worked with the U.S. House Committee on Ways and Means, the U.S. Department of Justice Antitrust Division,
-    and clerked for two LA Superior Court judges. In 2016, he founded Citizens Take Action, a nonprofit working to get big money
-    out of politics. In 2022, he authored a report card on campaign finance laws in OC municipal government. He serves on the Cypress
-    Community Festival board and volunteers at Second Harvest Food Bank. He served as Mayor in 2025.
+    and J.D. from UCLA. He worked with the U.S. House Committee on Ways and Means, the U.S. Department of Justice Antitrust
+    Division, and clerked for two LA Superior Court judges. In 2016, he founded Citizens Take Action, a nonprofit working
+    to get big money out of politics. In 2022, he authored a report card on campaign finance laws in OC municipal government.
+    He serves on the Cypress Community Festival board and volunteers at Second Harvest Food Bank. He served as Mayor in 2025.
   term_start: 2022
   term_end: 2026
   website: https://www.davidburkeforcypress.com/
   instagram: null
-  city_page: https://www.cypressca.org/government/city-council/council-member-david-burke
 - name: Rachel Strong Carnahan
   position: Councilmember
   district: District 5
   email: rstrongcarnahan@cypressca.org
   phone: (714) 229-6699
-  city_profile: https://www.cypressca.org/government/city-council/council-member-rachel-strong-carnahan
+  city_page: https://www.cypressca.org/government/city-council/council-member-rachel-strong-carnahan
   photo_url: https://www.cypressca.org/home/showpublishedimage/14531/639041920579870000
-  bio: Rachel Strong Carnahan is a former Senior Citizens Commissioner and 2022 City Council candidate. She has 18 years of experience
-    as a youth mentor and is a small business owner at Strong Dance Studios. She was appointed to fill the vacant District 5 seat
-    in November 2025 after the resignation of Scott Minikus. Her priorities include recruiting an excellent city manager, paying
-    down pension debt, reimagining green spaces with teens in mind, and building a city that values diversity and inclusion. She
-    raises her children in Cypress and calls herself a "hometown girl."
+  bio: Rachel Strong Carnahan is a former Senior Citizens Commissioner and 2022 City Council candidate. She has 18 years of
+    experience as a youth mentor and is a small business owner at Strong Dance Studios. She was appointed to fill the vacant
+    District 5 seat in November 2025 after the resignation of Scott Minikus. Her priorities include recruiting an excellent
+    city manager, paying down pension debt, reimagining green spaces with teens in mind, and building a city that values diversity
+    and inclusion. She raises her children in Cypress and calls herself a "hometown girl."
   term_start: 2025
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.cypressca.org/government/city-council/council-member-rachel-strong-carnahan
 meetings:
   schedule: 2nd and 4th Mondays
   time: 6:00 PM
@@ -100,7 +93,7 @@ meetings:
     address: 5275 Orange Avenue
     city_state_zip: Cypress, CA 90630
 portals:
-  destiny: https://public.destinyhosted.com/agenda_publish.cfm?id=29773
+  agendas: https://public.destinyhosted.com/agenda_publish.cfm?id=29773
   live_stream: https://www.cypressca.org/government/watch-cypress-channel-36
 broadcast:
   cable_channels:
@@ -133,3 +126,6 @@ elections:
   - District 5
   term_length: 4
   election_system: by-district
+email: ''
+phone: ''
+instagram: ''
