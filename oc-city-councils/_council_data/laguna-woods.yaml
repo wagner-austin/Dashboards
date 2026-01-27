@@ -1,81 +1,73 @@
 city: laguna-woods
 city_name: Laguna Woods
-last_updated: '2026-01-25'
 website: https://www.cityoflagunawoods.org
 council_url: https://www.cityoflagunawoods.org/city-council/
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-25'
 members:
 - name: Annie McCary
   position: Mayor
-  district: null
+  district: At-Large
   email: amccary@cityoflagunawoods.org
   phone: (949) 639-0500
-  city_profile: https://www.cityoflagunawoods.org/city-council/
+  city_page: https://www.cityoflagunawoods.org/city-council/
   photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/McCary_Annie-2024e-236x300.jpg
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.cityoflagunawoods.org/city-council/
 - name: Pearl Lee
   position: Mayor Pro Tem
-  district: null
+  district: At-Large
   email: plee@cityoflagunawoods.org
   phone: (949) 639-0500
-  city_profile: https://www.cityoflagunawoods.org/city-council/
+  city_page: https://www.cityoflagunawoods.org/city-council/
   photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Lee_Pearl-2024e-236x300.jpg
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.cityoflagunawoods.org/city-council/
 - name: Carol Moore
   position: Councilmember
-  district: null
+  district: At-Large
   email: cmoore@cityoflagunawoods.org
   phone: (949) 639-0500
-  city_profile: https://www.cityoflagunawoods.org/city-council/
+  city_page: https://www.cityoflagunawoods.org/city-council/
   photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Moore_Carol-2024e-236x300.jpg
   bio: null
   term_start: 2014
   term_end: 2026
-  first_elected: 2014
   website: null
   instagram: null
-  city_page: https://www.cityoflagunawoods.org/city-council/
+  first_elected: 2014
 - name: Cynthia Conners
   position: Councilmember
-  district: null
+  district: At-Large
   email: cconners@cityoflagunawoods.org
   phone: (949) 639-0500
-  city_profile: https://www.cityoflagunawoods.org/city-council/
+  city_page: https://www.cityoflagunawoods.org/city-council/
   photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/02/Conners_Cynthia-2024e-236x300.jpg
   bio: null
   term_start: 2024
   term_end: 2028
-  first_appointed: 2009
-  first_elected: 2012
   website: null
   instagram: null
-  city_page: https://www.cityoflagunawoods.org/city-council/
+  first_appointed: 2009
+  first_elected: 2012
 - name: Shari L. Horne
   position: Councilmember
-  district: null
+  district: At-Large
   email: shorne@cityoflagunawoods.org
   phone: (949) 639-0500
-  city_profile: https://www.cityoflagunawoods.org/city-council/
+  city_page: https://www.cityoflagunawoods.org/city-council/
   photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/02/Horne_Shari-2024e-236x300.jpg
   bio: null
   term_start: 2024
   term_end: 2028
-  first_appointed: 2014
   website: null
   instagram: null
-  city_page: https://www.cityoflagunawoods.org/city-council/
+  first_appointed: 2014
 meetings:
   schedule: 3rd Wednesday
   time: 2:00 PM
@@ -91,10 +83,10 @@ meetings:
     zoom_passcode: '104459'
     notes: View only - public comments NOT accepted via Zoom
 portals:
-  meetings: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
-  email_notifications: https://www.cityoflagunawoods.org/email-notifications
-  youtube: https://www.youtube.com/@cityoflagunawoods
+  agendas: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
   live_stream: https://www.youtube.com/@cityoflagunawoods
+  youtube: https://www.youtube.com/@cityoflagunawoods
+  email_notifications: https://www.cityoflagunawoods.org/email-notifications
 broadcast:
   cable_channels:
   - provider: Local Cable
@@ -127,3 +119,6 @@ elections:
   - At-Large (2 seats)
   term_length: 4
   election_system: at-large
+email: ''
+phone: ''
+instagram: ''
