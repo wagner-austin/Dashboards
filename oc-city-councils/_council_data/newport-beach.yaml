@@ -87,9 +87,8 @@ meetings:
     city_state_zip: Newport Beach, CA 92660
   agenda_availability: 72 hours prior; packets available Thursday before meeting
 portals:
-  agendas: https://www.newportbeachca.gov/government/data-hub/agendas-minutes
+  agendas: https://newportbeach.legistar.com/Calendar.aspx
   live_stream: https://www.newportbeachca.gov/government/departments/public-information-office/nbtv/nbtv-live
-  video_archive: https://ecms.newportbeachca.gov/Web/Browse.aspx?startid=691512&cnb=CityCouncil&cr=1
   youtube: https://youtube.com/playlist?list=PLzorGOSnQ7c2sblNcOnptOUb9K2cYuoj0
 broadcast:
   cable_channels:
