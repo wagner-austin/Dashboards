@@ -126,14 +126,14 @@ meetings:
 portals:
   agendas: https://www.yorbalindaca.gov/197/Council-Meeting-Agendas-Minutes
   live_stream: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
-  video_archive: https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7
+  video_archive: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
 broadcast:
   cable_channels:
   - provider: Local Cable
     channel: '3'
   - provider: AT&T U-Verse
     channel: '99'
-  live_stream: https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7
+  live_stream: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
 clerk:
   name: Marcia Brown
   title: City Clerk
