@@ -1,77 +1,69 @@
 city: villa-park
 city_name: Villa Park
-last_updated: '2026-01-26'
 website: https://villapark.org
 council_url: https://villapark.org/council-and-committees/city-council
-general_email: info@villapark.org
-phone: (714) 998-1500
-instagram: null
+last_updated: '2026-01-26'
 members:
 - name: Jordan Wu
   position: Mayor
-  district: null
+  district: At-Large
   email: jwu@villapark.org
   phone: (714) 998-1500
-  city_profile: https://villapark.org/Council-and-Committees/City-Council/Jordan-Wu-Bio
+  city_page: https://villapark.org/Council-and-Committees/City-Council/Jordan-Wu-Bio
   photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/JordanWu-2024-villaparkcitycouncil43297--retouched.jpg?ver=6ICLYQmCmPSdstJNQnYBBg%3d%3d
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Jordan-Wu-Bio
 - name: Robert Frackelton
   position: Mayor Pro Tem
-  district: null
+  district: At-Large
   email: rfrackelton@villapark.org
   phone: (714) 998-1500
-  city_profile: https://villapark.org/Council-and-Committees/City-Council/Robert-Frackelton-Bio
+  city_page: https://villapark.org/Council-and-Committees/City-Council/Robert-Frackelton-Bio
   photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Frackelton-2024-villaparkcitycouncil43322--retouched.jpg?ver=gZKhLn3Pl7KY3QB4jm4eTQ%3d%3d
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Robert-Frackelton-Bio
 - name: Nicol Jones
   position: Councilmember
-  district: null
+  district: At-Large
   email: njones@villapark.org
   phone: (714) 998-1500
-  city_profile: https://villapark.org/Council-and-Committees/City-Council/Nicol-Jones-Bio
+  city_page: https://villapark.org/Council-and-Committees/City-Council/Nicol-Jones-Bio
   photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/2024 Jones.jpg?ver=NOVq8QqYJd3vICxLHZlxWw%3d%3d
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Nicol-Jones-Bio
 - name: Kelly McBride
   position: Councilmember
-  district: null
+  district: At-Large
   email: kmcbride@villapark.org
   phone: (714) 998-1500
-  city_profile: https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio
+  city_page: https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio
   photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Kelly-2024-villaparkcitycouncil43380--retouched.jpg?ver=UQLZMUTZcuqyXxz-OuW9Rw%3d%3d
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio
 - name: Crystal Miles
   position: Councilmember
-  district: null
+  district: At-Large
   email: cmiles@villapark.org
   phone: (714) 998-1500
-  city_profile: https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio
+  city_page: https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio
   photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Miles-2024-villaparkcitycouncil43416--retouched.jpg?ver=Y18dsDaPXyl1OfV3aRiwFg%3d%3d
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio
 meetings:
   schedule: 4th Tuesday
   time: 6:30 PM
@@ -80,9 +72,9 @@ meetings:
     address: 17855 Santiago Boulevard
     city_state_zip: Villa Park, CA 92861
 portals:
-  agenda_center: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=780&view=gridview&pageSize=10
-  video_archive: https://villapark.org/Council-and-Committees/Council-Meeting-Videos/LCmid/667/sort-desc/datecreated
+  agendas: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=780&view=gridview&pageSize=10
   live_stream: https://villapark.org
+  video_archive: https://villapark.org/Council-and-Committees/Council-Meeting-Videos/LCmid/667/sort-desc/datecreated
   youtube: https://youtube.com/@cityofvillapark
 broadcast:
   cable_channels:
@@ -118,3 +110,6 @@ elections:
   term_length: 4
   election_system: at-large
   term_limits: Two full terms
+general_email: info@villapark.org
+phone: (714) 998-1500
+instagram: null
