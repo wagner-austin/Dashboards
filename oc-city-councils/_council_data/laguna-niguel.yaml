@@ -1,18 +1,15 @@
 city: laguna-niguel
 city_name: Laguna Niguel
-last_updated: '2026-01-25'
 website: https://www.cityoflagunaniguel.org
 council_url: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-25'
 members:
 - name: Gene Johns
   position: Mayor
   district: At-Large
   email: GJohns@cityoflagunaniguel.org
   phone: (949) 362-4373
-  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  city_page: https://www.cityoflagunaniguel.org/1576/Mayor-Gene-Johns
   photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24725
   bio: Mayor Gene Johns was appointed to the City Council on June 14, 2023, and was reappointed in November 2024 for a four-year
     term. He was selected to serve as Mayor on November 18, 2025. Currently, Mayor Johns is Council Liaison to the Traffic
@@ -28,13 +25,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.cityoflagunaniguel.org/1576/Mayor-Gene-Johns
 - name: Kelly Jennings
   position: Mayor Pro Tem
   district: At-Large
   email: KJennings@cityoflagunaniguel.org
   phone: (949) 362-4373
-  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  city_page: https://www.cityoflagunaniguel.org/838/Mayor-Pro-Tem-Kelly-Jennings
   photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=20328
   bio: Mayor Pro Tem Kelly Jennings was first elected to the City Council on November 3, 2020 for a four-year term, and was
     appointed in November 2024 for a four-year term. On March 7, 2023, Mayor Pro Tem Kelly Jennings was selected as Mayor,
@@ -53,13 +49,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.cityoflagunaniguel.org/838/Mayor-Pro-Tem-Kelly-Jennings
 - name: Ray Gennawey
   position: Councilmember
   district: At-Large
   email: RGennawey@cityoflagunaniguel.org
   phone: (949) 362-4373
-  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  city_page: https://www.cityoflagunaniguel.org/1541/Council-Member-Ray-Gennawey
   photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=23959
   bio: 'Council Member Ray Gennawey was elected to City Council on November 8, 2022, for a four-year term, and selected to
     serve as Mayor on December 3, 2024. Currently, Ray is Council Liaison to the City/CDBG Grant Sub-Committee, Investment,
@@ -73,13 +68,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.cityoflagunaniguel.org/1541/Council-Member-Ray-Gennawey
 - name: Stephanie Oddo
   position: Councilmember
   district: At-Large
   email: SOddo@cityoflagunaniguel.org
   phone: (949) 362-4373
-  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  city_page: https://www.cityoflagunaniguel.org/1542/Council-Member-Stephanie-Oddo
   photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=23960
   bio: Council Member Stephanie Oddo was elected to the Laguna Niguel City Council on November 8, 2022 for a four-year term.
     On April 18, 2023, Council Member Oddo was selected to serve as Mayor Pro Tem, and on November 7, 2023,  she was reaffirmed
@@ -89,13 +83,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.cityoflagunaniguel.org/1542/Council-Member-Stephanie-Oddo
 - name: Stephanie Winstead
   position: Councilmember
   district: At-Large
   email: SWinstead@cityoflagunaniguel.org
   phone: (949) 362-4373
-  city_profile: https://www.cityoflagunaniguel.org/396/Mayor-City-Council
+  city_page: https://www.cityoflagunaniguel.org/1573/Council-Member-Stephanie-Winstead
   photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24627
   bio: Council Member Stephanie Winstead was appointed to the City Council on May 10, 2023, and was reappointed in November
     2024 for a four-year term. Currently, Stephanie is Council Liaison to the Traffic & Transportation Commission, Military
@@ -109,7 +102,6 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.cityoflagunaniguel.org/1573/Council-Member-Stephanie-Winstead
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 7:00 PM
@@ -119,8 +111,8 @@ meetings:
     city_state_zip: Laguna Niguel, CA 92677
 portals:
   agendas: http://ca-lagunaniguel4.civicplus.com/914/Agendas
-  youtube: https://www.youtube.com/channel/UCvIGnIDVe7Puu8OgTTCCdFg
   live_stream: https://www.youtube.com/cityoflagunaniguel
+  youtube: https://www.youtube.com/channel/UCvIGnIDVe7Puu8OgTTCCdFg
 broadcast:
   cable_channels:
   - provider: Cox
@@ -130,10 +122,11 @@ broadcast:
   live_stream: https://www.youtube.com/cityoflagunaniguel
   rebroadcast: 6:00 PM daily following each meeting
 clerk:
-  title: City Clerk's Office
+  title: City Clerk
   phone: (949) 362-4301
   fax: (949) 362-4340
   email: cityclerk@cityoflagunaniguel.org
+  name: Marissa Asistin
 public_comment:
   in_person: true
   remote_live: false
@@ -155,3 +148,6 @@ elections:
   - 2 at-large seats
   term_length: 4
   election_system: at-large
+email: ''
+phone: ''
+instagram: ''
