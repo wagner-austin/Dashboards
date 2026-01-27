@@ -1,18 +1,15 @@
 city: rancho-santa-margarita
 city_name: Rancho Santa Margarita
-last_updated: '2026-01-26'
 website: https://www.cityofrsm.org
 council_url: https://www.cityofrsm.org/160/Mayor-City-Council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-26'
 members:
 - name: L. Anthony Beall
   position: Mayor
   district: At-Large
   email: tbeall@cityofrsm.org
   phone: 949-635-1800, ext. 6310
-  city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
+  city_page: https://www.cityofrsm.org/Directory.aspx?EID=9
   photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12201
   bio: 'Tony is a licensed attorney and has been practicing law in California for 25 years. As a real estate transactional
     attorney, he has developed an in-depth knowledge and special expertise in legal matters relating to public and private
@@ -26,13 +23,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.cityofrsm.org/Directory.aspx?EID=9
 - name: Anne D. Figueroa
   position: Mayor Pro Tem
   district: District 1
   email: afigueroa@cityofrsm.org
   phone: 949-635-1800, ext. 6310
-  city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
+  city_page: https://www.cityofrsm.org/Directory.aspx?EID=44
   photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=3823
   bio: Anne Figueroa is a 27-year resident of Rancho Santa Margarita. She and her husband, Dan, raised their three children
     here in our city while they attended both public and private schools. Anne has owned her own design business for the past
@@ -44,28 +40,27 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.cityofrsm.org/Directory.aspx?EID=44
 - name: Bradley J. McGirr
   position: Councilmember
+  district: District 4
   email: bmcgirr@cityofrsm.org
   phone: 949-635-1800, ext. 6310
   city_page: https://www.cityofrsm.org/Directory.aspx?EID=8
+  photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12199
   bio: After years of service to the community, Brad was appointed to the Rancho Santa Margarita Planning Commission in December
     2009 and served as the Vice Chair in 2012. He was also appointed as a member of the City’s Economic Development Committee
     and the Business Attraction Working Group. On November 6, 2012, Brad was elected to the Rancho Santa Margarita City Council,
     serving as Mayor Pro Tempore in 2014 and as Mayor in 2015. Brad again served as Mayor in 2020 and guided our city in this
     capacity at the height of the COVID pandemic. Brad was our city’s Mayor Pro Tempore in 2024 and 2025 and proudly serves
     as a member of the Board of Directors for the Orange County Fire Authority.
-  photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12199
   term_start: 2022
   term_end: 2026
-  district: District 4
 - name: Jerry Holloway
   position: Councilmember
   district: District 2
   email: jholloway@cityofrsm.org
   phone: 949-635-1800, ext. 6310
-  city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
+  city_page: https://www.cityofrsm.org/Directory.aspx?EID=11
   photo_url: https://www.cityofrsm.org/images/CityDirectory/8/Jerry%20Holloway.jpg
   bio: Dean of Students - Santa Margarita Catholic High School Social Studies Teacher - Santa Margarita Catholic High School
     Administration of Justice Instructor - Irvine Valley College
@@ -73,13 +68,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.cityofrsm.org/Directory.aspx?EID=11
 - name: Keri Lynn Baert
   position: Councilmember
   district: District 3
   email: kbaert@cityofrsm.org
   phone: 949-635-1800, ext. 6310
-  city_profile: https://www.cityofrsm.org/160/Mayor-City-Council
+  city_page: https://www.cityofrsm.org/Directory.aspx?EID=70
   photo_url: https://www.cityofrsm.org/ImageRepository/Document?documentID=12200
   bio: Keri has been a resident of Rancho Santa Margarita since 2002 and has dedicated herself to serving the community through
     various volunteer roles. She has been actively involved with local organizations and has supported her children’s education
@@ -94,7 +88,6 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.cityofrsm.org/Directory.aspx?EID=70
 meetings:
   schedule: 2nd and 4th Wednesdays
   time: 7:00 PM
@@ -103,10 +96,10 @@ meetings:
     address: 22112 El Paseo
     city_state_zip: Rancho Santa Margarita, CA 92688
 portals:
-  agenda_center: https://www.cityofrsm.org/129/Agendas-Minutes
-  ecomment: https://www.cityofrsm.org/forms.aspx?FID=102
-  granicus: https://cityofrsm.granicus.com/
+  agendas: https://www.cityofrsm.org/129/Agendas-Minutes
   live_stream: https://cityofrsm.granicus.com/
+  video_archive: https://cityofrsm.granicus.com/
+  ecomment: https://www.cityofrsm.org/forms.aspx?FID=102
 broadcast:
   live_stream: https://cityofrsm.granicus.com/
 clerk:
@@ -138,3 +131,6 @@ elections:
   - District 4
   term_length: 4
   election_system: mixed
+email: ''
+phone: ''
+instagram: ''
