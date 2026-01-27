@@ -1,18 +1,15 @@
 city: laguna-hills
 city_name: Laguna Hills
-last_updated: '2026-01-25'
 website: https://www.lagunahillsca.gov
 council_url: https://www.lagunahillsca.gov/129/City-Council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-25'
 members:
 - name: Don Caskey
   position: Mayor
-  district: null
+  district: At-Large
   email: dcaskey@lagunahillsca.gov
-  phone: 949-707-2600
-  city_profile: https://www.lagunahillsca.gov/527/Don-Caskey-Mayor
+  phone: (949) 707-2600
+  city_page: https://www.lagunahillsca.gov/527/Don-Caskey-Mayor
   photo_url: https://www.lagunahillsca.gov/ImageRepository/Document?documentID=6613
   bio: 'Don is a Fellow in the American Institute of Architects and has BA and MUD degrees in Architecture and Urban Planning
     & Design from USC. At age 27 Don started his firm in Orange County as Coleman/Caskey Architects then sold after 21 years
@@ -30,13 +27,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.lagunahillsca.gov/527/Don-Caskey-Mayor
 - name: Jared Mathis
   position: Mayor Pro Tem
-  district: null
+  district: At-Large
   email: jmathis@lagunahillsca.gov
-  phone: 949-707-2600
-  city_profile: https://www.lagunahillsca.gov/447/Jared-Mathis-Mayor-Pro-Tempore
+  phone: (949) 707-2600
+  city_page: https://www.lagunahillsca.gov/447/Jared-Mathis-Mayor-Pro-Tempore
   photo_url: https://www.lagunahillsca.gov/ImageRepository/Document?documentID=8874
   bio: As CEO of Moulton Company Jared Mathis, manages a global real estate portfolio consisting of industrial, residential
     and commercial retail properties. Moulton Company has roots and real estate holdings in Orange County dating back to 1874
@@ -56,13 +52,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.lagunahillsca.gov/447/Jared-Mathis-Mayor-Pro-Tempore
 - name: Dave Wheeler
   position: Councilmember
-  district: null
+  district: At-Large
   email: dwheeler@lagunahillsca.gov
-  phone: 949-707-2600
-  city_profile: https://www.lagunahillsca.gov/476/Dave-Wheeler
+  phone: (949) 707-2600
+  city_page: https://www.lagunahillsca.gov/476/Dave-Wheeler
   photo_url: https://www.lagunahillsca.gov/ImageRepository/Document?documentID=4265
   bio: Dave is a 33-year resident of Laguna Hills.  He was educated at Marietta College and Columbia University in New York
     and holds three degrees in Physics and Engineering. He graduated with honors from both schools and was president of the
@@ -78,13 +73,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.lagunahillsca.gov/476/Dave-Wheeler
 - name: Erica Pezold
   position: Councilmember
-  district: null
+  district: At-Large
   email: epezold@lagunahillsca.gov
-  phone: 949-707-2600
-  city_profile: https://www.lagunahillsca.gov/475/Erica-Pezold
+  phone: (949) 707-2600
+  city_page: https://www.lagunahillsca.gov/475/Erica-Pezold
   photo_url: https://www.lagunahillsca.gov/ImageRepository/Document?documentID=4264
   bio: Councilwoman Erica Pezold and her husband, Eric Pezold, an attorney at Snell & Wilmer LLP, and their three children
     have been residents of Laguna Hills for over ten years. Erica served as an HOA board of directors and volunteered for
@@ -102,13 +96,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.lagunahillsca.gov/475/Erica-Pezold
 - name: Joshua Sweeney
   position: Councilmember
-  district: null
+  district: At-Large
   email: jsweeney@lagunahillsca.gov
-  phone: 949-707-2600
-  city_profile: https://www.lagunahillsca.gov/234/Joshua-Sweeney
+  phone: (949) 707-2600
+  city_page: https://www.lagunahillsca.gov/234/Joshua-Sweeney
   photo_url: https://www.lagunahillsca.gov/ImageRepository/Document?documentID=7623
   bio: As the Mayor of Laguna Hills, I am honored to serve the city I love and call home. Laguna Hills is not just where I
     live—it’s where I’ve built my life, my family, and my future. I am committed to making sure that every resident feels
@@ -123,7 +116,6 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.lagunahillsca.gov/234/Joshua-Sweeney
 meetings:
   schedule: 2nd and 4th Tuesdays
   time: 6:00 PM
@@ -132,11 +124,13 @@ meetings:
     address: 24035 El Toro Road
     city_state_zip: Laguna Hills, CA 92653
 portals:
-  civicclerk: https://lagunahillsca.portal.civicclerk.com/
   agendas: https://lagunahillsca.portal.civicclerk.com/
   live_stream: https://lagunahillsca.portal.civicclerk.com/
+  civicclerk: https://lagunahillsca.portal.civicclerk.com/
 broadcast:
+  cable_channels: []
   live_stream: https://lagunahillsca.portal.civicclerk.com/
+  notes: Online streaming only via CivicClerk - no cable TV broadcast
 clerk:
   name: Jennifer Lee, CMC
   title: City Clerk
@@ -152,7 +146,8 @@ public_comment:
   email: jlee@lagunahillsca.gov
   deadline: 2 hours prior to meeting
   speaker_card: Pink "Request to Speak" form (voluntary)
-  notes: Email subject must include name and agenda item number. Clerk announces sender name and subject but does NOT read comments aloud. Text/social media comments not accepted.
+  notes: Email subject must include name and agenda item number. Clerk announces sender name and subject but does NOT read
+    comments aloud. Text/social media comments not accepted.
 council:
   size: 5
   districts: 0
@@ -168,3 +163,6 @@ elections:
   - District 4
   term_length: 4
   election_system: at-large
+email: ''
+phone: ''
+instagram: ''
