@@ -146,13 +146,13 @@ meetings:
     city_state_zip: Garden Grove, CA 92840
 portals:
   agendas: https://agendasuite.org/iip/gardengrove
-  live_stream: https://ggtv3-live.ggcity.org
+  live_stream: https://ggcity.org/ggtv3-live
   video_archive: https://ggcity.org/ggtv3/videos
 broadcast:
   cable_channels:
   - provider: GGTV
     channel: '3'
-  live_stream: https://ggtv3-live.ggcity.org
+  live_stream: https://ggcity.org/ggtv3-live
 clerk:
   name: Liz Vasquez
   title: City Clerk

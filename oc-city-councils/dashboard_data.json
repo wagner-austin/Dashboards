@@ -1384,7 +1384,7 @@
     },
     "portals": {
       "agendas": "https://agendasuite.org/iip/gardengrove",
-      "live_stream": "https://ggtv3-live.ggcity.org",
+      "live_stream": "https://ggcity.org/ggtv3-live",
       "video_archive": "https://ggcity.org/ggtv3/videos"
     },
     "broadcast": {
@@ -1394,7 +1394,7 @@
           "channel": "3"
         }
       ],
-      "live_stream": "https://ggtv3-live.ggcity.org"
+      "live_stream": "https://ggcity.org/ggtv3-live"
     },
     "clerk": {
       "name": "Liz Vasquez",
