@@ -1,101 +1,94 @@
 city: westminster
 city_name: Westminster
-last_updated: '2026-01-26'
 website: https://www.westminster-ca.gov
 council_url: https://www.westminster-ca.gov/government/mayor-and-city-council-members
-general_email: eComments@westminster-ca.gov
-phone: (714) 548-3178
-instagram: null
+last_updated: '2026-01-26'
 members:
 - name: Chi Charlie Nguyen
   position: Mayor
   district: At-Large
   email: ccnguyen@westminster-ca.gov
   phone: (714) 548-3178
-  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members/mayor-chi-charlie-nguyen
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/mayor-chi-charlie-nguyen
   photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4694/638701392192800000
-  bio: Mayor Nguyen was first elected in 2016 to serve on the Midway City Sanitary Board and is proud to be serving as the Board
-    President. He was then elected as a City Council Member in November 2018. Mayor Nguyen grew up in Orange County, went to Westminster/Bolsa
-    Grande High School, graduated with a Bachelor of Science degree in Engineering at Cal State University, Fullerton and received
-    his Master's Degree from California State University, Long Beach. He is an experienced engineer and a successful businessman
-    who has managed his own business in the City of Westminster for years. In his engineering profession, he worked for Boeing
-    Company, Rockwell International, and B/E Aerospace companies as a Design Engineer, Risk Management Engineer, Project Manager
-    and Senior Manager in the Department of Engineering.
+  bio: Mayor Nguyen was first elected in 2016 to serve on the Midway City Sanitary Board and is proud to be serving as the
+    Board President. He was then elected as a City Council Member in November 2018. Mayor Nguyen grew up in Orange County,
+    went to Westminster/Bolsa Grande High School, graduated with a Bachelor of Science degree in Engineering at Cal State
+    University, Fullerton and received his Master's Degree from California State University, Long Beach. He is an experienced
+    engineer and a successful businessman who has managed his own business in the City of Westminster for years. In his engineering
+    profession, he worked for Boeing Company, Rockwell International, and B/E Aerospace companies as a Design Engineer, Risk
+    Management Engineer, Project Manager and Senior Manager in the Department of Engineering.
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/mayor-chi-charlie-nguyen
 - name: Mark Nguyen
   position: Vice Mayor
   district: District 3
   email: mnguyen@westminster-ca.gov
   phone: (714) 548-3178
-  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members/vice-mayor-mark-nguyen-district-3
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-mark-nguyen-district-3
   photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4680/638700392461200000
   bio: Mark Nguyen was elected to Westminster City Council for District 3 in November 2024. Prior to his election, Mark served
-    as a Planning Commissioner for the City of Westminster. In 2022, Mark was elected by the residents of Westminster and Midway
-    City and currently serves on the Midway City Sanitary District Board of Directors. Mark was named the 2026 Vice Mayor at the
-    December 10, 2025 City Council meeting. Professionally, Mark is a software engineer with a specialization in database administration.
-    His journey began as one of the first refugees to flee Vietnam by boat following the Fall of Saigon. He spent his early years
-    on the Malaysian island of Pulau Bidong and in Nebraska, before moving to Southern California. Mark graduated from UCLA and
-    has been a long-time resident of Westminster where he lives with his wife and children.
+    as a Planning Commissioner for the City of Westminster. In 2022, Mark was elected by the residents of Westminster and
+    Midway City and currently serves on the Midway City Sanitary District Board of Directors. Mark was named the 2026 Vice
+    Mayor at the December 10, 2025 City Council meeting. Professionally, Mark is a software engineer with a specialization
+    in database administration. His journey began as one of the first refugees to flee Vietnam by boat following the Fall
+    of Saigon. He spent his early years on the Malaysian island of Pulau Bidong and in Nebraska, before moving to Southern
+    California. Mark graduated from UCLA and has been a long-time resident of Westminster where he lives with his wife and
+    children.
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-mark-nguyen-district-3
 - name: Amy Phan West
   position: Councilmember
   district: District 1
   email: APhanWest@westminster-ca.gov
   phone: (714) 548-3178
-  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-amy-phan-west-district-1
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-amy-phan-west-district-1
   photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4688/638701077054570000
-  bio: Born to immigrant parents who fled the Communist regime of Vietnam in 1985, her family's journey included two years in
-    refugee camps before finding asylum in the United States. Councilwoman Phan West is an alumna of Orange Coast College and holds
-    a degree in Education from Cal State University of Long Beach. Currently, Councilwoman Phan West owns an independent rental
-    consortium. She and her husband Jeremy West are raising three young sons.
+  bio: Born to immigrant parents who fled the Communist regime of Vietnam in 1985, her family's journey included two years
+    in refugee camps before finding asylum in the United States. Councilwoman Phan West is an alumna of Orange Coast College
+    and holds a degree in Education from Cal State University of Long Beach. Currently, Councilwoman Phan West owns an independent
+    rental consortium. She and her husband Jeremy West are raising three young sons.
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-amy-phan-west-district-1
 - name: Carlos Manzo
   position: Councilmember
   district: District 2
   email: CManzo@Westminster-CA.gov
   phone: (714) 548-3178
-  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-carlos-manzo-district-2
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-carlos-manzo-district-2
   photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4690/638701077070770000
-  bio: Council Member Manzo served as Vice Mayor in 2025. He previously served on the Planning Commission for eight years, chairing
-    the commission for two of those years. As an electrical supervisor for a residential homebuilder, he has experience overseeing
-    a large workforce and coordinating with various businesspeople, including developers, contractors and designers. He and his
-    wife Lisa have been active in their four children and four grandchildren's school and extracurricular activities. He focuses
-    on improving public safety and health of residents, believing that quality of life and essential services are important issues.
-    First elected November 2020, re-elected 2024.
+  bio: Council Member Manzo served as Vice Mayor in 2025. He previously served on the Planning Commission for eight years,
+    chairing the commission for two of those years. As an electrical supervisor for a residential homebuilder, he has experience
+    overseeing a large workforce and coordinating with various businesspeople, including developers, contractors and designers.
+    He and his wife Lisa have been active in their four children and four grandchildren's school and extracurricular activities.
+    He focuses on improving public safety and health of residents, believing that quality of life and essential services are
+    important issues. First elected November 2020, re-elected 2024.
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-carlos-manzo-district-2
 - name: NamQuan Nguyen
   position: Councilmember
   district: District 4
   email: NNguyen@westminster-ca.gov
   phone: (714) 548-3178
-  city_profile: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-namquan-nguyen-district-4
+  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-namquan-nguyen-district-4
   photo_url: https://www.westminster-ca.gov/home/showpublishedimage/4696/638701392206430000
-  bio: Council Member Nguyen has previously served this community on the Westminster Traffic Commission. A graduate of UC Irvine,
-    he has a bachelor's degree in Computer Engineering and owns a small business in Westminster. Council Member Nguyen immigrated
-    to this country from Vietnam in 1994 with his immediate family at the age of 20 through the Humanitarian Operation. His focus
-    is on bridging differences among residents, creating an understanding environment, taking good care of seniors, and keeping
-    this All-America City safe.
+  bio: Council Member Nguyen has previously served this community on the Westminster Traffic Commission. A graduate of UC
+    Irvine, he has a bachelor's degree in Computer Engineering and owns a small business in Westminster. Council Member Nguyen
+    immigrated to this country from Vietnam in 1994 with his immediate family at the age of 20 through the Humanitarian Operation.
+    His focus is on bridging differences among residents, creating an understanding environment, taking good care of seniors,
+    and keeping this All-America City safe.
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.westminster-ca.gov/government/mayor-and-city-council-members/council-member-namquan-nguyen-district-4
 meetings:
   schedule: 2nd and 4th Wednesdays
   time: 6:00 PM
@@ -105,8 +98,8 @@ meetings:
     address: 8200 Westminster Boulevard
     city_state_zip: Westminster, CA 92683
 portals:
-  agenda_center: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
-  granicus: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
+  agendas: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
+  video_archive: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
   youtube: https://youtube.com/@cityofwestminsterca92683
   wtv_stream: https://www.westminster-ca.gov/business/find/city-channel-wtv
 broadcast:
@@ -147,3 +140,6 @@ elections:
   - District 4
   election_system: by-district
   term_length: 4
+general_email: eComments@westminster-ca.gov
+phone: (714) 548-3178
+instagram: null
