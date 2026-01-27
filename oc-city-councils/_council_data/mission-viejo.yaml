@@ -1,18 +1,15 @@
 city: mission-viejo
 city_name: Mission Viejo
-last_updated: '2026-01-26'
 website: https://www.cityofmissionviejo.org
 council_url: https://www.cityofmissionviejo.org/government/city-council
-email: ''
-phone: ''
-instagram: ''
+last_updated: '2026-01-26'
 members:
 - name: Trish Kelley
   position: Mayor
   district: At-Large
   email: tkelley@cityofmissionviejo.org
-  phone: 949-470-3050
-  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley
+  phone: (949) 470-3050
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley
   photo_url: https://www.cityofmissionviejo.org/sites/default/files/Trish-Kelley.jpg
   bio: Trish Kelley was originally elected to the Mission Viejo City Council in November 2002.  She has served as Mayor in
     2005, 2008, 2010, 2014, 2021 and 2024.  Trish believes that quality of life, public safety, economic development, and
@@ -34,13 +31,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley
 - name: Wendy Bucknum
   position: Mayor Pro Tem
   district: At-Large
   email: wbucknum@cityofmissionviejo.org
-  phone: 949-470-3050
-  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/councilmember-wendy-bucknum
+  phone: (949) 470-3050
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/wendy-bucknum
   photo_url: https://www.cityofmissionviejo.org/sites/default/files/wendy-bucknum.jpg
   bio: Mayor Wendy Bucknum was initially elected to serve as a member of the Mission Viejo City Council in 2014. She brings
     a wealth of practical business experience, a long history of community involvement, and a solid record of volunteerism
@@ -56,13 +52,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/wendy-bucknum
 - name: Bob Ruesch
   position: Councilmember
   district: At-Large
   email: rruesch@cityofmissionviejo.org
-  phone: 949-470-3050
-  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch
+  phone: (949) 470-3050
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch
   photo_url: https://www.cityofmissionviejo.org/sites/default/files/Bob-Ruesch-Headshot.jpg
   bio: Robert “Bob” Ruesch came to Mission Viejo in 1994 with his wife Debbie to find a safer and better place to raise their
     family. Bob & Debbie have two adult children, daughter Kate who resides in Spain with her family, and their son Andrew
@@ -76,13 +71,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch
 - name: Brian Goodell
   position: Councilmember
   district: At-Large
   email: bgoodell@cityofmissionviejo.org
-  phone: 949-470-3050
-  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/councilmember-brian-goodell
+  phone: (949) 470-3050
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/brian-goodell
   photo_url: https://www.cityofmissionviejo.org/sites/default/files/bgoodell-web.jpg
   bio: 'Brian Goodell is a native Californian who moved to Mission Viejo in 1968 with his family. He graduated from Linda
     Vista Elementary School, La Paz Intermediate, Mission Viejo High School, and UCLA. Brian was a member of the world-famous
@@ -98,13 +92,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/brian-goodell
 - name: Cynthia Vasquez
   position: Councilmember
   district: At-Large
   email: cvasquez@cityofmissionviejo.org
-  phone: 949-470-3050
-  city_profile: https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez
+  phone: (949) 470-3050
+  city_page: https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez
   photo_url: https://www.cityofmissionviejo.org/sites/default/files/Cynthia-Vasquez-Headshot.jpg
   bio: Cynthia Vasquez, MBA, was elected to the Mission Viejo City Council in November 2022 for a four-year term.  She is
     the first representative for District 3 in the City’s inaugural district elections.  Her priorities focus on public safety,
@@ -119,7 +112,6 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez
 meetings:
   schedule: 2nd and 4th Tuesdays
   time: 6:00 PM
@@ -130,14 +122,22 @@ meetings:
     address: 200 Civic Center
     city_state_zip: Mission Viejo, CA 92691
 portals:
-  agenda_center: https://www.cityofmissionviejo.org/departments/agenda-minutes-videos
-  granicus: https://missionviejo.granicus.com/ViewPublisher.php?view_id=12
+  agendas: https://www.cityofmissionviejo.org/departments/agenda-minutes-videos
+  live_stream: https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true
+  video_archive: https://missionviejo.granicus.com/ViewPublisher.php?view_id=12
   ecomment: https://dms.cityofmissionviejo.org/OnBaseAgendaOnline
+broadcast:
+  cable_channels:
+  - provider: Cox
+    channel: '30'
+  - provider: AT&T
+    channel: '99'
   live_stream: https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true
 clerk:
-  title: City Clerk's Office
+  title: City Clerk
   phone: (949) 470-3052
   email: cityclerk@cityofmissionviejo.org
+  name: Kimberly Schmitt
 public_comment:
   in_person: true
   remote_live: false
@@ -162,10 +162,6 @@ elections:
   - Councilmember
   term_length: 4
   election_system: at-large
-broadcast:
-  cable_channels:
-  - provider: Cox
-    channel: '30'
-  - provider: AT&T
-    channel: '99'
-  live_stream: https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true
+email: ''
+phone: ''
+instagram: ''
