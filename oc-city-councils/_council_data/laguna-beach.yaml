@@ -1,77 +1,69 @@
 city: laguna-beach
 city_name: Laguna Beach
-last_updated: '2026-01-25'
 website: https://www.lagunabeachcity.net
 council_url: https://www.lagunabeachcity.net/government/departments/city-council
-email: citycouncil@lagunabeachcity.net
-phone: ''
-instagram: ''
+last_updated: '2026-01-26'
 members:
 - name: Mark Orgill
   position: Mayor
   district: At-Large
   email: morgill@lagunabeachcity.net
   phone: (949) 463-4821
-  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/41/126
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/mark-orgill
   photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4694/638064498925070000
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/mark-orgill
 - name: Bob Whalen
   position: Councilmember
   district: At-Large
   email: bwhalen@lagunabeachcity.net
   phone: (949) 497-0796
-  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/44/126
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/bob-whalen
   photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4706/638067135619970000
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/bob-whalen
 - name: Alex Rounaghi
   position: Councilmember
   district: At-Large
   email: arounaghi@lagunabeachcity.net
   phone: (949) 395-1275
-  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/43/126
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/alex-rounaghi
   photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4692/638694573774830000
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/alex-rounaghi
 - name: Hallie Jones
   position: Mayor Pro Tem
   district: At-Large
   email: hjones@lagunabeachcity.net
   phone: (949) 992-5419
-  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/42/126
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/hallie-jones
   photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/6128/638693684199500000
   bio: null
   term_start: 2024
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/hallie-jones
 - name: Sue Kempf
   position: Councilmember
   district: At-Large
   email: skempf@lagunabeachcity.net
   phone: (949) 439-3001
-  city_profile: https://www.lagunabeachcity.net/Home/Components/StaffDirectory/StaffDirectory/40/126
+  city_page: https://www.lagunabeachcity.net/government/departments/city-council/sue-kempf
   photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/5560/638453363123100000
   bio: null
   term_start: 2022
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/sue-kempf
 meetings:
   schedule: 2nd and 4th Tuesdays
   time: 5:00 PM
@@ -80,18 +72,25 @@ meetings:
     address: 505 Forest Avenue
     city_state_zip: Laguna Beach, CA 92651
 portals:
-  granicus: https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3
   agendas: https://www.lagunabeachcity.net/live-here/city-council/meetings-agendas-and-minutes
-  online_comment: https://www.lagunabeachcity.net/government/departments/city-council/online-comment-form
-  comment_form_pdf: https://www.lagunabeachcity.net/home/showpublisheddocument/16742/638326140977270000
-  youtube: https://www.youtube.com/@CityofLagunaBeachCA/streams
   live_stream: https://www.youtube.com/@CityofLagunaBeachCA/streams
+  video_archive: https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3
+  youtube: https://www.youtube.com/@CityofLagunaBeachCA/streams
+  ecomment: https://www.lagunabeachcity.net/government/departments/city-council/online-comment-form
+  comment_form_pdf: https://www.lagunabeachcity.net/home/showpublisheddocument/16742/638326140977270000
+broadcast:
+  cable_channels:
+  - provider: Cox
+    channel: '852'
+  live_stream: https://www.lagunabeachcity.net/meetings
+  youtube: https://www.youtube.com/channel/UCQsj8cEM7IvTH6p4uf3NUzQ
 clerk:
   title: City Clerk's Office
   phone: (949) 497-0705
   email: cityclerk@lagunabeachcity.net
   direct_email: amckay@lagunabeachcity.net
   address: 505 Forest Avenue, Laguna Beach, CA 92651
+  name: Ann Marie McKay
 public_comment:
   in_person: true
   remote_live: false
@@ -100,9 +99,9 @@ public_comment:
   time_limit: 3 minutes per speaker
   email: amckay@lagunabeachcity.net
   deadlines:
-    - "3:00 PM day before: linked to agenda with review time"
-    - "12:00 PM day of: provided to council but may not have review time"
-    - "After 12:00 PM: included in record but not linked to agenda"
+  - '3:00 PM day before: linked to agenda with review time'
+  - '12:00 PM day of: provided to council but may not have review time'
+  - 'After 12:00 PM: included in record but not linked to agenda'
   notes: Written comments NOT read aloud. Comments posted on city website - do not include personal info.
 council:
   size: 5
@@ -116,5 +115,6 @@ elections:
   - 2 at-large seats
   term_length: 4
   election_system: at-large
-broadcast:
-  live_stream: https://lagunabeachcity.granicus.com/ViewPublisher.php?view_id=3
+email: citycouncil@lagunabeachcity.net
+phone: ''
+instagram: ''
