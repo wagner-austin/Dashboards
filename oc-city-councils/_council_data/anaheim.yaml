@@ -3,72 +3,10 @@ city_name: Anaheim
 website: https://www.anaheim.net
 council_url: https://www.anaheim.net/173/City-Council
 last_updated: '2026-01-25'
-meetings:
-  schedule: 1st and 3rd Tuesdays
-  time: 5:00 PM
-  location:
-    name: Council Chamber
-    address: 200 S. Anaheim Blvd
-    city_state_zip: Anaheim, CA 92805
-portals:
-  granicus: https://anaheim.granicus.com/ViewPublisher.php?view_id=2
-  live_stream: https://www.anaheim.net/councilvideos
-  agendas: http://local.anaheim.net/docs_agend/questys_pub/
-broadcast:
-  cable_channels:
-  - provider: Charter Spectrum
-    channel: '3'
-  - provider: AT&T U-verse
-    channel: '99'
-  live_stream: https://www.anaheim.net/councilvideos
-clerk:
-  name: Theresa Bass, CMC
-  title: City Clerk
-  phone: (714) 765-5166
-  fax: (714) 765-4105
-  email: tbass@anaheim.net
-  address: 200 S. Anaheim Boulevard, 2nd Floor, Room 217, Anaheim, CA 92805
-public_comment:
-  email: publiccomment@anaheim.net
-  deadline: 2 hours prior to meeting
-  in_person: true
-  remote_live: false
-  ecomment: false
-  written_email: true
-  time_limit: 3 minutes per speaker
-  speaker_card: required (name and contact optional)
-  periods:
-    - type: First Public Comment
-      scope: Agenda items (except public hearings), then non-agenda if time remains
-      max_duration: 90 minutes
-    - type: Second Public Comment
-      scope: Non-agenda speakers not heard during first period
-      timing: After Report on Closed Session Items
-  public_hearing_limits:
-    applicant_initial: 20 minutes
-    applicant_rebuttal: 10 minutes
-    noticed_area_residents: 10 minutes
-    general_public: 3 minutes
-    legislative_matters: 5 minutes
-  notes: Comments posted on City website and made part of official public record. Speakers may be removed for profane language or disruptive behavior (AMC 1.12.017).
-elections:
-  next_election: '2026-11-03'
-  seats_up:
-  - Mayor
-  - District 1
-  - District 2
-  - District 3
-  election_system: by-district
-  term_length: 4
-council:
-  size: 7
-  districts: 6
-  at_large: 1
-  mayor_elected: true
-  term_length: 4
 members:
 - name: Ashleigh E. Aitken
   position: Mayor
+  district: At-Large
   email: aaitken@anaheim.net
   phone: (714) 765-5247
   city_page: https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken
@@ -160,3 +98,67 @@ members:
     businesses, parks, schools, a library and Anaheim’s 1.5-mile stretch of Beach Boulevard.
   term_start: 2024
   term_end: 2028
+meetings:
+  schedule: 1st and 3rd Tuesdays
+  time: 5:00 PM
+  location:
+    name: Council Chamber
+    address: 200 S. Anaheim Blvd
+    city_state_zip: Anaheim, CA 92805
+portals:
+  agendas: http://local.anaheim.net/docs_agend/questys_pub/
+  live_stream: https://www.anaheim.net/councilvideos
+  video_archive: https://anaheim.granicus.com/ViewPublisher.php?view_id=2
+broadcast:
+  cable_channels:
+  - provider: Charter Spectrum
+    channel: '3'
+  - provider: AT&T U-verse
+    channel: '99'
+  live_stream: https://www.anaheim.net/councilvideos
+clerk:
+  name: Theresa Bass, CMC
+  title: City Clerk
+  phone: (714) 765-5166
+  fax: (714) 765-4105
+  email: tbass@anaheim.net
+  address: 200 S. Anaheim Boulevard, 2nd Floor, Room 217, Anaheim, CA 92805
+public_comment:
+  email: publiccomment@anaheim.net
+  deadline: 2 hours prior to meeting
+  in_person: true
+  remote_live: false
+  ecomment: false
+  written_email: true
+  time_limit: 3 minutes per speaker
+  speaker_card: required (name and contact optional)
+  periods:
+  - type: First Public Comment
+    scope: Agenda items (except public hearings), then non-agenda if time remains
+    max_duration: 90 minutes
+  - type: Second Public Comment
+    scope: Non-agenda speakers not heard during first period
+    timing: After Report on Closed Session Items
+  public_hearing_limits:
+    applicant_initial: 20 minutes
+    applicant_rebuttal: 10 minutes
+    noticed_area_residents: 10 minutes
+    general_public: 3 minutes
+    legislative_matters: 5 minutes
+  notes: Comments posted on City website and made part of official public record. Speakers may be removed for profane language
+    or disruptive behavior (AMC 1.12.017).
+council:
+  size: 7
+  districts: 6
+  at_large: 1
+  mayor_elected: true
+  term_length: 4
+elections:
+  next_election: '2026-11-03'
+  seats_up:
+  - Mayor
+  - District 1
+  - District 2
+  - District 3
+  election_system: by-district
+  term_length: 4
