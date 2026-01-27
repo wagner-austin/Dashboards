@@ -1,18 +1,15 @@
 city: yorba-linda
 city_name: Yorba Linda
-last_updated: '2026-01-26'
 website: https://www.yorbalindaca.gov
 council_url: https://www.yorbalindaca.gov/190/City-Council
-general_email: city_council@yorbalindaca.gov
-phone: 714-961-7100
-instagram: null
+last_updated: '2026-01-26'
 members:
 - name: Carlos Rodriguez
   position: Mayor
-  district: null
+  district: At-Large
   email: crodriguez@yorbalindaca.gov
-  phone: 714-961-7110
-  city_profile: https://www.yorbalindaca.gov/746/Council-Member-Carlos-Rodriguez
+  phone: (714) 961-7110
+  city_page: https://www.yorbalindaca.gov/746/Council-Member-Carlos-Rodriguez
   photo_url: https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8530
   bio: Mayor Carlos Rodriguez brings over two decades of public and private sector experience to the City Council with extensive
     knowledge of managing a balanced budget, supervising staff, and successfully leading organizations. Mayor Carlos Rodriguez
@@ -28,13 +25,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.yorbalindaca.gov/746/Council-Member-Carlos-Rodriguez
 - name: Peggy Huang
   position: Mayor Pro Tem
-  district: null
+  district: At-Large
   email: phuang@yorbalindaca.gov
-  phone: 714-961-7110
-  city_profile: https://www.yorbalindaca.gov/194/Council-Member-Peggy-Huang
+  phone: (714) 961-7110
+  city_page: https://www.yorbalindaca.gov/194/Council-Member-Peggy-Huang
   photo_url: https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8532
   bio: Mayor Pro Tem Peggy Huang is passionate about serving the community, with a focus on advocacy for abused, neglected,
     and developmentally delayed children. She is a Taiwanese native but spent most of her adolescence and young adult years
@@ -52,13 +48,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.yorbalindaca.gov/194/Council-Member-Peggy-Huang
 - name: Tara Campbell
   position: Councilmember
-  district: null
+  district: At-Large
   email: tcampbell@yorbalindaca.gov
-  phone: 714-961-7110
-  city_profile: https://www.yorbalindaca.gov/744/Mayor-Tara-Campbell
+  phone: (714) 961-7110
+  city_page: https://www.yorbalindaca.gov/744/Mayor-Tara-Campbell
   photo_url: https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8534
   bio: Councilwoman Tara Campbell has served on the Yorba Linda City Council since 2016, including serving as Mayor in 2019
     making her the youngest female Mayor in California history. As a lifelong Yorba Linda resident, she is a strong advocate
@@ -73,13 +68,12 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.yorbalindaca.gov/744/Mayor-Tara-Campbell
 - name: Janice Lim
   position: Councilmember
-  district: null
+  district: At-Large
   email: jlim@yorbalindaca.gov
-  phone: 714-961-7110
-  city_profile: https://www.yorbalindaca.gov/195/Council-Member-Janice-Lim
+  phone: (714) 961-7110
+  city_page: https://www.yorbalindaca.gov/195/Council-Member-Janice-Lim
   photo_url: https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8521
   bio: Councilwoman Janice Lim is a seasoned public servant and community advocate with over 20 years of volunteer experience.
     Committed to preserving the charm and beauty of the city, she brings a unique blend of business acumen, architectural
@@ -95,13 +89,12 @@ members:
   term_end: 2026
   website: null
   instagram: null
-  city_page: https://www.yorbalindaca.gov/195/Council-Member-Janice-Lim
 - name: Shivinder Singh
   position: Councilmember
-  district: null
+  district: At-Large
   email: ssingh@yorbalindaca.gov
-  phone: 714-961-7110
-  city_profile: https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh
+  phone: (714) 961-7110
+  city_page: https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh
   photo_url: https://www.yorbalindaca.gov/ImageRepository/Document?documentID=8533
   bio: Councilmember Shivinder Singh has been a dedicated public servant on Yorba Linda City Commissions since 2017. He began
     as a Traffic Commissioner and transitioned to the Planning Commission, where he served as Chair in 2024. A devoted family
@@ -122,7 +115,6 @@ members:
   term_end: 2028
   website: null
   instagram: null
-  city_page: https://www.yorbalindaca.gov/923/Council-Member-Shivinder-Singh
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 6:30 PM
@@ -132,8 +124,7 @@ meetings:
     address: 4845 Casa Loma Avenue
     city_state_zip: Yorba Linda, CA 92886
 portals:
-  agenda_center: https://www.yorbalindaca.gov/197/Council-Meeting-Agendas-Minutes
-  granicus: https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7
+  agendas: https://www.yorbalindaca.gov/197/Council-Meeting-Agendas-Minutes
   live_stream: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
   video_archive: https://yorbalinda.granicus.com/ViewPublisher.php?view_id=7
 broadcast:
@@ -171,3 +162,6 @@ elections:
   term_length: 4
   election_system: at-large
   term_limits: Three consecutive 4-year terms
+general_email: city_council@yorbalindaca.gov
+phone: 714-961-7100
+instagram: null
