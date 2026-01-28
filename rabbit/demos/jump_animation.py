@@ -1,0 +1,25 @@
+"""ASCII bunny JUMP animation - vanilla Python."""
+import sys, os, time, msvcrt
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from bunny.jump.w60_frames import FRAMES
+
+print("\033[?25l\033[2J\033[H", end="")  # hide cursor, clear, home
+i = 0
+while True:
+    h = os.get_terminal_size().lines
+    lines = FRAMES[i].split("\n")
+    y = (h - len(lines)) // 2
+    for j, line in enumerate(lines):
+        print(f"\033[{y+j};6H{line:65}", end="")
+    print(f"\033[{h};1HJUMP - Press 'q' to quit", end="", flush=True)
+
+    t = time.time()
+    while time.time() - t < 0.06:  # fast for jump
+        if msvcrt.kbhit() and msvcrt.getch().lower() == b'q':
+            print("\033[?25h\033[2J\033[H", end="")
+            sys.exit()
+        time.sleep(0.01)
+
+    # loop animation
+    i = (i + 1) % len(FRAMES)
