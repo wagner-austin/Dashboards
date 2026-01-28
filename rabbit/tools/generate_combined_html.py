@@ -276,6 +276,6 @@ animate();
 </body>
 </html>'''
 
-output = Path(__file__).parent.parent / "web" / "combined.html"
+output = Path(__file__).parent.parent / "index.html"
 output.write_text(html)
 print(f"Created {output}")
