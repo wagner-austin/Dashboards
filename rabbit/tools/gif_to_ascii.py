@@ -68,7 +68,7 @@ import numpy as np
 # The "minimalist" gradient matches asciiart.eu's output.
 
 GRADIENTS = {
-    "minimalist": " .+-#",  # 5 chars - matches asciiart.eu "Minimalist"
+    "minimalist": " .-+#",  # 5 chars - matches asciiart.eu "Minimalist"
     "standard": " .:-=+*#%@",  # 10 chars - more detail
     "detailed": " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$",
 }
