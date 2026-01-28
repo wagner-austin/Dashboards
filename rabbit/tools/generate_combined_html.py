@@ -101,18 +101,10 @@ html = f'''<!DOCTYPE html>
             left: 0;
         }}
 
-        #info {{
-            position: fixed;
-            top: 10px; left: 10px;
-            color: #666;
-            font-family: sans-serif;
-            font-size: 10px;
-        }}
     </style>
 </head>
 <body>
     <pre id="screen"></pre>
-    <div id="info">Bunny Scroller | 'r' to reset</div>
 
     <script>
 const TREE_FRAMES = {json.dumps(TREE_FRAMES)};
