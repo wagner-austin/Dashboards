@@ -95,7 +95,7 @@ html = f'''<!DOCTYPE html>
             font-size: 10px;
             line-height: 1.0;
             white-space: pre;
-            color: #5a5a5a;
+            color: #e0e0e0;
             position: absolute;
             bottom: 0;
             left: 0;
