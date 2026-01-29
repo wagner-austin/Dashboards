@@ -94,6 +94,7 @@ broadcast:
     channel: '3'
   - provider: AT&T U-verse
     channel: '99'
+  live_stream: null
 clerk:
   name: Steve Franks
   title: City Manager/City Clerk

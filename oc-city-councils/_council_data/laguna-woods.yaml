@@ -85,6 +85,8 @@ meetings:
     zoom_id: 873 1726 2653
     zoom_passcode: '104459'
     notes: View only - public comments NOT accepted via Zoom
+    phone_numbers: null
+    zoom_url: null
   closed_session_time: null
 portals:
   agendas: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
@@ -107,6 +109,7 @@ clerk:
   email: cityhall@cityoflagunawoods.org
   address: 24264 El Toro Road, Laguna Woods, CA 92637
   fax: null
+  name: null
 public_comment:
   in_person: true
   remote_live: false

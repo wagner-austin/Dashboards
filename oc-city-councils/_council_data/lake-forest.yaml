@@ -79,9 +79,11 @@ portals:
   document_center: null
   municipal_code: null
   ecomment: null
+  video_archive: null
 broadcast:
   live_stream: https://www.facebook.com/lakeforestca
   platform: Facebook Live
+  cable_channels: []
 clerk:
   name: Thy Merritt
   title: Acting City Clerk

@@ -117,6 +117,7 @@ meetings:
     zoom_url: https://bit.ly/4kDYQHD
     zoom_id: 851 5107 5391
     zoom_passcode: '883147'
+    phone_numbers: null
   closed_session_time: null
 portals:
   agendas: https://www.fountainvalley.gov/AgendaCenter/City-Council-2
@@ -125,6 +126,7 @@ portals:
   municipal_code: https://ecode360.com/FO4927
   youtube: null
   ecomment: null
+  video_archive: null
 broadcast:
   cable_channels:
   - provider: Local Cable

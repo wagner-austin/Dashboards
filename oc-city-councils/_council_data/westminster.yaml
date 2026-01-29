@@ -113,6 +113,7 @@ portals:
   document_center: null
   municipal_code: null
   ecomment: null
+  live_stream: null
 broadcast:
   cable_channels:
   - provider: Spectrum
@@ -122,6 +123,7 @@ broadcast:
   - provider: AT&T U-verse
     channel: '99'
   rebroadcast: Monday 5:00 PM, Wednesday 6:00 PM, Friday 7:00 AM, Sunday 8:30 AM
+  live_stream: null
 clerk:
   name: Vacant
   title: City Clerk

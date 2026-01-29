@@ -93,6 +93,7 @@ clerk:
   direct_email: lucindaw@cityoffullerton.com
   fax: null
   address: null
+  name: null
 public_comment:
   in_person: true
   remote_live: true

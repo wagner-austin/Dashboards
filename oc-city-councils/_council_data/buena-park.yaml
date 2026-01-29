@@ -86,6 +86,7 @@ meetings:
     zoom_url: null
     zoom_id: null
     zoom_passcode: null
+    phone_numbers: null
   closed_session_time: null
 portals:
   agendas: https://horizon.agendalink.app/engage/buenaparkca/agendas
@@ -95,6 +96,7 @@ portals:
   municipal_code: https://ecode360.com/BU4909
   youtube: null
   ecomment: null
+  video_archive: null
 broadcast:
   cable_channels:
   - provider: Spectrum

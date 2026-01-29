@@ -102,11 +102,33 @@ def add_missing_fields(target: dict, reference: dict) -> list:
                 'phone_numbers': None
             }
             changes.append("Added meetings.remote section")
+        elif 'remote' in tgt_meetings and tgt_meetings['remote'] is not None:
+            # Ensure all remote fields exist
+            if 'zoom_url' not in tgt_meetings['remote']:
+                tgt_meetings['remote']['zoom_url'] = None
+                changes.append("Added meetings.remote.zoom_url: null")
+            if 'zoom_id' not in tgt_meetings['remote']:
+                tgt_meetings['remote']['zoom_id'] = None
+                changes.append("Added meetings.remote.zoom_id: null")
+            if 'zoom_passcode' not in tgt_meetings['remote']:
+                tgt_meetings['remote']['zoom_passcode'] = None
+                changes.append("Added meetings.remote.zoom_passcode: null")
+            if 'phone_numbers' not in tgt_meetings['remote']:
+                tgt_meetings['remote']['phone_numbers'] = None
+                changes.append("Added meetings.remote.phone_numbers: null")
 
     # Portals section
     if 'portals' in target and 'portals' in reference:
         ref_portals = reference['portals']
         tgt_portals = target['portals']
+
+        if 'live_stream' not in tgt_portals:
+            tgt_portals['live_stream'] = None
+            changes.append("Added portals.live_stream: null")
+
+        if 'video_archive' not in tgt_portals:
+            tgt_portals['video_archive'] = None
+            changes.append("Added portals.video_archive: null")
 
         if 'youtube' not in tgt_portals:
             tgt_portals['youtube'] = None
@@ -124,10 +146,26 @@ def add_missing_fields(target: dict, reference: dict) -> list:
             tgt_portals['ecomment'] = None
             changes.append("Added portals.ecomment: null")
 
+    # Broadcast section
+    if 'broadcast' in target and 'broadcast' in reference:
+        tgt_broadcast = target['broadcast']
+
+        if 'cable_channels' not in tgt_broadcast:
+            tgt_broadcast['cable_channels'] = []
+            changes.append("Added broadcast.cable_channels: []")
+
+        if 'live_stream' not in tgt_broadcast:
+            tgt_broadcast['live_stream'] = None
+            changes.append("Added broadcast.live_stream: null")
+
     # Clerk section
     if 'clerk' in target and 'clerk' in reference:
         ref_clerk = reference['clerk']
         tgt_clerk = target['clerk']
+
+        if 'name' not in tgt_clerk:
+            tgt_clerk['name'] = None
+            changes.append("Added clerk.name: null")
 
         if 'fax' not in tgt_clerk:
             tgt_clerk['fax'] = None

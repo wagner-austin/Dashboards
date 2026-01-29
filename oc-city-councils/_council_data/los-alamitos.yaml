@@ -128,6 +128,7 @@ portals:
   document_center: null
   municipal_code: null
   ecomment: null
+  video_archive: null
 broadcast:
   cable_channels:
   - provider: Local Cable

@@ -100,6 +100,8 @@ portals:
   document_center: https://danapoint.hylandcloud.com/231publicaccessviewer/
   municipal_code: https://ecode360.com/DA4921
   ecomment: null
+  live_stream: null
+  video_archive: null
 broadcast:
   cable_channels:
   - provider: Cox

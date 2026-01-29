@@ -114,6 +114,7 @@ portals:
   municipal_code: null
 broadcast:
   live_stream: https://www.cityofrsm.org/129/Agendas-Minutes
+  cable_channels: []
 clerk:
   name: Amy Diaz
   title: City Clerk

@@ -86,6 +86,8 @@ portals:
   document_center: null
   municipal_code: null
   ecomment: null
+  live_stream: null
+  video_archive: null
 broadcast:
   cable_channels:
   - provider: Cox

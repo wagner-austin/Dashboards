@@ -86,6 +86,7 @@ portals:
   ecomment: null
 broadcast:
   live_stream: https://www.sanjuancapistrano.org/189/Public-Meetings
+  cable_channels: []
 clerk:
   name: Christy Jakl
   title: City Clerk

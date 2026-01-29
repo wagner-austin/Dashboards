@@ -120,6 +120,7 @@ portals:
   document_center: null
   municipal_code: null
   ecomment: null
+  video_archive: null
 broadcast:
   cable_channels: []
   live_stream: https://us02web.zoom.us/j/84528780625?pwd=kMyEtwVcsndZFIkYaaPvseeu35XqBf.1

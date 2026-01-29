@@ -114,10 +114,12 @@ portals:
   youtube: null
   document_center: null
   municipal_code: null
+  live_stream: null
 broadcast:
   cable_channels:
   - provider: Spectrum
     channel: '3'
+  live_stream: null
 clerk:
   name: Erica Yasuda
   title: City Clerk

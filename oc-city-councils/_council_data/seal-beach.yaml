@@ -98,11 +98,14 @@ portals:
   document_center: null
   municipal_code: null
   ecomment: null
+  live_stream: null
+  video_archive: null
 broadcast:
   cable_channels:
   - provider: SBTV
     channel: '3'
   rebroadcast: Sunday 4:00 PM
+  live_stream: null
 clerk:
   name: Gloria Harper
   title: City Clerk
