@@ -1,6 +1,6 @@
 # Orange County City Councils
 
-Contact information and meeting details for all 34 Orange County city councils.
+Contact information, meeting details, elections, and term limits for all 34 Orange County city councils.
 
 **Live Dashboard:** [https://wagner-austin.github.io/Dashboards/oc-city-councils/](https://wagner-austin.github.io/Dashboards/oc-city-councils/)
 
@@ -10,12 +10,14 @@ The YAML files in `_council_data/` are the **golden source of truth**. They have
 
 ### What's Included (per city)
 
-- **Council members** - names, positions, districts, terms
+- **Council members** - names, positions, districts, terms, exact dates
 - **Contact info** - emails, phone numbers, city profile pages
 - **Meeting schedule** - day, time, location
 - **Public comment info** - email, deadline, time limits, remote options
 - **City clerk** - name, phone, email
 - **Quick links** - agendas, live stream, video archives
+- **Elections** - history, candidates, vote counts, cycle patterns
+- **Term limits** - limits, cooldowns, effective dates, sources
 
 ## Usage
 
@@ -31,13 +33,29 @@ Open `index.html` in a browser, or visit the live site above.
 
 **Or just push the YAML changes** - GitHub Actions will auto-rebuild the JSON.
 
-### Rebuild Dashboard Manually
+### Validate YAML Files
 
 ```bash
-python build_dashboard.py
+python validate_schema.py
 ```
 
-This reads all YAML files and outputs `dashboard_data.json`.
+This checks all YAML files against the standard schema and reports errors/warnings.
+
+### Rebuild Database
+
+```bash
+python db/init_db.py
+```
+
+This imports all YAML data into SQLite for querying.
+
+### Enrich Election Data
+
+```bash
+python election_data/enrich_yaml.py
+```
+
+This adds vote counts from OC Registrar Statement of Vote files.
 
 ## Project Structure
 
@@ -46,15 +64,25 @@ oc-city-councils/
 ├── index.html              # Dashboard (reads dashboard_data.json)
 ├── dashboard_data.json     # Auto-generated from YAML files
 ├── build_dashboard.py      # YAML → JSON builder
+├── validate_schema.py      # YAML schema validator
 ├── _council_data/          # ✅ YAML files (golden source of truth)
 │   ├── aliso-viejo.yaml
 │   ├── anaheim.yaml
 │   └── ... (34 cities)
-├── scrapers/               # Legacy scrapers (reference only)
-└── _archive/               # Disabled scripts
+├── db/                     # Database scripts
+│   ├── init_db.py          # YAML → SQLite importer
+│   ├── schema.sql          # Database schema with views
+│   └── oc_councils.db      # SQLite database
+├── docs/                   # Documentation
+│   └── YAML_TEMPLATE.md    # Complete YAML field reference
+└── election_data/          # Election enrichment
+    ├── enrich_yaml.py      # Add vote counts from SOV
+    └── *.xlsx              # OC Registrar Statement of Vote files
 ```
 
 ## YAML Format
+
+See `docs/YAML_TEMPLATE.md` for the complete field reference. Key sections:
 
 ```yaml
 city: anaheim
@@ -68,38 +96,31 @@ members:
   position: Mayor
   district: Citywide
   email: aaitken@anaheim.net
-  phone: (714) 765-5164
   term_start: 2022
   term_end: 2026
+  term_start_date: '2022-12-06'  # Exact date for term limit calc
+  term_end_date: '2026-12-08'
 
-meetings:
-  schedule: 1st and 3rd Tuesdays
-  time: 5:00 PM
-  location:
-    name: Council Chamber
-    address: 200 S. Anaheim Blvd
-    city_state_zip: Anaheim, CA 92805
-
-clerk:
-  name: Theresa Bass
-  title: City Clerk
-  phone: (714) 765-5166
-  email: cityclerk@anaheim.net
-
-public_comment:
-  in_person: true
-  remote_live: false
-  written_email: true
-  email: publiccomment@anaheim.net
-  time_limit: 3 minutes per speaker
-  deadline: 2 hours prior to meeting
-
-council:
-  size: 7
-  districts: 6
-  at_large: 1
-  mayor_elected: true
+elections:
+  next_election: '2026-11-03'
+  election_system: by-district
+  term_length: 4
+  term_limit: 2
+  term_limit_type: terms           # 'terms' or 'years'
+  term_limit_effective: '2022-11-08'
+  term_limit_cooldown: 2
+  term_limit_cooldown_unit: cycles # 'cycles' or 'years'
+  term_limit_source: https://...   # Municipal code URL
 ```
+
+## Database
+
+The SQLite database (`db/oc_councils.db`) provides queryable access to all data with pre-built views:
+
+- `v_current_council` - Current council members for all cities
+- `v_term_limit_status` - Term limit tracking with grandfathering
+- `v_term_limit_cities` - Cities with term limits
+- `v_election_history` - Past election results
 
 ## GitHub Actions
 
@@ -113,11 +134,11 @@ No manual rebuild needed.
 
 ## Important Notes
 
-⚠️ **Do NOT run the legacy scrapers** - they can overwrite verified data. The scraper scripts have been moved to `_archive/`.
-
 ✅ **YAML is the source of truth** - edit YAML files directly, not JSON.
 
 ✅ **Dashboard auto-rebuilds** - just push YAML changes.
+
+✅ **Term limits use exact dates** - `term_start_date` field determines if a member is grandfathered.
 
 ## License
 
