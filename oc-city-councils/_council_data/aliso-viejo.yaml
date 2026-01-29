@@ -6,7 +6,7 @@ last_updated: '2026-01-25'
 members:
 - name: Max Duncan
   position: Mayor
-  district: At-Large
+  district: District 2
   email: mduncan@avcity.org
   phone: (949) 425-3899
   city_page: https://avcity.org/294/Mayor-Max-Duncan
@@ -55,7 +55,7 @@ members:
   term_end: 2026
 - name: Tiffany Ackley
   position: Councilmember
-  district: At-Large
+  district: District 4
   email: tackley@avcity.org
   phone: (949) 425-3899
   city_page: https://avcity.org/293/Councilmember-Tiffany-Ackley
@@ -94,6 +94,8 @@ portals:
   agendas: https://avcity.org/129/Agendas-Minutes
   live_stream: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
   video_archive: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
+  document_center: https://avcity.org/DocumentCenter
+  municipal_code: https://www.codepublishing.com/CA/AlisoViejo/
   ecomment: null
 broadcast:
   cable_channels:
@@ -125,7 +127,99 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - At-Large (2 seats)
-  - District 3 (filling vacancy)
+    - district: "District 2"
+      incumbent: "Max Duncan"
+    - district: "District 4"
+      incumbent: "Tiffany Ackley"
   term_length: 4
-  election_system: mixed
+  term_limit: 2                      # Max consecutive 4-year terms (Ord. 2022-232)
+  term_limit_cooldown: 2             # 2 election cycles before eligible again
+  term_limit_effective: "2022-11-08" # Applies to persons elected starting Nov 8, 2022
+  term_limit_source: https://www.codepublishing.com/CA/AlisoViejo/#!/AlisoViejo02/AlisoViejo0204.html
+  election_system: by-district       # Fully by-district after 2026
+  transition_note: "Converted from at-large to by-district. Districts 1,3,5 elected 2024; Districts 2,4 in 2026."
+  cycle_pattern:
+    group_a:
+      years: "2024, 2028, 2032..."
+      seats: ["District 1", "District 3", "District 5"]
+    group_b:
+      years: "2026, 2030, 2034..."
+      seats: ["District 2", "District 4"]
+  nomination_period: "July-August 2026 (estimated)"
+  candidate_info:
+    contact_email: city-clerk@avcity.org
+    contact_phone: "949-425-2506"
+    location: "12 Journey, Suite 100, Aliso Viejo, CA 92656"
+  results_source: https://ocvote.gov/results
+  districting_info: https://avcity.org/districting
+  source: https://avcity.org/156/Elections
+  history:
+    - year: 2024
+      type: by-district              # First district election
+      seats: ["District 1", "District 3", "District 5"]
+      nomination_period: "July 15 - August 9, 2024"
+      winners:
+        - district: "District 1"
+          winner: "Tim Zandbergen"
+        - district: "District 3"
+          winner: "Richard Hurt"
+        - district: "District 5"
+          winner: "Mike Munzing"
+      certified: "2024-12-04"
+      resolution: "2024-31"
+      source: https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_db02f3098c962bf6a0b35f3db60f7ae4.pdf&view=1
+    - year: 2022
+      type: at-large
+      seats: ["At-Large (2 seats)"]
+      winners:
+        - seat: "At-Large"
+          winner: "Tiffany Ackley"
+          notes: "re-elected"
+        - seat: "At-Large"
+          winner: "Max Duncan"
+      certified: "2022-12-14"
+      resolution: "2022-32"
+      source: https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_52e316ff9e81216bd50630741aa23a8c.pdf&view=1
+    - year: 2020
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      winners:
+        - seat: "At-Large"
+          winner: "Ross Chun"
+          notes: "re-elected"
+        - seat: "At-Large"
+          winner: "Richard W. Hurt"
+        - seat: "At-Large"
+          winner: "Mike Munzing"
+          notes: "re-elected"
+      certified: "2020-12-09"
+      resolution: "2020-40"
+    - year: 2018
+      type: at-large
+      seats: ["At-Large (2 seats)"]
+      winners:
+        - seat: "At-Large"
+          winner: "Tiffany Ackley"
+          notes: "first elected"
+        - seat: "At-Large"
+          winner: "David C. Harrington"
+          notes: "re-elected"
+      certified: "2018-12-12"
+      resolution: "2018-40"
+      source: https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_c9f23aac8dc080e65bffeafdc137ec54.pdf&view=1
+    - year: 2016
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      winners:
+        - seat: "At-Large"
+          winner: "Mike Munzing"
+          notes: "re-elected"
+        - seat: "At-Large"
+          winner: "William A. Phillips"
+          notes: "re-elected"
+        - seat: "At-Large"
+          winner: "Ross Chun"
+          notes: "re-elected"
+      certified: "2016-12-14"
+      resolution: "2016-44"
+      source: https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_2afa8b915e945bbadb9b2404c97a8c31.pdf&view=1
