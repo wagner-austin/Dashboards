@@ -61,10 +61,11 @@ def check_drift(reference: dict, target: dict, target_name: str) -> dict:
     }
 
 
-def print_drift_report(drift: dict, verbose: bool = True):
+def print_drift_report(drift: dict, verbose: bool = True, show_extra: bool = False):
     """Print drift report for a single city."""
     city = drift['city']
     missing = drift['missing_fields']
+    extra = drift['extra_fields']
     missing_years = drift['missing_years']
     has_years = drift['has_years']
 
@@ -72,7 +73,11 @@ def print_drift_report(drift: dict, verbose: bool = True):
     missing_important = [m for m in missing if not m.startswith('members[].')
                         and not m.startswith('elections.history[]')]
 
-    has_issues = bool(missing_important) or bool(missing_years)
+    # Filter extra fields - ignore member-specific and history-specific extras
+    extra_important = [e for e in extra if not e.startswith('members[].')
+                      and not e.startswith('elections.history[]')]
+
+    has_issues = bool(missing_important) or bool(missing_years) or bool(extra_important)
 
     if not has_issues and not verbose:
         return False
@@ -101,6 +106,22 @@ def print_drift_report(drift: dict, verbose: bool = True):
             if len(fields) > 10:
                 print(f"      ... and {len(fields) - 10} more")
 
+    if extra_important and (show_extra or verbose):
+        print(f"  Extra/non-standard fields ({len(extra_important)}):")
+        sections = {}
+        for field in extra_important:
+            section = field.split('.')[0]
+            if section not in sections:
+                sections[section] = []
+            sections[section].append(field)
+
+        for section, fields in sorted(sections.items()):
+            print(f"    {section}:")
+            for f in fields[:10]:
+                print(f"      + {f}")
+            if len(fields) > 10:
+                print(f"      ... and {len(fields) - 10} more")
+
     return has_issues
 
 
@@ -109,6 +130,7 @@ def main():
     parser = argparse.ArgumentParser(description='Check schema drift against reference city')
     parser.add_argument('city', nargs='?', help='Check single city')
     parser.add_argument('--summary', action='store_true', help='Show summary only')
+    parser.add_argument('--extras', action='store_true', help='Show only extra/non-standard fields')
     parser.add_argument('--reference', default='aliso-viejo', help='Reference city (default: aliso-viejo)')
     args = parser.parse_args()
 
@@ -143,6 +165,7 @@ def main():
 
     issues_count = 0
     ok_count = 0
+    all_extras = {}  # Track all extra fields across cities
 
     for filepath in yaml_files:
         target = load_yaml(filepath)
@@ -150,7 +173,22 @@ def main():
 
         drift = check_drift(reference, target, target_name)
 
-        if args.summary:
+        # Track all extra fields
+        extra_important = [e for e in drift['extra_fields']
+                         if not e.startswith('members[].')
+                         and not e.startswith('elections.history[]')]
+        for field in extra_important:
+            if field not in all_extras:
+                all_extras[field] = []
+            all_extras[field].append(target_name)
+
+        if args.extras:
+            # Only show cities with extra fields
+            if extra_important:
+                print(f"\n{target_name}:")
+                for f in sorted(extra_important):
+                    print(f"  + {f}")
+        elif args.summary:
             missing_years = drift['missing_years']
             has_years = len(drift['has_years'])
             missing_fields = len([m for m in drift['missing_fields']
@@ -170,13 +208,26 @@ def main():
                 ok_count += 1
 
     print(f"\n{'='*60}")
-    print(f"Summary: {ok_count} OK, {issues_count} with drift")
 
-    if issues_count > 0:
-        print(f"\nTo fix drift, each city needs:")
-        print(f"  - Election history for years: {ref_years}")
-        print(f"  - All sections: members, meetings, portals, broadcast, clerk,")
-        print(f"    public_comment, council, elections (with history, cycle_pattern, etc.)")
+    if args.extras:
+        print(f"Non-standard fields summary ({len(all_extras)} unique):")
+        for field, cities in sorted(all_extras.items()):
+            print(f"  {field}: {len(cities)} cities")
+    else:
+        print(f"Summary: {ok_count} OK, {issues_count} with drift")
+
+        if issues_count > 0:
+            print(f"\nTo fix drift, each city needs:")
+            print(f"  - Election history for years: {ref_years}")
+            print(f"  - All sections: members, meetings, portals, broadcast, clerk,")
+            print(f"    public_comment, council, elections (with history, cycle_pattern, etc.)")
+
+        if all_extras:
+            print(f"\nNon-standard fields found ({len(all_extras)} unique):")
+            for field in sorted(all_extras.keys())[:10]:
+                print(f"  + {field} ({len(all_extras[field])} cities)")
+            if len(all_extras) > 10:
+                print(f"  ... and {len(all_extras) - 10} more (use --extras to see all)")
 
 
 if __name__ == '__main__':

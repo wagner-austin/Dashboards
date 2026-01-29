@@ -140,6 +140,6 @@ elections:
   - District 4
   election_system: by-district
   term_length: 4
-general_email: eComments@westminster-ca.gov
+email: eComments@westminster-ca.gov
 phone: (714) 548-3178
 instagram: null

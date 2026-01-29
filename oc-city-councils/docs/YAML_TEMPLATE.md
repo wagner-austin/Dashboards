@@ -11,6 +11,9 @@ city_name: Full City Name            # Display name (e.g., Aliso Viejo)
 website: https://...                 # Official city website
 council_url: https://...             # City council page
 last_updated: 'YYYY-MM-DD'           # Date of last verification
+email: info@city.gov                 # City general email
+phone: (XXX) XXX-XXXX                # City main phone
+instagram:                           # City Instagram handle (null if none)
 
 # =============================================================================
 # COUNCIL MEMBERS
@@ -36,14 +39,17 @@ members:
 meetings:
   schedule: "1st and 3rd Tuesdays"   # Meeting pattern
   time: "7:00 PM"                    # Start time
+  closed_session_time: "5:00 PM"     # If applicable (null if none)
   location:
     name: Council Chambers
     address: Street Address
     city_state_zip: City, CA XXXXX
-  zoom_url: https://...              # If applicable
-  zoom_id: "XXX XXX XXXX"           # If applicable
-  zoom_passcode: "XXXXX"            # If applicable
-  webex_url: https://...            # If applicable
+  remote:                            # Remote meeting info (null if not offered)
+    zoom_url: https://...
+    zoom_id: "XXX XXX XXXX"
+    zoom_passcode: "XXXXX"
+    phone_numbers:                   # List of dial-in numbers
+    - "XXX-XXX-XXXX"
 
 # =============================================================================
 # PORTALS & URLS

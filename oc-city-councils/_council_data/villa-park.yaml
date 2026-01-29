@@ -112,6 +112,6 @@ elections:
   term_limit: 2
   term_limit_type: terms
   term_limit_notes: "Two full terms"
-general_email: info@villapark.org
+email: info@villapark.org
 phone: (714) 998-1500
 instagram: null

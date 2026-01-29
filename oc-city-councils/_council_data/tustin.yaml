@@ -140,6 +140,6 @@ elections:
   - Councilmember
   term_length: 4
   election_system: at-large
-general_email: CityCouncil@tustinca.org
+email: CityCouncil@tustinca.org
 phone: 714-573-3012
 instagram: null

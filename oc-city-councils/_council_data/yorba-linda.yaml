@@ -164,6 +164,6 @@ elections:
   term_limit: 3
   term_limit_type: terms
   term_limit_notes: "Three consecutive 4-year terms"
-general_email: city_council@yorbalindaca.gov
+email: city_council@yorbalindaca.gov
 phone: 714-961-7100
 instagram: null

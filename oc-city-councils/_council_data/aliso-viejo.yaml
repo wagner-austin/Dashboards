@@ -3,6 +3,9 @@ city_name: Aliso Viejo
 website: https://avcity.org
 council_url: https://avcity.org/222/City-Council
 last_updated: '2026-01-25'
+email: info@avcity.org
+phone: (949) 425-2500
+instagram:
 members:
 - name: Max Duncan
   position: Mayor
@@ -93,14 +96,21 @@ members:
 meetings:
   schedule: 1st and 3rd Wednesdays
   time: 7:00 PM
+  closed_session_time:
   location:
     name: City Hall Council Chambers
     address: 12 Journey, Suite 100
     city_state_zip: Aliso Viejo, CA 92656
+  remote:
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://avcity.org/129/Agendas-Minutes
   live_stream: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
   video_archive: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
+  youtube:
   document_center: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
   municipal_code: https://www.codepublishing.com/CA/AlisoViejo/
   ecomment:
@@ -112,16 +122,19 @@ broadcast:
     channel: '99'
   live_stream: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
 clerk:
+  name: Kathy Bailor
   title: Interim City Clerk
   phone: (949) 425-2510
   email: city-clerk@avcity.org
-  name: Kathy Bailor
+  fax:
+  address: 12 Journey, Suite 100, Aliso Viejo, CA 92656
 public_comment:
   in_person: true
   remote_live: false
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
+  deadline:
   email: community-input@avcity.org
   notes: General public comment allowed at beginning of meetings
 council:
@@ -139,6 +152,7 @@ elections:
   - district: "District 4"
     incumbent: "Tiffany Ackley"
   term_length: 4
+  mayor_term_length:
   term_limit: 2
   term_limit_type: terms
   term_limit_cooldown: 2
