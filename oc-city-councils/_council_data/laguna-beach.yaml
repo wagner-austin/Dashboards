@@ -98,11 +98,8 @@ public_comment:
   written_email: true
   time_limit: 3 minutes per speaker
   email: amckay@lagunabeachcity.net
-  deadlines:
-  - '3:00 PM day before: linked to agenda with review time'
-  - '12:00 PM day of: provided to council but may not have review time'
-  - 'After 12:00 PM: included in record but not linked to agenda'
-  notes: Written comments NOT read aloud. Comments posted on city website - do not include personal info.
+  deadline: 3:00 PM day before meeting (for agenda linking)
+  notes: Written comments NOT read aloud. Comments posted on city website - do not include personal info. Deadline tiers - 3:00 PM day before (linked to agenda with review time), 12:00 PM day of (provided to council but may not have review time), after 12:00 PM (included in record but not linked to agenda).
 council:
   size: 5
   districts: 0

@@ -93,9 +93,9 @@ public_comment:
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  total_time: 30 minutes for oral communications Part 1
   email: CityClerk@san-clemente.org
   deadline: 4:00 PM on meeting day
+  notes: 30-minute total limit for oral communications Part 1.
 council:
   size: 5
   districts: 0

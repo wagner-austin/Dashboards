@@ -120,7 +120,6 @@ council:
   districts: 0
   at_large: 7
   mayor_elected: false
-  term_length: 4
 elections:
   next_election: '2026-11-03'
   seats_up:

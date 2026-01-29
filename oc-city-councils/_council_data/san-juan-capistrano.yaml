@@ -86,10 +86,8 @@ public_comment:
   written_email: true
   time_limit: 3 minutes per speaker
   email: cjakl@sanjuancapistrano.org
-  email_alt: cityclerk@sanjuancapistrano.org
-  phone: (949) 443-6310
   deadline: 1 hour prior to meeting
-  notes: Submit Request to Speak form to City Clerk; view meeting online at granicus link
+  notes: Submit Request to Speak form to City Clerk; view meeting online at granicus link. Alt email cityclerk@sanjuancapistrano.org, phone (949) 443-6310.
 council:
   size: 5
   districts: 5

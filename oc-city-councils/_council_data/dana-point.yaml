@@ -107,10 +107,9 @@ public_comment:
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
-  total_time_limit: 15 minutes for public comment period
   email: comment@danapoint.org
   deadline: 4:00 PM on meeting day
-  notes: Comments not read aloud but included in record. Include "Public Comment" and meeting date in subject line.
+  notes: 15-minute total limit for public comment period. Comments not read aloud but included in record. Include "Public Comment" and meeting date in subject line.
 council:
   size: 5
   districts: 5

@@ -139,7 +139,8 @@ clerk:
   title: City Clerk
   phone: (714) 961-7150
   email: cityclerk@yorbalindaca.gov
-  email_alt: mbrown@yorbalindaca.gov
+  fax:
+  address:
 public_comment:
   in_person: true
   remote_live: true
