@@ -49,13 +49,38 @@ python db/init_db.py
 
 This imports all YAML data into SQLite for querying.
 
-### Enrich Election Data
+### Populate Election History
 
 ```bash
-python election_data/enrich_yaml.py
+python election_data/populate_history.py --dry-run  # Preview
+python election_data/populate_history.py            # Apply
 ```
 
-This adds vote counts from OC Registrar Statement of Vote files.
+Creates election history entries (winners, vote counts, all candidates) from OC Registrar data for years 2012-2024. See `election_data/README.md` for data sources and details.
+
+### Enrich Existing Election Data
+
+```bash
+python election_data/enrich_yaml.py --all --dry-run
+```
+
+Adds vote counts and candidate lists to existing history entries.
+
+### Check Schema Drift
+
+```bash
+python check_schema_drift.py
+```
+
+Compares all cities against the reference schema (Aliso Viejo) to find missing fields or structural differences.
+
+### Check Data Coverage
+
+```bash
+python validate_schema.py --coverage
+```
+
+Shows a table of what data each city has (history years, vote counts, term limits, etc.).
 
 ## Project Structure
 
@@ -64,20 +89,22 @@ oc-city-councils/
 ├── index.html              # Dashboard (reads dashboard_data.json)
 ├── dashboard_data.json     # Auto-generated from YAML files
 ├── build_dashboard.py      # YAML → JSON builder
-├── validate_schema.py      # YAML schema validator
+├── validate_schema.py      # YAML schema validator (use --coverage for report)
+├── check_schema_drift.py   # Compare cities against reference schema
+├── add_missing_fields.py   # Add missing schema fields to all cities
 ├── _council_data/          # ✅ YAML files (golden source of truth)
-│   ├── aliso-viejo.yaml
+│   ├── aliso-viejo.yaml    # Reference schema
 │   ├── anaheim.yaml
 │   └── ... (34 cities)
 ├── db/                     # Database scripts
 │   ├── init_db.py          # YAML → SQLite importer
-│   ├── schema.sql          # Database schema with views
-│   └── oc_councils.db      # SQLite database
-├── docs/                   # Documentation
-│   └── YAML_TEMPLATE.md    # Complete YAML field reference
-└── election_data/          # Election enrichment
-    ├── enrich_yaml.py      # Add vote counts from SOV
-    └── *.xlsx              # OC Registrar Statement of Vote files
+│   └── schema.sql          # Database schema with views
+└── election_data/          # Election data & scripts
+    ├── README.md           # Data sources & how to use
+    ├── populate_history.py # Create history from OC Registrar data
+    ├── enrich_yaml.py      # Add vote counts to existing history
+    ├── validate_against_yaml.py  # Verify data accuracy
+    └── *.txt, *.CSV        # Raw OC Registrar data (gitignored)
 ```
 
 ## YAML Format

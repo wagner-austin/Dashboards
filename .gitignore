@@ -24,3 +24,14 @@ Thumbs.db
 # Private projects
 ice-cooperation-tracker/
 oc-flock-safety/
+
+# Windows artifacts
+nul
+
+# OC City Councils - raw election data (see election_data/README.md for sources)
+oc-city-councils/db/*.db
+oc-city-councils/election_data/*.CSV
+oc-city-councils/election_data/*.csv
+oc-city-councils/election_data/*.txt
+oc-city-councils/election_data/*.zip
+oc-city-councils/election_data/*_data/
