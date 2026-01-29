@@ -120,7 +120,7 @@ elections:
   - District 3
   - District 5
   term_length: 4
-  election_system: district
+  election_system: by-district
 email: ''
 phone: ''
 instagram: ''
