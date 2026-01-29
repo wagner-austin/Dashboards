@@ -154,9 +154,12 @@ elections:
       incumbent: "Kim Constantine"
     - district: "At-Large"
       incumbent: "Patrick Harper"
-  term_limit: 3                       # 3 consecutive full 4-year terms (Ord. 1506, 2015)
-  term_limit_cooldown: 2               # 2-year break required after maxing out
-  term_limit_effective: "2004-11-02"   # Applies to terms starting on/after this date
+  term_limit: 3
+  term_limit_type: terms
+  term_limit_cooldown: 2
+  term_limit_cooldown_unit: years
+  term_limit_effective: "2004-11-02"
+  term_limit_notes: "3 consecutive full 4-year terms per Ord. 1506 (2015). 2-year break required after maxing out. Applies to terms starting on/after Nov 2, 2004."
   term_limit_source: https://ecode360.com/42928071
   cycle_pattern:
     group_a:

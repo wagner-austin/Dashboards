@@ -129,7 +129,12 @@ elections:
     - district: "District 3"
       incumbent: "Jamey M. Federico"
   term_limit: 2
+  term_limit_type: terms              # TODO: verify - assumed terms not years
   term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null          # TODO: research effective date
+  term_limit_notes: null              # TODO: add ordinance reference
+  term_limit_source: null             # TODO: add municipal code URL
   cycle_pattern:
     group_a:
       years: "2022, 2026, 2030..."

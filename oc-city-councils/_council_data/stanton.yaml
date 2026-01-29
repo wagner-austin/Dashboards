@@ -146,7 +146,9 @@ elections:
   - District 3
   term_length: 4
   election_system: mixed
-  term_limits: Two 4-year terms (Measure RR 2016)
+  term_limit: 2
+  term_limit_type: terms
+  term_limit_notes: "Two 4-year terms (Measure RR 2016)"
 email: ''
 phone: ''
 instagram: ''

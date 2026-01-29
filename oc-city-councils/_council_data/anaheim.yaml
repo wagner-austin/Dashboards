@@ -168,9 +168,10 @@ elections:
       incumbent: "Natalie Rubalcava"
     - district: "District 6"
       incumbent: "Natalie Meeks"
-  term_limit: 8                       # 8 consecutive years combined for Mayor + Council (Charter § 503.5)
-  term_limit_type: years               # Limit is in years, not terms
+  term_limit: 8
+  term_limit_type: years
   term_limit_cooldown: null
+  term_limit_notes: "8 consecutive years combined for Mayor + Council per Charter § 503.5. Limit is in years, not terms."
   term_limit_source: https://codelibrary.amlegal.com/codes/anaheim/latest/anaheim_ca/0-0-0-51937
   nomination_period: null
   candidate_info:
