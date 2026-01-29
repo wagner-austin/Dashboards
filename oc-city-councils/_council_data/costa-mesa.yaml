@@ -126,6 +126,8 @@ portals:
   agendas: https://costamesa.legistar.com/Calendar.aspx
   live_stream: http://costamesa.granicus.com/player/camera/2?publish_id=10&redirect=true
   youtube: https://youtube.com/costamesatv
+  document_center: https://weblink.costamesaca.gov
+  municipal_code: https://ecode360.com/CO4918
 broadcast:
   cable_channels:
   - provider: Spectrum
@@ -159,10 +161,67 @@ council:
   term_length: 4
 elections:
   next_election: '2026-11-03'
-  seats_up:
-  - Mayor
-  - District 3
-  - District 4
-  - District 5
   election_system: mixed
   term_length: 4
+  mayor_term_length: 2
+  seats_up:
+    - district: "Mayor"
+      incumbent: "John Stephens"
+      term_length: 2
+    - district: "District 3"
+      incumbent: "Andrea Marr"
+    - district: "District 4"
+      incumbent: "Manuel Chavez"
+    - district: "District 5"
+      incumbent: "Arlis Reynolds"
+  term_limit: null
+  term_limit_cooldown: null
+  contribution_limit: "$5,900 (2025-26)"
+  cycle_pattern:
+    group_a:
+      years: "2022, 2026, 2030..."
+      seats: ["Mayor", "District 3", "District 4", "District 5"]
+    group_b:
+      years: "2024, 2028, 2032..."
+      seats: ["Mayor", "District 1", "District 2", "District 6"]
+    notes: "Mayor is up every election due to 2-year term"
+  candidate_info:
+    contact_email: null
+    contact_phone: "(714) 754-5225"
+    location: "77 Fair Drive, 1st Floor, Costa Mesa, CA 92626"
+  results_source: https://ocvote.gov/results
+  past_results: https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections
+  source: https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2026
+  history:
+    - year: 2024
+      seats: ["Mayor", "District 1", "District 2", "District 6"]
+      winners:
+        - district: "Mayor"
+          winner: "John Stephens"
+          notes: "re-elected"
+        - district: "District 1"
+          winner: "Mike Buley"
+          notes: "elected"
+        - district: "District 2"
+          winner: "Loren Gameros"
+          notes: "re-elected"
+        - district: "District 6"
+          winner: "Jeff Pettis"
+          notes: "elected"
+      source: https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2024
+    - year: 2022
+      seats: ["Mayor", "District 3", "District 4", "District 5"]
+      winners:
+        - district: "Mayor"
+          winner: "John Stephens"
+          notes: "elected"
+        - district: "District 3"
+          winner: "Andrea Marr"
+          notes: "re-elected"
+        - district: "District 4"
+          winner: "Manuel Chavez"
+          notes: "re-elected"
+        - district: "District 5"
+          winner: "Arlis Reynolds"
+          notes: "re-elected"
+      source: https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2022
