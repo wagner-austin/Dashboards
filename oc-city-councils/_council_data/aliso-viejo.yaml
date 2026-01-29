@@ -101,7 +101,7 @@ portals:
   agendas: https://avcity.org/129/Agendas-Minutes
   live_stream: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
   video_archive: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
-  document_center: https://avcity.org/DocumentCenter
+  document_center: https://alisoviejoca.granicus.com/ViewPublisher.php?view_id=3
   municipal_code: https://www.codepublishing.com/CA/AlisoViejo/
   ecomment:
 broadcast:
@@ -176,7 +176,7 @@ elections:
     - district: "District 3"
       winner: "Richard Hurt"
       votes: null
-      notes: "Unopposed - appointed per EC 10229. Resigned 2025; replaced by Garrett Dwyer."
+      notes: "Ran unopposed (no election held per EC 10229). Resigned Oct 2025; seat filled by Garrett Dwyer."
     - district: "District 5"
       winner: "Mike Munzing"
       votes: 2610
