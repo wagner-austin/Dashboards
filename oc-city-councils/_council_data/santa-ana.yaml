@@ -208,8 +208,6 @@ council:
   wards: 6
   at_large: 1
   mayor_elected: true
-  mayor_term: 2
-  councilmember_term: 4
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -218,3 +216,5 @@ elections:
   - Ward 4
   - Ward 6
   election_system: by-ward
+  term_length: 4
+  mayor_term_length: 2

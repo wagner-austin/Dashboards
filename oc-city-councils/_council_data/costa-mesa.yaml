@@ -157,7 +157,6 @@ council:
   districts: 6
   at_large: 1
   mayor_elected: true
-  mayor_term: 2
   term_length: 4
 elections:
   next_election: '2026-11-03'
