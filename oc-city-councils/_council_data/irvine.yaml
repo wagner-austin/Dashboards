@@ -2,7 +2,7 @@ city: irvine
 city_name: Irvine
 website: https://www.cityofirvine.org
 council_url: https://www.cityofirvine.org/city-council
-last_updated: '2026-01-25'
+last_updated: '2026-01-29'
 members:
 - name: Larry Agran
   position: Mayor
@@ -22,6 +22,7 @@ members:
   website: https://mayorlarryagran.org
   instagram: https://www.instagram.com/mayorlarryagran
   first_elected: 1978
+  notes: "Elected Mayor Nov 2024; previously held at-large council seat (2022-2024)"
 - name: James Mai
   position: Vice Mayor
   district: District 3
@@ -56,12 +57,14 @@ members:
     Councilmember Martinez Franco immigrated to the United States over 30 years ago. Her journey is one of determination and
     perseverance, beginning with humble roots working in apple fields, hotel housekeeping, and childcare. As a survivor of
     domestic violence, she sought refuge at Human Options. This nonprofit organization helped her secure stable and affordable
-    housing in Irvine –– where she began to rebuild her life with her two daughters. Betty’s determination led her to pursue
-    higher education options. She earned an Associate's degree from Orange Coast College, a Bachelor’s degree in Communications
-    from California State University, Fullerton, a Master’s degree in Public Administration, and a Graduate Certificate in
+    housing in Irvine –– where she began to rebuild her life with her two daughters. Betty's determination led her to pursue
+    higher education options. She earned an Associate's degree from Orange Coast College, a Bachelor's degree in Communications
+    from California State University, Fullerton, a Master's degree in Public Administration, and a Graduate Certificate in
     City and County Management from USC Price School of Public Policy.
-  term_start: 2024
+  term_start: 2025
   term_end: 2026
+  first_elected: 2025
+  notes: "Won April 2025 special election to fill vacancy left by Larry Agran's election as Mayor"
   instagram: https://www.instagram.com/councilmemberbettymartinez
 - name: Kathleen Treseder
   position: Councilmember
