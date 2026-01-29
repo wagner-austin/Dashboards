@@ -149,6 +149,9 @@ elections:
   seats_up:
   - district: "District 2"
     incumbent: "Max Duncan"
+  - district: "District 3"
+    incumbent: "Garrett Dwyer"
+    notes: "Special election to fill remainder of Hurt's term"
   - district: "District 4"
     incumbent: "Tiffany Ackley"
   term_length: 4

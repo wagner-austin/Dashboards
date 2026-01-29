@@ -82,6 +82,16 @@ python scripts/validate_schema.py --coverage
 
 Shows a table of what data each city has (history years, vote counts, term limits, etc.).
 
+### Verify Seats Up for Next Election
+
+```bash
+python scripts/verify_seats_up.py              # Check all cities
+python scripts/verify_seats_up.py tustin       # Check single city
+python scripts/verify_seats_up.py --fix        # Show suggested fixes
+```
+
+Verifies that `seats_up` matches members whose terms end in the election year.
+
 ## Project Structure
 
 ```
@@ -96,6 +106,7 @@ oc-city-councils/
 ├── scripts/                # Utility scripts
 │   ├── validate_schema.py  # Schema validator (--coverage for report)
 │   ├── check_schema_drift.py   # Compare cities to reference
+│   ├── verify_seats_up.py  # Verify seats_up vs member terms
 │   ├── add_missing_fields.py   # Add missing fields to all cities
 │   └── calculate_term_limits.py
 ├── docs/                   # Documentation
