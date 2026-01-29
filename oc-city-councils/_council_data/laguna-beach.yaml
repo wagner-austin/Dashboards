@@ -87,6 +87,8 @@ portals:
   youtube: https://www.youtube.com/@CityofLagunaBeachCA/streams
   ecomment: https://www.lagunabeachcity.net/government/departments/city-council/online-comment-form
   comment_form_pdf: https://www.lagunabeachcity.net/home/showpublisheddocument/16742/638326140977270000
+  document_center: null
+  municipal_code: null
 broadcast:
   cable_channels:
   - provider: Cox
@@ -135,8 +137,17 @@ elections:
   term_limit_effective: null
   term_limit_notes: null
   term_limit_source: null
-  cycle_pattern: null
-  candidate_info: null
+  cycle_pattern:
+    group_a:
+      years: null
+      seats: []
+    group_b:
+      years: null
+      seats: []
+  candidate_info:
+    contact_email: null
+    contact_phone: null
+    location: null
   nomination_period: null
   results_source: null
   source: null

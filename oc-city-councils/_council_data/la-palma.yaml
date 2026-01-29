@@ -82,6 +82,9 @@ portals:
   agendas: https://www.lapalmaca.gov/72/Agendas-and-Minutes
   audio_archive: https://www.lapalmaca.gov/72/Agendas-and-Minutes
   youtube: null
+  document_center: null
+  municipal_code: null
+  ecomment: null
 broadcast:
   cable_channels: []
   live_stream: null
@@ -126,8 +129,17 @@ elections:
   term_limit_effective: null
   term_limit_notes: null
   term_limit_source: null
-  cycle_pattern: null
-  candidate_info: null
+  cycle_pattern:
+    group_a:
+      years: null
+      seats: []
+    group_b:
+      years: null
+      seats: []
+  candidate_info:
+    contact_email: null
+    contact_phone: null
+    location: null
   nomination_period: null
   results_source: null
   source: null

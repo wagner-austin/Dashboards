@@ -110,6 +110,8 @@ portals:
   video_archive: https://www.cityofrsm.org/129/Agendas-Minutes
   ecomment: https://www.cityofrsm.org/forms.aspx?FID=102
   youtube: null
+  document_center: null
+  municipal_code: null
 broadcast:
   live_stream: https://www.cityofrsm.org/129/Agendas-Minutes
 clerk:
@@ -151,8 +153,17 @@ elections:
   term_limit_effective: null
   term_limit_notes: null
   term_limit_source: null
-  cycle_pattern: null
-  candidate_info: null
+  cycle_pattern:
+    group_a:
+      years: null
+      seats: []
+    group_b:
+      years: null
+      seats: []
+  candidate_info:
+    contact_email: null
+    contact_phone: null
+    location: null
   nomination_period: null
   results_source: null
   source: null

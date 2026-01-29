@@ -123,6 +123,9 @@ portals:
   live_stream: https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true
   video_archive: https://missionviejo.granicus.com/ViewPublisher.php?view_id=12
   youtube: null
+  document_center: null
+  municipal_code: null
+  ecomment: null
 broadcast:
   cable_channels:
   - provider: Cox
@@ -172,8 +175,17 @@ elections:
   term_limit_effective: null
   term_limit_notes: null
   term_limit_source: null
-  cycle_pattern: null
-  candidate_info: null
+  cycle_pattern:
+    group_a:
+      years: null
+      seats: []
+    group_b:
+      years: null
+      seats: []
+  candidate_info:
+    contact_email: null
+    contact_phone: null
+    location: null
   nomination_period: null
   results_source: null
   source: null

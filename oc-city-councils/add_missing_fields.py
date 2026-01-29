@@ -112,6 +112,18 @@ def add_missing_fields(target: dict, reference: dict) -> list:
             tgt_portals['youtube'] = None
             changes.append("Added portals.youtube: null")
 
+        if 'document_center' not in tgt_portals:
+            tgt_portals['document_center'] = None
+            changes.append("Added portals.document_center: null")
+
+        if 'municipal_code' not in tgt_portals:
+            tgt_portals['municipal_code'] = None
+            changes.append("Added portals.municipal_code: null")
+
+        if 'ecomment' not in tgt_portals:
+            tgt_portals['ecomment'] = None
+            changes.append("Added portals.ecomment: null")
+
     # Clerk section
     if 'clerk' in target and 'clerk' in reference:
         ref_clerk = reference['clerk']
@@ -179,15 +191,35 @@ def add_missing_fields(target: dict, reference: dict) -> list:
                 tgt_elections[field] = None
                 changes.append(f"Added elections.{field}: null")
 
-        # Cycle pattern
-        if 'cycle_pattern' not in tgt_elections and 'cycle_pattern' in ref_elections:
-            tgt_elections['cycle_pattern'] = None
-            changes.append("Added elections.cycle_pattern: null")
+        # Cycle pattern - create full structure
+        if 'cycle_pattern' not in tgt_elections:
+            tgt_elections['cycle_pattern'] = {
+                'group_a': {'years': None, 'seats': []},
+                'group_b': {'years': None, 'seats': []}
+            }
+            changes.append("Added elections.cycle_pattern structure")
+        elif tgt_elections['cycle_pattern'] is None:
+            tgt_elections['cycle_pattern'] = {
+                'group_a': {'years': None, 'seats': []},
+                'group_b': {'years': None, 'seats': []}
+            }
+            changes.append("Expanded elections.cycle_pattern from null")
 
-        # Candidate info
-        if 'candidate_info' not in tgt_elections and 'candidate_info' in ref_elections:
-            tgt_elections['candidate_info'] = None
-            changes.append("Added elections.candidate_info: null")
+        # Candidate info - create full structure
+        if 'candidate_info' not in tgt_elections:
+            tgt_elections['candidate_info'] = {
+                'contact_email': None,
+                'contact_phone': None,
+                'location': None
+            }
+            changes.append("Added elections.candidate_info structure")
+        elif tgt_elections['candidate_info'] is None:
+            tgt_elections['candidate_info'] = {
+                'contact_email': None,
+                'contact_phone': None,
+                'location': None
+            }
+            changes.append("Expanded elections.candidate_info from null")
 
         # Nomination period
         if 'nomination_period' not in tgt_elections:

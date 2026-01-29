@@ -99,6 +99,9 @@ portals:
   agendas: https://newportbeach.legistar.com/Calendar.aspx
   live_stream: https://www.newportbeachca.gov/government/departments/public-information-office/nbtv/nbtv-live
   youtube: https://youtube.com/playlist?list=PLzorGOSnQ7c2sblNcOnptOUb9K2cYuoj0
+  document_center: null
+  municipal_code: null
+  ecomment: null
 broadcast:
   cable_channels:
   - provider: Spectrum
@@ -150,8 +153,17 @@ elections:
   term_limit_effective: null
   term_limit_notes: null
   term_limit_source: null
-  cycle_pattern: null
-  candidate_info: null
+  cycle_pattern:
+    group_a:
+      years: null
+      seats: []
+    group_b:
+      years: null
+      seats: []
+  candidate_info:
+    contact_email: null
+    contact_phone: null
+    location: null
   nomination_period: null
   results_source: null
   source: null

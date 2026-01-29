@@ -76,6 +76,9 @@ portals:
   live_stream: https://www.facebook.com/lakeforestca
   youtube: https://www.youtube.com/@CityofLakeForestCA1991
   facebook: https://www.facebook.com/lakeforestca
+  document_center: null
+  municipal_code: null
+  ecomment: null
 broadcast:
   live_stream: https://www.facebook.com/lakeforestca
   platform: Facebook Live
@@ -122,8 +125,17 @@ elections:
   term_limit_effective: null
   term_limit_notes: null
   term_limit_source: null
-  cycle_pattern: null
-  candidate_info: null
+  cycle_pattern:
+    group_a:
+      years: null
+      seats: []
+    group_b:
+      years: null
+      seats: []
+  candidate_info:
+    contact_email: null
+    contact_phone: null
+    location: null
   nomination_period: null
   results_source: null
   source: null

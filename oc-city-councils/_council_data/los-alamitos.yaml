@@ -125,6 +125,9 @@ portals:
   agendas: https://cityoflosalamitos.org/129/Agendas-Minutes
   live_stream: https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3
   youtube: https://www.youtube.com/@cityoflosal
+  document_center: null
+  municipal_code: null
+  ecomment: null
 broadcast:
   cable_channels:
   - provider: Local Cable
@@ -171,8 +174,17 @@ elections:
   term_limit_effective: null
   term_limit_notes: null
   term_limit_source: null
-  cycle_pattern: null
-  candidate_info: null
+  cycle_pattern:
+    group_a:
+      years: null
+      seats: []
+    group_b:
+      years: null
+      seats: []
+  candidate_info:
+    contact_email: null
+    contact_phone: null
+    location: null
   nomination_period: null
   results_source: null
   source: null
