@@ -172,6 +172,8 @@ elections:
       votes: 2561
     - district: "District 3"
       winner: "Richard Hurt"
+      votes: null
+      notes: "Unopposed - appointed per CA Elections Code 10229"
     - district: "District 5"
       winner: "Mike Munzing"
       votes: 2610
@@ -238,7 +240,7 @@ elections:
       notes: "re-elected"
       votes: 9885
     - seat: "At-Large"
-      winner: "Richard W. Hurt"
+      winner: "Richard Hurt"
       votes: 8906
     - seat: "At-Large"
       winner: "Mike Munzing"
@@ -255,7 +257,7 @@ elections:
       - name: Ross Chun
         votes: 9885
         outcome: won
-      - name: Richard W. Hurt
+      - name: Richard Hurt
         votes: 8906
         outcome: won
       - name: Michael Winger
@@ -316,7 +318,7 @@ elections:
       notes: "re-elected"
       votes: 11344
     - seat: "At-Large"
-      winner: "William A. Phillips"
+      winner: "William (Bill) A. Phillips"
       notes: "re-elected"
       votes: 9027
     - seat: "At-Large"
@@ -333,7 +335,7 @@ elections:
       - name: Mike Munzing
         votes: 11344
         outcome: won
-      - name: William A. Phillips
+      - name: William (Bill) A. Phillips
         votes: 9027
         outcome: won
       - name: Ross Chun

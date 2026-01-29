@@ -107,12 +107,10 @@ def get_city_data(oc_data: dict, city_name: str) -> dict:
 
 
 def match_winner(yaml_winner: str, oc_candidates: list) -> tuple:
-    """Find matching candidate in OC data."""
+    """Find matching candidate in OC data using exact normalized match only."""
     yaml_norm = normalize_name(yaml_winner)
     for oc_name, votes in oc_candidates:
-        if normalize_name(oc_name) == yaml_norm or \
-           yaml_winner.lower() in oc_name.lower() or \
-           oc_name.lower() in yaml_winner.lower():
+        if normalize_name(oc_name) == yaml_norm:
             return oc_name, votes
     return None, None
 
@@ -245,18 +243,35 @@ def enrich_election(election: dict, oc_data: dict, city_name: str, year: int) ->
     return changes, None
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description='Enrich YAML with OC Registrar data')
-    parser.add_argument('city', help='City slug (e.g., aliso-viejo)')
-    parser.add_argument('--dry-run', action='store_true', help='Preview changes without writing')
-    args = parser.parse_args()
+def get_all_cities(base_path: Path) -> list[str]:
+    """Get all city slugs from _council_data/*.yaml files."""
+    yaml_dir = base_path.parent / '_council_data'
+    return sorted([f.stem for f in yaml_dir.glob('*.yaml')])
 
-    base_path = Path(__file__).parent
-    yaml_path = base_path.parent / '_council_data' / f'{args.city}.yaml'
+
+def process_city(city_slug: str, base_path: Path, oc_data: dict, dry_run: bool, report_only: bool) -> dict:
+    """
+    Process a single city. Returns a report dict with:
+    - city: city name
+    - status: 'ok', 'warning', 'error', 'skipped'
+    - changes: list of changes made/would be made
+    - warnings: list of potential issues
+    - errors: list of errors
+    """
+    yaml_path = base_path.parent / '_council_data' / f'{city_slug}.yaml'
+    report = {
+        'city': city_slug,
+        'status': 'ok',
+        'changes': [],
+        'warnings': [],
+        'errors': [],
+        'matches': [],  # Track what was matched for review
+    }
 
     if not yaml_path.exists():
-        print(f"Error: YAML file not found: {yaml_path}")
-        return 1
+        report['status'] = 'error'
+        report['errors'].append(f"YAML file not found: {yaml_path}")
+        return report
 
     # Setup ruamel.yaml to preserve formatting
     yaml = YAML()
@@ -267,9 +282,140 @@ def main() -> int:
     with open(yaml_path, 'r', encoding='utf-8') as f:
         data = yaml.load(f)
 
-    city_name = data.get('city_name', args.city.replace('-', ' ').title())
+    city_name = data.get('city_name', city_slug.replace('-', ' ').title())
+    report['city'] = city_name
 
-    # Load all OC data
+    # Process elections
+    elections = data.get('elections', {})
+    history = elections.get('history', [])
+
+    if not history:
+        report['status'] = 'skipped'
+        report['warnings'].append("No election history section in YAML")
+        return report
+
+    for election in history:
+        year = election.get('year')
+        if year not in oc_data:
+            report['warnings'].append(f"{year}: No OC data file available")
+            continue
+
+        # Get city-specific data from OC results
+        city_contests = get_city_data(oc_data[year], city_name)
+
+        if not city_contests:
+            report['warnings'].append(f"{year}: No contests found for '{city_name}' in OC data")
+            continue
+
+        # Track matches for this year
+        year_matches = {'year': year, 'matched': [], 'unmatched': []}
+
+        winners = election.get('winners', [])
+        election_type = election.get('type', 'general')
+        is_at_large = election_type == 'at-large'
+
+        # For at-large, merge all candidates
+        all_candidates = []
+        if is_at_large:
+            for contest, candidates in city_contests.items():
+                all_candidates.extend(candidates)
+            all_candidates = sorted(set(all_candidates), key=lambda x: -x[1])
+
+        for winner_entry in winners:
+            yaml_winner = winner_entry.get('winner')
+            district = winner_entry.get('district') or winner_entry.get('seat')
+
+            if is_at_large:
+                oc_name, votes = match_winner(yaml_winner, all_candidates)
+            else:
+                matched_contest = None
+                for contest in city_contests:
+                    if district and district.replace('District ', '') in contest:
+                        matched_contest = contest
+                        break
+                    if district and 'Mayor' in district and 'Mayor' in contest:
+                        matched_contest = contest
+                        break
+
+                if matched_contest:
+                    oc_name, votes = match_winner(yaml_winner, city_contests[matched_contest])
+                else:
+                    oc_name, votes = None, None
+                    report['warnings'].append(f"{year}: Could not match contest for {district}")
+
+            if oc_name and votes:
+                year_matches['matched'].append({
+                    'yaml': yaml_winner,
+                    'oc': oc_name,
+                    'votes': votes,
+                    'district': district,
+                })
+                old_votes = winner_entry.get('votes')
+                if old_votes != votes:
+                    if not report_only:
+                        winner_entry['votes'] = votes
+                    report['changes'].append(f"{year} {district}: {yaml_winner} votes {old_votes} -> {votes}")
+            else:
+                year_matches['unmatched'].append({
+                    'yaml': yaml_winner,
+                    'district': district,
+                })
+                report['warnings'].append(f"{year}: No OC match for '{yaml_winner}' ({district})")
+
+        report['matches'].append(year_matches)
+
+        # Add candidates (losers) if not present and not report_only
+        if 'candidates' not in election and not report_only:
+            changes, error = enrich_election(election, oc_data[year], city_name, year)
+            if changes:
+                report['changes'].extend(changes)
+
+    # Determine overall status
+    if report['errors']:
+        report['status'] = 'error'
+    elif report['warnings']:
+        report['status'] = 'warning'
+    elif report['changes']:
+        report['status'] = 'ok'
+    else:
+        report['status'] = 'skipped'
+
+    # Write if not dry_run and not report_only and has changes
+    if not dry_run and not report_only and report['changes']:
+        with open(yaml_path, 'w', encoding='utf-8') as f:
+            yaml.dump(data, f)
+
+    return report
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description='Enrich YAML with OC Registrar data')
+    parser.add_argument('city', nargs='?', help='City slug (e.g., aliso-viejo) or omit for --all')
+    parser.add_argument('--all', action='store_true', help='Process all cities')
+    parser.add_argument('--dry-run', action='store_true', help='Preview changes without writing')
+    parser.add_argument('--report', action='store_true', help='Show match report only (no changes)')
+    args = parser.parse_args()
+
+    if not args.city and not args.all:
+        parser.error("Either provide a city slug or use --all")
+
+    if args.all and not args.dry_run and not args.report:
+        print("ERROR: --all requires --dry-run or --report for safety.")
+        print("       Review the output first, then run individual cities.")
+        return 1
+
+    base_path = Path(__file__).parent
+
+    if args.all:
+        cities = get_all_cities(base_path)
+    else:
+        cities = [args.city]
+        yaml_path = base_path.parent / '_council_data' / f'{args.city}.yaml'
+        if not yaml_path.exists():
+            print(f"Error: YAML file not found: {yaml_path}")
+            return 1
+
+    # Load all OC data once
     data_sources = {
         2024: ('results-final.txt', parse_2024_2022),
         2022: ('results.txt', parse_2024_2022),
@@ -288,44 +434,66 @@ def main() -> int:
                 oc_data[year] = parser_func(filepath, year)
             else:
                 oc_data[year] = parser_func(filepath)
-
-    # Process elections
-    elections = data.get('elections', {})
-    history = elections.get('history', [])
-
-    print(f"\n{'='*60}")
-    print(f"ENRICHING: {city_name}")
-    print(f"{'='*60}")
-
-    all_changes = []
-
-    for election in history:
-        year = election.get('year')
-        if year in oc_data:
-            changes, error = enrich_election(election, oc_data[year], city_name, year)
-            if error:
-                print(f"\n{year}: {error}")
-            elif changes:
-                print(f"\n{year}:")
-                for change in changes:
-                    print(change)
-                all_changes.extend(changes)
-            else:
-                print(f"\n{year}: No changes needed")
         else:
-            print(f"\n{year}: No OC data available")
+            print(f"Warning: Missing data file for {year}: {filename}")
 
-    if not all_changes:
-        print("\nNo changes to make.")
-        return 0
+    # Process cities
+    reports = []
+    for city_slug in cities:
+        report = process_city(city_slug, base_path, oc_data, args.dry_run, args.report)
+        reports.append(report)
+
+    # Print summary
+    print(f"\n{'='*70}")
+    print("SUMMARY")
+    print(f"{'='*70}\n")
+
+    # Group by status
+    by_status = {'ok': [], 'warning': [], 'error': [], 'skipped': []}
+    for r in reports:
+        by_status[r['status']].append(r)
+
+    # Print each city's results
+    for report in reports:
+        status_icon = {'ok': '[OK]', 'warning': '[WARN]', 'error': '[ERR]', 'skipped': '[SKIP]'}[report['status']]
+        print(f"{status_icon} {report['city']}")
+
+        if args.report and report['matches']:
+            for year_match in report['matches']:
+                year = year_match['year']
+                matched = year_match['matched']
+                unmatched = year_match['unmatched']
+                if matched:
+                    print(f"    {year} matched:")
+                    for m in matched:
+                        name_match = "EXACT" if m['yaml'].lower() == m['oc'].lower() else "FUZZY"
+                        print(f"      [{name_match}] '{m['yaml']}' -> '{m['oc']}' ({m['votes']:,} votes)")
+                if unmatched:
+                    print(f"    {year} UNMATCHED:")
+                    for u in unmatched:
+                        print(f"      ??? '{u['yaml']}' ({u['district']})")
+
+        if report['warnings'] and not args.report:
+            for w in report['warnings']:
+                print(f"    [!] {w}")
+
+        if report['errors']:
+            for e in report['errors']:
+                print(f"    [X] {e}")
+
+        if report['changes'] and not args.report:
+            for c in report['changes']:
+                print(f"    {c}")
+
+    # Final counts
+    print(f"\n{'='*70}")
+    print(f"OK: {len(by_status['ok'])} | Warnings: {len(by_status['warning'])} | "
+          f"Errors: {len(by_status['error'])} | Skipped: {len(by_status['skipped'])}")
 
     if args.dry_run:
-        print(f"\n[DRY RUN] Would write {len(all_changes)} changes to {yaml_path}")
-    else:
-        # Write updated YAML (ruamel preserves comments)
-        with open(yaml_path, 'w', encoding='utf-8') as f:
-            yaml.dump(data, f)
-        print(f"\nWrote changes to {yaml_path}")
+        print("\n[DRY RUN] No files were modified.")
+    elif args.report:
+        print("\n[REPORT] No files were modified.")
 
     return 0
 
