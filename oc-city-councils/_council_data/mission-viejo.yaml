@@ -7,103 +7,107 @@ email: ''
 phone: ''
 instagram: ''
 members:
-- name: Wendy Bucknum
-  position: Mayor
-  district: District 5
-  email: wbucknum@cityofmissionviejo.org
-  phone: (949) 470-3050
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/wendy-bucknum
-  photo_url: https://www.cityofmissionviejo.org/sites/default/files/wendy-bucknum.jpg
-  bio: Mayor Wendy Bucknum was initially elected to serve as a member of the Mission Viejo City Council in 2014. She brings
-    a wealth of practical business experience, a long history of community involvement, and a solid record of volunteerism
-    in our schools, community, and youth sports programs. Mayor Bucknum has a strong business background from her 30+ years
-    serving in the community association and development industry and is a champion for City policies that are fair, understandable,
-    cost effective, and good for the economy. She is a mom who values partnerships with schools to give Mission Viejo youth
-    a meaningful educational experience and safe place to learn. As an active volunteer she understands the unique needs of
-    kids, families, and seniors, and supports programs to serve all. Wendy's primary goals are to maintain and enhance Mission
-    Viejo's public safety record, create a healthy local business economy, streamline governmental processes, preserve parks,
-    trails and open spaces, to protect Mission Viejo's schools and neighborhoods, and to maintain and enhance city infrastructure
-    and the community facilities Mission Viejo residents use and enjoy.
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Brian Goodell
-  position: Mayor Pro Tem
-  district: District 2
-  email: bgoodell@cityofmissionviejo.org
-  phone: (949) 470-3050
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/brian-goodell
-  photo_url: https://www.cityofmissionviejo.org/sites/default/files/bgoodell-web.jpg
-  bio: Brian Goodell is a native Californian who moved to Mission Viejo in 1968 with his family. He graduated from Linda Vista
-    Elementary School, La Paz Intermediate, Mission Viejo High School, and UCLA. Brian was a member of the world-famous Mission
-    Viejo Nadadores swim team and became the first Olympic Gold Medalist from Mission Viejo, breaking two world records while
-    winning two Gold Medals at the 1976 Olympic Games in Montreal. He was inducted into the International Swimming Hall of
-    Fame, the UCLA Athletics Hall of Fame, the Orange County Sports Hall of Fame, and the Saddleback Valley Unified School
-    District Hall of Fame. Brian won the Congressional Gold Medal of Achievement as a member of the 1980 USA Olympic Men's
-    Swimming Team that boycotted the 1980 Moscow Olympics. The citizens elected Brian to the Mission Viejo City Council in
-    2016, and he has served as a council member, Mayor Pro Tem, and Mayor in 2020, and he was re-elected to serve as Mayor
-    in 2023. Brian led the city with distinction during the outbreak of the COVID-19 Pandemic.
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Trish Kelley
-  position: Councilmember
-  district: District 4
-  email: tkelley@cityofmissionviejo.org
-  phone: (949) 470-3050
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley
-  photo_url: https://www.cityofmissionviejo.org/sites/default/files/Trish-Kelley.jpg
-  bio: Trish Kelley was originally elected to the Mission Viejo City Council in November 2002. She has served as Mayor in
-    2005, 2008, 2010, 2014, 2021 and 2024. Trish believes that quality of life, public safety, economic development, and transportation
-    are the primary concerns of our residents and works hard to preserve and enhance those areas. During her years of service
-    on the City Council, Trish has successfully promoted many programs and improvements to enhance the quality of life in
-    Mission Viejo. She advanced the expansion of the Norman P. Murray Community and Senior Center, the renovations of Montanoso
-    and Sierra Recreation Centers and the Marguerite Tennis Center and the Marguerite Aquatics Center, the addition of three
-    new parks, and she spearheaded the effort to bring a senior transportation program to Mission Viejo. In 2003, Trish led
-    the City Council to establish Mission Viejo as a City of Character.
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Bob Ruesch
-  position: Councilmember
-  district: District 1
-  email: rruesch@cityofmissionviejo.org
-  phone: (949) 470-3050
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch
-  photo_url: https://www.cityofmissionviejo.org/sites/default/files/Bob-Ruesch-Headshot.jpg
-  bio: Robert "Bob" Ruesch came to Mission Viejo in 1994 with his wife Debbie to find a safer and better place to raise their
-    family. Bob & Debbie have two adult children, daughter Kate who resides in Spain with her family, and their son Andrew
-    who resides in Mar Vista with his family. They have three grandsons, Luke, Zach, and Walter. Bob was a leader in the Boy
-    Scouts of America for over twenty years, helping many young men including his son obtain the rank of Eagle. He has been
-    part of a faith-based study for over twenty-five years. Bob's career has taken many paths. As an entrepreneur, he started
-    five businesses and has held many executive level positions in the private sector. Bob served on a Presidential Task Force
-    for the Reagan Presidency. Bob is a well-established authority on marketing, an accomplished pilot, rock climbing instructor,
-    and motorsport racer.
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Cynthia Vasquez
-  position: Councilmember
-  district: District 3
-  email: cvasquez@cityofmissionviejo.org
-  phone: (949) 470-3050
-  city_page: https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez
-  photo_url: https://www.cityofmissionviejo.org/sites/default/files/Cynthia-Vasquez-Headshot.jpg
-  bio: Cynthia Vasquez, MBA, was elected to the Mission Viejo City Council in November 2022 for a four-year term. She is the
-    first representative for District 3 in the City's inaugural district elections. Her priorities focus on public safety,
-    enhancing quality of life, fiscal responsibility, and driving economic development. Cynthia has demonstrated a strong
-    commitment to public safety and traffic management. Her initiatives include advocating for intersection improvements throughout
-    Mission Viejo, including the installation of a refuge lane on Marguerite Parkway at La Sierra Drive (2026). She also advocates
-    for lower speed limits near schools, increasing crossing guards, adding marked crosswalks near parks and schools, and
-    installing a protective fence around Napoli Park (2023).
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
+  - name: Wendy Bucknum
+    position: Mayor
+    district: District 5
+    email: wbucknum@cityofmissionviejo.org
+    phone: (949) 470-3050
+    city_page: https://www.cityofmissionviejo.org/departments/city-manager/wendy-bucknum
+    photo_url: https://www.cityofmissionviejo.org/sites/default/files/wendy-bucknum.jpg
+    bio: Mayor Wendy Bucknum was initially elected to serve as a member of the Mission Viejo City Council in 2014. She 
+      brings a wealth of practical business experience, a long history of community involvement, and a solid record of 
+      volunteerism in our schools, community, and youth sports programs. Mayor Bucknum has a strong business background 
+      from her 30+ years serving in the community association and development industry and is a champion for City 
+      policies that are fair, understandable, cost effective, and good for the economy. She is a mom who values 
+      partnerships with schools to give Mission Viejo youth a meaningful educational experience and safe place to learn.
+      As an active volunteer she understands the unique needs of kids, families, and seniors, and supports programs to 
+      serve all. Wendy's primary goals are to maintain and enhance Mission Viejo's public safety record, create a 
+      healthy local business economy, streamline governmental processes, preserve parks, trails and open spaces, to 
+      protect Mission Viejo's schools and neighborhoods, and to maintain and enhance city infrastructure and the 
+      community facilities Mission Viejo residents use and enjoy.
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Brian Goodell
+    position: Mayor Pro Tem
+    district: District 2
+    email: bgoodell@cityofmissionviejo.org
+    phone: (949) 470-3050
+    city_page: https://www.cityofmissionviejo.org/departments/city-manager/brian-goodell
+    photo_url: https://www.cityofmissionviejo.org/sites/default/files/bgoodell-web.jpg
+    bio: Brian Goodell is a native Californian who moved to Mission Viejo in 1968 with his family. He graduated from 
+      Linda Vista Elementary School, La Paz Intermediate, Mission Viejo High School, and UCLA. Brian was a member of the
+      world-famous Mission Viejo Nadadores swim team and became the first Olympic Gold Medalist from Mission Viejo, 
+      breaking two world records while winning two Gold Medals at the 1976 Olympic Games in Montreal. He was inducted 
+      into the International Swimming Hall of Fame, the UCLA Athletics Hall of Fame, the Orange County Sports Hall of 
+      Fame, and the Saddleback Valley Unified School District Hall of Fame. Brian won the Congressional Gold Medal of 
+      Achievement as a member of the 1980 USA Olympic Men's Swimming Team that boycotted the 1980 Moscow Olympics. The 
+      citizens elected Brian to the Mission Viejo City Council in 2016, and he has served as a council member, Mayor Pro
+      Tem, and Mayor in 2020, and he was re-elected to serve as Mayor in 2023. Brian led the city with distinction 
+      during the outbreak of the COVID-19 Pandemic.
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Trish Kelley
+    position: Councilmember
+    district: District 4
+    email: tkelley@cityofmissionviejo.org
+    phone: (949) 470-3050
+    city_page: https://www.cityofmissionviejo.org/departments/city-manager/trish-kelley
+    photo_url: https://www.cityofmissionviejo.org/sites/default/files/Trish-Kelley.jpg
+    bio: Trish Kelley was originally elected to the Mission Viejo City Council in November 2002. She has served as Mayor
+      in 2005, 2008, 2010, 2014, 2021 and 2024. Trish believes that quality of life, public safety, economic 
+      development, and transportation are the primary concerns of our residents and works hard to preserve and enhance 
+      those areas. During her years of service on the City Council, Trish has successfully promoted many programs and 
+      improvements to enhance the quality of life in Mission Viejo. She advanced the expansion of the Norman P. Murray 
+      Community and Senior Center, the renovations of Montanoso and Sierra Recreation Centers and the Marguerite Tennis 
+      Center and the Marguerite Aquatics Center, the addition of three new parks, and she spearheaded the effort to 
+      bring a senior transportation program to Mission Viejo. In 2003, Trish led the City Council to establish Mission 
+      Viejo as a City of Character.
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Bob Ruesch
+    position: Councilmember
+    district: District 1
+    email: rruesch@cityofmissionviejo.org
+    phone: (949) 470-3050
+    city_page: https://www.cityofmissionviejo.org/departments/city-manager/bob-ruesch
+    photo_url: https://www.cityofmissionviejo.org/sites/default/files/Bob-Ruesch-Headshot.jpg
+    bio: Robert "Bob" Ruesch came to Mission Viejo in 1994 with his wife Debbie to find a safer and better place to 
+      raise their family. Bob & Debbie have two adult children, daughter Kate who resides in Spain with her family, and 
+      their son Andrew who resides in Mar Vista with his family. They have three grandsons, Luke, Zach, and Walter. Bob 
+      was a leader in the Boy Scouts of America for over twenty years, helping many young men including his son obtain 
+      the rank of Eagle. He has been part of a faith-based study for over twenty-five years. Bob's career has taken many
+      paths. As an entrepreneur, he started five businesses and has held many executive level positions in the private 
+      sector. Bob served on a Presidential Task Force for the Reagan Presidency. Bob is a well-established authority on 
+      marketing, an accomplished pilot, rock climbing instructor, and motorsport racer.
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Cynthia Vasquez
+    position: Councilmember
+    district: District 3
+    email: cvasquez@cityofmissionviejo.org
+    phone: (949) 470-3050
+    city_page: https://www.cityofmissionviejo.org/departments/city-manager/cynthia-vasquez
+    photo_url: https://www.cityofmissionviejo.org/sites/default/files/Cynthia-Vasquez-Headshot.jpg
+    bio: Cynthia Vasquez, MBA, was elected to the Mission Viejo City Council in November 2022 for a four-year term. She 
+      is the first representative for District 3 in the City's inaugural district elections. Her priorities focus on 
+      public safety, enhancing quality of life, fiscal responsibility, and driving economic development. Cynthia has 
+      demonstrated a strong commitment to public safety and traffic management. Her initiatives include advocating for 
+      intersection improvements throughout Mission Viejo, including the installation of a refuge lane on Marguerite 
+      Parkway at La Sierra Drive (2026). She also advocates for lower speed limits near schools, increasing crossing 
+      guards, adding marked crosswalks near parks and schools, and installing a protective fence around Napoli Park 
+      (2023).
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
 meetings:
   schedule: 2nd and 4th Tuesdays
   time: 6:00 PM
@@ -114,32 +118,32 @@ meetings:
     address: 200 Civic Center
     city_state_zip: Mission Viejo, CA 92691
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://www.cityofmissionviejo.org/departments/agenda-minutes-videos
   live_stream: https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true
   video_archive: https://missionviejo.granicus.com/ViewPublisher.php?view_id=12
-  youtube: null
-  document_center: null
-  municipal_code: null
-  ecomment: null
+  youtube:
+  document_center:
+  municipal_code:
+  ecomment:
 broadcast:
   cable_channels:
-  - provider: Cox
-    channel: '30'
-  - provider: AT&T
-    channel: '99'
+    - provider: Cox
+      channel: '30'
+    - provider: AT&T
+      channel: '99'
   live_stream: https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true
 clerk:
   title: City Clerk
   phone: (949) 470-3052
   email: cityclerk@cityofmissionviejo.org
   name: Kimberly Schmitt
-  fax: null
-  address: null
+  fax:
+  address:
 public_comment:
   in_person: true
   remote_live: false
@@ -155,38 +159,262 @@ council:
   districts: 5
   at_large: 0
   mayor_elected: false
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - District 1
-  - District 4
-  - District 5
+    - District 1
+    - District 4
+    - District 5
   term_length: 4
   election_system: by-district
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2022
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Robert "Bob" Ruesch
+          votes: 3708
+        - district: District 2
+          winner: Brian Goodell
+          votes: 5060
+        - district: District 3
+          winner: Cynthia Vasquez
+          votes: 2652
+        - district: District 4
+          winner: Patricia "Trish" Kelley
+          votes: 4179
+        - district: District 5
+          winner: Wendy Bucknum
+          votes: 4881
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Robert "Bob" Ruesch
+              votes: 3708
+              outcome: won
+            - name: Deborah Cunningham-Skurnik
+              votes: 1888
+              outcome: lost
+            - name: Linda Shepard
+              votes: 1498
+              outcome: lost
+        - district: District 2
+          candidates:
+            - name: Brian Goodell
+              votes: 5060
+              outcome: won
+            - name: Stacy Holmes
+              votes: 3552
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Cynthia Vasquez
+              votes: 2652
+              outcome: won
+            - name: Greg Raths
+              votes: 2254
+              outcome: lost
+            - name: Ed Sachs
+              votes: 1498
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Patricia "Trish" Kelley
+              votes: 4179
+              outcome: won
+            - name: Terri Aprati
+              votes: 2432
+              outcome: lost
+            - name: Ken Golemo
+              votes: 105
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Wendy Bucknum
+              votes: 4881
+              outcome: won
+            - name: Jon Miller
+              votes: 2852
+              outcome: lost
+    - year: 2020
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Patricia "Trish" Kelley
+          votes: 25865
+        - seat: At-Large
+          winner: Brian Goodell
+          votes: 24856
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Patricia "Trish" Kelley
+              votes: 25865
+              outcome: won
+            - name: Brian Goodell
+              votes: 24856
+              outcome: won
+            - name: Cathy Schlicht
+              votes: 9532
+              outcome: lost
+            - name: Pauline Hale
+              votes: 8420
+              outcome: lost
+            - name: Jessica Gilbert
+              votes: 5696
+              outcome: lost
+            - name: Ryan Tworek
+              votes: 4384
+              outcome: lost
+            - name: Steve Sipe
+              votes: 4340
+              outcome: lost
+            - name: Michael Mcconnell
+              votes: 3914
+              outcome: lost
+    - year: 2018
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Ed Sachs
+          votes: 25886
+        - seat: At-Large
+          winner: Wendy Bucknum
+          votes: 25206
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Ed Sachs
+              votes: 25886
+              outcome: won
+            - name: Wendy Bucknum
+              votes: 25206
+              outcome: won
+            - name: Greg Raths
+              votes: 25017
+              outcome: lost
+            - name: Michael Mcconnell
+              votes: 10551
+              outcome: lost
+            - name: Mahmoud El-Farra
+              votes: 8796
+              outcome: lost
+    - year: 2016
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Patricia "Trish" Kelley
+          votes: 22724
+        - seat: At-Large
+          winner: Brian Goodell
+          votes: 20198
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Patricia "Trish" Kelley
+              votes: 22724
+              outcome: won
+            - name: Brian Goodell
+              votes: 20198
+              outcome: won
+            - name: Cathy Schlicht
+              votes: 13734
+              outcome: lost
+            - name: Shelly Blair
+              votes: 7752
+              outcome: lost
+            - name: Alex A. Naghibi
+              votes: 5895
+              outcome: lost
+    - year: 2014
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Greg Raths
+          votes: 12276
+        - seat: At-Large
+          winner: Ed Sachs
+          votes: 11570
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Greg Raths
+              votes: 12276
+              outcome: won
+            - name: Ed Sachs
+              votes: 11570
+              outcome: won
+            - name: Wendy Bucknum
+              votes: 9476
+              outcome: lost
+            - name: David "Dave" Leckness
+              votes: 8501
+              outcome: lost
+            - name: Rhonda Reardon
+              votes: 7186
+              outcome: lost
+            - name: Desi Joseph Kiss
+              votes: 5798
+              outcome: lost
+            - name: Steven G. Thornton
+              votes: 3718
+              outcome: lost
+            - name: Grant J. Voss
+              votes: 2786
+              outcome: lost
+    - year: 2012
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Frank Ury
+          votes: 18760
+        - seat: At-Large
+          winner: Cathy Schlicht
+          votes: 15892
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Frank Ury
+              votes: 18760
+              outcome: won
+            - name: Cathy Schlicht
+              votes: 15892
+              outcome: won
+            - name: Wendy Bucknum
+              votes: 15614
+              outcome: lost
+            - name: Ed Sachs
+              votes: 10013
+              outcome: lost
+            - name: Richard W. Coleman
+              votes: 4768
+              outcome: lost
+            - name: Desi J. Kiss
+              votes: 3720
+              outcome: lost

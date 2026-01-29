@@ -3,159 +3,167 @@ city_name: Irvine
 website: https://www.cityofirvine.org
 council_url: https://www.cityofirvine.org/city-council
 last_updated: '2026-01-29'
-email: null
-phone: null
-instagram: null
+email:
+phone:
+instagram:
 members:
-- name: Larry Agran
-  position: Mayor
-  district: At-Large
-  email: LarryAgran@cityofirvine.org
-  phone: (949) 724-6000
-  city_page: https://www.cityofirvine.org/city-council/mayor-larry-agran
-  photo_url: https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg
-  bio: Larry Agran graduated Phi Beta Kappa from the University of California at Berkeley in 1966, majoring in history and
-    economics. In 1969, he graduated with honors from Harvard Law School, where he specialized in public interest law. Larry
-    has served as Legal Counsel to the California State Senate Committee on Health and Welfare. He has taught legislation
-    and public policy at the UCLA School of Law and the Paul Merage School of Business at UC Irvine. Larry Agran first served
-    on the Irvine City Council from 1978 to 1990, including six years as Mayor. Under his leadership, Irvine received national
-    recognition for its pioneering programs in child care, affordable housing, recycling, and open space preservation.
-  term_start: 2024
-  term_end: 2026
-  website: https://mayorlarryagran.org
-  instagram: https://www.instagram.com/mayorlarryagran
-  first_elected: 1978
-  notes: Elected Mayor Nov 2024; previously held at-large council seat (2022-2024)
-- name: James Mai
-  position: Vice Mayor
-  district: District 3
-  email: JamesMai@cityofirvine.org
-  phone: (949) 724-6000
-  city_page: https://www.cityofirvine.org/city-council/vice-mayor-james-mai-district-3
-  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg
-  bio: James Mai was elected as the inaugural Councilmember for District 3 and was subsequently selected by his City Council
-    colleagues to serve as Vice Mayor. His election marks a historic milestone, reflecting Irvine’s rich diversity, as he
-    became the first Vietnamese American to hold elected office in the city. With over two decades of business leadership,
-    James brings extensive expertise in strategy, innovation, and growth. His career spans a broad range of industries and
-    international markets, earning him a reputation as a dynamic and results-driven entrepreneur. He has successfully launched
-    and managed organizations with a global presence, demonstrating resilience and adaptability in navigating complex and
-    emerging markets. As Managing Partner of Bristol & Bates, a management consulting firm specializing in business development
-    and technology strategies, James has delivered transformative solutions to organizations worldwide. His proficiency in
-    strategic operations, brand development, marketing, and technology has enabled businesses to scale efficiently and expand
-    their impact. His professional portfolio includes operations across North America, Europe, and Asia, as well as founding
-    an Irvine-based executive search firm in 2004.
-  term_start: 2022
-  term_end: 2026
-  instagram: https://www.instagram.com/vicemayormai
-- name: Betty Martinez Franco
-  position: Councilmember
-  district: District 5
-  email: bettymartinez@cityofirvine.org
-  phone: (949) 724-6000
-  city_page: https://www.cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5
-  photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg
-  bio: Councilmember Betty Martinez Franco is a proud, longtime resident of Irvine, an entrepreneur, and a public servant
-    representing Council District 5. In a historic victory, she became the first Latina and first Mexican immigrant elected
-    to the Irvine City Council, in a city where Latinos represent the third-largest demographic group. Originally from Mexico,
-    Councilmember Martinez Franco immigrated to the United States over 30 years ago. Her journey is one of determination and
-    perseverance, beginning with humble roots working in apple fields, hotel housekeeping, and childcare. As a survivor of
-    domestic violence, she sought refuge at Human Options. This nonprofit organization helped her secure stable and affordable
-    housing in Irvine –– where she began to rebuild her life with her two daughters. Betty's determination led her to pursue
-    higher education options. She earned an Associate's degree from Orange Coast College, a Bachelor's degree in Communications
-    from California State University, Fullerton, a Master's degree in Public Administration, and a Graduate Certificate in
-    City and County Management from USC Price School of Public Policy.
-  term_start: 2025
-  term_end: 2026
-  first_elected: 2025
-  notes: Won April 2025 special election to fill vacancy left by Larry Agran's election as Mayor
-  instagram: https://www.instagram.com/councilmemberbettymartinez
-- name: Kathleen Treseder
-  position: Councilmember
-  district: At-Large
-  email: KathleenTreseder@cityofirvine.org
-  phone: (949) 724-6000
-  city_page: https://www.cityofirvine.org/city-council/councilmember-kathleen-treseder-large
-  photo_url: https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg
-  bio: Meet Councilmember Kathleen Treseder, PhD - At-Large Councilmember Kathleen Treseder, PhD is the Howard A. Schneiderman
-    Endowed Chair and Professor at University of California Irvine. She leads an internationally recognized research program
-    studying how climate change affects endangered ecosystems and our society. She received her PhD from Stanford University
-    and has been elected a Fellow of the American Association for the Advancement of Science, the American Academy of Microbiology,
-    and the Ecological Society of America. She was recently honored with the 2024 Robert H. MacArthur Award from the Ecological
-    Society of America. This prestigious award is bestowed upon an established ecologist in mid-career who has made significant
-    contributions to the field of ecology, with the expectation of continuing to produce outstanding ecological research.
-    In 2022, she received the Marsh Award for Climate Change Research from the British Ecological Society. She has published
-    over 120 articles in scientific journals. Councilmember Treseder’s research has been featured on the BBC and NPR and in
-    numerous publications, including Discover Magazine, The Orange County Register, and Harper’s Bazaar.
-  term_start: 2024
-  term_end: 2026
-  instagram: https://www.instagram.com/councilmemberkathleentreseder
-- name: Melinda Liu
-  position: Councilmember
-  district: District 1
-  email: MelindaLiu@cityofirvine.org
-  phone: (949) 724-6000
-  city_page: https://www.cityofirvine.org/city-council/councilmember-melinda-liu-district-1
-  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg
-  bio: Councilmember Melinda Liu is a long-time Northwood resident with her multigenerational family in Irvine. She holds
-    a Bachelor of Arts degree in Political Science from the University of California in Berkeley and a Juris Doctor degree
-    from Southwestern University School Law in Los Angeles, California. Professionally, she is a licensed attorney by the
-    California Bar, a licensed Real Estate Broker in the State of California, and a certified Mediator. Born in Taipei, Taiwan,
-    Councilmember Liu moved to Los Angeles with her family as a teenager. In Irvine’s first district City Council election,
-    she made history as the first Taiwan-born Chinese-American woman who is fluent in Mandarin to be elected to Irvine City
-    Council. Throughout her legal career, Councilmember Liu has worked extensively with immigrant communities and small businesses.
-    She started working in immigration law during law school under the mentorship of prominent immigration attorneys. Then,
-    she gained insights and experiences serving small businesses in transactions, litigations, and complex government regulations
-    in private practice and the Small Business Administration. Currently, Councilmember Liu runs her solo estate planning
-    business where she helps families make estate plans with empathy and knowledge. Since high school, Councilmember Liu has
-    been an active community volunteer and leader who’s been recognized by many organizations. A passionate advocate for her
-    community, Councilmember Liu has spent years acting as a volunteer and leader at local athletic, education, and charitable
-    organizations. Specifically, she served as the President of Irvine Chinese School Parent Teacher Organization, Board Member
-    of Northwood High School Athletic Booster Club and PTSA, and a volunteer mediator at the Orange County Superior Court.
-  term_start: 2024
-  term_end: 2026
-  website: https://www.melindaliuirvine.com
-  instagram: https://www.instagram.com/melindaliu_official
-- name: Mike Carroll
-  position: Councilmember
-  district: District 4
-  email: MikeCarroll@cityofirvine.org
-  phone: (949) 724-6000
-  city_page: https://www.cityofirvine.org/city-council/councilmember-mike-carroll-district-4
-  photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png
-  bio: Councilmember Mike Carroll is serving his second 4-year term on the Irvine City Council. Appointed in 2019 on a bi-partisan
-    basis to fill a vacancy, in 2020 he was elected to a four-year term and then re-elected in 2024, where he received the
-    highest number of votes in the City’s history. With over 318,000 residents, Irvine is the second largest city in Orange
-    County, California, the sixth largest county in the United States. Irvine is a multi-award-winning master-planned community.
-    It is the most diversely integrated city and has been the safest city in America for nearly 20 years in a row. Carroll
-    is also Vice Chairman of the Great Park, the largest under-development municipal park in the nation. Spanning 1,300 acres
-    and hosting 6 million annual visits, the Great Park’s 500 acres completed to date embrace recreation, competitive sports,
-    parkland, and the environment. As a salute to our veterans, the Great Park honors the memory of the former Marine Corps
-    Air Station El Toro. The Great Park is setting the gold standard for park design, and upon completion, it will be a national
-    treasure among the great metropolitan parks of the world.
-  term_start: 2024
-  term_end: 2028
-  instagram: https://www.instagram.com/mikecarrollcouncilmember
-  first_elected: 2019
-- name: William Go
-  position: Councilmember
-  district: District 2
-  email: WilliamGo@cityofirvine.org
-  phone: (949) 724-6000
-  city_page: https://www.cityofirvine.org/city-council/councilmember-william-go-district-2
-  photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg
-  bio: 'William Go was elected to the Irvine City Council in 2024 as the first Councilmember to represent District 2 and the
-    first Chinese Filipino American to serve on the Council. William is also Chairman of the Great Park, currently the nation’s
-    largest municipal park under development. Covering 1,300 acres and welcoming approximately 6 million visitors each year,
-    the 500 acres already completed feature a dynamic mix of recreational spaces, competitive sports facilities, preserved
-    parkland, and environmental stewardship. In tribute to our veterans, the Great Park thoughtfully preserves and honors
-    the legacy of the former Marine Corps Air Station El Toro. By establishing a new benchmark for innovative park design,
-    the Great Park is poised to become a world-class metropolitan treasure upon full completion. William and his family immigrated
-    to the United States when he was a child. Raised alongside his four siblings by their mother, William saw her work tirelessly
-    to provide for their family, instilling in him the values of hard work and perseverance. Born in the Philippines to a
-    mother of Chinese descent, he speaks three languages: English, Tagalog, and Chinese.'
-  term_start: 2024
-  term_end: 2028
-  instagram: https://www.instagram.com/williamgoirvine
+  - name: Larry Agran
+    position: Mayor
+    district: At-Large
+    email: LarryAgran@cityofirvine.org
+    phone: (949) 724-6000
+    city_page: https://www.cityofirvine.org/city-council/mayor-larry-agran
+    photo_url: 
+      https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg
+    bio: Larry Agran graduated Phi Beta Kappa from the University of California at Berkeley in 1966, majoring in history
+      and economics. In 1969, he graduated with honors from Harvard Law School, where he specialized in public interest 
+      law. Larry has served as Legal Counsel to the California State Senate Committee on Health and Welfare. He has 
+      taught legislation and public policy at the UCLA School of Law and the Paul Merage School of Business at UC 
+      Irvine. Larry Agran first served on the Irvine City Council from 1978 to 1990, including six years as Mayor. Under
+      his leadership, Irvine received national recognition for its pioneering programs in child care, affordable 
+      housing, recycling, and open space preservation.
+    term_start: 2024
+    term_end: 2026
+    website: https://mayorlarryagran.org
+    instagram: https://www.instagram.com/mayorlarryagran
+    first_elected: 1978
+    notes: Elected Mayor Nov 2024; previously held at-large council seat (2022-2024)
+  - name: James Mai
+    position: Vice Mayor
+    district: District 3
+    email: JamesMai@cityofirvine.org
+    phone: (949) 724-6000
+    city_page: https://www.cityofirvine.org/city-council/vice-mayor-james-mai-district-3
+    photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg
+    bio: James Mai was elected as the inaugural Councilmember for District 3 and was subsequently selected by his City 
+      Council colleagues to serve as Vice Mayor. His election marks a historic milestone, reflecting Irvine’s rich 
+      diversity, as he became the first Vietnamese American to hold elected office in the city. With over two decades of
+      business leadership, James brings extensive expertise in strategy, innovation, and growth. His career spans a 
+      broad range of industries and international markets, earning him a reputation as a dynamic and results-driven 
+      entrepreneur. He has successfully launched and managed organizations with a global presence, demonstrating 
+      resilience and adaptability in navigating complex and emerging markets. As Managing Partner of Bristol & Bates, a 
+      management consulting firm specializing in business development and technology strategies, James has delivered 
+      transformative solutions to organizations worldwide. His proficiency in strategic operations, brand development, 
+      marketing, and technology has enabled businesses to scale efficiently and expand their impact. His professional 
+      portfolio includes operations across North America, Europe, and Asia, as well as founding an Irvine-based 
+      executive search firm in 2004.
+    term_start: 2022
+    term_end: 2026
+    instagram: https://www.instagram.com/vicemayormai
+  - name: Betty Martinez Franco
+    position: Councilmember
+    district: District 5
+    email: bettymartinez@cityofirvine.org
+    phone: (949) 724-6000
+    city_page: https://www.cityofirvine.org/city-council/councilmember-betty-martinez-franco-%E2%80%93-district-5
+    photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg
+    bio: Councilmember Betty Martinez Franco is a proud, longtime resident of Irvine, an entrepreneur, and a public 
+      servant representing Council District 5. In a historic victory, she became the first Latina and first Mexican 
+      immigrant elected to the Irvine City Council, in a city where Latinos represent the third-largest demographic 
+      group. Originally from Mexico, Councilmember Martinez Franco immigrated to the United States over 30 years ago. 
+      Her journey is one of determination and perseverance, beginning with humble roots working in apple fields, hotel 
+      housekeeping, and childcare. As a survivor of domestic violence, she sought refuge at Human Options. This 
+      nonprofit organization helped her secure stable and affordable housing in Irvine –– where she began to rebuild her
+      life with her two daughters. Betty's determination led her to pursue higher education options. She earned an 
+      Associate's degree from Orange Coast College, a Bachelor's degree in Communications from California State 
+      University, Fullerton, a Master's degree in Public Administration, and a Graduate Certificate in City and County 
+      Management from USC Price School of Public Policy.
+    term_start: 2025
+    term_end: 2026
+    first_elected: 2025
+    notes: Won April 2025 special election to fill vacancy left by Larry Agran's election as Mayor
+    instagram: https://www.instagram.com/councilmemberbettymartinez
+  - name: Kathleen Treseder
+    position: Councilmember
+    district: At-Large
+    email: KathleenTreseder@cityofirvine.org
+    phone: (949) 724-6000
+    city_page: https://www.cityofirvine.org/city-council/councilmember-kathleen-treseder-large
+    photo_url: https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg
+    bio: Meet Councilmember Kathleen Treseder, PhD - At-Large Councilmember Kathleen Treseder, PhD is the Howard A. 
+      Schneiderman Endowed Chair and Professor at University of California Irvine. She leads an internationally 
+      recognized research program studying how climate change affects endangered ecosystems and our society. She 
+      received her PhD from Stanford University and has been elected a Fellow of the American Association for the 
+      Advancement of Science, the American Academy of Microbiology, and the Ecological Society of America. She was 
+      recently honored with the 2024 Robert H. MacArthur Award from the Ecological Society of America. This prestigious 
+      award is bestowed upon an established ecologist in mid-career who has made significant contributions to the field 
+      of ecology, with the expectation of continuing to produce outstanding ecological research. In 2022, she received 
+      the Marsh Award for Climate Change Research from the British Ecological Society. She has published over 120 
+      articles in scientific journals. Councilmember Treseder’s research has been featured on the BBC and NPR and in 
+      numerous publications, including Discover Magazine, The Orange County Register, and Harper’s Bazaar.
+    term_start: 2024
+    term_end: 2026
+    instagram: https://www.instagram.com/councilmemberkathleentreseder
+  - name: Melinda Liu
+    position: Councilmember
+    district: District 1
+    email: MelindaLiu@cityofirvine.org
+    phone: (949) 724-6000
+    city_page: https://www.cityofirvine.org/city-council/councilmember-melinda-liu-district-1
+    photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg
+    bio: Councilmember Melinda Liu is a long-time Northwood resident with her multigenerational family in Irvine. She 
+      holds a Bachelor of Arts degree in Political Science from the University of California in Berkeley and a Juris 
+      Doctor degree from Southwestern University School Law in Los Angeles, California. Professionally, she is a 
+      licensed attorney by the California Bar, a licensed Real Estate Broker in the State of California, and a certified
+      Mediator. Born in Taipei, Taiwan, Councilmember Liu moved to Los Angeles with her family as a teenager. In 
+      Irvine’s first district City Council election, she made history as the first Taiwan-born Chinese-American woman 
+      who is fluent in Mandarin to be elected to Irvine City Council. Throughout her legal career, Councilmember Liu has
+      worked extensively with immigrant communities and small businesses. She started working in immigration law during 
+      law school under the mentorship of prominent immigration attorneys. Then, she gained insights and experiences 
+      serving small businesses in transactions, litigations, and complex government regulations in private practice and 
+      the Small Business Administration. Currently, Councilmember Liu runs her solo estate planning business where she 
+      helps families make estate plans with empathy and knowledge. Since high school, Councilmember Liu has been an 
+      active community volunteer and leader who’s been recognized by many organizations. A passionate advocate for her 
+      community, Councilmember Liu has spent years acting as a volunteer and leader at local athletic, education, and 
+      charitable organizations. Specifically, she served as the President of Irvine Chinese School Parent Teacher 
+      Organization, Board Member of Northwood High School Athletic Booster Club and PTSA, and a volunteer mediator at 
+      the Orange County Superior Court.
+    term_start: 2024
+    term_end: 2026
+    website: https://www.melindaliuirvine.com
+    instagram: https://www.instagram.com/melindaliu_official
+  - name: Mike Carroll
+    position: Councilmember
+    district: District 4
+    email: MikeCarroll@cityofirvine.org
+    phone: (949) 724-6000
+    city_page: https://www.cityofirvine.org/city-council/councilmember-mike-carroll-district-4
+    photo_url: https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png
+    bio: Councilmember Mike Carroll is serving his second 4-year term on the Irvine City Council. Appointed in 2019 on a
+      bi-partisan basis to fill a vacancy, in 2020 he was elected to a four-year term and then re-elected in 2024, where
+      he received the highest number of votes in the City’s history. With over 318,000 residents, Irvine is the second 
+      largest city in Orange County, California, the sixth largest county in the United States. Irvine is a 
+      multi-award-winning master-planned community. It is the most diversely integrated city and has been the safest 
+      city in America for nearly 20 years in a row. Carroll is also Vice Chairman of the Great Park, the largest 
+      under-development municipal park in the nation. Spanning 1,300 acres and hosting 6 million annual visits, the 
+      Great Park’s 500 acres completed to date embrace recreation, competitive sports, parkland, and the environment. As
+      a salute to our veterans, the Great Park honors the memory of the former Marine Corps Air Station El Toro. The 
+      Great Park is setting the gold standard for park design, and upon completion, it will be a national treasure among
+      the great metropolitan parks of the world.
+    term_start: 2024
+    term_end: 2028
+    instagram: https://www.instagram.com/mikecarrollcouncilmember
+    first_elected: 2019
+  - name: William Go
+    position: Councilmember
+    district: District 2
+    email: WilliamGo@cityofirvine.org
+    phone: (949) 724-6000
+    city_page: https://www.cityofirvine.org/city-council/councilmember-william-go-district-2
+    photo_url: https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg
+    bio: 'William Go was elected to the Irvine City Council in 2024 as the first Councilmember to represent District 2 and
+      the first Chinese Filipino American to serve on the Council. William is also Chairman of the Great Park, currently the
+      nation’s largest municipal park under development. Covering 1,300 acres and welcoming approximately 6 million visitors
+      each year, the 500 acres already completed feature a dynamic mix of recreational spaces, competitive sports facilities,
+      preserved parkland, and environmental stewardship. In tribute to our veterans, the Great Park thoughtfully preserves
+      and honors the legacy of the former Marine Corps Air Station El Toro. By establishing a new benchmark for innovative
+      park design, the Great Park is poised to become a world-class metropolitan treasure upon full completion. William and
+      his family immigrated to the United States when he was a child. Raised alongside his four siblings by their mother,
+      William saw her work tirelessly to provide for their family, instilling in him the values of hard work and perseverance.
+      Born in the Philippines to a mother of Chinese descent, he speaks three languages: English, Tagalog, and Chinese.'
+    term_start: 2024
+    term_end: 2028
+    instagram: https://www.instagram.com/williamgoirvine
 meetings:
   schedule: 2nd and 4th Tuesdays
   time: 4 PM
@@ -168,29 +176,29 @@ meetings:
     zoom_id: 160-043-4844
     zoom_passcode: '272906'
     phone_numbers:
-    - 669-254-5252
-    - 669-216-1590
-  closed_session_time: null
+      - 669-254-5252
+      - 669-216-1590
+  closed_session_time:
 portals:
   agendas: https://irvine.granicus.com/ViewPublisher.php?view_id=68
   live_stream: https://legacy.cityofirvine.org/cityhall/citymanager/pio/ictv/default.asp
   video_archive: https://irvine.granicus.com/ViewPublisher.php?view_id=68
   ecomment: https://irvine.granicusideas.com/meetings?scope=upcoming
-  youtube: null
-  document_center: null
-  municipal_code: null
+  youtube:
+  document_center:
+  municipal_code:
 broadcast:
   cable_channels:
-  - provider: Cox
-    channel: '30'
+    - provider: Cox
+      channel: '30'
   live_stream: https://legacy.cityofirvine.org/cityhall/citymanager/pio/ictv/default.asp
 clerk:
   name: Carl Petersen
   title: City Clerk
   phone: (949) 724-6205
   email: clerk@cityofirvine.org
-  fax: null
-  address: null
+  fax:
+  address:
 public_comment:
   in_person: true
   remote_live: true
@@ -201,45 +209,476 @@ public_comment:
   email: irvinecitycouncil@cityofirvine.org
   ecomment_deadline: 2 hours prior to meeting
   notes: Electronic kiosk available at chamber entrance for speaker registration
-  deadline: null
+  deadline:
 council:
   size: 7
   districts: 5
   at_large: 2
   mayor_elected: true
   expanded_date: 2024-03
-  notes: null
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - Mayor
-  - District 1
-  - District 5
-  - At-Large
+    - Mayor
+    - District 1
+    - District 5
+    - At-Large
   term_length: 4
   election_system: mixed
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: mixed
+      winners:
+        - district: District 1
+          winner: Melinda Liu
+          votes: 5896
+        - district: District 2
+          winner: William Go
+          votes: 5352
+        - district: District 3
+          winner: James Mai
+          votes: 8968
+        - district: District 4
+          winner: Mike Carroll
+          votes: 10255
+        - seat: Mayor
+          winner: Larry Agran
+          votes: 42652
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Melinda Liu
+              votes: 5896
+              outcome: won
+            - name: John Park
+              votes: 5787
+              outcome: lost
+            - name: Michelle Johnson
+              votes: 3274
+              outcome: lost
+            - name: Jackie Kan
+              votes: 2243
+              outcome: lost
+            - name: Jeff Kitchen
+              votes: 1050
+              outcome: lost
+        - district: District 2
+          candidates:
+            - name: William Go
+              votes: 5352
+              outcome: won
+            - name: Jeff Starke
+              votes: 4441
+              outcome: lost
+            - name: Gang Chen
+              votes: 3624
+              outcome: lost
+            - name: Parrisa Yazdani
+              votes: 3199
+              outcome: lost
+            - name: Mohamed Kothermydeen
+              votes: 689
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: James Mai
+              votes: 8968
+              outcome: won
+            - name: Tom Chomyn
+              votes: 5845
+              outcome: lost
+            - name: Jing Sun
+              votes: 5569
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Mike Carroll
+              votes: 10255
+              outcome: won
+            - name: Ayn Craciun
+              votes: 7446
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Larry Agran
+              votes: 42652
+              outcome: won
+            - name: Tammy Kim
+              votes: 37924
+              outcome: lost
+            - name: Ron Scolesdang
+              votes: 12891
+              outcome: lost
+            - name: Lee Sun
+              votes: 6001
+              outcome: lost
+            - name: Felipe Delgado
+              votes: 5325
+              outcome: lost
+            - name: Akshat "Ab" Bhatia
+              votes: 2761
+              outcome: lost
+            - name: Wing Chow
+              votes: 2496
+              outcome: lost
+    - year: 2022
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Larry Agran
+          votes: 31023
+        - seat: At-Large
+          winner: Kathleen Treseder
+          votes: 29440
+        - seat: Mayor
+          winner: Farrah N. Khan
+          votes: 29628
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Larry Agran
+              votes: 31023
+              outcome: won
+            - name: Kathleen Treseder
+              votes: 29440
+              outcome: won
+            - name: Anthony Kuo
+              votes: 27272
+              outcome: lost
+            - name: John Park
+              votes: 24891
+              outcome: lost
+            - name: Scott Hansen
+              votes: 12481
+              outcome: lost
+            - name: Navid Sadigh
+              votes: 4895
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Farrah N. Khan
+              votes: 29628
+              outcome: won
+            - name: Branda Lin
+              votes: 21560
+              outcome: lost
+            - name: Simon Moon
+              votes: 14834
+              outcome: lost
+            - name: Katherine Daigle
+              votes: 7184
+              outcome: lost
+            - name: Tom Chomyn
+              votes: 5129
+              outcome: lost
+    - year: 2020
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Tammy Kim
+          votes: 43744
+        - seat: At-Large
+          winner: Mike Carroll
+          votes: 38615
+        - seat: Mayor
+          winner: Farrah N. Khan
+          votes: 56304
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Tammy Kim
+              votes: 43744
+              outcome: won
+            - name: Mike Carroll
+              votes: 38615
+              outcome: won
+            - name: Larry Agran
+              votes: 38156
+              outcome: lost
+            - name: Lauren Johnson-Norris
+              votes: 37931
+              outcome: lost
+            - name: John Park
+              votes: 32521
+              outcome: lost
+            - name: Carrie O'Malley
+              votes: 27440
+              outcome: lost
+            - name: Mark Newgent
+              votes: 15894
+              outcome: lost
+            - name: Diana Jiang
+              votes: 14837
+              outcome: lost
+            - name: Laura Bratton
+              votes: 10305
+              outcome: lost
+            - name: Dylan Green
+              votes: 8814
+              outcome: lost
+            - name: Christina Dillard
+              votes: 8321
+              outcome: lost
+            - name: Anshul Garg
+              votes: 6420
+              outcome: lost
+            - name: Abigail K. Pole
+              votes: 6406
+              outcome: lost
+            - name: Hai Yang Liang
+              votes: 5944
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Farrah N. Khan
+              votes: 56304
+              outcome: won
+            - name: Christina L. Shea
+              votes: 42738
+              outcome: lost
+            - name: Luis Huang
+              votes: 9684
+              outcome: lost
+            - name: Katherine Daigle
+              votes: 9654
+              outcome: lost
+    - year: 2018
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Farrah N. Khan
+          votes: 23085
+        - seat: At-Large
+          winner: Anthony Kuo
+          votes: 21071
+        - seat: Mayor
+          winner: Donald P. Wagner
+          votes: 35592
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Farrah N. Khan
+              votes: 23085
+              outcome: won
+            - name: Anthony Kuo
+              votes: 21071
+              outcome: won
+            - name: Carrie O'Malley
+              votes: 19267
+              outcome: lost
+            - name: Lauren Johnson-Norris
+              votes: 17147
+              outcome: lost
+            - name: Kev Abazajian
+              votes: 16889
+              outcome: lost
+            - name: Frank Mcgill
+              votes: 12313
+              outcome: lost
+            - name: Jaci Woods
+              votes: 10092
+              outcome: lost
+            - name: Mark Newgent
+              votes: 8077
+              outcome: lost
+            - name: John Park
+              votes: 6877
+              outcome: lost
+            - name: Gang Chen
+              votes: 5835
+              outcome: lost
+            - name: Liqing Lee Sun
+              votes: 5462
+              outcome: lost
+            - name: David Chey
+              votes: 2624
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Donald P. Wagner
+              votes: 35592
+              outcome: won
+            - name: Ed Pope
+              votes: 24682
+              outcome: lost
+            - name: Katherine Daigle
+              votes: 13018
+              outcome: lost
+            - name: Ing Tiong
+              votes: 5341
+              outcome: lost
+    - year: 2016
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Christina L. Shea
+          votes: 28072
+        - seat: At-Large
+          winner: Melissa Fox
+          votes: 24023
+        - seat: Mayor
+          winner: Donald P. Wagner
+          votes: 30002
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Christina L. Shea
+              votes: 28072
+              outcome: won
+            - name: Melissa Fox
+              votes: 24023
+              outcome: won
+            - name: Anthony Kuo
+              votes: 21301
+              outcome: lost
+            - name: Farrah N. Khan
+              votes: 16487
+              outcome: lost
+            - name: Anila Ali
+              votes: 10011
+              outcome: lost
+            - name: Shiva Farivar
+              votes: 9799
+              outcome: lost
+            - name: Dale Cheema
+              votes: 8844
+              outcome: lost
+            - name: Courtney Santos
+              votes: 6758
+              outcome: lost
+            - name: Matthew Ehorn
+              votes: 4988
+              outcome: lost
+            - name: Hyunjoung "Genii" Ahn
+              votes: 4651
+              outcome: lost
+            - name: Ian Daelucian
+              votes: 4349
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Donald P. Wagner
+              votes: 30002
+              outcome: won
+            - name: Mary Ann Gaido
+              votes: 26278
+              outcome: lost
+            - name: Gang Chen
+              votes: 11816
+              outcome: lost
+            - name: Katherine Daigle
+              votes: 8299
+              outcome: lost
+            - name: David Chey
+              votes: 3206
+              outcome: lost
+    - year: 2014
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Lynn Schott
+          votes: 16814
+        - seat: At-Large
+          winner: Jeffrey Lalloway
+          votes: 16749
+        - seat: Mayor
+          winner: Steven S. Choi
+          votes: 18333
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Lynn Schott
+              votes: 16814
+              outcome: won
+            - name: Jeffrey Lalloway
+              votes: 16749
+              outcome: won
+            - name: Melissa Fox
+              votes: 16539
+              outcome: lost
+            - name: Larry Agran
+              votes: 14403
+              outcome: lost
+            - name: Evan Chemers
+              votes: 8966
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Steven S. Choi
+              votes: 18333
+              outcome: won
+            - name: Mary Ann Gaido
+              votes: 17380
+              outcome: lost
+            - name: Katherine Daigle
+              votes: 4698
+              outcome: lost
+    - year: 2012
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Beth Krom
+          votes: 34075
+        - seat: At-Large
+          winner: Christina L. Shea
+          votes: 31776
+        - seat: Mayor
+          winner: Steven S. Choi
+          votes: 32505
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Beth Krom
+              votes: 34075
+              outcome: won
+            - name: Christina L. Shea
+              votes: 31776
+              outcome: won
+            - name: Lynn Schott
+              votes: 30264
+              outcome: lost
+            - name: Pk Wong
+              votes: 27381
+              outcome: lost
+            - name: Gavin Huntley-Fenner
+              votes: 19286
+              outcome: lost
+            - name: Evan Chemers
+              votes: 17167
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Steven S. Choi
+              votes: 32505
+              outcome: won
+            - name: Larry Agran
+              votes: 28741
+              outcome: lost
+            - name: Katherine Daigle
+              votes: 9951
+              outcome: lost

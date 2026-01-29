@@ -3,104 +3,110 @@ city_name: Anaheim
 website: https://www.anaheim.net
 council_url: https://www.anaheim.net/173/City-Council
 last_updated: '2026-01-25'
-email: null
-phone: null
-instagram: null
+email:
+phone:
+instagram:
 members:
-- name: Ashleigh E. Aitken
-  position: Mayor
-  district: At-Large
-  email: aaitken@anaheim.net
-  phone: (714) 765-5247
-  city_page: https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken
-  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58010
-  bio: Ashleigh Aitken was elected as the 48th mayor of Anaheim in November 2022. She is the first woman mayor in Anaheim’s
-    167-year history. Mayor Aitken represents all Anaheim residents, neighborhoods and businesses on the City Council, alongside
-    six members elected by districts. As mayor, Aitken lead a series of 2023 transparency reforms at City Hall and is also
-    focused on enhancing public safety, expanding affordable housing and growing Anaheim’s economy by supporting our visitor
-    industry and streamlining processes to expand and attract new industries.
-  term_start: 2022
-  term_end: 2026
-- name: Carlos A. Leon
-  position: Mayor Pro Tem
-  district: District 2
-  email: cleon@anaheim.net
-  phone: (714) 765-5247
-  city_page: https://www.anaheim.net/2314/Council-Member-Carlos-A-Leon
-  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58081
-  bio: Carlos A. Leon represents District 2 in west Anaheim and serves as mayor pro tem on the Anaheim City Council. Council
-    Member Leon was elected to the City Council in November 2022 and selected to serve as mayor pro tem for 2026 by his Council
-    colleagues. As mayor pro tem, Leon chairs City Council meetings and represents the city as a whole as needed.
-  term_start: 2022
-  term_end: 2026
-- name: Kristen Maahs
-  position: Councilmember
-  district: District 5
-  email: kmaahs@anaheim.net
-  phone: (714) 765-5247
-  city_page: https://www.anaheim.net/3521/Council-Member-Kristen-Maahs
-  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58009
-  bio: Kristen Maahs was elected to the Anaheim City Council in November 2024, representing District 5 in central-east Anaheim.
-    A fourth-generation Anaheim resident, Maahs is focused funding and equipping Anaheim’s police and firefighters, addressing
-    homelessness with compassion and impact and promoting a strong economy through support of startups, existing Anaheim businesses
-    and those new to our city. Maahs also looks to build on Anaheim’s extensive reforms for transparency and accountability
-    while ensuring public money is spent efficiently with a focus on public services.
-  term_start: 2024
-  term_end: 2028
-- name: Natalie Meeks
-  position: Councilmember
-  district: District 6
-  email: nmeeks@anaheim.net
-  phone: (714) 765-5247
-  city_page: https://www.anaheim.net/5175/Council-Member-Natalie-Meeks
-  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58063
-  bio: Natalie Meeks was elected to the Anaheim City Council in November 2022, representing District 6 in east Anaheim. Before
-    joining the City Council, Meeks served on Anaheim’s Planning Commission from 2019 to late 2022, including as chair in
-    2021 and 2022. On the Council, Meeks is focused on safety and quality of life issues through adding officers to the Anaheim
-    Police Department, reducing crime, addressing homelessness, improving fire evacuation in Anaheim Hills and expanding and
-    building on the area’s parks, trails and libraries.
-  term_start: 2022
-  term_end: 2026
-- name: Natalie Rubalcava
-  position: Councilmember
-  district: District 3
-  email: nrubalcava@anaheim.net
-  phone: (714) 765-5247
-  city_page: https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava
-  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58060
-  bio: Natalie Rubalcava was elected to the Anaheim City Council in November 2022, representing District 3 in central Anaheim.
-    in 2023, Rubalcava served as mayor pro tem, representing the city at large at community and other events. Before joining
-    the Council, Rubalcava served on the Anaheim Housing and Community Development Commission from June to December 2022.
-    Earlier, she served on the city’s Community Services Board from 2004 to 2014, including as chair in 2009.
-  term_start: 2022
-  term_end: 2026
-- name: Norma Campos Kurtz
-  position: Councilmember
-  district: District 4
-  email: nkurtz@anaheim.net
-  phone: (714) 765-5247
-  city_page: https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz
-  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58023
-  bio: Norma Campos Kurtz was elected to the Anaheim City Council representing District 4 in 2024 after first being appointed
-    to fill a vacancy in the district in 2023. In 2024 she has served as mayor pro tem, chairing City Council meetings as
-    needed and helping to represent the city at community and other events. As Council member for District 4 in central-south
-    Anaheim, Campos Kurtz represents neighborhoods at the southern end of downtown as well as around The Anaheim Resort.
-  term_start: 2024
-  term_end: 2028
-- name: Ryan Balius
-  position: Councilmember
-  district: District 1
-  email: rbalius@anaheim.net
-  phone: (714) 765-5247
-  city_page: https://www.anaheim.net/3522/Council-Member-Ryan-Balius
-  photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=57980
-  bio: Ryan Balius was elected to the Anaheim City Council in November 2024, representing District 1 in west Anaheim. A 25-year
-    resident of west Anaheim, Balius is focused on advancing the ongoing rebuilding of Beach Boulevard with continued police
-    enforcement, more potential motel closures and redevelopment with homes, businesses and public spaces. District 1, which
-    goes from north Brookhurst Street to Anaheim’s western city lines with Buena Park, Cypress and Stanton, is home to neighborhoods,
-    businesses, parks, schools, a library and Anaheim’s 1.5-mile stretch of Beach Boulevard.
-  term_start: 2024
-  term_end: 2028
+  - name: Ashleigh E. Aitken
+    position: Mayor
+    district: At-Large
+    email: aaitken@anaheim.net
+    phone: (714) 765-5247
+    city_page: https://www.anaheim.net/5174/Anaheim-Mayor-Ashleigh-Aitken
+    photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58010
+    bio: Ashleigh Aitken was elected as the 48th mayor of Anaheim in November 2022. She is the first woman mayor in 
+      Anaheim’s 167-year history. Mayor Aitken represents all Anaheim residents, neighborhoods and businesses on the 
+      City Council, alongside six members elected by districts. As mayor, Aitken lead a series of 2023 transparency 
+      reforms at City Hall and is also focused on enhancing public safety, expanding affordable housing and growing 
+      Anaheim’s economy by supporting our visitor industry and streamlining processes to expand and attract new 
+      industries.
+    term_start: 2022
+    term_end: 2026
+  - name: Carlos A. Leon
+    position: Mayor Pro Tem
+    district: District 2
+    email: cleon@anaheim.net
+    phone: (714) 765-5247
+    city_page: https://www.anaheim.net/2314/Council-Member-Carlos-A-Leon
+    photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58081
+    bio: Carlos A. Leon represents District 2 in west Anaheim and serves as mayor pro tem on the Anaheim City Council. 
+      Council Member Leon was elected to the City Council in November 2022 and selected to serve as mayor pro tem for 
+      2026 by his Council colleagues. As mayor pro tem, Leon chairs City Council meetings and represents the city as a 
+      whole as needed.
+    term_start: 2022
+    term_end: 2026
+  - name: Kristen Maahs
+    position: Councilmember
+    district: District 5
+    email: kmaahs@anaheim.net
+    phone: (714) 765-5247
+    city_page: https://www.anaheim.net/3521/Council-Member-Kristen-Maahs
+    photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58009
+    bio: Kristen Maahs was elected to the Anaheim City Council in November 2024, representing District 5 in central-east
+      Anaheim. A fourth-generation Anaheim resident, Maahs is focused funding and equipping Anaheim’s police and 
+      firefighters, addressing homelessness with compassion and impact and promoting a strong economy through support of
+      startups, existing Anaheim businesses and those new to our city. Maahs also looks to build on Anaheim’s extensive 
+      reforms for transparency and accountability while ensuring public money is spent efficiently with a focus on 
+      public services.
+    term_start: 2024
+    term_end: 2028
+  - name: Natalie Meeks
+    position: Councilmember
+    district: District 6
+    email: nmeeks@anaheim.net
+    phone: (714) 765-5247
+    city_page: https://www.anaheim.net/5175/Council-Member-Natalie-Meeks
+    photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58063
+    bio: Natalie Meeks was elected to the Anaheim City Council in November 2022, representing District 6 in east 
+      Anaheim. Before joining the City Council, Meeks served on Anaheim’s Planning Commission from 2019 to late 2022, 
+      including as chair in 2021 and 2022. On the Council, Meeks is focused on safety and quality of life issues through
+      adding officers to the Anaheim Police Department, reducing crime, addressing homelessness, improving fire 
+      evacuation in Anaheim Hills and expanding and building on the area’s parks, trails and libraries.
+    term_start: 2022
+    term_end: 2026
+  - name: Natalie Rubalcava
+    position: Councilmember
+    district: District 3
+    email: nrubalcava@anaheim.net
+    phone: (714) 765-5247
+    city_page: https://www.anaheim.net/3523/Council-Member-Natalie-Rubalcava
+    photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58060
+    bio: Natalie Rubalcava was elected to the Anaheim City Council in November 2022, representing District 3 in central 
+      Anaheim. in 2023, Rubalcava served as mayor pro tem, representing the city at large at community and other events.
+      Before joining the Council, Rubalcava served on the Anaheim Housing and Community Development Commission from June
+      to December 2022. Earlier, she served on the city’s Community Services Board from 2004 to 2014, including as chair
+      in 2009.
+    term_start: 2022
+    term_end: 2026
+  - name: Norma Campos Kurtz
+    position: Councilmember
+    district: District 4
+    email: nkurtz@anaheim.net
+    phone: (714) 765-5247
+    city_page: https://www.anaheim.net/3524/Council-Member-Norma-Campos-Kurtz
+    photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=58023
+    bio: Norma Campos Kurtz was elected to the Anaheim City Council representing District 4 in 2024 after first being 
+      appointed to fill a vacancy in the district in 2023. In 2024 she has served as mayor pro tem, chairing City 
+      Council meetings as needed and helping to represent the city at community and other events. As Council member for 
+      District 4 in central-south Anaheim, Campos Kurtz represents neighborhoods at the southern end of downtown as well
+      as around The Anaheim Resort.
+    term_start: 2024
+    term_end: 2028
+  - name: Ryan Balius
+    position: Councilmember
+    district: District 1
+    email: rbalius@anaheim.net
+    phone: (714) 765-5247
+    city_page: https://www.anaheim.net/3522/Council-Member-Ryan-Balius
+    photo_url: https://www.anaheim.net/ImageRepository/Document?documentID=57980
+    bio: Ryan Balius was elected to the Anaheim City Council in November 2024, representing District 1 in west Anaheim. 
+      A 25-year resident of west Anaheim, Balius is focused on advancing the ongoing rebuilding of Beach Boulevard with 
+      continued police enforcement, more potential motel closures and redevelopment with homes, businesses and public 
+      spaces. District 1, which goes from north Brookhurst Street to Anaheim’s western city lines with Buena Park, 
+      Cypress and Stanton, is home to neighborhoods, businesses, parks, schools, a library and Anaheim’s 1.5-mile 
+      stretch of Beach Boulevard.
+    term_start: 2024
+    term_end: 2028
 meetings:
   schedule: Irregularly on Tuesdays (check calendar)
   time: 5:00 PM
@@ -108,26 +114,26 @@ meetings:
     name: Council Chamber
     address: 200 S. Anaheim Blvd
     city_state_zip: Anaheim, CA 92805
-  closed_session_time: null
+  closed_session_time:
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: http://local.anaheim.net/docs_agend/questys_pub/
   live_stream: https://www.anaheim.net/councilvideos
   video_archive: https://anaheim.granicus.com/ViewPublisher.php?view_id=2
   document_center: https://www.anaheim.net/DocumentCenter
   municipal_code: https://codelibrary.amlegal.com/codes/anaheim/latest/overview
-  youtube: null
-  ecomment: null
+  youtube:
+  ecomment:
 broadcast:
   cable_channels:
-  - provider: Charter Spectrum
-    channel: '3'
-  - provider: AT&T U-verse
-    channel: '99'
+    - provider: Charter Spectrum
+      channel: '3'
+    - provider: AT&T U-verse
+      channel: '99'
   live_stream: https://www.anaheim.net/councilvideos
 clerk:
   name: Theresa Bass, CMC
@@ -146,46 +152,46 @@ public_comment:
   time_limit: 3 minutes per speaker
   speaker_card: required (name and contact optional)
   periods:
-  - type: First Public Comment
-    scope: Agenda items (except public hearings), then non-agenda if time remains
-    max_duration: 90 minutes
-  - type: Second Public Comment
-    scope: Non-agenda speakers not heard during first period
-    timing: After Report on Closed Session Items
+    - type: First Public Comment
+      scope: Agenda items (except public hearings), then non-agenda if time remains
+      max_duration: 90 minutes
+    - type: Second Public Comment
+      scope: Non-agenda speakers not heard during first period
+      timing: After Report on Closed Session Items
   public_hearing_limits:
     applicant_initial: 20 minutes
     applicant_rebuttal: 10 minutes
     noticed_area_residents: 10 minutes
     general_public: 3 minutes
     legislative_matters: 5 minutes
-  notes: Comments posted on City website and made part of official public record. Speakers may be removed for profane language
-    or disruptive behavior (AMC 1.12.017).
+  notes: Comments posted on City website and made part of official public record. Speakers may be removed for profane 
+    language or disruptive behavior (AMC 1.12.017).
 council:
   size: 7
   districts: 6
   at_large: 1
   mayor_elected: true
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   election_system: by-district
   term_length: 4
   seats_up:
-  - district: Mayor
-    incumbent: Ashleigh E. Aitken
-  - district: District 2
-    incumbent: Carlos A. Leon
-  - district: District 3
-    incumbent: Natalie Rubalcava
-  - district: District 6
-    incumbent: Natalie Meeks
+    - district: Mayor
+      incumbent: Ashleigh E. Aitken
+    - district: District 2
+      incumbent: Carlos A. Leon
+    - district: District 3
+      incumbent: Natalie Rubalcava
+    - district: District 6
+      incumbent: Natalie Meeks
   term_limit: 8
   term_limit_type: years
-  term_limit_cooldown: null
+  term_limit_cooldown:
   term_limit_notes: 8 consecutive years combined for Mayor + Council per Charter § 503.5. Limit is in years, not terms.
   term_limit_source: https://codelibrary.amlegal.com/codes/anaheim/latest/anaheim_ca/0-0-0-51937
-  nomination_period: null
+  nomination_period:
   candidate_info:
     contact_email: tbass@anaheim.net
     contact_phone: (714) 765-5166
@@ -194,96 +200,359 @@ elections:
     group_a:
       years: 2024, 2028, 2032...
       seats:
-      - District 1
-      - District 4
-      - District 5
+        - District 1
+        - District 4
+        - District 5
     group_b:
       years: 2022, 2026, 2030...
       seats:
-      - Mayor
-      - District 2
-      - District 3
-      - District 6
+        - Mayor
+        - District 2
+        - District 3
+        - District 6
   results_source: https://ocvote.gov/results
   past_results: https://www.anaheim.net/2921/Past-Election-Results
   candidate_resources: https://www.anaheim.net/2917/Elections
-  fppc_filings: null
+  fppc_filings:
   source: https://www.anaheim.net/2917/Elections
   history:
-  - year: 2024
-    seats:
-    - District 1
-    - District 4
-    - District 5
-    results_url: https://www.anaheim.net/DocumentCenter/View/58171/November-5-2024-Election-Results
-    winners:
-    - district: District 1
-      winner: Ryan Balius
-      votes: 11092
-      runner_up: Ojaala Ahmad
-      runner_up_votes: 3524
-    - district: District 4
-      winner: Norma Campos Kurtz
-      votes: 9255
-      runner_up: Francisco Rosas
-      runner_up_votes: 3696
-    - district: District 5
-      winner: Kristen M. Maahs
-      votes: 7070
-      runner_up: Andrew Sarega
-      runner_up_votes: 5244
-  - year: 2022
-    seats:
-    - Mayor
-    - District 2
-    - District 3
-    - District 6
-    results_url: https://www.anaheim.net/DocumentCenter/View/49582/November-8-2022-Election-Results
-    winners:
-    - district: Mayor
-      winner: Ashleigh Aitken
-      votes: 29072
-      runner_up: Trevor O'Neil
-      runner_up_votes: 23240
-    - district: District 2
-      winner: Carlos A. Leon
-      votes: 4994
-      runner_up: Gloria Sahagún Ma'ae
-      runner_up_votes: 4916
-    - district: District 3
-      winner: Natalie Rubalcava
-      votes: 5437
-      runner_up: Al Jabbar
-      runner_up_votes: 3971
-    - district: District 6
-      winner: Natalie Meeks
-      votes: 14241
-      runner_up: Hari Shankar Lal
-      runner_up_votes: 5893
-  - year: 2020
-    seats:
-    - District 1
-    - District 4
-    - District 5
-    results_url: https://www.anaheim.net/DocumentCenter/View/35405/November-3-2020-Election-Results
-    winners:
-    - district: District 1
-      winner: Jose Diaz
-      votes: 7791
-      runner_up: Denise Barnes
-      runner_up_votes: 6997
-    - district: District 4
-      winner: Avelino Valencia
-      votes: 7861
-      runner_up: Annemarie Randle-Trejo
-      runner_up_votes: 3541
-    - district: District 5
-      winner: Steve Faessel
-      votes: 11160
-      runner_up: Sabrina 'Sav' Quezada
-      runner_up_votes: 6440
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
+    - year: 2024
+      seats:
+        - District 1
+        - District 4
+        - District 5
+      results_url: https://www.anaheim.net/DocumentCenter/View/58171/November-5-2024-Election-Results
+      winners:
+        - district: District 1
+          winner: Ryan Balius
+          votes: 11092
+          runner_up: Ojaala Ahmad
+          runner_up_votes: 3524
+        - district: District 4
+          winner: Norma Campos Kurtz
+          votes: 9255
+          runner_up: Francisco Rosas
+          runner_up_votes: 3696
+        - district: District 5
+          winner: Kristen M. Maahs
+          votes: 7070
+          runner_up: Andrew Sarega
+          runner_up_votes: 5244
+    - year: 2022
+      seats:
+        - Mayor
+        - District 2
+        - District 3
+        - District 6
+      results_url: https://www.anaheim.net/DocumentCenter/View/49582/November-8-2022-Election-Results
+      winners:
+        - district: Mayor
+          winner: Ashleigh Aitken
+          votes: 29072
+          runner_up: Trevor O'Neil
+          runner_up_votes: 23240
+        - district: District 2
+          winner: Carlos A. Leon
+          votes: 4994
+          runner_up: Gloria Sahagún Ma'ae
+          runner_up_votes: 4916
+        - district: District 3
+          winner: Natalie Rubalcava
+          votes: 5437
+          runner_up: Al Jabbar
+          runner_up_votes: 3971
+        - district: District 6
+          winner: Natalie Meeks
+          votes: 14241
+          runner_up: Hari Shankar Lal
+          runner_up_votes: 5893
+    - year: 2020
+      seats:
+        - District 1
+        - District 4
+        - District 5
+      results_url: https://www.anaheim.net/DocumentCenter/View/35405/November-3-2020-Election-Results
+      winners:
+        - district: District 1
+          winner: Jose Diaz
+          votes: 7791
+          runner_up: Denise Barnes
+          runner_up_votes: 6997
+        - district: District 4
+          winner: Avelino Valencia
+          votes: 7861
+          runner_up: Annemarie Randle-Trejo
+          runner_up_votes: 3541
+        - district: District 5
+          winner: Steve Faessel
+          votes: 11160
+          runner_up: Sabrina 'Sav' Quezada
+          runner_up_votes: 6440
+    - year: 2018
+      type: by-district
+      winners:
+        - district: District 2
+          winner: Jordan Brandman
+          votes: 4567
+        - district: District 3
+          winner: Jose F. Moreno
+          votes: 5905
+        - district: District 6
+          winner: Trevor O'Neil
+          votes: 10362
+        - seat: Mayor
+          winner: Harry Sidhu
+          votes: 26422
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Jordan Brandman
+              votes: 4567
+              outcome: won
+            - name: James Derek Vanderbilt
+              votes: 3462
+              outcome: lost
+            - name: Duane Roberts
+              votes: 2769
+              outcome: lost
+            - name: Robert Trimble
+              votes: 539
+              outcome: lost
+            - name: Donald Bruhns
+              votes: 253
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Jose F. Moreno
+              votes: 5905
+              outcome: won
+            - name: Mitch Caldwell
+              votes: 3359
+              outcome: lost
+            - name: Robert R. Nelson
+              votes: 1642
+              outcome: lost
+        - district: District 6
+          candidates:
+            - name: Trevor O'Neil
+              votes: 10362
+              outcome: won
+            - name: Patty Gaby
+              votes: 7954
+              outcome: lost
+            - name: Grant Henninger
+              votes: 4494
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Harry Sidhu
+              votes: 26422
+              outcome: won
+            - name: Ashleigh Aitken
+              votes: 25944
+              outcome: lost
+            - name: Lorri Galloway
+              votes: 12367
+              outcome: lost
+            - name: Cynthia Ward
+              votes: 7121
+              outcome: lost
+            - name: H. Fuji Shioura
+              votes: 3024
+              outcome: lost
+            - name: Robert Williams
+              votes: 2824
+              outcome: lost
+            - name: Rudy Gaona
+              votes: 2506
+              outcome: lost
+            - name: Tony D. Martin
+              votes: 1199
+              outcome: lost
+    - year: 2016
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Denise Barnes
+          votes: 3646
+        - district: District 3
+          winner: Jose F. Moreno
+          votes: 4647
+        - district: District 4
+          winner: Lucille Kring
+          votes: 4936
+        - district: District 5
+          winner: Steve Faessel
+          votes: 6344
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Denise Barnes
+              votes: 3646
+              outcome: won
+            - name: Steven Chavez Lodge
+              votes: 3355
+              outcome: lost
+            - name: Leonard "Len" Lahtinen
+              votes: 2858
+              outcome: lost
+            - name: Mark Richard Daniels
+              votes: 1901
+              outcome: lost
+            - name: Orlando Perez
+              votes: 810
+              outcome: lost
+            - name: Angel Vanstark
+              votes: 400
+              outcome: lost
+            - name: Freddy Fitzgerald Carvajal
+              votes: 397
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Jose F. Moreno
+              votes: 4647
+              outcome: won
+            - name: Jordan Brandman
+              votes: 4575
+              outcome: lost
+            - name: Robert R. Nelson
+              votes: 1908
+              outcome: lost
+            - name: Jennifer Rivera
+              votes: 976
+              outcome: lost
+            - name: Linda Lobatos
+              votes: 817
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Lucille Kring
+              votes: 4936
+              outcome: won
+            - name: Arturo Ferreras
+              votes: 3469
+              outcome: lost
+            - name: Joe Moreno
+              votes: 1713
+              outcome: lost
+            - name: Robert Williams
+              votes: 1563
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Steve Faessel
+              votes: 6344
+              outcome: won
+            - name: Mark Lopez
+              votes: 5186
+              outcome: lost
+            - name: Donna Acevedo-Nelson
+              votes: 1812
+              outcome: lost
+            - name: Sandra Angel
+              votes: 1525
+              outcome: lost
+    - year: 2014
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Yes
+          votes: 30873
+        - seat: At-Large
+          winner: Kris Murray
+          votes: 16207
+        - seat: Mayor
+          winner: Tom Tait
+          votes: 24116
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Yes
+              votes: 30873
+              outcome: won
+            - name: Kris Murray
+              votes: 16207
+              outcome: won
+            - name: James D. Vanderbilt
+              votes: 15541
+              outcome: lost
+            - name: Gail Eastman
+              votes: 15338
+              outcome: lost
+            - name: No
+              votes: 13981
+              outcome: lost
+            - name: Jose F. Moreno (1)
+              votes: 11521
+              outcome: lost
+            - name: Doug Pettibone
+              votes: 7309
+              outcome: lost
+            - name: Jerry O'Keefe
+              votes: 6244
+              outcome: lost
+            - name: Donna Michelle Acevedo
+              votes: 3188
+              outcome: lost
+            - name: Jose Moreno (2)
+              votes: 2976
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Tom Tait
+              votes: 24116
+              outcome: won
+            - name: Lorri Galloway
+              votes: 9235
+              outcome: lost
+            - name: Lucille Kring
+              votes: 8757
+              outcome: lost
+            - name: Denis Fitzgerald
+              votes: 3090
+              outcome: lost
+    - year: 2012
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Jordan Brandman
+          votes: 26332
+        - seat: At-Large
+          winner: Lucille Kring
+          votes: 25464
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Jordan Brandman
+              votes: 26332
+              outcome: won
+            - name: Lucille Kring
+              votes: 25464
+              outcome: won
+            - name: John Leos
+              votes: 19051
+              outcome: lost
+            - name: Jennifer Rivera
+              votes: 14091
+              outcome: lost
+            - name: Steven Albert Chavez Lodge
+              votes: 13834
+              outcome: lost
+            - name: Linda Linder
+              votes: 13456
+              outcome: lost
+            - name: Brian Neil Chuchua
+              votes: 9534
+              outcome: lost
+            - name: Rodolfo "Rudy" Gaona
+              votes: 7703
+              outcome: lost
+            - name: Duane Roberts
+              votes: 6914
+              outcome: lost
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit_cooldown_unit:
+  term_limit_effective:

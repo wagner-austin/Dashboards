@@ -7,64 +7,64 @@ email: citycouncil@lapalmaca.gov
 phone: (714) 690-3334
 instagram: ''
 members:
-- name: Nitesh P. Patel
-  position: Mayor
-  district: At-Large
-  email: citycouncil@lapalmaca.gov
-  phone: (714) 690-3334
-  city_page: https://www.lapalmaca.gov/66/City-Council
-  photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13971
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Debbie S. Baker
-  position: Mayor Pro Tem
-  district: District 1
-  email: citycouncil@lapalmaca.gov
-  phone: (714) 690-3334
-  city_page: https://www.lapalmaca.gov/66/City-Council
-  photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13972
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Janet Keo Conklin
-  position: Councilmember
-  district: At-Large
-  email: citycouncil@lapalmaca.gov
-  phone: (714) 690-3334
-  city_page: https://www.lapalmaca.gov/66/City-Council
-  photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=12391
-  bio: ''
-  term_start: 2022
-  term_end: 2026
-- name: Mark I. Waldman
-  position: Councilmember
-  district: District 5
-  email: citycouncil@lapalmaca.gov
-  phone: (714) 690-3334
-  city_page: https://www.lapalmaca.gov/66/City-Council
-  photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13973
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Vikesh P. Patel
-  position: Councilmember
-  district: District 3
-  email: citycouncil@lapalmaca.gov
-  phone: (714) 690-3334
-  city_page: https://www.lapalmaca.gov/66/City-Council
-  photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13426
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
+  - name: Nitesh P. Patel
+    position: Mayor
+    district: At-Large
+    email: citycouncil@lapalmaca.gov
+    phone: (714) 690-3334
+    city_page: https://www.lapalmaca.gov/66/City-Council
+    photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13971
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Debbie S. Baker
+    position: Mayor Pro Tem
+    district: District 1
+    email: citycouncil@lapalmaca.gov
+    phone: (714) 690-3334
+    city_page: https://www.lapalmaca.gov/66/City-Council
+    photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13972
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Janet Keo Conklin
+    position: Councilmember
+    district: At-Large
+    email: citycouncil@lapalmaca.gov
+    phone: (714) 690-3334
+    city_page: https://www.lapalmaca.gov/66/City-Council
+    photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=12391
+    bio: ''
+    term_start: 2022
+    term_end: 2026
+  - name: Mark I. Waldman
+    position: Councilmember
+    district: District 5
+    email: citycouncil@lapalmaca.gov
+    phone: (714) 690-3334
+    city_page: https://www.lapalmaca.gov/66/City-Council
+    photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13973
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Vikesh P. Patel
+    position: Councilmember
+    district: District 3
+    email: citycouncil@lapalmaca.gov
+    phone: (714) 690-3334
+    city_page: https://www.lapalmaca.gov/66/City-Council
+    photo_url: https://www.lapalmaca.gov/ImageRepository/Document?documentId=13426
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
 meetings:
   schedule: 1st Tuesday
   time: 6:30 PM
@@ -74,22 +74,22 @@ meetings:
     address: 7822 Walker Street
     city_state_zip: La Palma, CA 90623
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://www.lapalmaca.gov/72/Agendas-and-Minutes
   audio_archive: https://www.lapalmaca.gov/72/Agendas-and-Minutes
-  youtube: null
-  document_center: null
-  municipal_code: null
-  ecomment: null
-  live_stream: null
-  video_archive: null
+  youtube:
+  document_center:
+  municipal_code:
+  ecomment:
+  live_stream:
+  video_archive:
 broadcast:
   cable_channels: []
-  live_stream: null
+  live_stream:
   notes: Audio recordings only - no video or live stream
 clerk:
   name: Norma Alley
@@ -98,7 +98,7 @@ clerk:
   email: nalley@lapalmaca.gov
   office_email: cityclerk@lapalmaca.gov
   address: 7822 Walker Street, La Palma, CA 90623
-  fax: null
+  fax:
 public_comment:
   in_person: true
   remote_live: false
@@ -107,42 +107,217 @@ public_comment:
   time_limit: 5 minutes per speaker
   email: cityclerk@lapalmaca.gov
   notes: Non-agenda items only during public comment. Agenda items referred to staff or placed on future agenda.
-  deadline: null
+  deadline:
 council:
   size: 5
   districts: 3
   at_large: 2
   mayor_elected: false
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - At-Large (2 seats)
+    - At-Large (2 seats)
   term_length: 4
   election_system: mixed
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: mixed
+      winners:
+        - district: District 1
+          winner: Debbie S. Baker
+          votes: 1110
+        - district: District 3
+          winner: Vikesh P. Patel
+          votes: 922
+        - district: District 5
+          winner: Mark Waldman
+          votes: 1067
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Debbie S. Baker
+              votes: 1110
+              outcome: won
+        - district: District 3
+          candidates:
+            - name: Vikesh P. Patel
+              votes: 922
+              outcome: won
+        - district: District 5
+          candidates:
+            - name: Mark Waldman
+              votes: 1067
+              outcome: won
+    - year: 2022
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Nitesh Patel
+          votes: 3289
+        - seat: At-Large
+          winner: Janet K. Conklin
+          votes: 2273
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Nitesh Patel
+              votes: 3289
+              outcome: won
+            - name: Janet K. Conklin
+              votes: 2273
+              outcome: won
+            - name: Jonathan Dinwiddie
+              votes: 1611
+              outcome: lost
+    - year: 2020
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Marshall Goodman
+          votes: 4696
+        - seat: At-Large
+          winner: Debbie Baker
+          votes: 3595
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Marshall Goodman
+              votes: 4696
+              outcome: won
+            - name: Debbie Baker
+              votes: 3595
+              outcome: won
+            - name: Mark I. Waldman
+              votes: 3214
+              outcome: lost
+            - name: April Kamilah Bagasao Bautista
+              votes: 2556
+              outcome: lost
+            - name: Taylor H.W. Quan
+              votes: 1818
+              outcome: lost
+            - name: Emanuel Aparicio
+              votes: 1592
+              outcome: lost
+    - year: 2018
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Michele Steggell
+          votes: 3164
+        - seat: At-Large
+          winner: Nitesh P. Patel
+          votes: 2979
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Michele Steggell
+              votes: 3164
+              outcome: won
+            - name: Nitesh P. Patel
+              votes: 2979
+              outcome: won
+            - name: Garrett S. Wada
+              votes: 2161
+              outcome: lost
+    - year: 2016
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Gerard Goedhart
+          votes: 4086
+        - seat: At-Large
+          winner: Peter Kim
+          votes: 4040
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Gerard Goedhart
+              votes: 4086
+              outcome: won
+            - name: Peter Kim
+              votes: 4040
+              outcome: won
+            - name: Marshall Goodman
+              votes: 3353
+              outcome: lost
+    - year: 2014
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Steve Hwangbo
+          votes: 2479
+        - seat: At-Large
+          winner: Michele Steggell
+          votes: 1714
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Steve Hwangbo
+              votes: 2479
+              outcome: won
+            - name: Michele Steggell
+              votes: 1714
+              outcome: won
+            - name: Christine Barnes
+              votes: 1630
+              outcome: lost
+    - year: 2012
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Peter Kim
+          votes: 2959
+        - seat: At-Large
+          winner: Gerard Goedhart
+          votes: 2500
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Peter Kim
+              votes: 2959
+              outcome: won
+            - name: Gerard Goedhart
+              votes: 2500
+              outcome: won
+            - name: Steve Shanahan
+              votes: 2181
+              outcome: lost
+            - name: Christine Barnes
+              votes: 1841
+              outcome: lost
+            - name: Robert Carruth
+              votes: 1823
+              outcome: lost
+            - name: Patricia "Pat" Craig
+              votes: 1744
+              outcome: lost
+            - name: Sylvia Colannino Smith
+              votes: 1500
+              outcome: lost

@@ -5,94 +5,95 @@ council_url: https://www.tustinca.org/482/City-Council
 last_updated: '2026-01-26'
 email: CityCouncil@tustinca.org
 phone: 714-573-3012
-instagram: null
+instagram:
 members:
-- name: Austin Lumbard
-  position: Mayor
-  district: At-Large
-  email: ALumbard@tustinca.org
-  phone: (714) 573-3012
-  city_page: https://www.tustinca.org/499/Mayor-Austin-Lumbard
-  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=8794
-  bio: 'Mayor Austin Lumbard, elected to City Council in 2018 and elected as Mayor in 2022, was born and raised in Orange
-    County and is a long-time Tustin resident.  His priorities while on City Council include: Mayor Lumbard has served the
-    community in a variety of roles.  He currently represents Tustin on the Orange County Fire Authority and is an alternate
-    representative to the Orange County Sanitation District and the Water Advisory Committee of Orange County.  Mayor Lumbard
-    previously served on the Foothill/Eastern Transportation Corridor Agencies, the Newport Bay Watershed Executive Committee,
-    the Santa Ana River Flood Protection Agency, and the Airport Land Use Commission for Orange County. Prior to being elected
-    to City Council, Mayor Lumbard served six years on Tustin’s Planning Commission, twice as Commission Chair.  He also served
-    for many years as a reserve deputy with the Orange County Sheriff’s Department.  This experience helped shape his passion
-    for keeping all Tustin residents safe.'
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Ray Schnell
-  position: Mayor Pro Tem
-  district: At-Large
-  email: rschnell@tustinca.org
-  phone: (714) 573-3012
-  city_page: https://www.tustinca.org/1396/Mayor-Pro-Tem-Ray-Schnell
-  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=8793
-  bio: 'Mayor Pro Tem Ray Schnell, elected to office in November 2022, has lived in Orange County for 20 years and is a long-time
-    Tustin resident. His priorities while on City Council include keeping Tustin: Accountable (honest, ethical, and transparent
-    government) Affordable & Prosperous (preserving the economic vitality of Tustin.'
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: John Nielsen
-  position: Councilmember
-  district: At-Large
-  email: jnielsen@tustinca.org
-  phone: (714) 573-3012
-  city_page: https://www.tustinca.org/493/Council-Member-John-Nielsen
-  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16355
-  bio: Council Member John Nielsen was elected to the City Council originally in 2008, was re-elected in 2012 and served through
-    2016. He also served as Mayor in 2012 and in 2016. During this time on the City Council John served as the Chairman of
-    the Board of Directors of the Orange County Sanitation District from 2015 to 2016, and on the Board from 2010 to 2016.
-    He also served as Regional Council Member for District 17 representing the Cities of Tustin, Orange and Villa Park on
-    the Board for the Southern California Association of Governments from 2009 to 2016. John also served on the Board of Directors
-    for the Orange County Fire Authority in 2010. Prior to being elected to the City Council he served on the Tustin Planning
-    Commission from 2002 to 2008. Subsequent to his service on the Tustin City Council John was elected to the Board of Directors
-    for the East Orange County Water District representing District 4 in 2022. In November of 2024 Council Member Nielsen
-    was again elected to the Tustin City Council representing District 2.
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Lee K. Fink
-  position: Councilmember
-  district: At-Large
-  email: lfink@tustinca.org
-  phone: (714) 573-3012
-  city_page: https://www.tustinca.org/1208/Council-Member-Lee-K-Fink
-  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16153
-  bio: 'Council Member Lee Fink, elected in November 2024, is a Tustin native, attorney, and longtime community volunteer.
-    His priorities on the City Council focus on: Developing the Local Economy for the Future, including providing abundant
-    housing and business development in Tustin Keeping the community safe and healthy, including ensuring public safety, addressing
-    homelessness, and'
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Ryan Gallagher
-  position: Councilmember
-  district: At-Large
-  email: rgallagher@tustinca.org
-  phone: (714) 573-3012
-  city_page: https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher
-  photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16360
-  bio: Mayor Pro Tem Ryan Gallagher, elected to City Council in 2020, was born and raised in Southern California and is a
-    passionate advocate for fiscally responsible government, innovation, and supporting a vibrant local community in Tustin.
-    His priorities while on City Council include Mayor Pro Tem Gallagher represents the City of Tustin as Vice-Chair of the
-    Orange County Sanitation District Board, and also serves as a member of the Water Advisory Committee of Orange County
-    and Newport Bay Watershed Executive Committee (alternate). Prior to joining the City Council, Ryan proudly served the
-    community through his role on the Tustin Planning Commission.
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
+  - name: Austin Lumbard
+    position: Mayor
+    district: At-Large
+    email: ALumbard@tustinca.org
+    phone: (714) 573-3012
+    city_page: https://www.tustinca.org/499/Mayor-Austin-Lumbard
+    photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=8794
+    bio: 'Mayor Austin Lumbard, elected to City Council in 2018 and elected as Mayor in 2022, was born and raised in Orange
+      County and is a long-time Tustin resident.  His priorities while on City Council include: Mayor Lumbard has served the
+      community in a variety of roles.  He currently represents Tustin on the Orange County Fire Authority and is an alternate
+      representative to the Orange County Sanitation District and the Water Advisory Committee of Orange County.  Mayor Lumbard
+      previously served on the Foothill/Eastern Transportation Corridor Agencies, the Newport Bay Watershed Executive Committee,
+      the Santa Ana River Flood Protection Agency, and the Airport Land Use Commission for Orange County. Prior to being elected
+      to City Council, Mayor Lumbard served six years on Tustin’s Planning Commission, twice as Commission Chair.  He also
+      served for many years as a reserve deputy with the Orange County Sheriff’s Department.  This experience helped shape
+      his passion for keeping all Tustin residents safe.'
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Ray Schnell
+    position: Mayor Pro Tem
+    district: At-Large
+    email: rschnell@tustinca.org
+    phone: (714) 573-3012
+    city_page: https://www.tustinca.org/1396/Mayor-Pro-Tem-Ray-Schnell
+    photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=8793
+    bio: 'Mayor Pro Tem Ray Schnell, elected to office in November 2022, has lived in Orange County for 20 years and is a
+      long-time Tustin resident. His priorities while on City Council include keeping Tustin: Accountable (honest, ethical,
+      and transparent government) Affordable & Prosperous (preserving the economic vitality of Tustin.'
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: John Nielsen
+    position: Councilmember
+    district: At-Large
+    email: jnielsen@tustinca.org
+    phone: (714) 573-3012
+    city_page: https://www.tustinca.org/493/Council-Member-John-Nielsen
+    photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16355
+    bio: Council Member John Nielsen was elected to the City Council originally in 2008, was re-elected in 2012 and 
+      served through 2016. He also served as Mayor in 2012 and in 2016. During this time on the City Council John served
+      as the Chairman of the Board of Directors of the Orange County Sanitation District from 2015 to 2016, and on the 
+      Board from 2010 to 2016. He also served as Regional Council Member for District 17 representing the Cities of 
+      Tustin, Orange and Villa Park on the Board for the Southern California Association of Governments from 2009 to 
+      2016. John also served on the Board of Directors for the Orange County Fire Authority in 2010. Prior to being 
+      elected to the City Council he served on the Tustin Planning Commission from 2002 to 2008. Subsequent to his 
+      service on the Tustin City Council John was elected to the Board of Directors for the East Orange County Water 
+      District representing District 4 in 2022. In November of 2024 Council Member Nielsen was again elected to the 
+      Tustin City Council representing District 2.
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Lee K. Fink
+    position: Councilmember
+    district: At-Large
+    email: lfink@tustinca.org
+    phone: (714) 573-3012
+    city_page: https://www.tustinca.org/1208/Council-Member-Lee-K-Fink
+    photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16153
+    bio: 'Council Member Lee Fink, elected in November 2024, is a Tustin native, attorney, and longtime community volunteer.
+      His priorities on the City Council focus on: Developing the Local Economy for the Future, including providing abundant
+      housing and business development in Tustin Keeping the community safe and healthy, including ensuring public safety,
+      addressing homelessness, and'
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Ryan Gallagher
+    position: Councilmember
+    district: At-Large
+    email: rgallagher@tustinca.org
+    phone: (714) 573-3012
+    city_page: https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher
+    photo_url: https://www.tustinca.org/ImageRepository/Document?documentID=16360
+    bio: Mayor Pro Tem Ryan Gallagher, elected to City Council in 2020, was born and raised in Southern California and 
+      is a passionate advocate for fiscally responsible government, innovation, and supporting a vibrant local community
+      in Tustin. His priorities while on City Council include Mayor Pro Tem Gallagher represents the City of Tustin as 
+      Vice-Chair of the Orange County Sanitation District Board, and also serves as a member of the Water Advisory 
+      Committee of Orange County and Newport Bay Watershed Executive Committee (alternate). Prior to joining the City 
+      Council, Ryan proudly served the community through his role on the Tustin Planning Commission.
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 6:00 PM
@@ -102,32 +103,32 @@ meetings:
     address: 300 Centennial Way
     city_state_zip: Tustin, CA 92780
   remote:
-    zoom_url: null
+    zoom_url:
     zoom_id: 940 8640 1921
     zoom_passcode: '600222'
     phone_numbers:
-    - 669-900-6833
+      - 669-900-6833
 portals:
   agendas: https://www.tustinca.org/282/Meetings-Agendas
   video_archive: https://www.tustinca.org/282/Meetings-Agendas
   ecomment: https://tustin.granicusideas.com/meetings?scope=upcoming
-  youtube: null
-  document_center: null
-  municipal_code: null
-  live_stream: null
+  youtube:
+  document_center:
+  municipal_code:
+  live_stream:
 broadcast:
   cable_channels:
-  - provider: Spectrum
-    channel: '3'
-  live_stream: null
+    - provider: Spectrum
+      channel: '3'
+  live_stream:
 clerk:
   name: Erica Yasuda
   title: City Clerk
   phone: (714) 573-3025
   direct: (714) 573-3027
   email: cityclerk@tustinca.org
-  fax: null
-  address: null
+  fax:
+  address:
 public_comment:
   in_person: true
   remote_live: true
@@ -136,44 +137,239 @@ public_comment:
   time_limit: 3 minutes per speaker
   email: CityCouncil@tustinca.org
   notes: Submit Request to Speak form electronically; *6 to unmute, *9 to raise hand on phone
-  deadline: null
+  deadline:
 council:
   size: 5
   districts: 0
   at_large: 5
   mayor_elected: false
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - Mayor Pro Tem
-  - Councilmember
-  - Councilmember
+    - Mayor Pro Tem
+    - Councilmember
+    - Councilmember
   term_length: 4
   election_system: at-large
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: at-large
+      winners:
+        - district: District 1
+          winner: Lee Fink
+          votes: 4059
+        - district: District 2
+          winner: John Nielsen
+          votes: 2112
+        - district: District 4
+          winner: Ryan Gallagher
+          votes: 5314
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Lee Fink
+              votes: 4059
+              outcome: won
+            - name: Tanner Douthit
+              votes: 3735
+              outcome: lost
+        - district: District 2
+          candidates:
+            - name: John Nielsen
+              votes: 2112
+              outcome: won
+            - name: Nathan Yeargin
+              votes: 1014
+              outcome: lost
+            - name: Bill Esbit
+              votes: 650
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Ryan Gallagher
+              votes: 5314
+              outcome: won
+            - name: Lana Clay
+              votes: 2447
+              outcome: lost
+    - year: 2022
+      type: at-large
+      winners:
+        - district: District 3
+          winner: Ray Schnell
+          votes: 3297
+        - seat: Mayor
+          winner: Austin Lumbard
+          votes: 10675
+      candidates:
+        - district: District 3
+          candidates:
+            - name: Ray Schnell
+              votes: 3297
+              outcome: won
+            - name: Frank Gomez
+              votes: 2918
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Austin Lumbard
+              votes: 10675
+              outcome: won
+            - name: Rebecca "Beckie" Gomez
+              votes: 8892
+              outcome: lost
+    - year: 2020
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Letitia Clark
+          votes: 15685
+        - seat: At-Large
+          winner: Rebecca "Beckie" Gomez
+          votes: 12780
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Letitia Clark
+              votes: 15685
+              outcome: won
+            - name: Rebecca "Beckie" Gomez
+              votes: 12780
+              outcome: won
+            - name: Ryan Gallagher
+              votes: 12075
+              outcome: lost
+            - name: Lee Fink
+              votes: 11577
+              outcome: lost
+            - name: Jorge Valdes
+              votes: 8997
+              outcome: lost
+            - name: Aj Jha
+              votes: 7419
+              outcome: lost
+            - name: Kurt Bensworth
+              votes: 3850
+              outcome: lost
+            - name: Jaime "James" Perez
+              votes: 2607
+              outcome: lost
+            - name: Cristian Cusac
+              votes: 1488
+              outcome: lost
+    - year: 2018
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Austin Lumbard
+          votes: 13543
+        - seat: At-Large
+          winner: Barry W. Cooper
+          votes: 10966
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Austin Lumbard
+              votes: 13543
+              outcome: won
+            - name: Barry W. Cooper
+              votes: 10966
+              outcome: won
+            - name: Sherri Loveland
+              votes: 1434
+              outcome: lost
+    - year: 2016
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Charles E. "Chuck" Puckett
+          votes: 13662
+        - seat: At-Large
+          winner: Letitia Clark
+          votes: 12748
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Charles E. "Chuck" Puckett
+              votes: 13662
+              outcome: won
+            - name: Letitia Clark
+              votes: 12748
+              outcome: won
+            - name: Allan Bernstein
+              votes: 11974
+              outcome: lost
+            - name: Austin Lumbard
+              votes: 9900
+              outcome: lost
+    - year: 2014
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Al Murray
+          votes: 7577
+        - seat: At-Large
+          winner: Rebecca "Beckie" Gomez
+          votes: 6327
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Al Murray
+              votes: 7577
+              outcome: won
+            - name: Rebecca "Beckie" Gomez
+              votes: 6327
+              outcome: won
+    - year: 2012
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: John Nielsen
+          votes: 10724
+        - seat: At-Large
+          winner: Charles E. "Chuck" Puckett
+          votes: 9186
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: John Nielsen
+              votes: 10724
+              outcome: won
+            - name: Charles E. "Chuck" Puckett
+              votes: 9186
+              outcome: won
+            - name: Allan Bernstein
+              votes: 9017
+              outcome: lost
+            - name: David Waldram
+              votes: 8605
+              outcome: lost
+            - name: Tracy Worley Hagen
+              votes: 8599
+              outcome: lost

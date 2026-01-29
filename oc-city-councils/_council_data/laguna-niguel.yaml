@@ -7,104 +7,106 @@ email: ''
 phone: ''
 instagram: ''
 members:
-- name: Gene Johns
-  position: Mayor
-  district: District 5
-  email: GJohns@cityoflagunaniguel.org
-  phone: (949) 362-4373
-  city_page: https://www.cityoflagunaniguel.org/1576/Mayor-Gene-Johns
-  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24725
-  bio: Mayor Gene Johns was appointed to the City Council on June 14, 2023, and was reappointed in November 2024 for a four-year
-    term. He was selected to serve as Mayor on November 18, 2025. Currently, Mayor Johns is Council Liaison to the Traffic
-    & Transportation Commission, Military Support Committee, and Orange County Mosquito and Vector Control. Mayor Johns served
-    over 31 years as a Deputy Sheriff with the Los Angeles County Sheriff’s Department, in which 24 of those years, he served
-    as cross-designated Task Force Officer assigned to the United States Drug Enforcement Administration (DEA). He commanded
-    a Task Force Group nationally recognized for disrupting and dismantling drug cartel operations. His expertise has been
-    nationally recognized and was often called upon to instruct various law enforcement agencies throughout the nation. Mayor
-    Johns retired in Laguna Niguel seven years ago, and since retirement, has sought opportunities to volunteer in civic and
-    community organizations in the city. He is an active member of the Laguna Niguel Chamber of Commerce, Niguel Botanical
-    Preserve, and Laguna Niguel Lions Club.
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Kelly Jennings
-  position: Mayor Pro Tem
-  district: District 1
-  email: KJennings@cityoflagunaniguel.org
-  phone: (949) 362-4373
-  city_page: https://www.cityoflagunaniguel.org/838/Mayor-Pro-Tem-Kelly-Jennings
-  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=20328
-  bio: Mayor Pro Tem Kelly Jennings was first elected to the City Council on November 3, 2020 for a four-year term, and was
-    appointed in November 2024 for a four-year term. On March 7, 2023, Mayor Pro Tem Kelly Jennings was selected as Mayor,
-    and on November 7, 2023, she was reaffirmed to continue as Mayor for a one-year term. On November 18, 2025, she was selected
-    to serve as Mayor Pro Tem. Currently, Mayor Pro Tem Jennings is Council Liaison to the Parks, Recreation & Senior Commission,
-    Investment Banking & Audit Committee, City/CDBG Grant Sub Committee, Youth Committee, Orange County Fire Authority Executive
-    Committee, Orange County Fire Authority Legislative & Public Affairs Committee, and South Orange County Watershed Management
-    Area Executive Committee. Mayor Pro Tem Kelly Jennings is passionate about public service and loves giving back to the
-    Laguna Niguel community. She is the Community Life Director for Mission Lutheran Church in Laguna Niguel, where she oversees
-    the church’s operations including its work with six global and five regional charities. Kelly previously served as the
-    elected Director for the Moulton Niguel Water District and as a Commissioner for the Santiago Aqueduct Commission. Kelly
-    has been a longtime member of the Laguna Niguel Chamber of Commerce and promotes local small business success by serving
-    as a Chamber Ambassador. She also serves as a Director of Sustain Southern California, which advances sustainability and
-    economic growth through innovation, collaboration and education.
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Ray Gennawey
-  position: Councilmember
-  district: At-Large
-  email: RGennawey@cityoflagunaniguel.org
-  phone: (949) 362-4373
-  city_page: https://www.cityoflagunaniguel.org/1541/Council-Member-Ray-Gennawey
-  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=23959
-  bio: 'Council Member Ray Gennawey was elected to City Council on November 8, 2022, for a four-year term, and selected to
-    serve as Mayor on December 3, 2024. Currently, Ray is Council Liaison to the City/CDBG Grant Sub-Committee, Investment,
-    Banking & Audit Committee, Youth Committee, and California Joint Powers Insurance Authority. Council Member Ray Gennawey
-    is an Orange County Deputy District Attorney, where he is specially assigned to the Human Trafficking Unit and the Orange
-    County Human Trafficking Task Force. Over the course of his career, Ray has prosecuted murderers, gangsters, child abusers,
-    and third-strikers. Ray currently leads a team of law enforcement professionals with the OC GRIP (Gang Reduction and Intervention
-    Partnership), working extensively with young students in at-risk neighborhoods to set them on a path to a brighter future.
-    Ray is dedicated to serving our community, and is a passionate advocate of:'
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Stephanie Oddo
-  position: Councilmember
-  district: At-Large
-  email: SOddo@cityoflagunaniguel.org
-  phone: (949) 362-4373
-  city_page: https://www.cityoflagunaniguel.org/1542/Council-Member-Stephanie-Oddo
-  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=23960
-  bio: Council Member Stephanie Oddo was elected to the Laguna Niguel City Council on November 8, 2022 for a four-year term.
-    On April 18, 2023, Council Member Oddo was selected to serve as Mayor Pro Tem, and on November 7, 2023,  she was reaffirmed
-    to continue as Mayor Pro Tem. Laguna Niguel Parks, Recreation, and Senior Commission Transportation Corridor Agency, San
-    Joaquin Hills (The Toll Roads) (Vice Chair)
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Stephanie Winstead
-  position: Councilmember
-  district: District 3
-  email: SWinstead@cityoflagunaniguel.org
-  phone: (949) 362-4373
-  city_page: https://www.cityoflagunaniguel.org/1573/Council-Member-Stephanie-Winstead
-  photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24627
-  bio: Council Member Stephanie Winstead was appointed to the City Council on May 10, 2023, and was reappointed in November
-    2024 for a four-year term. Currently, Stephanie is Council Liaison to the Traffic & Transportation Commission, Military
-    Support Committee, Orange County Public Library Advisory Board, and Capistrano Unified School District. Council Member
-    Winstead has over a decade of experience serving the City of Laguna Niguel.  Examples of her service include serving on
-    the City’s Traffic and Transportation Commission, Parks and Recreation Commission, Military Support Committee, and the
-    Investment, Banking and Audit Committee. Additionally, she has served as the Chair of the Chamber of Commerce Board of
-    Directors in 2019.  Professionally, Winstead is an estate planning attorney and is the founder and president of Winstead
-    Law Group, APC located in Laguna Niguel.
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
+  - name: Gene Johns
+    position: Mayor
+    district: District 5
+    email: GJohns@cityoflagunaniguel.org
+    phone: (949) 362-4373
+    city_page: https://www.cityoflagunaniguel.org/1576/Mayor-Gene-Johns
+    photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24725
+    bio: Mayor Gene Johns was appointed to the City Council on June 14, 2023, and was reappointed in November 2024 for a
+      four-year term. He was selected to serve as Mayor on November 18, 2025. Currently, Mayor Johns is Council Liaison 
+      to the Traffic & Transportation Commission, Military Support Committee, and Orange County Mosquito and Vector 
+      Control. Mayor Johns served over 31 years as a Deputy Sheriff with the Los Angeles County Sheriff’s Department, in
+      which 24 of those years, he served as cross-designated Task Force Officer assigned to the United States Drug 
+      Enforcement Administration (DEA). He commanded a Task Force Group nationally recognized for disrupting and 
+      dismantling drug cartel operations. His expertise has been nationally recognized and was often called upon to 
+      instruct various law enforcement agencies throughout the nation. Mayor Johns retired in Laguna Niguel seven years 
+      ago, and since retirement, has sought opportunities to volunteer in civic and community organizations in the city.
+      He is an active member of the Laguna Niguel Chamber of Commerce, Niguel Botanical Preserve, and Laguna Niguel 
+      Lions Club.
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Kelly Jennings
+    position: Mayor Pro Tem
+    district: District 1
+    email: KJennings@cityoflagunaniguel.org
+    phone: (949) 362-4373
+    city_page: https://www.cityoflagunaniguel.org/838/Mayor-Pro-Tem-Kelly-Jennings
+    photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=20328
+    bio: Mayor Pro Tem Kelly Jennings was first elected to the City Council on November 3, 2020 for a four-year term, 
+      and was appointed in November 2024 for a four-year term. On March 7, 2023, Mayor Pro Tem Kelly Jennings was 
+      selected as Mayor, and on November 7, 2023, she was reaffirmed to continue as Mayor for a one-year term. On 
+      November 18, 2025, she was selected to serve as Mayor Pro Tem. Currently, Mayor Pro Tem Jennings is Council 
+      Liaison to the Parks, Recreation & Senior Commission, Investment Banking & Audit Committee, City/CDBG Grant Sub 
+      Committee, Youth Committee, Orange County Fire Authority Executive Committee, Orange County Fire Authority 
+      Legislative & Public Affairs Committee, and South Orange County Watershed Management Area Executive Committee. 
+      Mayor Pro Tem Kelly Jennings is passionate about public service and loves giving back to the Laguna Niguel 
+      community. She is the Community Life Director for Mission Lutheran Church in Laguna Niguel, where she oversees the
+      church’s operations including its work with six global and five regional charities. Kelly previously served as the
+      elected Director for the Moulton Niguel Water District and as a Commissioner for the Santiago Aqueduct Commission.
+      Kelly has been a longtime member of the Laguna Niguel Chamber of Commerce and promotes local small business 
+      success by serving as a Chamber Ambassador. She also serves as a Director of Sustain Southern California, which 
+      advances sustainability and economic growth through innovation, collaboration and education.
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Ray Gennawey
+    position: Councilmember
+    district: At-Large
+    email: RGennawey@cityoflagunaniguel.org
+    phone: (949) 362-4373
+    city_page: https://www.cityoflagunaniguel.org/1541/Council-Member-Ray-Gennawey
+    photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=23959
+    bio: 'Council Member Ray Gennawey was elected to City Council on November 8, 2022, for a four-year term, and selected
+      to serve as Mayor on December 3, 2024. Currently, Ray is Council Liaison to the City/CDBG Grant Sub-Committee, Investment,
+      Banking & Audit Committee, Youth Committee, and California Joint Powers Insurance Authority. Council Member Ray Gennawey
+      is an Orange County Deputy District Attorney, where he is specially assigned to the Human Trafficking Unit and the Orange
+      County Human Trafficking Task Force. Over the course of his career, Ray has prosecuted murderers, gangsters, child abusers,
+      and third-strikers. Ray currently leads a team of law enforcement professionals with the OC GRIP (Gang Reduction and
+      Intervention Partnership), working extensively with young students in at-risk neighborhoods to set them on a path to
+      a brighter future. Ray is dedicated to serving our community, and is a passionate advocate of:'
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Stephanie Oddo
+    position: Councilmember
+    district: At-Large
+    email: SOddo@cityoflagunaniguel.org
+    phone: (949) 362-4373
+    city_page: https://www.cityoflagunaniguel.org/1542/Council-Member-Stephanie-Oddo
+    photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=23960
+    bio: Council Member Stephanie Oddo was elected to the Laguna Niguel City Council on November 8, 2022 for a four-year
+      term. On April 18, 2023, Council Member Oddo was selected to serve as Mayor Pro Tem, and on November 7, 2023,  she
+      was reaffirmed to continue as Mayor Pro Tem. Laguna Niguel Parks, Recreation, and Senior Commission Transportation
+      Corridor Agency, San Joaquin Hills (The Toll Roads) (Vice Chair)
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Stephanie Winstead
+    position: Councilmember
+    district: District 3
+    email: SWinstead@cityoflagunaniguel.org
+    phone: (949) 362-4373
+    city_page: https://www.cityoflagunaniguel.org/1573/Council-Member-Stephanie-Winstead
+    photo_url: https://www.cityoflagunaniguel.org/ImageRepository/Document?documentId=24627
+    bio: Council Member Stephanie Winstead was appointed to the City Council on May 10, 2023, and was reappointed in 
+      November 2024 for a four-year term. Currently, Stephanie is Council Liaison to the Traffic & Transportation 
+      Commission, Military Support Committee, Orange County Public Library Advisory Board, and Capistrano Unified School
+      District. Council Member Winstead has over a decade of experience serving the City of Laguna Niguel.  Examples of 
+      her service include serving on the City’s Traffic and Transportation Commission, Parks and Recreation Commission, 
+      Military Support Committee, and the Investment, Banking and Audit Committee. Additionally, she has served as the 
+      Chair of the Chamber of Commerce Board of Directors in 2019.  Professionally, Winstead is an estate planning 
+      attorney and is the founder and president of Winstead Law Group, APC located in Laguna Niguel.
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 7:00 PM
@@ -112,26 +114,26 @@ meetings:
     name: Council Chambers
     address: 30111 Crown Valley Parkway
     city_state_zip: Laguna Niguel, CA 92677
-  closed_session_time: null
+  closed_session_time:
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: http://ca-lagunaniguel4.civicplus.com/914/Agendas
   youtube: https://www.youtube.com/channel/UCvIGnIDVe7Puu8OgTTCCdFg
-  document_center: null
-  municipal_code: null
-  ecomment: null
-  live_stream: null
-  video_archive: null
+  document_center:
+  municipal_code:
+  ecomment:
+  live_stream:
+  video_archive:
 broadcast:
   cable_channels:
-  - provider: Cox
-    channel: '853'
-  - provider: AT&T U-Verse
-    channel: '99'
+    - provider: Cox
+      channel: '853'
+    - provider: AT&T U-Verse
+      channel: '99'
   live_stream: https://www.youtube.com/cityoflagunaniguel
   rebroadcast: 6:00 PM daily following each meeting
 clerk:
@@ -140,7 +142,7 @@ clerk:
   fax: (949) 362-4340
   email: cityclerk@cityoflagunaniguel.org
   name: Marissa Asistin
-  address: null
+  address:
 public_comment:
   in_person: true
   remote_live: false
@@ -150,43 +152,229 @@ public_comment:
   email: cityclerk@cityoflagunaniguel.org
   speaker_card: '"Request to Speak" form required'
   notes: No action taken on items not on agenda
-  deadline: null
+  deadline:
 council:
   size: 5
   districts: 5
   at_large: 0
   mayor_elected: false
-  expanded_date: null
+  expanded_date:
   notes: Transitioned to by-district elections in 2024. Districts 2 and 4 first elections in 2026.
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - District 2
-  - District 4
+    - District 2
+    - District 4
   term_length: 4
   election_system: by-district
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2022
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Stephanie Oddo
+          votes: 10295
+        - seat: At-Large
+          winner: Ray Gennawey
+          votes: 9379
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Stephanie Oddo
+              votes: 10295
+              outcome: won
+            - name: Ray Gennawey
+              votes: 9379
+              outcome: won
+            - name: Stephanie Winstead
+              votes: 8765
+              outcome: lost
+            - name: Jeff Von Waldburg
+              votes: 7434
+              outcome: lost
+            - name: Javad Mokhbery
+              votes: 4302
+              outcome: lost
+            - name: Melissa Caldwell
+              votes: 2695
+              outcome: lost
+            - name: Randall Aaron Morton
+              votes: 347
+              outcome: lost
+    - year: 2020
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Sandy Rains
+          votes: 16791
+        - seat: At-Large
+          winner: Rischi Paul Sharma
+          votes: 15657
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Sandy Rains
+              votes: 16791
+              outcome: won
+            - name: Rischi Paul Sharma
+              votes: 15657
+              outcome: won
+            - name: Kelly Jennings
+              votes: 15313
+              outcome: lost
+            - name: Stephanie Oddo
+              votes: 11360
+              outcome: lost
+            - name: Shani Moslehi
+              votes: 10978
+              outcome: lost
+            - name: Sherry Astrella
+              votes: 5297
+              outcome: lost
+            - name: John Dhaliwal
+              votes: 3780
+              outcome: lost
+            - name: Michael Harvey Fair
+              votes: 2865
+              outcome: lost
+    - year: 2018
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Elaine Gennawey
+          votes: 18596
+        - seat: At-Large
+          winner: Sandy Rains
+          votes: 15015
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Elaine Gennawey
+              votes: 18596
+              outcome: won
+            - name: Sandy Rains
+              votes: 15015
+              outcome: won
+            - name: Fred Minagar
+              votes: 14578
+              outcome: lost
+            - name: Deborah Townes
+              votes: 7555
+              outcome: lost
+            - name: Bhajan "John" Singh Dhaliwal
+              votes: 2502
+              outcome: lost
+    - year: 2016
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Laurie Davies
+          votes: 19189
+        - seat: At-Large
+          winner: Jerry Slusiewicz
+          votes: 12658
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Laurie Davies
+              votes: 19189
+              outcome: won
+            - name: Jerry Slusiewicz
+              votes: 12658
+              outcome: won
+            - name: John Mark Jennings
+              votes: 11326
+              outcome: lost
+            - name: Matt Clements
+              votes: 8177
+              outcome: lost
+            - name: Jonathan Wallentine
+              votes: 7342
+              outcome: lost
+            - name: III William J. Kelley
+              votes: 4638
+              outcome: lost
+            - name: Randall Aaron Morton
+              votes: 2084
+              outcome: lost
+    - year: 2014
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Elaine Gennawey
+          votes: 7101
+        - seat: At-Large
+          winner: Fred Minagar
+          votes: 5883
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Elaine Gennawey
+              votes: 7101
+              outcome: won
+            - name: Fred Minagar
+              votes: 5883
+              outcome: won
+            - name: John Mark Jennings
+              votes: 5418
+              outcome: lost
+            - name: Matt Clements
+              votes: 5409
+              outcome: lost
+            - name: Jesse James
+              votes: 1483
+              outcome: lost
+            - name: Randall Aaron Morton
+              votes: 1180
+              outcome: lost
+    - year: 2012
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Laurie Davies
+          votes: 16584
+        - seat: At-Large
+          winner: Jerry Slusiewicz
+          votes: 13925
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Laurie Davies
+              votes: 16584
+              outcome: won
+            - name: Jerry Slusiewicz
+              votes: 13925
+              outcome: won
+            - name: Jerry Mccloskey
+              votes: 13267
+              outcome: lost
+            - name: Brad Barber
+              votes: 7449
+              outcome: lost
+            - name: Tony English
+              votes: 6434
+              outcome: lost

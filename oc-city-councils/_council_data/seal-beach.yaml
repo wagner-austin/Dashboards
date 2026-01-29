@@ -7,75 +7,77 @@ email: ''
 phone: ''
 instagram: ''
 members:
-- name: Lisa Landau
-  position: Mayor
-  district: District 3
-  email: llandau@sealbeachca.gov
-  phone: (562) 431-2527 x1503
-  city_page: https://www.sealbeachca.gov/Government/City-Council
-  photo_url: https://www.sealbeachca.gov/portals/0/Documents/128021.jpeg?ver=2023-03-30-084054-510
-  bio: Finished his Leo career at 17 yrs. old with the most community service hours ever served in the 20-year history of
-    the Leo program in Seal Beach. The Seal Beach Chamber of Commerce provides a healthy environment to sustain, promote,
-    and grow businesses and civic and community organiza
-  term_start: 2022
-  term_end: 2026
-  website: https://lisaforsealbeach.com
-  instagram: null
-  phone_alt: (714) 656-8000
-- name: Ben Wong
-  position: Mayor Pro Tem
-  district: District 2
-  email: bwong@sealbeachca.gov
-  phone: (562) 431-2527 x1502
-  city_page: https://www.sealbeachca.gov/Government/City-Council
-  photo_url: https://www.sealbeachca.gov/portals/0/Images/Government/City%20Council/Wong_c.jpg?ver=2024-12-10-141231-117
-  bio: is a crime." I strongly support law enforcement in keeping our community safe and protecting businesses from shoplifting.
-    Well-balanced Budget We need to find new streams of revenue by encouraging businesses to continue to invest in Seal Beach
-    while responsibly managing city spending.
-  term_start: 2024
-  term_end: 2028
-  website: https://sealbeachben.com
-  instagram: null
-  phone_alt: (714) 655-4415
-- name: Joe Kalmick
-  position: Councilmember
-  district: District 1
-  email: jkalmick@sealbeachca.gov
-  phone: (562) 431-2527 x1501
-  city_page: https://www.sealbeachca.gov/Government/City-Council
-  photo_url: https://www.sealbeachca.gov/LinkClick.aspx?fileticket=13AaEF_cf6A%3d&portalid=0
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-  phone_alt: (562) 397-4124
-- name: Patty Senecal
-  position: Councilmember
-  district: District 4
-  email: psenecal@sealbeachca.gov
-  phone: (562) 431-2527 x1504
-  city_page: https://www.sealbeachca.gov/Government/City-Council
-  photo_url: https://www.sealbeachca.gov/portals/0/Images/Government/City%20Council/Senecal_2025_c.jpg?ver=2024-12-10-141231-117
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-  phone_alt: (310) 773-1913
-- name: Nathan Steele
-  position: Councilmember
-  district: District 5
-  email: nsteele@sealbeachca.gov
-  phone: (562) 431-2527 x1505
-  city_page: https://www.sealbeachca.gov/Government/City-Council
-  photo_url: https://www.sealbeachca.gov/portals/0/Documents/Councilman%20Steele.jpg?ver=2023-03-27-111034-577
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-  phone_alt: (714) 474-1272
+  - name: Lisa Landau
+    position: Mayor
+    district: District 3
+    email: llandau@sealbeachca.gov
+    phone: (562) 431-2527 x1503
+    city_page: https://www.sealbeachca.gov/Government/City-Council
+    photo_url: https://www.sealbeachca.gov/portals/0/Documents/128021.jpeg?ver=2023-03-30-084054-510
+    bio: Finished his Leo career at 17 yrs. old with the most community service hours ever served in the 20-year history
+      of the Leo program in Seal Beach. The Seal Beach Chamber of Commerce provides a healthy environment to sustain, 
+      promote, and grow businesses and civic and community organiza
+    term_start: 2022
+    term_end: 2026
+    website: https://lisaforsealbeach.com
+    instagram:
+    phone_alt: (714) 656-8000
+  - name: Ben Wong
+    position: Mayor Pro Tem
+    district: District 2
+    email: bwong@sealbeachca.gov
+    phone: (562) 431-2527 x1502
+    city_page: https://www.sealbeachca.gov/Government/City-Council
+    photo_url: 
+      https://www.sealbeachca.gov/portals/0/Images/Government/City%20Council/Wong_c.jpg?ver=2024-12-10-141231-117
+    bio: is a crime." I strongly support law enforcement in keeping our community safe and protecting businesses from 
+      shoplifting. Well-balanced Budget We need to find new streams of revenue by encouraging businesses to continue to 
+      invest in Seal Beach while responsibly managing city spending.
+    term_start: 2024
+    term_end: 2028
+    website: https://sealbeachben.com
+    instagram:
+    phone_alt: (714) 655-4415
+  - name: Joe Kalmick
+    position: Councilmember
+    district: District 1
+    email: jkalmick@sealbeachca.gov
+    phone: (562) 431-2527 x1501
+    city_page: https://www.sealbeachca.gov/Government/City-Council
+    photo_url: https://www.sealbeachca.gov/LinkClick.aspx?fileticket=13AaEF_cf6A%3d&portalid=0
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+    phone_alt: (562) 397-4124
+  - name: Patty Senecal
+    position: Councilmember
+    district: District 4
+    email: psenecal@sealbeachca.gov
+    phone: (562) 431-2527 x1504
+    city_page: https://www.sealbeachca.gov/Government/City-Council
+    photo_url: 
+      https://www.sealbeachca.gov/portals/0/Images/Government/City%20Council/Senecal_2025_c.jpg?ver=2024-12-10-141231-117
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+    phone_alt: (310) 773-1913
+  - name: Nathan Steele
+    position: Councilmember
+    district: District 5
+    email: nsteele@sealbeachca.gov
+    phone: (562) 431-2527 x1505
+    city_page: https://www.sealbeachca.gov/Government/City-Council
+    photo_url: https://www.sealbeachca.gov/portals/0/Documents/Councilman%20Steele.jpg?ver=2023-03-27-111034-577
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+    phone_alt: (714) 474-1272
 meetings:
   schedule: 2nd and 4th Mondays
   time: 7:00 PM
@@ -85,27 +87,27 @@ meetings:
     address: 211 Eighth Street
     city_state_zip: Seal Beach, CA 90740
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://www.sealbeachca.gov/Government/Agendas-Notices-Meeting-Videos/Council-Commission-Meetings
   youtube: https://youtube.com/@cityofsealbeachcouncilchambers
   minutes: http://pubrec.sealbeachca.gov/WebLink/Browse.aspx?startid=1990
   e_records: http://pubrec.sealbeachca.gov/WebLink8/
   public_records: https://cityofsealbeach.nextrequest.com
-  document_center: null
-  municipal_code: null
-  ecomment: null
-  live_stream: null
-  video_archive: null
+  document_center:
+  municipal_code:
+  ecomment:
+  live_stream:
+  video_archive:
 broadcast:
   cable_channels:
-  - provider: SBTV
-    channel: '3'
+    - provider: SBTV
+      channel: '3'
   rebroadcast: Sunday 4:00 PM
-  live_stream: null
+  live_stream:
 clerk:
   name: Gloria Harper
   title: City Clerk
@@ -113,7 +115,7 @@ clerk:
   email: gharper@sealbeachca.gov
   address: 211 Eighth Street, Seal Beach, CA 90740
   hours: 8:00 a.m. to 5:00 p.m.
-  fax: null
+  fax:
 public_comment:
   in_person: true
   remote_live: false
@@ -122,45 +124,240 @@ public_comment:
   time_limit: 5 minutes per speaker
   email: gharper@sealbeachca.gov
   notes: Speaker cards available at Clerk's desk; address Mayor and entire Council only; on-demand video since 2012
-  deadline: null
+  deadline:
 council:
   size: 5
   districts: 5
   at_large: 0
   mayor_elected: false
   mayor_rotation: Selected by council annually
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - District 1
-  - District 3
-  - District 5
+    - District 1
+    - District 3
+    - District 5
   term_length: 4
   election_system: by-district
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: by-district
+      winners:
+        - district: District 2
+          winner: Ben Wong
+          votes: 2432
+        - district: District 4
+          winner: Patty Senecal
+          votes: 2402
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Ben Wong
+              votes: 2432
+              outcome: won
+        - district: District 4
+          candidates:
+            - name: Patty Senecal
+              votes: 2402
+              outcome: won
+    - year: 2022
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Joe Kalmick
+          votes: 1197
+        - district: District 3
+          winner: Stephanie Wade
+          votes: 967
+        - district: District 5
+          winner: Nathan Steele
+          votes: 1308
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Joe Kalmick
+              votes: 1197
+              outcome: won
+            - name: Gregg Barton
+              votes: 582
+              outcome: lost
+            - name: Christopher Desanto
+              votes: 559
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Stephanie Wade
+              votes: 967
+              outcome: won
+            - name: Lisa Landau
+              votes: 912
+              outcome: lost
+            - name: Fred Macksoud
+              votes: 258
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Nathan Steele
+              votes: 1308
+              outcome: won
+            - name: Mariann Klinger
+              votes: 641
+              outcome: lost
+            - name: Michael J. Mcgrorty
+              votes: 593
+              outcome: lost
+            - name: Jonathan Rich
+              votes: 365
+              outcome: lost
+    - year: 2020
+      type: by-district
+      winners:
+        - district: District 2
+          winner: Thomas Moore
+          votes: 2292
+        - district: District 4
+          winner: Schelly Sustarsic
+          votes: 2739
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Thomas Moore
+              votes: 2292
+              outcome: won
+            - name: Carole S. Damoci
+              votes: 1022
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Schelly Sustarsic
+              votes: 2739
+              outcome: won
+    - year: 2018
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Joe Kalmick
+          votes: 988
+        - district: District 3
+          winner: Mike Varipapa
+          votes: 1728
+        - district: District 5
+          winner: Sandra Massa-Lavitt
+          votes: 2280
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Joe Kalmick
+              votes: 988
+              outcome: won
+            - name: Peter Amundson
+              votes: 673
+              outcome: lost
+            - name: Scott L. Levitt
+              votes: 635
+              outcome: lost
+            - name: John Waller
+              votes: 144
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Mike Varipapa
+              votes: 1728
+              outcome: won
+        - district: District 5
+          candidates:
+            - name: Sandra Massa-Lavitt
+              votes: 2280
+              outcome: won
+    - year: 2016
+      type: by-district
+      winners:
+        - district: District 2
+          winner: Thomas Moore
+          votes: 1410
+        - district: District 4
+          winner: Schelly Sustarsic
+          votes: 1966
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Thomas Moore
+              votes: 1410
+              outcome: won
+            - name: Ronde Winkler
+              votes: 1316
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Schelly Sustarsic
+              votes: 1966
+              outcome: won
+            - name: Gina Phillips
+              votes: 859
+              outcome: lost
+    - year: 2014
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Ellery Deaton
+          votes: 1063
+        - district: District 3
+          winner: Mike Varipapa
+          votes: 903
+        - district: District 5
+          winner: Sandra Massa-Lavitt
+          votes: 1108
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Ellery Deaton
+              votes: 1063
+              outcome: won
+            - name: Charles Antos
+              votes: 247
+              outcome: lost
+            - name: Tom Quinn
+              votes: 245
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Mike Varipapa
+              votes: 903
+              outcome: won
+            - name: Scott Weir
+              votes: 689
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Sandra Massa-Lavitt
+              votes: 1108
+              outcome: won
+            - name: Anne Seifert
+              votes: 959
+              outcome: lost

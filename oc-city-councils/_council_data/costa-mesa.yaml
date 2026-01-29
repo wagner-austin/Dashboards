@@ -3,115 +3,119 @@ city_name: Costa Mesa
 website: https://www.costamesaca.gov
 council_url: https://www.costamesaca.gov/government/mayor-city-council
 last_updated: '2026-01-26'
-email: null
-phone: null
-instagram: null
+email:
+phone:
+instagram:
 members:
-- name: John Stephens
-  position: Mayor
-  district: Citywide
-  email: John.Stephens@costamesaca.gov
-  phone: (714) 337-1872
-  city_page: https://www.costamesaca.gov/government/mayor-city-council/mayor-john-stephens
-  photo_url: https://www.costamesaca.gov/home/showpublishedimage/18192/637789805555630000
-  bio: John Stephens was born in Pasadena and raised in San Gabriel. He earned his B.A. in Business Administration and Marketing
-    from Cal Poly Pomona (Magna Cum Laude, 1986) and his law degree from UC Davis Law School in 1989. He founded Stephens
-    Friedland LLP in 2006, named the Veterans Legal Institute Law Firm of the Year in 2019. A Costa Mesa resident since 1989,
-    he was first elected to City Council in 2016 and has been mayor since March 2021. He is Chair of the Association of California
-    Cities-OC Homelessness Task Force and a founding member of the Costa Mesa Early Childhood Coalition. He lives in Mesa
-    Verde with his wife Amy and has four children.
-  term_start: 2024
-  term_end: 2026
-- name: Manuel Chavez
-  position: Mayor Pro Tem
-  district: District 4
-  email: Manuel.Chavez@costamesaca.gov
-  phone: (949) 274-2305
-  city_page: https://www.costamesaca.gov/government/mayor-city-council/mayor-pro-tem-manuel-chavez
-  photo_url: https://www.costamesaca.gov/home/showpublishedimage/24111/638732302613630000
-  bio: Manuel Chavez was first elected in 2018, becoming the youngest council member in Costa Mesa history at age 23 and the
-    first Latino elected to the Costa Mesa City Council. Growing up in Westside Costa Mesa, he attended Pomona Elementary,
-    TeWinkle Middle School, and Estancia High School. He earned two B.A. degrees from UC Irvine in Political Science and Religious
-    Studies. He works as Outreach and Programs Manager at Save Our Youth, a local nonprofit serving students in the Newport-Mesa
-    Unified School District. He serves on OCTA's Community Advisory Committee and as a Board Member for the Coastal Corridor
-    Alliance.
-  term_start: 2022
-  term_end: 2026
-- name: Andrea Marr
-  position: Councilmember
-  district: District 3
-  email: Andrea.Marr@costamesaca.gov
-  phone: (714) 754-5105
-  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-andrea-marr
-  photo_url: https://www.costamesaca.gov/home/showpublishedimage/18194/637789805565630000
-  bio: Andrea Marr is a graduate of the U.S. Naval Academy, nominated by Vice President Al Gore, where she earned a degree
-    in Aerospace Engineering. She also holds an M.S. in Engineering Management from Old Dominion University. During her Navy
-    service, she qualified as a nuclear reactor operator and served as Gunnery and Ordinance Officer. After the Navy, she
-    volunteered in Nicaragua installing solar panels. A 2013 White House Champion of Change for her work in energy as a veteran,
-    she is a licensed professional engineer and Director at Willdan Group. First elected to District 3 in 2018, she previously
-    served on the City's Cultural Art Committee and Bikeway and Walkability Committee. She lives in Costa Mesa with her husband
-    Scott.
-  term_start: 2022
-  term_end: 2026
-- name: Arlis Reynolds
-  position: Councilmember
-  district: District 5
-  email: Arlis.Reynolds@costamesaca.gov
-  phone: (714) 754-5107
-  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-arlis-reynolds
-  photo_url: https://www.costamesaca.gov/home/showpublishedimage/15983/637460647341370000
-  bio: Arlis Reynolds grew up in the Freedom Homes neighborhood of Westside Costa Mesa and attended local schools including
-    Pomona Elementary, TeWinkle Middle School, and Estancia High School, where she captained varsity volleyball and soccer.
-    She earned a B.S. in Mechanical Engineering from MIT and is a member of the Executive MBA Program at UCI Paul Merage School
-    of Business. First elected in 2018 as the first person to represent District 5, she was re-elected in 2022. She helped
-    organize community efforts for a 380-acre public nature park at Banning Ranch. Her priorities include public safety, walkable
-    neighborhoods, and enhancing local parks. She lives in Freedom Homes with her dog Zoe and cat Peanut.
-  term_start: 2022
-  term_end: 2026
-- name: Jeff Pettis
-  position: Councilmember
-  district: District 6
-  email: jeff.pettis@costamesaca.gov
-  phone: (714) 754-5107
-  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-jeff-pettis
-  photo_url: https://www.costamesaca.gov/home/showpublishedimage/24138/638748836709970000
-  bio: Jeff Pettis is Deputy Chief Nurse of Mental Health at the Long Beach VA Medical Center. Born and raised in Newport
-    Beach, he started his career in the corporate world with Frito-Lay and a major auto group before becoming a registered
-    nurse. He and his wife Kerry have lived in Costa Mesa's Mesa Verde neighborhood for 13 years, where they raised their
-    three daughters Hannah, Madi, and Charlotte. First elected to District 6 in 2024, his focus areas include addressing homelessness,
-    promoting fiscal responsibility, enhancing public safety, and preserving the residential character of Costa Mesa.
-  term_start: 2024
-  term_end: 2028
-- name: Loren Gameros
-  position: Councilmember
-  district: District 2
-  email: LGameros@costamesaca.gov
-  phone: (714) 754-5107
-  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-loren-gameros
-  photo_url: https://www.costamesaca.gov/home/showpublishedimage/15977/637460647316500000
-  bio: Loren Gameros is a 40-year resident of Costa Mesa who attended Bear Street Elementary and TeWinkle Middle School. He
-    started his career in the 1980s as a cabinetmaker and staircase builder at a local woodshop. He brings two decades of
-    experience with the Operating Engineers Training Trust Local 12, where he teaches building inspection to apprentices and
-    journeypersons. His experience includes 16 years as an accredited teacher through Rio Hondo College and Santiago Canyon
-    College career programs. In 2020, he became the first person elected to represent Costa Mesa City Council District 2.
-    He was re-elected in 2024. He lives in Costa Mesa with his wife Heather, son Kyle, and daughter Presley.
-  term_start: 2024
-  term_end: 2028
-- name: Mike Buley
-  position: Councilmember
-  district: District 1
-  email: mike.buley@costamesaca.gov
-  phone: (714) 754-5107
-  city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-mike-buley
-  photo_url: https://www.costamesaca.gov/home/showpublishedimage/24115/638732319597200000
-  bio: Mike Buley is a civil litigation trial attorney with over 32 years of experience, the last 25 years as owner of his
-    own firm with offices in Newport Beach. He and his wife Adriana moved to Costa Mesa's Mesa Verde neighborhood 21 years
-    ago and raised three children there. His practice has included complex business, real estate, and contract dispute matters,
-    working with City Attorneys and the California Attorney General's Office. He has served the community as a volunteer on
-    St. John the Baptist School's Finance Committee and coached basketball and softball. Elected to District 1 in 2024, his
-    focus areas include managing development, crime, homelessness, and budgetary issues impacting quality of life.
-  term_start: 2024
-  term_end: 2028
+  - name: John Stephens
+    position: Mayor
+    district: Citywide
+    email: John.Stephens@costamesaca.gov
+    phone: (714) 337-1872
+    city_page: https://www.costamesaca.gov/government/mayor-city-council/mayor-john-stephens
+    photo_url: https://www.costamesaca.gov/home/showpublishedimage/18192/637789805555630000
+    bio: John Stephens was born in Pasadena and raised in San Gabriel. He earned his B.A. in Business Administration and
+      Marketing from Cal Poly Pomona (Magna Cum Laude, 1986) and his law degree from UC Davis Law School in 1989. He 
+      founded Stephens Friedland LLP in 2006, named the Veterans Legal Institute Law Firm of the Year in 2019. A Costa 
+      Mesa resident since 1989, he was first elected to City Council in 2016 and has been mayor since March 2021. He is 
+      Chair of the Association of California Cities-OC Homelessness Task Force and a founding member of the Costa Mesa 
+      Early Childhood Coalition. He lives in Mesa Verde with his wife Amy and has four children.
+    term_start: 2024
+    term_end: 2026
+  - name: Manuel Chavez
+    position: Mayor Pro Tem
+    district: District 4
+    email: Manuel.Chavez@costamesaca.gov
+    phone: (949) 274-2305
+    city_page: https://www.costamesaca.gov/government/mayor-city-council/mayor-pro-tem-manuel-chavez
+    photo_url: https://www.costamesaca.gov/home/showpublishedimage/24111/638732302613630000
+    bio: Manuel Chavez was first elected in 2018, becoming the youngest council member in Costa Mesa history at age 23 
+      and the first Latino elected to the Costa Mesa City Council. Growing up in Westside Costa Mesa, he attended Pomona
+      Elementary, TeWinkle Middle School, and Estancia High School. He earned two B.A. degrees from UC Irvine in 
+      Political Science and Religious Studies. He works as Outreach and Programs Manager at Save Our Youth, a local 
+      nonprofit serving students in the Newport-Mesa Unified School District. He serves on OCTA's Community Advisory 
+      Committee and as a Board Member for the Coastal Corridor Alliance.
+    term_start: 2022
+    term_end: 2026
+  - name: Andrea Marr
+    position: Councilmember
+    district: District 3
+    email: Andrea.Marr@costamesaca.gov
+    phone: (714) 754-5105
+    city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-andrea-marr
+    photo_url: https://www.costamesaca.gov/home/showpublishedimage/18194/637789805565630000
+    bio: Andrea Marr is a graduate of the U.S. Naval Academy, nominated by Vice President Al Gore, where she earned a 
+      degree in Aerospace Engineering. She also holds an M.S. in Engineering Management from Old Dominion University. 
+      During her Navy service, she qualified as a nuclear reactor operator and served as Gunnery and Ordinance Officer. 
+      After the Navy, she volunteered in Nicaragua installing solar panels. A 2013 White House Champion of Change for 
+      her work in energy as a veteran, she is a licensed professional engineer and Director at Willdan Group. First 
+      elected to District 3 in 2018, she previously served on the City's Cultural Art Committee and Bikeway and 
+      Walkability Committee. She lives in Costa Mesa with her husband Scott.
+    term_start: 2022
+    term_end: 2026
+  - name: Arlis Reynolds
+    position: Councilmember
+    district: District 5
+    email: Arlis.Reynolds@costamesaca.gov
+    phone: (714) 754-5107
+    city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-arlis-reynolds
+    photo_url: https://www.costamesaca.gov/home/showpublishedimage/15983/637460647341370000
+    bio: Arlis Reynolds grew up in the Freedom Homes neighborhood of Westside Costa Mesa and attended local schools 
+      including Pomona Elementary, TeWinkle Middle School, and Estancia High School, where she captained varsity 
+      volleyball and soccer. She earned a B.S. in Mechanical Engineering from MIT and is a member of the Executive MBA 
+      Program at UCI Paul Merage School of Business. First elected in 2018 as the first person to represent District 5, 
+      she was re-elected in 2022. She helped organize community efforts for a 380-acre public nature park at Banning 
+      Ranch. Her priorities include public safety, walkable neighborhoods, and enhancing local parks. She lives in 
+      Freedom Homes with her dog Zoe and cat Peanut.
+    term_start: 2022
+    term_end: 2026
+  - name: Jeff Pettis
+    position: Councilmember
+    district: District 6
+    email: jeff.pettis@costamesaca.gov
+    phone: (714) 754-5107
+    city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-jeff-pettis
+    photo_url: https://www.costamesaca.gov/home/showpublishedimage/24138/638748836709970000
+    bio: Jeff Pettis is Deputy Chief Nurse of Mental Health at the Long Beach VA Medical Center. Born and raised in 
+      Newport Beach, he started his career in the corporate world with Frito-Lay and a major auto group before becoming 
+      a registered nurse. He and his wife Kerry have lived in Costa Mesa's Mesa Verde neighborhood for 13 years, where 
+      they raised their three daughters Hannah, Madi, and Charlotte. First elected to District 6 in 2024, his focus 
+      areas include addressing homelessness, promoting fiscal responsibility, enhancing public safety, and preserving 
+      the residential character of Costa Mesa.
+    term_start: 2024
+    term_end: 2028
+  - name: Loren Gameros
+    position: Councilmember
+    district: District 2
+    email: LGameros@costamesaca.gov
+    phone: (714) 754-5107
+    city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-loren-gameros
+    photo_url: https://www.costamesaca.gov/home/showpublishedimage/15977/637460647316500000
+    bio: Loren Gameros is a 40-year resident of Costa Mesa who attended Bear Street Elementary and TeWinkle Middle 
+      School. He started his career in the 1980s as a cabinetmaker and staircase builder at a local woodshop. He brings 
+      two decades of experience with the Operating Engineers Training Trust Local 12, where he teaches building 
+      inspection to apprentices and journeypersons. His experience includes 16 years as an accredited teacher through 
+      Rio Hondo College and Santiago Canyon College career programs. In 2020, he became the first person elected to 
+      represent Costa Mesa City Council District 2. He was re-elected in 2024. He lives in Costa Mesa with his wife 
+      Heather, son Kyle, and daughter Presley.
+    term_start: 2024
+    term_end: 2028
+  - name: Mike Buley
+    position: Councilmember
+    district: District 1
+    email: mike.buley@costamesaca.gov
+    phone: (714) 754-5107
+    city_page: https://www.costamesaca.gov/government/mayor-city-council/council-member-mike-buley
+    photo_url: https://www.costamesaca.gov/home/showpublishedimage/24115/638732319597200000
+    bio: Mike Buley is a civil litigation trial attorney with over 32 years of experience, the last 25 years as owner of
+      his own firm with offices in Newport Beach. He and his wife Adriana moved to Costa Mesa's Mesa Verde neighborhood 
+      21 years ago and raised three children there. His practice has included complex business, real estate, and 
+      contract dispute matters, working with City Attorneys and the California Attorney General's Office. He has served 
+      the community as a volunteer on St. John the Baptist School's Finance Committee and coached basketball and 
+      softball. Elected to District 1 in 2024, his focus areas include managing development, crime, homelessness, and 
+      budgetary issues impacting quality of life.
+    term_start: 2024
+    term_end: 2028
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 6:00 PM
@@ -124,22 +128,22 @@ meetings:
     zoom_id: 960 6037 9921
     zoom_passcode: '595958'
     phone_numbers:
-    - (669) 900-6833
-  closed_session_time: null
+      - (669) 900-6833
+  closed_session_time:
 portals:
   agendas: https://costamesa.legistar.com/Calendar.aspx
   live_stream: http://costamesa.granicus.com/player/camera/2?publish_id=10&redirect=true
   youtube: https://youtube.com/costamesatv
   document_center: https://weblink.costamesaca.gov
   municipal_code: https://ecode360.com/CO4918
-  ecomment: null
-  video_archive: null
+  ecomment:
+  video_archive:
 broadcast:
   cable_channels:
-  - provider: Spectrum
-    channel: '3'
-  - provider: AT&T U-verse
-    channel: '99'
+    - provider: Spectrum
+      channel: '3'
+    - provider: AT&T U-verse
+      channel: '99'
   tv_channel: Costa Mesa TV
   live_stream: http://costamesa.granicus.com/player/camera/2?publish_id=10&redirect=true
 clerk:
@@ -149,7 +153,7 @@ clerk:
   direct_phone: (714) 754-5221
   email: brenda.green@costamesaca.gov
   address: 77 Fair Drive, Costa Mesa, CA 92626
-  fax: null
+  fax:
 public_comment:
   in_person: true
   remote_live: true
@@ -164,95 +168,325 @@ council:
   districts: 6
   at_large: 1
   mayor_elected: true
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   election_system: mixed
   term_length: 4
   mayor_term_length: 2
   seats_up:
-  - district: Mayor
-    incumbent: John Stephens
-    term_length: 2
-  - district: District 3
-    incumbent: Andrea Marr
-  - district: District 4
-    incumbent: Manuel Chavez
-  - district: District 5
-    incumbent: Arlis Reynolds
-  term_limit: null
-  term_limit_cooldown: null
+    - district: Mayor
+      incumbent: John Stephens
+      term_length: 2
+    - district: District 3
+      incumbent: Andrea Marr
+    - district: District 4
+      incumbent: Manuel Chavez
+    - district: District 5
+      incumbent: Arlis Reynolds
+  term_limit:
+  term_limit_cooldown:
   contribution_limit: $5,900 (2025-26)
   cycle_pattern:
     group_a:
       years: 2022, 2026, 2030...
       seats:
-      - Mayor
-      - District 3
-      - District 4
-      - District 5
+        - Mayor
+        - District 3
+        - District 4
+        - District 5
     group_b:
       years: 2024, 2028, 2032...
       seats:
-      - Mayor
-      - District 1
-      - District 2
-      - District 6
+        - Mayor
+        - District 1
+        - District 2
+        - District 6
     notes: Mayor is up every election due to 2-year term
   candidate_info:
-    contact_email: null
+    contact_email:
     contact_phone: (714) 754-5225
     location: 77 Fair Drive, 1st Floor, Costa Mesa, CA 92626
   results_source: https://ocvote.gov/results
   past_results: https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections
   source: https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2026
   history:
-  - year: 2024
-    seats:
-    - Mayor
-    - District 1
-    - District 2
-    - District 6
-    winners:
-    - district: Mayor
-      winner: John Stephens
-      notes: re-elected
-    - district: District 1
-      winner: Mike Buley
-      notes: elected
-    - district: District 2
-      winner: Loren Gameros
-      notes: re-elected
-    - district: District 6
-      winner: Jeff Pettis
-      notes: elected
-    source: https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2024
-  - year: 2022
-    seats:
-    - Mayor
-    - District 3
-    - District 4
-    - District 5
-    winners:
-    - district: Mayor
-      winner: John Stephens
-      notes: elected
-    - district: District 3
-      winner: Andrea Marr
-      notes: re-elected
-    - district: District 4
-      winner: Manuel Chavez
-      notes: re-elected
-    - district: District 5
-      winner: Arlis Reynolds
-      notes: re-elected
-    source: https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2022
-  districting_info: null
-  transition_note: null
-  term_limit_type: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
-  nomination_period: null
+    - year: 2024
+      seats:
+        - Mayor
+        - District 1
+        - District 2
+        - District 6
+      winners:
+        - district: Mayor
+          winner: John Stephens
+          notes: re-elected
+        - district: District 1
+          winner: Mike Buley
+          notes: elected
+        - district: District 2
+          winner: Loren Gameros
+          notes: re-elected
+        - district: District 6
+          winner: Jeff Pettis
+          notes: elected
+      source: 
+        https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2024
+    - year: 2022
+      seats:
+        - Mayor
+        - District 3
+        - District 4
+        - District 5
+      winners:
+        - district: Mayor
+          winner: John Stephens
+          notes: elected
+        - district: District 3
+          winner: Andrea Marr
+          notes: re-elected
+        - district: District 4
+          winner: Manuel Chavez
+          notes: re-elected
+        - district: District 5
+          winner: Arlis Reynolds
+          notes: re-elected
+      source: 
+        https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2022
+    - year: 2020
+      type: mixed
+      winners:
+        - district: District 1
+          winner: Don Harper
+          votes: 4437
+        - district: District 2
+          winner: Loren Gameros
+          votes: 3962
+        - district: District 6
+          winner: Jeffrey Harlan
+          votes: 4612
+        - seat: Mayor
+          winner: Katrina Foley
+          votes: 25833
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Don Harper
+              votes: 4437
+              outcome: won
+            - name: John Stephens
+              votes: 4114
+              outcome: lost
+            - name: Jason Komala
+              votes: 1640
+              outcome: lost
+        - district: District 2
+          candidates:
+            - name: Loren Gameros
+              votes: 3962
+              outcome: won
+            - name: Ben Chapman
+              votes: 2436
+              outcome: lost
+            - name: Gary Parkin
+              votes: 1629
+              outcome: lost
+        - district: District 6
+          candidates:
+            - name: Jeffrey Harlan
+              votes: 4612
+              outcome: won
+            - name: Jeff Pettis
+              votes: 1997
+              outcome: lost
+            - name: Hengameh Abraham
+              votes: 1910
+              outcome: lost
+            - name: Lee Ramos
+              votes: 1314
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Katrina Foley
+              votes: 25833
+              outcome: won
+            - name: Sandra L. "Sandy" Genis
+              votes: 11158
+              outcome: lost
+            - name: Wendy Brooks Leece
+              votes: 5751
+              outcome: lost
+            - name: Quentin "Q" Pullen
+              votes: 5161
+              outcome: lost
+            - name: Al Melone
+              votes: 1564
+              outcome: lost
+    - year: 2018
+      type: mixed
+      winners:
+        - district: District 3
+          winner: Andrea Marr
+          votes: 3109
+        - district: District 4
+          winner: Manuel Chavez
+          votes: 1603
+        - district: District 5
+          winner: Arlis Reynolds
+          votes: 3168
+        - seat: Mayor
+          winner: Katrina Foley
+          votes: 20568
+      candidates:
+        - district: District 3
+          candidates:
+            - name: Andrea Marr
+              votes: 3109
+              outcome: won
+            - name: Brett Eckles
+              votes: 2342
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Manuel Chavez
+              votes: 1603
+              outcome: won
+            - name: Michelle Figueredo-Wilson
+              votes: 709
+              outcome: lost
+            - name: Steve Chan
+              votes: 332
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Arlis Reynolds
+              votes: 3168
+              outcome: won
+            - name: Allan R. Mansoor
+              votes: 1748
+              outcome: lost
+            - name: Rebecca Trahan
+              votes: 696
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Katrina Foley
+              votes: 20568
+              outcome: won
+            - name: Sandra L. "Sandy" Genis
+              votes: 14018
+              outcome: lost
+    - year: 2016
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Sandra L. "Sandy" Genis
+          votes: 18091
+        - seat: At-Large
+          winner: John Stephens
+          votes: 17869
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Sandra L. "Sandy" Genis
+              votes: 18091
+              outcome: won
+            - name: John Stephens
+              votes: 17869
+              outcome: won
+            - name: Allan R. Mansoor
+              votes: 15187
+              outcome: lost
+            - name: Steve Mensinger
+              votes: 14660
+              outcome: lost
+            - name: Jay Humphrey
+              votes: 14470
+              outcome: lost
+            - name: Lee Ramos
+              votes: 10334
+              outcome: lost
+            - name: Al Melone
+              votes: 4923
+              outcome: lost
+    - year: 2014
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Katrina Foley
+          votes: 9346
+        - seat: At-Large
+          winner: Jim Righeimer
+          votes: 7524
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Katrina Foley
+              votes: 9346
+              outcome: won
+            - name: Jim Righeimer
+              votes: 7524
+              outcome: won
+            - name: Jay Humphrey
+              votes: 7477
+              outcome: lost
+            - name: Lee Ramos
+              votes: 5305
+              outcome: lost
+            - name: Tony Capitelli
+              votes: 1856
+              outcome: lost
+            - name: Al Melone
+              votes: 1470
+              outcome: lost
+            - name: Rita Louise Simpson
+              votes: 1200
+              outcome: lost
+            - name: Christopher Scott Bunyan
+              votes: 1108
+              outcome: lost
+    - year: 2012
+      type: mixed
+      winners:
+        - seat: At-Large
+          winner: Sandra L. "Sandy" Genis
+          votes: 15982
+        - seat: At-Large
+          winner: Steve Mensinger
+          votes: 14199
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Sandra L. "Sandy" Genis
+              votes: 15982
+              outcome: won
+            - name: Steve Mensinger
+              votes: 14199
+              outcome: won
+            - name: Gary Monahan
+              votes: 13945
+              outcome: lost
+            - name: John Stephens
+              votes: 13790
+              outcome: lost
+            - name: Colin Mccarthy
+              votes: 13450
+              outcome: lost
+            - name: Harold Weitzberg
+              votes: 11697
+              outcome: lost
+            - name: Al Melone
+              votes: 3658
+              outcome: lost
+            - name: James Rader
+              votes: 2449
+              outcome: lost
+  districting_info:
+  transition_note:
+  term_limit_type:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
+  nomination_period:

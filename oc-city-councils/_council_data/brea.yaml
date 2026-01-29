@@ -3,122 +3,128 @@ city_name: Brea
 website: https://www.cityofbrea.gov
 council_url: https://www.cityofbrea.gov/511/City-Council
 last_updated: '2026-01-25'
-email: null
-phone: null
-instagram: null
+email:
+phone:
+instagram:
 members:
-- name: Cecilia Hupp
-  position: Mayor
-  district: At-Large
-  email: ceciliah@cityofbrea.gov
-  phone: (714) 990-7704
-  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=3
-  photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=13261
-  bio: Mayor Cecilia Hupp was elected to the Brea City Council in November 2014, and re-elected in 2018 and 2022. She previously
-    served as Mayor in 2017, during Brea’s Centennial Year, and in 2022. During her service on the City Council, Mayor Hupp
-    has championed housing and community development and advocates for affordable housing opportunities for senior citizens.
-    Mayor Hupp has surveyed the progress of innovative, mixed-use developments at La Floresta, Brea Place, and Central Park
-    Village. She has presided over the conversion of repurposed railroad tracks into a 50-acre linear, multi-use trail, known
-    as the Tracks at Brea, as well as the construction of the 57 Freeway/Lambert Road Interchange. Mayor Hupp has also overseen
-    the implementation of two regional homeless Navigation Centers, in partnership with North Orange County Cities, and approved
-    Brea’s first workforce-housing project. In doing so, Mayor Hupp seeks team-building to achieve mutually-beneficial goals.
-    Mayor Hupp considers herself a fiscal conservative, who believes in prudent spending, as well as transparency in government.
-    While in office, she has lobbied both the state and federal levels over issues such as paramedic tax reform, local control,
-    and pension reform. Mayor Hupp exudes fiscal resourcefulness through having established a $10 million PARS irrevocable
-    trust fund account to assist with the City’s employee retirement obligations. Additionally, she judiciously approved a
-    25% fiscal reserve policy for the City of Brea’s annual budget.
-  term_start: 2022
-  term_end: 2026
-- name: Marty Simonoff
-  position: Mayor Pro Tem
-  district: At-Large
-  email: martys@cityofbrea.gov
-  phone: (714) 990-7702
-  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=6
-  photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=12582
-  bio: Mayor Pro Tem Marty Simonoff is currently serving his eighth term on the Brea City Council. He was first elected in
-    November 1996. Mayor Pro Tem Simonoff was re-elected in 2000, 2004, 2008, 2012, 2016, 2020 and 2024. He previously served
-    as Mayor in 1999, 2002, 2007, 2015, 2020 and 2023. Mayor Pro Tem Simonoff’s professional experience includes a career
-    in law enforcement. He retired in 1991 as a Police Captain with the City of Huntington Park. Mayor Pro Tem Simonoff holds
-    a Bachelor of Arts Degree in Political Science from Whittier College, California. Though Mayor Pro Tem Simonoff is retired
-    from public safety, he has maintained a strong interest in all aspects of public safety. He is beginning his 29th year
-    as a member of the National League of Cities' Public Safety and Crime Prevention Policy and Steering Committee, having
-    served as chair in 2006. He is also a 28-year member of the League of California Cities' Public Safety and Crime Prevention
-    Policy Committee and Steering Committee, having served three terms as chair. Mayor Pro Tem Simonoff is a past member of
-    the League of California Cities Board of Directors and served on the board from 2004-2010. He is past president of the
-    Orange County Division of the League of California Cities. Mayor Pro Tem Simonoff also represents the City regionally
-    on the Orange County Council of Governments (OCCOG) and is a Regional Representative on the board for the Southern California
-    Association of Governments (SCAG), he serves as an Ex-Officio Member of the Metrolink Board of Directors.
-  term_start: 2024
-  term_end: 2028
-- name: Blair Stewart
-  position: Councilmember
-  district: At-Large
-  email: blairs@cityofbrea.gov
-  phone: (714) 990-7703
-  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=2
-  photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=13955
-  bio: Council Member Blair Stewart was elected to the Brea City Council in November 2022 and served as Mayor in 2025. He
-    is currently serving on the City's Development Committee, the Wildlife Corridor Conservation Authority, and the Hillside
-    Open Space Education Coalition. Regionally, Council Member Stewart was elected to serve as the 2nd Vice President of the
-    Orange County Division for the League of California Cities. He also serves on Policy Committees for the League of California
-    Cities Governance, Transparency and Labor Relations Committee, and the National League of Cities, Transportation and Infrastructure
-    Committee. Additionally, Council Member Stewart is part of the Orange County Emergency Medical Care Committee, Bridges
-    at Kramer Place Community Advisory Board and serves on the Local Government and Small Business Assistance Advisory Group
-    for the South Coast Air Quality Management District. Council Member Stewart is employed as a Hazardous Materials Firefighter
-    for the City of Torrance Fire Department. Throughout his 25-year career with the department, he also worked as a Certified
-    Film Safety Officer and Recruitment Specialist. Council Member Stewart is a United States Marine Corps veteran who served
-    in active duty for four years, and as a reservist another four years. He was honorably discharged as a Sergeant E5 in
-    August 1999. Council Member Stewart is a long-time resident of Brea. A Brea Olinda High School graduate, he played sports
-    and attended Brea Olinda Unified School District schools. He currently serves on the Orange County Athletic Club Advisory
-    Board located in Brea. Council Member Stewart is a father to two adult daughters and currently lives with his 8-year-old
-    German Schnauzer.
-  term_start: 2024
-  term_end: 2028
-- name: Christine Marick
-  position: Councilmember
-  district: At-Large
-  email: christinem@cityofbrea.gov
-  phone: (714) 990-7700
-  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=4
-  photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=12584
-  bio: Council Member Christine Marick was first elected in 2012, and re-elected in 2016, 2020 and 2024. She has served as
-    Mayor in 2016, 2019, and 2024. Prior to her election to the City Council, she served on the City's Planning Commission.
-    Council Member Marick currently serves on the City’s Investment Advisory Committee, Orange County Sanitation District,
-    Orange County Public Library Advisory Board, Orange County Status of Women and Girls Commission, and the 4th District
-    Representative on the Orange County Waste Management Commission. For the League of California Cities, Council Member Marick
-    serves on the Revenue and Taxation Policy Committee. Born and raised in Washington, DC, Council Member Marick earned her
-    Bachelor of Science degree from Georgetown University and her MBA from the UCLA Anderson School of Management. Council
-    Member Marick has worked in diverse industries, including government, educational services, and investment management.
-    She is currently the Chief Professional Officer for the Boys & Girls Clubs of Brea-Placentia-Yorba Linda. Council Member
-    Marick has called Brea home since 2003. She and her husband were initially drawn to Brea for its hometown feel, abundant
-    shopping and dining, and convenient location. They now appreciate Brea’s high level of community services and citizen
-    involvement as well as the high quality schools.
-  term_start: 2024
-  term_end: 2028
-- name: Steven Vargas
-  position: Councilmember
-  district: At-Large
-  email: stevenv@cityofbrea.gov
-  phone: (714) 990-7701
-  city_page: https://www.cityofbrea.gov/Directory.aspx?EID=5
-  photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=11690
-  bio: Council Member Steven Vargas was most recently elected to the Brea City Council in November 2014, re-elected in 2018
-    and 2022, and served as Mayor in 2021. He also previously served on the City Council from 1998-2002. Council Member Vargas
-    holds a Bachelor’s Degree in Science, Technology from Excelsior College of New York. He is currently a member of the League
-    of California Cities Transportation, Communications & Public Works Policy Committee; the Orange County City Selection
-    Committee; and a member of the North Orange County Cities Joint Powers Authority. Council Member Vargas also serves as
-    a Member of the City’s Development Committee and is an alternate on the Orange County Sanitation District, as well as
-    the Investment Advisory Committee. He previously served the County of Orange as a Third District Executive Assistant,
-    and at the federal level, as an Outreach Coordinator for Puerto Rico Federal Affairs Administration (PRFAA). Council Member
-    Vargas is a member of the United States Navy Reserve (USNR) and holds the rank of Lieutenant Commander, Civil Engineering
-    Corps. He has been activated for military service five times since 9/11, including a one-year deployment to Iraq, Al-Asad,
-    and Falluja, during the 2008-09 surge. Council Member Vargas loves to be involved in the community and serve others. As
-    an engaged volunteer, he has held leadership positions in numerous non-profit organizations over the years including former
-    President, Placentia Boys & Girls Club; previous District Executive for Cub Scout Pack 820; former Commander, Brea Veterans
-    of Foreign Wars Post 5384; and current Adjutant of the Brea American Legion Post 181.
-  term_start: 2022
-  term_end: 2026
+  - name: Cecilia Hupp
+    position: Mayor
+    district: At-Large
+    email: ceciliah@cityofbrea.gov
+    phone: (714) 990-7704
+    city_page: https://www.cityofbrea.gov/Directory.aspx?EID=3
+    photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=13261
+    bio: Mayor Cecilia Hupp was elected to the Brea City Council in November 2014, and re-elected in 2018 and 2022. She 
+      previously served as Mayor in 2017, during Brea’s Centennial Year, and in 2022. During her service on the City 
+      Council, Mayor Hupp has championed housing and community development and advocates for affordable housing 
+      opportunities for senior citizens. Mayor Hupp has surveyed the progress of innovative, mixed-use developments at 
+      La Floresta, Brea Place, and Central Park Village. She has presided over the conversion of repurposed railroad 
+      tracks into a 50-acre linear, multi-use trail, known as the Tracks at Brea, as well as the construction of the 57 
+      Freeway/Lambert Road Interchange. Mayor Hupp has also overseen the implementation of two regional homeless 
+      Navigation Centers, in partnership with North Orange County Cities, and approved Brea’s first workforce-housing 
+      project. In doing so, Mayor Hupp seeks team-building to achieve mutually-beneficial goals. Mayor Hupp considers 
+      herself a fiscal conservative, who believes in prudent spending, as well as transparency in government. While in 
+      office, she has lobbied both the state and federal levels over issues such as paramedic tax reform, local control,
+      and pension reform. Mayor Hupp exudes fiscal resourcefulness through having established a $10 million PARS 
+      irrevocable trust fund account to assist with the City’s employee retirement obligations. Additionally, she 
+      judiciously approved a 25% fiscal reserve policy for the City of Brea’s annual budget.
+    term_start: 2022
+    term_end: 2026
+  - name: Marty Simonoff
+    position: Mayor Pro Tem
+    district: At-Large
+    email: martys@cityofbrea.gov
+    phone: (714) 990-7702
+    city_page: https://www.cityofbrea.gov/Directory.aspx?EID=6
+    photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=12582
+    bio: Mayor Pro Tem Marty Simonoff is currently serving his eighth term on the Brea City Council. He was first 
+      elected in November 1996. Mayor Pro Tem Simonoff was re-elected in 2000, 2004, 2008, 2012, 2016, 2020 and 2024. He
+      previously served as Mayor in 1999, 2002, 2007, 2015, 2020 and 2023. Mayor Pro Tem Simonoff’s professional 
+      experience includes a career in law enforcement. He retired in 1991 as a Police Captain with the City of 
+      Huntington Park. Mayor Pro Tem Simonoff holds a Bachelor of Arts Degree in Political Science from Whittier 
+      College, California. Though Mayor Pro Tem Simonoff is retired from public safety, he has maintained a strong 
+      interest in all aspects of public safety. He is beginning his 29th year as a member of the National League of 
+      Cities' Public Safety and Crime Prevention Policy and Steering Committee, having served as chair in 2006. He is 
+      also a 28-year member of the League of California Cities' Public Safety and Crime Prevention Policy Committee and 
+      Steering Committee, having served three terms as chair. Mayor Pro Tem Simonoff is a past member of the League of 
+      California Cities Board of Directors and served on the board from 2004-2010. He is past president of the Orange 
+      County Division of the League of California Cities. Mayor Pro Tem Simonoff also represents the City regionally on 
+      the Orange County Council of Governments (OCCOG) and is a Regional Representative on the board for the Southern 
+      California Association of Governments (SCAG), he serves as an Ex-Officio Member of the Metrolink Board of 
+      Directors.
+    term_start: 2024
+    term_end: 2028
+  - name: Blair Stewart
+    position: Councilmember
+    district: At-Large
+    email: blairs@cityofbrea.gov
+    phone: (714) 990-7703
+    city_page: https://www.cityofbrea.gov/Directory.aspx?EID=2
+    photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=13955
+    bio: Council Member Blair Stewart was elected to the Brea City Council in November 2022 and served as Mayor in 2025.
+      He is currently serving on the City's Development Committee, the Wildlife Corridor Conservation Authority, and the
+      Hillside Open Space Education Coalition. Regionally, Council Member Stewart was elected to serve as the 2nd Vice 
+      President of the Orange County Division for the League of California Cities. He also serves on Policy Committees 
+      for the League of California Cities Governance, Transparency and Labor Relations Committee, and the National 
+      League of Cities, Transportation and Infrastructure Committee. Additionally, Council Member Stewart is part of the
+      Orange County Emergency Medical Care Committee, Bridges at Kramer Place Community Advisory Board and serves on the
+      Local Government and Small Business Assistance Advisory Group for the South Coast Air Quality Management District.
+      Council Member Stewart is employed as a Hazardous Materials Firefighter for the City of Torrance Fire Department. 
+      Throughout his 25-year career with the department, he also worked as a Certified Film Safety Officer and 
+      Recruitment Specialist. Council Member Stewart is a United States Marine Corps veteran who served in active duty 
+      for four years, and as a reservist another four years. He was honorably discharged as a Sergeant E5 in August 
+      1999. Council Member Stewart is a long-time resident of Brea. A Brea Olinda High School graduate, he played sports
+      and attended Brea Olinda Unified School District schools. He currently serves on the Orange County Athletic Club 
+      Advisory Board located in Brea. Council Member Stewart is a father to two adult daughters and currently lives with
+      his 8-year-old German Schnauzer.
+    term_start: 2024
+    term_end: 2028
+  - name: Christine Marick
+    position: Councilmember
+    district: At-Large
+    email: christinem@cityofbrea.gov
+    phone: (714) 990-7700
+    city_page: https://www.cityofbrea.gov/Directory.aspx?EID=4
+    photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=12584
+    bio: Council Member Christine Marick was first elected in 2012, and re-elected in 2016, 2020 and 2024. She has 
+      served as Mayor in 2016, 2019, and 2024. Prior to her election to the City Council, she served on the City's 
+      Planning Commission. Council Member Marick currently serves on the City’s Investment Advisory Committee, Orange 
+      County Sanitation District, Orange County Public Library Advisory Board, Orange County Status of Women and Girls 
+      Commission, and the 4th District Representative on the Orange County Waste Management Commission. For the League 
+      of California Cities, Council Member Marick serves on the Revenue and Taxation Policy Committee. Born and raised 
+      in Washington, DC, Council Member Marick earned her Bachelor of Science degree from Georgetown University and her 
+      MBA from the UCLA Anderson School of Management. Council Member Marick has worked in diverse industries, including
+      government, educational services, and investment management. She is currently the Chief Professional Officer for 
+      the Boys & Girls Clubs of Brea-Placentia-Yorba Linda. Council Member Marick has called Brea home since 2003. She 
+      and her husband were initially drawn to Brea for its hometown feel, abundant shopping and dining, and convenient 
+      location. They now appreciate Brea’s high level of community services and citizen involvement as well as the high 
+      quality schools.
+    term_start: 2024
+    term_end: 2028
+  - name: Steven Vargas
+    position: Councilmember
+    district: At-Large
+    email: stevenv@cityofbrea.gov
+    phone: (714) 990-7701
+    city_page: https://www.cityofbrea.gov/Directory.aspx?EID=5
+    photo_url: https://www.cityofbrea.gov/ImageRepository/Document?documentId=11690
+    bio: Council Member Steven Vargas was most recently elected to the Brea City Council in November 2014, re-elected in
+      2018 and 2022, and served as Mayor in 2021. He also previously served on the City Council from 1998-2002. Council 
+      Member Vargas holds a Bachelor’s Degree in Science, Technology from Excelsior College of New York. He is currently
+      a member of the League of California Cities Transportation, Communications & Public Works Policy Committee; the 
+      Orange County City Selection Committee; and a member of the North Orange County Cities Joint Powers Authority. 
+      Council Member Vargas also serves as a Member of the City’s Development Committee and is an alternate on the 
+      Orange County Sanitation District, as well as the Investment Advisory Committee. He previously served the County 
+      of Orange as a Third District Executive Assistant, and at the federal level, as an Outreach Coordinator for Puerto
+      Rico Federal Affairs Administration (PRFAA). Council Member Vargas is a member of the United States Navy Reserve 
+      (USNR) and holds the rank of Lieutenant Commander, Civil Engineering Corps. He has been activated for military 
+      service five times since 9/11, including a one-year deployment to Iraq, Al-Asad, and Falluja, during the 2008-09 
+      surge. Council Member Vargas loves to be involved in the community and serve others. As an engaged volunteer, he 
+      has held leadership positions in numerous non-profit organizations over the years including former President, 
+      Placentia Boys & Girls Club; previous District Executive for Cub Scout Pack 820; former Commander, Brea Veterans 
+      of Foreign Wars Post 5384; and current Adjutant of the Brea American Legion Post 181.
+    term_start: 2022
+    term_end: 2026
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 7:00 PM
@@ -126,26 +132,26 @@ meetings:
     name: City Council Chambers
     address: 1 Civic Center Circle
     city_state_zip: Brea, CA 92821
-  closed_session_time: null
+  closed_session_time:
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://www.cityofbrea.gov/509/Meeting-Agendas-Minutes
   live_stream: https://www.cityofbrea.gov/812/Government-Access-Channel
-  video_archive: null
-  ecomment: null
-  youtube: null
-  document_center: null
-  municipal_code: null
+  video_archive:
+  ecomment:
+  youtube:
+  document_center:
+  municipal_code:
 broadcast:
   cable_channels:
-  - provider: Spectrum
-    channel: '3'
-  - provider: AT&T U-Verse
-    channel: '99'
+    - provider: Spectrum
+      channel: '3'
+    - provider: AT&T U-Verse
+      channel: '99'
   live_stream: https://www.cityofbrea.gov/812/Government-Access-Channel
 clerk:
   name: Victoria Popescu
@@ -153,7 +159,7 @@ clerk:
   phone: (714) 990-7756
   email: cityclerksgroup@cityofbrea.gov
   address: 1 Civic Center Circle, Brea, CA 92821
-  fax: null
+  fax:
 public_comment:
   in_person: true
   remote_live: true
@@ -162,43 +168,229 @@ public_comment:
   written_email: true
   time_limit: 3 minutes per speaker
   email: cityclerksgroup@cityofbrea.gov
-  deadline: null
-  notes: null
+  deadline:
+  notes:
 council:
   size: 5
   districts: 0
   at_large: 5
   mayor_elected: false
-  expanded_date: null
+  expanded_date:
   notes: City Council voted April 2022 not to proceed with by-district elections
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - At-Large (2 seats)
+    - At-Large (2 seats)
   term_length: 4
   election_system: at-large
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Christine Marick
+          votes: 10873
+        - seat: At-Large
+          winner: Marty Simonoff
+          votes: 8263
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Christine Marick
+              votes: 10873
+              outcome: won
+            - name: Marty Simonoff
+              votes: 8263
+              outcome: won
+            - name: Bill Klovstad
+              votes: 7689
+              outcome: lost
+            - name: Thomas Donini
+              votes: 6561
+              outcome: lost
+    - year: 2022
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Steven C. Vargas
+          votes: 9029
+        - seat: At-Large
+          winner: Blair Stewart
+          votes: 8880
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Steven C. Vargas
+              votes: 9029
+              outcome: won
+            - name: Blair Stewart
+              votes: 8880
+              outcome: won
+            - name: Cecilia Hupp
+              votes: 8711
+              outcome: lost
+            - name: Kari J. Windes
+              votes: 4177
+              outcome: lost
+            - name: Andrew Herrera
+              votes: 3650
+              outcome: lost
+    - year: 2020
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Christine Marick
+          votes: 13107
+        - seat: At-Large
+          winner: Marty Simonoff
+          votes: 11538
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Christine Marick
+              votes: 13107
+              outcome: won
+            - name: Marty Simonoff
+              votes: 11538
+              outcome: won
+            - name: Tyler Baugh
+              votes: 7302
+              outcome: lost
+            - name: Robyn Neufeld
+              votes: 4120
+              outcome: lost
+    - year: 2018
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Cecilia Hupp
+          votes: 9726
+        - seat: At-Large
+          winner: Steven Vargas
+          votes: 7731
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Cecilia Hupp
+              votes: 9726
+              outcome: won
+            - name: Steven Vargas
+              votes: 7731
+              outcome: won
+            - name: Glenn G. Parker
+              votes: 6948
+              outcome: lost
+            - name: Steve Shatynski
+              votes: 5788
+              outcome: lost
+            - name: Bill R. Hall
+              votes: 5171
+              outcome: lost
+            - name: Blake Perez
+              votes: 3016
+              outcome: lost
+            - name: Sean Thomas
+              votes: 2242
+              outcome: lost
+    - year: 2016
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Christine Marick
+          votes: 11476
+        - seat: At-Large
+          winner: Marty Simonoff
+          votes: 9765
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Christine Marick
+              votes: 11476
+              outcome: won
+            - name: Marty Simonoff
+              votes: 9765
+              outcome: won
+            - name: Christopher Parkin
+              votes: 6029
+              outcome: lost
+    - year: 2014
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Cecilia Hupp
+          votes: 5921
+        - seat: At-Large
+          winner: Steven Vargas
+          votes: 4998
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Cecilia Hupp
+              votes: 5921
+              outcome: won
+            - name: Steven Vargas
+              votes: 4998
+              outcome: won
+            - name: Glenn G. Parker
+              votes: 4198
+              outcome: lost
+            - name: Brett Murdock
+              votes: 3365
+              outcome: lost
+            - name: Michael Kim
+              votes: 3197
+              outcome: lost
+            - name: Marc Harris
+              votes: 2807
+              outcome: lost
+    - year: 2012
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Christine Marick
+          votes: 8918
+        - seat: At-Large
+          winner: Marty Simonoff
+          votes: 8665
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Christine Marick
+              votes: 8918
+              outcome: won
+            - name: Marty Simonoff
+              votes: 8665
+              outcome: won
+            - name: Steven Vargas
+              votes: 7374
+              outcome: lost
+            - name: Chris Parkin
+              votes: 1715
+              outcome: lost
+            - name: Tory Stone
+              votes: 750
+              outcome: lost

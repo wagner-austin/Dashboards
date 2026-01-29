@@ -7,56 +7,61 @@ email: council@lakeforestca.gov
 phone: (949) 461-3400
 instagram: ''
 members:
-- name: Robert Pequeño
-  position: Mayor
-  district: District 5
-  email: rpequeno@lakeforestca.gov
-  phone: (949) 461-3425
-  city_page: https://www.lakeforestca.gov/business_detail_T5_R11.php
-  photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Mayor-Pro-Tem-Robert-Peque%C3%B1o.jpg?t=202508141138220
-  bio: ''
-  term_start: 2024
-  term_end: 2028
-- name: Doug Cirbo
-  position: Mayor Pro Tem
-  district: District 1
-  email: dcirbo@lakeforestca.gov
-  phone: (949) 461-3425
-  city_page: https://www.lakeforestca.gov/business_detail_T5_R12.php
-  photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Council-Member-Doug-Cirbo.jpg?t=202508141138140
-  bio: ''
-  term_start: 2024
-  term_end: 2028
-- name: Benjamin Yu
-  position: Councilmember
-  district: District 2
-  email: byu@lakeforestca.gov
-  phone: (949) 461-3425
-  city_page: https://www.lakeforestca.gov/business_detail_T5_R14.php
-  photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Council-Member-Benjamin-Yu.jpg?t=202508141138140
-  bio: ''
-  term_start: 2022
-  term_end: 2026
-- name: Mark Tettemer
-  position: Councilmember
-  district: District 4
-  email: mtettemer@lakeforestca.gov
-  phone: (949) 461-3425
-  city_page: https://www.lakeforestca.gov/business_detail_T5_R13.php
-  photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Council-Member-Mark-Tettemer.png?t=202508141138140
-  bio: ''
-  term_start: 2022
-  term_end: 2026
-- name: Scott Voigts
-  position: Councilmember
-  district: District 3
-  email: svoigts@lakeforestca.gov
-  phone: (949) 461-3425
-  city_page: https://www.lakeforestca.gov/business_detail_T5_R10.php
-  photo_url: https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Mayor-Scott-Voigts.jpg?t=202508141138170
-  bio: ''
-  term_start: 2022
-  term_end: 2026
+  - name: Robert Pequeño
+    position: Mayor
+    district: District 5
+    email: rpequeno@lakeforestca.gov
+    phone: (949) 461-3425
+    city_page: https://www.lakeforestca.gov/business_detail_T5_R11.php
+    photo_url: 
+      https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Mayor-Pro-Tem-Robert-Peque%C3%B1o.jpg?t=202508141138220
+    bio: ''
+    term_start: 2024
+    term_end: 2028
+  - name: Doug Cirbo
+    position: Mayor Pro Tem
+    district: District 1
+    email: dcirbo@lakeforestca.gov
+    phone: (949) 461-3425
+    city_page: https://www.lakeforestca.gov/business_detail_T5_R12.php
+    photo_url: 
+      https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Council-Member-Doug-Cirbo.jpg?t=202508141138140
+    bio: ''
+    term_start: 2024
+    term_end: 2028
+  - name: Benjamin Yu
+    position: Councilmember
+    district: District 2
+    email: byu@lakeforestca.gov
+    phone: (949) 461-3425
+    city_page: https://www.lakeforestca.gov/business_detail_T5_R14.php
+    photo_url: 
+      https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Council-Member-Benjamin-Yu.jpg?t=202508141138140
+    bio: ''
+    term_start: 2022
+    term_end: 2026
+  - name: Mark Tettemer
+    position: Councilmember
+    district: District 4
+    email: mtettemer@lakeforestca.gov
+    phone: (949) 461-3425
+    city_page: https://www.lakeforestca.gov/business_detail_T5_R13.php
+    photo_url: 
+      https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Council-Member-Mark-Tettemer.png?t=202508141138140
+    bio: ''
+    term_start: 2022
+    term_end: 2026
+  - name: Scott Voigts
+    position: Councilmember
+    district: District 3
+    email: svoigts@lakeforestca.gov
+    phone: (949) 461-3425
+    city_page: https://www.lakeforestca.gov/business_detail_T5_R10.php
+    photo_url: 
+      https://www.lakeforestca.gov/bus-directory/City%20Council%20Members/Mayor-Scott-Voigts.jpg?t=202508141138170
+    bio: ''
+    term_start: 2022
+    term_end: 2026
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 6:30 PM
@@ -67,19 +72,19 @@ meetings:
     city_state_zip: Lake Forest, CA 92630
   agenda_availability: 72 hours prior (Friday before Tuesday meetings)
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://www.lakeforestca.gov/city_government/agendas_and_minutes/index.php
   live_stream: https://www.facebook.com/lakeforestca
   youtube: https://www.youtube.com/@CityofLakeForestCA1991
   facebook: https://www.facebook.com/lakeforestca
-  document_center: null
-  municipal_code: null
-  ecomment: null
-  video_archive: null
+  document_center:
+  municipal_code:
+  ecomment:
+  video_archive:
 broadcast:
   live_stream: https://www.facebook.com/lakeforestca
   platform: Facebook Live
@@ -89,8 +94,8 @@ clerk:
   title: Acting City Clerk
   phone: (949) 461-3420
   email: council@lakeforestca.gov
-  fax: null
-  address: null
+  fax:
+  address:
 public_comment:
   in_person: true
   remote_live: true
@@ -107,38 +112,297 @@ council:
   districts: 5
   at_large: 0
   mayor_elected: false
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - District 2
-  - District 3
-  - District 4
+    - District 2
+    - District 3
+    - District 4
   term_length: 4
   election_system: by-district
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Doug Cirbo
+          votes: 7133
+        - district: District 5
+          winner: Robert Pequeno
+          votes: 5869
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Doug Cirbo
+              votes: 7133
+              outcome: won
+        - district: District 5
+          candidates:
+            - name: Robert Pequeno
+              votes: 5869
+              outcome: won
+    - year: 2022
+      type: by-district
+      winners:
+        - district: District 2
+          winner: Benjamin Yu
+          votes: 2764
+        - district: District 3
+          winner: Scott Voigts
+          votes: 3746
+        - district: District 4
+          winner: Mark Tettemer
+          votes: 4736
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Benjamin Yu
+              votes: 2764
+              outcome: won
+            - name: Suzy Betz
+              votes: 1308
+              outcome: lost
+            - name: Bob Stuart
+              votes: 875
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Scott Voigts
+              votes: 3746
+              outcome: won
+        - district: District 4
+          candidates:
+            - name: Mark Tettemer
+              votes: 4736
+              outcome: won
+    - year: 2020
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Doug Cirbo
+          votes: 1976
+        - district: District 5
+          winner: Robert Pequeño
+          votes: 3133
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Doug Cirbo
+              votes: 1976
+              outcome: won
+            - name: Chris Mcdonald
+              votes: 1954
+              outcome: lost
+            - name: Richa Sharma
+              votes: 1678
+              outcome: lost
+            - name: Louise M Robertson
+              votes: 1604
+              outcome: lost
+            - name: Lori Berger
+              votes: 985
+              outcome: lost
+            - name: Nick Tanner
+              votes: 378
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Robert Pequeño
+              votes: 3133
+              outcome: won
+            - name: Jeannette J. Nadal
+              votes: 1000
+              outcome: lost
+            - name: Larissa Clark
+              votes: 738
+              outcome: lost
+            - name: Frank Wagoner
+              votes: 422
+              outcome: lost
+            - name: Shane Jones
+              votes: 269
+              outcome: lost
+    - year: 2018
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Yes
+          votes: 24030
+        - seat: At-Large
+          winner: No
+          votes: 16069
+        - district: District 2
+          winner: Neeki Moatazedi
+          votes: 4194
+        - district: District 3
+          winner: Scott (Scottie) Voigts
+          votes: 4206
+        - district: District 4
+          winner: Mark Tettemer
+          votes: 3333
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Yes
+              votes: 24030
+              outcome: won
+            - name: No
+              votes: 16069
+              outcome: won
+        - district: District 2
+          candidates:
+            - name: Neeki Moatazedi
+              votes: 4194
+              outcome: won
+            - name: Sonny Morper
+              votes: 3066
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Scott (Scottie) Voigts
+              votes: 4206
+              outcome: won
+        - district: District 4
+          candidates:
+            - name: Mark Tettemer
+              votes: 3333
+              outcome: won
+            - name: Jim Gardner
+              votes: 2874
+              outcome: lost
+    - year: 2016
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Leah Basile
+          votes: 13912
+        - seat: At-Large
+          winner: Dwight Robinson
+          votes: 9984
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Leah Basile
+              votes: 13912
+              outcome: won
+            - name: Dwight Robinson
+              votes: 9984
+              outcome: won
+            - name: Adam Nick
+              votes: 9885
+              outcome: lost
+            - name: Francisco Barajas
+              votes: 7939
+              outcome: lost
+            - name: Frank Wagoner
+              votes: 6862
+              outcome: lost
+            - name: Farh Semnani
+              votes: 3002
+              outcome: lost
+    - year: 2014
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Scott Voigts
+          votes: 6706
+        - seat: At-Large
+          winner: Jim Gardner
+          votes: 6292
+        - seat: Mayor
+          winner: Yes
+          votes: 12534
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Scott Voigts
+              votes: 6706
+              outcome: won
+            - name: Jim Gardner
+              votes: 6292
+              outcome: won
+            - name: Andrew "Drew" Hamilton
+              votes: 6068
+              outcome: lost
+            - name: Thomas Cagley
+              votes: 5637
+              outcome: lost
+            - name: David A. Bass
+              votes: 5373
+              outcome: lost
+            - name: Liz Miller
+              votes: 4861
+              outcome: lost
+            - name: Kathryn (Kathy) Mccullough
+              votes: 4407
+              outcome: lost
+            - name: Mike Healey
+              votes: 2541
+              outcome: lost
+        - district: Mayor
+          candidates:
+            - name: Yes
+              votes: 12534
+              outcome: won
+            - name: No
+              votes: 3693
+              outcome: lost
+    - year: 2012
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Adam Nick
+          votes: 10279
+        - seat: At-Large
+          winner: Dwight Robinson
+          votes: 9381
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Adam Nick
+              votes: 10279
+              outcome: won
+            - name: Dwight Robinson
+              votes: 9381
+              outcome: won
+            - name: Terry D. Anderson
+              votes: 7183
+              outcome: lost
+            - name: Jim Gardner
+              votes: 5894
+              outcome: lost
+            - name: Marcia Rudolph
+              votes: 5675
+              outcome: lost
+            - name: Kathy "Kathyz" Zechmeister
+              votes: 5420
+              outcome: lost
+            - name: Ken Carrell
+              votes: 3207
+              outcome: lost

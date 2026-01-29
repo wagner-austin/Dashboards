@@ -5,68 +5,73 @@ council_url: https://villapark.org/council-and-committees/city-council
 last_updated: '2026-01-26'
 email: info@villapark.org
 phone: (714) 998-1500
-instagram: null
+instagram:
 members:
-- name: Jordan Wu
-  position: Mayor
-  district: At-Large
-  email: jwu@villapark.org
-  phone: (714) 998-1500
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Jordan-Wu-Bio
-  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/JordanWu-2024-villaparkcitycouncil43297--retouched.jpg?ver=6ICLYQmCmPSdstJNQnYBBg%3d%3d
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Robert Frackelton
-  position: Mayor Pro Tem
-  district: At-Large
-  email: rfrackelton@villapark.org
-  phone: (714) 998-1500
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Robert-Frackelton-Bio
-  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Frackelton-2024-villaparkcitycouncil43322--retouched.jpg?ver=gZKhLn3Pl7KY3QB4jm4eTQ%3d%3d
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Nicol Jones
-  position: Councilmember
-  district: At-Large
-  email: njones@villapark.org
-  phone: (714) 998-1500
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Nicol-Jones-Bio
-  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/2024 Jones.jpg?ver=NOVq8QqYJd3vICxLHZlxWw%3d%3d
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Kelly McBride
-  position: Councilmember
-  district: At-Large
-  email: kmcbride@villapark.org
-  phone: (714) 998-1500
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio
-  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Kelly-2024-villaparkcitycouncil43380--retouched.jpg?ver=UQLZMUTZcuqyXxz-OuW9Rw%3d%3d
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Crystal Miles
-  position: Councilmember
-  district: At-Large
-  email: cmiles@villapark.org
-  phone: (714) 998-1500
-  city_page: https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio
-  photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Miles-2024-villaparkcitycouncil43416--retouched.jpg?ver=Y18dsDaPXyl1OfV3aRiwFg%3d%3d
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
+  - name: Jordan Wu
+    position: Mayor
+    district: At-Large
+    email: jwu@villapark.org
+    phone: (714) 998-1500
+    city_page: https://villapark.org/Council-and-Committees/City-Council/Jordan-Wu-Bio
+    photo_url: 
+      https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/JordanWu-2024-villaparkcitycouncil43297--retouched.jpg?ver=6ICLYQmCmPSdstJNQnYBBg%3d%3d
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Robert Frackelton
+    position: Mayor Pro Tem
+    district: At-Large
+    email: rfrackelton@villapark.org
+    phone: (714) 998-1500
+    city_page: https://villapark.org/Council-and-Committees/City-Council/Robert-Frackelton-Bio
+    photo_url: 
+      https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Frackelton-2024-villaparkcitycouncil43322--retouched.jpg?ver=gZKhLn3Pl7KY3QB4jm4eTQ%3d%3d
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Nicol Jones
+    position: Councilmember
+    district: At-Large
+    email: njones@villapark.org
+    phone: (714) 998-1500
+    city_page: https://villapark.org/Council-and-Committees/City-Council/Nicol-Jones-Bio
+    photo_url: https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/2024 
+      Jones.jpg?ver=NOVq8QqYJd3vICxLHZlxWw%3d%3d
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Kelly McBride
+    position: Councilmember
+    district: At-Large
+    email: kmcbride@villapark.org
+    phone: (714) 998-1500
+    city_page: https://villapark.org/Council-and-Committees/City-Council/Kelly-McBride-Bio
+    photo_url: 
+      https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Kelly-2024-villaparkcitycouncil43380--retouched.jpg?ver=UQLZMUTZcuqyXxz-OuW9Rw%3d%3d
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Crystal Miles
+    position: Councilmember
+    district: At-Large
+    email: cmiles@villapark.org
+    phone: (714) 998-1500
+    city_page: https://villapark.org/Council-and-Committees/City-Council/Crystal-Miles-Bio
+    photo_url: 
+      https://villapark.org/portals/0/Images/Council-And-Committees/City-Council/2024/Miles-2024-villaparkcitycouncil43416--retouched.jpg?ver=Y18dsDaPXyl1OfV3aRiwFg%3d%3d
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
 meetings:
   schedule: 4th Tuesday
   time: 6:30 PM
@@ -74,34 +79,35 @@ meetings:
     name: Council Chambers
     address: 17855 Santiago Boulevard
     city_state_zip: Villa Park, CA 92861
-  closed_session_time: null
+  closed_session_time:
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
-  agendas: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=780&view=gridview&pageSize=10
+  agendas: 
+    https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=780&view=gridview&pageSize=10
   live_stream: https://villapark.org
   video_archive: https://villapark.org/Council-and-Committees/Council-Meeting-Videos/LCmid/667/sort-desc/datecreated
   youtube: https://youtube.com/@cityofvillapark
-  document_center: null
-  municipal_code: null
-  ecomment: null
+  document_center:
+  municipal_code:
+  ecomment:
 broadcast:
   cable_channels:
-  - provider: Spectrum
-    channel: '3'
-  - provider: AT&T U-verse
-    channel: '99'
-  live_stream: null
+    - provider: Spectrum
+      channel: '3'
+    - provider: AT&T U-verse
+      channel: '99'
+  live_stream:
 clerk:
   name: Steve Franks
   title: City Manager/City Clerk
   phone: (714) 998-1500
   email: sfranks@villapark.org
-  fax: null
-  address: null
+  fax:
+  address:
 public_comment:
   in_person: true
   remote_live: false
@@ -116,36 +122,162 @@ council:
   districts: 0
   at_large: 5
   mayor_elected: false
-  expanded_date: null
+  expanded_date:
   notes: All members elected at-large
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - At-Large (3 seats)
+    - At-Large (3 seats)
   term_length: 4
   election_system: at-large
   term_limit: 2
   term_limit_type: terms
   term_limit_notes: Two full terms
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Robert Frackelton
+          votes: 2476
+        - seat: At-Large
+          winner: Kelly Mcbride
+          votes: 1748
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Robert Frackelton
+              votes: 2476
+              outcome: won
+            - name: Kelly Mcbride
+              votes: 1748
+              outcome: won
+            - name: Lawrence Talebi
+              votes: 1210
+              outcome: lost
+            - name: Yan Killy
+              votes: 779
+              outcome: lost
+    - year: 2022
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Crystal K. Miles
+          votes: 1801
+        - seat: At-Large
+          winner: Nicol Jones
+          votes: 1458
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Crystal K. Miles
+              votes: 1801
+              outcome: won
+            - name: Nicol Jones
+              votes: 1458
+              outcome: won
+            - name: Jordan Wu
+              votes: 1350
+              outcome: lost
+            - name: Donna Buxton
+              votes: 1344
+              outcome: lost
+            - name: Marybeth Felcyn
+              votes: 1057
+              outcome: lost
+    - year: 2018
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Crystal K. Miles
+          votes: 2194
+        - seat: At-Large
+          winner: Chad Zimmerman
+          votes: 2065
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Crystal K. Miles
+              votes: 2194
+              outcome: won
+            - name: Chad Zimmerman
+              votes: 2065
+              outcome: won
+            - name: Robert Collacott
+              votes: 1698
+              outcome: lost
+            - name: Diana C. Fascenelli
+              votes: 1480
+              outcome: lost
+    - year: 2016
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Vince Rossini
+          votes: 1769
+        - seat: At-Large
+          winner: Robert (Robbie) Pitts
+          votes: 1737
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Vince Rossini
+              votes: 1769
+              outcome: won
+            - name: Robert (Robbie) Pitts
+              votes: 1737
+              outcome: won
+            - name: Howard Kirschner
+              votes: 1639
+              outcome: lost
+    - year: 2014
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Bill Nelson
+          votes: 1362
+        - seat: At-Large
+          winner: Robert Collacott
+          votes: 1251
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Bill Nelson
+              votes: 1362
+              outcome: won
+            - name: Robert Collacott
+              votes: 1251
+              outcome: won
+            - name: Diana C. Fascenelli
+              votes: 1156
+              outcome: lost
+            - name: Karl Kreutziger
+              votes: 1040
+              outcome: lost
+            - name: Sanjay "Jay" Khetani
+              votes: 730
+              outcome: lost
+            - name: Stephen Miller
+              votes: 643
+              outcome: lost

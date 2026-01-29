@@ -7,70 +7,70 @@ email: ''
 phone: ''
 instagram: ''
 members:
-- name: Annie McCary
-  position: Mayor
-  district: At-Large
-  email: amccary@cityoflagunawoods.org
-  phone: (949) 639-0500
-  city_page: https://www.cityoflagunawoods.org/city-council/
-  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/McCary_Annie-2024e-236x300.jpg
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Pearl Lee
-  position: Mayor Pro Tem
-  district: At-Large
-  email: plee@cityoflagunawoods.org
-  phone: (949) 639-0500
-  city_page: https://www.cityoflagunawoods.org/city-council/
-  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Lee_Pearl-2024e-236x300.jpg
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Carol Moore
-  position: Councilmember
-  district: At-Large
-  email: cmoore@cityoflagunawoods.org
-  phone: (949) 639-0500
-  city_page: https://www.cityoflagunawoods.org/city-council/
-  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Moore_Carol-2024e-236x300.jpg
-  bio: null
-  term_start: 2014
-  term_end: 2026
-  website: null
-  instagram: null
-  first_elected: 2014
-- name: Cynthia Conners
-  position: Councilmember
-  district: At-Large
-  email: cconners@cityoflagunawoods.org
-  phone: (949) 639-0500
-  city_page: https://www.cityoflagunawoods.org/city-council/
-  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/02/Conners_Cynthia-2024e-236x300.jpg
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-  first_appointed: 2009
-  first_elected: 2012
-- name: Shari L. Horne
-  position: Councilmember
-  district: At-Large
-  email: shorne@cityoflagunawoods.org
-  phone: (949) 639-0500
-  city_page: https://www.cityoflagunawoods.org/city-council/
-  photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/02/Horne_Shari-2024e-236x300.jpg
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-  first_appointed: 2014
+  - name: Annie McCary
+    position: Mayor
+    district: At-Large
+    email: amccary@cityoflagunawoods.org
+    phone: (949) 639-0500
+    city_page: https://www.cityoflagunawoods.org/city-council/
+    photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/McCary_Annie-2024e-236x300.jpg
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Pearl Lee
+    position: Mayor Pro Tem
+    district: At-Large
+    email: plee@cityoflagunawoods.org
+    phone: (949) 639-0500
+    city_page: https://www.cityoflagunawoods.org/city-council/
+    photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Lee_Pearl-2024e-236x300.jpg
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Carol Moore
+    position: Councilmember
+    district: At-Large
+    email: cmoore@cityoflagunawoods.org
+    phone: (949) 639-0500
+    city_page: https://www.cityoflagunawoods.org/city-council/
+    photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/Moore_Carol-2024e-236x300.jpg
+    bio:
+    term_start: 2014
+    term_end: 2026
+    website:
+    instagram:
+    first_elected: 2014
+  - name: Cynthia Conners
+    position: Councilmember
+    district: At-Large
+    email: cconners@cityoflagunawoods.org
+    phone: (949) 639-0500
+    city_page: https://www.cityoflagunawoods.org/city-council/
+    photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/02/Conners_Cynthia-2024e-236x300.jpg
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+    first_appointed: 2009
+    first_elected: 2012
+  - name: Shari L. Horne
+    position: Councilmember
+    district: At-Large
+    email: shorne@cityoflagunawoods.org
+    phone: (949) 639-0500
+    city_page: https://www.cityoflagunawoods.org/city-council/
+    photo_url: https://www.cityoflagunawoods.org/wp-content/uploads/2025/02/Horne_Shari-2024e-236x300.jpg
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+    first_appointed: 2014
 meetings:
   schedule: 3rd Wednesday
   time: 2:00 PM
@@ -80,27 +80,27 @@ meetings:
     city_state_zip: Laguna Woods, CA 92637
   remote:
     zoom_phone:
-    - (669) 444-9171
-    - (346) 248-7799
+      - (669) 444-9171
+      - (346) 248-7799
     zoom_id: 873 1726 2653
     zoom_passcode: '104459'
     notes: View only - public comments NOT accepted via Zoom
-    phone_numbers: null
-    zoom_url: null
-  closed_session_time: null
+    phone_numbers:
+    zoom_url:
+  closed_session_time:
 portals:
   agendas: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
   live_stream: https://www.youtube.com/@cityoflagunawoods
   video_archive: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
   youtube: https://www.youtube.com/@cityoflagunawoods
   email_notifications: https://www.cityoflagunawoods.org/email-notifications
-  document_center: null
-  municipal_code: null
-  ecomment: null
+  document_center:
+  municipal_code:
+  ecomment:
 broadcast:
   cable_channels:
-  - provider: Local Cable
-    channel: '31'
+    - provider: Local Cable
+      channel: '31'
   live_stream: https://www.youtube.com/@cityoflagunawoods
 clerk:
   title: City Clerk's Office
@@ -108,8 +108,8 @@ clerk:
   tty: (949) 639-0535
   email: cityhall@cityoflagunawoods.org
   address: 24264 El Toro Road, Laguna Woods, CA 92637
-  fax: null
-  name: null
+  fax:
+  name:
 public_comment:
   in_person: true
   remote_live: false
@@ -119,42 +119,195 @@ public_comment:
   email: cityhall@cityoflagunawoods.org
   speaker_card: Submit to City staff or proceed to podium
   notes: Public comments NOT accepted via Zoom, YouTube, or cable TV - in person only
-  deadline: null
+  deadline:
 council:
   size: 5
   districts: 0
   at_large: 5
   mayor_elected: false
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - At-Large (2 seats)
+    - At-Large (2 seats)
   term_length: 4
   election_system: at-large
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Shari L. Horne
+          votes: 7718
+        - seat: At-Large
+          winner: Cynthia S. Conners
+          votes: 7327
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Shari L. Horne
+              votes: 7718
+              outcome: won
+            - name: Cynthia S. Conners
+              votes: 7327
+              outcome: won
+            - name: Eun Ju "Pearl" Lee
+              votes: 5949
+              outcome: lost
+            - name: James Ping-Ya Tung
+              votes: 3941
+              outcome: lost
+    - year: 2022
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Carol Moore
+          votes: 6027
+        - seat: At-Large
+          winner: Annie Mccary
+          votes: 4730
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Carol Moore
+              votes: 6027
+              outcome: won
+            - name: Annie Mccary
+              votes: 4730
+              outcome: won
+            - name: Edward H. Tao
+              votes: 3418
+              outcome: lost
+    - year: 2020
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Noel Hatch
+          votes: 6343
+        - seat: At-Large
+          winner: Shari L Horne
+          votes: 5916
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Noel Hatch
+              votes: 6343
+              outcome: won
+            - name: Shari L Horne
+              votes: 5916
+              outcome: won
+            - name: Cynthia Conners
+              votes: 5792
+              outcome: lost
+            - name: Judith P. Troutman
+              votes: 3984
+              outcome: lost
+            - name: Kathryn Robbins
+              votes: 3960
+              outcome: lost
+    - year: 2018
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Carol Moore
+          votes: 5472
+        - seat: At-Large
+          winner: Joe Rainey
+          votes: 5055
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Carol Moore
+              votes: 5472
+              outcome: won
+            - name: Joe Rainey
+              votes: 5055
+              outcome: won
+            - name: Judith P. Troutman
+              votes: 4993
+              outcome: lost
+    - year: 2014
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Bert Hack
+          votes: 3419
+        - seat: At-Large
+          winner: Carol A. Moore
+          votes: 2963
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Bert Hack
+              votes: 3419
+              outcome: won
+            - name: Carol A. Moore
+              votes: 2963
+              outcome: won
+            - name: Rae C. Tso
+              votes: 2947
+              outcome: lost
+            - name: Al Roddan
+              votes: 1473
+              outcome: lost
+            - name: Mark L. Monin
+              votes: 1403
+              outcome: lost
+            - name: David Russell Ohrn
+              votes: 1323
+              outcome: lost
+    - year: 2012
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Cynthia S. Conners
+          votes: 6055
+        - seat: At-Large
+          winner: Milton W. Robbins
+          votes: 3965
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Cynthia S. Conners
+              votes: 6055
+              outcome: won
+            - name: Milton W. Robbins
+              votes: 3965
+              outcome: won
+            - name: Noel Hatch
+              votes: 3941
+              outcome: lost
+            - name: Shari L. Horne
+              votes: 3689
+              outcome: lost
+            - name: David Russell Ohrn
+              votes: 3030
+              outcome: lost
+            - name: Mara G. Hodgkins
+              votes: 1578
+              outcome: lost

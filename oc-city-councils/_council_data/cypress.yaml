@@ -3,91 +3,94 @@ city_name: Cypress
 website: https://www.cypressca.org
 council_url: https://www.cypressca.org/government/city-council
 last_updated: '2026-01-25'
-email: null
-phone: null
-instagram: null
+email:
+phone:
+instagram:
 members:
-- name: Leo Medrano
-  position: Mayor
-  district: District 4
-  email: lmedrano@cypressca.org
-  phone: (714) 229-6699
-  city_page: https://www.cypressca.org/government/city-council/council-member-leo-medrano
-  photo_url: https://www.cypressca.org/home/showpublishedimage/12826/638726243326730000
-  bio: Leo Medrano is a Navy veteran, engineer, and finance expert serving his first term on the Cypress City Council. He
-    previously served as a Cypress City Commissioner. A native Southern Californian, his mother was a public school employee
-    and his father was a U.S. Postal Service letter carrier and Navy veteran. He has worked as a Serial-Startup CFO, former
-    U.S. Naval Officer, and former investment banker. His priorities include enhancing public safety, promoting fiscal responsibility,
-    and fostering community engagement.
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Kyle Chang
-  position: Mayor Pro Tem
-  district: District 3
-  email: kchang@cypressca.org
-  phone: (714) 229-6699
-  city_page: https://www.cypressca.org/government/city-council/council-member-kyle-change
-  photo_url: https://www.cypressca.org/home/showpublishedimage/12830/638726219857670000
-  bio: Dr. Kyle Chang is a public health statistician with a Ph.D. in Social Psychology from UC Irvine and B.A. degrees in
-    Psychology from UT Austin and Literary Criticism from U of Houston. He has over 20 years of experience working with government
-    agencies and nonprofits, including work as a caseworker for Children's Protective Services, therapist with children with
-    autism, and researcher of children's health. He worked at Riverside County DPSS and Orange County Health Care Agency's
-    Mental Health Services Act office. He represents Cypress on the Bridges at Kraemer Place Community Advisory Board. He
-    is a husband and father of two.
-  term_start: 2024
-  term_end: 2028
-  website: https://votekylechang.com/
-  instagram: https://www.instagram.com/kylechangoc/
-- name: Bonnie Peat
-  position: Councilmember
-  district: At-Large
-  email: bpeat@cypressca.org
-  phone: (714) 229-6699
-  city_page: https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat
-  photo_url: https://www.cypressca.org/home/showpublishedimage/10176/638091266228000000
-  bio: Bonnie Peat is a retired aerospace executive with 35 years of leadership experience at Parker Hannifin Corporation.
-    She serves on the Board of Directors for Novaria Group, an aerospace company. She holds a B.A. in Business Administration-Finance
-    from CSU Fullerton and an A.A. from Cypress College, where she was named 2022 Alumnus of the Year. She served on the Cypress
-    School District Board of Trustees from 2018-2022, twice as President. A 50-year Cypress resident, she grew up on a dairy
-    farm when Cypress was known as Dairy City. She represents Cypress on the Orange County Sanitation District.
-  term_start: 2022
-  term_end: 2026
-  website: https://bonniepeatforcypress.com/
-  instagram: null
-- name: David Burke
-  position: Councilmember
-  district: At-Large
-  email: dburke@cypressca.org
-  phone: (714) 229-6699
-  city_page: https://www.cypressca.org/government/city-council/council-member-david-burke
-  photo_url: https://www.cypressca.org/home/showpublishedimage/10178/638091266025670000
-  bio: David Burke is a native Southern Californian and son of two public school teachers. He holds a B.A. in Political Science
-    and J.D. from UCLA. He worked with the U.S. House Committee on Ways and Means, the U.S. Department of Justice Antitrust
-    Division, and clerked for two LA Superior Court judges. In 2016, he founded Citizens Take Action, a nonprofit working
-    to get big money out of politics. In 2022, he authored a report card on campaign finance laws in OC municipal government.
-    He serves on the Cypress Community Festival board and volunteers at Second Harvest Food Bank. He served as Mayor in 2025.
-  term_start: 2022
-  term_end: 2026
-  website: https://www.davidburkeforcypress.com/
-  instagram: null
-- name: Rachel Strong Carnahan
-  position: Councilmember
-  district: District 5
-  email: rstrongcarnahan@cypressca.org
-  phone: (714) 229-6699
-  city_page: https://www.cypressca.org/government/city-council/council-member-rachel-strong-carnahan
-  photo_url: https://www.cypressca.org/home/showpublishedimage/14531/639041920579870000
-  bio: Rachel Strong Carnahan is a former Senior Citizens Commissioner and 2022 City Council candidate. She has 18 years of
-    experience as a youth mentor and is a small business owner at Strong Dance Studios. She was appointed to fill the vacant
-    District 5 seat in November 2025 after the resignation of Scott Minikus. Her priorities include recruiting an excellent
-    city manager, paying down pension debt, reimagining green spaces with teens in mind, and building a city that values diversity
-    and inclusion. She raises her children in Cypress and calls herself a "hometown girl."
-  term_start: 2025
-  term_end: 2026
-  website: null
-  instagram: null
+  - name: Leo Medrano
+    position: Mayor
+    district: District 4
+    email: lmedrano@cypressca.org
+    phone: (714) 229-6699
+    city_page: https://www.cypressca.org/government/city-council/council-member-leo-medrano
+    photo_url: https://www.cypressca.org/home/showpublishedimage/12826/638726243326730000
+    bio: Leo Medrano is a Navy veteran, engineer, and finance expert serving his first term on the Cypress City Council.
+      He previously served as a Cypress City Commissioner. A native Southern Californian, his mother was a public school
+      employee and his father was a U.S. Postal Service letter carrier and Navy veteran. He has worked as a 
+      Serial-Startup CFO, former U.S. Naval Officer, and former investment banker. His priorities include enhancing 
+      public safety, promoting fiscal responsibility, and fostering community engagement.
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Kyle Chang
+    position: Mayor Pro Tem
+    district: District 3
+    email: kchang@cypressca.org
+    phone: (714) 229-6699
+    city_page: https://www.cypressca.org/government/city-council/council-member-kyle-change
+    photo_url: https://www.cypressca.org/home/showpublishedimage/12830/638726219857670000
+    bio: Dr. Kyle Chang is a public health statistician with a Ph.D. in Social Psychology from UC Irvine and B.A. 
+      degrees in Psychology from UT Austin and Literary Criticism from U of Houston. He has over 20 years of experience 
+      working with government agencies and nonprofits, including work as a caseworker for Children's Protective 
+      Services, therapist with children with autism, and researcher of children's health. He worked at Riverside County 
+      DPSS and Orange County Health Care Agency's Mental Health Services Act office. He represents Cypress on the 
+      Bridges at Kraemer Place Community Advisory Board. He is a husband and father of two.
+    term_start: 2024
+    term_end: 2028
+    website: https://votekylechang.com/
+    instagram: https://www.instagram.com/kylechangoc/
+  - name: Bonnie Peat
+    position: Councilmember
+    district: At-Large
+    email: bpeat@cypressca.org
+    phone: (714) 229-6699
+    city_page: https://www.cypressca.org/government/city-council/mayor-pro-tem-bonnie-peat
+    photo_url: https://www.cypressca.org/home/showpublishedimage/10176/638091266228000000
+    bio: Bonnie Peat is a retired aerospace executive with 35 years of leadership experience at Parker Hannifin 
+      Corporation. She serves on the Board of Directors for Novaria Group, an aerospace company. She holds a B.A. in 
+      Business Administration-Finance from CSU Fullerton and an A.A. from Cypress College, where she was named 2022 
+      Alumnus of the Year. She served on the Cypress School District Board of Trustees from 2018-2022, twice as 
+      President. A 50-year Cypress resident, she grew up on a dairy farm when Cypress was known as Dairy City. She 
+      represents Cypress on the Orange County Sanitation District.
+    term_start: 2022
+    term_end: 2026
+    website: https://bonniepeatforcypress.com/
+    instagram:
+  - name: David Burke
+    position: Councilmember
+    district: At-Large
+    email: dburke@cypressca.org
+    phone: (714) 229-6699
+    city_page: https://www.cypressca.org/government/city-council/council-member-david-burke
+    photo_url: https://www.cypressca.org/home/showpublishedimage/10178/638091266025670000
+    bio: David Burke is a native Southern Californian and son of two public school teachers. He holds a B.A. in 
+      Political Science and J.D. from UCLA. He worked with the U.S. House Committee on Ways and Means, the U.S. 
+      Department of Justice Antitrust Division, and clerked for two LA Superior Court judges. In 2016, he founded 
+      Citizens Take Action, a nonprofit working to get big money out of politics. In 2022, he authored a report card on 
+      campaign finance laws in OC municipal government. He serves on the Cypress Community Festival board and volunteers
+      at Second Harvest Food Bank. He served as Mayor in 2025.
+    term_start: 2022
+    term_end: 2026
+    website: https://www.davidburkeforcypress.com/
+    instagram:
+  - name: Rachel Strong Carnahan
+    position: Councilmember
+    district: District 5
+    email: rstrongcarnahan@cypressca.org
+    phone: (714) 229-6699
+    city_page: https://www.cypressca.org/government/city-council/council-member-rachel-strong-carnahan
+    photo_url: https://www.cypressca.org/home/showpublishedimage/14531/639041920579870000
+    bio: Rachel Strong Carnahan is a former Senior Citizens Commissioner and 2022 City Council candidate. She has 18 
+      years of experience as a youth mentor and is a small business owner at Strong Dance Studios. She was appointed to 
+      fill the vacant District 5 seat in November 2025 after the resignation of Scott Minikus. Her priorities include 
+      recruiting an excellent city manager, paying down pension debt, reimagining green spaces with teens in mind, and 
+      building a city that values diversity and inclusion. She raises her children in Cypress and calls herself a 
+      "hometown girl."
+    term_start: 2025
+    term_end: 2026
+    website:
+    instagram:
 meetings:
   schedule: 2nd and 4th Mondays
   time: 6:00 PM
@@ -96,32 +99,32 @@ meetings:
     name: Council Chambers
     address: 5275 Orange Avenue
     city_state_zip: Cypress, CA 90630
-  closed_session_time: null
+  closed_session_time:
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://public.destinyhosted.com/agenda_publish.cfm?id=29773
   live_stream: https://www.cypressca.org/government/watch-cypress-channel-36
   document_center: https://ecms.cypressca.org/WebLink/Welcome.aspx
   municipal_code: https://ecode360.com/CY4920
-  youtube: null
-  ecomment: null
-  video_archive: null
+  youtube:
+  ecomment:
+  video_archive:
 broadcast:
   cable_channels:
-  - provider: Spectrum
-    channel: '36'
+    - provider: Spectrum
+      channel: '36'
   live_stream: https://www.cypressca.org/government/watch-cypress-channel-36
 clerk:
   title: City Clerk
   phone: (714) 229-6685
   email: cityclerk@cypressca.org
-  fax: null
-  address: null
-  name: null
+  fax:
+  address:
+  name:
 public_comment:
   in_person: true
   remote_live: false
@@ -130,7 +133,7 @@ public_comment:
   time_limit: 3 minutes per speaker
   email: cityclerk@cypressca.org
   deadline: 3:00 PM on meeting day
-  notes: null
+  notes:
 council:
   size: 5
   districts: 5
@@ -138,34 +141,34 @@ council:
   mayor_elected: false
   transition_date: March 2024
   notes: Transitioned to by-district elections in March 2024 to comply with California Voting Rights Act
-  expanded_date: null
+  expanded_date:
 elections:
   next_election: '2026-11-03'
   election_system: by-district
   term_length: 4
   seats_up:
-  - district: District 1
-    incumbent: null
-  - district: District 2
-    incumbent: null
-  - district: District 5
-    incumbent: Rachel Strong Carnahan
-    notes: Appointed Nov 2025 to fill vacancy
-  term_limit: null
-  term_limit_cooldown: null
+    - district: District 1
+      incumbent:
+    - district: District 2
+      incumbent:
+    - district: District 5
+      incumbent: Rachel Strong Carnahan
+      notes: Appointed Nov 2025 to fill vacancy
+  term_limit:
+  term_limit_cooldown:
   transition_note: Transitioned from at-large to by-district March 2024
   cycle_pattern:
     group_a:
       years: 2024, 2028, 2032...
       seats:
-      - District 3
-      - District 4
+        - District 3
+        - District 4
     group_b:
       years: 2026, 2030, 2034...
       seats:
-      - District 1
-      - District 2
-      - District 5
+        - District 1
+        - District 2
+        - District 5
   candidate_info:
     contact_email: afarnell@cypressca.org
     contact_phone: (714) 229-6685
@@ -173,29 +176,212 @@ elections:
   results_source: https://ocvote.gov/results
   source: https://www.cypressca.org/government/2026-election
   history:
-  - year: 2024
-    seats:
-    - District 3
-    - District 4
-    source: https://www.cypressca.org/government/2024-election
-    candidates:
-    - district: District 3
+    - year: 2024
+      seats:
+        - District 3
+        - District 4
+      source: https://www.cypressca.org/government/2024-election
       candidates:
-      - Mark H Plager
-      - Kyle Chang
-      - Gayel Kaplan
-      winner: Kyle Chang
-    - district: District 4
+        - district: District 3
+          candidates:
+            - Mark H Plager
+            - Kyle Chang
+            - Gayel Kaplan
+          winner: Kyle Chang
+        - district: District 4
+          candidates:
+            - Leo Medrano
+            - Blaze Bhence
+            - Glenn Button
+          winner: Leo Medrano
+    - year: 2022
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: David Burke
+          votes: 7099
+        - seat: At-Large
+          winner: Scott Minikus
+          votes: 6514
       candidates:
-      - Leo Medrano
-      - Blaze Bhence
-      - Glenn Button
-      winner: Leo Medrano
-  mayor_term_length: null
-  districting_info: null
-  term_limit_type: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
-  nomination_period: null
+        - district: At-Large
+          candidates:
+            - name: David Burke
+              votes: 7099
+              outcome: won
+            - name: Scott Minikus
+              votes: 6514
+              outcome: won
+            - name: Bonnie Peat
+              votes: 6211
+              outcome: lost
+            - name: Rachel Strong
+              votes: 5142
+              outcome: lost
+            - name: Helen Le
+              votes: 5098
+              outcome: lost
+            - name: Terry Miller
+              votes: 4717
+              outcome: lost
+            - name: Carrie Hayashida
+              votes: 4592
+              outcome: lost
+    - year: 2020
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Anne Hertz
+          votes: 8129
+        - seat: At-Large
+          winner: Frances Marquez
+          votes: 7353
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Anne Hertz
+              votes: 8129
+              outcome: won
+            - name: Frances Marquez
+              votes: 7353
+              outcome: won
+            - name: Carrie Katsumata Hayashida
+              votes: 6070
+              outcome: lost
+            - name: Blaze Bhence
+              votes: 4020
+              outcome: lost
+            - name: Steve Mauss
+              votes: 3988
+              outcome: lost
+            - name: Rachel Strong
+              votes: 3800
+              outcome: lost
+            - name: Jimmy Fuller
+              votes: 2895
+              outcome: lost
+            - name: Cole Thompson
+              votes: 2694
+              outcome: lost
+            - name: David Gersten
+              votes: 1113
+              outcome: lost
+    - year: 2018
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Jon Peat
+          votes: 8913
+        - seat: At-Large
+          winner: Stacy Berry
+          votes: 8283
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Jon Peat
+              votes: 8913
+              outcome: won
+            - name: Stacy Berry
+              votes: 8283
+              outcome: won
+            - name: Paulo Morales
+              votes: 7448
+              outcome: lost
+            - name: Frances Marquez
+              votes: 6221
+              outcome: lost
+            - name: Steven D. Bradley
+              votes: 5366
+              outcome: lost
+            - name: Nettie Bryan
+              votes: 4264
+              outcome: lost
+    - year: 2016
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Rob Johnson
+          votes: 9369
+        - seat: At-Large
+          winner: Mariellen Yarc
+          votes: 8921
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Rob Johnson
+              votes: 9369
+              outcome: won
+            - name: Mariellen Yarc
+              votes: 8921
+              outcome: won
+            - name: Mike Schoppman
+              votes: 5669
+              outcome: lost
+            - name: Giselle A. Blanco
+              votes: 5596
+              outcome: lost
+    - year: 2014
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Paulo M. Morales
+          votes: 5486
+        - seat: At-Large
+          winner: Jon Peat
+          votes: 5067
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Paulo M. Morales
+              votes: 5486
+              outcome: won
+            - name: Jon Peat
+              votes: 5067
+              outcome: won
+            - name: Stacy Berry
+              votes: 4844
+              outcome: lost
+            - name: Jay Sondhi
+              votes: 4065
+              outcome: lost
+            - name: Nancy Kyllingstad
+              votes: 3150
+              outcome: lost
+            - name: Mike Schoppman
+              votes: 2209
+              outcome: lost
+            - name: Larry M. Smith
+              votes: 1843
+              outcome: lost
+    - year: 2012
+      type: by-district
+      winners:
+        - seat: At-Large
+          winner: Rob Johnson
+          votes: 10282
+        - seat: At-Large
+          winner: Mariellen Yarc
+          votes: 8365
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Rob Johnson
+              votes: 10282
+              outcome: won
+            - name: Mariellen Yarc
+              votes: 8365
+              outcome: won
+            - name: Jay Sondhi
+              votes: 4919
+              outcome: lost
+            - name: Bijan Mohseni
+              votes: 3764
+              outcome: lost
+  mayor_term_length:
+  districting_info:
+  term_limit_type:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
+  nomination_period:

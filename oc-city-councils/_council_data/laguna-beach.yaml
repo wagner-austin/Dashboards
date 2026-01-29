@@ -7,66 +7,66 @@ email: citycouncil@lagunabeachcity.net
 phone: ''
 instagram: ''
 members:
-- name: Mark Orgill
-  position: Mayor
-  district: At-Large
-  email: morgill@lagunabeachcity.net
-  phone: (949) 463-4821
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/mark-orgill
-  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4694/638064498925070000
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Bob Whalen
-  position: Councilmember
-  district: At-Large
-  email: bwhalen@lagunabeachcity.net
-  phone: (949) 497-0796
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/bob-whalen
-  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4706/638067135619970000
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Alex Rounaghi
-  position: Councilmember
-  district: At-Large
-  email: arounaghi@lagunabeachcity.net
-  phone: (949) 395-1275
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/alex-rounaghi
-  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4692/638694573774830000
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Hallie Jones
-  position: Mayor Pro Tem
-  district: At-Large
-  email: hjones@lagunabeachcity.net
-  phone: (949) 992-5419
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/hallie-jones
-  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/6128/638693684199500000
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Sue Kempf
-  position: Councilmember
-  district: At-Large
-  email: skempf@lagunabeachcity.net
-  phone: (949) 439-3001
-  city_page: https://www.lagunabeachcity.net/government/departments/city-council/sue-kempf
-  photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/5560/638453363123100000
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
+  - name: Mark Orgill
+    position: Mayor
+    district: At-Large
+    email: morgill@lagunabeachcity.net
+    phone: (949) 463-4821
+    city_page: https://www.lagunabeachcity.net/government/departments/city-council/mark-orgill
+    photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4694/638064498925070000
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Bob Whalen
+    position: Councilmember
+    district: At-Large
+    email: bwhalen@lagunabeachcity.net
+    phone: (949) 497-0796
+    city_page: https://www.lagunabeachcity.net/government/departments/city-council/bob-whalen
+    photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4706/638067135619970000
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Alex Rounaghi
+    position: Councilmember
+    district: At-Large
+    email: arounaghi@lagunabeachcity.net
+    phone: (949) 395-1275
+    city_page: https://www.lagunabeachcity.net/government/departments/city-council/alex-rounaghi
+    photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4692/638694573774830000
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Hallie Jones
+    position: Mayor Pro Tem
+    district: At-Large
+    email: hjones@lagunabeachcity.net
+    phone: (949) 992-5419
+    city_page: https://www.lagunabeachcity.net/government/departments/city-council/hallie-jones
+    photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/6128/638693684199500000
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Sue Kempf
+    position: Councilmember
+    district: At-Large
+    email: skempf@lagunabeachcity.net
+    phone: (949) 439-3001
+    city_page: https://www.lagunabeachcity.net/government/departments/city-council/sue-kempf
+    photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/5560/638453363123100000
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
 meetings:
   schedule: 2nd and 4th Tuesdays
   time: 5:00 PM
@@ -74,12 +74,12 @@ meetings:
     name: Council Chambers
     address: 505 Forest Avenue
     city_state_zip: Laguna Beach, CA 92651
-  closed_session_time: null
+  closed_session_time:
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://www.lagunabeachcity.net/live-here/city-council/meetings-agendas-and-minutes
   live_stream: https://www.lagunabeachcity.net/meetings
@@ -87,12 +87,12 @@ portals:
   youtube: https://www.youtube.com/@CityofLagunaBeachCA/streams
   ecomment: https://www.lagunabeachcity.net/government/departments/city-council/online-comment-form
   comment_form_pdf: https://www.lagunabeachcity.net/home/showpublisheddocument/16742/638326140977270000
-  document_center: null
-  municipal_code: null
+  document_center:
+  municipal_code:
 broadcast:
   cable_channels:
-  - provider: Cox
-    channel: '852'
+    - provider: Cox
+      channel: '852'
   live_stream: https://www.lagunabeachcity.net/meetings
   youtube: https://www.youtube.com/channel/UCQsj8cEM7IvTH6p4uf3NUzQ
 clerk:
@@ -102,7 +102,7 @@ clerk:
   direct_email: amckay@lagunabeachcity.net
   address: 505 Forest Avenue, Laguna Beach, CA 92651
   name: Ann Marie McKay
-  fax: null
+  fax:
 public_comment:
   in_person: true
   remote_live: false
@@ -111,44 +111,263 @@ public_comment:
   time_limit: 3 minutes per speaker
   email: amckay@lagunabeachcity.net
   deadline: 3:00 PM day before meeting (for agenda linking)
-  notes: Written comments NOT read aloud. Comments posted on city website - do not include personal info. Deadline tiers -
-    3:00 PM day before (linked to agenda with review time), 12:00 PM day of (provided to council but may not have review time),
-    after 12:00 PM (included in record but not linked to agenda).
+  notes: Written comments NOT read aloud. Comments posted on city website - do not include personal info. Deadline tiers
+    - 3:00 PM day before (linked to agenda with review time), 12:00 PM day of (provided to council but may not have 
+    review time), after 12:00 PM (included in record but not linked to agenda).
 council:
   size: 5
   districts: 0
   at_large: 5
   mayor_elected: false
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - 2 at-large seats
+    - 2 at-large seats
   term_length: 4
   election_system: at-large
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Bob Whalen
+          votes: 7029
+        - seat: At-Large
+          winner: Hallie Jones
+          votes: 6851
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Bob Whalen
+              votes: 7029
+              outcome: won
+            - name: Hallie Jones
+              votes: 6851
+              outcome: won
+            - name: George Weiss
+              votes: 5141
+              outcome: lost
+            - name: Judie Mancuso
+              votes: 4013
+              outcome: lost
+    - year: 2022
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Alex Rounaghi
+          votes: 6591
+        - seat: At-Large
+          winner: Sue Kempf
+          votes: 6321
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Alex Rounaghi
+              votes: 6591
+              outcome: won
+            - name: Sue Kempf
+              votes: 6321
+              outcome: won
+            - name: Mark S. Orgill
+              votes: 4359
+              outcome: lost
+            - name: Ruben Flores
+              votes: 3647
+              outcome: lost
+            - name: Jerome Pudwill
+              votes: 3495
+              outcome: lost
+            - name: Peter Blake
+              votes: 3242
+              outcome: lost
+            - name: Louis Weil
+              votes: 2955
+              outcome: lost
+    - year: 2020
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Bob Whalen
+          votes: 6442
+        - seat: At-Large
+          winner: George Weiss
+          votes: 5665
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Bob Whalen
+              votes: 6442
+              outcome: won
+            - name: George Weiss
+              votes: 5665
+              outcome: won
+            - name: Ruben Flores
+              votes: 5534
+              outcome: lost
+            - name: Larry Nokes
+              votes: 5016
+              outcome: lost
+            - name: Steve Dicterow
+              votes: 3540
+              outcome: lost
+    - year: 2018
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Peter Blake
+          votes: 4881
+        - seat: At-Large
+          winner: Toni Iseman
+          votes: 4792
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Peter Blake
+              votes: 4881
+              outcome: won
+            - name: Toni Iseman
+              votes: 4792
+              outcome: won
+            - name: Sue Kempf
+              votes: 4483
+              outcome: lost
+            - name: Ann Christoph
+              votes: 4235
+              outcome: lost
+            - name: Cheryl Kinsman
+              votes: 4037
+              outcome: lost
+            - name: Judie Mancuso
+              votes: 2834
+              outcome: lost
+            - name: Robert "Rob" Zur Schmiede
+              votes: 2206
+              outcome: lost
+            - name: Paul Merritt
+              votes: 2067
+              outcome: lost
+            - name: Lorene Laguna
+              votes: 1417
+              outcome: lost
+            - name: Sue Marie Connolly
+              votes: 735
+              outcome: lost
+            - name: Elizabeth "Liz" Bates
+              votes: 559
+              outcome: lost
+            - name: Allison T. Mathews
+              votes: 530
+              outcome: lost
+            - name: Jorg Dubin
+              votes: 255
+              outcome: lost
+    - year: 2016
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Bob Whalen
+          votes: 7039
+        - seat: At-Large
+          winner: Steve Dicterow
+          votes: 5452
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Bob Whalen
+              votes: 7039
+              outcome: won
+            - name: Steve Dicterow
+              votes: 5452
+              outcome: won
+            - name: Verna Rollinger
+              votes: 4959
+              outcome: lost
+            - name: Judie Mancuso
+              votes: 3851
+              outcome: lost
+    - year: 2014
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Kelly H. Boyd
+          votes: 4675
+        - seat: At-Large
+          winner: Toni Iseman
+          votes: 4655
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Kelly H. Boyd
+              votes: 4675
+              outcome: won
+            - name: Toni Iseman
+              votes: 4655
+              outcome: won
+            - name: Robert "Rob" Zur Schmiede
+              votes: 4583
+              outcome: lost
+            - name: Michele Hall
+              votes: 2912
+              outcome: lost
+            - name: Jon Madison
+              votes: 1770
+              outcome: lost
+            - name: Paul Merritt
+              votes: 1227
+              outcome: lost
+            - name: Eli J. Grossman
+              votes: 539
+              outcome: lost
+    - year: 2012
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Bob Whalen
+          votes: 5686
+        - seat: At-Large
+          winner: Steve Dicterow
+          votes: 5420
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Bob Whalen
+              votes: 5686
+              outcome: won
+            - name: Steve Dicterow
+              votes: 5420
+              outcome: won
+            - name: Jane Egly
+              votes: 4467
+              outcome: lost
+            - name: Verna Rollinger
+              votes: 4430
+              outcome: lost
+            - name: Robert M. Ross
+              votes: 791
+              outcome: lost

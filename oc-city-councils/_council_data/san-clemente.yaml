@@ -7,66 +7,66 @@ email: ''
 phone: ''
 instagram: ''
 members:
-- name: Rick Loeffler
-  position: Mayor
-  district: At-Large
-  email: LoefflerR@san-clemente.org
-  phone: (949) 702-8235
-  city_page: https://www.sanclemente.gov/Directory.aspx?EID=58
-  photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Steve Knoblock
-  position: Mayor Pro Tem
-  district: At-Large
-  email: KnoblockS@san-clemente.org
-  phone: (949) 361-8322
-  city_page: https://www.sanclemente.gov/Directory.aspx?EID=57
-  photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Mark Enmeier
-  position: Councilmember
-  district: At-Large
-  email: EnmeierM@san-clemente.org
-  phone: (949) 361-8322
-  city_page: https://www.sanclemente.gov/Directory.aspx?EID=56
-  photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Victor Cabral
-  position: Councilmember
-  district: At-Large
-  email: CabralV@san-clemente.org
-  phone: (949) 361-8322
-  city_page: https://www.sanclemente.gov/Directory.aspx?EID=55
-  photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Zhen Wu
-  position: Councilmember
-  district: At-Large
-  email: WuZ@san-clemente.org
-  phone: (949) 361-8322
-  city_page: https://www.sanclemente.gov/Directory.aspx?EID=59
-  photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
+  - name: Rick Loeffler
+    position: Mayor
+    district: At-Large
+    email: LoefflerR@san-clemente.org
+    phone: (949) 702-8235
+    city_page: https://www.sanclemente.gov/Directory.aspx?EID=58
+    photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Steve Knoblock
+    position: Mayor Pro Tem
+    district: At-Large
+    email: KnoblockS@san-clemente.org
+    phone: (949) 361-8322
+    city_page: https://www.sanclemente.gov/Directory.aspx?EID=57
+    photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Mark Enmeier
+    position: Councilmember
+    district: At-Large
+    email: EnmeierM@san-clemente.org
+    phone: (949) 361-8322
+    city_page: https://www.sanclemente.gov/Directory.aspx?EID=56
+    photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Victor Cabral
+    position: Councilmember
+    district: At-Large
+    email: CabralV@san-clemente.org
+    phone: (949) 361-8322
+    city_page: https://www.sanclemente.gov/Directory.aspx?EID=55
+    photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Zhen Wu
+    position: Councilmember
+    district: At-Large
+    email: WuZ@san-clemente.org
+    phone: (949) 361-8322
+    city_page: https://www.sanclemente.gov/Directory.aspx?EID=59
+    photo_url: https://www.sanclemente.gov/ImageRepository/Document?documentId=91
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 5:30 PM
@@ -76,22 +76,22 @@ meetings:
     address: 100 Avenida Presidio
     city_state_zip: San Clemente, CA 92672
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://www.sanclemente.gov/agendacenter
   youtube: https://youtube.com/@cityofsanclementevideos
-  document_center: null
-  municipal_code: null
-  ecomment: null
-  live_stream: null
-  video_archive: null
+  document_center:
+  municipal_code:
+  ecomment:
+  live_stream:
+  video_archive:
 broadcast:
   cable_channels:
-  - provider: Cox
-    channel: '854'
+    - provider: Cox
+      channel: '854'
   live_stream: https://youtube.com/@cityofsanclementevideos
   rebroadcast: Saturdays 12 PM, Thursdays 2 PM
 clerk:
@@ -100,7 +100,7 @@ clerk:
   phone: (949) 361-8301
   email: CityClerk@san-clemente.org
   address: 910 Calle Negocio, San Clemente, CA 92673
-  fax: null
+  fax:
 public_comment:
   in_person: true
   remote_live: false
@@ -115,39 +115,329 @@ council:
   districts: 0
   at_large: 5
   mayor_elected: false
-  expanded_date: null
+  expanded_date:
   notes: Currently all at-large; 4 districts + elected mayor begin November 2026
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - Mayor (new elected position)
-  - District 1
-  - District 2
+    - Mayor (new elected position)
+    - District 1
+    - District 2
   term_length: 4
   election_system: at-large
   notes: Transitioning to by-district with elected mayor in 2026
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: at-large
+      winners:
+        - district: District 3
+          winner: Rick Loeffler
+          votes: 3694
+        - district: District 4
+          winner: Zhen Wu
+          votes: 4866
+      candidates:
+        - district: District 3
+          candidates:
+            - name: Rick Loeffler
+              votes: 3694
+              outcome: won
+            - name: Angela Watts
+              votes: 2826
+              outcome: lost
+            - name: Amanda Quintanilla
+              votes: 932
+              outcome: lost
+            - name: Lois Mcnicoll
+              votes: 287
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Zhen Wu
+              votes: 4866
+              outcome: won
+            - name: Sarah Schneider
+              votes: 3811
+              outcome: lost
+    - year: 2022
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Victor Cabral
+          votes: 10227
+        - seat: At-Large
+          winner: Mark Enmeier
+          votes: 9823
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Victor Cabral
+              votes: 10227
+              outcome: won
+            - name: Mark Enmeier
+              votes: 9823
+              outcome: won
+            - name: Steven "Steve" Knoblock
+              votes: 9240
+              outcome: lost
+            - name: Donna Vidrine
+              votes: 9217
+              outcome: lost
+            - name: Zhen Wu
+              votes: 8866
+              outcome: lost
+            - name: Aaron Washington
+              votes: 8854
+              outcome: lost
+            - name: Dennis Kamp
+              votes: 5453
+              outcome: lost
+            - name: Thor Johnson
+              votes: 5258
+              outcome: lost
+            - name: Ashley Williams
+              votes: 2430
+              outcome: lost
+            - name: Chanel Fetty
+              votes: 1068
+              outcome: lost
+            - name: Shane Hirschman
+              votes: 659
+              outcome: lost
+            - name: Martina Mcburney-Wheeler
+              votes: 641
+              outcome: lost
+    - year: 2020
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Gene James
+          votes: 10901
+        - seat: At-Large
+          winner: Chris Duncan
+          votes: 10693
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Gene James
+              votes: 10901
+              outcome: won
+            - name: Chris Duncan
+              votes: 10693
+              outcome: won
+            - name: Aaron Washington
+              votes: 9721
+              outcome: lost
+            - name: Steven Knoblock
+              votes: 8040
+              outcome: lost
+            - name: Bill Hart
+              votes: 8016
+              outcome: lost
+            - name: Jim Dahl
+              votes: 7358
+              outcome: lost
+            - name: Charlie Smith
+              votes: 7093
+              outcome: lost
+            - name: Donna Vidrine
+              votes: 6222
+              outcome: lost
+            - name: Tyler Boden
+              votes: 5916
+              outcome: lost
+            - name: Zhen Wu
+              votes: 4043
+              outcome: lost
+            - name: Thor Johnson
+              votes: 3139
+              outcome: lost
+            - name: Jeff Wellman
+              votes: 2518
+              outcome: lost
+            - name: Jeff Provance JR
+              votes: 2499
+              outcome: lost
+            - name: Joseph Kenney
+              votes: 2117
+              outcome: lost
+            - name: Patrick Minnehan
+              votes: 1583
+              outcome: lost
+            - name: George T. Gregory
+              votes: 859
+              outcome: lost
+            - name: Laron Rush
+              votes: 802
+              outcome: lost
+            - name: Jerry Quinlan
+              votes: 764
+              outcome: lost
+    - year: 2018
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: No
+          votes: 18933
+        - seat: At-Large
+          winner: Dan Bane
+          votes: 12184
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: No
+              votes: 18933
+              outcome: won
+            - name: Dan Bane
+              votes: 12184
+              outcome: won
+            - name: Laura Ferguson
+              votes: 8728
+              outcome: lost
+            - name: Kathy Ward
+              votes: 8146
+              outcome: lost
+            - name: Yes
+              votes: 7990
+              outcome: lost
+            - name: Gene W. James
+              votes: 7493
+              outcome: lost
+            - name: Bernie Wohlfarth
+              votes: 6011
+              outcome: lost
+            - name: Wayne Eggleston
+              votes: 5987
+              outcome: lost
+            - name: Jackson Hinkle
+              votes: 5817
+              outcome: lost
+            - name: Jake Rybczyk
+              votes: 5423
+              outcome: lost
+            - name: Don Brown
+              votes: 5303
+              outcome: lost
+            - name: Mikii Rathmann
+              votes: 4057
+              outcome: lost
+            - name: Ed Ward
+              votes: 3297
+              outcome: lost
+            - name: Tiffany Joy Robson Leet
+              votes: 2109
+              outcome: lost
+    - year: 2016
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Chris Hamm
+          votes: 14315
+        - seat: At-Large
+          winner: Steven Swartz
+          votes: 11421
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Chris Hamm
+              votes: 14315
+              outcome: won
+            - name: Steven Swartz
+              votes: 11421
+              outcome: won
+            - name: Dan Bane
+              votes: 11074
+              outcome: lost
+            - name: Robert "Bob" Baker
+              votes: 10912
+              outcome: lost
+            - name: Pamela Joy Glass
+              votes: 1888
+              outcome: lost
+    - year: 2014
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Tim Brown
+          votes: 10008
+        - seat: At-Large
+          winner: Lori Donchak
+          votes: 8809
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Tim Brown
+              votes: 10008
+              outcome: won
+            - name: Lori Donchak
+              votes: 8809
+              outcome: won
+            - name: Kathy Ward
+              votes: 7191
+              outcome: lost
+            - name: Jim Dahl
+              votes: 5689
+              outcome: lost
+            - name: Mikii Rathmann
+              votes: 4333
+              outcome: lost
+            - name: Ricardo "Rick" Nicol
+              votes: 3674
+              outcome: lost
+            - name: Fred Olsen
+              votes: 2734
+              outcome: lost
+    - year: 2012
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Chris Hamm
+          votes: 12308
+        - seat: At-Large
+          winner: 1 Robert "Bob" Baker
+          votes: 10890
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Chris Hamm
+              votes: 12308
+              outcome: won
+            - name: 1 Robert "Bob" Baker
+              votes: 10890
+              outcome: won
+            - name: Jim Dahl
+              votes: 9555
+              outcome: lost
+            - name: Mike Mortenson
+              votes: 9145
+              outcome: lost
+            - name: David Clegg
+              votes: 3105
+              outcome: lost
+            - name: 0 Robert "Bob" Baker
+              votes: 1995
+              outcome: lost

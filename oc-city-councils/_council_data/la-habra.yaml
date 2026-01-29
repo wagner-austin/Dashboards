@@ -7,66 +7,66 @@ email: ''
 phone: ''
 instagram: ''
 members:
-- name: Jose Medrano
-  position: Mayor
-  district: At-Large
-  email: CityCouncil@lahabraca.gov
-  phone: (562) 383-4000
-  city_page: https://www.lahabraca.gov/153/City-Council
-  photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentId=15728
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: James Gomez
-  position: Mayor Pro Tem
-  district: At-Large
-  email: CityCouncil@lahabraca.gov
-  phone: (562) 383-4000
-  city_page: https://www.lahabraca.gov/153/City-Council
-  photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=15729
-  bio: null
-  term_start: 2022
-  term_end: 2026
-  website: null
-  instagram: null
-- name: Daren Nigsarian
-  position: Councilmember
-  district: At-Large
-  email: CityCouncil@lahabraca.gov
-  phone: (562) 383-4000
-  city_page: https://www.lahabraca.gov/153/City-Council
-  photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=12381
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Delwin Lampkin
-  position: Councilmember
-  district: At-Large
-  email: CityCouncil@lahabraca.gov
-  phone: (562) 383-4000
-  city_page: https://www.lahabraca.gov/153/City-Council
-  photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentId=15202
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
-- name: Rose Espinoza
-  position: Councilmember
-  district: At-Large
-  email: CityCouncil@lahabraca.gov
-  phone: (562) 383-4000
-  city_page: https://www.lahabraca.gov/153/City-Council
-  photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=12382
-  bio: null
-  term_start: 2024
-  term_end: 2028
-  website: null
-  instagram: null
+  - name: Jose Medrano
+    position: Mayor
+    district: At-Large
+    email: CityCouncil@lahabraca.gov
+    phone: (562) 383-4000
+    city_page: https://www.lahabraca.gov/153/City-Council
+    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentId=15728
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: James Gomez
+    position: Mayor Pro Tem
+    district: At-Large
+    email: CityCouncil@lahabraca.gov
+    phone: (562) 383-4000
+    city_page: https://www.lahabraca.gov/153/City-Council
+    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=15729
+    bio:
+    term_start: 2022
+    term_end: 2026
+    website:
+    instagram:
+  - name: Daren Nigsarian
+    position: Councilmember
+    district: At-Large
+    email: CityCouncil@lahabraca.gov
+    phone: (562) 383-4000
+    city_page: https://www.lahabraca.gov/153/City-Council
+    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=12381
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Delwin Lampkin
+    position: Councilmember
+    district: At-Large
+    email: CityCouncil@lahabraca.gov
+    phone: (562) 383-4000
+    city_page: https://www.lahabraca.gov/153/City-Council
+    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentId=15202
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
+  - name: Rose Espinoza
+    position: Councilmember
+    district: At-Large
+    email: CityCouncil@lahabraca.gov
+    phone: (562) 383-4000
+    city_page: https://www.lahabraca.gov/153/City-Council
+    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=12382
+    bio:
+    term_start: 2024
+    term_end: 2028
+    website:
+    instagram:
 meetings:
   schedule: 1st and 3rd Mondays
   time: 6:30 PM
@@ -74,24 +74,24 @@ meetings:
     name: Council Chamber
     address: 100 E. La Habra Boulevard
     city_state_zip: La Habra, CA 90631
-  closed_session_time: null
+  closed_session_time:
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://destinyhosted.com/agenda_publish.cfm?id=52422
   live_stream: https://www.lahabraca.gov/356/Archived-Council-Videos
   video_archive: https://www.lahabraca.gov/356/Archived-Council-Videos
-  youtube: null
-  document_center: null
-  municipal_code: null
-  ecomment: null
+  youtube:
+  document_center:
+  municipal_code:
+  ecomment:
 broadcast:
   cable_channels:
-  - provider: Government Access
-    channel: '3'
+    - provider: Government Access
+      channel: '3'
   live_stream: https://www.lahabraca.gov/356/Archived-Council-Videos
   rebroadcast: 6:30 PM Tuesday-Friday following each meeting
 clerk:
@@ -116,39 +116,177 @@ council:
   districts: 0
   at_large: 5
   mayor_elected: false
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - At-Large (3 seats)
+    - At-Large (3 seats)
   term_length: 4
   election_system: at-large
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Daren Nigsarian
+          votes: 11802
+        - seat: At-Large
+          winner: Rose Espinoza
+          votes: 9964
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Daren Nigsarian
+              votes: 11802
+              outcome: won
+            - name: Rose Espinoza
+              votes: 9964
+              outcome: won
+            - name: Delwin "Del" Lampkin
+              votes: 7710
+              outcome: lost
+            - name: Susan M. Pritchard
+              votes: 7430
+              outcome: lost
+            - name: Carrie Surich
+              votes: 5878
+              outcome: lost
+            - name: Michelle Bernier
+              votes: 5038
+              outcome: lost
+    - year: 2022
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Jose Medrano
+          votes: 7885
+        - seat: At-Large
+          winner: Daren Nigsarian
+          votes: 7403
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Jose Medrano
+              votes: 7885
+              outcome: won
+            - name: Daren Nigsarian
+              votes: 7403
+              outcome: won
+            - name: James "Jim" Gomez
+              votes: 6899
+              outcome: lost
+            - name: Guadalupe Lara
+              votes: 6295
+              outcome: lost
+            - name: Susan M. Pritchard
+              votes: 5189
+              outcome: lost
+            - name: C Michelle Juarez Bernier
+              votes: 3260
+              outcome: lost
+    - year: 2020
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Rose Espinoza
+          votes: 15461
+        - seat: At-Large
+          winner: Tim Shaw
+          votes: 12340
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Rose Espinoza
+              votes: 15461
+              outcome: won
+            - name: Tim Shaw
+              votes: 12340
+              outcome: won
+            - name: Steve Simonian
+              votes: 11980
+              outcome: lost
+            - name: Peter Cruz
+              votes: 8087
+              outcome: lost
+            - name: Michael Navarro
+              votes: 5839
+              outcome: lost
+    - year: 2018
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: James "Jim" Gomez
+          votes: 10496
+        - seat: At-Large
+          winner: Jose Medrano
+          votes: 8711
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: James "Jim" Gomez
+              votes: 10496
+              outcome: won
+            - name: Jose Medrano
+              votes: 8711
+              outcome: won
+            - name: Michael A. Blazey
+              votes: 6625
+              outcome: lost
+    - year: 2016
+      type: at-large
+      winners:
+        - seat: At-Large
+          winner: Tim Shaw
+          votes: 13243
+        - seat: At-Large
+          winner: Rose "Rosie" Espinoza
+          votes: 9063
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Tim Shaw
+              votes: 13243
+              outcome: won
+            - name: Rose "Rosie" Espinoza
+              votes: 9063
+              outcome: won
+            - name: Tom Beamish
+              votes: 8597
+              outcome: lost
+            - name: Dawn Holthouser
+              votes: 6611
+              outcome: lost
+            - name: Jesus "Jess" Badillo
+              votes: 3811
+              outcome: lost
+            - name: Ida Macmurray
+              votes: 3122
+              outcome: lost
 agendas:
   available: Thursday preceding meetings
   online: https://destinyhosted.com/agenda_publish.cfm?id=52422

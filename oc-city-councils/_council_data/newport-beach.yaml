@@ -7,78 +7,78 @@ email: citycouncil@newportbeachca.gov
 phone: (949) 644-3004
 instagram: ''
 members:
-- name: Lauren Kleiman
-  position: Mayor
-  district: District 6
-  email: lkleiman@newportbeachca.gov
-  phone: (949) 644-3004
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-6
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/69680/639025910187630000
-  bio: ''
-  term_start: 2022
-  term_end: 2026
-- name: Noah Blom
-  position: Mayor Pro Tem
-  district: District 5
-  email: nblom@newportbeachca.gov
-  phone: (949) 644-3004
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-5
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61370/638073902352530000
-  bio: ''
-  term_start: 2024
-  term_end: 2028
-  notes: 2023 Mayor; term limit reached
-- name: Joe Stapleton
-  position: Councilmember
-  district: District 1
-  email: jstapleton@newportbeachca.gov
-  phone: (949) 644-3004
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-1
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61366/638073902344500000
-  bio: ''
-  term_start: 2022
-  term_end: 2026
-  notes: 2025 Mayor
-- name: Michelle Barto
-  position: Councilmember
-  district: District 2
-  email: mbarto@newportbeachca.gov
-  phone: (949) 644-3004
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-2
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/66048/638696179075330000
-  bio: ''
-  term_start: 2024
-  term_end: 2028
-- name: Erik Weigand
-  position: Councilmember
-  district: District 3
-  email: eweigand@newportbeachca.gov
-  phone: (949) 644-3004
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-3
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61364/638073902340330000
-  bio: ''
-  term_start: 2022
-  term_end: 2026
-- name: Robyn Grant
-  position: Councilmember
-  district: District 4
-  email: rgrant@newportbeachca.gov
-  phone: (949) 644-3004
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-4
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61372/638073902356470000
-  bio: ''
-  term_start: 2022
-  term_end: 2026
-- name: Sara J. Weber
-  position: Councilmember
-  district: District 7
-  email: sweber@newportbeachca.gov
-  phone: (949) 644-3004
-  city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-7
-  photo_url: https://www.newportbeachca.gov/home/showpublishedimage/69660/639016589436300000
-  bio: ''
-  term_start: 2024
-  term_end: 2028
+  - name: Lauren Kleiman
+    position: Mayor
+    district: District 6
+    email: lkleiman@newportbeachca.gov
+    phone: (949) 644-3004
+    city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-6
+    photo_url: https://www.newportbeachca.gov/home/showpublishedimage/69680/639025910187630000
+    bio: ''
+    term_start: 2022
+    term_end: 2026
+  - name: Noah Blom
+    position: Mayor Pro Tem
+    district: District 5
+    email: nblom@newportbeachca.gov
+    phone: (949) 644-3004
+    city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-5
+    photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61370/638073902352530000
+    bio: ''
+    term_start: 2024
+    term_end: 2028
+    notes: 2023 Mayor; term limit reached
+  - name: Joe Stapleton
+    position: Councilmember
+    district: District 1
+    email: jstapleton@newportbeachca.gov
+    phone: (949) 644-3004
+    city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-1
+    photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61366/638073902344500000
+    bio: ''
+    term_start: 2022
+    term_end: 2026
+    notes: 2025 Mayor
+  - name: Michelle Barto
+    position: Councilmember
+    district: District 2
+    email: mbarto@newportbeachca.gov
+    phone: (949) 644-3004
+    city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-2
+    photo_url: https://www.newportbeachca.gov/home/showpublishedimage/66048/638696179075330000
+    bio: ''
+    term_start: 2024
+    term_end: 2028
+  - name: Erik Weigand
+    position: Councilmember
+    district: District 3
+    email: eweigand@newportbeachca.gov
+    phone: (949) 644-3004
+    city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-3
+    photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61364/638073902340330000
+    bio: ''
+    term_start: 2022
+    term_end: 2026
+  - name: Robyn Grant
+    position: Councilmember
+    district: District 4
+    email: rgrant@newportbeachca.gov
+    phone: (949) 644-3004
+    city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-4
+    photo_url: https://www.newportbeachca.gov/home/showpublishedimage/61372/638073902356470000
+    bio: ''
+    term_start: 2022
+    term_end: 2026
+  - name: Sara J. Weber
+    position: Councilmember
+    district: District 7
+    email: sweber@newportbeachca.gov
+    phone: (949) 644-3004
+    city_page: https://www.newportbeachca.gov/government/city-council/find-your-council-district/district-7
+    photo_url: https://www.newportbeachca.gov/home/showpublishedimage/69660/639016589436300000
+    bio: ''
+    term_start: 2024
+    term_end: 2028
 meetings:
   schedule: 2nd and 4th Tuesdays
   study_session_time: 4:00 PM
@@ -89,26 +89,26 @@ meetings:
     address: 100 Civic Center Drive
     city_state_zip: Newport Beach, CA 92660
   agenda_availability: 72 hours prior; packets available Thursday before meeting
-  closed_session_time: null
+  closed_session_time:
   remote:
-    zoom_url: null
-    zoom_id: null
-    zoom_passcode: null
-    phone_numbers: null
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
 portals:
   agendas: https://newportbeach.legistar.com/Calendar.aspx
   live_stream: https://www.newportbeachca.gov/government/departments/public-information-office/nbtv/nbtv-live
   youtube: https://youtube.com/playlist?list=PLzorGOSnQ7c2sblNcOnptOUb9K2cYuoj0
-  document_center: null
-  municipal_code: null
-  ecomment: null
-  video_archive: null
+  document_center:
+  municipal_code:
+  ecomment:
+  video_archive:
 broadcast:
   cable_channels:
-  - provider: Spectrum
-    channel: '3'
-  - provider: Cox
-    channel: '852'
+    - provider: Spectrum
+      channel: '3'
+    - provider: Cox
+      channel: '852'
   rebroadcast: Sundays at 4:00 PM, Mondays at 12:00 PM, Tuesdays at 4:00 PM
   live_stream: https://www.newportbeachca.gov/government/departments/public-information-office/nbtv/nbtv-live
 clerk:
@@ -116,8 +116,8 @@ clerk:
   phone: (949) 644-3005
   email: cityclerk@newportbeachca.gov
   name: Lena Shumway
-  fax: null
-  address: null
+  fax:
+  address:
 public_comment:
   in_person: true
   remote_live: true
@@ -127,45 +127,331 @@ public_comment:
   email: cityclerk@newportbeachca.gov
   deadline: Monday at 5:00 PM before meeting (included in agenda packet)
   late_deadline: 2:00 PM on meeting day (provided in hard copy)
-  notes: null
+  notes:
 council:
   size: 7
   districts: 7
   at_large: 0
   mayor_elected: false
-  expanded_date: null
-  notes: null
+  expanded_date:
+  notes:
 elections:
   next_election: '2026-11-03'
   seats_up:
-  - District 1
-  - District 3
-  - District 4
-  - District 6
+    - District 1
+    - District 3
+    - District 4
+    - District 6
   election_system: by-district
   term_length: 4
-  mayor_term_length: null
-  districting_info: null
-  transition_note: null
-  term_limit: null
-  term_limit_type: null
-  term_limit_cooldown: null
-  term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  mayor_term_length:
+  districting_info:
+  transition_note:
+  term_limit:
+  term_limit_type:
+  term_limit_cooldown:
+  term_limit_cooldown_unit:
+  term_limit_effective:
+  term_limit_notes:
+  term_limit_source:
   cycle_pattern:
     group_a:
-      years: null
+      years:
       seats: []
     group_b:
-      years: null
+      years:
       seats: []
   candidate_info:
-    contact_email: null
-    contact_phone: null
-    location: null
-  nomination_period: null
-  results_source: null
-  source: null
-  history: []
+    contact_email:
+    contact_phone:
+    location:
+  nomination_period:
+  results_source:
+  source:
+  history:
+    - year: 2024
+      type: by-district
+      winners:
+        - district: District 2
+          winner: Michelle Barto
+          votes: 26760
+        - district: District 5
+          winner: Noah Blom
+          votes: 27803
+        - district: District 7
+          winner: Sara J. Weber
+          votes: 30845
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Michelle Barto
+              votes: 26760
+              outcome: won
+            - name: Nancy Scarbrough
+              votes: 16359
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Noah Blom
+              votes: 27803
+              outcome: won
+            - name: Jeff Herdman
+              votes: 15515
+              outcome: lost
+        - district: District 7
+          candidates:
+            - name: Sara J. Weber
+              votes: 30845
+              outcome: won
+            - name: Miles Patricola
+              votes: 11382
+              outcome: lost
+    - year: 2022
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Joe Stapleton
+          votes: 21780
+        - district: District 3
+          winner: Erik Weigand
+          votes: 18957
+        - district: District 4
+          winner: Robyn Grant
+          votes: 27212
+        - district: District 6
+          winner: Lauren Kleiman
+          votes: 18351
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Joe Stapleton
+              votes: 21780
+              outcome: won
+            - name: Tom Miller
+              votes: 12203
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Erik Weigand
+              votes: 18957
+              outcome: won
+            - name: Jim Mosher
+              votes: 8886
+              outcome: lost
+            - name: Amy Peters
+              votes: 5466
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Robyn Grant
+              votes: 27212
+              outcome: won
+        - district: District 6
+          candidates:
+            - name: Lauren Kleiman
+              votes: 18351
+              outcome: won
+            - name: Joy Brenner
+              votes: 14892
+              outcome: lost
+    - year: 2020
+      type: by-district
+      winners:
+        - district: District 2
+          winner: Brad Avery
+          votes: 28538
+        - district: District 5
+          winner: Noah Blom
+          votes: 28470
+        - district: District 7
+          winner: Will O'Neill
+          votes: 40971
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Brad Avery
+              votes: 28538
+              outcome: won
+            - name: Nancy Scarbrough
+              votes: 19159
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Noah Blom
+              votes: 28470
+              outcome: won
+            - name: Jeff Herdman
+              votes: 19290
+              outcome: lost
+        - district: District 7
+          candidates:
+            - name: Will O'Neill
+              votes: 40971
+              outcome: won
+    - year: 2018
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Diane Brooks Dixon
+          votes: 21169
+        - district: District 3
+          winner: Marshall "Duffy" Duffield
+          votes: 18458
+        - district: District 4
+          winner: Kevin Muldoon
+          votes: 24227
+        - district: District 6
+          winner: Joy Brenner
+          votes: 20514
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Diane Brooks Dixon
+              votes: 21169
+              outcome: won
+            - name: Mike Glenn
+              votes: 14688
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Marshall "Duffy" Duffield
+              votes: 18458
+              outcome: won
+            - name: Tim Stoaks
+              votes: 18422
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Kevin Muldoon
+              votes: 24227
+              outcome: won
+            - name: Roy Englebrecht
+              votes: 11456
+              outcome: lost
+        - district: District 6
+          candidates:
+            - name: Joy Brenner
+              votes: 20514
+              outcome: won
+            - name: Scott Peotter
+              votes: 15696
+              outcome: lost
+    - year: 2016
+      type: by-district
+      winners:
+        - district: District 2
+          winner: Brad Avery
+          votes: 20671
+        - district: District 5
+          winner: Jeff Herdman
+          votes: 12986
+        - district: District 7
+          winner: Will O'Neill
+          votes: 18186
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Brad Avery
+              votes: 20671
+              outcome: won
+            - name: Shelley M. Henderson
+              votes: 14811
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Jeff Herdman
+              votes: 12986
+              outcome: won
+            - name: Lee Lowrey
+              votes: 12073
+              outcome: lost
+            - name: Mike Glenn
+              votes: 11428
+              outcome: lost
+        - district: District 7
+          candidates:
+            - name: Will O'Neill
+              votes: 18186
+              outcome: won
+            - name: Phil Greer
+              votes: 9702
+              outcome: lost
+            - name: Fred Ameri
+              votes: 8578
+              outcome: lost
+    - year: 2014
+      type: by-district
+      winners:
+        - district: District 1
+          winner: Diane Dixon
+          votes: 19619
+        - district: District 3
+          winner: Duffy Duffield
+          votes: 16504
+        - district: District 4
+          winner: Kevin Muldoon
+          votes: 11768
+        - district: District 6
+          winner: Scott Peotter
+          votes: 11920
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Diane Dixon
+              votes: 19619
+              outcome: won
+        - district: District 3
+          candidates:
+            - name: Duffy Duffield
+              votes: 16504
+              outcome: won
+            - name: Rush Hill
+              votes: 8072
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Kevin Muldoon
+              votes: 11768
+              outcome: won
+            - name: Tim Brown
+              votes: 8582
+              outcome: lost
+            - name: Roy Englebrecht
+              votes: 2844
+              outcome: lost
+        - district: District 6
+          candidates:
+            - name: Scott Peotter
+              votes: 11920
+              outcome: won
+            - name: Mike Toerge
+              votes: 11048
+              outcome: lost
+    - year: 2012
+      type: by-district
+      winners:
+        - district: District 2
+          winner: Anthony Petros
+          votes: 30506
+        - district: District 5
+          winner: Edward D. Selich
+          votes: 29760
+        - district: District 7
+          winner: Keith D. Curry
+          votes: 30255
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Anthony Petros
+              votes: 30506
+              outcome: won
+        - district: District 5
+          candidates:
+            - name: Edward D. Selich
+              votes: 29760
+              outcome: won
+        - district: District 7
+          candidates:
+            - name: Keith D. Curry
+              votes: 30255
+              outcome: won
