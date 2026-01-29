@@ -285,14 +285,127 @@ def validate_file(filepath: Path) -> ValidationResult:
     return result
 
 
+def check_coverage(data: dict, city_name: str) -> dict:
+    """Check data coverage for a city, returning what's present/missing."""
+    coverage = {
+        'city': city_name,
+        'sections': {},
+    }
+
+    # Check main sections
+    sections = {
+        'members': bool(data.get('members')),
+        'meetings': bool(data.get('meetings')),
+        'portals': bool(data.get('portals')),
+        'broadcast': bool(data.get('broadcast')),
+        'clerk': bool(data.get('clerk')),
+        'public_comment': bool(data.get('public_comment')),
+        'council': bool(data.get('council')),
+        'elections': bool(data.get('elections')),
+    }
+    coverage['sections'] = sections
+
+    # Check member details (sample first member)
+    members = data.get('members', [])
+    if members:
+        m = members[0]
+        coverage['member_fields'] = {
+            'bio': bool(m.get('bio')),
+            'photo_url': bool(m.get('photo_url')),
+            'city_page': bool(m.get('city_page')),
+            'term_start_date': bool(m.get('term_start_date')),
+            'term_end_date': bool(m.get('term_end_date')),
+        }
+
+    # Check elections details
+    elections = data.get('elections', {})
+    coverage['elections'] = {
+        'history': bool(elections.get('history')),
+        'history_years': len(elections.get('history', [])),
+        'cycle_pattern': bool(elections.get('cycle_pattern')),
+        'term_limit': elections.get('term_limit') is not None,
+        'term_limit_source': bool(elections.get('term_limit_source')),
+    }
+
+    # Check if history has vote counts
+    history = elections.get('history', [])
+    has_votes = False
+    has_candidates = False
+    for h in history:
+        winners = h.get('winners', [])
+        for w in winners:
+            if w.get('votes') is not None:
+                has_votes = True
+        if h.get('candidates'):
+            has_candidates = True
+    coverage['elections']['has_vote_counts'] = has_votes
+    coverage['elections']['has_candidate_lists'] = has_candidates
+
+    # Check portals
+    portals = data.get('portals', {})
+    coverage['portals'] = {
+        'agendas': bool(portals.get('agendas')),
+        'live_stream': bool(portals.get('live_stream')),
+        'video_archive': bool(portals.get('video_archive')),
+        'document_center': bool(portals.get('document_center')),
+        'municipal_code': bool(portals.get('municipal_code')),
+        'ecomment': bool(portals.get('ecomment')),
+    }
+
+    return coverage
+
+
+def print_coverage_report(data_dir: Path):
+    """Print a coverage report for all cities."""
+    yaml_files = sorted(data_dir.glob('*.yaml'))
+
+    print(f"{'City':<25} {'Hist':<5} {'Votes':<6} {'Cands':<6} {'TLimit':<7} {'Cycle':<6} {'Docs':<5}")
+    print(f"{'-'*25} {'-'*5} {'-'*6} {'-'*6} {'-'*7} {'-'*6} {'-'*5}")
+
+    for filepath in yaml_files:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+
+        city_name = data.get('city_name', filepath.stem)
+        cov = check_coverage(data, city_name)
+
+        hist_years = cov['elections']['history_years']
+        has_votes = 'yes' if cov['elections']['has_vote_counts'] else '-'
+        has_cands = 'yes' if cov['elections']['has_candidate_lists'] else '-'
+        has_tlimit = 'yes' if cov['elections']['term_limit'] else '-'
+        has_cycle = 'yes' if cov['elections']['cycle_pattern'] else '-'
+        has_docs = 'yes' if cov['portals']['document_center'] else '-'
+
+        print(f"{city_name:<25} {hist_years:<5} {has_votes:<6} {has_cands:<6} {has_tlimit:<7} {has_cycle:<6} {has_docs:<5}")
+
+    print(f"\nLegend: Hist=election history years, Votes=has vote counts, Cands=has candidate lists")
+    print(f"        TLimit=has term limits, Cycle=has cycle_pattern, Docs=has document_center")
+
+
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description='Validate city council YAML files')
+    parser.add_argument('--coverage', action='store_true', help='Show data coverage report')
+    parser.add_argument('city', nargs='?', help='Validate single city (e.g., anaheim)')
+    args = parser.parse_args()
+
     data_dir = Path(__file__).parent / '_council_data'
 
     if not data_dir.exists():
         print(f"Error: Directory not found: {data_dir}")
         sys.exit(1)
 
-    yaml_files = sorted(data_dir.glob('*.yaml'))
+    if args.coverage:
+        print_coverage_report(data_dir)
+        sys.exit(0)
+
+    if args.city:
+        yaml_files = [data_dir / f'{args.city}.yaml']
+        if not yaml_files[0].exists():
+            print(f"Error: File not found: {yaml_files[0]}")
+            sys.exit(1)
+    else:
+        yaml_files = sorted(data_dir.glob('*.yaml'))
 
     if not yaml_files:
         print(f"No YAML files found in {data_dir}")
