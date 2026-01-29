@@ -3,6 +3,9 @@ city_name: Irvine
 website: https://www.cityofirvine.org
 council_url: https://www.cityofirvine.org/city-council
 last_updated: '2026-01-29'
+email: null
+phone: null
+instagram: null
 members:
 - name: Larry Agran
   position: Mayor
@@ -22,7 +25,7 @@ members:
   website: https://mayorlarryagran.org
   instagram: https://www.instagram.com/mayorlarryagran
   first_elected: 1978
-  notes: "Elected Mayor Nov 2024; previously held at-large council seat (2022-2024)"
+  notes: Elected Mayor Nov 2024; previously held at-large council seat (2022-2024)
 - name: James Mai
   position: Vice Mayor
   district: District 3
@@ -64,7 +67,7 @@ members:
   term_start: 2025
   term_end: 2026
   first_elected: 2025
-  notes: "Won April 2025 special election to fill vacancy left by Larry Agran's election as Mayor"
+  notes: Won April 2025 special election to fill vacancy left by Larry Agran's election as Mayor
   instagram: https://www.instagram.com/councilmemberbettymartinez
 - name: Kathleen Treseder
   position: Councilmember
@@ -167,11 +170,13 @@ meetings:
     phone_numbers:
     - 669-254-5252
     - 669-216-1590
+  closed_session_time: null
 portals:
   agendas: https://irvine.granicus.com/ViewPublisher.php?view_id=68
   live_stream: https://legacy.cityofirvine.org/cityhall/citymanager/pio/ictv/default.asp
   video_archive: https://irvine.granicus.com/ViewPublisher.php?view_id=68
   ecomment: https://irvine.granicusideas.com/meetings?scope=upcoming
+  youtube: null
 broadcast:
   cable_channels:
   - provider: Cox
@@ -182,6 +187,8 @@ clerk:
   title: City Clerk
   phone: (949) 724-6205
   email: clerk@cityofirvine.org
+  fax: null
+  address: null
 public_comment:
   in_person: true
   remote_live: true
@@ -192,12 +199,14 @@ public_comment:
   email: irvinecitycouncil@cityofirvine.org
   ecomment_deadline: 2 hours prior to meeting
   notes: Electronic kiosk available at chamber entrance for speaker registration
+  deadline: null
 council:
   size: 7
   districts: 5
   at_large: 2
   mayor_elected: true
   expanded_date: 2024-03
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -207,3 +216,19 @@ elections:
   - At-Large
   term_length: 4
   election_system: mixed
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

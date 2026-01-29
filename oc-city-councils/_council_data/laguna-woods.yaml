@@ -3,6 +3,9 @@ city_name: Laguna Woods
 website: https://www.cityoflagunawoods.org
 council_url: https://www.cityoflagunawoods.org/city-council/
 last_updated: '2026-01-25'
+email: ''
+phone: ''
+instagram: ''
 members:
 - name: Annie McCary
   position: Mayor
@@ -82,6 +85,7 @@ meetings:
     zoom_id: 873 1726 2653
     zoom_passcode: '104459'
     notes: View only - public comments NOT accepted via Zoom
+  closed_session_time: null
 portals:
   agendas: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
   live_stream: https://www.youtube.com/@cityoflagunawoods
@@ -99,6 +103,7 @@ clerk:
   tty: (949) 639-0535
   email: cityhall@cityoflagunawoods.org
   address: 24264 El Toro Road, Laguna Woods, CA 92637
+  fax: null
 public_comment:
   in_person: true
   remote_live: false
@@ -108,18 +113,33 @@ public_comment:
   email: cityhall@cityoflagunawoods.org
   speaker_card: Submit to City staff or proceed to podium
   notes: Public comments NOT accepted via Zoom, YouTube, or cable TV - in person only
+  deadline: null
 council:
   size: 5
   districts: 0
   at_large: 5
   mayor_elected: false
   expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
   - At-Large (2 seats)
   term_length: 4
   election_system: at-large
-email: ''
-phone: ''
-instagram: ''
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

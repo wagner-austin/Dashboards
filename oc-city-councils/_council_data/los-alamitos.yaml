@@ -3,6 +3,9 @@ city_name: Los Alamitos
 website: https://cityoflosalamitos.org
 council_url: https://cityoflosalamitos.org/165/City-Council
 last_updated: '2026-01-26'
+email: ''
+phone: ''
+instagram: ''
 members:
 - name: Tanya Doby
   position: Mayor
@@ -112,6 +115,12 @@ meetings:
     name: Council Chamber, City Hall
     address: 3191 Katella Avenue
     city_state_zip: Los Alamitos, CA 90720
+  closed_session_time: null
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://cityoflosalamitos.org/129/Agendas-Minutes
   live_stream: https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3
@@ -126,6 +135,8 @@ clerk:
   title: City Clerk
   phone: (562) 431-3538 ext. 220
   email: cityclerk@cityoflosalamitos.org
+  fax: null
+  address: null
 public_comment:
   in_person: true
   remote_live: false
@@ -135,12 +146,14 @@ public_comment:
   email: cityclerk@cityoflosalamitos.org
   deadline: 3:00 PM on meeting day
   subject_line: COUNCIL PUBLIC COMMENT
+  notes: null
 council:
   size: 5
   districts: 5
   at_large: 0
   mayor_elected: false
   expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -148,6 +161,19 @@ elections:
   - District 5
   term_length: 4
   election_system: by-district
-email: ''
-phone: ''
-instagram: ''
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

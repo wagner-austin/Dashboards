@@ -3,6 +3,9 @@ city_name: Lake Forest
 website: https://www.lakeforestca.gov
 council_url: https://www.lakeforestca.gov/city_government/city_council/index.php
 last_updated: '2026-01-26'
+email: council@lakeforestca.gov
+phone: (949) 461-3400
+instagram: ''
 members:
 - name: Robert Pequeño
   position: Mayor
@@ -63,6 +66,11 @@ meetings:
     address: 100 Civic Center Drive
     city_state_zip: Lake Forest, CA 92630
   agenda_availability: 72 hours prior (Friday before Tuesday meetings)
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://www.lakeforestca.gov/city_government/agendas_and_minutes/index.php
   live_stream: https://www.facebook.com/lakeforestca
@@ -76,6 +84,8 @@ clerk:
   title: Acting City Clerk
   phone: (949) 461-3420
   email: council@lakeforestca.gov
+  fax: null
+  address: null
 public_comment:
   in_person: true
   remote_live: true
@@ -92,6 +102,8 @@ council:
   districts: 5
   at_large: 0
   mayor_elected: false
+  expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -100,6 +112,19 @@ elections:
   - District 4
   term_length: 4
   election_system: by-district
-email: council@lakeforestca.gov
-phone: (949) 461-3400
-instagram: ''
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

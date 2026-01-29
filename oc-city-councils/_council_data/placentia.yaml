@@ -3,6 +3,9 @@ city_name: Placentia
 website: https://www.placentia.org
 council_url: https://www.placentia.org/268/Mayor-City-Council
 last_updated: '2026-01-26'
+email: ''
+phone: (714) 993-8117
+instagram: ''
 members:
 - name: Chad P. Wanke
   position: Mayor
@@ -111,11 +114,17 @@ meetings:
     name: City Council Chambers
     address: 401 E. Chapman Avenue
     city_state_zip: Placentia, CA 92870
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://portal.laserfiche.com/portal/Welcome.aspx?repo=r-d37070b7
   live_stream: https://placentia.granicus.com/ViewPublisher.php?view_id=4
   video_archive: https://www.placentia.org/667/City-Council-Meeting-Archives
   ecomment: null
+  youtube: null
 broadcast:
   cable_channels:
   - provider: AT&T U-Verse
@@ -128,6 +137,8 @@ clerk:
   title: City Clerk
   phone: (714) 993-8231
   email: rmckinnell@placentia.org
+  fax: null
+  address: null
 public_comment:
   in_person: true
   remote_live: false
@@ -136,12 +147,14 @@ public_comment:
   time_limit: 5 minutes per speaker
   email: cityclerk@placentia.org
   deadline: 6:00 PM on meeting day
+  notes: null
 council:
   size: 5
   districts: 5
   at_large: 0
   mayor_elected: false
   expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -149,6 +162,19 @@ elections:
   - District 5
   term_length: 4
   election_system: by-district
-email: ''
-phone: (714) 993-8117
-instagram: ''
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

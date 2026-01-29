@@ -3,6 +3,9 @@ city_name: Fountain Valley
 website: https://www.fountainvalley.gov
 council_url: https://www.fountainvalley.gov/156/City-Council
 last_updated: '2026-01-25'
+email: null
+phone: null
+instagram: null
 members:
 - name: Ted Bui
   position: Councilmember
@@ -114,11 +117,13 @@ meetings:
     zoom_url: https://bit.ly/4kDYQHD
     zoom_id: 851 5107 5391
     zoom_passcode: '883147'
+  closed_session_time: null
 portals:
   agendas: https://www.fountainvalley.gov/AgendaCenter/City-Council-2
   live_stream: https://www.fountainvalley.gov/213/Watch-FV-Television
   document_center: https://www.fountainvalley.gov/DocumentCenter
   municipal_code: https://ecode360.com/FO4927
+  youtube: null
 broadcast:
   cable_channels:
   - provider: Local Cable
@@ -130,6 +135,7 @@ clerk:
   phone: (714) 593-4445
   fax: (714) 593-4494
   email: Rick.Miller@fountainvalley.gov
+  address: null
 public_comment:
   in_person: true
   remote_live: true
@@ -137,48 +143,59 @@ public_comment:
   written_email: true
   time_limit: 3 minutes per speaker
   email: Rick.Miller@fountainvalley.gov
+  deadline: null
+  notes: null
 council:
   size: 5
   districts: 0
   at_large: 5
   mayor_elected: false
   expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   election_system: at-large
   term_length: 4
   seats_up:
-    - district: "At-Large"
-      incumbent: "Jim Cunneen"
-    - district: "At-Large"
-      incumbent: "Kim Constantine"
-    - district: "At-Large"
-      incumbent: "Patrick Harper"
+  - district: At-Large
+    incumbent: Jim Cunneen
+  - district: At-Large
+    incumbent: Kim Constantine
+  - district: At-Large
+    incumbent: Patrick Harper
   term_limit: 3
   term_limit_type: terms
   term_limit_cooldown: 2
   term_limit_cooldown_unit: years
-  term_limit_effective: "2004-11-02"
-  term_limit_notes: "3 consecutive full 4-year terms per Ord. 1506 (2015). 2-year break required after maxing out. Applies to terms starting on/after Nov 2, 2004."
+  term_limit_effective: '2004-11-02'
+  term_limit_notes: 3 consecutive full 4-year terms per Ord. 1506 (2015). 2-year break required after maxing out. Applies
+    to terms starting on/after Nov 2, 2004.
   term_limit_source: https://ecode360.com/42928071
   cycle_pattern:
     group_a:
-      years: "2022, 2026, 2030..."
-      seats: ["At-Large (3 seats)"]
+      years: 2022, 2026, 2030...
+      seats:
+      - At-Large (3 seats)
     group_b:
-      years: "2024, 2028, 2032..."
-      seats: ["At-Large (2 seats)"]
-  nomination_period: "July 13 - August 7, 2026"
+      years: 2024, 2028, 2032...
+      seats:
+      - At-Large (2 seats)
+  nomination_period: July 13 - August 7, 2026
   candidate_info:
     contact_email: rick.miller@fountainvalley.gov
-    contact_phone: "(714) 593-4445"
-    location: "10200 Slater Ave, Fountain Valley, CA 92708"
+    contact_phone: (714) 593-4445
+    location: 10200 Slater Ave, Fountain Valley, CA 92708
   results_source: https://ocvote.gov/results
   source: https://www.fountainvalley.gov/1262/November-3-2026---General-Municipal-Elec
   history:
-    - year: 2024
-      seats: ["At-Large (2 seats)"]
-      source: https://www.fountainvalley.gov/DocumentCenter/View/21141/Election-Notice-for-Website
-    - year: 2022
-      seats: ["At-Large (3 seats)"]
-      source: https://fountainvalley.gov/DocumentCenter/View/15451/City-Council-Resolution-9832---Requesting-the-Consolidation-of-the-election-with-the-countypdf
+  - year: 2024
+    seats:
+    - At-Large (2 seats)
+    source: https://www.fountainvalley.gov/DocumentCenter/View/21141/Election-Notice-for-Website
+  - year: 2022
+    seats:
+    - At-Large (3 seats)
+    source: https://fountainvalley.gov/DocumentCenter/View/15451/City-Council-Resolution-9832---Requesting-the-Consolidation-of-the-election-with-the-countypdf
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null

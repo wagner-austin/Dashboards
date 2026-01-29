@@ -3,6 +3,9 @@ city_name: San Clemente
 website: https://www.sanclemente.gov
 council_url: https://www.sanclemente.gov/government/city-council
 last_updated: '2026-01-26'
+email: ''
+phone: ''
+instagram: ''
 members:
 - name: Rick Loeffler
   position: Mayor
@@ -72,6 +75,11 @@ meetings:
     name: City Hall
     address: 100 Avenida Presidio
     city_state_zip: San Clemente, CA 92672
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://www.sanclemente.gov/agendacenter
   youtube: https://youtube.com/@cityofsanclementevideos
@@ -87,6 +95,7 @@ clerk:
   phone: (949) 361-8301
   email: CityClerk@san-clemente.org
   address: 910 Calle Negocio, San Clemente, CA 92673
+  fax: null
 public_comment:
   in_person: true
   remote_live: false
@@ -112,6 +121,19 @@ elections:
   term_length: 4
   election_system: at-large
   notes: Transitioning to by-district with elected mayor in 2026
-email: ''
-phone: ''
-instagram: ''
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

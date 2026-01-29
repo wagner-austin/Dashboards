@@ -3,6 +3,9 @@ city_name: Santa Ana
 website: https://www.santa-ana.org
 council_url: https://www.santa-ana.org/departments/city-council/
 last_updated: '2026-01-26'
+email: null
+phone: null
+instagram: null
 members:
 - name: Valerie Amezcua
   position: Mayor
@@ -192,6 +195,7 @@ clerk:
   phone: (714) 647-6520
   email: cityclerk@santa-ana.org
   address: 20 Civic Center Plaza, M-30, Santa Ana, CA 92701
+  fax: null
 public_comment:
   in_person: true
   remote_live: true
@@ -208,6 +212,8 @@ council:
   wards: 6
   at_large: 1
   mayor_elected: true
+  expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -218,3 +224,18 @@ elections:
   election_system: by-ward
   term_length: 4
   mayor_term_length: 2
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

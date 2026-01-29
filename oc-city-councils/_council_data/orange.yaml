@@ -3,6 +3,9 @@ city_name: Orange
 website: https://www.cityoforange.org
 council_url: https://www.cityoforange.org/our-city/local-government/city-council
 last_updated: '2026-01-26'
+email: null
+phone: null
+instagram: null
 members:
 - name: Dan Slater
   position: Mayor
@@ -82,11 +85,17 @@ meetings:
     name: City Council Chamber
     address: 300 E. Chapman Avenue
     city_state_zip: Orange, CA 92866
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://cityoforange.legistar.com/Calendar.aspx
   live_stream: https://www.cityoforange.org/residents/orange-tv3-live
   video_archive: https://cityoforange.legistar.com/Page.aspx?M=Z
   ecomment: https://cityoforange.granicusideas.com/meetings
+  youtube: null
 broadcast:
   cable_channels:
   - provider: Spectrum
@@ -102,6 +111,7 @@ clerk:
   phone: (714) 744-5500
   fax: (714) 744-5515
   email: clerkinfo@cityoforange.org
+  address: null
 public_comment:
   in_person: true
   remote_live: false
@@ -111,11 +121,14 @@ public_comment:
   email: CCpubliccomment@cityoforange.org
   ecomment_url: https://cityoforange.granicusideas.com/meetings
   deadline: 3:00 PM on meeting day
+  notes: null
 council:
   size: 7
   districts: 6
   at_large: 1
   mayor_elected: true
+  expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -125,3 +138,19 @@ elections:
   - District 6
   election_system: by-district
   term_length: 4
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

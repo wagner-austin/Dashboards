@@ -3,6 +3,9 @@ city_name: Yorba Linda
 website: https://www.yorbalindaca.gov
 council_url: https://www.yorbalindaca.gov/190/City-Council
 last_updated: '2026-01-26'
+email: city_council@yorbalindaca.gov
+phone: 714-961-7100
+instagram: null
 members:
 - name: Carlos Rodriguez
   position: Mayor
@@ -123,10 +126,16 @@ meetings:
     name: City Council Chambers
     address: 4845 Casa Loma Avenue
     city_state_zip: Yorba Linda, CA 92886
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://www.yorbalindaca.gov/197/Council-Meeting-Agendas-Minutes
   live_stream: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
   video_archive: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
+  youtube: null
 broadcast:
   cable_channels:
   - provider: Local Cable
@@ -139,8 +148,8 @@ clerk:
   title: City Clerk
   phone: (714) 961-7150
   email: cityclerk@yorbalindaca.gov
-  fax:
-  address:
+  fax: null
+  address: null
 public_comment:
   in_person: true
   remote_live: true
@@ -149,6 +158,7 @@ public_comment:
   time_limit: 5 minutes per speaker
   email: cityclerk@yorbalindaca.gov
   notes: Public Comment Card required; Zoom available for hybrid meetings; email subject must state "Written Public Comments"
+  deadline: null
 council:
   size: 5
   districts: 0
@@ -164,7 +174,17 @@ elections:
   election_system: at-large
   term_limit: 3
   term_limit_type: terms
-  term_limit_notes: "Three consecutive 4-year terms"
-email: city_council@yorbalindaca.gov
-phone: 714-961-7100
-instagram: null
+  term_limit_notes: Three consecutive 4-year terms
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

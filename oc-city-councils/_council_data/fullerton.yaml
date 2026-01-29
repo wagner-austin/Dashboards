@@ -3,6 +3,9 @@ city_name: Fullerton
 website: https://www.cityoffullerton.com
 council_url: https://www.cityoffullerton.com/government/city-council
 last_updated: '2026-01-25'
+email: null
+phone: null
+instagram: null
 members:
 - name: Fred Jung
   position: Mayor
@@ -62,11 +65,17 @@ meetings:
     name: Council Chamber
     address: 303 W. Commonwealth Ave.
     city_state_zip: Fullerton, CA 92832
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://fullerton.legistar.com/
   live_stream: https://www.cityoffullerton.com/ftv3
   video_archive: https://fullerton.granicus.com/ViewPublisher.php?view_id=2
   district_map: https://www.cityoffullerton.com/government/departments/city-clerk/elections/find-my-district
+  youtube: null
 broadcast:
   cable_channels:
   - provider: Spectrum
@@ -79,6 +88,8 @@ clerk:
   phone: (714) 738-6350
   email: cityclerksoffice@cityoffullerton.com
   direct_email: lucindaw@cityoffullerton.com
+  fax: null
+  address: null
 public_comment:
   in_person: true
   remote_live: true
@@ -88,11 +99,14 @@ public_comment:
   ecomment: true
   subject_format: '"CITY COUNCIL MEETING CORRESPONDENCE - ITEM #" or "NON-AGENDA ITEM"'
   notes: Correspondence becomes part of official record and posted online with supplemental materials
+  deadline: null
 council:
   size: 5
   districts: 5
   at_large: 0
   mayor_elected: false
+  expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -100,3 +114,19 @@ elections:
   - District 5
   election_system: by-district
   term_length: 4
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

@@ -3,6 +3,9 @@ city_name: Dana Point
 website: https://www.danapoint.org
 council_url: https://www.danapoint.org/department/city-council
 last_updated: '2026-01-25'
+email: null
+phone: null
+instagram: null
 members:
 - name: John Gabbard
   position: Mayor
@@ -85,6 +88,12 @@ meetings:
     name: Council Chamber, City Hall
     address: 33282 Golden Lantern, Suite 210
     city_state_zip: Dana Point, CA 92629
+  closed_session_time: null
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://www.danapoint.org/department/city-council/meetings-agendas-minutes
   youtube: https://www.youtube.com/channel/UCdNW_5KL2Q7lC-DFHUyFr7A
@@ -101,6 +110,7 @@ clerk:
   phone: (949) 248-3505
   email: ssharke@danapoint.org
   address: 33282 Golden Lantern, Dana Point, CA 92629
+  fax: null
 public_comment:
   in_person: true
   remote_live: false
@@ -109,56 +119,74 @@ public_comment:
   time_limit: 3 minutes per speaker
   email: comment@danapoint.org
   deadline: 4:00 PM on meeting day
-  notes: 15-minute total limit for public comment period. Comments not read aloud but included in record. Include "Public Comment" and meeting date in subject line.
+  notes: 15-minute total limit for public comment period. Comments not read aloud but included in record. Include "Public
+    Comment" and meeting date in subject line.
 council:
   size: 5
   districts: 5
   at_large: 0
   mayor_elected: false
   expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   election_system: by-district
   term_length: 4
   seats_up:
-    - district: "District 1"
-      incumbent: "John Gabbard"
-    - district: "District 2"
-      incumbent: "Matthew Pagano"
-    - district: "District 3"
-      incumbent: "Jamey M. Federico"
+  - district: District 1
+    incumbent: John Gabbard
+  - district: District 2
+    incumbent: Matthew Pagano
+  - district: District 3
+    incumbent: Jamey M. Federico
   term_limit: 2
-  term_limit_type: terms              # TODO: verify - assumed terms not years
+  term_limit_type: terms
   term_limit_cooldown: null
   term_limit_cooldown_unit: null
-  term_limit_effective: null          # TODO: research effective date
-  term_limit_notes: null              # TODO: add ordinance reference
-  term_limit_source: null             # TODO: add municipal code URL
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
   cycle_pattern:
     group_a:
-      years: "2022, 2026, 2030..."
-      seats: ["District 1", "District 2", "District 3"]
+      years: 2022, 2026, 2030...
+      seats:
+      - District 1
+      - District 2
+      - District 3
     group_b:
-      years: "2024, 2028, 2032..."
-      seats: ["District 4", "District 5"]
+      years: 2024, 2028, 2032...
+      seats:
+      - District 4
+      - District 5
   candidate_info:
     contact_email: ssharke@danapoint.org
-    contact_phone: "(949) 248-3505"
-    location: "33282 Golden Lantern, Dana Point, CA 92629"
+    contact_phone: (949) 248-3505
+    location: 33282 Golden Lantern, Dana Point, CA 92629
   results_source: https://ocvote.gov/results
   source: https://www.danapoint.org/City-Government/City-Clerk/Election/Election-2024
   history:
-    - year: 2024
-      seats: ["District 4", "District 5"]
-      winners:
-        - district: "District 4"
-          winner: "Mike Frost"
-        - district: "District 5"
-          winner: "Michael Villar"
-      source: https://www.danapoint.org/City-Government/City-Clerk/Election/Election-2024
-    - year: 2022
-      seats: ["District 1", "District 2", "District 3"]
-      source: https://danapoint.hylandcloud.com/231publicaccessviewer/
-    - year: 2020
-      seats: ["District 4", "District 5"]
-      source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+  - year: 2024
+    seats:
+    - District 4
+    - District 5
+    winners:
+    - district: District 4
+      winner: Mike Frost
+    - district: District 5
+      winner: Michael Villar
+    source: https://www.danapoint.org/City-Government/City-Clerk/Election/Election-2024
+  - year: 2022
+    seats:
+    - District 1
+    - District 2
+    - District 3
+    source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+  - year: 2020
+    seats:
+    - District 4
+    - District 5
+    source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  nomination_period: null

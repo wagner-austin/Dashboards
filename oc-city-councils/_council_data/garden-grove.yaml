@@ -3,6 +3,9 @@ city_name: Garden Grove
 website: https://ggcity.org
 council_url: https://ggcity.org/city-council
 last_updated: '2026-01-25'
+email: ''
+phone: ''
+instagram: ''
 members:
 - name: Stephanie Klopfenstein
   position: Mayor
@@ -144,10 +147,17 @@ meetings:
     name: City Council Chamber
     address: 11300 Stanford Avenue
     city_state_zip: Garden Grove, CA 92840
+  closed_session_time: null
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://agendasuite.org/iip/gardengrove
   live_stream: https://ggcity.org/ggtv3-live
   video_archive: https://ggcity.org/ggtv3/videos
+  youtube: null
 broadcast:
   cable_channels:
   - provider: GGTV
@@ -158,6 +168,8 @@ clerk:
   title: City Clerk
   phone: (714) 741-5043
   email: cityclerk@ggcity.org
+  fax: null
+  address: null
 public_comment:
   in_person: true
   remote_live: true
@@ -173,6 +185,8 @@ council:
   districts: 6
   at_large: 1
   mayor_elected: true
+  expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -181,6 +195,19 @@ elections:
   - District 4
   election_system: by-district
   term_length: 4
-email: ''
-phone: ''
-instagram: ''
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

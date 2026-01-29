@@ -3,6 +3,9 @@ city_name: Villa Park
 website: https://villapark.org
 council_url: https://villapark.org/council-and-committees/city-council
 last_updated: '2026-01-26'
+email: info@villapark.org
+phone: (714) 998-1500
+instagram: null
 members:
 - name: Jordan Wu
   position: Mayor
@@ -71,6 +74,12 @@ meetings:
     name: Council Chambers
     address: 17855 Santiago Boulevard
     city_state_zip: Villa Park, CA 92861
+  closed_session_time: null
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=780&view=gridview&pageSize=10
   live_stream: https://villapark.org
@@ -87,6 +96,8 @@ clerk:
   title: City Manager/City Clerk
   phone: (714) 998-1500
   email: sfranks@villapark.org
+  fax: null
+  address: null
 public_comment:
   in_person: true
   remote_live: false
@@ -111,7 +122,17 @@ elections:
   election_system: at-large
   term_limit: 2
   term_limit_type: terms
-  term_limit_notes: "Two full terms"
-email: info@villapark.org
-phone: (714) 998-1500
-instagram: null
+  term_limit_notes: Two full terms
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []

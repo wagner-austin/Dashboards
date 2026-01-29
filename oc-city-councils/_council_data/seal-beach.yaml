@@ -3,6 +3,9 @@ city_name: Seal Beach
 website: https://www.sealbeachca.gov
 council_url: https://www.sealbeachca.gov/Government/City-Council
 last_updated: '2026-01-26'
+email: ''
+phone: ''
+instagram: ''
 members:
 - name: Lisa Landau
   position: Mayor
@@ -81,6 +84,11 @@ meetings:
     name: City Council Chambers
     address: 211 Eighth Street
     city_state_zip: Seal Beach, CA 90740
+  remote:
+    zoom_url: null
+    zoom_id: null
+    zoom_passcode: null
+    phone_numbers: null
 portals:
   agendas: https://www.sealbeachca.gov/Government/Agendas-Notices-Meeting-Videos/Council-Commission-Meetings
   youtube: https://youtube.com/@cityofsealbeachcouncilchambers
@@ -99,6 +107,7 @@ clerk:
   email: gharper@sealbeachca.gov
   address: 211 Eighth Street, Seal Beach, CA 90740
   hours: 8:00 a.m. to 5:00 p.m.
+  fax: null
 public_comment:
   in_person: true
   remote_live: false
@@ -107,12 +116,15 @@ public_comment:
   time_limit: 5 minutes per speaker
   email: gharper@sealbeachca.gov
   notes: Speaker cards available at Clerk's desk; address Mayor and entire Council only; on-demand video since 2012
+  deadline: null
 council:
   size: 5
   districts: 5
   at_large: 0
   mayor_elected: false
   mayor_rotation: Selected by council annually
+  expanded_date: null
+  notes: null
 elections:
   next_election: '2026-11-03'
   seats_up:
@@ -121,6 +133,19 @@ elections:
   - District 5
   term_length: 4
   election_system: by-district
-email: ''
-phone: ''
-instagram: ''
+  mayor_term_length: null
+  districting_info: null
+  transition_note: null
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  cycle_pattern: null
+  candidate_info: null
+  nomination_period: null
+  results_source: null
+  source: null
+  history: []
