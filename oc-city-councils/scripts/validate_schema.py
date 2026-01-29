@@ -359,8 +359,8 @@ def print_coverage_report(data_dir: Path):
     """Print a coverage report for all cities."""
     yaml_files = sorted(data_dir.glob('*.yaml'))
 
-    print(f"{'City':<25} {'Hist':<5} {'Votes':<6} {'Cands':<6} {'TLimit':<7} {'Cycle':<6} {'Docs':<5}")
-    print(f"{'-'*25} {'-'*5} {'-'*6} {'-'*6} {'-'*7} {'-'*6} {'-'*5}")
+    print(f"{'City':<25} {'Hist':<5} {'Votes':<6} {'Cands':<6} {'TLimit':<7} {'Docs':<5} {'MCode':<5}")
+    print(f"{'-'*25} {'-'*5} {'-'*6} {'-'*6} {'-'*7} {'-'*5} {'-'*5}")
 
     for filepath in yaml_files:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -373,13 +373,13 @@ def print_coverage_report(data_dir: Path):
         has_votes = 'yes' if cov['elections']['has_vote_counts'] else '-'
         has_cands = 'yes' if cov['elections']['has_candidate_lists'] else '-'
         has_tlimit = 'yes' if cov['elections']['term_limit'] else '-'
-        has_cycle = 'yes' if cov['elections']['cycle_pattern'] else '-'
         has_docs = 'yes' if cov['portals']['document_center'] else '-'
+        has_mcode = 'yes' if cov['portals']['municipal_code'] else '-'
 
-        print(f"{city_name:<25} {hist_years:<5} {has_votes:<6} {has_cands:<6} {has_tlimit:<7} {has_cycle:<6} {has_docs:<5}")
+        print(f"{city_name:<25} {hist_years:<5} {has_votes:<6} {has_cands:<6} {has_tlimit:<7} {has_docs:<5} {has_mcode:<5}")
 
     print(f"\nLegend: Hist=election history years, Votes=has vote counts, Cands=has candidate lists")
-    print(f"        TLimit=has term limits, Cycle=has cycle_pattern, Docs=has document_center")
+    print(f"        TLimit=has term limits, Docs=document_center, MCode=municipal_code")
 
 
 def main():
@@ -389,7 +389,7 @@ def main():
     parser.add_argument('city', nargs='?', help='Validate single city (e.g., anaheim)')
     args = parser.parse_args()
 
-    data_dir = Path(__file__).parent / '_council_data'
+    data_dir = Path(__file__).parent.parent / '_council_data'
 
     if not data_dir.exists():
         print(f"Error: Directory not found: {data_dir}")

@@ -289,7 +289,7 @@ def print_city_report(result: dict):
 
 
 def main():
-    data_dir = Path(__file__).parent / '_council_data'
+    data_dir = Path(__file__).parent.parent / '_council_data'
 
     if len(sys.argv) < 2:
         print("Usage: python calculate_term_limits.py [city-slug|--all]")

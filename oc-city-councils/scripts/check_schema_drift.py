@@ -134,7 +134,7 @@ def main():
     parser.add_argument('--reference', default='aliso-viejo', help='Reference city (default: aliso-viejo)')
     args = parser.parse_args()
 
-    data_dir = Path(__file__).parent / '_council_data'
+    data_dir = Path(__file__).parent.parent / '_council_data'
 
     # Load reference
     ref_path = data_dir / f'{args.reference}.yaml'

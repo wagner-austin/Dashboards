@@ -36,7 +36,7 @@ Open `index.html` in a browser, or visit the live site above.
 ### Validate YAML Files
 
 ```bash
-python validate_schema.py
+python scripts/validate_schema.py
 ```
 
 This checks all YAML files against the standard schema and reports errors/warnings.
@@ -69,7 +69,7 @@ Adds vote counts and candidate lists to existing history entries.
 ### Check Schema Drift
 
 ```bash
-python check_schema_drift.py
+python scripts/check_schema_drift.py
 ```
 
 Compares all cities against the reference schema (Aliso Viejo) to find missing fields or structural differences.
@@ -77,7 +77,7 @@ Compares all cities against the reference schema (Aliso Viejo) to find missing f
 ### Check Data Coverage
 
 ```bash
-python validate_schema.py --coverage
+python scripts/validate_schema.py --coverage
 ```
 
 Shows a table of what data each city has (history years, vote counts, term limits, etc.).
@@ -89,18 +89,24 @@ oc-city-councils/
 ├── index.html              # Dashboard (reads dashboard_data.json)
 ├── dashboard_data.json     # Auto-generated from YAML files
 ├── build_dashboard.py      # YAML → JSON builder
-├── validate_schema.py      # YAML schema validator (use --coverage for report)
-├── check_schema_drift.py   # Compare cities against reference schema
-├── add_missing_fields.py   # Add missing schema fields to all cities
 ├── _council_data/          # ✅ YAML files (golden source of truth)
 │   ├── aliso-viejo.yaml    # Reference schema
 │   ├── anaheim.yaml
 │   └── ... (34 cities)
+├── scripts/                # Utility scripts
+│   ├── validate_schema.py  # Schema validator (--coverage for report)
+│   ├── check_schema_drift.py   # Compare cities to reference
+│   ├── add_missing_fields.py   # Add missing fields to all cities
+│   └── calculate_term_limits.py
+├── docs/                   # Documentation
+│   ├── CITY_CHECKLIST.md   # Coverage status per city
+│   ├── DATA_GUIDE.md       # Comprehensive data guide
+│   └── YAML_TEMPLATE.md    # Complete YAML field reference
 ├── db/                     # Database scripts
 │   ├── init_db.py          # YAML → SQLite importer
 │   └── schema.sql          # Database schema with views
 └── election_data/          # Election data & scripts
-    ├── README.md           # Data sources & how to use
+    ├── README.md           # Data sources & how to download
     ├── populate_history.py # Create history from OC Registrar data
     ├── enrich_yaml.py      # Add vote counts to existing history
     ├── validate_against_yaml.py  # Verify data accuracy
