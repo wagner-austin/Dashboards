@@ -45,16 +45,19 @@ members:
   phone: (949) 425-3899
   city_page: https://avcity.org/295/Councilmember-Garrett-Dwyer
   photo_url: https://avcity.org/ImageRepository/Document?documentID=4478
-  bio: Garrett Dwyer was appointed in 2025 to represent the 3rd District of the Aliso Viejo City Council. This district 
-    includes our Town Center and The Commons, Grand Park, Woodfield Park, and communities surrounded by Alicia Parkway, 
-    Pacific Park Drive and State Route 73. Garrett and his wife moved to Aliso Viejo in 2004 to build their family and 
-    quickly became enamored with the city. From the quality of the schools and parks to the safety of the streets, 
-    Garrett knew this was his place to plant roots. As his family has grown with kids and dogs and cats, so has 
-    Garrett's service to our community. There's a good chance you've seen him serving as either a PTA treasurer, soccer 
-    coach, AYSO board member, substitute instructor at church, HOA board member, or YMCA Adventure Guides Expedition 
+  bio: Garrett Dwyer was appointed in 2025 to represent the 3rd District of the Aliso Viejo City Council. This district
+    includes our Town Center and The Commons, Grand Park, Woodfield Park, and communities surrounded by Alicia Parkway,
+    Pacific Park Drive and State Route 73. Garrett and his wife moved to Aliso Viejo in 2004 to build their family and
+    quickly became enamored with the city. From the quality of the schools and parks to the safety of the streets,
+    Garrett knew this was his place to plant roots. As his family has grown with kids and dogs and cats, so has
+    Garrett's service to our community. There's a good chance you've seen him serving as either a PTA treasurer, soccer
+    coach, AYSO board member, substitute instructor at church, HOA board member, or YMCA Adventure Guides Expedition
     Navigator.
   term_start: 2025
+  term_start_date: '2025-10-15'
   term_end: 2026
+  notes: "Appointed Oct 15, 2025 to fill vacancy from Richard Hurt resignation (3-1 vote). Special election Nov 2026."
+  appointment_source: https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_0d0af4c8a226e585bdc39fcfefbd7282.pdf&view=1
 - name: Tiffany Ackley
   position: Councilmember
   district: District 4
@@ -173,7 +176,7 @@ elections:
     - district: "District 3"
       winner: "Richard Hurt"
       votes: null
-      notes: "Unopposed - appointed per CA Elections Code 10229"
+      notes: "Unopposed - appointed per EC 10229. Resigned 2025; replaced by Garrett Dwyer."
     - district: "District 5"
       winner: "Mike Munzing"
       votes: 2610
