@@ -347,3 +347,62 @@ elections:
       - name: Mary R. Rios
         votes: 6557
         outcome: lost
+  - year: 2014
+    type: at-large
+    seats: ["At-Large (2 seats)"]
+    winners:
+    - seat: "At-Large"
+      winner: "David C. Harrington"
+      votes: 4077
+    - seat: "At-Large"
+      winner: "Phil Tsunoda"
+      votes: 3360
+    candidates:
+    - district: At-Large
+      candidates:
+      - name: David C. Harrington
+        votes: 4077
+        outcome: won
+      - name: Phil Tsunoda
+        votes: 3360
+        outcome: won
+      - name: Carmen Cave
+        votes: 2297
+        outcome: lost
+      - name: Gary V. Miller
+        votes: 1811
+        outcome: lost
+      - name: Andrew R. Abrecht
+        votes: 1735
+        outcome: lost
+  - year: 2012
+    type: at-large
+    seats: ["At-Large (3 seats)"]
+    winners:
+    - seat: "At-Large"
+      winner: "Ross Chun"
+      votes: 7256
+    - seat: "At-Large"
+      winner: "William (Bill) A. Phillips"
+      votes: 7244
+    - seat: "At-Large"
+      winner: "Mike Munzing"
+      votes: 7065
+    candidates:
+    - district: At-Large
+      candidates:
+      - name: Ross Chun
+        votes: 7256
+        outcome: won
+      - name: William (Bill) A. Phillips
+        votes: 7244
+        outcome: won
+      - name: Mike Munzing
+        votes: 7065
+        outcome: won
+      - name: Greg Ficke
+        votes: 6160
+        outcome: lost
+      - name: Donald A. Garcia
+        votes: 5856
+        outcome: lost
