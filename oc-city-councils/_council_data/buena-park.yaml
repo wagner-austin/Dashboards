@@ -141,18 +141,23 @@ elections:
       incumbent: Carlos Franco
     - district: District 5
       incumbent: Connor Traut
-  term_limit:
-  term_limit_cooldown:
+  term_limit: 3
+  term_limit_type: terms
+  term_limit_cooldown: 1
+  term_limit_cooldown_unit: year
+  term_limit_effective: "1997-01-01"
+  term_limit_notes: "Max 3 consecutive 4-year terms per Ord. 1330. Partial terms under 2 years don't count. After maxing out, must sit out 1 full calendar year before eligible again."
+  term_limit_source: https://ecode360.com/42915391
   transition_note: Adopted by-district elections March 22, 2022
   cycle_pattern:
     group_a:
-      years: 2026, 2030, 2034...
+      years: "2026, 2030, 2034..."
       seats:
         - District 1
         - District 2
         - District 5
     group_b:
-      years: 2028, 2032, 2036...
+      years: "2028, 2032, 2036..."
       seats:
         - District 3
         - District 4
@@ -166,15 +171,12 @@ elections:
   districting_info: https://www.buenapark.com/city_departments/city_clerk/elections_and_voter_services/index.php
   source: https://www.buenapark.com/city_departments/city_clerk/elections_and_voter_services/index.php
   mayor_term_length:
-  term_limit_type:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
   nomination_period:
   history:
     - year: 2024
       type: by-district
+      resolution: "14923"
+      resolution_source: https://portal.laserfiche.com/Portal/DocView.aspx?id=239914&repo=r-79e623a9
       winners:
         - district: District 2
           winner: Carlos Franco
@@ -212,6 +214,8 @@ elections:
               outcome: lost
     - year: 2022
       type: by-district
+      resolution: "14600"
+      resolution_source: https://portal.laserfiche.com/Portal/DocView.aspx?id=193442&repo=r-79e623a9
       winners:
         - district: District 1
           winner: Joyce Ahn
@@ -244,6 +248,8 @@ elections:
               outcome: lost
     - year: 2020
       type: by-district
+      resolution: "14251"
+      resolution_source: https://portal.laserfiche.com/Portal/DocView.aspx?id=167185&repo=r-79e623a9
       winners:
         - district: District 3
           winner: Susan Sonne
@@ -273,6 +279,8 @@ elections:
               outcome: lost
     - year: 2018
       type: by-district
+      resolution: "13885"
+      resolution_source: https://portal.laserfiche.com/Portal/DocView.aspx?id=143505&repo=r-79e623a9
       winners:
         - district: District 1
           winner: Sunny Youngsun Park
@@ -316,6 +324,8 @@ elections:
               outcome: lost
     - year: 2016
       type: by-district
+      resolution: "13532"
+      resolution_source: https://portal.laserfiche.com/Portal/DocView.aspx?id=124699&repo=r-79e623a9
       winners:
         - district: District 3
           winner: Fred R. Smith
@@ -344,7 +354,9 @@ elections:
               votes: 4692
               outcome: won
     - year: 2014
-      type: by-district
+      type: at-large
+      resolution: "13160"
+      resolution_source: https://portal.laserfiche.com/Portal/DocView.aspx?id=90212&repo=r-79e623a9
       winners:
         - seat: At-Large
           winner: Elizabeth "Beth" Swift
@@ -352,6 +364,9 @@ elections:
         - seat: At-Large
           winner: Steve Berry
           votes: 5452
+        - seat: At-Large
+          winner: Virginia Vaughn
+          votes: 4294
       candidates:
         - district: At-Large
           candidates:
@@ -363,7 +378,7 @@ elections:
               outcome: won
             - name: Virginia Vaughn
               votes: 4294
-              outcome: lost
+              outcome: won
             - name: Al Salehi
               votes: 3569
               outcome: lost
@@ -380,7 +395,9 @@ elections:
               votes: 2001
               outcome: lost
     - year: 2012
-      type: by-district
+      type: at-large
+      resolution: "12832"
+      resolution_source: https://portal.laserfiche.com/Portal/DocView.aspx?id=77756&repo=r-79e623a9
       winners:
         - seat: At-Large
           winner: Art Brown
