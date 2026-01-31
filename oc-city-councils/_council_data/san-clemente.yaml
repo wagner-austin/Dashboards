@@ -84,7 +84,7 @@ portals:
   agendas: https://www.sanclemente.gov/agendacenter
   youtube: https://youtube.com/@cityofsanclementevideos
   document_center:
-  municipal_code:
+  municipal_code: https://library.municode.com/ca/san_clemente
   ecomment:
   live_stream:
   video_archive:
@@ -129,13 +129,13 @@ elections:
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 2
+  term_limit_type: terms
+  term_limit_cooldown: 2
+  term_limit_cooldown_unit: years
+  term_limit_effective: '2020-11-03'
+  term_limit_notes: 2 consecutive 4-year terms per Ord. 1691 (Nov 2020). 2-year break required. Partial terms don't count. Mayor: 3 lifetime 2-year terms per Sec. 2.04.100.
+  term_limit_source: https://library.municode.com/ca/san_clemente/codes/code_of_ordinances?nodeId=TIT2ADPE_CH2.04CICO_2.04.090TELI
   cycle_pattern:
     group_a:
       years:
