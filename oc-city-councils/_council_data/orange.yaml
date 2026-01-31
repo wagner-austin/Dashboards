@@ -96,8 +96,8 @@ portals:
   video_archive: https://cityoforange.legistar.com/Page.aspx?M=Z
   ecomment: https://cityoforange.granicusideas.com/meetings
   youtube:
-  document_center:
-  municipal_code:
+  document_center: https://citydocs.cityoforange.org/WebLink/Welcome.aspx?dbid=0&cr=1
+  municipal_code: https://ecode360.com/OR5214
 broadcast:
   cable_channels:
     - provider: Spectrum
@@ -134,29 +134,42 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - Mayor
-    - District 1
-    - District 4
-    - District 6
+    - district: Mayor
+      incumbent: Dan Slater
+    - district: District 1
+      incumbent: Arianna Barrios
+    - district: District 4
+      incumbent: Denis Bilodeau
+    - district: District 6
+      incumbent: John Gyllenhammer
   election_system: by-district
   term_length: 4
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 2
+  term_limit_type: terms
+  term_limit_cooldown: 2
+  term_limit_cooldown_unit: years
+  term_limit_effective: '1996-11-05'
+  term_limit_notes: 2 consecutive 4-year terms (max 6 consecutive years) per Ord. 27-96. Mayor: 3 consecutive 2-year terms. Combined max 14 years. 2-year break required.
+  term_limit_source: https://ecode360.com/43545885
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - District 2
+        - District 3
+        - District 5
     group_b:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - District 1
+        - District 4
+        - District 6
+    mayor:
+      years: "Every 2 years (2024, 2026, 2028...)"
+      notes: "Mayor elected at-large for 2-year terms"
   candidate_info:
     contact_email:
     contact_phone:
@@ -167,6 +180,11 @@ elections:
   history:
     - year: 2024
       type: by-district
+      seats: ["District 2", "District 3", "District 5", "Mayor"]
+      certified: "2024-12-10"
+      resolution: "11583"
+      source: https://citydocs.cityoforange.org/WebLink/DocView.aspx?id=244369642&dbid=0&repo=CityofOrange
+      notes: "All council candidates ran unopposed. Measure Z (sales tax) failed 28,299-28,792. Measure AA (fireworks) passed 35,468-22,503."
       winners:
         - district: District 2
           winner: Jon Dumitru
@@ -203,6 +221,11 @@ elections:
               outcome: won
     - year: 2022
       type: by-district
+      seats: ["District 1", "District 3", "District 4", "District 6", "Mayor"]
+      certified: "2022-12-15"
+      resolution: "11426"
+      source: https://citydocs.cityoforange.org/WebLink/DocView.aspx?id=244260791&dbid=0&repo=CityofOrange
+      notes: "District 3 was a 2-year short term for transition staggering."
       winners:
         - district: District 1
           winner: Arianna Barrios
@@ -233,7 +256,7 @@ elections:
             - name: Kathy Tavoularis
               votes: 4226
               outcome: won
-            - name: John R Russo
+            - name: John R. Russo
               votes: 2020
               outcome: lost
         - district: District 4
@@ -268,6 +291,11 @@ elections:
               outcome: lost
     - year: 2020
       type: by-district
+      seats: ["District 1", "District 2", "District 3", "District 5", "Mayor"]
+      certified: "2020-12-01"
+      resolution: "11287"
+      source: https://citydocs.cityoforange.org/WebLink/DocView.aspx?id=244083201&dbid=0&repo=CityofOrange
+      notes: "First district election. District 1 was a 2-year short term for transition. Measure AA failed 23,290-39,877."
       winners:
         - district: District 1
           winner: Arianna Barrios
@@ -318,7 +346,7 @@ elections:
             - name: Mike Alvarez
               votes: 5482
               outcome: won
-            - name: John R Russo
+            - name: John R. Russo
               votes: 2893
               outcome: lost
             - name: Danett Abbott-Wicker
@@ -341,7 +369,11 @@ elections:
               votes: 24846
               outcome: lost
     - year: 2018
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats)", "Mayor"]
+      certified: "2018-12-11"
+      resolution: "11127"
+      source: https://citydocs.cityoforange.org/WebLink/DocView.aspx?id=244044764&dbid=0&repo=CityofOrange
       winners:
         - seat: At-Large
           winner: Kimberlee Nichols
@@ -390,8 +422,29 @@ elections:
             - name: John Russo
               votes: 9048
               outcome: lost
+    - year: 2016
+      type: at-large
+      seats: ["At-Large (2 seats)", "Mayor"]
+      certified: "2016-08-23"
+      resolution: "10963, 10964, 10965"
+      source: https://citydocs.cityoforange.org/WebLink/DocView.aspx?id=244044938&dbid=0&repo=CityofOrange
+      notes: "Election canceled - all candidates ran unopposed. Reappointed per Elections Code 10229."
+      winners:
+        - seat: At-Large
+          winner: Mark A. Murphy
+          notes: Reappointed - uncontested
+        - seat: At-Large
+          winner: Michael Alvarez
+          notes: Reappointed - uncontested
+        - seat: Mayor
+          winner: Teresa "Tita" Smith
+          notes: Reappointed - uncontested
     - year: 2014
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats)", "Mayor"]
+      certified: "2014-12-02"
+      resolution: "10833"
+      source: https://citydocs.cityoforange.org/WebLink/DocView.aspx?id=244045942&dbid=0&repo=CityofOrange
       winners:
         - seat: At-Large
           winner: Fred M. Whitaker
@@ -429,7 +482,12 @@ elections:
               votes: 4837
               outcome: lost
     - year: 2012
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats)", "Mayor"]
+      certified: "2012-12-04"
+      resolution: "10693"
+      source: https://citydocs.cityoforange.org/WebLink/DocView.aspx?id=244046160&dbid=0&repo=CityofOrange
+      notes: "Measure FF (referendum) failed 19,809-25,655."
       winners:
         - seat: At-Large
           winner: Mark A. Murphy
