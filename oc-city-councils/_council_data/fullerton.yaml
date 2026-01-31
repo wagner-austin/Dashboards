@@ -76,8 +76,8 @@ portals:
   video_archive: https://fullerton.granicus.com/ViewPublisher.php?view_id=2
   district_map: https://www.cityoffullerton.com/government/departments/city-clerk/elections/find-my-district
   youtube:
-  document_center:
-  municipal_code:
+  document_center: https://fullerton.granicus.com/ViewPublisher.php?view_id=2
+  municipal_code: https://codelibrary.amlegal.com/codes/fullerton/latest/fullerton_ca/0-0-0-1
   ecomment:
 broadcast:
   cable_channels:
@@ -87,13 +87,13 @@ broadcast:
       channel: '99'
   live_stream: https://www.cityoffullerton.com/ftv3
 clerk:
-  title: City Clerk's Office
+  name: Lucinda Williams, MMC
+  title: City Clerk
   phone: (714) 738-6350
   email: cityclerksoffice@cityoffullerton.com
   direct_email: lucindaw@cityoffullerton.com
   fax:
-  address:
-  name:
+  address: 303 W. Commonwealth Ave., Fullerton, CA 92832
 public_comment:
   in_person: true
   remote_live: true
@@ -114,27 +114,34 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - District 3
-    - District 5
+    - district: District 3
+      incumbent: Shana Charles
+    - district: District 5
+      incumbent: Ahmad Zahra
   election_system: by-district
   term_length: 4
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 3
+  term_limit_type: terms
+  term_limit_cooldown: 4
+  term_limit_cooldown_unit: years
+  term_limit_effective: '2010-11-02'
+  term_limit_notes: 3 successive 4-year terms per Ord. 3165 (2010). 4-year break required after maxing out. Applies to terms commencing after Nov 2, 2010.
+  term_limit_source: https://codelibrary.amlegal.com/codes/fullerton/latest/fullerton_ca/0-0-0-166
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2020, 2024, 2028..."
+      seats:
+        - District 1
+        - District 2
+        - District 4
     group_b:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - District 3
+        - District 5
   candidate_info:
     contact_email:
     contact_phone:
@@ -145,6 +152,13 @@ elections:
   history:
     - year: 2024
       type: by-district
+      seats:
+        - District 1
+        - District 2
+        - District 4
+      certified: "2024-12-17"
+      resolution: "2024-064"
+      source: http://fullerton.granicus.com/MetaViewer.php?view_id=2&clip_id=1984&meta_id=121347
       winners:
         - district: District 1
           winner: Fred Jung
@@ -188,6 +202,12 @@ elections:
               outcome: lost
     - year: 2022
       type: by-district
+      seats:
+        - District 3
+        - District 5
+      certified: "2022-12-13"
+      resolution: "2022-097"
+      source: http://fullerton.granicus.com/MetaViewer.php?view_id=2&clip_id=1579&meta_id=102937
       winners:
         - district: District 3
           winner: Shana Charles
@@ -220,6 +240,13 @@ elections:
               outcome: lost
     - year: 2020
       type: by-district
+      seats:
+        - District 1
+        - District 2
+        - District 4
+      certified: "2020-12-01"
+      resolution: "2020-108"
+      source: http://fullerton.granicus.com/MetaViewer.php?view_id=2&clip_id=1234&meta_id=86784
       winners:
         - district: District 1
           winner: Fred Jung
@@ -263,6 +290,12 @@ elections:
               outcome: lost
     - year: 2018
       type: by-district
+      seats:
+        - District 3
+        - District 5
+      certified: "2018-12-04"
+      resolution: "2018-72"
+      source: http://fullerton.granicus.com/MetaViewer.php?view_id=2&clip_id=1006&meta_id=69426
       winners:
         - district: District 3
           winner: Jesus J. Silva
@@ -300,7 +333,12 @@ elections:
               votes: 387
               outcome: lost
     - year: 2016
-      type: by-district
+      type: at-large
+      seats:
+        - At-Large (2 seats)
+      certified: "2016-12-13"
+      resolution: "2016-70"
+      source: https://fullerton.granicus.com/MinutesViewer.php?view_id=2&clip_id=819
       winners:
         - seat: At-Large
           winner: Jennifer Fitzgerald
@@ -348,7 +386,12 @@ elections:
               votes: 1795
               outcome: lost
     - year: 2014
-      type: by-district
+      type: at-large
+      seats:
+        - At-Large (2 seats)
+      certified: "2014-12-02"
+      resolution: "2014-80"
+      source: https://fullerton.granicus.com/MinutesViewer.php?view_id=2&clip_id=617
       winners:
         - seat: At-Large
           winner: Doug Chaffee
@@ -381,7 +424,12 @@ elections:
               votes: 1153
               outcome: lost
     - year: 2012
-      type: by-district
+      type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2012-12-04"
+      resolution: "2012-81"
+      source: https://fullerton.granicus.com/MinutesViewer.php?view_id=2&clip_id=410
       winners:
         - seat: At-Large
           winner: Bruce Whitaker
@@ -389,6 +437,9 @@ elections:
         - seat: At-Large
           winner: Jennifer Fitzgerald
           votes: 15116
+        - seat: At-Large
+          winner: Jan M. Flory
+          votes: 12829
       candidates:
         - district: At-Large
           candidates:
@@ -400,7 +451,7 @@ elections:
               outcome: won
             - name: Jan M. Flory
               votes: 12829
-              outcome: lost
+              outcome: won
             - name: Travis Kiger
               votes: 12800
               outcome: lost
