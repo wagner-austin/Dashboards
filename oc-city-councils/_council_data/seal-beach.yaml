@@ -98,7 +98,7 @@ portals:
   e_records: http://pubrec.sealbeachca.gov/WebLink8/
   public_records: https://cityofsealbeach.nextrequest.com
   document_center:
-  municipal_code:
+  municipal_code: https://ecode360.com/SE5012
   ecomment:
   live_stream:
   video_archive:
@@ -144,13 +144,13 @@ elections:
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 2
+  term_limit_type: terms
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: '1974'
+  term_limit_notes: 2 consecutive 4-year terms per Charter Section 422 (amended 1974).
+  term_limit_source: https://ecode360.com/43961759
   cycle_pattern:
     group_a:
       years:
