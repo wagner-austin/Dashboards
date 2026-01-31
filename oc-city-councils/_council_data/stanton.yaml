@@ -122,7 +122,7 @@ portals:
   live_stream: https://www.stantonca.gov/government/agendas___minutes/index.php
   youtube: https://www.youtube.com/@CityofStanton
   document_center:
-  municipal_code:
+  municipal_code: https://ecode360.com/ST5018
   ecomment:
   video_archive:
 broadcast:
@@ -162,14 +162,14 @@ elections:
   election_system: mixed
   term_limit: 2
   term_limit_type: terms
-  term_limit_notes: Two 4-year terms (Measure RR 2016)
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: '2016-11-08'
+  term_limit_notes: 2 full 4-year terms lifetime per Sec. 2.04.070 (Measure RR, Nov 2016). Mayor: 2 terms lifetime effective Nov 2024. Partial/mid-term vacancy appointments don't count.
+  term_limit_source: https://ecode360.com/43147795
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_source:
   cycle_pattern:
     group_a:
       years:
