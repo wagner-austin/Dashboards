@@ -124,7 +124,7 @@ portals:
   agendas: http://local.anaheim.net/docs_agend/questys_pub/
   live_stream: https://www.anaheim.net/councilvideos
   video_archive: https://anaheim.granicus.com/ViewPublisher.php?view_id=2
-  document_center: https://www.anaheim.net/DocumentCenter
+  document_center: https://anaheim.granicus.com/ViewPublisher.php?view_id=2
   municipal_code: https://codelibrary.amlegal.com/codes/anaheim/latest/overview
   youtube:
   ecomment:
@@ -188,8 +188,10 @@ elections:
       incumbent: Natalie Meeks
   term_limit: 8
   term_limit_type: years
-  term_limit_cooldown:
-  term_limit_notes: 8 consecutive years combined for Mayor + Council per Charter § 503.5. Limit is in years, not terms.
+  term_limit_cooldown: 1
+  term_limit_cooldown_unit: cycle
+  term_limit_effective: "1992-11-03"
+  term_limit_notes: "8 consecutive years combined for Mayor + Council per Charter § 503.5. Two complete 4-year terms = 8 years. Partial terms under 2 years don't count. After maxing out, must sit out 1 election cycle (2 years) before eligible again."
   term_limit_source: https://codelibrary.amlegal.com/codes/anaheim/latest/anaheim_ca/0-0-0-51937
   nomination_period:
   candidate_info:
@@ -198,13 +200,13 @@ elections:
     location: 200 S. Anaheim Boulevard, 2nd Floor, Room 217, Anaheim, CA 92805
   cycle_pattern:
     group_a:
-      years: 2024, 2028, 2032...
+      years: "2024, 2028, 2032..."
       seats:
         - District 1
         - District 4
         - District 5
     group_b:
-      years: 2022, 2026, 2030...
+      years: "2022, 2026, 2030..."
       seats:
         - Mayor
         - District 2
@@ -221,6 +223,9 @@ elections:
         - District 1
         - District 4
         - District 5
+      certified: "2024-12-10"
+      resolution: "2024-127"
+      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=5921203&dbid=0&repo=CITYOFANAHEIM
       results_url: https://www.anaheim.net/DocumentCenter/View/58171/November-5-2024-Election-Results
       winners:
         - district: District 1
@@ -244,6 +249,9 @@ elections:
         - District 2
         - District 3
         - District 6
+      certified: "2022-12-06"
+      resolution: "2022-142"
+      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=4832002&dbid=0&repo=CITYOFANAHEIM
       results_url: https://www.anaheim.net/DocumentCenter/View/49582/November-8-2022-Election-Results
       winners:
         - district: Mayor
@@ -271,6 +279,9 @@ elections:
         - District 1
         - District 4
         - District 5
+      certified: "2020-12-08"
+      resolution: "2020-142"
+      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=4800598&dbid=0&repo=CITYOFANAHEIM
       results_url: https://www.anaheim.net/DocumentCenter/View/35405/November-3-2020-Election-Results
       winners:
         - district: District 1
@@ -290,6 +301,9 @@ elections:
           runner_up_votes: 6440
     - year: 2018
       type: by-district
+      certified: "2018-12-04"
+      resolution: "2018-147"
+      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=2074933&dbid=0&repo=CITYOFANAHEIM
       winners:
         - district: District 2
           winner: Jordan Brandman
@@ -371,6 +385,9 @@ elections:
               outcome: lost
     - year: 2016
       type: by-district
+      certified: "2016-12-13"
+      resolution: "2016-229"
+      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=1774445&dbid=0&repo=CITYOFANAHEIM
       winners:
         - district: District 1
           winner: Denise Barnes
@@ -454,7 +471,10 @@ elections:
               votes: 1525
               outcome: lost
     - year: 2014
-      type: by-district
+      type: at-large
+      certified: "2014-12-09"
+      resolution: "2014-208"
+      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=1478336&dbid=0&repo=CITYOFANAHEIM
       winners:
         - seat: At-Large
           winner: Yes
@@ -513,7 +533,10 @@ elections:
               votes: 3090
               outcome: lost
     - year: 2012
-      type: by-district
+      type: at-large
+      certified: "2012-12-11"
+      resolution_source: https://local.anaheim.net/docs_agend/questys_pub/MG38724/AS38763/AS38766/AI40859/DO40856/1.pdf
+      source_note: "OC Registrar Certificate; council minutes not available in archive"
       winners:
         - seat: At-Large
           winner: Jordan Brandman
@@ -551,8 +574,6 @@ elections:
             - name: Duane Roberts
               votes: 6914
               outcome: lost
-  mayor_term_length:
+  mayor_term_length: 4
   districting_info:
   transition_note:
-  term_limit_cooldown_unit:
-  term_limit_effective:
