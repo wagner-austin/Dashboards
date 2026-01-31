@@ -142,7 +142,7 @@ portals:
   video_archive: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
   youtube:
   document_center:
-  municipal_code:
+  municipal_code: https://ecode360.com/YO5039
   ecomment:
 broadcast:
   cable_channels:
@@ -183,14 +183,14 @@ elections:
   election_system: at-large
   term_limit: 3
   term_limit_type: terms
-  term_limit_notes: Three consecutive 4-year terms
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: '1996-12-13'
+  term_limit_notes: 3 full terms lifetime per Sec. 2.04.025 (Ord. 96-781, effective Dec 1996). Partial terms (>half) count as full terms. All at-large council seats considered one office.
+  term_limit_source: https://ecode360.com/11414665
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_source:
   cycle_pattern:
     group_a:
       years:
