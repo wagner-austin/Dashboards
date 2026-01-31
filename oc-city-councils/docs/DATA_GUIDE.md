@@ -122,11 +122,11 @@ elections:
 **Examples:**
 
 ```yaml
-# Aliso Viejo - 2 consecutive 4-year terms, 2 cycle cooldown
+# Aliso Viejo - 2 consecutive 4-year terms, 1 cycle (2 year) cooldown
 term_limit: 2
 term_limit_type: terms
-term_limit_cooldown: 2
-term_limit_cooldown_unit: cycles
+term_limit_cooldown: 1
+term_limit_cooldown_unit: cycle
 term_limit_effective: "2022-11-08"
 term_limit_notes: "Max consecutive 4-year terms per Ord. 2022-232. Applies to persons elected on/after Nov 8, 2022."
 term_limit_source: https://www.codepublishing.com/CA/AlisoViejo/#!/AlisoViejo02/AlisoViejo0204.html
@@ -395,7 +395,7 @@ history:
 
 | City | Limit | Type | Cooldown |
 |------|-------|------|----------|
-| Aliso Viejo | 2 | terms | 2 cycles |
+| Aliso Viejo | 2 | terms | 1 cycle |
 | Anaheim | 8 | years | none |
 | Fountain Valley | 3 | terms | 2 years |
 | Dana Point | 2 | terms | unknown |
