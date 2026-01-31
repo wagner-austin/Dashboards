@@ -141,7 +141,7 @@ portals:
   live_stream: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
   video_archive: https://www.yorbalindaca.gov/201/Council-Meeting-Video-Streaming
   youtube:
-  document_center:
+  document_center: https://pub-yorbalinda.escribemeetings.com/?MeetingViewId=2
   municipal_code: https://ecode360.com/YO5039
   ecomment:
 broadcast:
@@ -178,7 +178,10 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - At-Large (2 seats)
+    - district: At-Large
+      incumbent: Carlos Rodriguez
+    - district: At-Large
+      incumbent: Janice Lim
   term_length: 4
   election_system: at-large
   term_limit: 3
@@ -193,11 +196,13 @@ elections:
   transition_note:
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2012, 2016, 2020, 2024, 2028..."
+      seats:
+        - At-Large (3 seats)
     group_b:
-      years:
-      seats: []
+      years: "2014, 2018, 2022, 2026..."
+      seats:
+        - At-Large (2 seats)
   candidate_info:
     contact_email:
     contact_phone:
@@ -208,13 +213,24 @@ elections:
   history:
     - year: 2024
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2024-12-03"
+      resolution: "2024-5924"
+      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=22122
+      notes: "Outgoing: Beth Haney (8 years of service). Peggy Huang returns after 2-year break (served 2014-2022). Measure JJ passed."
       winners:
         - seat: At-Large
           winner: Tara Campbell
           votes: 27244
+          notes: "re-elected"
         - seat: At-Large
           winner: Peggy Huang
           votes: 17956
+          notes: "first elected (returning)"
+        - seat: At-Large
+          winner: Shivinder Singh
+          votes: 12764
+          notes: "first elected"
       candidates:
         - district: At-Large
           candidates:
@@ -226,7 +242,7 @@ elections:
               outcome: won
             - name: Shivinder Singh
               votes: 12764
-              outcome: lost
+              outcome: won
             - name: Jess Battaglia
               votes: 12699
               outcome: lost
@@ -235,13 +251,19 @@ elections:
               outcome: lost
     - year: 2022
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2022-12-06"
+      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=14766
+      notes: "Outgoing: Peggy Huang (8 years of service). Janice Lim newly elected."
       winners:
         - seat: At-Large
           winner: Carlos Rodriguez
           votes: 16392
+          notes: "re-elected"
         - seat: At-Large
           winner: Janice Lim
           votes: 13266
+          notes: "first elected"
       candidates:
         - district: At-Large
           candidates:
@@ -254,15 +276,39 @@ elections:
             - name: Ryan Bent
               votes: 12334
               outcome: lost
+    - year: 2020
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2020-08-18"
+      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=2682
+      notes: "Election cancelled per Elections Code 10229 - only 3 incumbents (of 5 who pulled papers) filed. Beth Haney, Gene Hernandez, and Tara Campbell appointed by Council motion. Minutes approved Oct 6, 2020."
+      winners:
+        - seat: At-Large
+          winner: Beth Haney
+          notes: "appointed (incumbent)"
+        - seat: At-Large
+          winner: Eugene J. "Gene" Hernandez
+          notes: "appointed (incumbent)"
+        - seat: At-Large
+          winner: Tara Campbell
+          notes: "appointed (incumbent)"
+      candidates: []
     - year: 2018
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2018-12-04"
+      resolution: "2018-5598"
+      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=3042
+      notes: "Outgoing: Tom Lindsey (8 years of service). Tara Campbell became youngest mayor in California history."
       winners:
         - seat: At-Large
           winner: Peggy Huang
           votes: 18764
+          notes: "re-elected"
         - seat: At-Large
           winner: Carlos Rodriguez
           votes: 16120
+          notes: "first elected"
       candidates:
         - district: At-Large
           candidates:
@@ -277,13 +323,24 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2016-12-20"
+      resolution: "2016-5423"
+      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=3502
+      notes: "Outgoing: Mark Schwing (20 years of service), Craig Young. First female-majority council."
       winners:
         - seat: At-Large
           winner: Tara Campbell
           votes: 15253
+          notes: "first elected"
         - seat: At-Large
           winner: Eugene J. "Gene" Hernandez
           votes: 13331
+          notes: "re-elected"
+        - seat: At-Large
+          winner: Beth Haney
+          votes: 11981
+          notes: "first elected"
       candidates:
         - district: At-Large
           candidates:
@@ -295,7 +352,7 @@ elections:
               outcome: won
             - name: Beth Haney
               votes: 11981
-              outcome: lost
+              outcome: won
             - name: Craig Young
               votes: 11662
               outcome: lost
@@ -310,25 +367,29 @@ elections:
               outcome: lost
     - year: 2014
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2014-12-02"
+      resolution: "2014-5288"
+      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=4021
+      notes: "Outgoing: John Anderson (12 years of service)."
       winners:
         - seat: At-Large
-          winner: Yes
-          votes: 16061
+          winner: Tom Lindsey
+          votes: 8081
+          notes: "re-elected"
         - seat: At-Large
           winner: Peggy Huang
           votes: 8253
+          notes: "first elected"
       candidates:
         - district: At-Large
           candidates:
-            - name: Yes
-              votes: 16061
-              outcome: won
             - name: Peggy Huang
               votes: 8253
               outcome: won
             - name: Tom Lindsey
               votes: 8081
-              outcome: lost
+              outcome: won
             - name: Jeffrey N. Decker
               votes: 6476
               outcome: lost
@@ -338,21 +399,29 @@ elections:
             - name: Matt Palmer
               votes: 3087
               outcome: lost
-            - name: No
-              votes: 2714
-              outcome: lost
             - name: Paul Ambrus
               votes: 2575
               outcome: lost
     - year: 2012
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2012-12-04"
+      resolution: "2012-5168"
+      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=4307
+      notes: "Outgoing: Jim Winder, Nancy Rikel."
       winners:
         - seat: At-Large
           winner: Mark Schwing
           votes: 15380
+          notes: "re-elected"
         - seat: At-Large
           winner: Craig Young
           votes: 14790
+          notes: "first elected"
+        - seat: At-Large
+          winner: Eugene J. "Gene" Hernandez
+          votes: 13845
+          notes: "first elected"
       candidates:
         - district: At-Large
           candidates:
@@ -364,7 +433,7 @@ elections:
               outcome: won
             - name: Eugene J. "Gene" Hernandez
               votes: 13845
-              outcome: lost
+              outcome: won
             - name: Nancy Rikel
               votes: 13641
               outcome: lost
