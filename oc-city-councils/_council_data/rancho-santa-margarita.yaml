@@ -113,8 +113,8 @@ portals:
   video_archive: https://www.cityofrsm.org/129/Agendas-Minutes
   ecomment: https://www.cityofrsm.org/forms.aspx?FID=102
   youtube:
-  document_center:
-  municipal_code:
+  document_center: https://cityofrsm.granicus.com/Viewpublisher.php?view_id=2
+  municipal_code: https://library.municode.com/ca/rancho_santa_margarita
 broadcast:
   live_stream: https://www.cityofrsm.org/129/Agendas-Minutes
   cable_channels: []
@@ -144,26 +144,34 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - 3 seats (mixed)
+    - district: At-Large
+      incumbent: Anne D. Figueroa
+    - district: At-Large
+      incumbent: Bradley J. McGirr
+    - district: At-Large
+      incumbent: Jerry Holloway
   term_length: 4
   election_system: mixed
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: No term limits for council members.
+  term_limit_source: https://library.municode.com/ca/rancho_santa_margarita/codes/code_of_ordinances?nodeId=COOR_TIT2ADPE_CH2.01CICOEL
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - District 3
+        - At-Large (1 seat)
     group_b:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - At-Large (3 seats)
   candidate_info:
     contact_email:
     contact_phone:
@@ -200,4 +208,44 @@ elections:
               outcome: lost
             - name: Tony Mata
               votes: 2123
+              outcome: lost
+    - year: 2012
+      type: at-large
+      seats: ["At-Large (2 seats, Full Term)", "At-Large (1 seat, Short Term)"]
+      certified: "2012-12-12"
+      resolution: "12-12-12-01"
+      source: https://cityofrsm.granicus.com/MetaViewer.php?view_id=2&clip_id=167&meta_id=11025
+      notes: "Special election for short term (2-year) seat to fill vacancy from Gary Thompson resignation."
+      winners:
+        - seat: At-Large (Full Term)
+          winner: Tony Beall
+          votes: 13011
+        - seat: At-Large (Full Term)
+          winner: Carol Gamble
+          votes: 9793
+        - seat: At-Large (Short Term)
+          winner: Brad McGirr
+          votes: 7036
+      candidates:
+        - district: At-Large (Full Term)
+          candidates:
+            - name: Tony Beall
+              votes: 13011
+              outcome: won
+            - name: Carol Gamble
+              votes: 9793
+              outcome: won
+            - name: Kenney Hrabik
+              votes: 6121
+              outcome: lost
+        - district: At-Large (Short Term)
+          candidates:
+            - name: Brad McGirr
+              votes: 7036
+              outcome: won
+            - name: Lawrence McCook
+              votes: 5391
+              outcome: lost
+            - name: Glenn Acosta
+              votes: 4591
               outcome: lost
