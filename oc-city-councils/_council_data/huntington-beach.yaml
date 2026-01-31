@@ -101,8 +101,8 @@ portals:
   live_stream: https://huntingtonbeach.granicus.com/MediaPlayer.php?publish_id=34
   video_archive: https://reflect-huntingtonbeach.cablecast.tv/internetchannel/gallery/5?channel=1
   youtube: https://youtube.com/@cityofhb
-  document_center:
-  municipal_code:
+  document_center: https://records.huntingtonbeachca.gov/WebLink/Browse.aspx?id=1&dbid=0&repo=COHB
+  municipal_code: https://ecode360.com/HU4937
   ecomment:
 broadcast:
   cable_channels:
@@ -143,26 +143,35 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - 4 at-large seats
+    - district: At-Large
+      incumbent: Casey McKeon
+    - district: At-Large
+      incumbent: Gracey Larrea-Van Der Mark
+    - district: At-Large
+      incumbent: Pat Burns
+    - district: At-Large
+      incumbent: Andrew Gruel
   election_system: at-large
   term_length: 4
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 2
+  term_limit_type: terms
+  term_limit_cooldown: 1
+  term_limit_cooldown_unit: cycle
+  term_limit_effective: "1966-01-01"
+  term_limit_notes: "2 consecutive 4-year terms per City Charter § 300. Partial terms >2 years count as full term toward limit."
+  term_limit_source: https://ecode360.com/46474717
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2020, 2024, 2028..."
+      seats:
+        - "At-Large (3 seats)"
     group_b:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - "At-Large (4 seats)"
   candidate_info:
     contact_email:
     contact_phone:
@@ -173,6 +182,11 @@ elections:
   history:
     - year: 2024
       type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2024-12-03"
+      resolution: "2024-59"
+      source: https://records.huntingtonbeachca.gov/WebLink/DocView.aspx?id=6892738&dbid=0&repo=COHB
       winners:
         - seat: At-Large
           winner: Chad Williams
@@ -180,6 +194,9 @@ elections:
         - seat: At-Large
           winner: Butch Twining
           votes: 43924
+        - seat: At-Large
+          winner: Don Kennedy
+          votes: 43319
       candidates:
         - district: At-Large
           candidates:
@@ -191,7 +208,7 @@ elections:
               outcome: won
             - name: Don Kennedy
               votes: 43319
-              outcome: lost
+              outcome: won
             - name: Natalie Moser
               votes: 40260
               outcome: lost
@@ -209,6 +226,11 @@ elections:
               outcome: lost
     - year: 2022
       type: at-large
+      seats:
+        - At-Large (4 seats)
+      certified: "2022-12-06"
+      resolution: "2022-69"
+      source: https://records.huntingtonbeachca.gov/WebLink/DocView.aspx?id=6143732&dbid=0&repo=COHB
       winners:
         - seat: At-Large
           winner: Pat Burns
@@ -216,6 +238,12 @@ elections:
         - seat: At-Large
           winner: Tony Strickland
           votes: 36805
+        - seat: At-Large
+          winner: Gracey Van Der Mark
+          votes: 33833
+        - seat: At-Large
+          winner: Casey McKeon
+          votes: 33455
       candidates:
         - district: At-Large
           candidates:
@@ -227,10 +255,10 @@ elections:
               outcome: won
             - name: Gracey Van Der Mark
               votes: 33833
-              outcome: lost
-            - name: Casey Mckeon
+              outcome: won
+            - name: Casey McKeon
               votes: 33455
-              outcome: lost
+              outcome: won
             - name: Gina Clayton-Tarvin
               votes: 21630
               outcome: lost
@@ -275,6 +303,11 @@ elections:
               outcome: lost
     - year: 2020
       type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2020-12-07"
+      resolution: "2020-83"
+      source: https://records.huntingtonbeachca.gov/WebLink/DocView.aspx?id=5407590&dbid=0&repo=COHB
       winners:
         - seat: At-Large
           winner: Tito Ortiz
@@ -282,6 +315,9 @@ elections:
         - seat: At-Large
           winner: Dan Kalmick
           votes: 30310
+        - seat: At-Large
+          winner: Natalie Moser
+          votes: 30185
       candidates:
         - district: At-Large
           candidates:
@@ -293,7 +329,7 @@ elections:
               outcome: won
             - name: Natalie Moser
               votes: 30185
-              outcome: lost
+              outcome: won
             - name: Gracey Van Der Mark
               votes: 23365
               outcome: lost
@@ -332,6 +368,11 @@ elections:
               outcome: lost
     - year: 2018
       type: at-large
+      seats:
+        - At-Large (4 seats)
+      certified: "2018-12-03"
+      resolution: "2018-80"
+      source: https://records.huntingtonbeachca.gov/WebLink/DocView.aspx?id=5328837&dbid=0&repo=COHB
       winners:
         - seat: At-Large
           winner: Mike Posey
@@ -339,6 +380,12 @@ elections:
         - seat: At-Large
           winner: Barbara Delgleize
           votes: 28691
+        - seat: At-Large
+          winner: Kim Carr
+          votes: 28030
+        - seat: At-Large
+          winner: Erik Peterson
+          votes: 26129
       candidates:
         - district: At-Large
           candidates:
@@ -350,10 +397,10 @@ elections:
               outcome: won
             - name: Kim Carr
               votes: 28030
-              outcome: lost
+              outcome: won
             - name: Erik Peterson
               votes: 26129
-              outcome: lost
+              outcome: won
             - name: Ron Sterud
               votes: 20689
               outcome: lost
@@ -389,6 +436,11 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2016-12-12"
+      resolution: "2016-89"
+      source: https://records.huntingtonbeachca.gov/WebLink/DocView.aspx?id=5328814&dbid=0&repo=COHB
       winners:
         - seat: At-Large
           winner: Jill Hardy
@@ -396,6 +448,9 @@ elections:
         - seat: At-Large
           winner: Lyn Semeta
           votes: 34457
+        - seat: At-Large
+          winner: Patrick Brenden
+          votes: 28424
       candidates:
         - district: At-Large
           candidates:
@@ -407,7 +462,7 @@ elections:
               outcome: won
             - name: Patrick Brenden
               votes: 28424
-              outcome: lost
+              outcome: won
             - name: Ron Sterud
               votes: 24234
               outcome: lost
@@ -431,6 +486,11 @@ elections:
               outcome: lost
     - year: 2014
       type: at-large
+      seats:
+        - At-Large (4 seats)
+      certified: "2014-12-01"
+      resolution: "2014-93"
+      source: https://records.huntingtonbeachca.gov/WebLink/DocView.aspx?id=4966051&dbid=0&repo=COHB
       winners:
         - seat: At-Large
           winner: Barbara Delgleize
@@ -438,6 +498,12 @@ elections:
         - seat: At-Large
           winner: Mike Posey
           votes: 19575
+        - seat: At-Large
+          winner: William "Billy" O'Connell
+          votes: 19026
+        - seat: At-Large
+          winner: Erik Peterson
+          votes: 18688
       candidates:
         - district: At-Large
           candidates:
@@ -449,10 +515,10 @@ elections:
               outcome: won
             - name: William "Billy" O'Connell
               votes: 19026
-              outcome: lost
+              outcome: won
             - name: Erik Peterson
               votes: 18688
-              outcome: lost
+              outcome: won
             - name: Connie Boardman
               votes: 15876
               outcome: lost
@@ -476,6 +542,11 @@ elections:
               outcome: lost
     - year: 2012
       type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2012-12-03"
+      resolution: "2012-83"
+      source: https://records.huntingtonbeachca.gov/WebLink/DocView.aspx?id=5317243&dbid=0&repo=COHB
       winners:
         - seat: At-Large
           winner: Jill Hardy
@@ -483,6 +554,9 @@ elections:
         - seat: At-Large
           winner: Jim Katapodis
           votes: 25254
+        - seat: At-Large
+          winner: Dave Sullivan
+          votes: 24506
       candidates:
         - district: At-Large
           candidates:
@@ -494,7 +568,7 @@ elections:
               outcome: won
             - name: Dave Sullivan
               votes: 24506
-              outcome: lost
+              outcome: won
             - name: Barbara Delgleize
               votes: 24400
               outcome: lost
