@@ -53,7 +53,13 @@ def parse_2024_2022(filepath: Path, year: int) -> dict:
         reader = csv.DictReader(f, delimiter='\t')
         for row in reader:
             contest = row.get('Contest Title', '')
-            if 'CITY OF' in contest and ('City Council' in contest or 'Mayor' in contest):
+            # Match city council/mayor races - some years use "CITY OF X", others just "X"
+            is_city_race = ('City Council' in contest or 'Mayor' in contest) and (
+                'CITY OF' in contest or
+                # Match cities without "CITY OF" prefix (e.g., 2022 format)
+                any(city in contest for city in CITY_NAME_MAP.values())
+            )
+            if is_city_race:
                 candidate = row.get('Choice Name1') or row.get('Choice Name', '')
                 if candidate and 'write-in' not in candidate.lower():
                     votes = int(row.get('Total Votes', 0) or 0)
@@ -69,7 +75,12 @@ def parse_2020(filepath: Path) -> dict:
         reader = csv.DictReader(f)
         for row in reader:
             contest = row.get('Contest Title', '')
-            if 'CITY OF' in contest and ('City Council' in contest or 'Mayor' in contest):
+            # Match city council/mayor races - some use "CITY OF X", others just "X"
+            is_city_race = ('City Council' in contest or 'Mayor' in contest) and (
+                'CITY OF' in contest or
+                any(city in contest for city in CITY_NAME_MAP.values())
+            )
+            if is_city_race:
                 candidate = row.get('Choice Name', '')
                 if candidate and 'write-in' not in candidate.lower():
                     votes = int(row.get('Total Votes', 0) or 0)
@@ -84,7 +95,13 @@ def parse_2018_earlier(filepath: Path) -> dict:
         reader = csv.DictReader(f)
         for row in reader:
             contest = row.get('Contest_title', '')
-            if 'CITY OF' in contest.upper() and ('CITY COUNCIL' in contest.upper() or 'MAYOR' in contest.upper()):
+            contest_upper = contest.upper()
+            # Match city council/mayor races - some use "CITY OF X", others just "X"
+            is_city_race = ('CITY COUNCIL' in contest_upper or 'MAYOR' in contest_upper) and (
+                'CITY OF' in contest_upper or
+                any(city in contest_upper for city in CITY_NAME_MAP.values())
+            )
+            if is_city_race:
                 candidate = row.get('Candidate_name', '')
                 if candidate and 'write-in' not in candidate.lower():
                     absentee = int(row.get('Absentee_votes', 0) or 0)
