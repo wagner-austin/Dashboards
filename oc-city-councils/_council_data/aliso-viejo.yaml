@@ -158,10 +158,10 @@ elections:
   mayor_term_length:
   term_limit: 2
   term_limit_type: terms
-  term_limit_cooldown: 2
-  term_limit_cooldown_unit: cycles
+  term_limit_cooldown: 1
+  term_limit_cooldown_unit: cycle
   term_limit_effective: "2022-11-08"
-  term_limit_notes: "Max consecutive 4-year terms per Ord. 2022-232. Applies to persons elected on/after Nov 8, 2022."
+  term_limit_notes: "Max 2 consecutive 4-year terms per Ord. 2022-232. Partial terms under 2 years don't count. After maxing out, must sit out 1 election cycle (2 years) before eligible again. Applies to persons elected on/after Nov 8, 2022."
   term_limit_source: https://www.codepublishing.com/CA/AlisoViejo/#!/AlisoViejo02/AlisoViejo0204.html
   election_system: by-district
   transition_note: "Converted from at-large to by-district. Districts 1,3,5 elected 2024; Districts 2,4 in 2026."
@@ -199,8 +199,8 @@ elections:
       votes: 2610
     certified: "2024-12-04"
     resolution: "2024-31"
-    source: 
-      https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_db02f3098c962bf6a0b35f3db60f7ae4.pdf&view=1
+    resolution_source: https://alisoviejoca.granicus.com/MetaViewer.php?view_id=3&clip_id=650&meta_id=37807
+    source: https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_e78e3b50400fe8de663049ada52a2aa8.pdf&view=1
     candidates:
     - district: District 5
       candidates:
@@ -231,8 +231,7 @@ elections:
       votes: 7132
     certified: "2022-12-14"
     resolution: "2022-32"
-    source: 
-      https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_52e316ff9e81216bd50630741aa23a8c.pdf&view=1
+    source: https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_db02f3098c962bf6a0b35f3db60f7ae4.pdf&view=1
     candidates:
     - district: At-Large
       candidates:
@@ -268,6 +267,7 @@ elections:
       votes: 11067
     certified: "2020-12-09"
     resolution: "2020-40"
+    source: https://alisoviejoca.granicus.com/DocumentViewer.php?file=alisoviejoca_52e316ff9e81216bd50630741aa23a8c.pdf&view=1
     candidates:
     - district: At-Large
       candidates:
