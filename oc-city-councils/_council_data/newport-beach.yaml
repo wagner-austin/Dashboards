@@ -99,8 +99,8 @@ portals:
   agendas: https://newportbeach.legistar.com/Calendar.aspx
   live_stream: https://www.newportbeachca.gov/government/departments/public-information-office/nbtv/nbtv-live
   youtube: https://youtube.com/playlist?list=PLzorGOSnQ7c2sblNcOnptOUb9K2cYuoj0
-  document_center:
-  municipal_code:
+  document_center: https://ecms.newportbeachca.gov/WEB/Browse.aspx?id=691511&dbid=0&repo=CNB
+  municipal_code: https://www.codepublishing.com/CA/NewportBeach/
   ecomment:
   video_archive:
 broadcast:
@@ -138,29 +138,40 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - District 1
-    - District 3
-    - District 4
-    - District 6
+    - district: District 1
+      incumbent: Joe Stapleton
+    - district: District 3
+      incumbent: Erik Weigand
+    - district: District 4
+      incumbent: Robyn Grant
+    - district: District 6
+      incumbent: Lauren Kleiman
   election_system: by-district
   term_length: 4
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 2
+  term_limit_type: terms
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: '1992-12-15'
+  term_limit_notes: 2 consecutive 4-year terms per Charter Section 401 (amended Dec 1992). No cooldown specified.
+  term_limit_source: https://www.codepublishing.com/CA/NewportBeach/#!/NewportBeachCH.html#04.0000
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - District 2
+        - District 5
+        - District 7
     group_b:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - District 1
+        - District 3
+        - District 4
+        - District 6
   candidate_info:
     contact_email:
     contact_phone:
@@ -171,6 +182,10 @@ elections:
   history:
     - year: 2024
       type: by-district
+      seats: ["District 2", "District 5", "District 7"]
+      certified: "2024-12-10"
+      resolution: "2024-92"
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=3089851&dbid=0&repo=CNB
       winners:
         - district: District 2
           winner: Michelle Barto
@@ -208,6 +223,10 @@ elections:
               outcome: lost
     - year: 2022
       type: by-district
+      seats: ["District 1", "District 3", "District 4", "District 6"]
+      certified: "2022-12-13"
+      resolution: "2022-94"
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=2847184&dbid=0&repo=CNB
       winners:
         - district: District 1
           winner: Joe Stapleton
@@ -256,6 +275,11 @@ elections:
               outcome: lost
     - year: 2020
       type: by-district
+      seats: ["District 2", "District 5", "District 7"]
+      certified: "2020-12-08"
+      resolution: "2020-104"
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=2637171&dbid=0&repo=CNB
+      notes: "Measure Z (Harbor Commission added to Charter) passed 26,131-21,236."
       winners:
         - district: District 2
           winner: Brad Avery
@@ -290,6 +314,11 @@ elections:
               outcome: won
     - year: 2018
       type: by-district
+      seats: ["District 1", "District 3", "District 4", "District 6"]
+      certified: "2018-12-11"
+      resolution: "2018-83"
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=1339633&dbid=0&repo=CNB
+      notes: "Measure T (voter approval for certain debt) passed 30,564-7,686."
       winners:
         - district: District 1
           winner: Diane Brooks Dixon
@@ -338,6 +367,11 @@ elections:
               outcome: lost
     - year: 2016
       type: by-district
+      seats: ["District 2", "District 5", "District 7"]
+      certified: "2016-12-13"
+      resolution: "2016-132"
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=1158587&dbid=0&repo=CNB
+      notes: "Measure MM (5/7 votes to propose taxes) passed 32,642-7,573."
       winners:
         - district: District 2
           winner: Brad Avery
@@ -381,6 +415,11 @@ elections:
               outcome: lost
     - year: 2014
       type: by-district
+      seats: ["District 1", "District 3", "District 4", "District 6"]
+      certified: "2014-12-09"
+      resolution: "2014-105"
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=675717&dbid=0&repo=CNB
+      notes: "Measure Y (GP Land Use Element) failed 8,180-18,401."
       winners:
         - district: District 1
           winner: Diane Dixon
@@ -429,6 +468,11 @@ elections:
               outcome: lost
     - year: 2012
       type: by-district
+      seats: ["District 2", "District 5", "District 7"]
+      certified: "2012-12-11"
+      resolution: "2012-122"
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=136468&dbid=0&repo=CNB
+      notes: "All three ran unopposed. Measure EE (Charter Amendments) passed 23,046-17,532."
       winners:
         - district: District 2
           winner: Anthony Petros
