@@ -9,7 +9,7 @@ instagram: ''
 members:
   - name: Rick Loeffler
     position: Mayor
-    district: At-Large
+    district: District 3
     email: LoefflerR@san-clemente.org
     phone: (949) 702-8235
     city_page: https://www.sanclemente.gov/Directory.aspx?EID=58
@@ -57,7 +57,7 @@ members:
     instagram:
   - name: Zhen Wu
     position: Councilmember
-    district: At-Large
+    district: District 4
     email: WuZ@san-clemente.org
     phone: (949) 361-8322
     city_page: https://www.sanclemente.gov/Directory.aspx?EID=59
@@ -83,7 +83,7 @@ meetings:
 portals:
   agendas: https://www.sanclemente.gov/agendacenter
   youtube: https://youtube.com/@cityofsanclementevideos
-  document_center:
+  document_center: https://www.sanclemente.gov/AgendaCenter
   municipal_code: https://library.municode.com/ca/san_clemente
   ecomment:
   live_stream:
@@ -112,23 +112,26 @@ public_comment:
   notes: 30-minute total limit for oral communications Part 1.
 council:
   size: 5
-  districts: 0
-  at_large: 5
-  mayor_elected: false
+  districts: 4
+  at_large: 0
+  mayor_elected: true
   expanded_date:
-  notes: Currently all at-large; 4 districts + elected mayor begin November 2026
+  notes: Transitioned to 4 districts + elected mayor. Districts 3 & 4 elected 2024; Mayor + Districts 1 & 2 complete transition in 2026.
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - Mayor (new elected position)
-    - District 1
-    - District 2
+    - district: Mayor
+      incumbent: (new elected position)
+    - district: District 1
+      incumbent: (new district seat)
+    - district: District 2
+      incumbent: (new district seat)
   term_length: 4
-  election_system: at-large
-  notes: Transitioning to by-district with elected mayor in 2026
-  mayor_term_length:
-  districting_info:
-  transition_note:
+  election_system: by-district
+  notes: Fully by-district starting 2026. Mayor elected citywide for 2-year terms.
+  mayor_term_length: 2
+  districting_info: https://www.sanclemente.gov/266/District-Elections
+  transition_note: "Ord. 1762 (Nov 2023) established by-district elections + mayor term limits. Ord. 1775 (May 2024) adopted Map 120. Res. 23-85 declared transition intent per CVRA."
   term_limit: 2
   term_limit_type: terms
   term_limit_cooldown: 2
@@ -138,21 +141,32 @@ elections:
   term_limit_source: https://library.municode.com/ca/san_clemente/codes/code_of_ordinances?nodeId=TIT2ADPE_CH2.04CICO_2.04.090TELI
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - District 3
+        - District 4
+        - Mayor (2-year term, every election starting 2026)
     group_b:
-      years:
-      seats: []
+      years: "2026, 2030, 2034..."
+      seats:
+        - District 1
+        - District 2
+        - Mayor (2-year term, every election starting 2026)
   candidate_info:
     contact_email:
     contact_phone:
     location:
   nomination_period:
   results_source:
-  source:
+  source: https://www.sanclemente.gov/266/District-Elections
   history:
     - year: 2024
-      type: at-large
+      type: by-district
+      seats: ["District 3", "District 4"]
+      certified: "2024-12-10"
+      resolution: "24-191"
+      source: https://ca-sanclemente.civicplus.com/AgendaCenter/ViewFile/Item/133?fileID=1312
+      notes: "First by-district election. Measure BB (beach sales tax) failed 24,004-13,145 (needed 2/3 majority)."
       winners:
         - district: District 3
           winner: Rick Loeffler
@@ -185,6 +199,11 @@ elections:
               outcome: lost
     - year: 2022
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2022-12-06"
+      resolution: "22-42"
+      source: https://ca-sanclemente.civicplus.com/AgendaCenter/ViewFile/Item/2072?fileID=12114
+      notes: "Measure U (appointive City Clerk) passed 13,746-12,064. Measure V (appointive City Treasurer) passed 13,201-12,704."
       winners:
         - seat: At-Large
           winner: Victor Cabral
@@ -192,6 +211,9 @@ elections:
         - seat: At-Large
           winner: Mark Enmeier
           votes: 9823
+        - seat: At-Large
+          winner: Steven "Steve" Knoblock
+          votes: 9240
       candidates:
         - district: At-Large
           candidates:
@@ -203,7 +225,7 @@ elections:
               outcome: won
             - name: Steven "Steve" Knoblock
               votes: 9240
-              outcome: lost
+              outcome: won
             - name: Donna Vidrine
               votes: 9217
               outcome: lost
@@ -233,15 +255,23 @@ elections:
               outcome: lost
     - year: 2020
       type: at-large
+      seats: ["At-Large (Full Term, 2 seats)", "At-Large (Short Term, 1 seat)"]
+      certified: "2020-12-01"
+      resolution: "20-65"
+      source: https://www.sanclemente.gov/AgendaCenter/ViewFile/Item/1956?fileID=10991
+      notes: "Special election for short term to fill vacancy. Measure BB (term limits) passed 28,141-8,157."
       winners:
-        - seat: At-Large
+        - seat: At-Large (Full Term)
           winner: Gene James
           votes: 10901
-        - seat: At-Large
+        - seat: At-Large (Full Term)
           winner: Chris Duncan
           votes: 10693
+        - seat: At-Large (Short Term)
+          winner: Steven Knoblock
+          votes: 8040
       candidates:
-        - district: At-Large
+        - district: At-Large (Full Term)
           candidates:
             - name: Gene James
               votes: 10901
@@ -252,26 +282,11 @@ elections:
             - name: Aaron Washington
               votes: 9721
               outcome: lost
-            - name: Steven Knoblock
-              votes: 8040
-              outcome: lost
             - name: Bill Hart
               votes: 8016
               outcome: lost
-            - name: Jim Dahl
-              votes: 7358
-              outcome: lost
             - name: Charlie Smith
               votes: 7093
-              outcome: lost
-            - name: Donna Vidrine
-              votes: 6222
-              outcome: lost
-            - name: Tyler Boden
-              votes: 5916
-              outcome: lost
-            - name: Zhen Wu
-              votes: 4043
               outcome: lost
             - name: Thor Johnson
               votes: 3139
@@ -288,6 +303,23 @@ elections:
             - name: Patrick Minnehan
               votes: 1583
               outcome: lost
+        - district: At-Large (Short Term)
+          candidates:
+            - name: Steven Knoblock
+              votes: 8040
+              outcome: won
+            - name: Jim Dahl
+              votes: 7358
+              outcome: lost
+            - name: Donna Vidrine
+              votes: 6222
+              outcome: lost
+            - name: Tyler Boden
+              votes: 5916
+              outcome: lost
+            - name: Zhen Wu
+              votes: 4043
+              outcome: lost
             - name: George T. Gregory
               votes: 859
               outcome: lost
@@ -299,31 +331,33 @@ elections:
               outcome: lost
     - year: 2018
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2018-12-04"
+      resolution: "18-44"
+      source: https://www.sanclemente.gov/AgendaCenter/ViewFile/Item/1865?fileID=9996
+      notes: "Measure V (election by district) failed 7,990-18,933. Measure W (TOT increase) failed 12,727-15,369."
       winners:
-        - seat: At-Large
-          winner: No
-          votes: 18933
         - seat: At-Large
           winner: Dan Bane
           votes: 12184
+        - seat: At-Large
+          winner: Laura Ferguson
+          votes: 8728
+        - seat: At-Large
+          winner: Kathy Ward
+          votes: 8146
       candidates:
         - district: At-Large
           candidates:
-            - name: No
-              votes: 18933
-              outcome: won
             - name: Dan Bane
               votes: 12184
               outcome: won
             - name: Laura Ferguson
               votes: 8728
-              outcome: lost
+              outcome: won
             - name: Kathy Ward
               votes: 8146
-              outcome: lost
-            - name: Yes
-              votes: 7990
-              outcome: lost
+              outcome: won
             - name: Gene W. James
               votes: 7493
               outcome: lost
@@ -353,6 +387,10 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2016-12-20"
+      source: https://www.sanclemente.gov/AgendaCenter/ViewFile/Item/1796?fileID=9309
+      notes: "Measure OO (TOT increase) failed 15,035-15,043."
       winners:
         - seat: At-Large
           winner: Chris Hamm
@@ -380,6 +418,9 @@ elections:
               outcome: lost
     - year: 2014
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2014-12-02"
+      source: https://www.sanclemente.gov/AgendaCenter/ViewFile/Item/1713?fileID=8451
       winners:
         - seat: At-Large
           winner: Tim Brown
@@ -387,6 +428,9 @@ elections:
         - seat: At-Large
           winner: Lori Donchak
           votes: 8809
+        - seat: At-Large
+          winner: Kathy Ward
+          votes: 7191
       candidates:
         - district: At-Large
           candidates:
@@ -398,7 +442,7 @@ elections:
               outcome: won
             - name: Kathy Ward
               votes: 7191
-              outcome: lost
+              outcome: won
             - name: Jim Dahl
               votes: 5689
               outcome: lost
@@ -413,6 +457,11 @@ elections:
               outcome: lost
     - year: 2012
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2012-12-04"
+      resolution: "12-61"
+      source: https://www.sanclemente.gov/AgendaCenter/ViewFile/Item/1584?fileID=7350
+      notes: "Two candidates named Robert 'Bob' Baker on ballot."
       winners:
         - seat: At-Large
           winner: Chris Hamm
