@@ -81,14 +81,16 @@ members:
     phone: (714) 229-6699
     city_page: https://www.cypressca.org/government/city-council/council-member-rachel-strong-carnahan
     photo_url: https://www.cypressca.org/home/showpublishedimage/14531/639041920579870000
-    bio: Rachel Strong Carnahan is a former Senior Citizens Commissioner and 2022 City Council candidate. She has 18 
-      years of experience as a youth mentor and is a small business owner at Strong Dance Studios. She was appointed to 
-      fill the vacant District 5 seat in November 2025 after the resignation of Scott Minikus. Her priorities include 
-      recruiting an excellent city manager, paying down pension debt, reimagining green spaces with teens in mind, and 
-      building a city that values diversity and inclusion. She raises her children in Cypress and calls herself a 
+    bio: Rachel Strong Carnahan is a former Senior Citizens Commissioner and 2022 City Council candidate. She has 18
+      years of experience as a youth mentor and is a small business owner at Strong Dance Studios. She was appointed to
+      fill the vacant District 5 seat in November 2025 after the resignation of Scott Minikus. Her priorities include
+      recruiting an excellent city manager, paying down pension debt, reimagining green spaces with teens in mind, and
+      building a city that values diversity and inclusion. She raises her children in Cypress and calls herself a
       "hometown girl."
     term_start: 2025
+    term_start_date: '2025-11-28'
     term_end: 2026
+    notes: "Appointed Nov 28, 2025 to fill at-large vacancy from Scott Minikus resignation (Oct 1, 2025). 3-1 vote at special meeting. Term expires when District 5 member elected Nov 2026 is sworn in."
     website:
     instagram:
 meetings:
@@ -119,12 +121,12 @@ broadcast:
       channel: '36'
   live_stream: https://www.cypressca.org/government/watch-cypress-channel-36
 clerk:
+  name: Lisa Berglund
   title: City Clerk
   phone: (714) 229-6685
   email: cityclerk@cypressca.org
   fax:
   address:
-  name:
 public_comment:
   in_person: true
   remote_live: false
@@ -154,17 +156,22 @@ elections:
     - district: District 5
       incumbent: Rachel Strong Carnahan
       notes: Appointed Nov 2025 to fill vacancy
-  term_limit:
-  term_limit_cooldown:
-  transition_note: Transitioned from at-large to by-district March 2024
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: null
+  term_limit_source: null
+  transition_note: Transitioned from at-large to by-district March 2024 (Ord. 1207)
   cycle_pattern:
     group_a:
-      years: 2024, 2028, 2032...
+      years: "2024, 2028, 2032..."
       seats:
         - District 3
         - District 4
     group_b:
-      years: 2026, 2030, 2034...
+      years: "2026, 2030, 2034..."
       seats:
         - District 1
         - District 2
@@ -177,10 +184,21 @@ elections:
   source: https://www.cypressca.org/government/2026-election
   history:
     - year: 2024
+      type: by-district
+      certified: "2024-12-09"
+      resolution: "6998"
+      resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=303803&dbid=0&repo=CityOfCypress
       seats:
         - District 3
         - District 4
       source: https://www.cypressca.org/government/2024-election
+      winners:
+        - district: District 3
+          winner: Kyle Chang
+          votes: 1957
+        - district: District 4
+          winner: Leo Medrano
+          votes: 2036
       candidates:
         - district: District 3
           candidates:
@@ -195,7 +213,10 @@ elections:
             - Glenn Button
           winner: Leo Medrano
     - year: 2022
-      type: by-district
+      type: at-large
+      certified: "2022-12-12"
+      resolution: "6919"
+      resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=235562&dbid=0&repo=CityOfCypress
       winners:
         - seat: At-Large
           winner: David Burke
@@ -203,6 +224,9 @@ elections:
         - seat: At-Large
           winner: Scott Minikus
           votes: 6514
+        - seat: At-Large
+          winner: Bonnie Peat
+          votes: 6211
       candidates:
         - district: At-Large
           candidates:
@@ -214,7 +238,7 @@ elections:
               outcome: won
             - name: Bonnie Peat
               votes: 6211
-              outcome: lost
+              outcome: won
             - name: Rachel Strong
               votes: 5142
               outcome: lost
@@ -228,7 +252,10 @@ elections:
               votes: 4592
               outcome: lost
     - year: 2020
-      type: by-district
+      type: at-large
+      certified: "2020-12-14"
+      resolution: "6825"
+      resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=183897&dbid=0&repo=CityOfCypress
       winners:
         - seat: At-Large
           winner: Anne Hertz
@@ -267,7 +294,10 @@ elections:
               votes: 1113
               outcome: lost
     - year: 2018
-      type: by-district
+      type: at-large
+      certified: "2018-12-10"
+      resolution: "6718"
+      resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=134440&dbid=0&repo=CityOfCypress
       winners:
         - seat: At-Large
           winner: Jon Peat
@@ -275,6 +305,9 @@ elections:
         - seat: At-Large
           winner: Stacy Berry
           votes: 8283
+        - seat: At-Large
+          winner: Paulo Morales
+          votes: 7448
       candidates:
         - district: At-Large
           candidates:
@@ -286,7 +319,7 @@ elections:
               outcome: won
             - name: Paulo Morales
               votes: 7448
-              outcome: lost
+              outcome: won
             - name: Frances Marquez
               votes: 6221
               outcome: lost
@@ -297,7 +330,10 @@ elections:
               votes: 4264
               outcome: lost
     - year: 2016
-      type: by-district
+      type: at-large
+      certified: "2016-12-12"
+      resolution: "6600"
+      resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=99644&dbid=0&repo=CityOfCypress
       winners:
         - seat: At-Large
           winner: Rob Johnson
@@ -321,7 +357,10 @@ elections:
               votes: 5596
               outcome: lost
     - year: 2014
-      type: by-district
+      type: at-large
+      certified: "2014-12-08"
+      resolution: "6485"
+      resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=86420&dbid=0&repo=CityOfCypress
       winners:
         - seat: At-Large
           winner: Paulo M. Morales
@@ -329,6 +368,9 @@ elections:
         - seat: At-Large
           winner: Jon Peat
           votes: 5067
+        - seat: At-Large
+          winner: Stacy Berry
+          votes: 4844
       candidates:
         - district: At-Large
           candidates:
@@ -340,7 +382,7 @@ elections:
               outcome: won
             - name: Stacy Berry
               votes: 4844
-              outcome: lost
+              outcome: won
             - name: Jay Sondhi
               votes: 4065
               outcome: lost
@@ -354,7 +396,10 @@ elections:
               votes: 1843
               outcome: lost
     - year: 2012
-      type: by-district
+      type: at-large
+      certified: "2012-12-10"
+      resolution: "6341"
+      resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=87711&dbid=0&repo=CityOfCypress
       winners:
         - seat: At-Large
           winner: Rob Johnson
@@ -379,9 +424,4 @@ elections:
               outcome: lost
   mayor_term_length:
   districting_info:
-  term_limit_type:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
   nomination_period:
