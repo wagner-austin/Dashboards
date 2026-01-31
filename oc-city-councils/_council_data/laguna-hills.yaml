@@ -143,8 +143,8 @@ portals:
   video_archive: https://lagunahillsca.portal.civicclerk.com/
   civicclerk: https://lagunahillsca.portal.civicclerk.com/
   youtube:
-  document_center:
-  municipal_code:
+  document_center: https://lagunahillsca.portal.civicclerk.com/
+  municipal_code: https://www.codepublishing.com/CA/LagunaHills/
   ecomment:
 broadcast:
   cable_channels: []
@@ -178,28 +178,41 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - District 1
-    - District 2
-    - District 4
+    - district: District 1
+      incumbent: null
+      notes: First district election - transition from at-large. No eligible incumbent.
+    - district: District 2
+      incumbent: null
+      notes: First district election - transition from at-large. 1 eligible incumbent per city website (TBD which).
+    - district: District 4
+      incumbent: null
+      notes: First district election - transition from at-large. No eligible incumbent.
   term_length: 4
-  election_system: at-large
+  election_system: by-district
   mayor_term_length:
-  districting_info:
-  transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  districting_info: https://www.lagunahillsca.gov/1134/Districting
+  transition_note: Ordinance 2025-7 established by-district elections. Districts 1,2,4 elected Nov 2026; Districts 3,5 elected Nov 2028.
+  term_limit: 2
+  term_limit_type: terms
+  term_limit_cooldown: 2
+  term_limit_cooldown_unit: years
+  term_limit_effective: '2010-11-02'
+  term_limit_notes: 2 consecutive 4-year terms per Ord. 2010-6. 2-year break required. Serving 2+ years of partial term counts as full term.
+  term_limit_source: https://www.codepublishing.com/CA/LagunaHills/html/LagunaHills02/LagunaHills0204.html
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2026, 2030, 2034..."
+      seats:
+        - District 1
+        - District 2
+        - District 4
+      notes: First by-district election in 2026
     group_b:
-      years:
-      seats: []
+      years: "2028, 2032, 2036..."
+      seats:
+        - District 3
+        - District 5
+      notes: First by-district election in 2028
   candidate_info:
     contact_email:
     contact_phone:
@@ -210,6 +223,10 @@ elections:
   history:
     - year: 2024
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2024-12-10"
+      resolution: "2024-12-10-X"
+      source: https://lagunahillsca.portal.civicclerk.com/event/727/files/attachment/558
       winners:
         - seat: At-Large
           winner: Jared Mathis
@@ -231,6 +248,11 @@ elections:
               outcome: lost
     - year: 2022
       type: at-large
+      seats: ["At-Large (4 seats)"]
+      certified: "2022-12-13"
+      resolution: "2022-12-13-1"
+      source: https://lagunahillsca.portal.civicclerk.com/event/184/files/agenda/217
+      notes: "4th seat due to Bill Hunt vacancy (resigned 2021). Caskey appointed Oct 2021, won short term (2022-2024). See: https://voiceofoc.org/2021/11/laguna-hills-city-council-appoints-new-council-member-avoiding-a-special-election/"
       winners:
         - seat: At-Large
           winner: Donald Caskey
@@ -238,6 +260,12 @@ elections:
         - seat: At-Large
           winner: Erica Pezold
           votes: 6917
+        - seat: At-Large
+          winner: David Wheeler
+          votes: 6647
+        - seat: At-Large
+          winner: Joshua Sweeney
+          votes: 5720
       candidates:
         - district: At-Large
           candidates:
@@ -249,15 +277,19 @@ elections:
               outcome: won
             - name: David Wheeler
               votes: 6647
-              outcome: lost
+              outcome: won
             - name: Joshua Sweeney
               votes: 5720
-              outcome: lost
+              outcome: won
             - name: Parshan Khosravi
               votes: 3477
               outcome: lost
     - year: 2020
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2020-12-08"
+      resolution: "2020-12-08-1"
+      source: https://lagunahillsca.portal.civicclerk.com/event/194/files/agenda/243
       winners:
         - seat: At-Large
           winner: Janine Heft
@@ -279,6 +311,10 @@ elections:
               outcome: lost
     - year: 2018
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2018-12-11"
+      resolution: "2018-12-11-1"
+      source: https://lagunahillsca.portal.civicclerk.com/event/189/files/agenda/231
       winners:
         - seat: At-Large
           winner: Don Sedgwick
@@ -286,6 +322,9 @@ elections:
         - seat: At-Large
           winner: David "Dave" Wheeler
           votes: 5803
+        - seat: At-Large
+          winner: Erica Pezold
+          votes: 5723
       candidates:
         - district: At-Large
           candidates:
@@ -297,7 +336,7 @@ elections:
               outcome: won
             - name: Erica Pezold
               votes: 5723
-              outcome: lost
+              outcome: won
             - name: Christina "Chris" Mackey
               votes: 4092
               outcome: lost
@@ -312,6 +351,10 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2016-12-13"
+      resolution: "2016-12-13-1"
+      source: https://lagunahillsca.portal.civicclerk.com/event/185/files/agenda/220
       winners:
         - seat: At-Large
           winner: Janine Heft
@@ -331,14 +374,41 @@ elections:
             - name: Mark Jones
               votes: 3920
               outcome: lost
+    - year: 2014
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2014-12-09"
+      resolution: "received and filed"
+      source: https://lagunahillsca.portal.civicclerk.com/event/193/files/agenda/240
+      notes: "Minutes confirm oaths administered to Sedgwick, Carruth, Kogerman"
+      winners:
+        - seat: At-Large
+          winner: Don Sedgwick
+        - seat: At-Large
+          winner: Robert Carruth
+        - seat: At-Large
+          winner: Barbara Kogerman
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Don Sedgwick
+              outcome: won
+            - name: Robert Carruth
+              outcome: won
+            - name: Barbara Kogerman
+              outcome: won
     - year: 2012
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2012-12-11"
+      resolution: "2012-12-11-1"
+      source: https://lagunahillsca.portal.civicclerk.com/event/190/files/agenda/233
       winners:
         - seat: At-Large
           winner: Andrew Blount
           votes: 5679
         - seat: At-Large
-          winner: Dore Gilbert
+          winner: Dore J. Gilbert
           votes: 4980
       candidates:
         - district: At-Large
