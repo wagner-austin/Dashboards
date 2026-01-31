@@ -162,8 +162,8 @@ portals:
   live_stream: https://ggcity.org/ggtv3-live
   video_archive: https://ggcity.org/ggtv3/videos
   youtube:
-  document_center:
-  municipal_code:
+  document_center: https://ggcity.org/archives/public/index
+  municipal_code: https://ecode360.com/GA4928
   ecomment:
 broadcast:
   cable_channels:
@@ -197,28 +197,40 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - District 1
-    - District 3
-    - District 4
+    - district: District 1
+      incumbent: George S. Brietigam III
+    - district: District 3
+      incumbent: Cindy Ngoc Tran
+    - district: District 4
+      incumbent: Joe DoVinh
   election_system: by-district
   term_length: 4
-  mayor_term_length:
+  mayor_term_length: 2
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 2
+  term_limit_type: terms
+  term_limit_cooldown: 2
+  term_limit_cooldown_unit: years
+  term_limit_effective: "1996-03-01"
+  term_limit_notes: "Councilmember: 2 consecutive 4-year terms, 2-year cooldown. Mayor: 4 consecutive 2-year terms, 2-year cooldown. Can switch between offices without restriction. Approved by voters March 1996, amended November 2008."
+  term_limit_source: https://ecode360.com/42523141
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - Mayor
+        - District 1
+        - District 3
+        - District 4
     group_b:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - Mayor
+        - District 2
+        - District 5
+        - District 6
+    notes: Mayor is up every election due to 2-year term
   candidate_info:
     contact_email:
     contact_phone:
@@ -229,6 +241,14 @@ elections:
   history:
     - year: 2024
       type: by-district
+      seats:
+        - Mayor
+        - District 2
+        - District 5
+        - District 6
+      certified: "2024-12-10"
+      resolution: "9893-24"
+      source: https://ggcity.org/archives/public/download/313058
       winners:
         - district: District 2
           winner: Phillip Nguyen
@@ -295,6 +315,14 @@ elections:
               outcome: lost
     - year: 2022
       type: by-district
+      seats:
+        - Mayor
+        - District 1
+        - District 3
+        - District 4
+      certified: "2022-12-13"
+      resolution: "9777-22"
+      source: https://ggcity.org/archives/public/download/300293
       winners:
         - district: District 1
           winner: III George S. Brietigam
@@ -352,6 +380,14 @@ elections:
               outcome: won
     - year: 2020
       type: by-district
+      seats:
+        - Mayor
+        - District 2
+        - District 5
+        - District 6
+      certified: "2020-12-08"
+      resolution: "9664-20"
+      source: https://ggcity.org/archives/public/download/300335
       winners:
         - district: District 2
           winner: John R. O'Neill
@@ -406,6 +442,14 @@ elections:
               outcome: lost
     - year: 2018
       type: by-district
+      seats:
+        - Mayor
+        - District 1
+        - District 3
+        - District 4
+      certified: "2018-12-11"
+      resolution: "9533-18"
+      source: https://ggcity.org/archives/public/download/266784
       winners:
         - district: District 1
           winner: III George S. Brietigam
@@ -466,6 +510,16 @@ elections:
               outcome: lost
     - year: 2016
       type: by-district
+      seats:
+        - Mayor
+        - District 2
+        - District 3 (Short Term)
+        - District 5
+        - District 6
+      certified: "2016-12-13"
+      resolution: "9398-16"
+      source: https://ggcity.org/archives/public/download/224225
+      notes: "District 3 was a 2-year short term. First district-based election."
       winners:
         - district: District 2
           winner: John R. O'Neill
@@ -473,6 +527,7 @@ elections:
         - district: District 3
           winner: Thu-Ha Nguyen
           votes: 4657
+          notes: "2-year short term"
         - district: District 5
           winner: Stephanie Klopfenstein
           votes: 4062
@@ -521,7 +576,13 @@ elections:
               votes: 521
               outcome: lost
     - year: 2014
-      type: by-district
+      type: at-large
+      seats:
+        - Mayor
+        - At-Large (2 seats)
+      certified: "2014-12-09"
+      resolution: "9267-14"
+      source: https://ggcity.org/archives/public/download/184929
       winners:
         - seat: At-Large
           winner: Phat Bui
@@ -574,7 +635,13 @@ elections:
               votes: 4234
               outcome: lost
     - year: 2012
-      type: by-district
+      type: at-large
+      seats:
+        - Mayor
+        - At-Large (2 seats)
+      certified: "2012-12-11"
+      resolution: "9158-12"
+      source: https://ggcity.org/archives/public/download/173395
       winners:
         - seat: At-Large
           winner: Steve Jones
