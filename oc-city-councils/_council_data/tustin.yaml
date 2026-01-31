@@ -113,7 +113,7 @@ portals:
   video_archive: https://www.tustinca.org/282/Meetings-Agendas
   ecomment: https://tustin.granicusideas.com/meetings?scope=upcoming
   youtube:
-  document_center:
+  document_center: https://webdocs.tustinca.org/Weblink/Browse.aspx?id=3&dbid=0&repo=TUSTIN
   municipal_code: https://library.municode.com/ca/tustin
   live_stream:
 broadcast:
@@ -140,17 +140,18 @@ public_comment:
   deadline:
 council:
   size: 5
-  districts: 0
-  at_large: 5
-  mayor_elected: false
+  districts: 4
+  at_large: 0
+  mayor_elected: true
   expanded_date:
-  notes:
+  notes: Transitioned to 4 districts + elected mayor starting 2022
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - Mayor Pro Tem
-    - Councilmember
-    - Councilmember
+    - district: Mayor
+      incumbent: Austin Lumbard
+    - district: District 3
+      incumbent: Ray Schnell
   term_length: 4
   election_system: at-large
   mayor_term_length:
@@ -165,11 +166,16 @@ elections:
   term_limit_source: https://library.municode.com/ca/tustin/codes/code_of_ordinances?nodeId=ART1AD_CH3CICO_1307LICOTEMAMECO
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - Mayor
+        - District 3
     group_b:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - District 1
+        - District 2
+        - District 4
   candidate_info:
     contact_email:
     contact_phone:
@@ -179,7 +185,12 @@ elections:
   source:
   history:
     - year: 2024
-      type: at-large
+      type: by-district
+      seats: ["District 1", "District 2", "District 4"]
+      certified: "2024-12-03"
+      resolution: "24-87"
+      source: https://webdocs.tustinca.org/WebLink/DocView.aspx?id=825788&dbid=0&repo=TUSTIN
+      notes: "First by-district election. Measure II (council term limits) passed 15,420-13,165."
       winners:
         - district: District 1
           winner: Lee Fink
@@ -219,7 +230,12 @@ elections:
               votes: 2447
               outcome: lost
     - year: 2022
-      type: at-large
+      type: mixed
+      seats: ["Mayor", "District 3"]
+      certified: "2022-12-06"
+      resolution: "22-63"
+      source: https://webdocs.tustinca.org/WebLink/DocView.aspx?id=795979&dbid=0&repo=TUSTIN
+      notes: "First election with districts (Mayor citywide + District 3)."
       winners:
         - district: District 3
           winner: Ray Schnell
@@ -246,6 +262,11 @@ elections:
               outcome: lost
     - year: 2020
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2020-12-01"
+      resolution: "20-77"
+      source: https://webdocs.tustinca.org/WebLink/DocView.aspx?id=757735&dbid=0&repo=TUSTIN
+      notes: "Council salary measure passed."
       winners:
         - seat: At-Large
           winner: Letitia Clark
@@ -253,6 +274,9 @@ elections:
         - seat: At-Large
           winner: Rebecca "Beckie" Gomez
           votes: 12780
+        - seat: At-Large
+          winner: Ryan Gallagher
+          votes: 12075
       candidates:
         - district: At-Large
           candidates:
@@ -264,7 +288,7 @@ elections:
               outcome: won
             - name: Ryan Gallagher
               votes: 12075
-              outcome: lost
+              outcome: won
             - name: Lee Fink
               votes: 11577
               outcome: lost
@@ -285,6 +309,11 @@ elections:
               outcome: lost
     - year: 2018
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2018-12-04"
+      resolution: "18-92"
+      source: https://webdocs.tustinca.org/WebLink/DocView.aspx?id=649593&dbid=0&repo=TUSTIN
+      notes: "Measure CC (TOT increase to 13%) passed 14,244-8,958."
       winners:
         - seat: At-Large
           winner: Austin Lumbard
@@ -306,6 +335,10 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2016-12-09"
+      resolution: "16-73"
+      source: https://webdocs.tustinca.org/WebLink/DocView.aspx?id=384543&dbid=0&repo=TUSTIN
       winners:
         - seat: At-Large
           winner: Charles E. "Chuck" Puckett
@@ -313,6 +346,9 @@ elections:
         - seat: At-Large
           winner: Letitia Clark
           votes: 12748
+        - seat: At-Large
+          winner: Allan Bernstein
+          votes: 11974
       candidates:
         - district: At-Large
           candidates:
@@ -324,12 +360,17 @@ elections:
               outcome: won
             - name: Allan Bernstein
               votes: 11974
-              outcome: lost
+              outcome: won
             - name: Austin Lumbard
               votes: 9900
               outcome: lost
     - year: 2014
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2014-12-02"
+      resolution: "14-79"
+      source: https://webdocs.tustinca.org/WebLink/DocView.aspx?id=243165&dbid=0&repo=TUSTIN
+      notes: "Both candidates ran unopposed. Measure HH (TOT increase to 10%) passed 5,724-5,102."
       winners:
         - seat: At-Large
           winner: Al Murray
@@ -348,6 +389,11 @@ elections:
               outcome: won
     - year: 2012
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2012-12-04"
+      resolution: "12-109"
+      source: https://webdocs.tustinca.org/WebLink/DocView.aspx?id=207852&dbid=0&repo=TUSTIN
+      notes: "Measure HH (eliminate council salary/benefits) passed 14,086-6,531."
       winners:
         - seat: At-Large
           winner: John Nielsen
@@ -355,6 +401,9 @@ elections:
         - seat: At-Large
           winner: Charles E. "Chuck" Puckett
           votes: 9186
+        - seat: At-Large
+          winner: Allan Bernstein
+          votes: 9017
       candidates:
         - district: At-Large
           candidates:
@@ -366,7 +415,7 @@ elections:
               outcome: won
             - name: Allan Bernstein
               votes: 9017
-              outcome: lost
+              outcome: won
             - name: David Waldram
               votes: 8605
               outcome: lost
