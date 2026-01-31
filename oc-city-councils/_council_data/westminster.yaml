@@ -116,7 +116,7 @@ portals:
   youtube: https://youtube.com/@cityofwestminsterca92683
   wtv_stream: https://www.westminster-ca.gov/business/find/city-channel-wtv
   document_center:
-  municipal_code:
+  municipal_code: https://ecode360.com/WE5033
   ecomment:
   live_stream:
 broadcast:
@@ -163,13 +163,13 @@ elections:
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 3
+  term_limit_type: terms
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: '2020-11-03'
+  term_limit_notes: 3 four-year terms lifetime per Sec. 2.04.125 (Ord. 2570, 2020). Mayor and council combined. Partial terms (>half) count as full terms. Applies to those elected from Nov 2020.
+  term_limit_source: https://ecode360.com/43782048
   cycle_pattern:
     group_a:
       years:
