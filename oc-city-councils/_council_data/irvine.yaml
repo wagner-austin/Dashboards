@@ -47,8 +47,8 @@ members:
       marketing, and technology has enabled businesses to scale efficiently and expand their impact. His professional 
       portfolio includes operations across North America, Europe, and Asia, as well as founding an Irvine-based 
       executive search firm in 2004.
-    term_start: 2022
-    term_end: 2026
+    term_start: 2024
+    term_end: 2028
     instagram: https://www.instagram.com/vicemayormai
   - name: Betty Martinez Franco
     position: Councilmember
@@ -90,8 +90,8 @@ members:
       of ecology, with the expectation of continuing to produce outstanding ecological research. In 2022, she received 
       the Marsh Award for Climate Change Research from the British Ecological Society. She has published over 120 
       articles in scientific journals. Councilmember Treseder’s research has been featured on the BBC and NPR and in 
-      numerous publications, including Discover Magazine, The Orange County Register, and Harper’s Bazaar.
-    term_start: 2024
+      numerous publications, including Discover Magazine, The Orange County Register, and Harper's Bazaar.
+    term_start: 2022
     term_end: 2026
     instagram: https://www.instagram.com/councilmemberkathleentreseder
   - name: Melinda Liu
@@ -185,8 +185,8 @@ portals:
   video_archive: https://irvine.granicus.com/ViewPublisher.php?view_id=68
   ecomment: https://irvine.granicusideas.com/meetings?scope=upcoming
   youtube:
-  document_center:
-  municipal_code:
+  document_center: https://irvinequickrecords.com/
+  municipal_code: https://library.municode.com/ca/irvine/codes/code_of_ordinances
 broadcast:
   cable_channels:
     - provider: Cox
@@ -213,36 +213,50 @@ public_comment:
 council:
   size: 7
   districts: 5
-  at_large: 2
+  at_large: 1
   mayor_elected: true
   expanded_date: 2024-03
-  notes:
+  notes: "Expanded from 5 to 7 members (March 2024 charter amendment). Final structure: Mayor at-large + 6 district councilmembers. Treseder's at-large seat (expires 2026) will become District 6."
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - Mayor
-    - District 1
-    - District 5
-    - At-Large
+    - district: Mayor
+      incumbent: Larry Agran
+    - district: District 1
+      incumbent: Melinda Liu
+    - district: District 5
+      incumbent: Betty Martinez Franco
+    - district: At-Large
+      incumbent: Kathleen Treseder
+      notes: "Seat becomes District 6 after 2026"
   term_length: 4
   election_system: mixed
-  mayor_term_length:
+  mayor_term_length: 2
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 2
+  term_limit_type: terms
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: "2014-11-04"
+  term_limit_notes: "2 full terms for Mayor (2-year terms) and 2 full terms for Council (4-year terms) per Charter § 400. Partial terms >1 year (Mayor) or >2 years (Council) count as full terms. Separate limits for Mayor vs Council positions. Applies to terms beginning on/after Nov 4, 2014."
+  term_limit_source: https://library.municode.com/ca/irvine/codes/code_of_ordinances?nodeId=CHTRCIIR_ARTIVTHCO_S400MACO
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - Mayor
+        - District 2
+        - District 3
+        - District 4
     group_b:
-      years:
-      seats: []
+      years: "2026, 2030, 2034..."
+      seats:
+        - Mayor
+        - District 1
+        - District 5
+        - District 6
+    notes: "Mayor up every election (2-year term). District 6 replaces At-Large seat starting 2026. D1 had initial 2-year term (2024-2026)."
   candidate_info:
     contact_email:
     contact_phone:
@@ -253,6 +267,16 @@ elections:
   history:
     - year: 2024
       type: mixed
+      seats:
+        - Mayor
+        - District 1
+        - District 2
+        - District 3
+        - District 4
+      certified: "2024-12-10"
+      resolution: "24-92"
+      source: https://irvine.granicus.com/MetaViewer.php?view_id=&meta_id=158424
+      notes: "First district election. D1 gets short 2-year term; D2/D3/D4 get 4-year terms."
       winners:
         - district: District 1
           winner: Melinda Liu
@@ -348,6 +372,12 @@ elections:
               outcome: lost
     - year: 2022
       type: mixed
+      seats:
+        - Mayor
+        - At-Large (2 seats)
+      certified: "2022-12-13"
+      resolution: "22-105"
+      source: https://irvine.granicus.com/MetaViewer.php?view_id=&meta_id=133766
       winners:
         - seat: At-Large
           winner: Larry Agran
@@ -398,6 +428,12 @@ elections:
               outcome: lost
     - year: 2020
       type: mixed
+      seats:
+        - Mayor
+        - At-Large (2 seats + 1 vacancy fill)
+      certified: "2020-12-08"
+      resolution: "20-97"
+      notes: "3rd runner-up (Larry Agran) elected to fill vacancy created by Khan's election to Mayor"
       winners:
         - seat: At-Large
           winner: Tammy Kim
@@ -405,6 +441,10 @@ elections:
         - seat: At-Large
           winner: Mike Carroll
           votes: 38615
+        - seat: At-Large
+          winner: Larry Agran
+          votes: 38156
+          notes: "3rd runner-up elected to 2-year term to fill vacancy from Khan's election to Mayor"
         - seat: Mayor
           winner: Farrah N. Khan
           votes: 56304
@@ -419,7 +459,8 @@ elections:
               outcome: won
             - name: Larry Agran
               votes: 38156
-              outcome: lost
+              outcome: won
+              notes: "3rd runner-up elected to 2-year term to fill vacancy from Khan's election to Mayor"
             - name: Lauren Johnson-Norris
               votes: 37931
               outcome: lost
@@ -469,6 +510,11 @@ elections:
               outcome: lost
     - year: 2018
       type: mixed
+      seats:
+        - Mayor
+        - At-Large (2 seats)
+      certified: "2018-12-11"
+      resolution: "18-81"
       winners:
         - seat: At-Large
           winner: Farrah N. Khan
@@ -534,6 +580,11 @@ elections:
               outcome: lost
     - year: 2016
       type: mixed
+      seats:
+        - Mayor
+        - At-Large (2 seats)
+      certified: "2016-12-13"
+      resolution: "16-92"
       winners:
         - seat: At-Large
           winner: Christina L. Shea
@@ -599,6 +650,11 @@ elections:
               outcome: lost
     - year: 2014
       type: mixed
+      seats:
+        - Mayor
+        - At-Large (2 seats)
+      certified: "2014-12-09"
+      resolution: "14-148"
       winners:
         - seat: At-Large
           winner: Lynn Schott
@@ -640,6 +696,11 @@ elections:
               outcome: lost
     - year: 2012
       type: mixed
+      seats:
+        - Mayor
+        - At-Large (2 seats)
+      certified: "2012-12-11"
+      resolution: "12-143"
       winners:
         - seat: At-Large
           winner: Beth Krom
