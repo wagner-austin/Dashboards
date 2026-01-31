@@ -127,8 +127,8 @@ portals:
   live_stream: https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true
   video_archive: https://missionviejo.granicus.com/ViewPublisher.php?view_id=12
   youtube:
-  document_center:
-  municipal_code:
+  document_center: https://dms.cityofmissionviejo.org/publicaccess/
+  municipal_code: https://library.municode.com/ca/mission_viejo
   ecomment:
 broadcast:
   cable_channels:
@@ -164,28 +164,36 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - District 1
-    - District 4
-    - District 5
+    - district: District 1
+      incumbent: Bob Ruesch
+    - district: District 4
+      incumbent: Trish Kelley
+    - district: District 5
+      incumbent: Wendy Bucknum
   term_length: 4
   election_system: by-district
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 3
+  term_limit_type: terms
+  term_limit_cooldown: 365
+  term_limit_cooldown_unit: days
+  term_limit_effective: '1998-06-02'
+  term_limit_notes: 3 consecutive terms per Ord. 98-180. 365-day break required. Term = 731+ consecutive days. Applies prospectively to terms commencing on/after June 2, 1998.
+  term_limit_source: https://library.municode.com/ca/mission_viejo/codes/code_of_ordinances?nodeId=MUCO_TIT2ADPE_CH2.04CO_S2.04.010ELMETELI
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - District 2
+        - District 3
     group_b:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - District 1
+        - District 4
+        - District 5
   candidate_info:
     contact_email:
     contact_phone:
@@ -194,8 +202,38 @@ elections:
   results_source:
   source:
   history:
+    - year: 2024
+      type: by-district
+      seats: ["District 2", "District 3"]
+      certified: "2024-12-10"
+      resolution: "24-55"
+      source: https://dms.cityofmissionviejo.org/publicaccess/
+      notes: "D2/D3 ran unopposed. Measure Y (TOT increase 8% to 12%) failed 23,454-26,959."
+      winners:
+        - district: District 2
+          winner: Brian Goodell
+          notes: Unopposed
+        - district: District 3
+          winner: Cynthia Vasquez
+          notes: Unopposed
+      candidates:
+        - district: District 2
+          candidates:
+            - name: Brian Goodell
+              outcome: won
+              notes: Unopposed
+        - district: District 3
+          candidates:
+            - name: Cynthia Vasquez
+              outcome: won
+              notes: Unopposed
     - year: 2022
       type: by-district
+      seats: ["District 1", "District 2", "District 3", "District 4", "District 5"]
+      certified: "2022-12-13"
+      resolution: "22-43"
+      source: https://dms.cityofmissionviejo.org/publicaccess/
+      notes: "First district election. All 5 districts elected simultaneously."
       winners:
         - district: District 1
           winner: Robert "Bob" Ruesch
@@ -229,7 +267,7 @@ elections:
             - name: Brian Goodell
               votes: 5060
               outcome: won
-            - name: Stacy Holmes
+            - name: Stacey Holmes
               votes: 3552
               outcome: lost
         - district: District 3
@@ -263,7 +301,12 @@ elections:
               votes: 2852
               outcome: lost
     - year: 2020
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats, 2-year terms)"]
+      certified: "2020-12-08"
+      resolution: "20-54"
+      source: https://dms.cityofmissionviejo.org/publicaccess/
+      notes: "Two-year terms to prepare for district transition."
       winners:
         - seat: At-Large
           winner: Patricia "Trish" Kelley
@@ -295,11 +338,16 @@ elections:
             - name: Steve Sipe
               votes: 4340
               outcome: lost
-            - name: Michael Mcconnell
+            - name: Michael McConnell
               votes: 3914
               outcome: lost
     - year: 2018
-      type: by-district
+      type: at-large
+      seats: ["At-Large (3 seats, 2-year terms)"]
+      certified: "2018-12-11"
+      resolution: "18-52"
+      source: https://dms.cityofmissionviejo.org/publicaccess/
+      notes: "Three 2-year terms elected."
       winners:
         - seat: At-Large
           winner: Ed Sachs
@@ -307,6 +355,9 @@ elections:
         - seat: At-Large
           winner: Wendy Bucknum
           votes: 25206
+        - seat: At-Large
+          winner: Greg Raths
+          votes: 25017
       candidates:
         - district: At-Large
           candidates:
@@ -318,15 +369,19 @@ elections:
               outcome: won
             - name: Greg Raths
               votes: 25017
-              outcome: lost
-            - name: Michael Mcconnell
+              outcome: won
+            - name: Michael McConnell
               votes: 10551
               outcome: lost
             - name: Mahmoud El-Farra
               votes: 8796
               outcome: lost
     - year: 2016
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2016-12-13"
+      resolution: "16-57"
+      source: https://dms.cityofmissionviejo.org/publicaccess/
       winners:
         - seat: At-Large
           winner: Patricia "Trish" Kelley
@@ -353,7 +408,11 @@ elections:
               votes: 5895
               outcome: lost
     - year: 2014
-      type: by-district
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2014-12-01"
+      resolution: "14-54"
+      source: https://dms.cityofmissionviejo.org/publicaccess/
       winners:
         - seat: At-Large
           winner: Greg Raths
@@ -361,6 +420,9 @@ elections:
         - seat: At-Large
           winner: Ed Sachs
           votes: 11570
+        - seat: At-Large
+          winner: Wendy Bucknum
+          votes: 9476
       candidates:
         - district: At-Large
           candidates:
@@ -372,7 +434,7 @@ elections:
               outcome: won
             - name: Wendy Bucknum
               votes: 9476
-              outcome: lost
+              outcome: won
             - name: David "Dave" Leckness
               votes: 8501
               outcome: lost
@@ -389,7 +451,11 @@ elections:
               votes: 2786
               outcome: lost
     - year: 2012
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2012-12-03"
+      resolution: "12-67"
+      source: https://dms.cityofmissionviejo.org/publicaccess/
       winners:
         - seat: At-Large
           winner: Frank Ury
