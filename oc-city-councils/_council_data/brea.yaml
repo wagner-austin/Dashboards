@@ -144,8 +144,8 @@ portals:
   video_archive:
   ecomment:
   youtube:
-  document_center:
-  municipal_code:
+  document_center: https://weblink.cityofbrea.net/WebLink/browse.aspx?id=1&dbid=0&repo=BREA-DOCS
+  municipal_code: https://ecode360.com/BR6949
 broadcast:
   cable_channels:
     - provider: Spectrum
@@ -180,36 +180,45 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - At-Large (2 seats)
+    - district: "At-Large"
+      incumbent: "Cecilia Hupp"
+    - district: "At-Large"
+      incumbent: "Steven Vargas"
+    - district: "At-Large"
+      incumbent: "Blair Stewart"
   term_length: 4
   election_system: at-large
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: "No term limits. Marty Simonoff serving 8th consecutive term (first elected 1996)."
+  term_limit_source: null
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2020, 2024, 2028..."
+      seats:
+        - "At-Large (2 seats)"
     group_b:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - "At-Large (3 seats)"
   candidate_info:
-    contact_email:
-    contact_phone:
-    location:
+    contact_email: cityclerksgroup@cityofbrea.gov
+    contact_phone: (714) 990-7756
+    location: 1 Civic Center Circle, Brea, CA 92821
   nomination_period:
-  results_source:
-  source:
+  results_source: https://ocvote.gov/results
+  source: https://www.cityofbrea.gov/511/City-Council
   history:
     - year: 2024
       type: at-large
+      resolution: "2024-065"
+      resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=182254&dbid=0&repo=BREA-DOCS
       winners:
         - seat: At-Large
           winner: Christine Marick
@@ -234,6 +243,8 @@ elections:
               outcome: lost
     - year: 2022
       type: at-large
+      resolution: "2022-080"
+      resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=147203&dbid=0&repo=BREA-DOCS
       winners:
         - seat: At-Large
           winner: Steven C. Vargas
@@ -241,6 +252,9 @@ elections:
         - seat: At-Large
           winner: Blair Stewart
           votes: 8880
+        - seat: At-Large
+          winner: Cecilia Hupp
+          votes: 8711
       candidates:
         - district: At-Large
           candidates:
@@ -252,7 +266,7 @@ elections:
               outcome: won
             - name: Cecilia Hupp
               votes: 8711
-              outcome: lost
+              outcome: won
             - name: Kari J. Windes
               votes: 4177
               outcome: lost
@@ -261,6 +275,8 @@ elections:
               outcome: lost
     - year: 2020
       type: at-large
+      resolution: "2020-068"
+      resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=136377&dbid=0&repo=BREA-DOCS
       winners:
         - seat: At-Large
           winner: Christine Marick
@@ -285,6 +301,9 @@ elections:
               outcome: lost
     - year: 2018
       type: at-large
+      certified: "2018-12-18"
+      resolution: "2018-067"
+      resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=125076&dbid=0&repo=BREA-DOCS
       winners:
         - seat: At-Large
           winner: Cecilia Hupp
@@ -292,6 +311,9 @@ elections:
         - seat: At-Large
           winner: Steven Vargas
           votes: 7731
+        - seat: At-Large
+          winner: Glenn G. Parker
+          votes: 6948
       candidates:
         - district: At-Large
           candidates:
@@ -303,7 +325,7 @@ elections:
               outcome: won
             - name: Glenn G. Parker
               votes: 6948
-              outcome: lost
+              outcome: won
             - name: Steve Shatynski
               votes: 5788
               outcome: lost
@@ -318,6 +340,9 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      certified: "2016-12-20"
+      resolution: "2016-075"
+      resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=85783&dbid=0&repo=BREA-DOCS
       winners:
         - seat: At-Large
           winner: Christine Marick
@@ -339,6 +364,9 @@ elections:
               outcome: lost
     - year: 2014
       type: at-large
+      certified: "2014-12-02"
+      resolution: "2014-072"
+      resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=64917&dbid=0&repo=BREA-DOCS
       winners:
         - seat: At-Large
           winner: Cecilia Hupp
@@ -346,6 +374,9 @@ elections:
         - seat: At-Large
           winner: Steven Vargas
           votes: 4998
+        - seat: At-Large
+          winner: Glenn G. Parker
+          votes: 4198
       candidates:
         - district: At-Large
           candidates:
@@ -357,7 +388,7 @@ elections:
               outcome: won
             - name: Glenn G. Parker
               votes: 4198
-              outcome: lost
+              outcome: won
             - name: Brett Murdock
               votes: 3365
               outcome: lost
@@ -369,6 +400,9 @@ elections:
               outcome: lost
     - year: 2012
       type: at-large
+      certified: "2012-12-04"
+      resolution: "2012-071"
+      resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=43024&dbid=0&repo=BREA-DOCS
       winners:
         - seat: At-Large
           winner: Christine Marick
