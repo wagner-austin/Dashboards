@@ -151,20 +151,20 @@ elections:
       incumbent: Jamey M. Federico
   term_limit: 2
   term_limit_type: terms
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: "1992-11-03"
+  term_limit_notes: "Max 2 full consecutive terms per § 2.05.082 (Ord. 92-05). If appointed and served >2 years of that term, limited to 1 more consecutive term. No cooldown specified."
+  term_limit_source: https://ecode360.com/42940658
   cycle_pattern:
     group_a:
-      years: 2022, 2026, 2030...
+      years: "2022, 2026, 2030..."
       seats:
         - District 1
         - District 2
         - District 3
     group_b:
-      years: 2024, 2028, 2032...
+      years: "2024, 2028, 2032..."
       seats:
         - District 4
         - District 5
@@ -176,6 +176,43 @@ elections:
   source: https://www.danapoint.org/City-Government/City-Clerk/Election/Election-2024
   history:
     - year: 2024
+      type: by-district
+      certified: "2024-12-03"
+      resolution: "24-12-03-01"
+      resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/Adk6VpPIihsukM7kNALPuw%C3%81o4d%C3%81MdnoyhKjEA%C3%81GyGPJ6StWm8g0%C3%899VAz%C3%89WmceRmox2fEd20kP39qqJKYb%C3%81TWlAQ%3D/
+      seats:
+        - District 4
+        - District 5
+      winners:
+        - district: District 4
+          winner: Mike Frost
+          notes: Ran unopposed
+        - district: District 5
+          winner: Michael Villar
+          notes: Ran unopposed
+      source: https://www.danapoint.org/City-Government/City-Clerk/Election/Election-2024
+    - year: 2022
+      type: by-district
+      certified: "2022-12-06"
+      resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AbCpTqKPzGRseF29J6pWckHgZzAmbt2I54yka1w%C3%81%C3%81pPMAUW5SZCCwepB0glxVaDLyL2XDrVUwQRa%C3%81iq01NHqBSk%3D/
+      notes: Election certification resolution not found in document archive; winners confirmed via meeting minutes showing swearing-in
+      seats:
+        - District 1
+        - District 2
+        - District 3
+      winners:
+        - district: District 1
+          winner: John Gabbard
+        - district: District 2
+          winner: Matthew Pagano
+        - district: District 3
+          winner: Jamey Federico
+      source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+    - year: 2020
+      type: by-district
+      certified: "2020-12-01"
+      resolution: "20-12-01-01"
+      resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AeP9xDpU4UuD3tjjukk8wQcnYwZTzcEvywThuNc%C3%812BSBS%C3%89vZHz1TcrOS30QTmy82g7KheqpTo4kZQGGQzsK30Fk%3D/
       seats:
         - District 4
         - District 5
@@ -184,20 +221,12 @@ elections:
           winner: Mike Frost
         - district: District 5
           winner: Michael Villar
-      source: https://www.danapoint.org/City-Government/City-Clerk/Election/Election-2024
-    - year: 2022
-      seats:
-        - District 1
-        - District 2
-        - District 3
-      source: https://danapoint.hylandcloud.com/231publicaccessviewer/
-    - year: 2020
-      seats:
-        - District 4
-        - District 5
       source: https://danapoint.hylandcloud.com/231publicaccessviewer/
     - year: 2018
       type: by-district
+      certified: "2018-12-04"
+      resolution: "18-12-04-01"
+      resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AVzkS4wnRAwqsFXJzqLWg%C3%89%C3%898wm1kcbySzxOsdVsQ1DwsiTfFaGYE3YzSw96z3pYtevehLLLGvYp%C3%890Kq3dj3aaDY%3D/
       winners:
         - district: District 1
           winner: Joe Muller
@@ -240,7 +269,10 @@ elections:
               votes: 1231
               outcome: lost
     - year: 2016
-      type: by-district
+      type: at-large
+      certified: "2016-12-14"
+      resolution: "16-12-14-01"
+      resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AY9GhdZ6G%C3%81Q7BMqKwTOnPxjp8NOOuGfAdpyN6PNiXj6XVtnwHHzmkJS5iHYXrE1YrOdZ3dBKM5FzvutHyJ3PaJk%3D/
       winners:
         - seat: At-Large
           winner: Debra Lewis
@@ -267,7 +299,10 @@ elections:
               votes: 1093
               outcome: lost
     - year: 2014
-      type: by-district
+      type: at-large
+      certified: "2014-12-02"
+      resolution: "14-12-02-01"
+      resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AU%C3%89C93HxYUCpjSsJbL7X5k8nRLVh%C3%81wjGd3zW%C3%81ipycNK5lUow6IUyiUMsLp5IXmLHnxgMZLVwbIu9b%C3%89mLsfKYRtE%3D/
       winners:
         - seat: At-Large
           winner: John Tomlinson
@@ -275,6 +310,9 @@ elections:
         - seat: At-Large
           winner: Richard A. Viczorek
           votes: 3117
+        - seat: At-Large
+          winner: Joe Muller
+          votes: 3010
       candidates:
         - district: At-Large
           candidates:
@@ -286,7 +324,7 @@ elections:
               outcome: won
             - name: Joe Muller
               votes: 3010
-              outcome: lost
+              outcome: won
             - name: Jody Payne
               votes: 2949
               outcome: lost
@@ -306,7 +344,10 @@ elections:
               votes: 1617
               outcome: lost
     - year: 2012
-      type: by-district
+      type: at-large
+      certified: "2012-12-04"
+      resolution: "12-12-04-01"
+      resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AW8ENJxIwbgv%C3%89Q1fyA0YzpUu456xvTNf3qYOr6Qny3dZnAu2RHzpW%C3%89NvQZZsSu8aBoshRDaS4CNaV%C3%89YqsadhpTI%3D/
       winners:
         - seat: At-Large
           winner: J. Scott Schoeffel
