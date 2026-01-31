@@ -2,30 +2,30 @@ city: la-habra
 city_name: La Habra
 website: https://www.lahabraca.gov
 council_url: https://www.lahabraca.gov/153/City-Council
-last_updated: '2026-01-25'
+last_updated: '2026-01-29'
 email: ''
 phone: ''
 instagram: ''
 members:
-  - name: Jose Medrano
+  - name: Rose Espinoza
     position: Mayor
     district: At-Large
     email: CityCouncil@lahabraca.gov
     phone: (562) 383-4000
     city_page: https://www.lahabraca.gov/153/City-Council
-    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentId=15728
+    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=12382
     bio:
-    term_start: 2022
-    term_end: 2026
+    term_start: 2024
+    term_end: 2028
     website:
     instagram:
-  - name: James Gomez
+  - name: Jose Medrano
     position: Mayor Pro Tem
     district: At-Large
     email: CityCouncil@lahabraca.gov
     phone: (562) 383-4000
     city_page: https://www.lahabraca.gov/153/City-Council
-    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=15729
+    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentId=15728
     bio:
     term_start: 2022
     term_end: 2026
@@ -55,16 +55,16 @@ members:
     term_end: 2028
     website:
     instagram:
-  - name: Rose Espinoza
+  - name: James Gomez
     position: Councilmember
     district: At-Large
     email: CityCouncil@lahabraca.gov
     phone: (562) 383-4000
     city_page: https://www.lahabraca.gov/153/City-Council
-    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=12382
+    photo_url: https://www.lahabraca.gov/ImageRepository/Document?documentID=15729
     bio:
-    term_start: 2024
-    term_end: 2028
+    term_start: 2022
+    term_end: 2026
     website:
     instagram:
 meetings:
@@ -85,8 +85,8 @@ portals:
   live_stream: https://www.lahabraca.gov/356/Archived-Council-Videos
   video_archive: https://www.lahabraca.gov/356/Archived-Council-Videos
   youtube:
-  document_center:
-  municipal_code:
+  document_center: https://www.lahabraca.gov/AgendaCenter
+  municipal_code: https://ecode360.com/LA4951
   ecomment:
 broadcast:
   cable_channels:
@@ -121,36 +121,46 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - At-Large (3 seats)
+    - district: At-Large
+      incumbent: Jose Medrano
+    - district: At-Large
+      incumbent: James Gomez
   term_length: 4
   election_system: at-large
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: No term limits for council members. Mayor/Mayor Pro Tem elected internally for 1-year terms per Ord. 1831 (2021).
+  term_limit_source: https://ecode360.com/42849022
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: 2026, 2030...
+      seats:
+        - At-Large (2 seats)
     group_b:
-      years:
-      seats: []
+      years: 2028, 2032...
+      seats:
+        - At-Large (3 seats)
   candidate_info:
-    contact_email:
-    contact_phone:
-    location:
+    contact_email: cc@lahabraca.gov
+    contact_phone: (562) 383-4030
+    location: 110 E. La Habra Boulevard, La Habra, CA 90631
   nomination_period:
-  results_source:
+  results_source: https://ocvote.gov/results
   source:
   history:
     - year: 2024
       type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2024-12-16"
+      resolution: "CC 2024-32"
+      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12162024-2140
       winners:
         - seat: At-Large
           winner: Daren Nigsarian
@@ -158,6 +168,9 @@ elections:
         - seat: At-Large
           winner: Rose Espinoza
           votes: 9964
+        - seat: At-Large
+          winner: Delwin Lampkin
+          votes: 7710
       candidates:
         - district: At-Large
           candidates:
@@ -169,7 +182,7 @@ elections:
               outcome: won
             - name: Delwin "Del" Lampkin
               votes: 7710
-              outcome: lost
+              outcome: won
             - name: Susan M. Pritchard
               votes: 7430
               outcome: lost
@@ -181,6 +194,12 @@ elections:
               outcome: lost
     - year: 2022
       type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2022-12-19"
+      resolution: "6093"
+      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12192022-1800
+      notes: 3rd seat due to Tim Shaw resignation (Jan 2022). Nigsarian elected to short 2-year term (remainder of Shaw's 2020-2024 term).
       winners:
         - seat: At-Large
           winner: Jose Medrano
@@ -188,6 +207,9 @@ elections:
         - seat: At-Large
           winner: Daren Nigsarian
           votes: 7403
+        - seat: At-Large
+          winner: James Gomez
+          votes: 6899
       candidates:
         - district: At-Large
           candidates:
@@ -199,7 +221,7 @@ elections:
               outcome: won
             - name: James "Jim" Gomez
               votes: 6899
-              outcome: lost
+              outcome: won
             - name: Guadalupe Lara
               votes: 6295
               outcome: lost
@@ -211,6 +233,11 @@ elections:
               outcome: lost
     - year: 2020
       type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2020-12-21"
+      resolution: "5980"
+      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12192022-1415
       winners:
         - seat: At-Large
           winner: Rose Espinoza
@@ -218,6 +245,9 @@ elections:
         - seat: At-Large
           winner: Tim Shaw
           votes: 12340
+        - seat: At-Large
+          winner: Steve Simonian
+          votes: 11980
       candidates:
         - district: At-Large
           candidates:
@@ -229,7 +259,7 @@ elections:
               outcome: won
             - name: Steve Simonian
               votes: 11980
-              outcome: lost
+              outcome: won
             - name: Peter Cruz
               votes: 8087
               outcome: lost
@@ -238,9 +268,14 @@ elections:
               outcome: lost
     - year: 2018
       type: at-large
+      seats:
+        - At-Large (2 seats)
+      certified: "2018-12-17"
+      resolution: "5882"
+      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12192022-1040
       winners:
         - seat: At-Large
-          winner: James "Jim" Gomez
+          winner: James Gomez
           votes: 10496
         - seat: At-Large
           winner: Jose Medrano
@@ -259,13 +294,21 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2016-12-19"
+      resolution: "5782"
+      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12192022-635
       winners:
         - seat: At-Large
           winner: Tim Shaw
           votes: 13243
         - seat: At-Large
-          winner: Rose "Rosie" Espinoza
+          winner: Rose Espinoza
           votes: 9063
+        - seat: At-Large
+          winner: Tom Beamish
+          votes: 8597
       candidates:
         - district: At-Large
           candidates:
@@ -277,7 +320,7 @@ elections:
               outcome: won
             - name: Tom Beamish
               votes: 8597
-              outcome: lost
+              outcome: won
             - name: Dawn Holthouser
               votes: 6611
               outcome: lost
@@ -287,6 +330,3 @@ elections:
             - name: Ida Macmurray
               votes: 3122
               outcome: lost
-agendas:
-  available: Thursday preceding meetings
-  online: https://destinyhosted.com/agenda_publish.cfm?id=52422
