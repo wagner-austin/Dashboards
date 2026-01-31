@@ -91,7 +91,7 @@ portals:
   live_stream: https://villapark.org
   video_archive: https://villapark.org/Council-and-Committees/Council-Meeting-Videos/LCmid/667/sort-desc/datecreated
   youtube: https://youtube.com/@cityofvillapark
-  document_center:
+  document_center: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=1467&view=gridview&pageSize=100
   municipal_code: https://library.municode.com/ca/villa_park
   ecomment:
 broadcast:
@@ -127,7 +127,12 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - At-Large (3 seats)
+    - district: At-Large
+      incumbent: Jordan Wu
+    - district: At-Large
+      incumbent: Nicol Jones
+    - district: At-Large
+      incumbent: Crystal Miles
   term_length: 4
   election_system: at-large
   term_limit: 2
@@ -142,11 +147,13 @@ elections:
   transition_note:
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - At-Large (3 seats)
     group_b:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - At-Large (2 seats)
   candidate_info:
     contact_email:
     contact_phone:
@@ -157,6 +164,10 @@ elections:
   history:
     - year: 2024
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2024-12-10"
+      resolution: "2024-3614"
+      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=1467&view=gridview&pageSize=100
       winners:
         - seat: At-Large
           winner: Robert Frackelton
@@ -181,6 +192,10 @@ elections:
               outcome: lost
     - year: 2022
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2022-12-06"
+      resolution: "2022-3563"
+      source: https://villapark.org/Portals/0/Documents/Council-And-Committees/City-Council/Agendas-And-Minutes/2022/Minutes/120622%20Minutes.pdf
       winners:
         - seat: At-Large
           winner: Crystal K. Miles
@@ -188,6 +203,9 @@ elections:
         - seat: At-Large
           winner: Nicol Jones
           votes: 1458
+        - seat: At-Large
+          winner: Jordan Wu
+          votes: 1350
       candidates:
         - district: At-Large
           candidates:
@@ -199,7 +217,7 @@ elections:
               outcome: won
             - name: Jordan Wu
               votes: 1350
-              outcome: lost
+              outcome: won
             - name: Donna Buxton
               votes: 1344
               outcome: lost
@@ -232,6 +250,10 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2016-12-13"
+      resolution: "2016-3375"
+      source: https://villapark.org/Portals/0/Documents/Council-And-Committees/City-Council/Agendas-And-Minutes/2016/Minutes/Minutes-121316.pdf
       winners:
         - seat: At-Large
           winner: Vince Rossini
@@ -253,6 +275,11 @@ elections:
               outcome: lost
     - year: 2014
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2014-12-09"
+      resolution: "2014-3302"
+      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=1467&view=gridview&pageSize=100
+      notes: "Measure II (safe and sane fireworks) passed."
       winners:
         - seat: At-Large
           winner: Bill Nelson
@@ -260,6 +287,9 @@ elections:
         - seat: At-Large
           winner: Robert Collacott
           votes: 1251
+        - seat: At-Large
+          winner: Diana C. Fascenelli
+          votes: 1156
       candidates:
         - district: At-Large
           candidates:
@@ -271,7 +301,7 @@ elections:
               outcome: won
             - name: Diana C. Fascenelli
               votes: 1156
-              outcome: lost
+              outcome: won
             - name: Karl Kreutziger
               votes: 1040
               outcome: lost
@@ -280,4 +310,38 @@ elections:
               outcome: lost
             - name: Stephen Miller
               votes: 643
+              outcome: lost
+    - year: 2010
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2010-12-07"
+      resolution: "2010-3144"
+      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=1467&view=gridview&pageSize=100
+      winners:
+        - seat: At-Large
+          winner: Brad E. Reese
+          votes: 1686
+        - seat: At-Large
+          winner: Deborah Pauly
+          votes: 1597
+        - seat: At-Large
+          winner: Robert H. "Bob" Fauteux
+          votes: 1566
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Brad E. Reese
+              votes: 1686
+              outcome: won
+            - name: Deborah Pauly
+              votes: 1597
+              outcome: won
+            - name: Robert H. "Bob" Fauteux
+              votes: 1566
+              outcome: won
+            - name: James (Jim) Rheins
+              votes: 1456
+              outcome: lost
+            - name: Richard Barnett
+              votes: 1387
               outcome: lost
