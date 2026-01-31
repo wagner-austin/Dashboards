@@ -121,7 +121,7 @@ portals:
   agendas: https://www.stantonca.gov/government/agendas___minutes/city_council.php
   live_stream: https://www.stantonca.gov/government/agendas___minutes/index.php
   youtube: https://www.youtube.com/@CityofStanton
-  document_center:
+  document_center: https://portal.laserfiche.com/portal/Welcome.aspx?repo=r-9b80d00c
   municipal_code: https://ecode360.com/ST5018
   ecomment:
   video_archive:
@@ -155,9 +155,12 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - Mayor (At-Large)
-    - District 1
-    - District 3
+    - district: Mayor (At-Large)
+      incumbent: David J. Shawver
+    - district: District 1
+      incumbent: Donald Torres
+    - district: District 3
+      incumbent: Gary Taylor
   term_length: 4
   election_system: mixed
   term_limit: 2
@@ -172,11 +175,16 @@ elections:
   transition_note:
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2020, 2024, 2028..."
+      seats:
+        - District 2
+        - District 4
     group_b:
-      years:
-      seats: []
+      years: "2018, 2022, 2026..."
+      seats:
+        - Mayor (At-Large)
+        - District 1
+        - District 3
   candidate_info:
     contact_email:
     contact_phone:
@@ -187,6 +195,11 @@ elections:
   history:
     - year: 2024
       type: mixed
+      seats: ["District 2", "District 4"]
+      certified: "2024-12-10"
+      resolution: "2024-41"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=168722&repo=r-9b80d00c
+      notes: "Measure HH (Mayoral 2-term lifetime limit) passed 7,048-3,533."
       winners:
         - district: District 2
           winner: Victor Barrios
@@ -213,6 +226,11 @@ elections:
               outcome: lost
     - year: 2022
       type: mixed
+      seats: ["Mayor (At-Large)", "District 1", "District 3"]
+      certified: "2022-12-13"
+      resolution: "2022-48"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=124639&repo=r-9b80d00c
+      notes: "Mayor and District 3 ran unopposed."
       winners:
         - district: District 1
           winner: Donald Torres
@@ -244,6 +262,10 @@ elections:
               outcome: won
     - year: 2020
       type: mixed
+      seats: ["District 2", "District 4"]
+      certified: "2020-12-08"
+      resolution: "2020-50"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=93094&repo=r-9b80d00c
       winners:
         - district: District 2
           winner: Hong Alyce Van
@@ -273,6 +295,11 @@ elections:
               outcome: lost
     - year: 2018
       type: mixed
+      seats: ["Mayor (At-Large)", "District 1", "District 3"]
+      certified: "2018-12-11"
+      resolution: "2018-47"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=75670&repo=r-9b80d00c
+      notes: "District 1 ran unopposed."
       winners:
         - district: District 1
           winner: Rigoberto A. Ramirez
@@ -316,6 +343,11 @@ elections:
               outcome: lost
     - year: 2016
       type: mixed
+      seats: ["At-Large (2 seats)"]
+      certified: "2016-12-13"
+      resolution: "2016-47"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=63622&repo=r-9b80d00c
+      notes: "Measure KK (council term limits) passed. Measure OO (sales tax repeal) failed."
       winners:
         - seat: At-Large
           winner: Carol Warren
@@ -337,6 +369,11 @@ elections:
               outcome: lost
     - year: 2014
       type: mixed
+      seats: ["At-Large (3 seats)"]
+      certified: "2014-12-08"
+      resolution: "2014-47"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=56780&repo=r-9b80d00c
+      notes: "Measure GG (transactions and use tax) passed 2,543-2,092."
       winners:
         - seat: At-Large
           winner: David John Shawver
@@ -344,6 +381,9 @@ elections:
         - seat: At-Large
           winner: Brian Donahue
           votes: 2611
+        - seat: At-Large
+          winner: Rigoberto A. Ramirez
+          votes: 2544
       candidates:
         - district: At-Large
           candidates:
@@ -355,7 +395,7 @@ elections:
               outcome: won
             - name: Rigoberto A. Ramirez
               votes: 2544
-              outcome: lost
+              outcome: won
             - name: Kevin Carr
               votes: 1708
               outcome: lost
@@ -364,6 +404,10 @@ elections:
               outcome: lost
     - year: 2012
       type: mixed
+      seats: ["At-Large (2 seats)"]
+      certified: "2012-12-11"
+      resolution: "2012-55"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=50317&repo=r-9b80d00c
       winners:
         - seat: At-Large
           winner: Carol Warren
