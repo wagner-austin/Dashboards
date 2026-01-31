@@ -189,7 +189,7 @@ portals:
   video_archive: https://santaana.granicus.com/ViewPublisher.php?view_id=2
   youtube: https://youtube.com/@cityofsantaanavideos
   primegov: https://santa-ana.primegov.com/Portal/Meeting
-  document_center:
+  document_center: https://publicdocs.santa-ana.org/WebLink/Welcome.aspx?cr=1
   municipal_code: https://library.municode.com/ca/santa_ana
   ecomment:
 broadcast:
@@ -228,10 +228,14 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - Mayor
-    - Ward 2
-    - Ward 4
-    - Ward 6
+    - district: Mayor
+      incumbent: Valerie Amezcua
+    - district: Ward 2
+      incumbent: Benjamin Vazquez
+    - district: Ward 4
+      incumbent: Phil Bacerra
+    - district: Ward 6
+      incumbent: David Penaloza
   election_system: by-ward
   term_length: 4
   mayor_term_length: 2
@@ -246,11 +250,19 @@ elections:
   term_limit_source: https://library.municode.com/ca/santa_ana/codes/code_of_ordinances?nodeId=PTITHCH_ARTIVCICO_DIV1GE_S401.01TELI
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2020, 2024, 2028..."
+      seats:
+        - Ward 1
+        - Ward 3
+        - Ward 5
+        - Mayor (2-year term, every election)
     group_b:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - Ward 2
+        - Ward 4
+        - Ward 6
+        - Mayor (2-year term, every election)
   candidate_info:
     contact_email:
     contact_phone:
@@ -261,37 +273,25 @@ elections:
   history:
     - year: 2024
       type: by-ward
+      seats: ["Mayor", "Ward 1", "Ward 3", "Ward 5"]
+      certified: "2024-12-10"
+      resolution: "2024-074"
+      source: https://publicdocs.santa-ana.org/WebLink/1/doc/224726/Page1.aspx
+      notes: "Measure CC (Rent Stabilization) passed. Measure DD (Noncitizen voting) failed. Measure EE (Charter amendments) passed. Measure FF (Council compensation) failed."
       winners:
-        - seat: At-Large
-          winner: Jessie Lopez
-          votes: 9109
-        - seat: At-Large
-          winner: Jeffrey Katz
-          votes: 8685
         - seat: Mayor
           winner: Valerie Amezcua
           votes: 44785
+        - district: Ward 1
+          winner: Thai Viet Phan
+          votes: 7151
+        - district: Ward 3
+          winner: Jessie Lopez
+          votes: 9109
+        - district: Ward 5
+          winner: Johnathan Ryan Hernandez
+          votes: 5078
       candidates:
-        - district: At-Large
-          candidates:
-            - name: Jessie Lopez
-              votes: 9109
-              outcome: won
-            - name: Jeffrey Katz
-              votes: 8685
-              outcome: won
-            - name: Thai Viet Phan
-              votes: 7151
-              outcome: lost
-            - name: Julie Tran
-              votes: 6471
-              outcome: lost
-            - name: Johnathan Ryan Hernandez
-              votes: 5078
-              outcome: lost
-            - name: Mario Alvarado
-              votes: 4003
-              outcome: lost
         - district: Mayor
           candidates:
             - name: Valerie Amezcua
@@ -300,39 +300,51 @@ elections:
             - name: Benjamin Vazquez
               votes: 29948
               outcome: lost
+        - district: Ward 1
+          candidates:
+            - name: Thai Viet Phan
+              votes: 7151
+              outcome: won
+            - name: Julie Tran
+              votes: 6471
+              outcome: lost
+        - district: Ward 3
+          candidates:
+            - name: Jessie Lopez
+              votes: 9109
+              outcome: won
+            - name: Jeffrey Katz
+              votes: 8685
+              outcome: lost
+        - district: Ward 5
+          candidates:
+            - name: Johnathan Ryan Hernandez
+              votes: 5078
+              outcome: won
+            - name: Mario Alvarado
+              votes: 4003
+              outcome: lost
     - year: 2022
       type: by-ward
+      seats: ["Mayor", "Ward 2", "Ward 4", "Ward 6"]
+      certified: "2022-12-13"
+      resolution: "2022-096"
+      source: https://publicdocs.santa-ana.org/WebLink/1/doc/135041/Page1.aspx
+      notes: "Measure W (Business License Tax) passed 27,142-14,596. Measure X (Charter Amendments) passed 32,071-10,425."
       winners:
-        - seat: At-Large
-          winner: Phil Bacerra
-          votes: 4406
-        - seat: At-Large
-          winner: Amalia Mejia
-          votes: 3865
         - seat: Mayor
           winner: Valerie Amezcua
           votes: 16095
+        - district: Ward 2
+          winner: Benjamin Vazquez
+          votes: 2235
+        - district: Ward 4
+          winner: Phil Bacerra
+          votes: 4406
+        - district: Ward 6
+          winner: David Penaloza
+          votes: 2663
       candidates:
-        - district: At-Large
-          candidates:
-            - name: Phil Bacerra
-              votes: 4406
-              outcome: won
-            - name: Amalia Mejia
-              votes: 3865
-              outcome: won
-            - name: David Penaloza
-              votes: 2863
-              outcome: lost
-            - name: Manuel "Manny" Escamilla
-              votes: 2364
-              outcome: lost
-            - name: Benjamin Vazquez
-              votes: 2235
-              outcome: lost
-            - name: Nelida Mendoza
-              votes: 2155
-              outcome: lost
         - district: Mayor
           candidates:
             - name: Valerie Amezcua
@@ -347,60 +359,50 @@ elections:
             - name: Jesse Nestor
               votes: 3162
               outcome: lost
+        - district: Ward 2
+          candidates:
+            - name: Benjamin Vazquez
+              votes: 2235
+              outcome: won
+            - name: Nelida Mendoza
+              votes: 2155
+              outcome: lost
+        - district: Ward 4
+          candidates:
+            - name: Phil Bacerra
+              votes: 4406
+              outcome: won
+            - name: Amalia Mejia
+              votes: 3865
+              outcome: lost
+        - district: Ward 6
+          candidates:
+            - name: David Penaloza
+              votes: 2663
+              outcome: won
+            - name: Manuel "Manny" Escamilla
+              votes: 2364
+              outcome: lost
     - year: 2020
       type: by-ward
+      seats: ["Mayor", "Ward 1", "Ward 3", "Ward 5"]
+      certified: "2020-12-08"
+      resolution: "2020-108"
+      source: https://publicdocs.santa-ana.org/WebLink/1/doc/125519/Page1.aspx
       winners:
-        - seat: At-Large
-          winner: Thai Viet Phan
-          votes: 6909
-        - seat: At-Large
-          winner: Jessie Lopez
-          votes: 6786
         - seat: Mayor
           winner: Vicente Sarmiento
           votes: 29493
+        - district: Ward 1
+          winner: Thai Viet Phan
+          votes: 6909
+        - district: Ward 3
+          winner: Jessie Lopez
+          votes: 6786
+        - district: Ward 5
+          winner: Johnathan Ryan Hernandez
+          votes: 4179
       candidates:
-        - district: At-Large
-          candidates:
-            - name: Thai Viet Phan
-              votes: 6909
-              outcome: won
-            - name: Jessie Lopez
-              votes: 6786
-              outcome: won
-            - name: Mark Mcloughlin
-              votes: 5242
-              outcome: lost
-            - name: Antonio "Tony" Adame
-              votes: 4945
-              outcome: lost
-            - name: Johnathan Ryan Hernandez
-              votes: 4179
-              outcome: lost
-            - name: Jeffrey Katz
-              votes: 4116
-              outcome: lost
-            - name: Cynthia Contreras
-              votes: 3278
-              outcome: lost
-            - name: Juan Villegas
-              votes: 3263
-              outcome: lost
-            - name: Danny Vega
-              votes: 2322
-              outcome: lost
-            - name: Thomas Anthony Gordon
-              votes: 2087
-              outcome: lost
-            - name: Laura Perez
-              votes: 2011
-              outcome: lost
-            - name: Jannelle Welker
-              votes: 1421
-              outcome: lost
-            - name: Vic Mendez
-              votes: 661
-              outcome: lost
         - district: Mayor
           candidates:
             - name: Vicente Sarmiento
@@ -421,39 +423,85 @@ elections:
             - name: Mark I. Lopez
               votes: 1950
               outcome: lost
+        - district: Ward 1
+          candidates:
+            - name: Thai Viet Phan
+              votes: 6909
+              outcome: won
+            - name: Antonio "Tony" Adame
+              votes: 4945
+              outcome: lost
+            - name: Cynthia Contreras
+              votes: 3278
+              outcome: lost
+            - name: Thomas Anthony Gordon
+              votes: 2087
+              outcome: lost
+        - district: Ward 3
+          candidates:
+            - name: Jessie Lopez
+              votes: 6786
+              outcome: won
+            - name: Mark Mcloughlin
+              votes: 5242
+              outcome: lost
+            - name: Jeffrey Katz
+              votes: 4116
+              outcome: lost
+            - name: Danny Vega
+              votes: 2322
+              outcome: lost
+            - name: Jannelle Welker
+              votes: 1421
+              outcome: lost
+        - district: Ward 5
+          candidates:
+            - name: Johnathan Ryan Hernandez
+              votes: 4179
+              outcome: won
+            - name: Juan Villegas
+              votes: 3263
+              outcome: lost
+            - name: Laura Perez
+              votes: 2011
+              outcome: lost
+            - name: Vic Mendez
+              votes: 661
+              outcome: lost
     - year: 2018
       type: by-ward
+      seats: ["Mayor", "Ward 2", "Ward 4", "Ward 6"]
+      certified: "2018-12-11"
+      resolution: "2018-091"
+      source: https://publicdocs.santa-ana.org/WebLink/1/doc/104685/Page1.aspx
+      notes: "Measure X (city services) passed 33,462-24,542. Measure Y (cannabis tax) passed 40,759-16,973. Measure Z (charter update) passed 37,008-16,224. Measure AA (by-ward elections) passed 35,027-20,381."
       winners:
-        - seat: At-Large
-          winner: Roman Reyna
-          votes: 29863
-        - seat: At-Large
-          winner: Phil Bacerra
-          votes: 23613
         - seat: Mayor
           winner: Miguel A. Pulido
           votes: 28360
+        - district: Ward 2
+          winner: David Penaloza
+          votes: 14549
+        - district: Ward 4
+          winner: Roman Reyna
+          votes: 29863
+        - district: Ward 6
+          winner: Cecilia "Ceci" Iglesias
+          votes: 21077
       candidates:
-        - district: At-Large
+        - district: Mayor
           candidates:
-            - name: Roman Reyna
-              votes: 29863
+            - name: Miguel A. Pulido
+              votes: 28360
               outcome: won
-            - name: Phil Bacerra
-              votes: 23613
-              outcome: won
-            - name: Cecilia "Ceci" Iglesias
-              votes: 21077
+            - name: Sal Tinajero
+              votes: 27674
               outcome: lost
-            - name: Nelida Mendoza
-              votes: 18363
-              outcome: lost
+        - district: Ward 2
+          candidates:
             - name: David Penaloza
               votes: 14549
-              outcome: lost
-            - name: Mirna Velasquez
-              votes: 14534
-              outcome: lost
+              outcome: won
             - name: Sandra Pena Sarmiento
               votes: 10990
               outcome: lost
@@ -469,48 +517,74 @@ elections:
             - name: Irma Macias
               votes: 4536
               outcome: lost
-        - district: Mayor
+        - district: Ward 4
           candidates:
-            - name: Miguel A. Pulido
-              votes: 28360
+            - name: Roman Reyna
+              votes: 29863
               outcome: won
-            - name: Sal Tinajero
-              votes: 27674
+            - name: Phil Bacerra
+              votes: 23613
+              outcome: lost
+        - district: Ward 6
+          candidates:
+            - name: Cecilia "Ceci" Iglesias
+              votes: 21077
+              outcome: won
+            - name: Nelida Mendoza
+              votes: 18363
+              outcome: lost
+            - name: Mirna Velasquez
+              votes: 14534
               outcome: lost
     - year: 2016
       type: by-ward
+      seats: ["Mayor", "Ward 1", "Ward 3", "Ward 5"]
+      certified: "2016-12-13"
+      resolution: "2016-094"
+      source: https://publicdocs.santa-ana.org/WebLink/1/doc/91482/Page1.aspx
+      notes: "Measure PP (Council Compensation) passed 44,292-20,819."
       winners:
-        - seat: At-Large
-          winner: Vicente Sarmiento
-          votes: 36486
-        - seat: At-Large
-          winner: Juan Villegas
-          votes: 35187
         - seat: Mayor
           winner: Miguel A. Pulido
           votes: 34317
+        - district: Ward 1
+          winner: Vicente Sarmiento
+          votes: 36486
+        - district: Ward 3
+          winner: Jose Solorio
+          votes: 28002
+        - district: Ward 5
+          winner: Juan Villegas
+          votes: 35187
       candidates:
-        - district: At-Large
+        - district: Mayor
+          candidates:
+            - name: Miguel A. Pulido
+              votes: 34317
+              outcome: won
+            - name: Benjamin Vazquez
+              votes: 24576
+              outcome: lost
+            - name: Steve Rocco
+              votes: 8774
+              outcome: lost
+        - district: Ward 1
           candidates:
             - name: Vicente Sarmiento
               votes: 36486
               outcome: won
-            - name: Juan Villegas
-              votes: 35187
-              outcome: won
             - name: Jessica B. Cha
               votes: 29183
               outcome: lost
-            - name: Roman Reyna
-              votes: 29035
-              outcome: lost
+        - district: Ward 3
+          candidates:
             - name: Jose Solorio
               votes: 28002
-              outcome: lost
+              outcome: won
             - name: Ana Urzua Alcaraz
               votes: 10892
               outcome: lost
-            - name: Patrick D. "MR. Patrick" Yrarrazaval- Correa
+            - name: Patrick D. "MR. Patrick" Yrarrazaval-Correa
               votes: 9297
               outcome: lost
             - name: Shane Ramon Barrows
@@ -525,56 +599,35 @@ elections:
             - name: Juve Dan Pinedo
               votes: 1069
               outcome: lost
-        - district: Mayor
+        - district: Ward 5
           candidates:
-            - name: Miguel A. Pulido
-              votes: 34317
+            - name: Juan Villegas
+              votes: 35187
               outcome: won
-            - name: Benjamin Vazquez
-              votes: 24576
-              outcome: lost
-            - name: Steve Rocco
-              votes: 8774
+            - name: Roman Reyna
+              votes: 29035
               outcome: lost
     - year: 2014
       type: by-ward
+      seats: ["Mayor", "Ward 2", "Ward 4", "Ward 6"]
+      certified: "2014-12-09"
+      resolution: "2014-084"
+      source: https://publicdocs.santa-ana.org/WebLink/1/doc/80367/Page1.aspx
+      notes: "Measure AA (Utility User Tax) passed 24,845-7,955. Measure BB (Medical Marijuana) passed 22,147-11,482. Measure CC passed 18,090-14,987."
       winners:
-        - seat: At-Large
-          winner: Sal Tinajero
-          votes: 19820
-        - seat: At-Large
-          winner: David Benavides
-          votes: 16776
         - seat: Mayor
           winner: Miguel A. Pulido
           votes: 16608
+        - district: Ward 2
+          winner: Michele C. Martinez
+          votes: 16483
+        - district: Ward 4
+          winner: David Benavides
+          votes: 16776
+        - district: Ward 6
+          winner: Sal Tinajero
+          votes: 19820
       candidates:
-        - district: At-Large
-          candidates:
-            - name: Sal Tinajero
-              votes: 19820
-              outcome: won
-            - name: David Benavides
-              votes: 16776
-              outcome: won
-            - name: Michele C. Martinez
-              votes: 16483
-              outcome: lost
-            - name: Alex Padilla
-              votes: 14412
-              outcome: lost
-            - name: Miguel "Mike" Gonzalez
-              votes: 11620
-              outcome: lost
-            - name: Gilad Salmon
-              votes: 5836
-              outcome: lost
-            - name: Mirna Velasquez
-              votes: 5786
-              outcome: lost
-            - name: Rene Gomez
-              votes: 3579
-              outcome: lost
         - district: Mayor
           candidates:
             - name: Miguel A. Pulido
@@ -589,51 +642,57 @@ elections:
             - name: Laura Perez
               votes: 85
               outcome: lost
+        - district: Ward 2
+          candidates:
+            - name: Michele C. Martinez
+              votes: 16483
+              outcome: won
+            - name: Gilad Salmon
+              votes: 5836
+              outcome: lost
+            - name: Mirna Velasquez
+              votes: 5786
+              outcome: lost
+            - name: Rene Gomez
+              votes: 3579
+              outcome: lost
+        - district: Ward 4
+          candidates:
+            - name: David Benavides
+              votes: 16776
+              outcome: won
+            - name: Alex Padilla
+              votes: 14412
+              outcome: lost
+        - district: Ward 6
+          candidates:
+            - name: Sal Tinajero
+              votes: 19820
+              outcome: won
+            - name: Miguel "Mike" Gonzalez
+              votes: 11620
+              outcome: lost
     - year: 2012
       type: by-ward
+      seats: ["Mayor", "Ward 1", "Ward 3", "Ward 5"]
+      certified: "2012-12-11"
+      resolution: "2012-051"
+      source: https://publicdocs.santa-ana.org/WebLink/1/doc/70842/Page1.aspx
+      notes: "Measure GG passed 42,957-12,642."
       winners:
-        - seat: At-Large
-          winner: Roman A. Reyna
-          votes: 32419
-        - seat: At-Large
-          winner: Vincent F. Sarmiento
-          votes: 27289
         - seat: Mayor
           winner: Miguel A. Pulido
           votes: 27092
+        - district: Ward 1
+          winner: Vincent F. Sarmiento
+          votes: 27289
+        - district: Ward 3
+          winner: Angelica Amezcua
+          votes: 19577
+        - district: Ward 5
+          winner: Roman A. Reyna
+          votes: 32419
       candidates:
-        - district: At-Large
-          candidates:
-            - name: Roman A. Reyna
-              votes: 32419
-              outcome: won
-            - name: Vincent F. Sarmiento
-              votes: 27289
-              outcome: won
-            - name: Estela Amezcua
-              votes: 25230
-              outcome: lost
-            - name: Karina Onofre
-              votes: 20065
-              outcome: lost
-            - name: Angelica Amezcua
-              votes: 19577
-              outcome: lost
-            - name: Eric M. Alderete
-              votes: 11876
-              outcome: lost
-            - name: Brett Elliott Franklin
-              votes: 8358
-              outcome: lost
-            - name: Charles Hart
-              votes: 6265
-              outcome: lost
-            - name: Shane Ramon Barrows
-              votes: 4355
-              outcome: lost
-            - name: Stefano "Steve" Rocco
-              votes: 3010
-              outcome: lost
         - district: Mayor
           candidates:
             - name: Miguel A. Pulido
@@ -653,4 +712,40 @@ elections:
               outcome: lost
             - name: Miguel Angel Briseno
               votes: 1626
+              outcome: lost
+        - district: Ward 1
+          candidates:
+            - name: Vincent F. Sarmiento
+              votes: 27289
+              outcome: won
+            - name: Estela Amezcua
+              votes: 25230
+              outcome: lost
+        - district: Ward 3
+          candidates:
+            - name: Angelica Amezcua
+              votes: 19577
+              outcome: won
+            - name: Eric M. Alderete
+              votes: 11876
+              outcome: lost
+            - name: Brett Elliott Franklin
+              votes: 8358
+              outcome: lost
+            - name: Charles Hart
+              votes: 6265
+              outcome: lost
+            - name: Shane Ramon Barrows
+              votes: 4355
+              outcome: lost
+            - name: Stefano "Steve" Rocco
+              votes: 3010
+              outcome: lost
+        - district: Ward 5
+          candidates:
+            - name: Roman A. Reyna
+              votes: 32419
+              outcome: won
+            - name: Karina Onofre
+              votes: 20065
               outcome: lost
