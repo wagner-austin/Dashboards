@@ -83,7 +83,7 @@ portals:
   audio_archive: https://www.lapalmaca.gov/72/Agendas-and-Minutes
   youtube:
   document_center:
-  municipal_code:
+  municipal_code: https://library.municode.com/ca/la_palma/codes/code_of_ordinances
   ecomment:
   live_stream:
   video_archive:
@@ -118,26 +118,33 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - At-Large (2 seats)
+    - district: At-Large
+      incumbent: Nitesh P. Patel
+    - district: At-Large
+      incumbent: Janet Keo Conklin
   term_length: 4
   election_system: mixed
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 3
+  term_limit_type: terms
+  term_limit_cooldown: 4
+  term_limit_cooldown_unit: years
+  term_limit_effective: '2024-11-05'
+  term_limit_notes: 3 consecutive 4-year terms per Measure W/Ord. 2024-03. 4-year break required. Previously 2 terms with 2-year break (1996). Sunset: reverts to 2 terms if city returns to at-large.
+  term_limit_source: https://library.municode.com/ca/la_palma/codes/code_of_ordinances?nodeId=COOR_CH2AD_ARTIINGE_S2-8TEOFCO
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - District 1
+        - District 3
+        - District 5
     group_b:
-      years:
-      seats: []
+      years: "2026, 2030, 2034..."
+      seats:
+        - At-Large (2 seats)
   candidate_info:
     contact_email:
     contact_phone:
@@ -148,6 +155,11 @@ elections:
   history:
     - year: 2024
       type: mixed
+      seats: ["District 1", "District 3", "District 5"]
+      certified: "2024-12-10"
+      resolution: "2024-47"
+      source: https://lapalmaca.portal.civicclerk.com/event/24/files/attachment/202
+      notes: "First district election after transition from at-large"
       winners:
         - district: District 1
           winner: Debbie S. Baker
@@ -175,7 +187,11 @@ elections:
               votes: 1067
               outcome: won
     - year: 2022
-      type: mixed
+      type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2022-12-13"
+      resolution: "2022-52"
+      source: https://www.lapalmaca.gov/ArchiveCenter/ViewFile/Item/3158
       winners:
         - seat: At-Large
           winner: Nitesh Patel
@@ -196,7 +212,11 @@ elections:
               votes: 1611
               outcome: lost
     - year: 2020
-      type: mixed
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2020-12-08"
+      resolution: "2020-49"
+      source: https://www.lapalmaca.gov/ArchiveCenter/ViewFile/Item/2936
       winners:
         - seat: At-Large
           winner: Marshall Goodman
@@ -204,6 +224,9 @@ elections:
         - seat: At-Large
           winner: Debbie Baker
           votes: 3595
+        - seat: At-Large
+          winner: Mark I. Waldman
+          votes: 3214
       candidates:
         - district: At-Large
           candidates:
@@ -215,7 +238,7 @@ elections:
               outcome: won
             - name: Mark I. Waldman
               votes: 3214
-              outcome: lost
+              outcome: won
             - name: April Kamilah Bagasao Bautista
               votes: 2556
               outcome: lost
@@ -226,7 +249,11 @@ elections:
               votes: 1592
               outcome: lost
     - year: 2018
-      type: mixed
+      type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2018-12-04"
+      resolution: "2018-56"
+      source: https://www.lapalmaca.gov/ArchiveCenter/ViewFile/Item/2576
       winners:
         - seat: At-Large
           winner: Michele Steggell
@@ -247,7 +274,11 @@ elections:
               votes: 2161
               outcome: lost
     - year: 2016
-      type: mixed
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2016-12-06"
+      resolution: "2016-72"
+      source: https://www.lapalmaca.gov/ArchiveCenter/ViewFile/Item/2114
       winners:
         - seat: At-Large
           winner: Gerard Goedhart
@@ -255,6 +286,9 @@ elections:
         - seat: At-Large
           winner: Peter Kim
           votes: 4040
+        - seat: At-Large
+          winner: Marshall Goodman
+          votes: 3353
       candidates:
         - district: At-Large
           candidates:
@@ -266,9 +300,13 @@ elections:
               outcome: won
             - name: Marshall Goodman
               votes: 3353
-              outcome: lost
+              outcome: won
     - year: 2014
-      type: mixed
+      type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2014-12-02"
+      resolution: "2014-57"
+      source: https://www.lapalmaca.gov/ArchiveCenter/ViewFile/Item/1706
       winners:
         - seat: At-Large
           winner: Steve Hwangbo
@@ -289,7 +327,11 @@ elections:
               votes: 1630
               outcome: lost
     - year: 2012
-      type: mixed
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2012-12-04"
+      resolution: "2012-58"
+      source: https://www.lapalmaca.gov/ArchiveCenter/ViewFile/Item/1329
       winners:
         - seat: At-Large
           winner: Peter Kim
@@ -297,6 +339,9 @@ elections:
         - seat: At-Large
           winner: Gerard Goedhart
           votes: 2500
+        - seat: At-Large
+          winner: Steve Shanahan
+          votes: 2181
       candidates:
         - district: At-Large
           candidates:
@@ -308,7 +353,7 @@ elections:
               outcome: won
             - name: Steve Shanahan
               votes: 2181
-              outcome: lost
+              outcome: won
             - name: Christine Barnes
               votes: 1841
               outcome: lost
