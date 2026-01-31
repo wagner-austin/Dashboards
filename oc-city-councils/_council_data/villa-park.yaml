@@ -92,7 +92,7 @@ portals:
   video_archive: https://villapark.org/Council-and-Committees/Council-Meeting-Videos/LCmid/667/sort-desc/datecreated
   youtube: https://youtube.com/@cityofvillapark
   document_center:
-  municipal_code:
+  municipal_code: https://library.municode.com/ca/villa_park
   ecomment:
 broadcast:
   cable_channels:
@@ -132,14 +132,14 @@ elections:
   election_system: at-large
   term_limit: 2
   term_limit_type: terms
-  term_limit_notes: Two full terms
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: '1998-01-01'
+  term_limit_notes: 2 full terms lifetime per Sec. 2-2.14 (Ord. 98-456). Applies to service subsequent to Jan 1, 1998.
+  term_limit_source: https://library.municode.com/ca/villa_park/codes/code_of_ordinances?nodeId=CHIIAD_ART2-2CICO_S2-2.14LITECOME
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_source:
   cycle_pattern:
     group_a:
       years:
