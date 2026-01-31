@@ -114,7 +114,7 @@ portals:
   ecomment: https://tustin.granicusideas.com/meetings?scope=upcoming
   youtube:
   document_center:
-  municipal_code:
+  municipal_code: https://library.municode.com/ca/tustin
   live_stream:
 broadcast:
   cable_channels:
@@ -156,13 +156,13 @@ elections:
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: 3
+  term_limit_type: terms
+  term_limit_cooldown: 8
+  term_limit_cooldown_unit: years
+  term_limit_effective: '2024-11-05'
+  term_limit_notes: 3 consecutive terms or 12 consecutive years (whichever is less) per Sec. 1307 (amended Dec 2024). 8-year cooldown. Partial terms count if 728+ days served. Mayor and council combined. Applies prospectively from Nov 2024.
+  term_limit_source: https://library.municode.com/ca/tustin/codes/code_of_ordinances?nodeId=ART1AD_CH3CICO_1307LICOTEMAMECO
   cycle_pattern:
     group_a:
       years:
