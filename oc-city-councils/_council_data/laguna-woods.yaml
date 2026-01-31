@@ -94,8 +94,8 @@ portals:
   video_archive: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
   youtube: https://www.youtube.com/@cityoflagunawoods
   email_notifications: https://www.cityoflagunawoods.org/email-notifications
-  document_center:
-  municipal_code:
+  document_center: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
+  municipal_code: https://library.municode.com/ca/laguna_woods/codes/code_of_ordinances
   ecomment:
 broadcast:
   cable_channels:
@@ -130,26 +130,31 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - At-Large (2 seats)
+    - district: At-Large
+      incumbent: Annie McCary
+    - district: At-Large
+      incumbent: Carol Moore
   term_length: 4
   election_system: at-large
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: No term limits for council members.
+  term_limit_source: https://library.municode.com/ca/laguna_woods/codes/code_of_ordinances
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - At-Large (3 seats)
     group_b:
-      years:
-      seats: []
+      years: "2026, 2030, 2034..."
+      seats:
+        - At-Large (2 seats)
   candidate_info:
     contact_email:
     contact_phone:
@@ -160,6 +165,10 @@ elections:
   history:
     - year: 2024
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2024-12-11"
+      resolution: "2024-12-11"
+      source: https://www.cityoflagunawoods.org/wp-content/uploads/2025/01/12-11-2024-City-Council-Minutes-Adjourned-Regular-Meeting.pdf
       winners:
         - seat: At-Large
           winner: Shari L. Horne
@@ -167,6 +176,9 @@ elections:
         - seat: At-Large
           winner: Cynthia S. Conners
           votes: 7327
+        - seat: At-Large
+          winner: Eun Ju "Pearl" Lee
+          votes: 5949
       candidates:
         - district: At-Large
           candidates:
@@ -178,12 +190,16 @@ elections:
               outcome: won
             - name: Eun Ju "Pearl" Lee
               votes: 5949
-              outcome: lost
+              outcome: won
             - name: James Ping-Ya Tung
               votes: 3941
               outcome: lost
     - year: 2022
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2022-12-12"
+      resolution: "2022-12-12"
+      source: https://www.cityoflagunawoods.org/wp-content/uploads/2023/01/12-12-22-City-Council-Minutes-Special-Meeting.pdf
       winners:
         - seat: At-Large
           winner: Carol Moore
@@ -205,33 +221,61 @@ elections:
               outcome: lost
     - year: 2020
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2020-12-07"
+      resolution: "2020-12-07"
+      source: https://www.cityoflagunawoods.org/wp-content/uploads/2020/12/12-07-2020-City-Council-Minutes-Special-Meeting.pdf
       winners:
         - seat: At-Large
           winner: Noel Hatch
           votes: 6343
         - seat: At-Large
-          winner: Shari L Horne
+          winner: Shari L. Horne
           votes: 5916
+        - seat: At-Large
+          winner: Cynthia Conners
+          votes: 5792
       candidates:
         - district: At-Large
           candidates:
             - name: Noel Hatch
               votes: 6343
               outcome: won
-            - name: Shari L Horne
+            - name: Shari L. Horne
               votes: 5916
               outcome: won
             - name: Cynthia Conners
               votes: 5792
-              outcome: lost
+              outcome: won
             - name: Judith P. Troutman
               votes: 3984
               outcome: lost
             - name: Kathryn Robbins
               votes: 3960
               outcome: lost
+    - year: 2016
+      type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: null
+      resolution: null
+      source: null
+      notes: "Election canceled - all candidates ran unopposed. Conners, Horne, Hatch reappointed per Elections Code 10229."
+      winners:
+        - seat: At-Large
+          winner: Cynthia Conners
+          notes: Reappointed - uncontested
+        - seat: At-Large
+          winner: Shari L. Horne
+          notes: Reappointed - uncontested
+        - seat: At-Large
+          winner: Noel Hatch
+          notes: Reappointed - uncontested
     - year: 2018
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2018-12-19"
+      resolution: "2018-12-19"
+      source: https://www.cityoflagunawoods.org/wp-content/uploads/2019/01/12-19-2018-City-Council-Minutes-Regular-Meeting.pdf
       winners:
         - seat: At-Large
           winner: Carol Moore
@@ -253,6 +297,10 @@ elections:
               outcome: lost
     - year: 2014
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2014-12-17"
+      resolution: "2014-12-17"
+      source: https://www.cityoflagunawoods.org/documents/12-17-14%20Minutes%20Special.pdf
       winners:
         - seat: At-Large
           winner: Bert Hack
@@ -283,6 +331,10 @@ elections:
               outcome: lost
     - year: 2012
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2012-12-19"
+      resolution: "12-24"
+      source: https://www.cityoflagunawoods.org/documents/m%2012-19-12.pdf
       winners:
         - seat: At-Large
           winner: Cynthia S. Conners
@@ -290,6 +342,9 @@ elections:
         - seat: At-Large
           winner: Milton W. Robbins
           votes: 3965
+        - seat: At-Large
+          winner: Noel Hatch
+          votes: 3941
       candidates:
         - district: At-Large
           candidates:
@@ -301,7 +356,7 @@ elections:
               outcome: won
             - name: Noel Hatch
               votes: 3941
-              outcome: lost
+              outcome: won
             - name: Shari L. Horne
               votes: 3689
               outcome: lost
