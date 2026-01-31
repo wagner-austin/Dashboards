@@ -115,7 +115,7 @@ portals:
   video_archive: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
   youtube: https://youtube.com/@cityofwestminsterca92683
   wtv_stream: https://www.westminster-ca.gov/business/find/city-channel-wtv
-  document_center:
+  document_center: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
   municipal_code: https://ecode360.com/WE5033
   ecomment:
   live_stream:
@@ -155,9 +155,12 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - Mayor
-    - District 1
-    - District 4
+    - district: Mayor
+      incumbent: Chi Charlie Nguyen
+    - district: District 1
+      incumbent: Amy Phan West
+    - district: District 4
+      incumbent: NamQuan Nguyen
   election_system: by-district
   term_length: 4
   mayor_term_length:
@@ -172,11 +175,16 @@ elections:
   term_limit_source: https://ecode360.com/43782048
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2022, 2026, 2030..."
+      seats:
+        - Mayor
+        - District 1
+        - District 4
     group_b:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - District 2
+        - District 3
   candidate_info:
     contact_email:
     contact_phone:
@@ -187,13 +195,20 @@ elections:
   history:
     - year: 2024
       type: by-district
+      seats: ["District 2", "District 3"]
+      certified: "2024-12-09"
+      resolution: "5286"
+      source: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
+      notes: "Outgoing: Kimberly Ho (District 3)."
       winners:
         - district: District 2
           winner: Carlos Manzo
           votes: 3717
+          notes: "re-elected"
         - district: District 3
           winner: Mark Nguyen
           votes: 4547
+          notes: "first elected"
       candidates:
         - district: District 2
           candidates:
@@ -219,16 +234,23 @@ elections:
               outcome: lost
     - year: 2022
       type: by-district
+      seats: ["Mayor", "District 1", "District 4"]
+      certified: "2022-12-09"
+      source: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
+      notes: "Outgoing: Tai Do. First directly elected mayor. Measure Y (sales tax) passed."
       winners:
-        - district: District 1
-          winner: Amy Phan West
-          votes: 3190
-        - district: District 4
-          winner: Namquan Nguyen
-          votes: 2433
         - seat: Mayor
           winner: Chi Charlie Nguyen
           votes: 7665
+          notes: "first elected as Mayor"
+        - district: District 1
+          winner: Amy Phan West
+          votes: 3190
+          notes: "first elected"
+        - district: District 4
+          winner: Namquan Nguyen
+          votes: 2433
+          notes: "first elected"
       candidates:
         - district: District 1
           candidates:
@@ -268,13 +290,20 @@ elections:
               outcome: lost
     - year: 2020
       type: by-district
+      seats: ["District 2", "District 3"]
+      certified: "2020-12-09"
+      resolution: "5241"
+      source: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
+      notes: "First by-district election. Outgoing: Sergio Contreras. Ordinance 2570 (term limits) passed."
       winners:
         - district: District 2
           winner: Carlos Manzo
           votes: 3439
+          notes: "first elected"
         - district: District 3
           winner: Kimberly Ho
           votes: 6285
+          notes: "re-elected (transitioned from at-large)"
       candidates:
         - district: District 2
           candidates:
@@ -296,17 +325,25 @@ elections:
               votes: 3423
               outcome: lost
     - year: 2018
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats)", "Mayor"]
+      certified: "2018-12-12"
+      resolution: "4927"
+      source: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
+      notes: "Outgoing: Margie L. Rice (did not seek re-election). Kimberly Ho appointed Vice Mayor."
       winners:
         - seat: At-Large
           winner: Tai Do
           votes: 7860
+          notes: "first elected"
         - seat: At-Large
           winner: Chi Charlie Nguyen
           votes: 7655
+          notes: "first elected"
         - seat: Mayor
           winner: Tri Ta
           votes: 18344
+          notes: "re-elected"
       candidates:
         - district: At-Large
           candidates:
@@ -358,17 +395,24 @@ elections:
               votes: 6878
               outcome: lost
     - year: 2016
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats)", "Mayor"]
+      certified: "2016-12-08"
+      source: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
+      notes: "Outgoing: Diana Lee Carey. Kimberly Ho became first Vietnamese-American woman elected to council. Measure SS (sales tax) passed."
       winners:
         - seat: At-Large
           winner: Sergio Contreras
           votes: 13975
+          notes: "re-elected"
         - seat: At-Large
           winner: Kimberly Ho
           votes: 12426
+          notes: "first elected"
         - seat: Mayor
           winner: Tri Ta
           votes: 16094
+          notes: "re-elected"
       candidates:
         - district: At-Large
           candidates:
@@ -408,17 +452,24 @@ elections:
               votes: 1232
               outcome: lost
     - year: 2014
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats)", "Mayor"]
+      certified: "2014-12-10"
+      source: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
+      notes: "Tyler Diep returned to council after serving 2008-2012."
       winners:
         - seat: At-Large
           winner: Tyler Diep
           votes: 10444
+          notes: "returning"
         - seat: At-Large
           winner: Margie L. Rice
           votes: 9067
+          notes: "re-elected"
         - seat: Mayor
           winner: Tri Ta
           votes: 14198
+          notes: "re-elected"
       candidates:
         - district: At-Large
           candidates:
@@ -443,17 +494,24 @@ elections:
               votes: 2540
               outcome: lost
     - year: 2012
-      type: by-district
+      type: at-large
+      seats: ["At-Large (2 seats)", "Mayor"]
+      certified: "2012-12-12"
+      source: https://westminsterca.granicus.com/ViewPublisher.php?view_id=2
+      notes: "Outgoing: Tyler Diep. Tri Ta vacated council seat upon election as Mayor; Margie L. Rice appointed to fill vacancy."
       winners:
         - seat: At-Large
           winner: Sergio Contreras
           votes: 11715
+          notes: "first elected"
         - seat: At-Large
           winner: Diana Carey
           votes: 8999
+          notes: "first elected"
         - seat: Mayor
           winner: Tri Ta
           votes: 11861
+          notes: "re-elected"
       candidates:
         - district: At-Large
           candidates:
