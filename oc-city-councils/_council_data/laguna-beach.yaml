@@ -15,8 +15,8 @@ members:
     city_page: https://www.lagunabeachcity.net/government/departments/city-council/mark-orgill
     photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4694/638064498925070000
     bio:
-    term_start: 2024
-    term_end: 2028
+    term_start: 2022
+    term_end: 2026
     website:
     instagram:
   - name: Bob Whalen
@@ -27,8 +27,8 @@ members:
     city_page: https://www.lagunabeachcity.net/government/departments/city-council/bob-whalen
     photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4706/638067135619970000
     bio:
-    term_start: 2022
-    term_end: 2026
+    term_start: 2024
+    term_end: 2028
     website:
     instagram:
   - name: Alex Rounaghi
@@ -39,8 +39,8 @@ members:
     city_page: https://www.lagunabeachcity.net/government/departments/city-council/alex-rounaghi
     photo_url: https://www.lagunabeachcity.net/home/showpublishedimage/4692/638694573774830000
     bio:
-    term_start: 2024
-    term_end: 2028
+    term_start: 2022
+    term_end: 2026
     website:
     instagram:
   - name: Hallie Jones
@@ -87,8 +87,8 @@ portals:
   youtube: https://www.youtube.com/@CityofLagunaBeachCA/streams
   ecomment: https://www.lagunabeachcity.net/government/departments/city-council/online-comment-form
   comment_form_pdf: https://www.lagunabeachcity.net/home/showpublisheddocument/16742/638326140977270000
-  document_center:
-  municipal_code:
+  document_center: https://portal.laserfiche.com/Portal/Browse.aspx?id=31682&repo=r-1645a77d
+  municipal_code: https://ecode360.com/LA4953
 broadcast:
   cable_channels:
     - provider: Cox
@@ -124,26 +124,33 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - 2 at-large seats
+    - district: At-Large
+      incumbent: Mark Orgill
+    - district: At-Large
+      incumbent: Alex Rounaghi
+    - district: At-Large
+      incumbent: Sue Kempf
   term_length: 4
   election_system: at-large
   mayor_term_length:
   districting_info:
   transition_note:
-  term_limit:
-  term_limit_type:
-  term_limit_cooldown:
-  term_limit_cooldown_unit:
-  term_limit_effective:
-  term_limit_notes:
-  term_limit_source:
+  term_limit: null
+  term_limit_type: null
+  term_limit_cooldown: null
+  term_limit_cooldown_unit: null
+  term_limit_effective: null
+  term_limit_notes: No term limits for council members. Ballot initiative for Nov 2026 proposes 2 consecutive terms with 2-year hiatus.
+  term_limit_source: https://ecode360.com/LA4953
   cycle_pattern:
     group_a:
-      years:
-      seats: []
+      years: "2024, 2028, 2032..."
+      seats:
+        - At-Large (2 seats)
     group_b:
-      years:
-      seats: []
+      years: "2026, 2030, 2034..."
+      seats:
+        - At-Large (3 seats)
   candidate_info:
     contact_email:
     contact_phone:
@@ -154,6 +161,10 @@ elections:
   history:
     - year: 2024
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2024-12-09"
+      resolution: "24.090"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=24282&repo=r-1645a77d
       winners:
         - seat: At-Large
           winner: Bob Whalen
@@ -178,6 +189,10 @@ elections:
               outcome: lost
     - year: 2022
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2022-12-13"
+      resolution: "22.095"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=24100&repo=r-1645a77d
       winners:
         - seat: At-Large
           winner: Alex Rounaghi
@@ -185,6 +200,9 @@ elections:
         - seat: At-Large
           winner: Sue Kempf
           votes: 6321
+        - seat: At-Large
+          winner: Mark Orgill
+          votes: 4359
       candidates:
         - district: At-Large
           candidates:
@@ -194,9 +212,9 @@ elections:
             - name: Sue Kempf
               votes: 6321
               outcome: won
-            - name: Mark S. Orgill
+            - name: Mark Orgill
               votes: 4359
-              outcome: lost
+              outcome: won
             - name: Ruben Flores
               votes: 3647
               outcome: lost
@@ -211,6 +229,10 @@ elections:
               outcome: lost
     - year: 2020
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2020-12-08"
+      resolution: "20.092"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=23890&repo=r-1645a77d
       winners:
         - seat: At-Large
           winner: Bob Whalen
@@ -238,6 +260,10 @@ elections:
               outcome: lost
     - year: 2018
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2018-12-04"
+      resolution: "18.076"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=23692&repo=r-1645a77d
       winners:
         - seat: At-Large
           winner: Peter Blake
@@ -245,6 +271,9 @@ elections:
         - seat: At-Large
           winner: Toni Iseman
           votes: 4792
+        - seat: At-Large
+          winner: Sue Kempf
+          votes: 4483
       candidates:
         - district: At-Large
           candidates:
@@ -256,7 +285,7 @@ elections:
               outcome: won
             - name: Sue Kempf
               votes: 4483
-              outcome: lost
+              outcome: won
             - name: Ann Christoph
               votes: 4235
               outcome: lost
@@ -289,6 +318,10 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2016-12-13"
+      resolution: "16.100"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=23545&repo=r-1645a77d
       winners:
         - seat: At-Large
           winner: Bob Whalen
@@ -306,13 +339,17 @@ elections:
               votes: 5452
               outcome: won
             - name: Verna Rollinger
-              votes: 4959
+              votes: 4958
               outcome: lost
             - name: Judie Mancuso
               votes: 3851
               outcome: lost
     - year: 2014
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2014-12-02"
+      resolution: "14.073"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=23373&repo=r-1645a77d
       winners:
         - seat: At-Large
           winner: Kelly H. Boyd
@@ -320,6 +357,9 @@ elections:
         - seat: At-Large
           winner: Toni Iseman
           votes: 4655
+        - seat: At-Large
+          winner: Robert "Rob" Zur Schmiede
+          votes: 4583
       candidates:
         - district: At-Large
           candidates:
@@ -331,7 +371,7 @@ elections:
               outcome: won
             - name: Robert "Rob" Zur Schmiede
               votes: 4583
-              outcome: lost
+              outcome: won
             - name: Michele Hall
               votes: 2912
               outcome: lost
@@ -346,6 +386,10 @@ elections:
               outcome: lost
     - year: 2012
       type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2012-12-04"
+      resolution: "12.076"
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=23277&repo=r-1645a77d
       winners:
         - seat: At-Large
           winner: Bob Whalen
