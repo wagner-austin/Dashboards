@@ -129,10 +129,35 @@ elections:
   seats_up:
     - district: At-Large
       incumbent: Jordan Wu
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 full terms lifetime per § 2-2.14."
     - district: At-Large
       incumbent: Nicol Jones
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 full terms lifetime per § 2-2.14."
     - district: At-Large
       incumbent: Crystal Miles
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Two full terms. Termed out per § 2-2.14 (lifetime limit, no cooldown)."
+  seats_up_2028:
+    - district: At-Large
+      incumbent: Robert Frackelton
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 full terms lifetime per § 2-2.14."
+    - district: At-Large
+      incumbent: Kelly McBride
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 full terms lifetime per § 2-2.14."
   term_length: 4
   election_system: at-large
   term_limit: 2
@@ -167,13 +192,13 @@ elections:
       seats: ["At-Large (2 seats)"]
       certified: "2024-12-10"
       resolution: "2024-3614"
-      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=1467&view=gridview&pageSize=100
+      source: https://villapark.org/Portals/0/Documents/Council-And-Committees/City-Council/Agendas-And-Minutes/2024/Agendas/Agenda%20121024.pdf
       winners:
         - seat: At-Large
           winner: Robert Frackelton
           votes: 2476
         - seat: At-Large
-          winner: Kelly Mcbride
+          winner: Kelly McBride
           votes: 1748
       candidates:
         - district: At-Large
@@ -181,7 +206,7 @@ elections:
             - name: Robert Frackelton
               votes: 2476
               outcome: won
-            - name: Kelly Mcbride
+            - name: Kelly McBride
               votes: 1748
               outcome: won
             - name: Lawrence Talebi
@@ -224,8 +249,35 @@ elections:
             - name: Marybeth Felcyn
               votes: 1057
               outcome: lost
+    - year: 2020
+      type: at-large
+      seats: ["At-Large (2 seats)"]
+      certified: "2020-08-18"
+      resolution: "2020-3494"
+      source: https://villapark.org/Portals/0/Documents/Council-And-Committees/City-Council/Agendas-And-Minutes/2020/Agendas/Agenda%2008182020%20Special%20Meeting.pdf
+      notes: "Election cancelled - only 2 candidates for 2 seats. Appointed per EC 10229."
+      winners:
+        - seat: At-Large
+          winner: Robert "Robbie" Pitts
+          notes: "Appointed per EC 10229 (incumbent)"
+        - seat: At-Large
+          winner: Vincent "Vince" Rossini
+          notes: "Appointed per EC 10229 (incumbent)"
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Robert "Robbie" Pitts
+              outcome: won
+              notes: "Appointed per EC 10229 (incumbent)"
+            - name: Vincent "Vince" Rossini
+              outcome: won
+              notes: "Appointed per EC 10229 (incumbent)"
     - year: 2018
       type: at-large
+      seats: ["At-Large (3 seats)"]
+      certified: "2018-12-04"
+      resolution: "2018-3439"
+      source: https://villapark.org/Portals/0/Documents/Council-And-Committees/City-Council/Agendas-And-Minutes/2018/Minutes/Minutes-120418.pdf
       winners:
         - seat: At-Large
           winner: Crystal K. Miles
@@ -233,6 +285,9 @@ elections:
         - seat: At-Large
           winner: Chad Zimmerman
           votes: 2065
+        - seat: At-Large
+          winner: Robert Collacott
+          votes: 1698
       candidates:
         - district: At-Large
           candidates:
@@ -244,7 +299,7 @@ elections:
               outcome: won
             - name: Robert Collacott
               votes: 1698
-              outcome: lost
+              outcome: won
             - name: Diana C. Fascenelli
               votes: 1480
               outcome: lost
@@ -253,7 +308,7 @@ elections:
       seats: ["At-Large (2 seats)"]
       certified: "2016-12-13"
       resolution: "2016-3375"
-      source: https://villapark.org/Portals/0/Documents/Council-And-Committees/City-Council/Agendas-And-Minutes/2016/Minutes/Minutes-121316.pdf
+      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes/Archives/2016?folderId=752&view=gridview&pageSize=100
       winners:
         - seat: At-Large
           winner: Vince Rossini
@@ -278,8 +333,8 @@ elections:
       seats: ["At-Large (3 seats)"]
       certified: "2014-12-09"
       resolution: "2014-3302"
-      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=1467&view=gridview&pageSize=100
-      notes: "Measure II (safe and sane fireworks) passed."
+      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes/Archives/2014?folderId=730&view=gridview&pageSize=100
+      notes: "Measure II (safe and sane fireworks) passed 1,436-1,109."
       winners:
         - seat: At-Large
           winner: Bill Nelson
@@ -311,12 +366,41 @@ elections:
             - name: Stephen Miller
               votes: 643
               outcome: lost
+    - year: 2012
+      type: at-large
+      seats: ["At-Large (2 full term seats)", "At-Large (1 short term seat)"]
+      certified: "2012-08-21"
+      resolution: "2012-3206"
+      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes/Archives/2012?folderId=694&view=gridview&pageSize=2147483647
+      notes: "Election cancelled - 3 candidates for 3 seats. Appointed per EC 10229."
+      winners:
+        - seat: At-Large (Full Term)
+          winner: Rick Barnett
+          notes: "Appointed per EC 10229"
+        - seat: At-Large (Full Term)
+          winner: Greg Mills
+          notes: "Appointed per EC 10229"
+        - seat: At-Large (Short Term)
+          winner: Diana Fascenelli
+          notes: "Appointed per EC 10229"
+      candidates:
+        - district: At-Large
+          candidates:
+            - name: Rick Barnett
+              outcome: won
+              notes: "Appointed per EC 10229 (full term)"
+            - name: Greg Mills
+              outcome: won
+              notes: "Appointed per EC 10229 (full term)"
+            - name: Diana Fascenelli
+              outcome: won
+              notes: "Appointed per EC 10229 (short term)"
     - year: 2010
       type: at-large
       seats: ["At-Large (3 seats)"]
       certified: "2010-12-07"
       resolution: "2010-3144"
-      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes?folderId=1467&view=gridview&pageSize=100
+      source: https://villapark.org/Council-and-Committees/Council-Agenda-and-Minutes/Archives/2010?folderId=625&view=gridview&pageSize=100
       winners:
         - seat: At-Large
           winner: Brad E. Reese
