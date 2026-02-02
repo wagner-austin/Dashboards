@@ -35,7 +35,7 @@ members:
     city_page: https://www.cityoffullerton.com/government/city-council/council-member-ahmad-zahra
     photo_url: https://www.cityoffullerton.com/home/showpublishedimage/7806/638732629311070000
     bio: ''
-    term_start: 2018
+    term_start: 2022
     term_end: 2026
   - name: Jamie Valencia
     position: Councilmember
@@ -76,7 +76,7 @@ portals:
   video_archive: https://fullerton.granicus.com/ViewPublisher.php?view_id=2
   district_map: https://www.cityoffullerton.com/government/departments/city-clerk/elections/find-my-district
   youtube:
-  document_center: https://fullerton.granicus.com/ViewPublisher.php?view_id=2
+  document_center: https://fullerton.legistar.com/Calendar.aspx
   municipal_code: https://codelibrary.amlegal.com/codes/fullerton/latest/fullerton_ca/0-0-0-1
   ecomment:
 broadcast:
@@ -116,8 +116,35 @@ elections:
   seats_up:
     - district: District 3
       incumbent: Shana Charles
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 3 successive term limit per § 2.04.050."
     - district: District 5
       incumbent: Ahmad Zahra
+      termed_out: false
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Second term. Eligible for 3rd. 3 successive term limit per § 2.04.050."
+  seats_up_2028:
+    - district: District 1
+      incumbent: Fred Jung
+      termed_out: false
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Second term. Eligible for 3rd. 3 successive term limit per § 2.04.050."
+    - district: District 2
+      incumbent: Nicholas Dunlap
+      termed_out: false
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Second term. Eligible for 3rd. 3 successive term limit per § 2.04.050."
+    - district: District 4
+      incumbent: Jamie Valencia
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 3 successive term limit per § 2.04.050."
   election_system: by-district
   term_length: 4
   mayor_term_length:
@@ -158,7 +185,7 @@ elections:
         - District 4
       certified: "2024-12-17"
       resolution: "2024-064"
-      source: http://fullerton.granicus.com/MetaViewer.php?view_id=2&clip_id=1984&meta_id=121347
+      source: https://fullerton.legistar.com/MeetingDetail.aspx?ID=1120198&GUID=BAA6504C-B399-4478-99FB-A462DF134493
       winners:
         - district: District 1
           winner: Fred Jung
@@ -207,7 +234,7 @@ elections:
         - District 5
       certified: "2022-12-13"
       resolution: "2022-097"
-      source: http://fullerton.granicus.com/MetaViewer.php?view_id=2&clip_id=1579&meta_id=102937
+      source: https://fullerton.legistar.com/MeetingDetail.aspx?ID=1062912&GUID=84F4C205-87C9-411E-A974-906D0F8A5511
       winners:
         - district: District 3
           winner: Shana Charles
@@ -246,7 +273,8 @@ elections:
         - District 4
       certified: "2020-12-01"
       resolution: "2020-108"
-      source: http://fullerton.granicus.com/MetaViewer.php?view_id=2&clip_id=1234&meta_id=86784
+      source: https://fullerton.legistar.com/MeetingDetail.aspx?ID=723115&GUID=E0C4B10D-9D8F-45B4-80C1-B6FD4EC991CD
+      notes: "Measure S (sales tax) failed 26,903-35,901. Measure U (fireworks ban) failed 25,276-37,646."
       winners:
         - district: District 1
           winner: Fred Jung
@@ -295,7 +323,8 @@ elections:
         - District 5
       certified: "2018-12-04"
       resolution: "2018-72"
-      source: http://fullerton.granicus.com/MetaViewer.php?view_id=2&clip_id=1006&meta_id=69426
+      source: https://fullerton.legistar.com/MeetingDetail.aspx?ID=568917&GUID=526D0AE5-8D8C-45A7-8036-CB337331DB80
+      notes: "First by-district election for Districts 3 and 5."
       winners:
         - district: District 3
           winner: Jesus J. Silva
@@ -339,6 +368,7 @@ elections:
       certified: "2016-12-13"
       resolution: "2016-70"
       source: https://fullerton.granicus.com/MinutesViewer.php?view_id=2&clip_id=819
+      notes: "Last at-large election. Ordinance 3230 adopted same meeting to establish by-district elections starting 2018."
       winners:
         - seat: At-Large
           winner: Jennifer Fitzgerald
@@ -430,6 +460,7 @@ elections:
       certified: "2012-12-04"
       resolution: "2012-81"
       source: https://fullerton.granicus.com/MinutesViewer.php?view_id=2&clip_id=410
+      notes: "Measure W (fireworks ban) passed - Ordinance 3183 executed. Measure X also on ballot."
       winners:
         - seat: At-Large
           winner: Bruce Whitaker
