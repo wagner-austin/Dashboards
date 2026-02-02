@@ -172,7 +172,7 @@ meetings:
     address: 1 Civic Center Plaza
     city_state_zip: Irvine, CA 92606
   remote:
-    zoom_url: https://www.zoomgov.com/j/1600434844
+    zoom_url: https://zoom.us/join
     zoom_id: 160-043-4844
     zoom_passcode: '272906'
     phone_numbers:
@@ -187,6 +187,7 @@ portals:
   youtube:
   document_center: https://irvine.granicus.com/ViewPublisher.php?view_id=68
   municipal_code: https://library.municode.com/ca/irvine/codes/code_of_ordinances
+  charter_url: https://library.municode.com/ca/irvine/codes/code_of_ordinances?nodeId=CHTRCIIR
 broadcast:
   cable_channels:
     - provider: Cox
