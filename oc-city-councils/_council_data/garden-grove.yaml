@@ -13,17 +13,17 @@ members:
     email: stephaniek@ggcity.org
     phone: (714) 741-5104
     city_page: https://ggcity.org/city-council/stephanie-klopfenstein
-    photo_url: 
+    photo_url:
       https://ggcity.org/sites/default/files/styles/medium/public/2025-01/mayor_stephanie_klopfenstein.jpg?itok=YdMRUkng
-    bio: In 2024, Stephanie Klopfenstein became Garden Grove's first elected female mayor. Prior to becoming mayor, she 
+    bio: In 2024, Stephanie Klopfenstein became Garden Grove's first elected female mayor. Prior to becoming mayor, she
       served as the District 5 councilmember since 2016. Born and raised in Garden Grove, her family roots trace back to
-      the town’s early beginnings in the late 1800’s. A proud product of the Garden Grove Unified School District, 
-      Council Member Klopfenstein spent time traveling and working abroad in radio broadcasting. Drawn back to her deep 
-      ancestral roots and desire to give back to her city, she returned to Garden Grove. Following studies at Concordia 
-      University, she married and began a career in marketing. She values time spent with her husband and young 
+      the town's early beginnings in the late 1800's. A proud product of the Garden Grove Unified School District,
+      Council Member Klopfenstein spent time traveling and working abroad in radio broadcasting. Drawn back to her deep
+      ancestral roots and desire to give back to her city, she returned to Garden Grove. Following studies at Concordia
+      University, she married and began a career in marketing. She values time spent with her husband and young
       daughter, exploring the Eastern Sierra, cooking, and enjoying a good book.
     term_start: 2024
-    term_end: 2028
+    term_end: 2026
     website:
     instagram:
   - name: George S. Brietigam III
@@ -197,12 +197,55 @@ council:
 elections:
   next_election: '2026-11-03'
   seats_up:
+    - district: Mayor
+      incumbent: Stephanie Klopfenstein
+      termed_out: false
+      terms_served: "2024 (Mayor)"
+      terms_counted: 1
+      notes: "First Mayor term. Was D5 2016-2024 (termed out). Switched to Mayor per § 2.04.020(B)(4) exception."
     - district: District 1
       incumbent: George S. Brietigam III
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Two consecutive terms. Termed out per § 2.04.020(B)(2)."
     - district: District 3
       incumbent: Cindy Ngoc Tran
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per § 2.04.020(B)(2)."
     - district: District 4
       incumbent: Joe DoVinh
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per § 2.04.020(B)(2)."
+  seats_up_2028:
+    - district: Mayor
+      incumbent: "(2026 winner)"
+      termed_out: false
+      terms_served: "2026"
+      terms_counted: 1
+      notes: "First or second Mayor term depending on 2026 winner."
+    - district: District 2
+      incumbent: Phillip Nguyen
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per § 2.04.020(B)(2)."
+    - district: District 5
+      incumbent: Yesenia Muñeton
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per § 2.04.020(B)(2)."
+    - district: District 6
+      incumbent: Ariana Arestegui
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per § 2.04.020(B)(2)."
   election_system: by-district
   term_length: 4
   mayor_term_length: 2
