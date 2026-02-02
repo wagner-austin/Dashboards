@@ -23,13 +23,13 @@ members:
       to City Council, Mayor Lumbard served six years on Tustin’s Planning Commission, twice as Commission Chair.  He also
       served for many years as a reserve deputy with the Orange County Sheriff’s Department.  This experience helped shape
       his passion for keeping all Tustin residents safe.'
-    term_start: 2024
-    term_end: 2028
+    term_start: 2022
+    term_end: 2026
     website:
     instagram:
   - name: Ray Schnell
     position: Mayor Pro Tem
-    district: At-Large
+    district: District 3
     email: rschnell@tustinca.org
     phone: (714) 573-3012
     city_page: https://www.tustinca.org/1396/Mayor-Pro-Tem-Ray-Schnell
@@ -37,13 +37,13 @@ members:
     bio: 'Mayor Pro Tem Ray Schnell, elected to office in November 2022, has lived in Orange County for 20 years and is a
       long-time Tustin resident. His priorities while on City Council include keeping Tustin: Accountable (honest, ethical,
       and transparent government) Affordable & Prosperous (preserving the economic vitality of Tustin.'
-    term_start: 2024
-    term_end: 2028
+    term_start: 2022
+    term_end: 2026
     website:
     instagram:
   - name: John Nielsen
     position: Councilmember
-    district: At-Large
+    district: District 2
     email: jnielsen@tustinca.org
     phone: (714) 573-3012
     city_page: https://www.tustinca.org/493/Council-Member-John-Nielsen
@@ -64,7 +64,7 @@ members:
     instagram:
   - name: Lee K. Fink
     position: Councilmember
-    district: At-Large
+    district: District 1
     email: lfink@tustinca.org
     phone: (714) 573-3012
     city_page: https://www.tustinca.org/1208/Council-Member-Lee-K-Fink
@@ -73,13 +73,13 @@ members:
       His priorities on the City Council focus on: Developing the Local Economy for the Future, including providing abundant
       housing and business development in Tustin Keeping the community safe and healthy, including ensuring public safety,
       addressing homelessness, and'
-    term_start: 2022
-    term_end: 2026
+    term_start: 2024
+    term_end: 2028
     website:
     instagram:
   - name: Ryan Gallagher
     position: Councilmember
-    district: At-Large
+    district: District 4
     email: rgallagher@tustinca.org
     phone: (714) 573-3012
     city_page: https://www.tustinca.org/1207/Council-Member-Ryan-Gallagher
@@ -90,8 +90,8 @@ members:
       Vice-Chair of the Orange County Sanitation District Board, and also serves as a member of the Water Advisory 
       Committee of Orange County and Newport Bay Watershed Executive Committee (alternate). Prior to joining the City 
       Council, Ryan proudly served the community through his role on the Tustin Planning Commission.
-    term_start: 2022
-    term_end: 2026
+    term_start: 2024
+    term_end: 2028
     website:
     instagram:
 meetings:
@@ -150,10 +150,37 @@ elections:
   seats_up:
     - district: Mayor
       incumbent: Austin Lumbard
+      termed_out: false
+      terms_served: "2018 (at-large), 2022 (Mayor) - pre-Nov 2024, don't count"
+      terms_counted: 0
+      notes: "Term limits effective Nov 2024 per § 1307. Prior terms don't count. 2026 would be term 1."
     - district: District 3
       incumbent: Ray Schnell
+      termed_out: false
+      terms_served: "2022 (pre-Nov 2024, doesn't count)"
+      terms_counted: 0
+      notes: "Term limits effective Nov 2024 per § 1307. Prior term doesn't count. 2026 would be term 1."
+  seats_up_2028:
+    - district: District 1
+      incumbent: Lee K. Fink
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term under new limits. 3 consecutive terms/12 years max per § 1307."
+    - district: District 2
+      incumbent: John Nielsen
+      termed_out: false
+      terms_served: "2008, 2012 (pre-Nov 2024, don't count), 2024"
+      terms_counted: 1
+      notes: "First term under new limits. Prior 2008-2016 service doesn't count per § 1307."
+    - district: District 4
+      incumbent: Ryan Gallagher
+      termed_out: false
+      terms_served: "2020 (at-large, doesn't count), 2024"
+      terms_counted: 1
+      notes: "First term under new limits. Prior 2020 at-large doesn't count per § 1307."
   term_length: 4
-  election_system: at-large
+  election_system: by-district
   mayor_term_length:
   districting_info:
   transition_note:
