@@ -123,7 +123,7 @@ meetings:
     zoom_passcode:
     phone_numbers:
 portals:
-  agendas: https://www.cityofmissionviejo.org/departments/agenda-minutes-videos
+  agendas: https://missionviejo.granicus.com/ViewPublisher.php?view_id=25
   live_stream: https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true
   video_archive: https://missionviejo.granicus.com/ViewPublisher.php?view_id=12
   youtube:
