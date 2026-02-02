@@ -164,11 +164,36 @@ elections:
   next_election: '2026-11-03'
   seats_up:
     - district: District 2
-      incumbent: null
-      notes: First district election - transition from at-large
+      incumbent: TBD (Gennawey or Oddo based on residence)
+      termed_out: false
+      terms_served: "2022 (at-large)"
+      terms_counted: 1
+      notes: "First district election. Gennawey and Oddo both on term 1, eligible. § 2-8-31."
     - district: District 4
-      incumbent: null
-      notes: First district election - transition from at-large
+      incumbent: TBD (Gennawey or Oddo based on residence)
+      termed_out: false
+      terms_served: "2022 (at-large)"
+      terms_counted: 1
+      notes: "First district election. Gennawey and Oddo both on term 1, eligible. § 2-8-31."
+  seats_up_2028:
+    - district: District 1
+      incumbent: Kelly Jennings
+      termed_out: true
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two consecutive terms. Termed out per § 2-8-31."
+    - district: District 3
+      incumbent: Stephanie Winstead
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. Appointed May 2023 (~18 months, <2 years doesn't count). § 2-8-31."
+    - district: District 5
+      incumbent: Gene Johns
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. Appointed June 2023 (~17 months, <2 years doesn't count). § 2-8-31."
   term_length: 4
   election_system: by-district
   mayor_term_length:
