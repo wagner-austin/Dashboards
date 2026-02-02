@@ -140,12 +140,47 @@ elections:
   seats_up:
     - district: District 1
       incumbent: Joe Stapleton
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 401."
     - district: District 3
       incumbent: Erik Weigand
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 401."
     - district: District 4
       incumbent: Robyn Grant
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 401."
     - district: District 6
       incumbent: Lauren Kleiman
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 401."
+  seats_up_2028:
+    - district: District 2
+      incumbent: Michelle Barto
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 401."
+    - district: District 5
+      incumbent: Noah Blom
+      termed_out: true
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two consecutive terms. Termed out per Charter § 401."
+    - district: District 7
+      incumbent: Sara J. Weber
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 401."
   election_system: by-district
   term_length: 4
   mayor_term_length:
@@ -185,7 +220,7 @@ elections:
       seats: ["District 2", "District 5", "District 7"]
       certified: "2024-12-10"
       resolution: "2024-92"
-      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=3089851&dbid=0&repo=CNB
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=3089785&dbid=0&repo=CNB
       winners:
         - district: District 2
           winner: Michelle Barto
@@ -226,7 +261,7 @@ elections:
       seats: ["District 1", "District 3", "District 4", "District 6"]
       certified: "2022-12-13"
       resolution: "2022-94"
-      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=2847184&dbid=0&repo=CNB
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=2847025&dbid=0&repo=CNB
       winners:
         - district: District 1
           winner: Joe Stapleton
@@ -278,7 +313,7 @@ elections:
       seats: ["District 2", "District 5", "District 7"]
       certified: "2020-12-08"
       resolution: "2020-104"
-      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=2637171&dbid=0&repo=CNB
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=2636200&dbid=0&repo=CNB
       notes: "Measure Z (Harbor Commission added to Charter) passed 26,131-21,236."
       winners:
         - district: District 2
@@ -317,7 +352,7 @@ elections:
       seats: ["District 1", "District 3", "District 4", "District 6"]
       certified: "2018-12-11"
       resolution: "2018-83"
-      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=1339633&dbid=0&repo=CNB
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=1339526&dbid=0&repo=CNB
       notes: "Measure T (voter approval for certain debt) passed 30,564-7,686."
       winners:
         - district: District 1
@@ -370,7 +405,7 @@ elections:
       seats: ["District 2", "District 5", "District 7"]
       certified: "2016-12-13"
       resolution: "2016-132"
-      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=1158587&dbid=0&repo=CNB
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=1158769&dbid=0&repo=CNB
       notes: "Measure MM (5/7 votes to propose taxes) passed 32,642-7,573."
       winners:
         - district: District 2
@@ -418,7 +453,7 @@ elections:
       seats: ["District 1", "District 3", "District 4", "District 6"]
       certified: "2014-12-09"
       resolution: "2014-105"
-      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=675717&dbid=0&repo=CNB
+      source: https://ecms.newportbeachca.gov/WEB/DocView.aspx?id=676197&dbid=0&repo=CNB
       notes: "Measure Y (GP Land Use Element) failed 8,180-18,401."
       winners:
         - district: District 1
