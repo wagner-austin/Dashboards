@@ -119,9 +119,9 @@ meetings:
     address: 10200 Slater Avenue
     city_state_zip: Fountain Valley, CA 92708
   remote:
-    zoom_url: https://bit.ly/4kDYQHD
-    zoom_id: 851 5107 5391
-    zoom_passcode: '883147'
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
     phone_numbers:
   closed_session_time:
 portals:
@@ -129,7 +129,7 @@ portals:
   live_stream: https://www.fountainvalley.gov/213/Watch-FV-Television
   document_center: https://www.fountainvalley.gov/AgendaCenter/City-Council-2
   municipal_code: https://ecode360.com/FO4927
-  youtube:
+  youtube: https://www.youtube.com/@CityofFV
   ecomment:
   video_archive: https://www.fountainvalley.gov/AgendaCenter/City-Council-2
 broadcast:
