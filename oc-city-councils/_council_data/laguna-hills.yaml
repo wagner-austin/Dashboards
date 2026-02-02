@@ -179,14 +179,50 @@ elections:
   next_election: '2026-11-03'
   seats_up:
     - district: District 1
-      incumbent: null
-      notes: First district election - transition from at-large. No eligible incumbent.
+      incumbent: TBD (Wheeler, Pezold, or Sweeney based on residence)
+      termed_out: TBD
+      terms_served: TBD
+      terms_counted: TBD
+      notes: "First district election. Wheeler (2018, 2022) and Pezold (2018, 2022) termed out. Sweeney (2022) eligible."
     - district: District 2
-      incumbent: null
-      notes: First district election - transition from at-large. 1 eligible incumbent per city website (TBD which).
+      incumbent: TBD (Wheeler, Pezold, or Sweeney based on residence)
+      termed_out: TBD
+      terms_served: TBD
+      terms_counted: TBD
+      notes: "First district election. Wheeler (2018, 2022) and Pezold (2018, 2022) termed out. Sweeney (2022) eligible."
     - district: District 4
-      incumbent: null
-      notes: First district election - transition from at-large. No eligible incumbent.
+      incumbent: TBD (Wheeler, Pezold, or Sweeney based on residence)
+      termed_out: TBD
+      terms_served: TBD
+      terms_counted: TBD
+      notes: "First district election. Wheeler (2018, 2022) and Pezold (2018, 2022) termed out. Sweeney (2022) eligible."
+  seats_up_2028:
+    - district: District 3
+      incumbent: TBD (Caskey or Mathis based on residence)
+      termed_out: TBD
+      terms_served: TBD
+      terms_counted: TBD
+      notes: "First district election. Caskey (2022 short, 2024 = 2 terms) termed out. Mathis (2024) eligible."
+    - district: District 5
+      incumbent: TBD (Caskey or Mathis based on residence)
+      termed_out: TBD
+      terms_served: TBD
+      terms_counted: TBD
+      notes: "First district election. Caskey (2022 short, 2024 = 2 terms) termed out. Mathis (2024) eligible."
+  termed_out_2026:
+    - name: Dave Wheeler
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "2 consecutive terms per § 2-04.080. Termed out."
+    - name: Erica Pezold
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "2 consecutive terms per § 2-04.080. Termed out."
+  termed_out_2028:
+    - name: Don Caskey
+      terms_served: "2022 (short term ~2 yrs counts), 2024"
+      terms_counted: 2
+      notes: "Appointed Oct 2021 (~14 months, <2 yrs doesn't count). Short term 2022-2024 (~2 yrs) counts. Termed out per § 2-04.080."
   term_length: 4
   election_system: by-district
   mayor_term_length:
