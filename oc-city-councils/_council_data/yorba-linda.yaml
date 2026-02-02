@@ -180,8 +180,35 @@ elections:
   seats_up:
     - district: At-Large
       incumbent: Carlos Rodriguez
+      termed_out: false
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Two terms. 3 full terms lifetime per § 2.04.025."
     - district: At-Large
       incumbent: Janice Lim
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 3 full terms lifetime per § 2.04.025."
+  seats_up_2028:
+    - district: At-Large
+      incumbent: Tara Campbell
+      termed_out: true
+      terms_served: "2016, 2020, 2024"
+      terms_counted: 3
+      notes: "Three terms. Termed out per § 2.04.025 (lifetime limit, no cooldown)."
+    - district: At-Large
+      incumbent: Peggy Huang
+      termed_out: true
+      terms_served: "2014, 2018, 2024"
+      terms_counted: 3
+      notes: "Three terms. Termed out per § 2.04.025 (lifetime limit, no cooldown)."
+    - district: At-Large
+      incumbent: Shivinder Singh
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 3 full terms lifetime per § 2.04.025."
   term_length: 4
   election_system: at-large
   term_limit: 3
@@ -190,7 +217,7 @@ elections:
   term_limit_cooldown_unit: null
   term_limit_effective: '1996-12-13'
   term_limit_notes: 3 full terms lifetime per Sec. 2.04.025 (Ord. 96-781, effective Dec 1996). Partial terms (>half) count as full terms. All at-large council seats considered one office.
-  term_limit_source: https://ecode360.com/11414665
+  term_limit_source: https://ecode360.com/44323309
   mayor_term_length:
   districting_info:
   transition_note:
@@ -216,8 +243,8 @@ elections:
       seats: ["At-Large (3 seats)"]
       certified: "2024-12-03"
       resolution: "2024-5924"
-      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=22122
-      notes: "Outgoing: Beth Haney (8 years of service). Peggy Huang returns after 2-year break (served 2014-2022). Measure JJ passed."
+      source: https://pub-yorbalinda.escribemeetings.com/Meeting.aspx?Id=d7e7d911-6c3d-4403-8fb5-227a677a5e41&Agenda=Agenda&lang=English
+      notes: "Outgoing: Beth Haney (8 years of service). Peggy Huang returns after 2-year break (served 2014-2022). Measure JJ (Local Control) passed 34,718-3,686. Measure KK (Bryant Ranch) failed 6,868-31,159."
       winners:
         - seat: At-Large
           winner: Tara Campbell
@@ -253,8 +280,9 @@ elections:
       type: at-large
       seats: ["At-Large (2 seats)"]
       certified: "2022-12-06"
-      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=14766
-      notes: "Outgoing: Peggy Huang (8 years of service). Janice Lim newly elected."
+      resolution: "2022-5832"
+      source: https://pub-yorbalinda.escribemeetings.com/Meeting.aspx?Id=3fe76400-09e6-47a7-ba1e-5bb7a10967cc&Agenda=Agenda&lang=English
+      notes: "Outgoing: Peggy Huang (8 years of service). Janice Lim newly elected. Measure Z (Housing Element) failed 7,221-21,937."
       winners:
         - seat: At-Large
           winner: Carlos Rodriguez
@@ -280,8 +308,9 @@ elections:
       type: at-large
       seats: ["At-Large (3 seats)"]
       certified: "2020-08-18"
-      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=2682
-      notes: "Election cancelled per Elections Code 10229 - only 3 incumbents (of 5 who pulled papers) filed. Beth Haney, Gene Hernandez, and Tara Campbell appointed by Council motion. Minutes approved Oct 6, 2020."
+      resolution: "2020-5705, 2020-5708, 2020-5709"
+      source: https://pub-yorbalinda.escribemeetings.com/Meeting.aspx?Id=9acd2a82-7236-067a-33cd-0176b8d61d55&Agenda=Agenda&lang=English
+      notes: "Election cancelled per EC 10229 - only 3 candidates for 3 seats. Separate resolutions for each: Tara Campbell (5705), Beth Haney (5708), Gene Hernandez (5709). City saved ~$70,000."
       winners:
         - seat: At-Large
           winner: Beth Haney
@@ -298,7 +327,7 @@ elections:
       seats: ["At-Large (2 seats)"]
       certified: "2018-12-04"
       resolution: "2018-5598"
-      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=3042
+      source: https://pub-yorbalinda.escribemeetings.com/Meeting.aspx?Id=bca7ab18-33d2-6e60-8530-a5194a9d9225&Agenda=Agenda&lang=English
       notes: "Outgoing: Tom Lindsey (8 years of service). Tara Campbell became youngest mayor in California history."
       winners:
         - seat: At-Large
@@ -326,8 +355,8 @@ elections:
       seats: ["At-Large (3 seats)"]
       certified: "2016-12-20"
       resolution: "2016-5423"
-      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=3502
-      notes: "Outgoing: Mark Schwing (20 years of service), Craig Young. First female-majority council."
+      source: https://pub-yorbalinda.escribemeetings.com/Meeting.aspx?Id=26d2f64c-702d-0a55-8fe2-f18104090e0b&Agenda=Agenda&lang=English
+      notes: "Outgoing: Mark Schwing (20 years of service), Craig Young. First female-majority council. Measure (limiting council pension/healthcare benefits) passed."
       winners:
         - seat: At-Large
           winner: Tara Campbell
@@ -370,8 +399,8 @@ elections:
       seats: ["At-Large (2 seats)"]
       certified: "2014-12-02"
       resolution: "2014-5288"
-      source: https://pub-yorbalinda.escribemeetings.com/FileStream.ashx?DocumentId=4021
-      notes: "Outgoing: John Anderson (12 years of service)."
+      source: https://pub-yorbalinda.escribemeetings.com/Meeting.aspx?Id=884fe84c-0c7e-5d09-1bac-b2800a0f2684&Agenda=Agenda&lang=English
+      notes: "Outgoing: John Anderson (12 years of service). Measure JJ (eliminating council pension/healthcare benefits) passed 16,061-2,714."
       winners:
         - seat: At-Large
           winner: Tom Lindsey
