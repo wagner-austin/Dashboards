@@ -112,8 +112,8 @@ meetings:
     address: 7800 Katella Avenue
     city_state_zip: Stanton, CA 90680
   remote:
-    zoom_url: https://us02web.zoom.us/j/84528780625?pwd=kMyEtwVcsndZFIkYaaPvseeu35XqBf.1
-    zoom_id: 845-2878-0625
+    zoom_url:
+    zoom_id:
     zoom_passcode:
     phone_numbers:
       - 669-444-9171
@@ -138,7 +138,7 @@ clerk:
   address:
 public_comment:
   in_person: true
-  remote_live: true
+  remote_live: false
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
