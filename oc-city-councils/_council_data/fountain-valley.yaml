@@ -167,10 +167,35 @@ elections:
   seats_up:
     - district: At-Large
       incumbent: Jim Cunneen
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 3 consecutive term limit per § 2.04.230."
     - district: At-Large
       incumbent: Kim Constantine
+      termed_out: false
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Second term. Eligible for 3rd. 3 consecutive term limit per § 2.04.230."
     - district: At-Large
       incumbent: Patrick Harper
+      termed_out: false
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Second term. Eligible for 3rd. 3 consecutive term limit per § 2.04.230."
+  seats_up_2028:
+    - district: At-Large
+      incumbent: Ted Bui
+      termed_out: false
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Second term. Eligible for 3rd. 3 consecutive term limit per § 2.04.230."
+    - district: At-Large
+      incumbent: Glenn Grandis
+      termed_out: false
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Second term. Eligible for 3rd. 3 consecutive term limit per § 2.04.230."
   term_limit: 3
   term_limit_type: terms
   term_limit_cooldown: 2
@@ -368,6 +393,7 @@ elections:
         - At-Large (2 seats)
       certified: "2016-12-06"
       source: https://www.fountainvalley.gov/AgendaCenter/ViewFile/Minutes/_12062016-318
+      source_doc: "December 6, 2016 City Council Minutes - Item 10 Election Certification"
       winners:
         - seat: At-Large
           winner: Steve A. Nagel
@@ -441,6 +467,10 @@ elections:
       type: at-large
       seats:
         - At-Large (2 seats)
+      certified: "2012-12-04"
+      resolution: "9401"
+      source: https://www.fountainvalley.gov/DocumentCenter/View/783/December-4-2012-City-Council-Agenda-PDF
+      source_doc: "December 4, 2012 City Council Agenda - Election Certification"
       winners:
         - seat: At-Large
           winner: Steve A. Nagel
