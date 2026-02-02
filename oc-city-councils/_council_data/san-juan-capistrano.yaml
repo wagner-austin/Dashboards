@@ -25,8 +25,9 @@ members:
     city_page: https://sanjuancapistrano.org/directory.aspx?eid=51
     photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=1467
     bio:
-    term_start: 2018
+    term_start: 2022
     term_end: 2026
+    notes: "Appointed unopposed per EC 10229 (Res. 22-08-24-01)"
     website:
     instagram:
   - name: Howard Hart
@@ -49,7 +50,7 @@ members:
     city_page: https://sanjuancapistrano.org/directory.aspx?eid=50
     photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=1468
     bio:
-    term_start: 2016
+    term_start: 2024
     term_end: 2028
     website:
     instagram:
@@ -61,8 +62,11 @@ members:
     city_page: https://sanjuancapistrano.org/directory.aspx?eid=49
     photo_url: https://sanjuancapistrano.org/ImageRepository/Document?documentID=1469
     bio: ''
-    term_start: 2018
+    term_start: 2022
     term_end: 2026
+    notes: "Appointed unopposed per EC 10229 (Res. 22-08-24-01)"
+    website:
+    instagram:
 meetings:
   schedule: 1st and 3rd Tuesdays
   time: 5:00 PM
@@ -81,7 +85,7 @@ portals:
   live_stream: https://www.sanjuancapistrano.org/189/Public-Meetings
   video_archive: https://www.sanjuancapistrano.org/189/Public-Meetings
   youtube:
-  document_center: https://www.sanjuancapistrano.org/189/Public-Meetings
+  document_center: https://sjc.granicus.com/ViewPublisher.php?view_id=3
   municipal_code: https://ecode360.com/SA5003
   ecomment:
 broadcast:
@@ -116,10 +120,35 @@ elections:
   seats_up:
     - district: District 2
       incumbent: Troy A. Bourne
+      termed_out: false
+      terms_served: "2018, 2022 (appointed)"
+      terms_counted: null
+      notes: "No term limits."
     - district: District 3
       incumbent: John Campbell
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: null
+      notes: "No term limits."
     - district: District 4
       incumbent: John Taylor
+      termed_out: false
+      terms_served: "2018, 2022 (appointed)"
+      terms_counted: null
+      notes: "No term limits."
+  seats_up_2028:
+    - district: District 1
+      incumbent: Sergio Farias
+      termed_out: false
+      terms_served: "2016, 2024"
+      terms_counted: null
+      notes: "No term limits."
+    - district: District 5
+      incumbent: Howard Hart
+      termed_out: false
+      terms_served: "2020"
+      terms_counted: null
+      notes: "No term limits."
   term_length: 4
   election_system: by-district
   mayor_term_length:
@@ -172,13 +201,22 @@ elections:
               outcome: lost
     - year: 2022
       type: by-district
-      seats: ["District 3"]
+      seats: ["District 2", "District 3", "District 4"]
       certified: "2022-12-13"
       source: https://sjc.granicus.com/MetaViewer.php?view_id=3&clip_id=2645&meta_id=160770
+      notes: "D2 (Bourne) and D4 (Taylor) appointed unopposed per EC 10229 (Res. 22-08-24-01). Only D3 went to election."
       winners:
+        - district: District 2
+          winner: Troy Bourne
+          votes: null
+          notes: "Appointed unopposed per EC 10229"
         - district: District 3
           winner: John Campbell
           votes: 1526
+        - district: District 4
+          winner: John Taylor
+          votes: null
+          notes: "Appointed unopposed per EC 10229"
       candidates:
         - district: District 3
           candidates:
