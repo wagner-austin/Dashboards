@@ -82,8 +82,8 @@ members:
     photo_url: 
       https://www.danapoint.org/files/assets/city/v/11/city-council/images/villar-3.jpg?dimension=pageimage&w=480
     bio: Michael Villar is a longtime Capo Beach resident, a retired USMC helicopter pilot and commissioned officer, and
-      is currently a Lean Director in the construction industry. He earned his undergraduate degree in Sociology from 
-      UCLA and his master's degree in Computer Science from the Naval Postgraduate School. He was elected in 2024.
+      is currently a Lean Director in the construction industry. He earned his undergraduate degree in Sociology from
+      UCLA and his master's degree in Computer Science from the Naval Postgraduate School. First elected in 2020, re-elected in 2024.
     term_start: 2024
     term_end: 2028
     website:
@@ -145,10 +145,35 @@ elections:
   seats_up:
     - district: District 1
       incumbent: John Gabbard
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per § 2.05.082."
     - district: District 2
       incumbent: Matthew Pagano
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per § 2.05.082."
     - district: District 3
       incumbent: Jamey M. Federico
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Two consecutive terms. Termed out per § 2.05.082."
+  seats_up_2028:
+    - district: District 4
+      incumbent: Mike Frost
+      termed_out: true
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two consecutive terms. Termed out per § 2.05.082."
+    - district: District 5
+      incumbent: Michael Villar
+      termed_out: true
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two consecutive terms. Termed out per § 2.05.082."
   term_limit: 2
   term_limit_type: terms
   term_limit_cooldown: null
@@ -183,6 +208,7 @@ elections:
       seats:
         - District 4
         - District 5
+      notes: "Measure T (repeal STR ordinance) failed. Both candidates ran unopposed."
       winners:
         - district: District 4
           winner: Mike Frost
@@ -190,12 +216,24 @@ elections:
         - district: District 5
           winner: Michael Villar
           notes: Ran unopposed
+      candidates:
+        - district: District 4
+          candidates:
+            - name: Mike Frost
+              outcome: won
+              notes: unopposed
+        - district: District 5
+          candidates:
+            - name: Michael Villar
+              outcome: won
+              notes: unopposed
       source: https://www.danapoint.org/City-Government/City-Clerk/Election/Election-2024
     - year: 2022
       type: by-district
-      certified: "2022-12-06"
-      resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AbCpTqKPzGRseF29J6pWckHgZzAmbt2I54yka1w%C3%81%C3%81pPMAUW5SZCCwepB0glxVaDLyL2XDrVUwQRa%C3%81iq01NHqBSk%3D/
-      notes: Election certification resolution not found in document archive; winners confirmed via meeting minutes showing swearing-in
+      certified: "2022-08-25"
+      resolution: "22-08-25-01, 22-08-25-02"
+      resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+      notes: "Election cancelled per EC 10229 - all candidates ran unopposed. D1 & D2 appointed via Res. 22-08-25-01, D3 via Res. 22-08-25-02. Sworn in Dec 6, 2022."
       seats:
         - District 1
         - District 2
@@ -203,10 +241,29 @@ elections:
       winners:
         - district: District 1
           winner: John Gabbard
+          notes: Appointed per EC 10229 - ran unopposed
         - district: District 2
           winner: Matthew Pagano
+          notes: Appointed per EC 10229 - ran unopposed
         - district: District 3
           winner: Jamey Federico
+          notes: Appointed per EC 10229 - ran unopposed, re-elected
+      candidates:
+        - district: District 1
+          candidates:
+            - name: John Gabbard
+              outcome: won
+              notes: unopposed - appointed
+        - district: District 2
+          candidates:
+            - name: Matthew Pagano
+              outcome: won
+              notes: unopposed - appointed
+        - district: District 3
+          candidates:
+            - name: Jamey Federico
+              outcome: won
+              notes: unopposed - appointed
       source: https://danapoint.hylandcloud.com/231publicaccessviewer/
     - year: 2020
       type: by-district
@@ -219,14 +276,39 @@ elections:
       winners:
         - district: District 4
           winner: Mike Frost
+          votes: 2135
         - district: District 5
           winner: Michael Villar
+          votes: 2990
+      candidates:
+        - district: District 4
+          candidates:
+            - name: Mike Frost
+              votes: 2135
+              outcome: won
+            - name: Gary Newkirk
+              votes: 1314
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Michael Villar
+              votes: 2990
+              outcome: won
+            - name: Benjamin Tyler Bebee
+              votes: 650
+              outcome: lost
       source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+      source_doc: "Agenda Packet - City Council - 12/1/2020 - - 08. Election Agenda Report.pdf"
     - year: 2018
       type: by-district
       certified: "2018-12-04"
       resolution: "18-12-04-01"
       resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AVzkS4wnRAwqsFXJzqLWg%C3%89%C3%898wm1kcbySzxOsdVsQ1DwsiTfFaGYE3YzSw96z3pYtevehLLLGvYp%C3%890Kq3dj3aaDY%3D/
+      seats:
+        - District 1
+        - District 2
+        - District 3
+      notes: "First by-district election after transition from at-large."
       winners:
         - district: District 1
           winner: Joe Muller
@@ -268,11 +350,15 @@ elections:
             - name: Charles Payne
               votes: 1231
               outcome: lost
+      source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+      source_doc: "Agenda Packet - City Council - 12/4/2018 - Item #12 - Election Agenda Report Revised.pdf"
     - year: 2016
       type: at-large
       certified: "2016-12-14"
       resolution: "16-12-14-01"
       resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AY9GhdZ6G%C3%81Q7BMqKwTOnPxjp8NOOuGfAdpyN6PNiXj6XVtnwHHzmkJS5iHYXrE1YrOdZ3dBKM5FzvutHyJ3PaJk%3D/
+      seats:
+        - At-Large (2 seats)
       winners:
         - seat: At-Large
           winner: Debra Lewis
@@ -298,11 +384,15 @@ elections:
             - name: Nadia Khalil
               votes: 1093
               outcome: lost
+      source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+      source_doc: "Agenda Packet - City Council - 12/14/2016 - - 01. Election Agenda Report 2016.doc"
     - year: 2014
       type: at-large
       certified: "2014-12-02"
       resolution: "14-12-02-01"
       resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AU%C3%89C93HxYUCpjSsJbL7X5k8nRLVh%C3%81wjGd3zW%C3%81ipycNK5lUow6IUyiUMsLp5IXmLHnxgMZLVwbIu9b%C3%89mLsfKYRtE%3D/
+      seats:
+        - At-Large (3 seats)
       winners:
         - seat: At-Large
           winner: John Tomlinson
@@ -343,11 +433,15 @@ elections:
             - name: Chuck Rathbone
               votes: 1617
               outcome: lost
+      source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+      source_doc: "Agenda Packet - City Council - 12/2/2014 - - 12. Election Agenda Report 2014.doc"
     - year: 2012
       type: at-large
       certified: "2012-12-04"
       resolution: "12-12-04-01"
       resolution_source: https://danapoint.hylandcloud.com/231publicaccessviewer/api/Document/AW8ENJxIwbgv%C3%89Q1fyA0YzpUu456xvTNf3qYOr6Qny3dZnAu2RHzpW%C3%89NvQZZsSu8aBoshRDaS4CNaV%C3%89YqsadhpTI%3D/
+      seats:
+        - At-Large (2 seats)
       winners:
         - seat: At-Large
           winner: J. Scott Schoeffel
@@ -370,6 +464,8 @@ elections:
             - name: Ed Stevenson
               votes: 4097
               outcome: lost
+      source: https://danapoint.hylandcloud.com/231publicaccessviewer/
+      source_doc: "Agenda Packet - City Council - 12/4/2012 - - 10. Election Agenda Report 2012.doc"
   mayor_term_length:
   districting_info:
   transition_note:
