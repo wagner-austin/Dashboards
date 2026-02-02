@@ -81,7 +81,7 @@ portals:
   live_stream: https://www.facebook.com/lakeforestca
   youtube: https://www.youtube.com/@CityofLakeForestCA1991
   facebook: https://www.facebook.com/lakeforestca
-  document_center: https://portal.laserfiche.com/portal/Welcome.aspx
+  document_center: https://portal.laserfiche.com/Portal/Welcome.aspx?repo=r-d45ef59a
   municipal_code: https://ecode360.com/LA4954
   ecomment:
   video_archive:
@@ -119,10 +119,35 @@ elections:
   seats_up:
     - district: District 2
       incumbent: Benjamin Yu
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 four-year term lifetime limit per § 2.04.080."
     - district: District 3
       incumbent: Scott Voigts
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Two terms. Termed out per § 2.04.080 (lifetime limit, no cooldown)."
     - district: District 4
       incumbent: Mark Tettemer
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Two terms. Termed out per § 2.04.080 (lifetime limit, no cooldown)."
+  seats_up_2028:
+    - district: District 1
+      incumbent: Doug Cirbo
+      termed_out: true
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two terms. Termed out per § 2.04.080 (lifetime limit, no cooldown)."
+    - district: District 5
+      incumbent: Robert Pequeño
+      termed_out: true
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two terms. Termed out per § 2.04.080 (lifetime limit, no cooldown)."
   term_length: 4
   election_system: by-district
   mayor_term_length:
@@ -274,7 +299,7 @@ elections:
       certified: "2018-12-04"
       resolution: "2018-47"
       source: https://portal.laserfiche.com/Portal/DocView.aspx?id=4621585&repo=r-d45ef59a
-      notes: "First district election. Measure S (term limits) passed 24,030-16,069. Measure Q passed. Measure R failed."
+      notes: "First district election. Measure S (term limits) passed 24,030-5,080 (82.5%). Measure Q passed 15,243-11,953. Measure R failed 10,980-16,069."
       winners:
         - district: District 2
           winner: Neeki Moatazedi
