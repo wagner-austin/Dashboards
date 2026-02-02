@@ -129,7 +129,7 @@ portals:
   agendas: https://cityoflosalamitos.org/129/Agendas-Minutes
   live_stream: https://cityoflosalamitos.org/629/Watch-Los-Al-TV-3
   youtube: https://www.youtube.com/@cityoflosal
-  document_center: https://portal.laserfiche.com/Portal/Welcome.aspx
+  document_center: https://portal.laserfiche.com/Portal/Welcome.aspx?repo=r-8ad256a6
   municipal_code: https://ecode360.com/LO4963
   ecomment:
   video_archive:
@@ -167,8 +167,35 @@ elections:
   seats_up:
     - district: District 4
       incumbent: Shelley Hasselbrink
+      termed_out: false
+      terms_served: "2014, 2018, 2022 (prior, don't count)"
+      terms_counted: 0
+      notes: "Prior terms don't count per Charter § 501A(C). 2026 would be term 1 under new 3-term limit."
     - district: District 5
       incumbent: Emily Hibard
+      termed_out: false
+      terms_served: "2022 (prior, doesn't count)"
+      terms_counted: 0
+      notes: "Prior term doesn't count per Charter § 501A(C). 2026 would be term 1 under new 3-term limit."
+  seats_up_2028:
+    - district: District 1
+      incumbent: Tanya Doby
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term under new 3-term limit (Charter § 501A)."
+    - district: District 2
+      incumbent: Gary Loe
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term under new 3-term limit (Charter § 501A)."
+    - district: District 3
+      incumbent: Jordan Nefulda
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term under new 3-term limit (Charter § 501A)."
   term_length: 4
   election_system: by-district
   mayor_term_length:
