@@ -166,8 +166,35 @@ elections:
   seats_up:
     - district: District 2
       incumbent: Kevin Kirwin
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 3 consecutive term limit per Charter § 600."
     - district: District 4
       incumbent: Chad P. Wanke
+      termed_out: false
+      terms_served: "2014 (pre-effective), 2018, 2022"
+      terms_counted: 2
+      notes: "Two consecutive terms post-effective. 2026 would be 3rd and final consecutive term per Charter § 600."
+  seats_up_2028:
+    - district: District 1
+      incumbent: Thomas Hummer
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 3 consecutive term limit per Charter § 600."
+    - district: District 3
+      incumbent: Jeremy B. Yamaguchi
+      termed_out: true
+      terms_served: "2008, 2012 (pre-effective), 2016, 2020, 2024"
+      terms_counted: 3
+      notes: "Three consecutive terms post-effective (2016, 2020, 2024). Termed out per Charter § 600."
+    - district: District 5
+      incumbent: Ward L. Smith
+      termed_out: true
+      terms_served: "2016, 2020, 2024"
+      terms_counted: 3
+      notes: "Three consecutive terms (all post-effective). Termed out per Charter § 600."
   term_length: 4
   election_system: by-district
   mayor_term_length:
