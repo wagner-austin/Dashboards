@@ -136,20 +136,45 @@ public_comment:
   notes: Audio streaming only (no video)
 council:
   size: 5
-  districts: 1
-  at_large: 4
-  mayor_elected: false
+  districts: 4
+  at_large: 1
+  mayor_elected: true
   expanded_date:
-  notes: Only District 3 is by-district; other seats are at-large
+  notes: "Per Ord. 23-02 (Oct 2023): Mayor elected at-large, 4 council members by district (D1-D4). First district elections: D3 in 2024, D1/D2/D4 in 2026."
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - district: At-Large
-      incumbent: Anne D. Figueroa
-    - district: At-Large
-      incumbent: Bradley J. McGirr
-    - district: At-Large
-      incumbent: Jerry Holloway
+    - district: District 1
+      incumbent: null
+      termed_out: false
+      terms_served: null
+      terms_counted: null
+      notes: "First district election - no incumbent. At-large holdovers (Figueroa, McGirr, Holloway) terms expire. No term limits."
+    - district: District 2
+      incumbent: null
+      termed_out: false
+      terms_served: null
+      terms_counted: null
+      notes: "First district election - no incumbent. No term limits."
+    - district: District 4
+      incumbent: null
+      termed_out: false
+      terms_served: null
+      terms_counted: null
+      notes: "First district election - no incumbent. No term limits."
+  seats_up_2028:
+    - district: Mayor (At-Large)
+      incumbent: L. Anthony Beall
+      termed_out: false
+      terms_served: "2004, 2008, 2012, 2016, 2020 (at-large), 2024 (Mayor)"
+      terms_counted: null
+      notes: "First elected mayor term (2024). Previously at-large council member since 2004. No term limits."
+    - district: District 3
+      incumbent: Keri Lynn Baert
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: null
+      notes: "First term. No term limits."
   term_length: 4
   election_system: mixed
   mayor_term_length:
@@ -170,9 +195,11 @@ elections:
         - Mayor (At-Large)
         - District 3
     group_b:
-      years: "2022, 2026, 2030..."
+      years: "2026, 2030, 2034..."
       seats:
-        - At-Large (3 seats)
+        - District 1
+        - District 2
+        - District 4
   candidate_info:
     contact_email:
     contact_phone:
