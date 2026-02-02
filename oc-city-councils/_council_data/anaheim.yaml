@@ -1,5 +1,6 @@
 city: anaheim
 city_name: Anaheim
+charter_url: https://www.anaheim.net/DocumentCenter/View/268/City-Charter?bidId=
 website: https://www.anaheim.net
 council_url: https://www.anaheim.net/173/City-Council
 last_updated: '2026-01-25'
@@ -121,11 +122,12 @@ meetings:
     zoom_passcode:
     phone_numbers:
 portals:
-  agendas: http://local.anaheim.net/docs_agend/questys_pub/
+  agendas: https://www.anaheim.net/2142/View-City-Council-Meetings
   live_stream: https://www.anaheim.net/councilvideos
   video_archive: https://anaheim.granicus.com/ViewPublisher.php?view_id=2
   document_center: https://anaheim.granicus.com/ViewPublisher.php?view_id=2
   municipal_code: https://codelibrary.amlegal.com/codes/anaheim/latest/overview
+  charter_url: https://www.anaheim.net/DocumentCenter/View/268/City-Charter?bidId=
   youtube:
   ecomment:
 broadcast:
@@ -164,8 +166,7 @@ public_comment:
     noticed_area_residents: 10 minutes
     general_public: 3 minutes
     legislative_matters: 5 minutes
-  notes: Comments posted on City website and made part of official public record. Speakers may be removed for profane 
-    language or disruptive behavior (AMC 1.12.017).
+  notes: Comments posted on City website and made part of official public record.
 council:
   size: 7
   districts: 6
