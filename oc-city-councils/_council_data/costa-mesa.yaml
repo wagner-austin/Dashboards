@@ -178,13 +178,53 @@ elections:
   seats_up:
     - district: Mayor
       incumbent: John Stephens
-      term_length: 2
+      termed_out: true
+      terms_served: "2022, 2024"
+      terms_counted: 4
+      notes: "Two consecutive 2-year Mayor terms. Termed out per § 2-25. Could run for council seat since Mayor terms are separate."
     - district: District 3
       incumbent: Andrea Marr
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 8
+      notes: "Two consecutive 4-year terms. Termed out per § 2-24."
     - district: District 4
       incumbent: Manuel Chavez
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 8
+      notes: "Two consecutive 4-year terms. Termed out per § 2-24."
     - district: District 5
       incumbent: Arlis Reynolds
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 8
+      notes: "Two consecutive 4-year terms. Termed out per § 2-24."
+  seats_up_2028:
+    - district: Mayor
+      incumbent: "(New 2026 winner)"
+      termed_out: false
+      terms_served: "2026"
+      terms_counted: 2
+      notes: "First 2-year Mayor term (assuming new Mayor elected 2026)."
+    - district: District 1
+      incumbent: Mike Buley
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 4
+      notes: "First 4-year council term. If re-elected, would reach 2 consecutive terms in 2032."
+    - district: District 2
+      incumbent: Loren Gameros
+      termed_out: true
+      terms_served: "2020, 2024"
+      terms_counted: 8
+      notes: "Two consecutive 4-year terms. Termed out per § 2-24."
+    - district: District 6
+      incumbent: Jeff Pettis
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 4
+      notes: "First 4-year council term. If re-elected, would reach 2 consecutive terms in 2032."
   term_limit: 2
   term_limit_type: terms
   term_limit_cooldown: null
@@ -230,17 +270,48 @@ elections:
       winners:
         - district: Mayor
           winner: John Stephens
-          notes: re-elected
+          votes: 23236
         - district: District 1
           winner: Mike Buley
-          notes: elected
+          votes: 4849
         - district: District 2
           winner: Loren Gameros
-          notes: re-elected
+          votes: 5463
+          notes: unopposed
         - district: District 6
           winner: Jeff Pettis
-          notes: elected
-      source: 
+          votes: 4377
+      candidates:
+        - district: Mayor
+          candidates:
+            - name: John Stephens
+              votes: 23236
+              outcome: won
+            - name: James Peters
+              votes: 20520
+              outcome: lost
+        - district: District 1
+          candidates:
+            - name: Mike Buley
+              votes: 4849
+              outcome: won
+            - name: Adam C. Ereth
+              votes: 4106
+              outcome: lost
+        - district: District 2
+          candidates:
+            - name: Loren Gameros
+              votes: 5463
+              outcome: won
+        - district: District 6
+          candidates:
+            - name: Jeff Pettis
+              votes: 4377
+              outcome: won
+            - name: Jeffrey Harlan
+              votes: 4295
+              outcome: lost
+      source:
         https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2024
     - year: 2022
       type: mixed
@@ -252,26 +323,67 @@ elections:
         - District 3
         - District 4
         - District 5
+      notes: "Measure K (land use/housing) passed 16,483-16,461."
       winners:
         - district: Mayor
           winner: John Stephens
-          notes: elected
+          votes: 17297
         - district: District 3
           winner: Andrea Marr
-          notes: re-elected
+          votes: 2220
         - district: District 4
           winner: Manuel Chavez
-          notes: re-elected
+          votes: 1881
+          notes: unopposed
         - district: District 5
           winner: Arlis Reynolds
-          notes: re-elected
-      source: 
+          votes: 3175
+      candidates:
+        - district: Mayor
+          candidates:
+            - name: John Stephens
+              votes: 17297
+              outcome: won
+            - name: John M.W. Moorlach
+              votes: 14336
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Andrea Marr
+              votes: 2220
+              outcome: won
+            - name: John Thomas Patton
+              votes: 2142
+              outcome: lost
+            - name: Jorge Miron
+              votes: 651
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Manuel Chavez
+              votes: 1881
+              outcome: won
+        - district: District 5
+          candidates:
+            - name: Arlis Reynolds
+              votes: 3175
+              outcome: won
+            - name: Robert Dickson
+              votes: 1784
+              outcome: lost
+      source:
         https://www.costamesaca.gov/government/departments-and-divisions/city-clerk/city-elections/city-elections-2022
     - year: 2020
       type: mixed
       certified: "2020-12-01"
       resolution: "2020-62"
       resolution_source: https://weblink.costamesaca.gov/WebLink/DocView.aspx?id=217761&dbid=0&repo=CityofCostaMesa
+      seats:
+        - Mayor
+        - District 1
+        - District 2
+        - District 6
+      notes: "Measure Q (cannabis tax) passed 33,291-17,793."
       winners:
         - district: District 1
           winner: Don Harper
@@ -344,6 +456,11 @@ elections:
       certified: "2018-12-04"
       resolution: "18-81"
       resolution_source: https://weblink.costamesaca.gov/WebLink/DocView.aspx?id=120795&dbid=0&repo=CityofCostaMesa
+      seats:
+        - Mayor
+        - District 3
+        - District 4
+        - District 5
       winners:
         - district: District 3
           winner: Andrea Marr
@@ -401,6 +518,9 @@ elections:
       certified: "2016-12-13"
       resolution: "16-86"
       resolution_source: https://weblink.costamesaca.gov/WebLink/DocView.aspx?id=75706&dbid=0&repo=CityofCostaMesa
+      seats:
+        - At-Large (3 seats)
+      notes: "Last at-large election. Measure EE (establish districts) passed 23,295-12,495. Measure X (cannabis) passed. Measures V, W, BB failed."
       winners:
         - seat: At-Large
           winner: Sandra L. "Sandy" Genis
@@ -440,6 +560,9 @@ elections:
       certified: "2014-12-02"
       resolution: "14-78"
       resolution_source: https://weblink.costamesaca.gov/WebLink/DocView.aspx?id=2507&dbid=0&repo=CityofCostaMesa
+      seats:
+        - At-Large (2 seats)
+      notes: "Measure O (charter) failed 6,994-12,084. Advisory Measure P (oppose I-405 tolls) passed 10,558-8,806."
       winners:
         - seat: At-Large
           winner: Katrina Foley
@@ -479,6 +602,9 @@ elections:
       certified: "2012-12-04"
       resolution: "12-76"
       resolution_source: https://weblink.costamesaca.gov/WebLink/DocView.aspx?id=1324&dbid=0&repo=CityofCostaMesa
+      seats:
+        - At-Large (3 seats)
+      notes: "Measure V (charter) failed 13,806-20,529."
       winners:
         - seat: At-Large
           winner: Sandra L. "Sandy" Genis
