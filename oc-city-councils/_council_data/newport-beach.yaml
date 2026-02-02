@@ -1,5 +1,6 @@
 city: newport-beach
 city_name: Newport Beach
+charter_url: https://www.codepublishing.com/CA/NewportBeach/html/NewportBeachCH.html
 website: https://www.newportbeachca.gov
 council_url: https://www.newportbeachca.gov/government/city-council
 last_updated: '2026-01-26'
@@ -120,7 +121,7 @@ clerk:
   address:
 public_comment:
   in_person: true
-  remote_live: true
+  remote_live: false
   written_email: true
   ecomment: true
   time_limit: 3 minutes per speaker
