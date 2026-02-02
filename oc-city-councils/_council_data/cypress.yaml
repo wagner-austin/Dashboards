@@ -150,19 +150,43 @@ elections:
   term_length: 4
   seats_up:
     - district: District 1
-      incumbent:
+      incumbent: null
+      termed_out: false
+      terms_served: null
+      terms_counted: null
+      notes: "New district - first election. No incumbent."
     - district: District 2
-      incumbent:
+      incumbent: null
+      termed_out: false
+      terms_served: null
+      terms_counted: null
+      notes: "New district - first election. No incumbent."
     - district: District 5
       incumbent: Rachel Strong Carnahan
-      notes: Appointed Nov 2025 to fill vacancy
-  term_limit: null
-  term_limit_type: null
+      termed_out: false
+      terms_served: "2025 (appointed)"
+      terms_counted: 0
+      notes: "Appointed Nov 28, 2025 (<1 year, doesn't count). 8-year lifetime limit per Charter § 400."
+  seats_up_2028:
+    - district: District 3
+      incumbent: Kyle Chang
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 4
+      notes: "First 4-year term. 8-year lifetime limit per Charter § 400."
+    - district: District 4
+      incumbent: Leo Medrano
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 4
+      notes: "First 4-year term. 8-year lifetime limit per Charter § 400."
+  term_limit: 8
+  term_limit_type: years
   term_limit_cooldown: null
   term_limit_cooldown_unit: null
-  term_limit_effective: null
-  term_limit_notes: null
-  term_limit_source: null
+  term_limit_effective: "1977-11-08"
+  term_limit_notes: "8 years LIFETIME limit per Charter § 400. Once 8+ years served, ineligible forever. Only service after Nov 8, 1977 counts."
+  term_limit_source: https://www.cypressca.org/home/showdocument?id=13560
   transition_note: Transitioned from at-large to by-district March 2024 (Ord. 1207)
   cycle_pattern:
     group_a:
@@ -191,6 +215,7 @@ elections:
       seats:
         - District 3
         - District 4
+      notes: "Measure S (housing at Los Alamitos Race Course) passed 13,334-9,336."
       source: https://www.cypressca.org/government/2024-election
       winners:
         - district: District 3
@@ -202,21 +227,33 @@ elections:
       candidates:
         - district: District 3
           candidates:
-            - Mark H Plager
-            - Kyle Chang
-            - Gayel Kaplan
-          winner: Kyle Chang
+            - name: Kyle Chang
+              votes: 1957
+              outcome: won
+            - name: Mark H. Plager
+              votes: 1928
+              outcome: lost
+            - name: Gayel Kaplan
+              votes: 565
+              outcome: lost
         - district: District 4
           candidates:
-            - Leo Medrano
-            - Blaze Bhence
-            - Glenn Button
-          winner: Leo Medrano
+            - name: Leo Medrano
+              votes: 2036
+              outcome: won
+            - name: Glenn Button
+              votes: 1676
+              outcome: lost
+            - name: Blaze Bhence
+              votes: 1329
+              outcome: lost
     - year: 2022
       type: at-large
       certified: "2022-12-12"
       resolution: "6919"
       resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=235562&dbid=0&repo=CityOfCypress
+      seats:
+        - At-Large (3 seats)
       winners:
         - seat: At-Large
           winner: David Burke
@@ -256,6 +293,9 @@ elections:
       certified: "2020-12-14"
       resolution: "6825"
       resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=183897&dbid=0&repo=CityOfCypress
+      seats:
+        - At-Large (2 seats)
+      notes: "Measure P (charter amendment - vacancies/publication) passed 16,050-7,155."
       winners:
         - seat: At-Large
           winner: Anne Hertz
@@ -298,6 +338,8 @@ elections:
       certified: "2018-12-10"
       resolution: "6718"
       resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=134440&dbid=0&repo=CityOfCypress
+      seats:
+        - At-Large (3 seats)
       winners:
         - seat: At-Large
           winner: Jon Peat
@@ -334,6 +376,9 @@ elections:
       certified: "2016-12-12"
       resolution: "6600"
       resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=99644&dbid=0&repo=CityOfCypress
+      seats:
+        - At-Large (2 seats)
+      notes: "Measure GG (Town Center Specific Plan) failed 9,626-10,059."
       winners:
         - seat: At-Large
           winner: Rob Johnson
@@ -361,6 +406,9 @@ elections:
       certified: "2014-12-08"
       resolution: "6485"
       resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=86420&dbid=0&repo=CityOfCypress
+      seats:
+        - At-Large (3 seats)
+      notes: "Measure Q (Moody St zone change) failed 5,212-5,686. Measure R (Mackay School zone change) passed 6,272-4,747."
       winners:
         - seat: At-Large
           winner: Paulo M. Morales
@@ -400,6 +448,8 @@ elections:
       certified: "2012-12-10"
       resolution: "6341"
       resolution_source: https://ecms.cypressca.org/WebLink/DocView.aspx?id=87711&dbid=0&repo=CityOfCypress
+      seats:
+        - At-Large (2 seats)
       winners:
         - seat: At-Large
           winner: Rob Johnson
