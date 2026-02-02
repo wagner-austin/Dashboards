@@ -1,5 +1,6 @@
 city: huntington-beach
 city_name: Huntington Beach
+charter_url: https://ecode360.com/HU4937
 website: https://www.huntingtonbeachca.gov
 council_url: https://www.huntingtonbeachca.gov/government/city_council/index.php
 last_updated: '2026-01-25'
@@ -7,7 +8,7 @@ email:
 phone:
 instagram:
 members:
-  - name: Casey Mc Keon
+  - name: Casey McKeon
     position: Mayor
     district: At-Large
     email: Casey.McKeon@surfcity-hb.org
@@ -105,6 +106,7 @@ portals:
   youtube: https://youtube.com/@cityofhb
   document_center: https://records.huntingtonbeachca.gov/WebLink/Browse.aspx?id=1&dbid=0&repo=COHB
   municipal_code: https://ecode360.com/HU4937
+  charter_url: https://ecode360.com/HU4937
   ecomment:
 broadcast:
   cable_channels:
