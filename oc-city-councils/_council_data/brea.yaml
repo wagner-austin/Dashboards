@@ -139,7 +139,7 @@ meetings:
     zoom_passcode:
     phone_numbers:
 portals:
-  agendas: https://www.cityofbrea.gov/509/Meeting-Agendas-Minutes
+  agendas: https://horizon.agendalink.app/engage/breaca/agendas
   live_stream: https://www.cityofbrea.gov/812/Government-Access-Channel
   video_archive:
   ecomment:
@@ -162,8 +162,7 @@ clerk:
   fax:
 public_comment:
   in_person: true
-  remote_live: true
-  remote_platform: Zoom
+  remote_live: false
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
