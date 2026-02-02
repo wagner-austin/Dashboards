@@ -98,15 +98,14 @@ clerk:
   address:
 public_comment:
   in_person: true
-  remote_live: true
-  remote_live_method: Facebook Live comments with "COMMENT TO COUNCIL:" prefix
+  remote_live: false
   ecomment: false
   written_email: true
   time_limit: 3 minutes per speaker
   overall_limit: 30 minutes for public comment period
   email: council@lakeforestca.gov
   deadline: 5:00 PM on meeting day
-  notes: Comments via Facebook Live must begin with "COMMENT TO COUNCIL:" in all caps to be read aloud
+  notes: Public comments no longer accepted remotely. Email comments not read at meeting, uploaded to agenda packet as public record.
 council:
   size: 5
   districts: 5
