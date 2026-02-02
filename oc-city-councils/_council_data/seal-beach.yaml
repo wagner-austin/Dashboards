@@ -97,7 +97,7 @@ portals:
   minutes: http://pubrec.sealbeachca.gov/WebLink/Browse.aspx?startid=1990
   e_records: http://pubrec.sealbeachca.gov/WebLink8/
   public_records: https://cityofsealbeach.nextrequest.com
-  document_center: https://www.sealbeachca.gov/Government/Agendas-Notices-Meeting-Videos/Council-Commission-Meetings
+  document_center: https://sealbeach.primegov.com/public/portal
   municipal_code: https://ecode360.com/SE5012
   ecomment:
   live_stream:
@@ -138,10 +138,35 @@ elections:
   seats_up:
     - district: District 1
       incumbent: Joe Kalmick
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Two consecutive terms. Termed out per Charter § 422 (consecutive limit, can run again after sitting out)."
     - district: District 3
       incumbent: Lisa Landau
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive terms per Charter § 422."
     - district: District 5
       incumbent: Nathan Steele
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive terms per Charter § 422."
+  seats_up_2028:
+    - district: District 2
+      incumbent: Ben Wong
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive terms per Charter § 422."
+    - district: District 4
+      incumbent: Patty Senecal
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive terms per Charter § 422."
   term_length: 4
   election_system: by-district
   mayor_term_length:
@@ -179,7 +204,7 @@ elections:
       seats: ["District 2", "District 4"]
       certified: "2024-12-09"
       resolution: "7595"
-      source: https://sealbeach.primegov.com/Portal/Meeting?meetingTemplateId=9672
+      source: https://sealbeach.primegov.com/Public/CompiledDocument?meetingTemplateId=6796&compileOutputType=1
       notes: "Both candidates ran unopposed. Measure GG (½¢ sales tax) passed 10,689-4,073."
       winners:
         - district: District 2
@@ -206,7 +231,7 @@ elections:
       seats: ["District 1", "District 3", "District 5"]
       certified: "2022-12-12"
       resolution: "7348"
-      source: https://sealbeach.primegov.com/Portal/Meeting?meetingTemplateId=7510
+      source: https://sealbeach.primegov.com/Public/CompiledDocument?meetingTemplateId=5204&compileOutputType=1
       notes: "District 3 and District 5 required runoffs (Jan 31, 2023). Lisa Landau won D3 runoff; Nathan Steele won D5 runoff."
       winners:
         - district: District 1
@@ -414,8 +439,9 @@ elections:
       type: by-district
       seats: ["District 2", "District 4", "City Clerk"]
       certified: "2012-08-22"
-      source: https://sealbeach.primegov.com/public/portal
-      notes: "Election canceled - all candidates ran unopposed. Declared elected per Elections Code 10229 at August 22, 2012 meeting. Six Charter amendment measures also on ballot."
+      ordinance: "1623"
+      source: https://sealbeach.primegov.com/Portal/Meeting?meetingTemplateId=1069
+      notes: "Election canceled - all candidates ran unopposed. Appointed per EC 10229 (Ord. 1623). Charter amendment measures withdrawn (Ord. 1622)."
       winners:
         - district: District 2
           winner: David W. Sloan
