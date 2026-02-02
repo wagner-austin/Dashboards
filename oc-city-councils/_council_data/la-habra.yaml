@@ -85,7 +85,7 @@ portals:
   live_stream: https://www.lahabraca.gov/356/Archived-Council-Videos
   video_archive: https://www.lahabraca.gov/356/Archived-Council-Videos
   youtube:
-  document_center: https://www.lahabraca.gov/AgendaCenter
+  document_center: https://lahabraca.new.swagit.com/views/110/
   municipal_code: https://ecode360.com/LA4951
   ecomment:
 broadcast:
@@ -123,8 +123,35 @@ elections:
   seats_up:
     - district: At-Large
       incumbent: Jose Medrano
+      termed_out: false
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "No term limits."
     - district: At-Large
       incumbent: James Gomez
+      termed_out: false
+      terms_served: "2014 (appointed), 2018, 2022"
+      terms_counted: 3
+      notes: "No term limits."
+  seats_up_2028:
+    - district: At-Large
+      incumbent: Rose Espinoza
+      termed_out: false
+      terms_served: "2016, 2020, 2024"
+      terms_counted: 3
+      notes: "No term limits."
+    - district: At-Large
+      incumbent: Daren Nigsarian
+      termed_out: false
+      terms_served: "2022 (short), 2024"
+      terms_counted: 2
+      notes: "No term limits."
+    - district: At-Large
+      incumbent: Delwin Lampkin
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "No term limits."
   term_length: 4
   election_system: at-large
   mayor_term_length:
@@ -160,7 +187,8 @@ elections:
         - At-Large (3 seats)
       certified: "2024-12-16"
       resolution: "CC 2024-32"
-      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12162024-2140
+      source: https://destinyhosted.com/agenda_publish.cfm?id=52422&dsp=ag&seq=577
+      notes: "Measure V (Emergency Services/Neighborhood Safety) passed 15,876-7,158."
       winners:
         - seat: At-Large
           winner: Daren Nigsarian
@@ -198,7 +226,7 @@ elections:
         - At-Large (3 seats)
       certified: "2022-12-19"
       resolution: "6093"
-      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12192022-1800
+      source: https://destinyhosted.com/agenda_publish.cfm?id=52422&dsp=ag&seq=410
       notes: 3rd seat due to Tim Shaw resignation (Jan 2022). Nigsarian elected to short 2-year term (remainder of Shaw's 2020-2024 term).
       winners:
         - seat: At-Large
@@ -237,7 +265,8 @@ elections:
         - At-Large (3 seats)
       certified: "2020-12-21"
       resolution: "5980"
-      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12192022-1415
+      source: https://destinyhosted.com/agenda_publish.cfm?id=52422&dsp=ag&seq=37
+      notes: "Measure W (Cannabis Business Tax) passed 17,726-8,550. Measure X (Preservation of Open Space) passed 19,649-6,535."
       winners:
         - seat: At-Large
           winner: Rose Espinoza
@@ -272,7 +301,7 @@ elections:
         - At-Large (2 seats)
       certified: "2018-12-17"
       resolution: "5882"
-      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12192022-1040
+      source: https://swagit-attachments.granicus.com/imported/lahabra/agenda-481.html
       winners:
         - seat: At-Large
           winner: James Gomez
@@ -298,7 +327,7 @@ elections:
         - At-Large (3 seats)
       certified: "2016-12-19"
       resolution: "5782"
-      source: https://www.lahabraca.gov/AgendaCenter/ViewFile/Minutes/_12192022-635
+      source: https://swagit-attachments.granicus.com/imported/lahabra/agenda-314.html
       winners:
         - seat: At-Large
           winner: Tim Shaw
@@ -330,3 +359,17 @@ elections:
             - name: Ida Macmurray
               votes: 3122
               outcome: lost
+    - year: 2014
+      type: appointment
+      seats:
+        - At-Large (2 seats)
+      certified: "2014-08-18"
+      source: https://swagit-attachments.granicus.com/imported/lahabra/agenda-137.html
+      notes: "Election cancelled per Elections Code § 10229 - only 2 candidates for 2 seats. James Gomez and Michael Blazey appointed without election."
+      winners:
+        - seat: At-Large
+          winner: James Gomez
+          notes: "Appointed - unopposed"
+        - seat: At-Large
+          winner: Michael Blazey
+          notes: "Appointed - unopposed"
