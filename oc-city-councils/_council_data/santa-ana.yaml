@@ -1,5 +1,6 @@
 city: santa-ana
 city_name: Santa Ana
+charter_url: https://library.municode.com/ca/santa_ana/codes/code_of_ordinances?nodeId=PTITHCH
 website: https://www.santa-ana.org
 council_url: https://www.santa-ana.org/departments/city-council/
 last_updated: '2026-01-26'
@@ -178,13 +179,13 @@ meetings:
     address: 22 Civic Center Plaza
     city_state_zip: Santa Ana, CA 92701
   remote:
-    zoom_url: https://us02web.zoom.us/j/315965149
-    zoom_id: 315-965-149
+    zoom_url:
+    zoom_id:
     zoom_passcode:
     phone_numbers:
       - (669) 900-9128
 portals:
-  agendas: https://www.santa-ana.org/agendas-and-minutes/
+  agendas: https://santa-ana.primegov.com/public/portal?fromiframe=true
   live_stream: https://www.santa-ana.org/agendas-and-minutes/
   video_archive: https://santaana.granicus.com/ViewPublisher.php?view_id=2
   youtube: https://youtube.com/@cityofsantaanavideos
