@@ -149,11 +149,41 @@ elections:
   seats_up:
   - district: "District 2"
     incumbent: "Max Duncan"
+    termed_out: false
+    terms_served: "2022"
+    terms_counted: 1
+    notes: "First term under term limits (effective Nov 2022)"
   - district: "District 3"
     incumbent: "Garrett Dwyer"
-    notes: "Special election to fill remainder of Hurt's term"
+    termed_out: false
+    terms_served: "2025 (appointed)"
+    terms_counted: 0
+    notes: "Special election to fill Hurt's term. Appointed Oct 2025 (<2 years, doesn't count per 2.04.125A)."
   - district: "District 4"
     incumbent: "Tiffany Ackley"
+    termed_out: false
+    terms_served: "2018, 2022"
+    terms_counted: 1
+    notes: "2018 term predates term limits (effective Nov 2022). Only 2022 counts."
+  seats_up_2028:
+  - district: "District 1"
+    incumbent: "Tim Zandbergen"
+    termed_out: false
+    terms_served: "2024"
+    terms_counted: 1
+    notes: "First term under term limits"
+  - district: "District 3"
+    incumbent: "(2026 winner)"
+    termed_out: false
+    terms_served: "2026 (short term ~2 years)"
+    terms_counted: 1
+    notes: "2026 special election fills remainder of Hurt's term (Dec 2024-Dec 2028). Service ~Dec 2026 to ~Dec 2028 ≈ 2 years. Per 2.04.125A, only terms <2 years don't count - this term is ≈2 years so it COUNTS."
+  - district: "District 5"
+    incumbent: "Mike Munzing"
+    termed_out: false
+    terms_served: "2012, 2016, 2020, 2024"
+    terms_counted: 1
+    notes: "2012-2020 predate term limits (effective Nov 2022). Only 2024 counts."
   term_length: 4
   mayor_term_length:
   term_limit: 2
