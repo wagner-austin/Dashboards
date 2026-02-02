@@ -11,6 +11,33 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[union
 import polars as pl
 
 
+# Treatment group definitions (Emily's samples with labeled columns)
+TREATMENTS = {
+    "Leaf": {
+        "Drought": ["BL - Drought", "CL - Drought", "EL - Drought", "GL - Drought"],
+        "Ambient": ["IL - Ambient", "JL - Ambient", "LL - Ambient", "ML - Ambient"],
+        "Watered": ["OL - Watered", "PL - Watered", "RL - Watered", "TL - Watered"],
+    },
+    "Root": {
+        "Drought": ["AR - Drought", "DR - Drought", "ER - Drought", "GR - Drought"],
+        "Ambient": ["HR - Ambient", "IR - Ambient", "JR - Ambient", "MR - Ambient"],
+        "Watered": ["RR - Watered", "SR - Watered", "TR - Watered"],
+    },
+}
+
+# Tissue-specific blanks
+# Blk1/Blk2 = leaf blanks, ebtruong blanks = root blanks
+TISSUE_BLANKS = {
+    "Leaf": ["Blk1", "Blk2"],
+    "Root": [
+        "250220_ebtruong_blank1",
+        "250220_ebtruong_blank2",
+        "250220_ebtruong_blank3",
+        "250220_ebtruong_blank4",
+    ],
+}
+
+
 def filter_cumulative(
     df: pl.DataFrame, col: str, threshold: float
 ) -> tuple[set[str], int, float]:
@@ -119,6 +146,17 @@ def filter_blanks(
     return kept, stats
 
 
+def get_peaks_in_group(df: pl.DataFrame, cols: list[str]) -> set[str]:
+    """Get peaks that have non-zero signal in any column of the group."""
+    peaks = set()
+    for col in cols:
+        if col in df.columns:
+            temp = df.select(["Compound", col]).drop_nulls()
+            temp = temp.filter(pl.col(col) > 0)
+            peaks.update(temp["Compound"].to_list())
+    return peaks
+
+
 def df_to_json(df: pl.DataFrame, sample_cols: list[str]) -> str:
     """Convert DataFrame to JSON for DataTables."""
     records = []
@@ -135,45 +173,72 @@ def df_to_json(df: pl.DataFrame, sample_cols: list[str]) -> str:
 
 
 def main() -> int:
-    data_path = Path(
-        r"C:\Users\austi\PROJECTS\Tree Data\Metabolomics\Emily_Jaycee_CombinedData.xlsx"
-    )
+    # Use local copy of labeled data
+    data_path = Path(__file__).parent / "Emily_Data_Pruned_Labeled.xlsx"
 
     print("Loading data...")
-    all_cols = pl.read_excel(
-        data_path, sheet_name="Normalized", infer_schema_length=0
-    ).columns
-    data_cols = [c for c in all_cols if not c.startswith("__UNNAMED__")]
     df = pl.read_excel(
         data_path,
         sheet_name="Normalized",
-        columns=data_cols,
         infer_schema_length=None,
     )
 
-    # Emily's samples only (Jaycee's removed due to signal intensity differences)
-    SAMPLE_COLS = [
-        # Emily's leaves
-        "BL", "CL", "EL", "GL", "IL", "JL", "LL", "ML", "OL", "PL", "RL", "TL",
-        # Emily's roots
-        "AR", "DR", "ER", "GR", "HR", "IR", "JR", "MR", "RR", "SR", "TR",
-    ]
+    # Build sample columns from treatment definitions
+    SAMPLE_COLS = []
+    for tissue_treatments in TREATMENTS.values():
+        for samples in tissue_treatments.values():
+            SAMPLE_COLS.extend(samples)
 
-    # Emily's blanks for blank subtraction
-    BLANK_COLS = [
-        "250220_ebtruong_blank1", "250220_ebtruong_blank2",
-        "250220_ebtruong_blank3", "250220_ebtruong_blank4"
-    ]
+    # Build tissue-specific sample lists
+    LEAF_SAMPLES = []
+    ROOT_SAMPLES = []
+    for treatment, samples in TREATMENTS["Leaf"].items():
+        LEAF_SAMPLES.extend(samples)
+    for treatment, samples in TREATMENTS["Root"].items():
+        ROOT_SAMPLES.extend(samples)
+
+    # Filter to blanks that exist in the data
+    LEAF_BLANKS = [c for c in TISSUE_BLANKS["Leaf"] if c in df.columns]
+    ROOT_BLANKS = [c for c in TISSUE_BLANKS["Root"] if c in df.columns]
+
+    print("\n" + "=" * 60)
+    print("BLANK FILTERING CONFIGURATION")
+    print("=" * 60)
+    print(f"\nLEAF samples ({len(LEAF_SAMPLES)}): {', '.join(LEAF_SAMPLES)}")
+    print(f"LEAF blanks ({len(LEAF_BLANKS)}): {', '.join(LEAF_BLANKS)}")
+    print(f"\nROOT samples ({len(ROOT_SAMPLES)}): {', '.join(ROOT_SAMPLES)}")
+    print(f"ROOT blanks ({len(ROOT_BLANKS)}): {', '.join(ROOT_BLANKS)}")
+    print("=" * 60 + "\n")
 
     print("Running filtering...")
 
     total = df["Compound"].n_unique()
 
-    # Step 1: Blank filtering - remove peaks that are primarily blank contamination
-    print("Step 1: Blank filtering...")
-    kept_blank, blank_stats = filter_blanks(df, SAMPLE_COLS, BLANK_COLS, threshold=3.0)
+    # Step 1: Tissue-specific blank filtering
+    print("Step 1: Tissue-specific blank filtering...")
+
+    # Filter leaf samples with leaf blanks
+    print(f"  Filtering LEAF samples with {len(LEAF_BLANKS)} leaf blanks...")
+    kept_leaf, leaf_blank_stats = filter_blanks(df, LEAF_SAMPLES, LEAF_BLANKS, threshold=3.0)
+    print(f"    Leaf: kept {len(kept_leaf):,} peaks, removed {leaf_blank_stats['both_discard']:,} contamination")
+
+    # Filter root samples with root blanks
+    print(f"  Filtering ROOT samples with {len(ROOT_BLANKS)} root blanks...")
+    kept_root, root_blank_stats = filter_blanks(df, ROOT_SAMPLES, ROOT_BLANKS, threshold=3.0)
+    print(f"    Root: kept {len(kept_root):,} peaks, removed {root_blank_stats['both_discard']:,} contamination")
+
+    # Union of peaks kept from both tissues
+    kept_blank = kept_leaf | kept_root
+    blank_stats = {
+        "sample_only": leaf_blank_stats["sample_only"] + root_blank_stats["sample_only"],
+        "both_keep": leaf_blank_stats["both_keep"] + root_blank_stats["both_keep"],
+        "both_discard": leaf_blank_stats["both_discard"] + root_blank_stats["both_discard"],
+        "blank_only": leaf_blank_stats["blank_only"] + root_blank_stats["blank_only"],
+        "neither": leaf_blank_stats["neither"] + root_blank_stats["neither"],
+        "total_clean": len(kept_blank),
+    }
     df_blank_filtered = df.filter(pl.col("Compound").is_in(list(kept_blank)))
-    print(f"  After blank filtering: {len(kept_blank):,} peaks (removed {blank_stats['both_discard']:,} contamination peaks)")
+    print(f"  Combined: {len(kept_blank):,} unique peaks after tissue-specific blank filtering")
 
     # Step 2: 80% cumulative filtering on blank-filtered data
     print("Step 2: 80% cumulative filtering...")
@@ -181,28 +246,58 @@ def main() -> int:
     sample_data_80: list[tuple[str, str, int, float]] = []
 
     for col in SAMPLE_COLS:
+        if col not in df_blank_filtered.columns:
+            continue
         k80, n80, pct80 = filter_cumulative(df_blank_filtered, col, 0.80)
         kept_80.update(k80)
-        tissue = "Leaf" if col.endswith("L") else "Root"
+        # Determine tissue from column name (e.g., "BL - Drought" -> Leaf, "AR - Drought" -> Root)
+        tissue = "Leaf" if col[1] == "L" else "Root"
         sample_data_80.append((col, tissue, n80, pct80 * 100))
 
     # Create final filtered DataFrame
     print("Creating filtered dataset...")
-    df_80 = df_blank_filtered.filter(pl.col("Compound").is_in(list(kept_80))).select(["Compound"] + SAMPLE_COLS)
+    available_cols = [c for c in SAMPLE_COLS if c in df_blank_filtered.columns]
+    df_80 = df_blank_filtered.filter(pl.col("Compound").is_in(list(kept_80))).select(["Compound"] + available_cols)
 
     # Convert to JSON
     print("Converting to JSON...")
-    json_80 = df_to_json(df_80, SAMPLE_COLS)
+    json_80 = df_to_json(df_80, available_cols)
 
     # Calculate stats
     leaf_80 = [x for x in sample_data_80 if x[1] == "Leaf"]
     root_80 = [x for x in sample_data_80 if x[1] == "Root"]
 
+    # Venn diagram calculations - peaks by treatment
+    print("Calculating treatment overlaps...")
+    venn_data = {}
+    for tissue in ["Leaf", "Root"]:
+        drought_peaks = get_peaks_in_group(df_80, TREATMENTS[tissue]["Drought"])
+        ambient_peaks = get_peaks_in_group(df_80, TREATMENTS[tissue]["Ambient"])
+        watered_peaks = get_peaks_in_group(df_80, TREATMENTS[tissue]["Watered"])
+
+        all_peaks = drought_peaks | ambient_peaks | watered_peaks
+        venn_data[tissue] = {
+            "drought": len(drought_peaks),
+            "ambient": len(ambient_peaks),
+            "watered": len(watered_peaks),
+            "all": len(all_peaks),
+            # Unique to each treatment (not in the other two)
+            "drought_only": len(drought_peaks - ambient_peaks - watered_peaks),
+            "ambient_only": len(ambient_peaks - drought_peaks - watered_peaks),
+            "watered_only": len(watered_peaks - drought_peaks - ambient_peaks),
+            # Shared between pairs (but not all three)
+            "drought_ambient": len((drought_peaks & ambient_peaks) - watered_peaks),
+            "drought_watered": len((drought_peaks & watered_peaks) - ambient_peaks),
+            "ambient_watered": len((ambient_peaks & watered_peaks) - drought_peaks),
+            # Shared by all three
+            "all_three": len(drought_peaks & ambient_peaks & watered_peaks),
+        }
+
     print("Generating HTML...")
 
     # Build column definitions for DataTables
     col_defs = [{"data": "Compound", "title": "Compound"}]
-    for col in SAMPLE_COLS:
+    for col in available_cols:
         col_defs.append({"data": col, "title": col})
     col_defs_json = json.dumps(col_defs)
 
@@ -531,6 +626,7 @@ def main() -> int:
 
         <div class="tabs">
         <button class="tab active" onclick="showTab('overview')">Overview</button>
+        <button class="tab" onclick="showTab('venn')">Venn Diagrams</button>
         <button class="tab" onclick="showTab('methods')">Methods</button>
         <button class="tab" onclick="showTab('data80')">Filtered Data ({len(kept_80):,})</button>
         <button class="tab" onclick="showTab('peaks')">Understanding Peaks</button>
@@ -575,10 +671,11 @@ def main() -> int:
 
         <h3>Source Data</h3>
         <ul>
-            <li><strong>File:</strong> Emily_Jaycee_CombinedData.xlsx</li>
+            <li><strong>File:</strong> Emily_Data_Pruned_Labeled.xlsx</li>
             <li><strong>Sheet:</strong> Normalized</li>
             <li><strong>Samples:</strong> 23 total (12 Leaf, 11 Root) - Emily's samples only</li>
-            <li><strong>Blanks:</strong> 4 blanks (250220_ebtruong_blank1-4)</li>
+            <li><strong>Leaf blanks:</strong> {', '.join(LEAF_BLANKS)}</li>
+            <li><strong>Root blanks:</strong> {', '.join(ROOT_BLANKS)}</li>
         </ul>
 
         <div class="alert alert-info" style="margin: 1.5rem 0;">
@@ -632,6 +729,63 @@ def main() -> int:
 
     </div>
 
+    <!-- VENN TAB -->
+    <div id="venn" class="tab-content">
+        <h2>Treatment Overlap - Venn Diagrams</h2>
+        <p>Shows how peaks are distributed across treatment groups (Drought, Ambient, Watered). "Unique" means the peak is ONLY found in that treatment, not in the others.</p>
+
+        <div class="two-col">
+            <div>
+                <h3 style="color: var(--leaf-color);">Leaf Tissue</h3>
+                <div id="venn-leaf" style="width: 100%; height: 350px;"></div>
+                <div class="alert alert-info" style="margin-top: 0.5rem;">
+                    <strong>{100*venn_data['Leaf']['all_three']/venn_data['Leaf']['all']:.1f}%</strong> of leaf peaks shared across all treatments
+                </div>
+            </div>
+            <div>
+                <h3 style="color: var(--root-color);">Root Tissue</h3>
+                <div id="venn-root" style="width: 100%; height: 350px;"></div>
+                <div class="alert alert-info" style="margin-top: 0.5rem;">
+                    <strong>{100*venn_data['Root']['all_three']/venn_data['Root']['all']:.1f}%</strong> of root peaks shared across all treatments
+                </div>
+            </div>
+        </div>
+
+        <h3>Detailed Breakdown</h3>
+        <div class="two-col">
+            <div>
+                <h4 style="color: var(--leaf-color);">Leaf</h4>
+                <table class="info-table">
+                    <tr><th>Region</th><th>Peaks</th></tr>
+                    <tr><td style="color: #dc2626;">Drought Only</td><td><strong>{venn_data['Leaf']['drought_only']:,}</strong></td></tr>
+                    <tr><td style="color: #2563eb;">Ambient Only</td><td><strong>{venn_data['Leaf']['ambient_only']:,}</strong></td></tr>
+                    <tr><td style="color: #16a34a;">Watered Only</td><td><strong>{venn_data['Leaf']['watered_only']:,}</strong></td></tr>
+                    <tr><td>D + A only</td><td><strong>{venn_data['Leaf']['drought_ambient']:,}</strong></td></tr>
+                    <tr><td>D + W only</td><td><strong>{venn_data['Leaf']['drought_watered']:,}</strong></td></tr>
+                    <tr><td>A + W only</td><td><strong>{venn_data['Leaf']['ambient_watered']:,}</strong></td></tr>
+                    <tr style="background: var(--gray-100);"><td><strong>All Three</strong></td><td><strong>{venn_data['Leaf']['all_three']:,}</strong></td></tr>
+                </table>
+            </div>
+            <div>
+                <h4 style="color: var(--root-color);">Root</h4>
+                <table class="info-table">
+                    <tr><th>Region</th><th>Peaks</th></tr>
+                    <tr><td style="color: #dc2626;">Drought Only</td><td><strong>{venn_data['Root']['drought_only']:,}</strong></td></tr>
+                    <tr><td style="color: #2563eb;">Ambient Only</td><td><strong>{venn_data['Root']['ambient_only']:,}</strong></td></tr>
+                    <tr><td style="color: #16a34a;">Watered Only</td><td><strong>{venn_data['Root']['watered_only']:,}</strong></td></tr>
+                    <tr><td>D + A only</td><td><strong>{venn_data['Root']['drought_ambient']:,}</strong></td></tr>
+                    <tr><td>D + W only</td><td><strong>{venn_data['Root']['drought_watered']:,}</strong></td></tr>
+                    <tr><td>A + W only</td><td><strong>{venn_data['Root']['ambient_watered']:,}</strong></td></tr>
+                    <tr style="background: var(--gray-100);"><td><strong>All Three</strong></td><td><strong>{venn_data['Root']['all_three']:,}</strong></td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="alert alert-success" style="margin-top: 2rem;">
+            <strong>How to interpret:</strong> Peaks unique to a treatment (e.g., "Drought Only") are potential biomarkers for that stress condition. Peaks shared by all three are likely core metabolites present regardless of water availability.
+        </div>
+    </div>
+
     <!-- METHODS TAB -->
     <div id="methods" class="tab-content">
         <h2>Two-Step Filtering Process</h2>
@@ -655,7 +809,8 @@ def main() -> int:
             <p><strong>The 3x threshold</strong> is a standard practice in metabolomics. A peak must be at least 3 times stronger in real samples than in blanks to be considered a true biological signal rather than contamination.</p>
 
             <div class="alert alert-success">
-                <strong>Blanks used:</strong> 250220_ebtruong_blank1, blank2, blank3, blank4
+                <strong>Leaf blanks ({len(LEAF_BLANKS)}):</strong> {', '.join(LEAF_BLANKS)}<br>
+                <strong>Root blanks ({len(ROOT_BLANKS)}):</strong> {', '.join(ROOT_BLANKS)}
             </div>
         </div>
 
@@ -749,6 +904,8 @@ def main() -> int:
     </div>
 
     <!-- JavaScript -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/venn.js@0.2.20/venn.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
@@ -798,6 +955,71 @@ def main() -> int:
             setTimeout(function() {{
                 initTable('#table80', data80);
             }}, 500);
+        }});
+
+        // Venn diagram data
+        var leafVennData = [
+            {{sets: ['Drought'], size: {venn_data['Leaf']['drought']}}},
+            {{sets: ['Ambient'], size: {venn_data['Leaf']['ambient']}}},
+            {{sets: ['Watered'], size: {venn_data['Leaf']['watered']}}},
+            {{sets: ['Drought', 'Ambient'], size: {venn_data['Leaf']['drought_ambient'] + venn_data['Leaf']['all_three']}}},
+            {{sets: ['Drought', 'Watered'], size: {venn_data['Leaf']['drought_watered'] + venn_data['Leaf']['all_three']}}},
+            {{sets: ['Ambient', 'Watered'], size: {venn_data['Leaf']['ambient_watered'] + venn_data['Leaf']['all_three']}}},
+            {{sets: ['Drought', 'Ambient', 'Watered'], size: {venn_data['Leaf']['all_three']}}}
+        ];
+
+        var rootVennData = [
+            {{sets: ['Drought'], size: {venn_data['Root']['drought']}}},
+            {{sets: ['Ambient'], size: {venn_data['Root']['ambient']}}},
+            {{sets: ['Watered'], size: {venn_data['Root']['watered']}}},
+            {{sets: ['Drought', 'Ambient'], size: {venn_data['Root']['drought_ambient'] + venn_data['Root']['all_three']}}},
+            {{sets: ['Drought', 'Watered'], size: {venn_data['Root']['drought_watered'] + venn_data['Root']['all_three']}}},
+            {{sets: ['Ambient', 'Watered'], size: {venn_data['Root']['ambient_watered'] + venn_data['Root']['all_three']}}},
+            {{sets: ['Drought', 'Ambient', 'Watered'], size: {venn_data['Root']['all_three']}}}
+        ];
+
+        // Render Venn diagrams
+        function renderVenn(selector, data) {{
+            var chart = venn.VennDiagram()
+                .width(400)
+                .height(320);
+            var div = d3.select(selector);
+            div.datum(data).call(chart);
+
+            // Style the circles
+            div.selectAll(".venn-circle path")
+                .style("fill-opacity", 0.6)
+                .style("stroke-width", 2);
+
+            // Color by treatment
+            div.selectAll(".venn-circle")
+                .each(function(d) {{
+                    var colors = {{
+                        'Drought': '#dc2626',
+                        'Ambient': '#2563eb',
+                        'Watered': '#16a34a'
+                    }};
+                    d3.select(this).select("path")
+                        .style("fill", colors[d.sets[0]] || '#888')
+                        .style("stroke", colors[d.sets[0]] || '#888');
+                }});
+
+            // Style labels
+            div.selectAll(".venn-circle text")
+                .style("font-size", "14px")
+                .style("font-weight", "600");
+        }}
+
+        // Render when tab is shown (to get correct dimensions)
+        var vennRendered = false;
+        document.querySelector('[onclick*=\"venn\"]').addEventListener('click', function() {{
+            if (!vennRendered) {{
+                setTimeout(function() {{
+                    renderVenn("#venn-leaf", leafVennData);
+                    renderVenn("#venn-root", rootVennData);
+                    vennRendered = true;
+                }}, 100);
+            }}
         }});
 
     </script>
