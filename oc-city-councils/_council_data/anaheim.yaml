@@ -180,12 +180,47 @@ elections:
   seats_up:
     - district: Mayor
       incumbent: Ashleigh E. Aitken
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 4
+      notes: "First term (4 years). If re-elected, would reach 8 years in 2030."
     - district: District 2
       incumbent: Carlos A. Leon
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 4
+      notes: "First term (4 years). If re-elected, would reach 8 years in 2030."
     - district: District 3
       incumbent: Natalie Rubalcava
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 4
+      notes: "First term (4 years). If re-elected, would reach 8 years in 2030."
     - district: District 6
       incumbent: Natalie Meeks
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 4
+      notes: "First term (4 years). If re-elected, would reach 8 years in 2030."
+  seats_up_2028:
+    - district: District 1
+      incumbent: Ryan Balius
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 4
+      notes: "First term (4 years)."
+    - district: District 4
+      incumbent: Norma Campos Kurtz
+      termed_out: false
+      terms_served: "2023 (appointed Jan 24), 2024"
+      terms_counted: 4
+      notes: "Appointed Jan 24, 2023 to fill D4 vacancy (~22.5 months, <2 years = doesn't count per § 503.5). Only 2024-2028 term counts."
+    - district: District 5
+      incumbent: Kristen Maahs
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 4
+      notes: "First term (4 years)."
   term_limit: 8
   term_limit_type: years
   term_limit_cooldown: 1
@@ -219,13 +254,14 @@ elections:
   source: https://www.anaheim.net/2917/Elections
   history:
     - year: 2024
+      type: by-district
       seats:
         - District 1
         - District 4
         - District 5
       certified: "2024-12-10"
       resolution: "2024-127"
-      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=5921203&dbid=0&repo=CITYOFANAHEIM
+      resolution_source: https://local.anaheim.net/docs_agend/questys_pub/44588/Agenda.html
       results_url: https://www.anaheim.net/DocumentCenter/View/58171/November-5-2024-Election-Results
       winners:
         - district: District 1
@@ -243,7 +279,36 @@ elections:
           votes: 7070
           runner_up: Andrew Sarega
           runner_up_votes: 5244
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Ryan Balius
+              votes: 11092
+              outcome: won
+            - name: Ojaala Ahmad
+              votes: 3524
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Norma Campos Kurtz
+              votes: 9255
+              outcome: won
+            - name: Francisco Rosas
+              votes: 3696
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Kristen M. Maahs
+              votes: 7070
+              outcome: won
+            - name: Andrew Sarega
+              votes: 5244
+              outcome: lost
+            - name: Cristal Ruiz
+              votes: 4098
+              outcome: lost
     - year: 2022
+      type: mixed
       seats:
         - Mayor
         - District 2
@@ -251,8 +316,9 @@ elections:
         - District 6
       certified: "2022-12-06"
       resolution: "2022-142"
-      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=4832002&dbid=0&repo=CITYOFANAHEIM
+      resolution_source: https://local.anaheim.net/docs_agend/questys_pub/36130/Agenda.html
       results_url: https://www.anaheim.net/DocumentCenter/View/49582/November-8-2022-Election-Results
+      notes: "Measure J (hotel tax update) passed 41,143-28,317."
       winners:
         - district: Mayor
           winner: Ashleigh Aitken
@@ -274,14 +340,54 @@ elections:
           votes: 14241
           runner_up: Hari Shankar Lal
           runner_up_votes: 5893
+      candidates:
+        - district: Mayor
+          candidates:
+            - name: Ashleigh Aitken
+              votes: 29072
+              outcome: won
+            - name: Trevor O'Neil
+              votes: 23240
+              outcome: lost
+            - name: Lorri Galloway
+              votes: 11532
+              outcome: lost
+            - name: Dick Lopez
+              votes: 3858
+              outcome: lost
+        - district: District 2
+          candidates:
+            - name: Carlos A. Leon
+              votes: 4994
+              outcome: won
+            - name: Gloria Sahagún Ma'ae
+              votes: 4916
+              outcome: lost
+        - district: District 3
+          candidates:
+            - name: Natalie Rubalcava
+              votes: 5437
+              outcome: won
+            - name: Al Jabbar
+              votes: 3971
+              outcome: lost
+        - district: District 6
+          candidates:
+            - name: Natalie Meeks
+              votes: 14241
+              outcome: won
+            - name: Hari Shankar Lal
+              votes: 5893
+              outcome: lost
     - year: 2020
+      type: by-district
       seats:
         - District 1
         - District 4
         - District 5
       certified: "2020-12-08"
       resolution: "2020-142"
-      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=4800598&dbid=0&repo=CITYOFANAHEIM
+      resolution_source: https://anaheim.granicus.com/GeneratedAgendaViewer.php?view_id=2&clip_id=2519
       results_url: https://www.anaheim.net/DocumentCenter/View/35405/November-3-2020-Election-Results
       winners:
         - district: District 1
@@ -299,11 +405,54 @@ elections:
           votes: 11160
           runner_up: Sabrina 'Sav' Quezada
           runner_up_votes: 6440
+      candidates:
+        - district: District 1
+          candidates:
+            - name: Jose Diaz
+              votes: 7791
+              outcome: won
+            - name: Denise Barnes
+              votes: 6997
+              outcome: lost
+            - name: Ryan Balius
+              votes: 3653
+              outcome: lost
+        - district: District 4
+          candidates:
+            - name: Avelino Valencia
+              votes: 7861
+              outcome: won
+            - name: Annemarie Randle-Trejo
+              votes: 3541
+              outcome: lost
+            - name: Jeanine A. Robbins
+              votes: 3349
+              outcome: lost
+            - name: Julie Brunette
+              votes: 779
+              outcome: lost
+        - district: District 5
+          candidates:
+            - name: Steve Faessel
+              votes: 11160
+              outcome: won
+            - name: Sabrina "Sav" Quezada
+              votes: 6440
+              outcome: lost
+            - name: Kenneth Batiste
+              votes: 3551
+              outcome: lost
     - year: 2018
       type: by-district
+      seats:
+        - Mayor
+        - District 2
+        - District 3
+        - District 6
       certified: "2018-12-04"
       resolution: "2018-147"
-      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=2074933&dbid=0&repo=CITYOFANAHEIM
+      resolution_source: https://anaheim.granicus.com/GeneratedAgendaViewer.php?view_id=2&clip_id=2045
+      notes: "Final year of district-based election implementation. Measure J (1700 S. Harbor Blvd development) passed 42,349-38,919. Measure K (1030 W. Katella Ave development) passed 42,378-38,859. Measure L (hospitality minimum wage) passed 45,237-38,229."
       winners:
         - district: District 2
           winner: Jordan Brandman
@@ -385,9 +534,15 @@ elections:
               outcome: lost
     - year: 2016
       type: by-district
+      seats:
+        - District 1
+        - District 3
+        - District 4
+        - District 5
       certified: "2016-12-13"
       resolution: "2016-229"
-      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=1774445&dbid=0&repo=CITYOFANAHEIM
+      resolution_source: https://anaheim.granicus.com/GeneratedAgendaViewer.php?view_id=2&clip_id=1753
+      notes: "First year of district-based elections. Terms determined by lot drawing at swearing-in (one 2-year term, three 4-year terms). Measure U (require 2/3 council vote to propose taxes) passed 76,728-17,330 (81.6%)."
       winners:
         - district: District 1
           winner: Denise Barnes
@@ -472,52 +627,24 @@ elections:
               outcome: lost
     - year: 2014
       type: at-large
+      seats:
+        - Mayor
+        - At-Large (2 seats)
       certified: "2014-12-09"
       resolution: "2014-208"
-      resolution_source: https://records.anaheim.net/CityClerk/DocView.aspx?id=1478336&dbid=0&repo=CITYOFANAHEIM
+      resolution_source: https://anaheim.granicus.com/GeneratedAgendaViewer.php?view_id=2&clip_id=1440
+      notes: "Measure L (district-based elections) passed 30,873-13,981 (68.8%). Measure M (expand council to 6) passed 23,752-20,103 (54.2%). Measure N (local services) failed 21,413-21,535 (49.9%)."
       winners:
-        - seat: At-Large
-          winner: Yes
-          votes: 30873
-        - seat: At-Large
-          winner: Kris Murray
-          votes: 16207
         - seat: Mayor
           winner: Tom Tait
           votes: 24116
+        - seat: At-Large
+          winner: Kris Murray
+          votes: 16207
+        - seat: At-Large
+          winner: James D. Vanderbilt
+          votes: 15541
       candidates:
-        - district: At-Large
-          candidates:
-            - name: Yes
-              votes: 30873
-              outcome: won
-            - name: Kris Murray
-              votes: 16207
-              outcome: won
-            - name: James D. Vanderbilt
-              votes: 15541
-              outcome: lost
-            - name: Gail Eastman
-              votes: 15338
-              outcome: lost
-            - name: No
-              votes: 13981
-              outcome: lost
-            - name: Jose F. Moreno (1)
-              votes: 11521
-              outcome: lost
-            - name: Doug Pettibone
-              votes: 7309
-              outcome: lost
-            - name: Jerry O'Keefe
-              votes: 6244
-              outcome: lost
-            - name: Donna Michelle Acevedo
-              votes: 3188
-              outcome: lost
-            - name: Jose Moreno (2)
-              votes: 2976
-              outcome: lost
         - district: Mayor
           candidates:
             - name: Tom Tait
@@ -532,11 +659,38 @@ elections:
             - name: Denis Fitzgerald
               votes: 3090
               outcome: lost
+        - district: At-Large
+          candidates:
+            - name: Kris Murray
+              votes: 16207
+              outcome: won
+            - name: James D. Vanderbilt
+              votes: 15541
+              outcome: won
+            - name: Gail Eastman
+              votes: 15338
+              outcome: lost
+            - name: Jose F. Moreno
+              votes: 11521
+              outcome: lost
+            - name: Doug Pettibone
+              votes: 7309
+              outcome: lost
+            - name: Jerry O'Keefe
+              votes: 6244
+              outcome: lost
+            - name: Donna Michelle Acevedo
+              votes: 3188
+              outcome: lost
+            - name: Jose Moreno
+              votes: 2976
+              outcome: lost
     - year: 2012
       type: at-large
+      seats:
+        - At-Large (2 seats)
       certified: "2012-12-11"
-      resolution_source: https://local.anaheim.net/docs_agend/questys_pub/MG38724/AS38763/AS38766/AI40859/DO40856/1.pdf
-      source_note: "OC Registrar Certificate; council minutes not available in archive"
+      resolution_source: https://anaheim.granicus.com/GeneratedAgendaViewer.php?view_id=2&clip_id=1146
       winners:
         - seat: At-Large
           winner: Jordan Brandman
@@ -573,6 +727,80 @@ elections:
               outcome: lost
             - name: Duane Roberts
               votes: 6914
+              outcome: lost
+    - year: 2010
+      type: at-large
+      seats:
+        - Mayor
+        - At-Large (2 seats)
+      certified: "2010-12-07"
+      resolution_source: https://anaheim.granicus.com/GeneratedAgendaViewer.php?view_id=2&clip_id=819
+      notes: "Measure J (design-build procurement) passed 38,404-21,268. Measure K (ban red light cameras) passed 47,246-17,688."
+      winners:
+        - seat: Mayor
+          winner: Tom Tait
+          votes: 33340
+        - seat: At-Large
+          winner: Gail Eastman
+          votes: 20389
+        - seat: At-Large
+          winner: Kris Murray
+          votes: 17871
+      candidates:
+        - district: Mayor
+          candidates:
+            - name: Tom Tait
+              votes: 33340
+              outcome: won
+            - name: Shirley McCracken
+              votes: 19668
+              outcome: lost
+            - name: Denis Fitzgerald
+              votes: 8229
+              outcome: lost
+        - district: At-Large
+          candidates:
+            - name: Gail Eastman
+              votes: 20389
+              outcome: won
+            - name: Kris Murray
+              votes: 17871
+              outcome: won
+            - name: John Leos
+              votes: 12966
+              outcome: lost
+            - name: Linda Linder
+              votes: 8296
+              outcome: lost
+            - name: Robert Nelson
+              votes: 7176
+              outcome: lost
+            - name: Thomas "Hoagy" Holguin
+              votes: 7165
+              outcome: lost
+            - name: Bill Dalati
+              votes: 5392
+              outcome: lost
+            - name: Brian Neil Chuchua
+              votes: 5070
+              outcome: lost
+            - name: Sandy Parke
+              votes: 5010
+              outcome: lost
+            - name: Robert Jesus Flores
+              votes: 4886
+              outcome: lost
+            - name: Dustin Apodaca
+              votes: 4176
+              outcome: lost
+            - name: Dennis J. Varnum
+              votes: 3859
+              outcome: lost
+            - name: John Santoianni
+              votes: 2982
+              outcome: lost
+            - name: Rudy Gaona
+              votes: 2329
               outcome: lost
   mayor_term_length: 4
   districting_info:
