@@ -38,7 +38,9 @@ members:
     photo_url: https://www.huntingtonbeachca.gov/AndrewGruel-Circle-Headshot.png?t=202504211504120
     bio: ''
     term_start: 2025
+    term_start_date: '2025-03-18'
     term_end: 2026
+    notes: "Appointed Mar 18, 2025 under Charter Section 312 to fill vacancy from Tony Strickland's resignation (elected to State Senate District 36). Serves remainder of term through 2026."
   - name: Chad Williams
     position: Councilmember
     district: At-Large
@@ -145,12 +147,47 @@ elections:
   seats_up:
     - district: At-Large
       incumbent: Casey McKeon
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 300."
     - district: At-Large
       incumbent: Gracey Larrea-Van Der Mark
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 300."
     - district: At-Large
       incumbent: Pat Burns
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 300."
     - district: At-Large
       incumbent: Andrew Gruel
+      termed_out: false
+      terms_served: "2025 (appointed)"
+      terms_counted: 0
+      notes: "Appointed Mar 2025 (<2 years). Partial term doesn't count per Charter § 300."
+  seats_up_2028:
+    - district: At-Large
+      incumbent: Butch Twining
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 300."
+    - district: At-Large
+      incumbent: Chad Williams
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 300."
+    - district: At-Large
+      incumbent: Don Kennedy
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 consecutive term limit per Charter § 300."
   election_system: at-large
   term_length: 4
   mayor_term_length:
@@ -231,6 +268,7 @@ elections:
       certified: "2022-12-06"
       resolution: "2022-69"
       source: https://records.huntingtonbeachca.gov/WebLink/DocView.aspx?id=6143732&dbid=0&repo=COHB
+      notes: "Measure L (charter amendment) failed 31,246-43,508. Measure M (charter amendment) failed 29,378-45,777. Measure N (charter amendment) failed 32,390-41,385. Measure O (cannabis tax) passed 42,771-35,463."
       winners:
         - seat: At-Large
           winner: Pat Burns
