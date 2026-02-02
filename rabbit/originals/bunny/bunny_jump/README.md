@@ -2,68 +2,52 @@
 
 Jumping bunny animation.
 
+## Source
+
+`Bunny_Jump.mp4` - 26 frames at 30fps
+
 ## Frames
 
-19 frames (frame_01 to frame_19), no ping-pong.
+26 frames (frame_01 to frame_26), uniform timing.
 
 | Frame | Delay |
 |-------|-------|
-| 1-9   | 0.05s |
-| 10    | 0.08s |
-| 11    | 0.07s |
-| 12    | 0.06s |
-| 13-19 | 0.05s |
-
-## Image Preprocessing
-
-**Automated** Python script (see main README for full code):
-
-```python
-# Warmth
-r = r.point(lambda x: min(255, int(x * 1.1)))
-b = b.point(lambda x: int(x * 0.85))
-
-# Adjustments
-brightness = 0.5
-contrast = 1.3
-color = 1.4
-noise = 15
-unsharp_mask = (radius=2, percent=150, threshold=3)
-vignette = 0.75
-
-# Final fix
-brightness = 1.6
-color = 0.8
-contrast = 1.1
-```
+| 1-26  | 0.03s |
 
 ## GIF Generation
 
-No ping-pong (plays forward only, loops).
-
 ```bash
-cd originals/bunny/bunny_jump
+# Created from MP4
 python -c "
 from PIL import Image
-import glob, re
+import cv2
 
-files = sorted(glob.glob('frame_*.png'))
-frames = [Image.open(f).convert('RGBA') for f in files]
-durations = [int(float(re.search(r'delay-(\d+\.?\d*)s', f).group(1)) * 1000) for f in files]
+cap = cv2.VideoCapture('Bunny_Jump.mp4')
+frames = []
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    frames.append(Image.fromarray(frame_rgb))
+cap.release()
 
 frames[0].save('bunny_jump.gif', save_all=True, append_images=frames[1:],
-    duration=durations, loop=0, transparency=0, disposal=2)
+    duration=33, loop=0)
 "
 ```
 
 ## ASCII Conversion
 
 ```bash
-python tools/gif_to_ascii.py originals/bunny/bunny_jump/bunny_jump.gif --contrast 1.1 --invert --widths 40 --output bunny/jump/
+python tools/gif_to_ascii.py originals/bunny/bunny_jump/Bunny_Jump.mp4 --contrast 1.5 --invert --widths 60 --frames 26 --output bunny/jump/
 ```
+
+Note: Frames are cropped 25% from each side before conversion.
 
 | Setting  | Value |
 |----------|-------|
-| Contrast | 1.1   |
+| Contrast | 1.5   |
 | Invert   | Yes   |
-| Width    | 40    |
+| Width    | 60    |
+| Crop     | 25% sides |
