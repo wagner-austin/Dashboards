@@ -126,10 +126,35 @@ elections:
   seats_up:
     - district: At-Large
       incumbent: Mark Orgill
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "No term limits."
     - district: At-Large
       incumbent: Alex Rounaghi
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "No term limits."
     - district: At-Large
       incumbent: Sue Kempf
+      termed_out: false
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "No term limits."
+  seats_up_2028:
+    - district: At-Large
+      incumbent: Bob Whalen
+      termed_out: false
+      terms_served: "2012, 2016, 2020, 2024"
+      terms_counted: 4
+      notes: "No term limits."
+    - district: At-Large
+      incumbent: Hallie Jones
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "No term limits."
   term_length: 4
   election_system: at-large
   mayor_term_length:
@@ -164,7 +189,7 @@ elections:
       seats: ["At-Large (2 seats)"]
       certified: "2024-12-09"
       resolution: "24.090"
-      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=24282&repo=r-1645a77d
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=51703&repo=r-1645a77d
       winners:
         - seat: At-Large
           winner: Bob Whalen
@@ -192,7 +217,8 @@ elections:
       seats: ["At-Large (3 seats)"]
       certified: "2022-12-13"
       resolution: "22.095"
-      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=24100&repo=r-1645a77d
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=50942&repo=r-1645a77d
+      notes: "Measure Q (major development voter approval) failed 4,439-7,965. Measure R (hotel development voter approval) failed 3,677-8,559. Measure S (hotel employee minimum wage) failed 3,972-8,358."
       winners:
         - seat: At-Large
           winner: Alex Rounaghi
@@ -232,7 +258,7 @@ elections:
       seats: ["At-Large (2 seats)"]
       certified: "2020-12-08"
       resolution: "20.092"
-      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=23890&repo=r-1645a77d
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=50163&repo=r-1645a77d
       winners:
         - seat: At-Large
           winner: Bob Whalen
@@ -263,7 +289,8 @@ elections:
       seats: ["At-Large (3 seats)"]
       certified: "2018-12-04"
       resolution: "18.076"
-      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=23692&repo=r-1645a77d
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=49133&repo=r-1645a77d
+      notes: "Measure P (Utility Undergrounding and Fire Safety 1% sales tax) failed 6,029-7,034."
       winners:
         - seat: At-Large
           winner: Peter Blake
@@ -321,7 +348,8 @@ elections:
       seats: ["At-Large (2 seats)"]
       certified: "2016-12-13"
       resolution: "16.100"
-      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=23545&repo=r-1645a77d
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=47935&repo=r-1645a77d
+      notes: "Measure KK (medical marijuana dispensaries) failed 4,002-9,702. Measure LL (TOT increase 10% to 12%) passed 10,508-2,840."
       winners:
         - seat: At-Large
           winner: Bob Whalen
@@ -339,7 +367,7 @@ elections:
               votes: 5452
               outcome: won
             - name: Verna Rollinger
-              votes: 4958
+              votes: 4959
               outcome: lost
             - name: Judie Mancuso
               votes: 3851
@@ -389,7 +417,8 @@ elections:
       seats: ["At-Large (2 seats)"]
       certified: "2012-12-04"
       resolution: "12.076"
-      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=23277&repo=r-1645a77d
+      source: https://portal.laserfiche.com/Portal/DocView.aspx?id=45065&repo=r-1645a77d
+      notes: "Measure CC (parcel tax $120/year for open space acquisition) failed 5,836-7,185."
       winners:
         - seat: At-Large
           winner: Bob Whalen
