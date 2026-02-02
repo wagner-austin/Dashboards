@@ -189,7 +189,7 @@ portals:
   video_archive: https://santaana.granicus.com/ViewPublisher.php?view_id=2
   youtube: https://youtube.com/@cityofsantaanavideos
   primegov: https://santa-ana.primegov.com/Portal/Meeting
-  document_center: https://publicdocs.santa-ana.org/WebLink/Welcome.aspx?cr=1
+  document_center: https://publicdocs.santa-ana.org/WebLink/Welcome.aspx
   municipal_code: https://library.municode.com/ca/santa_ana
   ecomment:
 broadcast:
@@ -230,12 +230,53 @@ elections:
   seats_up:
     - district: Mayor
       incumbent: Valerie Amezcua
+      termed_out: false
+      terms_served: "2022, 2024"
+      terms_counted: 2
+      notes: "Two of 4 lifetime 2-year terms per Charter § 401.01."
     - district: Ward 2
       incumbent: Benjamin Vazquez
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "One of 3 lifetime 4-year terms per Charter § 401.01."
     - district: Ward 4
       incumbent: Phil Bacerra
+      termed_out: false
+      terms_served: "2019 (special, doesn't count), 2022"
+      terms_counted: 1
+      notes: "One of 3 lifetime 4-year terms per Charter § 401.01. 2019 special election doesn't count."
     - district: Ward 6
       incumbent: David Penaloza
+      termed_out: false
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Two of 3 lifetime 4-year terms per Charter § 401.01."
+  seats_up_2028:
+    - district: Mayor
+      incumbent: null
+      termed_out: false
+      terms_served: "2026"
+      terms_counted: null
+      notes: "Depends on 2026 winner. 4 lifetime 2-year terms per Charter § 401.01."
+    - district: Ward 1
+      incumbent: Thai Viet Phan
+      termed_out: false
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two of 3 lifetime 4-year terms per Charter § 401.01."
+    - district: Ward 3
+      incumbent: Jessie Lopez
+      termed_out: false
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two of 3 lifetime 4-year terms per Charter § 401.01."
+    - district: Ward 5
+      incumbent: Johnathan Ryan Hernandez
+      termed_out: false
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two of 3 lifetime 4-year terms per Charter § 401.01."
   election_system: by-ward
   term_length: 4
   mayor_term_length: 2
@@ -246,7 +287,7 @@ elections:
   term_limit_cooldown: null
   term_limit_cooldown_unit: null
   term_limit_effective: '2022-11-08'
-  term_limit_notes: 3 four-year terms lifetime per Charter Sec. 401.01 (Measure approved Nov 2022). Mayor: 4 two-year terms lifetime. Applies to anyone elected in/after 2012. Short/partial terms don't count.
+  term_limit_notes: "3 four-year terms lifetime per Charter Sec. 401.01 (Measure approved Nov 2022). Mayor: 4 two-year terms lifetime. Applies to anyone elected in/after 2012. Short/partial terms don't count."
   term_limit_source: https://library.municode.com/ca/santa_ana/codes/code_of_ordinances?nodeId=PTITHCH_ARTIVCICO_DIV1GE_S401.01TELI
   cycle_pattern:
     group_a:
