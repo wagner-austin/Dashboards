@@ -160,7 +160,7 @@ clerk:
   address:
 public_comment:
   in_person: true
-  remote_live: true
+  remote_live: false
   ecomment: false
   written_email: true
   time_limit: 5 minutes per speaker
