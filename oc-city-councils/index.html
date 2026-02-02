@@ -125,10 +125,10 @@
             padding: 1.25rem;
         }
         .info-card h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-600); margin-bottom: 0.75rem; }
-        .info-row { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--gray-100); }
+        .info-row { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--gray-100); gap: 1rem; }
         .info-row:last-child { border-bottom: none; }
-        .info-row dt { color: var(--gray-600); }
-        .info-row dd { color: var(--gray-900); font-weight: 500; }
+        .info-row dt { color: var(--gray-600); flex-shrink: 0; }
+        .info-row dd { color: var(--gray-900); font-weight: 500; text-align: right; }
         .info-row dd a { color: var(--primary); text-decoration: none; }
         .info-row dd a:hover { text-decoration: underline; }
         .council-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
@@ -142,7 +142,10 @@
             text-align: center;
             transition: all 0.2s;
             cursor: pointer;
+            position: relative;
         }
+        .council-card .seat-up { position: absolute; top: 8px; right: 8px; background: rgba(229, 231, 235, 0.95); color: var(--gray-800); font-size: 0.95rem; padding: 2px 8px; border-radius: 4px; font-weight: 550; }
+        .council-card .seat-up.termed-out { border: 3px solid #ffc107; }
         .council-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,102,161,0.15); }
         .council-card .photo {
             width: 140px;
@@ -161,6 +164,88 @@
         .council-card .contact-info a { color: var(--primary); text-decoration: none; }
         .council-card .contact-info a:hover { text-decoration: underline; }
         .hidden { display: none; }
+
+        /* Election styles */
+        .election-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .election-card h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-600);
+            margin-bottom: 0.75rem;
+        }
+        .seat-item {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            background: var(--gray-50);
+            border-left: 4px solid var(--primary);
+        }
+        .seat-item.termed-out {
+            border-left-color: var(--danger);
+            background: var(--danger-light);
+        }
+        .seat-item .seat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+        }
+        .seat-item .district-name {
+            font-weight: 600;
+            color: var(--gray-800);
+            font-size: 0.9rem;
+        }
+        .seat-item .termed-badge {
+            background: var(--danger);
+            color: white;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .seat-item .incumbent {
+            color: var(--gray-700);
+            font-size: 0.85rem;
+        }
+        .seat-item .terms-info {
+            color: var(--gray-600);
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+        .seat-item .notes {
+            color: var(--gray-500);
+            font-size: 0.7rem;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        .term-limit-info {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+        .term-limit-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .term-limit-info a:hover {
+            text-decoration: underline;
+        }
+        .no-term-limits {
+            color: var(--gray-500);
+            font-style: italic;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
@@ -189,6 +274,10 @@
                         <dl id="meetingInfo"></dl>
                     </div>
                     <div class="info-card">
+                        <h4>Term Limits</h4>
+                        <dl id="termLimitInfo"></dl>
+                    </div>
+                    <div class="info-card">
                         <h4>City Clerk</h4>
                         <dl id="clerkInfo"></dl>
                     </div>
@@ -196,12 +285,6 @@
                         <h4>Public Comment</h4>
                         <dl id="commentInfo"></dl>
                     </div>
-                    <!-- Hidden for now - election data needs verification
-                    <div class="info-card">
-                        <h4>Elections</h4>
-                        <dl id="electionInfo"></dl>
-                    </div>
-                    -->
                 </div>
             </div>
 
@@ -218,8 +301,8 @@
         async function init() {
             const res = await fetch('dashboard_data.json?v=' + Date.now());
             cities = await res.json();
-            const select = document.getElementById('citySelect');
 
+            const select = document.getElementById('citySelect');
             cities.forEach((c, i) => {
                 const opt = document.createElement('option');
                 opt.value = i;
@@ -236,6 +319,27 @@
 
         function row(label, value) {
             return value ? `<div class="info-row"><dt>${label}</dt><dd>${value}</dd></div>` : '';
+        }
+
+        function renderSeats(seats) {
+            if (!seats || seats.length === 0) {
+                return '<div class="no-term-limits">No seats listed</div>';
+            }
+            return seats.map(seat => {
+                const termedOut = seat.termed_out === true;
+                return `
+                    <div class="seat-item ${termedOut ? 'termed-out' : ''}">
+                        <div class="seat-header">
+                            <span class="district-name">${seat.district || 'At-Large'}</span>
+                            ${termedOut ? '<span class="termed-badge">Termed Out</span>' : ''}
+                        </div>
+                        <div class="incumbent">${seat.incumbent || 'TBD'}</div>
+                        ${seat.terms_counted !== null && seat.terms_counted !== undefined ?
+                            `<div class="terms-info">Terms: ${seat.terms_counted} (${seat.terms_served || 'N/A'})</div>` : ''}
+                        ${seat.notes ? `<div class="notes">${seat.notes}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
         }
 
         function showCity(idx) {
@@ -289,17 +393,26 @@
                 row('Deadline', pc.deadline) +
                 row('Notes', pc.notes);
 
-            // Elections - hidden for now, data needs verification
-            // const el = c.elections || {};
-            // document.getElementById('electionInfo').innerHTML =
-            //     row('Next Election', el.next_election) +
-            //     row('Seats Up', el.seats_up?.length ? el.seats_up.join(', ') : '');
+            // Term Limits
+            const el = c.elections || {};
+            const limitType = el.term_limit_cooldown ? 'consecutive' : 'lifetime';
+            const sourceUrl = el.term_limit_source || c.portals?.municipal_code;
+            document.getElementById('termLimitInfo').innerHTML =
+                (el.term_limit ? row('Limit', `${el.term_limit} terms (${limitType})`) : row('Limit', 'None')) +
+                (el.term_limit_cooldown ? row('Cooldown', `${el.term_limit_cooldown} ${el.term_limit_cooldown_unit || 'years'}`) : '') +
+                (sourceUrl ? row('Code', `<a href="${sourceUrl}" target="_blank">Municipal Code</a>`) : '') +
+                (c.charter_url ? row('Charter', `<a href="${c.charter_url}" target="_blank">Charter</a>`) : '') +
+                (c.portals?.document_center ? row('Documents', `<a href="${c.portals.document_center}" target="_blank">Document Center</a>`) : '');
 
             // Council Members
+            const getSeatInfo = (name) => (el.seats_up || []).find(s => s.incumbent === name);
             document.getElementById('members').innerHTML = (c.members || []).map(mem => {
                 const profileUrl = mem.city_page || c.council_url || '#';
+                const seat = getSeatInfo(mem.name);
+                const badge = seat ? `<span class="seat-up${seat.termed_out ? ' termed-out' : ''}">2026</span>` : '';
                 return `
                 <div class="council-card" onclick="window.open('${profileUrl}', '_blank')">
+                    ${badge}
                     ${mem.photo_url ? `<img class="photo" src="${mem.photo_url}" alt="${mem.name}" loading="lazy" onerror="this.style.visibility='hidden'">` : '<div class="photo"></div>'}
                     <div class="name">${mem.name}</div>
                     <div class="position">${mem.position}</div>
@@ -314,6 +427,6 @@
 
         init();
     </script>
-    <div style="position:fixed;bottom:8px;right:12px;font-size:11px;color:#999;font-family:monospace;">v1.0.2</div>
+    <div style="position:fixed;bottom:8px;right:12px;font-size:11px;color:#999;font-family:monospace;">v1.0.3</div>
 </body>
 </html>
