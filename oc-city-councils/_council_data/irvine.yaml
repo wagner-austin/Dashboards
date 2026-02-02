@@ -185,7 +185,7 @@ portals:
   video_archive: https://irvine.granicus.com/ViewPublisher.php?view_id=68
   ecomment: https://irvine.granicusideas.com/meetings?scope=upcoming
   youtube:
-  document_center: https://irvinequickrecords.com/
+  document_center: https://irvine.granicus.com/ViewPublisher.php?view_id=68
   municipal_code: https://library.municode.com/ca/irvine/codes/code_of_ordinances
 broadcast:
   cable_channels:
@@ -222,13 +222,53 @@ elections:
   seats_up:
     - district: Mayor
       incumbent: Larry Agran
+      termed_out: false
+      terms_served: "2024 (Mayor)"
+      terms_counted: 1
+      notes: "First Mayor term. Council 2022-2024 doesn't count (separate limits). Charter § 400."
     - district: District 1
       incumbent: Melinda Liu
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term (short 2-year term). Charter § 400."
     - district: District 5
       incumbent: Betty Martinez Franco
+      termed_out: false
+      terms_served: "2025 (special)"
+      terms_counted: 0
+      notes: "Won April 2025 special election (<2 years). Partial term doesn't count per Charter § 400."
     - district: At-Large
       incumbent: Kathleen Treseder
-      notes: "Seat becomes District 6 after 2026"
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. Seat becomes District 6 after 2026. Charter § 400."
+  seats_up_2028:
+    - district: Mayor
+      incumbent: "(2026 winner)"
+      termed_out: false
+      terms_served: "2026"
+      terms_counted: 1
+      notes: "First or second Mayor term depending on 2026 result."
+    - district: District 2
+      incumbent: William Go
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. Charter § 400."
+    - district: District 3
+      incumbent: James Mai
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. Charter § 400."
+    - district: District 4
+      incumbent: Mike Carroll
+      termed_out: true
+      terms_served: "2020, 2024"
+      terms_counted: 2
+      notes: "Two full terms. Appointed May 14, 2019 (~18 months partial term <2 years, doesn't count). Termed out per Charter § 400."
   term_length: 4
   election_system: mixed
   mayor_term_length: 2
@@ -275,7 +315,7 @@ elections:
         - District 4
       certified: "2024-12-10"
       resolution: "24-92"
-      source: https://irvine.granicus.com/MetaViewer.php?view_id=&meta_id=158424
+      source: https://irvine.granicus.com/AgendaViewer.php?view_id=68&clip_id=6699
       notes: "First district election. D1 gets short 2-year term; D2/D3/D4 get 4-year terms."
       winners:
         - district: District 1
@@ -377,7 +417,7 @@ elections:
         - At-Large (2 seats)
       certified: "2022-12-13"
       resolution: "22-105"
-      source: https://irvine.granicus.com/MetaViewer.php?view_id=&meta_id=133766
+      source: https://irvine.granicus.com/AgendaViewer.php?view_id=68&clip_id=5954
       winners:
         - seat: At-Large
           winner: Larry Agran
@@ -433,7 +473,8 @@ elections:
         - At-Large (2 seats + 1 vacancy fill)
       certified: "2020-12-08"
       resolution: "20-97"
-      notes: "3rd runner-up (Larry Agran) elected to fill vacancy created by Khan's election to Mayor"
+      source: https://irvine.granicus.com/AgendaViewer.php?view_id=68&clip_id=5233
+      notes: "3rd runner-up (Larry Agran) elected to fill vacancy created by Khan's election to Mayor. 88.2% voter turnout."
       winners:
         - seat: At-Large
           winner: Tammy Kim
@@ -515,6 +556,7 @@ elections:
         - At-Large (2 seats)
       certified: "2018-12-11"
       resolution: "18-81"
+      source: https://irvine.granicus.com/AgendaViewer.php?view_id=68&clip_id=4576
       winners:
         - seat: At-Large
           winner: Farrah N. Khan
@@ -585,6 +627,7 @@ elections:
         - At-Large (2 seats)
       certified: "2016-12-13"
       resolution: "16-92"
+      source: https://irvine.granicus.com/AgendaViewer.php?view_id=68&clip_id=3986
       winners:
         - seat: At-Large
           winner: Christina L. Shea
@@ -655,6 +698,8 @@ elections:
         - At-Large (2 seats)
       certified: "2014-12-09"
       resolution: "14-148"
+      source: https://irvine.granicus.com/AgendaViewer.php?view_id=68&clip_id=3407
+      notes: "Measure V (Great Park Fiscal Transparency) passed 34,846-4,430 (88.7%). Measure W (Term Limits) passed 29,361-9,986 (74.6%)."
       winners:
         - seat: At-Large
           winner: Lynn Schott
@@ -701,6 +746,8 @@ elections:
         - At-Large (2 seats)
       certified: "2012-12-11"
       resolution: "12-143"
+      source: https://irvine.granicus.com/AgendaViewer.php?view_id=68&clip_id=3289
+      notes: "Measure BB (Irvine Support Our Schools Initiative) passed 49,619-21,278 (70%)."
       winners:
         - seat: At-Large
           winner: Beth Krom
