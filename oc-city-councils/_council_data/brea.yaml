@@ -77,8 +77,8 @@ members:
       and attended Brea Olinda Unified School District schools. He currently serves on the Orange County Athletic Club 
       Advisory Board located in Brea. Council Member Stewart is a father to two adult daughters and currently lives with
       his 8-year-old German Schnauzer.
-    term_start: 2024
-    term_end: 2028
+    term_start: 2022
+    term_end: 2026
   - name: Christine Marick
     position: Councilmember
     district: At-Large
@@ -182,10 +182,35 @@ elections:
   seats_up:
     - district: "At-Large"
       incumbent: "Cecilia Hupp"
+      termed_out: false
+      terms_served: "2014, 2018, 2022"
+      terms_counted: null
+      notes: "No term limits"
     - district: "At-Large"
       incumbent: "Steven Vargas"
+      termed_out: false
+      terms_served: "1998-2002, 2014, 2018, 2022"
+      terms_counted: null
+      notes: "No term limits. Also served 1998-2002."
     - district: "At-Large"
       incumbent: "Blair Stewart"
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: null
+      notes: "No term limits"
+  seats_up_2028:
+    - district: "At-Large"
+      incumbent: "Marty Simonoff"
+      termed_out: false
+      terms_served: "1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024"
+      terms_counted: null
+      notes: "No term limits. 8th consecutive term."
+    - district: "At-Large"
+      incumbent: "Christine Marick"
+      termed_out: false
+      terms_served: "2012, 2016, 2020, 2024"
+      terms_counted: null
+      notes: "No term limits"
   term_length: 4
   election_system: at-large
   mayor_term_length:
@@ -217,8 +242,12 @@ elections:
   history:
     - year: 2024
       type: at-large
+      seats:
+        - At-Large (2 seats)
+      certified: "2024-12-03"
       resolution: "2024-065"
       resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=182254&dbid=0&repo=BREA-DOCS
+      notes: "City Treasurer also elected: Denise Eby (15,283) defeated Sean Thomas (3,876)."
       winners:
         - seat: At-Large
           winner: Christine Marick
@@ -243,6 +272,9 @@ elections:
               outcome: lost
     - year: 2022
       type: at-large
+      seats:
+        - At-Large (3 seats)
+      certified: "2022-12-06"
       resolution: "2022-080"
       resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=147203&dbid=0&repo=BREA-DOCS
       winners:
@@ -275,8 +307,12 @@ elections:
               outcome: lost
     - year: 2020
       type: at-large
+      seats:
+        - At-Large (2 seats)
+      certified: "2020-12-15"
       resolution: "2020-068"
       resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=136377&dbid=0&repo=BREA-DOCS
+      notes: "City Treasurer also elected: Denise Eby defeated Bev Perry."
       winners:
         - seat: At-Large
           winner: Christine Marick
@@ -301,6 +337,8 @@ elections:
               outcome: lost
     - year: 2018
       type: at-large
+      seats:
+        - At-Large (3 seats)
       certified: "2018-12-18"
       resolution: "2018-067"
       resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=125076&dbid=0&repo=BREA-DOCS
@@ -340,9 +378,12 @@ elections:
               outcome: lost
     - year: 2016
       type: at-large
+      seats:
+        - At-Large (2 seats)
       certified: "2016-12-20"
       resolution: "2016-075"
       resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=85783&dbid=0&repo=BREA-DOCS
+      notes: "City Treasurer also elected: Rick Rios (8,411) defeated George Ullrich (7,785)."
       winners:
         - seat: At-Large
           winner: Christine Marick
@@ -364,6 +405,8 @@ elections:
               outcome: lost
     - year: 2014
       type: at-large
+      seats:
+        - At-Large (3 seats)
       certified: "2014-12-02"
       resolution: "2014-072"
       resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=64917&dbid=0&repo=BREA-DOCS
@@ -400,9 +443,12 @@ elections:
               outcome: lost
     - year: 2012
       type: at-large
+      seats:
+        - At-Large (2 seats)
       certified: "2012-12-04"
       resolution: "2012-071"
       resolution_source: https://weblink.cityofbrea.net/WebLink/DocView.aspx?id=43024&dbid=0&repo=BREA-DOCS
+      notes: "City Treasurer Glenn G. Parker re-elected (13,797, unopposed). Measure T (compensation limits) passed 8,681-7,389. Measure U (public records) failed 6,903-8,917."
       winners:
         - seat: At-Large
           winner: Christine Marick
