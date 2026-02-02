@@ -103,13 +103,13 @@ broadcast:
       channel: '31'
   live_stream: https://www.youtube.com/@cityoflagunawoods
 clerk:
-  title: City Clerk's Office
+  title: City Clerk
   phone: (949) 639-0500
   tty: (949) 639-0535
   email: cityhall@cityoflagunawoods.org
   address: 24264 El Toro Road, Laguna Woods, CA 92637
   fax:
-  name:
+  name: Yolie Trippy
 public_comment:
   in_person: true
   remote_live: false
@@ -132,8 +132,35 @@ elections:
   seats_up:
     - district: At-Large
       incumbent: Annie McCary
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "No term limits."
     - district: At-Large
       incumbent: Carol Moore
+      termed_out: false
+      terms_served: "2014, 2018, 2022"
+      terms_counted: 3
+      notes: "No term limits."
+  seats_up_2028:
+    - district: At-Large
+      incumbent: Pearl Lee
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "No term limits."
+    - district: At-Large
+      incumbent: Cynthia Conners
+      termed_out: false
+      terms_served: "2012, 2016, 2020, 2024"
+      terms_counted: 4
+      notes: "No term limits. First appointed 2009."
+    - district: At-Large
+      incumbent: Shari L. Horne
+      termed_out: false
+      terms_served: "2016, 2020, 2024"
+      terms_counted: 3
+      notes: "No term limits. First appointed 2014."
   term_length: 4
   election_system: at-large
   mayor_term_length:
