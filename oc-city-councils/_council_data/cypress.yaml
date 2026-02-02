@@ -1,5 +1,6 @@
 city: cypress
 city_name: Cypress
+charter_url: https://www.cypressca.org/home/showpublisheddocument/13560/638996819924737488
 website: https://www.cypressca.org
 council_url: https://www.cypressca.org/government/city-council
 last_updated: '2026-01-25'
@@ -108,10 +109,11 @@ meetings:
     zoom_passcode:
     phone_numbers:
 portals:
-  agendas: https://public.destinyhosted.com/agenda_publish.cfm?id=29773
+  agendas: https://public.destinyhosted.com/agenda_publish.cfm?id=29773&mt=CCREG
   live_stream: https://www.cypressca.org/government/watch-cypress-channel-36
   document_center: https://ecms.cypressca.org/WebLink/Welcome.aspx
   municipal_code: https://ecode360.com/CY4920
+  charter_url: https://www.cypressca.org/home/showpublisheddocument/13560/638996819924737488
   youtube:
   ecomment:
   video_archive:
@@ -186,7 +188,7 @@ elections:
   term_limit_cooldown_unit: null
   term_limit_effective: "1977-11-08"
   term_limit_notes: "8 years LIFETIME limit per Charter § 400. Once 8+ years served, ineligible forever. Only service after Nov 8, 1977 counts."
-  term_limit_source: https://www.cypressca.org/home/showdocument?id=13560
+  term_limit_source:
   transition_note: Transitioned from at-large to by-district March 2024 (Ord. 1207)
   cycle_pattern:
     group_a:
