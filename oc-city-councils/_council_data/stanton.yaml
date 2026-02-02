@@ -157,10 +157,35 @@ elections:
   seats_up:
     - district: Mayor (At-Large)
       incumbent: David J. Shawver
+      termed_out: false
+      terms_served: "2018, 2022 (pre-Nov 2024, don't count)"
+      terms_counted: 0
+      notes: "Mayor limit effective Nov 4, 2024 per § 2.04.070. Prior terms don't count. 2026 would be term 1."
     - district: District 1
       incumbent: Donald Torres
+      termed_out: false
+      terms_served: "2022"
+      terms_counted: 1
+      notes: "First term. 2 full terms lifetime per § 2.04.070 (post-Dec 31, 2015)."
     - district: District 3
       incumbent: Gary Taylor
+      termed_out: true
+      terms_served: "2018, 2022"
+      terms_counted: 2
+      notes: "Two terms (post-Dec 31, 2015). Termed out per § 2.04.070 (lifetime limit)."
+  seats_up_2028:
+    - district: District 2
+      incumbent: Victor Barrios
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 full terms lifetime per § 2.04.070."
+    - district: District 4
+      incumbent: John D. Warren
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term. 2 full terms lifetime per § 2.04.070."
   term_length: 4
   election_system: mixed
   term_limit: 2
@@ -168,7 +193,7 @@ elections:
   term_limit_cooldown: null
   term_limit_cooldown_unit: null
   term_limit_effective: '2016-11-08'
-  term_limit_notes: 2 full 4-year terms lifetime per Sec. 2.04.070 (Measure RR, Nov 2016). Mayor: 2 terms lifetime effective Nov 2024. Partial/mid-term vacancy appointments don't count.
+  term_limit_notes: "2 full 4-year terms lifetime per Sec. 2.04.070 (Measure RR, Nov 2016). Mayor: 2 terms lifetime effective Nov 2024. Partial/mid-term vacancy appointments don't count."
   term_limit_source: https://ecode360.com/43147795
   mayor_term_length:
   districting_info:
