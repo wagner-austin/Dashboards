@@ -651,6 +651,7 @@
   {
     "city": "anaheim",
     "city_name": "Anaheim",
+    "charter_url": "https://www.anaheim.net/DocumentCenter/View/268/City-Charter?bidId=",
     "website": "https://www.anaheim.net",
     "council_url": "https://www.anaheim.net/173/City-Council",
     "last_updated": "2026-01-25",
@@ -760,11 +761,12 @@
       }
     },
     "portals": {
-      "agendas": "http://local.anaheim.net/docs_agend/questys_pub/",
+      "agendas": "https://www.anaheim.net/2142/View-City-Council-Meetings",
       "live_stream": "https://www.anaheim.net/councilvideos",
       "video_archive": "https://anaheim.granicus.com/ViewPublisher.php?view_id=2",
       "document_center": "https://anaheim.granicus.com/ViewPublisher.php?view_id=2",
       "municipal_code": "https://codelibrary.amlegal.com/codes/anaheim/latest/overview",
+      "charter_url": "https://www.anaheim.net/DocumentCenter/View/268/City-Charter?bidId=",
       "youtube": null,
       "ecomment": null
     },
@@ -817,7 +819,7 @@
         "general_public": "3 minutes",
         "legislative_matters": "5 minutes"
       },
-      "notes": "Comments posted on City website and made part of official public record. Speakers may be removed for profane language or disruptive behavior (AMC 1.12.017)."
+      "notes": "Comments posted on City website and made part of official public record."
     },
     "council": {
       "size": 7,
@@ -1941,7 +1943,7 @@
       }
     },
     "portals": {
-      "agendas": "https://www.cityofbrea.gov/509/Meeting-Agendas-Minutes",
+      "agendas": "https://horizon.agendalink.app/engage/breaca/agendas",
       "live_stream": "https://www.cityofbrea.gov/812/Government-Access-Channel",
       "video_archive": null,
       "ecomment": null,
@@ -1972,8 +1974,7 @@
     },
     "public_comment": {
       "in_person": true,
-      "remote_live": true,
-      "remote_platform": "Zoom",
+      "remote_live": false,
       "ecomment": false,
       "written_email": true,
       "time_limit": "3 minutes per speaker",
@@ -3193,6 +3194,7 @@
   {
     "city": "costa-mesa",
     "city_name": "Costa Mesa",
+    "charter_url": "http://ftp.costamesaca.gov/costamesaca/council/agenda/2014/2014-03-18/NB-1-Attach-2.pdf",
     "website": "https://www.costamesaca.gov",
     "council_url": "https://www.costamesaca.gov/government/mayor-city-council",
     "last_updated": "2026-01-26",
@@ -3294,9 +3296,9 @@
         "city_state_zip": "Costa Mesa, CA 92626"
       },
       "remote": {
-        "zoom_url": "https://zoom.us/j/96060379921?pwd=N2lvbzhJM2hWU3puZkk1T3VYTXhoQT09",
-        "zoom_id": "960 6037 9921",
-        "zoom_passcode": "595958",
+        "zoom_url": null,
+        "zoom_id": null,
+        "zoom_passcode": null,
         "phone_numbers": [
           "(669) 900-6833"
         ]
@@ -3309,6 +3311,7 @@
       "youtube": "https://youtube.com/costamesatv",
       "document_center": "https://weblink.costamesaca.gov",
       "municipal_code": "https://ecode360.com/CO4918",
+      "charter_url": "http://ftp.costamesaca.gov/costamesaca/council/agenda/2014/2014-03-18/NB-1-Attach-2.pdf",
       "ecomment": null,
       "video_archive": null
     },
@@ -4122,6 +4125,7 @@
   {
     "city": "cypress",
     "city_name": "Cypress",
+    "charter_url": "https://www.cypressca.org/home/showpublisheddocument/13560/638996819924737488",
     "website": "https://www.cypressca.org",
     "council_url": "https://www.cypressca.org/government/city-council",
     "last_updated": "2026-01-25",
@@ -4220,10 +4224,11 @@
       }
     },
     "portals": {
-      "agendas": "https://public.destinyhosted.com/agenda_publish.cfm?id=29773",
+      "agendas": "https://public.destinyhosted.com/agenda_publish.cfm?id=29773&mt=CCREG",
       "live_stream": "https://www.cypressca.org/government/watch-cypress-channel-36",
       "document_center": "https://ecms.cypressca.org/WebLink/Welcome.aspx",
       "municipal_code": "https://ecode360.com/CY4920",
+      "charter_url": "https://www.cypressca.org/home/showpublisheddocument/13560/638996819924737488",
       "youtube": null,
       "ecomment": null,
       "video_archive": null
@@ -4318,7 +4323,7 @@
       "term_limit_cooldown_unit": null,
       "term_limit_effective": "1977-11-08",
       "term_limit_notes": "8 years LIFETIME limit per Charter \u00a7 400. Once 8+ years served, ineligible forever. Only service after Nov 8, 1977 counts.",
-      "term_limit_source": "https://www.cypressca.org/home/showdocument?id=13560",
+      "term_limit_source": null,
       "transition_note": "Transitioned from at-large to by-district March 2024 (Ord. 1207)",
       "cycle_pattern": {
         "group_a": {
@@ -5557,9 +5562,9 @@
         "city_state_zip": "Fountain Valley, CA 92708"
       },
       "remote": {
-        "zoom_url": "https://bit.ly/4kDYQHD",
-        "zoom_id": "851 5107 5391",
-        "zoom_passcode": "883147",
+        "zoom_url": null,
+        "zoom_id": null,
+        "zoom_passcode": null,
         "phone_numbers": null
       },
       "closed_session_time": null
@@ -5569,7 +5574,7 @@
       "live_stream": "https://www.fountainvalley.gov/213/Watch-FV-Television",
       "document_center": "https://www.fountainvalley.gov/AgendaCenter/City-Council-2",
       "municipal_code": "https://ecode360.com/FO4927",
-      "youtube": null,
+      "youtube": "https://www.youtube.com/@CityofFV",
       "ecomment": null,
       "video_archive": "https://www.fountainvalley.gov/AgendaCenter/City-Council-2"
     },
@@ -6278,7 +6283,7 @@
     },
     "public_comment": {
       "in_person": true,
-      "remote_live": true,
+      "remote_live": false,
       "written_email": true,
       "email": "CouncilMembers@cityoffullerton.com",
       "time_limit": "3 minutes per speaker",
@@ -6352,7 +6357,7 @@
       "term_limit_cooldown_unit": "years",
       "term_limit_effective": "2010-11-02",
       "term_limit_notes": "3 successive 4-year terms per Ord. 3165 (2010). 4-year break required after maxing out. Applies to terms commencing after Nov 2, 2010.",
-      "term_limit_source": "https://codelibrary.amlegal.com/codes/fullerton/latest/fullerton_ca/0-0-0-166",
+      "term_limit_source": "https://codelibrary.amlegal.com/codes/fullerton/latest/fullerton_ca/0-0-0-554",
       "cycle_pattern": {
         "group_a": {
           "years": "2020, 2024, 2028...",
@@ -7096,7 +7101,7 @@
     },
     "public_comment": {
       "in_person": true,
-      "remote_live": true,
+      "remote_live": false,
       "written_email": true,
       "ecomment": true,
       "time_limit": "3 minutes per speaker",
@@ -8009,6 +8014,7 @@
   {
     "city": "huntington-beach",
     "city_name": "Huntington Beach",
+    "charter_url": "https://ecode360.com/HU4937",
     "website": "https://www.huntingtonbeachca.gov",
     "council_url": "https://www.huntingtonbeachca.gov/government/city_council/index.php",
     "last_updated": "2026-01-25",
@@ -8017,7 +8023,7 @@
     "instagram": null,
     "members": [
       {
-        "name": "Casey Mc Keon",
+        "name": "Casey McKeon",
         "position": "Mayor",
         "district": "At-Large",
         "email": "Casey.McKeon@surfcity-hb.org",
@@ -8126,6 +8132,7 @@
       "youtube": "https://youtube.com/@cityofhb",
       "document_center": "https://records.huntingtonbeachca.gov/WebLink/Browse.aspx?id=1&dbid=0&repo=COHB",
       "municipal_code": "https://ecode360.com/HU4937",
+      "charter_url": "https://ecode360.com/HU4937",
       "ecomment": null
     },
     "broadcast": {
@@ -9089,7 +9096,7 @@
         "city_state_zip": "Irvine, CA 92606"
       },
       "remote": {
-        "zoom_url": "https://www.zoomgov.com/j/1600434844",
+        "zoom_url": "https://zoom.us/join",
         "zoom_id": "160-043-4844",
         "zoom_passcode": "272906",
         "phone_numbers": [
@@ -9106,7 +9113,8 @@
       "ecomment": "https://irvine.granicusideas.com/meetings?scope=upcoming",
       "youtube": null,
       "document_center": "https://irvine.granicus.com/ViewPublisher.php?view_id=68",
-      "municipal_code": "https://library.municode.com/ca/irvine/codes/code_of_ordinances"
+      "municipal_code": "https://library.municode.com/ca/irvine/codes/code_of_ordinances",
+      "charter_url": "https://library.municode.com/ca/irvine/codes/code_of_ordinances?nodeId=CHTRCIIR"
     },
     "broadcast": {
       "cable_channels": [
@@ -13302,15 +13310,11 @@
         "city_state_zip": "Laguna Woods, CA 92637"
       },
       "remote": {
-        "zoom_phone": [
-          "(669) 444-9171",
-          "(346) 248-7799"
-        ],
-        "zoom_id": "873 1726 2653",
-        "zoom_passcode": "104459",
-        "notes": "View only - public comments NOT accepted via Zoom",
+        "zoom_url": null,
+        "zoom_id": null,
+        "zoom_passcode": null,
         "phone_numbers": null,
-        "zoom_url": null
+        "notes": "View only - Zoom/YouTube/Cable are for viewing only, public comments NOT accepted remotely"
       },
       "closed_session_time": null
     },
@@ -13910,15 +13914,14 @@
     },
     "public_comment": {
       "in_person": true,
-      "remote_live": true,
-      "remote_live_method": "Facebook Live comments with \"COMMENT TO COUNCIL:\" prefix",
+      "remote_live": false,
       "ecomment": false,
       "written_email": true,
       "time_limit": "3 minutes per speaker",
       "overall_limit": "30 minutes for public comment period",
       "email": "council@lakeforestca.gov",
       "deadline": "5:00 PM on meeting day",
-      "notes": "Comments via Facebook Live must begin with \"COMMENT TO COUNCIL:\" in all caps to be read aloud"
+      "notes": "Public comments no longer accepted remotely. Email comments not read at meeting, uploaded to agenda packet as public record."
     },
     "council": {
       "size": 5,
@@ -15235,7 +15238,7 @@
       }
     },
     "portals": {
-      "agendas": "https://www.cityofmissionviejo.org/departments/agenda-minutes-videos",
+      "agendas": "https://missionviejo.granicus.com/ViewPublisher.php?view_id=25",
       "live_stream": "https://missionviejo.granicus.com/player/camera/5?publish_id=178&redirect=true",
       "video_archive": "https://missionviejo.granicus.com/ViewPublisher.php?view_id=12",
       "youtube": null,
@@ -15856,6 +15859,7 @@
   {
     "city": "newport-beach",
     "city_name": "Newport Beach",
+    "charter_url": "https://www.codepublishing.com/CA/NewportBeach/html/NewportBeachCH.html",
     "website": "https://www.newportbeachca.gov",
     "council_url": "https://www.newportbeachca.gov/government/city-council",
     "last_updated": "2026-01-26",
@@ -16002,7 +16006,7 @@
     },
     "public_comment": {
       "in_person": true,
-      "remote_live": true,
+      "remote_live": false,
       "written_email": true,
       "ecomment": true,
       "time_limit": "3 minutes per speaker",
@@ -17628,6 +17632,7 @@
   {
     "city": "placentia",
     "city_name": "Placentia",
+    "charter_url": "https://ecode360.com/42709533",
     "website": "https://www.placentia.org",
     "council_url": "https://www.placentia.org/268/Mayor-City-Council",
     "last_updated": "2026-01-26",
@@ -20394,6 +20399,7 @@
   {
     "city": "santa-ana",
     "city_name": "Santa Ana",
+    "charter_url": "https://library.municode.com/ca/santa_ana/codes/code_of_ordinances?nodeId=PTITHCH",
     "website": "https://www.santa-ana.org",
     "council_url": "https://www.santa-ana.org/departments/city-council/",
     "last_updated": "2026-01-26",
@@ -20496,8 +20502,8 @@
         "city_state_zip": "Santa Ana, CA 92701"
       },
       "remote": {
-        "zoom_url": "https://us02web.zoom.us/j/315965149",
-        "zoom_id": "315-965-149",
+        "zoom_url": null,
+        "zoom_id": null,
         "zoom_passcode": null,
         "phone_numbers": [
           "(669) 900-9128"
@@ -20505,7 +20511,7 @@
       }
     },
     "portals": {
-      "agendas": "https://www.santa-ana.org/agendas-and-minutes/",
+      "agendas": "https://santa-ana.primegov.com/public/portal?fromiframe=true",
       "live_stream": "https://www.santa-ana.org/agendas-and-minutes/",
       "video_archive": "https://santaana.granicus.com/ViewPublisher.php?view_id=2",
       "youtube": "https://youtube.com/@cityofsantaanavideos",
@@ -21538,6 +21544,7 @@
   {
     "city": "seal-beach",
     "city_name": "Seal Beach",
+    "charter_url": "https://www.sealbeachca.gov/Portals/0/Documents/CITY%20CHARTER%20-%202014%20Final.pdf?ver=2016-02-10-112102-057",
     "website": "https://www.sealbeachca.gov",
     "council_url": "https://www.sealbeachca.gov/Government/City-Council",
     "last_updated": "2026-01-26",
@@ -21638,12 +21645,12 @@
       }
     },
     "portals": {
-      "agendas": "https://www.sealbeachca.gov/Government/Agendas-Notices-Meeting-Videos/Council-Commission-Meetings",
+      "agendas": "https://sealbeach.primegov.com/public/portal?fromiframe=true",
       "youtube": "https://youtube.com/@cityofsealbeachcouncilchambers",
       "minutes": "http://pubrec.sealbeachca.gov/WebLink/Browse.aspx?startid=1990",
       "e_records": "http://pubrec.sealbeachca.gov/WebLink8/",
       "public_records": "https://cityofsealbeach.nextrequest.com",
-      "document_center": "https://sealbeach.primegov.com/public/portal",
+      "document_center": "https://sealbeach.primegov.com/public/portal?fromiframe=true",
       "municipal_code": "https://ecode360.com/SE5012",
       "ecomment": null,
       "live_stream": null,
@@ -22348,8 +22355,8 @@
         "city_state_zip": "Stanton, CA 90680"
       },
       "remote": {
-        "zoom_url": "https://us02web.zoom.us/j/84528780625?pwd=kMyEtwVcsndZFIkYaaPvseeu35XqBf.1",
-        "zoom_id": "845-2878-0625",
+        "zoom_url": null,
+        "zoom_id": null,
         "zoom_passcode": null,
         "phone_numbers": [
           "669-444-9171"
@@ -22380,7 +22387,7 @@
     },
     "public_comment": {
       "in_person": true,
-      "remote_live": true,
+      "remote_live": false,
       "ecomment": false,
       "written_email": true,
       "time_limit": "3 minutes per speaker",
@@ -23012,7 +23019,7 @@
       }
     },
     "portals": {
-      "agendas": "https://www.tustinca.org/282/Meetings-Agendas",
+      "agendas": "https://tustin.granicus.com/ViewPublisher.php?view_id=5",
       "video_archive": "https://www.tustinca.org/282/Meetings-Agendas",
       "ecomment": "https://tustin.granicusideas.com/meetings?scope=upcoming",
       "youtube": null,
@@ -25200,7 +25207,7 @@
     },
     "public_comment": {
       "in_person": true,
-      "remote_live": true,
+      "remote_live": false,
       "ecomment": false,
       "written_email": true,
       "time_limit": "5 minutes per speaker",
