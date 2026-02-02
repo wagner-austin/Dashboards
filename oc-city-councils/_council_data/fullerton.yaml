@@ -96,7 +96,7 @@ clerk:
   address: 303 W. Commonwealth Ave., Fullerton, CA 92832
 public_comment:
   in_person: true
-  remote_live: true
+  remote_live: false
   written_email: true
   email: CouncilMembers@cityoffullerton.com
   time_limit: 3 minutes per speaker
@@ -156,7 +156,7 @@ elections:
   term_limit_cooldown_unit: years
   term_limit_effective: '2010-11-02'
   term_limit_notes: 3 successive 4-year terms per Ord. 3165 (2010). 4-year break required after maxing out. Applies to terms commencing after Nov 2, 2010.
-  term_limit_source: https://codelibrary.amlegal.com/codes/fullerton/latest/fullerton_ca/0-0-0-166
+  term_limit_source: https://codelibrary.amlegal.com/codes/fullerton/latest/fullerton_ca/0-0-0-554
   cycle_pattern:
     group_a:
       years: "2020, 2024, 2028..."
