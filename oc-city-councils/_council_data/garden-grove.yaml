@@ -179,7 +179,7 @@ clerk:
   address:
 public_comment:
   in_person: true
-  remote_live: true
+  remote_live: false
   written_email: true
   ecomment: true
   time_limit: 3 minutes per speaker
