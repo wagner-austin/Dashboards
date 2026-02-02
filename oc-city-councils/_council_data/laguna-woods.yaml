@@ -79,14 +79,11 @@ meetings:
     address: 24264 El Toro Road
     city_state_zip: Laguna Woods, CA 92637
   remote:
-    zoom_phone:
-      - (669) 444-9171
-      - (346) 248-7799
-    zoom_id: 873 1726 2653
-    zoom_passcode: '104459'
-    notes: View only - public comments NOT accepted via Zoom
-    phone_numbers:
     zoom_url:
+    zoom_id:
+    zoom_passcode:
+    phone_numbers:
+    notes: View only - Zoom/YouTube/Cable are for viewing only, public comments NOT accepted remotely
   closed_session_time:
 portals:
   agendas: https://www.cityoflagunawoods.org/city-council/city-council-meetings/
