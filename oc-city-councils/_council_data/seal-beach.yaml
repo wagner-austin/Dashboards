@@ -1,5 +1,6 @@
 city: seal-beach
 city_name: Seal Beach
+charter_url: https://www.sealbeachca.gov/Portals/0/Documents/CITY%20CHARTER%20-%202014%20Final.pdf?ver=2016-02-10-112102-057
 website: https://www.sealbeachca.gov
 council_url: https://www.sealbeachca.gov/Government/City-Council
 last_updated: '2026-01-26'
@@ -92,12 +93,12 @@ meetings:
     zoom_passcode:
     phone_numbers:
 portals:
-  agendas: https://www.sealbeachca.gov/Government/Agendas-Notices-Meeting-Videos/Council-Commission-Meetings
+  agendas: https://sealbeach.primegov.com/public/portal?fromiframe=true
   youtube: https://youtube.com/@cityofsealbeachcouncilchambers
   minutes: http://pubrec.sealbeachca.gov/WebLink/Browse.aspx?startid=1990
   e_records: http://pubrec.sealbeachca.gov/WebLink8/
   public_records: https://cityofsealbeach.nextrequest.com
-  document_center: https://sealbeach.primegov.com/public/portal
+  document_center: https://sealbeach.primegov.com/public/portal?fromiframe=true
   municipal_code: https://ecode360.com/SE5012
   ecomment:
   live_stream:
