@@ -82,7 +82,7 @@ portals:
   agendas: https://www.lapalmaca.gov/72/Agendas-and-Minutes
   audio_archive: https://www.lapalmaca.gov/72/Agendas-and-Minutes
   youtube:
-  document_center:
+  document_center: https://lapalmaca.portal.civicclerk.com/
   municipal_code: https://library.municode.com/ca/la_palma/codes/code_of_ordinances
   ecomment:
   live_stream:
@@ -110,18 +110,45 @@ public_comment:
   deadline:
 council:
   size: 5
-  districts: 3
-  at_large: 2
+  districts: 5
+  at_large: 0
   mayor_elected: false
   expanded_date:
-  notes:
+  notes: "Transitioned to 5-district system in 2024 (Ordinance 2022-14). Previously at-large."
 elections:
   next_election: '2026-11-03'
   seats_up:
-    - district: At-Large
+    - district: District 2
       incumbent: Nitesh P. Patel
-    - district: At-Large
+      termed_out: false
+      terms_served: "2018, 2022 (at-large, old rules)"
+      terms_counted: 0
+      notes: "Prior at-large terms under old rules don't count. 2026 would be term 1 under new 3-term limit (Ord. 2024-03)."
+    - district: District 4
       incumbent: Janet Keo Conklin
+      termed_out: false
+      terms_served: "2022 (at-large, old rules)"
+      terms_counted: 0
+      notes: "Prior at-large term under old rules doesn't count. 2026 would be term 1 under new 3-term limit (Ord. 2024-03)."
+  seats_up_2028:
+    - district: District 1
+      incumbent: Debbie S. Baker
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term under new 3-term limit (Ord. 2024-03). Prior 2020 at-large term under old rules doesn't count."
+    - district: District 3
+      incumbent: Vikesh P. Patel
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term under new 3-term limit (Ord. 2024-03)."
+    - district: District 5
+      incumbent: Mark I. Waldman
+      termed_out: false
+      terms_served: "2024"
+      terms_counted: 1
+      notes: "First term under new 3-term limit (Ord. 2024-03). Prior 2020 at-large term under old rules doesn't count."
   term_length: 4
   election_system: mixed
   mayor_term_length:
@@ -132,7 +159,7 @@ elections:
   term_limit_cooldown: 4
   term_limit_cooldown_unit: years
   term_limit_effective: '2024-11-05'
-  term_limit_notes: 3 consecutive 4-year terms per Measure W/Ord. 2024-03. 4-year break required. Previously 2 terms with 2-year break (1996). Sunset: reverts to 2 terms if city returns to at-large.
+  term_limit_notes: "3 consecutive 4-year terms per Measure W/Ord. 2024-03. 4-year break required. Previously 2 terms with 2-year break (1996). Sunset: reverts to 2 terms if city returns to at-large."
   term_limit_source: https://library.municode.com/ca/la_palma/codes/code_of_ordinances?nodeId=COOR_CH2AD_ARTIINGE_S2-8TEOFCO
   cycle_pattern:
     group_a:
@@ -144,7 +171,9 @@ elections:
     group_b:
       years: "2026, 2030, 2034..."
       seats:
-        - At-Large (2 seats)
+        - District 2
+        - District 4
+    source: "Ordinance 2022-14, Section 2-413"
   candidate_info:
     contact_email:
     contact_phone:
@@ -158,8 +187,8 @@ elections:
       seats: ["District 1", "District 3", "District 5"]
       certified: "2024-12-10"
       resolution: "2024-47"
-      source: https://lapalmaca.portal.civicclerk.com/event/24/files/attachment/202
-      notes: "First district election after transition from at-large"
+      source: https://lapalmaca.portal.civicclerk.com/event/24/files/agenda/119
+      notes: "First district election after transition from at-large. All candidates unopposed. Measure W (term limits: 3 terms with 4-year break) passed 4,022-2,874."
       winners:
         - district: District 1
           winner: Debbie S. Baker
@@ -191,7 +220,8 @@ elections:
       seats: ["At-Large (2 seats)"]
       certified: "2022-12-13"
       resolution: "2022-52"
-      source: https://www.lapalmaca.gov/ArchiveCenter/ViewFile/Item/3158
+      source: https://lapalmaca.portal.civicclerk.com/event/142/files/agenda/176
+      notes: "Measure P (TOT increase 8% to 12%) passed 3,647-1,496."
       winners:
         - seat: At-Large
           winner: Nitesh Patel
