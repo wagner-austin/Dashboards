@@ -1,5 +1,6 @@
 city: costa-mesa
 city_name: Costa Mesa
+charter_url: http://ftp.costamesaca.gov/costamesaca/council/agenda/2014/2014-03-18/NB-1-Attach-2.pdf
 website: https://www.costamesaca.gov
 council_url: https://www.costamesaca.gov/government/mayor-city-council
 last_updated: '2026-01-26'
@@ -124,9 +125,9 @@ meetings:
     address: 77 Fair Drive
     city_state_zip: Costa Mesa, CA 92626
   remote:
-    zoom_url: https://zoom.us/j/96060379921?pwd=N2lvbzhJM2hWU3puZkk1T3VYTXhoQT09
-    zoom_id: 960 6037 9921
-    zoom_passcode: '595958'
+    zoom_url:
+    zoom_id:
+    zoom_passcode:
     phone_numbers:
       - (669) 900-6833
   closed_session_time:
@@ -136,6 +137,7 @@ portals:
   youtube: https://youtube.com/costamesatv
   document_center: https://weblink.costamesaca.gov
   municipal_code: https://ecode360.com/CO4918
+  charter_url: http://ftp.costamesaca.gov/costamesaca/council/agenda/2014/2014-03-18/NB-1-Attach-2.pdf
   ecomment:
   video_archive:
 broadcast:
