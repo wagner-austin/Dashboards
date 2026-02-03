@@ -4,50 +4,40 @@ Jumping bunny animation.
 
 ## Source
 
-`Bunny_Jump.mp4` - 26 frames at 30fps
+`Bunny_Jump.mp4` - 26 frames at 30fps, reduced to 17 frames.
 
 ## Frames
 
-26 frames (frame_01 to frame_26), uniform timing.
+17 frames, 58ms interval in engine (plays once per spacebar press).
 
-| Frame | Delay |
-|-------|-------|
-| 1-26  | 0.03s |
+## Config
 
-## GIF Generation
+Defined in `config.json`:
 
-```bash
-# Created from MP4
-python -c "
-from PIL import Image
-import cv2
-
-cap = cv2.VideoCapture('Bunny_Jump.mp4')
-frames = []
-while True:
-    ret, frame = cap.read()
-    if not ret:
-        break
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frames.append(Image.fromarray(frame_rgb))
-cap.release()
-
-frames[0].save('bunny_jump.gif', save_all=True, append_images=frames[1:],
-    duration=33, loop=0)
-"
+```json
+{
+  "source": "originals/bunny/bunny_jump/bunny_jump.gif",
+  "widths": [30, 50, 80],
+  "contrast": 3.5,
+  "invert": true,
+  "crop": "25%,0,25%,8",
+  "directions": ["left", "right"]
+}
 ```
 
-## ASCII Conversion
+## Generation
 
 ```bash
-python tools/gif_to_ascii.py originals/bunny/bunny_jump/Bunny_Jump.mp4 --contrast 1.5 --invert --widths 60 --frames 26 --output bunny/jump/
+poetry run python -m scripts.generate_sprites
 ```
-
-Note: Frames are cropped 25% from each side before conversion.
 
 | Setting  | Value |
 |----------|-------|
-| Contrast | 1.5   |
+| Contrast | 3.5   |
 | Invert   | Yes   |
-| Width    | 60    |
-| Crop     | 25% sides |
+| Widths   | 30, 50, 80 |
+| Crop     | 25% sides, 8px bottom |
+
+## Notes
+
+Higher contrast needed due to video source. Cropped to remove empty space around bunny.
