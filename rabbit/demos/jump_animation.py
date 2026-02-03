@@ -1,5 +1,8 @@
 """ASCII bunny JUMP animation - vanilla Python."""
-import sys, os, time, msvcrt
+import msvcrt
+import os
+import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from bunny.jump.w60_frames import FRAMES

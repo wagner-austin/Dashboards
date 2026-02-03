@@ -1,9 +1,12 @@
 """Interactive walk + jump animation - spacebar to jump."""
-import sys, os, time, msvcrt
+import msvcrt
+import os
+import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from frames.bunny.w40_frames import FRAMES as WALK_FRAMES
-from bunny.jump.w40_frames import FRAMES as JUMP_FRAMES
+from bunny.jump.w42_frames import FRAMES as JUMP_FRAMES
+from frames.bunny.w42_frames import FRAMES as WALK_FRAMES
 
 # Target height - all frames padded to this
 TARGET_HEIGHT = 32
@@ -51,7 +54,7 @@ def blend_frames(frame_a, frame_b, t):
         lines_b.insert(0, ' ' * max_width)
 
     result = []
-    for la, lb in zip(lines_a, lines_b):
+    for la, lb in zip(lines_a, lines_b, strict=False):
         line = []
         for i in range(max(len(la), len(lb))):
             ca = la[i] if i < len(la) else ' '
@@ -78,7 +81,7 @@ def check_input():
         key = msvcrt.getch()
         if key == b' ':
             return 'jump'
-        elif key.lower() == b'q':
+        if key.lower() == b'q':
             return 'quit'
     return None
 

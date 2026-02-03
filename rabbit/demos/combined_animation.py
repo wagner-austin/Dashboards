@@ -1,11 +1,14 @@
 """ASCII bunny combined animation - walk between each action with aligned ground."""
-import sys, os, time, msvcrt
+import msvcrt
+import os
+import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from frames.bunny.w40_frames import FRAMES as WALK_FRAMES
-from bunny.idle.w30_frames import FRAMES as IDLE_FRAMES
 from bunny.alert.w30_frames import FRAMES as ALERT_FRAMES
+from bunny.idle.w30_frames import FRAMES as IDLE_FRAMES
 from bunny.jump.w60_frames import FRAMES as JUMP_FRAMES
+from frames.bunny.w42_frames import FRAMES as WALK_FRAMES
 
 # Target height - all frames padded to this height with ground at bottom
 TARGET_HEIGHT = 32
@@ -60,7 +63,7 @@ def blend_frames(frame_a, frame_b, t):
         lines_b.insert(0, ' ' * max_width)
 
     result = []
-    for la, lb in zip(lines_a, lines_b):
+    for la, lb in zip(lines_a, lines_b, strict=False):
         line = []
         for i in range(max(len(la), len(lb))):
             ca = la[i] if i < len(la) else ' '
@@ -93,6 +96,7 @@ def transition_blend(from_frames, to_frames, steps=3):
 
 import random
 
+
 def transition_dissolve(from_frames, to_frames, steps=5):
     """Dissolve from last frame of A to first frame of B - no flicker."""
     frame_a = from_frames[-1]
@@ -118,7 +122,7 @@ def transition_dissolve(from_frames, to_frames, steps=5):
     for step in range(steps):
         t = (step + 1) / steps
         result = []
-        for row, (la, lb) in enumerate(zip(lines_a, lines_b)):
+        for row, (la, lb) in enumerate(zip(lines_a, lines_b, strict=False)):
             line = []
             for col in range(max_width):
                 ca = la[col] if col < len(la) else ' '

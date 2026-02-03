@@ -1,5 +1,8 @@
 """ASCII bunny IDLE animation - vanilla Python."""
-import sys, os, time, msvcrt
+import msvcrt
+import os
+import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from bunny.idle.w30_frames import FRAMES

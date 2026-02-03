@@ -1,8 +1,11 @@
 """ASCII bunny WALK animation - vanilla Python."""
-import sys, os, time, msvcrt
+import msvcrt
+import os
+import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from frames.bunny.w40_frames import FRAMES
+from frames.bunny.w42_frames import FRAMES
 
 print("\033[?25l\033[2J\033[H", end="")  # hide cursor, clear, home
 i = 0
