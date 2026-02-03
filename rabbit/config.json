@@ -1,0 +1,55 @@
+{
+  "sprites": {
+    "bunny": {
+      "animations": {
+        "walk": {
+          "source": "originals/bunny/bunny_walk/bunny.gif",
+          "widths": [30, 50, 80],
+          "contrast": 1.8,
+          "invert": true,
+          "crop": "0,0,0,2",
+          "directions": ["left", "right"]
+        },
+        "jump": {
+          "source": "originals/bunny/bunny_jump/bunny_jump_new.gif",
+          "widths": [30, 50, 80],
+          "contrast": 3.3,
+          "invert": true,
+          "crop": "25%,0,25%,0",
+          "directions": ["left", "right"]
+        },
+        "idle": {
+          "source": "originals/bunny/bunny_idle/bunny_idle.gif",
+          "widths": [30, 50, 80],
+          "contrast": 2.5,
+          "invert": true,
+          "directions": ["left"]
+        },
+        "alert": {
+          "source": "originals/bunny/bunny_alert/bunny_alert.gif",
+          "widths": [30, 50, 80],
+          "contrast": 2.3,
+          "invert": true,
+          "directions": ["left"]
+        }
+      }
+    },
+    "tree": {
+      "source": "originals/tree/tree.gif",
+      "widths": [60, 120, 180],
+      "contrast": 1.5,
+      "invert": true
+    }
+  },
+  "layers": [
+    {"name": "sky", "type": "static"},
+    {"name": "background", "sprites": ["mountain"], "parallax": 0.2},
+    {"name": "midground", "sprites": ["tree"], "parallax": 0.5},
+    {"name": "foreground", "sprites": ["bunny"], "parallax": 1.0}
+  ],
+  "settings": {
+    "fps": 60,
+    "jumpSpeed": 58,
+    "scrollSpeed": 36
+  }
+}
