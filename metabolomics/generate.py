@@ -270,6 +270,7 @@ def main() -> int:
     # Venn diagram calculations - peaks by treatment
     print("Calculating treatment overlaps...")
     venn_data = {}
+    treatment_peaks = {}  # Store actual peak sets for priority analysis
     for tissue in ["Leaf", "Root"]:
         drought_peaks = get_peaks_in_group(df_80, TREATMENTS[tissue]["Drought"])
         ambient_peaks = get_peaks_in_group(df_80, TREATMENTS[tissue]["Ambient"])
@@ -292,6 +293,94 @@ def main() -> int:
             # Shared by all three
             "all_three": len(drought_peaks & ambient_peaks & watered_peaks),
         }
+        treatment_peaks[tissue] = {
+            "drought_only": drought_peaks - ambient_peaks - watered_peaks,
+            "ambient_only": ambient_peaks - drought_peaks - watered_peaks,
+            "watered_only": watered_peaks - drought_peaks - ambient_peaks,
+        }
+
+    # Priority peaks analysis - get ALL peaks with treatment abundances
+    print("Building priority peaks data...")
+    meta_cols = ["Compound", "m/z", "Retention time (min)", "Anova (p)", "q Value", "Max Fold Change", "Minimum CV%"]
+    meta_cols = [c for c in meta_cols if c in df.columns]
+    df_meta = df.select(meta_cols)
+
+    all_peaks_data = {"Leaf": [], "Root": []}
+    for tissue in ["Leaf", "Root"]:
+        compounds = df_80["Compound"].to_list()
+
+        for compound in compounds:
+            meta_row = df_meta.filter(pl.col("Compound") == compound)
+            if meta_row.height == 0:
+                continue
+            meta_row = meta_row.row(0, named=True)
+
+            data_row = df_80.filter(pl.col("Compound") == compound)
+            if data_row.height == 0:
+                continue
+
+            # Get average abundance AND occurrence count for each treatment
+            abundances = {}
+            occurrences = {}
+            for treat_name in ["Drought", "Ambient", "Watered"]:
+                treat_cols = [c for c in TREATMENTS[tissue][treat_name] if c in df_80.columns]
+                if treat_cols:
+                    vals = [data_row[c][0] for c in treat_cols if data_row[c][0] is not None and data_row[c][0] > 0]
+                    abundances[treat_name.lower()] = sum(float(v) for v in vals) / len(vals) if vals else 0
+                    occurrences[treat_name.lower()] = f"{len(vals)}/{len(treat_cols)}"
+                else:
+                    abundances[treat_name.lower()] = 0
+                    occurrences[treat_name.lower()] = "0/0"
+
+            # Skip if not present in any treatment for this tissue
+            if abundances["drought"] == 0 and abundances["ambient"] == 0 and abundances["watered"] == 0:
+                continue
+
+            # Determine which treatments have this peak
+            in_drought = abundances["drought"] > 0
+            in_ambient = abundances["ambient"] > 0
+            in_watered = abundances["watered"] > 0
+
+            p_val = meta_row.get("Anova (p)", 1)
+            try:
+                p_val = float(p_val) if p_val is not None else 1
+            except:
+                p_val = 1
+
+            fold_change = meta_row.get("Max Fold Change", "")
+            try:
+                fold_change = float(fold_change) if fold_change and str(fold_change) != "Infinity" else None
+            except:
+                fold_change = None
+
+            cv_pct = meta_row.get("Minimum CV%", None)
+            try:
+                cv_pct = float(cv_pct) if cv_pct is not None else None
+            except:
+                cv_pct = None
+
+            all_peaks_data[tissue].append({
+                "compound": compound,
+                "mz": meta_row.get("m/z", ""),
+                "rt": meta_row.get("Retention time (min)", ""),
+                "drought": abundances["drought"],
+                "ambient": abundances["ambient"],
+                "watered": abundances["watered"],
+                "drought_occ": occurrences["drought"],
+                "ambient_occ": occurrences["ambient"],
+                "watered_occ": occurrences["watered"],
+                "in_drought": in_drought,
+                "in_ambient": in_ambient,
+                "in_watered": in_watered,
+                "p_value": p_val,
+                "fold_change": fold_change,
+                "cv": cv_pct,
+            })
+
+        # Sort by max abundance across treatments
+        all_peaks_data[tissue].sort(key=lambda x: max(x["drought"], x["ambient"], x["watered"]), reverse=True)
+
+    all_peaks_json = json.dumps(all_peaks_data)
 
     print("Generating HTML...")
 
@@ -616,6 +705,61 @@ def main() -> int:
 
         .kept {{ color: var(--success); font-weight: 600; }}
         .filtered {{ color: #dc2626; font-weight: 600; }}
+
+        /* Priority peaks highlight */
+        .priority-row-highlight {{
+            background: #fef3c7 !important;
+            border-color: #f59e0b !important;
+            box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.3);
+        }}
+
+        /* Treatment toggle buttons */
+        .treatment-toggle {{
+            padding: 0.5rem 1.25rem;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }}
+        .treatment-toggle:hover {{
+            opacity: 0.85;
+        }}
+        .treatment-toggle.active[data-treatment="drought"] {{
+            background: #dc2626 !important;
+            color: white !important;
+            border-color: #b91c1c;
+        }}
+        .treatment-toggle.active[data-treatment="ambient"] {{
+            background: #2563eb !important;
+            color: white !important;
+            border-color: #1d4ed8;
+        }}
+        .treatment-toggle.active[data-treatment="watered"] {{
+            background: #16a34a !important;
+            color: white !important;
+            border-color: #15803d;
+        }}
+
+        /* Viz toggle buttons */
+        .viz-toggle {{
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            background: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }}
+        .viz-toggle:hover {{
+            background: #f3f4f6;
+        }}
+        .viz-toggle.active {{
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }}
     </style>
 </head>
 <body>
@@ -626,7 +770,8 @@ def main() -> int:
 
         <div class="tabs">
         <button class="tab active" onclick="showTab('overview')">Overview</button>
-        <button class="tab" onclick="showTab('venn')">Venn Diagrams</button>
+        <button class="tab" onclick="showTab('priority')">Priority Peaks</button>
+        <button class="tab" onclick="showTab('venn')">Treatment Overlap</button>
         <button class="tab" onclick="showTab('methods')">Methods</button>
         <button class="tab" onclick="showTab('data80')">Filtered Data ({len(kept_80):,})</button>
         <button class="tab" onclick="showTab('peaks')">Understanding Peaks</button>
@@ -729,55 +874,103 @@ def main() -> int:
 
     </div>
 
-    <!-- VENN TAB -->
-    <div id="venn" class="tab-content">
-        <h2>Treatment Overlap - Venn Diagrams</h2>
-        <p>Shows how peaks are distributed across treatment groups (Drought, Ambient, Watered). "Unique" means the peak is ONLY found in that treatment, not in the others.</p>
+    <!-- PRIORITY PEAKS TAB -->
+    <div id="priority" class="tab-content">
+        <h2>Compare Treatments</h2>
+        <p>Toggle treatments to compare. Shows peaks that differ between selected treatments.</p>
 
-        <div class="two-col">
-            <div>
-                <h3 style="color: var(--leaf-color);">Leaf Tissue</h3>
-                <div id="venn-leaf" style="width: 100%; height: 350px;"></div>
-                <div class="alert alert-info" style="margin-top: 0.5rem;">
-                    <strong>{100*venn_data['Leaf']['all_three']/venn_data['Leaf']['all']:.1f}%</strong> of leaf peaks shared across all treatments
+        <!-- Toggle buttons -->
+        <div style="display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; align-items: center;">
+            <span style="font-weight: 600; color: var(--gray-600);">Select treatments:</span>
+            <button id="toggle-drought" class="treatment-toggle active" onclick="toggleTreatment('drought')" style="background: #dc2626; color: white;">Drought</button>
+            <button id="toggle-ambient" class="treatment-toggle" onclick="toggleTreatment('ambient')" style="background: #e5e7eb; color: #374151;">Ambient</button>
+            <button id="toggle-watered" class="treatment-toggle" onclick="toggleTreatment('watered')" style="background: #e5e7eb; color: #374151;">Watered</button>
+            <span id="comparison-hint" style="color: var(--gray-600); font-size: 0.9em; margin-left: 1rem;"></span>
+        </div>
+
+        <!-- Visualization section (shows when 2 treatments selected) -->
+        <div id="viz-section" style="display: none; margin-bottom: 2rem;">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+                <span style="font-weight: 600; color: var(--gray-600);">View:</span>
+                <button class="viz-toggle active" data-viz="bubble" onclick="setVizType('bubble')">Bubble Chart</button>
+                <button class="viz-toggle" data-viz="treemap" onclick="setVizType('treemap')">Treemap</button>
+                <button class="viz-toggle" data-viz="bars" onclick="setVizType('bars')">Fold Change Bars</button>
+            </div>
+            <div class="two-col">
+                <div>
+                    <h4 style="color: var(--root-color); margin-bottom: 0.5rem;">Root</h4>
+                    <div id="viz-root" style="background: white; border-radius: 8px; padding: 0.5rem; min-height: 450px;"></div>
+                </div>
+                <div>
+                    <h4 style="color: var(--leaf-color); margin-bottom: 0.5rem;">Leaf</h4>
+                    <div id="viz-leaf" style="background: white; border-radius: 8px; padding: 0.5rem; min-height: 450px;"></div>
                 </div>
             </div>
+            <p id="viz-info" style="color: var(--gray-600); font-size: 0.85em; margin-top: 0.5rem; text-align: center;"></p>
+        </div>
+
+        <div class="two-col" style="margin-top: 1rem;">
             <div>
-                <h3 style="color: var(--root-color);">Root Tissue</h3>
-                <div id="venn-root" style="width: 100%; height: 350px;"></div>
-                <div class="alert alert-info" style="margin-top: 0.5rem;">
-                    <strong>{100*venn_data['Root']['all_three']/venn_data['Root']['all']:.1f}%</strong> of root peaks shared across all treatments
-                </div>
+                <h3 style="color: var(--root-color); margin-bottom: 1rem;">
+                    Root Tissue <span id="root-peak-count" style="font-weight: normal; font-size: 0.8em;"></span>
+                </h3>
+                <div id="priority-root" style="background: white; border-radius: 8px; padding: 1rem; max-height: 500px; overflow-y: auto;"></div>
+            </div>
+            <div>
+                <h3 style="color: var(--leaf-color); margin-bottom: 1rem;">
+                    Leaf Tissue <span id="leaf-peak-count" style="font-weight: normal; font-size: 0.8em;"></span>
+                </h3>
+                <div id="priority-leaf" style="background: white; border-radius: 8px; padding: 1rem; max-height: 500px; overflow-y: auto;"></div>
             </div>
         </div>
 
-        <h3>Detailed Breakdown</h3>
-        <div class="two-col">
-            <div>
-                <h4 style="color: var(--leaf-color);">Leaf</h4>
+        <div class="alert alert-info" style="margin-top: 1.5rem;">
+            <strong>m/z</strong> = mass-to-charge ratio (use in chemcalc.org to estimate molecular formula)
+            <br>
+            <strong>RT</strong> = retention time (minutes)
+            <br>
+            <strong>Abundance</strong> = normalized peak area (unitless, higher = more compound)
+        </div>
+    </div>
+
+    <!-- TREATMENT OVERLAP TAB -->
+    <div id="venn" class="tab-content">
+        <h2>Treatment Overlap</h2>
+        <p>Shows how peaks are distributed across treatment groups (Drought, Ambient, Watered). "Unique" means the peak is ONLY found in that treatment, not in the others.</p>
+
+        <div class="two-col" style="margin-top: 1.5rem;">
+            <div class="method-section" style="background: linear-gradient(135deg, var(--leaf-bg) 0%, #d1fae5 100%); border-color: var(--leaf-color);">
+                <h3 style="color: var(--leaf-color); margin-top: 0;">Leaf Tissue ({venn_data['Leaf']['all']:,} peaks)</h3>
                 <table class="info-table">
-                    <tr><th>Region</th><th>Peaks</th></tr>
-                    <tr><td style="color: #dc2626;">Drought Only</td><td><strong>{venn_data['Leaf']['drought_only']:,}</strong></td></tr>
-                    <tr><td style="color: #2563eb;">Ambient Only</td><td><strong>{venn_data['Leaf']['ambient_only']:,}</strong></td></tr>
-                    <tr><td style="color: #16a34a;">Watered Only</td><td><strong>{venn_data['Leaf']['watered_only']:,}</strong></td></tr>
-                    <tr><td>D + A only</td><td><strong>{venn_data['Leaf']['drought_ambient']:,}</strong></td></tr>
-                    <tr><td>D + W only</td><td><strong>{venn_data['Leaf']['drought_watered']:,}</strong></td></tr>
-                    <tr><td>A + W only</td><td><strong>{venn_data['Leaf']['ambient_watered']:,}</strong></td></tr>
-                    <tr style="background: var(--gray-100);"><td><strong>All Three</strong></td><td><strong>{venn_data['Leaf']['all_three']:,}</strong></td></tr>
+                    <tr><th>Region</th><th>Peaks</th><th>Meaning</th></tr>
+                    <tr><td><strong style="color: #dc2626;">Drought Only</strong></td><td><strong>{venn_data['Leaf']['drought_only']:,}</strong></td><td>Only in drought, not ambient or watered</td></tr>
+                    <tr><td><strong style="color: #2563eb;">Ambient Only</strong></td><td><strong>{venn_data['Leaf']['ambient_only']:,}</strong></td><td>Only in ambient, not drought or watered</td></tr>
+                    <tr><td><strong style="color: #16a34a;">Watered Only</strong></td><td><strong>{venn_data['Leaf']['watered_only']:,}</strong></td><td>Only in watered, not drought or ambient</td></tr>
+                    <tr><td>Drought + Ambient</td><td><strong>{venn_data['Leaf']['drought_ambient']:,}</strong></td><td>Shared by D &amp; A, not W</td></tr>
+                    <tr><td>Drought + Watered</td><td><strong>{venn_data['Leaf']['drought_watered']:,}</strong></td><td>Shared by D &amp; W, not A</td></tr>
+                    <tr><td>Ambient + Watered</td><td><strong>{venn_data['Leaf']['ambient_watered']:,}</strong></td><td>Shared by A &amp; W, not D</td></tr>
+                    <tr><td><strong>All Three</strong></td><td><strong>{venn_data['Leaf']['all_three']:,}</strong></td><td>Present in all treatments (core metabolites)</td></tr>
                 </table>
+                <div class="alert alert-info" style="margin-top: 1rem;">
+                    <strong>{100*venn_data['Leaf']['all_three']/venn_data['Leaf']['all']:.1f}%</strong> of leaf peaks are shared across all treatments
+                </div>
             </div>
-            <div>
-                <h4 style="color: var(--root-color);">Root</h4>
+
+            <div class="method-section" style="background: linear-gradient(135deg, var(--root-bg) 0%, #fef3c7 100%); border-color: var(--root-color);">
+                <h3 style="color: var(--root-color); margin-top: 0;">Root Tissue ({venn_data['Root']['all']:,} peaks)</h3>
                 <table class="info-table">
-                    <tr><th>Region</th><th>Peaks</th></tr>
-                    <tr><td style="color: #dc2626;">Drought Only</td><td><strong>{venn_data['Root']['drought_only']:,}</strong></td></tr>
-                    <tr><td style="color: #2563eb;">Ambient Only</td><td><strong>{venn_data['Root']['ambient_only']:,}</strong></td></tr>
-                    <tr><td style="color: #16a34a;">Watered Only</td><td><strong>{venn_data['Root']['watered_only']:,}</strong></td></tr>
-                    <tr><td>D + A only</td><td><strong>{venn_data['Root']['drought_ambient']:,}</strong></td></tr>
-                    <tr><td>D + W only</td><td><strong>{venn_data['Root']['drought_watered']:,}</strong></td></tr>
-                    <tr><td>A + W only</td><td><strong>{venn_data['Root']['ambient_watered']:,}</strong></td></tr>
-                    <tr style="background: var(--gray-100);"><td><strong>All Three</strong></td><td><strong>{venn_data['Root']['all_three']:,}</strong></td></tr>
+                    <tr><th>Region</th><th>Peaks</th><th>Meaning</th></tr>
+                    <tr><td><strong style="color: #dc2626;">Drought Only</strong></td><td><strong>{venn_data['Root']['drought_only']:,}</strong></td><td>Only in drought, not ambient or watered</td></tr>
+                    <tr><td><strong style="color: #2563eb;">Ambient Only</strong></td><td><strong>{venn_data['Root']['ambient_only']:,}</strong></td><td>Only in ambient, not drought or watered</td></tr>
+                    <tr><td><strong style="color: #16a34a;">Watered Only</strong></td><td><strong>{venn_data['Root']['watered_only']:,}</strong></td><td>Only in watered, not drought or ambient</td></tr>
+                    <tr><td>Drought + Ambient</td><td><strong>{venn_data['Root']['drought_ambient']:,}</strong></td><td>Shared by D &amp; A, not W</td></tr>
+                    <tr><td>Drought + Watered</td><td><strong>{venn_data['Root']['drought_watered']:,}</strong></td><td>Shared by D &amp; W, not A</td></tr>
+                    <tr><td>Ambient + Watered</td><td><strong>{venn_data['Root']['ambient_watered']:,}</strong></td><td>Shared by A &amp; W, not D</td></tr>
+                    <tr><td><strong>All Three</strong></td><td><strong>{venn_data['Root']['all_three']:,}</strong></td><td>Present in all treatments (core metabolites)</td></tr>
                 </table>
+                <div class="alert alert-info" style="margin-top: 1rem;">
+                    <strong>{100*venn_data['Root']['all_three']/venn_data['Root']['all']:.1f}%</strong> of root peaks are shared across all treatments
+                </div>
             </div>
         </div>
 
@@ -905,7 +1098,6 @@ def main() -> int:
 
     <!-- JavaScript -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/venn.js@0.2.20/venn.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
@@ -957,69 +1149,644 @@ def main() -> int:
             }}, 500);
         }});
 
-        // Venn diagram data
-        var leafVennData = [
-            {{sets: ['Drought'], size: {venn_data['Leaf']['drought']}}},
-            {{sets: ['Ambient'], size: {venn_data['Leaf']['ambient']}}},
-            {{sets: ['Watered'], size: {venn_data['Leaf']['watered']}}},
-            {{sets: ['Drought', 'Ambient'], size: {venn_data['Leaf']['drought_ambient'] + venn_data['Leaf']['all_three']}}},
-            {{sets: ['Drought', 'Watered'], size: {venn_data['Leaf']['drought_watered'] + venn_data['Leaf']['all_three']}}},
-            {{sets: ['Ambient', 'Watered'], size: {venn_data['Leaf']['ambient_watered'] + venn_data['Leaf']['all_three']}}},
-            {{sets: ['Drought', 'Ambient', 'Watered'], size: {venn_data['Leaf']['all_three']}}}
-        ];
+        // All peaks data with treatment abundances
+        var allPeaksData = {all_peaks_json};
 
-        var rootVennData = [
-            {{sets: ['Drought'], size: {venn_data['Root']['drought']}}},
-            {{sets: ['Ambient'], size: {venn_data['Root']['ambient']}}},
-            {{sets: ['Watered'], size: {venn_data['Root']['watered']}}},
-            {{sets: ['Drought', 'Ambient'], size: {venn_data['Root']['drought_ambient'] + venn_data['Root']['all_three']}}},
-            {{sets: ['Drought', 'Watered'], size: {venn_data['Root']['drought_watered'] + venn_data['Root']['all_three']}}},
-            {{sets: ['Ambient', 'Watered'], size: {venn_data['Root']['ambient_watered'] + venn_data['Root']['all_three']}}},
-            {{sets: ['Drought', 'Ambient', 'Watered'], size: {venn_data['Root']['all_three']}}}
-        ];
+        // Toggle state
+        var toggleState = {{ drought: true, ambient: false, watered: false }};
 
-        // Render Venn diagrams
-        function renderVenn(selector, data) {{
-            var chart = venn.VennDiagram()
-                .width(400)
-                .height(320);
-            var div = d3.select(selector);
-            div.datum(data).call(chart);
-
-            // Style the circles
-            div.selectAll(".venn-circle path")
-                .style("fill-opacity", 0.6)
-                .style("stroke-width", 2);
-
-            // Color by treatment
-            div.selectAll(".venn-circle")
-                .each(function(d) {{
-                    var colors = {{
-                        'Drought': '#dc2626',
-                        'Ambient': '#2563eb',
-                        'Watered': '#16a34a'
-                    }};
-                    d3.select(this).select("path")
-                        .style("fill", colors[d.sets[0]] || '#888')
-                        .style("stroke", colors[d.sets[0]] || '#888');
-                }});
-
-            // Style labels
-            div.selectAll(".venn-circle text")
-                .style("font-size", "14px")
-                .style("font-weight", "600");
+        // Toggle treatment button
+        function toggleTreatment(treatment) {{
+            toggleState[treatment] = !toggleState[treatment];
+            updateToggleButtons();
+            updateComparison();
+            updateVisualization();
         }}
 
-        // Render when tab is shown (to get correct dimensions)
-        var vennRendered = false;
-        document.querySelector('[onclick*=\"venn\"]').addEventListener('click', function() {{
-            if (!vennRendered) {{
-                setTimeout(function() {{
-                    renderVenn("#venn-leaf", leafVennData);
-                    renderVenn("#venn-root", rootVennData);
-                    vennRendered = true;
-                }}, 100);
+        function updateToggleButtons() {{
+            ['drought', 'ambient', 'watered'].forEach(function(t) {{
+                var btn = document.getElementById('toggle-' + t);
+                btn.setAttribute('data-treatment', t);
+                if (toggleState[t]) {{
+                    btn.classList.add('active');
+                }} else {{
+                    btn.classList.remove('active');
+                    btn.style.background = '#e5e7eb';
+                    btn.style.color = '#374151';
+                }}
+            }});
+
+            // Update hint text
+            var active = Object.keys(toggleState).filter(function(k) {{ return toggleState[k]; }});
+            var hint = document.getElementById('comparison-hint');
+            if (active.length === 0) {{
+                hint.textContent = '(select at least one treatment)';
+            }} else if (active.length === 1) {{
+                hint.textContent = '→ Showing peaks unique to ' + active[0];
+            }} else if (active.length === 2) {{
+                hint.textContent = '→ Comparing ' + active[0] + ' vs ' + active[1];
+            }} else {{
+                hint.textContent = '→ Showing all peaks';
             }}
+        }}
+
+        function updateComparison() {{
+            renderFilteredPeaks('#priority-root', allPeaksData.Root);
+            renderFilteredPeaks('#priority-leaf', allPeaksData.Leaf);
+        }}
+
+        function renderFilteredPeaks(selector, data) {{
+            var container = d3.select(selector);
+            container.html('');
+
+            var active = Object.keys(toggleState).filter(function(k) {{ return toggleState[k]; }});
+
+            if (active.length === 0) {{
+                container.append('p').style('color', '#666').text('Select at least one treatment above.');
+                d3.select(selector.replace('priority-', '') + '-peak-count').text('');
+                return;
+            }}
+
+            // Filter peaks based on toggle state
+            var filtered = data.filter(function(d) {{
+                if (active.length === 1) {{
+                    // Show peaks ONLY in this treatment
+                    var t = active[0];
+                    return d['in_' + t] && !d['in_' + otherTreatments(t)[0]] && !d['in_' + otherTreatments(t)[1]];
+                }} else if (active.length === 2) {{
+                    // Show peaks in either treatment (for comparison)
+                    var t1 = active[0], t2 = active[1];
+                    return d['in_' + t1] || d['in_' + t2];
+                }} else {{
+                    // Show all peaks
+                    return true;
+                }}
+            }});
+
+            // Sort by max abundance in selected treatments
+            filtered.sort(function(a, b) {{
+                var maxA = Math.max.apply(null, active.map(function(t) {{ return a[t] || 0; }}));
+                var maxB = Math.max.apply(null, active.map(function(t) {{ return b[t] || 0; }}));
+                return maxB - maxA;
+            }});
+
+            // Update count
+            var countId = selector === '#priority-root' ? 'root-peak-count' : 'leaf-peak-count';
+            document.getElementById(countId).textContent = '(' + filtered.length + ' peaks)';
+
+            if (filtered.length === 0) {{
+                container.append('p').style('color', '#666').text('No peaks match this selection.');
+                return;
+            }}
+
+            // Column headers
+            var headerRow = container.append('div')
+                .style('display', 'flex')
+                .style('font-size', '0.7em')
+                .style('color', '#666')
+                .style('margin-bottom', '0.5rem')
+                .style('padding', '0.25rem')
+                .style('font-weight', '600')
+                .style('border-bottom', '2px solid #e5e7eb');
+            headerRow.append('div').style('width', '25px').style('text-align', 'center').text('#');
+            headerRow.append('div').style('width', '140px').text('Compound');
+            headerRow.append('div').style('width', '70px').style('text-align', 'right').text('m/z');
+            headerRow.append('div').style('width', '35px').style('text-align', 'right').text('RT');
+            headerRow.append('div').style('width', '40px').style('text-align', 'right').text('CV%');
+
+            // Dynamic abundance columns based on selection (with occurrence sub-header)
+            active.forEach(function(t) {{
+                var color = {{ drought: '#dc2626', ambient: '#2563eb', watered: '#16a34a' }}[t];
+                headerRow.append('div')
+                    .style('width', '90px')
+                    .style('text-align', 'right')
+                    .style('color', color)
+                    .html(t.charAt(0).toUpperCase() + t.slice(1) + '<br><span style="font-weight:normal;font-size:0.85em">(n/total)</span>');
+            }});
+
+            // Rows (limit to 100 for performance)
+            var rowContainer = container.append('div');
+            filtered.slice(0, 100).forEach(function(d, i) {{
+                var row = rowContainer.append('div')
+                    .style('display', 'flex')
+                    .style('align-items', 'center')
+                    .style('padding', '0.3rem 0.25rem')
+                    .style('background', i % 2 === 0 ? '#f9fafb' : 'white')
+                    .style('font-size', '0.75em');
+
+                row.append('div').style('width', '25px').style('text-align', 'center').style('color', '#999').text(i + 1);
+
+                var name = d.compound.length > 18 ? d.compound.substring(0, 15) + '...' : d.compound;
+                row.append('div').style('width', '140px').style('font-family', 'monospace').style('font-size', '0.95em').attr('title', d.compound).text(name);
+                row.append('div').style('width', '70px').style('text-align', 'right').style('font-family', 'monospace').text(d.mz ? parseFloat(d.mz).toFixed(4) : '-');
+                row.append('div').style('width', '35px').style('text-align', 'right').style('font-family', 'monospace').text(d.rt ? parseFloat(d.rt).toFixed(1) : '-');
+
+                // CV% with color coding
+                var cvText = d.cv ? d.cv.toFixed(0) + '%' : '-';
+                var cvColor = d.cv ? (d.cv < 30 ? '#16a34a' : d.cv < 60 ? '#ca8a04' : '#dc2626') : '#999';
+                row.append('div').style('width', '40px').style('text-align', 'right').style('color', cvColor).text(cvText);
+
+                active.forEach(function(t) {{
+                    var val = d[t] || 0;
+                    var occ = d[t + '_occ'] || '0/0';
+                    var color = {{ drought: '#dc2626', ambient: '#2563eb', watered: '#16a34a' }}[t];
+                    var cellDiv = row.append('div')
+                        .style('width', '90px')
+                        .style('text-align', 'right')
+                        .style('font-family', 'monospace');
+
+                    if (val > 0) {{
+                        cellDiv.html('<span style="color:' + color + '">' + val.toExponential(1) + '</span> <span style="color:#999;font-size:0.85em">(' + occ + ')</span>');
+                    }} else {{
+                        cellDiv.style('color', '#ccc').text('0 (' + occ + ')');
+                    }}
+                }});
+            }});
+
+            if (filtered.length > 100) {{
+                container.append('p')
+                    .style('color', '#666')
+                    .style('font-size', '0.85em')
+                    .style('margin-top', '0.5rem')
+                    .text('Showing top 100 of ' + filtered.length + ' peaks');
+            }}
+        }}
+
+        function otherTreatments(t) {{
+            var all = ['drought', 'ambient', 'watered'];
+            return all.filter(function(x) {{ return x !== t; }});
+        }}
+
+        // Visualization state
+        var currentVizType = 'bubble';
+        var treatmentColors = {{ drought: '#dc2626', ambient: '#2563eb', watered: '#16a34a' }};
+
+        function setVizType(type) {{
+            currentVizType = type;
+            document.querySelectorAll('.viz-toggle').forEach(function(btn) {{
+                btn.classList.toggle('active', btn.getAttribute('data-viz') === type);
+            }});
+            updateVisualization();
+        }}
+
+        function updateVisualization() {{
+            var active = Object.keys(toggleState).filter(function(k) {{ return toggleState[k]; }});
+
+            // Show viz section for any selection (1, 2, or 3 treatments)
+            var vizSection = document.getElementById('viz-section');
+            if (active.length >= 1) {{
+                vizSection.style.display = 'block';
+                renderViz('#viz-root', allPeaksData.Root, active);
+                renderViz('#viz-leaf', allPeaksData.Leaf, active);
+            }} else {{
+                vizSection.style.display = 'none';
+            }}
+        }}
+
+        function renderViz(selector, data, treatments) {{
+            var container = d3.select(selector);
+            container.html('');
+
+            // Filter data based on selection
+            var filtered;
+            if (treatments.length === 1) {{
+                // Peaks unique to this treatment
+                var t = treatments[0];
+                var others = ['drought', 'ambient', 'watered'].filter(function(x) {{ return x !== t; }});
+                filtered = data.filter(function(d) {{ return d['in_' + t] && !d['in_' + others[0]] && !d['in_' + others[1]]; }});
+            }} else if (treatments.length === 2) {{
+                // Peaks in either treatment
+                filtered = data.filter(function(d) {{ return d['in_' + treatments[0]] || d['in_' + treatments[1]]; }});
+            }} else {{
+                // All peaks
+                filtered = data;
+            }}
+
+            if (currentVizType === 'bars') {{
+                if (treatments.length === 2) {{
+                    renderBars(container, filtered, treatments[0], treatments[1], treatmentColors[treatments[0]], treatmentColors[treatments[1]]);
+                }} else {{
+                    container.append('p').style('color', '#666').style('font-size', '0.9em').text('Fold change bars require exactly 2 treatments selected');
+                }}
+            }} else if (currentVizType === 'bubble') {{
+                renderBubble(container, filtered, treatments);
+            }} else if (currentVizType === 'treemap') {{
+                renderTreemap(container, filtered, treatments);
+            }}
+        }}
+
+        function renderScatter(container, data, t1, t2, color1, color2) {{
+            var width = 320, height = 280;
+            var margin = {{ top: 20, right: 20, bottom: 40, left: 50 }};
+
+            var svg = container.append('svg')
+                .attr('width', width)
+                .attr('height', height);
+
+            // Get max values for scales (use log scale)
+            var maxVal = Math.max(
+                d3.max(data, function(d) {{ return d[t1] || 1; }}),
+                d3.max(data, function(d) {{ return d[t2] || 1; }})
+            );
+
+            var xScale = d3.scaleLog().domain([1, maxVal]).range([margin.left, width - margin.right]);
+            var yScale = d3.scaleLog().domain([1, maxVal]).range([height - margin.bottom, margin.top]);
+
+            // Diagonal line (equal abundance)
+            svg.append('line')
+                .attr('x1', margin.left).attr('y1', height - margin.bottom)
+                .attr('x2', width - margin.right).attr('y2', margin.top)
+                .attr('stroke', '#e5e7eb').attr('stroke-width', 1).attr('stroke-dasharray', '4');
+
+            // Points
+            svg.selectAll('circle')
+                .data(data)
+                .enter()
+                .append('circle')
+                .attr('cx', function(d) {{ return xScale(Math.max(d[t1] || 1, 1)); }})
+                .attr('cy', function(d) {{ return yScale(Math.max(d[t2] || 1, 1)); }})
+                .attr('r', 4)
+                .attr('fill', function(d) {{
+                    if (d[t1] > 0 && d[t2] === 0) return color1;
+                    if (d[t2] > 0 && d[t1] === 0) return color2;
+                    return '#8b5cf6'; // purple for shared
+                }})
+                .attr('opacity', 0.6)
+                .append('title')
+                .text(function(d) {{
+                    return d.compound + '\\n' + t1 + ': ' + (d[t1] ? d[t1].toExponential(1) : '0') + '\\n' + t2 + ': ' + (d[t2] ? d[t2].toExponential(1) : '0');
+                }});
+
+            // Axes labels
+            svg.append('text').attr('x', width/2).attr('y', height - 5).attr('text-anchor', 'middle').attr('font-size', '11px').attr('fill', color1).text(t1.charAt(0).toUpperCase() + t1.slice(1) + ' →');
+            svg.append('text').attr('transform', 'rotate(-90)').attr('x', -height/2).attr('y', 12).attr('text-anchor', 'middle').attr('font-size', '11px').attr('fill', color2).text(t2.charAt(0).toUpperCase() + t2.slice(1) + ' →');
+
+            document.getElementById('viz-info').innerHTML = '<span style="color:' + color1 + '">●</span> Only in ' + t1 + ' &nbsp; <span style="color:' + color2 + '">●</span> Only in ' + t2 + ' &nbsp; <span style="color:#8b5cf6">●</span> In both (off-diagonal = different levels)';
+        }}
+
+        function renderBars(container, data, t1, t2, color1, color2) {{
+            var width = 450, height = 420;
+
+            // Calculate fold change and sort
+            var withFC = data.map(function(d) {{
+                var v1 = d[t1] || 0.1, v2 = d[t2] || 0.1;
+                var fc = v1 > v2 ? v1/v2 : -v2/v1;
+                return {{ compound: d.compound, mz: d.mz, fc: fc, t1val: d[t1], t2val: d[t2] }};
+            }}).filter(function(d) {{ return Math.abs(d.fc) > 2; }}) // Only show >2x differences
+              .sort(function(a, b) {{ return Math.abs(b.fc) - Math.abs(a.fc); }})
+              .slice(0, 20);
+
+            var svg = container.append('svg').attr('width', width).attr('height', height);
+
+            if (withFC.length === 0) {{
+                svg.append('text').attr('x', width/2).attr('y', height/2).attr('text-anchor', 'middle').attr('fill', '#666').text('No peaks with >2x difference');
+                return;
+            }}
+
+            var barHeight = Math.min(12, (height - 30) / withFC.length);
+            var maxFC = d3.max(withFC, function(d) {{ return Math.abs(d.fc); }});
+            var xScale = d3.scaleLinear().domain([-maxFC, maxFC]).range([60, width - 10]);
+
+            withFC.forEach(function(d, i) {{
+                var y = i * barHeight + 15;
+                var barColor = d.fc > 0 ? color1 : color2;
+
+                // Bar
+                svg.append('rect')
+                    .attr('x', d.fc > 0 ? xScale(0) : xScale(d.fc))
+                    .attr('y', y)
+                    .attr('width', Math.abs(xScale(d.fc) - xScale(0)))
+                    .attr('height', barHeight - 2)
+                    .attr('fill', barColor)
+                    .attr('opacity', 0.7)
+                    .append('title')
+                    .text(d.compound + '\\nFold change: ' + d.fc.toFixed(1) + 'x');
+
+                // Label
+                var label = d.mz ? parseFloat(d.mz).toFixed(1) : d.compound.substring(0, 8);
+                svg.append('text')
+                    .attr('x', 5)
+                    .attr('y', y + barHeight/2 + 3)
+                    .attr('font-size', '8px')
+                    .attr('fill', '#666')
+                    .text(label);
+            }});
+
+            // Center line
+            svg.append('line').attr('x1', xScale(0)).attr('y1', 10).attr('x2', xScale(0)).attr('y2', height - 5).attr('stroke', '#333').attr('stroke-width', 1);
+
+            document.getElementById('viz-info').innerHTML = 'Top peaks with >2x fold change. <span style="color:' + color1 + '">◀ Higher in ' + t1 + '</span> | <span style="color:' + color2 + '">Higher in ' + t2 + ' ▶</span>';
+        }}
+
+        // COMPOUND CLOUD - circles sized by abundance
+        function renderCloud(container, data, treatments) {{
+            var width = 320, height = 280;
+            var svg = container.append('svg').attr('width', width).attr('height', height);
+
+            if (data.length === 0) {{
+                svg.append('text').attr('x', width/2).attr('y', height/2).attr('text-anchor', 'middle').attr('fill', '#666').text('No peaks to display');
+                return;
+            }}
+
+            // Sort by max abundance and take top 100
+            var sorted = data.slice().sort(function(a, b) {{
+                var maxA = Math.max(a.drought || 0, a.ambient || 0, a.watered || 0);
+                var maxB = Math.max(b.drought || 0, b.ambient || 0, b.watered || 0);
+                return maxB - maxA;
+            }}).slice(0, 100);
+
+            // Determine dominant treatment for color
+            function getDominantColor(d) {{
+                var vals = [
+                    {{ t: 'drought', v: d.drought || 0 }},
+                    {{ t: 'ambient', v: d.ambient || 0 }},
+                    {{ t: 'watered', v: d.watered || 0 }}
+                ].filter(function(x) {{ return treatments.indexOf(x.t) >= 0; }});
+                vals.sort(function(a, b) {{ return b.v - a.v; }});
+                return treatmentColors[vals[0].t];
+            }}
+
+            // Use D3 pack layout for circles
+            var pack = d3.pack()
+                .size([width - 10, height - 30])
+                .padding(2);
+
+            var root = d3.hierarchy({{ children: sorted }})
+                .sum(function(d) {{ return Math.max(d.drought || 0, d.ambient || 0, d.watered || 0); }});
+
+            pack(root);
+
+            // Draw circles
+            var nodes = svg.selectAll('g')
+                .data(root.leaves())
+                .enter()
+                .append('g')
+                .attr('transform', function(d) {{ return 'translate(' + (d.x + 5) + ',' + (d.y + 15) + ')'; }});
+
+            nodes.append('circle')
+                .attr('r', function(d) {{ return d.r; }})
+                .attr('fill', function(d) {{ return getDominantColor(d.data); }})
+                .attr('opacity', 0.75)
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 1)
+                .style('cursor', 'pointer');
+
+            // Add m/z labels to larger circles
+            nodes.filter(function(d) {{ return d.r > 12; }})
+                .append('text')
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.3em')
+                .attr('font-size', function(d) {{ return Math.min(d.r * 0.7, 10) + 'px'; }})
+                .attr('fill', 'white')
+                .attr('font-weight', 'bold')
+                .text(function(d) {{ return d.data.mz ? parseFloat(d.data.mz).toFixed(1) : ''; }});
+
+            // Tooltips
+            nodes.append('title')
+                .text(function(d) {{
+                    var data = d.data;
+                    return data.compound + '\\nm/z: ' + (data.mz || 'N/A') + '\\nRT: ' + (data.rt || 'N/A') + '\\nDrought: ' + (data.drought ? data.drought.toExponential(1) : '0') + '\\nAmbient: ' + (data.ambient ? data.ambient.toExponential(1) : '0') + '\\nWatered: ' + (data.watered ? data.watered.toExponential(1) : '0');
+                }});
+
+            document.getElementById('viz-info').innerHTML = 'Circle size = abundance, color = dominant treatment. Hover for details.';
+        }}
+
+        // PIE CHART - distribution of peaks
+        function renderPie(container, filtered, treatments, allData) {{
+            var width = 320, height = 280;
+            var radius = Math.min(width, height) / 2 - 40;
+
+            var svg = container.append('svg').attr('width', width).attr('height', height)
+                .append('g').attr('transform', 'translate(' + width/2 + ',' + height/2 + ')');
+
+            // Calculate categories based on selection
+            var pieData = [];
+            if (treatments.length === 2) {{
+                var t1 = treatments[0], t2 = treatments[1];
+                var onlyT1 = filtered.filter(function(d) {{ return d['in_' + t1] && !d['in_' + t2]; }}).length;
+                var onlyT2 = filtered.filter(function(d) {{ return d['in_' + t2] && !d['in_' + t1]; }}).length;
+                var both = filtered.filter(function(d) {{ return d['in_' + t1] && d['in_' + t2]; }}).length;
+                pieData = [
+                    {{ label: 'Only ' + t1, value: onlyT1, color: treatmentColors[t1] }},
+                    {{ label: 'Only ' + t2, value: onlyT2, color: treatmentColors[t2] }},
+                    {{ label: 'Shared', value: both, color: '#8b5cf6' }}
+                ];
+            }} else if (treatments.length === 1) {{
+                pieData = [{{ label: treatments[0] + ' unique', value: filtered.length, color: treatmentColors[treatments[0]] }}];
+            }} else {{
+                // 3 treatments - show unique vs shared
+                var unique = filtered.filter(function(d) {{
+                    var count = (d.in_drought ? 1 : 0) + (d.in_ambient ? 1 : 0) + (d.in_watered ? 1 : 0);
+                    return count === 1;
+                }}).length;
+                var shared2 = filtered.filter(function(d) {{
+                    var count = (d.in_drought ? 1 : 0) + (d.in_ambient ? 1 : 0) + (d.in_watered ? 1 : 0);
+                    return count === 2;
+                }}).length;
+                var shared3 = filtered.filter(function(d) {{
+                    return d.in_drought && d.in_ambient && d.in_watered;
+                }}).length;
+                pieData = [
+                    {{ label: 'Unique to 1', value: unique, color: '#f59e0b' }},
+                    {{ label: 'Shared by 2', value: shared2, color: '#8b5cf6' }},
+                    {{ label: 'All three', value: shared3, color: '#10b981' }}
+                ];
+            }}
+
+            pieData = pieData.filter(function(d) {{ return d.value > 0; }});
+
+            var pie = d3.pie().value(function(d) {{ return d.value; }}).sort(null);
+            var arc = d3.arc().innerRadius(0).outerRadius(radius);
+            var labelArc = d3.arc().innerRadius(radius * 0.6).outerRadius(radius * 0.6);
+
+            var arcs = svg.selectAll('arc').data(pie(pieData)).enter().append('g');
+
+            arcs.append('path')
+                .attr('d', arc)
+                .attr('fill', function(d) {{ return d.data.color; }})
+                .attr('stroke', 'white')
+                .attr('stroke-width', 2)
+                .attr('opacity', 0.85);
+
+            arcs.append('text')
+                .attr('transform', function(d) {{ return 'translate(' + labelArc.centroid(d) + ')'; }})
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '10px')
+                .attr('fill', 'white')
+                .attr('font-weight', 'bold')
+                .text(function(d) {{ return d.data.value; }});
+
+            // Legend
+            var legend = svg.append('g').attr('transform', 'translate(' + (-width/2 + 10) + ',' + (radius + 15) + ')');
+            pieData.forEach(function(d, i) {{
+                legend.append('rect').attr('x', i * 100).attr('y', 0).attr('width', 12).attr('height', 12).attr('fill', d.color);
+                legend.append('text').attr('x', i * 100 + 16).attr('y', 10).attr('font-size', '9px').text(d.label);
+            }});
+
+            document.getElementById('viz-info').innerHTML = 'Peak distribution across treatments';
+        }}
+
+        // BUBBLE CHART - each compound is a bubble
+        function renderBubble(container, data, treatments) {{
+            var width = 450, height = 420;
+            var svg = container.append('svg').attr('width', width).attr('height', height);
+
+            if (data.length === 0) {{
+                svg.append('text').attr('x', width/2).attr('y', height/2).attr('text-anchor', 'middle').attr('fill', '#666').text('No peaks to display');
+                return;
+            }}
+
+            // Helper to get max abundance from selected treatments only
+            function getSelectedMax(d) {{
+                var vals = treatments.map(function(t) {{ return d[t] || 0; }});
+                return Math.max.apply(null, vals);
+            }}
+
+            // Take top 100 by abundance (using selected treatments)
+            var sorted = data.slice().sort(function(a, b) {{
+                return getSelectedMax(b) - getSelectedMax(a);
+            }}).slice(0, 100);
+
+            // Pack layout - size based on selected treatments only
+            var pack = d3.pack().size([width - 20, height - 40]).padding(2);
+
+            var root = d3.hierarchy({{ children: sorted }})
+                .sum(function(d) {{ return getSelectedMax(d); }});
+
+            pack(root);
+
+            // Determine color by absolute dominant treatment (always compares all 3)
+            function getColor(d) {{
+                if (!d.data.compound) return '#ccc';
+                var vals = [
+                    {{ t: 'drought', v: d.data.drought || 0 }},
+                    {{ t: 'ambient', v: d.data.ambient || 0 }},
+                    {{ t: 'watered', v: d.data.watered || 0 }}
+                ];
+                vals.sort(function(a, b) {{ return b.v - a.v; }});
+                return treatmentColors[vals[0].t];
+            }}
+
+            var nodes = svg.selectAll('g')
+                .data(root.leaves())
+                .enter()
+                .append('g')
+                .attr('transform', function(d) {{ return 'translate(' + (d.x + 10) + ',' + (d.y + 20) + ')'; }});
+
+            nodes.append('circle')
+                .attr('r', function(d) {{ return d.r; }})
+                .attr('fill', getColor)
+                .attr('opacity', 0.75)
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 1)
+                .style('cursor', 'pointer');
+
+            // Add m/z labels to larger circles
+            nodes.filter(function(d) {{ return d.r > 12; }})
+                .append('text')
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.3em')
+                .attr('font-size', function(d) {{ return Math.min(d.r * 0.7, 10) + 'px'; }})
+                .attr('fill', 'white')
+                .attr('font-weight', 'bold')
+                .text(function(d) {{ return d.data.mz ? parseFloat(d.data.mz).toFixed(1) : ''; }});
+
+            // Tooltips
+            nodes.append('title')
+                .text(function(d) {{
+                    if (!d.data.compound) return '';
+                    return d.data.compound + '\\nm/z: ' + (d.data.mz || 'N/A') + '\\nRT: ' + (d.data.rt || 'N/A') + '\\nDrought: ' + (d.data.drought ? d.data.drought.toExponential(1) : '0') + '\\nAmbient: ' + (d.data.ambient ? d.data.ambient.toExponential(1) : '0') + '\\nWatered: ' + (d.data.watered ? d.data.watered.toExponential(1) : '0');
+                }});
+
+            document.getElementById('viz-info').innerHTML = 'Bubble size = abundance, color = dominant treatment. Hover for details.';
+        }}
+
+        // TREEMAP - rectangles sized by abundance
+        function renderTreemap(container, data, treatments) {{
+            var width = 450, height = 420;
+
+            if (data.length === 0) {{
+                container.append('p').style('color', '#666').text('No peaks to display');
+                return;
+            }}
+
+            // Group by absolute dominant treatment (always compares all 3)
+            function getDominant(d) {{
+                var vals = [
+                    {{ t: 'drought', v: d.drought || 0 }},
+                    {{ t: 'ambient', v: d.ambient || 0 }},
+                    {{ t: 'watered', v: d.watered || 0 }}
+                ];
+                vals.sort(function(a, b) {{ return b.v - a.v; }});
+                return vals[0].t;
+            }}
+
+            // Helper to get max abundance from selected treatments only
+            function getSelectedMax(d) {{
+                var vals = treatments.map(function(t) {{ return d[t] || 0; }});
+                return Math.max.apply(null, vals);
+            }}
+
+            // Take top 100 by abundance (using selected treatments)
+            var sorted = data.slice().sort(function(a, b) {{
+                return getSelectedMax(b) - getSelectedMax(a);
+            }}).slice(0, 100);
+
+            var hierarchy = {{
+                name: 'root',
+                children: treatments.map(function(t) {{
+                    return {{
+                        name: t,
+                        children: sorted.filter(function(d) {{ return getDominant(d) === t; }}).map(function(d) {{
+                            return {{ name: d.mz ? parseFloat(d.mz).toFixed(2) : d.compound.substring(0,8), value: getSelectedMax(d), compound: d.compound, data: d }};
+                        }})
+                    }};
+                }}).filter(function(g) {{ return g.children.length > 0; }})
+            }};
+
+            var root = d3.hierarchy(hierarchy).sum(function(d) {{ return d.value || 0; }});
+            d3.treemap().size([width, height - 20]).padding(1)(root);
+
+            var svg = container.append('svg').attr('width', width).attr('height', height);
+
+            svg.selectAll('rect')
+                .data(root.leaves())
+                .enter()
+                .append('rect')
+                .attr('x', function(d) {{ return d.x0; }})
+                .attr('y', function(d) {{ return d.y0; }})
+                .attr('width', function(d) {{ return Math.max(0, d.x1 - d.x0); }})
+                .attr('height', function(d) {{ return Math.max(0, d.y1 - d.y0); }})
+                .attr('fill', function(d) {{ return treatmentColors[d.parent.data.name] || '#ccc'; }})
+                .attr('opacity', 0.8)
+                .attr('stroke', 'white')
+                .append('title')
+                .text(function(d) {{
+                    var data = d.data.data || {{}};
+                    return (d.data.compound || d.data.name) + '\\nm/z: ' + (data.mz || 'N/A') + '\\nValue: ' + (d.value ? d.value.toExponential(1) : '0');
+                }});
+
+            // Add labels to larger rectangles
+            svg.selectAll('text')
+                .data(root.leaves().filter(function(d) {{ return (d.x1 - d.x0) > 25 && (d.y1 - d.y0) > 12; }}))
+                .enter()
+                .append('text')
+                .attr('x', function(d) {{ return d.x0 + 2; }})
+                .attr('y', function(d) {{ return d.y0 + 10; }})
+                .attr('font-size', '8px')
+                .attr('fill', 'white')
+                .text(function(d) {{ return d.data.name; }});
+
+            document.getElementById('viz-info').innerHTML = 'Treemap: area = abundance, color = dominant treatment. Hover for details.';
+        }}
+
+        // Initialize when priority tab is shown
+        document.querySelector('[onclick*=\"priority\"]').addEventListener('click', function() {{
+            setTimeout(function() {{
+                updateToggleButtons();
+                updateComparison();
+                updateVisualization();
+            }}, 100);
         }});
 
     </script>
