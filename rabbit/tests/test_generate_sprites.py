@@ -255,13 +255,14 @@ def test_extract_animation_params_valid() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    source, widths, contrast, invert, crop, directions = result
+    source, widths, contrast, invert, crop, directions, trim_rows = result
     assert source == "test.gif"
     assert widths == [30, 50, 80]
     assert contrast == 2.0
     assert invert is True
     assert crop == "10%"
     assert directions == ["left", "right"]
+    assert trim_rows == 0
 
 
 def test_extract_animation_params_missing_source() -> None:
@@ -297,7 +298,7 @@ def test_extract_animation_params_invalid_contrast() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, contrast, _, _, _ = result
+    _, _, contrast, _, _, _, _ = result
     assert contrast == 1.5
 
 
@@ -312,7 +313,7 @@ def test_extract_animation_params_invalid_invert() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, invert, _, _ = result
+    _, _, _, invert, _, _, _ = result
     assert invert is False
 
 
@@ -327,7 +328,7 @@ def test_extract_animation_params_invalid_crop() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, crop, _ = result
+    _, _, _, _, crop, _, _ = result
     assert crop is None
 
 
@@ -366,7 +367,7 @@ def test_extract_animation_params_int_contrast() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, contrast, _, _, _ = result
+    _, _, contrast, _, _, _, _ = result
     assert contrast == 2.0
 
 
@@ -380,11 +381,12 @@ def test_extract_animation_params_defaults() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, contrast, invert, crop, directions = result
+    _, _, contrast, invert, crop, directions, trim_rows = result
     assert contrast == 1.5
     assert invert is False
     assert crop is None
     assert directions == ["left"]  # Default direction
+    assert trim_rows == 0
 
 
 def test_extract_animation_params_invalid_directions() -> None:
@@ -398,7 +400,7 @@ def test_extract_animation_params_invalid_directions() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, _, directions = result
+    _, _, _, _, _, directions, _ = result
     assert directions == ["left"]
 
 
@@ -413,7 +415,7 @@ def test_extract_animation_params_invalid_direction_items() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, _, directions = result
+    _, _, _, _, _, directions, _ = result
     assert directions == ["left"]
 
 
@@ -428,8 +430,64 @@ def test_extract_animation_params_empty_directions() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, _, directions = result
+    _, _, _, _, _, directions, _ = result
     assert directions == ["left"]
+
+
+def test_extract_animation_params_invalid_trim_rows() -> None:
+    """Test _extract_animation_params defaults invalid trim_rows."""
+    config: dict[str, object] = {
+        "source": "test.gif",
+        "widths": [30],
+        "trim_rows": "invalid",
+    }
+
+    result = _extract_animation_params(config)
+
+    assert result is not None
+    _, _, _, _, _, _, trim_rows = result
+    assert trim_rows == 0
+
+
+def test_extract_animation_params_with_trim_rows() -> None:
+    """Test _extract_animation_params parses trim_rows correctly."""
+    config: dict[str, object] = {
+        "source": "test.gif",
+        "widths": [30],
+        "trim_rows": 5,
+    }
+
+    result = _extract_animation_params(config)
+
+    assert result is not None
+    _, _, _, _, _, _, trim_rows = result
+    assert trim_rows == 5
+
+
+def test_process_animation_with_trim_rows(tmp_path: Path) -> None:
+    """Test _process_animation passes trim_rows to gif_to_ascii."""
+    widths: list[int] = [30]
+
+    with fake_hooks_context() as fakes:
+        _process_animation(
+            sprite_name="bunny",
+            anim_name="walk",
+            source="test.gif",
+            widths=widths,
+            contrast=1.5,
+            invert=False,
+            crop=None,
+            directions=["left"],
+            trim_rows=3,
+            base=tmp_path,
+        )
+
+    assert len(fakes.commands) == 1
+    cmd = fakes.commands[0]
+    # Check trim-rows flag is present
+    assert "--trim-rows" in cmd
+    trim_idx = cmd.index("--trim-rows") + 1
+    assert cmd[trim_idx] == "3"
 
 
 def test_process_animation_valid_widths(tmp_path: Path) -> None:
