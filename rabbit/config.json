@@ -20,17 +20,24 @@
         },
         "idle": {
           "source": "originals/bunny/bunny_idle/bunny_idle.gif",
-          "widths": [30, 50, 80],
-          "contrast": 2.5,
+          "widths": [30, 35, 40, 50, 80],
+          "contrast": 1.4,
           "invert": true,
-          "directions": ["left"]
+          "directions": ["left", "right"]
+        },
+        "walk_to_idle": {
+          "source": "originals/bunny/bunny_walk_to_idle/walk_to_idle.gif",
+          "widths": [30, 35, 40, 50, 80],
+          "contrast": 1.4,
+          "invert": true,
+          "directions": ["left", "right"]
         },
         "alert": {
           "source": "originals/bunny/bunny_alert/bunny_alert.gif",
-          "widths": [30, 50, 80],
-          "contrast": 2.3,
+          "widths": [30, 35, 40, 50, 80],
+          "contrast": 4.0,
           "invert": true,
-          "directions": ["left"]
+          "directions": ["left", "right"]
         }
       }
     },
