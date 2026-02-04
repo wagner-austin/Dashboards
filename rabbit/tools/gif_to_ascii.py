@@ -368,7 +368,9 @@ def process_media(
             if flip:
                 adjusted = ImageOps.mirror(adjusted)
 
-            ascii_art = image_to_ascii(adjusted, width=width, gradient=gradient, trim_rows=trim_rows)
+            ascii_art = image_to_ascii(
+                adjusted, width=width, gradient=gradient, trim_rows=trim_rows
+            )
             results[size_key].append(ascii_art)
 
             hooks.print_message(f"  Width {width}, Frame {i + 1}/{len(frames)} done")
