@@ -199,6 +199,20 @@ def test_image_to_ascii_space_density() -> None:
     assert "  " in first_line or len(first_line) > 5
 
 
+def test_image_to_ascii_with_trim_rows() -> None:
+    """Test image_to_ascii trims rows from bottom."""
+    # Create a tall image that will produce many rows
+    test_image = Image.new("RGB", (20, 40), color=(128, 128, 128))
+    result_no_trim = image_to_ascii(test_image, width=10, trim_rows=0)
+    result_with_trim = image_to_ascii(test_image, width=10, trim_rows=3)
+
+    lines_no_trim = result_no_trim.split("\n")
+    lines_with_trim = result_with_trim.split("\n")
+
+    # Trimmed result should have 3 fewer lines
+    assert len(lines_with_trim) == len(lines_no_trim) - 3
+
+
 def test_extract_gif_frames(tmp_path: Path) -> None:
     """Test extract_gif_frames uses hooks."""
     test_image = create_test_image()
