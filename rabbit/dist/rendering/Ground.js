@@ -9,8 +9,10 @@ export const GROUND_TILE = [
     " .      + .      .  .      . .      +  .      .   .     .   ",
     "   . .     .  +    .   . .    .  .     . +     . .   +   .  ",
 ];
+/** Width of each ground tile row - computed from first row at module load */
+export const GROUND_TILE_WIDTH = GROUND_TILE[0].length;
 export function drawGround(buffer, offsetX, width, height) {
-    const tileWidth = GROUND_TILE[0]?.length ?? 60;
+    const tileWidth = GROUND_TILE_WIDTH;
     for (let i = 0; i < GROUND_TILE.length; i++) {
         const row = height - GROUND_TILE.length + i;
         const tileLine = GROUND_TILE[i];
