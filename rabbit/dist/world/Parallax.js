@@ -2,7 +2,7 @@
  * Parallax scrolling calculations.
  * Pure functions for calculating scroll positions and speed transitions.
  */
-import { getSpeedMultiplier, lerp } from "../state/types.js";
+import { getSpeedMultiplier, lerp } from "../utils/math.js";
 /** Calculate new scroll positions */
 export function calculateScrollUpdate(groundScrollX, treeCenterX, scrollAmount, facingRight, viewportWidth, maxTreeWidth) {
     let newGroundX = groundScrollX;
