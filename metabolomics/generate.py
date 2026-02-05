@@ -1106,13 +1106,13 @@ def main() -> int:
                 <h3 style="color: var(--root-color); margin-bottom: 1rem;">
                     Root Tissue <span id="root-peak-count" style="font-weight: normal; font-size: 0.8em;"></span>
                 </h3>
-                <div id="priority-root" style="background: white; border-radius: 8px; padding: 1rem; max-height: 500px; overflow-y: auto;"></div>
+                <div id="priority-root" style="background: white; border-radius: 8px; padding: 1rem; max-height: 500px; overflow: auto;"></div>
             </div>
             <div>
                 <h3 style="color: var(--leaf-color); margin-bottom: 1rem;">
                     Leaf Tissue <span id="leaf-peak-count" style="font-weight: normal; font-size: 0.8em;"></span>
                 </h3>
-                <div id="priority-leaf" style="background: white; border-radius: 8px; padding: 1rem; max-height: 500px; overflow-y: auto;"></div>
+                <div id="priority-leaf" style="background: white; border-radius: 8px; padding: 1rem; max-height: 500px; overflow: auto;"></div>
             </div>
         </div>
 
@@ -1495,8 +1495,12 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
                 return;
             }}
 
+            // Wrapper for horizontal scroll
+            var tableWrapper = container.append('div')
+                .style('min-width', '600px');
+
             // Column headers
-            var headerRow = container.append('div')
+            var headerRow = tableWrapper.append('div')
                 .style('display', 'flex')
                 .style('font-size', '0.7em')
                 .style('color', '#666')
@@ -1522,7 +1526,7 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             }});
 
             // Rows (limit to 100 for performance)
-            var rowContainer = container.append('div');
+            var rowContainer = tableWrapper.append('div');
             filtered.slice(0, 100).forEach(function(d, i) {{
                 var row = rowContainer.append('div')
                     .style('display', 'flex')
