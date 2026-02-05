@@ -10,6 +10,8 @@ export function createInitialBunnyState() {
         isJumping: false,
         jumpFrameIdx: 0,
         isWalking: false,
+        pendingJump: false,
+        preJumpAnimation: null,
     };
 }
 export function createBunnyTimers(state, frames, intervals) {
@@ -32,6 +34,20 @@ export function createBunnyTimers(state, frames, intervals) {
             state.isJumping = false;
             state.jumpFrameIdx = 0;
             jumpTimer.stop();
+            // After jump, transition back based on pre-jump state
+            if (state.preJumpAnimation === "idle") {
+                // Was idle before jump, play landing transition
+                state.currentAnimation = "walk_to_idle";
+                state.bunnyFrameIdx = 0;
+                transitionTimer.start();
+            }
+            else if (state.preJumpAnimation === "walk") {
+                // Was walking before jump, resume walk
+                state.currentAnimation = "walk";
+                state.bunnyFrameIdx = 0;
+                walkTimer.start();
+            }
+            state.preJumpAnimation = null;
         }
     });
     const transitionTimer = createAnimationTimer(intervals.transition, () => {
@@ -52,10 +68,19 @@ export function createBunnyTimers(state, frames, intervals) {
         else if (state.currentAnimation === "idle_to_walk") {
             state.bunnyFrameIdx--;
             if (state.bunnyFrameIdx < 0) {
-                state.currentAnimation = "walk";
-                state.bunnyFrameIdx = 0;
                 transitionTimer.stop();
-                walkTimer.start();
+                // Check if we have a pending jump
+                if (state.pendingJump) {
+                    state.pendingJump = false;
+                    state.isJumping = true;
+                    state.jumpFrameIdx = 0;
+                    jumpTimer.start();
+                }
+                else {
+                    state.currentAnimation = "walk";
+                    state.bunnyFrameIdx = 0;
+                    walkTimer.start();
+                }
             }
         }
     });

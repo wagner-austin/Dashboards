@@ -10,6 +10,8 @@ export interface BunnyState {
     isJumping: boolean;
     jumpFrameIdx: number;
     isWalking: boolean;
+    pendingJump: boolean;
+    preJumpAnimation: BunnyAnimation | null;
 }
 export interface BunnyFrames {
     walkLeft: readonly string[];
