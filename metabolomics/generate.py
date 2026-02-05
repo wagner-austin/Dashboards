@@ -846,7 +846,7 @@ def main() -> int:
 
         .two-col {{
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }}
 
@@ -1502,6 +1502,7 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             // Column headers
             var headerRow = tableWrapper.append('div')
                 .style('display', 'flex')
+                .style('flex-wrap', 'nowrap')
                 .style('font-size', '0.7em')
                 .style('color', '#666')
                 .style('margin-bottom', '0.5rem')
@@ -1530,6 +1531,7 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             filtered.slice(0, 100).forEach(function(d, i) {{
                 var row = rowContainer.append('div')
                     .style('display', 'flex')
+                    .style('flex-wrap', 'nowrap')
                     .style('align-items', 'center')
                     .style('padding', '0.3rem 0.25rem')
                     .style('background', i % 2 === 0 ? '#f9fafb' : 'white')
