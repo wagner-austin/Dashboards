@@ -157,11 +157,23 @@ def get_peaks_in_group(df: pl.DataFrame, cols: list[str]) -> set[str]:
     return peaks
 
 
-def df_to_json(df: pl.DataFrame, sample_cols: list[str]) -> str:
+def df_to_json(df: pl.DataFrame, sample_cols: list[str], formula_lookup: dict = None) -> str:
     """Convert DataFrame to JSON for DataTables."""
     records = []
     for row in df.iter_rows(named=True):
         record = {"Compound": row["Compound"]}
+
+        # Add formula if lookup provided
+        if formula_lookup:
+            mz = row.get("m/z")
+            rt = row.get("Retention time (min)")
+            if mz and rt:
+                key = (round(float(mz), 4), round(float(rt), 2))
+                formula_info = formula_lookup.get(key, {})
+                record["Formula"] = formula_info.get("formula", "")
+            else:
+                record["Formula"] = ""
+
         for col in sample_cols:
             val = row.get(col)
             if val is not None:
@@ -170,6 +182,31 @@ def df_to_json(df: pl.DataFrame, sample_cols: list[str]) -> str:
                 record[col] = None
         records.append(record)
     return json.dumps(records)
+
+
+def load_formulas() -> dict:
+    """Load formula assignments and create lookup dict by (mz_round, rt_round)."""
+    formula_path = Path(__file__).parent / "formulas_assigned.csv"
+    if not formula_path.exists():
+        print("No formulas_assigned.csv found, skipping formula integration")
+        return {}
+
+    import csv
+    formulas = {}
+    with open(formula_path, "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            try:
+                mz = round(float(row["exp_mass"]), 4)
+                rt = round(float(row["RT"]), 2)
+                formulas[(mz, rt)] = {
+                    "formula": row["formula"],
+                    "err_ppm": round(float(row["err_ppm"]), 2),
+                }
+            except (ValueError, KeyError):
+                continue
+    print(f"Loaded {len(formulas)} formula assignments")
+    return formulas
 
 
 def main() -> int:
@@ -182,6 +219,9 @@ def main() -> int:
         sheet_name="Normalized",
         infer_schema_length=None,
     )
+
+    # Load formula assignments
+    formula_lookup = load_formulas()
 
     # Build sample columns from treatment definitions
     SAMPLE_COLS = []
@@ -257,11 +297,13 @@ def main() -> int:
     # Create final filtered DataFrame
     print("Creating filtered dataset...")
     available_cols = [c for c in SAMPLE_COLS if c in df_blank_filtered.columns]
-    df_80 = df_blank_filtered.filter(pl.col("Compound").is_in(list(kept_80))).select(["Compound"] + available_cols)
+    # Include m/z and RT for formula lookup
+    extra_cols = [c for c in ["m/z", "Retention time (min)"] if c in df_blank_filtered.columns]
+    df_80 = df_blank_filtered.filter(pl.col("Compound").is_in(list(kept_80))).select(["Compound"] + extra_cols + available_cols)
 
     # Convert to JSON
     print("Converting to JSON...")
-    json_80 = df_to_json(df_80, available_cols)
+    json_80 = df_to_json(df_80, available_cols, formula_lookup)
 
     # Calculate stats
     leaf_80 = [x for x in sample_data_80 if x[1] == "Leaf"]
@@ -359,10 +401,19 @@ def main() -> int:
             except:
                 cv_pct = None
 
+            # Look up formula
+            mz_val = meta_row.get("m/z", "")
+            rt_val = meta_row.get("Retention time (min)", "")
+            formula_info = formula_lookup.get(
+                (round(float(mz_val), 4), round(float(rt_val), 2)) if mz_val and rt_val else (0, 0),
+                {}
+            )
+
             all_peaks_data[tissue].append({
                 "compound": compound,
-                "mz": meta_row.get("m/z", ""),
-                "rt": meta_row.get("Retention time (min)", ""),
+                "mz": mz_val,
+                "rt": rt_val,
+                "formula": formula_info.get("formula", ""),
                 "drought": abundances["drought"],
                 "ambient": abundances["ambient"],
                 "watered": abundances["watered"],
@@ -386,6 +437,8 @@ def main() -> int:
 
     # Build column definitions for DataTables
     col_defs = [{"data": "Compound", "title": "Compound"}]
+    if formula_lookup:
+        col_defs.append({"data": "Formula", "title": "Formula"})
     for col in available_cols:
         col_defs.append({"data": col, "title": col})
     col_defs_json = json.dumps(col_defs)
@@ -899,11 +952,11 @@ def main() -> int:
             <div class="two-col">
                 <div>
                     <h4 style="color: var(--root-color); margin-bottom: 0.5rem;">Root</h4>
-                    <div id="viz-root" style="background: white; border-radius: 8px; padding: 0.5rem; min-height: 450px;"></div>
+                    <div id="viz-root" style="background: white; border-radius: 8px; padding: 0.5rem; min-height: 550px;"></div>
                 </div>
                 <div>
                     <h4 style="color: var(--leaf-color); margin-bottom: 0.5rem;">Leaf</h4>
-                    <div id="viz-leaf" style="background: white; border-radius: 8px; padding: 0.5rem; min-height: 450px;"></div>
+                    <div id="viz-leaf" style="background: white; border-radius: 8px; padding: 0.5rem; min-height: 550px;"></div>
                 </div>
             </div>
             <p id="viz-info" style="color: var(--gray-600); font-size: 0.85em; margin-top: 0.5rem; text-align: center;"></p>
@@ -1249,7 +1302,8 @@ def main() -> int:
                 .style('font-weight', '600')
                 .style('border-bottom', '2px solid #e5e7eb');
             headerRow.append('div').style('width', '25px').style('text-align', 'center').text('#');
-            headerRow.append('div').style('width', '140px').text('Compound');
+            headerRow.append('div').style('width', '120px').text('Compound');
+            headerRow.append('div').style('width', '90px').text('Formula');
             headerRow.append('div').style('width', '70px').style('text-align', 'right').text('m/z');
             headerRow.append('div').style('width', '35px').style('text-align', 'right').text('RT');
             headerRow.append('div').style('width', '40px').style('text-align', 'right').text('CV%');
@@ -1276,8 +1330,9 @@ def main() -> int:
 
                 row.append('div').style('width', '25px').style('text-align', 'center').style('color', '#999').text(i + 1);
 
-                var name = d.compound.length > 18 ? d.compound.substring(0, 15) + '...' : d.compound;
-                row.append('div').style('width', '140px').style('font-family', 'monospace').style('font-size', '0.95em').attr('title', d.compound).text(name);
+                var name = d.compound.length > 16 ? d.compound.substring(0, 13) + '...' : d.compound;
+                row.append('div').style('width', '120px').style('font-family', 'monospace').style('font-size', '0.95em').attr('title', d.compound).text(name);
+                row.append('div').style('width', '90px').style('font-family', 'monospace').style('font-size', '0.95em').style('color', d.formula ? '#2563eb' : '#ccc').text(d.formula || '-');
                 row.append('div').style('width', '70px').style('text-align', 'right').style('font-family', 'monospace').text(d.mz ? parseFloat(d.mz).toFixed(4) : '-');
                 row.append('div').style('width', '35px').style('text-align', 'right').style('font-family', 'monospace').text(d.rt ? parseFloat(d.rt).toFixed(1) : '-');
 
@@ -1425,7 +1480,7 @@ def main() -> int:
         }}
 
         function renderBars(container, data, t1, t2, color1, color2) {{
-            var width = 450, height = 420;
+            var width = 600, height = 520;
 
             // Calculate fold change and sort
             var withFC = data.map(function(d) {{
@@ -1545,7 +1600,7 @@ def main() -> int:
             nodes.append('title')
                 .text(function(d) {{
                     var data = d.data;
-                    return data.compound + '\\nm/z: ' + (data.mz || 'N/A') + '\\nRT: ' + (data.rt || 'N/A') + '\\nDrought: ' + (data.drought ? data.drought.toExponential(1) : '0') + '\\nAmbient: ' + (data.ambient ? data.ambient.toExponential(1) : '0') + '\\nWatered: ' + (data.watered ? data.watered.toExponential(1) : '0');
+                    return data.compound + (data.formula ? '\\nFormula: ' + data.formula : '') + '\\nm/z: ' + (data.mz || 'N/A') + '\\nRT: ' + (data.rt || 'N/A') + '\\nDrought: ' + (data.drought ? data.drought.toExponential(1) : '0') + '\\nAmbient: ' + (data.ambient ? data.ambient.toExponential(1) : '0') + '\\nWatered: ' + (data.watered ? data.watered.toExponential(1) : '0');
                 }});
 
             document.getElementById('viz-info').innerHTML = 'Circle size = abundance, color = dominant treatment. Hover for details.';
@@ -1628,7 +1683,7 @@ def main() -> int:
 
         // BUBBLE CHART - each compound is a bubble
         function renderBubble(container, data, treatments) {{
-            var width = 450, height = 420;
+            var width = 600, height = 520;
             var svg = container.append('svg').attr('width', width).attr('height', height);
 
             if (data.length === 0) {{
@@ -1636,33 +1691,32 @@ def main() -> int:
                 return;
             }}
 
-            // Helper to get max abundance from selected treatments only
-            function getSelectedMax(d) {{
+            // Helper to get average abundance from selected treatments
+            function getSelectedAvg(d) {{
                 var vals = treatments.map(function(t) {{ return d[t] || 0; }});
-                return Math.max.apply(null, vals);
+                var sum = vals.reduce(function(a, b) {{ return a + b; }}, 0);
+                return sum / vals.length;
             }}
 
             // Take top 100 by abundance (using selected treatments)
             var sorted = data.slice().sort(function(a, b) {{
-                return getSelectedMax(b) - getSelectedMax(a);
+                return getSelectedAvg(b) - getSelectedAvg(a);
             }}).slice(0, 100);
 
-            // Pack layout - size based on selected treatments only
+            // Pack layout - size based on average of selected treatments
             var pack = d3.pack().size([width - 20, height - 40]).padding(2);
 
             var root = d3.hierarchy({{ children: sorted }})
-                .sum(function(d) {{ return getSelectedMax(d); }});
+                .sum(function(d) {{ return getSelectedAvg(d); }});
 
             pack(root);
 
-            // Determine color by absolute dominant treatment (always compares all 3)
+            // Determine color by dominant treatment among SELECTED treatments only
             function getColor(d) {{
                 if (!d.data.compound) return '#ccc';
-                var vals = [
-                    {{ t: 'drought', v: d.data.drought || 0 }},
-                    {{ t: 'ambient', v: d.data.ambient || 0 }},
-                    {{ t: 'watered', v: d.data.watered || 0 }}
-                ];
+                var vals = treatments.map(function(t) {{
+                    return {{ t: t, v: d.data[t] || 0 }};
+                }});
                 vals.sort(function(a, b) {{ return b.v - a.v; }});
                 return treatmentColors[vals[0].t];
             }}
@@ -1695,28 +1749,26 @@ def main() -> int:
             nodes.append('title')
                 .text(function(d) {{
                     if (!d.data.compound) return '';
-                    return d.data.compound + '\\nm/z: ' + (d.data.mz || 'N/A') + '\\nRT: ' + (d.data.rt || 'N/A') + '\\nDrought: ' + (d.data.drought ? d.data.drought.toExponential(1) : '0') + '\\nAmbient: ' + (d.data.ambient ? d.data.ambient.toExponential(1) : '0') + '\\nWatered: ' + (d.data.watered ? d.data.watered.toExponential(1) : '0');
+                    return d.data.compound + (d.data.formula ? '\\nFormula: ' + d.data.formula : '') + '\\nm/z: ' + (d.data.mz || 'N/A') + '\\nRT: ' + (d.data.rt || 'N/A') + '\\nDrought: ' + (d.data.drought ? d.data.drought.toExponential(1) : '0') + '\\nAmbient: ' + (d.data.ambient ? d.data.ambient.toExponential(1) : '0') + '\\nWatered: ' + (d.data.watered ? d.data.watered.toExponential(1) : '0');
                 }});
 
-            document.getElementById('viz-info').innerHTML = 'Bubble size = abundance, color = dominant treatment. Hover for details.';
+            document.getElementById('viz-info').innerHTML = 'Bubble size = average abundance across selected treatments, color = dominant treatment. Hover for details.';
         }}
 
         // TREEMAP - rectangles sized by abundance
         function renderTreemap(container, data, treatments) {{
-            var width = 450, height = 420;
+            var width = 600, height = 520;
 
             if (data.length === 0) {{
                 container.append('p').style('color', '#666').text('No peaks to display');
                 return;
             }}
 
-            // Group by absolute dominant treatment (always compares all 3)
+            // Group by dominant treatment among SELECTED treatments only
             function getDominant(d) {{
-                var vals = [
-                    {{ t: 'drought', v: d.drought || 0 }},
-                    {{ t: 'ambient', v: d.ambient || 0 }},
-                    {{ t: 'watered', v: d.watered || 0 }}
-                ];
+                var vals = treatments.map(function(t) {{
+                    return {{ t: t, v: d[t] || 0 }};
+                }});
                 vals.sort(function(a, b) {{ return b.v - a.v; }});
                 return vals[0].t;
             }}
@@ -1763,7 +1815,7 @@ def main() -> int:
                 .append('title')
                 .text(function(d) {{
                     var data = d.data.data || {{}};
-                    return (d.data.compound || d.data.name) + '\\nm/z: ' + (data.mz || 'N/A') + '\\nValue: ' + (d.value ? d.value.toExponential(1) : '0');
+                    return (d.data.compound || d.data.name) + (data.formula ? '\\nFormula: ' + data.formula : '') + '\\nm/z: ' + (data.mz || 'N/A') + '\\nValue: ' + (d.value ? d.value.toExponential(1) : '0');
                 }});
 
             // Add labels to larger rectangles
