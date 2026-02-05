@@ -26,7 +26,7 @@ export function createInitialTreeState(viewportWidth: number): TreeState {
     sizeIdx: 2, // Start at largest size (most zoomed in)
     targetSizeIdx: 2,
     sizeTransitionProgress: 0,
-    centerX: viewportWidth + 60,
+    centerX: Math.floor(viewportWidth / 3),
   };
 }
 
@@ -95,3 +95,4 @@ export function getTreeTransitionFrames(
     targetIdx,
   };
 }
+
