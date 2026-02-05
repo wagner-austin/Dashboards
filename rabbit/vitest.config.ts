@@ -4,8 +4,13 @@ export default defineConfig({
   test: {
     coverage: {
       provider: "v8",
-      include: ["src/engine/**/*.ts", "src/state/**/*.ts", "src/world/**/*.ts"],
-      exclude: ["src/**/*.test.ts", "src/sprites/**", "src/engine/index.ts"],
+      include: ["src/**/*.ts"],
+      exclude: [
+        "src/**/*.test.ts",
+        "src/sprites/**",
+        "src/types.ts", // Type definitions only - no executable code
+        "src/io/**", // I/O boundary code - tested through dependency injection
+      ],
       thresholds: {
         lines: 100,
         functions: 100,
