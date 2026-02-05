@@ -3,7 +3,7 @@
  * Pure functions for calculating scroll positions and speed transitions.
  */
 
-import { getSpeedMultiplier, lerp } from "../state/types.js";
+import { getSpeedMultiplier, lerp } from "../utils/math.js";
 
 /** Result of a scroll update */
 export interface ScrollUpdate {
