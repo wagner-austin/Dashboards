@@ -17,6 +17,10 @@ export default tseslint.config(
       },
     },
     rules: {
+      "no-warning-comments": [
+        "error",
+        { terms: ["v8 ignore", "istanbul ignore", "c8 ignore"], location: "anywhere" },
+      ],
       "@typescript-eslint/no-unused-vars": [
         "error",
         { argsIgnorePattern: "^_" },
