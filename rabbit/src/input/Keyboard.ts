@@ -30,10 +30,8 @@ export function setupKeyboardControls(
       handleWalkInput(state.bunny, bunnyFrames, bunnyTimers, false);
     } else if (isRightKey) {
       handleWalkInput(state.bunny, bunnyFrames, bunnyTimers, true);
-    } else if (e.key === " " && !state.bunny.isJumping) {
-      state.bunny.isJumping = true;
-      state.bunny.jumpFrameIdx = 0;
-      bunnyTimers.jump.start();
+    } else if (e.key === " " && !state.bunny.isJumping && !state.bunny.pendingJump) {
+      handleJumpInput(state.bunny, bunnyFrames, bunnyTimers);
       e.preventDefault();
     } else if (key === "r") {
       state.tree.centerX = state.viewport.width + 60;
@@ -48,6 +46,41 @@ export function setupKeyboardControls(
       }
     }
   });
+}
+
+function handleJumpInput(
+  bunny: BunnyState,
+  frames: BunnyFrames,
+  timers: BunnyTimers
+): void {
+  // Store pre-jump animation state
+  const wasIdle = bunny.currentAnimation === "idle";
+  const wasWalking = bunny.currentAnimation === "walk";
+
+  if (wasIdle) {
+    // From idle: play crouch transition first, then jump
+    bunny.preJumpAnimation = "idle";
+    bunny.pendingJump = true;
+    timers.idle.stop();
+    const transitionFrames = bunny.facingRight ? frames.walkToIdleRight : frames.walkToIdleLeft;
+    bunny.currentAnimation = "idle_to_walk";
+    bunny.bunnyFrameIdx = transitionFrames.length - 1;
+    timers.transition.start();
+  } else if (wasWalking) {
+    // From walk: jump immediately
+    bunny.preJumpAnimation = "walk";
+    bunny.isJumping = true;
+    bunny.jumpFrameIdx = 0;
+    timers.walk.stop();
+    timers.jump.start();
+  } else {
+    // From transition: jump immediately
+    bunny.preJumpAnimation = bunny.isWalking ? "walk" : "idle";
+    bunny.isJumping = true;
+    bunny.jumpFrameIdx = 0;
+    timers.transition.stop();
+    timers.jump.start();
+  }
 }
 
 function handleWalkInput(
