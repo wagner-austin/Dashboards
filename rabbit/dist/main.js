@@ -2,25 +2,46 @@
  * Main entry point for the ASCII animation engine.
  * Orchestrates modules for rendering, entities, and input.
  */
-import { measureViewport, createBuffer, renderBuffer } from "./rendering/Viewport.js";
-import { drawSprite, drawSpriteFade } from "./rendering/draw.js";
-import { drawGround } from "./rendering/Ground.js";
-import { loadSpriteFrames, loadStaticSpriteFrames, loadConfig } from "./loaders/sprites.js";
-import { createInitialBunnyState, createBunnyTimers, getBunnyFrame } from "./entities/Bunny.js";
-import { createInitialTreeState, createTreeTimer, calcTreeY, getTreeFrame, getTreeTransitionFrames } from "./entities/Tree.js";
+import { measureViewport } from "./rendering/Viewport.js";
+import { renderFrame } from "./rendering/SceneRenderer.js";
+import { createAnimationTimer } from "./loaders/sprites.js";
+import { createInitialBunnyState, createBunnyTimers } from "./entities/Bunny.js";
+import { createInitialTreeState, createTreeTimer } from "./entities/Tree.js";
 import { setupKeyboardControls } from "./input/Keyboard.js";
-import { calculateScrollUpdate, updateSpeedTransition } from "./world/Parallax.js";
-async function init() {
-    const config = await loadConfig();
-    const screenEl = document.getElementById("screen");
+import { validateLayersConfig, createSceneState } from "./layers/index.js";
+import { createLayerInstances } from "./loaders/layers.js";
+import { createLayerAnimationCallback } from "./entities/SceneSprite.js";
+import { initializeAudio, setupTrackSwitcher, } from "./audio/index.js";
+import { loadConfig, loadBunnyFrames, loadTreeSizes, loadLayerSprites, createDefaultAudioDependencies, } from "./io/index.js";
+/** Default dependencies using real implementations */
+function createDefaultDependencies() {
+    return {
+        getScreenElement: () => document.getElementById("screen"),
+        loadConfigFn: loadConfig,
+        loadBunnyFramesFn: loadBunnyFrames,
+        loadTreeSizesFn: loadTreeSizes,
+        loadLayerSpritesFn: loadLayerSprites,
+        requestAnimationFrameFn: (callback) => requestAnimationFrame(callback),
+        audioDeps: createDefaultAudioDependencies(),
+    };
+}
+/** Initialize the application with injectable dependencies */
+export async function init(deps = createDefaultDependencies()) {
+    const config = await deps.loadConfigFn();
+    const screenEl = deps.getScreenElement();
     if (screenEl === null) {
         throw new Error("Screen element not found");
     }
     const screen = screenEl;
     const viewport = measureViewport(screen);
     // Load sprites
-    const bunnyFrames = await loadBunnyFrames(config);
-    const treeSizes = await loadTreeSizes(config);
+    const bunnyFrames = await deps.loadBunnyFramesFn(config);
+    const treeSizes = await deps.loadTreeSizesFn(config);
+    // Validate and load layer sprites
+    const validatedLayers = validateLayersConfig(config.layers);
+    const layerRegistry = await deps.loadLayerSpritesFn(config, validatedLayers);
+    const layerInstances = createLayerInstances(validatedLayers, layerRegistry, viewport.width);
+    const sceneState = createSceneState(layerInstances);
     // Initialize state
     const bunnyState = createInitialBunnyState();
     const treeState = createInitialTreeState(viewport.width);
@@ -29,6 +50,7 @@ async function init() {
         tree: treeState,
         viewport,
         groundScrollX: 0,
+        scene: sceneState,
     };
     // Create timers
     const bunnyTimers = createBunnyTimers(bunnyState, bunnyFrames, {
@@ -38,101 +60,55 @@ async function init() {
         transition: 80,
     });
     const treeTimer = createTreeTimer(treeState, treeSizes, 250);
+    // Layer animation timer - advances all scene sprite frames
+    const layerAnimationCallback = createLayerAnimationCallback(sceneState);
+    const layerAnimationTimer = createAnimationTimer(400, layerAnimationCallback);
     // Setup input
     setupKeyboardControls(state, bunnyFrames, bunnyTimers, treeSizes);
     // Handle resize
     window.addEventListener("resize", () => {
         state.viewport = measureViewport(screen);
     });
+    // Initialize audio (will start on first user interaction)
+    const audioSystem = initializeAudio(config.audio, deps.audioDeps);
+    if (audioSystem !== null) {
+        setupTrackSwitcher(audioSystem, (type, handler) => {
+            document.addEventListener(type, handler);
+        });
+    }
     // Start timers
     bunnyTimers.walk.start();
     bunnyTimers.idle.start();
     treeTimer.start();
+    layerAnimationTimer.start();
     // Render loop
     const SCROLL_SPEED = config.settings.scrollSpeed;
     const TREE_TRANSITION_DURATION_MS = 800;
     let lastTime = 0;
     function render(currentTime) {
-        const deltaTime = lastTime > 0 ? (currentTime - lastTime) / 1000 : 0;
-        lastTime = currentTime;
-        // Update tree transition
-        const transitionUpdate = updateSpeedTransition(treeState.sizeIdx, treeState.targetSizeIdx, treeState.sizeTransitionProgress, deltaTime * 1000, TREE_TRANSITION_DURATION_MS);
-        treeState.sizeIdx = transitionUpdate.treeSizeIdx;
-        treeState.sizeTransitionProgress = transitionUpdate.treeSizeTransitionProgress;
-        const isTreeTransitioning = treeState.sizeIdx !== treeState.targetSizeIdx;
-        const { width, height } = state.viewport;
-        const buffer = createBuffer(width, height);
-        // Draw ground
-        drawGround(buffer, state.groundScrollX, width, height);
-        // Draw tree
-        if (isTreeTransitioning && treeState.sizeTransitionProgress > 0) {
-            const frames = getTreeTransitionFrames(treeState, treeSizes);
-            if (frames) {
-                const currentX = Math.floor(treeState.centerX - frames.current.width / 2);
-                const targetX = Math.floor(treeState.centerX - frames.target.width / 2);
-                const currentY = calcTreeY(frames.current.lines.length, treeState.sizeIdx, height);
-                const targetY = calcTreeY(frames.target.lines.length, frames.targetIdx, height);
-                drawSpriteFade(buffer, frames.current.lines, frames.target.lines, currentX, targetX, currentY, targetY, width, height, treeState.sizeTransitionProgress);
-            }
-        }
-        else {
-            const frame = getTreeFrame(treeState, treeSizes);
-            if (frame) {
-                const treeX = Math.floor(treeState.centerX - frame.width / 2);
-                const treeY = calcTreeY(frame.lines.length, treeState.sizeIdx, height);
-                drawSprite(buffer, frame.lines, treeX, treeY, width, height);
-            }
-        }
-        // Draw bunny
-        const bunny = getBunnyFrame(bunnyState, bunnyFrames);
-        const bunnyX = Math.floor(width / 2) - 20;
-        const bunnyY = height - bunny.lines.length - 2;
-        drawSprite(buffer, bunny.lines, bunnyX, bunnyY, width, height);
-        // Render
-        screen.textContent = renderBuffer(buffer);
-        // Update scroll
-        if (bunnyState.isWalking && bunnyState.currentAnimation === "walk") {
-            const scrollAmount = SCROLL_SPEED * deltaTime;
-            const scrollUpdate = calculateScrollUpdate(state.groundScrollX, treeState.centerX, scrollAmount, bunnyState.facingRight, width, 180);
-            state.groundScrollX = scrollUpdate.groundScrollX;
-            treeState.centerX = scrollUpdate.treeCenterX;
-        }
-        requestAnimationFrame(render);
+        const renderState = {
+            bunnyState,
+            treeState,
+            sceneState: state.scene,
+            viewport: state.viewport,
+            groundScrollX: state.groundScrollX,
+            lastTime,
+        };
+        const result = renderFrame(renderState, bunnyFrames, treeSizes, screen, currentTime, SCROLL_SPEED, TREE_TRANSITION_DURATION_MS);
+        state.groundScrollX = result.groundScrollX;
+        lastTime = result.lastTime;
+        deps.requestAnimationFrameFn(render);
     }
-    requestAnimationFrame(render);
+    deps.requestAnimationFrameFn(render);
 }
-async function loadBunnyFrames(_config) {
-    const [walkLeft, walkRight, jumpLeft, jumpRight, idleLeft, idleRight, walkToIdleLeft, walkToIdleRight] = await Promise.all([
-        loadSpriteFrames("bunny", "walk", 50, "left"),
-        loadSpriteFrames("bunny", "walk", 50, "right"),
-        loadSpriteFrames("bunny", "jump", 50, "left"),
-        loadSpriteFrames("bunny", "jump", 50, "right"),
-        loadSpriteFrames("bunny", "idle", 40, "left"),
-        loadSpriteFrames("bunny", "idle", 40, "right"),
-        loadSpriteFrames("bunny", "walk_to_idle", 40, "left"),
-        loadSpriteFrames("bunny", "walk_to_idle", 40, "right"),
-    ]);
-    return {
-        walkLeft: walkLeft.frames,
-        walkRight: walkRight.frames,
-        jumpLeft: jumpLeft.frames,
-        jumpRight: jumpRight.frames,
-        idleLeft: idleLeft.frames,
-        idleRight: idleRight.frames,
-        walkToIdleLeft: walkToIdleLeft.frames,
-        walkToIdleRight: walkToIdleRight.frames,
-    };
+// Vitest sets import.meta.env.MODE to 'test'
+function isTestEnvironment() {
+    const meta = import.meta;
+    return meta.env?.MODE === "test";
 }
-async function loadTreeSizes(_config) {
-    const widths = [60, 120, 180];
-    const sizes = [];
-    for (const w of widths) {
-        const set = await loadStaticSpriteFrames("tree", w);
-        sizes.push({ width: w, frames: set.frames });
-    }
-    return sizes;
-}
-init().catch((error) => {
-    console.error("Failed to initialize:", error);
-});
+/** Test hooks for internal functions */
+export const _test_hooks = {
+    createDefaultDependencies,
+    isTestEnvironment,
+};
 //# sourceMappingURL=main.js.map
