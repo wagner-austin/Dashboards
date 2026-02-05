@@ -11,6 +11,12 @@ from pathlib import Path
 import pytest
 from scripts import _test_hooks as hooks
 from scripts.generate_sprites import (
+    _coerce_bool,
+    _coerce_directions,
+    _coerce_float,
+    _coerce_int,
+    _coerce_optional_str,
+    _coerce_str,
     _extract_animation_params,
     _parse_sprite_filename,
     _process_animated_sprite,
@@ -184,6 +190,26 @@ def test_generate_sprite_module_with_flip(tmp_path: Path) -> None:
     assert "--flip" in cmd
 
 
+def test_generate_sprite_module_with_brightness(tmp_path: Path) -> None:
+    """Test generate_sprite_module adds --brightness option."""
+    output_path = tmp_path / "sprites" / "bunny" / "w50.js"
+
+    with fake_hooks_context() as fakes:
+        generate_sprite_module(
+            source="test.gif",
+            output_path=output_path,
+            width=50,
+            contrast=1.5,
+            invert=False,
+            brightness=1.3,
+        )
+
+    cmd = fakes.commands[0]
+    assert "--brightness" in cmd
+    brightness_idx = cmd.index("--brightness") + 1
+    assert cmd[brightness_idx] == "1.3"
+
+
 def test_generate_sprite_module_error(tmp_path: Path) -> None:
     """Test generate_sprite_module exits on command error."""
     output_path = tmp_path / "sprites" / "bunny" / "w50.js"
@@ -218,6 +244,86 @@ def test_generate_sprite_module_creates_parent_dirs(tmp_path: Path) -> None:
         )
 
     assert output_path.parent.exists()
+
+
+def test_coerce_float_with_float() -> None:
+    """Test _coerce_float returns float when given float."""
+    assert _coerce_float(2.5, 1.0) == 2.5
+
+
+def test_coerce_float_with_int() -> None:
+    """Test _coerce_float returns float when given int."""
+    assert _coerce_float(3, 1.0) == 3.0
+
+
+def test_coerce_float_with_invalid() -> None:
+    """Test _coerce_float returns default when given non-numeric."""
+    assert _coerce_float("invalid", 1.5) == 1.5
+
+
+def test_coerce_bool_with_true() -> None:
+    """Test _coerce_bool returns True when given True."""
+    assert _coerce_bool(True, False) is True
+
+
+def test_coerce_bool_with_false() -> None:
+    """Test _coerce_bool returns False when given False."""
+    assert _coerce_bool(False, True) is False
+
+
+def test_coerce_bool_with_invalid() -> None:
+    """Test _coerce_bool returns default when given non-bool."""
+    assert _coerce_bool("yes", False) is False
+
+
+def test_coerce_str_with_string() -> None:
+    """Test _coerce_str returns string when given string."""
+    assert _coerce_str("hello", "default") == "hello"
+
+
+def test_coerce_str_with_invalid() -> None:
+    """Test _coerce_str returns default when given non-string."""
+    assert _coerce_str(123, "default") == "default"
+
+
+def test_coerce_optional_str_with_string() -> None:
+    """Test _coerce_optional_str returns string when given string."""
+    assert _coerce_optional_str("value") == "value"
+
+
+def test_coerce_optional_str_with_invalid() -> None:
+    """Test _coerce_optional_str returns None when given non-string."""
+    assert _coerce_optional_str(123) is None
+
+
+def test_coerce_int_with_int() -> None:
+    """Test _coerce_int returns int when given int."""
+    assert _coerce_int(5, 0) == 5
+
+
+def test_coerce_int_with_invalid() -> None:
+    """Test _coerce_int returns default when given non-int."""
+    assert _coerce_int(5.5, 0) == 0
+
+
+def test_coerce_directions_with_valid_list() -> None:
+    """Test _coerce_directions returns valid strings from list."""
+    assert _coerce_directions(["left", "right"]) == ["left", "right"]
+
+
+def test_coerce_directions_with_invalid_type() -> None:
+    """Test _coerce_directions returns default when not a list."""
+    assert _coerce_directions("left") == ["left"]
+
+
+def test_coerce_directions_with_empty_list() -> None:
+    """Test _coerce_directions returns default when list is empty."""
+    assert _coerce_directions([]) == ["left"]
+
+
+def test_coerce_directions_filters_non_strings() -> None:
+    """Test _coerce_directions filters non-string items."""
+    assert _coerce_directions([123, "left", None, "right"]) == ["left", "right"]
 
 
 def test_parse_sprite_filename_no_direction() -> None:
@@ -255,7 +361,7 @@ def test_extract_animation_params_valid() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    source, widths, contrast, invert, crop, directions, trim_rows = result
+    source, widths, contrast, invert, crop, directions, trim_rows, brightness, gradient = result
     assert source == "test.gif"
     assert widths == [30, 50, 80]
     assert contrast == 2.0
@@ -263,6 +369,8 @@ def test_extract_animation_params_valid() -> None:
     assert crop == "10%"
     assert directions == ["left", "right"]
     assert trim_rows == 0
+    assert brightness == 1.0
+    assert gradient == "minimalist"
 
 
 def test_extract_animation_params_missing_source() -> None:
@@ -298,7 +406,7 @@ def test_extract_animation_params_invalid_contrast() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, contrast, _, _, _, _ = result
+    _, _, contrast, _, _, _, _, _, _ = result
     assert contrast == 1.5
 
 
@@ -313,7 +421,7 @@ def test_extract_animation_params_invalid_invert() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, invert, _, _, _ = result
+    _, _, _, invert, _, _, _, _, _ = result
     assert invert is False
 
 
@@ -328,7 +436,7 @@ def test_extract_animation_params_invalid_crop() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, crop, _, _ = result
+    _, _, _, _, crop, _, _, _, _ = result
     assert crop is None
 
 
@@ -367,7 +475,7 @@ def test_extract_animation_params_int_contrast() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, contrast, _, _, _, _ = result
+    _, _, contrast, _, _, _, _, _, _ = result
     assert contrast == 2.0
 
 
@@ -381,12 +489,14 @@ def test_extract_animation_params_defaults() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, contrast, invert, crop, directions, trim_rows = result
+    _, _, contrast, invert, crop, directions, trim_rows, brightness, gradient = result
     assert contrast == 1.5
     assert invert is False
     assert crop is None
     assert directions == ["left"]  # Default direction
     assert trim_rows == 0
+    assert brightness == 1.0
+    assert gradient == "minimalist"
 
 
 def test_extract_animation_params_invalid_directions() -> None:
@@ -400,7 +510,7 @@ def test_extract_animation_params_invalid_directions() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, _, directions, _ = result
+    _, _, _, _, _, directions, _, _, _ = result
     assert directions == ["left"]
 
 
@@ -415,7 +525,7 @@ def test_extract_animation_params_invalid_direction_items() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, _, directions, _ = result
+    _, _, _, _, _, directions, _, _, _ = result
     assert directions == ["left"]
 
 
@@ -430,7 +540,7 @@ def test_extract_animation_params_empty_directions() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, _, directions, _ = result
+    _, _, _, _, _, directions, _, _, _ = result
     assert directions == ["left"]
 
 
@@ -445,7 +555,7 @@ def test_extract_animation_params_invalid_trim_rows() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, _, _, trim_rows = result
+    _, _, _, _, _, _, trim_rows, _, _ = result
     assert trim_rows == 0
 
 
@@ -460,8 +570,68 @@ def test_extract_animation_params_with_trim_rows() -> None:
     result = _extract_animation_params(config)
 
     assert result is not None
-    _, _, _, _, _, _, trim_rows = result
+    _, _, _, _, _, _, trim_rows, _, _ = result
     assert trim_rows == 5
+
+
+def test_extract_animation_params_with_brightness() -> None:
+    """Test _extract_animation_params parses brightness correctly."""
+    config: dict[str, object] = {
+        "source": "test.gif",
+        "widths": [30],
+        "brightness": 1.5,
+    }
+
+    result = _extract_animation_params(config)
+
+    assert result is not None
+    _, _, _, _, _, _, _, brightness, _ = result
+    assert brightness == 1.5
+
+
+def test_extract_animation_params_invalid_brightness() -> None:
+    """Test _extract_animation_params defaults invalid brightness."""
+    config: dict[str, object] = {
+        "source": "test.gif",
+        "widths": [30],
+        "brightness": "invalid",
+    }
+
+    result = _extract_animation_params(config)
+
+    assert result is not None
+    _, _, _, _, _, _, _, brightness, _ = result
+    assert brightness == 1.0
+
+
+def test_extract_animation_params_with_gradient() -> None:
+    """Test _extract_animation_params parses gradient correctly."""
+    config: dict[str, object] = {
+        "source": "test.gif",
+        "widths": [30],
+        "gradient": "ascii",
+    }
+
+    result = _extract_animation_params(config)
+
+    assert result is not None
+    _, _, _, _, _, _, _, _, gradient = result
+    assert gradient == "ascii"
+
+
+def test_extract_animation_params_invalid_gradient() -> None:
+    """Test _extract_animation_params defaults invalid gradient."""
+    config: dict[str, object] = {
+        "source": "test.gif",
+        "widths": [30],
+        "gradient": 123,
+    }
+
+    result = _extract_animation_params(config)
+
+    assert result is not None
+    _, _, _, _, _, _, _, _, gradient = result
+    assert gradient == "minimalist"
 
 
 def test_process_animation_with_trim_rows(tmp_path: Path) -> None:
@@ -789,6 +959,42 @@ def test_process_static_sprite_int_contrast(tmp_path: Path) -> None:
     cmd = fakes.commands[0]
     contrast_idx = cmd.index("--contrast") + 1
     assert cmd[contrast_idx] == "2.0"
+
+
+def test_process_static_sprite_with_crop(tmp_path: Path) -> None:
+    """Test _process_static_sprite passes crop to command."""
+    config: dict[str, object] = {
+        "source": "grass.mp4",
+        "widths": [80],
+        "contrast": 1.5,
+        "invert": False,
+        "crop": "0,50%,0,35%",
+    }
+
+    with fake_hooks_context() as fakes:
+        _process_static_sprite("grass", config, tmp_path)
+
+    assert len(fakes.commands) == 1
+    cmd = fakes.commands[0]
+    assert "--crop" in cmd
+    crop_idx = cmd.index("--crop") + 1
+    assert cmd[crop_idx] == "0,50%,0,35%"
+
+
+def test_process_static_sprite_invalid_crop(tmp_path: Path) -> None:
+    """Test _process_static_sprite ignores non-string crop."""
+    config: dict[str, object] = {
+        "source": "grass.mp4",
+        "widths": [80],
+        "crop": 123,
+    }
+
+    with fake_hooks_context() as fakes:
+        _process_static_sprite("grass", config, tmp_path)
+
+    assert len(fakes.commands) == 1
+    cmd = fakes.commands[0]
+    assert "--crop" not in cmd
 
 
 def test_process_sprite_with_animations(tmp_path: Path) -> None:
