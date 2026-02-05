@@ -80,6 +80,7 @@ export interface LayerDefinition {
   readonly type?: LayerType;
   readonly sprites?: readonly string[];
   readonly parallax?: number;
+  readonly tile?: boolean;
 }
 
 /** Global settings */
@@ -89,9 +90,26 @@ export interface Settings {
   readonly scrollSpeed: number; // characters per second
 }
 
+/** Audio configuration (imported from audio module at runtime) */
+export interface AudioConfigRef {
+  readonly enabled: boolean;
+  readonly masterVolume: number;
+  readonly tracks: readonly {
+    readonly id: string;
+    readonly path: string;
+    readonly volume: number;
+    readonly loop: boolean;
+    readonly tags: {
+      readonly time?: "day" | "night" | "dawn" | "dusk";
+      readonly location?: string;
+    };
+  }[];
+}
+
 /** Root config structure */
 export interface Config {
   readonly sprites: Record<string, SpriteConfig>;
   readonly layers: readonly LayerDefinition[];
   readonly settings: Settings;
+  readonly audio?: AudioConfigRef;
 }
