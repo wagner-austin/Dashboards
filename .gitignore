@@ -1,3 +1,12 @@
+# Node
+node_modules/
+
+# Coverage
+coverage/
+.coverage
+*.lcov
+.nyc_output/
+
 # Python
 __pycache__/
 *.py[cod]
