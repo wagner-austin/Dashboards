@@ -3,24 +3,42 @@
  */
 
 import type { BunnyState, BunnyFrames, BunnyTimers } from "../entities/Bunny.js";
-import type { TreeState, TreeSize } from "../entities/Tree.js";
 import type { ViewportState } from "../rendering/Viewport.js";
+import type { Camera } from "../world/Projection.js";
+import { DEFAULT_CAMERA_Z } from "../world/Projection.js";
 
+/**
+ * Input state containing all mutable game state.
+ *
+ * bunny: Bunny animation state.
+ * viewport: Screen dimensions.
+ * camera: Camera position.
+ * zoomDirection: Current zoom direction (1=in, -1=out, 0=none).
+ */
 export interface InputState {
   bunny: BunnyState;
-  tree: TreeState;
   viewport: ViewportState;
-  groundScrollX: number;
+  camera: Camera;
+  zoomDirection: number;
 }
 
+/**
+ * Setup keyboard controls for the game.
+ *
+ * Args:
+ *     state: Mutable input state.
+ *     bunnyFrames: Bunny animation frames.
+ *     bunnyTimers: Bunny animation timers.
+ */
 export function setupKeyboardControls(
   state: InputState,
   bunnyFrames: BunnyFrames,
-  bunnyTimers: BunnyTimers,
-  treeSizes: TreeSize[]
+  bunnyTimers: BunnyTimers
 ): void {
   document.addEventListener("keydown", (e: KeyboardEvent) => {
-    if (e.repeat) return;
+    if (e.repeat) {
+      return;
+    }
 
     const key = e.key.toLowerCase();
     const isLeftKey = e.key === "ArrowLeft" || key === "a";
@@ -34,47 +52,96 @@ export function setupKeyboardControls(
       handleJumpInput(state.bunny, bunnyFrames, bunnyTimers);
       e.preventDefault();
     } else if (key === "r") {
-      state.tree.centerX = state.viewport.width + 60;
-      state.groundScrollX = 0;
+      // Reset scene: camera position and zoom level
+      state.camera = { x: 0, z: DEFAULT_CAMERA_Z };
     } else if (key === "w" || e.key === "ArrowUp") {
-      if (state.tree.targetSizeIdx < treeSizes.length - 1) {
-        state.tree.targetSizeIdx++;
-      }
+      // Set zoom direction to forward (into scene)
+      state.zoomDirection = 1;
     } else if (key === "s" || e.key === "ArrowDown") {
-      if (state.tree.targetSizeIdx > 0) {
-        state.tree.targetSizeIdx--;
-      }
+      // Set zoom direction to backward (out of scene)
+      state.zoomDirection = -1;
+    }
+  });
+
+  document.addEventListener("keyup", (e: KeyboardEvent) => {
+    const key = e.key.toLowerCase();
+    if (key === "w" || e.key === "ArrowUp" || key === "s" || e.key === "ArrowDown") {
+      state.zoomDirection = 0;
     }
   });
 }
 
+/** Camera Z movement speed per frame */
+const CAMERA_Z_SPEED = 0.5;
+
+/** Minimum camera Z (closest to scene) */
+const MIN_CAMERA_Z = 40;
+
+/** Maximum camera Z (farthest from scene) */
+const MAX_CAMERA_Z = 80;
+
+/**
+ * Process zoom based on held key direction.
+ *
+ * Moves camera forward/backward through the scene.
+ * W/ArrowUp zooms in (moves camera forward, decreases z).
+ * S/ArrowDown zooms out (moves camera backward, increases z).
+ * All layer entities automatically resize via 3D projection.
+ *
+ * Args:
+ *     state: Input state with zoomDirection and camera.
+ */
+export function processZoom(state: InputState): void {
+  if (state.zoomDirection === 0) {
+    return;
+  }
+
+  let newZ = state.camera.z;
+
+  if (state.zoomDirection === 1) {
+    // Zoom in: move camera forward (decrease z)
+    newZ = Math.max(state.camera.z - CAMERA_Z_SPEED, MIN_CAMERA_Z);
+  } else if (state.zoomDirection === -1) {
+    // Zoom out: move camera backward (increase z)
+    newZ = Math.min(state.camera.z + CAMERA_Z_SPEED, MAX_CAMERA_Z);
+  }
+
+  state.camera = { ...state.camera, z: newZ };
+}
+
+/**
+ * Handle jump input.
+ *
+ * Args:
+ *     bunny: Bunny state to update.
+ *     frames: Bunny animation frames.
+ *     timers: Bunny animation timers.
+ */
 function handleJumpInput(
   bunny: BunnyState,
   frames: BunnyFrames,
   timers: BunnyTimers
 ): void {
-  // Store pre-jump animation state
   const wasIdle = bunny.currentAnimation === "idle";
   const wasWalking = bunny.currentAnimation === "walk";
 
   if (wasIdle) {
-    // From idle: play crouch transition first, then jump
     bunny.preJumpAnimation = "idle";
     bunny.pendingJump = true;
     timers.idle.stop();
-    const transitionFrames = bunny.facingRight ? frames.walkToIdleRight : frames.walkToIdleLeft;
+    const transitionFrames = bunny.facingRight
+      ? frames.walkToIdleRight
+      : frames.walkToIdleLeft;
     bunny.currentAnimation = "idle_to_walk";
     bunny.bunnyFrameIdx = transitionFrames.length - 1;
     timers.transition.start();
   } else if (wasWalking) {
-    // From walk: jump immediately
     bunny.preJumpAnimation = "walk";
     bunny.isJumping = true;
     bunny.jumpFrameIdx = 0;
     timers.walk.stop();
     timers.jump.start();
   } else {
-    // From transition: jump immediately
     bunny.preJumpAnimation = bunny.isWalking ? "walk" : "idle";
     bunny.isJumping = true;
     bunny.jumpFrameIdx = 0;
@@ -83,6 +150,15 @@ function handleJumpInput(
   }
 }
 
+/**
+ * Handle walk input.
+ *
+ * Args:
+ *     bunny: Bunny state to update.
+ *     frames: Bunny animation frames.
+ *     timers: Bunny animation timers.
+ *     goingRight: Direction of movement.
+ */
 function handleWalkInput(
   bunny: BunnyState,
   frames: BunnyFrames,
@@ -92,28 +168,28 @@ function handleWalkInput(
   const sameDirection = bunny.facingRight === goingRight;
 
   if (bunny.isWalking && sameDirection && bunny.currentAnimation === "walk") {
-    // Already walking this direction, stop with transition
     bunny.isWalking = false;
     timers.walk.stop();
     bunny.currentAnimation = "walk_to_idle";
     bunny.bunnyFrameIdx = 0;
     timers.transition.start();
   } else {
-    // Start walking (or switch direction, or interrupt transition)
     const wasIdle = bunny.currentAnimation === "idle";
-    const wasInTransition = bunny.currentAnimation === "walk_to_idle" || bunny.currentAnimation === "idle_to_walk";
+    const wasInTransition =
+      bunny.currentAnimation === "walk_to_idle" ||
+      bunny.currentAnimation === "idle_to_walk";
     bunny.facingRight = goingRight;
     bunny.isWalking = true;
 
     if (wasIdle) {
-      // Start reverse transition: idle → walk
       timers.idle.stop();
-      const transitionFrames = goingRight ? frames.walkToIdleRight : frames.walkToIdleLeft;
+      const transitionFrames = goingRight
+        ? frames.walkToIdleRight
+        : frames.walkToIdleLeft;
       bunny.currentAnimation = "idle_to_walk";
       bunny.bunnyFrameIdx = transitionFrames.length - 1;
       timers.transition.start();
     } else {
-      // Switching direction or interrupting transition - go directly to walk
       if (wasInTransition) {
         timers.transition.stop();
       }
@@ -123,3 +199,13 @@ function handleWalkInput(
     }
   }
 }
+
+/** Test hooks for internal functions */
+export const _test_hooks = {
+  handleJumpInput,
+  handleWalkInput,
+  processZoom,
+  CAMERA_Z_SPEED,
+  MIN_CAMERA_Z,
+  MAX_CAMERA_Z,
+};
