@@ -7,7 +7,6 @@ import { describe, it, expect } from "vitest";
 import {
   createSceneState,
   validateLayersConfig,
-  getParallaxX,
   renderLayer,
   renderAllLayers,
   renderForegroundLayers,
@@ -20,10 +19,6 @@ describe("layers/index exports", () => {
 
   it("exports validateLayersConfig", () => {
     expect(typeof validateLayersConfig).toBe("function");
-  });
-
-  it("exports getParallaxX", () => {
-    expect(typeof getParallaxX).toBe("function");
   });
 
   it("exports renderLayer", () => {

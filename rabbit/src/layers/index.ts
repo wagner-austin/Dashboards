@@ -15,7 +15,6 @@ export {
 } from "./validation.js";
 
 export {
-  getParallaxX,
   renderLayer,
   renderAllLayers,
   renderForegroundLayers,
