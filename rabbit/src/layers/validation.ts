@@ -20,6 +20,15 @@ function isStringArray(value: unknown): value is string[] {
   return true;
 }
 
+/** Type guard for number array */
+function isNumberArray(value: unknown): value is number[] {
+  if (!Array.isArray(value)) return false;
+  for (const item of value) {
+    if (typeof item !== "number") return false;
+  }
+  return true;
+}
+
 /** Type guard for LayerType */
 function isLayerType(value: unknown): value is LayerType {
   return value === "static" || value === "tile" || value === "sprites";
@@ -27,7 +36,18 @@ function isLayerType(value: unknown): value is LayerType {
 
 /**
  * Require valid LayerDefinition from config.
- * Throws descriptive error if invalid.
+ *
+ * Validates all fields and throws descriptive errors for invalid values.
+ *
+ * Args:
+ *     value: Raw value from config to validate.
+ *     index: Index in layers array for error messages.
+ *
+ * Returns:
+ *     Validated LayerDefinition.
+ *
+ * Raises:
+ *     Error: If value is not a valid LayerDefinition.
  */
 function requireLayerDefinition(value: unknown, index: number): LayerDefinition {
   if (!isRecord(value)) {
@@ -49,9 +69,14 @@ function requireLayerDefinition(value: unknown, index: number): LayerDefinition 
     throw new Error(`layers[${String(index)}] "${name}": "sprites" must be string array`);
   }
 
-  const parallax = value.parallax;
-  if (parallax !== undefined && typeof parallax !== "number") {
-    throw new Error(`layers[${String(index)}] "${name}": "parallax" must be a number`);
+  const positions = value.positions;
+  if (positions !== undefined && !isNumberArray(positions)) {
+    throw new Error(`layers[${String(index)}] "${name}": "positions" must be number array`);
+  }
+
+  const layer = value.layer;
+  if (layer !== undefined && typeof layer !== "number") {
+    throw new Error(`layers[${String(index)}] "${name}": "layer" must be a number`);
   }
 
   const tile = value.tile;
@@ -64,20 +89,32 @@ function requireLayerDefinition(value: unknown, index: number): LayerDefinition 
     name,
     ...(type !== undefined ? { type } : {}),
     ...(sprites !== undefined ? { sprites } : {}),
-    ...(parallax !== undefined ? { parallax } : {}),
+    ...(positions !== undefined ? { positions } : {}),
+    ...(layer !== undefined ? { layer } : {}),
     ...(tile !== undefined ? { tile } : {}),
   };
 }
 
+/** Default layer number when not specified */
+const DEFAULT_LAYER = 10;
+
 /**
  * Convert LayerDefinition to ValidatedLayer with defaults applied.
+ *
+ * Args:
+ *     definition: Parsed layer definition from config.
+ *     zIndex: Render order index.
+ *
+ * Returns:
+ *     ValidatedLayer with all required fields populated.
  */
 function toValidatedLayer(definition: LayerDefinition, zIndex: number): ValidatedLayer {
   return {
     name: definition.name,
     type: definition.type ?? "sprites",
-    parallax: definition.parallax ?? 1.0,
+    layer: definition.layer ?? DEFAULT_LAYER,
     spriteNames: definition.sprites ?? [],
+    positions: definition.positions ?? [],
     zIndex,
     tile: definition.tile ?? false,
   };
@@ -113,7 +150,9 @@ export function validateLayersConfig(layers: unknown): readonly ValidatedLayer[]
 export const _test_hooks = {
   isRecord,
   isStringArray,
+  isNumberArray,
   isLayerType,
   requireLayerDefinition,
   toValidatedLayer,
+  DEFAULT_LAYER,
 };
