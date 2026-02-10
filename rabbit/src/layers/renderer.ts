@@ -1,90 +1,179 @@
 /**
  * Layer rendering functions.
- * Renders all layers with parallax to buffer.
+ *
+ * Renders all layers using 3D projection to buffer.
+ * Handles entity wrapping for infinite scrolling.
  */
 
 import type { SceneState, LayerInstance, SceneSpriteState } from "./types.js";
+import type { Camera, ProjectionConfig, ScreenPosition } from "../world/Projection.js";
+import { project, scaleToSizeIndex } from "../world/Projection.js";
 import { drawSprite } from "../rendering/draw.js";
-import { getSceneSpriteFrame, calculateSceneSpriteY } from "../entities/SceneSprite.js";
+import { getSceneSpriteFrame } from "../entities/SceneSprite.js";
+
+/** World width for entity wrapping */
+const WORLD_WIDTH = 800;
 
 /**
- * Calculate screen X position with parallax applied.
+ * Wrap entity position for infinite scrolling.
  *
- * parallax = 0.0 → Fixed (doesn't move with camera)
- * parallax = 1.0 → Full movement (moves 1:1 with camera)
+ * When entity is more than half world width from camera, wraps it
+ * to the other side. Mutates entity.worldX in place.
+ *
+ * Args:
+ *     entity: Entity to wrap.
+ *     cameraX: Current camera X position.
  */
-export function getParallaxX(
-  entityX: number,
-  cameraX: number,
-  parallax: number
-): number {
-  return entityX - Math.floor(cameraX * parallax);
+function wrapEntityPosition(entity: SceneSpriteState, cameraX: number): void {
+  const relativeX = entity.worldX - cameraX;
+  const halfWorld = WORLD_WIDTH / 2;
+
+  if (relativeX < -halfWorld) {
+    entity.worldX += WORLD_WIDTH;
+  } else if (relativeX > halfWorld) {
+    entity.worldX -= WORLD_WIDTH;
+  }
+}
+
+/**
+ * Project entity to screen and update its size index.
+ *
+ * Args:
+ *     entity: Scene sprite to project.
+ *     camera: Current camera position.
+ *     viewportWidth: Screen width in characters.
+ *     viewportHeight: Screen height in characters.
+ *     config: Projection configuration.
+ *
+ * Returns:
+ *     ScreenPosition with projected coordinates.
+ */
+function projectEntity(
+  entity: SceneSpriteState,
+  camera: Camera,
+  viewportWidth: number,
+  viewportHeight: number,
+  config: ProjectionConfig
+): ScreenPosition {
+  const screen = project(
+    entity.worldX,
+    entity.worldZ,
+    camera,
+    viewportWidth,
+    viewportHeight,
+    config
+  );
+
+  if (screen.visible) {
+    entity.sizeIdx = scaleToSizeIndex(screen.scale, entity.sizes.length);
+  }
+
+  return screen;
 }
 
 /**
  * Render a single layer to buffer.
- * Applies parallax offset to all entities in layer.
+ *
+ * Projects all entities in the layer and draws them at their screen positions.
+ *
+ * Args:
+ *     buffer: 2D character buffer to draw into.
+ *     layer: Layer instance containing entities.
+ *     camera: Current camera position.
+ *     viewportWidth: Screen width in characters.
+ *     viewportHeight: Screen height in characters.
+ *     config: Projection configuration.
  */
 export function renderLayer(
   buffer: string[][],
   layer: LayerInstance,
-  cameraX: number,
+  camera: Camera,
   viewportWidth: number,
-  viewportHeight: number
+  viewportHeight: number,
+  config: ProjectionConfig
 ): void {
-  const parallax = layer.config.parallax;
+  // Skip wrapping for tiled layers (they handle their own repetition)
+  const shouldWrap = !layer.config.tile && layer.config.positions.length > 0;
 
   for (const entity of layer.entities) {
+    // Wrap positioned entities for infinite scrolling
+    if (shouldWrap) {
+      wrapEntityPosition(entity, camera.x);
+    }
+
+    const screen = projectEntity(entity, camera, viewportWidth, viewportHeight, config);
+
+    if (!screen.visible) {
+      continue;
+    }
+
     const frame = getSceneSpriteFrame(entity);
     if (frame === null) {
       continue;
     }
 
-    const screenX = getParallaxX(entity.x, cameraX, parallax);
-    const screenY = calculateSceneSpriteY(entity, viewportHeight);
+    const spriteX = screen.x - Math.floor(frame.width / 2);
+    const spriteY = screen.y - frame.lines.length;
 
-    drawSprite(buffer, frame.lines, screenX, screenY, viewportWidth, viewportHeight);
+    drawSprite(buffer, frame.lines, spriteX, spriteY, viewportWidth, viewportHeight);
   }
 }
 
 /**
  * Render all background layers (excludes foreground layers).
- * Layers with "front" in name are considered foreground.
+ *
+ * Layers with "front" in name are considered foreground and skipped.
+ *
+ * Args:
+ *     buffer: 2D character buffer to draw into.
+ *     scene: Scene state with camera and layers.
+ *     viewportWidth: Screen width in characters.
+ *     viewportHeight: Screen height in characters.
+ *     config: Projection configuration.
  */
 export function renderAllLayers(
   buffer: string[][],
   scene: SceneState,
   viewportWidth: number,
-  viewportHeight: number
+  viewportHeight: number,
+  config: ProjectionConfig
 ): void {
   for (const layer of scene.layers) {
     if (!layer.config.name.includes("front")) {
-      renderLayer(buffer, layer, scene.cameraX, viewportWidth, viewportHeight);
+      renderLayer(buffer, layer, scene.camera, viewportWidth, viewportHeight, config);
     }
   }
 }
 
 /**
  * Render tiled foreground layer with infinite wrapping.
- * Renders the first entity's frame repeated across viewport width.
+ *
+ * Args:
+ *     buffer: 2D character buffer to draw into.
+ *     entity: First entity in tiled layer.
+ *     camera: Current camera position.
+ *     viewportWidth: Screen width in characters.
+ *     viewportHeight: Screen height in characters.
  */
 function renderTiledForeground(
   buffer: string[][],
   entity: SceneSpriteState,
-  cameraX: number,
-  parallax: number,
+  camera: Camera,
   viewportWidth: number,
   viewportHeight: number
 ): void {
   const frame = getSceneSpriteFrame(entity);
-  if (frame === null) return;
+  if (frame === null) {
+    return;
+  }
 
   const tileWidth = frame.width;
+  // Fixed Y at bottom of viewport (ground layer)
   const screenY = viewportHeight - frame.lines.length;
 
-  // Calculate starting X based on camera, wrapping to tile boundary
-  const parallaxOffset = Math.floor(cameraX * parallax);
-  const startX = -(parallaxOffset % tileWidth);
+  // No parallax - moves 1:1 with camera
+  const offset = Math.floor(camera.x);
+  const startX = -(offset % tileWidth);
 
   // Render enough tiles to fill viewport
   for (let x = startX - tileWidth; x < viewportWidth + tileWidth; x += tileWidth) {
@@ -93,61 +182,90 @@ function renderTiledForeground(
 }
 
 /**
- * Render a foreground layer at the bottom of the screen.
- * Used for sprites that should appear in front of other entities.
- * For tiled layers, wraps tiles infinitely.
+ * Render a foreground layer at projected Y position.
+ *
+ * For tiled layers, wraps tiles infinitely across viewport.
+ *
+ * Args:
+ *     buffer: 2D character buffer to draw into.
+ *     layer: Layer instance to render.
+ *     camera: Current camera position.
+ *     viewportWidth: Screen width in characters.
+ *     viewportHeight: Screen height in characters.
+ *     config: Projection configuration.
  */
 export function renderForegroundLayer(
   buffer: string[][],
   layer: LayerInstance,
-  cameraX: number,
+  camera: Camera,
   viewportWidth: number,
-  viewportHeight: number
+  viewportHeight: number,
+  config: ProjectionConfig
 ): void {
-  const parallax = layer.config.parallax;
   const isTiled = layer.config.tile;
   const firstEntity = layer.entities[0];
 
   if (isTiled && firstEntity !== undefined) {
-    // For tiled layers, render tiles that wrap infinitely
-    renderTiledForeground(buffer, firstEntity, cameraX, parallax, viewportWidth, viewportHeight);
+    renderTiledForeground(
+      buffer,
+      firstEntity,
+      camera,
+      viewportWidth,
+      viewportHeight
+    );
   } else {
-    // Non-tiled: render each entity at its position
     for (const entity of layer.entities) {
+      const screen = projectEntity(entity, camera, viewportWidth, viewportHeight, config);
+
+      if (!screen.visible) {
+        continue;
+      }
+
       const frame = getSceneSpriteFrame(entity);
       if (frame === null) {
         continue;
       }
 
-      const screenX = getParallaxX(entity.x, cameraX, parallax);
-      const screenY = viewportHeight - frame.lines.length;
+      const spriteX = screen.x - Math.floor(frame.width / 2);
+      const spriteY = screen.y - frame.lines.length;
 
-      drawSprite(buffer, frame.lines, screenX, screenY, viewportWidth, viewportHeight);
+      drawSprite(buffer, frame.lines, spriteX, spriteY, viewportWidth, viewportHeight);
     }
   }
 }
 
 /**
  * Render all foreground layers (layers with "front" in name).
- * Positioned at bottom of screen, rendered after main entities.
+ *
+ * Rendered after main entities so they appear in front.
+ *
+ * Args:
+ *     buffer: 2D character buffer to draw into.
+ *     scene: Scene state with camera and layers.
+ *     viewportWidth: Screen width in characters.
+ *     viewportHeight: Screen height in characters.
+ *     config: Projection configuration.
  */
 export function renderForegroundLayers(
   buffer: string[][],
   scene: SceneState,
   viewportWidth: number,
-  viewportHeight: number
+  viewportHeight: number,
+  config: ProjectionConfig
 ): void {
   for (const layer of scene.layers) {
     if (layer.config.name.includes("front")) {
-      renderForegroundLayer(buffer, layer, scene.cameraX, viewportWidth, viewportHeight);
+      renderForegroundLayer(buffer, layer, scene.camera, viewportWidth, viewportHeight, config);
     }
   }
 }
 
 /** Test hooks for internal functions */
 export const _test_hooks = {
-  getParallaxX,
+  wrapEntityPosition,
+  projectEntity,
   renderLayer,
   renderForegroundLayer,
   renderTiledForeground,
+  WORLD_WIDTH,
 };
