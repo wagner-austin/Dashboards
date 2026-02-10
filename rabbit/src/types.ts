@@ -44,14 +44,14 @@ export type LayerType = "static" | "tile" | "sprites";
 export interface LayerConfig {
   readonly name: string;
   readonly type: LayerType;
-  readonly parallax: number;
+  readonly depth: number;
   readonly sprites: readonly string[];
 }
 
 /** A layer containing sprites at the same depth */
 export interface Layer {
   readonly name: string;
-  readonly parallax: number;
+  readonly depth: number;
   readonly sprites: Sprite[];
 }
 
@@ -65,6 +65,45 @@ export interface SpriteAnimationConfig {
   readonly directions?: readonly Direction[];
 }
 
+/**
+ * Layer-based sprite configuration.
+ *
+ * Defines how a sprite scales across layers with automatic width generation.
+ * Widths are generated using a decreasing step formula (fine steps for small
+ * sizes, coarse steps for large sizes).
+ *
+ * minWidth: Smallest character width (most distant layer).
+ * maxWidth: Largest character width (closest layer).
+ * defaultLayer: Layer where third largest size appears.
+ * layerDepth: Number of layers/sizes the sprite spans.
+ */
+export interface LayerSpriteConfig {
+  readonly minWidth: number;
+  readonly maxWidth: number;
+  readonly defaultLayer: number;
+  readonly layerDepth: number;
+}
+
+/**
+ * Zoom configuration for depth-based sprites like trees.
+ *
+ * Defines the visual range from horizon (far/small) to foreground (close/large).
+ * Sprite widths are auto-calculated by lerping between minWidth and maxWidth.
+ *
+ * horizonY: Y position at horizon (0-1, from top).
+ * foregroundY: Y position in foreground (0-1, from top).
+ * minWidth: Sprite width at horizon (smallest).
+ * maxWidth: Sprite width in foreground (largest).
+ * steps: Number of zoom levels (0 = horizon, steps = foreground).
+ */
+export interface TreeZoomConfig {
+  readonly horizonY: number;
+  readonly foregroundY: number;
+  readonly minWidth: number;
+  readonly maxWidth: number;
+  readonly steps: number;
+}
+
 /** Sprite definition with animations */
 export interface SpriteConfig {
   readonly animations?: Record<string, SpriteAnimationConfig>;
@@ -72,6 +111,8 @@ export interface SpriteConfig {
   readonly widths?: readonly number[];
   readonly contrast?: number;
   readonly invert?: boolean;
+  readonly zoom?: TreeZoomConfig;
+  readonly layerConfig?: LayerSpriteConfig;
 }
 
 /** Layer definition from config */
@@ -79,7 +120,8 @@ export interface LayerDefinition {
   readonly name: string;
   readonly type?: LayerType;
   readonly sprites?: readonly string[];
-  readonly parallax?: number;
+  readonly positions?: readonly number[];
+  readonly layer?: number;
   readonly tile?: boolean;
 }
 
