@@ -4,15 +4,25 @@
 
 import type { FrameSet } from "../types.js";
 import type { SceneSpriteState, SceneState } from "../layers/types.js";
-import { GROUND_TILE } from "../rendering/Ground.js";
 
 /**
  * Create initial state for a scene sprite.
+ *
+ * Args:
+ *     spriteName: Identifier for sprite lookup.
+ *     sizes: Available size variants.
+ *     worldX: Initial world X position.
+ *     worldZ: Initial world Z position (depth).
+ *     sizeIdx: Initial size index.
+ *
+ * Returns:
+ *     SceneSpriteState with provided values.
  */
 export function createSceneSpriteState(
   spriteName: string,
   sizes: readonly FrameSet[],
-  x: number,
+  worldX: number,
+  worldZ: number,
   sizeIdx: number
 ): SceneSpriteState {
   return {
@@ -20,13 +30,19 @@ export function createSceneSpriteState(
     sizes,
     sizeIdx,
     frameIdx: 0,
-    x,
+    worldX,
+    worldZ,
   };
 }
 
 /**
  * Get current frame for scene sprite.
- * Returns null if size or frame index is invalid.
+ *
+ * Args:
+ *     state: Scene sprite state.
+ *
+ * Returns:
+ *     Frame data with lines and width, or null if invalid.
  */
 export function getSceneSpriteFrame(
   state: SceneSpriteState
@@ -48,22 +64,10 @@ export function getSceneSpriteFrame(
 }
 
 /**
- * Calculate Y position for scene sprite (bottom-aligned to ground).
- */
-export function calculateSceneSpriteY(
-  state: SceneSpriteState,
-  viewportHeight: number
-): number {
-  const frame = getSceneSpriteFrame(state);
-  if (frame === null) {
-    return viewportHeight - GROUND_TILE.length;
-  }
-  const spriteHeight = frame.lines.length;
-  return viewportHeight - GROUND_TILE.length - spriteHeight;
-}
-
-/**
  * Advance animation frame (wraps around).
+ *
+ * Args:
+ *     state: Scene sprite state to update.
  */
 export function advanceSceneSpriteFrame(state: SceneSpriteState): void {
   const currentSize = state.sizes[state.sizeIdx];
@@ -75,6 +79,9 @@ export function advanceSceneSpriteFrame(state: SceneSpriteState): void {
 
 /**
  * Advance frame index for all scene sprites in all layers.
+ *
+ * Args:
+ *     scene: Scene state containing all layers.
  */
 export function advanceAllSceneSpriteFrames(scene: SceneState): void {
   for (const layer of scene.layers) {
@@ -86,6 +93,12 @@ export function advanceAllSceneSpriteFrames(scene: SceneState): void {
 
 /**
  * Create callback for layer animation timer.
+ *
+ * Args:
+ *     scene: Scene state to animate.
+ *
+ * Returns:
+ *     Callback function that advances all sprite frames.
  */
 export function createLayerAnimationCallback(scene: SceneState): () => void {
   return () => {
@@ -97,7 +110,6 @@ export function createLayerAnimationCallback(scene: SceneState): () => void {
 export const _test_hooks = {
   createSceneSpriteState,
   getSceneSpriteFrame,
-  calculateSceneSpriteY,
   advanceSceneSpriteFrame,
   advanceAllSceneSpriteFrames,
   createLayerAnimationCallback,
