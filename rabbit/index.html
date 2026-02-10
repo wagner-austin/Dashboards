@@ -26,6 +26,12 @@
 </head>
 <body>
     <pre id="screen"></pre>
-    <script type="module" src="./dist/io/autostart.js"></script>
+    <script>
+        // Cache bust by appending build timestamp
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = './dist/io/autostart.js?v=' + Date.now();
+        document.body.appendChild(script);
+    </script>
 </body>
 </html>
