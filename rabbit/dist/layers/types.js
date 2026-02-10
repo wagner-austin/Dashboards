@@ -1,11 +1,20 @@
 /**
  * Layer system types.
  */
-/** Create initial scene state */
-export function createSceneState(layers) {
+/**
+ * Create initial scene state.
+ *
+ * Args:
+ *     layers: Layer instances to include.
+ *     camera: Initial camera position.
+ *
+ * Returns:
+ *     SceneState with provided layers and camera.
+ */
+export function createSceneState(layers, camera) {
     return {
         layers,
-        cameraX: 0,
+        camera,
     };
 }
 //# sourceMappingURL=types.js.map

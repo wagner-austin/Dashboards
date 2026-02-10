@@ -5,10 +5,22 @@
  */
 import { _test_hooks as spritesHooks } from "../loaders/sprites.js";
 const { validateSpriteModule } = spritesHooks;
-/** Dynamic import with validation */
+/** Cache for loaded sprite modules to prevent duplicate downloads */
+const spriteModuleCache = new Map();
+/** Dynamic import with validation and caching */
 async function importSpriteModule(path) {
-    const module = await import(/* @vite-ignore */ path);
-    return validateSpriteModule(module, path);
+    // Check cache first
+    const cached = spriteModuleCache.get(path);
+    if (cached !== undefined) {
+        return cached;
+    }
+    // Create promise and cache it immediately to handle concurrent requests
+    const promise = (async () => {
+        const module = await import(/* @vite-ignore */ path);
+        return validateSpriteModule(module, path);
+    })();
+    spriteModuleCache.set(path, promise);
+    return promise;
 }
 /**
  * Load sprite frames for animated sprites (with direction).
@@ -68,10 +80,20 @@ export async function loadBunnyFrames(_config) {
     };
 }
 /**
- * Load all tree size variations.
+ * Load all tree size variations from config.
+ *
+ * Reads tree sprite widths from config and loads each size.
+ * Returns sizes sorted smallest to largest.
+ *
+ * Args:
+ *     config: Application config with sprite definitions.
+ *
+ * Returns:
+ *     Array of TreeSize sorted by width ascending.
  */
-export async function loadTreeSizes(_config) {
-    const widths = [60, 120, 180];
+export async function loadTreeSizes(config) {
+    const { getSpriteWidths } = await import("../loaders/layers.js");
+    const widths = getSpriteWidths(config, "tree");
     const sizes = [];
     for (const w of widths) {
         const set = await loadStaticSpriteFrames("tree", w);

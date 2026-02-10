@@ -3,10 +3,11 @@
  * Tests for scene renderer.
  */
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { renderFrame } from "./SceneRenderer.js";
+import { renderFrame, _test_hooks } from "./SceneRenderer.js";
+const { drawBunny } = _test_hooks;
 import { createInitialBunnyState } from "../entities/Bunny.js";
-import { createInitialTreeState } from "../entities/Tree.js";
 import { createSceneState } from "../layers/index.js";
+import { createCamera, createProjectionConfig } from "../world/Projection.js";
 function createTestBunnyFrames() {
     return {
         walkLeft: ["walk_l_0", "walk_l_1"],
@@ -19,18 +20,12 @@ function createTestBunnyFrames() {
         walkToIdleRight: ["trans_r_0", "trans_r_1"],
     };
 }
-function createTestTreeSizes() {
-    return [
-        { width: 60, frames: ["tree_60_0"] },
-        { width: 120, frames: ["tree_120_0"] },
-        { width: 180, frames: ["tree_180_0"] },
-    ];
-}
 function createTestSceneState() {
-    return createSceneState([]);
+    return createSceneState([], createCamera());
 }
 describe("renderFrame", () => {
     let screen;
+    const projectionConfig = createProjectionConfig();
     beforeEach(() => {
         screen = document.createElement("pre");
         document.body.appendChild(screen);
@@ -40,152 +35,143 @@ describe("renderFrame", () => {
     });
     it("renders frame and returns updated state", () => {
         const bunnyState = createInitialBunnyState();
-        const treeState = createInitialTreeState(100);
         const sceneState = createTestSceneState();
         const renderState = {
             bunnyState,
-            treeState,
             sceneState,
             viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-            groundScrollX: 0,
             lastTime: 0,
+            projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        const treeSizes = createTestTreeSizes();
-        const result = renderFrame(renderState, bunnyFrames, treeSizes, screen, 1000, 100, 800);
+        const result = renderFrame(renderState, bunnyFrames, screen, 1000, 100);
         expect(result.lastTime).toBe(1000);
-        expect(typeof result.groundScrollX).toBe("number");
-        expect(screen.textContent).toBeDefined();
+        expect(screen.textContent).not.toBe("");
         expect(screen.textContent.length).toBeGreaterThan(0);
     });
-    it("updates scroll when bunny is walking", () => {
+    it("updates camera when bunny is walking right", () => {
         const bunnyState = createInitialBunnyState();
         bunnyState.isWalking = true;
         bunnyState.currentAnimation = "walk";
         bunnyState.facingRight = true;
-        const treeState = createInitialTreeState(100);
         const sceneState = createTestSceneState();
+        const initialCameraX = sceneState.camera.x;
         const renderState = {
             bunnyState,
-            treeState,
             sceneState,
             viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-            groundScrollX: 0,
-            lastTime: 0,
+            lastTime: 1000,
+            projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        const treeSizes = createTestTreeSizes();
-        // First frame sets lastTime
-        renderFrame(renderState, bunnyFrames, treeSizes, screen, 1000, 100, 800);
-        // Second frame with time delta
-        renderState.lastTime = 1000;
-        const result = renderFrame(renderState, bunnyFrames, treeSizes, screen, 2000, 100, 800);
-        // Scroll should have changed
-        expect(result.groundScrollX).not.toBe(0);
+        renderFrame(renderState, bunnyFrames, screen, 2000, 100);
+        expect(sceneState.camera.x).toBeGreaterThan(initialCameraX);
     });
     it("updates camera when bunny walks left", () => {
         const bunnyState = createInitialBunnyState();
         bunnyState.isWalking = true;
         bunnyState.currentAnimation = "walk";
-        bunnyState.facingRight = false; // Walking left
-        const treeState = createInitialTreeState(100);
+        bunnyState.facingRight = false;
         const sceneState = createTestSceneState();
         const renderState = {
             bunnyState,
-            treeState,
             sceneState,
             viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-            groundScrollX: 0,
-            lastTime: 1000, // Set previous time so deltaTime > 0
+            lastTime: 1000,
+            projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        const treeSizes = createTestTreeSizes();
-        // Frame with time delta - camera should move left (negative)
-        const initialCameraX = sceneState.cameraX;
-        renderFrame(renderState, bunnyFrames, treeSizes, screen, 2000, 100, 800);
-        // Camera should have moved in the negative direction
-        expect(sceneState.cameraX).toBeLessThan(initialCameraX);
-    });
-    it("handles tree transition", () => {
-        const bunnyState = createInitialBunnyState();
-        const treeState = createInitialTreeState(100);
-        treeState.sizeIdx = 1;
-        treeState.targetSizeIdx = 2;
-        treeState.sizeTransitionProgress = 0.5;
-        const sceneState = createTestSceneState();
-        const renderState = {
-            bunnyState,
-            treeState,
-            sceneState,
-            viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-            groundScrollX: 0,
-            lastTime: 0,
-        };
-        const bunnyFrames = createTestBunnyFrames();
-        const treeSizes = createTestTreeSizes();
-        // Should not throw during transition
-        const result = renderFrame(renderState, bunnyFrames, treeSizes, screen, 1000, 100, 800);
-        expect(result.lastTime).toBe(1000);
-    });
-    it("handles null transition frames gracefully", () => {
-        const bunnyState = createInitialBunnyState();
-        const treeState = createInitialTreeState(100);
-        treeState.sizeIdx = 0;
-        treeState.targetSizeIdx = 1;
-        treeState.sizeTransitionProgress = 0.5;
-        treeState.frameIdx = 999; // Invalid frame index will cause null
-        const sceneState = createTestSceneState();
-        const renderState = {
-            bunnyState,
-            treeState,
-            sceneState,
-            viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-            groundScrollX: 0,
-            lastTime: 0,
-        };
-        const bunnyFrames = createTestBunnyFrames();
-        const treeSizes = createTestTreeSizes();
-        // Should not throw even with invalid frame index
-        const result = renderFrame(renderState, bunnyFrames, treeSizes, screen, 1000, 100, 800);
-        expect(result.lastTime).toBe(1000);
-    });
-    it("handles null tree frame gracefully", () => {
-        const bunnyState = createInitialBunnyState();
-        const treeState = createInitialTreeState(100);
-        treeState.sizeIdx = 999; // Invalid size index will cause null
-        const sceneState = createTestSceneState();
-        const renderState = {
-            bunnyState,
-            treeState,
-            sceneState,
-            viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-            groundScrollX: 0,
-            lastTime: 0,
-        };
-        const bunnyFrames = createTestBunnyFrames();
-        const treeSizes = createTestTreeSizes();
-        // Should not throw even with invalid size index
-        const result = renderFrame(renderState, bunnyFrames, treeSizes, screen, 1000, 100, 800);
-        expect(result.lastTime).toBe(1000);
+        const initialCameraX = sceneState.camera.x;
+        renderFrame(renderState, bunnyFrames, screen, 2000, 100);
+        expect(sceneState.camera.x).toBeLessThan(initialCameraX);
     });
     it("handles first frame with zero lastTime", () => {
         const bunnyState = createInitialBunnyState();
-        const treeState = createInitialTreeState(100);
         const sceneState = createTestSceneState();
         const renderState = {
             bunnyState,
-            treeState,
             sceneState,
             viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-            groundScrollX: 0,
-            lastTime: 0, // First frame
+            lastTime: 0,
+            projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        const treeSizes = createTestTreeSizes();
-        // Should handle first frame gracefully (deltaTime = 0)
-        const result = renderFrame(renderState, bunnyFrames, treeSizes, screen, 1000, 100, 800);
+        const result = renderFrame(renderState, bunnyFrames, screen, 1000, 100);
         expect(result.lastTime).toBe(1000);
-        expect(result.groundScrollX).toBe(0); // No scroll on first frame
+    });
+    it("does not update camera when bunny is idle", () => {
+        const bunnyState = createInitialBunnyState();
+        bunnyState.isWalking = false;
+        bunnyState.currentAnimation = "idle";
+        const sceneState = createTestSceneState();
+        const initialCameraX = sceneState.camera.x;
+        const renderState = {
+            bunnyState,
+            sceneState,
+            viewport: { width: 80, height: 24, charW: 10, charH: 20 },
+            lastTime: 1000,
+            projectionConfig,
+        };
+        const bunnyFrames = createTestBunnyFrames();
+        renderFrame(renderState, bunnyFrames, screen, 2000, 100);
+        expect(sceneState.camera.x).toBe(initialCameraX);
+    });
+    it("does not update camera when walking but not in walk animation", () => {
+        const bunnyState = createInitialBunnyState();
+        bunnyState.isWalking = true;
+        bunnyState.currentAnimation = "idle"; // Walking flag set but not in walk animation
+        const sceneState = createTestSceneState();
+        const initialCameraX = sceneState.camera.x;
+        const renderState = {
+            bunnyState,
+            sceneState,
+            viewport: { width: 80, height: 24, charW: 10, charH: 20 },
+            lastTime: 1000,
+            projectionConfig,
+        };
+        const bunnyFrames = createTestBunnyFrames();
+        renderFrame(renderState, bunnyFrames, screen, 2000, 100);
+        expect(sceneState.camera.x).toBe(initialCameraX);
+    });
+    it("renders with scene layers", () => {
+        const bunnyState = createInitialBunnyState();
+        const sceneState = createTestSceneState();
+        const renderState = {
+            bunnyState,
+            sceneState,
+            viewport: { width: 80, height: 24, charW: 10, charH: 20 },
+            lastTime: 0,
+            projectionConfig,
+        };
+        const bunnyFrames = createTestBunnyFrames();
+        const result = renderFrame(renderState, bunnyFrames, screen, 1000, 100);
+        expect(result.lastTime).toBe(1000);
+        expect(screen.textContent).not.toBe("");
+        expect(screen.textContent.length).toBeGreaterThan(0);
+    });
+});
+describe("drawBunny", () => {
+    function createBuffer(width, height) {
+        return Array.from({ length: height }, () => Array.from({ length: width }, () => " "));
+    }
+    it("draws bunny to buffer", () => {
+        const buffer = createBuffer(80, 24);
+        const bunnyState = createInitialBunnyState();
+        bunnyState.facingRight = true;
+        const bunnyFrames = createTestBunnyFrames();
+        drawBunny(buffer, bunnyState, bunnyFrames, 80, 24);
+        // Check that bunny was drawn (has non-space content)
+        const hasContent = buffer.some((row) => row.some((char) => char !== " "));
+        expect(hasContent).toBe(true);
+    });
+    it("draws bunny facing left", () => {
+        const buffer = createBuffer(80, 24);
+        const bunnyState = createInitialBunnyState();
+        bunnyState.facingRight = false;
+        const bunnyFrames = createTestBunnyFrames();
+        drawBunny(buffer, bunnyState, bunnyFrames, 80, 24);
+        const hasContent = buffer.some((row) => row.some((char) => char !== " "));
+        expect(hasContent).toBe(true);
     });
 });
 //# sourceMappingURL=SceneRenderer.test.js.map

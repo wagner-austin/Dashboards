@@ -6,6 +6,7 @@ import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { init, _test_hooks } from "./main.js";
 import { advanceAllSceneSpriteFrames, createLayerAnimationCallback } from "./entities/SceneSprite.js";
 import { createSceneState } from "./layers/index.js";
+import { createCamera } from "./world/Projection.js";
 function createTestBunnyFrames() {
     return {
         walkLeft: ["walk_l_0", "walk_l_1"],
@@ -17,13 +18,6 @@ function createTestBunnyFrames() {
         walkToIdleLeft: ["trans_l_0", "trans_l_1"],
         walkToIdleRight: ["trans_r_0", "trans_r_1"],
     };
-}
-function createTestTreeSizes() {
-    return [
-        { width: 60, frames: ["tree_60_0"] },
-        { width: 120, frames: ["tree_120_0"] },
-        { width: 180, frames: ["tree_180_0"] },
-    ];
 }
 function createTestConfig() {
     return {
@@ -81,7 +75,6 @@ describe("init", () => {
             getScreenElement: () => null,
             loadConfigFn: () => Promise.resolve(createTestConfig()),
             loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-            loadTreeSizesFn: () => Promise.resolve(createTestTreeSizes()),
             loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
             requestAnimationFrameFn: () => 0,
             audioDeps: createTestAudioDeps(),
@@ -93,7 +86,6 @@ describe("init", () => {
             getScreenElement: () => screen,
             loadConfigFn: () => Promise.resolve(createTestConfig()),
             loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-            loadTreeSizesFn: () => Promise.resolve(createTestTreeSizes()),
             loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
             requestAnimationFrameFn: (callback) => {
                 rafCallbacks.push(callback);
@@ -118,7 +110,6 @@ describe("init", () => {
             getScreenElement: () => screen,
             loadConfigFn: () => Promise.resolve(createTestConfig()),
             loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-            loadTreeSizesFn: () => Promise.resolve(createTestTreeSizes()),
             loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
             requestAnimationFrameFn: () => 0,
             audioDeps: createTestAudioDeps(),
@@ -141,7 +132,6 @@ describe("init", () => {
             getScreenElement: () => screen,
             loadConfigFn: () => Promise.resolve(configWithAudio),
             loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-            loadTreeSizesFn: () => Promise.resolve(createTestTreeSizes()),
             loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
             requestAnimationFrameFn: () => 0,
             audioDeps,
@@ -166,7 +156,6 @@ describe("init", () => {
             getScreenElement: () => screen,
             loadConfigFn: () => Promise.resolve(configWithDisabledAudio),
             loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-            loadTreeSizesFn: () => Promise.resolve(createTestTreeSizes()),
             loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
             requestAnimationFrameFn: () => 0,
             audioDeps,
@@ -182,7 +171,6 @@ describe("_test_hooks", () => {
         expect(typeof deps.getScreenElement).toBe("function");
         expect(typeof deps.loadConfigFn).toBe("function");
         expect(typeof deps.loadBunnyFramesFn).toBe("function");
-        expect(typeof deps.loadTreeSizesFn).toBe("function");
         expect(typeof deps.loadLayerSpritesFn).toBe("function");
         expect(typeof deps.requestAnimationFrameFn).toBe("function");
         expect(typeof deps.audioDeps).toBe("object");
@@ -222,13 +210,15 @@ describe("createLayerAnimationCallback", () => {
             sizes: [{ width: 10, frames: ["a", "b", "c"] }],
             sizeIdx: 0,
             frameIdx: 0,
-            x: 0,
+            worldX: 0,
+            worldZ: 100,
         };
         const layerConfig = {
             name: "test-layer",
             type: "sprites",
-            parallax: 1.0,
+            layer: 10,
             spriteNames: ["test"],
+            positions: [],
             zIndex: 0,
             tile: false,
         };
@@ -236,7 +226,8 @@ describe("createLayerAnimationCallback", () => {
             config: layerConfig,
             entities: [entity],
         };
-        const scene = createSceneState([layer]);
+        const camera = createCamera();
+        const scene = createSceneState([layer], camera);
         const callback = createLayerAnimationCallback(scene);
         // Initial state
         expect(entity.frameIdx).toBe(0);
@@ -256,20 +247,23 @@ describe("advanceAllSceneSpriteFrames", () => {
             sizes: [{ width: 10, frames: ["a", "b", "c"] }],
             sizeIdx: 0,
             frameIdx: 0,
-            x: 0,
+            worldX: 0,
+            worldZ: 100,
         };
         const entity2 = {
             spriteName: "test2",
             sizes: [{ width: 10, frames: ["x", "y"] }],
             sizeIdx: 0,
             frameIdx: 0,
-            x: 50,
+            worldX: 50,
+            worldZ: 100,
         };
         const layerConfig = {
             name: "test-layer",
             type: "sprites",
-            parallax: 1.0,
+            layer: 10,
             spriteNames: ["test1", "test2"],
+            positions: [],
             zIndex: 0,
             tile: false,
         };
@@ -277,7 +271,8 @@ describe("advanceAllSceneSpriteFrames", () => {
             config: layerConfig,
             entities: [entity1, entity2],
         };
-        const scene = createSceneState([layer]);
+        const camera = createCamera();
+        const scene = createSceneState([layer], camera);
         // Initial state
         expect(entity1.frameIdx).toBe(0);
         expect(entity2.frameIdx).toBe(0);
@@ -293,7 +288,8 @@ describe("advanceAllSceneSpriteFrames", () => {
         expect(entity2.frameIdx).toBe(0);
     });
     it("handles empty scene", () => {
-        const scene = createSceneState([]);
+        const camera = createCamera();
+        const scene = createSceneState([], camera);
         // Should not throw
         advanceAllSceneSpriteFrames(scene);
     });
@@ -301,8 +297,9 @@ describe("advanceAllSceneSpriteFrames", () => {
         const layerConfig = {
             name: "empty-layer",
             type: "sprites",
-            parallax: 1.0,
+            layer: 10,
             spriteNames: [],
+            positions: [],
             zIndex: 0,
             tile: false,
         };
@@ -310,7 +307,8 @@ describe("advanceAllSceneSpriteFrames", () => {
             config: layerConfig,
             entities: [],
         };
-        const scene = createSceneState([layer]);
+        const camera = createCamera();
+        const scene = createSceneState([layer], camera);
         // Should not throw
         advanceAllSceneSpriteFrames(scene);
     });

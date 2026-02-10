@@ -1,31 +1,44 @@
 /**
  * Main entry point for the ASCII animation engine.
+ *
  * Orchestrates modules for rendering, entities, and input.
  */
 import { measureViewport } from "./rendering/Viewport.js";
 import { renderFrame } from "./rendering/SceneRenderer.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers } from "./entities/Bunny.js";
-import { createInitialTreeState, createTreeTimer } from "./entities/Tree.js";
-import { setupKeyboardControls } from "./input/Keyboard.js";
+import { setupKeyboardControls, processZoom } from "./input/Keyboard.js";
 import { validateLayersConfig, createSceneState } from "./layers/index.js";
 import { createLayerInstances } from "./loaders/layers.js";
 import { createLayerAnimationCallback } from "./entities/SceneSprite.js";
+import { createCamera, createProjectionConfig } from "./world/Projection.js";
 import { initializeAudio, setupTrackSwitcher, } from "./audio/index.js";
-import { loadConfig, loadBunnyFrames, loadTreeSizes, loadLayerSprites, createDefaultAudioDependencies, } from "./io/index.js";
-/** Default dependencies using real implementations */
+import { loadConfig, loadBunnyFrames, loadLayerSprites, createDefaultAudioDependencies, } from "./io/index.js";
+/**
+ * Create default dependencies using real implementations.
+ *
+ * Returns:
+ *     MainDependencies with browser implementations.
+ */
 function createDefaultDependencies() {
     return {
         getScreenElement: () => document.getElementById("screen"),
         loadConfigFn: loadConfig,
         loadBunnyFramesFn: loadBunnyFrames,
-        loadTreeSizesFn: loadTreeSizes,
         loadLayerSpritesFn: loadLayerSprites,
         requestAnimationFrameFn: (callback) => requestAnimationFrame(callback),
         audioDeps: createDefaultAudioDependencies(),
     };
 }
-/** Initialize the application with injectable dependencies */
+/**
+ * Initialize the application with injectable dependencies.
+ *
+ * Args:
+ *     deps: Dependencies for testing or production.
+ *
+ * Raises:
+ *     Error: If screen element not found.
+ */
 export async function init(deps = createDefaultDependencies()) {
     const config = await deps.loadConfigFn();
     const screenEl = deps.getScreenElement();
@@ -36,20 +49,22 @@ export async function init(deps = createDefaultDependencies()) {
     const viewport = measureViewport(screen);
     // Load sprites
     const bunnyFrames = await deps.loadBunnyFramesFn(config);
-    const treeSizes = await deps.loadTreeSizesFn(config);
     // Validate and load layer sprites
     const validatedLayers = validateLayersConfig(config.layers);
     const layerRegistry = await deps.loadLayerSpritesFn(config, validatedLayers);
     const layerInstances = createLayerInstances(validatedLayers, layerRegistry, viewport.width);
-    const sceneState = createSceneState(layerInstances);
-    // Initialize state
+    // Create camera and projection config
+    const camera = createCamera();
+    const projectionConfig = createProjectionConfig();
+    // Create scene state with camera
+    const sceneState = createSceneState(layerInstances, camera);
+    // Initialize entity state
     const bunnyState = createInitialBunnyState();
-    const treeState = createInitialTreeState(viewport.width);
     const state = {
         bunny: bunnyState,
-        tree: treeState,
         viewport,
-        groundScrollX: 0,
+        camera,
+        zoomDirection: 0,
         scene: sceneState,
     };
     // Create timers
@@ -59,17 +74,16 @@ export async function init(deps = createDefaultDependencies()) {
         jump: 58,
         transition: 80,
     });
-    const treeTimer = createTreeTimer(treeState, treeSizes, 250);
-    // Layer animation timer - advances all scene sprite frames
+    // Layer animation timer
     const layerAnimationCallback = createLayerAnimationCallback(sceneState);
     const layerAnimationTimer = createAnimationTimer(400, layerAnimationCallback);
-    // Setup input
-    setupKeyboardControls(state, bunnyFrames, bunnyTimers, treeSizes);
+    // Setup keyboard input
+    setupKeyboardControls(state, bunnyFrames, bunnyTimers);
     // Handle resize
     window.addEventListener("resize", () => {
         state.viewport = measureViewport(screen);
     });
-    // Initialize audio (will start on first user interaction)
+    // Initialize audio
     const audioSystem = initializeAudio(config.audio, deps.audioDeps);
     if (audioSystem !== null) {
         setupTrackSwitcher(audioSystem, (type, handler) => {
@@ -79,29 +93,36 @@ export async function init(deps = createDefaultDependencies()) {
     // Start timers
     bunnyTimers.walk.start();
     bunnyTimers.idle.start();
-    treeTimer.start();
     layerAnimationTimer.start();
     // Render loop
     const SCROLL_SPEED = config.settings.scrollSpeed;
-    const TREE_TRANSITION_DURATION_MS = 800;
     let lastTime = 0;
     function render(currentTime) {
+        // Process zoom input (continuous while key held)
+        processZoom(state);
+        // Sync camera from input state to scene state
+        state.scene.camera = state.camera;
         const renderState = {
             bunnyState,
-            treeState,
             sceneState: state.scene,
             viewport: state.viewport,
-            groundScrollX: state.groundScrollX,
             lastTime,
+            projectionConfig,
         };
-        const result = renderFrame(renderState, bunnyFrames, treeSizes, screen, currentTime, SCROLL_SPEED, TREE_TRANSITION_DURATION_MS);
-        state.groundScrollX = result.groundScrollX;
+        const result = renderFrame(renderState, bunnyFrames, screen, currentTime, SCROLL_SPEED);
+        // Sync camera back from scene state to input state
+        state.camera = state.scene.camera;
         lastTime = result.lastTime;
         deps.requestAnimationFrameFn(render);
     }
     deps.requestAnimationFrameFn(render);
 }
-// Vitest sets import.meta.env.MODE to 'test'
+/**
+ * Check if running in test environment.
+ *
+ * Returns:
+ *     True if MODE is 'test'.
+ */
 function isTestEnvironment() {
     const meta = import.meta;
     return meta.env?.MODE === "test";

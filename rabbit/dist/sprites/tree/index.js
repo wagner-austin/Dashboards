@@ -1,4 +1,19 @@
+export { frames as w100 } from "./w100.js";
 export { frames as w120 } from "./w120.js";
+export { frames as w130 } from "./w130.js";
+export { frames as w15 } from "./w15.js";
+export { frames as w160 } from "./w160.js";
 export { frames as w180 } from "./w180.js";
+export { frames as w20 } from "./w20.js";
+export { frames as w200 } from "./w200.js";
+export { frames as w240 } from "./w240.js";
+export { frames as w25 } from "./w25.js";
+export { frames as w250 } from "./w250.js";
+export { frames as w30 } from "./w30.js";
+export { frames as w320 } from "./w320.js";
+export { frames as w350 } from "./w350.js";
+export { frames as w40 } from "./w40.js";
+export { frames as w55 } from "./w55.js";
 export { frames as w60 } from "./w60.js";
+export { frames as w75 } from "./w75.js";
 //# sourceMappingURL=index.js.map

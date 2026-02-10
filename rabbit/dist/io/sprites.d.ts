@@ -29,9 +29,18 @@ export declare function loadConfig(): Promise<Config>;
  */
 export declare function loadBunnyFrames(_config: Config): Promise<BunnyFrames>;
 /**
- * Load all tree size variations.
+ * Load all tree size variations from config.
+ *
+ * Reads tree sprite widths from config and loads each size.
+ * Returns sizes sorted smallest to largest.
+ *
+ * Args:
+ *     config: Application config with sprite definitions.
+ *
+ * Returns:
+ *     Array of TreeSize sorted by width ascending.
  */
-export declare function loadTreeSizes(_config: Config): Promise<TreeSize[]>;
+export declare function loadTreeSizes(config: Config): Promise<TreeSize[]>;
 /**
  * Load all sprites referenced by layers.
  */

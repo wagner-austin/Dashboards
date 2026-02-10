@@ -3,7 +3,9 @@
  * Tests for keyboard input handling.
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { setupKeyboardControls } from "./Keyboard.js";
+import { setupKeyboardControls, processZoom, _test_hooks } from "./Keyboard.js";
+import { createCamera } from "../world/Projection.js";
+const { CAMERA_Z_SPEED, MIN_CAMERA_Z, MAX_CAMERA_Z } = _test_hooks;
 function createMockTimer() {
     return {
         start: vi.fn(),
@@ -43,24 +45,10 @@ function createMockState() {
             pendingJump: false,
             preJumpAnimation: null,
         },
-        tree: {
-            frameIdx: 0,
-            direction: 1,
-            sizeIdx: 2,
-            targetSizeIdx: 2,
-            sizeTransitionProgress: 0,
-            centerX: 200,
-        },
         viewport: { width: 100, height: 50, charW: 10, charH: 20 },
-        groundScrollX: 0,
+        camera: createCamera(),
+        zoomDirection: 0,
     };
-}
-function createMockTreeSizes() {
-    return [
-        { width: 60, frames: ["s0"] },
-        { width: 120, frames: ["m0"] },
-        { width: 180, frames: ["l0"] },
-    ];
 }
 function dispatchKeyDown(key, repeat = false) {
     document.dispatchEvent(new KeyboardEvent("keydown", { key, repeat }));
@@ -69,13 +57,11 @@ describe("setupKeyboardControls", () => {
     let state;
     let timers;
     let frames;
-    let treeSizes;
     beforeEach(() => {
         state = createMockState();
         timers = createMockBunnyTimers();
         frames = createMockFrames();
-        treeSizes = createMockTreeSizes();
-        setupKeyboardControls(state, frames, timers, treeSizes);
+        setupKeyboardControls(state, frames, timers);
     });
     describe("walk input", () => {
         it("starts walking left when ArrowLeft pressed from idle", () => {
@@ -192,49 +178,66 @@ describe("setupKeyboardControls", () => {
         });
     });
     describe("reset input", () => {
-        it("resets tree and scroll when r pressed", () => {
-            state.groundScrollX = 500;
-            state.tree.centerX = 50;
+        it("resets camera position and zoom level when r pressed", () => {
+            state.camera = { x: 100, z: 45 };
             dispatchKeyDown("r");
-            expect(state.groundScrollX).toBe(0);
-            expect(state.tree.centerX).toBe(160); // width + 60
+            // Camera resets to default position
+            expect(state.camera.x).toBe(0);
+            expect(state.camera.z).toBe(55); // DEFAULT_CAMERA_Z
         });
         it("responds to R key (uppercase)", () => {
-            state.groundScrollX = 500;
+            state.camera = { x: 100, z: 45 };
             dispatchKeyDown("R");
-            expect(state.groundScrollX).toBe(0);
+            expect(state.camera.x).toBe(0);
+            expect(state.camera.z).toBe(55);
         });
     });
-    describe("tree zoom input", () => {
-        it("zooms in with w key", () => {
-            state.tree.targetSizeIdx = 1;
+    describe("zoom direction", () => {
+        it("sets zoomDirection to 1 with w key", () => {
             dispatchKeyDown("w");
-            expect(state.tree.targetSizeIdx).toBe(2);
+            expect(state.zoomDirection).toBe(1);
         });
-        it("zooms in with ArrowUp", () => {
-            state.tree.targetSizeIdx = 0;
+        it("sets zoomDirection to 1 with ArrowUp", () => {
             dispatchKeyDown("ArrowUp");
-            expect(state.tree.targetSizeIdx).toBe(1);
+            expect(state.zoomDirection).toBe(1);
         });
-        it("does not zoom past max", () => {
-            state.tree.targetSizeIdx = 2;
-            dispatchKeyDown("w");
-            expect(state.tree.targetSizeIdx).toBe(2);
-        });
-        it("zooms out with s key", () => {
-            state.tree.targetSizeIdx = 2;
+        it("sets zoomDirection to -1 with s key", () => {
             dispatchKeyDown("s");
-            expect(state.tree.targetSizeIdx).toBe(1);
+            expect(state.zoomDirection).toBe(-1);
         });
-        it("zooms out with ArrowDown", () => {
-            state.tree.targetSizeIdx = 2;
+        it("sets zoomDirection to -1 with ArrowDown", () => {
             dispatchKeyDown("ArrowDown");
-            expect(state.tree.targetSizeIdx).toBe(1);
+            expect(state.zoomDirection).toBe(-1);
         });
-        it("does not zoom past min", () => {
-            state.tree.targetSizeIdx = 0;
+        it("clears zoomDirection on w keyup", () => {
+            dispatchKeyDown("w");
+            expect(state.zoomDirection).toBe(1);
+            document.dispatchEvent(new KeyboardEvent("keyup", { key: "w" }));
+            expect(state.zoomDirection).toBe(0);
+        });
+        it("clears zoomDirection on ArrowUp keyup", () => {
+            dispatchKeyDown("ArrowUp");
+            expect(state.zoomDirection).toBe(1);
+            document.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowUp" }));
+            expect(state.zoomDirection).toBe(0);
+        });
+        it("clears zoomDirection on s keyup", () => {
             dispatchKeyDown("s");
-            expect(state.tree.targetSizeIdx).toBe(0);
+            expect(state.zoomDirection).toBe(-1);
+            document.dispatchEvent(new KeyboardEvent("keyup", { key: "s" }));
+            expect(state.zoomDirection).toBe(0);
+        });
+        it("clears zoomDirection on ArrowDown keyup", () => {
+            dispatchKeyDown("ArrowDown");
+            expect(state.zoomDirection).toBe(-1);
+            document.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowDown" }));
+            expect(state.zoomDirection).toBe(0);
+        });
+        it("does not clear zoomDirection on unrelated keyup", () => {
+            dispatchKeyDown("w");
+            expect(state.zoomDirection).toBe(1);
+            document.dispatchEvent(new KeyboardEvent("keyup", { key: "a" }));
+            expect(state.zoomDirection).toBe(1); // Still held
         });
     });
     describe("transition handling", () => {
@@ -254,6 +257,84 @@ describe("setupKeyboardControls", () => {
             expect(timers.transition.stop).toHaveBeenCalled();
             expect(timers.walk.start).toHaveBeenCalled();
         });
+    });
+});
+describe("processZoom", () => {
+    it("decreases camera.z when zoomDirection is 1 (zoom in)", () => {
+        const state = createMockState();
+        const initialZ = state.camera.z;
+        state.zoomDirection = 1;
+        processZoom(state);
+        expect(state.camera.z).toBe(initialZ - CAMERA_Z_SPEED);
+    });
+    it("increases camera.z when zoomDirection is -1 (zoom out)", () => {
+        const state = createMockState();
+        const initialZ = state.camera.z;
+        state.zoomDirection = -1;
+        processZoom(state);
+        expect(state.camera.z).toBe(initialZ + CAMERA_Z_SPEED);
+    });
+    it("does nothing when zoomDirection is 0", () => {
+        const state = createMockState();
+        const initialZ = state.camera.z;
+        state.zoomDirection = 0;
+        processZoom(state);
+        expect(state.camera.z).toBe(initialZ);
+    });
+    it("clamps camera.z to MIN_CAMERA_Z when zooming in", () => {
+        const state = createMockState();
+        state.camera = { x: state.camera.x, z: MIN_CAMERA_Z };
+        state.zoomDirection = 1;
+        processZoom(state);
+        expect(state.camera.z).toBe(MIN_CAMERA_Z);
+    });
+    it("clamps camera.z to MAX_CAMERA_Z when zooming out", () => {
+        const state = createMockState();
+        state.camera = { x: state.camera.x, z: MAX_CAMERA_Z };
+        state.zoomDirection = -1;
+        processZoom(state);
+        expect(state.camera.z).toBe(MAX_CAMERA_Z);
+    });
+    it("does nothing for invalid zoomDirection value of 2", () => {
+        const state = createMockState();
+        const initialZ = state.camera.z;
+        state.zoomDirection = 2;
+        processZoom(state);
+        expect(state.camera.z).toBe(initialZ);
+    });
+    it("preserves camera.x when zooming", () => {
+        const state = createMockState();
+        state.camera = { x: 100, z: 55 };
+        state.zoomDirection = 1;
+        processZoom(state);
+        expect(state.camera.x).toBe(100);
+    });
+    it("allows continuous zoom across multiple calls", () => {
+        const state = createMockState();
+        state.camera = { x: 0, z: 55 };
+        state.zoomDirection = 1;
+        processZoom(state);
+        processZoom(state);
+        processZoom(state);
+        expect(state.camera.z).toBe(55 - CAMERA_Z_SPEED * 3);
+    });
+    it("stops at MIN_CAMERA_Z after multiple zoom in calls", () => {
+        const state = createMockState();
+        state.camera = { x: 0, z: MIN_CAMERA_Z + 1 };
+        state.zoomDirection = 1;
+        processZoom(state);
+        processZoom(state);
+        processZoom(state);
+        expect(state.camera.z).toBe(MIN_CAMERA_Z);
+    });
+    it("stops at MAX_CAMERA_Z after multiple zoom out calls", () => {
+        const state = createMockState();
+        state.camera = { x: 0, z: MAX_CAMERA_Z - 1 };
+        state.zoomDirection = -1;
+        processZoom(state);
+        processZoom(state);
+        processZoom(state);
+        expect(state.camera.z).toBe(MAX_CAMERA_Z);
     });
 });
 //# sourceMappingURL=Keyboard.test.js.map
