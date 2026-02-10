@@ -1,5 +1,6 @@
 /**
  * Main entry point for the ASCII animation engine.
+ *
  * Orchestrates modules for rendering, entities, and input.
  */
 
@@ -8,11 +9,11 @@ import { measureViewport, type ViewportState } from "./rendering/Viewport.js";
 import { renderFrame, type RenderState } from "./rendering/SceneRenderer.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers, type BunnyFrames } from "./entities/Bunny.js";
-import { createInitialTreeState, createTreeTimer, type TreeSize } from "./entities/Tree.js";
-import { setupKeyboardControls, type InputState } from "./input/Keyboard.js";
+import { setupKeyboardControls, processZoom, type InputState } from "./input/Keyboard.js";
 import { validateLayersConfig, createSceneState, type SceneState, type ValidatedLayer } from "./layers/index.js";
 import { createLayerInstances, type SpriteRegistry } from "./loaders/layers.js";
 import { createLayerAnimationCallback } from "./entities/SceneSprite.js";
+import { createCamera, createProjectionConfig } from "./world/Projection.js";
 import {
   initializeAudio,
   setupTrackSwitcher,
@@ -21,36 +22,55 @@ import {
 import {
   loadConfig,
   loadBunnyFrames,
-  loadTreeSizes,
   loadLayerSprites,
   createDefaultAudioDependencies,
 } from "./io/index.js";
 
-/** Dependencies that can be injected for testing */
+/**
+ * Dependencies that can be injected for testing.
+ *
+ * getScreenElement: Returns the pre element for rendering.
+ * loadConfigFn: Loads the config.json file.
+ * loadBunnyFramesFn: Loads bunny animation frames.
+ * loadLayerSpritesFn: Loads layer sprite data.
+ * requestAnimationFrameFn: Schedules next frame.
+ * audioDeps: Audio system dependencies.
+ */
 export interface MainDependencies {
   getScreenElement: () => HTMLPreElement | null;
   loadConfigFn: () => Promise<Config>;
   loadBunnyFramesFn: (config: Config) => Promise<BunnyFrames>;
-  loadTreeSizesFn: (config: Config) => Promise<TreeSize[]>;
   loadLayerSpritesFn: (config: Config, layers: readonly ValidatedLayer[]) => Promise<SpriteRegistry>;
   requestAnimationFrameFn: (callback: (time: number) => void) => number;
   audioDeps: AudioDependencies;
 }
 
-/** Default dependencies using real implementations */
+/**
+ * Create default dependencies using real implementations.
+ *
+ * Returns:
+ *     MainDependencies with browser implementations.
+ */
 function createDefaultDependencies(): MainDependencies {
   return {
     getScreenElement: () => document.getElementById("screen") as HTMLPreElement | null,
     loadConfigFn: loadConfig,
     loadBunnyFramesFn: loadBunnyFrames,
-    loadTreeSizesFn: loadTreeSizes,
     loadLayerSpritesFn: loadLayerSprites,
     requestAnimationFrameFn: (callback) => requestAnimationFrame(callback),
     audioDeps: createDefaultAudioDependencies(),
   };
 }
 
-/** Initialize the application with injectable dependencies */
+/**
+ * Initialize the application with injectable dependencies.
+ *
+ * Args:
+ *     deps: Dependencies for testing or production.
+ *
+ * Raises:
+ *     Error: If screen element not found.
+ */
 export async function init(deps: MainDependencies = createDefaultDependencies()): Promise<void> {
   const config = await deps.loadConfigFn();
   const screenEl = deps.getScreenElement();
@@ -64,23 +84,27 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
 
   // Load sprites
   const bunnyFrames = await deps.loadBunnyFramesFn(config);
-  const treeSizes = await deps.loadTreeSizesFn(config);
 
   // Validate and load layer sprites
   const validatedLayers = validateLayersConfig(config.layers);
   const layerRegistry = await deps.loadLayerSpritesFn(config, validatedLayers);
   const layerInstances = createLayerInstances(validatedLayers, layerRegistry, viewport.width);
-  const sceneState = createSceneState(layerInstances);
 
-  // Initialize state
+  // Create camera and projection config
+  const camera = createCamera();
+  const projectionConfig = createProjectionConfig();
+
+  // Create scene state with camera
+  const sceneState = createSceneState(layerInstances, camera);
+
+  // Initialize entity state
   const bunnyState = createInitialBunnyState();
-  const treeState = createInitialTreeState(viewport.width);
 
-  const state: InputState & { viewport: ViewportState; groundScrollX: number; scene: SceneState } = {
+  const state: InputState & { viewport: ViewportState; scene: SceneState } = {
     bunny: bunnyState,
-    tree: treeState,
     viewport,
-    groundScrollX: 0,
+    camera,
+    zoomDirection: 0,
     scene: sceneState,
   };
 
@@ -91,21 +115,20 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
     jump: 58,
     transition: 80,
   });
-  const treeTimer = createTreeTimer(treeState, treeSizes, 250);
 
-  // Layer animation timer - advances all scene sprite frames
+  // Layer animation timer
   const layerAnimationCallback = createLayerAnimationCallback(sceneState);
   const layerAnimationTimer = createAnimationTimer(400, layerAnimationCallback);
 
-  // Setup input
-  setupKeyboardControls(state, bunnyFrames, bunnyTimers, treeSizes);
+  // Setup keyboard input
+  setupKeyboardControls(state, bunnyFrames, bunnyTimers);
 
   // Handle resize
   window.addEventListener("resize", () => {
     state.viewport = measureViewport(screen);
   });
 
-  // Initialize audio (will start on first user interaction)
+  // Initialize audio
   const audioSystem = initializeAudio(config.audio, deps.audioDeps);
   if (audioSystem !== null) {
     setupTrackSwitcher(audioSystem, (type, handler) => {
@@ -116,35 +139,37 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
   // Start timers
   bunnyTimers.walk.start();
   bunnyTimers.idle.start();
-  treeTimer.start();
   layerAnimationTimer.start();
 
   // Render loop
   const SCROLL_SPEED = config.settings.scrollSpeed;
-  const TREE_TRANSITION_DURATION_MS = 800;
   let lastTime = 0;
 
   function render(currentTime: number): void {
+    // Process zoom input (continuous while key held)
+    processZoom(state);
+
+    // Sync camera from input state to scene state
+    state.scene.camera = state.camera;
+
     const renderState: RenderState = {
       bunnyState,
-      treeState,
       sceneState: state.scene,
       viewport: state.viewport,
-      groundScrollX: state.groundScrollX,
       lastTime,
+      projectionConfig,
     };
 
     const result = renderFrame(
       renderState,
       bunnyFrames,
-      treeSizes,
       screen,
       currentTime,
-      SCROLL_SPEED,
-      TREE_TRANSITION_DURATION_MS
+      SCROLL_SPEED
     );
 
-    state.groundScrollX = result.groundScrollX;
+    // Sync camera back from scene state to input state
+    state.camera = state.scene.camera;
     lastTime = result.lastTime;
 
     deps.requestAnimationFrameFn(render);
@@ -153,7 +178,12 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
   deps.requestAnimationFrameFn(render);
 }
 
-// Vitest sets import.meta.env.MODE to 'test'
+/**
+ * Check if running in test environment.
+ *
+ * Returns:
+ *     True if MODE is 'test'.
+ */
 function isTestEnvironment(): boolean {
   const meta = import.meta as { env?: { MODE?: string } };
   return meta.env?.MODE === "test";
