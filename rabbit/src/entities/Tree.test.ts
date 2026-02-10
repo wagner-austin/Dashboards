@@ -6,9 +6,9 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import {
   createInitialTreeState,
   createTreeTimer,
-  calcTreeY,
   getTreeFrame,
   getTreeTransitionFrames,
+  TREE_X_RATIO,
   type TreeSize,
 } from "./Tree.js";
 
@@ -21,20 +21,35 @@ function createMockSizes(): TreeSize[] {
 }
 
 describe("createInitialTreeState", () => {
-  it("initializes tree positioned at 1/3 viewport width", () => {
-    const state = createInitialTreeState(100);
-    expect(state.centerX).toBe(33); // Math.floor(100 / 3)
+  it("initializes tree at configured X ratio", () => {
+    const viewportWidth = 300;
+    const state = createInitialTreeState(viewportWidth);
+    expect(state.worldX).toBe(viewportWidth * TREE_X_RATIO);
   });
 
-  it("starts at largest size (most zoomed in)", () => {
+  it("starts at second-largest visible size (last is fade-out)", () => {
+    // With default 3 sizes: last is fade-out, so starts at max(0, 3-3) = 0
     const state = createInitialTreeState(100);
-    expect(state.sizeIdx).toBe(2);
-    expect(state.targetSizeIdx).toBe(2);
+    expect(state.sizeIdx).toBe(0);
+    expect(state.targetSizeIdx).toBe(0);
+  });
+
+  it("computes correct initial size with explicit size count", () => {
+    // With 9 sizes: second-largest visible = max(0, 9-3) = 6
+    const state = createInitialTreeState(100, 9);
+    expect(state.sizeIdx).toBe(6);
+    expect(state.targetSizeIdx).toBe(6);
   });
 
   it("starts with no transition in progress", () => {
     const state = createInitialTreeState(100);
     expect(state.sizeTransitionProgress).toBe(0);
+  });
+
+  it("initializes with frame index 0 and forward direction", () => {
+    const state = createInitialTreeState(100);
+    expect(state.frameIdx).toBe(0);
+    expect(state.direction).toBe(1);
   });
 });
 
@@ -76,7 +91,6 @@ describe("createTreeTimer", () => {
     expect(state.frameIdx).toBe(2);
 
     vi.advanceTimersByTime(100);
-    // Should bounce: frameIdx = 3 >= 3, so frameIdx = 1, direction = -1
     expect(state.frameIdx).toBe(1);
     expect(state.direction).toBe(-1);
   });
@@ -94,14 +108,13 @@ describe("createTreeTimer", () => {
     expect(state.frameIdx).toBe(0);
 
     vi.advanceTimersByTime(100);
-    // Should bounce: frameIdx = -1 < 0, so frameIdx = 1, direction = 1
     expect(state.frameIdx).toBe(1);
     expect(state.direction).toBe(1);
   });
 
   it("handles undefined size gracefully", () => {
     const state = createInitialTreeState(100);
-    state.sizeIdx = 99; // Invalid
+    state.sizeIdx = 99;
     const sizes = createMockSizes();
     const timer = createTreeTimer(state, sizes, 100);
 
@@ -109,36 +122,6 @@ describe("createTreeTimer", () => {
     expect(() => {
       vi.advanceTimersByTime(100);
     }).not.toThrow();
-  });
-});
-
-describe("calcTreeY", () => {
-  it("positions tree above ground", () => {
-    const viewportHeight = 30;
-    const treeHeight = 20;
-    const y = calcTreeY(treeHeight, 0, viewportHeight);
-    // Ground is 6 rows, tree ground rows for size 0 is 3
-    // y = 30 - 6 - 20 + 3 = 7
-    expect(y).toBe(7);
-  });
-
-  it("adjusts for different size indices", () => {
-    const viewportHeight = 30;
-    const treeHeight = 20;
-
-    const y0 = calcTreeY(treeHeight, 0, viewportHeight); // ground rows = 3
-    const y1 = calcTreeY(treeHeight, 1, viewportHeight); // ground rows = 6
-    const y2 = calcTreeY(treeHeight, 2, viewportHeight); // ground rows = 9
-
-    expect(y1 - y0).toBe(3); // Difference of 3 ground rows
-    expect(y2 - y1).toBe(3);
-  });
-
-  it("uses default ground rows for unknown size index", () => {
-    const y = calcTreeY(20, 99, 30);
-    // Default is 6 ground rows
-    // y = 30 - 6 - 20 + 6 = 10
-    expect(y).toBe(10);
   });
 });
 
@@ -151,7 +134,9 @@ describe("getTreeFrame", () => {
 
     const result = getTreeFrame(state, sizes);
     expect(result).not.toBeNull();
-    if (result === null) throw new Error("Expected non-null result");
+    if (result === null) {
+      throw new Error("Expected non-null result");
+    }
     expect(result.lines).toEqual(["med0"]);
     expect(result.width).toBe(120);
   });
@@ -186,7 +171,9 @@ describe("getTreeTransitionFrames", () => {
 
     const result = getTreeTransitionFrames(state, sizes);
     expect(result).not.toBeNull();
-    if (result === null) throw new Error("Expected non-null result");
+    if (result === null) {
+      throw new Error("Expected non-null result");
+    }
     expect(result.current.lines).toEqual(["small1"]);
     expect(result.current.width).toBe(60);
     expect(result.target.lines).toEqual(["med1"]);
@@ -203,7 +190,9 @@ describe("getTreeTransitionFrames", () => {
 
     const result = getTreeTransitionFrames(state, sizes);
     expect(result).not.toBeNull();
-    if (result === null) throw new Error("Expected non-null result");
+    if (result === null) {
+      throw new Error("Expected non-null result");
+    }
     expect(result.current.lines).toEqual(["large1"]);
     expect(result.target.lines).toEqual(["med1"]);
     expect(result.targetIdx).toBe(1);
@@ -213,13 +202,14 @@ describe("getTreeTransitionFrames", () => {
     const state = createInitialTreeState(100);
     state.sizeIdx = 2;
     state.targetSizeIdx = 0;
-    state.frameIdx = 3; // Valid for size 2, but size 1 only has 3 frames
+    state.frameIdx = 3;
     const sizes = createMockSizes();
 
     const result = getTreeTransitionFrames(state, sizes);
     expect(result).not.toBeNull();
-    if (result === null) throw new Error("Expected non-null result");
-    // 3 % 3 = 0
+    if (result === null) {
+      throw new Error("Expected non-null result");
+    }
     expect(result.target.lines).toEqual(["med0"]);
   });
 
@@ -234,7 +224,6 @@ describe("getTreeTransitionFrames", () => {
 
   it("returns null for invalid computed target size", () => {
     const state = createInitialTreeState(100);
-    // Set sizeIdx to 0 and targetSizeIdx to -1 so computed targetIdx = -1 (invalid)
     state.sizeIdx = 0;
     state.targetSizeIdx = -1;
     const sizes = createMockSizes();
