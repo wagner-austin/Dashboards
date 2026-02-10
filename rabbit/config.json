@@ -43,13 +43,26 @@
     },
     "tree": {
       "source": "originals/tree/tree.gif",
-      "widths": [60, 120, 180],
       "contrast": 1.5,
-      "invert": true
+      "invert": true,
+      "widths": [15, 20, 25, 30, 40, 55, 75, 100, 130, 160, 200, 250, 320, 350],
+      "zoom": {
+        "horizonY": 0.35,
+        "foregroundY": 1.28,
+        "minWidth": 15,
+        "maxWidth": 350,
+        "steps": 13
+      },
+      "layerConfig": {
+        "minWidth": 15,
+        "maxWidth": 350,
+        "defaultLayer": 10,
+        "layerDepth": 14
+      }
     },
     "grass": {
       "source": "originals/grass/grass_video.mp4",
-      "widths": [120, 160, 200],
+      "widths": [160],
       "contrast": 0.7,
       "brightness": 1.1,
       "invert": false,
@@ -58,10 +71,11 @@
     }
   },
   "layers": [
-    {"name": "sky", "type": "static"},
-    {"name": "background", "parallax": 0.2},
-    {"name": "midground", "parallax": 0.5},
-    {"name": "grass-front", "sprites": ["grass"], "parallax": 1.0, "tile": true}
+    {"name": "sky", "type": "static", "layer": 25},
+    {"name": "far-trees", "layer": 16, "sprites": ["tree"], "positions": [-300, 0, 300, 600]},
+    {"name": "mid-trees", "layer": 12, "sprites": ["tree"], "positions": [-150, 150, 450]},
+    {"name": "near-trees", "layer": 9, "sprites": ["tree"], "positions": [-50, 250, 550]},
+    {"name": "grass-front", "sprites": ["grass"], "layer": 6, "tile": true}
   ],
   "settings": {
     "fps": 60,
