@@ -1,7 +1,7 @@
 SHELL := powershell.exe
 .SHELLFLAGS := -NoProfile -ExecutionPolicy Bypass -Command
 
-.PHONY: lint test check build clean
+.PHONY: lint test check build clean dev
 
 lint:
 	@$$ErrorActionPreference = 'SilentlyContinue'; poetry run mypy --version | Out-Null; if (-not $$?) { Write-Host "[lint] Stale venv detected; removing..." -ForegroundColor Yellow; if (Test-Path ".venv") { Remove-Item -Recurse -Force ".venv" } }
@@ -32,3 +32,9 @@ clean:
 	if (Test-Path "node_modules") { Remove-Item -Recurse -Force "node_modules" }
 	if (Test-Path ".venv") { Remove-Item -Recurse -Force ".venv" }
 	if (Test-Path ".coverage") { Remove-Item -Force ".coverage" }
+
+dev:
+	npm run build
+	@netstat -ano 2>$$null | Select-String ":5173.*LISTENING" | ForEach-Object { Stop-Process -Id (($$_ -split '\s+')[-1]) -Force -ErrorAction SilentlyContinue }
+	Write-Host "Starting server at http://localhost:5173" -ForegroundColor Green
+	python -m http.server 5173 --bind 0.0.0.0
