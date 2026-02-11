@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { setupKeyboardControls, processZoom, _test_hooks, type InputState } from "./Keyboard.js";
+import { setupKeyboardControls, processDepthMovement, _test_hooks, type InputState } from "./Keyboard.js";
 import type { BunnyFrames, BunnyTimers } from "../entities/Bunny.js";
 import type { AnimationTimer } from "../loaders/sprites.js";
 import { createCamera } from "../world/Projection.js";
@@ -55,7 +55,7 @@ function createMockState(): InputState {
     },
     viewport: { width: 100, height: 50, charW: 10, charH: 20 },
     camera: createCamera(),
-    zoomDirection: 0,
+    depthDirection: 0,
   };
 }
 
@@ -222,7 +222,7 @@ describe("setupKeyboardControls", () => {
   });
 
   describe("reset input", () => {
-    it("resets camera position and zoom level when r pressed", () => {
+    it("resets camera position and depth position when r pressed", () => {
       state.camera = { x: 100, z: 45 };
 
       dispatchKeyDown("r");
@@ -242,60 +242,60 @@ describe("setupKeyboardControls", () => {
     });
   });
 
-  describe("zoom direction", () => {
-    it("sets zoomDirection to 1 with w key", () => {
+  describe("depth direction", () => {
+    it("sets depthDirection to -1 with w key (into scene)", () => {
       dispatchKeyDown("w");
-      expect(state.zoomDirection).toBe(1);
+      expect(state.depthDirection).toBe(-1);
     });
 
-    it("sets zoomDirection to 1 with ArrowUp", () => {
+    it("sets depthDirection to -1 with ArrowUp (into scene)", () => {
       dispatchKeyDown("ArrowUp");
-      expect(state.zoomDirection).toBe(1);
+      expect(state.depthDirection).toBe(-1);
     });
 
-    it("sets zoomDirection to -1 with s key", () => {
+    it("sets depthDirection to 1 with s key (out of scene)", () => {
       dispatchKeyDown("s");
-      expect(state.zoomDirection).toBe(-1);
+      expect(state.depthDirection).toBe(1);
     });
 
-    it("sets zoomDirection to -1 with ArrowDown", () => {
+    it("sets depthDirection to 1 with ArrowDown (out of scene)", () => {
       dispatchKeyDown("ArrowDown");
-      expect(state.zoomDirection).toBe(-1);
+      expect(state.depthDirection).toBe(1);
     });
 
-    it("clears zoomDirection on w keyup", () => {
+    it("clears depthDirection on w keyup", () => {
       dispatchKeyDown("w");
-      expect(state.zoomDirection).toBe(1);
+      expect(state.depthDirection).toBe(-1);
       document.dispatchEvent(new KeyboardEvent("keyup", { key: "w" }));
-      expect(state.zoomDirection).toBe(0);
+      expect(state.depthDirection).toBe(0);
     });
 
-    it("clears zoomDirection on ArrowUp keyup", () => {
+    it("clears depthDirection on ArrowUp keyup", () => {
       dispatchKeyDown("ArrowUp");
-      expect(state.zoomDirection).toBe(1);
+      expect(state.depthDirection).toBe(-1);
       document.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowUp" }));
-      expect(state.zoomDirection).toBe(0);
+      expect(state.depthDirection).toBe(0);
     });
 
-    it("clears zoomDirection on s keyup", () => {
+    it("clears depthDirection on s keyup", () => {
       dispatchKeyDown("s");
-      expect(state.zoomDirection).toBe(-1);
+      expect(state.depthDirection).toBe(1);
       document.dispatchEvent(new KeyboardEvent("keyup", { key: "s" }));
-      expect(state.zoomDirection).toBe(0);
+      expect(state.depthDirection).toBe(0);
     });
 
-    it("clears zoomDirection on ArrowDown keyup", () => {
+    it("clears depthDirection on ArrowDown keyup", () => {
       dispatchKeyDown("ArrowDown");
-      expect(state.zoomDirection).toBe(-1);
+      expect(state.depthDirection).toBe(1);
       document.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowDown" }));
-      expect(state.zoomDirection).toBe(0);
+      expect(state.depthDirection).toBe(0);
     });
 
-    it("does not clear zoomDirection on unrelated keyup", () => {
+    it("does not clear depthDirection on unrelated keyup", () => {
       dispatchKeyDown("w");
-      expect(state.zoomDirection).toBe(1);
+      expect(state.depthDirection).toBe(-1);
       document.dispatchEvent(new KeyboardEvent("keyup", { key: "a" }));
-      expect(state.zoomDirection).toBe(1); // Still held
+      expect(state.depthDirection).toBe(-1); // Still held
     });
   });
 
@@ -323,109 +323,109 @@ describe("setupKeyboardControls", () => {
   });
 });
 
-describe("processZoom", () => {
-  it("decreases camera.z when zoomDirection is 1 (zoom in)", () => {
+describe("processDepthMovement", () => {
+  it("decreases camera.z when depthDirection is 1 (S key, out of scene)", () => {
     const state = createMockState();
     const initialZ = state.camera.z;
-    state.zoomDirection = 1;
+    state.depthDirection = 1;
 
-    processZoom(state);
+    processDepthMovement(state);
 
     expect(state.camera.z).toBe(initialZ - CAMERA_Z_SPEED);
   });
 
-  it("increases camera.z when zoomDirection is -1 (zoom out)", () => {
+  it("increases camera.z when depthDirection is -1 (W key, into scene)", () => {
     const state = createMockState();
     const initialZ = state.camera.z;
-    state.zoomDirection = -1;
+    state.depthDirection = -1;
 
-    processZoom(state);
+    processDepthMovement(state);
 
     expect(state.camera.z).toBe(initialZ + CAMERA_Z_SPEED);
   });
 
-  it("does nothing when zoomDirection is 0", () => {
+  it("does nothing when depthDirection is 0", () => {
     const state = createMockState();
     const initialZ = state.camera.z;
-    state.zoomDirection = 0;
+    state.depthDirection = 0;
 
-    processZoom(state);
+    processDepthMovement(state);
 
     expect(state.camera.z).toBe(initialZ);
   });
 
-  it("clamps camera.z to MIN_CAMERA_Z when zooming in", () => {
+  it("clamps camera.z to MIN_CAMERA_Z when moving forward", () => {
     const state = createMockState();
     state.camera = { x: state.camera.x, z: MIN_CAMERA_Z };
-    state.zoomDirection = 1;
+    state.depthDirection = 1;
 
-    processZoom(state);
+    processDepthMovement(state);
 
     expect(state.camera.z).toBe(MIN_CAMERA_Z);
   });
 
-  it("clamps camera.z to MAX_CAMERA_Z when zooming out", () => {
+  it("clamps camera.z to MAX_CAMERA_Z when moving backward", () => {
     const state = createMockState();
     state.camera = { x: state.camera.x, z: MAX_CAMERA_Z };
-    state.zoomDirection = -1;
+    state.depthDirection = -1;
 
-    processZoom(state);
+    processDepthMovement(state);
 
     expect(state.camera.z).toBe(MAX_CAMERA_Z);
   });
 
-  it("does nothing for invalid zoomDirection value of 2", () => {
+  it("does nothing for invalid depthDirection value of 2", () => {
     const state = createMockState();
     const initialZ = state.camera.z;
-    state.zoomDirection = 2;
+    state.depthDirection = 2;
 
-    processZoom(state);
+    processDepthMovement(state);
 
     expect(state.camera.z).toBe(initialZ);
   });
 
-  it("preserves camera.x when zooming", () => {
+  it("preserves camera.x when moving in depth", () => {
     const state = createMockState();
     state.camera = { x: 100, z: 55 };
-    state.zoomDirection = 1;
+    state.depthDirection = 1;
 
-    processZoom(state);
+    processDepthMovement(state);
 
     expect(state.camera.x).toBe(100);
   });
 
-  it("allows continuous zoom across multiple calls", () => {
+  it("allows continuous depth movement across multiple calls", () => {
     const state = createMockState();
     state.camera = { x: 0, z: 55 };
-    state.zoomDirection = 1;
+    state.depthDirection = 1;
 
-    processZoom(state);
-    processZoom(state);
-    processZoom(state);
+    processDepthMovement(state);
+    processDepthMovement(state);
+    processDepthMovement(state);
 
     expect(state.camera.z).toBe(55 - CAMERA_Z_SPEED * 3);
   });
 
-  it("stops at MIN_CAMERA_Z after multiple zoom in calls", () => {
+  it("stops at MIN_CAMERA_Z after multiple forward movement calls", () => {
     const state = createMockState();
     state.camera = { x: 0, z: MIN_CAMERA_Z + 1 };
-    state.zoomDirection = 1;
+    state.depthDirection = 1;
 
-    processZoom(state);
-    processZoom(state);
-    processZoom(state);
+    processDepthMovement(state);
+    processDepthMovement(state);
+    processDepthMovement(state);
 
     expect(state.camera.z).toBe(MIN_CAMERA_Z);
   });
 
-  it("stops at MAX_CAMERA_Z after multiple zoom out calls", () => {
+  it("stops at MAX_CAMERA_Z after multiple backward movement calls", () => {
     const state = createMockState();
     state.camera = { x: 0, z: MAX_CAMERA_Z - 1 };
-    state.zoomDirection = -1;
+    state.depthDirection = -1;
 
-    processZoom(state);
-    processZoom(state);
-    processZoom(state);
+    processDepthMovement(state);
+    processDepthMovement(state);
+    processDepthMovement(state);
 
     expect(state.camera.z).toBe(MAX_CAMERA_Z);
   });
