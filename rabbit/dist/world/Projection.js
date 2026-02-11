@@ -8,6 +8,8 @@
  *
  * All world positions use (x, z) where z is depth into the scene.
  */
+/** Default wrap iterations for Z-wrapping coverage. */
+export const DEFAULT_WRAP_ITERATIONS = 2;
 /**
  * Create default projection configuration.
  *
@@ -22,12 +24,37 @@ export function createProjectionConfig() {
         farZ: 200,
         groundY: 0.85,
         parallaxStrength: 0.5,
+        wrapIterations: DEFAULT_WRAP_ITERATIONS,
     };
 }
 /** Default camera Z position (distance from origin). */
 export const DEFAULT_CAMERA_Z = 55;
 /** World width for entity wrapping (must be large enough for sprites to fully exit screen). */
 export const WORLD_WIDTH = 800;
+/**
+ * Calculate camera depth bounds from projection configuration.
+ *
+ * Uses visibleDepth (farZ - nearZ) as the wrap range to match tree Z-wrapping
+ * interval, ensuring seamless infinite depth scrolling with no empty gaps.
+ *
+ * Args:
+ *     minTreeWorldZ: WorldZ of closest trees (used for starting position).
+ *     maxTreeWorldZ: WorldZ of farthest trees (unused, kept for compatibility).
+ *     projectionConfig: Projection configuration with nearZ/farZ.
+ *
+ * Returns:
+ *     DepthBounds: Computed depth bounds for camera movement.
+ */
+export function calculateDepthBounds(minTreeWorldZ, _maxTreeWorldZ, projectionConfig) {
+    const visibleDepth = projectionConfig.farZ - projectionConfig.nearZ;
+    const minZ = minTreeWorldZ - projectionConfig.farZ;
+    const maxZ = minZ + visibleDepth;
+    return {
+        minZ,
+        maxZ,
+        range: visibleDepth,
+    };
+}
 /**
  * Create initial camera state.
  *
@@ -132,6 +159,29 @@ export function wrapPosition(entityX, cameraX, worldWidth) {
     }
     return entityX;
 }
+/**
+ * Wrap camera depth position for infinite depth scrolling.
+ *
+ * Uses modular arithmetic to wrap positions into [minZ, maxZ) range.
+ * Equivalent positions at exact multiples of range map to minZ.
+ *
+ * Args:
+ *     cameraZ: Camera depth position.
+ *     minZ: Minimum depth bound (inclusive).
+ *     maxZ: Maximum depth bound (exclusive for wrapping).
+ *
+ * Returns:
+ *     number: Wrapped camera Z position within [minZ, maxZ).
+ */
+export function wrapDepth(cameraZ, minZ, maxZ) {
+    if (cameraZ >= minZ && cameraZ < maxZ) {
+        return cameraZ;
+    }
+    const range = maxZ - minZ;
+    const normalized = cameraZ - minZ;
+    const wrapped = ((normalized % range) + range) % range;
+    return minZ + wrapped;
+}
 /** Test hooks for internal functions. */
 export const _test_hooks = {
     createProjectionConfig,
@@ -139,5 +189,8 @@ export const _test_hooks = {
     project,
     scaleToSizeIndex,
     wrapPosition,
+    wrapDepth,
+    calculateDepthBounds,
+    DEFAULT_WRAP_ITERATIONS,
 };
 //# sourceMappingURL=Projection.js.map

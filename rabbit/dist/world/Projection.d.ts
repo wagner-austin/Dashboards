@@ -27,6 +27,7 @@ export interface Camera {
  * farZ: Maximum visible depth (horizon distance).
  * groundY: Vertical position of ground plane as fraction from top (0-1).
  * parallaxStrength: Multiplier for horizontal parallax effect (0=none, 1=full).
+ * wrapIterations: Number of depth wrap cycles in each direction for Z-wrapping layers.
  */
 export interface ProjectionConfig {
     readonly focalLength: number;
@@ -35,6 +36,7 @@ export interface ProjectionConfig {
     readonly farZ: number;
     readonly groundY: number;
     readonly parallaxStrength: number;
+    readonly wrapIterations: number;
 }
 /**
  * Result of projecting a world position to screen coordinates.
@@ -50,6 +52,8 @@ export interface ScreenPosition {
     readonly scale: number;
     readonly visible: boolean;
 }
+/** Default wrap iterations for Z-wrapping coverage. */
+export declare const DEFAULT_WRAP_ITERATIONS = 2;
 /**
  * Create default projection configuration.
  *
@@ -61,6 +65,33 @@ export declare function createProjectionConfig(): ProjectionConfig;
 export declare const DEFAULT_CAMERA_Z = 55;
 /** World width for entity wrapping (must be large enough for sprites to fully exit screen). */
 export declare const WORLD_WIDTH = 800;
+/**
+ * Depth bounds for camera movement.
+ *
+ * minZ: Minimum camera depth (bunny hopped fully toward viewer).
+ * maxZ: Maximum camera depth (bunny hopped fully into scene).
+ * range: Total depth range for wrapping (maxZ - minZ).
+ */
+export interface DepthBounds {
+    readonly minZ: number;
+    readonly maxZ: number;
+    readonly range: number;
+}
+/**
+ * Calculate camera depth bounds from projection configuration.
+ *
+ * Uses visibleDepth (farZ - nearZ) as the wrap range to match tree Z-wrapping
+ * interval, ensuring seamless infinite depth scrolling with no empty gaps.
+ *
+ * Args:
+ *     minTreeWorldZ: WorldZ of closest trees (used for starting position).
+ *     maxTreeWorldZ: WorldZ of farthest trees (unused, kept for compatibility).
+ *     projectionConfig: Projection configuration with nearZ/farZ.
+ *
+ * Returns:
+ *     DepthBounds: Computed depth bounds for camera movement.
+ */
+export declare function calculateDepthBounds(minTreeWorldZ: number, _maxTreeWorldZ: number, projectionConfig: ProjectionConfig): DepthBounds;
 /**
  * Create initial camera state.
  *
@@ -116,6 +147,21 @@ export declare function scaleToSizeIndex(scale: number, sizeCount: number): numb
  *     number: Wrapped entity X position.
  */
 export declare function wrapPosition(entityX: number, cameraX: number, worldWidth: number): number;
+/**
+ * Wrap camera depth position for infinite depth scrolling.
+ *
+ * Uses modular arithmetic to wrap positions into [minZ, maxZ) range.
+ * Equivalent positions at exact multiples of range map to minZ.
+ *
+ * Args:
+ *     cameraZ: Camera depth position.
+ *     minZ: Minimum depth bound (inclusive).
+ *     maxZ: Maximum depth bound (exclusive for wrapping).
+ *
+ * Returns:
+ *     number: Wrapped camera Z position within [minZ, maxZ).
+ */
+export declare function wrapDepth(cameraZ: number, minZ: number, maxZ: number): number;
 /** Test hooks for internal functions. */
 export declare const _test_hooks: {
     createProjectionConfig: typeof createProjectionConfig;
@@ -123,5 +169,8 @@ export declare const _test_hooks: {
     project: typeof project;
     scaleToSizeIndex: typeof scaleToSizeIndex;
     wrapPosition: typeof wrapPosition;
+    wrapDepth: typeof wrapDepth;
+    calculateDepthBounds: typeof calculateDepthBounds;
+    DEFAULT_WRAP_ITERATIONS: number;
 };
 //# sourceMappingURL=Projection.d.ts.map

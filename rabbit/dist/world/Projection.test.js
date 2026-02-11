@@ -2,7 +2,7 @@
  * Tests for 3D projection system.
  */
 import { describe, expect, it } from "vitest";
-import { createProjectionConfig, createCamera, project, scaleToSizeIndex, wrapPosition, DEFAULT_CAMERA_Z, WORLD_WIDTH, _test_hooks, } from "./Projection.js";
+import { createProjectionConfig, createCamera, project, scaleToSizeIndex, wrapPosition, wrapDepth, calculateDepthBounds, DEFAULT_CAMERA_Z, DEFAULT_WRAP_ITERATIONS, WORLD_WIDTH, _test_hooks, } from "./Projection.js";
 describe("createProjectionConfig", () => {
     it("returns config with default values", () => {
         const config = createProjectionConfig();
@@ -12,10 +12,16 @@ describe("createProjectionConfig", () => {
         expect(config.farZ).toBe(200);
         expect(config.groundY).toBe(0.85);
         expect(config.parallaxStrength).toBe(0.5);
+        expect(config.wrapIterations).toBe(DEFAULT_WRAP_ITERATIONS);
     });
     it("returns readonly config", () => {
         const config = createProjectionConfig();
         expect(Object.isFrozen(config) || typeof config.focalLength === "number").toBe(true);
+    });
+});
+describe("DEFAULT_WRAP_ITERATIONS", () => {
+    it("is 2 for minimal depth coverage", () => {
+        expect(DEFAULT_WRAP_ITERATIONS).toBe(2);
     });
 });
 describe("createCamera", () => {
@@ -232,6 +238,81 @@ describe("world constants", () => {
         expect(WORLD_WIDTH).toBe(800);
     });
 });
+describe("wrapDepth", () => {
+    it("returns same value when within bounds", () => {
+        expect(wrapDepth(50, 0, 100)).toBe(50);
+    });
+    it("returns same value at exact minZ", () => {
+        expect(wrapDepth(0, 0, 100)).toBe(0);
+    });
+    it("wraps maxZ to minZ (half-open interval)", () => {
+        // [minZ, maxZ) means maxZ wraps to minZ
+        expect(wrapDepth(100, 0, 100)).toBe(0);
+    });
+    it("wraps values below minZ to near maxZ", () => {
+        // -5 is 5 below 0, should wrap to 95
+        expect(wrapDepth(-5, 0, 100)).toBe(95);
+    });
+    it("wraps values above maxZ to near minZ", () => {
+        // 105 is 5 above 100, should wrap to 5
+        expect(wrapDepth(105, 0, 100)).toBe(5);
+    });
+    it("handles negative bounds", () => {
+        expect(wrapDepth(-150, -200, -100)).toBe(-150);
+        expect(wrapDepth(-210, -200, -100)).toBe(-110); // 10 below min, wraps to -110
+        expect(wrapDepth(-90, -200, -100)).toBe(-190); // 10 above max, wraps to -190
+    });
+    it("handles wrapping exactly one range", () => {
+        expect(wrapDepth(-100, 0, 100)).toBe(0); // Exactly one range below
+        expect(wrapDepth(200, 0, 100)).toBe(0); // Exactly one range above
+    });
+    it("handles small wrap amounts", () => {
+        expect(wrapDepth(-0.5, 0, 100)).toBe(99.5);
+        expect(wrapDepth(100.5, 0, 100)).toBe(0.5);
+    });
+    it("handles multiple range wrapping", () => {
+        expect(wrapDepth(250, 0, 100)).toBe(50); // 2.5 ranges above
+        expect(wrapDepth(-150, 0, 100)).toBe(50); // 1.5 ranges below
+    });
+});
+describe("calculateDepthBounds", () => {
+    it("calculates bounds using visibleDepth as range", () => {
+        const config = createProjectionConfig();
+        const visibleDepth = config.farZ - config.nearZ;
+        const bounds = calculateDepthBounds(90, 200, config);
+        // minZ = minTreeWorldZ - farZ = 90 - 200 = -110
+        // maxZ = minZ + visibleDepth = -110 + 160 = 50
+        // range = visibleDepth = 160
+        expect(bounds.minZ).toBe(-110);
+        expect(bounds.maxZ).toBe(-110 + visibleDepth);
+        expect(bounds.range).toBe(visibleDepth);
+    });
+    it("uses visibleDepth for range to match tree Z-wrapping interval", () => {
+        const config = createProjectionConfig();
+        const visibleDepth = config.farZ - config.nearZ;
+        const bounds = calculateDepthBounds(50, 150, config);
+        expect(bounds.range).toBe(visibleDepth);
+        expect(bounds.maxZ - bounds.minZ).toBe(visibleDepth);
+    });
+    it("ignores maxTreeWorldZ parameter", () => {
+        const config = createProjectionConfig();
+        const visibleDepth = config.farZ - config.nearZ;
+        // Different maxTreeWorldZ values should produce same range
+        const bounds1 = calculateDepthBounds(100, 200, config);
+        const bounds2 = calculateDepthBounds(100, 500, config);
+        expect(bounds1.minZ).toBe(bounds2.minZ);
+        expect(bounds1.maxZ).toBe(bounds2.maxZ);
+        expect(bounds1.range).toBe(visibleDepth);
+        expect(bounds2.range).toBe(visibleDepth);
+    });
+    it("returns readonly DepthBounds", () => {
+        const config = createProjectionConfig();
+        const bounds = calculateDepthBounds(90, 200, config);
+        expect(typeof bounds.minZ).toBe("number");
+        expect(typeof bounds.maxZ).toBe("number");
+        expect(typeof bounds.range).toBe("number");
+    });
+});
 describe("_test_hooks", () => {
     it("exports all internal functions", () => {
         expect(_test_hooks.createProjectionConfig).toBe(createProjectionConfig);
@@ -239,6 +320,8 @@ describe("_test_hooks", () => {
         expect(_test_hooks.project).toBe(project);
         expect(_test_hooks.scaleToSizeIndex).toBe(scaleToSizeIndex);
         expect(_test_hooks.wrapPosition).toBe(wrapPosition);
+        expect(_test_hooks.wrapDepth).toBe(wrapDepth);
+        expect(_test_hooks.calculateDepthBounds).toBe(calculateDepthBounds);
     });
 });
 //# sourceMappingURL=Projection.test.js.map
