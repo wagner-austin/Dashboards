@@ -13,13 +13,13 @@ import { DEFAULT_CAMERA_Z } from "../world/Projection.js";
  * bunny: Bunny animation state.
  * viewport: Screen dimensions.
  * camera: Camera position.
- * zoomDirection: Current zoom direction (1=in, -1=out, 0=none).
+ * depthDirection: Camera Z movement direction (1=forward, -1=backward, 0=none).
  */
 export interface InputState {
   bunny: BunnyState;
   viewport: ViewportState;
   camera: Camera;
-  zoomDirection: number;
+  depthDirection: number;
 }
 
 /**
@@ -52,21 +52,21 @@ export function setupKeyboardControls(
       handleJumpInput(state.bunny, bunnyFrames, bunnyTimers);
       e.preventDefault();
     } else if (key === "r") {
-      // Reset scene: camera position and zoom level
+      // Reset scene: camera position
       state.camera = { x: 0, z: DEFAULT_CAMERA_Z };
     } else if (key === "w" || e.key === "ArrowUp") {
-      // Set zoom direction to forward (into scene)
-      state.zoomDirection = 1;
+      // Move camera into scene (rabbit hops away, trees come toward us)
+      state.depthDirection = -1;
     } else if (key === "s" || e.key === "ArrowDown") {
-      // Set zoom direction to backward (out of scene)
-      state.zoomDirection = -1;
+      // Move camera out of scene (rabbit hops toward us)
+      state.depthDirection = 1;
     }
   });
 
   document.addEventListener("keyup", (e: KeyboardEvent) => {
     const key = e.key.toLowerCase();
     if (key === "w" || e.key === "ArrowUp" || key === "s" || e.key === "ArrowDown") {
-      state.zoomDirection = 0;
+      state.depthDirection = 0;
     }
   });
 }
@@ -75,34 +75,34 @@ export function setupKeyboardControls(
 const CAMERA_Z_SPEED = 0.5;
 
 /** Minimum camera Z (closest to scene) */
-const MIN_CAMERA_Z = 40;
+const MIN_CAMERA_Z = -500;
 
 /** Maximum camera Z (farthest from scene) */
-const MAX_CAMERA_Z = 80;
+const MAX_CAMERA_Z = 500;
 
 /**
- * Process zoom based on held key direction.
+ * Process camera depth movement based on held key direction.
  *
- * Moves camera forward/backward through the scene.
- * W/ArrowUp zooms in (moves camera forward, decreases z).
- * S/ArrowDown zooms out (moves camera backward, increases z).
- * All layer entities automatically resize via 3D projection.
+ * Moves camera through the 3D scene based on depthDirection:
+ * W/ArrowUp (depthDirection=-1): Move into scene, increases Z, zoom in effect.
+ * S/ArrowDown (depthDirection=1): Move out of scene, decreases Z, zoom out effect.
+ * Entities resize automatically via 3D perspective projection.
  *
  * Args:
- *     state: Input state with zoomDirection and camera.
+ *     state: Input state with depthDirection and camera.
  */
-export function processZoom(state: InputState): void {
-  if (state.zoomDirection === 0) {
+export function processDepthMovement(state: InputState): void {
+  if (state.depthDirection === 0) {
     return;
   }
 
   let newZ = state.camera.z;
 
-  if (state.zoomDirection === 1) {
-    // Zoom in: move camera forward (decrease z)
+  if (state.depthDirection === 1) {
+    // S key: Move out of scene (decrease Z, zoom out)
     newZ = Math.max(state.camera.z - CAMERA_Z_SPEED, MIN_CAMERA_Z);
-  } else if (state.zoomDirection === -1) {
-    // Zoom out: move camera backward (increase z)
+  } else if (state.depthDirection === -1) {
+    // W key: Move into scene (increase Z, zoom in)
     newZ = Math.min(state.camera.z + CAMERA_Z_SPEED, MAX_CAMERA_Z);
   }
 
@@ -204,7 +204,7 @@ function handleWalkInput(
 export const _test_hooks = {
   handleJumpInput,
   handleWalkInput,
-  processZoom,
+  processDepthMovement,
   CAMERA_Z_SPEED,
   MIN_CAMERA_Z,
   MAX_CAMERA_Z,
