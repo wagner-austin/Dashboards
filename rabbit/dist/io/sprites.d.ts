@@ -8,6 +8,7 @@ import type { BunnyFrames } from "../entities/Bunny.js";
 import type { TreeSize } from "../entities/Tree.js";
 import type { ValidatedLayer } from "../layers/types.js";
 import type { SpriteRegistry } from "../loaders/layers.js";
+import type { MutableSpriteRegistry, ProgressCallback } from "../loaders/progressive.js";
 /** Module interface for sprite frame exports */
 export interface SpriteModule {
     readonly frames: readonly string[];
@@ -45,4 +46,43 @@ export declare function loadTreeSizes(config: Config): Promise<TreeSize[]>;
  * Load all sprites referenced by layers.
  */
 export declare function loadLayerSprites(config: Config, layers: readonly ValidatedLayer[]): Promise<SpriteRegistry>;
+/**
+ * Load grass sprites into mutable registry.
+ *
+ * Args:
+ *     config: Application config.
+ *     registry: Mutable sprite registry.
+ *     onProgress: Progress callback.
+ */
+export declare function loadGrassSprites(config: Config, registry: MutableSpriteRegistry, onProgress: ProgressCallback): Promise<void>;
+/**
+ * Load tree sprites progressively from largest to smallest.
+ *
+ * Loads trees interleaved across tree types (tree1, tree2, etc.)
+ * so that the largest trees from all types load first.
+ *
+ * Args:
+ *     config: Application config.
+ *     registry: Mutable sprite registry.
+ *     onProgress: Progress callback.
+ */
+export declare function loadTreeSpritesProgressive(config: Config, registry: MutableSpriteRegistry, onProgress: ProgressCallback): Promise<void>;
+/**
+ * Callback invoked when bunny frames finish loading.
+ */
+export type BunnyLoadedCallback = (frames: BunnyFrames) => void;
+/**
+ * Run progressive loading sequence.
+ *
+ * Loads sprites in order: ground, grass, bunny, trees (largest to smallest).
+ * Calls onProgress for each loaded sprite to enable UI updates.
+ * Calls onBunnyLoaded immediately when bunny frames are ready, before trees.
+ *
+ * Args:
+ *     config: Application config.
+ *     registry: Mutable sprite registry to populate.
+ *     onProgress: Progress callback for each loaded sprite.
+ *     onBunnyLoaded: Callback when bunny frames are ready (before trees load).
+ */
+export declare function runProgressiveLoad(config: Config, registry: MutableSpriteRegistry, onProgress: ProgressCallback, onBunnyLoaded: BunnyLoadedCallback): Promise<void>;
 //# sourceMappingURL=sprites.d.ts.map

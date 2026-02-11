@@ -4,5 +4,5 @@
  * All functions here are testable through dependency injection in consuming modules.
  */
 export { createBrowserAudioElement, createDefaultAudioDependencies, } from "./browser.js";
-export { loadConfig, loadSpriteFrames, loadStaticSpriteFrames, loadBunnyFrames, loadTreeSizes, loadLayerSprites, } from "./sprites.js";
+export { loadConfig, loadSpriteFrames, loadStaticSpriteFrames, loadBunnyFrames, loadTreeSizes, loadLayerSprites, loadGrassSprites, loadTreeSpritesProgressive, runProgressiveLoad, } from "./sprites.js";
 //# sourceMappingURL=index.js.map
