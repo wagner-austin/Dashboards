@@ -7,7 +7,7 @@ import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { renderFrame, _test_hooks, type RenderState } from "./SceneRenderer.js";
 
 const { drawBunny } = _test_hooks;
-import { createInitialBunnyState, type BunnyFrames } from "../entities/Bunny.js";
+import { createInitialBunnyState, type BunnyFrames, type BunnyState, type AnimationState } from "../entities/Bunny.js";
 import { createSceneState, type SceneState } from "../layers/index.js";
 import { createCamera, createProjectionConfig } from "../world/Projection.js";
 
@@ -21,7 +21,17 @@ function createTestBunnyFrames(): BunnyFrames {
     idleRight: ["idle_r_0"],
     walkToIdleLeft: ["trans_l_0", "trans_l_1"],
     walkToIdleRight: ["trans_r_0", "trans_r_1"],
+    walkToTurnAwayLeft: ["turn_away_l_0", "turn_away_l_1"],
+    walkToTurnAwayRight: ["turn_away_r_0", "turn_away_r_1"],
+    walkToTurnTowardLeft: ["turn_toward_l_0", "turn_toward_l_1"],
+    walkToTurnTowardRight: ["turn_toward_r_0", "turn_toward_r_1"],
+    hopAway: ["hop_away_0", "hop_away_1"],
+    hopToward: ["hop_toward_0", "hop_toward_1"],
   };
+}
+
+function createTestBunnyState(animation: AnimationState, facingRight = false): BunnyState {
+  return { facingRight, animation };
 }
 
 function createTestSceneState(): SceneState {
@@ -69,10 +79,7 @@ describe("renderFrame", () => {
   });
 
   it("updates camera when bunny is walking right", () => {
-    const bunnyState = createInitialBunnyState();
-    bunnyState.isWalking = true;
-    bunnyState.currentAnimation = "walk";
-    bunnyState.facingRight = true;
+    const bunnyState = createTestBunnyState({ kind: "walk", frameIdx: 0 }, true);
 
     const sceneState = createTestSceneState();
     const initialCameraX = sceneState.camera.x;
@@ -93,10 +100,7 @@ describe("renderFrame", () => {
   });
 
   it("updates camera when bunny walks left", () => {
-    const bunnyState = createInitialBunnyState();
-    bunnyState.isWalking = true;
-    bunnyState.currentAnimation = "walk";
-    bunnyState.facingRight = false;
+    const bunnyState = createTestBunnyState({ kind: "walk", frameIdx: 0 }, false);
 
     const sceneState = createTestSceneState();
 
@@ -142,9 +146,7 @@ describe("renderFrame", () => {
   });
 
   it("does not update camera when bunny is idle", () => {
-    const bunnyState = createInitialBunnyState();
-    bunnyState.isWalking = false;
-    bunnyState.currentAnimation = "idle";
+    const bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
 
     const sceneState = createTestSceneState();
     const initialCameraX = sceneState.camera.x;
@@ -164,10 +166,29 @@ describe("renderFrame", () => {
     expect(sceneState.camera.x).toBe(initialCameraX);
   });
 
-  it("does not update camera when walking but not in walk animation", () => {
-    const bunnyState = createInitialBunnyState();
-    bunnyState.isWalking = true;
-    bunnyState.currentAnimation = "idle"; // Walking flag set but not in walk animation
+  it("does not update camera when bunny is jumping", () => {
+    const bunnyState = createTestBunnyState({ kind: "jump", frameIdx: 0, returnTo: "walk" });
+
+    const sceneState = createTestSceneState();
+    const initialCameraX = sceneState.camera.x;
+
+    const renderState: RenderState = {
+      bunnyState,
+      sceneState,
+      viewport: { width: 80, height: 24, charW: 10, charH: 20 },
+      lastTime: 1000,
+      projectionConfig,
+    };
+
+    const bunnyFrames = createTestBunnyFrames();
+
+    renderFrame(renderState, bunnyFrames, screen, 2000, 100);
+
+    expect(sceneState.camera.x).toBe(initialCameraX);
+  });
+
+  it("does not update camera when in transition", () => {
+    const bunnyState = createTestBunnyState({ kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" });
 
     const sceneState = createTestSceneState();
     const initialCameraX = sceneState.camera.x;
@@ -224,8 +245,7 @@ describe("drawBunny", () => {
 
   it("draws bunny to buffer", () => {
     const buffer = createBuffer(80, 24);
-    const bunnyState = createInitialBunnyState();
-    bunnyState.facingRight = true;
+    const bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 }, true);
     const bunnyFrames = createTestBunnyFrames();
 
     drawBunny(buffer, bunnyState, bunnyFrames, 80, 24);
@@ -237,8 +257,7 @@ describe("drawBunny", () => {
 
   it("draws bunny facing left", () => {
     const buffer = createBuffer(80, 24);
-    const bunnyState = createInitialBunnyState();
-    bunnyState.facingRight = false;
+    const bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 }, false);
     const bunnyFrames = createTestBunnyFrames();
 
     drawBunny(buffer, bunnyState, bunnyFrames, 80, 24);
