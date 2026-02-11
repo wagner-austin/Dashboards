@@ -32,7 +32,7 @@ export interface ValidatedLayer {
  * Scene sprite state for generic scene objects.
  *
  * spriteName: Identifier for sprite lookup.
- * sizes: Available size variants.
+ * sizes: Available size variants (mutable for progressive loading).
  * sizeIdx: Current size index.
  * frameIdx: Current animation frame.
  * worldX: World X position.
@@ -40,7 +40,7 @@ export interface ValidatedLayer {
  */
 export interface SceneSpriteState {
   readonly spriteName: string;
-  readonly sizes: readonly FrameSet[];
+  readonly sizes: FrameSet[];
   sizeIdx: number;
   frameIdx: number;
   worldX: number;
