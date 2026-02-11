@@ -75,6 +75,7 @@ function projectEntity(
  * Render a single layer to buffer.
  *
  * Projects all entities in the layer and draws them at their screen positions.
+ * Uses layer behavior to determine wrapping.
  *
  * Args:
  *     buffer: 2D character buffer to draw into.
@@ -92,12 +93,11 @@ export function renderLayer(
   viewportHeight: number,
   config: ProjectionConfig
 ): void {
-  // Skip wrapping for tiled layers (they handle their own repetition)
-  const shouldWrap = !layer.config.tile && layer.config.positions.length > 0;
+  // Use behavior-based wrapping (tiled layers handle their own repetition)
+  const shouldWrapX = layer.config.behavior.wrapX && !layer.config.tile;
 
   for (const entity of layer.entities) {
-    // Wrap positioned entities for infinite scrolling
-    if (shouldWrap) {
+    if (shouldWrapX) {
       wrapEntityPosition(entity, camera.x);
     }
 
