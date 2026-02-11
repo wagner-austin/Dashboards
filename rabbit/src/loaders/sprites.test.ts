@@ -167,6 +167,44 @@ describe("validateConfig", () => {
     expect(result.audio).toBeUndefined();
   });
 
+  it("validates config with autoLayers only", () => {
+    const config = {
+      sprites: { bunny: {} },
+      layers: [],
+      settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+      autoLayers: {
+        sprites: ["tree1"],
+        minLayer: 8,
+        maxLayer: 10,
+      },
+    };
+    const result = validateConfig(config);
+    expect(result.autoLayers).toBeDefined();
+    expect(result.autoLayers?.minLayer).toBe(8);
+    expect(result.audio).toBeUndefined();
+  });
+
+  it("validates config with both audio and autoLayers", () => {
+    const config = {
+      sprites: { bunny: {} },
+      layers: [],
+      settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+      audio: {
+        enabled: true,
+        masterVolume: 0.5,
+        tracks: [],
+      },
+      autoLayers: {
+        sprites: ["tree1"],
+        minLayer: 8,
+        maxLayer: 10,
+      },
+    };
+    const result = validateConfig(config);
+    expect(result.audio?.enabled).toBe(true);
+    expect(result.autoLayers?.minLayer).toBe(8);
+  });
+
   it("throws for non-object", () => {
     expect(() => validateConfig(null)).toThrow("Invalid config: not an object");
     expect(() => validateConfig("string")).toThrow("Invalid config: not an object");
