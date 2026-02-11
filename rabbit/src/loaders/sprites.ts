@@ -73,13 +73,26 @@ function validateConfig(data: unknown): Config {
     throw new Error("Invalid config: invalid settings object");
   }
   const audio = validateOptionalAudio(data.audio);
+  const autoLayers = data.autoLayers;
   // After validation, we construct a properly typed object
-  return {
+  // Build base config and add optional properties conditionally
+  const base: Config = {
     sprites: sprites as Config["sprites"],
     layers: layers as Config["layers"],
     settings,
-    ...(audio !== undefined ? { audio } : {}),
   };
+  const hasAudio = audio !== undefined;
+  const hasAutoLayers = autoLayers !== undefined;
+  if (hasAudio && hasAutoLayers) {
+    return { ...base, audio, autoLayers: autoLayers as NonNullable<Config["autoLayers"]> };
+  }
+  if (hasAudio) {
+    return { ...base, audio };
+  }
+  if (hasAutoLayers) {
+    return { ...base, autoLayers: autoLayers as NonNullable<Config["autoLayers"]> };
+  }
+  return base;
 }
 
 
