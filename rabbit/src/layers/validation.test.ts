@@ -3,16 +3,24 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { validateLayersConfig, _test_hooks } from "./validation.js";
+import { validateLayersConfig, processLayersConfig, _test_hooks } from "./validation.js";
+import { LAYER_BEHAVIORS } from "../types.js";
 
 const {
   isRecord,
   isStringArray,
   isNumberArray,
   isLayerType,
+  isBehaviorPreset,
+  inferBehavior,
   requireLayerDefinition,
+  requireAutoLayersConfig,
   toValidatedLayer,
+  createSeededRandom,
+  getSpriteAtIndex,
+  generateAutoLayers,
   DEFAULT_LAYER,
+  WORLD_WIDTH,
 } = _test_hooks;
 
 describe("isRecord", () => {
@@ -287,5 +295,358 @@ describe("validateLayersConfig", () => {
 describe("DEFAULT_LAYER", () => {
   it("is 10", () => {
     expect(DEFAULT_LAYER).toBe(10);
+  });
+});
+
+describe("WORLD_WIDTH", () => {
+  it("is 800", () => {
+    expect(WORLD_WIDTH).toBe(800);
+  });
+});
+
+describe("createSeededRandom", () => {
+  it("generates consistent values for same seed", () => {
+    const random1 = createSeededRandom(42);
+    const random2 = createSeededRandom(42);
+    expect(random1()).toBe(random2());
+    expect(random1()).toBe(random2());
+  });
+
+  it("generates different values for different seeds", () => {
+    const random1 = createSeededRandom(42);
+    const random2 = createSeededRandom(123);
+    expect(random1()).not.toBe(random2());
+  });
+
+  it("generates values between 0 and 1", () => {
+    const random = createSeededRandom(12345);
+    for (let i = 0; i < 100; i++) {
+      const value = random();
+      expect(value).toBeGreaterThanOrEqual(0);
+      expect(value).toBeLessThan(1);
+    }
+  });
+});
+
+describe("requireAutoLayersConfig", () => {
+  it("validates valid config", () => {
+    const config = requireAutoLayersConfig({
+      sprites: ["tree1", "tree2"],
+      minLayer: 8,
+      maxLayer: 20,
+    });
+    expect(config.sprites).toEqual(["tree1", "tree2"]);
+    expect(config.minLayer).toBe(8);
+    expect(config.maxLayer).toBe(20);
+  });
+
+  it("validates config with optional fields", () => {
+    const config = requireAutoLayersConfig({
+      sprites: ["tree"],
+      minLayer: 5,
+      maxLayer: 15,
+      treesPerLayer: 3,
+      seed: 999,
+    });
+    expect(config.treesPerLayer).toBe(3);
+    expect(config.seed).toBe(999);
+  });
+
+  it("throws for non-object", () => {
+    expect(() => requireAutoLayersConfig(null)).toThrow("autoLayers: must be an object");
+    expect(() => requireAutoLayersConfig("string")).toThrow("autoLayers: must be an object");
+  });
+
+  it("throws for empty sprites", () => {
+    expect(() => requireAutoLayersConfig({
+      sprites: [],
+      minLayer: 8,
+      maxLayer: 20,
+    })).toThrow("autoLayers.sprites: must be non-empty string array");
+  });
+
+  it("throws for non-array sprites", () => {
+    expect(() => requireAutoLayersConfig({
+      sprites: "tree",
+      minLayer: 8,
+      maxLayer: 20,
+    })).toThrow("autoLayers.sprites: must be non-empty string array");
+  });
+
+  it("throws for non-integer minLayer", () => {
+    expect(() => requireAutoLayersConfig({
+      sprites: ["tree"],
+      minLayer: 8.5,
+      maxLayer: 20,
+    })).toThrow("autoLayers.minLayer: must be an integer");
+  });
+
+  it("throws for non-integer maxLayer", () => {
+    expect(() => requireAutoLayersConfig({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: "20",
+    })).toThrow("autoLayers.maxLayer: must be an integer");
+  });
+
+  it("throws when minLayer > maxLayer", () => {
+    expect(() => requireAutoLayersConfig({
+      sprites: ["tree"],
+      minLayer: 20,
+      maxLayer: 8,
+    })).toThrow("autoLayers: minLayer must be <= maxLayer");
+  });
+
+  it("throws for invalid treesPerLayer", () => {
+    expect(() => requireAutoLayersConfig({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: 20,
+      treesPerLayer: 0,
+    })).toThrow("autoLayers.treesPerLayer: must be a positive integer");
+  });
+
+  it("throws for non-integer seed", () => {
+    expect(() => requireAutoLayersConfig({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: 20,
+      seed: 1.5,
+    })).toThrow("autoLayers.seed: must be an integer");
+  });
+});
+
+describe("generateAutoLayers", () => {
+  it("generates correct number of layers", () => {
+    const layers = generateAutoLayers({
+      sprites: ["tree1", "tree2"],
+      minLayer: 8,
+      maxLayer: 12,
+    });
+    expect(layers.length).toBe(5); // 8, 9, 10, 11, 12
+  });
+
+  it("alternates sprites across layers", () => {
+    const layers = generateAutoLayers({
+      sprites: ["tree1", "tree2"],
+      minLayer: 8,
+      maxLayer: 11,
+    });
+    expect(layers[0]?.sprites).toEqual(["tree1"]);
+    expect(layers[1]?.sprites).toEqual(["tree2"]);
+    expect(layers[2]?.sprites).toEqual(["tree1"]);
+    expect(layers[3]?.sprites).toEqual(["tree2"]);
+  });
+
+  it("generates correct layer numbers", () => {
+    const layers = generateAutoLayers({
+      sprites: ["tree"],
+      minLayer: 10,
+      maxLayer: 12,
+    });
+    expect(layers[0]?.layer).toBe(10);
+    expect(layers[1]?.layer).toBe(11);
+    expect(layers[2]?.layer).toBe(12);
+  });
+
+  it("generates correct number of positions per layer", () => {
+    const layers = generateAutoLayers({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: 8,
+      treesPerLayer: 3,
+    });
+    expect(layers[0]?.positions?.length).toBe(3);
+  });
+
+  it("uses default treesPerLayer of 2", () => {
+    const layers = generateAutoLayers({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: 8,
+    });
+    expect(layers[0]?.positions?.length).toBe(2);
+  });
+
+  it("generates unique layer names", () => {
+    const layers = generateAutoLayers({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: 10,
+    });
+    expect(layers[0]?.name).toBe("auto-trees-8");
+    expect(layers[1]?.name).toBe("auto-trees-9");
+    expect(layers[2]?.name).toBe("auto-trees-10");
+  });
+
+  it("generates consistent positions with same seed", () => {
+    const layers1 = generateAutoLayers({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: 8,
+      seed: 42,
+    });
+    const layers2 = generateAutoLayers({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: 8,
+      seed: 42,
+    });
+    expect(layers1[0]?.positions).toEqual(layers2[0]?.positions);
+  });
+
+  it("generates different positions with different seeds", () => {
+    const layers1 = generateAutoLayers({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: 8,
+      seed: 42,
+    });
+    const layers2 = generateAutoLayers({
+      sprites: ["tree"],
+      minLayer: 8,
+      maxLayer: 8,
+      seed: 123,
+    });
+    expect(layers1[0]?.positions).not.toEqual(layers2[0]?.positions);
+  });
+});
+
+describe("processLayersConfig", () => {
+  it("processes manual layers only when no autoLayers", () => {
+    const result = processLayersConfig([
+      { name: "sky", type: "static", layer: 20 },
+      { name: "ground", layer: 5 },
+    ]);
+    expect(result.length).toBe(2);
+    expect(result[0]?.name).toBe("sky");
+    expect(result[1]?.name).toBe("ground");
+  });
+
+  it("generates and combines auto layers with manual layers", () => {
+    const result = processLayersConfig(
+      [{ name: "sky", type: "static", layer: 25 }],
+      { sprites: ["tree"], minLayer: 8, maxLayer: 10 }
+    );
+    expect(result.length).toBe(4); // 1 manual + 3 auto
+    expect(result.some(l => l.name === "sky")).toBe(true);
+    expect(result.some(l => l.name === "auto-trees-8")).toBe(true);
+  });
+
+  it("sorts layers by layer number (highest first)", () => {
+    const result = processLayersConfig([
+      { name: "front", layer: 5 },
+      { name: "back", layer: 20 },
+      { name: "mid", layer: 10 },
+    ]);
+    expect(result[0]?.layer).toBe(20);
+    expect(result[1]?.layer).toBe(10);
+    expect(result[2]?.layer).toBe(5);
+  });
+
+  it("handles empty manual layers with autoLayers", () => {
+    const result = processLayersConfig(
+      [],
+      { sprites: ["tree"], minLayer: 8, maxLayer: 9 }
+    );
+    expect(result.length).toBe(2);
+  });
+
+  it("handles undefined autoLayers", () => {
+    const result = processLayersConfig([{ name: "test" }], undefined);
+    expect(result.length).toBe(1);
+  });
+
+  it("handles non-array layers with autoLayers only", () => {
+    const result = processLayersConfig(
+      null,
+      { sprites: ["tree"], minLayer: 8, maxLayer: 9 }
+    );
+    expect(result.length).toBe(2);
+    expect(result[0]?.name).toBe("auto-trees-9");
+    expect(result[1]?.name).toBe("auto-trees-8");
+  });
+
+  it("handles non-array layers without autoLayers", () => {
+    const result = processLayersConfig(null, undefined);
+    expect(result.length).toBe(0);
+  });
+});
+
+describe("isBehaviorPreset", () => {
+  it("returns true for valid behavior presets", () => {
+    expect(isBehaviorPreset("static")).toBe(true);
+    expect(isBehaviorPreset("background")).toBe(true);
+    expect(isBehaviorPreset("midground")).toBe(true);
+    expect(isBehaviorPreset("foreground")).toBe(true);
+  });
+
+  it("returns false for invalid values", () => {
+    expect(isBehaviorPreset("invalid")).toBe(false);
+    expect(isBehaviorPreset(123)).toBe(false);
+    expect(isBehaviorPreset(null)).toBe(false);
+    expect(isBehaviorPreset(undefined)).toBe(false);
+  });
+});
+
+describe("inferBehavior", () => {
+  it("uses explicit behavior when provided", () => {
+    const def = { name: "test", behavior: "background" as const };
+    expect(inferBehavior(def)).toEqual(LAYER_BEHAVIORS.background);
+  });
+
+  it("infers static behavior for static type", () => {
+    const def = { name: "test", type: "static" as const };
+    expect(inferBehavior(def)).toEqual(LAYER_BEHAVIORS.static);
+  });
+
+  it("infers foreground behavior for tiled layers", () => {
+    const def = { name: "test", tile: true };
+    expect(inferBehavior(def)).toEqual(LAYER_BEHAVIORS.foreground);
+  });
+
+  it("defaults to midground behavior", () => {
+    const def = { name: "test" };
+    expect(inferBehavior(def)).toEqual(LAYER_BEHAVIORS.midground);
+  });
+});
+
+describe("getSpriteAtIndex", () => {
+  it("returns sprite at valid index", () => {
+    expect(getSpriteAtIndex(["a", "b", "c"], 0)).toBe("a");
+    expect(getSpriteAtIndex(["a", "b", "c"], 1)).toBe("b");
+    expect(getSpriteAtIndex(["a", "b", "c"], 2)).toBe("c");
+  });
+
+  it("wraps index for cycling", () => {
+    expect(getSpriteAtIndex(["a", "b"], 2)).toBe("a");
+    expect(getSpriteAtIndex(["a", "b"], 3)).toBe("b");
+    expect(getSpriteAtIndex(["a", "b"], 4)).toBe("a");
+  });
+
+  it("throws for empty sprites array", () => {
+    expect(() => getSpriteAtIndex([], 0)).toThrow("autoLayers: sprites array is empty");
+  });
+
+  it("throws for sparse array with undefined hole", () => {
+    // Create a sparse array with a hole at index 0
+    // This tests the defensive undefined check
+    const sparse: string[] = [];
+    sparse.length = 2;
+    sparse[1] = "second";
+    expect(() => getSpriteAtIndex(sparse, 0)).toThrow("autoLayers: sprite index 0 out of bounds");
+  });
+});
+
+describe("requireLayerDefinition with behavior", () => {
+  it("accepts valid behavior preset", () => {
+    const def = requireLayerDefinition({ name: "test", behavior: "static" }, 0);
+    expect(def.behavior).toBe("static");
+  });
+
+  it("throws for invalid behavior preset", () => {
+    expect(() =>
+      requireLayerDefinition({ name: "test", behavior: "invalid" }, 0)
+    ).toThrow('"behavior" must be static|background|midground|foreground');
   });
 });
