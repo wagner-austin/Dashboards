@@ -8,6 +8,10 @@ const { drawBunny } = _test_hooks;
 import { createInitialBunnyState } from "../entities/Bunny.js";
 import { createSceneState } from "../layers/index.js";
 import { createCamera, createProjectionConfig } from "../world/Projection.js";
+/** Test depth bounds (minZ=-110, maxZ=160, range=270) */
+function createTestDepthBounds() {
+    return { minZ: -110, maxZ: 160, range: 270 };
+}
 function createTestBunnyFrames() {
     return {
         walkLeft: ["walk_l_0", "walk_l_1"],
@@ -30,7 +34,7 @@ function createTestBunnyState(animation, facingRight = false) {
     return { facingRight, animation };
 }
 function createTestSceneState() {
-    return createSceneState([], createCamera());
+    return createSceneState([], createCamera(), createTestDepthBounds());
 }
 describe("renderFrame", () => {
     let screen;
