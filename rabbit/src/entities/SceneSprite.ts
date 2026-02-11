@@ -20,7 +20,7 @@ import type { SceneSpriteState, SceneState } from "../layers/types.js";
  */
 export function createSceneSpriteState(
   spriteName: string,
-  sizes: readonly FrameSet[],
+  sizes: FrameSet[],
   worldX: number,
   worldZ: number,
   sizeIdx: number
