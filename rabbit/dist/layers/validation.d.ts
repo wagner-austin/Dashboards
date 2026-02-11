@@ -141,7 +141,6 @@ export declare const _test_hooks: {
     getSpriteAtIndex: typeof getSpriteAtIndex;
     generateAutoLayers: typeof generateAutoLayers;
     DEFAULT_LAYER: number;
-    WORLD_WIDTH: number;
 };
 export {};
 //# sourceMappingURL=validation.d.ts.map
