@@ -7,11 +7,10 @@ import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { init, _test_hooks, type MainDependencies } from "./main.js";
 import { advanceAllSceneSpriteFrames, createLayerAnimationCallback } from "./entities/SceneSprite.js";
 import type { BunnyFrames } from "./entities/Bunny.js";
-import type { LayerInstance, SceneSpriteState, ValidatedLayer as LayerValidatedLayer } from "./layers/types.js";
+import type { LayerInstance, SceneSpriteState, ValidatedLayer } from "./layers/types.js";
 import { createSceneState } from "./layers/index.js";
 import type { SpriteRegistry } from "./loaders/layers.js";
-import type { Config } from "./types.js";
-import type { ValidatedLayer } from "./layers/types.js";
+import { LAYER_BEHAVIORS, type Config } from "./types.js";
 import type { AudioDependencies } from "./audio/index.js";
 import { createCamera } from "./world/Projection.js";
 
@@ -269,7 +268,7 @@ describe("createLayerAnimationCallback", () => {
       worldX: 0,
       worldZ: 100,
     };
-    const layerConfig: LayerValidatedLayer = {
+    const layerConfig: ValidatedLayer = {
       name: "test-layer",
       type: "sprites",
       layer: 10,
@@ -277,6 +276,7 @@ describe("createLayerAnimationCallback", () => {
       positions: [],
       zIndex: 0,
       tile: false,
+      behavior: LAYER_BEHAVIORS.midground,
     };
     const layer: LayerInstance = {
       config: layerConfig,
@@ -320,7 +320,7 @@ describe("advanceAllSceneSpriteFrames", () => {
       worldX: 50,
       worldZ: 100,
     };
-    const layerConfig: LayerValidatedLayer = {
+    const layerConfig: ValidatedLayer = {
       name: "test-layer",
       type: "sprites",
       layer: 10,
@@ -328,6 +328,7 @@ describe("advanceAllSceneSpriteFrames", () => {
       positions: [],
       zIndex: 0,
       tile: false,
+      behavior: LAYER_BEHAVIORS.midground,
     };
     const layer: LayerInstance = {
       config: layerConfig,
@@ -363,7 +364,7 @@ describe("advanceAllSceneSpriteFrames", () => {
   });
 
   it("handles layer with no entities", () => {
-    const layerConfig: LayerValidatedLayer = {
+    const layerConfig: ValidatedLayer = {
       name: "empty-layer",
       type: "sprites",
       layer: 10,
@@ -371,6 +372,7 @@ describe("advanceAllSceneSpriteFrames", () => {
       positions: [],
       zIndex: 0,
       tile: false,
+      behavior: LAYER_BEHAVIORS.midground,
     };
     const layer: LayerInstance = {
       config: layerConfig,
