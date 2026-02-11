@@ -16,6 +16,9 @@ export {
   loadBunnyFrames,
   loadTreeSizes,
   loadLayerSprites,
+  loadGrassSprites,
+  loadTreeSpritesProgressive,
+  runProgressiveLoad,
 } from "./sprites.js";
 
-export type { SpriteModule } from "./sprites.js";
+export type { SpriteModule, BunnyLoadedCallback } from "./sprites.js";

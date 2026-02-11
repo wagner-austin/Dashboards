@@ -9,6 +9,18 @@ import type { BunnyFrames } from "../entities/Bunny.js";
 import type { TreeSize } from "../entities/Tree.js";
 import type { ValidatedLayer } from "../layers/types.js";
 import type { SpriteRegistry } from "../loaders/layers.js";
+import type {
+  MutableSpriteRegistry,
+  ProgressCallback,
+} from "../loaders/progressive.js";
+import {
+  collectTreeWidths,
+  getGrassSpriteNames,
+  getTreeSpriteNames,
+  getSpriteWidthsFromConfig,
+  getOrCreateSpriteArray,
+  insertSortedByWidth,
+} from "../loaders/progressive.js";
 import { _test_hooks as spritesHooks } from "../loaders/sprites.js";
 
 const { validateSpriteModule } = spritesHooks;
@@ -192,4 +204,113 @@ export async function loadLayerSprites(
   }
 
   return { sprites };
+}
+
+/**
+ * Load grass sprites into mutable registry.
+ *
+ * Args:
+ *     config: Application config.
+ *     registry: Mutable sprite registry.
+ *     onProgress: Progress callback.
+ */
+export async function loadGrassSprites(
+  config: Config,
+  registry: MutableSpriteRegistry,
+  onProgress: ProgressCallback
+): Promise<void> {
+  const grassNames = getGrassSpriteNames(config);
+  let current = 0;
+  let total = 0;
+
+  // Count total widths to load
+  for (const name of grassNames) {
+    const widths = getSpriteWidthsFromConfig(config, name);
+    total += widths.length;
+  }
+
+  for (const name of grassNames) {
+    const widths = getSpriteWidthsFromConfig(config, name);
+    const sizes = getOrCreateSpriteArray(registry, name);
+
+    for (const width of widths) {
+      current++;
+      onProgress({ phase: "grass", current, total, spriteName: name, width });
+
+      const frameSet = await loadStaticSpriteFrames(name, width);
+      insertSortedByWidth(sizes, frameSet);
+    }
+  }
+}
+
+/**
+ * Load tree sprites progressively from largest to smallest.
+ *
+ * Loads trees interleaved across tree types (tree1, tree2, etc.)
+ * so that the largest trees from all types load first.
+ *
+ * Args:
+ *     config: Application config.
+ *     registry: Mutable sprite registry.
+ *     onProgress: Progress callback.
+ */
+export async function loadTreeSpritesProgressive(
+  config: Config,
+  registry: MutableSpriteRegistry,
+  onProgress: ProgressCallback
+): Promise<void> {
+  const treeNames = getTreeSpriteNames(config);
+  const entries = collectTreeWidths(config, treeNames);
+  const total = entries.length;
+
+  for (let i = 0; i < entries.length; i++) {
+    const entry = entries[i];
+    if (entry === undefined) continue;
+
+    const { spriteName, width } = entry;
+    onProgress({ phase: "trees", current: i + 1, total, spriteName, width });
+
+    const sizes = getOrCreateSpriteArray(registry, spriteName);
+    const frameSet = await loadStaticSpriteFrames(spriteName, width);
+    insertSortedByWidth(sizes, frameSet);
+  }
+}
+
+/**
+ * Callback invoked when bunny frames finish loading.
+ */
+export type BunnyLoadedCallback = (frames: BunnyFrames) => void;
+
+/**
+ * Run progressive loading sequence.
+ *
+ * Loads sprites in order: ground, grass, bunny, trees (largest to smallest).
+ * Calls onProgress for each loaded sprite to enable UI updates.
+ * Calls onBunnyLoaded immediately when bunny frames are ready, before trees.
+ *
+ * Args:
+ *     config: Application config.
+ *     registry: Mutable sprite registry to populate.
+ *     onProgress: Progress callback for each loaded sprite.
+ *     onBunnyLoaded: Callback when bunny frames are ready (before trees load).
+ */
+export async function runProgressiveLoad(
+  config: Config,
+  registry: MutableSpriteRegistry,
+  onProgress: ProgressCallback,
+  onBunnyLoaded: BunnyLoadedCallback
+): Promise<void> {
+  // Phase 1: Ground (instant - notify only)
+  onProgress({ phase: "ground", current: 1, total: 1, spriteName: "ground", width: 0 });
+
+  // Phase 2: Grass sprites
+  await loadGrassSprites(config, registry, onProgress);
+
+  // Phase 3: Bunny frames - notify immediately when ready
+  onProgress({ phase: "bunny", current: 1, total: 1, spriteName: "bunny", width: 50 });
+  const bunnyFrames = await loadBunnyFrames(config);
+  onBunnyLoaded(bunnyFrames);
+
+  // Phase 4: Trees (largest to smallest)
+  await loadTreeSpritesProgressive(config, registry, onProgress);
 }
