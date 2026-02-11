@@ -3,13 +3,14 @@
  */
 import { type BunnyState, type BunnyFrames, type BunnyTimers } from "../entities/Bunny.js";
 import type { ViewportState } from "../rendering/Viewport.js";
-import type { Camera } from "../world/Projection.js";
+import type { Camera, DepthBounds } from "../world/Projection.js";
 /**
  * Input state containing all mutable game state.
  *
  * bunny: Bunny animation state.
  * viewport: Screen dimensions.
  * camera: Camera position.
+ * depthBounds: Bounds for depth wrapping (from config).
  * hopKeyHeld: Whether W/S key is currently held (for depth movement).
  * slideKeyHeld: Whether A/D key is currently held (for horizontal slide during hop).
  */
@@ -17,6 +18,7 @@ export interface InputState {
     bunny: BunnyState;
     viewport: ViewportState;
     camera: Camera;
+    depthBounds: DepthBounds;
     hopKeyHeld: "away" | "toward" | null;
     slideKeyHeld: "left" | "right" | null;
 }
@@ -32,10 +34,12 @@ export declare function setupKeyboardControls(state: InputState, bunnyFrames: Bu
 /**
  * Process camera depth movement based on hop state.
  *
- * Camera only moves when bunny is actually hopping, not during transitions.
+ * Camera moves when bunny is hopping, with infinite wrapping at depth bounds.
+ * Moving "toward" decreases Z (toward viewer).
+ * Moving "away" increases Z (into scene).
  *
  * Args:
- *     state: Input state with bunny and camera.
+ *     state: Input state with bunny, camera, and depthBounds.
  */
 export declare function processDepthMovement(state: InputState): void;
 /**
@@ -110,8 +114,6 @@ export declare const _test_hooks: {
     processHorizontalMovement: typeof processHorizontalMovement;
     isPendingJump: typeof isPendingJump;
     CAMERA_Z_SPEED: number;
-    MIN_CAMERA_Z: number;
-    MAX_CAMERA_Z: number;
     CAMERA_X_SPEED: number;
 };
 export {};

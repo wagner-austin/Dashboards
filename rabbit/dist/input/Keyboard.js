@@ -2,7 +2,7 @@
  * Keyboard input handling.
  */
 import { isHopping, isJumping, } from "../entities/Bunny.js";
-import { DEFAULT_CAMERA_Z } from "../world/Projection.js";
+import { DEFAULT_CAMERA_Z, wrapDepth } from "../world/Projection.js";
 /**
  * Setup keyboard controls for the game.
  *
@@ -77,32 +77,25 @@ export function setupKeyboardControls(state, bunnyFrames, bunnyTimers) {
         }
     });
 }
-/** Camera Z movement speed per frame */
+/** Camera Z movement speed per frame. */
 const CAMERA_Z_SPEED = 0.5;
-/** Minimum camera Z (closest to scene) */
-const MIN_CAMERA_Z = -500;
-/** Maximum camera Z (farthest from scene) */
-const MAX_CAMERA_Z = 500;
 /**
  * Process camera depth movement based on hop state.
  *
- * Camera only moves when bunny is actually hopping, not during transitions.
+ * Camera moves when bunny is hopping, with infinite wrapping at depth bounds.
+ * Moving "toward" decreases Z (toward viewer).
+ * Moving "away" increases Z (into scene).
  *
  * Args:
- *     state: Input state with bunny and camera.
+ *     state: Input state with bunny, camera, and depthBounds.
  */
 export function processDepthMovement(state) {
     const anim = state.bunny.animation;
     if (anim.kind !== "hop") {
         return;
     }
-    let newZ = state.camera.z;
-    if (anim.direction === "toward") {
-        newZ = Math.max(state.camera.z - CAMERA_Z_SPEED, MIN_CAMERA_Z);
-    }
-    else {
-        newZ = Math.min(state.camera.z + CAMERA_Z_SPEED, MAX_CAMERA_Z);
-    }
+    const delta = anim.direction === "toward" ? -CAMERA_Z_SPEED : CAMERA_Z_SPEED;
+    const newZ = wrapDepth(state.camera.z + delta, state.depthBounds.minZ, state.depthBounds.maxZ);
     state.camera = { ...state.camera, z: newZ };
 }
 /** Camera X movement speed per frame when sliding during hop */
@@ -326,8 +319,6 @@ export const _test_hooks = {
     processHorizontalMovement,
     isPendingJump,
     CAMERA_Z_SPEED,
-    MIN_CAMERA_Z,
-    MAX_CAMERA_Z,
     CAMERA_X_SPEED,
 };
 //# sourceMappingURL=Keyboard.js.map
