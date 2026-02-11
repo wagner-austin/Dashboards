@@ -3,7 +3,7 @@
  */
 
 import type { FrameSet, LayerBehavior, LayerType } from "../types.js";
-import type { Camera } from "../world/Projection.js";
+import type { Camera, DepthBounds } from "../world/Projection.js";
 
 /**
  * Validated layer from config (after validation).
@@ -63,9 +63,11 @@ export interface LayerInstance {
  *
  * layers: All active layer instances.
  * camera: Current camera position.
+ * depthBounds: Bounds for depth wrapping (from config).
  */
 export interface SceneState {
   readonly layers: readonly LayerInstance[];
+  readonly depthBounds: DepthBounds;
   camera: Camera;
 }
 
@@ -75,16 +77,50 @@ export interface SceneState {
  * Args:
  *     layers: Layer instances to include.
  *     camera: Initial camera position.
+ *     depthBounds: Bounds for depth wrapping.
  *
  * Returns:
- *     SceneState with provided layers and camera.
+ *     SceneState with provided layers, camera, and depth bounds.
  */
 export function createSceneState(
   layers: LayerInstance[],
-  camera: Camera
+  camera: Camera,
+  depthBounds: DepthBounds
 ): SceneState {
   return {
     layers,
     camera,
+    depthBounds,
   };
+}
+
+/**
+ * Render candidate for depth-sorted rendering.
+ *
+ * Pairs an entity with an effective Z position for sorting.
+ * Used to collect all render operations before sorting by depth.
+ *
+ * entity: The scene sprite to render.
+ * effectiveZ: The world Z position to render at (may differ from entity.worldZ for wrapping).
+ */
+export interface RenderCandidate {
+  readonly entity: SceneSpriteState;
+  readonly effectiveZ: number;
+}
+
+/**
+ * Create a render candidate.
+ *
+ * Args:
+ *     entity: Scene sprite to render.
+ *     effectiveZ: World Z position to render at.
+ *
+ * Returns:
+ *     RenderCandidate with provided values.
+ */
+export function createRenderCandidate(
+  entity: SceneSpriteState,
+  effectiveZ: number
+): RenderCandidate {
+  return { entity, effectiveZ };
 }
