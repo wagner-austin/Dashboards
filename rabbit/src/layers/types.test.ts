@@ -5,6 +5,7 @@
 import { describe, it, expect } from "vitest";
 import { createSceneState, type LayerInstance, type ValidatedLayer } from "./types.js";
 import { createCamera, DEFAULT_CAMERA_Z } from "../world/Projection.js";
+import { LAYER_BEHAVIORS } from "../types.js";
 
 function createTestLayer(name: string, zIndex: number, layer = 10): ValidatedLayer {
   return {
@@ -15,6 +16,7 @@ function createTestLayer(name: string, zIndex: number, layer = 10): ValidatedLay
     positions: [],
     zIndex,
     tile: false,
+    behavior: LAYER_BEHAVIORS.midground,
   };
 }
 
@@ -66,6 +68,7 @@ describe("createSceneState", () => {
       positions: [-100, 0, 100, 200],
       zIndex: 0,
       tile: false,
+      behavior: LAYER_BEHAVIORS.midground,
     };
     const layer: LayerInstance = { config, entities: [] };
     const state = createSceneState([layer], createCamera());
