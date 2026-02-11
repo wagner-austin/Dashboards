@@ -66,7 +66,7 @@ export function createProjectionConfig(): ProjectionConfig {
     horizonY: 0.12,
     nearZ: 40,
     farZ: 200,
-    groundY: 0.92,
+    groundY: 0.85,
     parallaxStrength: 0.5,
   };
 }
