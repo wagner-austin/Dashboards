@@ -9,7 +9,7 @@ import { measureViewport, type ViewportState } from "./rendering/Viewport.js";
 import { renderFrame, type RenderState } from "./rendering/SceneRenderer.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers, type BunnyFrames } from "./entities/Bunny.js";
-import { setupKeyboardControls, processDepthMovement, type InputState } from "./input/Keyboard.js";
+import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, type InputState } from "./input/Keyboard.js";
 import { processLayersConfig, createSceneState, type SceneState, type ValidatedLayer } from "./layers/index.js";
 import { createLayerInstances, type SpriteRegistry } from "./loaders/layers.js";
 import { createLayerAnimationCallback } from "./entities/SceneSprite.js";
@@ -104,7 +104,8 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
     bunny: bunnyState,
     viewport,
     camera,
-    depthDirection: 0,
+    hopKeyHeld: null,
+    slideKeyHeld: null,
     scene: sceneState,
   };
 
@@ -113,7 +114,8 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
     walk: 120,
     idle: 500,
     jump: 58,
-    transition: 80,
+    transition: 50,
+    hop: 150,
   });
 
   // Layer animation timer
@@ -146,8 +148,9 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
   let lastTime = 0;
 
   function render(currentTime: number): void {
-    // Process depth movement input (continuous while key held)
+    // Process movement input (continuous while keys held)
     processDepthMovement(state);
+    processHorizontalMovement(state);
 
     // Sync camera from input state to scene state
     state.scene.camera = state.camera;
