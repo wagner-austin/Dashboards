@@ -6,9 +6,21 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, _test_hooks, type InputState } from "./Keyboard.js";
 import { createBunnyTimers, type BunnyFrames, type BunnyState, type BunnyTimers, type AnimationState } from "../entities/Bunny.js";
-import { createCamera } from "../world/Projection.js";
+import { calculateDepthBounds, createProjectionConfig, type DepthBounds } from "../world/Projection.js";
+import { layerToWorldZ } from "../layers/widths.js";
 
-const { CAMERA_Z_SPEED, MIN_CAMERA_Z, MAX_CAMERA_Z, CAMERA_X_SPEED, handleHopRelease, isPendingJump } = _test_hooks;
+const { CAMERA_Z_SPEED, CAMERA_X_SPEED, handleHopRelease, isPendingJump } = _test_hooks;
+
+/** Create test depth bounds matching default config (layers 8-30). */
+function createTestDepthBounds(): DepthBounds {
+  const projectionConfig = createProjectionConfig();
+  const minTreeWorldZ = layerToWorldZ(8);
+  const maxTreeWorldZ = layerToWorldZ(30);
+  return calculateDepthBounds(minTreeWorldZ, maxTreeWorldZ, projectionConfig);
+}
+
+/** Standard test depth bounds. */
+const TEST_DEPTH_BOUNDS = createTestDepthBounds();
 
 function createTestFrames(): BunnyFrames {
   return {
@@ -34,10 +46,12 @@ function createTestBunnyState(animation: AnimationState, facingRight = false): B
 }
 
 function createTestInputState(bunnyState: BunnyState): InputState {
+  // Camera Z must be inside depthBounds [-110, 50) for valid movement
   return {
     bunny: bunnyState,
     viewport: { width: 100, height: 50, charW: 10, charH: 20 },
-    camera: createCamera(),
+    camera: { x: 0, z: 0 },
+    depthBounds: TEST_DEPTH_BOUNDS,
     hopKeyHeld: null,
     slideKeyHeld: null,
   };
@@ -525,27 +539,33 @@ describe("processDepthMovement", () => {
     expect(state.camera.z).toBe(initialZ + CAMERA_Z_SPEED);
   });
 
-  it("clamps camera.z to MIN_CAMERA_Z when moving toward", () => {
+  it("wraps from minZ to maxZ when moving toward past minimum", () => {
     const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-    state.camera = { x: state.camera.x, z: MIN_CAMERA_Z };
+    const { minZ, maxZ } = state.depthBounds;
+    state.camera = { x: state.camera.x, z: minZ };
 
     processDepthMovement(state);
 
-    expect(state.camera.z).toBe(MIN_CAMERA_Z);
+    // Should wrap to near maxZ
+    const expectedZ = maxZ - (minZ - (minZ - CAMERA_Z_SPEED)) % state.depthBounds.range;
+    expect(state.camera.z).toBeCloseTo(expectedZ, 5);
   });
 
-  it("clamps camera.z to MAX_CAMERA_Z when moving away", () => {
+  it("wraps from maxZ to minZ when moving away past maximum", () => {
     const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-    state.camera = { x: state.camera.x, z: MAX_CAMERA_Z };
+    const { minZ, maxZ } = state.depthBounds;
+    state.camera = { x: state.camera.x, z: maxZ };
 
     processDepthMovement(state);
 
-    expect(state.camera.z).toBe(MAX_CAMERA_Z);
+    // Should wrap to near minZ
+    const expectedZ = minZ + (maxZ + CAMERA_Z_SPEED - maxZ) % state.depthBounds.range;
+    expect(state.camera.z).toBeCloseTo(expectedZ, 5);
   });
 
   it("preserves camera.x when moving in depth", () => {
     const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-    state.camera = { x: 100, z: 55 };
+    state.camera = { x: 100, z: 0 };
 
     processDepthMovement(state);
 
@@ -554,35 +574,42 @@ describe("processDepthMovement", () => {
 
   it("allows continuous depth movement across multiple calls", () => {
     const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-    state.camera = { x: 0, z: 55 };
+    // Start at Z=0 (inside bounds [-110, 50))
+    state.camera = { x: 0, z: 0 };
 
     processDepthMovement(state);
     processDepthMovement(state);
     processDepthMovement(state);
 
-    expect(state.camera.z).toBe(55 - CAMERA_Z_SPEED * 3);
+    expect(state.camera.z).toBe(0 - CAMERA_Z_SPEED * 3);
   });
 
-  it("stops at MIN_CAMERA_Z after multiple toward movement calls", () => {
+  it("wraps continuously when moving toward past minimum multiple times", () => {
     const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-    state.camera = { x: 0, z: MIN_CAMERA_Z + 1 };
+    const { minZ, maxZ } = state.depthBounds;
+    // Start just above minZ
+    state.camera = { x: 0, z: minZ + CAMERA_Z_SPEED * 0.5 };
 
-    processDepthMovement(state);
-    processDepthMovement(state);
+    // First call goes below minZ, should wrap
     processDepthMovement(state);
 
-    expect(state.camera.z).toBe(MIN_CAMERA_Z);
+    // Result should be wrapped to near maxZ
+    expect(state.camera.z).toBeGreaterThan(minZ);
+    expect(state.camera.z).toBeLessThanOrEqual(maxZ);
   });
 
-  it("stops at MAX_CAMERA_Z after multiple away movement calls", () => {
+  it("wraps continuously when moving away past maximum multiple times", () => {
     const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-    state.camera = { x: 0, z: MAX_CAMERA_Z - 1 };
+    const { minZ, maxZ } = state.depthBounds;
+    // Start just below maxZ
+    state.camera = { x: 0, z: maxZ - CAMERA_Z_SPEED * 0.5 };
 
-    processDepthMovement(state);
-    processDepthMovement(state);
+    // First call goes above maxZ, should wrap
     processDepthMovement(state);
 
-    expect(state.camera.z).toBe(MAX_CAMERA_Z);
+    // Result should be wrapped to near minZ
+    expect(state.camera.z).toBeGreaterThanOrEqual(minZ);
+    expect(state.camera.z).toBeLessThan(maxZ);
   });
 });
 
@@ -810,7 +837,7 @@ describe("processHorizontalMovement", () => {
   it("allows continuous horizontal movement", () => {
     const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
     state.slideKeyHeld = "right";
-    state.camera = { x: 0, z: 55 };
+    state.camera = { x: 0, z: 0 };
 
     processHorizontalMovement(state);
     processHorizontalMovement(state);

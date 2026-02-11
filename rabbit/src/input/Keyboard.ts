@@ -11,8 +11,8 @@ import {
   type PendingAction,
 } from "../entities/Bunny.js";
 import type { ViewportState } from "../rendering/Viewport.js";
-import type { Camera } from "../world/Projection.js";
-import { DEFAULT_CAMERA_Z } from "../world/Projection.js";
+import type { Camera, DepthBounds } from "../world/Projection.js";
+import { DEFAULT_CAMERA_Z, wrapDepth } from "../world/Projection.js";
 
 /**
  * Input state containing all mutable game state.
@@ -20,6 +20,7 @@ import { DEFAULT_CAMERA_Z } from "../world/Projection.js";
  * bunny: Bunny animation state.
  * viewport: Screen dimensions.
  * camera: Camera position.
+ * depthBounds: Bounds for depth wrapping (from config).
  * hopKeyHeld: Whether W/S key is currently held (for depth movement).
  * slideKeyHeld: Whether A/D key is currently held (for horizontal slide during hop).
  */
@@ -27,6 +28,7 @@ export interface InputState {
   bunny: BunnyState;
   viewport: ViewportState;
   camera: Camera;
+  depthBounds: DepthBounds;
   hopKeyHeld: "away" | "toward" | null;
   slideKeyHeld: "left" | "right" | null;
 }
@@ -106,22 +108,18 @@ export function setupKeyboardControls(
   });
 }
 
-/** Camera Z movement speed per frame */
+/** Camera Z movement speed per frame. */
 const CAMERA_Z_SPEED = 0.5;
-
-/** Minimum camera Z (closest to scene) */
-const MIN_CAMERA_Z = -500;
-
-/** Maximum camera Z (farthest from scene) */
-const MAX_CAMERA_Z = 500;
 
 /**
  * Process camera depth movement based on hop state.
  *
- * Camera only moves when bunny is actually hopping, not during transitions.
+ * Camera moves when bunny is hopping, with infinite wrapping at depth bounds.
+ * Moving "toward" decreases Z (toward viewer).
+ * Moving "away" increases Z (into scene).
  *
  * Args:
- *     state: Input state with bunny and camera.
+ *     state: Input state with bunny, camera, and depthBounds.
  */
 export function processDepthMovement(state: InputState): void {
   const anim = state.bunny.animation;
@@ -129,13 +127,12 @@ export function processDepthMovement(state: InputState): void {
     return;
   }
 
-  let newZ = state.camera.z;
-
-  if (anim.direction === "toward") {
-    newZ = Math.max(state.camera.z - CAMERA_Z_SPEED, MIN_CAMERA_Z);
-  } else {
-    newZ = Math.min(state.camera.z + CAMERA_Z_SPEED, MAX_CAMERA_Z);
-  }
+  const delta = anim.direction === "toward" ? -CAMERA_Z_SPEED : CAMERA_Z_SPEED;
+  const newZ = wrapDepth(
+    state.camera.z + delta,
+    state.depthBounds.minZ,
+    state.depthBounds.maxZ
+  );
 
   state.camera = { ...state.camera, z: newZ };
 }
@@ -386,7 +383,5 @@ export const _test_hooks = {
   processHorizontalMovement,
   isPendingJump,
   CAMERA_Z_SPEED,
-  MIN_CAMERA_Z,
-  MAX_CAMERA_Z,
   CAMERA_X_SPEED,
 };
