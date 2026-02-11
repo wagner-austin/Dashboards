@@ -9,8 +9,8 @@ import { measureViewport, type ViewportState } from "./rendering/Viewport.js";
 import { renderFrame, type RenderState } from "./rendering/SceneRenderer.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers, type BunnyFrames } from "./entities/Bunny.js";
-import { setupKeyboardControls, processZoom, type InputState } from "./input/Keyboard.js";
-import { validateLayersConfig, createSceneState, type SceneState, type ValidatedLayer } from "./layers/index.js";
+import { setupKeyboardControls, processDepthMovement, type InputState } from "./input/Keyboard.js";
+import { processLayersConfig, createSceneState, type SceneState, type ValidatedLayer } from "./layers/index.js";
 import { createLayerInstances, type SpriteRegistry } from "./loaders/layers.js";
 import { createLayerAnimationCallback } from "./entities/SceneSprite.js";
 import { createCamera, createProjectionConfig } from "./world/Projection.js";
@@ -85,8 +85,8 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
   // Load sprites
   const bunnyFrames = await deps.loadBunnyFramesFn(config);
 
-  // Validate and load layer sprites
-  const validatedLayers = validateLayersConfig(config.layers);
+  // Process layers (including auto-generated layers if configured)
+  const validatedLayers = processLayersConfig(config.layers, config.autoLayers);
   const layerRegistry = await deps.loadLayerSpritesFn(config, validatedLayers);
   const layerInstances = createLayerInstances(validatedLayers, layerRegistry, viewport.width);
 
@@ -104,7 +104,7 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
     bunny: bunnyState,
     viewport,
     camera,
-    zoomDirection: 0,
+    depthDirection: 0,
     scene: sceneState,
   };
 
@@ -146,8 +146,8 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
   let lastTime = 0;
 
   function render(currentTime: number): void {
-    // Process zoom input (continuous while key held)
-    processZoom(state);
+    // Process depth movement input (continuous while key held)
+    processDepthMovement(state);
 
     // Sync camera from input state to scene state
     state.scene.camera = state.camera;
