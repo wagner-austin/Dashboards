@@ -83,29 +83,57 @@ export async function loadConfig(): Promise<Config> {
 }
 
 /**
+ * Load bunny animation frames (directional).
+ */
+async function loadDirectionalFrames(
+  animation: string,
+  width: number
+): Promise<{ left: readonly string[]; right: readonly string[] }> {
+  const [left, right] = await Promise.all([
+    loadSpriteFrames("bunny", animation, width, "left"),
+    loadSpriteFrames("bunny", animation, width, "right"),
+  ]);
+  return { left: left.frames, right: right.frames };
+}
+
+/**
+ * Load bunny animation frames (single direction).
+ */
+async function loadSingleFrames(animation: string, width: number): Promise<readonly string[]> {
+  const result = await loadSpriteFrames("bunny", animation, width);
+  return result.frames;
+}
+
+/**
  * Load all bunny animation frames.
  */
 export async function loadBunnyFrames(_config: Config): Promise<BunnyFrames> {
-  const [walkLeft, walkRight, jumpLeft, jumpRight, idleLeft, idleRight, walkToIdleLeft, walkToIdleRight] = await Promise.all([
-    loadSpriteFrames("bunny", "walk", 50, "left"),
-    loadSpriteFrames("bunny", "walk", 50, "right"),
-    loadSpriteFrames("bunny", "jump", 50, "left"),
-    loadSpriteFrames("bunny", "jump", 50, "right"),
-    loadSpriteFrames("bunny", "idle", 40, "left"),
-    loadSpriteFrames("bunny", "idle", 40, "right"),
-    loadSpriteFrames("bunny", "walk_to_idle", 40, "left"),
-    loadSpriteFrames("bunny", "walk_to_idle", 40, "right"),
+  const [walk, jump, idle, walkToIdle, walkToTurnAway, walkToTurnToward, hopAway, hopToward] = await Promise.all([
+    loadDirectionalFrames("walk", 50),
+    loadDirectionalFrames("jump", 50),
+    loadDirectionalFrames("idle", 40),
+    loadDirectionalFrames("walk_to_idle", 40),
+    loadDirectionalFrames("walk_to_turn_away", 40),
+    loadDirectionalFrames("walk_to_turn_toward", 40),
+    loadSingleFrames("hop_away", 40),
+    loadSingleFrames("hop_toward", 40),
   ]);
 
   return {
-    walkLeft: walkLeft.frames,
-    walkRight: walkRight.frames,
-    jumpLeft: jumpLeft.frames,
-    jumpRight: jumpRight.frames,
-    idleLeft: idleLeft.frames,
-    idleRight: idleRight.frames,
-    walkToIdleLeft: walkToIdleLeft.frames,
-    walkToIdleRight: walkToIdleRight.frames,
+    walkLeft: walk.left,
+    walkRight: walk.right,
+    jumpLeft: jump.left,
+    jumpRight: jump.right,
+    idleLeft: idle.left,
+    idleRight: idle.right,
+    walkToIdleLeft: walkToIdle.left,
+    walkToIdleRight: walkToIdle.right,
+    walkToTurnAwayLeft: walkToTurnAway.left,
+    walkToTurnAwayRight: walkToTurnAway.right,
+    walkToTurnTowardLeft: walkToTurnToward.left,
+    walkToTurnTowardRight: walkToTurnToward.right,
+    hopAway,
+    hopToward,
   };
 }
 
