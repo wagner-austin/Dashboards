@@ -1,3 +1,5 @@
+export { frames as hop_awayW40 } from "./hop_away/w40.js";
+export { frames as hop_towardW40 } from "./hop_toward/w40.js";
 export { frames as idleW40Left } from "./idle/w40_left.js";
 export { frames as idleW40Right } from "./idle/w40_right.js";
 export { frames as jumpW50Left } from "./jump/w50_left.js";
@@ -6,3 +8,9 @@ export { frames as walkW50Left } from "./walk/w50_left.js";
 export { frames as walkW50Right } from "./walk/w50_right.js";
 export { frames as walk_to_idleW40Left } from "./walk_to_idle/w40_left.js";
 export { frames as walk_to_idleW40Right } from "./walk_to_idle/w40_right.js";
+export { frames as walk_to_turn_awayW40 } from "./walk_to_turn_away/w40.js";
+export { frames as walk_to_turn_awayW40Left } from "./walk_to_turn_away/w40_left.js";
+export { frames as walk_to_turn_awayW40Right } from "./walk_to_turn_away/w40_right.js";
+export { frames as walk_to_turn_towardW40 } from "./walk_to_turn_toward/w40.js";
+export { frames as walk_to_turn_towardW40Left } from "./walk_to_turn_toward/w40_left.js";
+export { frames as walk_to_turn_towardW40Right } from "./walk_to_turn_toward/w40_right.js";
