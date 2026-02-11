@@ -21,7 +21,7 @@ describe("createProjectionConfig", () => {
     expect(config.horizonY).toBe(0.12);
     expect(config.nearZ).toBe(40);
     expect(config.farZ).toBe(200);
-    expect(config.groundY).toBe(0.92);
+    expect(config.groundY).toBe(0.85);
     expect(config.parallaxStrength).toBe(0.5);
   });
 
