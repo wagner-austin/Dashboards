@@ -16,7 +16,7 @@ import type { SceneSpriteState, SceneState } from "../layers/types.js";
  * Returns:
  *     SceneSpriteState with provided values.
  */
-export declare function createSceneSpriteState(spriteName: string, sizes: readonly FrameSet[], worldX: number, worldZ: number, sizeIdx: number): SceneSpriteState;
+export declare function createSceneSpriteState(spriteName: string, sizes: FrameSet[], worldX: number, worldZ: number, sizeIdx: number): SceneSpriteState;
 /**
  * Get current frame for scene sprite.
  *
