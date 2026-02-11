@@ -5,14 +5,12 @@
  * Handles entity wrapping for infinite scrolling.
  */
 
-import type { SceneState, LayerInstance, SceneSpriteState } from "./types.js";
-import type { Camera, ProjectionConfig, ScreenPosition } from "../world/Projection.js";
-import { project, scaleToSizeIndex } from "../world/Projection.js";
+import type { SceneState, LayerInstance, SceneSpriteState, RenderCandidate } from "./types.js";
+import { createRenderCandidate } from "./types.js";
+import type { Camera, ProjectionConfig } from "../world/Projection.js";
+import { project, scaleToSizeIndex, WORLD_WIDTH } from "../world/Projection.js";
 import { drawSprite } from "../rendering/draw.js";
 import { getSceneSpriteFrame } from "../entities/SceneSprite.js";
-
-/** World width for entity wrapping */
-const WORLD_WIDTH = 800;
 
 /**
  * Wrap entity position for infinite scrolling.
@@ -36,46 +34,222 @@ function wrapEntityPosition(entity: SceneSpriteState, cameraX: number): void {
 }
 
 /**
- * Project entity to screen and update its size index.
+ * Get wrapped Z positions for seamless infinite depth scrolling.
+ *
+ * Wraps at visible depth intervals (farZ - nearZ) so wrapped copies
+ * appear in the distance before originals disappear behind camera.
  *
  * Args:
- *     entity: Scene sprite to project.
+ *     worldZ: Entity's actual world Z position.
+ *     config: Projection config (visible depth = farZ - nearZ).
+ *
+ * Returns:
+ *     Array of Z positions from back to front (highest Z first).
+ */
+function getWrappedZPositions(
+  worldZ: number,
+  config: ProjectionConfig
+): readonly number[] {
+  const visibleDepth = config.farZ - config.nearZ;
+  const positions: number[] = [];
+  for (let i = config.wrapIterations; i >= -config.wrapIterations; i--) {
+    positions.push(worldZ + i * visibleDepth);
+  }
+  return positions;
+}
+
+/**
+ * Collect render candidates for a layer with Z wrapping.
+ *
+ * Gathers all entity/effectiveZ pairs that might be visible.
+ * Each entity generates multiple candidates at wrapped Z positions.
+ *
+ * Args:
+ *     entities: Entities to collect candidates from.
+ *     config: Projection config for visible depth calculation.
+ *
+ * Returns:
+ *     Array of render candidates.
+ */
+function collectWrappedCandidates(
+  entities: readonly SceneSpriteState[],
+  config: ProjectionConfig
+): RenderCandidate[] {
+  const candidates: RenderCandidate[] = [];
+
+  for (const entity of entities) {
+    const zPositions = getWrappedZPositions(entity.worldZ, config);
+    for (const effectiveZ of zPositions) {
+      candidates.push(createRenderCandidate(entity, effectiveZ));
+    }
+  }
+
+  return candidates;
+}
+
+/**
+ * Collect render candidates for a layer without Z wrapping.
+ *
+ * Each entity generates a single candidate at its actual Z position.
+ *
+ * Args:
+ *     entities: Entities to collect candidates from.
+ *
+ * Returns:
+ *     Array of render candidates.
+ */
+function collectDirectCandidates(
+  entities: readonly SceneSpriteState[]
+): RenderCandidate[] {
+  const candidates: RenderCandidate[] = [];
+
+  for (const entity of entities) {
+    candidates.push(createRenderCandidate(entity, entity.worldZ));
+  }
+
+  return candidates;
+}
+
+/**
+ * Compare render candidates by depth (back to front).
+ *
+ * Higher effectiveZ values sort first (farther from camera).
+ * This ensures proper overdraw order when rendering.
+ *
+ * Args:
+ *     a: First candidate.
+ *     b: Second candidate.
+ *
+ * Returns:
+ *     Negative if a should render first, positive if b should render first.
+ */
+function compareByDepth(a: RenderCandidate, b: RenderCandidate): number {
+  return b.effectiveZ - a.effectiveZ;
+}
+
+/**
+ * Render a single candidate to buffer.
+ *
+ * Projects entity at the effective Z position and draws if visible.
+ *
+ * Args:
+ *     buffer: 2D character buffer to draw into.
+ *     candidate: Render candidate with entity and effectiveZ.
  *     camera: Current camera position.
  *     viewportWidth: Screen width in characters.
  *     viewportHeight: Screen height in characters.
  *     config: Projection configuration.
- *
- * Returns:
- *     ScreenPosition with projected coordinates.
  */
-function projectEntity(
-  entity: SceneSpriteState,
+function renderCandidate(
+  buffer: string[][],
+  candidate: RenderCandidate,
   camera: Camera,
   viewportWidth: number,
   viewportHeight: number,
   config: ProjectionConfig
-): ScreenPosition {
+): void {
+  renderEntityAtZ(
+    buffer,
+    candidate.entity,
+    candidate.effectiveZ,
+    camera,
+    viewportWidth,
+    viewportHeight,
+    config
+  );
+}
+
+/**
+ * Render entities with depth-sorted ordering.
+ *
+ * Collects candidates (with optional Z wrapping), sorts by depth,
+ * and renders back to front for correct overdraw.
+ *
+ * Args:
+ *     buffer: 2D character buffer to draw into.
+ *     entities: Entities to render.
+ *     camera: Current camera position.
+ *     viewportWidth: Screen width in characters.
+ *     viewportHeight: Screen height in characters.
+ *     config: Projection configuration.
+ *     shouldWrapZ: Whether to generate wrapped Z positions.
+ */
+function renderEntitiesDepthSorted(
+  buffer: string[][],
+  entities: readonly SceneSpriteState[],
+  camera: Camera,
+  viewportWidth: number,
+  viewportHeight: number,
+  config: ProjectionConfig,
+  shouldWrapZ: boolean
+): void {
+  const candidates = shouldWrapZ
+    ? collectWrappedCandidates(entities, config)
+    : collectDirectCandidates(entities);
+
+  candidates.sort(compareByDepth);
+
+  for (const candidate of candidates) {
+    renderCandidate(buffer, candidate, camera, viewportWidth, viewportHeight, config);
+  }
+}
+
+/**
+ * Render entity at a specific world Z position.
+ *
+ * Projects entity to screen and draws if visible.
+ *
+ * Args:
+ *     buffer: 2D character buffer to draw into.
+ *     entity: Scene sprite to render.
+ *     worldZ: World Z position to render at.
+ *     camera: Current camera position.
+ *     viewportWidth: Screen width in characters.
+ *     viewportHeight: Screen height in characters.
+ *     config: Projection configuration.
+ */
+function renderEntityAtZ(
+  buffer: string[][],
+  entity: SceneSpriteState,
+  worldZ: number,
+  camera: Camera,
+  viewportWidth: number,
+  viewportHeight: number,
+  config: ProjectionConfig
+): void {
   const screen = project(
     entity.worldX,
-    entity.worldZ,
+    worldZ,
     camera,
     viewportWidth,
     viewportHeight,
     config
   );
 
-  if (screen.visible) {
-    entity.sizeIdx = scaleToSizeIndex(screen.scale, entity.sizes.length);
+  if (!screen.visible) {
+    return;
   }
 
-  return screen;
+  // Update sizeIdx based on projection scale
+  entity.sizeIdx = scaleToSizeIndex(screen.scale, entity.sizes.length);
+
+  const frame = getSceneSpriteFrame(entity);
+  if (frame === null) {
+    return;
+  }
+
+  const spriteX = screen.x - Math.floor(frame.width / 2);
+  const spriteY = screen.y - frame.lines.length;
+
+  drawSprite(buffer, frame.lines, spriteX, spriteY, viewportWidth, viewportHeight);
 }
 
 /**
  * Render a single layer to buffer.
  *
  * Projects all entities in the layer and draws them at their screen positions.
- * Uses layer behavior to determine wrapping.
+ * For Z-wrapping layers, collects all render candidates, sorts by depth
+ * (back to front), and renders in sorted order for correct overdraw.
  *
  * Args:
  *     buffer: 2D character buffer to draw into.
@@ -93,36 +267,65 @@ export function renderLayer(
   viewportHeight: number,
   config: ProjectionConfig
 ): void {
-  // Use behavior-based wrapping (tiled layers handle their own repetition)
   const shouldWrapX = layer.config.behavior.wrapX && !layer.config.tile;
+  const shouldWrapZ = layer.config.behavior.wrapZ;
 
-  for (const entity of layer.entities) {
-    if (shouldWrapX) {
+  if (shouldWrapX) {
+    for (const entity of layer.entities) {
       wrapEntityPosition(entity, camera.x);
     }
-
-    const screen = projectEntity(entity, camera, viewportWidth, viewportHeight, config);
-
-    if (!screen.visible) {
-      continue;
-    }
-
-    const frame = getSceneSpriteFrame(entity);
-    if (frame === null) {
-      continue;
-    }
-
-    const spriteX = screen.x - Math.floor(frame.width / 2);
-    const spriteY = screen.y - frame.lines.length;
-
-    drawSprite(buffer, frame.lines, spriteX, spriteY, viewportWidth, viewportHeight);
   }
+
+  renderEntitiesDepthSorted(
+    buffer,
+    layer.entities,
+    camera,
+    viewportWidth,
+    viewportHeight,
+    config,
+    shouldWrapZ
+  );
 }
 
 /**
- * Render all background layers (excludes foreground layers).
+ * Collect candidates from a layer with X wrapping applied.
  *
- * Layers with "front" in name are considered foreground and skipped.
+ * Applies X wrapping to entities if layer behavior requires it,
+ * then collects render candidates (with or without Z wrapping).
+ *
+ * Args:
+ *     layer: Layer instance to collect from.
+ *     camera: Current camera position.
+ *     config: Projection configuration.
+ *
+ * Returns:
+ *     Array of render candidates from this layer.
+ */
+function collectLayerCandidates(
+  layer: LayerInstance,
+  camera: Camera,
+  config: ProjectionConfig
+): RenderCandidate[] {
+  const shouldWrapX = layer.config.behavior.wrapX && !layer.config.tile;
+  const shouldWrapZ = layer.config.behavior.wrapZ;
+
+  if (shouldWrapX) {
+    for (const entity of layer.entities) {
+      wrapEntityPosition(entity, camera.x);
+    }
+  }
+
+  return shouldWrapZ
+    ? collectWrappedCandidates(layer.entities, config)
+    : collectDirectCandidates(layer.entities);
+}
+
+/**
+ * Render all background layers with global depth sorting.
+ *
+ * Collects ALL candidates from ALL non-front layers, sorts globally
+ * by depth (back to front), then renders in one pass. This ensures
+ * correct z-ordering across all layers.
  *
  * Args:
  *     buffer: 2D character buffer to draw into.
@@ -138,10 +341,19 @@ export function renderAllLayers(
   viewportHeight: number,
   config: ProjectionConfig
 ): void {
+  const allCandidates: RenderCandidate[] = [];
+
   for (const layer of scene.layers) {
     if (!layer.config.name.includes("front")) {
-      renderLayer(buffer, layer, scene.camera, viewportWidth, viewportHeight, config);
+      const candidates = collectLayerCandidates(layer, scene.camera, config);
+      allCandidates.push(...candidates);
     }
+  }
+
+  allCandidates.sort(compareByDepth);
+
+  for (const candidate of allCandidates) {
+    renderCandidate(buffer, candidate, scene.camera, viewportWidth, viewportHeight, config);
   }
 }
 
@@ -185,6 +397,7 @@ function renderTiledForeground(
  * Render a foreground layer at projected Y position.
  *
  * For tiled layers, wraps tiles infinitely across viewport.
+ * For non-tiled layers, uses depth-sorted rendering for correct overdraw.
  *
  * Args:
  *     buffer: 2D character buffer to draw into.
@@ -206,31 +419,17 @@ export function renderForegroundLayer(
   const firstEntity = layer.entities[0];
 
   if (isTiled && firstEntity !== undefined) {
-    renderTiledForeground(
+    renderTiledForeground(buffer, firstEntity, camera, viewportWidth, viewportHeight);
+  } else {
+    renderEntitiesDepthSorted(
       buffer,
-      firstEntity,
+      layer.entities,
       camera,
       viewportWidth,
-      viewportHeight
+      viewportHeight,
+      config,
+      layer.config.behavior.wrapZ
     );
-  } else {
-    for (const entity of layer.entities) {
-      const screen = projectEntity(entity, camera, viewportWidth, viewportHeight, config);
-
-      if (!screen.visible) {
-        continue;
-      }
-
-      const frame = getSceneSpriteFrame(entity);
-      if (frame === null) {
-        continue;
-      }
-
-      const spriteX = screen.x - Math.floor(frame.width / 2);
-      const spriteY = screen.y - frame.lines.length;
-
-      drawSprite(buffer, frame.lines, spriteX, spriteY, viewportWidth, viewportHeight);
-    }
   }
 }
 
@@ -263,9 +462,15 @@ export function renderForegroundLayers(
 /** Test hooks for internal functions */
 export const _test_hooks = {
   wrapEntityPosition,
-  projectEntity,
+  getWrappedZPositions,
+  renderEntityAtZ,
+  renderEntitiesDepthSorted,
   renderLayer,
   renderForegroundLayer,
   renderTiledForeground,
-  WORLD_WIDTH,
+  collectWrappedCandidates,
+  collectDirectCandidates,
+  compareByDepth,
+  renderCandidate,
+  collectLayerCandidates,
 };
