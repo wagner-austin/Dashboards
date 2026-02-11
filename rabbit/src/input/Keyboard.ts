@@ -2,7 +2,14 @@
  * Keyboard input handling.
  */
 
-import type { BunnyState, BunnyFrames, BunnyTimers } from "../entities/Bunny.js";
+import {
+  isHopping,
+  isJumping,
+  type BunnyState,
+  type BunnyFrames,
+  type BunnyTimers,
+  type PendingAction,
+} from "../entities/Bunny.js";
 import type { ViewportState } from "../rendering/Viewport.js";
 import type { Camera } from "../world/Projection.js";
 import { DEFAULT_CAMERA_Z } from "../world/Projection.js";
@@ -13,13 +20,15 @@ import { DEFAULT_CAMERA_Z } from "../world/Projection.js";
  * bunny: Bunny animation state.
  * viewport: Screen dimensions.
  * camera: Camera position.
- * depthDirection: Camera Z movement direction (1=forward, -1=backward, 0=none).
+ * hopKeyHeld: Whether W/S key is currently held (for depth movement).
+ * slideKeyHeld: Whether A/D key is currently held (for horizontal slide during hop).
  */
 export interface InputState {
   bunny: BunnyState;
   viewport: ViewportState;
   camera: Camera;
-  depthDirection: number;
+  hopKeyHeld: "away" | "toward" | null;
+  slideKeyHeld: "left" | "right" | null;
 }
 
 /**
@@ -45,28 +54,54 @@ export function setupKeyboardControls(
     const isRightKey = e.key === "ArrowRight" || key === "d";
 
     if (isLeftKey) {
-      handleWalkInput(state.bunny, bunnyFrames, bunnyTimers, false);
+      if (isHopping(state.bunny)) {
+        state.slideKeyHeld = "left";
+      } else {
+        handleWalkInput(state.bunny, bunnyFrames, bunnyTimers, false);
+      }
     } else if (isRightKey) {
-      handleWalkInput(state.bunny, bunnyFrames, bunnyTimers, true);
-    } else if (e.key === " " && !state.bunny.isJumping && !state.bunny.pendingJump) {
+      if (isHopping(state.bunny)) {
+        state.slideKeyHeld = "right";
+      } else {
+        handleWalkInput(state.bunny, bunnyFrames, bunnyTimers, true);
+      }
+    } else if (e.key === " " && !isJumping(state.bunny) && !isPendingJump(state.bunny)) {
       handleJumpInput(state.bunny, bunnyFrames, bunnyTimers);
       e.preventDefault();
     } else if (key === "r") {
-      // Reset scene: camera position
       state.camera = { x: 0, z: DEFAULT_CAMERA_Z };
     } else if (key === "w" || e.key === "ArrowUp") {
-      // Move camera into scene (rabbit hops away, trees come toward us)
-      state.depthDirection = -1;
+      state.hopKeyHeld = "away";
+      handleHopInput(state.bunny, bunnyTimers, "away");
     } else if (key === "s" || e.key === "ArrowDown") {
-      // Move camera out of scene (rabbit hops toward us)
-      state.depthDirection = 1;
+      state.hopKeyHeld = "toward";
+      handleHopInput(state.bunny, bunnyTimers, "toward");
     }
   });
 
   document.addEventListener("keyup", (e: KeyboardEvent) => {
     const key = e.key.toLowerCase();
-    if (key === "w" || e.key === "ArrowUp" || key === "s" || e.key === "ArrowDown") {
-      state.depthDirection = 0;
+    switch (true) {
+      case key === "w":
+      case e.key === "ArrowUp":
+      case key === "s":
+      case e.key === "ArrowDown":
+        state.hopKeyHeld = null;
+        state.slideKeyHeld = null;
+        handleHopRelease(state.bunny, bunnyTimers);
+        break;
+      case key === "a":
+      case e.key === "ArrowLeft":
+        if (state.slideKeyHeld === "left") {
+          state.slideKeyHeld = null;
+        }
+        break;
+      case key === "d":
+      case e.key === "ArrowRight":
+        if (state.slideKeyHeld === "right") {
+          state.slideKeyHeld = null;
+        }
+        break;
     }
   });
 }
@@ -81,32 +116,61 @@ const MIN_CAMERA_Z = -500;
 const MAX_CAMERA_Z = 500;
 
 /**
- * Process camera depth movement based on held key direction.
+ * Process camera depth movement based on hop state.
  *
- * Moves camera through the 3D scene based on depthDirection:
- * W/ArrowUp (depthDirection=-1): Move into scene, increases Z, zoom in effect.
- * S/ArrowDown (depthDirection=1): Move out of scene, decreases Z, zoom out effect.
- * Entities resize automatically via 3D perspective projection.
+ * Camera only moves when bunny is actually hopping, not during transitions.
  *
  * Args:
- *     state: Input state with depthDirection and camera.
+ *     state: Input state with bunny and camera.
  */
 export function processDepthMovement(state: InputState): void {
-  if (state.depthDirection === 0) {
+  const anim = state.bunny.animation;
+  if (anim.kind !== "hop") {
     return;
   }
 
   let newZ = state.camera.z;
 
-  if (state.depthDirection === 1) {
-    // S key: Move out of scene (decrease Z, zoom out)
+  if (anim.direction === "toward") {
     newZ = Math.max(state.camera.z - CAMERA_Z_SPEED, MIN_CAMERA_Z);
-  } else if (state.depthDirection === -1) {
-    // W key: Move into scene (increase Z, zoom in)
+  } else {
     newZ = Math.min(state.camera.z + CAMERA_Z_SPEED, MAX_CAMERA_Z);
   }
 
   state.camera = { ...state.camera, z: newZ };
+}
+
+/** Camera X movement speed per frame when sliding during hop */
+const CAMERA_X_SPEED = 2;
+
+/**
+ * Process horizontal camera movement when sliding during hop.
+ *
+ * Camera only moves horizontally when bunny is hopping and A/D is held.
+ *
+ * Args:
+ *     state: Input state with bunny, camera, and slideKeyHeld.
+ */
+export function processHorizontalMovement(state: InputState): void {
+  if (state.bunny.animation.kind !== "hop" || state.slideKeyHeld === null) {
+    return;
+  }
+
+  const direction = state.slideKeyHeld === "left" ? -1 : 1;
+  state.camera = { ...state.camera, x: state.camera.x + CAMERA_X_SPEED * direction };
+}
+
+/**
+ * Check if bunny has a pending jump.
+ *
+ * Args:
+ *     bunny: Bunny state.
+ *
+ * Returns:
+ *     True if in transition with pending jump action.
+ */
+function isPendingJump(bunny: BunnyState): boolean {
+  return bunny.animation.kind === "transition" && bunny.animation.pendingAction === "jump";
 }
 
 /**
@@ -122,30 +186,29 @@ function handleJumpInput(
   frames: BunnyFrames,
   timers: BunnyTimers
 ): void {
-  const wasIdle = bunny.currentAnimation === "idle";
-  const wasWalking = bunny.currentAnimation === "walk";
+  const anim = bunny.animation;
 
-  if (wasIdle) {
-    bunny.preJumpAnimation = "idle";
-    bunny.pendingJump = true;
+  if (anim.kind === "idle") {
     timers.idle.stop();
     const transitionFrames = bunny.facingRight
       ? frames.walkToIdleRight
       : frames.walkToIdleLeft;
-    bunny.currentAnimation = "idle_to_walk";
-    bunny.bunnyFrameIdx = transitionFrames.length - 1;
+    bunny.animation = {
+      kind: "transition",
+      type: "idle_to_walk",
+      frameIdx: transitionFrames.length - 1,
+      pendingAction: "jump",
+      returnTo: "idle",
+    };
     timers.transition.start();
-  } else if (wasWalking) {
-    bunny.preJumpAnimation = "walk";
-    bunny.isJumping = true;
-    bunny.jumpFrameIdx = 0;
+  } else if (anim.kind === "walk") {
     timers.walk.stop();
+    bunny.animation = { kind: "jump", frameIdx: 0, returnTo: "walk" };
     timers.jump.start();
-  } else {
-    bunny.preJumpAnimation = bunny.isWalking ? "walk" : "idle";
-    bunny.isJumping = true;
-    bunny.jumpFrameIdx = 0;
+  } else if (anim.kind === "transition") {
     timers.transition.stop();
+    const returnTo = anim.returnTo === "walk" ? "walk" : "idle";
+    bunny.animation = { kind: "jump", frameIdx: 0, returnTo };
     timers.jump.start();
   }
 }
@@ -165,38 +228,151 @@ function handleWalkInput(
   timers: BunnyTimers,
   goingRight: boolean
 ): void {
+  const anim = bunny.animation;
   const sameDirection = bunny.facingRight === goingRight;
 
-  if (bunny.isWalking && sameDirection && bunny.currentAnimation === "walk") {
-    bunny.isWalking = false;
+  if (anim.kind === "walk" && sameDirection) {
     timers.walk.stop();
-    bunny.currentAnimation = "walk_to_idle";
-    bunny.bunnyFrameIdx = 0;
+    bunny.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" };
     timers.transition.start();
-  } else {
-    const wasIdle = bunny.currentAnimation === "idle";
-    const wasInTransition =
-      bunny.currentAnimation === "walk_to_idle" ||
-      bunny.currentAnimation === "idle_to_walk";
+  } else if (anim.kind === "idle") {
     bunny.facingRight = goingRight;
-    bunny.isWalking = true;
+    timers.idle.stop();
+    const transitionFrames = goingRight
+      ? frames.walkToIdleRight
+      : frames.walkToIdleLeft;
+    bunny.animation = {
+      kind: "transition",
+      type: "idle_to_walk",
+      frameIdx: transitionFrames.length - 1,
+      pendingAction: "walk",
+      returnTo: "idle",
+    };
+    timers.transition.start();
+  } else if (anim.kind === "transition") {
+    bunny.facingRight = goingRight;
+    timers.transition.stop();
+    bunny.animation = { kind: "walk", frameIdx: 0 };
+    timers.walk.start();
+  } else if (anim.kind === "walk") {
+    bunny.facingRight = goingRight;
+    bunny.animation.frameIdx = 0;
+  }
+}
 
-    if (wasIdle) {
+/**
+ * Handle hop input (W/S key pressed).
+ *
+ * Starts the animation sequence for hopping into depth (away) or out (toward).
+ * From idle: idle → walk_to_turn → hop (loop)
+ * From walk: walk → walk_to_turn → hop (loop)
+ *
+ * Args:
+ *     bunny: Bunny state to update.
+ *     timers: Bunny animation timers.
+ *     direction: "away" for W key, "toward" for S key.
+ */
+function handleHopInput(
+  bunny: BunnyState,
+  timers: BunnyTimers,
+  direction: "away" | "toward"
+): void {
+  if (isJumping(bunny) || isHopping(bunny)) {
+    return;
+  }
+
+  const anim = bunny.animation;
+  const pendingAction: PendingAction = direction === "away" ? "hop_away" : "hop_toward";
+  const turnType = direction === "away" ? "walk_to_turn_away" : "walk_to_turn_toward";
+
+  switch (anim.kind) {
+    case "idle":
       timers.idle.stop();
-      const transitionFrames = goingRight
-        ? frames.walkToIdleRight
-        : frames.walkToIdleLeft;
-      bunny.currentAnimation = "idle_to_walk";
-      bunny.bunnyFrameIdx = transitionFrames.length - 1;
+      bunny.animation = {
+        kind: "transition",
+        type: turnType,
+        frameIdx: 0,
+        pendingAction: null,
+        returnTo: "idle",
+      };
       timers.transition.start();
-    } else {
-      if (wasInTransition) {
-        timers.transition.stop();
+      break;
+    case "walk":
+      timers.walk.stop();
+      bunny.animation = {
+        kind: "transition",
+        type: turnType,
+        frameIdx: 0,
+        pendingAction: null,
+        returnTo: "walk",
+      };
+      timers.transition.start();
+      break;
+    case "transition":
+      bunny.animation = {
+        ...anim,
+        pendingAction,
+      };
+      break;
+  }
+}
+
+/**
+ * Handle hop release (W/S key released).
+ *
+ * Stops the hopping animation and transitions back to previous state.
+ * If released during transition, cancels and returns to previous state.
+ *
+ * Args:
+ *     bunny: Bunny state to update.
+ *     timers: Bunny animation timers.
+ */
+function handleHopRelease(
+  bunny: BunnyState,
+  timers: BunnyTimers
+): void {
+  const anim = bunny.animation;
+
+  // If in transition, check if it's a hop-related transition
+  if (anim.kind === "transition") {
+    // Cancel turn transitions (they're specifically for hopping)
+    if (anim.type === "walk_to_turn_away" || anim.type === "walk_to_turn_toward") {
+      timers.transition.stop();
+      if (anim.returnTo === "idle") {
+        bunny.animation = { kind: "idle", frameIdx: 0 };
+        timers.idle.start();
+      } else {
+        bunny.animation = { kind: "walk", frameIdx: 0 };
+        timers.walk.start();
       }
-      bunny.currentAnimation = "walk";
-      bunny.bunnyFrameIdx = 0;
-      timers.walk.start();
+      return;
     }
+    // Clear hop pendingAction from idle_to_walk transitions, let walk happen
+    if (anim.type === "idle_to_walk" && (anim.pendingAction === "hop_away" || anim.pendingAction === "hop_toward")) {
+      bunny.animation = {
+        kind: "transition",
+        type: "idle_to_walk",
+        frameIdx: anim.frameIdx,
+        pendingAction: null,
+        returnTo: anim.returnTo,
+      };
+    }
+    return;
+  }
+
+  if (anim.kind !== "hop") {
+    return;
+  }
+
+  timers.hop.stop();
+  const returnTo = anim.returnTo;
+
+  if (returnTo === "walk") {
+    bunny.animation = { kind: "walk", frameIdx: 0 };
+    timers.walk.start();
+  } else {
+    bunny.animation = { kind: "idle", frameIdx: 0 };
+    timers.idle.start();
   }
 }
 
@@ -204,8 +380,13 @@ function handleWalkInput(
 export const _test_hooks = {
   handleJumpInput,
   handleWalkInput,
+  handleHopInput,
+  handleHopRelease,
   processDepthMovement,
+  processHorizontalMovement,
+  isPendingJump,
   CAMERA_Z_SPEED,
   MIN_CAMERA_Z,
   MAX_CAMERA_Z,
+  CAMERA_X_SPEED,
 };
