@@ -12,6 +12,7 @@ export {
 
 export {
   validateLayersConfig,
+  processLayersConfig,
 } from "./validation.js";
 
 export {
