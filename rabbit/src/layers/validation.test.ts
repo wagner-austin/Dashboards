@@ -5,6 +5,7 @@
 import { describe, it, expect } from "vitest";
 import { validateLayersConfig, processLayersConfig, _test_hooks } from "./validation.js";
 import { LAYER_BEHAVIORS } from "../types.js";
+import { WORLD_WIDTH } from "../world/Projection.js";
 
 const {
   isRecord,
@@ -20,7 +21,6 @@ const {
   getSpriteAtIndex,
   generateAutoLayers,
   DEFAULT_LAYER,
-  WORLD_WIDTH,
 } = _test_hooks;
 
 describe("isRecord", () => {

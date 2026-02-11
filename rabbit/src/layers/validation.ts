@@ -12,6 +12,7 @@ import type {
 } from "../types.js";
 import { LAYER_BEHAVIORS } from "../types.js";
 import type { ValidatedLayer } from "./types.js";
+import { WORLD_WIDTH } from "../world/Projection.js";
 
 /**
  * Seeded random number generator for consistent positions.
@@ -165,9 +166,6 @@ function inferBehavior(def: LayerDefinition): LayerBehavior {
 
   return LAYER_BEHAVIORS.midground;
 }
-
-/** World width for position generation */
-const WORLD_WIDTH = 800;
 
 /**
  * Require valid AutoLayersConfig from unknown input.
@@ -407,5 +405,4 @@ export const _test_hooks = {
   getSpriteAtIndex,
   generateAutoLayers,
   DEFAULT_LAYER,
-  WORLD_WIDTH,
 };
