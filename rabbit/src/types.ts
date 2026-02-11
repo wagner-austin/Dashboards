@@ -40,6 +40,35 @@ export interface Sprite {
 /** Layer type */
 export type LayerType = "static" | "tile" | "sprites";
 
+/**
+ * Layer behavior configuration.
+ *
+ * Controls how a layer responds to camera movement.
+ *
+ * parallax: Camera tracking multiplier (0 = fixed, 1 = full tracking).
+ * wrapX: Whether entities wrap horizontally for infinite scroll.
+ * wrapZ: Whether entities wrap in depth for infinite depth scroll.
+ */
+export interface LayerBehavior {
+  readonly parallax: number;
+  readonly wrapX: boolean;
+  readonly wrapZ: boolean;
+}
+
+/**
+ * Preset layer behaviors for common layer types.
+ */
+export const LAYER_BEHAVIORS = {
+  /** Sky/background - fixed, no wrapping */
+  static: { parallax: 0, wrapX: false, wrapZ: false },
+  /** Distant mountains - slow parallax, no wrapping */
+  background: { parallax: 0.3, wrapX: false, wrapZ: false },
+  /** Trees/objects - full tracking, X wrap for infinite scroll */
+  midground: { parallax: 1.0, wrapX: true, wrapZ: false },
+  /** Ground plane - full tracking, X wrap, tiles horizontally */
+  foreground: { parallax: 1.0, wrapX: true, wrapZ: false },
+} as const satisfies Record<string, LayerBehavior>;
+
 /** Configuration for a layer */
 export interface LayerConfig {
   readonly name: string;
@@ -115,6 +144,9 @@ export interface SpriteConfig {
   readonly layerConfig?: LayerSpriteConfig;
 }
 
+/** Behavior preset name */
+export type LayerBehaviorPreset = keyof typeof LAYER_BEHAVIORS;
+
 /** Layer definition from config */
 export interface LayerDefinition {
   readonly name: string;
@@ -123,6 +155,27 @@ export interface LayerDefinition {
   readonly positions?: readonly number[];
   readonly layer?: number;
   readonly tile?: boolean;
+  readonly behavior?: LayerBehaviorPreset;
+}
+
+/**
+ * Auto-layer generation configuration.
+ *
+ * Automatically generates tree layers spread across a depth range
+ * with alternating sprites and randomized positions.
+ *
+ * sprites: Sprite names to alternate between layers.
+ * minLayer: Nearest layer number (largest trees).
+ * maxLayer: Farthest layer number (smallest trees).
+ * treesPerLayer: Number of trees per layer (default 2).
+ * seed: Random seed for consistent positions (default 12345).
+ */
+export interface AutoLayersConfig {
+  readonly sprites: readonly string[];
+  readonly minLayer: number;
+  readonly maxLayer: number;
+  readonly treesPerLayer?: number;
+  readonly seed?: number;
 }
 
 /** Global settings */
@@ -154,4 +207,5 @@ export interface Config {
   readonly layers: readonly LayerDefinition[];
   readonly settings: Settings;
   readonly audio?: AudioConfigRef;
+  readonly autoLayers?: AutoLayersConfig;
 }
