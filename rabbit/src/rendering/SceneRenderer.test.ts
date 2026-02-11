@@ -9,7 +9,12 @@ import { renderFrame, _test_hooks, type RenderState } from "./SceneRenderer.js";
 const { drawBunny } = _test_hooks;
 import { createInitialBunnyState, type BunnyFrames, type BunnyState, type AnimationState } from "../entities/Bunny.js";
 import { createSceneState, type SceneState } from "../layers/index.js";
-import { createCamera, createProjectionConfig } from "../world/Projection.js";
+import { createCamera, createProjectionConfig, type DepthBounds } from "../world/Projection.js";
+
+/** Test depth bounds (minZ=-110, maxZ=160, range=270) */
+function createTestDepthBounds(): DepthBounds {
+  return { minZ: -110, maxZ: 160, range: 270 };
+}
 
 function createTestBunnyFrames(): BunnyFrames {
   return {
@@ -35,7 +40,7 @@ function createTestBunnyState(animation: AnimationState, facingRight = false): B
 }
 
 function createTestSceneState(): SceneState {
-  return createSceneState([], createCamera());
+  return createSceneState([], createCamera(), createTestDepthBounds());
 }
 
 describe("renderFrame", () => {
