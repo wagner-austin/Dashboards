@@ -24,6 +24,12 @@ function createTestBunnyFrames(): BunnyFrames {
     idleRight: ["idle_r_0"],
     walkToIdleLeft: ["trans_l_0", "trans_l_1"],
     walkToIdleRight: ["trans_r_0", "trans_r_1"],
+    walkToTurnAwayLeft: ["turn_away_l_0", "turn_away_l_1"],
+    walkToTurnAwayRight: ["turn_away_r_0", "turn_away_r_1"],
+    walkToTurnTowardLeft: ["turn_toward_l_0", "turn_toward_l_1"],
+    walkToTurnTowardRight: ["turn_toward_r_0", "turn_toward_r_1"],
+    hopAway: ["hop_away_0", "hop_away_1"],
+    hopToward: ["hop_toward_0", "hop_toward_1"],
   };
 }
 
