@@ -6,6 +6,7 @@
  */
 import { createSceneSpriteState } from "../entities/SceneSprite.js";
 import { layerToWorldZ, generateLayerWidths } from "../layers/widths.js";
+import { getOrCreateSpriteArray } from "./progressive.js";
 /**
  * Calculate sprite widths from zoom config.
  *
@@ -114,10 +115,12 @@ export function createLayerInstances(layers, registry, viewportWidth) {
     for (const config of layers) {
         const entities = [];
         for (const spriteName of config.spriteNames) {
-            const sizes = registry.sprites.get(spriteName);
-            if (sizes === undefined) {
+            const readonlySizes = registry.sprites.get(spriteName);
+            if (readonlySizes === undefined) {
                 throw new Error(`Sprite "${spriteName}" not found in registry`);
             }
+            // Create mutable copy for progressive loading support
+            const sizes = [...readonlySizes];
             const middleSizeIdx = Math.floor(sizes.length / 2);
             const spriteWidth = sizes[middleSizeIdx]?.width ?? 100;
             // Convert layer number to world Z coordinate
@@ -152,11 +155,63 @@ export function createLayerInstances(layers, registry, viewportWidth) {
     }
     return instances;
 }
+/**
+ * Create layer instances with mutable sprite arrays for progressive loading.
+ *
+ * Creates entities that reference mutable size arrays from the registry.
+ * As widths load, the entities see new sizes automatically.
+ * Uses default sprite width (100) for tiling since actual widths not yet loaded.
+ *
+ * Args:
+ *     layers: Validated layer configurations.
+ *     registry: Mutable registry with sprite arrays.
+ *     viewportWidth: Viewport width in characters.
+ *
+ * Returns:
+ *     Array of layer instances with entities referencing mutable size arrays.
+ */
+export function createProgressiveLayerInstances(layers, registry, viewportWidth) {
+    const instances = [];
+    for (const config of layers) {
+        const entities = [];
+        for (const spriteName of config.spriteNames) {
+            const sizes = getOrCreateSpriteArray(registry, spriteName);
+            const worldZ = layerToWorldZ(config.layer);
+            // Use default width for tiling since sizes may be empty
+            const defaultSpriteWidth = 100;
+            if (config.tile) {
+                const tileBuffer = viewportWidth * 4;
+                const totalWidth = viewportWidth + tileBuffer;
+                const numTiles = Math.ceil(totalWidth / defaultSpriteWidth) + 1;
+                const startX = -tileBuffer / 2;
+                for (let i = 0; i < numTiles; i++) {
+                    const worldX = startX + i * defaultSpriteWidth;
+                    const entity = createSceneSpriteState(spriteName, sizes, worldX, worldZ, 0);
+                    entities.push(entity);
+                }
+            }
+            else if (config.positions.length > 0) {
+                for (const worldX of config.positions) {
+                    const entity = createSceneSpriteState(spriteName, sizes, worldX, worldZ, 0);
+                    entities.push(entity);
+                }
+            }
+            else {
+                const worldX = Math.floor(viewportWidth / 2);
+                const entity = createSceneSpriteState(spriteName, sizes, worldX, worldZ, 0);
+                entities.push(entity);
+            }
+        }
+        instances.push({ config, entities });
+    }
+    return instances;
+}
 /** Test hooks for internal functions */
 export const _test_hooks = {
     calculateZoomWidths,
     calculateLayerWidths,
     getSpriteWidths,
     createLayerInstances,
+    createProgressiveLayerInstances,
 };
 //# sourceMappingURL=layers.js.map

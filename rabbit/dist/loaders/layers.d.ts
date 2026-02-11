@@ -6,7 +6,8 @@
  */
 import type { Config, FrameSet, TreeZoomConfig, LayerSpriteConfig } from "../types.js";
 import type { ValidatedLayer, LayerInstance } from "../layers/types.js";
-/** Registry of loaded sprite frames by name */
+import type { MutableSpriteRegistry } from "./progressive.js";
+/** Registry of loaded sprite frames by name (immutable for backwards compatibility) */
 export interface SpriteRegistry {
     readonly sprites: ReadonlyMap<string, readonly FrameSet[]>;
 }
@@ -75,11 +76,28 @@ export declare function getSpriteWidths(config: Config, spriteName: string): rea
  *     Error: If sprite not found in registry.
  */
 export declare function createLayerInstances(layers: readonly ValidatedLayer[], registry: SpriteRegistry, viewportWidth: number): LayerInstance[];
+/**
+ * Create layer instances with mutable sprite arrays for progressive loading.
+ *
+ * Creates entities that reference mutable size arrays from the registry.
+ * As widths load, the entities see new sizes automatically.
+ * Uses default sprite width (100) for tiling since actual widths not yet loaded.
+ *
+ * Args:
+ *     layers: Validated layer configurations.
+ *     registry: Mutable registry with sprite arrays.
+ *     viewportWidth: Viewport width in characters.
+ *
+ * Returns:
+ *     Array of layer instances with entities referencing mutable size arrays.
+ */
+export declare function createProgressiveLayerInstances(layers: readonly ValidatedLayer[], registry: MutableSpriteRegistry, viewportWidth: number): LayerInstance[];
 /** Test hooks for internal functions */
 export declare const _test_hooks: {
     calculateZoomWidths: typeof calculateZoomWidths;
     calculateLayerWidths: typeof calculateLayerWidths;
     getSpriteWidths: typeof getSpriteWidths;
     createLayerInstances: typeof createLayerInstances;
+    createProgressiveLayerInstances: typeof createProgressiveLayerInstances;
 };
 //# sourceMappingURL=layers.d.ts.map

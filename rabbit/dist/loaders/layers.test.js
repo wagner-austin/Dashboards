@@ -5,7 +5,8 @@ import { describe, it, expect } from "vitest";
 import { _test_hooks } from "./layers.js";
 import { LAYER_BEHAVIORS } from "../types.js";
 import { layerToWorldZ } from "../layers/widths.js";
-const { calculateZoomWidths, calculateLayerWidths, getSpriteWidths, createLayerInstances } = _test_hooks;
+import { createMutableSpriteRegistry } from "./progressive.js";
+const { calculateZoomWidths, calculateLayerWidths, getSpriteWidths, createLayerInstances, createProgressiveLayerInstances } = _test_hooks;
 function createTestConfig() {
     return {
         sprites: {
@@ -549,6 +550,181 @@ describe("createLayerInstances", () => {
         const instances = createLayerInstances(layers, registry, 100);
         // Should have tiled entities, not 3 positioned entities
         expect(instances[0]?.entities.length).toBeGreaterThan(3);
+    });
+});
+describe("createProgressiveLayerInstances", () => {
+    it("creates layer instances with mutable registry", () => {
+        const layers = [
+            {
+                name: "test",
+                type: "sprites",
+                layer: 10,
+                spriteNames: ["tree"],
+                positions: [50],
+                zIndex: 0,
+                tile: false,
+                behavior: LAYER_BEHAVIORS.midground,
+            },
+        ];
+        const registry = createMutableSpriteRegistry(["tree"]);
+        const instances = createProgressiveLayerInstances(layers, registry, 100);
+        expect(instances).toHaveLength(1);
+        expect(instances[0]?.entities).toHaveLength(1);
+        expect(instances[0]?.entities[0]?.spriteName).toBe("tree");
+    });
+    it("creates entities with empty sizes array initially", () => {
+        const layers = [
+            {
+                name: "test",
+                type: "sprites",
+                layer: 10,
+                spriteNames: ["tree"],
+                positions: [0],
+                zIndex: 0,
+                tile: false,
+                behavior: LAYER_BEHAVIORS.midground,
+            },
+        ];
+        const registry = createMutableSpriteRegistry(["tree"]);
+        const instances = createProgressiveLayerInstances(layers, registry, 100);
+        // Entities start with empty sizes array
+        expect(instances[0]?.entities[0]?.sizes).toEqual([]);
+        expect(instances[0]?.entities[0]?.sizeIdx).toBe(0);
+    });
+    it("entities see sizes added to registry after creation", () => {
+        const layers = [
+            {
+                name: "test",
+                type: "sprites",
+                layer: 10,
+                spriteNames: ["tree"],
+                positions: [0],
+                zIndex: 0,
+                tile: false,
+                behavior: LAYER_BEHAVIORS.midground,
+            },
+        ];
+        const registry = createMutableSpriteRegistry(["tree"]);
+        const instances = createProgressiveLayerInstances(layers, registry, 100);
+        // Initially empty
+        expect(instances[0]?.entities[0]?.sizes).toHaveLength(0);
+        // Add a frame set to the registry
+        const treeSizes = registry.sprites.get("tree");
+        if (treeSizes !== undefined) {
+            treeSizes.push({ width: 50, frames: ["T"] });
+        }
+        // Entity should now see the new size (same array reference)
+        expect(instances[0]?.entities[0]?.sizes).toHaveLength(1);
+        expect(instances[0]?.entities[0]?.sizes[0]?.width).toBe(50);
+    });
+    it("converts layer number to worldZ", () => {
+        const layers = [
+            {
+                name: "test",
+                type: "sprites",
+                layer: 15,
+                spriteNames: ["tree"],
+                positions: [0],
+                zIndex: 0,
+                tile: false,
+                behavior: LAYER_BEHAVIORS.midground,
+            },
+        ];
+        const registry = createMutableSpriteRegistry(["tree"]);
+        const instances = createProgressiveLayerInstances(layers, registry, 100);
+        const expectedZ = layerToWorldZ(15);
+        expect(instances[0]?.entities[0]?.worldZ).toBe(expectedZ);
+    });
+    it("creates tiled entities with default sprite width", () => {
+        const layers = [
+            {
+                name: "grass",
+                type: "sprites",
+                layer: 6,
+                spriteNames: ["grass"],
+                positions: [],
+                zIndex: 0,
+                tile: true,
+                behavior: LAYER_BEHAVIORS.foreground,
+            },
+        ];
+        const registry = createMutableSpriteRegistry(["grass"]);
+        const instances = createProgressiveLayerInstances(layers, registry, 100);
+        // Should create tiled entities using default width (100)
+        expect(instances[0]?.entities.length).toBeGreaterThan(1);
+        // Spacing should be default width (100)
+        const entities = instances[0]?.entities;
+        if (entities !== undefined && entities.length >= 2) {
+            const first = entities[0];
+            const second = entities[1];
+            if (first !== undefined && second !== undefined) {
+                const spacing = second.worldX - first.worldX;
+                expect(spacing).toBe(100); // default sprite width
+            }
+        }
+    });
+    it("creates single centered entity when no positions", () => {
+        const layers = [
+            {
+                name: "test",
+                type: "sprites",
+                layer: 10,
+                spriteNames: ["tree"],
+                positions: [],
+                zIndex: 0,
+                tile: false,
+                behavior: LAYER_BEHAVIORS.midground,
+            },
+        ];
+        const registry = createMutableSpriteRegistry(["tree"]);
+        const instances = createProgressiveLayerInstances(layers, registry, 200);
+        expect(instances[0]?.entities).toHaveLength(1);
+        expect(instances[0]?.entities[0]?.worldX).toBe(100); // Center of viewport
+    });
+    it("creates or retrieves sprite array for unknown sprites", () => {
+        const layers = [
+            {
+                name: "test",
+                type: "sprites",
+                layer: 10,
+                spriteNames: ["newSprite"],
+                positions: [0],
+                zIndex: 0,
+                tile: false,
+                behavior: LAYER_BEHAVIORS.midground,
+            },
+        ];
+        // Registry doesn't have newSprite initially
+        const registry = createMutableSpriteRegistry([]);
+        const instances = createProgressiveLayerInstances(layers, registry, 100);
+        // Should have created the sprite array
+        expect(registry.sprites.has("newSprite")).toBe(true);
+        expect(instances[0]?.entities[0]?.spriteName).toBe("newSprite");
+    });
+    it("handles multiple sprites in layer", () => {
+        const layers = [
+            {
+                name: "forest",
+                type: "sprites",
+                layer: 10,
+                spriteNames: ["tree1", "tree2"],
+                positions: [],
+                zIndex: 0,
+                tile: false,
+                behavior: LAYER_BEHAVIORS.midground,
+            },
+        ];
+        const registry = createMutableSpriteRegistry(["tree1", "tree2"]);
+        const instances = createProgressiveLayerInstances(layers, registry, 100);
+        expect(instances[0]?.entities).toHaveLength(2);
+        expect(instances[0]?.entities[0]?.spriteName).toBe("tree1");
+        expect(instances[0]?.entities[1]?.spriteName).toBe("tree2");
+    });
+    it("handles empty layers array", () => {
+        const layers = [];
+        const registry = createMutableSpriteRegistry([]);
+        const instances = createProgressiveLayerInstances(layers, registry, 100);
+        expect(instances).toEqual([]);
     });
 });
 //# sourceMappingURL=layers.test.js.map
