@@ -123,10 +123,10 @@ export async function loadBunnyFrames(_config: Config): Promise<BunnyFrames> {
  */
 export async function loadTreeSizes(config: Config): Promise<TreeSize[]> {
   const { getSpriteWidths } = await import("../loaders/layers.js");
-  const widths = getSpriteWidths(config, "tree");
+  const widths = getSpriteWidths(config, "tree1");
   const sizes: TreeSize[] = [];
   for (const w of widths) {
-    const set = await loadStaticSpriteFrames("tree", w);
+    const set = await loadStaticSpriteFrames("tree1", w);
     sizes.push({ width: w, frames: set.frames });
   }
   return sizes;
