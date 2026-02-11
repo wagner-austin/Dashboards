@@ -6,7 +6,7 @@ import { describe, it, expect } from "vitest";
 import { renderAllLayers, renderForegroundLayers, _test_hooks } from "./renderer.js";
 import { createSceneState, type LayerInstance, type ValidatedLayer, type SceneSpriteState } from "./types.js";
 import { createProjectionConfig, createCamera, type Camera } from "../world/Projection.js";
-import type { FrameSet } from "../types.js";
+import { LAYER_BEHAVIORS, type FrameSet, type LayerBehavior } from "../types.js";
 
 const {
   wrapEntityPosition,
@@ -32,7 +32,8 @@ function createTestLayer(
   zIndex: number,
   layer: number,
   entities: SceneSpriteState[],
-  positions: readonly number[] = []
+  positions: readonly number[] = [],
+  behavior: LayerBehavior = LAYER_BEHAVIORS.midground
 ): LayerInstance {
   const config: ValidatedLayer = {
     name,
@@ -42,6 +43,7 @@ function createTestLayer(
     positions,
     zIndex,
     tile: false,
+    behavior,
   };
   return { config, entities };
 }
@@ -199,11 +201,11 @@ describe("renderLayer", () => {
     renderLayer(buffer, layer, camera, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config);
   });
 
-  it("wraps entities when positions are specified", () => {
+  it("wraps entities with wrapX behavior", () => {
     const buffer = createBuffer(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
     const entity = createTestEntity(500, 100);
-    // Positions array makes it eligible for wrapping
-    const layer = createTestLayer("test", 0, 10, [entity], [500]);
+    // Midground behavior has wrapX: true
+    const layer = createTestLayer("test", 0, 10, [entity], [], LAYER_BEHAVIORS.midground);
 
     // Camera at 0, entity at 500 which is > halfWorld (400)
     renderLayer(buffer, layer, { x: 0, z: 50 }, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config);
@@ -212,11 +214,11 @@ describe("renderLayer", () => {
     expect(entity.worldX).toBe(500 - WORLD_WIDTH);
   });
 
-  it("does not wrap entities without positions", () => {
+  it("does not wrap entities with static behavior", () => {
     const buffer = createBuffer(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
     const entity = createTestEntity(500, 100);
-    // No positions - single centered entity, no wrapping
-    const layer = createTestLayer("test", 0, 10, [entity], []);
+    // Static behavior has wrapX: false
+    const layer = createTestLayer("test", 0, 10, [entity], [], LAYER_BEHAVIORS.static);
 
     renderLayer(buffer, layer, { x: 0, z: 50 }, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config);
 
@@ -323,6 +325,7 @@ describe("renderForegroundLayer", () => {
       positions: [],
       zIndex: 0,
       tile: true,
+      behavior: LAYER_BEHAVIORS.foreground,
     };
     const layer: LayerInstance = { config: config2, entities: [entity] };
 
@@ -342,6 +345,7 @@ describe("renderForegroundLayer", () => {
       positions: [],
       zIndex: 0,
       tile: true,
+      behavior: LAYER_BEHAVIORS.foreground,
     };
     const layer: LayerInstance = { config: config2, entities: [] };
 
