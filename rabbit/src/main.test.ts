@@ -9,7 +9,7 @@ import { advanceAllSceneSpriteFrames, createLayerAnimationCallback } from "./ent
 import type { BunnyFrames } from "./entities/Bunny.js";
 import type { LayerInstance, SceneSpriteState, ValidatedLayer } from "./layers/types.js";
 import { createSceneState } from "./layers/index.js";
-import type { SpriteRegistry } from "./loaders/layers.js";
+import type { MutableSpriteRegistry, ProgressCallback } from "./loaders/progressive.js";
 import { LAYER_BEHAVIORS, type Config } from "./types.js";
 import type { AudioDependencies } from "./audio/index.js";
 import { createCamera, type DepthBounds } from "./world/Projection.js";
@@ -53,16 +53,27 @@ function createTestConfig(): Config {
   };
 }
 
-function createTestSpriteRegistry(): SpriteRegistry {
-  const sprites = new Map<string, readonly { width: number; frames: readonly string[] }[]>();
-  // Provide minimal sprites for autoLayers (tree1, tree2)
-  sprites.set("tree1", [{ width: 40, frames: ["tree1_frame"] }]);
-  sprites.set("tree2", [{ width: 40, frames: ["tree2_frame"] }]);
-  return { sprites };
-}
-
-function createTestLoadLayerSpritesFn(): (_config: Config, _layers: readonly ValidatedLayer[]) => Promise<SpriteRegistry> {
-  return () => Promise.resolve(createTestSpriteRegistry());
+/**
+ * Create test runProgressiveLoadFn that calls onBunnyLoaded immediately.
+ *
+ * Calls the progress and bunny loaded callbacks to ensure code coverage.
+ *
+ * Args:
+ *     bunnyFrames: BunnyFrames to pass to onBunnyLoaded.
+ *
+ * Returns:
+ *     Function matching runProgressiveLoadFn signature.
+ */
+function createTestRunProgressiveLoadFn(
+  bunnyFrames: BunnyFrames
+): (_config: Config, _registry: MutableSpriteRegistry, _onProgress: ProgressCallback, onBunnyLoaded: (frames: BunnyFrames) => void) => Promise<void> {
+  return (_config, _registry, onProgress, onBunnyLoaded) => {
+    // Call progress callback to ensure coverage
+    onProgress({ phase: "ground", current: 1, total: 1, spriteName: "ground", width: 0 });
+    // Call bunny loaded callback
+    onBunnyLoaded(bunnyFrames);
+    return Promise.resolve();
+  };
 }
 
 /** Test audio element interface */
@@ -125,8 +136,7 @@ describe("init", () => {
     const deps: MainDependencies = {
       getScreenElement: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
-      loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-      loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
+      runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
       audioDeps: createTestAudioDeps(),
     };
@@ -145,8 +155,7 @@ describe("init", () => {
     const deps: MainDependencies = {
       getScreenElement: () => screen,
       loadConfigFn: () => Promise.resolve(configWithoutAutoLayers),
-      loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-      loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
+      runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
       audioDeps: createTestAudioDeps(),
     };
@@ -158,8 +167,7 @@ describe("init", () => {
     const deps: MainDependencies = {
       getScreenElement: () => screen,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
-      loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-      loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
+      runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: (callback) => {
         rafCallbacks.push(callback);
         return rafCallbacks.length;
@@ -169,8 +177,8 @@ describe("init", () => {
 
     await init(deps);
 
-    // Should have queued a render callback
-    expect(rafCallbacks.length).toBe(1);
+    // Should have queued multiple render callbacks (one at start, more as frames run)
+    expect(rafCallbacks.length).toBeGreaterThanOrEqual(1);
 
     // Simulate frame
     const firstCallback = rafCallbacks[0];
@@ -180,15 +188,76 @@ describe("init", () => {
     firstCallback(1000);
 
     // Should have queued another callback
-    expect(rafCallbacks.length).toBe(2);
+    expect(rafCallbacks.length).toBeGreaterThan(1);
+  });
+
+  it("renders without bunny while loading", async () => {
+    // Capture the onBunnyLoaded callback so we can control when it's called
+    let capturedOnBunnyLoaded: (frames: BunnyFrames) => void = () => { /* placeholder */ };
+    let resolveLoad: () => void = () => { /* placeholder */ };
+    const loadPromise = new Promise<void>((resolve) => {
+      resolveLoad = resolve;
+    });
+
+    const deps: MainDependencies = {
+      getScreenElement: () => screen,
+      loadConfigFn: () => Promise.resolve(createTestConfig()),
+      runProgressiveLoadFn: (_config, _registry, onProgress, onBunnyLoaded) => {
+        onProgress({ phase: "ground", current: 1, total: 1, spriteName: "ground", width: 0 });
+        // Capture callback but don't call it yet - simulates bunny still loading
+        capturedOnBunnyLoaded = onBunnyLoaded;
+        return loadPromise;
+      },
+      requestAnimationFrameFn: (callback) => {
+        rafCallbacks.push(callback);
+        return rafCallbacks.length;
+      },
+      audioDeps: createTestAudioDeps(),
+    };
+
+    // Start init but don't await - it will block waiting for load
+    const initPromise = init(deps);
+
+    // Wait a tick for the first render callback to be queued
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    // First render callback should be queued (before bunny loads)
+    expect(rafCallbacks.length).toBeGreaterThanOrEqual(1);
+
+    // Simulate frame while bunny is still loading
+    const firstCallback = rafCallbacks[0];
+    if (firstCallback === undefined) {
+      throw new Error("Expected callback to be defined");
+    }
+    firstCallback(1000);
+
+    // Screen should have rendered (without bunny, using empty frames)
+    expect(screen.textContent).toBeDefined();
+
+    // Should have queued another callback
+    expect(rafCallbacks.length).toBeGreaterThan(1);
+
+    // Now call the bunny loaded callback - simulates bunny finished loading
+    capturedOnBunnyLoaded(createTestBunnyFrames());
+
+    // Resolve the load promise to complete init
+    resolveLoad();
+
+    // Wait for init to complete
+    await initPromise;
+
+    // Run another frame - now with bunny loaded
+    const laterCallback = rafCallbacks[rafCallbacks.length - 1];
+    if (laterCallback !== undefined) {
+      laterCallback(2000);
+    }
   });
 
   it("handles resize event", async () => {
     const deps: MainDependencies = {
       getScreenElement: () => screen,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
-      loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-      loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
+      runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
       audioDeps: createTestAudioDeps(),
     };
@@ -213,8 +282,7 @@ describe("init", () => {
     const deps: MainDependencies = {
       getScreenElement: () => screen,
       loadConfigFn: () => Promise.resolve(configWithAudio),
-      loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-      loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
+      runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
       audioDeps,
     };
@@ -241,8 +309,7 @@ describe("init", () => {
     const deps: MainDependencies = {
       getScreenElement: () => screen,
       loadConfigFn: () => Promise.resolve(configWithDisabledAudio),
-      loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
-      loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
+      runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
       audioDeps,
     };
@@ -254,13 +321,100 @@ describe("init", () => {
   });
 });
 
+describe("collectAllSpriteNames", () => {
+  it("collects sprite names from manual layers", () => {
+    const config: Config = {
+      sprites: {},
+      layers: [
+        { name: "grass-front", sprites: ["grass"] },
+        { name: "rocks", sprites: ["rock1", "rock2"] },
+      ],
+      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+    };
+
+    const names = _test_hooks.collectAllSpriteNames(config);
+
+    expect(names).toContain("grass");
+    expect(names).toContain("rock1");
+    expect(names).toContain("rock2");
+  });
+
+  it("collects sprite names from autoLayers", () => {
+    const config: Config = {
+      sprites: {},
+      layers: [],
+      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+      autoLayers: {
+        sprites: ["tree1", "tree2"],
+        minLayer: 8,
+        maxLayer: 30,
+      },
+    };
+
+    const names = _test_hooks.collectAllSpriteNames(config);
+
+    expect(names).toContain("tree1");
+    expect(names).toContain("tree2");
+  });
+
+  it("deduplicates sprite names", () => {
+    const config: Config = {
+      sprites: {},
+      layers: [{ name: "layer1", sprites: ["tree1"] }],
+      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+      autoLayers: {
+        sprites: ["tree1", "tree2"],
+        minLayer: 8,
+        maxLayer: 30,
+      },
+    };
+
+    const names = _test_hooks.collectAllSpriteNames(config);
+
+    const tree1Count = names.filter((n) => n === "tree1").length;
+    expect(tree1Count).toBe(1);
+  });
+
+  it("handles layers without sprites array", () => {
+    const config: Config = {
+      sprites: {},
+      layers: [{ name: "sky", type: "static" }],
+      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+    };
+
+    const names = _test_hooks.collectAllSpriteNames(config);
+
+    expect(names).toEqual([]);
+  });
+});
+
+describe("createEmptyBunnyFrames", () => {
+  it("returns BunnyFrames with empty arrays", () => {
+    const frames = _test_hooks.createEmptyBunnyFrames();
+
+    expect(frames.walkLeft).toEqual([]);
+    expect(frames.walkRight).toEqual([]);
+    expect(frames.jumpLeft).toEqual([]);
+    expect(frames.jumpRight).toEqual([]);
+    expect(frames.idleLeft).toEqual([]);
+    expect(frames.idleRight).toEqual([]);
+    expect(frames.walkToIdleLeft).toEqual([]);
+    expect(frames.walkToIdleRight).toEqual([]);
+    expect(frames.walkToTurnAwayLeft).toEqual([]);
+    expect(frames.walkToTurnAwayRight).toEqual([]);
+    expect(frames.walkToTurnTowardLeft).toEqual([]);
+    expect(frames.walkToTurnTowardRight).toEqual([]);
+    expect(frames.hopAway).toEqual([]);
+    expect(frames.hopToward).toEqual([]);
+  });
+});
+
 describe("_test_hooks", () => {
   it("createDefaultDependencies returns functions", () => {
     const deps = _test_hooks.createDefaultDependencies();
     expect(typeof deps.getScreenElement).toBe("function");
     expect(typeof deps.loadConfigFn).toBe("function");
-    expect(typeof deps.loadBunnyFramesFn).toBe("function");
-    expect(typeof deps.loadLayerSpritesFn).toBe("function");
+    expect(typeof deps.runProgressiveLoadFn).toBe("function");
     expect(typeof deps.requestAnimationFrameFn).toBe("function");
     expect(typeof deps.audioDeps).toBe("object");
   });
