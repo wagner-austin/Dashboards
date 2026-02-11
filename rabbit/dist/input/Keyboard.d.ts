@@ -13,6 +13,7 @@ import type { Camera, DepthBounds } from "../world/Projection.js";
  * depthBounds: Bounds for depth wrapping (from config).
  * hopKeyHeld: Whether W/S key is currently held (for depth movement).
  * slideKeyHeld: Whether A/D key is currently held (for horizontal slide during hop).
+ * walkKeyHeld: Whether A/D key is currently held (for horizontal walk movement).
  */
 export interface InputState {
     bunny: BunnyState;
@@ -21,6 +22,7 @@ export interface InputState {
     depthBounds: DepthBounds;
     hopKeyHeld: "away" | "toward" | null;
     slideKeyHeld: "left" | "right" | null;
+    walkKeyHeld: "left" | "right" | null;
 }
 /**
  * Setup keyboard controls for the game.
@@ -52,6 +54,15 @@ export declare function processDepthMovement(state: InputState): void;
  */
 export declare function processHorizontalMovement(state: InputState): void;
 /**
+ * Process horizontal camera movement while walking.
+ *
+ * Camera moves horizontally when bunny is walking and walkKeyHeld is set.
+ *
+ * Args:
+ *     state: Input state with bunny, camera, and walkKeyHeld.
+ */
+export declare function processWalkMovement(state: InputState): void;
+/**
  * Check if bunny has a pending jump.
  *
  * Args:
@@ -71,7 +82,10 @@ declare function isPendingJump(bunny: BunnyState): boolean;
  */
 declare function handleJumpInput(bunny: BunnyState, frames: BunnyFrames, timers: BunnyTimers): void;
 /**
- * Handle walk input.
+ * Handle walk key down (start walking).
+ *
+ * Starts walking animation in the specified direction.
+ * If already walking in a different direction, switches direction.
  *
  * Args:
  *     bunny: Bunny state to update.
@@ -79,7 +93,17 @@ declare function handleJumpInput(bunny: BunnyState, frames: BunnyFrames, timers:
  *     timers: Bunny animation timers.
  *     goingRight: Direction of movement.
  */
-declare function handleWalkInput(bunny: BunnyState, frames: BunnyFrames, timers: BunnyTimers, goingRight: boolean): void;
+declare function handleWalkKeyDown(bunny: BunnyState, frames: BunnyFrames, timers: BunnyTimers, goingRight: boolean): void;
+/**
+ * Handle walk key up (stop walking).
+ *
+ * Transitions from walking to idle when the walk key is released.
+ *
+ * Args:
+ *     bunny: Bunny state to update.
+ *     timers: Bunny animation timers.
+ */
+declare function handleWalkKeyUp(bunny: BunnyState, timers: BunnyTimers): void;
 /**
  * Handle hop input (W/S key pressed).
  *
@@ -107,14 +131,17 @@ declare function handleHopRelease(bunny: BunnyState, timers: BunnyTimers): void;
 /** Test hooks for internal functions */
 export declare const _test_hooks: {
     handleJumpInput: typeof handleJumpInput;
-    handleWalkInput: typeof handleWalkInput;
+    handleWalkKeyDown: typeof handleWalkKeyDown;
+    handleWalkKeyUp: typeof handleWalkKeyUp;
     handleHopInput: typeof handleHopInput;
     handleHopRelease: typeof handleHopRelease;
     processDepthMovement: typeof processDepthMovement;
     processHorizontalMovement: typeof processHorizontalMovement;
+    processWalkMovement: typeof processWalkMovement;
     isPendingJump: typeof isPendingJump;
     CAMERA_Z_SPEED: number;
     CAMERA_X_SPEED: number;
+    WALK_SPEED: number;
 };
 export {};
 //# sourceMappingURL=Keyboard.d.ts.map
