@@ -4,7 +4,7 @@
 
 import { describe, it, expect } from "vitest";
 import { _test_hooks } from "./layers.js";
-import type { Config, TreeZoomConfig, LayerSpriteConfig } from "../types.js";
+import { LAYER_BEHAVIORS, type Config, type TreeZoomConfig, type LayerSpriteConfig } from "../types.js";
 import type { ValidatedLayer } from "../layers/types.js";
 import { layerToWorldZ } from "../layers/widths.js";
 
@@ -264,6 +264,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -291,6 +292,7 @@ describe("createLayerInstances", () => {
         positions: [-100, 0, 100, 200],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -319,6 +321,7 @@ describe("createLayerInstances", () => {
         positions: [50],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -344,6 +347,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -369,6 +373,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -397,6 +402,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -424,6 +430,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
       {
         name: "front",
@@ -433,6 +440,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 1,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -460,6 +468,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -491,6 +500,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -512,6 +522,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: true,
+        behavior: LAYER_BEHAVIORS.foreground,
       },
     ];
 
@@ -551,6 +562,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: true,
+        behavior: LAYER_BEHAVIORS.foreground,
       },
     ];
 
@@ -576,6 +588,7 @@ describe("createLayerInstances", () => {
         positions: [],
         zIndex: 0,
         tile: true,
+        behavior: LAYER_BEHAVIORS.foreground,
       },
     ];
 
@@ -613,6 +626,7 @@ describe("createLayerInstances", () => {
         positions: [0],
         zIndex: 0,
         tile: false,
+        behavior: LAYER_BEHAVIORS.midground,
       },
     ];
 
@@ -638,6 +652,7 @@ describe("createLayerInstances", () => {
         positions: [500, 600, 700], // These should be ignored
         zIndex: 0,
         tile: true,
+        behavior: LAYER_BEHAVIORS.foreground,
       },
     ];
 
