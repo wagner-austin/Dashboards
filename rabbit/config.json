@@ -33,25 +33,25 @@
           "directions": ["left", "right"]
         },
         "walk_to_turn_away": {
-          "source": "originals/bunny/bunny_walk_to_turn_away_transition",
+          "source": "originals/bunny/bunny_walk_to_turn_away_transition/walk_to_turn_away.gif",
           "widths": [40],
           "contrast": 1.4,
           "invert": true
         },
         "walk_to_turn_toward": {
-          "source": "originals/bunny/bunny_walk_to_turn_toward_transition",
+          "source": "originals/bunny/bunny_walk_to_turn_toward_transition/walk_to_turn_toward.gif",
           "widths": [40],
           "contrast": 1.4,
           "invert": true
         },
         "hop_away": {
-          "source": "originals/bunny/bunny_hop_away_animation",
+          "source": "originals/bunny/bunny_hop_away_animation/hop_away.gif",
           "widths": [40],
           "contrast": 1.4,
           "invert": true
         },
         "hop_toward": {
-          "source": "originals/bunny/bunny_hop_toward_animation",
+          "source": "originals/bunny/bunny_hop_toward_animation/hop_toward.gif",
           "widths": [40],
           "contrast": 1.4,
           "invert": true
