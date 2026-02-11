@@ -63,11 +63,11 @@ export declare const LAYER_BEHAVIORS: {
         readonly wrapX: false;
         readonly wrapZ: false;
     };
-    /** Trees/objects - full tracking, X wrap for infinite scroll */
+    /** Trees/objects - full tracking, X and Z wrap for infinite scroll */
     readonly midground: {
         readonly parallax: 1;
         readonly wrapX: true;
-        readonly wrapZ: false;
+        readonly wrapZ: true;
     };
     /** Ground plane - full tracking, X wrap, tiles horizontally */
     readonly foreground: {
