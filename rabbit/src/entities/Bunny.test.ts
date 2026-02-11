@@ -1,5 +1,5 @@
 /**
- * Tests for Bunny entity.
+ * Tests for Bunny entity state machine.
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
@@ -7,11 +7,16 @@ import {
   createInitialBunnyState,
   createBunnyTimers,
   getBunnyFrame,
+  isHopping,
+  isJumping,
+  isWalking,
+  getHopDirection,
   type BunnyFrames,
   type BunnyState,
+  type AnimationState,
 } from "./Bunny.js";
 
-function createMockFrames(): BunnyFrames {
+function createTestFrames(): BunnyFrames {
   return {
     walkLeft: ["walkL0", "walkL1", "walkL2"],
     walkRight: ["walkR0", "walkR1", "walkR2"],
@@ -21,34 +26,67 @@ function createMockFrames(): BunnyFrames {
     idleRight: ["idleR0", "idleR1"],
     walkToIdleLeft: ["transL0", "transL1", "transL2"],
     walkToIdleRight: ["transR0", "transR1", "transR2"],
+    walkToTurnAwayLeft: ["turnAwayL0", "turnAwayL1"],
+    walkToTurnAwayRight: ["turnAwayR0", "turnAwayR1"],
+    walkToTurnTowardLeft: ["turnTowardL0", "turnTowardL1"],
+    walkToTurnTowardRight: ["turnTowardR0", "turnTowardR1"],
+    hopAway: ["hopAway0", "hopAway1", "hopAway2"],
+    hopToward: ["hopToward0", "hopToward1", "hopToward2"],
   };
 }
 
-function createTestBunnyState(overrides: Partial<BunnyState> = {}): BunnyState {
-  return {
-    facingRight: false,
-    currentAnimation: "idle",
-    bunnyFrameIdx: 0,
-    isJumping: false,
-    jumpFrameIdx: 0,
-    isWalking: false,
-    pendingJump: false,
-    preJumpAnimation: null,
-    ...overrides,
-  };
+function createTestState(animation: AnimationState, facingRight = false): BunnyState {
+  return { facingRight, animation };
 }
 
 describe("createInitialBunnyState", () => {
-  it("returns default state facing left", () => {
+  it("returns idle state facing left", () => {
     const state = createInitialBunnyState();
     expect(state.facingRight).toBe(false);
-    expect(state.currentAnimation).toBe("idle");
-    expect(state.bunnyFrameIdx).toBe(0);
-    expect(state.isJumping).toBe(false);
-    expect(state.jumpFrameIdx).toBe(0);
-    expect(state.isWalking).toBe(false);
-    expect(state.pendingJump).toBe(false);
-    expect(state.preJumpAnimation).toBe(null);
+    expect(state.animation.kind).toBe("idle");
+    expect(state.animation.frameIdx).toBe(0);
+  });
+});
+
+describe("state helper functions", () => {
+  it("isHopping returns true when hopping", () => {
+    const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
+    expect(isHopping(state)).toBe(true);
+  });
+
+  it("isHopping returns false when not hopping", () => {
+    const state = createTestState({ kind: "idle", frameIdx: 0 });
+    expect(isHopping(state)).toBe(false);
+  });
+
+  it("isJumping returns true when jumping", () => {
+    const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "idle" });
+    expect(isJumping(state)).toBe(true);
+  });
+
+  it("isJumping returns false when not jumping", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 });
+    expect(isJumping(state)).toBe(false);
+  });
+
+  it("isWalking returns true when walking", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 });
+    expect(isWalking(state)).toBe(true);
+  });
+
+  it("isWalking returns false when not walking", () => {
+    const state = createTestState({ kind: "idle", frameIdx: 0 });
+    expect(isWalking(state)).toBe(false);
+  });
+
+  it("getHopDirection returns direction when hopping", () => {
+    const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
+    expect(getHopDirection(state)).toBe("toward");
+  });
+
+  it("getHopDirection returns null when not hopping", () => {
+    const state = createTestState({ kind: "idle", frameIdx: 0 });
+    expect(getHopDirection(state)).toBe(null);
   });
 });
 
@@ -61,555 +99,619 @@ describe("createBunnyTimers", () => {
     vi.useRealTimers();
   });
 
-  it("creates four timers", () => {
+  it("creates five timers", () => {
     const state = createInitialBunnyState();
-    const frames = createMockFrames();
+    const frames = createTestFrames();
     const timers = createBunnyTimers(state, frames, {
       walk: 100,
       idle: 200,
       jump: 50,
       transition: 80,
+      hop: 100,
     });
 
     expect(timers.walk).toBeDefined();
     expect(timers.idle).toBeDefined();
     expect(timers.jump).toBeDefined();
     expect(timers.transition).toBeDefined();
+    expect(timers.hop).toBeDefined();
   });
 
-  it("walk timer advances walk frame index", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "walk";
-    state.isWalking = true;
-    const frames = createMockFrames();
+  it("walk timer advances frame index", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 });
+    const frames = createTestFrames();
     const timers = createBunnyTimers(state, frames, {
       walk: 100,
       idle: 200,
       jump: 50,
       transition: 80,
+      hop: 100,
     });
 
     timers.walk.start();
-    expect(state.bunnyFrameIdx).toBe(0);
+    expect(state.animation.frameIdx).toBe(0);
 
     vi.advanceTimersByTime(100);
-    expect(state.bunnyFrameIdx).toBe(1);
+    expect(state.animation.frameIdx).toBe(1);
 
     vi.advanceTimersByTime(100);
-    expect(state.bunnyFrameIdx).toBe(2);
+    expect(state.animation.frameIdx).toBe(2);
 
     vi.advanceTimersByTime(100);
-    expect(state.bunnyFrameIdx).toBe(0); // Wraps
+    expect(state.animation.frameIdx).toBe(0);
   });
 
   it("walk timer uses right frames when facing right", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "walk";
-    state.facingRight = true;
-    const frames = createMockFrames();
+    const state = createTestState({ kind: "walk", frameIdx: 0 }, true);
+    const frames = createTestFrames();
     const timers = createBunnyTimers(state, frames, {
       walk: 100,
       idle: 200,
       jump: 50,
       transition: 80,
+      hop: 100,
     });
 
     timers.walk.start();
     vi.advanceTimersByTime(300);
-    expect(state.bunnyFrameIdx).toBe(0); // 3 frames wrap to 0
+    expect(state.animation.frameIdx).toBe(0);
   });
 
-  it("idle timer advances idle frame index", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "idle";
-    const frames = createMockFrames();
+  it("walk timer does nothing when not in walk state", () => {
+    const state = createTestState({ kind: "idle", frameIdx: 0 });
+    const frames = createTestFrames();
     const timers = createBunnyTimers(state, frames, {
       walk: 100,
       idle: 200,
       jump: 50,
       transition: 80,
-    });
-
-    timers.idle.start();
-    vi.advanceTimersByTime(200);
-    expect(state.bunnyFrameIdx).toBe(1);
-
-    vi.advanceTimersByTime(200);
-    expect(state.bunnyFrameIdx).toBe(0); // 2 frames wrap
-  });
-
-  it("idle timer uses right frames when facing right", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "idle";
-    state.facingRight = true;
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.idle.start();
-    vi.advanceTimersByTime(200);
-    expect(state.bunnyFrameIdx).toBe(1); // idleRight has 2 frames
-  });
-
-  it("jump timer advances jump frame and ends jump", () => {
-    const state = createInitialBunnyState();
-    state.isJumping = true;
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.jump.start();
-    expect(state.jumpFrameIdx).toBe(0);
-
-    vi.advanceTimersByTime(50);
-    expect(state.jumpFrameIdx).toBe(1);
-
-    vi.advanceTimersByTime(50);
-    expect(state.jumpFrameIdx).toBe(2);
-
-    vi.advanceTimersByTime(50);
-    expect(state.isJumping).toBe(false);
-    expect(state.jumpFrameIdx).toBe(0);
-  });
-
-  it("jump timer uses right frames when facing right", () => {
-    const state = createInitialBunnyState();
-    state.isJumping = true;
-    state.facingRight = true;
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.jump.start();
-    vi.advanceTimersByTime(150); // Complete full jump (3 frames)
-    expect(state.isJumping).toBe(false);
-    expect(state.jumpFrameIdx).toBe(0);
-  });
-
-  it("jump timer starts walk_to_idle transition when preJumpAnimation is idle", () => {
-    const state = createInitialBunnyState();
-    state.isJumping = true;
-    state.preJumpAnimation = "idle";
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.jump.start();
-    vi.advanceTimersByTime(150); // Complete jump (3 frames)
-
-    // Should transition back to idle via walk_to_idle
-    expect(state.isJumping).toBe(false);
-    expect(state.currentAnimation).toBe("walk_to_idle");
-    expect(state.bunnyFrameIdx).toBe(0);
-    expect(state.preJumpAnimation).toBe(null);
-    expect(timers.transition.isRunning()).toBe(true);
-  });
-
-  it("jump timer resumes walk when preJumpAnimation is walk", () => {
-    const state = createInitialBunnyState();
-    state.isJumping = true;
-    state.preJumpAnimation = "walk";
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.jump.start();
-    vi.advanceTimersByTime(150); // Complete jump (3 frames)
-
-    // Should resume walking
-    expect(state.isJumping).toBe(false);
-    expect(state.currentAnimation).toBe("walk");
-    expect(state.bunnyFrameIdx).toBe(0);
-    expect(state.preJumpAnimation).toBe(null);
-    expect(timers.walk.isRunning()).toBe(true);
-  });
-
-  it("transition timer starts jump when pendingJump is true after idle_to_walk", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "idle_to_walk";
-    state.bunnyFrameIdx = 2; // Last frame of transition (3 frames)
-    state.pendingJump = true;
-    state.preJumpAnimation = "idle";
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.transition.start();
-    vi.advanceTimersByTime(80); // bunnyFrameIdx becomes 1
-    vi.advanceTimersByTime(80); // bunnyFrameIdx becomes 0
-    vi.advanceTimersByTime(80); // bunnyFrameIdx becomes -1, triggers jump
-
-    expect(state.pendingJump).toBe(false);
-    expect(state.isJumping).toBe(true);
-    expect(state.jumpFrameIdx).toBe(0);
-    expect(timers.jump.isRunning()).toBe(true);
-  });
-
-  it("transition timer advances walk_to_idle and switches to idle", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "walk_to_idle";
-    state.bunnyFrameIdx = 0;
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.transition.start();
-    vi.advanceTimersByTime(80);
-    expect(state.bunnyFrameIdx).toBe(1);
-
-    vi.advanceTimersByTime(80);
-    expect(state.bunnyFrameIdx).toBe(2);
-
-    vi.advanceTimersByTime(80);
-    expect(state.currentAnimation).toBe("idle");
-    expect(state.bunnyFrameIdx).toBe(0);
-  });
-
-  it("transition timer uses right frames when facing right during walk_to_idle", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "walk_to_idle";
-    state.facingRight = true;
-    state.bunnyFrameIdx = 0;
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.transition.start();
-    vi.advanceTimersByTime(240); // Complete full transition (3 frames)
-    expect(state.currentAnimation).toBe("idle");
-    expect(state.bunnyFrameIdx).toBe(0);
-  });
-
-  it("transition timer reverses idle_to_walk and switches to walk", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "idle_to_walk";
-    state.bunnyFrameIdx = 2;
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.transition.start();
-    vi.advanceTimersByTime(80);
-    expect(state.bunnyFrameIdx).toBe(1);
-
-    vi.advanceTimersByTime(80);
-    expect(state.bunnyFrameIdx).toBe(0);
-
-    vi.advanceTimersByTime(80);
-    expect(state.currentAnimation).toBe("walk");
-    expect(state.bunnyFrameIdx).toBe(0);
-  });
-
-  it("transition timer uses right frames when facing right during idle_to_walk", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "idle_to_walk";
-    state.facingRight = true;
-    state.bunnyFrameIdx = 2;
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-    });
-
-    timers.transition.start();
-    vi.advanceTimersByTime(240); // Complete full transition
-    expect(state.currentAnimation).toBe("walk");
-    expect(state.bunnyFrameIdx).toBe(0);
-  });
-
-  it("walk timer does not advance during jump", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "walk";
-    state.isJumping = true;
-    const frames = createMockFrames();
-    const timers = createBunnyTimers(state, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
+      hop: 100,
     });
 
     timers.walk.start();
     vi.advanceTimersByTime(100);
-    expect(state.bunnyFrameIdx).toBe(0); // No change
+    expect(state.animation.frameIdx).toBe(0);
   });
 
-  it("idle timer does not advance when not in idle animation", () => {
+  it("idle timer advances frame index", () => {
     const state = createInitialBunnyState();
-    state.currentAnimation = "walk"; // Not idle
-    state.isJumping = false;
-    const frames = createMockFrames();
+    const frames = createTestFrames();
     const timers = createBunnyTimers(state, frames, {
       walk: 100,
       idle: 200,
       jump: 50,
       transition: 80,
+      hop: 100,
     });
 
     timers.idle.start();
     vi.advanceTimersByTime(200);
-    expect(state.bunnyFrameIdx).toBe(0); // No change
+    expect(state.animation.frameIdx).toBe(1);
+
+    vi.advanceTimersByTime(200);
+    expect(state.animation.frameIdx).toBe(0);
   });
 
-  it("idle timer does not advance during jump", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "idle";
-    state.isJumping = true;
-    const frames = createMockFrames();
+  it("idle timer uses right frames when facing right", () => {
+    const state = createTestState({ kind: "idle", frameIdx: 0 }, true);
+    const frames = createTestFrames();
     const timers = createBunnyTimers(state, frames, {
       walk: 100,
       idle: 200,
       jump: 50,
       transition: 80,
+      hop: 100,
     });
 
     timers.idle.start();
     vi.advanceTimersByTime(200);
-    expect(state.bunnyFrameIdx).toBe(0); // No change
+    expect(state.animation.frameIdx).toBe(1);
   });
 
-  it("transition timer does not advance during jump", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "walk_to_idle";
-    state.isJumping = true;
-    const frames = createMockFrames();
+  it("idle timer does nothing when not in idle state", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 });
+    const frames = createTestFrames();
     const timers = createBunnyTimers(state, frames, {
       walk: 100,
       idle: 200,
       jump: 50,
       transition: 80,
+      hop: 100,
     });
 
-    timers.transition.start();
-    vi.advanceTimersByTime(80);
-    expect(state.bunnyFrameIdx).toBe(0); // No change
+    timers.idle.start();
+    vi.advanceTimersByTime(200);
+    expect(state.animation.frameIdx).toBe(0);
   });
 
-  it("transition timer does nothing when animation is neither walk_to_idle nor idle_to_walk", () => {
-    const state = createInitialBunnyState();
-    state.currentAnimation = "walk"; // Not a transition animation
-    state.bunnyFrameIdx = 1;
-    const frames = createMockFrames();
+  it("jump timer advances frame and returns to walk", () => {
+    const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "walk" });
+    const frames = createTestFrames();
     const timers = createBunnyTimers(state, frames, {
       walk: 100,
       idle: 200,
       jump: 50,
       transition: 80,
+      hop: 100,
+    });
+
+    timers.jump.start();
+    vi.advanceTimersByTime(50);
+    expect(state.animation.frameIdx).toBe(1);
+
+    vi.advanceTimersByTime(50);
+    expect(state.animation.frameIdx).toBe(2);
+
+    vi.advanceTimersByTime(50);
+    expect(state.animation.kind).toBe("walk");
+    expect(timers.walk.isRunning()).toBe(true);
+  });
+
+  it("jump timer returns to walk_to_idle transition when returnTo is idle", () => {
+    const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "idle" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.jump.start();
+    vi.advanceTimersByTime(150);
+
+    expect(state.animation.kind).toBe("transition");
+    if (state.animation.kind === "transition") {
+      expect(state.animation.type).toBe("walk_to_idle");
+    }
+    expect(timers.transition.isRunning()).toBe(true);
+  });
+
+  it("jump timer uses right frames when facing right", () => {
+    const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "walk" }, true);
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.jump.start();
+    vi.advanceTimersByTime(150);
+    expect(state.animation.kind).toBe("walk");
+  });
+
+  it("jump timer does nothing when not in jump state", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.jump.start();
+    vi.advanceTimersByTime(50);
+    expect(state.animation.kind).toBe("walk");
+  });
+
+  it("transition timer advances walk_to_idle and switches to idle", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
     });
 
     timers.transition.start();
     vi.advanceTimersByTime(80);
-    expect(state.bunnyFrameIdx).toBe(1); // No change
-    expect(state.currentAnimation).toBe("walk"); // Still walk
+    expect(state.animation.frameIdx).toBe(1);
+
+    vi.advanceTimersByTime(80);
+    expect(state.animation.frameIdx).toBe(2);
+
+    vi.advanceTimersByTime(80);
+    expect(state.animation.kind).toBe("idle");
+    expect(timers.idle.isRunning()).toBe(true);
+  });
+
+  it("transition timer reverses idle_to_walk and switches to walk", () => {
+    const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "walk", returnTo: "idle" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(80);
+    expect(state.animation.frameIdx).toBe(1);
+
+    vi.advanceTimersByTime(80);
+    expect(state.animation.frameIdx).toBe(0);
+
+    vi.advanceTimersByTime(80);
+    expect(state.animation.kind).toBe("walk");
+    expect(timers.walk.isRunning()).toBe(true);
+  });
+
+  it("transition timer starts jump when pendingAction is jump", () => {
+    const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "jump", returnTo: "idle" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(240);
+
+    expect(state.animation.kind).toBe("jump");
+    expect(timers.jump.isRunning()).toBe(true);
+  });
+
+  it("transition timer starts walk_to_turn_away when pendingAction is hop_away", () => {
+    const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "hop_away", returnTo: "idle" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(240);
+
+    expect(state.animation.kind).toBe("transition");
+    if (state.animation.kind === "transition") {
+      expect(state.animation.type).toBe("walk_to_turn_away");
+    }
+  });
+
+  it("transition timer starts walk_to_turn_toward when pendingAction is hop_toward", () => {
+    const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "hop_toward", returnTo: "idle" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(240);
+
+    expect(state.animation.kind).toBe("transition");
+    if (state.animation.kind === "transition") {
+      expect(state.animation.type).toBe("walk_to_turn_toward");
+    }
+  });
+
+  it("transition timer advances walk_to_turn_away and starts hopping", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: "walk" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(80);
+    expect(state.animation.frameIdx).toBe(1);
+
+    vi.advanceTimersByTime(80);
+    expect(state.animation.kind).toBe("hop");
+    if (state.animation.kind === "hop") {
+      expect(state.animation.direction).toBe("away");
+      expect(state.animation.returnTo).toBe("walk");
+    }
+    expect(timers.hop.isRunning()).toBe(true);
+  });
+
+  it("transition timer advances walk_to_turn_toward and starts hopping", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: "idle" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(160);
+
+    expect(state.animation.kind).toBe("hop");
+    if (state.animation.kind === "hop") {
+      expect(state.animation.direction).toBe("toward");
+      expect(state.animation.returnTo).toBe("idle");
+    }
+    expect(timers.hop.isRunning()).toBe(true);
+  });
+
+  it("transition timer uses right frames for walk_to_turn_away", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: "walk" }, true);
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(160);
+
+    expect(state.animation.kind).toBe("hop");
+  });
+
+  it("transition timer uses right frames for walk_to_turn_toward", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: "idle" }, true);
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(160);
+
+    expect(state.animation.kind).toBe("hop");
+  });
+
+  it("transition timer uses right frames for walk_to_idle", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" }, true);
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(240);
+    expect(state.animation.kind).toBe("idle");
+  });
+
+  it("transition timer does nothing when not in transition state", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 1 });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.transition.start();
+    vi.advanceTimersByTime(80);
+    expect(state.animation.kind).toBe("walk");
+    expect(state.animation.frameIdx).toBe(1);
+  });
+
+  it("hop timer advances frame index for hop_away", () => {
+    const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.hop.start();
+    vi.advanceTimersByTime(100);
+    expect(state.animation.frameIdx).toBe(1);
+
+    vi.advanceTimersByTime(100);
+    expect(state.animation.frameIdx).toBe(2);
+
+    vi.advanceTimersByTime(100);
+    expect(state.animation.frameIdx).toBe(0);
+  });
+
+  it("hop timer advances frame index for hop_toward", () => {
+    const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "walk" });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.hop.start();
+    vi.advanceTimersByTime(100);
+    expect(state.animation.frameIdx).toBe(1);
+  });
+
+  it("hop timer does nothing when not in hop state", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 });
+    const frames = createTestFrames();
+    const timers = createBunnyTimers(state, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+
+    timers.hop.start();
+    vi.advanceTimersByTime(100);
+    expect(state.animation.frameIdx).toBe(0);
   });
 });
 
 describe("getBunnyFrame", () => {
-  it("returns jump frame when jumping facing left", () => {
-    const state = createTestBunnyState({
-      currentAnimation: "walk",
-      bunnyFrameIdx: 1,
-      isJumping: true,
-      jumpFrameIdx: 2,
-      isWalking: true,
-    });
-    const frames = createMockFrames();
+  const frames = createTestFrames();
 
+  it("returns idle frame facing left", () => {
+    const state = createTestState({ kind: "idle", frameIdx: 0 });
     const result = getBunnyFrame(state, frames);
-    expect(result.lines).toEqual(["jumpL2"]);
-    expect(result.frameIdx).toBe(2);
+    expect(result.lines).toEqual(["idleL0"]);
+    expect(result.frameIdx).toBe(0);
   });
 
-  it("returns jump frame when jumping facing right", () => {
-    const state = createTestBunnyState({
-      facingRight: true,
-      currentAnimation: "walk",
-      bunnyFrameIdx: 1,
-      isJumping: true,
-      jumpFrameIdx: 1,
-      isWalking: true,
-    });
-    const frames = createMockFrames();
-
+  it("returns idle frame facing right", () => {
+    const state = createTestState({ kind: "idle", frameIdx: 1 }, true);
     const result = getBunnyFrame(state, frames);
-    expect(result.lines).toEqual(["jumpR1"]);
+    expect(result.lines).toEqual(["idleR1"]);
     expect(result.frameIdx).toBe(1);
   });
 
-  it("returns idle frame when in idle animation facing right", () => {
-    const state = createTestBunnyState({
-      facingRight: true,
-      bunnyFrameIdx: 1,
-    });
-    const frames = createMockFrames();
-
+  it("wraps idle frame index", () => {
+    const state = createTestState({ kind: "idle", frameIdx: 5 });
     const result = getBunnyFrame(state, frames);
-    expect(result.lines).toEqual(["idleR1"]);
+    expect(result.frameIdx).toBe(1);
   });
 
-  it("returns idle frame when in idle animation facing left", () => {
-    const state = createTestBunnyState();
-    const frames = createMockFrames();
-
-    const result = getBunnyFrame(state, frames);
-    expect(result.lines).toEqual(["idleL0"]);
-  });
-
-  it("returns transition frame for walk_to_idle facing left", () => {
-    const state = createTestBunnyState({
-      currentAnimation: "walk_to_idle",
-      bunnyFrameIdx: 1,
-    });
-    const frames = createMockFrames();
-
-    const result = getBunnyFrame(state, frames);
-    expect(result.lines).toEqual(["transL1"]);
-  });
-
-  it("returns transition frame for walk_to_idle facing right", () => {
-    const state = createTestBunnyState({
-      facingRight: true,
-      currentAnimation: "walk_to_idle",
-    });
-    const frames = createMockFrames();
-
-    const result = getBunnyFrame(state, frames);
-    expect(result.lines).toEqual(["transR0"]);
-  });
-
-  it("returns transition frame for idle_to_walk", () => {
-    const state = createTestBunnyState({
-      facingRight: true,
-      currentAnimation: "idle_to_walk",
-      bunnyFrameIdx: 2,
-      isWalking: true,
-    });
-    const frames = createMockFrames();
-
-    const result = getBunnyFrame(state, frames);
-    expect(result.lines).toEqual(["transR2"]);
-  });
-
-  it("returns walk frame when walking right", () => {
-    const state = createTestBunnyState({
-      facingRight: true,
-      currentAnimation: "walk",
-      isWalking: true,
-    });
-    const frames = createMockFrames();
-
-    const result = getBunnyFrame(state, frames);
-    expect(result.lines).toEqual(["walkR0"]);
-  });
-
-  it("returns walk frame when walking left", () => {
-    const state = createTestBunnyState({
-      currentAnimation: "walk",
-      bunnyFrameIdx: 1,
-      isWalking: true,
-    });
-    const frames = createMockFrames();
-
+  it("returns walk frame facing left", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 1 });
     const result = getBunnyFrame(state, frames);
     expect(result.lines).toEqual(["walkL1"]);
     expect(result.frameIdx).toBe(1);
   });
 
-  it("clamps transition frame index to valid range", () => {
-    const state = createTestBunnyState({
-      currentAnimation: "walk_to_idle",
-      bunnyFrameIdx: 100, // Out of range
-    });
-    const frames = createMockFrames();
-
+  it("returns walk frame facing right", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 }, true);
     const result = getBunnyFrame(state, frames);
-    expect(result.frameIdx).toBe(2); // Clamped to max
+    expect(result.lines).toEqual(["walkR0"]);
   });
 
-  it("handles negative transition frame index", () => {
-    const state = createTestBunnyState({
-      currentAnimation: "idle_to_walk",
-      bunnyFrameIdx: -5,
-      isWalking: true,
-    });
-    const frames = createMockFrames();
-
-    const result = getBunnyFrame(state, frames);
-    expect(result.frameIdx).toBe(0); // Clamped to min
-  });
-
-  it("wraps idle frame index", () => {
-    const state = createTestBunnyState({
-      bunnyFrameIdx: 5, // Greater than frame count
-    });
-    const frames = createMockFrames();
-
-    const result = getBunnyFrame(state, frames);
-    expect(result.frameIdx).toBe(1); // 5 % 2 = 1
-  });
-
-  it("returns empty lines when frame index is out of bounds", () => {
-    const state = createTestBunnyState({
-      currentAnimation: "walk",
-      bunnyFrameIdx: 999, // Way out of bounds
-      isWalking: true,
-    });
-    const frames = createMockFrames();
-
+  it("returns empty lines when walk frame index is out of bounds", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 999 });
     const result = getBunnyFrame(state, frames);
     expect(result.lines).toEqual([]);
     expect(result.frameIdx).toBe(999);
+  });
+
+  it("returns jump frame facing left", () => {
+    const state = createTestState({ kind: "jump", frameIdx: 2, returnTo: "idle" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["jumpL2"]);
+    expect(result.frameIdx).toBe(2);
+  });
+
+  it("returns jump frame facing right", () => {
+    const state = createTestState({ kind: "jump", frameIdx: 1, returnTo: "walk" }, true);
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["jumpR1"]);
   });
 
   it("returns empty lines when jump frame index is out of bounds", () => {
-    const state = createTestBunnyState({
-      facingRight: true,
-      currentAnimation: "walk",
-      isJumping: true,
-      jumpFrameIdx: 999, // Way out of bounds
-    });
-    const frames = createMockFrames();
-
+    const state = createTestState({ kind: "jump", frameIdx: 999, returnTo: "idle" }, true);
     const result = getBunnyFrame(state, frames);
     expect(result.lines).toEqual([]);
-    expect(result.frameIdx).toBe(999);
+  });
+
+  it("returns hop_away frame", () => {
+    const state = createTestState({ kind: "hop", direction: "away", frameIdx: 1, returnTo: "idle" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["hopAway1"]);
+    expect(result.frameIdx).toBe(1);
+  });
+
+  it("returns hop_toward frame", () => {
+    const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 2, returnTo: "walk" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["hopToward2"]);
+    expect(result.frameIdx).toBe(2);
+  });
+
+  it("wraps hop frame index", () => {
+    const state = createTestState({ kind: "hop", direction: "away", frameIdx: 5, returnTo: "idle" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.frameIdx).toBe(2);
+  });
+
+  it("returns idle_to_walk transition frame facing left", () => {
+    const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "walk", returnTo: "idle" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["transL2"]);
+    expect(result.frameIdx).toBe(2);
+  });
+
+  it("returns walk_to_idle transition frame facing right", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" }, true);
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["transR0"]);
+  });
+
+  it("clamps transition frame index to valid range", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_idle", frameIdx: 100, pendingAction: null, returnTo: "idle" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.frameIdx).toBe(2);
+  });
+
+  it("handles negative transition frame index", () => {
+    const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: -5, pendingAction: "walk", returnTo: "idle" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.frameIdx).toBe(0);
+  });
+
+  it("returns walk_to_turn_away frame facing left", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_away", frameIdx: 1, pendingAction: null, returnTo: "walk" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["turnAwayL1"]);
+  });
+
+  it("returns walk_to_turn_away frame facing right", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: "walk" }, true);
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["turnAwayR0"]);
+  });
+
+  it("returns walk_to_turn_toward frame facing left", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: "idle" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["turnTowardL0"]);
+  });
+
+  it("returns walk_to_turn_toward frame facing right", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_toward", frameIdx: 1, pendingAction: null, returnTo: "idle" }, true);
+    const result = getBunnyFrame(state, frames);
+    expect(result.lines).toEqual(["turnTowardR1"]);
+  });
+
+  it("clamps walk_to_turn_away frame index", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_away", frameIdx: 100, pendingAction: null, returnTo: "walk" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.frameIdx).toBe(1);
+  });
+
+  it("clamps walk_to_turn_toward frame index to min", () => {
+    const state = createTestState({ kind: "transition", type: "walk_to_turn_toward", frameIdx: -5, pendingAction: null, returnTo: "idle" });
+    const result = getBunnyFrame(state, frames);
+    expect(result.frameIdx).toBe(0);
   });
 });
