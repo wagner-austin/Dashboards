@@ -8,6 +8,10 @@ import { advanceAllSceneSpriteFrames, createLayerAnimationCallback } from "./ent
 import { createSceneState } from "./layers/index.js";
 import { LAYER_BEHAVIORS } from "./types.js";
 import { createCamera } from "./world/Projection.js";
+/** Test depth bounds (minZ=-110, maxZ=160, range=270) */
+function createTestDepthBounds() {
+    return { minZ: -110, maxZ: 160, range: 270 };
+}
 function createTestBunnyFrames() {
     return {
         walkLeft: ["walk_l_0", "walk_l_1"],
@@ -31,10 +35,21 @@ function createTestConfig() {
         sprites: {},
         layers: [],
         settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+        autoLayers: {
+            sprites: ["tree1", "tree2"],
+            minLayer: 8,
+            maxLayer: 30,
+            treesPerLayer: 2,
+            seed: 42,
+        },
     };
 }
 function createTestSpriteRegistry() {
-    return { sprites: new Map() };
+    const sprites = new Map();
+    // Provide minimal sprites for autoLayers (tree1, tree2)
+    sprites.set("tree1", [{ width: 40, frames: ["tree1_frame"] }]);
+    sprites.set("tree2", [{ width: 40, frames: ["tree2_frame"] }]);
+    return { sprites };
 }
 function createTestLoadLayerSpritesFn() {
     return () => Promise.resolve(createTestSpriteRegistry());
@@ -87,6 +102,23 @@ describe("init", () => {
             audioDeps: createTestAudioDeps(),
         };
         await expect(init(deps)).rejects.toThrow("Screen element not found");
+    });
+    it("throws when autoLayers not in config", async () => {
+        const configWithoutAutoLayers = {
+            sprites: {},
+            layers: [],
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            // No autoLayers
+        };
+        const deps = {
+            getScreenElement: () => screen,
+            loadConfigFn: () => Promise.resolve(configWithoutAutoLayers),
+            loadBunnyFramesFn: () => Promise.resolve(createTestBunnyFrames()),
+            loadLayerSpritesFn: createTestLoadLayerSpritesFn(),
+            requestAnimationFrameFn: () => 0,
+            audioDeps: createTestAudioDeps(),
+        };
+        await expect(init(deps)).rejects.toThrow("config.autoLayers is required for depth movement");
     });
     it("initializes and starts render loop", async () => {
         const deps = {
@@ -235,7 +267,8 @@ describe("createLayerAnimationCallback", () => {
             entities: [entity],
         };
         const camera = createCamera();
-        const scene = createSceneState([layer], camera);
+        const depthBounds = createTestDepthBounds();
+        const scene = createSceneState([layer], camera, depthBounds);
         const callback = createLayerAnimationCallback(scene);
         // Initial state
         expect(entity.frameIdx).toBe(0);
@@ -281,7 +314,8 @@ describe("advanceAllSceneSpriteFrames", () => {
             entities: [entity1, entity2],
         };
         const camera = createCamera();
-        const scene = createSceneState([layer], camera);
+        const depthBounds = createTestDepthBounds();
+        const scene = createSceneState([layer], camera, depthBounds);
         // Initial state
         expect(entity1.frameIdx).toBe(0);
         expect(entity2.frameIdx).toBe(0);
@@ -298,7 +332,8 @@ describe("advanceAllSceneSpriteFrames", () => {
     });
     it("handles empty scene", () => {
         const camera = createCamera();
-        const scene = createSceneState([], camera);
+        const depthBounds = createTestDepthBounds();
+        const scene = createSceneState([], camera, depthBounds);
         // Should not throw
         advanceAllSceneSpriteFrames(scene);
     });
@@ -318,7 +353,8 @@ describe("advanceAllSceneSpriteFrames", () => {
             entities: [],
         };
         const camera = createCamera();
-        const scene = createSceneState([layer], camera);
+        const depthBounds = createTestDepthBounds();
+        const scene = createSceneState([layer], camera, depthBounds);
         // Should not throw
         advanceAllSceneSpriteFrames(scene);
     });

@@ -11,7 +11,8 @@ import { setupKeyboardControls, processDepthMovement, processHorizontalMovement 
 import { processLayersConfig, createSceneState } from "./layers/index.js";
 import { createLayerInstances } from "./loaders/layers.js";
 import { createLayerAnimationCallback } from "./entities/SceneSprite.js";
-import { createCamera, createProjectionConfig } from "./world/Projection.js";
+import { createCamera, createProjectionConfig, calculateDepthBounds } from "./world/Projection.js";
+import { layerToWorldZ } from "./layers/widths.js";
 import { initializeAudio, setupTrackSwitcher, } from "./audio/index.js";
 import { loadConfig, loadBunnyFrames, loadLayerSprites, createDefaultAudioDependencies, } from "./io/index.js";
 /**
@@ -56,14 +57,22 @@ export async function init(deps = createDefaultDependencies()) {
     // Create camera and projection config
     const camera = createCamera();
     const projectionConfig = createProjectionConfig();
-    // Create scene state with camera
-    const sceneState = createSceneState(layerInstances, camera);
+    // Calculate depth bounds from autoLayers config (required for depth movement)
+    if (config.autoLayers === undefined) {
+        throw new Error("config.autoLayers is required for depth movement");
+    }
+    const minTreeWorldZ = layerToWorldZ(config.autoLayers.minLayer);
+    const maxTreeWorldZ = layerToWorldZ(config.autoLayers.maxLayer);
+    const depthBounds = calculateDepthBounds(minTreeWorldZ, maxTreeWorldZ, projectionConfig);
+    // Create scene state with camera and depth bounds
+    const sceneState = createSceneState(layerInstances, camera, depthBounds);
     // Initialize entity state
     const bunnyState = createInitialBunnyState();
     const state = {
         bunny: bunnyState,
         viewport,
         camera,
+        depthBounds,
         hopKeyHeld: null,
         slideKeyHeld: null,
         scene: sceneState,
