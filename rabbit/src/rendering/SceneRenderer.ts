@@ -7,7 +7,7 @@
 import { createBuffer, renderBuffer, type ViewportState } from "./Viewport.js";
 import { drawSprite } from "./draw.js";
 import { drawGround } from "./Ground.js";
-import { getBunnyFrame, type BunnyFrames, type BunnyState } from "../entities/Bunny.js";
+import { getBunnyFrame, isWalking, type BunnyFrames, type BunnyState } from "../entities/Bunny.js";
 import { renderAllLayers, renderForegroundLayers, type SceneState } from "../layers/index.js";
 import type { ProjectionConfig } from "../world/Projection.js";
 
@@ -96,7 +96,7 @@ export function renderFrame(
   screen.textContent = renderBuffer(buffer);
 
   // Update camera position when walking
-  if (state.bunnyState.isWalking && state.bunnyState.currentAnimation === "walk") {
+  if (isWalking(state.bunnyState)) {
     const scrollAmount = scrollSpeed * deltaTime;
     const direction = state.bunnyState.facingRight ? 1 : -1;
 
