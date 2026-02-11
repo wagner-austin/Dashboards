@@ -3,46 +3,82 @@
     "bunny": {
       "animations": {
         "walk": {
-          "source": "originals/bunny/bunny_walk/bunny.gif",
-          "widths": [30, 50, 80],
+          "source": "originals/bunny/bunny_walk_animation/bunny.gif",
+          "widths": [50],
           "contrast": 1.8,
           "invert": true,
           "crop": "0,0,0,2",
           "directions": ["left", "right"]
         },
         "jump": {
-          "source": "originals/bunny/bunny_jump/bunny_jump_new.gif",
-          "widths": [30, 50, 80],
+          "source": "originals/bunny/bunny_jump_animation/bunny_jump_new.gif",
+          "widths": [50],
           "contrast": 3.3,
           "invert": true,
           "crop": "25%,0,25%,0",
           "directions": ["left", "right"]
         },
         "idle": {
-          "source": "originals/bunny/bunny_idle/bunny_idle.gif",
-          "widths": [30, 35, 40, 50, 80],
+          "source": "originals/bunny/bunny_idle_animation/bunny_idle.gif",
+          "widths": [40],
           "contrast": 1.4,
           "invert": true,
           "directions": ["left", "right"]
         },
         "walk_to_idle": {
-          "source": "originals/bunny/bunny_walk_to_idle/walk_to_idle.gif",
-          "widths": [30, 35, 40, 50, 80],
+          "source": "originals/bunny/bunny_walk_to_idle_transition/walk_to_idle.gif",
+          "widths": [40],
           "contrast": 1.4,
           "invert": true,
           "directions": ["left", "right"]
         },
-        "alert": {
-          "source": "originals/bunny/bunny_alert/bunny_alert.gif",
-          "widths": [30, 35, 40, 50, 80],
-          "contrast": 4.0,
-          "invert": true,
-          "directions": ["left", "right"]
+        "walk_to_turn_away": {
+          "source": "originals/bunny/bunny_walk_to_turn_away_transition",
+          "widths": [40],
+          "contrast": 1.4,
+          "invert": true
+        },
+        "walk_to_turn_toward": {
+          "source": "originals/bunny/bunny_walk_to_turn_toward_transition",
+          "widths": [40],
+          "contrast": 1.4,
+          "invert": true
+        },
+        "hop_away": {
+          "source": "originals/bunny/bunny_hop_away_animation",
+          "widths": [40],
+          "contrast": 1.4,
+          "invert": true
+        },
+        "hop_toward": {
+          "source": "originals/bunny/bunny_hop_toward_animation",
+          "widths": [40],
+          "contrast": 1.4,
+          "invert": true
         }
       }
     },
-    "tree": {
-      "source": "originals/tree/tree.gif",
+    "tree1": {
+      "source": "originals/trees/tree1/tree.gif",
+      "contrast": 1.5,
+      "invert": true,
+      "widths": [15, 20, 25, 30, 40, 55, 75, 100, 130, 160, 200, 250, 320, 350],
+      "zoom": {
+        "horizonY": 0.35,
+        "foregroundY": 1.28,
+        "minWidth": 15,
+        "maxWidth": 350,
+        "steps": 13
+      },
+      "layerConfig": {
+        "minWidth": 15,
+        "maxWidth": 350,
+        "defaultLayer": 10,
+        "layerDepth": 14
+      }
+    },
+    "tree2": {
+      "source": "originals/trees/tree2/tree2.gif",
       "contrast": 1.5,
       "invert": true,
       "widths": [15, 20, 25, 30, 40, 55, 75, 100, 130, 160, 200, 250, 320, 350],
@@ -71,12 +107,16 @@
     }
   },
   "layers": [
-    {"name": "sky", "type": "static", "layer": 25},
-    {"name": "far-trees", "layer": 16, "sprites": ["tree"], "positions": [-300, 0, 300, 600]},
-    {"name": "mid-trees", "layer": 12, "sprites": ["tree"], "positions": [-150, 150, 450]},
-    {"name": "near-trees", "layer": 9, "sprites": ["tree"], "positions": [-50, 250, 550]},
+    {"name": "sky", "type": "static", "layer": 35},
     {"name": "grass-front", "sprites": ["grass"], "layer": 6, "tile": true}
   ],
+  "autoLayers": {
+    "sprites": ["tree1", "tree2"],
+    "minLayer": 8,
+    "maxLayer": 30,
+    "treesPerLayer": 2,
+    "seed": 42
+  },
   "settings": {
     "fps": 60,
     "jumpSpeed": 58,
