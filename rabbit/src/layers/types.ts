@@ -2,7 +2,7 @@
  * Layer system types.
  */
 
-import type { FrameSet, LayerType } from "../types.js";
+import type { FrameSet, LayerBehavior, LayerType } from "../types.js";
 import type { Camera } from "../world/Projection.js";
 
 /**
@@ -15,6 +15,7 @@ import type { Camera } from "../world/Projection.js";
  * positions: X world coordinates for sprite instances.
  * zIndex: Render order index.
  * tile: Whether sprites tile horizontally.
+ * behavior: Layer behavior for parallax and wrapping.
  */
 export interface ValidatedLayer {
   readonly name: string;
@@ -24,6 +25,7 @@ export interface ValidatedLayer {
   readonly positions: readonly number[];
   readonly zIndex: number;
   readonly tile: boolean;
+  readonly behavior: LayerBehavior;
 }
 
 /**
