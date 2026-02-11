@@ -23,6 +23,7 @@ import { DEFAULT_CAMERA_Z, wrapDepth } from "../world/Projection.js";
  * depthBounds: Bounds for depth wrapping (from config).
  * hopKeyHeld: Whether W/S key is currently held (for depth movement).
  * slideKeyHeld: Whether A/D key is currently held (for horizontal slide during hop).
+ * walkKeyHeld: Whether A/D key is currently held (for horizontal walk movement).
  */
 export interface InputState {
   bunny: BunnyState;
@@ -31,6 +32,7 @@ export interface InputState {
   depthBounds: DepthBounds;
   hopKeyHeld: "away" | "toward" | null;
   slideKeyHeld: "left" | "right" | null;
+  walkKeyHeld: "left" | "right" | null;
 }
 
 /**
@@ -59,13 +61,15 @@ export function setupKeyboardControls(
       if (isHopping(state.bunny)) {
         state.slideKeyHeld = "left";
       } else {
-        handleWalkInput(state.bunny, bunnyFrames, bunnyTimers, false);
+        state.walkKeyHeld = "left";
+        handleWalkKeyDown(state.bunny, bunnyFrames, bunnyTimers, false);
       }
     } else if (isRightKey) {
       if (isHopping(state.bunny)) {
         state.slideKeyHeld = "right";
       } else {
-        handleWalkInput(state.bunny, bunnyFrames, bunnyTimers, true);
+        state.walkKeyHeld = "right";
+        handleWalkKeyDown(state.bunny, bunnyFrames, bunnyTimers, true);
       }
     } else if (e.key === " " && !isJumping(state.bunny) && !isPendingJump(state.bunny)) {
       handleJumpInput(state.bunny, bunnyFrames, bunnyTimers);
@@ -97,11 +101,19 @@ export function setupKeyboardControls(
         if (state.slideKeyHeld === "left") {
           state.slideKeyHeld = null;
         }
+        if (state.walkKeyHeld === "left") {
+          state.walkKeyHeld = null;
+          handleWalkKeyUp(state.bunny, bunnyTimers);
+        }
         break;
       case key === "d":
       case e.key === "ArrowRight":
         if (state.slideKeyHeld === "right") {
           state.slideKeyHeld = null;
+        }
+        if (state.walkKeyHeld === "right") {
+          state.walkKeyHeld = null;
+          handleWalkKeyUp(state.bunny, bunnyTimers);
         }
         break;
     }
@@ -155,6 +167,26 @@ export function processHorizontalMovement(state: InputState): void {
 
   const direction = state.slideKeyHeld === "left" ? -1 : 1;
   state.camera = { ...state.camera, x: state.camera.x + CAMERA_X_SPEED * direction };
+}
+
+/** Camera X movement speed per frame when walking */
+const WALK_SPEED = 2;
+
+/**
+ * Process horizontal camera movement while walking.
+ *
+ * Camera moves horizontally when bunny is walking and walkKeyHeld is set.
+ *
+ * Args:
+ *     state: Input state with bunny, camera, and walkKeyHeld.
+ */
+export function processWalkMovement(state: InputState): void {
+  if (state.bunny.animation.kind !== "walk" || state.walkKeyHeld === null) {
+    return;
+  }
+
+  const direction = state.walkKeyHeld === "left" ? -1 : 1;
+  state.camera = { ...state.camera, x: state.camera.x + WALK_SPEED * direction };
 }
 
 /**
@@ -211,7 +243,10 @@ function handleJumpInput(
 }
 
 /**
- * Handle walk input.
+ * Handle walk key down (start walking).
+ *
+ * Starts walking animation in the specified direction.
+ * If already walking in a different direction, switches direction.
  *
  * Args:
  *     bunny: Bunny state to update.
@@ -219,20 +254,15 @@ function handleJumpInput(
  *     timers: Bunny animation timers.
  *     goingRight: Direction of movement.
  */
-function handleWalkInput(
+function handleWalkKeyDown(
   bunny: BunnyState,
   frames: BunnyFrames,
   timers: BunnyTimers,
   goingRight: boolean
 ): void {
   const anim = bunny.animation;
-  const sameDirection = bunny.facingRight === goingRight;
 
-  if (anim.kind === "walk" && sameDirection) {
-    timers.walk.stop();
-    bunny.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" };
-    timers.transition.start();
-  } else if (anim.kind === "idle") {
+  if (anim.kind === "idle") {
     bunny.facingRight = goingRight;
     timers.idle.stop();
     const transitionFrames = goingRight
@@ -252,8 +282,42 @@ function handleWalkInput(
     bunny.animation = { kind: "walk", frameIdx: 0 };
     timers.walk.start();
   } else if (anim.kind === "walk") {
+    // Already walking - just switch direction if needed
     bunny.facingRight = goingRight;
     bunny.animation.frameIdx = 0;
+  }
+}
+
+/**
+ * Handle walk key up (stop walking).
+ *
+ * Transitions from walking to idle when the walk key is released.
+ *
+ * Args:
+ *     bunny: Bunny state to update.
+ *     timers: Bunny animation timers.
+ */
+function handleWalkKeyUp(
+  bunny: BunnyState,
+  timers: BunnyTimers
+): void {
+  const anim = bunny.animation;
+
+  if (anim.kind === "walk") {
+    timers.walk.stop();
+    bunny.animation = {
+      kind: "transition",
+      type: "walk_to_idle",
+      frameIdx: 0,
+      pendingAction: null,
+      returnTo: "idle",
+    };
+    timers.transition.start();
+  } else if (anim.kind === "transition" && anim.type === "idle_to_walk") {
+    // Cancel the transition to walk
+    timers.transition.stop();
+    bunny.animation = { kind: "idle", frameIdx: 0 };
+    timers.idle.start();
   }
 }
 
@@ -376,12 +440,15 @@ function handleHopRelease(
 /** Test hooks for internal functions */
 export const _test_hooks = {
   handleJumpInput,
-  handleWalkInput,
+  handleWalkKeyDown,
+  handleWalkKeyUp,
   handleHopInput,
   handleHopRelease,
   processDepthMovement,
   processHorizontalMovement,
+  processWalkMovement,
   isPendingJump,
   CAMERA_Z_SPEED,
   CAMERA_X_SPEED,
+  WALK_SPEED,
 };

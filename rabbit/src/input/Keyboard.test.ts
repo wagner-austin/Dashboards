@@ -4,12 +4,12 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, _test_hooks, type InputState } from "./Keyboard.js";
+import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, processWalkMovement, _test_hooks, type InputState } from "./Keyboard.js";
 import { createBunnyTimers, type BunnyFrames, type BunnyState, type BunnyTimers, type AnimationState } from "../entities/Bunny.js";
 import { calculateDepthBounds, createProjectionConfig, type DepthBounds } from "../world/Projection.js";
 import { layerToWorldZ } from "../layers/widths.js";
 
-const { CAMERA_Z_SPEED, CAMERA_X_SPEED, handleHopRelease, isPendingJump } = _test_hooks;
+const { CAMERA_Z_SPEED, CAMERA_X_SPEED, WALK_SPEED, handleHopRelease, handleWalkKeyUp, isPendingJump } = _test_hooks;
 
 /** Create test depth bounds matching default config (layers 8-30). */
 function createTestDepthBounds(): DepthBounds {
@@ -54,6 +54,7 @@ function createTestInputState(bunnyState: BunnyState): InputState {
     depthBounds: TEST_DEPTH_BOUNDS,
     hopKeyHeld: null,
     slideKeyHeld: null,
+    walkKeyHeld: null,
   };
 }
 
@@ -108,7 +109,7 @@ describe("setupKeyboardControls", () => {
     vi.useRealTimers();
   });
 
-  describe("walk input", () => {
+  describe("walk input (press-and-hold)", () => {
     it("starts transition to walk when ArrowLeft pressed from idle", () => {
       dispatchKeyDown("ArrowLeft");
       expect(state.bunny.animation.kind).toBe("transition");
@@ -117,6 +118,7 @@ describe("setupKeyboardControls", () => {
         expect(state.bunny.animation.pendingAction).toBe("walk");
       }
       expect(state.bunny.facingRight).toBe(false);
+      expect(state.walkKeyHeld).toBe("left");
     });
 
     it("starts transition to walk when ArrowRight pressed from idle", () => {
@@ -127,59 +129,104 @@ describe("setupKeyboardControls", () => {
         expect(state.bunny.animation.pendingAction).toBe("walk");
       }
       expect(state.bunny.facingRight).toBe(true);
+      expect(state.walkKeyHeld).toBe("right");
     });
 
     it("responds to a key (lowercase)", () => {
       dispatchKeyDown("a");
       expect(state.bunny.animation.kind).toBe("transition");
       expect(state.bunny.facingRight).toBe(false);
+      expect(state.walkKeyHeld).toBe("left");
     });
 
     it("responds to d key (lowercase)", () => {
       dispatchKeyDown("d");
       expect(state.bunny.animation.kind).toBe("transition");
       expect(state.bunny.facingRight).toBe(true);
+      expect(state.walkKeyHeld).toBe("right");
     });
 
     it("responds to A key (uppercase/caps lock)", () => {
       dispatchKeyDown("A");
       expect(state.bunny.animation.kind).toBe("transition");
       expect(state.bunny.facingRight).toBe(false);
+      expect(state.walkKeyHeld).toBe("left");
     });
 
     it("responds to D key (uppercase/caps lock)", () => {
       dispatchKeyDown("D");
       expect(state.bunny.animation.kind).toBe("transition");
       expect(state.bunny.facingRight).toBe(true);
-    });
-
-    it("stops walking when same direction pressed while walking", () => {
-      state.bunny.animation = { kind: "walk", frameIdx: 0 };
-      state.bunny.facingRight = false;
-
-      dispatchKeyDown("ArrowLeft");
-
-      const anim = getAnim(state);
-      expect(anim.kind).toBe("transition");
-      if (anim.kind === "transition") {
-        expect(anim.type).toBe("walk_to_idle");
-      }
+      expect(state.walkKeyHeld).toBe("right");
     });
 
     it("switches direction when opposite key pressed while walking", () => {
       state.bunny.animation = { kind: "walk", frameIdx: 0 };
       state.bunny.facingRight = false;
+      state.walkKeyHeld = "left";
 
       dispatchKeyDown("ArrowRight");
 
       expect(state.bunny.animation.kind).toBe("walk");
       expect(state.bunny.facingRight).toBe(true);
       expect(state.bunny.animation.frameIdx).toBe(0);
+      expect(state.walkKeyHeld).toBe("right");
     });
 
     it("ignores repeated key events", () => {
       dispatchKeyDown("ArrowLeft", true);
       expect(state.bunny.animation.kind).toBe("idle");
+      expect(state.walkKeyHeld).toBe(null);
+    });
+
+    it("stops walking when key released while walking", () => {
+      state.bunny.animation = { kind: "walk", frameIdx: 0 };
+      state.bunny.facingRight = false;
+      state.walkKeyHeld = "left";
+      timers.walk.start();
+
+      dispatchKeyUp("ArrowLeft");
+
+      const anim = getAnim(state);
+      expect(anim.kind).toBe("transition");
+      if (anim.kind === "transition") {
+        expect(anim.type).toBe("walk_to_idle");
+      }
+      expect(state.walkKeyHeld).toBe(null);
+      expect(timers.transition.isRunning()).toBe(true);
+    });
+
+    it("cancels idle_to_walk transition when key released", () => {
+      dispatchKeyDown("ArrowLeft");
+      expect(state.bunny.animation.kind).toBe("transition");
+      expect(state.walkKeyHeld).toBe("left");
+
+      dispatchKeyUp("ArrowLeft");
+
+      expect(state.bunny.animation.kind).toBe("idle");
+      expect(state.walkKeyHeld).toBe(null);
+      expect(timers.idle.isRunning()).toBe(true);
+    });
+
+    it("does not clear walkKeyHeld on releasing opposite direction key", () => {
+      dispatchKeyDown("ArrowLeft");
+      expect(state.walkKeyHeld).toBe("left");
+
+      dispatchKeyUp("ArrowRight");
+
+      expect(state.walkKeyHeld).toBe("left");
+    });
+
+    it("clears only matching walkKeyHeld direction on keyup", () => {
+      state.bunny.animation = { kind: "walk", frameIdx: 0 };
+      state.walkKeyHeld = "right";
+      timers.walk.start();
+
+      dispatchKeyUp("ArrowLeft");
+
+      // Should not clear because walkKeyHeld is "right", not "left"
+      expect(state.walkKeyHeld).toBe("right");
+      expect(state.bunny.animation.kind).toBe("walk");
     });
   });
 
@@ -780,6 +827,110 @@ describe("isPendingJump", () => {
   });
 });
 
+describe("handleWalkKeyUp", () => {
+  let bunnyState: BunnyState;
+  let timers: BunnyTimers;
+  let frames: BunnyFrames;
+
+  beforeEach(() => {
+    vi.useFakeTimers();
+    bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
+    frames = createTestFrames();
+    timers = createBunnyTimers(bunnyState, frames, {
+      walk: 100,
+      idle: 200,
+      jump: 50,
+      transition: 80,
+      hop: 100,
+    });
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("transitions from walk to walk_to_idle when key released", () => {
+    bunnyState.animation = { kind: "walk", frameIdx: 1 };
+    timers.walk.start();
+
+    handleWalkKeyUp(bunnyState, timers);
+
+    const anim = getBunnyAnim(bunnyState);
+    expect(anim.kind).toBe("transition");
+    if (anim.kind === "transition") {
+      expect(anim.type).toBe("walk_to_idle");
+      expect(anim.frameIdx).toBe(0);
+      expect(anim.pendingAction).toBe(null);
+      expect(anim.returnTo).toBe("idle");
+    }
+    expect(timers.walk.isRunning()).toBe(false);
+    expect(timers.transition.isRunning()).toBe(true);
+  });
+
+  it("cancels idle_to_walk transition and returns to idle", () => {
+    bunnyState.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 1, pendingAction: "walk", returnTo: "idle" };
+    timers.transition.start();
+
+    handleWalkKeyUp(bunnyState, timers);
+
+    expect(bunnyState.animation.kind).toBe("idle");
+    expect(bunnyState.animation.frameIdx).toBe(0);
+    expect(timers.transition.isRunning()).toBe(false);
+    expect(timers.idle.isRunning()).toBe(true);
+  });
+
+  it("does nothing when in idle state", () => {
+    bunnyState.animation = { kind: "idle", frameIdx: 0 };
+
+    handleWalkKeyUp(bunnyState, timers);
+
+    expect(bunnyState.animation.kind).toBe("idle");
+  });
+
+  it("does nothing when in hop state", () => {
+    bunnyState.animation = { kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" };
+
+    handleWalkKeyUp(bunnyState, timers);
+
+    expect(bunnyState.animation.kind).toBe("hop");
+  });
+
+  it("does nothing when in jump state", () => {
+    bunnyState.animation = { kind: "jump", frameIdx: 0, returnTo: "idle" };
+
+    handleWalkKeyUp(bunnyState, timers);
+
+    expect(bunnyState.animation.kind).toBe("jump");
+  });
+
+  it("does nothing when in walk_to_idle transition", () => {
+    bunnyState.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 1, pendingAction: null, returnTo: "idle" };
+    timers.transition.start();
+
+    handleWalkKeyUp(bunnyState, timers);
+
+    const anim = getBunnyAnim(bunnyState);
+    expect(anim.kind).toBe("transition");
+    if (anim.kind === "transition") {
+      expect(anim.type).toBe("walk_to_idle");
+    }
+    expect(timers.transition.isRunning()).toBe(true);
+  });
+
+  it("does nothing when in walk_to_turn transition", () => {
+    bunnyState.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: "idle" };
+    timers.transition.start();
+
+    handleWalkKeyUp(bunnyState, timers);
+
+    const anim = getBunnyAnim(bunnyState);
+    expect(anim.kind).toBe("transition");
+    if (anim.kind === "transition") {
+      expect(anim.type).toBe("walk_to_turn_away");
+    }
+  });
+});
+
 describe("processHorizontalMovement", () => {
   function createTestState(animation: AnimationState, facingRight = false): InputState {
     return createTestInputState(createTestBunnyState(animation, facingRight));
@@ -844,6 +995,103 @@ describe("processHorizontalMovement", () => {
     processHorizontalMovement(state);
 
     expect(state.camera.x).toBe(CAMERA_X_SPEED * 3);
+  });
+});
+
+describe("processWalkMovement", () => {
+  function createTestState(animation: AnimationState, facingRight = false): InputState {
+    return createTestInputState(createTestBunnyState(animation, facingRight));
+  }
+
+  it("does nothing when not walking", () => {
+    const state = createTestState({ kind: "idle", frameIdx: 0 });
+    state.walkKeyHeld = "left";
+    const initialX = state.camera.x;
+
+    processWalkMovement(state);
+
+    expect(state.camera.x).toBe(initialX);
+  });
+
+  it("does nothing when walking but no walk key held", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 });
+    const initialX = state.camera.x;
+
+    processWalkMovement(state);
+
+    expect(state.camera.x).toBe(initialX);
+  });
+
+  it("moves camera left when walking and walkKeyHeld is left", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 }, false);
+    state.walkKeyHeld = "left";
+    const initialX = state.camera.x;
+
+    processWalkMovement(state);
+
+    expect(state.camera.x).toBe(initialX - WALK_SPEED);
+  });
+
+  it("moves camera right when walking and walkKeyHeld is right", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 }, true);
+    state.walkKeyHeld = "right";
+    const initialX = state.camera.x;
+
+    processWalkMovement(state);
+
+    expect(state.camera.x).toBe(initialX + WALK_SPEED);
+  });
+
+  it("preserves camera.z when moving horizontally", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 });
+    state.walkKeyHeld = "left";
+    state.camera = { x: 0, z: 100 };
+
+    processWalkMovement(state);
+
+    expect(state.camera.z).toBe(100);
+  });
+
+  it("allows continuous walk movement", () => {
+    const state = createTestState({ kind: "walk", frameIdx: 0 });
+    state.walkKeyHeld = "right";
+    state.camera = { x: 0, z: 0 };
+
+    processWalkMovement(state);
+    processWalkMovement(state);
+    processWalkMovement(state);
+
+    expect(state.camera.x).toBe(WALK_SPEED * 3);
+  });
+
+  it("does nothing during transition", () => {
+    const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: 0, pendingAction: "walk", returnTo: "idle" });
+    state.walkKeyHeld = "left";
+    const initialX = state.camera.x;
+
+    processWalkMovement(state);
+
+    expect(state.camera.x).toBe(initialX);
+  });
+
+  it("does nothing during hop even with walkKeyHeld", () => {
+    const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
+    state.walkKeyHeld = "left";
+    const initialX = state.camera.x;
+
+    processWalkMovement(state);
+
+    expect(state.camera.x).toBe(initialX);
+  });
+
+  it("does nothing during jump even with walkKeyHeld", () => {
+    const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "idle" });
+    state.walkKeyHeld = "right";
+    const initialX = state.camera.x;
+
+    processWalkMovement(state);
+
+    expect(state.camera.x).toBe(initialX);
   });
 });
 
