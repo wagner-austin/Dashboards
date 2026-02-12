@@ -60,8 +60,8 @@ async function bundle() {
 function updateIndexHtml(bundleFilename) {
   let html = fs.readFileSync(INDEX_HTML, "utf-8");
 
-  // Replace the script loading section
-  const oldScriptPattern = /<script>[\s\S]*?<\/script>/;
+  // Replace any script tag (with or without attributes)
+  const oldScriptPattern = /<script[^>]*>[\s\S]*?<\/script>/;
   const newScript = `<script type="module" src="./${BUNDLE_DIR}/${bundleFilename}"></script>`;
 
   html = html.replace(oldScriptPattern, newScript);
