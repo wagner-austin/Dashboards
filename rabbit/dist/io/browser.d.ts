@@ -6,6 +6,7 @@
 import type { AudioContextLike, AudioDependencies } from "../audio/types.js";
 /**
  * Create browser AudioContext.
+ * Falls back to webkitAudioContext for older Android Chrome browsers.
  *
  * Returns:
  *     AudioContext for Web Audio API.
