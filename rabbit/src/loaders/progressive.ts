@@ -5,7 +5,7 @@
  * 1. Ground (instant - pure ASCII)
  * 2. Grass sprites
  * 3. Bunny animation frames
- * 4. Trees from largest to smallest width
+ * 4. Trees from smallest to largest width
  */
 
 import type { Config, FrameSet } from "../types.js";
@@ -16,7 +16,7 @@ import type { Config, FrameSet } from "../types.js";
  * ground: ASCII ground (instant).
  * grass: Grass sprite widths.
  * bunny: All bunny animation frames.
- * trees: Tree widths from largest to smallest.
+ * trees: Tree widths from smallest to largest.
  */
 export type LoadPhase = "ground" | "grass" | "bunny" | "trees";
 
@@ -128,17 +128,17 @@ export function insertSortedByWidth(sizes: FrameSet[], frameSet: FrameSet): void
 }
 
 /**
- * Collect all tree widths from config, sorted descending (largest first).
+ * Collect all tree widths from config, sorted ascending (smallest first).
  *
  * Combines widths from all tree sprites and returns unique widths
- * with their sprite names, sorted by width descending.
+ * with their sprite names, sorted by width ascending.
  *
  * Args:
  *     config: Application config with sprite definitions.
  *     treeNames: Names of tree sprites to collect widths from.
  *
  * Returns:
- *     Array of TreeWidthEntry sorted by width descending.
+ *     Array of TreeWidthEntry sorted by width ascending.
  */
 export function collectTreeWidths(
   config: Config,
@@ -162,8 +162,8 @@ export function collectTreeWidths(
     }
   }
 
-  // Sort by width descending (largest first)
-  entries.sort((a, b) => b.width - a.width);
+  // Sort by width ascending (smallest first)
+  entries.sort((a, b) => a.width - b.width);
 
   return entries;
 }
