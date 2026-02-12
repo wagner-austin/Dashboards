@@ -8,12 +8,14 @@ import { init } from "../main.js";
 
 /** Debug log to screen overlay. */
 function debug(msg: string): void {
-  const win = window as unknown as { debugLog?: (m: string) => void };
-  if (win.debugLog !== undefined) {
-    win.debugLog(msg);
-  } else {
-    console.log(msg);
+  if (typeof window !== "undefined") {
+    const win = window as unknown as { debugLog?: (m: string) => void };
+    if (win.debugLog !== undefined) {
+      win.debugLog(msg);
+      return;
+    }
   }
+  console.log(msg);
 }
 
 // Vitest sets import.meta.env.MODE to 'test'

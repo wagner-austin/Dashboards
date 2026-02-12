@@ -6,13 +6,14 @@
 import { init } from "../main.js";
 /** Debug log to screen overlay. */
 function debug(msg) {
-    const win = window;
-    if (win.debugLog !== undefined) {
-        win.debugLog(msg);
+    if (typeof window !== "undefined") {
+        const win = window;
+        if (win.debugLog !== undefined) {
+            win.debugLog(msg);
+            return;
+        }
     }
-    else {
-        console.log(msg);
-    }
+    console.log(msg);
 }
 // Vitest sets import.meta.env.MODE to 'test'
 function isTestEnvironment() {

@@ -128,6 +128,9 @@ function createTestContext(initialState: TestContextState = "running"): TestCont
       }
       return Promise.resolve();
     },
+    createBuffer(): AudioBuffer {
+      return {} as AudioBuffer;
+    },
     createBufferSource(): AudioBufferSourceNodeLike {
       const source = createTestBufferSource();
       sources.push(source);

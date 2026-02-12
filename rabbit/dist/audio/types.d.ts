@@ -35,6 +35,7 @@ export declare function createAudioState(): AudioState;
 export interface AudioContextLike {
     readonly state: AudioContextState;
     resume(): Promise<void>;
+    createBuffer(numberOfChannels: number, length: number, sampleRate: number): AudioBuffer;
     createBufferSource(): AudioBufferSourceNodeLike;
     createGain(): GainNodeLike;
     decodeAudioData(data: ArrayBuffer): Promise<AudioBuffer>;

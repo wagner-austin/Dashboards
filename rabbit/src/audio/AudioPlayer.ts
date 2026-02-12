@@ -13,15 +13,19 @@ import type {
   FetchFn,
 } from "./types.js";
 
+/* v8 ignore start */
 /** Debug log to screen overlay. */
 function debug(msg: string): void {
-  const win = window as unknown as { debugLog?: (m: string) => void };
-  if (win.debugLog !== undefined) {
-    win.debugLog(msg);
-  } else {
-    console.log(msg);
+  if (typeof window !== "undefined") {
+    const win = window as unknown as { debugLog?: (m: string) => void };
+    if (win.debugLog !== undefined) {
+      win.debugLog(msg);
+      return;
+    }
   }
+  console.log(msg);
 }
+/* v8 ignore stop */
 
 /** Audio player interface. */
 export interface AudioPlayer {
@@ -92,7 +96,7 @@ export function createAudioPlayer(deps: AudioPlayerDeps): AudioPlayer {
     debug(`[AudioPlayer] Fetching audio: ${track.path}`);
     const response = await deps.fetchFn(track.path);
     if (!response.ok) {
-      debug(`[AudioPlayer] Fetch failed: ${response.status}`);
+      debug(`[AudioPlayer] Fetch failed: ${String(response.status)}`);
       return null;
     }
 
@@ -170,7 +174,7 @@ export function createAudioPlayer(deps: AudioPlayerDeps): AudioPlayer {
           state.isPlaying = false;
         }
       };
-    }).catch((err) => {
+    }).catch((err: unknown) => {
       debug(`[AudioPlayer] Load failed: ${String(err)}`);
     });
   }

@@ -4,15 +4,17 @@
  */
 import { createAudioPlayer } from "./AudioPlayer.js";
 import { getDefaultTrack } from "./TrackSelector.js";
+/* v8 ignore start */
 /** Debug log to screen overlay. */
 function debug(msg) {
-    const win = window;
-    if (win.debugLog !== undefined) {
-        win.debugLog(msg);
+    if (typeof window !== "undefined") {
+        const win = window;
+        if (win.debugLog !== undefined) {
+            win.debugLog(msg);
+            return;
+        }
     }
-    else {
-        console.log(msg);
-    }
+    console.log(msg);
 }
 /**
  * Get track at index from tracks array.
@@ -119,35 +121,30 @@ export function initializeAudio(audioConfig, deps) {
                 deps.removeEventListenerFn("keydown", start);
             },
         };
+        // Unlock audio using howler.js pattern: play empty buffer + resume
+        debug("[Audio] Unlocking audio (howler.js pattern)...");
+        // Create empty 1-sample buffer
+        const scratchBuffer = context.createBuffer(1, 1, 22050);
+        const source = context.createBufferSource();
+        source.buffer = scratchBuffer;
+        source.connect(context.destination);
+        // Play empty buffer immediately
+        source.start(0);
+        debug("[Audio] Empty buffer started");
+        // Call resume while buffer plays
         if (context.state === "suspended") {
-            debug("[Audio] Context suspended, calling resume()...");
-            // Android Chrome: resume() promise may hang, so use timeout fallback
-            let played = false;
-            const playOnce = () => {
-                if (!played) {
-                    played = true;
-                    debug(`[Audio] Playing track: ${track.id}`);
-                    player.play(track);
-                }
-            };
-            // Try resume and play when it resolves
+            debug("[Audio] Calling resume()...");
             context.resume().then(() => {
                 debug("[Audio] Resume succeeded");
-                playOnce();
             }).catch((err) => {
-                debug(`[Audio] Resume failed: ${String(err)}`);
-                playOnce();
+                debug(`[Audio] Resume error: ${String(err)}`);
             });
-            // Fallback: play after 500ms if resume hangs
-            setTimeout(() => {
-                debug("[Audio] Timeout fallback triggered");
-                playOnce();
-            }, 500);
         }
-        else {
-            debug(`[Audio] Context running, playing track: ${track.id}`);
+        // When empty buffer ends, audio is unlocked - play real track
+        source.onended = () => {
+            debug(`[Audio] Unlocked, playing track: ${track.id}`);
             player.play(track);
-        }
+        };
         deps.removeEventListenerFn("click", start);
         deps.removeEventListenerFn("touchstart", start);
         deps.removeEventListenerFn("touchend", start);

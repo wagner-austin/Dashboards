@@ -88,6 +88,7 @@ function createTestAudioDeps(): TestAudioDeps {
     createContext: (): AudioDependencies["createContext"] extends () => infer R ? R : never => ({
       state: "running" as const,
       resume: (): Promise<void> => Promise.resolve(),
+      createBuffer: (): AudioBuffer => ({} as AudioBuffer),
       createBufferSource: (): { buffer: null; loop: boolean; connect: () => void; start: () => void; stop: () => void; onended: null } => ({
         buffer: null,
         loop: false,

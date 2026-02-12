@@ -3,15 +3,17 @@
  * Fetches audio as ArrayBuffer, decodes to AudioBuffer, plays via BufferSourceNode.
  * Supports crossfade between tracks using GainNode ramping.
  */
+/* v8 ignore start */
 /** Debug log to screen overlay. */
 function debug(msg) {
-    const win = window;
-    if (win.debugLog !== undefined) {
-        win.debugLog(msg);
+    if (typeof window !== "undefined") {
+        const win = window;
+        if (win.debugLog !== undefined) {
+            win.debugLog(msg);
+            return;
+        }
     }
-    else {
-        console.log(msg);
-    }
+    console.log(msg);
 }
 /** Fade duration in seconds. */
 const FADE_DURATION = 1.0;
@@ -45,7 +47,7 @@ export function createAudioPlayer(deps) {
         debug(`[AudioPlayer] Fetching audio: ${track.path}`);
         const response = await deps.fetchFn(track.path);
         if (!response.ok) {
-            debug(`[AudioPlayer] Fetch failed: ${response.status}`);
+            debug(`[AudioPlayer] Fetch failed: ${String(response.status)}`);
             return null;
         }
         debug("[AudioPlayer] Decoding audio...");

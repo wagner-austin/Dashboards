@@ -71,6 +71,7 @@ function createTestAudioDeps() {
         createContext: () => ({
             state: "running",
             resume: () => Promise.resolve(),
+            createBuffer: () => ({}),
             createBufferSource: () => ({
                 buffer: null,
                 loop: false,

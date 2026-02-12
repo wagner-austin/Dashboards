@@ -82,6 +82,9 @@ function createTestContext(initialState = "running") {
             }
             return Promise.resolve();
         },
+        createBuffer() {
+            return {};
+        },
         createBufferSource() {
             const source = createTestBufferSource();
             sources.push(source);
