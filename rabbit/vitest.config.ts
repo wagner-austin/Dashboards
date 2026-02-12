@@ -10,6 +10,7 @@ export default defineConfig({
         "src/sprites/**",
         "src/types.ts", // Type definitions only - no executable code
         "src/io/**", // I/O boundary code - tested through dependency injection
+        "src/**/index.ts", // Re-export files - no executable logic
       ],
       thresholds: {
         lines: 100,
