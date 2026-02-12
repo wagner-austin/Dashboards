@@ -56,10 +56,10 @@ export declare function loadLayerSprites(config: Config, layers: readonly Valida
  */
 export declare function loadGrassSprites(config: Config, registry: MutableSpriteRegistry, onProgress: ProgressCallback): Promise<void>;
 /**
- * Load tree sprites progressively from largest to smallest.
+ * Load tree sprites progressively from smallest to largest.
  *
  * Loads trees interleaved across tree types (tree1, tree2, etc.)
- * so that the largest trees from all types load first.
+ * so that the smallest trees from all types load first.
  *
  * Args:
  *     config: Application config.
@@ -74,7 +74,7 @@ export type BunnyLoadedCallback = (frames: BunnyFrames) => void;
 /**
  * Run progressive loading sequence.
  *
- * Loads sprites in order: ground, grass, bunny, trees (largest to smallest).
+ * Loads sprites in order: ground, grass, bunny, trees (smallest to largest).
  * Calls onProgress for each loaded sprite to enable UI updates.
  * Calls onBunnyLoaded immediately when bunny frames are ready, before trees.
  *
