@@ -3,11 +3,12 @@
  *
  * Implements a virtual joystick that anchors at the touch point and
  * translates drag direction into 8-way movement input. Tap gestures
- * trigger jump. Uses the same shared handlers as keyboard input.
+ * trigger jump. Uses the unified input model shared with keyboard.
  */
 import { isHopping, isJumping, } from "../entities/Bunny.js";
-import { isPendingJump, handleJumpInput, handleWalkKeyDown, handleWalkKeyUp, handleHopInput, handleHopRelease, } from "./handlers.js";
-/** Default touch configuration */
+import { processInputChange, } from "./Keyboard.js";
+import { isPendingJump, handleJumpInput, } from "./handlers.js";
+/** Default touch configuration. */
 export const DEFAULT_TOUCH_CONFIG = {
     deadzone: 20,
     tapThreshold: 200,
@@ -80,60 +81,40 @@ export function calculateDirection(joystick, config) {
     }
 }
 /**
- * Check if direction is up (includes "up" but not just up-left/up-right without up).
+ * Extract horizontal component from touch direction.
  *
  * Args:
- *     direction: Touch direction to check.
+ *     direction: Touch direction to extract from.
  *
  * Returns:
- *     True if direction includes up.
+ *     HorizontalInput extracted from direction.
  */
-function isUp(direction) {
+function directionToHorizontal(direction) {
     if (direction === null)
-        return false;
-    return direction.includes("up");
+        return null;
+    if (direction.includes("left"))
+        return "left";
+    if (direction.includes("right"))
+        return "right";
+    return null;
 }
 /**
- * Check if direction is down (includes "down").
+ * Extract vertical component from touch direction.
  *
  * Args:
- *     direction: Touch direction to check.
+ *     direction: Touch direction to extract from.
  *
  * Returns:
- *     True if direction includes down.
+ *     VerticalInput extracted from direction.
  */
-function isDown(direction) {
+function directionToVertical(direction) {
     if (direction === null)
-        return false;
-    return direction.includes("down");
-}
-/**
- * Check if direction is left (includes "left").
- *
- * Args:
- *     direction: Touch direction to check.
- *
- * Returns:
- *     True if direction includes left.
- */
-function isLeft(direction) {
-    if (direction === null)
-        return false;
-    return direction.includes("left");
-}
-/**
- * Check if direction is right (includes "right").
- *
- * Args:
- *     direction: Touch direction to check.
- *
- * Returns:
- *     True if direction includes right.
- */
-function isRight(direction) {
-    if (direction === null)
-        return false;
-    return direction.includes("right");
+        return null;
+    if (direction.includes("up"))
+        return "up";
+    if (direction.includes("down"))
+        return "down";
+    return null;
 }
 /**
  * Check if a touch qualifies as a tap (quick touch-release).
@@ -154,10 +135,10 @@ export function isTap(joystick, releaseTime, config) {
     return duration < config.tapThreshold && distance < config.tapMaxDistance;
 }
 /**
- * Process a new direction and generate appropriate input actions.
+ * Process a new direction and update input state.
  *
- * Compares previous direction to new direction and triggers
- * the appropriate start/end handlers for movement.
+ * Converts touch direction to horizontal/vertical components and
+ * calls the shared processInputChange function.
  *
  * Args:
  *     prevDirection: Previous touch direction.
@@ -168,71 +149,15 @@ export function isTap(joystick, releaseTime, config) {
  *     bunnyTimers: Bunny animation timers.
  */
 export function processDirectionChange(prevDirection, newDirection, touchState, inputState, bunnyFrames, bunnyTimers) {
-    const prevUp = isUp(prevDirection);
-    const prevDown = isDown(prevDirection);
-    const newUp = isUp(newDirection);
-    const newDown = isDown(newDirection);
-    const newLeft = isLeft(newDirection);
-    const newRight = isRight(newDirection);
-    const prevVertical = prevUp || prevDown;
-    const newVertical = newUp || newDown;
-    // Handle vertical (hop) changes
-    if (!prevVertical && newVertical) {
-        // Started vertical movement - begin hop
-        const direction = newUp ? "away" : "toward";
-        inputState.hopKeyHeld = direction;
-        handleHopInput(inputState.bunny, bunnyTimers, direction);
-    }
-    else if (prevVertical && !newVertical) {
-        // Ended vertical movement - stop hop
-        inputState.hopKeyHeld = null;
-        inputState.slideKeyHeld = null;
-        handleHopRelease(inputState.bunny, bunnyTimers);
-    }
-    else if (prevUp && newDown) {
-        // Switched from up to down
-        handleHopRelease(inputState.bunny, bunnyTimers);
-        inputState.hopKeyHeld = "toward";
-        handleHopInput(inputState.bunny, bunnyTimers, "toward");
-    }
-    else if (prevDown && newUp) {
-        // Switched from down to up
-        handleHopRelease(inputState.bunny, bunnyTimers);
-        inputState.hopKeyHeld = "away";
-        handleHopInput(inputState.bunny, bunnyTimers, "away");
-    }
-    // Handle horizontal movement
-    const currentlyHopping = isHopping(inputState.bunny) || inputState.hopKeyHeld !== null;
-    if (currentlyHopping) {
-        // During hop: left/right controls slide
-        if (newLeft && !newRight) {
-            inputState.slideKeyHeld = "left";
-        }
-        else if (newRight && !newLeft) {
-            inputState.slideKeyHeld = "right";
-        }
-        else {
-            inputState.slideKeyHeld = null;
-        }
-    }
-    else {
-        // Not hopping: left/right controls walk
-        if (newLeft && !newRight && inputState.walkKeyHeld !== "left") {
-            // Want to go left and not already going left
-            inputState.walkKeyHeld = "left";
-            handleWalkKeyDown(inputState.bunny, bunnyFrames, bunnyTimers, false);
-        }
-        else if (newRight && !newLeft && inputState.walkKeyHeld !== "right") {
-            // Want to go right and not already going right
-            inputState.walkKeyHeld = "right";
-            handleWalkKeyDown(inputState.bunny, bunnyFrames, bunnyTimers, true);
-        }
-        else if (!newLeft && !newRight && inputState.walkKeyHeld !== null) {
-            // Stopped horizontal movement
-            inputState.walkKeyHeld = null;
-            handleWalkKeyUp(inputState.bunny, bunnyTimers);
-        }
-    }
+    const prevHorizontal = directionToHorizontal(prevDirection);
+    const prevVertical = directionToVertical(prevDirection);
+    const newHorizontal = directionToHorizontal(newDirection);
+    const newVertical = directionToVertical(newDirection);
+    // Update raw input state
+    inputState.horizontalHeld = newHorizontal;
+    inputState.verticalHeld = newVertical;
+    // Use shared input change processor
+    processInputChange(prevHorizontal, prevVertical, newHorizontal, newVertical, inputState, bunnyFrames, bunnyTimers);
     touchState.currentDirection = newDirection;
 }
 /**
@@ -256,16 +181,12 @@ export function handleTouchEnd(touchState, inputState, bunnyFrames, bunnyTimers,
         }
     }
     else {
-        // Regular release - end all inputs
-        if (inputState.hopKeyHeld !== null) {
-            inputState.hopKeyHeld = null;
-            inputState.slideKeyHeld = null;
-            handleHopRelease(inputState.bunny, bunnyTimers);
-        }
-        if (inputState.walkKeyHeld !== null) {
-            inputState.walkKeyHeld = null;
-            handleWalkKeyUp(inputState.bunny, bunnyTimers);
-        }
+        // Regular release - end all inputs via processInputChange
+        const prevHorizontal = inputState.horizontalHeld;
+        const prevVertical = inputState.verticalHeld;
+        inputState.horizontalHeld = null;
+        inputState.verticalHeld = null;
+        processInputChange(prevHorizontal, prevVertical, null, null, inputState, bunnyFrames, bunnyTimers);
     }
     touchState.joystick = null;
     touchState.currentDirection = null;
@@ -387,7 +308,7 @@ export function handleTouchEndEvent(touchState, inputState, bunnyFrames, bunnyTi
  * Setup touch controls for the game.
  *
  * Attaches touch event listeners to the document and translates
- * touch gestures into input actions using the shared handlers.
+ * touch gestures into input state changes using the shared input model.
  *
  * Args:
  *     inputState: Game input state.
@@ -417,7 +338,7 @@ export function setupTouchControls(inputState, bunnyFrames, bunnyTimers, config 
     document.addEventListener("touchcancel", onEnd);
     return touchState;
 }
-/** Test hooks for internal functions */
+/** Test hooks for internal functions. */
 export const _test_hooks = {
     createTouchState,
     calculateDirection,
@@ -427,10 +348,8 @@ export const _test_hooks = {
     handleTouchStart,
     handleTouchMove,
     handleTouchEndEvent,
-    isUp,
-    isDown,
-    isLeft,
-    isRight,
+    directionToHorizontal,
+    directionToVertical,
     findTouchByIdentifier,
     hasTouchWithIdentifier,
     DEFAULT_TOUCH_CONFIG,

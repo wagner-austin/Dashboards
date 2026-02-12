@@ -1,13 +1,13 @@
 /**
  * @vitest-environment jsdom
- * Tests for keyboard input handling.
+ * Tests for keyboard input handling with unified input model.
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, processWalkMovement, _test_hooks } from "./Keyboard.js";
+import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, _test_hooks } from "./Keyboard.js";
 import { createBunnyTimers } from "../entities/Bunny.js";
 import { calculateDepthBounds, createProjectionConfig } from "../world/Projection.js";
 import { layerToWorldZ } from "../layers/widths.js";
-const { CAMERA_Z_SPEED, CAMERA_X_SPEED, WALK_SPEED, handleHopRelease, handleWalkKeyUp, isPendingJump } = _test_hooks;
+const { CAMERA_Z_SPEED, CAMERA_X_SPEED, handleHopRelease, handleWalkKeyUp, isPendingJump, processInputChange } = _test_hooks;
 /** Create test depth bounds matching default config (layers 8-30). */
 function createTestDepthBounds() {
     const projectionConfig = createProjectionConfig();
@@ -39,15 +39,13 @@ function createTestBunnyState(animation, facingRight = false) {
     return { facingRight, animation };
 }
 function createTestInputState(bunnyState) {
-    // Camera Z must be inside depthBounds [-110, 50) for valid movement
     return {
         bunny: bunnyState,
         viewport: { width: 100, height: 50, charW: 10, charH: 20 },
         camera: { x: 0, z: 0 },
         depthBounds: TEST_DEPTH_BOUNDS,
-        hopKeyHeld: null,
-        slideKeyHeld: null,
-        walkKeyHeld: null,
+        horizontalHeld: null,
+        verticalHeld: null,
     };
 }
 function dispatchKeyDown(key, repeat = false) {
@@ -57,17 +55,7 @@ function dispatchKeyUp(key) {
     document.dispatchEvent(new KeyboardEvent("keyup", { key }));
 }
 /**
- * Get animation state after mutation.
- *
- * Breaks TypeScript's type inference to allow checking state after event dispatch.
- */
-function getAnim(s) {
-    return s.bunny.animation;
-}
-/**
- * Get animation state from bunny state after mutation.
- *
- * Breaks TypeScript's type inference to allow checking state after function calls.
+ * Get animation state from bunny state.
  */
 function getBunnyAnim(s) {
     return s.animation;
@@ -88,438 +76,368 @@ describe("setupKeyboardControls", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         setupKeyboardControls(state, frames, timers);
     });
     afterEach(() => {
         vi.useRealTimers();
     });
-    describe("walk input (press-and-hold)", () => {
-        it("starts transition to walk when ArrowLeft pressed from idle", () => {
+    describe("horizontal input (A/D keys)", () => {
+        it("sets horizontalHeld to left when ArrowLeft pressed", () => {
             dispatchKeyDown("ArrowLeft");
-            expect(state.bunny.animation.kind).toBe("transition");
-            if (state.bunny.animation.kind === "transition") {
-                expect(state.bunny.animation.type).toBe("idle_to_walk");
-                expect(state.bunny.animation.pendingAction).toBe("walk");
-            }
-            expect(state.bunny.facingRight).toBe(false);
-            expect(state.walkKeyHeld).toBe("left");
+            expect(state.horizontalHeld).toBe("left");
         });
-        it("starts transition to walk when ArrowRight pressed from idle", () => {
+        it("sets horizontalHeld to right when ArrowRight pressed", () => {
             dispatchKeyDown("ArrowRight");
-            expect(state.bunny.animation.kind).toBe("transition");
-            if (state.bunny.animation.kind === "transition") {
-                expect(state.bunny.animation.type).toBe("idle_to_walk");
-                expect(state.bunny.animation.pendingAction).toBe("walk");
-            }
-            expect(state.bunny.facingRight).toBe(true);
-            expect(state.walkKeyHeld).toBe("right");
+            expect(state.horizontalHeld).toBe("right");
         });
         it("responds to a key (lowercase)", () => {
             dispatchKeyDown("a");
-            expect(state.bunny.animation.kind).toBe("transition");
-            expect(state.bunny.facingRight).toBe(false);
-            expect(state.walkKeyHeld).toBe("left");
+            expect(state.horizontalHeld).toBe("left");
         });
         it("responds to d key (lowercase)", () => {
             dispatchKeyDown("d");
-            expect(state.bunny.animation.kind).toBe("transition");
-            expect(state.bunny.facingRight).toBe(true);
-            expect(state.walkKeyHeld).toBe("right");
+            expect(state.horizontalHeld).toBe("right");
         });
-        it("responds to A key (uppercase/caps lock)", () => {
+        it("responds to A key (uppercase)", () => {
             dispatchKeyDown("A");
+            expect(state.horizontalHeld).toBe("left");
+        });
+        it("responds to D key (uppercase)", () => {
+            dispatchKeyDown("D");
+            expect(state.horizontalHeld).toBe("right");
+        });
+        it("starts walk transition when pressing left from idle", () => {
+            dispatchKeyDown("ArrowLeft");
             expect(state.bunny.animation.kind).toBe("transition");
             expect(state.bunny.facingRight).toBe(false);
-            expect(state.walkKeyHeld).toBe("left");
         });
-        it("responds to D key (uppercase/caps lock)", () => {
-            dispatchKeyDown("D");
+        it("starts walk transition when pressing right from idle", () => {
+            dispatchKeyDown("ArrowRight");
             expect(state.bunny.animation.kind).toBe("transition");
             expect(state.bunny.facingRight).toBe(true);
-            expect(state.walkKeyHeld).toBe("right");
         });
-        it("switches direction when opposite key pressed while walking", () => {
-            state.bunny.animation = { kind: "walk", frameIdx: 0 };
-            state.bunny.facingRight = false;
-            state.walkKeyHeld = "left";
+        it("clears horizontalHeld on left key release", () => {
+            dispatchKeyDown("ArrowLeft");
+            expect(state.horizontalHeld).toBe("left");
+            dispatchKeyUp("ArrowLeft");
+            expect(state.horizontalHeld).toBe(null);
+        });
+        it("clears horizontalHeld on right key release", () => {
             dispatchKeyDown("ArrowRight");
-            expect(state.bunny.animation.kind).toBe("walk");
-            expect(state.bunny.facingRight).toBe(true);
-            expect(state.bunny.animation.frameIdx).toBe(0);
-            expect(state.walkKeyHeld).toBe("right");
+            expect(state.horizontalHeld).toBe("right");
+            dispatchKeyUp("ArrowRight");
+            expect(state.horizontalHeld).toBe(null);
+        });
+        it("only clears matching direction on release", () => {
+            dispatchKeyDown("ArrowLeft");
+            dispatchKeyUp("ArrowRight");
+            expect(state.horizontalHeld).toBe("left");
         });
         it("ignores repeated key events", () => {
             dispatchKeyDown("ArrowLeft", true);
-            expect(state.bunny.animation.kind).toBe("idle");
-            expect(state.walkKeyHeld).toBe(null);
-        });
-        it("stops walking when key released while walking", () => {
-            state.bunny.animation = { kind: "walk", frameIdx: 0 };
-            state.bunny.facingRight = false;
-            state.walkKeyHeld = "left";
-            timers.walk.start();
-            dispatchKeyUp("ArrowLeft");
-            const anim = getAnim(state);
-            expect(anim.kind).toBe("transition");
-            if (anim.kind === "transition") {
-                expect(anim.type).toBe("walk_to_idle");
-            }
-            expect(state.walkKeyHeld).toBe(null);
-            expect(timers.transition.isRunning()).toBe(true);
-        });
-        it("cancels idle_to_walk transition when key released", () => {
-            dispatchKeyDown("ArrowLeft");
-            expect(state.bunny.animation.kind).toBe("transition");
-            expect(state.walkKeyHeld).toBe("left");
-            dispatchKeyUp("ArrowLeft");
-            expect(state.bunny.animation.kind).toBe("idle");
-            expect(state.walkKeyHeld).toBe(null);
-            expect(timers.idle.isRunning()).toBe(true);
-        });
-        it("does not clear walkKeyHeld on releasing opposite direction key", () => {
-            dispatchKeyDown("ArrowLeft");
-            expect(state.walkKeyHeld).toBe("left");
-            dispatchKeyUp("ArrowRight");
-            expect(state.walkKeyHeld).toBe("left");
-        });
-        it("clears only matching walkKeyHeld direction on keyup", () => {
-            state.bunny.animation = { kind: "walk", frameIdx: 0 };
-            state.walkKeyHeld = "right";
-            timers.walk.start();
-            dispatchKeyUp("ArrowLeft");
-            // Should not clear because walkKeyHeld is "right", not "left"
-            expect(state.walkKeyHeld).toBe("right");
-            expect(state.bunny.animation.kind).toBe("walk");
+            expect(state.horizontalHeld).toBe(null);
         });
     });
-    describe("jump input", () => {
-        it("starts transition then jump when space pressed from idle", () => {
-            dispatchKeyDown(" ");
-            expect(state.bunny.animation.kind).toBe("transition");
-            if (state.bunny.animation.kind === "transition") {
-                expect(state.bunny.animation.type).toBe("idle_to_walk");
-                expect(state.bunny.animation.pendingAction).toBe("jump");
-            }
-            expect(timers.transition.isRunning()).toBe(true);
-        });
-        it("starts jump immediately when space pressed while walking", () => {
-            state.bunny.animation = { kind: "walk", frameIdx: 0 };
-            dispatchKeyDown(" ");
-            const anim = getAnim(state);
-            expect(anim.kind).toBe("jump");
-            if (anim.kind === "jump") {
-                expect(anim.returnTo).toBe("walk");
-            }
-            expect(timers.jump.isRunning()).toBe(true);
-        });
-        it("does not start jump when already jumping", () => {
-            state.bunny.animation = { kind: "jump", frameIdx: 0, returnTo: "idle" };
-            const wasRunning = timers.jump.isRunning();
-            dispatchKeyDown(" ");
-            expect(timers.jump.isRunning()).toBe(wasRunning);
-        });
-        it("does not start jump when hopping", () => {
-            state.bunny.animation = { kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" };
-            dispatchKeyDown(" ");
-            // Should remain in hop state, jump not started
-            expect(state.bunny.animation.kind).toBe("hop");
-            expect(timers.jump.isRunning()).toBe(false);
-        });
-        it("does not start jump when pendingJump is true", () => {
-            state.bunny.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "jump", returnTo: "idle" };
-            dispatchKeyDown(" ");
-            expect(timers.jump.isRunning()).toBe(false);
-        });
-        it("starts jump immediately when in transition animation", () => {
-            state.bunny.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" };
-            dispatchKeyDown(" ");
-            const anim = getAnim(state);
-            expect(anim.kind).toBe("jump");
-            if (anim.kind === "jump") {
-                expect(anim.returnTo).toBe("idle");
-            }
-            expect(timers.jump.isRunning()).toBe(true);
-        });
-        it("uses correct transition frames when jumping from idle facing right", () => {
-            state.bunny.facingRight = true;
-            dispatchKeyDown(" ");
-            if (state.bunny.animation.kind === "transition") {
-                expect(state.bunny.animation.frameIdx).toBe(2);
-                expect(state.bunny.animation.type).toBe("idle_to_walk");
-            }
-        });
-        it("sets returnTo to walk when jumping from transition with returnTo walk", () => {
-            state.bunny.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 1, pendingAction: null, returnTo: "walk" };
-            dispatchKeyDown(" ");
-            const anim = getAnim(state);
-            expect(anim.kind).toBe("jump");
-            if (anim.kind === "jump") {
-                expect(anim.returnTo).toBe("walk");
-            }
-        });
-        it("sets returnTo to idle when jumping from walk_to_idle transition", () => {
-            state.bunny.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 1, pendingAction: null, returnTo: "walk" };
-            dispatchKeyDown(" ");
-            const anim = getAnim(state);
-            expect(anim.kind).toBe("jump");
-            if (anim.kind === "jump") {
-                // returnTo is based on the transition's returnTo which was "walk"
-                expect(anim.returnTo).toBe("walk");
-            }
-        });
-    });
-    describe("reset input", () => {
-        it("resets camera position and depth position when r pressed", () => {
-            state.camera = { x: 100, z: 45 };
-            dispatchKeyDown("r");
-            expect(state.camera.x).toBe(0);
-            expect(state.camera.z).toBe(55);
-        });
-        it("responds to R key (uppercase)", () => {
-            state.camera = { x: 100, z: 45 };
-            dispatchKeyDown("R");
-            expect(state.camera.x).toBe(0);
-            expect(state.camera.z).toBe(55);
-        });
-    });
-    describe("hop input", () => {
-        it("sets hopKeyHeld to away with w key", () => {
+    describe("vertical input (W/S keys)", () => {
+        it("sets verticalHeld to up when W pressed", () => {
             dispatchKeyDown("w");
-            expect(state.hopKeyHeld).toBe("away");
+            expect(state.verticalHeld).toBe("up");
         });
-        it("sets hopKeyHeld to away with ArrowUp", () => {
-            dispatchKeyDown("ArrowUp");
-            expect(state.hopKeyHeld).toBe("away");
-        });
-        it("sets hopKeyHeld to toward with s key", () => {
+        it("sets verticalHeld to down when S pressed", () => {
             dispatchKeyDown("s");
-            expect(state.hopKeyHeld).toBe("toward");
+            expect(state.verticalHeld).toBe("down");
         });
-        it("sets hopKeyHeld to toward with ArrowDown", () => {
+        it("responds to ArrowUp", () => {
+            dispatchKeyDown("ArrowUp");
+            expect(state.verticalHeld).toBe("up");
+        });
+        it("responds to ArrowDown", () => {
             dispatchKeyDown("ArrowDown");
-            expect(state.hopKeyHeld).toBe("toward");
+            expect(state.verticalHeld).toBe("down");
         });
-        it("clears hopKeyHeld on w keyup", () => {
+        it("starts hop transition when pressing W from idle", () => {
             dispatchKeyDown("w");
-            expect(state.hopKeyHeld).toBe("away");
+            expect(state.bunny.animation.kind).toBe("transition");
+        });
+        it("clears verticalHeld on up key release", () => {
+            dispatchKeyDown("w");
+            expect(state.verticalHeld).toBe("up");
             dispatchKeyUp("w");
-            expect(state.hopKeyHeld).toBe(null);
+            expect(state.verticalHeld).toBe(null);
         });
-        it("clears hopKeyHeld on ArrowUp keyup", () => {
-            dispatchKeyDown("ArrowUp");
-            expect(state.hopKeyHeld).toBe("away");
-            dispatchKeyUp("ArrowUp");
-            expect(state.hopKeyHeld).toBe(null);
-        });
-        it("clears hopKeyHeld on s keyup", () => {
+        it("clears verticalHeld on down key release", () => {
             dispatchKeyDown("s");
-            expect(state.hopKeyHeld).toBe("toward");
+            expect(state.verticalHeld).toBe("down");
             dispatchKeyUp("s");
-            expect(state.hopKeyHeld).toBe(null);
+            expect(state.verticalHeld).toBe(null);
         });
-        it("clears hopKeyHeld on ArrowDown keyup", () => {
-            dispatchKeyDown("ArrowDown");
-            expect(state.hopKeyHeld).toBe("toward");
-            dispatchKeyUp("ArrowDown");
-            expect(state.hopKeyHeld).toBe(null);
-        });
-        it("does not clear hopKeyHeld on a keyup", () => {
+        it("only clears matching direction on release", () => {
             dispatchKeyDown("w");
-            expect(state.hopKeyHeld).toBe("away");
-            dispatchKeyUp("a");
-            expect(state.hopKeyHeld).toBe("away");
+            dispatchKeyUp("s");
+            expect(state.verticalHeld).toBe("up");
         });
-        it("does not clear hopKeyHeld on d keyup", () => {
+    });
+    describe("diagonal input (D+W simultaneous)", () => {
+        it("pressing D then W sets both horizontalHeld and verticalHeld", () => {
+            dispatchKeyDown("d");
+            expect(state.horizontalHeld).toBe("right");
+            expect(state.verticalHeld).toBe(null);
             dispatchKeyDown("w");
-            expect(state.hopKeyHeld).toBe("away");
-            dispatchKeyUp("d");
-            expect(state.hopKeyHeld).toBe("away");
+            expect(state.horizontalHeld).toBe("right");
+            expect(state.verticalHeld).toBe("up");
         });
-        it("does not clear hopKeyHeld on ArrowLeft keyup", () => {
+        it("pressing W then D sets both inputs", () => {
             dispatchKeyDown("w");
-            expect(state.hopKeyHeld).toBe("away");
-            dispatchKeyUp("ArrowLeft");
-            expect(state.hopKeyHeld).toBe("away");
+            dispatchKeyDown("d");
+            expect(state.horizontalHeld).toBe("right");
+            expect(state.verticalHeld).toBe("up");
         });
-        it("does not clear hopKeyHeld on ArrowRight keyup", () => {
+        it("releasing W while holding D keeps horizontalHeld", () => {
+            dispatchKeyDown("d");
             dispatchKeyDown("w");
-            expect(state.hopKeyHeld).toBe("away");
-            dispatchKeyUp("ArrowRight");
-            expect(state.hopKeyHeld).toBe("away");
+            dispatchKeyUp("w");
+            expect(state.horizontalHeld).toBe("right");
+            expect(state.verticalHeld).toBe(null);
         });
-        it("starts turn away transition when w pressed from idle", () => {
-            dispatchKeyDown("w");
+    });
+    describe("jump input (spacebar)", () => {
+        it("starts jump transition when space pressed from idle", () => {
+            dispatchKeyDown(" ");
             expect(state.bunny.animation.kind).toBe("transition");
-            if (state.bunny.animation.kind === "transition") {
-                expect(state.bunny.animation.type).toBe("walk_to_turn_away");
-                expect(state.bunny.animation.returnTo).toBe("idle");
-            }
-            expect(timers.transition.isRunning()).toBe(true);
         });
-        it("starts turn toward transition when s pressed from idle", () => {
-            dispatchKeyDown("s");
-            expect(state.bunny.animation.kind).toBe("transition");
-            if (state.bunny.animation.kind === "transition") {
-                expect(state.bunny.animation.type).toBe("walk_to_turn_toward");
-                expect(state.bunny.animation.returnTo).toBe("idle");
-            }
-            expect(timers.transition.isRunning()).toBe(true);
-        });
-        it("starts turn away transition when w pressed from idle facing right", () => {
-            state.bunny.facingRight = true;
-            dispatchKeyDown("w");
-            expect(state.bunny.animation.kind).toBe("transition");
-            if (state.bunny.animation.kind === "transition") {
-                expect(state.bunny.animation.type).toBe("walk_to_turn_away");
-                expect(state.bunny.animation.frameIdx).toBe(0);
-            }
-        });
-        it("starts walk_to_turn_away when w pressed from walk", () => {
-            state.bunny.animation = { kind: "walk", frameIdx: 0 };
-            timers.walk.start();
-            dispatchKeyDown("w");
-            const anim = getAnim(state);
-            expect(anim.kind).toBe("transition");
-            if (anim.kind === "transition") {
-                expect(anim.type).toBe("walk_to_turn_away");
-                expect(anim.returnTo).toBe("walk");
-            }
-            expect(timers.transition.isRunning()).toBe(true);
-        });
-        it("starts walk_to_turn_toward when s pressed from walk", () => {
-            state.bunny.animation = { kind: "walk", frameIdx: 0 };
-            timers.walk.start();
-            dispatchKeyDown("s");
-            const anim = getAnim(state);
-            expect(anim.kind).toBe("transition");
-            if (anim.kind === "transition") {
-                expect(anim.type).toBe("walk_to_turn_toward");
-                expect(anim.returnTo).toBe("walk");
-            }
-            expect(timers.transition.isRunning()).toBe(true);
-        });
-        it("does not start hop when already jumping", () => {
-            state.bunny.animation = { kind: "jump", frameIdx: 0, returnTo: "idle" };
-            dispatchKeyDown("w");
+        it("ignores space during jump", () => {
+            state.bunny.animation = { kind: "jump", frameIdx: 0 };
+            dispatchKeyDown(" ");
             expect(state.bunny.animation.kind).toBe("jump");
         });
-        it("does not start hop when already hopping", () => {
-            state.bunny.animation = { kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" };
-            dispatchKeyDown("w");
-            expect(state.bunny.animation.kind).toBe("hop");
-        });
-        it("updates pendingAction during transition when hop pressed", () => {
-            state.bunny.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 1, pendingAction: "walk", returnTo: "idle" };
-            dispatchKeyDown("w");
-            const anim = getAnim(state);
-            if (anim.kind === "transition") {
-                expect(anim.pendingAction).toBe("hop_away");
-            }
-        });
     });
-    describe("transition handling", () => {
-        it("starts idle_to_walk transition from idle", () => {
-            dispatchKeyDown("ArrowRight");
-            expect(state.bunny.animation.kind).toBe("transition");
-            if (state.bunny.animation.kind === "transition") {
-                expect(state.bunny.animation.type).toBe("idle_to_walk");
-                expect(state.bunny.animation.frameIdx).toBe(2);
-            }
-            expect(timers.transition.isRunning()).toBe(true);
-        });
-        it("interrupts transition when direction key pressed", () => {
-            state.bunny.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" };
-            dispatchKeyDown("ArrowRight");
-            expect(state.bunny.animation.kind).toBe("walk");
-            expect(timers.walk.isRunning()).toBe(true);
+    describe("reset (R key)", () => {
+        it("resets camera position on R key", () => {
+            state.camera = { x: 100, z: 50 };
+            dispatchKeyDown("r");
+            expect(state.camera.x).toBe(0);
         });
     });
 });
+describe("processInputChange", () => {
+    let bunnyState;
+    let state;
+    let timers;
+    let frames;
+    beforeEach(() => {
+        vi.useFakeTimers();
+        bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
+        state = createTestInputState(bunnyState);
+        frames = createTestFrames();
+        timers = createBunnyTimers(bunnyState, frames, {
+            walk: 100,
+            idle: 200,
+            jump: 50,
+            transition: 80,
+            hop: 100,
+        }, () => false);
+    });
+    afterEach(() => {
+        vi.useRealTimers();
+    });
+    it("starts hop when vertical input begins", () => {
+        processInputChange(null, null, null, "up", state, frames, timers);
+        expect(state.bunny.animation.kind).toBe("transition");
+    });
+    it("stops hop when vertical input ends", () => {
+        state.bunny.animation = { kind: "hop", direction: "away", frameIdx: 0 };
+        timers.hop.start();
+        processInputChange(null, "up", null, null, state, frames, timers);
+        expect(state.bunny.animation.kind).toBe("idle");
+    });
+    it("switches hop direction from up to down", () => {
+        state.bunny.animation = { kind: "hop", direction: "away", frameIdx: 0 };
+        timers.hop.start();
+        processInputChange(null, "up", null, "down", state, frames, timers);
+        expect(state.bunny.animation.kind).toBe("transition");
+    });
+    it("switches hop direction from down to up", () => {
+        state.bunny.animation = { kind: "hop", direction: "toward", frameIdx: 0 };
+        timers.hop.start();
+        processInputChange(null, "down", null, "up", state, frames, timers);
+        expect(state.bunny.animation.kind).toBe("transition");
+    });
+    it("starts walk when horizontal input begins and not hopping", () => {
+        processInputChange(null, null, "left", null, state, frames, timers);
+        expect(state.bunny.animation.kind).toBe("transition");
+        expect(state.bunny.facingRight).toBe(false);
+    });
+    it("switches walk direction from left to right", () => {
+        state.bunny.animation = { kind: "walk", frameIdx: 0 };
+        processInputChange("left", null, "right", null, state, frames, timers);
+        expect(state.bunny.facingRight).toBe(true);
+    });
+    it("stops walk when horizontal input ends", () => {
+        state.bunny.animation = { kind: "walk", frameIdx: 0 };
+        timers.walk.start();
+        processInputChange("left", null, null, null, state, frames, timers);
+        expect(state.bunny.animation.kind).toBe("transition");
+    });
+    it("does not start walk when hopping", () => {
+        state.bunny.animation = { kind: "hop", direction: "away", frameIdx: 0 };
+        processInputChange(null, "up", "left", "up", state, frames, timers);
+        // Animation should still be hop, not walk
+        expect(state.bunny.animation.kind).toBe("hop");
+    });
+    it("does not start walk when vertical is held", () => {
+        processInputChange(null, null, "left", "up", state, frames, timers);
+        // Should start hop, not walk
+        expect(state.bunny.animation.kind).toBe("transition");
+    });
+    it("updates facingRight when horizontal pressed during jump", () => {
+        state.bunny.animation = { kind: "jump", frameIdx: 0 };
+        state.bunny.facingRight = true;
+        processInputChange(null, null, "left", null, state, frames, timers);
+        expect(state.bunny.facingRight).toBe(false);
+    });
+    it("updates facingRight to right when horizontal right pressed during jump", () => {
+        state.bunny.animation = { kind: "jump", frameIdx: 0 };
+        state.bunny.facingRight = false;
+        processInputChange(null, null, "right", null, state, frames, timers);
+        expect(state.bunny.facingRight).toBe(true);
+    });
+});
 describe("processDepthMovement", () => {
-    function createTestState(animation, facingRight = false) {
-        return createTestInputState(createTestBunnyState(animation, facingRight));
+    function createTestState(animation) {
+        return createTestInputState(createTestBunnyState(animation));
     }
     it("does nothing when not hopping", () => {
         const state = createTestState({ kind: "idle", frameIdx: 0 });
         const initialZ = state.camera.z;
-        state.hopKeyHeld = "away";
         processDepthMovement(state);
         expect(state.camera.z).toBe(initialZ);
     });
-    it("does nothing during transition even with hopKeyHeld", () => {
-        const state = createTestState({ kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: "idle" });
-        const initialZ = state.camera.z;
-        state.hopKeyHeld = "away";
-        processDepthMovement(state);
-        expect(state.camera.z).toBe(initialZ);
-    });
-    it("decreases camera.z when hopping toward (S key, out of scene)", () => {
-        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-        const initialZ = state.camera.z;
-        processDepthMovement(state);
-        expect(state.camera.z).toBe(initialZ - CAMERA_Z_SPEED);
-    });
-    it("increases camera.z when hopping away (W key, into scene)", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
+    it("moves camera away (positive Z) when hopping away", () => {
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
         const initialZ = state.camera.z;
         processDepthMovement(state);
         expect(state.camera.z).toBe(initialZ + CAMERA_Z_SPEED);
     });
-    it("wraps from minZ to maxZ when moving toward past minimum", () => {
-        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-        const { minZ, maxZ } = state.depthBounds;
-        state.camera = { x: state.camera.x, z: minZ };
+    it("moves camera toward (negative Z) when hopping toward", () => {
+        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0 });
+        const initialZ = state.camera.z;
         processDepthMovement(state);
-        // Should wrap to near maxZ
-        const expectedZ = maxZ - (minZ - (minZ - CAMERA_Z_SPEED)) % state.depthBounds.range;
-        expect(state.camera.z).toBeCloseTo(expectedZ, 5);
+        expect(state.camera.z).toBe(initialZ - CAMERA_Z_SPEED);
     });
-    it("wraps from maxZ to minZ when moving away past maximum", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-        const { minZ, maxZ } = state.depthBounds;
-        state.camera = { x: state.camera.x, z: maxZ };
+    it("wraps Z at max bound when moving away", () => {
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
+        state.camera = { x: 0, z: state.depthBounds.maxZ - 0.1 };
         processDepthMovement(state);
-        // Should wrap to near minZ
-        const expectedZ = minZ + (maxZ + CAMERA_Z_SPEED - maxZ) % state.depthBounds.range;
-        expect(state.camera.z).toBeCloseTo(expectedZ, 5);
+        expect(state.camera.z).toBeLessThan(state.depthBounds.maxZ);
+        expect(state.camera.z).toBeGreaterThanOrEqual(state.depthBounds.minZ);
     });
-    it("preserves camera.x when moving in depth", () => {
-        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-        state.camera = { x: 100, z: 0 };
+    it("wraps Z at min bound when moving toward", () => {
+        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0 });
+        state.camera = { x: 0, z: state.depthBounds.minZ + 0.1 };
         processDepthMovement(state);
-        expect(state.camera.x).toBe(100);
+        expect(state.camera.z).toBeLessThan(state.depthBounds.maxZ);
     });
-    it("allows continuous depth movement across multiple calls", () => {
-        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-        // Start at Z=0 (inside bounds [-110, 50))
-        state.camera = { x: 0, z: 0 };
-        processDepthMovement(state);
-        processDepthMovement(state);
-        processDepthMovement(state);
-        expect(state.camera.z).toBe(0 - CAMERA_Z_SPEED * 3);
+});
+describe("processHorizontalMovement", () => {
+    function createTestState(animation) {
+        return createTestInputState(createTestBunnyState(animation));
+    }
+    it("does nothing when not moving", () => {
+        const state = createTestState({ kind: "idle", frameIdx: 0 });
+        state.horizontalHeld = "left";
+        const initialX = state.camera.x;
+        processHorizontalMovement(state);
+        expect(state.camera.x).toBe(initialX);
     });
-    it("wraps continuously when moving toward past minimum multiple times", () => {
-        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-        const { minZ, maxZ } = state.depthBounds;
-        // Start just above minZ
-        state.camera = { x: 0, z: minZ + CAMERA_Z_SPEED * 0.5 };
-        // First call goes below minZ, should wrap
-        processDepthMovement(state);
-        // Result should be wrapped to near maxZ
-        expect(state.camera.z).toBeGreaterThan(minZ);
-        expect(state.camera.z).toBeLessThanOrEqual(maxZ);
+    it("does nothing when moving but no horizontal input", () => {
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
+        const initialX = state.camera.x;
+        processHorizontalMovement(state);
+        expect(state.camera.x).toBe(initialX);
     });
-    it("wraps continuously when moving away past maximum multiple times", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-        const { minZ, maxZ } = state.depthBounds;
-        // Start just below maxZ
-        state.camera = { x: 0, z: maxZ - CAMERA_Z_SPEED * 0.5 };
-        // First call goes above maxZ, should wrap
-        processDepthMovement(state);
-        // Result should be wrapped to near minZ
-        expect(state.camera.z).toBeGreaterThanOrEqual(minZ);
-        expect(state.camera.z).toBeLessThan(maxZ);
+    it("moves camera left when hopping with left held", () => {
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
+        state.horizontalHeld = "left";
+        const initialX = state.camera.x;
+        processHorizontalMovement(state);
+        expect(state.camera.x).toBe(initialX - CAMERA_X_SPEED);
+    });
+    it("moves camera right when hopping with right held", () => {
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
+        state.horizontalHeld = "right";
+        const initialX = state.camera.x;
+        processHorizontalMovement(state);
+        expect(state.camera.x).toBe(initialX + CAMERA_X_SPEED);
+    });
+    it("moves camera left when walking with left held", () => {
+        const state = createTestState({ kind: "walk", frameIdx: 0 });
+        state.horizontalHeld = "left";
+        const initialX = state.camera.x;
+        processHorizontalMovement(state);
+        expect(state.camera.x).toBe(initialX - CAMERA_X_SPEED);
+    });
+    it("moves camera right when walking with right held", () => {
+        const state = createTestState({ kind: "walk", frameIdx: 0 });
+        state.horizontalHeld = "right";
+        const initialX = state.camera.x;
+        processHorizontalMovement(state);
+        expect(state.camera.x).toBe(initialX + CAMERA_X_SPEED);
+    });
+    it("preserves camera.z when moving horizontally", () => {
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
+        state.horizontalHeld = "left";
+        state.camera = { x: 0, z: 100 };
+        processHorizontalMovement(state);
+        expect(state.camera.z).toBe(100);
+    });
+    it("does nothing during transition", () => {
+        const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: 0, pendingAction: "walk", returnTo: "idle" });
+        state.horizontalHeld = "left";
+        const initialX = state.camera.x;
+        processHorizontalMovement(state);
+        expect(state.camera.x).toBe(initialX);
+    });
+    it("moves camera during jump", () => {
+        const state = createTestState({ kind: "jump", frameIdx: 0 });
+        state.horizontalHeld = "left";
+        const initialX = state.camera.x;
+        processHorizontalMovement(state);
+        expect(state.camera.x).toBeLessThan(initialX);
+    });
+});
+describe("isPendingJump", () => {
+    it("returns false for idle", () => {
+        const bunny = createTestBunnyState({ kind: "idle", frameIdx: 0 });
+        expect(isPendingJump(bunny)).toBe(false);
+    });
+    it("returns false for walk", () => {
+        const bunny = createTestBunnyState({ kind: "walk", frameIdx: 0 });
+        expect(isPendingJump(bunny)).toBe(false);
+    });
+    it("returns false for jump", () => {
+        const bunny = createTestBunnyState({ kind: "jump", frameIdx: 0 });
+        expect(isPendingJump(bunny)).toBe(false);
+    });
+    it("returns false for transition without pending jump", () => {
+        const bunny = createTestBunnyState({
+            kind: "transition",
+            type: "idle_to_walk",
+            frameIdx: 0,
+            pendingAction: "walk",
+            returnTo: "idle",
+        });
+        expect(isPendingJump(bunny)).toBe(false);
+    });
+    it("returns true for transition with pending jump", () => {
+        const bunny = createTestBunnyState({
+            kind: "transition",
+            type: "idle_to_walk",
+            frameIdx: 0,
+            pendingAction: "jump",
+            returnTo: "idle",
+        });
+        expect(isPendingJump(bunny)).toBe(true);
     });
 });
 describe("handleHopRelease", () => {
@@ -536,117 +454,43 @@ describe("handleHopRelease", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
     });
     afterEach(() => {
         vi.useRealTimers();
     });
-    it("clears hop pendingAction from idle_to_walk transition and lets walk happen", () => {
-        bunnyState.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "hop_away", returnTo: "idle" };
-        timers.transition.start();
-        handleHopRelease(bunnyState, timers);
-        // Transition continues but pendingAction is cleared
-        const anim = getBunnyAnim(bunnyState);
-        expect(anim.kind).toBe("transition");
-        if (anim.kind === "transition") {
-            expect(anim.type).toBe("idle_to_walk");
-            expect(anim.pendingAction).toBe(null);
-        }
-        expect(timers.transition.isRunning()).toBe(true);
-    });
-    it("cancels walk_to_turn_away transition and returns to walk when returnTo is walk", () => {
-        bunnyState.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 1, pendingAction: null, returnTo: "walk" };
-        timers.transition.start();
-        handleHopRelease(bunnyState, timers);
-        expect(bunnyState.animation.kind).toBe("walk");
-        expect(timers.walk.isRunning()).toBe(true);
-        expect(timers.transition.isRunning()).toBe(false);
-    });
-    it("cancels walk_to_turn_away transition and returns to idle when returnTo is idle", () => {
-        bunnyState.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 1, pendingAction: null, returnTo: "idle" };
-        timers.transition.start();
-        handleHopRelease(bunnyState, timers);
+    it("transitions from hop to idle when no horizontal held", () => {
+        bunnyState.animation = { kind: "hop", direction: "away", frameIdx: 0 };
+        timers.hop.start();
+        handleHopRelease(bunnyState, timers, () => false);
         expect(bunnyState.animation.kind).toBe("idle");
+        expect(timers.hop.isRunning()).toBe(false);
         expect(timers.idle.isRunning()).toBe(true);
-        expect(timers.transition.isRunning()).toBe(false);
     });
-    it("cancels walk_to_turn_toward transition and returns to walk when returnTo is walk", () => {
-        bunnyState.animation = { kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: "walk" };
-        timers.transition.start();
-        handleHopRelease(bunnyState, timers);
+    it("transitions from hop to walk when horizontal held", () => {
+        bunnyState.animation = { kind: "hop", direction: "away", frameIdx: 0 };
+        timers.hop.start();
+        handleHopRelease(bunnyState, timers, () => true);
         expect(bunnyState.animation.kind).toBe("walk");
+        expect(timers.hop.isRunning()).toBe(false);
         expect(timers.walk.isRunning()).toBe(true);
     });
-    it("cancels walk_to_turn_toward transition and returns to idle when returnTo is idle", () => {
+    it("cancels turn_away transition and returns to idle when no horizontal held", () => {
+        bunnyState.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: "idle" };
+        timers.transition.start();
+        handleHopRelease(bunnyState, timers, () => false);
+        expect(bunnyState.animation.kind).toBe("idle");
+    });
+    it("cancels turn_toward transition and returns to walk when horizontal held", () => {
         bunnyState.animation = { kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: "idle" };
         timers.transition.start();
-        handleHopRelease(bunnyState, timers);
-        expect(bunnyState.animation.kind).toBe("idle");
-        expect(timers.idle.isRunning()).toBe(true);
-        expect(timers.transition.isRunning()).toBe(false);
+        handleHopRelease(bunnyState, timers, () => true);
+        expect(bunnyState.animation.kind).toBe("walk");
     });
-    it("does nothing for transition without pending hop action", () => {
-        bunnyState.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 1, pendingAction: null, returnTo: "idle" };
-        timers.transition.start();
-        handleHopRelease(bunnyState, timers);
-        expect(bunnyState.animation.kind).toBe("transition");
-        expect(timers.transition.isRunning()).toBe(true);
-    });
-    it("does nothing for non-transition, non-hop state", () => {
+    it("does nothing for non-hop animation", () => {
         bunnyState.animation = { kind: "walk", frameIdx: 0 };
-        handleHopRelease(bunnyState, timers);
+        handleHopRelease(bunnyState, timers, () => false);
         expect(bunnyState.animation.kind).toBe("walk");
-    });
-    it("stops hop and returns to walk when returnTo is walk", () => {
-        bunnyState.animation = { kind: "hop", direction: "away", frameIdx: 1, returnTo: "walk" };
-        timers.hop.start();
-        handleHopRelease(bunnyState, timers);
-        expect(bunnyState.animation.kind).toBe("walk");
-        expect(timers.walk.isRunning()).toBe(true);
-        expect(timers.hop.isRunning()).toBe(false);
-    });
-    it("stops hop and returns to idle when returnTo is idle", () => {
-        bunnyState.animation = { kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" };
-        timers.hop.start();
-        handleHopRelease(bunnyState, timers);
-        expect(bunnyState.animation.kind).toBe("idle");
-        expect(timers.idle.isRunning()).toBe(true);
-        expect(timers.hop.isRunning()).toBe(false);
-    });
-    it("clears hop_toward pendingAction from idle_to_walk same as hop_away", () => {
-        bunnyState.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 1, pendingAction: "hop_toward", returnTo: "idle" };
-        timers.transition.start();
-        handleHopRelease(bunnyState, timers);
-        const anim = getBunnyAnim(bunnyState);
-        expect(anim.kind).toBe("transition");
-        if (anim.kind === "transition") {
-            expect(anim.pendingAction).toBe(null);
-        }
-    });
-    it("does not cancel walk_to_idle transition even with pending hop", () => {
-        bunnyState.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 1, pendingAction: "hop_away", returnTo: "idle" };
-        timers.transition.start();
-        handleHopRelease(bunnyState, timers);
-        // walk_to_idle with pending hop should not be cancelled (logic doesn't handle this case)
-        expect(bunnyState.animation.kind).toBe("transition");
-    });
-});
-describe("isPendingJump", () => {
-    it("returns true when transition has pending jump action", () => {
-        const bunny = createTestBunnyState({ kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "jump", returnTo: "idle" });
-        expect(isPendingJump(bunny)).toBe(true);
-    });
-    it("returns false when transition has different pending action", () => {
-        const bunny = createTestBunnyState({ kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "walk", returnTo: "idle" });
-        expect(isPendingJump(bunny)).toBe(false);
-    });
-    it("returns false when not in transition", () => {
-        const bunny = createTestBunnyState({ kind: "idle", frameIdx: 0 });
-        expect(isPendingJump(bunny)).toBe(false);
-    });
-    it("returns false when transition has null pending action", () => {
-        const bunny = createTestBunnyState({ kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" });
-        expect(isPendingJump(bunny)).toBe(false);
     });
 });
 describe("handleWalkKeyUp", () => {
@@ -663,12 +507,12 @@ describe("handleWalkKeyUp", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
     });
     afterEach(() => {
         vi.useRealTimers();
     });
-    it("transitions from walk to walk_to_idle when key released", () => {
+    it("transitions from walk to walk_to_idle", () => {
         bunnyState.animation = { kind: "walk", frameIdx: 1 };
         timers.walk.start();
         handleWalkKeyUp(bunnyState, timers);
@@ -676,289 +520,18 @@ describe("handleWalkKeyUp", () => {
         expect(anim.kind).toBe("transition");
         if (anim.kind === "transition") {
             expect(anim.type).toBe("walk_to_idle");
-            expect(anim.frameIdx).toBe(0);
-            expect(anim.pendingAction).toBe(null);
-            expect(anim.returnTo).toBe("idle");
         }
-        expect(timers.walk.isRunning()).toBe(false);
-        expect(timers.transition.isRunning()).toBe(true);
     });
     it("cancels idle_to_walk transition and returns to idle", () => {
         bunnyState.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 1, pendingAction: "walk", returnTo: "idle" };
         timers.transition.start();
         handleWalkKeyUp(bunnyState, timers);
         expect(bunnyState.animation.kind).toBe("idle");
-        expect(bunnyState.animation.frameIdx).toBe(0);
-        expect(timers.transition.isRunning()).toBe(false);
-        expect(timers.idle.isRunning()).toBe(true);
     });
-    it("does nothing when in idle state", () => {
-        bunnyState.animation = { kind: "idle", frameIdx: 0 };
-        handleWalkKeyUp(bunnyState, timers);
-        expect(bunnyState.animation.kind).toBe("idle");
-    });
-    it("does nothing when in hop state", () => {
-        bunnyState.animation = { kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" };
+    it("does nothing for hop animation", () => {
+        bunnyState.animation = { kind: "hop", direction: "away", frameIdx: 0 };
         handleWalkKeyUp(bunnyState, timers);
         expect(bunnyState.animation.kind).toBe("hop");
-    });
-    it("does nothing when in jump state", () => {
-        bunnyState.animation = { kind: "jump", frameIdx: 0, returnTo: "idle" };
-        handleWalkKeyUp(bunnyState, timers);
-        expect(bunnyState.animation.kind).toBe("jump");
-    });
-    it("does nothing when in walk_to_idle transition", () => {
-        bunnyState.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 1, pendingAction: null, returnTo: "idle" };
-        timers.transition.start();
-        handleWalkKeyUp(bunnyState, timers);
-        const anim = getBunnyAnim(bunnyState);
-        expect(anim.kind).toBe("transition");
-        if (anim.kind === "transition") {
-            expect(anim.type).toBe("walk_to_idle");
-        }
-        expect(timers.transition.isRunning()).toBe(true);
-    });
-    it("does nothing when in walk_to_turn transition", () => {
-        bunnyState.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: "idle" };
-        timers.transition.start();
-        handleWalkKeyUp(bunnyState, timers);
-        const anim = getBunnyAnim(bunnyState);
-        expect(anim.kind).toBe("transition");
-        if (anim.kind === "transition") {
-            expect(anim.type).toBe("walk_to_turn_away");
-        }
-    });
-});
-describe("processHorizontalMovement", () => {
-    function createTestState(animation, facingRight = false) {
-        return createTestInputState(createTestBunnyState(animation, facingRight));
-    }
-    it("does nothing when not hopping", () => {
-        const state = createTestState({ kind: "idle", frameIdx: 0 });
-        state.slideKeyHeld = "left";
-        const initialX = state.camera.x;
-        processHorizontalMovement(state);
-        expect(state.camera.x).toBe(initialX);
-    });
-    it("does nothing when hopping but no slide key held", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-        const initialX = state.camera.x;
-        processHorizontalMovement(state);
-        expect(state.camera.x).toBe(initialX);
-    });
-    it("moves camera left when hopping and slideKeyHeld is left", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-        state.slideKeyHeld = "left";
-        const initialX = state.camera.x;
-        processHorizontalMovement(state);
-        expect(state.camera.x).toBe(initialX - CAMERA_X_SPEED);
-    });
-    it("moves camera right when hopping and slideKeyHeld is right", () => {
-        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
-        state.slideKeyHeld = "right";
-        const initialX = state.camera.x;
-        processHorizontalMovement(state);
-        expect(state.camera.x).toBe(initialX + CAMERA_X_SPEED);
-    });
-    it("preserves camera.z when moving horizontally", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-        state.slideKeyHeld = "left";
-        state.camera = { x: 0, z: 100 };
-        processHorizontalMovement(state);
-        expect(state.camera.z).toBe(100);
-    });
-    it("allows continuous horizontal movement", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-        state.slideKeyHeld = "right";
-        state.camera = { x: 0, z: 0 };
-        processHorizontalMovement(state);
-        processHorizontalMovement(state);
-        processHorizontalMovement(state);
-        expect(state.camera.x).toBe(CAMERA_X_SPEED * 3);
-    });
-});
-describe("processWalkMovement", () => {
-    function createTestState(animation, facingRight = false) {
-        return createTestInputState(createTestBunnyState(animation, facingRight));
-    }
-    it("does nothing when not walking", () => {
-        const state = createTestState({ kind: "idle", frameIdx: 0 });
-        state.walkKeyHeld = "left";
-        const initialX = state.camera.x;
-        processWalkMovement(state);
-        expect(state.camera.x).toBe(initialX);
-    });
-    it("does nothing when walking but no walk key held", () => {
-        const state = createTestState({ kind: "walk", frameIdx: 0 });
-        const initialX = state.camera.x;
-        processWalkMovement(state);
-        expect(state.camera.x).toBe(initialX);
-    });
-    it("moves camera left when walking and walkKeyHeld is left", () => {
-        const state = createTestState({ kind: "walk", frameIdx: 0 }, false);
-        state.walkKeyHeld = "left";
-        const initialX = state.camera.x;
-        processWalkMovement(state);
-        expect(state.camera.x).toBe(initialX - WALK_SPEED);
-    });
-    it("moves camera right when walking and walkKeyHeld is right", () => {
-        const state = createTestState({ kind: "walk", frameIdx: 0 }, true);
-        state.walkKeyHeld = "right";
-        const initialX = state.camera.x;
-        processWalkMovement(state);
-        expect(state.camera.x).toBe(initialX + WALK_SPEED);
-    });
-    it("preserves camera.z when moving horizontally", () => {
-        const state = createTestState({ kind: "walk", frameIdx: 0 });
-        state.walkKeyHeld = "left";
-        state.camera = { x: 0, z: 100 };
-        processWalkMovement(state);
-        expect(state.camera.z).toBe(100);
-    });
-    it("allows continuous walk movement", () => {
-        const state = createTestState({ kind: "walk", frameIdx: 0 });
-        state.walkKeyHeld = "right";
-        state.camera = { x: 0, z: 0 };
-        processWalkMovement(state);
-        processWalkMovement(state);
-        processWalkMovement(state);
-        expect(state.camera.x).toBe(WALK_SPEED * 3);
-    });
-    it("does nothing during transition", () => {
-        const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: 0, pendingAction: "walk", returnTo: "idle" });
-        state.walkKeyHeld = "left";
-        const initialX = state.camera.x;
-        processWalkMovement(state);
-        expect(state.camera.x).toBe(initialX);
-    });
-    it("does nothing during hop even with walkKeyHeld", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-        state.walkKeyHeld = "left";
-        const initialX = state.camera.x;
-        processWalkMovement(state);
-        expect(state.camera.x).toBe(initialX);
-    });
-    it("does nothing during jump even with walkKeyHeld", () => {
-        const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "idle" });
-        state.walkKeyHeld = "right";
-        const initialX = state.camera.x;
-        processWalkMovement(state);
-        expect(state.camera.x).toBe(initialX);
-    });
-});
-describe("slide input during hop", () => {
-    let bunnyState;
-    let state;
-    let timers;
-    let frames;
-    beforeEach(() => {
-        vi.useFakeTimers();
-        bunnyState = createTestBunnyState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
-        state = createTestInputState(bunnyState);
-        frames = createTestFrames();
-        timers = createBunnyTimers(bunnyState, frames, {
-            walk: 100,
-            idle: 200,
-            jump: 50,
-            transition: 80,
-            hop: 100,
-        });
-        setupKeyboardControls(state, frames, timers);
-    });
-    afterEach(() => {
-        vi.useRealTimers();
-    });
-    it("sets slideKeyHeld to left when a pressed during hop", () => {
-        dispatchKeyDown("a");
-        expect(state.slideKeyHeld).toBe("left");
-    });
-    it("sets slideKeyHeld to left when ArrowLeft pressed during hop", () => {
-        dispatchKeyDown("ArrowLeft");
-        expect(state.slideKeyHeld).toBe("left");
-    });
-    it("sets slideKeyHeld to right when d pressed during hop", () => {
-        dispatchKeyDown("d");
-        expect(state.slideKeyHeld).toBe("right");
-    });
-    it("sets slideKeyHeld to right when ArrowRight pressed during hop", () => {
-        dispatchKeyDown("ArrowRight");
-        expect(state.slideKeyHeld).toBe("right");
-    });
-    it("clears slideKeyHeld on a keyup", () => {
-        dispatchKeyDown("a");
-        expect(state.slideKeyHeld).toBe("left");
-        dispatchKeyUp("a");
-        expect(state.slideKeyHeld).toBe(null);
-    });
-    it("clears slideKeyHeld on ArrowLeft keyup", () => {
-        dispatchKeyDown("ArrowLeft");
-        expect(state.slideKeyHeld).toBe("left");
-        dispatchKeyUp("ArrowLeft");
-        expect(state.slideKeyHeld).toBe(null);
-    });
-    it("clears slideKeyHeld on d keyup", () => {
-        dispatchKeyDown("d");
-        expect(state.slideKeyHeld).toBe("right");
-        dispatchKeyUp("d");
-        expect(state.slideKeyHeld).toBe(null);
-    });
-    it("clears slideKeyHeld on ArrowRight keyup", () => {
-        dispatchKeyDown("ArrowRight");
-        expect(state.slideKeyHeld).toBe("right");
-        dispatchKeyUp("ArrowRight");
-        expect(state.slideKeyHeld).toBe(null);
-    });
-    it("clears slideKeyHeld when hop key released", () => {
-        state.hopKeyHeld = "away";
-        dispatchKeyDown("a");
-        expect(state.slideKeyHeld).toBe("left");
-        dispatchKeyUp("w");
-        expect(state.slideKeyHeld).toBe(null);
-    });
-    it("does not set slideKeyHeld when not hopping", () => {
-        state.bunny.animation = { kind: "idle", frameIdx: 0 };
-        dispatchKeyDown("a");
-        expect(state.slideKeyHeld).toBe(null);
-    });
-    it("does not clear slideKeyHeld when releasing d if currently sliding left", () => {
-        dispatchKeyDown("d");
-        expect(state.slideKeyHeld).toBe("right");
-        dispatchKeyDown("a");
-        expect(state.slideKeyHeld).toBe("left");
-        dispatchKeyUp("d");
-        expect(state.slideKeyHeld).toBe("left");
-    });
-    it("does not clear slideKeyHeld when releasing a if currently sliding right", () => {
-        dispatchKeyDown("a");
-        expect(state.slideKeyHeld).toBe("left");
-        dispatchKeyDown("d");
-        expect(state.slideKeyHeld).toBe("right");
-        dispatchKeyUp("a");
-        expect(state.slideKeyHeld).toBe("right");
-    });
-    it("allows alternating between left and right slide", () => {
-        dispatchKeyDown("d");
-        expect(state.slideKeyHeld).toBe("right");
-        dispatchKeyUp("d");
-        expect(state.slideKeyHeld).toBe(null);
-        dispatchKeyDown("a");
-        expect(state.slideKeyHeld).toBe("left");
-        dispatchKeyUp("a");
-        expect(state.slideKeyHeld).toBe(null);
-        dispatchKeyDown("d");
-        expect(state.slideKeyHeld).toBe("right");
-    });
-    it("handles rapid switching d->a->d while hopping", () => {
-        dispatchKeyDown("d");
-        expect(state.slideKeyHeld).toBe("right");
-        dispatchKeyDown("a");
-        expect(state.slideKeyHeld).toBe("left");
-        dispatchKeyUp("d");
-        expect(state.slideKeyHeld).toBe("left");
-        dispatchKeyUp("a");
-        expect(state.slideKeyHeld).toBe(null);
-        dispatchKeyDown("d");
-        expect(state.slideKeyHeld).toBe("right");
     });
 });
 //# sourceMappingURL=Keyboard.test.js.map

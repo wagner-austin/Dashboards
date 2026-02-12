@@ -3,15 +3,17 @@
  *
  * Implements a virtual joystick that anchors at the touch point and
  * translates drag direction into 8-way movement input. Tap gestures
- * trigger jump. Uses the same shared handlers as keyboard input.
+ * trigger jump. Uses the unified input model shared with keyboard.
  */
 import { type BunnyFrames, type BunnyTimers } from "../entities/Bunny.js";
-import type { InputState } from "./Keyboard.js";
+import { type InputState, type HorizontalInput, type VerticalInput } from "./Keyboard.js";
 /**
  * Touch joystick state tracking.
  *
- * anchorX, anchorY: Where the touch started (joystick center).
- * currentX, currentY: Current touch position.
+ * anchorX: X coordinate where the touch started (joystick center).
+ * anchorY: Y coordinate where the touch started (joystick center).
+ * currentX: Current touch X position.
+ * currentY: Current touch Y position.
  * startTime: When touch started (for tap detection).
  * identifier: Touch.identifier for multi-touch tracking.
  */
@@ -51,7 +53,7 @@ export interface TouchConfig {
     readonly tapThreshold: number;
     readonly tapMaxDistance: number;
 }
-/** Default touch configuration */
+/** Default touch configuration. */
 export declare const DEFAULT_TOUCH_CONFIG: TouchConfig;
 /**
  * Create initial touch state.
@@ -75,45 +77,25 @@ export declare function createTouchState(): TouchState;
  */
 export declare function calculateDirection(joystick: JoystickState, config: TouchConfig): TouchDirection;
 /**
- * Check if direction is up (includes "up" but not just up-left/up-right without up).
+ * Extract horizontal component from touch direction.
  *
  * Args:
- *     direction: Touch direction to check.
+ *     direction: Touch direction to extract from.
  *
  * Returns:
- *     True if direction includes up.
+ *     HorizontalInput extracted from direction.
  */
-declare function isUp(direction: TouchDirection): boolean;
+declare function directionToHorizontal(direction: TouchDirection): HorizontalInput;
 /**
- * Check if direction is down (includes "down").
+ * Extract vertical component from touch direction.
  *
  * Args:
- *     direction: Touch direction to check.
+ *     direction: Touch direction to extract from.
  *
  * Returns:
- *     True if direction includes down.
+ *     VerticalInput extracted from direction.
  */
-declare function isDown(direction: TouchDirection): boolean;
-/**
- * Check if direction is left (includes "left").
- *
- * Args:
- *     direction: Touch direction to check.
- *
- * Returns:
- *     True if direction includes left.
- */
-declare function isLeft(direction: TouchDirection): boolean;
-/**
- * Check if direction is right (includes "right").
- *
- * Args:
- *     direction: Touch direction to check.
- *
- * Returns:
- *     True if direction includes right.
- */
-declare function isRight(direction: TouchDirection): boolean;
+declare function directionToVertical(direction: TouchDirection): VerticalInput;
 /**
  * Check if a touch qualifies as a tap (quick touch-release).
  *
@@ -127,10 +109,10 @@ declare function isRight(direction: TouchDirection): boolean;
  */
 export declare function isTap(joystick: JoystickState, releaseTime: number, config: TouchConfig): boolean;
 /**
- * Process a new direction and generate appropriate input actions.
+ * Process a new direction and update input state.
  *
- * Compares previous direction to new direction and triggers
- * the appropriate start/end handlers for movement.
+ * Converts touch direction to horizontal/vertical components and
+ * calls the shared processInputChange function.
  *
  * Args:
  *     prevDirection: Previous touch direction.
@@ -225,7 +207,7 @@ export declare function handleTouchEndEvent(touchState: TouchState, inputState: 
  * Setup touch controls for the game.
  *
  * Attaches touch event listeners to the document and translates
- * touch gestures into input actions using the shared handlers.
+ * touch gestures into input state changes using the shared input model.
  *
  * Args:
  *     inputState: Game input state.
@@ -237,7 +219,7 @@ export declare function handleTouchEndEvent(touchState: TouchState, inputState: 
  *     TouchState for external access if needed.
  */
 export declare function setupTouchControls(inputState: InputState, bunnyFrames: BunnyFrames, bunnyTimers: BunnyTimers, config?: TouchConfig): TouchState;
-/** Test hooks for internal functions */
+/** Test hooks for internal functions. */
 export declare const _test_hooks: {
     createTouchState: typeof createTouchState;
     calculateDirection: typeof calculateDirection;
@@ -247,10 +229,8 @@ export declare const _test_hooks: {
     handleTouchStart: typeof handleTouchStart;
     handleTouchMove: typeof handleTouchMove;
     handleTouchEndEvent: typeof handleTouchEndEvent;
-    isUp: typeof isUp;
-    isDown: typeof isDown;
-    isLeft: typeof isLeft;
-    isRight: typeof isRight;
+    directionToHorizontal: typeof directionToHorizontal;
+    directionToVertical: typeof directionToVertical;
     findTouchByIdentifier: typeof findTouchByIdentifier;
     hasTouchWithIdentifier: typeof hasTouchWithIdentifier;
     DEFAULT_TOUCH_CONFIG: TouchConfig;

@@ -5,7 +5,7 @@
  * Both keyboard and touch input sources use these same handlers to ensure
  * consistent behavior and a single source of truth.
  */
-import { type BunnyState, type BunnyFrames, type BunnyTimers } from "../entities/Bunny.js";
+import { type BunnyState, type BunnyFrames, type BunnyTimers, type IsHorizontalHeld } from "../entities/Bunny.js";
 /**
  * Check if bunny has a pending jump.
  *
@@ -72,14 +72,15 @@ export declare function handleHopInput(bunny: BunnyState, timers: BunnyTimers, d
 /**
  * Handle hop release (W/S key or touch released).
  *
- * Stops the hopping animation and transitions back to previous state.
- * If released during transition, cancels and returns to previous state.
+ * Stops the hopping animation and checks current input to decide next state.
+ * If released during transition, cancels and checks current input.
  *
  * Args:
  *     bunny: Bunny state to update.
  *     timers: Bunny animation timers.
+ *     isHorizontalHeld: Callback to check current horizontal input.
  */
-export declare function handleHopRelease(bunny: BunnyState, timers: BunnyTimers): void;
+export declare function handleHopRelease(bunny: BunnyState, timers: BunnyTimers, isHorizontalHeld: IsHorizontalHeld): void;
 /** Test hooks for internal functions */
 export declare const _test_hooks: {
     isPendingJump: typeof isPendingJump;
