@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-    <div id="debug">PAGE LOADED v2</div>
+    <div id="debug">PAGE LOADED v3</div>
     <pre id="screen"></pre>
     <script>
         window.debugLog = function(msg) {
@@ -62,7 +62,7 @@
     </script>
     <script type="module">
         window.debugLog('LOADING MODULE...');
-        import('./dist/io/autostart.js').then(function() {
+        import('./dist/io/autostart.js?v=3').then(function() {
             window.debugLog('MODULE LOADED OK');
         }).catch(function(err) {
             window.debugLog('MODULE ERROR: ' + err.message);
