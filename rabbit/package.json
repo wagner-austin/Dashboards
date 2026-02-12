@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
+    "bundle": "tsc && node scripts/bundle.js",
     "watch": "tsc --watch",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
