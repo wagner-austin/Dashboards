@@ -5,7 +5,7 @@
  */
 
 export {
-  createBrowserAudioElement,
+  createBrowserAudioContext,
   createDefaultAudioDependencies,
 } from "./browser.js";
 

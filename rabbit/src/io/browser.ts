@@ -4,22 +4,29 @@
  * Testability is ensured through dependency injection in consuming modules.
  */
 
-import type { AudioElementLike, AudioDependencies } from "../audio/types.js";
+import type { AudioContextLike, AudioDependencies } from "../audio/types.js";
 
 /**
- * Create browser audio element.
- * Returns a real HTMLAudioElement for browser use.
+ * Create browser AudioContext.
+ *
+ * Returns:
+ *     AudioContext for Web Audio API.
  */
-export function createBrowserAudioElement(): AudioElementLike {
-  return new Audio();
+export function createBrowserAudioContext(): AudioContextLike {
+  const AudioContextClass = window.AudioContext;
+  return new AudioContextClass() as AudioContextLike;
 }
 
 /**
  * Create default audio dependencies for browser use.
+ *
+ * Returns:
+ *     AudioDependencies with browser implementations.
  */
 export function createDefaultAudioDependencies(): AudioDependencies {
   return {
-    createElementFn: createBrowserAudioElement,
+    createContext: createBrowserAudioContext,
+    fetchFn: (url: string) => fetch(url),
     addEventListenerFn: (type, handler): void => {
       document.addEventListener(type, handler);
     },
