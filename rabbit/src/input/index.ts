@@ -8,8 +8,10 @@ export {
   setupKeyboardControls,
   processDepthMovement,
   processHorizontalMovement,
-  processWalkMovement,
+  processInputChange,
   type InputState,
+  type HorizontalInput,
+  type VerticalInput,
 } from "./Keyboard.js";
 
 export {
