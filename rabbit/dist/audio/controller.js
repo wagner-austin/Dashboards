@@ -4,18 +4,6 @@
  */
 import { createAudioPlayer } from "./AudioPlayer.js";
 import { getDefaultTrack } from "./TrackSelector.js";
-/* v8 ignore start */
-/** Debug log to screen overlay. */
-function debug(msg) {
-    if (typeof window !== "undefined") {
-        const win = window;
-        if (win.debugLog !== undefined) {
-            win.debugLog(msg);
-            return;
-        }
-    }
-    console.log(msg);
-}
 /**
  * Get track at index from tracks array.
  *
@@ -95,20 +83,15 @@ export function initializeAudio(audioConfig, deps) {
     }
     let system = null;
     const start = () => {
-        debug("[Audio] start() called");
         if (system !== null) {
-            debug("[Audio] system already exists, returning");
             return;
         }
-        debug("[Audio] Creating AudioContext...");
         const context = deps.createContext();
-        debug(`[Audio] AudioContext created, state: ${context.state}`);
         const player = createAudioPlayer({
             context,
             fetchFn: deps.fetchFn,
             masterVolume: audioConfig.masterVolume,
         });
-        debug("[Audio] Player created");
         system = {
             context,
             player,
@@ -121,8 +104,6 @@ export function initializeAudio(audioConfig, deps) {
                 deps.removeEventListenerFn("keydown", start);
             },
         };
-        // Play track immediately - skip resume(), just play
-        debug(`[Audio] Playing track: ${track.id}`);
         player.play(track);
         deps.removeEventListenerFn("click", start);
         deps.removeEventListenerFn("touchstart", start);

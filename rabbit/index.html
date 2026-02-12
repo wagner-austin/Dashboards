@@ -22,51 +22,10 @@
             bottom: 0;
             left: 0;
         }
-        #debug {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.9);
-            color: #0f0;
-            font-family: monospace;
-            font-size: 12px;
-            padding: 10px;
-            max-height: 50vh;
-            overflow-y: auto;
-            z-index: 9999;
-            white-space: pre-wrap;
-        }
     </style>
 </head>
 <body>
-    <div id="debug">PAGE LOADED v3</div>
     <pre id="screen"></pre>
-    <script>
-        window.debugLog = function(msg) {
-            const el = document.getElementById('debug');
-            if (el) {
-                el.textContent += msg + '\n';
-                el.scrollTop = el.scrollHeight;
-            }
-            console.log(msg);
-        };
-        // Immediate touch test - runs before any modules
-        document.addEventListener('touchstart', function() {
-            window.debugLog('TOUCH DETECTED');
-        });
-        document.addEventListener('click', function() {
-            window.debugLog('CLICK DETECTED');
-        });
-        window.debugLog('INLINE SCRIPT RAN');
-    </script>
-    <script type="module">
-        window.debugLog('LOADING MODULE...');
-        import('./dist/io/autostart.js?v=3').then(function() {
-            window.debugLog('MODULE LOADED OK');
-        }).catch(function(err) {
-            window.debugLog('MODULE ERROR: ' + err.message);
-        });
-    </script>
+    <script type="module" src="./dist/io/autostart.js"></script>
 </body>
 </html>

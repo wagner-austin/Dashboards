@@ -404,7 +404,7 @@ describe("initializeAudio", () => {
     expect(system1).toBe(system2);
   });
 
-  it("resumes suspended context on interaction", async () => {
+  it("plays track on suspended context without calling resume", async () => {
     const audioDeps = createTestAudioDeps("suspended");
     initializeAudio(
       {
@@ -418,26 +418,8 @@ describe("initializeAudio", () => {
     audioDeps.triggerEvent("click");
     await flushPromises();
 
-    expect(audioDeps.context.resumeCalled).toBe(true);
-  });
-
-  it("plays track even when resume fails", async () => {
-    const audioDeps = createTestAudioDeps("suspended");
-    audioDeps.context.setResumeRejects(true);
-
-    initializeAudio(
-      {
-        enabled: true,
-        masterVolume: 0.5,
-        tracks: [{ id: "test", path: "audio/test.mp3", volume: 1.0, loop: true, tags: {} }],
-      },
-      audioDeps
-    );
-
-    audioDeps.triggerEvent("click");
-    await flushPromises();
-
-    expect(audioDeps.context.resumeCalled).toBe(true);
+    // We no longer call resume - just play directly
+    expect(audioDeps.context.sources.length).toBeGreaterThan(0);
   });
 
   it("returns tracks and currentIndex starting at 0", () => {

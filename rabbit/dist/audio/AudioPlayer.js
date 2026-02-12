@@ -3,18 +3,6 @@
  * Fetches audio as ArrayBuffer, decodes to AudioBuffer, plays via BufferSourceNode.
  * Supports crossfade between tracks using GainNode ramping.
  */
-/* v8 ignore start */
-/** Debug log to screen overlay. */
-function debug(msg) {
-    if (typeof window !== "undefined") {
-        const win = window;
-        if (win.debugLog !== undefined) {
-            win.debugLog(msg);
-            return;
-        }
-    }
-    console.log(msg);
-}
 /** Fade duration in seconds. */
 const FADE_DURATION = 1.0;
 /**
@@ -41,20 +29,15 @@ export function createAudioPlayer(deps) {
     async function loadBuffer(track) {
         const cached = state.buffers.get(track.id);
         if (cached !== undefined) {
-            debug(`[AudioPlayer] Using cached buffer for: ${track.id}`);
             return cached;
         }
-        debug(`[AudioPlayer] Fetching audio: ${track.path}`);
         const response = await deps.fetchFn(track.path);
         if (!response.ok) {
-            debug(`[AudioPlayer] Fetch failed: ${String(response.status)}`);
             return null;
         }
-        debug("[AudioPlayer] Decoding audio...");
         const arrayBuffer = await response.arrayBuffer();
         const audioBuffer = await deps.context.decodeAudioData(arrayBuffer);
         state.buffers.set(track.id, audioBuffer);
-        debug(`[AudioPlayer] Audio decoded and cached: ${track.id}`);
         return audioBuffer;
     }
     function fadeOut(active) {
@@ -82,7 +65,6 @@ export function createAudioPlayer(deps) {
         active.gain.gain.linearRampToValueAtTime(targetVolume, currentTime + FADE_DURATION);
     }
     function play(track) {
-        debug(`[AudioPlayer] play() called for: ${track.id}`);
         state.currentTrackId = track.id;
         state.isPlaying = true;
         if (state.activeSource !== null) {
@@ -91,27 +73,23 @@ export function createAudioPlayer(deps) {
         }
         loadBuffer(track).then(buffer => {
             if (buffer === null) {
-                debug("[AudioPlayer] Buffer is null, aborting");
                 return;
             }
             if (state.currentTrackId !== track.id) {
-                debug("[AudioPlayer] Track changed, aborting");
                 return;
             }
-            debug("[AudioPlayer] Creating source and starting playback");
             const active = createSource(buffer, track);
             state.activeSource = active;
             active.source.start();
             fadeIn(active);
-            debug("[AudioPlayer] Playback started");
             active.source.onended = () => {
                 if (state.activeSource === active) {
                     state.activeSource = null;
                     state.isPlaying = false;
                 }
             };
-        }).catch((err) => {
-            debug(`[AudioPlayer] Load failed: ${String(err)}`);
+        }).catch(() => {
+            /* fetch or decode failed */
         });
     }
     function pause() {

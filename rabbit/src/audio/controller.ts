@@ -9,20 +9,6 @@ import type { AudioTrack, AudioConfig, AudioDependencies, AudioContextLike } fro
 
 export type { AudioDependencies };
 
-/* v8 ignore start */
-/** Debug log to screen overlay. */
-function debug(msg: string): void {
-  if (typeof window !== "undefined") {
-    const win = window as unknown as { debugLog?: (m: string) => void };
-    if (win.debugLog !== undefined) {
-      win.debugLog(msg);
-      return;
-    }
-  }
-  console.log(msg);
-}
-/* v8 ignore stop */
-
 /** Audio system state for track switching. */
 export interface AudioSystem {
   context: AudioContextLike;
@@ -132,22 +118,17 @@ export function initializeAudio(
   let system: AudioSystem | null = null;
 
   const start = (): void => {
-    debug("[Audio] start() called");
     if (system !== null) {
-      debug("[Audio] system already exists, returning");
       return;
     }
 
-    debug("[Audio] Creating AudioContext...");
     const context = deps.createContext();
-    debug(`[Audio] AudioContext created, state: ${context.state}`);
 
     const player = createAudioPlayer({
       context,
       fetchFn: deps.fetchFn,
       masterVolume: audioConfig.masterVolume,
     });
-    debug("[Audio] Player created");
 
     system = {
       context,
@@ -162,8 +143,6 @@ export function initializeAudio(
       },
     };
 
-    // Play track immediately - skip resume(), just play
-    debug(`[Audio] Playing track: ${track.id}`);
     player.play(track);
 
     deps.removeEventListenerFn("click", start);
