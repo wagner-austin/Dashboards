@@ -13,6 +13,7 @@ import {
   type BunnyFrames,
   type BunnyTimers,
   type PendingAction,
+  type IsHorizontalHeld,
 } from "../entities/Bunny.js";
 
 /**
@@ -63,12 +64,11 @@ export function handleJumpInput(
     timers.transition.start();
   } else if (anim.kind === "walk") {
     timers.walk.stop();
-    bunny.animation = { kind: "jump", frameIdx: 0, returnTo: "walk" };
+    bunny.animation = { kind: "jump", frameIdx: 0 };
     timers.jump.start();
   } else if (anim.kind === "transition") {
     timers.transition.stop();
-    const returnTo = anim.returnTo === "walk" ? "walk" : "idle";
-    bunny.animation = { kind: "jump", frameIdx: 0, returnTo };
+    bunny.animation = { kind: "jump", frameIdx: 0 };
     timers.jump.start();
   }
 }
@@ -215,16 +215,18 @@ export function handleHopInput(
 /**
  * Handle hop release (W/S key or touch released).
  *
- * Stops the hopping animation and transitions back to previous state.
- * If released during transition, cancels and returns to previous state.
+ * Stops the hopping animation and checks current input to decide next state.
+ * If released during transition, cancels and checks current input.
  *
  * Args:
  *     bunny: Bunny state to update.
  *     timers: Bunny animation timers.
+ *     isHorizontalHeld: Callback to check current horizontal input.
  */
 export function handleHopRelease(
   bunny: BunnyState,
-  timers: BunnyTimers
+  timers: BunnyTimers,
+  isHorizontalHeld: IsHorizontalHeld
 ): void {
   const anim = bunny.animation;
 
@@ -233,12 +235,12 @@ export function handleHopRelease(
     // Cancel turn transitions (they're specifically for hopping)
     if (anim.type === "walk_to_turn_away" || anim.type === "walk_to_turn_toward") {
       timers.transition.stop();
-      if (anim.returnTo === "idle") {
-        bunny.animation = { kind: "idle", frameIdx: 0 };
-        timers.idle.start();
-      } else {
+      if (isHorizontalHeld()) {
         bunny.animation = { kind: "walk", frameIdx: 0 };
         timers.walk.start();
+      } else {
+        bunny.animation = { kind: "idle", frameIdx: 0 };
+        timers.idle.start();
       }
       return;
     }
@@ -260,9 +262,8 @@ export function handleHopRelease(
   }
 
   timers.hop.stop();
-  const returnTo = anim.returnTo;
 
-  if (returnTo === "walk") {
+  if (isHorizontalHeld()) {
     bunny.animation = { kind: "walk", frameIdx: 0 };
     timers.walk.start();
   } else {
