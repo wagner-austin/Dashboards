@@ -1,8 +1,8 @@
 /**
  * Core type definitions for the audio system.
- * Supports ambient background music with modular track selection.
+ * Uses Web Audio API for reliable cross-browser playback.
  */
-/** Create initial audio state */
+/** Create initial audio state. */
 export function createAudioState() {
     return {
         currentTrackId: null,
@@ -10,7 +10,7 @@ export function createAudioState() {
         volume: 1.0,
     };
 }
-/** Test hooks for internal functions */
+/** Test hooks for internal functions. */
 export const _test_hooks = {
     createAudioState,
 };

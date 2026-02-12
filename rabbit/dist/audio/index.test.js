@@ -1,10 +1,107 @@
 /**
  * Tests for audio module public API exports.
+ * Uses real test implementations instead of mocks.
  */
 import { describe, it, expect } from "vitest";
-import { 
-// Types - imported for type checking only
-createAudioState, validateAudioConfig, selectTrackByTime, selectTrackByLocation, getDefaultTrack, createAudioPlayer, createBrowserAudioElement, createDefaultAudioDependencies, setupAudioStart, switchToNextTrack, setupTrackSwitcher, initializeAudio, } from "./index.js";
+import { createAudioState, validateAudioConfig, selectTrackByTime, selectTrackByLocation, getDefaultTrack, createAudioPlayer, createBrowserAudioContext, createDefaultAudioDependencies, setupAudioStart, switchToNextTrack, setupTrackSwitcher, initializeAudio, } from "./index.js";
+/** Create test AudioParam. */
+function createTestAudioParam() {
+    const ramps = [];
+    return {
+        value: 0,
+        linearRampToValueAtTime(value, endTime) {
+            ramps.push({ value, endTime });
+        },
+        get ramps() {
+            return ramps;
+        },
+    };
+}
+/** Create test GainNode. */
+function createTestGainNode() {
+    const connections = [];
+    const gain = createTestAudioParam();
+    return {
+        gain,
+        connect(destination) {
+            connections.push(destination);
+        },
+        get connections() {
+            return connections;
+        },
+    };
+}
+/** Create test BufferSourceNode. */
+function createTestBufferSource() {
+    let started = false;
+    let stopped = false;
+    const connectedTo = [];
+    return {
+        buffer: null,
+        loop: false,
+        onended: null,
+        connect(destination) {
+            connectedTo.push(destination);
+        },
+        start() {
+            started = true;
+        },
+        stop() {
+            stopped = true;
+        },
+        get started() {
+            return started;
+        },
+        get stopped() {
+            return stopped;
+        },
+        get connectedTo() {
+            return connectedTo;
+        },
+    };
+}
+/** Create test AudioContext. */
+function createTestContext() {
+    const sources = [];
+    const gains = [];
+    const destination = {};
+    return {
+        state: "running",
+        destination,
+        resume() {
+            return Promise.resolve();
+        },
+        createBufferSource() {
+            const source = createTestBufferSource();
+            sources.push(source);
+            return source;
+        },
+        createGain() {
+            const gain = createTestGainNode();
+            gains.push(gain);
+            return gain;
+        },
+        decodeAudioData() {
+            return Promise.resolve({});
+        },
+        get sources() {
+            return sources;
+        },
+        get gains() {
+            return gains;
+        },
+    };
+}
+/** Create test fetch function. */
+function createTestFetch() {
+    return (url) => {
+        void url;
+        return Promise.resolve({
+            ok: true,
+            arrayBuffer: () => Promise.resolve(new ArrayBuffer(8)),
+        });
+    };
+}
 describe("audio module exports", () => {
     describe("type exports", () => {
         it("exports TimeOfDay type", () => {
@@ -41,25 +138,14 @@ describe("audio module exports", () => {
             };
             expect(state.isPlaying).toBe(false);
         });
-        it("exports AudioElementLike type", () => {
-            const element = {
-                src: "",
-                volume: 1,
-                loop: false,
-                play: () => Promise.resolve(),
-                pause: () => { },
-            };
-            expect(element.src).toBe("");
+        it("exports AudioContextLike type", () => {
+            const context = createTestContext();
+            expect(context.state).toBe("running");
         });
         it("exports AudioPlayerDeps type", () => {
             const deps = {
-                createElement: () => ({
-                    src: "",
-                    volume: 1,
-                    loop: false,
-                    play: () => Promise.resolve(),
-                    pause: () => { },
-                }),
+                context: createTestContext(),
+                fetchFn: createTestFetch(),
                 masterVolume: 1.0,
             };
             expect(deps.masterVolume).toBe(1.0);
@@ -103,20 +189,15 @@ describe("audio module exports", () => {
         });
         it("exports createAudioPlayer", () => {
             const deps = {
-                createElement: () => ({
-                    src: "",
-                    volume: 1,
-                    loop: false,
-                    play: () => Promise.resolve(),
-                    pause: () => { },
-                }),
+                context: createTestContext(),
+                fetchFn: createTestFetch(),
                 masterVolume: 1.0,
             };
             const player = createAudioPlayer(deps);
             expect(player.getState().isPlaying).toBe(false);
         });
-        it("exports createBrowserAudioElement", () => {
-            expect(typeof createBrowserAudioElement).toBe("function");
+        it("exports createBrowserAudioContext", () => {
+            expect(typeof createBrowserAudioContext).toBe("function");
         });
         it("exports createDefaultAudioDependencies", () => {
             expect(typeof createDefaultAudioDependencies).toBe("function");
@@ -136,27 +217,27 @@ describe("audio module exports", () => {
     });
     describe("controller type exports", () => {
         it("exports AudioDependencies type", () => {
+            const context = createTestContext();
             const deps = {
-                createElementFn: () => ({
-                    src: "",
-                    volume: 1,
-                    loop: false,
-                    play: () => Promise.resolve(),
-                    pause: () => { },
-                }),
+                createContext: () => context,
+                fetchFn: createTestFetch(),
                 addEventListenerFn: () => { },
                 removeEventListenerFn: () => { },
             };
-            expect(typeof deps.createElementFn).toBe("function");
+            expect(typeof deps.createContext).toBe("function");
         });
         it("exports AudioSystem type", () => {
+            const context = createTestContext();
             const system = {
+                context,
                 player: {
                     play: () => { },
                     pause: () => { },
                     resume: () => { },
                     setVolume: () => { },
-                    getState: () => ({ currentTrackId: null, isPlaying: false, volume: 1 }),
+                    getState: () => ({
+                        currentTrackId: null, isPlaying: false, volume: 1,
+                    }),
                 },
                 tracks: [],
                 currentIndex: 0,

@@ -1,12 +1,13 @@
 /**
  * Audio controller - manages audio playback lifecycle and track switching.
- * Handles browser autoplay restrictions via user interaction triggers.
+ * Initializes AudioContext on first user interaction to satisfy browser autoplay policies.
  */
 import { type AudioPlayer } from "./AudioPlayer.js";
-import type { AudioTrack, AudioConfig, AudioDependencies } from "./types.js";
+import type { AudioTrack, AudioConfig, AudioDependencies, AudioContextLike } from "./types.js";
 export type { AudioDependencies };
-/** Audio system state for track switching */
+/** Audio system state for track switching. */
 export interface AudioSystem {
+    context: AudioContextLike;
     player: AudioPlayer;
     tracks: readonly AudioTrack[];
     currentIndex: number;
@@ -14,31 +15,58 @@ export interface AudioSystem {
 }
 /**
  * Get track at index from tracks array.
- * Returns undefined if index is out of bounds.
+ *
+ * Args:
+ *     tracks: Array of audio tracks.
+ *     index: Index to retrieve.
+ *
+ * Returns:
+ *     Track at index or undefined if out of bounds.
  */
 declare function getTrackAtIndex(tracks: readonly AudioTrack[], index: number): AudioTrack | undefined;
-/** Type guard for KeyboardEvent */
+/** Type guard for KeyboardEvent. */
 declare function isKeyboardEvent(e: Event): e is KeyboardEvent;
 /**
  * Setup audio to start on first user interaction.
- * Required for iOS/Safari which blocks autoplay.
+ * Creates AudioContext and resumes it if suspended, then plays the track.
+ *
+ * Args:
+ *     context: Audio context.
+ *     player: Audio player.
+ *     track: Track to play.
+ *     deps: Audio dependencies.
+ *
+ * Returns:
+ *     Cleanup function to remove event listeners.
  */
-export declare function setupAudioStart(player: AudioPlayer, track: AudioTrack, deps: AudioDependencies): () => void;
+export declare function setupAudioStart(context: AudioContextLike, player: AudioPlayer, track: AudioTrack, deps: AudioDependencies): () => void;
 /**
  * Switch to next track with crossfade.
- * Cycles through available tracks.
+ *
+ * Args:
+ *     audio: Audio system.
  */
 export declare function switchToNextTrack(audio: AudioSystem): void;
 /**
  * Setup keyboard listener for track switching (N key).
+ *
+ * Args:
+ *     audio: Audio system.
+ *     addListenerFn: Function to add event listener.
  */
 export declare function setupTrackSwitcher(audio: AudioSystem, addListenerFn: (type: string, handler: (e: Event) => void) => void): void;
 /**
- * Initialize audio player if audio is enabled in config.
- * Returns the audio system with player and tracks, or null if disabled.
+ * Initialize audio system if enabled in config.
+ *
+ * Args:
+ *     audioConfig: Audio configuration from config.json.
+ *     deps: Audio dependencies.
+ *
+ * Returns:
+ *     Audio system or null if disabled.
  */
 export declare function initializeAudio(audioConfig: AudioConfig | undefined, deps: AudioDependencies): AudioSystem | null;
-/** Test hooks for internal functions */
+/** Test hooks for internal functions. */
 export declare const _test_hooks: {
     getTrackAtIndex: typeof getTrackAtIndex;
     isKeyboardEvent: typeof isKeyboardEvent;

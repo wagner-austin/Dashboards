@@ -1,11 +1,10 @@
 /**
- * Audio player with dependency injection for testability.
- * Uses HTMLAudioElement for cross-browser compatibility.
- * Supports fade-in on start and crossfade between tracks.
+ * Audio player using Web Audio API.
+ * Fetches audio as ArrayBuffer, decodes to AudioBuffer, plays via BufferSourceNode.
+ * Supports crossfade between tracks using GainNode ramping.
  */
-import type { AudioTrack, AudioState, AudioElementLike } from "./types.js";
-export type { AudioElementLike };
-/** Audio player interface */
+import type { AudioTrack, AudioState, AudioContextLike, FetchFn } from "./types.js";
+/** Audio player interface. */
 export interface AudioPlayer {
     play(track: AudioTrack): void;
     pause(): void;
@@ -13,18 +12,25 @@ export interface AudioPlayer {
     setVolume(volume: number): void;
     getState(): AudioState;
 }
-/** Dependencies for audio player */
+/** Dependencies for audio player. */
 export interface AudioPlayerDeps {
-    createElement: () => AudioElementLike;
+    context: AudioContextLike;
+    fetchFn: FetchFn;
     masterVolume: number;
 }
 /**
- * Create audio player with injected dependencies.
- * Allows testing without actual Audio elements.
+ * Create audio player with Web Audio API.
+ *
+ * Args:
+ *     deps: Audio player dependencies.
+ *
+ * Returns:
+ *     AudioPlayer instance.
  */
 export declare function createAudioPlayer(deps: AudioPlayerDeps): AudioPlayer;
-/** Test hooks for internal functions */
+/** Test hooks for internal functions. */
 export declare const _test_hooks: {
     createAudioPlayer: typeof createAudioPlayer;
+    FADE_DURATION: number;
 };
 //# sourceMappingURL=AudioPlayer.d.ts.map

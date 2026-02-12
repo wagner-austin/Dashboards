@@ -1,20 +1,144 @@
 /**
  * @vitest-environment jsdom
  * Tests for audio controller.
+ * Uses real test implementations instead of mocks.
  */
 import { describe, it, expect } from "vitest";
 import { setupAudioStart, switchToNextTrack, setupTrackSwitcher, initializeAudio, _test_hooks, } from "./controller.js";
-/** Create test audio dependencies with trackable event listeners */
-function createTestAudioDeps() {
-    const handlers = new Map();
+/** Create test AudioParam. */
+function createTestAudioParam() {
+    const ramps = [];
     return {
-        createElementFn: () => ({
-            src: "",
-            volume: 1,
-            loop: false,
-            play: () => Promise.resolve(),
-            pause: () => { },
-        }),
+        value: 0,
+        linearRampToValueAtTime(value, endTime) {
+            ramps.push({ value, endTime });
+        },
+        get ramps() {
+            return ramps;
+        },
+    };
+}
+/** Create test GainNode. */
+function createTestGainNode() {
+    const connections = [];
+    const gain = createTestAudioParam();
+    return {
+        gain,
+        connect(destination) {
+            connections.push(destination);
+        },
+        get connections() {
+            return connections;
+        },
+    };
+}
+/** Create test BufferSourceNode. */
+function createTestBufferSource() {
+    let started = false;
+    let stopped = false;
+    const connectedTo = [];
+    return {
+        buffer: null,
+        loop: false,
+        onended: null,
+        connect(destination) {
+            connectedTo.push(destination);
+        },
+        start() {
+            started = true;
+        },
+        stop() {
+            stopped = true;
+        },
+        get started() {
+            return started;
+        },
+        get stopped() {
+            return stopped;
+        },
+        get connectedTo() {
+            return connectedTo;
+        },
+    };
+}
+/** Create test AudioContext. */
+function createTestContext(initialState = "running") {
+    const sources = [];
+    const gains = [];
+    const decodedBuffers = [];
+    let resumeCalled = false;
+    let resumeRejects = false;
+    let currentState = initialState;
+    const destination = {};
+    return {
+        get state() {
+            return currentState;
+        },
+        destination,
+        resume() {
+            resumeCalled = true;
+            if (resumeRejects) {
+                return Promise.reject(new Error("Resume failed"));
+            }
+            return Promise.resolve();
+        },
+        createBufferSource() {
+            const source = createTestBufferSource();
+            sources.push(source);
+            return source;
+        },
+        createGain() {
+            const gain = createTestGainNode();
+            gains.push(gain);
+            return gain;
+        },
+        decodeAudioData(data) {
+            decodedBuffers.push(data);
+            return Promise.resolve({});
+        },
+        get sources() {
+            return sources;
+        },
+        get gains() {
+            return gains;
+        },
+        get decodedBuffers() {
+            return decodedBuffers;
+        },
+        get resumeCalled() {
+            return resumeCalled;
+        },
+        get resumeRejects() {
+            return resumeRejects;
+        },
+        setResumeRejects(value) {
+            resumeRejects = value;
+        },
+        setState(state) {
+            currentState = state;
+        },
+    };
+}
+/** Create test fetch function. */
+function createTestFetch(ok = true) {
+    const fetchedUrls = [];
+    const fetchFn = (url) => {
+        fetchedUrls.push(url);
+        return Promise.resolve({
+            ok,
+            arrayBuffer: () => Promise.resolve(new ArrayBuffer(8)),
+        });
+    };
+    return [fetchFn, { get fetchedUrls() { return fetchedUrls; } }];
+}
+/** Create test audio dependencies with trackable event listeners. */
+function createTestAudioDeps(contextState = "running") {
+    const handlers = new Map();
+    const context = createTestContext(contextState);
+    const [fetchFn] = createTestFetch();
+    return {
+        createContext: () => context,
+        fetchFn,
         addEventListenerFn: (type, handler) => {
             const existing = handlers.get(type) ?? [];
             existing.push(handler);
@@ -27,54 +151,86 @@ function createTestAudioDeps() {
                 existing.splice(idx, 1);
             }
         },
-        handlers,
+        get handlers() {
+            return handlers;
+        },
+        context,
     };
+}
+/** Create test player. */
+function createTestPlayer() {
+    const playedTracks = [];
+    return {
+        play(track) {
+            playedTracks.push(track);
+        },
+        pause() { },
+        resume() { },
+        setVolume() { },
+        getState() {
+            return { currentTrackId: null, isPlaying: false, volume: 1 };
+        },
+        get playedTracks() {
+            return playedTracks;
+        },
+    };
+}
+/** Wait for async operations. */
+async function flushPromises() {
+    await new Promise(resolve => setTimeout(resolve, 0));
 }
 describe("setupAudioStart", () => {
     it("registers event listeners for click, touchstart, keydown", () => {
         const audioDeps = createTestAudioDeps();
-        const mockPlayer = {
-            play: () => { },
-            pause: () => { },
-            resume: () => { },
-            setVolume: () => { },
-            getState: () => ({
-                currentTrackId: null, isPlaying: false, volume: 1,
-            }),
-        };
-        const mockTrack = { id: "test", path: "audio/test.mp3", volume: 1, loop: true, tags: {} };
-        setupAudioStart(mockPlayer, mockTrack, audioDeps);
+        const player = createTestPlayer();
+        const track = { id: "test", path: "audio/test.mp3", volume: 1, loop: true, tags: {} };
+        setupAudioStart(audioDeps.context, player, track, audioDeps);
         expect(audioDeps.handlers.get("click")?.length).toBe(1);
         expect(audioDeps.handlers.get("touchstart")?.length).toBe(1);
         expect(audioDeps.handlers.get("keydown")?.length).toBe(1);
     });
     it("removes listeners after play is triggered", () => {
         const audioDeps = createTestAudioDeps();
-        let playCalled = false;
-        const mockPlayer = {
-            play: () => { playCalled = true; },
-            pause: () => { },
-            resume: () => { },
-            setVolume: () => { },
-            getState: () => ({
-                currentTrackId: null, isPlaying: false, volume: 1,
-            }),
-        };
-        const mockTrack = { id: "test", path: "audio/test.mp3", volume: 1, loop: true, tags: {} };
-        setupAudioStart(mockPlayer, mockTrack, audioDeps);
-        // Get the click handler
+        const player = createTestPlayer();
+        const track = { id: "test", path: "audio/test.mp3", volume: 1, loop: true, tags: {} };
+        setupAudioStart(audioDeps.context, player, track, audioDeps);
         const clickHandlers = audioDeps.handlers.get("click");
         expect(clickHandlers?.length).toBe(1);
-        // Trigger click
         const clickHandler = clickHandlers?.[0];
         if (clickHandler !== undefined) {
             clickHandler();
         }
-        expect(playCalled).toBe(true);
-        // Handlers should be removed after play
+        expect(player.playedTracks.length).toBe(1);
         expect(audioDeps.handlers.get("click")?.length).toBe(0);
         expect(audioDeps.handlers.get("touchstart")?.length).toBe(0);
         expect(audioDeps.handlers.get("keydown")?.length).toBe(0);
+    });
+    it("resumes suspended context before playing", async () => {
+        const audioDeps = createTestAudioDeps("suspended");
+        const player = createTestPlayer();
+        const track = { id: "test", path: "audio/test.mp3", volume: 1, loop: true, tags: {} };
+        setupAudioStart(audioDeps.context, player, track, audioDeps);
+        const clickHandler = audioDeps.handlers.get("click")?.[0];
+        if (clickHandler !== undefined) {
+            clickHandler();
+        }
+        await flushPromises();
+        expect(audioDeps.context.resumeCalled).toBe(true);
+        expect(player.playedTracks.length).toBe(1);
+    });
+    it("handles resume failure gracefully", async () => {
+        const audioDeps = createTestAudioDeps("suspended");
+        audioDeps.context.setResumeRejects(true);
+        const player = createTestPlayer();
+        const track = { id: "test", path: "audio/test.mp3", volume: 1, loop: true, tags: {} };
+        setupAudioStart(audioDeps.context, player, track, audioDeps);
+        const clickHandler = audioDeps.handlers.get("click")?.[0];
+        if (clickHandler !== undefined) {
+            clickHandler();
+        }
+        await flushPromises();
+        expect(audioDeps.context.resumeCalled).toBe(true);
+        expect(player.playedTracks.length).toBe(0);
     });
 });
 describe("initializeAudio", () => {
@@ -102,6 +258,7 @@ describe("initializeAudio", () => {
         }, audioDeps);
         expect(result).not.toBe(null);
         expect(result?.player).toBeDefined();
+        expect(result?.context).toBeDefined();
         expect(typeof result?.cleanup).toBe("function");
     });
     it("returns tracks and currentIndex starting at 0", () => {
@@ -155,12 +312,10 @@ describe("switchToNextTrack", () => {
         expect(result).not.toBe(null);
         if (result === null)
             return;
-        // Manually create invalid state to test defensive code path
         const invalidAudio = {
             ...result,
             tracks: [undefined, undefined],
         };
-        // Should not throw and should not change index when track is undefined
         const originalIndex = invalidAudio.currentIndex;
         switchToNextTrack(invalidAudio);
         expect(invalidAudio.currentIndex).toBe(originalIndex);
@@ -187,7 +342,6 @@ describe("setupTrackSwitcher", () => {
         expect(handler).toBeDefined();
         if (handler === undefined)
             return;
-        // Simulate N key press
         const event = new KeyboardEvent("keydown", { key: "n" });
         handler(event);
         expect(result.currentIndex).toBe(1);
@@ -210,10 +364,8 @@ describe("setupTrackSwitcher", () => {
         const handler = handlers[0];
         if (handler === undefined)
             return;
-        // Switch once to index 1
         handler(new KeyboardEvent("keydown", { key: "n" }));
         expect(result.currentIndex).toBe(1);
-        // Simulate uppercase N - should wrap back to 0
         handler(new KeyboardEvent("keydown", { key: "N" }));
         expect(result.currentIndex).toBe(0);
     });
@@ -235,10 +387,31 @@ describe("setupTrackSwitcher", () => {
         const handler = handlers[0];
         if (handler === undefined)
             return;
-        // Simulate different key
         const event = new KeyboardEvent("keydown", { key: "m" });
         handler(event);
-        expect(result.currentIndex).toBe(0); // Should not change
+        expect(result.currentIndex).toBe(0);
+    });
+    it("ignores non-keyboard events", () => {
+        const audioDeps = createTestAudioDeps();
+        const tracks = [
+            { id: "track1", path: "audio/track1.mp3", volume: 1.0, loop: true, tags: {} },
+            { id: "track2", path: "audio/track2.mp3", volume: 1.0, loop: true, tags: {} },
+        ];
+        const result = initializeAudio({ enabled: true, masterVolume: 0.5, tracks }, audioDeps);
+        expect(result).not.toBe(null);
+        if (result === null)
+            return;
+        const handlers = [];
+        const addListenerFn = (_type, handler) => {
+            handlers.push(handler);
+        };
+        setupTrackSwitcher(result, addListenerFn);
+        const handler = handlers[0];
+        if (handler === undefined)
+            return;
+        const event = new MouseEvent("click");
+        handler(event);
+        expect(result.currentIndex).toBe(0);
     });
 });
 describe("_test_hooks", () => {

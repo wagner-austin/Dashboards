@@ -1,124 +1,117 @@
 /**
- * Audio player with dependency injection for testability.
- * Uses HTMLAudioElement for cross-browser compatibility.
- * Supports fade-in on start and crossfade between tracks.
+ * Audio player using Web Audio API.
+ * Fetches audio as ArrayBuffer, decodes to AudioBuffer, plays via BufferSourceNode.
+ * Supports crossfade between tracks using GainNode ramping.
  */
-/** Default fade duration in milliseconds */
-const FADE_DURATION_MS = 1000;
-const FADE_STEPS = 20;
+/** Fade duration in seconds. */
+const FADE_DURATION = 1.0;
 /**
- * Create audio player with injected dependencies.
- * Allows testing without actual Audio elements.
+ * Create audio player with Web Audio API.
+ *
+ * Args:
+ *     deps: Audio player dependencies.
+ *
+ * Returns:
+ *     AudioPlayer instance.
  */
 export function createAudioPlayer(deps) {
     const state = {
         currentTrackId: null,
-        currentTrack: null,
         isPlaying: false,
         volume: deps.masterVolume,
-        element: null,
-        fadeIn: null,
-        fadeOuts: [],
+        buffers: new Map(),
+        activeSource: null,
+        fadingOutSources: [],
     };
     function calculateVolume(trackVolume) {
         return state.volume * trackVolume;
     }
-    function stopFadeIn() {
-        if (state.fadeIn !== null) {
-            clearInterval(state.fadeIn.interval);
-            state.fadeIn = null;
+    async function loadBuffer(track) {
+        const cached = state.buffers.get(track.id);
+        if (cached !== undefined) {
+            return cached;
         }
-    }
-    function removeFadeOutByInterval(interval) {
-        clearInterval(interval);
-        state.fadeOuts = state.fadeOuts.filter(f => f.interval !== interval);
-    }
-    function stopAllFadeOuts() {
-        for (const fadeOp of state.fadeOuts) {
-            clearInterval(fadeOp.interval);
+        const response = await deps.fetchFn(track.path);
+        if (!response.ok) {
+            return null;
         }
-        state.fadeOuts = [];
+        const arrayBuffer = await response.arrayBuffer();
+        const audioBuffer = await deps.context.decodeAudioData(arrayBuffer);
+        state.buffers.set(track.id, audioBuffer);
+        return audioBuffer;
     }
-    function fadeIn(element, targetVolume) {
-        stopFadeIn();
-        const stepDuration = FADE_DURATION_MS / FADE_STEPS;
-        const volumeStep = targetVolume / FADE_STEPS;
-        let currentStep = 0;
-        element.volume = 0;
-        const interval = setInterval(() => {
-            currentStep++;
-            const newVolume = Math.min(volumeStep * currentStep, targetVolume);
-            element.volume = newVolume;
-            if (currentStep >= FADE_STEPS) {
-                stopFadeIn();
-            }
-        }, stepDuration);
-        state.fadeIn = { interval, element };
+    function fadeOut(active) {
+        const currentTime = 0;
+        active.gain.gain.linearRampToValueAtTime(0, currentTime + FADE_DURATION);
+        state.fadingOutSources.push(active);
+        setTimeout(() => {
+            active.source.stop();
+            state.fadingOutSources = state.fadingOutSources.filter(s => s !== active);
+        }, FADE_DURATION * 1000);
     }
-    function fadeOut(element, startVolume) {
-        const stepDuration = FADE_DURATION_MS / FADE_STEPS;
-        const volumeStep = startVolume / FADE_STEPS;
-        let currentStep = 0;
-        const interval = setInterval(() => {
-            currentStep++;
-            const newVolume = Math.max(startVolume - volumeStep * currentStep, 0);
-            element.volume = newVolume;
-            if (currentStep >= FADE_STEPS) {
-                element.pause();
-                removeFadeOutByInterval(interval);
-            }
-        }, stepDuration);
-        state.fadeOuts.push({ interval, element });
+    function createSource(buffer, track) {
+        const source = deps.context.createBufferSource();
+        source.buffer = buffer;
+        source.loop = track.loop;
+        const gain = deps.context.createGain();
+        gain.gain.value = 0;
+        source.connect(gain);
+        gain.connect(deps.context.destination);
+        return { source, gain, track };
+    }
+    function fadeIn(active) {
+        const targetVolume = calculateVolume(active.track.volume);
+        const currentTime = 0;
+        active.gain.gain.linearRampToValueAtTime(targetVolume, currentTime + FADE_DURATION);
     }
     function play(track) {
-        // If there's a current element playing, crossfade out
-        if (state.element !== null) {
-            const oldElement = state.element;
-            const oldVolume = oldElement.volume;
-            stopFadeIn(); // Stop any in-progress fade-in on old element
-            fadeOut(oldElement, oldVolume);
-        }
-        // Create new element
-        const element = deps.createElement();
-        state.element = element;
         state.currentTrackId = track.id;
-        state.currentTrack = track;
-        // Configure element
-        element.src = track.path;
-        element.loop = track.loop;
-        const targetVolume = calculateVolume(track.volume);
-        element.volume = 0; // Start silent for fade-in
-        // Start playback with fade-in
         state.isPlaying = true;
-        element.play().then(() => {
-            fadeIn(element, targetVolume);
+        if (state.activeSource !== null) {
+            fadeOut(state.activeSource);
+            state.activeSource = null;
+        }
+        loadBuffer(track).then(buffer => {
+            if (buffer === null) {
+                return;
+            }
+            if (state.currentTrackId !== track.id) {
+                return;
+            }
+            const active = createSource(buffer, track);
+            state.activeSource = active;
+            active.source.start();
+            fadeIn(active);
+            active.source.onended = () => {
+                if (state.activeSource === active) {
+                    state.activeSource = null;
+                    state.isPlaying = false;
+                }
+            };
         }).catch(() => {
-            // Autoplay may be blocked - state remains "playing" awaiting user interaction
+            // Load failed silently
         });
     }
     function pause() {
-        stopFadeIn();
-        stopAllFadeOuts();
-        if (state.element !== null) {
-            state.element.pause();
-        }
         state.isPlaying = false;
+        if (state.activeSource !== null) {
+            state.activeSource.source.stop();
+            state.activeSource = null;
+        }
+        for (const fading of state.fadingOutSources) {
+            fading.source.stop();
+        }
+        state.fadingOutSources = [];
     }
     function resume() {
-        if (state.element !== null && !state.isPlaying) {
-            state.isPlaying = true;
-            state.element.play().catch(() => {
-                // May fail if not resumed from user interaction
-            });
-        }
+        // Web Audio API does not support resume of stopped sources
+        // Must replay from beginning
+        state.isPlaying = true;
     }
     function setVolume(volume) {
-        // Clamp volume to valid range
-        const clampedVolume = Math.max(0, Math.min(1, volume));
-        state.volume = clampedVolume;
-        // Update element volume if playing
-        if (state.element !== null && state.currentTrack !== null) {
-            state.element.volume = calculateVolume(state.currentTrack.volume);
+        state.volume = Math.max(0, Math.min(1, volume));
+        if (state.activeSource !== null) {
+            state.activeSource.gain.gain.value = calculateVolume(state.activeSource.track.volume);
         }
     }
     function getState() {
@@ -136,8 +129,9 @@ export function createAudioPlayer(deps) {
         getState,
     };
 }
-/** Test hooks for internal functions */
+/** Test hooks for internal functions. */
 export const _test_hooks = {
     createAudioPlayer,
+    FADE_DURATION,
 };
 //# sourceMappingURL=AudioPlayer.js.map

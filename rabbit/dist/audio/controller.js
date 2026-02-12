@@ -1,27 +1,51 @@
 /**
  * Audio controller - manages audio playback lifecycle and track switching.
- * Handles browser autoplay restrictions via user interaction triggers.
+ * Initializes AudioContext on first user interaction to satisfy browser autoplay policies.
  */
 import { createAudioPlayer } from "./AudioPlayer.js";
 import { getDefaultTrack } from "./TrackSelector.js";
 /**
  * Get track at index from tracks array.
- * Returns undefined if index is out of bounds.
+ *
+ * Args:
+ *     tracks: Array of audio tracks.
+ *     index: Index to retrieve.
+ *
+ * Returns:
+ *     Track at index or undefined if out of bounds.
  */
 function getTrackAtIndex(tracks, index) {
     return tracks[index];
 }
-/** Type guard for KeyboardEvent */
+/** Type guard for KeyboardEvent. */
 function isKeyboardEvent(e) {
     return "key" in e;
 }
 /**
  * Setup audio to start on first user interaction.
- * Required for iOS/Safari which blocks autoplay.
+ * Creates AudioContext and resumes it if suspended, then plays the track.
+ *
+ * Args:
+ *     context: Audio context.
+ *     player: Audio player.
+ *     track: Track to play.
+ *     deps: Audio dependencies.
+ *
+ * Returns:
+ *     Cleanup function to remove event listeners.
  */
-export function setupAudioStart(player, track, deps) {
+export function setupAudioStart(context, player, track, deps) {
     const start = () => {
-        player.play(track);
+        if (context.state === "suspended") {
+            context.resume().then(() => {
+                player.play(track);
+            }).catch(() => {
+                // Resume failed
+            });
+        }
+        else {
+            player.play(track);
+        }
         deps.removeEventListenerFn("click", start);
         deps.removeEventListenerFn("touchstart", start);
         deps.removeEventListenerFn("keydown", start);
@@ -33,7 +57,9 @@ export function setupAudioStart(player, track, deps) {
 }
 /**
  * Switch to next track with crossfade.
- * Cycles through available tracks.
+ *
+ * Args:
+ *     audio: Audio system.
  */
 export function switchToNextTrack(audio) {
     const trackCount = audio.tracks.length;
@@ -50,6 +76,10 @@ export function switchToNextTrack(audio) {
 }
 /**
  * Setup keyboard listener for track switching (N key).
+ *
+ * Args:
+ *     audio: Audio system.
+ *     addListenerFn: Function to add event listener.
  */
 export function setupTrackSwitcher(audio, addListenerFn) {
     const handleKey = (e) => {
@@ -60,8 +90,14 @@ export function setupTrackSwitcher(audio, addListenerFn) {
     addListenerFn("keydown", handleKey);
 }
 /**
- * Initialize audio player if audio is enabled in config.
- * Returns the audio system with player and tracks, or null if disabled.
+ * Initialize audio system if enabled in config.
+ *
+ * Args:
+ *     audioConfig: Audio configuration from config.json.
+ *     deps: Audio dependencies.
+ *
+ * Returns:
+ *     Audio system or null if disabled.
  */
 export function initializeAudio(audioConfig, deps) {
     if (audioConfig === undefined) {
@@ -74,19 +110,22 @@ export function initializeAudio(audioConfig, deps) {
     if (track === null) {
         return null;
     }
+    const context = deps.createContext();
     const player = createAudioPlayer({
-        createElement: deps.createElementFn,
+        context,
+        fetchFn: deps.fetchFn,
         masterVolume: audioConfig.masterVolume,
     });
-    const cleanup = setupAudioStart(player, track, deps);
+    const cleanup = setupAudioStart(context, player, track, deps);
     return {
+        context,
         player,
         tracks: audioConfig.tracks,
         currentIndex: 0,
         cleanup,
     };
 }
-/** Test hooks for internal functions */
+/** Test hooks for internal functions. */
 export const _test_hooks = {
     getTrackAtIndex,
     isKeyboardEvent,

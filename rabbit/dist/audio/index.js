@@ -10,5 +10,5 @@ export { selectTrackByTime, selectTrackByLocation, getDefaultTrack, } from "./Tr
 export { createAudioPlayer } from "./AudioPlayer.js";
 export { setupAudioStart, switchToNextTrack, setupTrackSwitcher, initializeAudio, } from "./controller.js";
 // Browser-specific (from io module)
-export { createBrowserAudioElement, createDefaultAudioDependencies } from "../io/browser.js";
+export { createBrowserAudioContext, createDefaultAudioDependencies } from "../io/browser.js";
 //# sourceMappingURL=index.js.map

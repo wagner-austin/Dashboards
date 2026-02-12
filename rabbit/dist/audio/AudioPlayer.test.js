@@ -1,44 +1,127 @@
 /**
- * Tests for audio player.
+ * Tests for audio player using Web Audio API.
+ * Uses real test implementations instead of mocks.
  */
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { createAudioPlayer, _test_hooks } from "./AudioPlayer.js";
-/** Create a mock audio element with observable state */
-function createMockElement(options) {
-    const mockState = { playing: false, src: "", vol: 1, looping: false };
+/** Create test AudioParam. */
+function createTestAudioParam() {
+    const ramps = [];
     return {
-        get src() {
-            return mockState.src;
+        value: 0,
+        linearRampToValueAtTime(value, endTime) {
+            ramps.push({ value, endTime });
         },
-        set src(s) {
-            mockState.src = s;
+        get ramps() {
+            return ramps;
         },
-        get volume() {
-            return mockState.vol;
-        },
-        set volume(v) {
-            mockState.vol = v;
-        },
-        get loop() {
-            return mockState.looping;
-        },
-        set loop(l) {
-            mockState.looping = l;
-        },
-        play() {
-            if (options?.rejectPlay === true) {
-                return Promise.reject(new Error("Autoplay blocked"));
-            }
-            mockState.playing = true;
-            return Promise.resolve();
-        },
-        pause() {
-            mockState.playing = false;
-        },
-        _state: mockState,
     };
 }
-/** Create test track with minimal fields */
+/** Create test GainNode. */
+function createTestGainNode() {
+    const connections = [];
+    const gain = createTestAudioParam();
+    return {
+        gain,
+        connect(destination) {
+            connections.push(destination);
+        },
+        get connections() {
+            return connections;
+        },
+    };
+}
+/** Create test BufferSourceNode. */
+function createTestBufferSource() {
+    let started = false;
+    let stopped = false;
+    const connectedTo = [];
+    return {
+        buffer: null,
+        loop: false,
+        onended: null,
+        connect(destination) {
+            connectedTo.push(destination);
+        },
+        start() {
+            started = true;
+        },
+        stop() {
+            stopped = true;
+        },
+        get started() {
+            return started;
+        },
+        get stopped() {
+            return stopped;
+        },
+        get connectedTo() {
+            return connectedTo;
+        },
+    };
+}
+/** Create test AudioContext. */
+function createTestContext() {
+    const sources = [];
+    const gains = [];
+    const decodedBuffers = [];
+    let resumed = false;
+    let decodeRejects = false;
+    const destination = {};
+    return {
+        state: "running",
+        destination,
+        resume() {
+            resumed = true;
+            return Promise.resolve();
+        },
+        createBufferSource() {
+            const source = createTestBufferSource();
+            sources.push(source);
+            return source;
+        },
+        createGain() {
+            const gain = createTestGainNode();
+            gains.push(gain);
+            return gain;
+        },
+        decodeAudioData(data) {
+            decodedBuffers.push(data);
+            if (decodeRejects) {
+                return Promise.reject(new Error("Decode failed"));
+            }
+            return Promise.resolve({});
+        },
+        get sources() {
+            return sources;
+        },
+        get gains() {
+            return gains;
+        },
+        get decodedBuffers() {
+            return decodedBuffers;
+        },
+        get resumed() {
+            return resumed;
+        },
+        setDecodeRejects(value) {
+            decodeRejects = value;
+        },
+    };
+}
+/** Create test fetch function. */
+function createTestFetch(ok = true) {
+    const fetchedUrls = [];
+    const fetchFn = (url) => {
+        fetchedUrls.push(url);
+        return Promise.resolve({
+            ok,
+            arrayBuffer: () => Promise.resolve(new ArrayBuffer(8)),
+        });
+    };
+    return [fetchFn, { get fetchedUrls() { return fetchedUrls; } }];
+}
+/** Create test track. */
 function createTestTrack(id, options) {
     return {
         id,
@@ -48,397 +131,336 @@ function createTestTrack(id, options) {
         tags: {},
     };
 }
-/** Create test dependencies with mock element */
+/** Create test dependencies. */
 function createTestDeps(masterVolume = 1.0) {
-    const elements = [];
-    return {
-        createElement: () => {
-            const el = createMockElement();
-            elements.push(el);
-            return el;
-        },
-        masterVolume,
-        elements,
-    };
+    const context = createTestContext();
+    const [fetchFn, fetchState] = createTestFetch();
+    return [
+        { context, fetchFn, masterVolume },
+        context,
+        fetchState,
+    ];
+}
+/** Wait for async operations. */
+async function flushPromises() {
+    await new Promise(resolve => setTimeout(resolve, 0));
 }
 describe("createAudioPlayer", () => {
     beforeEach(() => {
-        vi.useFakeTimers();
+        // Use real timers
     });
     afterEach(() => {
-        vi.useRealTimers();
+        // Cleanup
     });
     describe("initial state", () => {
         it("starts with no current track", () => {
-            const deps = createTestDeps();
+            const [deps] = createTestDeps();
             const player = createAudioPlayer(deps);
             expect(player.getState().currentTrackId).toBe(null);
         });
         it("starts with isPlaying false", () => {
-            const deps = createTestDeps();
+            const [deps] = createTestDeps();
             const player = createAudioPlayer(deps);
             expect(player.getState().isPlaying).toBe(false);
         });
         it("starts with master volume from deps", () => {
-            const deps = createTestDeps(0.5);
+            const [deps] = createTestDeps(0.5);
             const player = createAudioPlayer(deps);
             expect(player.getState().volume).toBe(0.5);
         });
     });
     describe("play", () => {
-        it("sets current track id", () => {
-            const deps = createTestDeps();
+        it("sets current track id", async () => {
+            const [deps] = createTestDeps();
             const player = createAudioPlayer(deps);
             const track = createTestTrack("ambient");
             player.play(track);
+            await flushPromises();
             expect(player.getState().currentTrackId).toBe("ambient");
         });
         it("sets isPlaying to true", () => {
-            const deps = createTestDeps();
+            const [deps] = createTestDeps();
             const player = createAudioPlayer(deps);
             const track = createTestTrack("ambient");
             player.play(track);
             expect(player.getState().isPlaying).toBe(true);
         });
-        it("configures element with track path", () => {
-            const deps = createTestDeps();
+        it("fetches audio file", async () => {
+            const [deps, , fetchState] = createTestDeps();
             const player = createAudioPlayer(deps);
             const track = createTestTrack("ambient");
             player.play(track);
-            expect(deps.elements[0]?._state.src).toBe("audio/ambient.mp3");
+            await flushPromises();
+            expect(fetchState.fetchedUrls).toContain("audio/ambient.mp3");
         });
-        it("configures element with track loop setting", () => {
-            const deps = createTestDeps();
+        it("decodes audio data", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            const track = createTestTrack("ambient");
+            player.play(track);
+            await flushPromises();
+            expect(context.decodedBuffers.length).toBe(1);
+        });
+        it("creates buffer source", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            const track = createTestTrack("ambient");
+            player.play(track);
+            await flushPromises();
+            expect(context.sources.length).toBe(1);
+        });
+        it("creates gain node", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            const track = createTestTrack("ambient");
+            player.play(track);
+            await flushPromises();
+            expect(context.gains.length).toBe(1);
+        });
+        it("starts source playback", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            const track = createTestTrack("ambient");
+            player.play(track);
+            await flushPromises();
+            expect(context.sources[0]?.started).toBe(true);
+        });
+        it("configures loop on source", async () => {
+            const [deps, context] = createTestDeps();
             const player = createAudioPlayer(deps);
             player.play(createTestTrack("looping", { loop: true }));
-            expect(deps.elements[0]?._state.looping).toBe(true);
+            await flushPromises();
+            expect(context.sources[0]?.loop).toBe(true);
+        });
+        it("configures non-looping source", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
             player.play(createTestTrack("oneshot", { loop: false }));
-            expect(deps.elements[1]?._state.looping).toBe(false);
+            await flushPromises();
+            expect(context.sources[0]?.loop).toBe(false);
         });
-        it("starts at zero volume for fade-in", () => {
-            const deps = createTestDeps(0.5);
-            const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient", { volume: 0.8 });
-            player.play(track);
-            // Volume starts at 0 for fade-in
-            expect(deps.elements[0]?._state.vol).toBe(0);
-        });
-        it("fades in to target volume over time", async () => {
-            const deps = createTestDeps(0.5);
-            const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient", { volume: 0.8 });
-            player.play(track);
-            // Wait for play promise to resolve
-            await vi.runAllTimersAsync();
-            // After full fade (2000ms), should reach target: 0.5 * 0.8 = 0.4
-            expect(deps.elements[0]?._state.vol).toBeCloseTo(0.4);
-        });
-        it("gradually increases volume during fade", async () => {
-            const deps = createTestDeps(1.0);
-            const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient", { volume: 1.0 });
-            player.play(track);
-            // Wait for play promise
-            await Promise.resolve();
-            // After partial fade (500ms = half of 1000ms)
-            vi.advanceTimersByTime(500);
-            const midVolume = deps.elements[0]?._state.vol ?? 0;
-            expect(midVolume).toBeGreaterThan(0);
-            expect(midVolume).toBeLessThan(1);
-            // After full fade
-            vi.advanceTimersByTime(500);
-            expect(deps.elements[0]?._state.vol).toBeCloseTo(1.0);
-        });
-        it("calls play on element", () => {
-            const deps = createTestDeps();
+        it("caches buffers for reuse", async () => {
+            const [deps, , fetchState] = createTestDeps();
             const player = createAudioPlayer(deps);
             const track = createTestTrack("ambient");
             player.play(track);
-            expect(deps.elements[0]?._state.playing).toBe(true);
-        });
-        it("crossfades when playing new track while one is playing", async () => {
-            const deps = createTestDeps(1.0);
-            const player = createAudioPlayer(deps);
-            // Start first track and let it fade in completely
-            player.play(createTestTrack("first", { volume: 1.0 }));
-            await vi.runAllTimersAsync();
-            expect(deps.elements[0]?._state.vol).toBeCloseTo(1.0);
-            expect(deps.elements[0]?._state.playing).toBe(true);
-            // Play second track - should start crossfade
-            player.play(createTestTrack("second", { volume: 1.0 }));
-            await Promise.resolve(); // Wait for play promise
-            // Both should be playing during crossfade
-            expect(deps.elements[0]?._state.playing).toBe(true);
-            expect(deps.elements[1]?._state.playing).toBe(true);
-            // After crossfade completes, first should be paused
-            await vi.runAllTimersAsync();
-            expect(deps.elements[0]?._state.playing).toBe(false);
-            expect(deps.elements[0]?._state.vol).toBe(0);
-            expect(deps.elements[1]?._state.vol).toBeCloseTo(1.0);
-        });
-        it("fades out old track during crossfade", async () => {
-            const deps = createTestDeps(1.0);
-            const player = createAudioPlayer(deps);
-            // Start first track and let it fade in completely
-            player.play(createTestTrack("first", { volume: 1.0 }));
-            await vi.runAllTimersAsync();
-            const initialVolume = deps.elements[0]?._state.vol ?? 0;
-            expect(initialVolume).toBeCloseTo(1.0);
-            // Play second track
-            player.play(createTestTrack("second", { volume: 1.0 }));
-            await Promise.resolve();
-            // After partial crossfade (500ms = half of 1000ms fade)
-            vi.advanceTimersByTime(500);
-            const midVolume = deps.elements[0]?._state.vol ?? 0;
-            expect(midVolume).toBeLessThan(initialVolume);
-            expect(midVolume).toBeGreaterThan(0);
-        });
-        it("stops fade-in on old track when crossfading mid-fade", async () => {
-            const deps = createTestDeps(1.0);
-            const player = createAudioPlayer(deps);
-            // Start first track
-            player.play(createTestTrack("first", { volume: 1.0 }));
-            await Promise.resolve();
-            // Partial fade-in
-            vi.advanceTimersByTime(500);
-            const midFadeVolume = deps.elements[0]?._state.vol ?? 0;
-            expect(midFadeVolume).toBeGreaterThan(0);
-            expect(midFadeVolume).toBeLessThan(1);
-            // Play second track mid-fade - should stop fade-in and start fade-out
-            player.play(createTestTrack("second", { volume: 1.0 }));
-            await Promise.resolve();
-            // First track should start fading out from current volume
-            vi.advanceTimersByTime(1000);
-            const fadeOutVolume = deps.elements[0]?._state.vol ?? 0;
-            expect(fadeOutVolume).toBeLessThan(midFadeVolume);
-        });
-        it("handles autoplay being blocked gracefully", async () => {
-            // Create deps that return a rejecting element
-            const elements = [];
-            const deps = {
-                createElement: () => {
-                    const el = createMockElement({ rejectPlay: true });
-                    elements.push(el);
-                    return el;
-                },
-                masterVolume: 1.0,
-                elements,
-            };
-            const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient");
-            // Play should not throw even when autoplay is blocked
+            await flushPromises();
             player.play(track);
-            await Promise.resolve(); // Let promise rejection be handled
-            // State should still show as playing (awaiting user interaction)
+            await flushPromises();
+            expect(fetchState.fetchedUrls.length).toBe(1);
+        });
+        it("handles fetch failure gracefully", async () => {
+            const context = createTestContext();
+            const [fetchFn] = createTestFetch(false);
+            const deps = { context, fetchFn, masterVolume: 1.0 };
+            const player = createAudioPlayer(deps);
+            const track = createTestTrack("missing");
+            player.play(track);
+            await flushPromises();
             expect(player.getState().isPlaying).toBe(true);
-            expect(player.getState().currentTrackId).toBe("ambient");
+        });
+        it("handles decode failure gracefully", async () => {
+            const context = createTestContext();
+            context.setDecodeRejects(true);
+            const [fetchFn] = createTestFetch();
+            const deps = { context, fetchFn, masterVolume: 1.0 };
+            const player = createAudioPlayer(deps);
+            const track = createTestTrack("corrupt");
+            player.play(track);
+            await flushPromises();
+            expect(player.getState().isPlaying).toBe(true);
+        });
+        it("fades out old track when switching", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            player.play(createTestTrack("first"));
+            await flushPromises();
+            player.play(createTestTrack("second"));
+            await flushPromises();
+            const firstGain = context.gains[0];
+            expect(firstGain?.gain.ramps.some(r => r.value === 0)).toBe(true);
+        });
+        it("stops faded source after fade duration", async () => {
+            vi.useFakeTimers();
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            player.play(createTestTrack("first"));
+            await vi.runAllTimersAsync();
+            player.play(createTestTrack("second"));
+            await vi.runAllTimersAsync();
+            const firstSource = context.sources[0];
+            expect(firstSource?.stopped).toBe(true);
+            vi.useRealTimers();
+        });
+        it("connects source to gain node", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            player.play(createTestTrack("ambient"));
+            await flushPromises();
+            const source = context.sources[0];
+            const gain = context.gains[0];
+            expect(source?.connectedTo).toContain(gain);
+        });
+        it("connects gain to destination", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            player.play(createTestTrack("ambient"));
+            await flushPromises();
+            const gain = context.gains[0];
+            expect(gain?.connections).toContain(context.destination);
+        });
+        it("fades in with target volume", async () => {
+            const [deps, context] = createTestDeps(0.5);
+            const player = createAudioPlayer(deps);
+            player.play(createTestTrack("ambient", { volume: 0.8 }));
+            await flushPromises();
+            const gain = context.gains[0];
+            expect(gain?.gain.ramps.some(r => r.value === 0.4)).toBe(true);
+        });
+        it("ignores buffer if track changed", async () => {
+            const [deps] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            player.play(createTestTrack("first"));
+            player.play(createTestTrack("second"));
+            await flushPromises();
+            expect(player.getState().currentTrackId).toBe("second");
         });
     });
     describe("pause", () => {
         it("sets isPlaying to false", () => {
-            const deps = createTestDeps();
+            const [deps] = createTestDeps();
             const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient");
-            player.play(track);
+            player.play(createTestTrack("ambient"));
             player.pause();
             expect(player.getState().isPlaying).toBe(false);
         });
-        it("pauses the element", () => {
-            const deps = createTestDeps();
+        it("stops the source", async () => {
+            const [deps, context] = createTestDeps();
             const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient");
-            player.play(track);
+            player.play(createTestTrack("ambient"));
+            await flushPromises();
             player.pause();
-            expect(deps.elements[0]?._state.playing).toBe(false);
+            expect(context.sources[0]?.stopped).toBe(true);
         });
-        it("does nothing if no element exists", () => {
-            const deps = createTestDeps();
+        it("preserves current track id", async () => {
+            const [deps] = createTestDeps();
             const player = createAudioPlayer(deps);
-            // Should not throw
-            player.pause();
-            expect(player.getState().isPlaying).toBe(false);
-        });
-        it("preserves current track id", () => {
-            const deps = createTestDeps();
-            const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient");
-            player.play(track);
+            player.play(createTestTrack("ambient"));
+            await flushPromises();
             player.pause();
             expect(player.getState().currentTrackId).toBe("ambient");
         });
-        it("stops fade-in when paused", async () => {
-            const deps = createTestDeps(1.0);
+        it("does nothing if no active source", () => {
+            const [deps] = createTestDeps();
             const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient", { volume: 1.0 });
-            player.play(track);
-            await Promise.resolve(); // Wait for play promise
-            // Partial fade
-            vi.advanceTimersByTime(500);
-            const volumeBeforePause = deps.elements[0]?._state.vol ?? 0;
             player.pause();
-            // Advance more time - volume should not change since fade stopped
-            vi.advanceTimersByTime(1500);
-            expect(deps.elements[0]?._state.vol).toBe(volumeBeforePause);
+            expect(player.getState().isPlaying).toBe(false);
         });
-        it("stops all fade-outs when paused", async () => {
-            const deps = createTestDeps(1.0);
+        it("stops fading out sources", async () => {
+            const [deps, context] = createTestDeps();
             const player = createAudioPlayer(deps);
-            // Start first track and let it fade in
-            player.play(createTestTrack("first", { volume: 1.0 }));
-            await vi.runAllTimersAsync();
-            expect(deps.elements[0]?._state.vol).toBeCloseTo(1.0);
-            // Start crossfade to second track
-            player.play(createTestTrack("second", { volume: 1.0 }));
-            await Promise.resolve();
-            vi.advanceTimersByTime(500);
-            // First track should be fading out
-            const midFadeVolume = deps.elements[0]?._state.vol ?? 0;
-            expect(midFadeVolume).toBeLessThan(1.0);
-            expect(midFadeVolume).toBeGreaterThan(0);
-            // Pause - should stop all fades
+            player.play(createTestTrack("first"));
+            await flushPromises();
+            player.play(createTestTrack("second"));
             player.pause();
-            const volumeAtPause = deps.elements[0]?._state.vol ?? 0;
-            // Advance time - first track volume should not change
-            vi.advanceTimersByTime(1500);
-            expect(deps.elements[0]?._state.vol).toBe(volumeAtPause);
+            expect(context.sources[0]?.stopped).toBe(true);
         });
     });
     describe("resume", () => {
         it("sets isPlaying to true", () => {
-            const deps = createTestDeps();
+            const [deps] = createTestDeps();
             const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient");
-            player.play(track);
-            player.pause();
-            player.resume();
-            expect(player.getState().isPlaying).toBe(true);
-        });
-        it("calls play on element", () => {
-            const deps = createTestDeps();
-            const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient");
-            player.play(track);
-            player.pause();
-            expect(deps.elements[0]?._state.playing).toBe(false);
-            player.resume();
-            expect(deps.elements[0]?._state.playing).toBe(true);
-        });
-        it("does nothing if no element exists", () => {
-            const deps = createTestDeps();
-            const player = createAudioPlayer(deps);
-            // Should not throw
-            player.resume();
-            expect(player.getState().isPlaying).toBe(false);
-        });
-        it("does nothing if already playing", () => {
-            const deps = createTestDeps();
-            const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient");
-            player.play(track);
-            player.resume(); // Already playing
-            expect(player.getState().isPlaying).toBe(true);
-            // Only one element should be created
-            expect(deps.elements.length).toBe(1);
-        });
-        it("handles play rejection gracefully on resume", async () => {
-            // First create player with normal element, then make it reject on resume
-            let shouldReject = false;
-            const elements = [];
-            const deps = {
-                createElement: () => {
-                    const mockState = { playing: false, src: "", vol: 1, looping: false };
-                    const el = {
-                        get src() { return mockState.src; },
-                        set src(s) { mockState.src = s; },
-                        get volume() { return mockState.vol; },
-                        set volume(v) { mockState.vol = v; },
-                        get loop() { return mockState.looping; },
-                        set loop(l) { mockState.looping = l; },
-                        play() {
-                            if (shouldReject) {
-                                return Promise.reject(new Error("Not from user interaction"));
-                            }
-                            mockState.playing = true;
-                            return Promise.resolve();
-                        },
-                        pause() { mockState.playing = false; },
-                        _state: mockState,
-                    };
-                    elements.push(el);
-                    return el;
-                },
-                masterVolume: 1.0,
-                elements,
-            };
-            const player = createAudioPlayer(deps);
-            // Play and pause normally
             player.play(createTestTrack("ambient"));
-            await Promise.resolve();
             player.pause();
-            // Now make play reject
-            shouldReject = true;
-            // Resume should not throw even when play fails
             player.resume();
-            await Promise.resolve(); // Let promise rejection be handled
-            // State should show as playing (set before the promise)
             expect(player.getState().isPlaying).toBe(true);
         });
     });
     describe("setVolume", () => {
         it("updates volume state", () => {
-            const deps = createTestDeps(1.0);
+            const [deps] = createTestDeps(1.0);
             const player = createAudioPlayer(deps);
             player.setVolume(0.7);
             expect(player.getState().volume).toBe(0.7);
         });
         it("clamps volume to minimum 0", () => {
-            const deps = createTestDeps(1.0);
+            const [deps] = createTestDeps(1.0);
             const player = createAudioPlayer(deps);
             player.setVolume(-0.5);
             expect(player.getState().volume).toBe(0);
         });
         it("clamps volume to maximum 1", () => {
-            const deps = createTestDeps(1.0);
+            const [deps] = createTestDeps(1.0);
             const player = createAudioPlayer(deps);
             player.setVolume(1.5);
             expect(player.getState().volume).toBe(1);
         });
-        it("updates element volume when playing after fade completes", async () => {
-            const deps = createTestDeps(1.0);
+        it("updates gain node when playing", async () => {
+            const [deps, context] = createTestDeps(1.0);
             const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient", { volume: 0.8 });
-            player.play(track);
-            await vi.runAllTimersAsync(); // Complete fade-in
-            expect(deps.elements[0]?._state.vol).toBeCloseTo(0.8); // 1.0 * 0.8
+            player.play(createTestTrack("ambient", { volume: 0.8 }));
+            await flushPromises();
             player.setVolume(0.5);
-            expect(deps.elements[0]?._state.vol).toBeCloseTo(0.4); // 0.5 * 0.8
-        });
-        it("does nothing to element if not playing", () => {
-            const deps = createTestDeps(1.0);
-            const player = createAudioPlayer(deps);
-            // Should not throw
-            player.setVolume(0.5);
-            expect(player.getState().volume).toBe(0.5);
+            expect(context.gains[0]?.gain.value).toBe(0.4);
         });
     });
     describe("getState", () => {
-        it("returns immutable snapshot", () => {
-            const deps = createTestDeps(0.5);
+        it("returns snapshot of state", () => {
+            const [deps] = createTestDeps(0.5);
             const player = createAudioPlayer(deps);
-            const track = createTestTrack("ambient");
-            player.play(track);
+            player.play(createTestTrack("ambient"));
             const state1 = player.getState();
             player.pause();
             const state2 = player.getState();
-            // Original state should not be mutated
             expect(state1.isPlaying).toBe(true);
             expect(state2.isPlaying).toBe(false);
+        });
+    });
+    describe("onended callback", () => {
+        it("sets isPlaying false when track ends", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            player.play(createTestTrack("ambient"));
+            await flushPromises();
+            const source = context.sources[0];
+            if (source !== undefined && source.onended !== null) {
+                source.onended();
+            }
+            expect(player.getState().isPlaying).toBe(false);
+        });
+        it("clears active source when track ends", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            player.play(createTestTrack("ambient"));
+            await flushPromises();
+            const source = context.sources[0];
+            if (source !== undefined && source.onended !== null) {
+                source.onended();
+            }
+            player.setVolume(0.5);
+            expect(player.getState().volume).toBe(0.5);
+        });
+        it("ignores onended if active source changed", async () => {
+            const [deps, context] = createTestDeps();
+            const player = createAudioPlayer(deps);
+            player.play(createTestTrack("first"));
+            await flushPromises();
+            const firstSource = context.sources[0];
+            player.play(createTestTrack("second"));
+            await flushPromises();
+            if (firstSource !== undefined && firstSource.onended !== null) {
+                firstSource.onended();
+            }
+            expect(player.getState().isPlaying).toBe(true);
         });
     });
 });
 describe("_test_hooks", () => {
     it("exports createAudioPlayer", () => {
         expect(_test_hooks.createAudioPlayer).toBe(createAudioPlayer);
+    });
+    it("exports FADE_DURATION", () => {
+        expect(_test_hooks.FADE_DURATION).toBe(1.0);
     });
 });
 //# sourceMappingURL=AudioPlayer.test.js.map
