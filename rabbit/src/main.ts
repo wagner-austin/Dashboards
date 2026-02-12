@@ -13,7 +13,7 @@ import { measureViewport, type ViewportState } from "./rendering/Viewport.js";
 import { renderFrame, type RenderState } from "./rendering/SceneRenderer.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers } from "./entities/Bunny.js";
-import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, processWalkMovement, type InputState } from "./input/Keyboard.js";
+import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, type InputState } from "./input/Keyboard.js";
 import { setupTouchControls } from "./input/Touch.js";
 import { processLayersConfig, createSceneState, type SceneState } from "./layers/index.js";
 import { createProgressiveLayerInstances } from "./loaders/layers.js";
@@ -107,7 +107,7 @@ function collectAllSpriteNames(config: Config): readonly string[] {
  * Initialize the application with progressive loading.
  *
  * Starts render loop immediately with ground visible, then progressively
- * loads grass, bunny, and trees (largest to smallest). Scene populates
+ * loads grass, bunny, and trees (smallest to largest). Scene populates
  * as sprites load.
  *
  * Args:
@@ -165,9 +165,8 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
     viewport,
     camera,
     depthBounds,
-    hopKeyHeld: null,
-    slideKeyHeld: null,
-    walkKeyHeld: null,
+    horizontalHeld: null,
+    verticalHeld: null,
     scene: sceneState,
   };
 
@@ -198,7 +197,6 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
     if (bunnyFrames !== null) {
       processDepthMovement(state);
       processHorizontalMovement(state);
-      processWalkMovement(state);
     }
 
     // Sync camera from input state to scene state
@@ -255,6 +253,9 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
       // Bunny loaded callback - set up controls immediately
       bunnyFrames = loadedBunnyFrames;
 
+      // Create callback to check horizontal input for animation completion
+      const isHorizontalHeld = (): boolean => state.horizontalHeld !== null;
+
       // Create timers now that bunny is loaded
       const bunnyTimers = createBunnyTimers(bunnyState, bunnyFrames, {
         walk: 120,
@@ -262,7 +263,7 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
         jump: 58,
         transition: 50,
         hop: 150,
-      });
+      }, isHorizontalHeld);
 
       // Setup input controls
       setupKeyboardControls(state, bunnyFrames, bunnyTimers);
