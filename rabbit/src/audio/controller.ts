@@ -162,34 +162,28 @@ export function initializeAudio(
       },
     };
 
-    // Unlock audio using howler.js pattern: play empty buffer + resume
-    debug("[Audio] Unlocking audio (howler.js pattern)...");
+    // Unlock audio using howler.js pattern: play empty buffer + resume + play immediately
+    debug("[Audio] Unlocking audio...");
 
-    // Create empty 1-sample buffer
+    // Create and play empty 1-sample buffer to unlock
     const scratchBuffer = context.createBuffer(1, 1, 22050);
     const source = context.createBufferSource();
     source.buffer = scratchBuffer;
     source.connect(context.destination);
-
-    // Play empty buffer immediately
     source.start(0);
     debug("[Audio] Empty buffer started");
 
-    // Call resume while buffer plays
+    // Call resume
     if (context.state === "suspended") {
       debug("[Audio] Calling resume()...");
-      context.resume().then(() => {
-        debug("[Audio] Resume succeeded");
-      }).catch((err: unknown) => {
+      context.resume().catch((err: unknown) => {
         debug(`[Audio] Resume error: ${String(err)}`);
       });
     }
 
-    // When empty buffer ends, audio is unlocked - play real track
-    source.onended = (): void => {
-      debug(`[Audio] Unlocked, playing track: ${track.id}`);
-      player.play(track);
-    };
+    // Play track immediately - don't wait for onended or resume promise
+    debug(`[Audio] Playing track: ${track.id}`);
+    player.play(track);
 
     deps.removeEventListenerFn("click", start);
     deps.removeEventListenerFn("touchstart", start);
