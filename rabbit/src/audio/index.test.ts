@@ -13,7 +13,6 @@ import {
   createAudioPlayer,
   createBrowserAudioContext,
   createDefaultAudioDependencies,
-  setupAudioStart,
   switchToNextTrack,
   setupTrackSwitcher,
   initializeAudio,
@@ -32,6 +31,7 @@ import type {
   AudioPlayerDeps,
   AudioDependencies,
   AudioSystem,
+  DeferredAudioSystem,
 } from "./index.js";
 
 /** Test audio param that tracks value changes. */
@@ -280,10 +280,6 @@ describe("audio module exports", () => {
       expect(typeof createDefaultAudioDependencies).toBe("function");
     });
 
-    it("exports setupAudioStart", () => {
-      expect(typeof setupAudioStart).toBe("function");
-    });
-
     it("exports switchToNextTrack", () => {
       expect(typeof switchToNextTrack).toBe("function");
     });
@@ -327,6 +323,16 @@ describe("audio module exports", () => {
         cleanup: (): void => { /* no-op */ },
       };
       expect(system.currentIndex).toBe(0);
+    });
+
+    it("exports DeferredAudioSystem type", () => {
+      const deferred: DeferredAudioSystem = {
+        tracks: [],
+        currentIndex: 0,
+        cleanup: (): void => { /* no-op */ },
+        getSystem: (): AudioSystem | null => null,
+      };
+      expect(deferred.currentIndex).toBe(0);
     });
   });
 });

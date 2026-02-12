@@ -8,7 +8,7 @@ export { validateAudioConfig } from "./validation.js";
 export { selectTrackByTime, selectTrackByLocation, getDefaultTrack, } from "./TrackSelector.js";
 export type { AudioPlayer, AudioPlayerDeps, } from "./AudioPlayer.js";
 export { createAudioPlayer } from "./AudioPlayer.js";
-export type { AudioSystem } from "./controller.js";
-export { setupAudioStart, switchToNextTrack, setupTrackSwitcher, initializeAudio, } from "./controller.js";
+export type { AudioSystem, DeferredAudioSystem } from "./controller.js";
+export { switchToNextTrack, setupTrackSwitcher, initializeAudio, } from "./controller.js";
 export { createBrowserAudioContext, createDefaultAudioDependencies } from "../io/browser.js";
 //# sourceMappingURL=index.d.ts.map

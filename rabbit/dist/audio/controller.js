@@ -22,40 +22,6 @@ function isKeyboardEvent(e) {
     return "key" in e;
 }
 /**
- * Setup audio to start on first user interaction.
- * Creates AudioContext and resumes it if suspended, then plays the track.
- *
- * Args:
- *     context: Audio context.
- *     player: Audio player.
- *     track: Track to play.
- *     deps: Audio dependencies.
- *
- * Returns:
- *     Cleanup function to remove event listeners.
- */
-export function setupAudioStart(context, player, track, deps) {
-    const start = () => {
-        if (context.state === "suspended") {
-            context.resume().then(() => {
-                player.play(track);
-            }).catch(() => {
-                // Resume failed
-            });
-        }
-        else {
-            player.play(track);
-        }
-        deps.removeEventListenerFn("click", start);
-        deps.removeEventListenerFn("touchstart", start);
-        deps.removeEventListenerFn("keydown", start);
-    };
-    deps.addEventListenerFn("click", start);
-    deps.addEventListenerFn("touchstart", start);
-    deps.addEventListenerFn("keydown", start);
-    return start;
-}
-/**
  * Switch to next track with crossfade.
  *
  * Args:
@@ -78,26 +44,31 @@ export function switchToNextTrack(audio) {
  * Setup keyboard listener for track switching (N key).
  *
  * Args:
- *     audio: Audio system.
+ *     getAudio: Function returning audio system or null if not yet initialized.
  *     addListenerFn: Function to add event listener.
  */
-export function setupTrackSwitcher(audio, addListenerFn) {
+export function setupTrackSwitcher(getAudio, addListenerFn) {
     const handleKey = (e) => {
         if (isKeyboardEvent(e) && (e.key === "n" || e.key === "N")) {
-            switchToNextTrack(audio);
+            const audio = getAudio();
+            if (audio !== null) {
+                switchToNextTrack(audio);
+            }
         }
     };
     addListenerFn("keydown", handleKey);
 }
 /**
  * Initialize audio system if enabled in config.
+ * AudioContext is created lazily on first user interaction to satisfy
+ * Android Chrome's requirement that AudioContext be created from a user gesture.
  *
  * Args:
  *     audioConfig: Audio configuration from config.json.
  *     deps: Audio dependencies.
  *
  * Returns:
- *     Audio system or null if disabled.
+ *     Deferred audio system or null if disabled.
  */
 export function initializeAudio(audioConfig, deps) {
     if (audioConfig === undefined) {
@@ -110,26 +81,65 @@ export function initializeAudio(audioConfig, deps) {
     if (track === null) {
         return null;
     }
-    const context = deps.createContext();
-    const player = createAudioPlayer({
-        context,
-        fetchFn: deps.fetchFn,
-        masterVolume: audioConfig.masterVolume,
-    });
-    const cleanup = setupAudioStart(context, player, track, deps);
+    let system = null;
+    const start = () => {
+        if (system !== null) {
+            return;
+        }
+        const context = deps.createContext();
+        const player = createAudioPlayer({
+            context,
+            fetchFn: deps.fetchFn,
+            masterVolume: audioConfig.masterVolume,
+        });
+        system = {
+            context,
+            player,
+            tracks: audioConfig.tracks,
+            currentIndex: 0,
+            cleanup: () => {
+                deps.removeEventListenerFn("click", start);
+                deps.removeEventListenerFn("touchstart", start);
+                deps.removeEventListenerFn("touchend", start);
+                deps.removeEventListenerFn("keydown", start);
+            },
+        };
+        if (context.state === "suspended") {
+            context.resume().then(() => {
+                player.play(track);
+            }).catch(() => {
+                // Resume failed - try playing anyway
+                player.play(track);
+            });
+        }
+        else {
+            player.play(track);
+        }
+        deps.removeEventListenerFn("click", start);
+        deps.removeEventListenerFn("touchstart", start);
+        deps.removeEventListenerFn("touchend", start);
+        deps.removeEventListenerFn("keydown", start);
+    };
+    deps.addEventListenerFn("click", start);
+    deps.addEventListenerFn("touchstart", start);
+    deps.addEventListenerFn("touchend", start);
+    deps.addEventListenerFn("keydown", start);
     return {
-        context,
-        player,
         tracks: audioConfig.tracks,
         currentIndex: 0,
-        cleanup,
+        cleanup: () => {
+            deps.removeEventListenerFn("click", start);
+            deps.removeEventListenerFn("touchstart", start);
+            deps.removeEventListenerFn("touchend", start);
+            deps.removeEventListenerFn("keydown", start);
+        },
+        getSystem: () => system,
     };
 }
 /** Test hooks for internal functions. */
 export const _test_hooks = {
     getTrackAtIndex,
     isKeyboardEvent,
-    setupAudioStart,
     switchToNextTrack,
     setupTrackSwitcher,
     initializeAudio,

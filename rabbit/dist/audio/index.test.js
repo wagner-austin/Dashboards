@@ -3,7 +3,7 @@
  * Uses real test implementations instead of mocks.
  */
 import { describe, it, expect } from "vitest";
-import { createAudioState, validateAudioConfig, selectTrackByTime, selectTrackByLocation, getDefaultTrack, createAudioPlayer, createBrowserAudioContext, createDefaultAudioDependencies, setupAudioStart, switchToNextTrack, setupTrackSwitcher, initializeAudio, } from "./index.js";
+import { createAudioState, validateAudioConfig, selectTrackByTime, selectTrackByLocation, getDefaultTrack, createAudioPlayer, createBrowserAudioContext, createDefaultAudioDependencies, switchToNextTrack, setupTrackSwitcher, initializeAudio, } from "./index.js";
 /** Create test AudioParam. */
 function createTestAudioParam() {
     const ramps = [];
@@ -202,9 +202,6 @@ describe("audio module exports", () => {
         it("exports createDefaultAudioDependencies", () => {
             expect(typeof createDefaultAudioDependencies).toBe("function");
         });
-        it("exports setupAudioStart", () => {
-            expect(typeof setupAudioStart).toBe("function");
-        });
         it("exports switchToNextTrack", () => {
             expect(typeof switchToNextTrack).toBe("function");
         });
@@ -244,6 +241,15 @@ describe("audio module exports", () => {
                 cleanup: () => { },
             };
             expect(system.currentIndex).toBe(0);
+        });
+        it("exports DeferredAudioSystem type", () => {
+            const deferred = {
+                tracks: [],
+                currentIndex: 0,
+                cleanup: () => { },
+                getSystem: () => null,
+            };
+            expect(deferred.currentIndex).toBe(0);
         });
     });
 });

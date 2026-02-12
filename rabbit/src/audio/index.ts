@@ -36,9 +36,8 @@ export type {
 export { createAudioPlayer } from "./AudioPlayer.js";
 
 // Audio controller
-export type { AudioSystem } from "./controller.js";
+export type { AudioSystem, DeferredAudioSystem } from "./controller.js";
 export {
-  setupAudioStart,
   switchToNextTrack,
   setupTrackSwitcher,
   initializeAudio,
