@@ -123,21 +123,21 @@ describe("collectTreeWidths", () => {
         const entries = collectTreeWidths(config, ["tree1", "tree2"]);
         expect(entries.length).toBe(7); // 4 from tree1 + 3 from tree2
     });
-    it("sorts entries by width descending (largest first)", () => {
+    it("sorts entries by width ascending (smallest first)", () => {
         const config = createTestConfig();
         const entries = collectTreeWidths(config, ["tree1", "tree2"]);
         const widths = entries.map((e) => e.width);
-        expect(widths).toEqual([200, 150, 100, 50, 30, 20, 15]);
+        expect(widths).toEqual([15, 20, 30, 50, 100, 150, 200]);
     });
     it("preserves sprite names for each entry", () => {
         const config = createTestConfig();
         const entries = collectTreeWidths(config, ["tree1", "tree2"]);
         const first = entries[0];
         expect(first?.spriteName).toBe("tree1");
-        expect(first?.width).toBe(200);
+        expect(first?.width).toBe(15);
         const second = entries[1];
         expect(second?.spriteName).toBe("tree2");
-        expect(second?.width).toBe(150);
+        expect(second?.width).toBe(20);
     });
     it("handles empty tree names array", () => {
         const config = createTestConfig();

@@ -5,7 +5,7 @@
  * 1. Ground (instant - pure ASCII)
  * 2. Grass sprites
  * 3. Bunny animation frames
- * 4. Trees from largest to smallest width
+ * 4. Trees from smallest to largest width
  */
 /**
  * Create empty mutable sprite registry.
@@ -65,17 +65,17 @@ export function insertSortedByWidth(sizes, frameSet) {
     sizes.splice(insertIdx, 0, frameSet);
 }
 /**
- * Collect all tree widths from config, sorted descending (largest first).
+ * Collect all tree widths from config, sorted ascending (smallest first).
  *
  * Combines widths from all tree sprites and returns unique widths
- * with their sprite names, sorted by width descending.
+ * with their sprite names, sorted by width ascending.
  *
  * Args:
  *     config: Application config with sprite definitions.
  *     treeNames: Names of tree sprites to collect widths from.
  *
  * Returns:
- *     Array of TreeWidthEntry sorted by width descending.
+ *     Array of TreeWidthEntry sorted by width ascending.
  */
 export function collectTreeWidths(config, treeNames) {
     const entries = [];
@@ -92,8 +92,8 @@ export function collectTreeWidths(config, treeNames) {
             entries.push({ spriteName, width });
         }
     }
-    // Sort by width descending (largest first)
-    entries.sort((a, b) => b.width - a.width);
+    // Sort by width ascending (smallest first)
+    entries.sort((a, b) => a.width - b.width);
     return entries;
 }
 /**
