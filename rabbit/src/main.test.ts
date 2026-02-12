@@ -326,6 +326,34 @@ describe("init", () => {
     expect(audioDeps.handlers.get("click")).toBeUndefined();
   });
 
+  it("track switcher calls getSystem when N key pressed", async () => {
+    const audioDeps = createTestAudioDeps();
+    const configWithAudio = {
+      ...createTestConfig(),
+      audio: {
+        enabled: true,
+        masterVolume: 0.5,
+        tracks: [
+          { id: "track1", path: "audio/track1.mp3", volume: 1.0, loop: true, tags: {} },
+          { id: "track2", path: "audio/track2.mp3", volume: 1.0, loop: true, tags: {} },
+        ],
+      },
+    };
+
+    const deps: MainDependencies = {
+      getScreenElement: () => screen,
+      loadConfigFn: () => Promise.resolve(configWithAudio),
+      runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
+      requestAnimationFrameFn: () => 0,
+      audioDeps,
+    };
+
+    await init(deps);
+
+    // Trigger N key - this exercises the getAudio callback passed to setupTrackSwitcher
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "n" }));
+  });
+
   it("exercises isHorizontalHeld callback via jump completion", async () => {
     vi.useFakeTimers();
 

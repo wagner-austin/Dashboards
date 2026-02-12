@@ -121,9 +121,9 @@ export async function init(deps = createDefaultDependencies()) {
         state.viewport = measureViewport(screen);
     });
     // Initialize audio
-    const audioSystem = initializeAudio(config.audio, deps.audioDeps);
-    if (audioSystem !== null) {
-        setupTrackSwitcher(audioSystem, (type, handler) => {
+    const deferredAudio = initializeAudio(config.audio, deps.audioDeps);
+    if (deferredAudio !== null) {
+        setupTrackSwitcher(() => deferredAudio.getSystem(), (type, handler) => {
             document.addEventListener(type, handler);
         });
     }
