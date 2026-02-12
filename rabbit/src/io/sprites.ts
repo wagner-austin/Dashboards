@@ -66,7 +66,7 @@ export async function loadSpriteFrames(
   direction?: string
 ): Promise<FrameSet> {
   const suffix = direction !== undefined ? `_${direction}` : "";
-  const path = `../dist/sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
+  const path = `../sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
   const module = await importSpriteModule(path);
   return {
     width,
@@ -81,7 +81,7 @@ export async function loadStaticSpriteFrames(
   spriteName: string,
   width: number
 ): Promise<FrameSet> {
-  const path = `../dist/sprites/${spriteName}/w${String(width)}.js`;
+  const path = `../sprites/${spriteName}/w${String(width)}.js`;
   const module = await importSpriteModule(path);
   return {
     width,
