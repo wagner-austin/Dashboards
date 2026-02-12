@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-    <div id="debug"></div>
+    <div id="debug">PAGE LOADED v2</div>
     <pre id="screen"></pre>
     <script>
         window.debugLog = function(msg) {
@@ -51,6 +51,14 @@
             }
             console.log(msg);
         };
+        // Immediate touch test - runs before any modules
+        document.addEventListener('touchstart', function() {
+            window.debugLog('TOUCH DETECTED');
+        });
+        document.addEventListener('click', function() {
+            window.debugLog('CLICK DETECTED');
+        });
+        window.debugLog('INLINE SCRIPT RAN');
     </script>
     <script type="module" src="./dist/io/autostart.js"></script>
 </body>
