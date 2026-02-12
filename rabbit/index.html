@@ -60,6 +60,13 @@
         });
         window.debugLog('INLINE SCRIPT RAN');
     </script>
-    <script type="module" src="./dist/io/autostart.js"></script>
+    <script type="module">
+        window.debugLog('LOADING MODULE...');
+        import('./dist/io/autostart.js').then(function() {
+            window.debugLog('MODULE LOADED OK');
+        }).catch(function(err) {
+            window.debugLog('MODULE ERROR: ' + err.message);
+        });
+    </script>
 </body>
 </html>

@@ -160,13 +160,28 @@ export function initializeAudio(
 
     if (context.state === "suspended") {
       debug("[Audio] Context suspended, calling resume()...");
+      // Android Chrome: resume() promise may hang, so use timeout fallback
+      let played = false;
+      const playOnce = (): void => {
+        if (!played) {
+          played = true;
+          debug(`[Audio] Playing track: ${track.id}`);
+          player.play(track);
+        }
+      };
+      // Try resume and play when it resolves
       context.resume().then(() => {
-        debug(`[Audio] Resume succeeded, playing track: ${track.id}`);
-        player.play(track);
+        debug("[Audio] Resume succeeded");
+        playOnce();
       }).catch((err) => {
-        debug(`[Audio] Resume failed: ${String(err)} - trying to play anyway`);
-        player.play(track);
+        debug(`[Audio] Resume failed: ${String(err)}`);
+        playOnce();
       });
+      // Fallback: play after 500ms if resume hangs
+      setTimeout(() => {
+        debug("[Audio] Timeout fallback triggered");
+        playOnce();
+      }, 500);
     } else {
       debug(`[Audio] Context running, playing track: ${track.id}`);
       player.play(track);
