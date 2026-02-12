@@ -3,9 +3,12 @@
  * This module contains dynamic imports which require browser/bundler integration.
  * Excluded from unit test coverage - testability ensured through dependency injection.
  */
+import { getSpriteWidths } from "../loaders/layers.js";
 import { collectTreeWidths, getGrassSpriteNames, getTreeSpriteNames, getSpriteWidthsFromConfig, getOrCreateSpriteArray, insertSortedByWidth, } from "../loaders/progressive.js";
 import { _test_hooks as spritesHooks } from "../loaders/sprites.js";
 const { validateSpriteModule } = spritesHooks;
+/** Cache bust version timestamp - updated on each build. */
+const CACHE_VERSION = Date.now();
 /** Cache for loaded sprite modules to prevent duplicate downloads */
 const spriteModuleCache = new Map();
 /** Dynamic import with validation and caching */
@@ -17,7 +20,8 @@ async function importSpriteModule(path) {
     }
     // Create promise and cache it immediately to handle concurrent requests
     const promise = (async () => {
-        const module = await import(/* @vite-ignore */ path);
+        const versionedPath = `${path}?v=${String(CACHE_VERSION)}`;
+        const module = await import(versionedPath);
         return validateSpriteModule(module, path);
     })();
     spriteModuleCache.set(path, promise);
@@ -28,7 +32,7 @@ async function importSpriteModule(path) {
  */
 export async function loadSpriteFrames(spriteName, animationName, width, direction) {
     const suffix = direction !== undefined ? `_${direction}` : "";
-    const path = `./dist/sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
+    const path = `../sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
     const module = await importSpriteModule(path);
     return {
         width,
@@ -39,7 +43,7 @@ export async function loadSpriteFrames(spriteName, animationName, width, directi
  * Load sprite frames for static sprites (no direction).
  */
 export async function loadStaticSpriteFrames(spriteName, width) {
-    const path = `./dist/sprites/${spriteName}/w${String(width)}.js`;
+    const path = `../sprites/${spriteName}/w${String(width)}.js`;
     const module = await importSpriteModule(path);
     return {
         width,
@@ -51,7 +55,7 @@ export async function loadStaticSpriteFrames(spriteName, width) {
  */
 export async function loadConfig() {
     const { validateConfig } = spritesHooks;
-    const response = await fetch("./config.json");
+    const response = await fetch(`./config.json?v=${String(CACHE_VERSION)}`);
     const data = await response.json();
     return validateConfig(data);
 }
@@ -116,7 +120,6 @@ export async function loadBunnyFrames(_config) {
  *     Array of TreeSize sorted by width ascending.
  */
 export async function loadTreeSizes(config) {
-    const { getSpriteWidths } = await import("../loaders/layers.js");
     const widths = getSpriteWidths(config, "tree1");
     const sizes = [];
     for (const w of widths) {
@@ -129,7 +132,6 @@ export async function loadTreeSizes(config) {
  * Load all sprites referenced by layers.
  */
 export async function loadLayerSprites(config, layers) {
-    const { getSpriteWidths } = await import("../loaders/layers.js");
     const sprites = new Map();
     // Collect unique sprite names from all layers
     const spriteNames = new Set();

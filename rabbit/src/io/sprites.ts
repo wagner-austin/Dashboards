@@ -9,6 +9,7 @@ import type { BunnyFrames } from "../entities/Bunny.js";
 import type { TreeSize } from "../entities/Tree.js";
 import type { ValidatedLayer } from "../layers/types.js";
 import type { SpriteRegistry } from "../loaders/layers.js";
+import { getSpriteWidths } from "../loaders/layers.js";
 import type {
   MutableSpriteRegistry,
   ProgressCallback,
@@ -24,6 +25,9 @@ import {
 import { _test_hooks as spritesHooks } from "../loaders/sprites.js";
 
 const { validateSpriteModule } = spritesHooks;
+
+/** Cache bust version timestamp - updated on each build. */
+const CACHE_VERSION = Date.now();
 
 /** Module interface for sprite frame exports */
 export interface SpriteModule {
@@ -43,7 +47,8 @@ async function importSpriteModule(path: string): Promise<SpriteModule> {
 
   // Create promise and cache it immediately to handle concurrent requests
   const promise = (async (): Promise<SpriteModule> => {
-    const module: unknown = await import(/* @vite-ignore */ path);
+    const versionedPath = `${path}?v=${String(CACHE_VERSION)}`;
+    const module: unknown = await import(versionedPath);
     return validateSpriteModule(module, path);
   })();
 
@@ -61,7 +66,7 @@ export async function loadSpriteFrames(
   direction?: string
 ): Promise<FrameSet> {
   const suffix = direction !== undefined ? `_${direction}` : "";
-  const path = `./dist/sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
+  const path = `../sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
   const module = await importSpriteModule(path);
   return {
     width,
@@ -76,7 +81,7 @@ export async function loadStaticSpriteFrames(
   spriteName: string,
   width: number
 ): Promise<FrameSet> {
-  const path = `./dist/sprites/${spriteName}/w${String(width)}.js`;
+  const path = `../sprites/${spriteName}/w${String(width)}.js`;
   const module = await importSpriteModule(path);
   return {
     width,
@@ -89,7 +94,7 @@ export async function loadStaticSpriteFrames(
  */
 export async function loadConfig(): Promise<Config> {
   const { validateConfig } = spritesHooks;
-  const response = await fetch("./config.json");
+  const response = await fetch(`./config.json?v=${String(CACHE_VERSION)}`);
   const data: unknown = await response.json();
   return validateConfig(data);
 }
@@ -162,7 +167,6 @@ export async function loadBunnyFrames(_config: Config): Promise<BunnyFrames> {
  *     Array of TreeSize sorted by width ascending.
  */
 export async function loadTreeSizes(config: Config): Promise<TreeSize[]> {
-  const { getSpriteWidths } = await import("../loaders/layers.js");
   const widths = getSpriteWidths(config, "tree1");
   const sizes: TreeSize[] = [];
   for (const w of widths) {
@@ -179,7 +183,6 @@ export async function loadLayerSprites(
   config: Config,
   layers: readonly ValidatedLayer[]
 ): Promise<SpriteRegistry> {
-  const { getSpriteWidths } = await import("../loaders/layers.js");
   const sprites = new Map<string, readonly FrameSet[]>();
 
   // Collect unique sprite names from all layers
