@@ -10,7 +10,10 @@ export type {
   AudioTrack,
   AudioConfig,
   AudioState,
-  AudioElementLike,
+  AudioContextLike,
+  AudioBufferSourceNodeLike,
+  GainNodeLike,
+  AudioParamLike,
   AudioDependencies,
 } from "./types.js";
 export { createAudioState } from "./types.js";
@@ -42,4 +45,4 @@ export {
 } from "./controller.js";
 
 // Browser-specific (from io module)
-export { createBrowserAudioElement, createDefaultAudioDependencies } from "../io/browser.js";
+export { createBrowserAudioContext, createDefaultAudioDependencies } from "../io/browser.js";
