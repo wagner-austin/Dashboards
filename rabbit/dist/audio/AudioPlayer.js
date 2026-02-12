@@ -29,15 +29,20 @@ export function createAudioPlayer(deps) {
     async function loadBuffer(track) {
         const cached = state.buffers.get(track.id);
         if (cached !== undefined) {
+            console.log("[AudioPlayer] Using cached buffer for:", track.id);
             return cached;
         }
+        console.log("[AudioPlayer] Fetching audio:", track.path);
         const response = await deps.fetchFn(track.path);
         if (!response.ok) {
+            console.log("[AudioPlayer] Fetch failed:", response.status);
             return null;
         }
+        console.log("[AudioPlayer] Decoding audio...");
         const arrayBuffer = await response.arrayBuffer();
         const audioBuffer = await deps.context.decodeAudioData(arrayBuffer);
         state.buffers.set(track.id, audioBuffer);
+        console.log("[AudioPlayer] Audio decoded and cached:", track.id);
         return audioBuffer;
     }
     function fadeOut(active) {
@@ -65,6 +70,7 @@ export function createAudioPlayer(deps) {
         active.gain.gain.linearRampToValueAtTime(targetVolume, currentTime + FADE_DURATION);
     }
     function play(track) {
+        console.log("[AudioPlayer] play() called for:", track.id);
         state.currentTrackId = track.id;
         state.isPlaying = true;
         if (state.activeSource !== null) {
@@ -73,23 +79,27 @@ export function createAudioPlayer(deps) {
         }
         loadBuffer(track).then(buffer => {
             if (buffer === null) {
+                console.log("[AudioPlayer] Buffer is null, aborting");
                 return;
             }
             if (state.currentTrackId !== track.id) {
+                console.log("[AudioPlayer] Track changed, aborting");
                 return;
             }
+            console.log("[AudioPlayer] Creating source and starting playback");
             const active = createSource(buffer, track);
             state.activeSource = active;
             active.source.start();
             fadeIn(active);
+            console.log("[AudioPlayer] Playback started");
             active.source.onended = () => {
                 if (state.activeSource === active) {
                     state.activeSource = null;
                     state.isPlaying = false;
                 }
             };
-        }).catch(() => {
-            // Load failed silently
+        }).catch((err) => {
+            console.log("[AudioPlayer] Load failed:", err);
         });
     }
     function pause() {

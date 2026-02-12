@@ -118,16 +118,22 @@ export function initializeAudio(
   let system: AudioSystem | null = null;
 
   const start = (): void => {
+    console.log("[Audio] start() called");
     if (system !== null) {
+      console.log("[Audio] system already exists, returning");
       return;
     }
 
+    console.log("[Audio] Creating AudioContext...");
     const context = deps.createContext();
+    console.log("[Audio] AudioContext created, state:", context.state);
+
     const player = createAudioPlayer({
       context,
       fetchFn: deps.fetchFn,
       masterVolume: audioConfig.masterVolume,
     });
+    console.log("[Audio] Player created");
 
     system = {
       context,
@@ -143,13 +149,16 @@ export function initializeAudio(
     };
 
     if (context.state === "suspended") {
+      console.log("[Audio] Context suspended, calling resume()...");
       context.resume().then(() => {
+        console.log("[Audio] Resume succeeded, playing track:", track.id);
         player.play(track);
-      }).catch(() => {
-        // Resume failed - try playing anyway
+      }).catch((err) => {
+        console.log("[Audio] Resume failed:", err, "- trying to play anyway");
         player.play(track);
       });
     } else {
+      console.log("[Audio] Context running, playing track:", track.id);
       player.play(track);
     }
 
