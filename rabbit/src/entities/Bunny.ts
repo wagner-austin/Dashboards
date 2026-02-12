@@ -28,11 +28,10 @@ export interface WalkState {
   frameIdx: number;
 }
 
-/** Bunny is jumping, will return to previous state after. */
+/** Bunny is jumping. */
 export interface JumpState {
   readonly kind: "jump";
   frameIdx: number;
-  readonly returnTo: "idle" | "walk";
 }
 
 /** Bunny is hopping away or toward camera. */
@@ -40,7 +39,6 @@ export interface HopState {
   readonly kind: "hop";
   readonly direction: "away" | "toward";
   frameIdx: number;
-  readonly returnTo: "idle" | "walk";
 }
 
 /** Bunny is transitioning between states. */
@@ -170,12 +168,21 @@ export function createInitialBunnyState(): BunnyState {
 }
 
 /**
+ * Callback to check if horizontal input is currently held.
+ *
+ * Returns true if left or right is held, used by animation completion
+ * to decide whether to walk or idle.
+ */
+export type IsHorizontalHeld = () => boolean;
+
+/**
  * Create bunny animation timers.
  *
  * Args:
  *     state: Mutable bunny state.
  *     frames: Animation frame data.
  *     intervals: Timer intervals in milliseconds.
+ *     isHorizontalHeld: Callback to check current horizontal input.
  *
  * Returns:
  *     BunnyTimers with all animation timers.
@@ -183,7 +190,8 @@ export function createInitialBunnyState(): BunnyState {
 export function createBunnyTimers(
   state: BunnyState,
   frames: BunnyFrames,
-  intervals: { walk: number; idle: number; jump: number; transition: number; hop: number }
+  intervals: { walk: number; idle: number; jump: number; transition: number; hop: number },
+  isHorizontalHeld: IsHorizontalHeld
 ): BunnyTimers {
   const walkTimer = createAnimationTimer(intervals.walk, () => {
     if (state.animation.kind !== "walk") return;
@@ -204,14 +212,12 @@ export function createBunnyTimers(
 
     if (state.animation.frameIdx >= jumpFrames.length) {
       jumpTimer.stop();
-      const returnTo = state.animation.returnTo;
-
-      if (returnTo === "walk") {
+      if (isHorizontalHeld()) {
         state.animation = { kind: "walk", frameIdx: 0 };
         walkTimer.start();
       } else {
-        state.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" };
-        transitionTimer.start();
+        state.animation = { kind: "idle", frameIdx: 0 };
+        idleTimer.start();
       }
     }
   });
@@ -237,13 +243,13 @@ export function createBunnyTimers(
         transitionTimer.stop();
 
         if (anim.pendingAction === "jump") {
-          state.animation = { kind: "jump", frameIdx: 0, returnTo: "idle" };
+          state.animation = { kind: "jump", frameIdx: 0 };
           jumpTimer.start();
         } else if (anim.pendingAction === "hop_away") {
-          state.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: anim.returnTo };
+          state.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: "idle" };
           transitionTimer.start();
         } else if (anim.pendingAction === "hop_toward") {
-          state.animation = { kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: anim.returnTo };
+          state.animation = { kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: "idle" };
           transitionTimer.start();
         } else {
           state.animation = { kind: "walk", frameIdx: 0 };
@@ -256,7 +262,7 @@ export function createBunnyTimers(
 
       if (anim.frameIdx >= turnAwayFrames.length) {
         transitionTimer.stop();
-        state.animation = { kind: "hop", direction: "away", frameIdx: 0, returnTo: anim.returnTo };
+        state.animation = { kind: "hop", direction: "away", frameIdx: 0 };
         hopTimer.start();
       }
     } else {
@@ -266,7 +272,7 @@ export function createBunnyTimers(
 
       if (anim.frameIdx >= turnTowardFrames.length) {
         transitionTimer.stop();
-        state.animation = { kind: "hop", direction: "toward", frameIdx: 0, returnTo: anim.returnTo };
+        state.animation = { kind: "hop", direction: "toward", frameIdx: 0 };
         hopTimer.start();
       }
     }
