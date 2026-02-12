@@ -76,31 +76,37 @@ function createTestRunProgressiveLoadFn(
   };
 }
 
-/** Test audio element interface */
-interface TestAudioElement {
-  src: string;
-  volume: number;
-  loop: boolean;
-  play: () => Promise<void>;
-  pause: () => void;
-}
-
 /** Test audio deps return type */
 interface TestAudioDeps extends AudioDependencies {
   handlers: Map<string, (() => void)[]>;
 }
 
-/** Create test audio dependencies with no-op event listeners */
+/** Create test audio dependencies with Web Audio API mocks */
 function createTestAudioDeps(): TestAudioDeps {
   const handlers = new Map<string, (() => void)[]>();
   return {
-    createElementFn: (): TestAudioElement => ({
-      src: "",
-      volume: 1,
-      loop: false,
-      play: (): Promise<void> => Promise.resolve(),
-      pause: (): void => { /* no-op */ },
+    createContext: (): AudioDependencies["createContext"] extends () => infer R ? R : never => ({
+      state: "running" as const,
+      resume: (): Promise<void> => Promise.resolve(),
+      createBufferSource: (): { buffer: null; loop: boolean; connect: () => void; start: () => void; stop: () => void; onended: null } => ({
+        buffer: null,
+        loop: false,
+        connect: (): void => { /* no-op */ },
+        start: (): void => { /* no-op */ },
+        stop: (): void => { /* no-op */ },
+        onended: null,
+      }),
+      createGain: (): { gain: { value: number; linearRampToValueAtTime: () => void }; connect: () => void } => ({
+        gain: { value: 0, linearRampToValueAtTime: (): void => { /* no-op */ } },
+        connect: (): void => { /* no-op */ },
+      }),
+      decodeAudioData: (): Promise<AudioBuffer> => Promise.resolve({} as AudioBuffer),
+      destination: {} as AudioNode,
     }),
+    fetchFn: (): Promise<Response> => Promise.resolve({
+      ok: true,
+      arrayBuffer: (): Promise<ArrayBuffer> => Promise.resolve(new ArrayBuffer(8)),
+    } as unknown as Response),
     addEventListenerFn: (type: string, handler: () => void): void => {
       const existing = handlers.get(type) ?? [];
       existing.push(handler);
