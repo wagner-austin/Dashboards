@@ -18,18 +18,16 @@ export interface WalkState {
     readonly kind: "walk";
     frameIdx: number;
 }
-/** Bunny is jumping, will return to previous state after. */
+/** Bunny is jumping. */
 export interface JumpState {
     readonly kind: "jump";
     frameIdx: number;
-    readonly returnTo: "idle" | "walk";
 }
 /** Bunny is hopping away or toward camera. */
 export interface HopState {
     readonly kind: "hop";
     readonly direction: "away" | "toward";
     frameIdx: number;
-    readonly returnTo: "idle" | "walk";
 }
 /** Bunny is transitioning between states. */
 export interface TransitionState {
@@ -127,12 +125,20 @@ export declare function getHopDirection(state: BunnyState): "away" | "toward" | 
  */
 export declare function createInitialBunnyState(): BunnyState;
 /**
+ * Callback to check if horizontal input is currently held.
+ *
+ * Returns true if left or right is held, used by animation completion
+ * to decide whether to walk or idle.
+ */
+export type IsHorizontalHeld = () => boolean;
+/**
  * Create bunny animation timers.
  *
  * Args:
  *     state: Mutable bunny state.
  *     frames: Animation frame data.
  *     intervals: Timer intervals in milliseconds.
+ *     isHorizontalHeld: Callback to check current horizontal input.
  *
  * Returns:
  *     BunnyTimers with all animation timers.
@@ -143,7 +149,7 @@ export declare function createBunnyTimers(state: BunnyState, frames: BunnyFrames
     jump: number;
     transition: number;
     hop: number;
-}): BunnyTimers;
+}, isHorizontalHeld: IsHorizontalHeld): BunnyTimers;
 /**
  * Get current bunny frame to render.
  *

@@ -34,7 +34,7 @@ describe("createInitialBunnyState", () => {
 });
 describe("state helper functions", () => {
     it("isHopping returns true when hopping", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
         expect(isHopping(state)).toBe(true);
     });
     it("isHopping returns false when not hopping", () => {
@@ -42,7 +42,7 @@ describe("state helper functions", () => {
         expect(isHopping(state)).toBe(false);
     });
     it("isJumping returns true when jumping", () => {
-        const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "idle" });
+        const state = createTestState({ kind: "jump", frameIdx: 0 });
         expect(isJumping(state)).toBe(true);
     });
     it("isJumping returns false when not jumping", () => {
@@ -58,7 +58,7 @@ describe("state helper functions", () => {
         expect(isWalking(state)).toBe(false);
     });
     it("getHopDirection returns direction when hopping", () => {
-        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "idle" });
+        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0 });
         expect(getHopDirection(state)).toBe("toward");
     });
     it("getHopDirection returns null when not hopping", () => {
@@ -82,7 +82,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         expect(timers.walk).toBeDefined();
         expect(timers.idle).toBeDefined();
         expect(timers.jump).toBeDefined();
@@ -98,7 +98,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.walk.start();
         expect(state.animation.frameIdx).toBe(0);
         vi.advanceTimersByTime(100);
@@ -117,7 +117,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.walk.start();
         vi.advanceTimersByTime(300);
         expect(state.animation.frameIdx).toBe(0);
@@ -131,7 +131,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.walk.start();
         vi.advanceTimersByTime(100);
         expect(state.animation.frameIdx).toBe(0);
@@ -145,7 +145,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.idle.start();
         vi.advanceTimersByTime(200);
         expect(state.animation.frameIdx).toBe(1);
@@ -161,7 +161,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.idle.start();
         vi.advanceTimersByTime(200);
         expect(state.animation.frameIdx).toBe(1);
@@ -175,13 +175,13 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.idle.start();
         vi.advanceTimersByTime(200);
         expect(state.animation.frameIdx).toBe(0);
     });
-    it("jump timer advances frame and returns to walk", () => {
-        const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "walk" });
+    it("jump timer advances frame and returns to idle when no horizontal held", () => {
+        const state = createTestState({ kind: "jump", frameIdx: 0 });
         const frames = createTestFrames();
         const timers = createBunnyTimers(state, frames, {
             walk: 100,
@@ -189,18 +189,33 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.jump.start();
         vi.advanceTimersByTime(50);
         expect(state.animation.frameIdx).toBe(1);
         vi.advanceTimersByTime(50);
         expect(state.animation.frameIdx).toBe(2);
         vi.advanceTimersByTime(50);
+        expect(state.animation.kind).toBe("idle");
+        expect(timers.idle.isRunning()).toBe(true);
+    });
+    it("jump timer returns to walk when horizontal is held", () => {
+        const state = createTestState({ kind: "jump", frameIdx: 0 });
+        const frames = createTestFrames();
+        const timers = createBunnyTimers(state, frames, {
+            walk: 100,
+            idle: 200,
+            jump: 50,
+            transition: 80,
+            hop: 100,
+        }, () => true);
+        timers.jump.start();
+        vi.advanceTimersByTime(150);
         expect(state.animation.kind).toBe("walk");
         expect(timers.walk.isRunning()).toBe(true);
     });
-    it("jump timer returns to walk_to_idle transition when returnTo is idle", () => {
-        const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "idle" });
+    it("jump timer uses right frames when facing right and returns to idle", () => {
+        const state = createTestState({ kind: "jump", frameIdx: 0 }, true);
         const frames = createTestFrames();
         const timers = createBunnyTimers(state, frames, {
             walk: 100,
@@ -208,28 +223,10 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.jump.start();
         vi.advanceTimersByTime(150);
-        expect(state.animation.kind).toBe("transition");
-        if (state.animation.kind === "transition") {
-            expect(state.animation.type).toBe("walk_to_idle");
-        }
-        expect(timers.transition.isRunning()).toBe(true);
-    });
-    it("jump timer uses right frames when facing right", () => {
-        const state = createTestState({ kind: "jump", frameIdx: 0, returnTo: "walk" }, true);
-        const frames = createTestFrames();
-        const timers = createBunnyTimers(state, frames, {
-            walk: 100,
-            idle: 200,
-            jump: 50,
-            transition: 80,
-            hop: 100,
-        });
-        timers.jump.start();
-        vi.advanceTimersByTime(150);
-        expect(state.animation.kind).toBe("walk");
+        expect(state.animation.kind).toBe("idle");
     });
     it("jump timer does nothing when not in jump state", () => {
         const state = createTestState({ kind: "walk", frameIdx: 0 });
@@ -240,7 +237,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.jump.start();
         vi.advanceTimersByTime(50);
         expect(state.animation.kind).toBe("walk");
@@ -254,7 +251,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(80);
         expect(state.animation.frameIdx).toBe(1);
@@ -273,7 +270,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(80);
         expect(state.animation.frameIdx).toBe(1);
@@ -292,7 +289,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(240);
         expect(state.animation.kind).toBe("jump");
@@ -307,7 +304,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(240);
         expect(state.animation.kind).toBe("transition");
@@ -324,7 +321,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(240);
         expect(state.animation.kind).toBe("transition");
@@ -341,7 +338,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(80);
         expect(state.animation.frameIdx).toBe(1);
@@ -349,7 +346,6 @@ describe("createBunnyTimers", () => {
         expect(state.animation.kind).toBe("hop");
         if (state.animation.kind === "hop") {
             expect(state.animation.direction).toBe("away");
-            expect(state.animation.returnTo).toBe("walk");
         }
         expect(timers.hop.isRunning()).toBe(true);
     });
@@ -362,13 +358,12 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(160);
         expect(state.animation.kind).toBe("hop");
         if (state.animation.kind === "hop") {
             expect(state.animation.direction).toBe("toward");
-            expect(state.animation.returnTo).toBe("idle");
         }
         expect(timers.hop.isRunning()).toBe(true);
     });
@@ -381,7 +376,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(160);
         expect(state.animation.kind).toBe("hop");
@@ -395,7 +390,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(160);
         expect(state.animation.kind).toBe("hop");
@@ -409,7 +404,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(240);
         expect(state.animation.kind).toBe("idle");
@@ -423,14 +418,14 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.transition.start();
         vi.advanceTimersByTime(80);
         expect(state.animation.kind).toBe("walk");
         expect(state.animation.frameIdx).toBe(1);
     });
     it("hop timer advances frame index for hop_away", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0, returnTo: "idle" });
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
         const frames = createTestFrames();
         const timers = createBunnyTimers(state, frames, {
             walk: 100,
@@ -438,7 +433,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.hop.start();
         vi.advanceTimersByTime(100);
         expect(state.animation.frameIdx).toBe(1);
@@ -448,7 +443,7 @@ describe("createBunnyTimers", () => {
         expect(state.animation.frameIdx).toBe(0);
     });
     it("hop timer advances frame index for hop_toward", () => {
-        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0, returnTo: "walk" });
+        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0 });
         const frames = createTestFrames();
         const timers = createBunnyTimers(state, frames, {
             walk: 100,
@@ -456,7 +451,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.hop.start();
         vi.advanceTimersByTime(100);
         expect(state.animation.frameIdx).toBe(1);
@@ -470,7 +465,7 @@ describe("createBunnyTimers", () => {
             jump: 50,
             transition: 80,
             hop: 100,
-        });
+        }, () => false);
         timers.hop.start();
         vi.advanceTimersByTime(100);
         expect(state.animation.frameIdx).toBe(0);
@@ -513,35 +508,35 @@ describe("getBunnyFrame", () => {
         expect(result.frameIdx).toBe(999);
     });
     it("returns jump frame facing left", () => {
-        const state = createTestState({ kind: "jump", frameIdx: 2, returnTo: "idle" });
+        const state = createTestState({ kind: "jump", frameIdx: 2 });
         const result = getBunnyFrame(state, frames);
         expect(result.lines).toEqual(["jumpL2"]);
         expect(result.frameIdx).toBe(2);
     });
     it("returns jump frame facing right", () => {
-        const state = createTestState({ kind: "jump", frameIdx: 1, returnTo: "walk" }, true);
+        const state = createTestState({ kind: "jump", frameIdx: 1 }, true);
         const result = getBunnyFrame(state, frames);
         expect(result.lines).toEqual(["jumpR1"]);
     });
     it("returns empty lines when jump frame index is out of bounds", () => {
-        const state = createTestState({ kind: "jump", frameIdx: 999, returnTo: "idle" }, true);
+        const state = createTestState({ kind: "jump", frameIdx: 999 }, true);
         const result = getBunnyFrame(state, frames);
         expect(result.lines).toEqual([]);
     });
     it("returns hop_away frame", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 1, returnTo: "idle" });
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 1 });
         const result = getBunnyFrame(state, frames);
         expect(result.lines).toEqual(["hopAway1"]);
         expect(result.frameIdx).toBe(1);
     });
     it("returns hop_toward frame", () => {
-        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 2, returnTo: "walk" });
+        const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 2 });
         const result = getBunnyFrame(state, frames);
         expect(result.lines).toEqual(["hopToward2"]);
         expect(result.frameIdx).toBe(2);
     });
     it("wraps hop frame index", () => {
-        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 5, returnTo: "idle" });
+        const state = createTestState({ kind: "hop", direction: "away", frameIdx: 5 });
         const result = getBunnyFrame(state, frames);
         expect(result.frameIdx).toBe(2);
     });

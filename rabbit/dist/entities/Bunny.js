@@ -72,11 +72,12 @@ export function createInitialBunnyState() {
  *     state: Mutable bunny state.
  *     frames: Animation frame data.
  *     intervals: Timer intervals in milliseconds.
+ *     isHorizontalHeld: Callback to check current horizontal input.
  *
  * Returns:
  *     BunnyTimers with all animation timers.
  */
-export function createBunnyTimers(state, frames, intervals) {
+export function createBunnyTimers(state, frames, intervals, isHorizontalHeld) {
     const walkTimer = createAnimationTimer(intervals.walk, () => {
         if (state.animation.kind !== "walk")
             return;
@@ -96,14 +97,13 @@ export function createBunnyTimers(state, frames, intervals) {
         state.animation.frameIdx++;
         if (state.animation.frameIdx >= jumpFrames.length) {
             jumpTimer.stop();
-            const returnTo = state.animation.returnTo;
-            if (returnTo === "walk") {
+            if (isHorizontalHeld()) {
                 state.animation = { kind: "walk", frameIdx: 0 };
                 walkTimer.start();
             }
             else {
-                state.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" };
-                transitionTimer.start();
+                state.animation = { kind: "idle", frameIdx: 0 };
+                idleTimer.start();
             }
         }
     });
@@ -125,15 +125,15 @@ export function createBunnyTimers(state, frames, intervals) {
             if (anim.frameIdx < 0) {
                 transitionTimer.stop();
                 if (anim.pendingAction === "jump") {
-                    state.animation = { kind: "jump", frameIdx: 0, returnTo: "idle" };
+                    state.animation = { kind: "jump", frameIdx: 0 };
                     jumpTimer.start();
                 }
                 else if (anim.pendingAction === "hop_away") {
-                    state.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: anim.returnTo };
+                    state.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 0, pendingAction: null, returnTo: "idle" };
                     transitionTimer.start();
                 }
                 else if (anim.pendingAction === "hop_toward") {
-                    state.animation = { kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: anim.returnTo };
+                    state.animation = { kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: "idle" };
                     transitionTimer.start();
                 }
                 else {
@@ -147,7 +147,7 @@ export function createBunnyTimers(state, frames, intervals) {
             const turnAwayFrames = state.facingRight ? frames.walkToTurnAwayRight : frames.walkToTurnAwayLeft;
             if (anim.frameIdx >= turnAwayFrames.length) {
                 transitionTimer.stop();
-                state.animation = { kind: "hop", direction: "away", frameIdx: 0, returnTo: anim.returnTo };
+                state.animation = { kind: "hop", direction: "away", frameIdx: 0 };
                 hopTimer.start();
             }
         }
@@ -157,7 +157,7 @@ export function createBunnyTimers(state, frames, intervals) {
             const turnTowardFrames = state.facingRight ? frames.walkToTurnTowardRight : frames.walkToTurnTowardLeft;
             if (anim.frameIdx >= turnTowardFrames.length) {
                 transitionTimer.stop();
-                state.animation = { kind: "hop", direction: "toward", frameIdx: 0, returnTo: anim.returnTo };
+                state.animation = { kind: "hop", direction: "toward", frameIdx: 0 };
                 hopTimer.start();
             }
         }
