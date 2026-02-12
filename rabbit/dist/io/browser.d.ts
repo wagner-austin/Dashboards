@@ -3,14 +3,19 @@
  * This module contains code that requires browser APIs and is excluded from unit test coverage.
  * Testability is ensured through dependency injection in consuming modules.
  */
-import type { AudioElementLike, AudioDependencies } from "../audio/types.js";
+import type { AudioContextLike, AudioDependencies } from "../audio/types.js";
 /**
- * Create browser audio element.
- * Returns a real HTMLAudioElement for browser use.
+ * Create browser AudioContext.
+ *
+ * Returns:
+ *     AudioContext for Web Audio API.
  */
-export declare function createBrowserAudioElement(): AudioElementLike;
+export declare function createBrowserAudioContext(): AudioContextLike;
 /**
  * Create default audio dependencies for browser use.
+ *
+ * Returns:
+ *     AudioDependencies with browser implementations.
  */
 export declare function createDefaultAudioDependencies(): AudioDependencies;
 //# sourceMappingURL=browser.d.ts.map
