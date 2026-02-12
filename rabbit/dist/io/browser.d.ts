@@ -6,7 +6,7 @@
 import type { AudioContextLike, AudioDependencies } from "../audio/types.js";
 /**
  * Create browser AudioContext.
- * Falls back to webkitAudioContext for older Android Chrome browsers.
+ * Uses the same pattern as kana-pop AudioService for maximum compatibility.
  *
  * Returns:
  *     AudioContext for Web Audio API.

@@ -6,21 +6,22 @@
 
 import type { AudioContextLike, AudioDependencies } from "../audio/types.js";
 
-/** Window with webkit audio context for older Android Chrome. */
-interface WindowWithWebkit {
+/** Window with webkit audio context for older browsers. */
+interface WindowWithWebkit extends Window {
   AudioContext?: typeof AudioContext;
   webkitAudioContext?: typeof AudioContext;
 }
 
 /**
  * Create browser AudioContext.
- * Falls back to webkitAudioContext for older Android Chrome browsers.
+ * Uses the same pattern as kana-pop AudioService for maximum compatibility.
  *
  * Returns:
  *     AudioContext for Web Audio API.
  */
 export function createBrowserAudioContext(): AudioContextLike {
-  const win = window as unknown as WindowWithWebkit;
+  const win = window as WindowWithWebkit;
+  // Set global AudioContext like kana-pop does
   const AudioContextClass = win.AudioContext ?? win.webkitAudioContext;
   if (AudioContextClass === undefined) {
     throw new Error("Web Audio API not supported");

@@ -5,13 +5,14 @@
  */
 /**
  * Create browser AudioContext.
- * Falls back to webkitAudioContext for older Android Chrome browsers.
+ * Uses the same pattern as kana-pop AudioService for maximum compatibility.
  *
  * Returns:
  *     AudioContext for Web Audio API.
  */
 export function createBrowserAudioContext() {
     const win = window;
+    // Set global AudioContext like kana-pop does
     const AudioContextClass = win.AudioContext ?? win.webkitAudioContext;
     if (AudioContextClass === undefined) {
         throw new Error("Web Audio API not supported");
