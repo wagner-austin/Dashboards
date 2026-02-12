@@ -172,7 +172,7 @@ describe("renderFrame", () => {
   });
 
   it("does not update camera when bunny is jumping", () => {
-    const bunnyState = createTestBunnyState({ kind: "jump", frameIdx: 0, returnTo: "walk" });
+    const bunnyState = createTestBunnyState({ kind: "jump", frameIdx: 0 });
 
     const sceneState = createTestSceneState();
     const initialCameraX = sceneState.camera.x;
