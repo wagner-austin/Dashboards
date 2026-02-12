@@ -9,6 +9,7 @@ import { renderFrame } from "./rendering/SceneRenderer.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers } from "./entities/Bunny.js";
 import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, processWalkMovement } from "./input/Keyboard.js";
+import { setupTouchControls } from "./input/Touch.js";
 import { processLayersConfig, createSceneState } from "./layers/index.js";
 import { createProgressiveLayerInstances } from "./loaders/layers.js";
 import { createLayerAnimationCallback } from "./entities/SceneSprite.js";
@@ -181,8 +182,9 @@ export async function init(deps = createDefaultDependencies()) {
             transition: 50,
             hop: 150,
         });
-        // Setup keyboard input
+        // Setup input controls
         setupKeyboardControls(state, bunnyFrames, bunnyTimers);
+        setupTouchControls(state, bunnyFrames, bunnyTimers);
         // Start bunny animation timers
         bunnyTimers.walk.start();
         bunnyTimers.idle.start();
