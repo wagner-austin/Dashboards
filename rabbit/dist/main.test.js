@@ -64,16 +64,31 @@ function createTestRunProgressiveLoadFn(bunnyFrames) {
         return Promise.resolve();
     };
 }
-/** Create test audio dependencies with no-op event listeners */
+/** Create test audio dependencies with Web Audio API mocks */
 function createTestAudioDeps() {
     const handlers = new Map();
     return {
-        createElementFn: () => ({
-            src: "",
-            volume: 1,
-            loop: false,
-            play: () => Promise.resolve(),
-            pause: () => { },
+        createContext: () => ({
+            state: "running",
+            resume: () => Promise.resolve(),
+            createBufferSource: () => ({
+                buffer: null,
+                loop: false,
+                connect: () => { },
+                start: () => { },
+                stop: () => { },
+                onended: null,
+            }),
+            createGain: () => ({
+                gain: { value: 0, linearRampToValueAtTime: () => { } },
+                connect: () => { },
+            }),
+            decodeAudioData: () => Promise.resolve({}),
+            destination: {},
+        }),
+        fetchFn: () => Promise.resolve({
+            ok: true,
+            arrayBuffer: () => Promise.resolve(new ArrayBuffer(8)),
         }),
         addEventListenerFn: (type, handler) => {
             const existing = handlers.get(type) ?? [];
