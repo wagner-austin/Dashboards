@@ -1,0 +1,109 @@
+{
+  "$schema": "./config.schema.json",
+  "_comment": "Single source of truth for metabolomics pipeline configuration",
+
+  "input": {
+    "file": "Emily_Data_Pruned_Labeled.xlsx",
+    "sheet": "Normalized",
+    "formula_file": "Emily_Data_WITH_FORMULAS.xlsx"
+  },
+
+  "output": {
+    "html": "index.html",
+    "intermediate_dir": "intermediate"
+  },
+
+  "samples": {
+    "leaf": {
+      "drought": ["BL - Drought", "CL - Drought", "EL - Drought", "GL - Drought"],
+      "ambient": ["IL - Ambient", "JL - Ambient", "LL - Ambient", "ML - Ambient"],
+      "watered": ["OL - Watered", "PL - Watered", "RL - Watered", "TL - Watered"]
+    },
+    "root": {
+      "drought": ["AR - Drought", "DR - Drought", "ER - Drought", "GR - Drought"],
+      "ambient": ["HR - Ambient", "IR - Ambient", "JR - Ambient", "MR - Ambient"],
+      "watered": ["RR - Watered", "SR - Watered", "TR - Watered"]
+    }
+  },
+
+  "blanks": {
+    "leaf": ["Blk1", "Blk2"],
+    "root": [
+      "250220_ebtruong_blank1",
+      "250220_ebtruong_blank2",
+      "250220_ebtruong_blank3",
+      "250220_ebtruong_blank4"
+    ]
+  },
+
+  "pipeline": {
+    "steps": [
+      {
+        "name": "load",
+        "module": "loader",
+        "description": "Load raw data from Excel"
+      },
+      {
+        "name": "blank_filter",
+        "module": "blank_filter",
+        "description": "Remove contamination peaks (sample/blank ratio test)"
+      },
+      {
+        "name": "cumulative_filter",
+        "module": "cumulative_filter",
+        "description": "Keep peaks contributing to top N% of signal"
+      },
+      {
+        "name": "diversity",
+        "module": "diversity",
+        "description": "Calculate chemical richness and Shannon diversity"
+      },
+      {
+        "name": "overlap",
+        "module": "overlap",
+        "description": "Calculate treatment overlap (Venn diagram data)"
+      },
+      {
+        "name": "render",
+        "module": "render",
+        "description": "Generate HTML dashboard"
+      }
+    ]
+  },
+
+  "thresholds": {
+    "blank_filter": {
+      "fold_change": 20.0,
+      "p_value": 0.05,
+      "fdr_correction": true,
+      "reference": "https://bioconductor.org/packages/release/bioc/html/pmp.html",
+      "citation": "Jankevics A, Lloyd GR, Weber RJM. pmp: Peak Matrix Processing. Bioconductor."
+    },
+    "cumulative_filter": {
+      "threshold": 0.80,
+      "description": "Keep peaks contributing to top 80% of signal per sample"
+    },
+    "detection": {
+      "min_value": 0.0,
+      "description": "Values > this threshold are considered detected"
+    }
+  },
+
+  "references": {
+    "blank_subtraction": {
+      "name": "pmp/Bioconductor",
+      "url": "https://bioconductor.org/packages/release/bioc/html/pmp.html",
+      "citation": "Jankevics A, Lloyd GR, Weber RJM. pmp: Peak Matrix Processing and signal batch correction for metabolomics datasets."
+    },
+    "shannon_diversity": {
+      "name": "Vinaixa et al. 2012",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3901240/",
+      "citation": "Vinaixa M, et al. A Guideline to Univariate Statistical Analysis for LC/MS-Based Untargeted Metabolomics-Derived Data. Metabolites. 2012;2(4):775-795."
+    },
+    "fdr_correction": {
+      "name": "Benjamini-Hochberg",
+      "url": "https://www.jstor.org/stable/2346101",
+      "citation": "Benjamini Y, Hochberg Y. Controlling the false discovery rate. J R Stat Soc B. 1995;57(1):289-300."
+    }
+  }
+}

@@ -6,6 +6,16 @@
 
 import { init } from "../main.js";
 
+/** Debug log to screen overlay. */
+function debug(msg: string): void {
+  const win = window as unknown as { debugLog?: (m: string) => void };
+  if (win.debugLog !== undefined) {
+    win.debugLog(msg);
+  } else {
+    console.log(msg);
+  }
+}
+
 // Vitest sets import.meta.env.MODE to 'test'
 function isTestEnvironment(): boolean {
   const meta = import.meta as { env?: { MODE?: string } };
@@ -13,14 +23,20 @@ function isTestEnvironment(): boolean {
 }
 
 if (!isTestEnvironment() && typeof document !== "undefined") {
+  debug("[autostart] Module loaded");
   if (document.readyState === "loading") {
+    debug("[autostart] Waiting for DOMContentLoaded");
     document.addEventListener("DOMContentLoaded", () => {
+      debug("[autostart] DOMContentLoaded fired, calling init()");
       init().catch((error: unknown) => {
+        debug(`[autostart] Init failed: ${String(error)}`);
         console.error("Failed to initialize:", error);
       });
     });
   } else {
+    debug("[autostart] DOM ready, calling init()");
     init().catch((error: unknown) => {
+      debug(`[autostart] Init failed: ${String(error)}`);
       console.error("Failed to initialize:", error);
     });
   }

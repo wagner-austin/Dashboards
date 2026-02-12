@@ -108,28 +108,24 @@ This is **NOT the same** as comparing sample intensity to blank intensity for co
 
 ---
 
-## What Our Current Method Does (and Its Limitations)
+## What Our Current Method Does
 
-### Current Implementation
+### Current Implementation (Updated 2026-02-11)
 ```
 For each peak found in both samples and blanks:
 1. Calculate fold-change: sample_mean / blank_mean
 2. Perform Welch's t-test (one-sided)
 3. Apply Benjamini-Hochberg FDR correction
-4. Keep if: fold-change ≥ 3x AND FDR-adjusted p < 0.05
+4. Keep if: fold-change ≥ 20x AND FDR-adjusted p < 0.05
 
 Peaks only in samples (not in blanks): auto-keep (infinite fold-change)
 ```
 
-### Limitations
+**Citation:** 20x fold-change threshold from pmp/Bioconductor (Jankevics, Lloyd, Weber)
 
-1. **The 3x threshold is not directly citable for this purpose.**
-   - ICH 3:1 refers to signal-to-noise ratio for establishing LOD (lowest detectable concentration)
-   - We are using it for sample-vs-blank intensity comparison (contamination filtering)
-   - These are fundamentally different applications
-   - No peer-reviewed paper directly supports "3x sample/blank" for contamination removal
+### Remaining Limitations
 
-2. **"Infinite fold" peaks bypass validation.**
+1. **"Infinite fold" peaks bypass validation.**
    - Peaks only in samples are auto-kept without statistical testing
    - This assumes: if not in blank, cannot be contamination
    - Reasonable assumption, but should be explicitly stated

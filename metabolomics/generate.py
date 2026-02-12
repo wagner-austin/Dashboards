@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -10,6 +11,26 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[union
 
 import polars as pl
 
+
+# =============================================================================
+# CENTRALIZED CONFIGURATION
+# =============================================================================
+# All thresholds and parameters in one place for easy modification
+
+# Blank filtering parameters (pmp/Bioconductor standard)
+BLANK_FOLD_THRESHOLD = 20.0  # Sample must be 20x higher than blank
+P_VALUE_CUTOFF = 0.05        # Statistical significance threshold
+FDR_CORRECTION = True        # Apply Benjamini-Hochberg correction
+
+# Cumulative filtering
+CUMULATIVE_THRESHOLD = 0.80  # Keep peaks contributing to top 80% of signal
+
+# Chemical richness detection threshold
+DETECTION_THRESHOLD = 0.0    # Values > this are considered "detected"
+
+# =============================================================================
+# SAMPLE DEFINITIONS
+# =============================================================================
 
 # Treatment group definitions (Emily's samples with labeled columns)
 TREATMENTS = {
@@ -77,15 +98,18 @@ def filter_min_pct(df: pl.DataFrame, col: str, min_pct: float) -> set[str]:
 
 
 def filter_blanks(
-    df: pl.DataFrame, sample_cols: list[str], blank_cols: list[str], threshold: float = 3.0,
-    use_statistical_test: bool = True, p_value_cutoff: float = 0.05, fdr_correction: bool = True
+    df: pl.DataFrame, sample_cols: list[str], blank_cols: list[str],
+    threshold: float | None = None,
+    use_statistical_test: bool = True,
+    p_value_cutoff: float | None = None,
+    fdr_correction: bool | None = None
 ) -> tuple[set[str], dict]:
     """
     Filter peaks based on blank subtraction with optional statistical validation.
 
     Publication-quality filtering requires BOTH:
-    1. Fold-change >= threshold (default 3x) - biological significance
-    2. Statistical test p-value < cutoff (default 0.05) - statistical significance
+    1. Fold-change >= threshold (default from BLANK_FOLD_THRESHOLD) - biological significance
+    2. Statistical test p-value < cutoff (default from P_VALUE_CUTOFF) - statistical significance
 
     When use_statistical_test=True:
     - Performs Welch's t-test (unequal variance t-test) for peaks in both samples and blanks
@@ -95,6 +119,14 @@ def filter_blanks(
     Returns (set of kept compounds, stats dict with validation metrics).
     """
     from scipy import stats as scipy_stats
+
+    # Use centralized config defaults
+    if threshold is None:
+        threshold = BLANK_FOLD_THRESHOLD
+    if p_value_cutoff is None:
+        p_value_cutoff = P_VALUE_CUTOFF
+    if fdr_correction is None:
+        fdr_correction = FDR_CORRECTION
 
     compounds = df["Compound"].to_list()
     kept: set[str] = set()
@@ -368,14 +400,14 @@ def main() -> int:
     # Step 1: Tissue-specific blank filtering
     print("Step 1: Tissue-specific blank filtering...")
 
-    # Filter leaf samples with leaf blanks
-    print(f"  Filtering LEAF samples with {len(LEAF_BLANKS)} leaf blanks...")
-    kept_leaf, leaf_blank_stats = filter_blanks(df, LEAF_SAMPLES, LEAF_BLANKS, threshold=3.0)
+    # Filter leaf samples with leaf blanks (uses BLANK_FOLD_THRESHOLD from config)
+    print(f"  Filtering LEAF samples with {len(LEAF_BLANKS)} leaf blanks (threshold={BLANK_FOLD_THRESHOLD}x)...")
+    kept_leaf, leaf_blank_stats = filter_blanks(df, LEAF_SAMPLES, LEAF_BLANKS)
     print(f"    Leaf: kept {len(kept_leaf):,} peaks, removed {leaf_blank_stats['both_discard']:,} contamination")
 
-    # Filter root samples with root blanks
-    print(f"  Filtering ROOT samples with {len(ROOT_BLANKS)} root blanks...")
-    kept_root, root_blank_stats = filter_blanks(df, ROOT_SAMPLES, ROOT_BLANKS, threshold=3.0)
+    # Filter root samples with root blanks (uses BLANK_FOLD_THRESHOLD from config)
+    print(f"  Filtering ROOT samples with {len(ROOT_BLANKS)} root blanks (threshold={BLANK_FOLD_THRESHOLD}x)...")
+    kept_root, root_blank_stats = filter_blanks(df, ROOT_SAMPLES, ROOT_BLANKS)
     print(f"    Root: kept {len(kept_root):,} peaks, removed {root_blank_stats['both_discard']:,} contamination")
 
     # Union of peaks kept from both tissues
@@ -405,7 +437,7 @@ def main() -> int:
     for col in SAMPLE_COLS:
         if col not in df_blank_filtered.columns:
             continue
-        k80, n80, pct80 = filter_cumulative(df_blank_filtered, col, 0.80)
+        k80, n80, pct80 = filter_cumulative(df_blank_filtered, col, CUMULATIVE_THRESHOLD)
         kept_80.update(k80)
         # Determine tissue from column name (e.g., "BL - Drought" -> Leaf, "AR - Drought" -> Root)
         tissue = "Leaf" if col[1] == "L" else "Root"
@@ -457,6 +489,113 @@ def main() -> int:
             "ambient_only": ambient_peaks - drought_peaks - watered_peaks,
             "watered_only": watered_peaks - drought_peaks - ambient_peaks,
         }
+
+    # =============================================================================
+    # CHEMICAL RICHNESS CALCULATION
+    # =============================================================================
+    # Chemical richness = number of detected peaks per sample
+    #
+    # DATA SOURCE: df_blank_filtered (14,307 peaks after blank subtraction)
+    # NOT df_80 (1,626 peaks after 80% cumulative filter)
+    #
+    # For each sample column, count rows where value > 0 (detected)
+    # Group by treatment, calculate mean ± SE
+    #
+    print(f"Calculating chemical richness (from {df_blank_filtered.height:,} blank-filtered peaks)...")
+
+    def calculate_richness(data: pl.DataFrame, sample_cols: list[str]) -> list[int]:
+        """Count non-zero peaks per sample."""
+        richness = []
+        for col in sample_cols:
+            if col not in data.columns:
+                continue
+            # Count non-null, non-zero values
+            count = data.filter(
+                (pl.col(col).is_not_null()) & (pl.col(col) > DETECTION_THRESHOLD)
+            ).height
+            richness.append(count)
+        return richness
+
+    def calc_se(values: list[int | float]) -> float:
+        """Calculate standard error = stdev / sqrt(n)."""
+        if len(values) < 2:
+            return 0.0
+        mean = sum(values) / len(values)
+        variance = sum((x - mean) ** 2 for x in values) / (len(values) - 1)
+        return math.sqrt(variance / len(values))
+
+    chemical_richness = {}
+    total_blank_filtered = df_blank_filtered.height  # For transparency
+    for tissue in ["Leaf", "Root"]:
+        chemical_richness[tissue] = {}
+        for treatment in ["Drought", "Ambient", "Watered"]:
+            cols = TREATMENTS[tissue][treatment]
+            # USE df_blank_filtered, NOT df_80
+            richness_vals = calculate_richness(df_blank_filtered, cols)
+            if richness_vals:
+                mean_val = sum(richness_vals) / len(richness_vals)
+                se_val = calc_se(richness_vals)
+            else:
+                mean_val, se_val = 0.0, 0.0
+            chemical_richness[tissue][treatment] = {
+                "mean": mean_val,
+                "se": se_val,
+                "n": len(richness_vals),
+                "values": richness_vals,
+                "total_possible": total_blank_filtered,  # For transparency
+            }
+            print(f"    {tissue} {treatment}: {mean_val:.1f} ± {se_val:.1f} peaks (n={len(richness_vals)}) out of {total_blank_filtered:,}")
+
+    # =============================================================================
+    # SHANNON DIVERSITY CALCULATION
+    # =============================================================================
+    # Shannon diversity H = -Σ(p × ln(p)) where p = relative abundance
+    #
+    # DATA SOURCE: df_blank_filtered (14,307 peaks after blank subtraction)
+    # NOT df_80 (1,626 peaks after 80% cumulative filter)
+    #
+    # For each sample, calculate H using all detected peak abundances
+    # Higher H = more even distribution; Lower H = dominated by few peaks
+    #
+    print(f"Calculating Shannon diversity (from {df_blank_filtered.height:,} blank-filtered peaks)...")
+
+    def calculate_shannon(data: pl.DataFrame, sample_col: str) -> float:
+        """Calculate Shannon diversity index for a sample."""
+        if sample_col not in data.columns:
+            return 0.0
+        vals = data.select(sample_col).drop_nulls().to_series().to_list()
+        vals = [v for v in vals if v > DETECTION_THRESHOLD]
+        if not vals:
+            return 0.0
+        total = sum(vals)
+        if total == 0:
+            return 0.0
+        h = 0.0
+        for v in vals:
+            p = v / total
+            if p > 0:
+                h -= p * math.log(p)
+        return h
+
+    shannon_diversity = {}
+    for tissue in ["Leaf", "Root"]:
+        shannon_diversity[tissue] = {}
+        for treatment in ["Drought", "Ambient", "Watered"]:
+            cols = TREATMENTS[tissue][treatment]
+            # USE df_blank_filtered, NOT df_80
+            h_vals = [calculate_shannon(df_blank_filtered, col) for col in cols if col in df_blank_filtered.columns]
+            if h_vals:
+                mean_val = sum(h_vals) / len(h_vals)
+                se_val = calc_se(h_vals)
+            else:
+                mean_val, se_val = 0.0, 0.0
+            shannon_diversity[tissue][treatment] = {
+                "mean": mean_val,
+                "se": se_val,
+                "n": len(h_vals),
+                "values": h_vals,
+            }
+            print(f"    {tissue} {treatment}: H = {mean_val:.3f} ± {se_val:.3f} (n={len(h_vals)})")
 
     # Priority peaks analysis - get ALL peaks with treatment abundances
     print("Building priority peaks data...")
@@ -950,6 +1089,7 @@ def main() -> int:
 
         <div class="tabs">
         <button class="tab active" onclick="showTab('overview')">Overview</button>
+        <button class="tab" onclick="showTab('diversity')">Diversity</button>
         <button class="tab" onclick="showTab('priority')">Priority Peaks</button>
         <button class="tab" onclick="showTab('venn')">Treatment Overlap</button>
         <button class="tab" onclick="showTab('methods')">Methods</button>
@@ -989,7 +1129,7 @@ def main() -> int:
         <table class="info-table">
             <tr><th>Category</th><th>Count</th><th>Description</th></tr>
             <tr><td class="kept">Sample Only</td><td>{blank_stats['sample_only']:,}</td><td>Peaks only in samples, not in blanks (auto-kept)</td></tr>
-            <tr><td class="kept">Passed Validation</td><td>{blank_stats['both_keep']:,}</td><td>Passed both fold-change (≥3x) AND statistical test (p&lt;0.05, FDR-corrected)</td></tr>
+            <tr><td class="kept">Passed Validation</td><td>{blank_stats['both_keep']:,}</td><td>Passed both fold-change (≥{BLANK_FOLD_THRESHOLD:.0f}x) AND statistical test (p&lt;{P_VALUE_CUTOFF}, FDR-corrected)</td></tr>
             <tr><td class="filtered">Contamination</td><td>{blank_stats['both_discard']:,}</td><td>Failed fold-change or statistical test (removed)</td></tr>
             <tr><td>Blank Only</td><td>{blank_stats['blank_only']:,}</td><td>Peaks only in blanks (not in samples)</td></tr>
         </table>
@@ -997,13 +1137,13 @@ def main() -> int:
         <h4 style="margin-top: 1.5rem;">Statistical Validation Details</h4>
         <table class="info-table">
             <tr><th>Criterion</th><th>Passed</th><th>Failed</th><th>Description</th></tr>
-            <tr><td>Fold-Change ≥3x</td><td class="kept">{blank_stats.get('fold_change_pass', 0):,}</td><td class="filtered">{blank_stats.get('fold_change_fail', 0):,}</td><td>Sample mean ≥ 3× blank mean</td></tr>
-            <tr><td>Welch's t-test</td><td class="kept">{blank_stats.get('stat_test_pass', 0):,}</td><td class="filtered">{blank_stats.get('stat_test_fail', 0):,}</td><td>p &lt; 0.05 (FDR-corrected, one-sided)</td></tr>
+            <tr><td>Fold-Change ≥{BLANK_FOLD_THRESHOLD:.0f}x</td><td class="kept">{blank_stats.get('fold_change_pass', 0):,}</td><td class="filtered">{blank_stats.get('fold_change_fail', 0):,}</td><td>Sample mean ≥ {BLANK_FOLD_THRESHOLD:.0f}× blank mean (<a href="https://bioconductor.org/packages/release/bioc/html/pmp.html" target="_blank">pmp/Bioconductor</a>)</td></tr>
+            <tr><td>Welch's t-test</td><td class="kept">{blank_stats.get('stat_test_pass', 0):,}</td><td class="filtered">{blank_stats.get('stat_test_fail', 0):,}</td><td>p &lt; {P_VALUE_CUTOFF} (FDR-corrected, one-sided)</td></tr>
             <tr><td>Insufficient Data</td><td colspan="2">{blank_stats.get('insufficient_data', 0):,}</td><td>Not enough replicates for t-test (used fold-change only)</td></tr>
         </table>
 
         <div class="alert alert-success" style="margin-top: 1rem;">
-            <strong>Validation Method:</strong> Publication-quality blank subtraction using dual criteria: (1) fold-change ≥3x for biological significance, and (2) Welch's t-test with Benjamini-Hochberg FDR correction for statistical significance (p &lt; 0.05).
+            <strong>Validation Method:</strong> Publication-quality blank subtraction using dual criteria: (1) fold-change ≥{BLANK_FOLD_THRESHOLD:.0f}x for biological significance (<a href="https://bioconductor.org/packages/release/bioc/html/pmp.html" target="_blank">pmp/Bioconductor</a>), and (2) Welch's t-test with Benjamini-Hochberg FDR correction for statistical significance (p &lt; {P_VALUE_CUTOFF}).
         </div>
 
         <h3>Source Data</h3>
@@ -1064,6 +1204,122 @@ def main() -> int:
             <p style="margin-top: 1rem;"><strong>Example:</strong> If a sample needed 500 peaks to reach 80% of its signal, those 500 peaks are the most abundant compounds. The smallest peak kept might contribute 0.02% - anything contributing less was filtered as noise.</p>
         </div>
 
+    </div>
+
+    <!-- DIVERSITY TAB -->
+    <div id="diversity" class="tab-content">
+        <h2>Chemical Richness & Diversity</h2>
+        <p>Comparison of metabolite richness (peak counts) and Shannon diversity index across treatments.</p>
+
+        <div class="alert alert-info" style="margin-bottom: 1.5rem;">
+            <strong>Data Source:</strong> Blank-filtered dataset ({len(kept_blank):,} peaks after {BLANK_FOLD_THRESHOLD:.0f}x blank subtraction).<br>
+            <strong>NOT</strong> the 80% cumulative-filtered dataset ({len(kept_80):,} peaks).<br>
+            <em>Richness and diversity are calculated BEFORE the 80% filter to capture full metabolome complexity.</em>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+            <!-- Chemical Richness Section -->
+            <div>
+                <h3>Chemical Richness (Peak Counts)</h3>
+                <p style="color: var(--gray-600); font-size: 0.9em;">Number of detected metabolites per sample (mean ± SE) out of {len(kept_blank):,} total peaks</p>
+
+                <div style="margin-top: 1rem;">
+                    <h4 style="color: var(--leaf-color);">Leaf Tissue</h4>
+                    <table class="info-table">
+                        <tr><th>Treatment</th><th>Mean</th><th>SE</th><th>n</th></tr>
+                        <tr><td style="background: #fee2e2;">Drought</td><td>{chemical_richness['Leaf']['Drought']['mean']:.1f}</td><td>±{chemical_richness['Leaf']['Drought']['se']:.1f}</td><td>{chemical_richness['Leaf']['Drought']['n']}</td></tr>
+                        <tr><td style="background: #dbeafe;">Ambient</td><td>{chemical_richness['Leaf']['Ambient']['mean']:.1f}</td><td>±{chemical_richness['Leaf']['Ambient']['se']:.1f}</td><td>{chemical_richness['Leaf']['Ambient']['n']}</td></tr>
+                        <tr><td style="background: #dcfce7;">Watered</td><td>{chemical_richness['Leaf']['Watered']['mean']:.1f}</td><td>±{chemical_richness['Leaf']['Watered']['se']:.1f}</td><td>{chemical_richness['Leaf']['Watered']['n']}</td></tr>
+                    </table>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <h4 style="color: var(--root-color);">Root Tissue</h4>
+                    <table class="info-table">
+                        <tr><th>Treatment</th><th>Mean</th><th>SE</th><th>n</th></tr>
+                        <tr><td style="background: #fee2e2;">Drought</td><td>{chemical_richness['Root']['Drought']['mean']:.1f}</td><td>±{chemical_richness['Root']['Drought']['se']:.1f}</td><td>{chemical_richness['Root']['Drought']['n']}</td></tr>
+                        <tr><td style="background: #dbeafe;">Ambient</td><td>{chemical_richness['Root']['Ambient']['mean']:.1f}</td><td>±{chemical_richness['Root']['Ambient']['se']:.1f}</td><td>{chemical_richness['Root']['Ambient']['n']}</td></tr>
+                        <tr><td style="background: #dcfce7;">Watered</td><td>{chemical_richness['Root']['Watered']['mean']:.1f}</td><td>±{chemical_richness['Root']['Watered']['se']:.1f}</td><td>{chemical_richness['Root']['Watered']['n']}</td></tr>
+                    </table>
+                </div>
+
+                <div id="richness-chart" style="margin-top: 1rem; min-height: 300px;"></div>
+            </div>
+
+            <!-- Shannon Diversity Section -->
+            <div>
+                <h3>Shannon Diversity Index (H)</h3>
+                <p style="color: var(--gray-600); font-size: 0.9em;">H = -Σ(p × ln(p)) where p = relative abundance (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3901240/" target="_blank">Vinaixa et al. 2012</a>)</p>
+
+                <div style="margin-top: 1rem;">
+                    <h4 style="color: var(--leaf-color);">Leaf Tissue</h4>
+                    <table class="info-table">
+                        <tr><th>Treatment</th><th>Mean H</th><th>SE</th><th>n</th></tr>
+                        <tr><td style="background: #fee2e2;">Drought</td><td>{shannon_diversity['Leaf']['Drought']['mean']:.3f}</td><td>±{shannon_diversity['Leaf']['Drought']['se']:.3f}</td><td>{shannon_diversity['Leaf']['Drought']['n']}</td></tr>
+                        <tr><td style="background: #dbeafe;">Ambient</td><td>{shannon_diversity['Leaf']['Ambient']['mean']:.3f}</td><td>±{shannon_diversity['Leaf']['Ambient']['se']:.3f}</td><td>{shannon_diversity['Leaf']['Ambient']['n']}</td></tr>
+                        <tr><td style="background: #dcfce7;">Watered</td><td>{shannon_diversity['Leaf']['Watered']['mean']:.3f}</td><td>±{shannon_diversity['Leaf']['Watered']['se']:.3f}</td><td>{shannon_diversity['Leaf']['Watered']['n']}</td></tr>
+                    </table>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <h4 style="color: var(--root-color);">Root Tissue</h4>
+                    <table class="info-table">
+                        <tr><th>Treatment</th><th>Mean H</th><th>SE</th><th>n</th></tr>
+                        <tr><td style="background: #fee2e2;">Drought</td><td>{shannon_diversity['Root']['Drought']['mean']:.3f}</td><td>±{shannon_diversity['Root']['Drought']['se']:.3f}</td><td>{shannon_diversity['Root']['Drought']['n']}</td></tr>
+                        <tr><td style="background: #dbeafe;">Ambient</td><td>{shannon_diversity['Root']['Ambient']['mean']:.3f}</td><td>±{shannon_diversity['Root']['Ambient']['se']:.3f}</td><td>{shannon_diversity['Root']['Ambient']['n']}</td></tr>
+                        <tr><td style="background: #dcfce7;">Watered</td><td>{shannon_diversity['Root']['Watered']['mean']:.3f}</td><td>±{shannon_diversity['Root']['Watered']['se']:.3f}</td><td>{shannon_diversity['Root']['Watered']['n']}</td></tr>
+                    </table>
+                </div>
+
+                <div id="shannon-chart" style="margin-top: 1rem; min-height: 300px;"></div>
+            </div>
+        </div>
+
+        <div class="alert alert-info" style="margin-top: 2rem;">
+            <strong>Interpretation:</strong><br>
+            • <strong>Chemical Richness:</strong> Higher values indicate more metabolites detected. Differences may reflect stress responses or metabolic shifts.<br>
+            • <strong>Shannon Diversity:</strong> Higher H indicates more even distribution of metabolite abundances. Lower H suggests dominance by fewer compounds.
+        </div>
+
+        <div class="method-section" style="margin-top: 2rem; padding: 1.5rem; background: var(--gray-50); border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h4 style="margin-top: 0;">Methodology (Exact Calculations)</h4>
+
+            <h5>Chemical Richness</h5>
+            <pre style="background: white; padding: 1rem; border-radius: 4px; overflow-x: auto;">
+Data source: df_blank_filtered ({len(kept_blank):,} peaks after {BLANK_FOLD_THRESHOLD:.0f}x blank subtraction)
+
+For each sample column (e.g., "BL - Drought"):
+    richness = COUNT of rows WHERE value > {DETECTION_THRESHOLD}
+
+For each treatment:
+    mean = SUM(sample_richness_values) / n_samples
+    SE = STDEV(sample_richness_values) / SQRT(n_samples)</pre>
+
+            <h5 style="margin-top: 1rem;">Shannon Diversity Index</h5>
+            <pre style="background: white; padding: 1rem; border-radius: 4px; overflow-x: auto;">
+Data source: df_blank_filtered ({len(kept_blank):,} peaks after {BLANK_FOLD_THRESHOLD:.0f}x blank subtraction)
+
+For each sample column:
+    1. Get all peak abundances where value > {DETECTION_THRESHOLD}
+    2. total = SUM(all abundances)
+    3. For each peak: p = abundance / total
+    4. H = -SUM(p × ln(p))
+
+For each treatment:
+    mean = SUM(H_values) / n_samples
+    SE = STDEV(H_values) / SQRT(n_samples)</pre>
+
+            <p style="margin-top: 1rem; color: var(--gray-600); font-size: 0.9em;">
+                <strong>Why blank-filtered, not 80%-filtered?</strong> The 80% cumulative filter removes low-abundance peaks to focus analysis.
+                But richness and diversity metrics should capture the FULL metabolome complexity, so we use the larger blank-filtered dataset.
+            </p>
+        </div>
+
+        <div class="alert alert-success" style="margin-top: 1rem;">
+            <strong>References:</strong><br>
+            • Shannon diversity index: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3901240/" target="_blank">Vinaixa et al. 2012, Metabolites</a><br>
+            • Chemical richness methods: <a href="https://link.springer.com/article/10.1134/S1021443720030085" target="_blank">Fu et al. 2020, Russian J Plant Physiol</a>
+        </div>
     </div>
 
     <!-- PRIORITY PEAKS TAB -->
@@ -1189,12 +1445,12 @@ def main() -> int:
 2. Perform Welch's t-test (one-sided: sample > blank)
 3. Apply Benjamini-Hochberg FDR correction for multiple testing
 4. KEEP only if BOTH criteria pass:
-   - Fold-change ≥ 3x (biological significance)
-   - FDR-adjusted p-value &lt; 0.05 (statistical significance)
+   - Fold-change ≥ {BLANK_FOLD_THRESHOLD:.0f}x (biological significance, per pmp/Bioconductor)
+   - FDR-adjusted p-value &lt; {P_VALUE_CUTOFF} (statistical significance)
 
 Peaks ONLY in samples (not in blanks) → auto-KEEP</pre>
 
-            <p><strong>Why dual criteria?</strong> The 3x fold-change ensures biological relevance (a peak must be meaningfully higher in samples). The statistical test ensures the difference isn't due to random variation. FDR correction accounts for testing thousands of peaks simultaneously.</p>
+            <p><strong>Why dual criteria?</strong> The {BLANK_FOLD_THRESHOLD:.0f}x fold-change threshold (<a href="https://bioconductor.org/packages/release/bioc/html/pmp.html" target="_blank">pmp/Bioconductor standard</a>) ensures biological relevance (a peak must be meaningfully higher in samples). The statistical test ensures the difference isn't due to random variation. FDR correction accounts for testing thousands of peaks simultaneously.</p>
 
             <div class="alert alert-info" style="margin-top: 1rem;">
                 <strong>Statistical Details:</strong><br>
@@ -1295,7 +1551,7 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
     <!-- FILTERED DATA TAB -->
     <div id="data80" class="tab-content">
         <h2 style="padding: 1rem; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 8px; margin-bottom: 0;">Filtered Metabolomics Data</h2>
-        <p style="color: var(--gray-600); margin-bottom: 1.5rem; padding: 0.75rem 1rem; background: var(--gray-50); border-left: 3px solid var(--primary); font-size: 0.9rem; font-style: italic;">Two-step filtered data: blank subtraction (3x threshold) followed by 80% cumulative signal threshold.</p>
+        <p style="color: var(--gray-600); margin-bottom: 1.5rem; padding: 0.75rem 1rem; background: var(--gray-50); border-left: 3px solid var(--primary); font-size: 0.9rem; font-style: italic;">Two-step filtered data: blank subtraction ({BLANK_FOLD_THRESHOLD:.0f}x threshold, <a href="https://bioconductor.org/packages/release/bioc/html/pmp.html" target="_blank">pmp/Bioconductor</a>) followed by {CUMULATIVE_THRESHOLD*100:.0f}% cumulative signal threshold.</p>
         <div class="summary-cards">
             <div class="card">
                 <h4>Original Peaks</h4>
@@ -1364,6 +1620,10 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
         // Data
         const data80 = {json_80};
         const columns = {col_defs_json};
+
+        // Diversity data
+        const chemicalRichness = {json.dumps(chemical_richness)};
+        const shannonDiversity = {json.dumps(shannon_diversity)};
 
         // Tab switching
         function showTab(tabId) {{
@@ -2051,6 +2311,134 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
                 updateToggleButtons();
                 updateComparison();
                 updateVisualization();
+            }}, 100);
+        }});
+
+        // Diversity charts
+        function renderDiversityCharts() {{
+            const treatments = ['Drought', 'Ambient', 'Watered'];
+            const colors = {{'Drought': '#ef4444', 'Ambient': '#3b82f6', 'Watered': '#22c55e'}};
+            const margin = {{top: 20, right: 30, bottom: 40, left: 60}};
+            const width = 450 - margin.left - margin.right;
+            const height = 280 - margin.top - margin.bottom;
+
+            // Richness chart
+            const richnessData = [];
+            ['Leaf', 'Root'].forEach(tissue => {{
+                treatments.forEach(t => {{
+                    richnessData.push({{
+                        tissue: tissue,
+                        treatment: t,
+                        mean: chemicalRichness[tissue][t].mean,
+                        se: chemicalRichness[tissue][t].se
+                    }});
+                }});
+            }});
+
+            const richnessSvg = d3.select('#richness-chart')
+                .append('svg')
+                .attr('width', width + margin.left + margin.right)
+                .attr('height', height + margin.top + margin.bottom)
+                .append('g')
+                .attr('transform', `translate(${{margin.left}},${{margin.top}})`);
+
+            const x0 = d3.scaleBand().domain(['Leaf', 'Root']).rangeRound([0, width]).paddingInner(0.1);
+            const x1 = d3.scaleBand().domain(treatments).rangeRound([0, x0.bandwidth()]).padding(0.05);
+            const y = d3.scaleLinear().domain([0, d3.max(richnessData, d => d.mean + d.se) * 1.1]).nice().rangeRound([height, 0]);
+
+            richnessSvg.append('g').attr('transform', `translate(0,${{height}})`).call(d3.axisBottom(x0));
+            richnessSvg.append('g').call(d3.axisLeft(y));
+            richnessSvg.append('text').attr('x', width/2).attr('y', height + 35).attr('text-anchor', 'middle').text('Tissue');
+            richnessSvg.append('text').attr('transform', 'rotate(-90)').attr('y', -45).attr('x', -height/2).attr('text-anchor', 'middle').text('Peak Count');
+
+            ['Leaf', 'Root'].forEach(tissue => {{
+                const tissueData = richnessData.filter(d => d.tissue === tissue);
+                const g = richnessSvg.append('g').attr('transform', `translate(${{x0(tissue)}},0)`);
+
+                g.selectAll('rect')
+                    .data(tissueData)
+                    .enter().append('rect')
+                    .attr('x', d => x1(d.treatment))
+                    .attr('y', d => y(d.mean))
+                    .attr('width', x1.bandwidth())
+                    .attr('height', d => height - y(d.mean))
+                    .attr('fill', d => colors[d.treatment]);
+
+                // Error bars
+                g.selectAll('.error')
+                    .data(tissueData)
+                    .enter().append('line')
+                    .attr('x1', d => x1(d.treatment) + x1.bandwidth()/2)
+                    .attr('x2', d => x1(d.treatment) + x1.bandwidth()/2)
+                    .attr('y1', d => y(d.mean - d.se))
+                    .attr('y2', d => y(d.mean + d.se))
+                    .attr('stroke', '#333').attr('stroke-width', 1.5);
+            }});
+
+            // Shannon chart
+            const shannonData = [];
+            ['Leaf', 'Root'].forEach(tissue => {{
+                treatments.forEach(t => {{
+                    shannonData.push({{
+                        tissue: tissue,
+                        treatment: t,
+                        mean: shannonDiversity[tissue][t].mean,
+                        se: shannonDiversity[tissue][t].se
+                    }});
+                }});
+            }});
+
+            const shannonSvg = d3.select('#shannon-chart')
+                .append('svg')
+                .attr('width', width + margin.left + margin.right)
+                .attr('height', height + margin.top + margin.bottom)
+                .append('g')
+                .attr('transform', `translate(${{margin.left}},${{margin.top}})`);
+
+            const yS = d3.scaleLinear().domain([0, d3.max(shannonData, d => d.mean + d.se) * 1.1]).nice().rangeRound([height, 0]);
+
+            shannonSvg.append('g').attr('transform', `translate(0,${{height}})`).call(d3.axisBottom(x0));
+            shannonSvg.append('g').call(d3.axisLeft(yS).ticks(5));
+            shannonSvg.append('text').attr('x', width/2).attr('y', height + 35).attr('text-anchor', 'middle').text('Tissue');
+            shannonSvg.append('text').attr('transform', 'rotate(-90)').attr('y', -45).attr('x', -height/2).attr('text-anchor', 'middle').text('Shannon Index (H)');
+
+            ['Leaf', 'Root'].forEach(tissue => {{
+                const tissueData = shannonData.filter(d => d.tissue === tissue);
+                const g = shannonSvg.append('g').attr('transform', `translate(${{x0(tissue)}},0)`);
+
+                g.selectAll('rect')
+                    .data(tissueData)
+                    .enter().append('rect')
+                    .attr('x', d => x1(d.treatment))
+                    .attr('y', d => yS(d.mean))
+                    .attr('width', x1.bandwidth())
+                    .attr('height', d => height - yS(d.mean))
+                    .attr('fill', d => colors[d.treatment]);
+
+                g.selectAll('.error')
+                    .data(tissueData)
+                    .enter().append('line')
+                    .attr('x1', d => x1(d.treatment) + x1.bandwidth()/2)
+                    .attr('x2', d => x1(d.treatment) + x1.bandwidth()/2)
+                    .attr('y1', d => yS(d.mean - d.se))
+                    .attr('y2', d => yS(d.mean + d.se))
+                    .attr('stroke', '#333').attr('stroke-width', 1.5);
+            }});
+
+            // Legend
+            const legend = richnessSvg.append('g').attr('transform', `translate(${{width - 100}}, 0)`);
+            treatments.forEach((t, i) => {{
+                legend.append('rect').attr('x', 0).attr('y', i * 18).attr('width', 14).attr('height', 14).attr('fill', colors[t]);
+                legend.append('text').attr('x', 18).attr('y', i * 18 + 11).text(t).style('font-size', '11px');
+            }});
+        }}
+
+        // Initialize diversity charts when tab is shown
+        document.querySelector('[onclick*=\"diversity\"]').addEventListener('click', function() {{
+            setTimeout(function() {{
+                if (!document.querySelector('#richness-chart svg')) {{
+                    renderDiversityCharts();
+                }}
             }}, 100);
         }});
 

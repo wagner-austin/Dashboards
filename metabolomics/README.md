@@ -5,7 +5,7 @@ Interactive visualization tool for analyzing metabolomics data across treatment 
 ## Data Processing
 
 ### Two-Step Filtering
-1. **Blank Subtraction** - Removes contamination peaks where sample signal < 3x blank signal
+1. **Blank Subtraction** - Removes contamination peaks where sample signal < 20x blank signal (per pmp/Bioconductor)
    - Leaf samples filtered against leaf blanks (Blk1, Blk2)
    - Root samples filtered against root blanks (ebtruong_blank1-4)
 2. **80% Cumulative Threshold** - Keeps only peaks that contribute to the top 80% of signal in any sample
