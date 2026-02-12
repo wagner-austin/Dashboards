@@ -322,10 +322,9 @@ export function handleTouchEndEvent(touchState, inputState, bunnyFrames, bunnyTi
 export function setupTouchControls(inputState, bunnyFrames, bunnyTimers, config = DEFAULT_TOUCH_CONFIG) {
     const touchState = createTouchState();
     document.addEventListener("touchstart", (e) => {
-        if (handleTouchStart(touchState, e.touches, Date.now())) {
-            e.preventDefault();
-        }
-    }, { passive: false });
+        handleTouchStart(touchState, e.touches, Date.now());
+        // Note: Do NOT call preventDefault() here - it blocks audio autoplay on mobile
+    });
     document.addEventListener("touchmove", (e) => {
         if (handleTouchMove(touchState, inputState, bunnyFrames, bunnyTimers, e.touches, config)) {
             e.preventDefault();

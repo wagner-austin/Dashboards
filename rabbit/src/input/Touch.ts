@@ -488,10 +488,9 @@ export function setupTouchControls(
   const touchState = createTouchState();
 
   document.addEventListener("touchstart", (e: TouchEvent) => {
-    if (handleTouchStart(touchState, e.touches, Date.now())) {
-      e.preventDefault();
-    }
-  }, { passive: false });
+    handleTouchStart(touchState, e.touches, Date.now());
+    // Note: Do NOT call preventDefault() here - it blocks audio autoplay on mobile
+  });
 
   document.addEventListener("touchmove", (e: TouchEvent) => {
     if (handleTouchMove(touchState, inputState, bunnyFrames, bunnyTimers, e.touches, config)) {
