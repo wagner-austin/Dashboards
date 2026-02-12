@@ -373,11 +373,14 @@ describe("processDepthMovement", () => {
     return createTestInputState(createTestBunnyState(animation));
   }
 
+  /** Use 1 second delta for simple math: movement = speed * 1 */
+  const DELTA_TIME = 1.0;
+
   it("does nothing when not hopping", () => {
     const state = createTestState({ kind: "idle", frameIdx: 0 });
     const initialZ = state.camera.z;
 
-    processDepthMovement(state);
+    processDepthMovement(state, DELTA_TIME);
 
     expect(state.camera.z).toBe(initialZ);
   });
@@ -386,7 +389,7 @@ describe("processDepthMovement", () => {
     const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
     const initialZ = state.camera.z;
 
-    processDepthMovement(state);
+    processDepthMovement(state, DELTA_TIME);
 
     expect(state.camera.z).toBe(initialZ + CAMERA_Z_SPEED);
   });
@@ -395,7 +398,7 @@ describe("processDepthMovement", () => {
     const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0 });
     const initialZ = state.camera.z;
 
-    processDepthMovement(state);
+    processDepthMovement(state, DELTA_TIME);
 
     expect(state.camera.z).toBe(initialZ - CAMERA_Z_SPEED);
   });
@@ -404,7 +407,7 @@ describe("processDepthMovement", () => {
     const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
     state.camera = { x: 0, z: state.depthBounds.maxZ - 0.1 };
 
-    processDepthMovement(state);
+    processDepthMovement(state, DELTA_TIME);
 
     expect(state.camera.z).toBeLessThan(state.depthBounds.maxZ);
     expect(state.camera.z).toBeGreaterThanOrEqual(state.depthBounds.minZ);
@@ -414,7 +417,7 @@ describe("processDepthMovement", () => {
     const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0 });
     state.camera = { x: 0, z: state.depthBounds.minZ + 0.1 };
 
-    processDepthMovement(state);
+    processDepthMovement(state, DELTA_TIME);
 
     expect(state.camera.z).toBeLessThan(state.depthBounds.maxZ);
   });
@@ -425,12 +428,15 @@ describe("processHorizontalMovement", () => {
     return createTestInputState(createTestBunnyState(animation));
   }
 
+  /** Use 1 second delta for simple math: movement = speed * 1 */
+  const DELTA_TIME = 1.0;
+
   it("does nothing when not moving", () => {
     const state = createTestState({ kind: "idle", frameIdx: 0 });
     state.horizontalHeld = "left";
     const initialX = state.camera.x;
 
-    processHorizontalMovement(state);
+    processHorizontalMovement(state, DELTA_TIME);
 
     expect(state.camera.x).toBe(initialX);
   });
@@ -439,7 +445,7 @@ describe("processHorizontalMovement", () => {
     const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
     const initialX = state.camera.x;
 
-    processHorizontalMovement(state);
+    processHorizontalMovement(state, DELTA_TIME);
 
     expect(state.camera.x).toBe(initialX);
   });
@@ -449,7 +455,7 @@ describe("processHorizontalMovement", () => {
     state.horizontalHeld = "left";
     const initialX = state.camera.x;
 
-    processHorizontalMovement(state);
+    processHorizontalMovement(state, DELTA_TIME);
 
     expect(state.camera.x).toBe(initialX - CAMERA_X_SPEED);
   });
@@ -459,7 +465,7 @@ describe("processHorizontalMovement", () => {
     state.horizontalHeld = "right";
     const initialX = state.camera.x;
 
-    processHorizontalMovement(state);
+    processHorizontalMovement(state, DELTA_TIME);
 
     expect(state.camera.x).toBe(initialX + CAMERA_X_SPEED);
   });
@@ -469,7 +475,7 @@ describe("processHorizontalMovement", () => {
     state.horizontalHeld = "left";
     const initialX = state.camera.x;
 
-    processHorizontalMovement(state);
+    processHorizontalMovement(state, DELTA_TIME);
 
     expect(state.camera.x).toBe(initialX - CAMERA_X_SPEED);
   });
@@ -479,7 +485,7 @@ describe("processHorizontalMovement", () => {
     state.horizontalHeld = "right";
     const initialX = state.camera.x;
 
-    processHorizontalMovement(state);
+    processHorizontalMovement(state, DELTA_TIME);
 
     expect(state.camera.x).toBe(initialX + CAMERA_X_SPEED);
   });
@@ -489,7 +495,7 @@ describe("processHorizontalMovement", () => {
     state.horizontalHeld = "left";
     state.camera = { x: 0, z: 100 };
 
-    processHorizontalMovement(state);
+    processHorizontalMovement(state, DELTA_TIME);
 
     expect(state.camera.z).toBe(100);
   });
@@ -499,7 +505,7 @@ describe("processHorizontalMovement", () => {
     state.horizontalHeld = "left";
     const initialX = state.camera.x;
 
-    processHorizontalMovement(state);
+    processHorizontalMovement(state, DELTA_TIME);
 
     expect(state.camera.x).toBe(initialX);
   });
@@ -509,7 +515,7 @@ describe("processHorizontalMovement", () => {
     state.horizontalHeld = "left";
     const initialX = state.camera.x;
 
-    processHorizontalMovement(state);
+    processHorizontalMovement(state, DELTA_TIME);
 
     expect(state.camera.x).toBeLessThan(initialX);
   });

@@ -148,8 +148,8 @@ export function setupKeyboardControls(state, bunnyFrames, bunnyTimers) {
         processInputChange(prevHorizontal, prevVertical, state.horizontalHeld, state.verticalHeld, state, bunnyFrames, bunnyTimers);
     });
 }
-/** Camera Z movement speed per frame. */
-const CAMERA_Z_SPEED = 0.5;
+/** Camera Z movement speed per second. */
+const CAMERA_Z_SPEED = 30;
 /**
  * Process camera depth movement based on hop state.
  *
@@ -159,18 +159,19 @@ const CAMERA_Z_SPEED = 0.5;
  *
  * Args:
  *     state: Input state with bunny, camera, and depthBounds.
+ *     deltaTime: Time since last frame in seconds.
  */
-export function processDepthMovement(state) {
+export function processDepthMovement(state, deltaTime) {
     const anim = state.bunny.animation;
     if (anim.kind !== "hop") {
         return;
     }
     const delta = anim.direction === "toward" ? -CAMERA_Z_SPEED : CAMERA_Z_SPEED;
-    const newZ = wrapDepth(state.camera.z + delta, state.depthBounds.minZ, state.depthBounds.maxZ);
+    const newZ = wrapDepth(state.camera.z + delta * deltaTime, state.depthBounds.minZ, state.depthBounds.maxZ);
     state.camera = { ...state.camera, z: newZ };
 }
-/** Camera X movement speed per frame */
-const CAMERA_X_SPEED = 2;
+/** Camera X movement speed per second. */
+const CAMERA_X_SPEED = 120;
 /**
  * Process horizontal camera movement.
  *
@@ -179,15 +180,16 @@ const CAMERA_X_SPEED = 2;
  *
  * Args:
  *     state: Input state with bunny, camera, and horizontalHeld.
+ *     deltaTime: Time since last frame in seconds.
  */
-export function processHorizontalMovement(state) {
+export function processHorizontalMovement(state, deltaTime) {
     const anim = state.bunny.animation;
     const isMoving = anim.kind === "hop" || anim.kind === "walk" || anim.kind === "jump";
     if (!isMoving || state.horizontalHeld === null) {
         return;
     }
     const direction = state.horizontalHeld === "left" ? -1 : 1;
-    state.camera = { ...state.camera, x: state.camera.x + CAMERA_X_SPEED * direction };
+    state.camera = { ...state.camera, x: state.camera.x + CAMERA_X_SPEED * deltaTime * direction };
 }
 /** Test hooks for internal functions */
 export const _test_hooks = {

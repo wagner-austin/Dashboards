@@ -193,10 +193,13 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
   let lastTime = 0;
 
   function render(currentTime: number): void {
+    // Calculate delta time for frame-rate independent movement
+    const deltaTime = lastTime > 0 ? (currentTime - lastTime) / 1000 : 0;
+
     // Process movement input only if bunny is loaded
     if (bunnyFrames !== null) {
-      processDepthMovement(state);
-      processHorizontalMovement(state);
+      processDepthMovement(state, deltaTime);
+      processHorizontalMovement(state, deltaTime);
     }
 
     // Sync camera from input state to scene state

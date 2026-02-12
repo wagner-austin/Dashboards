@@ -307,35 +307,37 @@ describe("processDepthMovement", () => {
     function createTestState(animation) {
         return createTestInputState(createTestBunnyState(animation));
     }
+    /** Use 1 second delta for simple math: movement = speed * 1 */
+    const DELTA_TIME = 1.0;
     it("does nothing when not hopping", () => {
         const state = createTestState({ kind: "idle", frameIdx: 0 });
         const initialZ = state.camera.z;
-        processDepthMovement(state);
+        processDepthMovement(state, DELTA_TIME);
         expect(state.camera.z).toBe(initialZ);
     });
     it("moves camera away (positive Z) when hopping away", () => {
         const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
         const initialZ = state.camera.z;
-        processDepthMovement(state);
+        processDepthMovement(state, DELTA_TIME);
         expect(state.camera.z).toBe(initialZ + CAMERA_Z_SPEED);
     });
     it("moves camera toward (negative Z) when hopping toward", () => {
         const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0 });
         const initialZ = state.camera.z;
-        processDepthMovement(state);
+        processDepthMovement(state, DELTA_TIME);
         expect(state.camera.z).toBe(initialZ - CAMERA_Z_SPEED);
     });
     it("wraps Z at max bound when moving away", () => {
         const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
         state.camera = { x: 0, z: state.depthBounds.maxZ - 0.1 };
-        processDepthMovement(state);
+        processDepthMovement(state, DELTA_TIME);
         expect(state.camera.z).toBeLessThan(state.depthBounds.maxZ);
         expect(state.camera.z).toBeGreaterThanOrEqual(state.depthBounds.minZ);
     });
     it("wraps Z at min bound when moving toward", () => {
         const state = createTestState({ kind: "hop", direction: "toward", frameIdx: 0 });
         state.camera = { x: 0, z: state.depthBounds.minZ + 0.1 };
-        processDepthMovement(state);
+        processDepthMovement(state, DELTA_TIME);
         expect(state.camera.z).toBeLessThan(state.depthBounds.maxZ);
     });
 });
@@ -343,66 +345,68 @@ describe("processHorizontalMovement", () => {
     function createTestState(animation) {
         return createTestInputState(createTestBunnyState(animation));
     }
+    /** Use 1 second delta for simple math: movement = speed * 1 */
+    const DELTA_TIME = 1.0;
     it("does nothing when not moving", () => {
         const state = createTestState({ kind: "idle", frameIdx: 0 });
         state.horizontalHeld = "left";
         const initialX = state.camera.x;
-        processHorizontalMovement(state);
+        processHorizontalMovement(state, DELTA_TIME);
         expect(state.camera.x).toBe(initialX);
     });
     it("does nothing when moving but no horizontal input", () => {
         const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
         const initialX = state.camera.x;
-        processHorizontalMovement(state);
+        processHorizontalMovement(state, DELTA_TIME);
         expect(state.camera.x).toBe(initialX);
     });
     it("moves camera left when hopping with left held", () => {
         const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
         state.horizontalHeld = "left";
         const initialX = state.camera.x;
-        processHorizontalMovement(state);
+        processHorizontalMovement(state, DELTA_TIME);
         expect(state.camera.x).toBe(initialX - CAMERA_X_SPEED);
     });
     it("moves camera right when hopping with right held", () => {
         const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
         state.horizontalHeld = "right";
         const initialX = state.camera.x;
-        processHorizontalMovement(state);
+        processHorizontalMovement(state, DELTA_TIME);
         expect(state.camera.x).toBe(initialX + CAMERA_X_SPEED);
     });
     it("moves camera left when walking with left held", () => {
         const state = createTestState({ kind: "walk", frameIdx: 0 });
         state.horizontalHeld = "left";
         const initialX = state.camera.x;
-        processHorizontalMovement(state);
+        processHorizontalMovement(state, DELTA_TIME);
         expect(state.camera.x).toBe(initialX - CAMERA_X_SPEED);
     });
     it("moves camera right when walking with right held", () => {
         const state = createTestState({ kind: "walk", frameIdx: 0 });
         state.horizontalHeld = "right";
         const initialX = state.camera.x;
-        processHorizontalMovement(state);
+        processHorizontalMovement(state, DELTA_TIME);
         expect(state.camera.x).toBe(initialX + CAMERA_X_SPEED);
     });
     it("preserves camera.z when moving horizontally", () => {
         const state = createTestState({ kind: "hop", direction: "away", frameIdx: 0 });
         state.horizontalHeld = "left";
         state.camera = { x: 0, z: 100 };
-        processHorizontalMovement(state);
+        processHorizontalMovement(state, DELTA_TIME);
         expect(state.camera.z).toBe(100);
     });
     it("does nothing during transition", () => {
         const state = createTestState({ kind: "transition", type: "idle_to_walk", frameIdx: 0, pendingAction: "walk", returnTo: "idle" });
         state.horizontalHeld = "left";
         const initialX = state.camera.x;
-        processHorizontalMovement(state);
+        processHorizontalMovement(state, DELTA_TIME);
         expect(state.camera.x).toBe(initialX);
     });
     it("moves camera during jump", () => {
         const state = createTestState({ kind: "jump", frameIdx: 0 });
         state.horizontalHeld = "left";
         const initialX = state.camera.x;
-        processHorizontalMovement(state);
+        processHorizontalMovement(state, DELTA_TIME);
         expect(state.camera.x).toBeLessThan(initialX);
     });
 });

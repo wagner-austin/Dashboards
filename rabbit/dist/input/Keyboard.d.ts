@@ -73,8 +73,9 @@ export declare function setupKeyboardControls(state: InputState, bunnyFrames: Bu
  *
  * Args:
  *     state: Input state with bunny, camera, and depthBounds.
+ *     deltaTime: Time since last frame in seconds.
  */
-export declare function processDepthMovement(state: InputState): void;
+export declare function processDepthMovement(state: InputState, deltaTime: number): void;
 /**
  * Process horizontal camera movement.
  *
@@ -83,8 +84,9 @@ export declare function processDepthMovement(state: InputState): void;
  *
  * Args:
  *     state: Input state with bunny, camera, and horizontalHeld.
+ *     deltaTime: Time since last frame in seconds.
  */
-export declare function processHorizontalMovement(state: InputState): void;
+export declare function processHorizontalMovement(state: InputState, deltaTime: number): void;
 /** Test hooks for internal functions */
 export declare const _test_hooks: {
     handleJumpInput: typeof handleJumpInput;
