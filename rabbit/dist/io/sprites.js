@@ -32,7 +32,7 @@ async function importSpriteModule(path) {
  */
 export async function loadSpriteFrames(spriteName, animationName, width, direction) {
     const suffix = direction !== undefined ? `_${direction}` : "";
-    const path = `./dist/sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
+    const path = `../dist/sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
     const module = await importSpriteModule(path);
     return {
         width,
@@ -43,7 +43,7 @@ export async function loadSpriteFrames(spriteName, animationName, width, directi
  * Load sprite frames for static sprites (no direction).
  */
 export async function loadStaticSpriteFrames(spriteName, width) {
-    const path = `./dist/sprites/${spriteName}/w${String(width)}.js`;
+    const path = `../dist/sprites/${spriteName}/w${String(width)}.js`;
     const module = await importSpriteModule(path);
     return {
         width,
