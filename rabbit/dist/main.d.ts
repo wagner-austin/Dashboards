@@ -48,7 +48,7 @@ declare function collectAllSpriteNames(config: Config): readonly string[];
  * Initialize the application with progressive loading.
  *
  * Starts render loop immediately with ground visible, then progressively
- * loads grass, bunny, and trees (largest to smallest). Scene populates
+ * loads grass, bunny, and trees (smallest to largest). Scene populates
  * as sprites load.
  *
  * Args:

@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  * Tests for main entry point.
  */
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { init, _test_hooks } from "./main.js";
 import { advanceAllSceneSpriteFrames, createLayerAnimationCallback } from "./entities/SceneSprite.js";
 import { createSceneState } from "./layers/index.js";
@@ -256,6 +256,31 @@ describe("init", () => {
         await init(deps);
         // No event listeners should be registered
         expect(audioDeps.handlers.get("click")).toBeUndefined();
+    });
+    it("exercises isHorizontalHeld callback via jump completion", async () => {
+        vi.useFakeTimers();
+        const deps = {
+            getScreenElement: () => screen,
+            loadConfigFn: () => Promise.resolve(createTestConfig()),
+            runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
+            requestAnimationFrameFn: (callback) => {
+                rafCallbacks.push(callback);
+                return rafCallbacks.length;
+            },
+            audioDeps: createTestAudioDeps(),
+        };
+        await init(deps);
+        // Trigger a jump with space key
+        document.dispatchEvent(new KeyboardEvent("keydown", { key: " " }));
+        // Advance timers to complete the jump (jump timer has 58ms interval, frames has 1 frame)
+        // transition timer (50ms) + jump timer (58ms * frames)
+        vi.advanceTimersByTime(200);
+        // Run a render frame to process the state
+        const callback = rafCallbacks[rafCallbacks.length - 1];
+        if (callback !== undefined) {
+            callback(1000);
+        }
+        vi.useRealTimers();
     });
 });
 describe("collectAllSpriteNames", () => {
