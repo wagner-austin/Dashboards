@@ -22,10 +22,36 @@
             bottom: 0;
             left: 0;
         }
+        #debug {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.9);
+            color: #0f0;
+            font-family: monospace;
+            font-size: 12px;
+            padding: 10px;
+            max-height: 50vh;
+            overflow-y: auto;
+            z-index: 9999;
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
+    <div id="debug"></div>
     <pre id="screen"></pre>
+    <script>
+        window.debugLog = function(msg) {
+            const el = document.getElementById('debug');
+            if (el) {
+                el.textContent += msg + '\n';
+                el.scrollTop = el.scrollHeight;
+            }
+            console.log(msg);
+        };
+    </script>
     <script type="module" src="./dist/io/autostart.js"></script>
 </body>
 </html>

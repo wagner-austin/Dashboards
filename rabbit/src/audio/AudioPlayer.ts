@@ -13,6 +13,16 @@ import type {
   FetchFn,
 } from "./types.js";
 
+/** Debug log to screen overlay. */
+function debug(msg: string): void {
+  const win = window as unknown as { debugLog?: (m: string) => void };
+  if (win.debugLog !== undefined) {
+    win.debugLog(msg);
+  } else {
+    console.log(msg);
+  }
+}
+
 /** Audio player interface. */
 export interface AudioPlayer {
   play(track: AudioTrack): void;
@@ -75,22 +85,22 @@ export function createAudioPlayer(deps: AudioPlayerDeps): AudioPlayer {
   async function loadBuffer(track: AudioTrack): Promise<AudioBuffer | null> {
     const cached = state.buffers.get(track.id);
     if (cached !== undefined) {
-      console.log("[AudioPlayer] Using cached buffer for:", track.id);
+      debug(`[AudioPlayer] Using cached buffer for: ${track.id}`);
       return cached;
     }
 
-    console.log("[AudioPlayer] Fetching audio:", track.path);
+    debug(`[AudioPlayer] Fetching audio: ${track.path}`);
     const response = await deps.fetchFn(track.path);
     if (!response.ok) {
-      console.log("[AudioPlayer] Fetch failed:", response.status);
+      debug(`[AudioPlayer] Fetch failed: ${response.status}`);
       return null;
     }
 
-    console.log("[AudioPlayer] Decoding audio...");
+    debug("[AudioPlayer] Decoding audio...");
     const arrayBuffer = await response.arrayBuffer();
     const audioBuffer = await deps.context.decodeAudioData(arrayBuffer);
     state.buffers.set(track.id, audioBuffer);
-    console.log("[AudioPlayer] Audio decoded and cached:", track.id);
+    debug(`[AudioPlayer] Audio decoded and cached: ${track.id}`);
     return audioBuffer;
   }
 
@@ -126,7 +136,7 @@ export function createAudioPlayer(deps: AudioPlayerDeps): AudioPlayer {
   }
 
   function play(track: AudioTrack): void {
-    console.log("[AudioPlayer] play() called for:", track.id);
+    debug(`[AudioPlayer] play() called for: ${track.id}`);
     state.currentTrackId = track.id;
     state.isPlaying = true;
 
@@ -137,22 +147,22 @@ export function createAudioPlayer(deps: AudioPlayerDeps): AudioPlayer {
 
     loadBuffer(track).then(buffer => {
       if (buffer === null) {
-        console.log("[AudioPlayer] Buffer is null, aborting");
+        debug("[AudioPlayer] Buffer is null, aborting");
         return;
       }
 
       if (state.currentTrackId !== track.id) {
-        console.log("[AudioPlayer] Track changed, aborting");
+        debug("[AudioPlayer] Track changed, aborting");
         return;
       }
 
-      console.log("[AudioPlayer] Creating source and starting playback");
+      debug("[AudioPlayer] Creating source and starting playback");
       const active = createSource(buffer, track);
       state.activeSource = active;
 
       active.source.start();
       fadeIn(active);
-      console.log("[AudioPlayer] Playback started");
+      debug("[AudioPlayer] Playback started");
 
       active.source.onended = (): void => {
         if (state.activeSource === active) {
@@ -161,7 +171,7 @@ export function createAudioPlayer(deps: AudioPlayerDeps): AudioPlayer {
         }
       };
     }).catch((err) => {
-      console.log("[AudioPlayer] Load failed:", err);
+      debug(`[AudioPlayer] Load failed: ${String(err)}`);
     });
   }
 

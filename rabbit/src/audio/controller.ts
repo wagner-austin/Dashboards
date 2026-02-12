@@ -9,6 +9,16 @@ import type { AudioTrack, AudioConfig, AudioDependencies, AudioContextLike } fro
 
 export type { AudioDependencies };
 
+/** Debug log to screen overlay. */
+function debug(msg: string): void {
+  const win = window as unknown as { debugLog?: (m: string) => void };
+  if (win.debugLog !== undefined) {
+    win.debugLog(msg);
+  } else {
+    console.log(msg);
+  }
+}
+
 /** Audio system state for track switching. */
 export interface AudioSystem {
   context: AudioContextLike;
@@ -118,22 +128,22 @@ export function initializeAudio(
   let system: AudioSystem | null = null;
 
   const start = (): void => {
-    console.log("[Audio] start() called");
+    debug("[Audio] start() called");
     if (system !== null) {
-      console.log("[Audio] system already exists, returning");
+      debug("[Audio] system already exists, returning");
       return;
     }
 
-    console.log("[Audio] Creating AudioContext...");
+    debug("[Audio] Creating AudioContext...");
     const context = deps.createContext();
-    console.log("[Audio] AudioContext created, state:", context.state);
+    debug(`[Audio] AudioContext created, state: ${context.state}`);
 
     const player = createAudioPlayer({
       context,
       fetchFn: deps.fetchFn,
       masterVolume: audioConfig.masterVolume,
     });
-    console.log("[Audio] Player created");
+    debug("[Audio] Player created");
 
     system = {
       context,
@@ -149,16 +159,16 @@ export function initializeAudio(
     };
 
     if (context.state === "suspended") {
-      console.log("[Audio] Context suspended, calling resume()...");
+      debug("[Audio] Context suspended, calling resume()...");
       context.resume().then(() => {
-        console.log("[Audio] Resume succeeded, playing track:", track.id);
+        debug(`[Audio] Resume succeeded, playing track: ${track.id}`);
         player.play(track);
       }).catch((err) => {
-        console.log("[Audio] Resume failed:", err, "- trying to play anyway");
+        debug(`[Audio] Resume failed: ${String(err)} - trying to play anyway`);
         player.play(track);
       });
     } else {
-      console.log("[Audio] Context running, playing track:", track.id);
+      debug(`[Audio] Context running, playing track: ${track.id}`);
       player.play(track);
     }
 
