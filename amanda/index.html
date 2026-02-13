@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=yes">
+    <title>Amanda</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #background {
+            font-family: "Courier New", monospace;
+            font-size: 8px;
+            line-height: 1.0;
+            white-space: pre;
+            color: #e0e0e0;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        #character {
+            position: absolute;
+            bottom: 10%;
+            right: 25%;
+            transform: translateX(50%);
+            height: 60%;
+            width: auto;
+            z-index: 2;
+        }
+
+        #start-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        #start-overlay span {
+            color: #e0e0e0;
+            font-family: "Courier New", monospace;
+            font-size: 24px;
+        }
+
+        #start-overlay.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="start-overlay"><span>Click to start</span></div>
+    <pre id="background"></pre>
+    <img id="character" src="" alt="Amanda">
+    <audio id="audio" loop>
+        <source src="./audio/peace_dancer.mp3" type="audio/mpeg">
+    </audio>
+    <script type="module" src="./dist/main.js"></script>
+</body>
+</html>
