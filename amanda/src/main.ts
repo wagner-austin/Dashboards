@@ -10,6 +10,7 @@ interface SpriteAnimation {
   speedMultiplier?: number; // 1 = normal, 2 = half speed, 0.5 = double speed
   isDefault?: boolean; // Return to this after other animations
   isInterrupt?: boolean; // Triggered by click/touch, not random
+  loops?: number; // How many times to loop before switching (default 1)
 }
 
 // Bothered animation - triggered by click/touch (uses FAST_FRAME_DELAY)
@@ -36,6 +37,7 @@ const ANIMATIONS: SpriteAnimation[] = [
     weight: 65, // Head down reading - most common
     speedMultiplier: 2, // Half speed
     isDefault: true,
+    loops: 3,
   },
   {
     folder: "amanda_reading_looking_up_idle",
@@ -45,6 +47,7 @@ const ANIMATIONS: SpriteAnimation[] = [
     ],
     weight: 20, // Look up
     speedMultiplier: 2, // Half speed
+    loops: 3,
   },
   {
     folder: "amanda_reading_looking_down_page_turn",
@@ -55,6 +58,7 @@ const ANIMATIONS: SpriteAnimation[] = [
       "frame_05_delay-0.4s.png",
     ],
     weight: 10, // Page turn
+    loops: 1,
   },
   {
     folder: "amanda_standing_closes_book",
@@ -67,6 +71,7 @@ const ANIMATIONS: SpriteAnimation[] = [
     ],
     pingPong: true,
     weight: 5, // Standing closes book - rare
+    loops: 1,
   },
 ];
 
@@ -137,7 +142,6 @@ function initCharacter(): void {
   let direction = 1; // 1 = forward, -1 = reverse (for ping-pong)
   let pauseFrames = 0; // Pause counter for end frame delay
   let animationInterval: ReturnType<typeof setInterval> | null = null;
-  const LOOPS_BEFORE_SWITCH = 3;
   const END_FRAME_PAUSE = 3; // Number of frames to pause at end
 
   function getFrameDelay(): number {
@@ -240,8 +244,8 @@ function initCharacter(): void {
       }
     }
 
-    // Switch animation after a few loops (interrupt animations only play once)
-    const loopsNeeded = currentAnimation.isInterrupt ? 1 : LOOPS_BEFORE_SWITCH;
+    // Switch animation after loops complete (interrupt animations only play once)
+    const loopsNeeded = currentAnimation.isInterrupt ? 1 : (currentAnimation.loops ?? 1);
     if (loopCount >= loopsNeeded) {
       switchAnimation();
     }
