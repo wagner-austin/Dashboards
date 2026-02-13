@@ -264,8 +264,8 @@ function initAudio(): void {
   if (!audio || !overlay) return;
 
   const tracks = [
-    { src: "./audio/Concertino for Clarinet in Eb major performed by Amanda Tang.mp3", name: "Concertino for Clarinet - Amanda Tang", volume: 0.4 },
-    { src: "./audio/peace_dancer.mp3", name: "Peace Dancer - Jodie Blackshaw", volume: 0.8 },
+    { src: "./audio/Concertino for Clarinet in Eb major performed by Amanda Tang.mp3", name: "Concertino for Clarinet - Amanda Tang", volume: 0.3 },
+    { src: "./audio/peace_dancer.mp3", name: "Peace Dancer - Jodie Blackshaw", volume: 1.0 },
     { src: "./audio/angels_in_the_architecture_usc.mp3", name: "Angels in the Architecture - Frank Ticheli", volume: 1.0 },
   ];
   let currentTrack = 0;
@@ -297,10 +297,14 @@ function initAudio(): void {
 
   // Keyboard controls
   document.addEventListener("keydown", (e) => {
-    if (e.key === "n" || e.key === "N") {
+    if (e.key === "n" || e.key === "N" || e.key === "ArrowRight") {
       nextTrack();
     } else if (e.key === "l" || e.key === "L") {
       audio.loop = !audio.loop;
+      nowPlaying?.classList.toggle("looping", audio.loop);
+    } else if (e.key === "ArrowLeft") {
+      currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+      playTrack(currentTrack);
     }
   });
 
