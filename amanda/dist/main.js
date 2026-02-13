@@ -266,17 +266,23 @@ function initAudio() {
     // Swipe controls for mobile
     let touchStartX = 0;
     let touchStartY = 0;
+    let touchStartTarget = null;
     document.addEventListener("touchstart", (e) => {
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
+        touchStartTarget = e.target;
     });
     document.addEventListener("touchend", (e) => {
+        // Ignore if touch started on character
+        const character = document.getElementById("character");
+        if (touchStartTarget === character)
+            return;
         const touchEndX = e.changedTouches[0].clientX;
         const touchEndY = e.changedTouches[0].clientY;
         const deltaX = touchEndX - touchStartX;
         const deltaY = touchEndY - touchStartY;
         // Only trigger if horizontal swipe is dominant and long enough
-        if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (Math.abs(deltaX) > 100 && Math.abs(deltaX) > Math.abs(deltaY)) {
             if (deltaX < 0) {
                 // Swipe left = next track
                 nextTrack();
