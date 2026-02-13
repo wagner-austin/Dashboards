@@ -228,20 +228,33 @@ function initAudio() {
     if (!audio || !overlay)
         return;
     const tracks = [
-        "./audio/Amanda Tang - Concertino for Clarinet in Eb major.mp3",
-        "./audio/peace_dancer.mp3",
+        { src: "./audio/Amanda Tang - Concertino for Clarinet in Eb major.mp3", volume: 0.4 },
+        { src: "./audio/peace_dancer.mp3", volume: 0.8 },
+        { src: "./audio/angels_in_the_architecture_usc.mp3", volume: 1.0 },
     ];
     let currentTrack = 0;
-    audio.addEventListener("ended", () => {
-        currentTrack = (currentTrack + 1) % tracks.length;
-        audio.src = tracks[currentTrack];
+    function playTrack(index) {
+        audio.src = tracks[index].src;
+        audio.volume = tracks[index].volume;
         audio.play();
-    });
+    }
+    function nextTrack() {
+        currentTrack = (currentTrack + 1) % tracks.length;
+        playTrack(currentTrack);
+    }
+    audio.addEventListener("ended", nextTrack);
     overlay.addEventListener("click", () => {
         overlay.classList.add("hidden");
-        audio.volume = 0.4;
-        audio.src = tracks[currentTrack];
-        audio.play();
+        playTrack(currentTrack);
+    });
+    // Keyboard controls
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "n" || e.key === "N") {
+            nextTrack();
+        }
+        else if (e.key === "l" || e.key === "L") {
+            audio.loop = !audio.loop;
+        }
     });
 }
 function init() {
