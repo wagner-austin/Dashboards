@@ -47,7 +47,7 @@ const ANIMATIONS: SpriteAnimation[] = [
     ],
     weight: 20, // Look up
     speedMultiplier: 2, // Half speed
-    loops: 3,
+    loops: 2,
   },
   {
     folder: "amanda_reading_looking_down_page_turn",
