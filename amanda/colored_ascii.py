@@ -1,10 +1,9 @@
 """Convert GIF to colored ASCII HTML frames."""
-from PIL import Image
+from PIL import Image, ImageEnhance
 from pathlib import Path
-import json
 
-# Character gradient (light to dark)
-GRADIENT = " .-+#"
+# Character gradient (light to dark) - using lighter chars for brightness
+GRADIENT = " .:#"
 
 
 def image_to_colored_ascii(img: Image.Image, width: int = 80) -> str:
@@ -29,7 +28,6 @@ def image_to_colored_ascii(img: Image.Image, width: int = 80) -> str:
         if char == " ":
             html_chars.append(" ")
         else:
-            # Use hex color
             color = f"#{r:02x}{g:02x}{b:02x}"
             html_chars.append(f'<span style="color:{color}">{char}</span>')
 
@@ -70,7 +68,9 @@ def main() -> None:
 
     html_frames: list[str] = []
     for i, frame in enumerate(frames):
-        html = image_to_colored_ascii(frame, width=160)
+        # Apply contrast enhancement
+        enhanced = ImageEnhance.Contrast(frame).enhance(2.0)
+        html = image_to_colored_ascii(enhanced, width=160)
         html_frames.append(html)
         print(f"  Frame {i + 1}/{len(frames)} done")
 

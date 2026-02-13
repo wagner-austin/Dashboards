@@ -1,5 +1,5 @@
 import { frames as bridgeFrames } from "./sprites/bridge/w400.js";
-import { frames as happyBirthdayFrames } from "./sprites/happy_birthday/w160.js";
+import { frames as happyBirthdayFrames } from "./sprites/happy_birthday_colored/frames.js";
 
 // Animation definitions with frequency weights
 interface SpriteAnimation {
@@ -80,17 +80,23 @@ const FAST_FRAME_DELAY = 150; // For bothered animation
 // Background animation speed
 const BG_FRAME_DELAY = 150; // ~6-7fps for background
 
+let lastPickedAnimation: SpriteAnimation | null = null;
+
 function pickWeightedAnimation(): SpriteAnimation {
-  const totalWeight = OTHER_ANIMATIONS.reduce((sum, a) => sum + a.weight, 0);
+  // Filter out the last picked animation to avoid repeats
+  const available = OTHER_ANIMATIONS.filter((a) => a !== lastPickedAnimation);
+  const totalWeight = available.reduce((sum, a) => sum + a.weight, 0);
   let random = Math.random() * totalWeight;
 
-  for (const animation of OTHER_ANIMATIONS) {
+  for (const animation of available) {
     random -= animation.weight;
     if (random <= 0) {
+      lastPickedAnimation = animation;
       return animation;
     }
   }
-  return OTHER_ANIMATIONS[0];
+  lastPickedAnimation = available[0];
+  return available[0];
 }
 
 function initBackground(): void {
@@ -247,7 +253,7 @@ function initHappyBirthday(): void {
   let frameIndex = 0;
 
   function animate(): void {
-    happyBirthday!.textContent = happyBirthdayFrames[frameIndex];
+    happyBirthday!.innerHTML = happyBirthdayFrames[frameIndex];
     frameIndex = (frameIndex + 1) % happyBirthdayFrames.length;
   }
 
