@@ -1,12 +1,15 @@
 import { frames as bridgeFrames } from "./sprites/bridge/w400.js";
 import { frames as happyBirthdayFrames } from "./sprites/happy_birthday/w160.js";
-// Bothered animation - triggered by click/touch
+// Bothered animation - triggered by click/touch (uses FAST_FRAME_DELAY)
 const BOTHERED_ANIMATION = {
     folder: "amanda_bothered",
-    frames: ["frame_00_delay-0.4s.png", "frame_01_delay-0.4s.png"],
+    frames: [
+        "frame_00_delay-0.4s.png",
+        "frame_01_delay-0.4s.png",
+        "frame_02_delay-0.4s.png",
+    ],
     pingPong: true,
     weight: 0,
-    speedMultiplier: 0.5, // Double speed
     isInterrupt: true,
 };
 const ANIMATIONS = [
@@ -55,8 +58,9 @@ const ANIMATIONS = [
 ];
 const DEFAULT_ANIMATION = ANIMATIONS.find((a) => a.isDefault) ?? ANIMATIONS[0];
 const OTHER_ANIMATIONS = ANIMATIONS.filter((a) => !a.isDefault);
-// Frame delay in ms
+// Frame delays in ms
 const FRAME_DELAY = 600;
+const FAST_FRAME_DELAY = 150; // For bothered animation
 // Background animation speed
 const BG_FRAME_DELAY = 150; // ~6-7fps for background
 function pickWeightedAnimation() {
@@ -101,29 +105,37 @@ function initCharacter() {
     let loopCount = 0;
     let direction = 1; // 1 = forward, -1 = reverse (for ping-pong)
     let pauseFrames = 0; // Pause counter for end frame delay
-    let speedCounter = 0; // Counter for speed multiplier
-    let isInterrupted = false; // Flag for interrupt animations
+    let animationInterval = null;
     const LOOPS_BEFORE_SWITCH = 3;
     const END_FRAME_PAUSE = 3; // Number of frames to pause at end
+    function getFrameDelay() {
+        if (currentAnimation.isInterrupt)
+            return FAST_FRAME_DELAY;
+        const multiplier = currentAnimation.speedMultiplier ?? 1;
+        return FRAME_DELAY * multiplier;
+    }
+    function startTimer() {
+        if (animationInterval)
+            clearInterval(animationInterval);
+        animationInterval = setInterval(animate, getFrameDelay());
+    }
     function switchAnimation() {
+        const wasInterrupt = currentAnimation.isInterrupt;
         loopCount = 0;
         direction = 1;
         frameIndex = 0;
-        speedCounter = 0;
         // If returning from interrupt, go back to default
-        if (isInterrupted) {
-            isInterrupted = false;
+        if (wasInterrupt) {
             currentAnimation = DEFAULT_ANIMATION;
-            return;
         }
-        // If currently on default, pick a random other animation
-        // Otherwise, return to default
-        if (currentAnimation.isDefault) {
+        else if (currentAnimation.isDefault) {
             currentAnimation = pickWeightedAnimation();
         }
         else {
             currentAnimation = DEFAULT_ANIMATION;
         }
+        // Restart timer with new speed
+        startTimer();
     }
     function triggerBothered() {
         // Don't interrupt if already bothered
@@ -135,13 +147,13 @@ function initCharacter() {
         setTimeout(() => {
             character.style.transform = "translateX(50%)";
         }, 80);
-        isInterrupted = true;
         currentAnimation = BOTHERED_ANIMATION;
         frameIndex = 0;
         direction = 1;
         loopCount = 0;
-        speedCounter = 0;
         pauseFrames = 0;
+        // Restart timer with fast speed
+        startTimer();
     }
     // Click/touch to trigger bothered animation
     character.addEventListener("click", (e) => {
@@ -161,13 +173,6 @@ function initCharacter() {
             pauseFrames--;
             return;
         }
-        // Handle speed multiplier (skip frames to slow down)
-        const multiplier = currentAnimation.speedMultiplier ?? 1;
-        speedCounter++;
-        if (speedCounter < multiplier) {
-            return;
-        }
-        speedCounter = 0;
         frameIndex += direction;
         // Handle ping-pong animations
         if (currentAnimation.pingPong) {
@@ -198,7 +203,7 @@ function initCharacter() {
     }
     // Start animation
     animate();
-    setInterval(animate, FRAME_DELAY);
+    startTimer();
 }
 function initHappyBirthday() {
     const happyBirthday = document.getElementById("happy-birthday");
