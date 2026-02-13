@@ -163,11 +163,17 @@ function initCharacter() {
     // Click/touch to trigger bothered animation
     character.addEventListener("click", (e) => {
         e.stopPropagation();
+        e.preventDefault();
         triggerBothered();
     });
     character.addEventListener("touchstart", (e) => {
         e.stopPropagation();
+        e.preventDefault();
         triggerBothered();
+    });
+    character.addEventListener("touchend", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
     });
     character.style.cursor = "pointer";
     function animate() {
@@ -273,8 +279,10 @@ function initAudio() {
         touchStartTarget = e.target;
     });
     document.addEventListener("touchend", (e) => {
-        // Ignore if touch started on character
+        // Ignore if touch started on or near character
         const character = document.getElementById("character");
+        if (character && touchStartTarget instanceof Node && character.contains(touchStartTarget))
+            return;
         if (touchStartTarget === character)
             return;
         const touchEndX = e.changedTouches[0].clientX;
@@ -293,6 +301,8 @@ function initAudio() {
                 playTrack(currentTrack);
             }
         }
+        // Reset touch state
+        touchStartTarget = null;
     });
 }
 function init() {
