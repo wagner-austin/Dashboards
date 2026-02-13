@@ -1,5 +1,14 @@
 import { frames as bridgeFrames } from "./sprites/bridge/w400.js";
 import { frames as happyBirthdayFrames } from "./sprites/happy_birthday/w160.js";
+// Bothered animation - triggered by click/touch
+const BOTHERED_ANIMATION = {
+    folder: "amanda_bothered",
+    frames: ["frame_00_delay-0.4s.png", "frame_01_delay-0.4s.png"],
+    pingPong: true,
+    weight: 0,
+    speedMultiplier: 0.5, // Double speed
+    isInterrupt: true,
+};
 const ANIMATIONS = [
     {
         folder: "amanda_reading_looking_down_idle",
@@ -93,6 +102,7 @@ function initCharacter() {
     let direction = 1; // 1 = forward, -1 = reverse (for ping-pong)
     let pauseFrames = 0; // Pause counter for end frame delay
     let speedCounter = 0; // Counter for speed multiplier
+    let isInterrupted = false; // Flag for interrupt animations
     const LOOPS_BEFORE_SWITCH = 3;
     const END_FRAME_PAUSE = 3; // Number of frames to pause at end
     function switchAnimation() {
@@ -100,6 +110,12 @@ function initCharacter() {
         direction = 1;
         frameIndex = 0;
         speedCounter = 0;
+        // If returning from interrupt, go back to default
+        if (isInterrupted) {
+            isInterrupted = false;
+            currentAnimation = DEFAULT_ANIMATION;
+            return;
+        }
         // If currently on default, pick a random other animation
         // Otherwise, return to default
         if (currentAnimation.isDefault) {
@@ -109,6 +125,34 @@ function initCharacter() {
             currentAnimation = DEFAULT_ANIMATION;
         }
     }
+    function triggerBothered() {
+        // Don't interrupt if already bothered
+        if (currentAnimation.isInterrupt)
+            return;
+        // Tiny squish effect
+        character.style.transition = "transform 0.08s ease-out";
+        character.style.transform = "translateX(50%) scaleY(0.95) scaleX(1.03)";
+        setTimeout(() => {
+            character.style.transform = "translateX(50%)";
+        }, 80);
+        isInterrupted = true;
+        currentAnimation = BOTHERED_ANIMATION;
+        frameIndex = 0;
+        direction = 1;
+        loopCount = 0;
+        speedCounter = 0;
+        pauseFrames = 0;
+    }
+    // Click/touch to trigger bothered animation
+    character.addEventListener("click", (e) => {
+        e.stopPropagation();
+        triggerBothered();
+    });
+    character.addEventListener("touchstart", (e) => {
+        e.stopPropagation();
+        triggerBothered();
+    });
+    character.style.cursor = "pointer";
     function animate() {
         const framePath = `./originals/${currentAnimation.folder}/${currentAnimation.frames[frameIndex]}`;
         character.src = framePath;
@@ -146,8 +190,9 @@ function initCharacter() {
                 loopCount++;
             }
         }
-        // Switch animation after a few loops
-        if (loopCount >= LOOPS_BEFORE_SWITCH) {
+        // Switch animation after a few loops (interrupt animations only play once)
+        const loopsNeeded = currentAnimation.isInterrupt ? 1 : LOOPS_BEFORE_SWITCH;
+        if (loopCount >= loopsNeeded) {
             switchAnimation();
         }
     }
