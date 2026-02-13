@@ -71,6 +71,20 @@
             z-index: 3;
         }
 
+        #now-playing {
+            font-family: "Courier New", monospace;
+            font-size: 16px;
+            color: #fff;
+            background: #000;
+            padding: 4px 8px;
+            position: absolute;
+            bottom: 3%;
+            right: 15%;
+            transform: translateX(50%);
+            z-index: 2;
+            text-align: center;
+        }
+
         #start-overlay {
             position: fixed;
             top: 0;
@@ -145,6 +159,7 @@
         <pre id="background"></pre>
         <pre id="happy-birthday"></pre>
         <img id="character" src="" alt="Amanda">
+        <div id="now-playing"></div>
     </div>
     <audio id="audio"></audio>
     <script type="module" src="./dist/main.js"></script>

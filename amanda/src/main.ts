@@ -264,20 +264,28 @@ function initHappyBirthday(): void {
 function initAudio(): void {
   const audio = document.getElementById("audio") as HTMLAudioElement;
   const overlay = document.getElementById("start-overlay");
+  const nowPlaying = document.getElementById("now-playing");
 
   if (!audio || !overlay) return;
 
   const tracks = [
-    { src: "./audio/Amanda Tang - Concertino for Clarinet in Eb major.mp3", volume: 0.4 },
-    { src: "./audio/peace_dancer.mp3", volume: 0.8 },
-    { src: "./audio/angels_in_the_architecture_usc.mp3", volume: 1.0 },
+    { src: "./audio/Concertino for Clarinet in Eb major performed by Amanda Tang.mp3", name: "Concertino for Clarinet - Amanda Tang", volume: 0.4 },
+    { src: "./audio/peace_dancer.mp3", name: "Peace Dancer - Jodie Blackshaw", volume: 0.8 },
+    { src: "./audio/angels_in_the_architecture_usc.mp3", name: "Angels in the Architecture - Frank Ticheli", volume: 1.0 },
   ];
   let currentTrack = 0;
+
+  function updateNowPlaying(): void {
+    if (nowPlaying) {
+      nowPlaying.textContent = tracks[currentTrack].name;
+    }
+  }
 
   function playTrack(index: number): void {
     audio.src = tracks[index].src;
     audio.volume = tracks[index].volume;
     audio.play();
+    updateNowPlaying();
   }
 
   function nextTrack(): void {
@@ -298,6 +306,34 @@ function initAudio(): void {
       nextTrack();
     } else if (e.key === "l" || e.key === "L") {
       audio.loop = !audio.loop;
+    }
+  });
+
+  // Swipe controls for mobile
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  document.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  });
+
+  document.addEventListener("touchend", (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    // Only trigger if horizontal swipe is dominant and long enough
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0) {
+        // Swipe left = next track
+        nextTrack();
+      } else {
+        // Swipe right = previous track
+        currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+        playTrack(currentTrack);
+      }
     }
   });
 }
