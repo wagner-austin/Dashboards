@@ -49,7 +49,7 @@ const OTHER_ANIMATIONS = ANIMATIONS.filter((a) => !a.isDefault);
 // Frame delay in ms
 const FRAME_DELAY = 600;
 // Background animation speed
-const BG_FRAME_DELAY = 100; // ~10fps for background
+const BG_FRAME_DELAY = 150; // ~6-7fps for background
 function pickWeightedAnimation() {
     const totalWeight = OTHER_ANIMATIONS.reduce((sum, a) => sum + a.weight, 0);
     let random = Math.random() * totalWeight;
