@@ -1,5 +1,4 @@
 import { frames as bridgeFrames } from "./sprites/bridge/w400.js";
-import { frames as happyBirthdayFrames } from "./sprites/happy_birthday_colored/frames.js";
 
 // Animation definitions with frequency weights
 interface SpriteAnimation {
@@ -256,20 +255,6 @@ function initCharacter(): void {
   startTimer();
 }
 
-function initHappyBirthday(): void {
-  const happyBirthday = document.getElementById("happy-birthday");
-  if (!happyBirthday) return;
-
-  let frameIndex = 0;
-
-  function animate(): void {
-    happyBirthday!.innerHTML = happyBirthdayFrames[frameIndex];
-    frameIndex = (frameIndex + 1) % happyBirthdayFrames.length;
-  }
-
-  animate();
-  setInterval(animate, 80); // ~12fps for the GIF
-}
 
 function initAudio(): void {
   const audio = document.getElementById("audio") as HTMLAudioElement;
@@ -361,7 +346,6 @@ function initAudio(): void {
 function init(): void {
   initAudio();
   initBackground();
-  initHappyBirthday();
   initCharacter();
 }
 

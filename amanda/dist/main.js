@@ -1,5 +1,4 @@
 import { frames as bridgeFrames } from "./sprites/bridge/w400.js";
-import { frames as happyBirthdayFrames } from "./sprites/happy_birthday_colored/frames.js";
 // Bothered animation - triggered by click/touch (uses FAST_FRAME_DELAY)
 const BOTHERED_ANIMATION = {
     folder: "amanda_bothered",
@@ -219,18 +218,6 @@ function initCharacter() {
     animate();
     startTimer();
 }
-function initHappyBirthday() {
-    const happyBirthday = document.getElementById("happy-birthday");
-    if (!happyBirthday)
-        return;
-    let frameIndex = 0;
-    function animate() {
-        happyBirthday.innerHTML = happyBirthdayFrames[frameIndex];
-        frameIndex = (frameIndex + 1) % happyBirthdayFrames.length;
-    }
-    animate();
-    setInterval(animate, 80); // ~12fps for the GIF
-}
 function initAudio() {
     const audio = document.getElementById("audio");
     const overlay = document.getElementById("start-overlay");
@@ -311,7 +298,6 @@ function initAudio() {
 function init() {
     initAudio();
     initBackground();
-    initHappyBirthday();
     initCharacter();
 }
 document.addEventListener("DOMContentLoaded", init);
