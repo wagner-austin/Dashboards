@@ -1,4 +1,5 @@
-import { frames as bridgeFrames } from "./sprites/bridge/w300.js";
+import { frames as bridgeFrames } from "./sprites/bridge/w400.js";
+import { frames as happyBirthdayFrames } from "./sprites/happy_birthday/w160.js";
 const ANIMATIONS = [
     {
         folder: "amanda_reading_looking_down_idle",
@@ -154,19 +155,44 @@ function initCharacter() {
     animate();
     setInterval(animate, FRAME_DELAY);
 }
+function initHappyBirthday() {
+    const happyBirthday = document.getElementById("happy-birthday");
+    if (!happyBirthday)
+        return;
+    let frameIndex = 0;
+    function animate() {
+        happyBirthday.textContent = happyBirthdayFrames[frameIndex];
+        frameIndex = (frameIndex + 1) % happyBirthdayFrames.length;
+    }
+    animate();
+    setInterval(animate, 80); // ~12fps for the GIF
+}
 function initAudio() {
     const audio = document.getElementById("audio");
     const overlay = document.getElementById("start-overlay");
     if (!audio || !overlay)
         return;
+    const tracks = [
+        "./audio/Amanda Tang - Concertino for Clarinet in Eb major.mp3",
+        "./audio/peace_dancer.mp3",
+    ];
+    let currentTrack = 0;
+    audio.addEventListener("ended", () => {
+        currentTrack = (currentTrack + 1) % tracks.length;
+        audio.src = tracks[currentTrack];
+        audio.play();
+    });
     overlay.addEventListener("click", () => {
         overlay.classList.add("hidden");
+        audio.volume = 0.4;
+        audio.src = tracks[currentTrack];
         audio.play();
     });
 }
 function init() {
     initAudio();
     initBackground();
+    initHappyBirthday();
     initCharacter();
 }
 document.addEventListener("DOMContentLoaded", init);

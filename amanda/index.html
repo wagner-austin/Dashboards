@@ -28,12 +28,24 @@
 
         #character {
             position: absolute;
-            bottom: 10%;
-            right: 25%;
+            bottom: 5%;
+            right: 15%;
             transform: translateX(50%);
-            height: 60%;
+            height: 50%;
             width: auto;
             z-index: 2;
+        }
+
+        #happy-birthday {
+            font-family: "Courier New", monospace;
+            font-size: 8px;
+            line-height: 1.0;
+            white-space: pre;
+            color: #e0e0e0;
+            position: absolute;
+            top: 0%;
+            left: 5%;
+            z-index: 3;
         }
 
         #start-overlay {
@@ -64,10 +76,9 @@
 <body>
     <div id="start-overlay"><span>Click to start</span></div>
     <pre id="background"></pre>
+    <pre id="happy-birthday"></pre>
     <img id="character" src="" alt="Amanda">
-    <audio id="audio" loop>
-        <source src="./audio/peace_dancer.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="audio"></audio>
     <script type="module" src="./dist/main.js"></script>
 </body>
 </html>
