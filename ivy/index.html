@@ -2,60 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ivy</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body, #scene, .character, #background, #iloveyou {
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-
         html, body {
             background: #0a0a0a;
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
-
-        body {
-            cursor: pointer;
-        }
-
+        body { cursor: pointer; }
         #scene {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 1080px;
             height: 1920px;
             transform-origin: top left;
         }
-
         #background {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             object-fit: cover;
             z-index: 0;
         }
-
         .character {
             position: absolute;
-            height: auto;
-            width: auto;
             max-height: 20%;
             z-index: 2;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             cursor: pointer;
         }
-
-        /* Position each Ivy animation differently */
         #ivy-1 { top: 12%; left: 5%; }
         #ivy-2 { top: 8%; right: 5%; }
         #ivy-3 { top: 35%; left: 3%; }
@@ -63,134 +42,174 @@
         #ivy-5 { top: 55%; left: 5%; }
         #ivy-6 { top: 52%; right: 5%; }
         #ivy-7 { top: 75%; left: 50%; transform: translateX(-50%); }
-
-        /* Teddy positions */
         #teddy-1 { bottom: 18%; left: 8%; max-height: 15%; }
         #teddy-2 { bottom: 18%; right: 8%; max-height: 15%; }
-
         #iloveyou {
             position: absolute;
-            top: 2%;
-            left: 50%;
+            top: 2%; left: 50%;
             transform: translateX(-50%);
             height: 10%;
-            width: auto;
             z-index: 3;
             mix-blend-mode: multiply;
         }
-
         #us-video {
             position: absolute;
-            bottom: 3%;
-            left: 50%;
+            bottom: 3%; left: 50%;
             transform: translateX(-50%);
             height: 15%;
-            width: auto;
             z-index: 2;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
-
         #now-playing {
-            font-family: "Courier New", monospace;
+            font-family: monospace;
             font-size: 24px;
             color: #fff;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0,0,0,0.7);
             padding: 8px 16px;
             position: absolute;
-            bottom: 1%;
-            left: 50%;
+            bottom: 1%; left: 50%;
             transform: translateX(-50%);
             z-index: 10;
-            text-align: center;
             border-radius: 4px;
         }
-
-        #now-playing.looping {
-            outline: 2px solid #fff;
-        }
-
+        #now-playing.looping { outline: 2px solid #fff; }
         #start-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 100;
             cursor: pointer;
         }
-
         #start-overlay span {
             color: #e0e0e0;
-            font-family: "Courier New", monospace;
+            font-family: monospace;
             font-size: 24px;
         }
-
-        #start-overlay.hidden {
-            display: none;
-        }
+        #start-overlay.hidden { display: none; }
     </style>
 </head>
 <body>
-    <div id="start-overlay" onclick="this.classList.add('hidden'); document.querySelectorAll('video').forEach(v=>v.play()); document.getElementById('audio').src='./audio/An Unusual PrinceOnce Upon a Dream (From Sleeping Beauty).mp3'; document.getElementById('audio').play();"><span>Click to start</span></div>
+    <div id="start-overlay"><span>Click to start</span></div>
     <div id="scene">
         <video id="background" autoplay loop muted playsinline>
             <source src="./originals/background/vertical.mp4" type="video/mp4">
         </video>
-
-        <!-- I love you at top -->
         <video id="iloveyou" autoplay loop muted playsinline>
             <source src="./originals/ioveyou_handwritten.mp4" type="video/mp4">
         </video>
-
-        <!-- Ivy animations -->
-        <img id="ivy-1" class="character" src="./originals/Ivy_1/IMG_0704.JPG" alt="Ivy">
-        <img id="ivy-2" class="character" src="./originals/Ivy_2/IMG_2115.JPG" alt="Ivy">
-        <img id="ivy-3" class="character" src="./originals/Ivy_3/IMG_8753.JPG" alt="Ivy">
-        <img id="ivy-4" class="character" src="./originals/Ivy_4/IMG_7795.JPG" alt="Ivy">
-        <img id="ivy-5" class="character" src="./originals/Ivy_5/IMG_7747.JPG" alt="Ivy">
-        <img id="ivy-6" class="character" src="./originals/Ivy_6/IMG_4890.JPG" alt="Ivy">
-        <img id="ivy-7" class="character" src="./originals/Ivy_7/IMG_4125.JPG" alt="Ivy">
-
-        <!-- Teddy animations -->
-        <img id="teddy-1" class="character" src="./originals/Teddy_1/IMG_5271.JPG" alt="Teddy">
-        <img id="teddy-2" class="character" src="./originals/Teddy_2/IMG_5261.JPG" alt="Teddy">
-
-        <!-- Us video -->
+        <img id="ivy-1" class="character" src="./originals/Ivy_1/IMG_0704.JPG">
+        <img id="ivy-2" class="character" src="./originals/Ivy_2/IMG_2115.JPG">
+        <img id="ivy-3" class="character" src="./originals/Ivy_3/IMG_8753.JPG">
+        <img id="ivy-4" class="character" src="./originals/Ivy_4/IMG_7795.JPG">
+        <img id="ivy-5" class="character" src="./originals/Ivy_5/IMG_7747.JPG">
+        <img id="ivy-6" class="character" src="./originals/Ivy_6/IMG_4890.JPG">
+        <img id="ivy-7" class="character" src="./originals/Ivy_7/IMG_4125.JPG">
+        <img id="teddy-1" class="character" src="./originals/Teddy_1/IMG_5271.JPG">
+        <img id="teddy-2" class="character" src="./originals/Teddy_2/IMG_5261.JPG">
         <video id="us-video" loop muted playsinline>
             <source src="./originals/Us_1/20250905_174002.mp4" type="video/mp4">
         </video>
-
         <div id="now-playing"></div>
     </div>
     <audio id="audio"></audio>
-    <script type="module" src="./dist/main.js"></script>
     <script>
+        // Animation data
+        const ANIMATIONS = {
+            "ivy-1": { folder: "Ivy_1", frames: ["IMG_0704.JPG","IMG_0705.JPG","IMG_0706.JPG","IMG_0707.JPG","IMG_0708.JPG","IMG_0709.JPG","IMG_0710.JPG"], delay: 150 },
+            "ivy-2": { folder: "Ivy_2", frames: ["IMG_2115.JPG","IMG_2116.JPG","IMG_2117.JPG","IMG_2118.JPG","IMG_2119.JPG","IMG_2120.JPG","IMG_2121.JPG","IMG_2122.JPG"], delay: 150 },
+            "ivy-3": { folder: "Ivy_3", frames: ["IMG_8753.JPG","IMG_8754.JPG","IMG_8755.JPG","IMG_8756.JPG","IMG_8757.JPG","IMG_8758.JPG","IMG_8759.JPG","IMG_8760.JPG","IMG_8761.JPG","IMG_8762.JPG","IMG_8763.JPG","IMG_8764.JPG","IMG_8765.JPG","IMG_8766.JPG"], delay: 120 },
+            "ivy-4": { folder: "Ivy_4", frames: ["IMG_7795.JPG","IMG_7796.JPG","IMG_7797.JPG","IMG_7798.JPG","IMG_7799.JPG","IMG_7800.JPG","IMG_7801.JPG","IMG_7802.JPG","IMG_7803.JPG","IMG_7804.JPG"], delay: 140 },
+            "ivy-5": { folder: "Ivy_5", frames: ["IMG_7747.JPG","IMG_7748.JPG","IMG_7749.JPG","IMG_7750.JPG","IMG_7751.JPG","IMG_7752.JPG"], delay: 180 },
+            "ivy-6": { folder: "Ivy_6", frames: ["IMG_4890.JPG","IMG_4891.JPG","IMG_4892.JPG","IMG_4893.JPG","IMG_4894.JPG","IMG_4895.JPG","IMG_4896.JPG","IMG_4897.JPG","IMG_4898.JPG","IMG_4899.JPG","IMG_4900.JPG","IMG_4901.JPG","IMG_4902.JPG","IMG_4903.JPG","IMG_4904.JPG","IMG_4905.JPG","IMG_4906.JPG","IMG_4907.JPG","IMG_4908.JPG","IMG_4909.JPG","IMG_4910.JPG","IMG_4911.JPG","IMG_4912.JPG","IMG_4913.JPG","IMG_4914.JPG","IMG_4915.JPG","IMG_4916.JPG","IMG_4917.JPG","IMG_4918.JPG","IMG_4919.JPG","IMG_4920.JPG","IMG_4921.JPG","IMG_4922.JPG","IMG_4923.JPG","IMG_4924.JPG","IMG_4925.JPG","IMG_4926.JPG","IMG_4927.JPG"], delay: 80 },
+            "ivy-7": { folder: "Ivy_7", frames: ["IMG_4125.JPG","IMG_4126.JPG","IMG_4127.JPG","IMG_4128.JPG","IMG_4129.JPG","IMG_4130.JPG","IMG_4131.JPG","IMG_4132.JPG","IMG_4133.JPG","IMG_4134.JPG","IMG_4135.JPG","IMG_4136.JPG","IMG_4137.JPG","IMG_4138.JPG"], delay: 120 },
+            "teddy-1": { folder: "Teddy_1", frames: ["IMG_5271.JPG","IMG_5272.JPG","IMG_5279.JPG","IMG_5280.JPG","IMG_5281.JPG","IMG_5282.JPG","IMG_5283.JPG","IMG_5284.JPG","IMG_5285.JPG"], delay: 160 },
+            "teddy-2": { folder: "Teddy_2", frames: ["IMG_5261.JPG","IMG_5262.JPG","IMG_5263.JPG","IMG_5264.JPG","IMG_5265.JPG"], delay: 200 },
+        };
+
+        const tracks = [
+            { src: "./audio/An Unusual PrinceOnce Upon a Dream (From Sleeping Beauty).mp3", name: "Once Upon a Dream", volume: 0.8 },
+            { src: "./audio/Fairies said goodbye to Gruff  Ending scene  TinkerBell And The Legend Of The Neverbeast.mp3", name: "Fairies & Gruff", volume: 0.8 },
+            { src: "./audio/To the Fairies They Draw Near.mp3", name: "To the Fairies They Draw Near", volume: 0.8 },
+        ];
+        let currentTrack = 0;
+
         function scaleScene() {
             const scene = document.getElementById('scene');
-            if (!scene) return;
-
-            const vw = window.innerWidth;
-            const vh = window.innerHeight;
-            const sceneW = 1080;
-            const sceneH = 1920;
-
-            const scaleX = vw / sceneW;
-            const scaleY = vh / sceneH;
-            const scale = Math.min(scaleX, scaleY);
-
-            const offsetX = (vw - sceneW * scale) / 2;
-            const offsetY = (vh - sceneH * scale) / 2;
-
-            scene.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+            const vw = window.innerWidth, vh = window.innerHeight;
+            const scale = Math.min(vw / 1080, vh / 1920);
+            scene.style.transform = `translate(${(vw - 1080 * scale) / 2}px, ${(vh - 1920 * scale) / 2}px) scale(${scale})`;
         }
 
+        function initCharacter(id) {
+            const config = ANIMATIONS[id];
+            const el = document.getElementById(id);
+            if (!el || !config) return;
+            let idx = 0;
+            function animate() {
+                el.src = `./originals/${config.folder}/${config.frames[idx]}`;
+                idx = (idx + 1) % config.frames.length;
+            }
+            el.addEventListener("click", function(e) {
+                e.stopPropagation();
+                el.style.transition = "transform 0.1s";
+                el.style.transform = "scale(0.92)";
+                setTimeout(function() { el.style.transform = ""; }, 100);
+            });
+            animate();
+            setInterval(animate, config.delay);
+        }
+
+        function playTrack(idx) {
+            const audio = document.getElementById("audio");
+            const np = document.getElementById("now-playing");
+            audio.src = tracks[idx].src;
+            audio.volume = tracks[idx].volume;
+            audio.play();
+            np.textContent = tracks[idx].name;
+        }
+
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % tracks.length;
+            playTrack(currentTrack);
+        }
+
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+            playTrack(currentTrack);
+        }
+
+        document.getElementById("start-overlay").addEventListener("click", function() {
+            this.classList.add("hidden");
+            playTrack(currentTrack);
+            document.querySelectorAll("video").forEach(function(v) { v.play(); });
+        });
+
+        document.getElementById("audio").addEventListener("ended", nextTrack);
+
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "ArrowRight") nextTrack();
+            else if (e.key === "ArrowLeft") prevTrack();
+            else if (e.key === "l" || e.key === "L") {
+                const audio = document.getElementById("audio");
+                audio.loop = !audio.loop;
+                document.getElementById("now-playing").classList.toggle("looping", audio.loop);
+            }
+        });
+
+        let touchStartX = 0;
+        document.addEventListener("touchstart", function(e) { touchStartX = e.touches[0].clientX; });
+        document.addEventListener("touchend", function(e) {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 100) { dx < 0 ? nextTrack() : prevTrack(); }
+        });
+
+        window.addEventListener("resize", scaleScene);
         scaleScene();
-        window.addEventListener('resize', scaleScene);
+        Object.keys(ANIMATIONS).forEach(initCharacter);
     </script>
 </body>
 </html>
