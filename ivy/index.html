@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="screen-orientation" content="landscape">
     <title>Ivy</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Prevent tap highlight and text selection on mobile */
-        body, #scene, .character, #background-video, #iloveyou-video {
+        body, #scene, .character, #background, #iloveyou {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -31,12 +29,12 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 1920px;
-            height: 1080px;
+            width: 1080px;
+            height: 1920px;
             transform-origin: top left;
         }
 
-        #background-video {
+        #background {
             position: absolute;
             top: 0;
             left: 0;
@@ -50,40 +48,43 @@
             position: absolute;
             height: auto;
             width: auto;
-            max-height: 25%;
+            max-height: 20%;
             z-index: 2;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
         }
 
         /* Position each Ivy animation differently */
-        #ivy-1 { top: 10%; left: 5%; }
-        #ivy-2 { top: 15%; right: 8%; }
-        #ivy-3 { bottom: 20%; left: 10%; }
-        #ivy-4 { bottom: 15%; right: 5%; }
-        #ivy-5 { top: 40%; left: 2%; }
-        #ivy-6 { top: 35%; right: 3%; }
-        #ivy-7 { bottom: 5%; left: 40%; }
+        #ivy-1 { top: 12%; left: 5%; }
+        #ivy-2 { top: 8%; right: 5%; }
+        #ivy-3 { top: 35%; left: 3%; }
+        #ivy-4 { top: 32%; right: 3%; }
+        #ivy-5 { top: 55%; left: 5%; }
+        #ivy-6 { top: 52%; right: 5%; }
+        #ivy-7 { top: 75%; left: 50%; transform: translateX(-50%); }
 
         /* Teddy positions */
-        #teddy-1 { top: 5%; left: 45%; max-height: 18%; }
-        #teddy-2 { bottom: 10%; right: 40%; max-height: 18%; }
+        #teddy-1 { bottom: 18%; left: 8%; max-height: 15%; }
+        #teddy-2 { bottom: 18%; right: 8%; max-height: 15%; }
 
-        #iloveyou-video {
+        #iloveyou {
             position: absolute;
-            top: 50%;
+            top: 2%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            height: 40%;
+            transform: translateX(-50%);
+            height: 10%;
             width: auto;
             z-index: 3;
+            mix-blend-mode: multiply;
         }
 
         #us-video {
             position: absolute;
-            bottom: 5%;
-            right: 5%;
-            height: 30%;
+            bottom: 3%;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 15%;
             width: auto;
             z-index: 2;
             border-radius: 8px;
@@ -92,12 +93,12 @@
 
         #now-playing {
             font-family: "Courier New", monospace;
-            font-size: 20px;
+            font-size: 24px;
             color: #fff;
             background: rgba(0, 0, 0, 0.7);
             padding: 8px 16px;
             position: absolute;
-            bottom: 2%;
+            bottom: 1%;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
@@ -132,57 +133,15 @@
         #start-overlay.hidden {
             display: none;
         }
-
-        /* Force landscape on mobile */
-        @media screen and (orientation: portrait) {
-            #rotate-notice {
-                display: flex !important;
-            }
-            #scene {
-                display: none;
-            }
-        }
-
-        #rotate-notice {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0a0a;
-            z-index: 200;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #e0e0e0;
-            font-family: "Courier New", monospace;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        #rotate-notice .icon {
-            font-size: 48px;
-            margin-bottom: 1rem;
-            animation: rotate-hint 1.5s ease-in-out infinite;
-        }
-
-        @keyframes rotate-hint {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(90deg); }
-        }
     </style>
 </head>
 <body>
-    <div id="rotate-notice">
-        <div class="icon">📱</div>
-        <div>Please rotate your device to landscape</div>
-    </div>
-    <div id="start-overlay" onclick="this.classList.add('hidden'); document.getElementById('audio').play(); document.querySelectorAll('video').forEach(v => v.play());"><span>Click to start</span></div>
+    <div id="start-overlay"><span>Click to start</span></div>
     <div id="scene">
-        <video id="background-video" autoplay loop muted playsinline>
-            <source src="./originals/background/19700121_0357_698fb81911108191965b26cb204433a1.mp4" type="video/mp4">
-        </video>
+        <img id="background" src="./originals/background_frames/frame_001.jpg" alt="">
+
+        <!-- I love you at top -->
+        <img id="iloveyou" src="./originals/iloveyou_frames/frame_001.png" alt="I love you">
 
         <!-- Ivy animations -->
         <img id="ivy-1" class="character" src="./originals/Ivy_1/IMG_0704.JPG" alt="Ivy">
@@ -197,19 +156,14 @@
         <img id="teddy-1" class="character" src="./originals/Teddy_1/IMG_5271.JPG" alt="Teddy">
         <img id="teddy-2" class="character" src="./originals/Teddy_2/IMG_5261.JPG" alt="Teddy">
 
-        <!-- I love you overlay -->
-        <video id="iloveyou-video" autoplay loop muted playsinline>
-            <source src="./originals/ioveyou_handwritten.mp4" type="video/mp4">
-        </video>
-
         <!-- Us video -->
-        <video id="us-video" autoplay loop muted playsinline>
+        <video id="us-video" loop muted playsinline>
             <source src="./originals/Us_1/20250905_174002.mp4" type="video/mp4">
         </video>
 
         <div id="now-playing"></div>
     </div>
-    <audio id="audio" src="./audio/An Unusual PrinceOnce Upon a Dream (From Sleeping Beauty).mp3"></audio>
+    <audio id="audio"></audio>
     <script type="module" src="./dist/main.js"></script>
     <script>
         function scaleScene() {
@@ -218,15 +172,13 @@
 
             const vw = window.innerWidth;
             const vh = window.innerHeight;
-            const sceneW = 1920;
-            const sceneH = 1080;
+            const sceneW = 1080;
+            const sceneH = 1920;
 
-            // Scale to fit viewport while maintaining aspect ratio
             const scaleX = vw / sceneW;
             const scaleY = vh / sceneH;
             const scale = Math.min(scaleX, scaleY);
 
-            // Center the scene
             const offsetX = (vw - sceneW * scale) / 2;
             const offsetY = (vh - sceneH * scale) / 2;
 
@@ -235,9 +187,6 @@
 
         scaleScene();
         window.addEventListener('resize', scaleScene);
-        window.addEventListener('orientationchange', () => {
-            setTimeout(scaleScene, 100);
-        });
     </script>
 </body>
 </html>
