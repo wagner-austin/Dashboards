@@ -136,7 +136,7 @@
     </style>
 </head>
 <body>
-    <div id="start-overlay"><span>Click to start</span></div>
+    <div id="start-overlay" onclick="this.classList.add('hidden'); document.querySelectorAll('video').forEach(v=>v.play()); document.getElementById('audio').src='./audio/An Unusual PrinceOnce Upon a Dream (From Sleeping Beauty).mp3'; document.getElementById('audio').play();"><span>Click to start</span></div>
     <div id="scene">
         <video id="background" autoplay loop muted playsinline>
             <source src="./originals/background/vertical.mp4" type="video/mp4">
