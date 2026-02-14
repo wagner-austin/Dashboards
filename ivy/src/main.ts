@@ -251,3 +251,5 @@ function init(): void {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
+export {};
