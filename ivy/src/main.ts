@@ -56,17 +56,6 @@ const ANIMATIONS: Record<string, { element: string; folder: string; frames: stri
   },
 };
 
-// Background frames (100 frames)
-const BG_FRAMES: string[] = [];
-for (let i = 1; i <= 100; i++) {
-  BG_FRAMES.push(`frame_${String(i).padStart(3, "0")}.jpg`);
-}
-
-// I love you frames (26 frames)
-const ILOVEYOU_FRAMES: string[] = [];
-for (let i = 1; i <= 26; i++) {
-  ILOVEYOU_FRAMES.push(`frame_${String(i).padStart(3, "0")}.png`);
-}
 
 function initCharacter(id: string): void {
   const config = ANIMATIONS[id];
@@ -96,48 +85,11 @@ function initCharacter(id: string): void {
   setInterval(animate, config.delay);
 }
 
-function initBackground(): void {
-  const bg = document.getElementById("background") as HTMLImageElement;
-  if (!bg) return;
-
-  let frameIndex = 0;
-  let direction = 1;
-
-  function animate(): void {
-    bg.src = `./originals/background_frames/${BG_FRAMES[frameIndex]}`;
-
-    if (direction === 1 && frameIndex >= BG_FRAMES.length - 1) {
-      direction = -1;
-    } else if (direction === -1 && frameIndex <= 0) {
-      direction = 1;
-    }
-    frameIndex += direction;
-  }
-
-  animate();
-  setInterval(animate, 100);
-}
-
-function initIloveyou(): void {
-  const el = document.getElementById("iloveyou") as HTMLImageElement;
-  if (!el) return;
-
-  let frameIndex = 0;
-
-  function animate(): void {
-    el.src = `./originals/iloveyou_frames/${ILOVEYOU_FRAMES[frameIndex]}`;
-    frameIndex = (frameIndex + 1) % ILOVEYOU_FRAMES.length;
-  }
-
-  animate();
-  setInterval(animate, 100);
-}
 
 function initAudio(): void {
   const audio = document.getElementById("audio") as HTMLAudioElement;
   const overlay = document.getElementById("start-overlay");
   const nowPlaying = document.getElementById("now-playing");
-  const usVideo = document.getElementById("us-video") as HTMLVideoElement;
 
   if (!audio || !overlay) return;
 
@@ -171,7 +123,8 @@ function initAudio(): void {
   overlay.addEventListener("click", () => {
     overlay.classList.add("hidden");
     playTrack(currentTrack);
-    if (usVideo) usVideo.play();
+    // Start all videos
+    document.querySelectorAll("video").forEach((v) => v.play());
   });
 
   // Keyboard controls
@@ -206,8 +159,6 @@ function initAudio(): void {
 
 function init(): void {
   initAudio();
-  initBackground();
-  initIloveyou();
 
   // Init all character animations
   for (const id of Object.keys(ANIMATIONS)) {
