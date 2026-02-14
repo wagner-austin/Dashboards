@@ -54,10 +54,9 @@
         }
         #us-video {
             position: absolute;
-            bottom: 3%; left: 50%;
-            transform: translateX(-50%);
-            height: 15%;
-            z-index: 2;
+            bottom: 3%; right: 3%;
+            height: 12%;
+            z-index: 1;
             border-radius: 8px;
         }
         #now-playing {
@@ -209,7 +208,10 @@
 
         window.addEventListener("resize", scaleScene);
         scaleScene();
-        Object.keys(ANIMATIONS).forEach(initCharacter);
+        // Stagger animation starts to avoid hammering server
+        Object.keys(ANIMATIONS).forEach(function(id, i) {
+            setTimeout(function() { initCharacter(id); }, i * 500);
+        });
     </script>
 </body>
 </html>
