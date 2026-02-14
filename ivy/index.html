@@ -178,7 +178,7 @@
         <div class="icon">📱</div>
         <div>Please rotate your device to landscape</div>
     </div>
-    <div id="start-overlay"><span>Click to start</span></div>
+    <div id="start-overlay" onclick="this.classList.add('hidden'); document.getElementById('audio').play(); document.querySelectorAll('video').forEach(v => v.play());"><span>Click to start</span></div>
     <div id="scene">
         <video id="background-video" autoplay loop muted playsinline>
             <source src="./originals/background/19700121_0357_698fb81911108191965b26cb204433a1.mp4" type="video/mp4">
@@ -209,7 +209,7 @@
 
         <div id="now-playing"></div>
     </div>
-    <audio id="audio"></audio>
+    <audio id="audio" src="./audio/An Unusual PrinceOnce Upon a Dream (From Sleeping Beauty).mp3"></audio>
     <script type="module" src="./dist/main.js"></script>
     <script>
         function scaleScene() {
