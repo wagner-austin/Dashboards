@@ -208,10 +208,14 @@
 
         window.addEventListener("resize", scaleScene);
         scaleScene();
-        // Stagger animation starts to avoid hammering server
-        Object.keys(ANIMATIONS).forEach(function(id, i) {
-            setTimeout(function() { initCharacter(id); }, i * 500);
-        });
+
+        // Start all animations with slight stagger
+        var ids = Object.keys(ANIMATIONS);
+        for (var i = 0; i < ids.length; i++) {
+            (function(id, delay) {
+                setTimeout(function() { initCharacter(id); }, delay);
+            })(ids[i], i * 300);
+        }
     </script>
 </body>
 </html>
