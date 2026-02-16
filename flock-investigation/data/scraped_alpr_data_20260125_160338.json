@@ -1,0 +1,4301 @@
+{
+  "deflock": {
+    "url": "https://deflock.me/",
+    "timestamp": "2026-01-25T16:02:29.031929",
+    "cameras_found": 0,
+    "cameras": [],
+    "oc_cities_mentioned": [],
+    "page_text_preview": "MAP\nLEARN\nNEWS\nCONTRIBUTE\nGET INVOLVED\nWelcome to DeFlock\nAn open-source project mapping license plate readers.\n70,983\u00a0LPRs mapped in the USA\nEXPLORE THE MAP\nWhat are ALPRs\n\nAutomated License Plate Readers (ALPRs or LPRs) are AI-powered cameras that capture and analyze images of all passing vehicles, storing details like your car's location, date, and time. They also capture your car's make, model, color, and identifying features such as dents, roof racks, and bumper stickers, often turning these into searchable data points.\n\nThese cameras collect data on millions of vehicles regardless of whether the driver is suspected of a crime. These systems are marketed as indispensable tools to fight crime, but they ignore the powerful tools police already have to track criminals, such as cell phone location data, creating a loophole that doesn't require a warrant.\n\nExample of an annotated license plate reader photo showing captured vehicle details\n\nThe Dangers of ALPRs\n Privacy Violations\nALPRs track your movements and store your data for long periods of time, creating a detailed record of your location history.\n Risk of Misuse\nData from ALPRs has led to wrongful arrests, profiling, and stalking ex-partners by police officers.\n Limited Benefits\nThere's no substantial evidence that ALPRs effectively prevent crime, despite Flock's unethical attempts to prove otherwise.\n\nALPRs are a serious risk to your privacy and civil liberties. These systems continuously record your movements without a warrant, probable cause, or even reasonable suspicion. Your driving history is rarely confined to the town or city where the cameras are installed. It's typically shared with thousands of other agencies nationwide (secretly). Once the data is out of your community, you have no control over how it's used or what rules apply, leading to instances of misuse.\n\nLEARN ABOUT ALPRS\nWhat is Flock?\n\nFlock Safety is one of the largest ALPR vendors in the United States. Their cameras are installed for po"
+  },
+  "eyesonflock": {
+    "url": "https://eyesonflock.com/",
+    "timestamp": "2026-01-25T16:03:38.623177",
+    "agencies_found": 837,
+    "agencies": [
+      [
+        "REASON",
+        "COUNT"
+      ],
+      [
+        "INVESTIGATION",
+        "35,139"
+      ],
+      [
+        "INV",
+        "20,836"
+      ],
+      [
+        "INVEST",
+        "13,547"
+      ],
+      [
+        "STOLEN",
+        "9,534"
+      ],
+      [
+        "10851",
+        "8,187"
+      ],
+      [
+        "Daytime search for best result",
+        "7,549"
+      ],
+      [
+        "THEFT",
+        "7,420"
+      ],
+      [
+        "GTA",
+        "6,764"
+      ],
+      [
+        "STOLEN VEHICLE",
+        "5,900"
+      ],
+      [
+        "WARRANT",
+        "5,667"
+      ],
+      [
+        "ORGANIZATION",
+        "COUNT"
+      ],
+      [
+        "El Cajon CA PD",
+        "252"
+      ],
+      [
+        "Riverside County CA District Attorney",
+        "226"
+      ],
+      [
+        "Santa Ana CA PD",
+        "208"
+      ],
+      [
+        "California Highway Patrol",
+        "184"
+      ],
+      [
+        "Irvine CA PD",
+        "177"
+      ],
+      [
+        "Vacaville CA PD",
+        "177"
+      ],
+      [
+        "Fairfield CA PD",
+        "166"
+      ],
+      [
+        "[Federal] US Postal Inspection Service",
+        "157"
+      ],
+      [
+        "Wichita Falls TX PD",
+        "153"
+      ],
+      [
+        "Sauk Village IL PD",
+        "152"
+      ],
+      [
+        "LOCATION",
+        "STATE",
+        "CAMERAS",
+        "VEHICLES CAPTURED",
+        "HOTLIST HITS",
+        "HOTLIST HIT RATE",
+        "ORGS SHARED",
+        "DATA RETENTION",
+        "SEARCHES",
+        "SEARCH AUDIT"
+      ],
+      [
+        "El Cajon",
+        "CA",
+        "102",
+        "682,613",
+        "7,204",
+        "1.06%",
+        "688",
+        "30 days",
+        "605",
+        "Redacted"
+      ],
+      [
+        "Spokane",
+        "WA",
+        "Redacted",
+        "Redacted",
+        "Redacted",
+        "N/A",
+        "Redacted",
+        "30 days",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "Abington",
+        "MA",
+        "10",
+        "202,724",
+        "735",
+        "0.36%",
+        "111",
+        "30 days",
+        "56",
+        "Redacted"
+      ],
+      [
+        "Accomack",
+        "VA",
+        "43",
+        "109,939",
+        "178",
+        "0.16%",
+        "Redacted",
+        "21 days",
+        "94",
+        "Redacted"
+      ],
+      [
+        "Akron",
+        "OH",
+        "147",
+        "447,717",
+        "6,687",
+        "1.49%",
+        "Redacted",
+        "30 days",
+        "2,169",
+        "Redacted"
+      ],
+      [
+        "Alameda",
+        "CA",
+        "36",
+        "429,556",
+        "3,583",
+        "0.83%",
+        "Redacted",
+        "30 days",
+        "259",
+        "View"
+      ],
+      [
+        "Albany",
+        "CA",
+        "35",
+        "289,496",
+        "3,000",
+        "1.04%",
+        "287",
+        "30 days",
+        "122",
+        "View"
+      ],
+      [
+        "Albany",
+        "OR",
+        "4",
+        "59,736",
+        "3",
+        "0.01%",
+        "21",
+        "30 days",
+        "25",
+        "View"
+      ],
+      [
+        "Alexandria",
+        "MN",
+        "11",
+        "82,105",
+        "1,053",
+        "1.28%",
+        "205",
+        "30 days",
+        "75",
+        "Redacted"
+      ],
+      [
+        "Alexandria",
+        "VA",
+        "61",
+        "Redacted",
+        "Redacted",
+        "N/A",
+        "Redacted",
+        "21 days",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "Allen",
+        "KY",
+        "6",
+        "66,454",
+        "406",
+        "0.61%",
+        "96",
+        "30 days",
+        "69",
+        "Redacted"
+      ],
+      [
+        "Allen Park",
+        "MI",
+        "10",
+        "271,372",
+        "808",
+        "0.30%",
+        "Redacted",
+        "30 days",
+        "48",
+        "Redacted"
+      ],
+      [
+        "Altoona",
+        "IA",
+        "51",
+        "349,580",
+        "4,808",
+        "1.38%",
+        "Redacted",
+        "30 days",
+        "211",
+        "Redacted"
+      ],
+      [
+        "Altoona",
+        "WI",
+        "11",
+        "114,101",
+        "258",
+        "0.23%",
+        "1,108",
+        "30 days",
+        "85",
+        "Redacted"
+      ],
+      [
+        "Amberley Village",
+        "OH",
+        "9",
+        "126,733",
+        "958",
+        "0.76%",
+        "Redacted",
+        "30 days",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "Amherst",
+        "VA",
+        "4",
+        "65,333",
+        "283",
+        "0.43%",
+        "Redacted",
+        "21 days",
+        "44",
+        "Redacted"
+      ],
+      [
+        "Amherst",
+        "OH",
+        "12",
+        "146,463",
+        "460",
+        "0.31%",
+        "Redacted",
+        "30 days",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "Ankeny",
+        "IA",
+        "16",
+        "313,881",
+        "2,697",
+        "0.86%",
+        "Redacted",
+        "30 days",
+        "205",
+        "View"
+      ],
+      [
+        "Anoka",
+        "MN",
+        "13",
+        "212,360",
+        "2,539",
+        "1.20%",
+        "860",
+        "30 days",
+        "81",
+        "Redacted"
+      ],
+      [
+        "Anoka",
+        "MN",
+        "6",
+        "136,081",
+        "1,861",
+        "1.37%",
+        "74",
+        "30 days",
+        "3",
+        "Redacted"
+      ],
+      [
+        "Apache Junction",
+        "AZ",
+        "Redacted",
+        "Redacted",
+        "Redacted",
+        "N/A",
+        "Redacted",
+        "30 days",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "App State University",
+        "NC",
+        "3",
+        "53,290",
+        "124",
+        "0.23%",
+        "213",
+        "30 days",
+        "25",
+        "View"
+      ],
+      [
+        "Appleton",
+        "WI",
+        "20",
+        "298,477",
+        "5,685",
+        "1.90%",
+        "215",
+        "30 days",
+        "379",
+        "View"
+      ],
+      [
+        "Aransas Pass",
+        "TX",
+        "10",
+        "88,644",
+        "403",
+        "0.45%",
+        "1,081",
+        "30 days",
+        "62",
+        "Redacted"
+      ],
+      [
+        "Arcanum",
+        "OH",
+        "5",
+        "13,202",
+        "4",
+        "0.03%",
+        "Redacted",
+        "30 days",
+        "22",
+        "Redacted"
+      ],
+      [
+        "Arlington",
+        "VA",
+        "41",
+        "461,116",
+        "190",
+        "0.04%",
+        "Redacted",
+        "21 days",
+        "279",
+        "Redacted"
+      ],
+      [
+        "Arlington",
+        "WA",
+        "26",
+        "226,366",
+        "588",
+        "0.26%",
+        "Redacted",
+        "30 days",
+        "80",
+        "Redacted"
+      ],
+      [
+        "Arlington",
+        "TX",
+        "137",
+        "1,361,537",
+        "27,437",
+        "2.02%",
+        "Redacted",
+        "30 days",
+        "1,973",
+        "Redacted"
+      ],
+      [
+        "Arvada",
+        "CO",
+        "16",
+        "476,106",
+        "4,543",
+        "0.95%",
+        "72",
+        "30 days",
+        "306",
+        "Redacted"
+      ],
+      [
+        "Asheville",
+        "NC",
+        "Redacted",
+        "300,424",
+        "5,141",
+        "1.71%",
+        "Redacted",
+        "30 days",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "Ashland",
+        "OH",
+        "Redacted",
+        "166,022",
+        "101",
+        "0.06%",
+        "428",
+        "Redacted",
+        "112",
+        "View"
+      ],
+      [
+        "Atherton",
+        "CA",
+        "53",
+        "302,946",
+        "1,375",
+        "0.45%",
+        "314",
+        "365 days",
+        "43",
+        "Redacted"
+      ],
+      [
+        "Aubrey",
+        "TX",
+        "55",
+        "Redacted",
+        "2,941",
+        "N/A",
+        "Redacted",
+        "30 days",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "Auburn",
+        "CA",
+        "12",
+        "147,412",
+        "194",
+        "0.13%",
+        "308",
+        "30 days",
+        "103",
+        "View"
+      ],
+      [
+        "Auburn",
+        "ME",
+        "Redacted",
+        "Redacted",
+        "Redacted",
+        "N/A",
+        "Redacted",
+        "Redacted",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "Auglaize",
+        "OH",
+        "0",
+        "0",
+        "Redacted",
+        "N/A",
+        "564",
+        "30 days",
+        "30",
+        "Redacted"
+      ],
+      [
+        "Augusta",
+        "VA",
+        "2",
+        "41,330",
+        "9",
+        "0.02%",
+        "Redacted",
+        "21 days",
+        "6",
+        "Redacted"
+      ],
+      [
+        "Austin",
+        "TX",
+        "0",
+        "0",
+        "Redacted",
+        "N/A",
+        "0",
+        "7 days",
+        "0",
+        "Redacted"
+      ],
+      [
+        "Avon",
+        "IN",
+        "6",
+        "242,780",
+        "30,765",
+        "12.67%",
+        "Redacted",
+        "30 days",
+        "305",
+        "Redacted"
+      ],
+      [
+        "Avon Lake",
+        "OH",
+        "15",
+        "125,926",
+        "316",
+        "0.25%",
+        "421",
+        "30 days",
+        "38",
+        "View"
+      ],
+      [
+        "Bainbridge Township",
+        "OH",
+        "2",
+        "88,109",
+        "87",
+        "0.10%",
+        "Redacted",
+        "30 days",
+        "32",
+        "Redacted"
+      ],
+      [
+        "Bakersfield",
+        "CA",
+        "381",
+        "725,780",
+        "16,966",
+        "2.34%",
+        "359",
+        "30 days",
+        "1,348",
+        "View"
+      ],
+      [
+        "Baraboo",
+        "WI",
+        "6",
+        "75,847",
+        "1,952",
+        "2.57%",
+        "51",
+        "30 days",
+        "13",
+        "View"
+      ],
+      [
+        "Barling",
+        "AR",
+        "7",
+        "77,303",
+        "129",
+        "0.17%",
+        "33",
+        "30 days",
+        "113",
+        "View"
+      ],
+      [
+        "Barrow",
+        "GA",
+        "312",
+        "542,849",
+        "48,771",
+        "8.98%",
+        "Redacted",
+        "30 days",
+        "500",
+        "Redacted"
+      ],
+      [
+        "Barstow",
+        "CA",
+        "70",
+        "322,694",
+        "1,315",
+        "0.41%",
+        "318",
+        "30 days",
+        "123",
+        "Redacted"
+      ],
+      [
+        "Bartlesville",
+        "OK",
+        "10",
+        "70,305",
+        "93",
+        "0.13%",
+        "388",
+        "30 days",
+        "24",
+        "View"
+      ],
+      [
+        "Baytown",
+        "TX",
+        "72",
+        "453,806",
+        "8,545",
+        "1.88%",
+        "Redacted",
+        "30 days",
+        "452",
+        "Redacted"
+      ],
+      [
+        "Beaumont",
+        "CA",
+        "48",
+        "424,829",
+        "6,496",
+        "1.53%",
+        "309",
+        "30 days",
+        "397",
+        "Redacted"
+      ],
+      [
+        "Becker",
+        "MN",
+        "5",
+        "25,307",
+        "248",
+        "0.98%",
+        "Redacted",
+        "30 days",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "Bedford",
+        "TX",
+        "28",
+        "374,337",
+        "1,696",
+        "0.45%",
+        "362",
+        "30 days",
+        "272",
+        "Redacted"
+      ],
+      [
+        "Bee Cave",
+        "TX",
+        "2",
+        "5,967",
+        "4",
+        "0.07%",
+        "Redacted",
+        "30 days",
+        "0",
+        "View"
+      ],
+      [
+        "Beecher",
+        "IL",
+        "10",
+        "50,498",
+        "183",
+        "0.36%",
+        "335",
+        "30 days",
+        "42",
+        "Redacted"
+      ],
+      [
+        "Bel Aire",
+        "KS",
+        "0",
+        "0",
+        "Redacted",
+        "N/A",
+        "Redacted",
+        "Redacted",
+        "1",
+        "View"
+      ],
+      [
+        "Bell",
+        "CA",
+        "11",
+        "398,351",
+        "1,878",
+        "0.47%",
+        "360",
+        "30 days",
+        "41",
+        "View"
+      ],
+      [
+        "Bell Gardens",
+        "CA",
+        "23",
+        "501,586",
+        "4,138",
+        "0.82%",
+        "Redacted",
+        "30 days",
+        "Redacted",
+        "Redacted"
+      ],
+      [
+        "Belle Isle",
+        "FL",
+        "17",
+        "452,105",
+        "100,426",
+        "22.21%",
+        "207",
+        "30 days",
+        "6",
+        "View"
+      ],
+      [
+        "Bellefontaine",
+        "OH",
+        "14",
+        "90,685",
+        "1,073",
+        "1.18%",
+        "387",
+        "30 days",
+        "144",
+        "Redacted"
+      ],
+      [
+        "Bellevue",
+        "ID",
+        "2",
+        "37,444",
+        "400",
+        "1.07%",
+        "21",
+        "30 days",
+        "3",
+        "View"
+      ],
+      [
+        "Belmont",
+        "CA",
+        "10",
+        "277,873",
+        "617",
+        "0.22%",
+        "268",
+        "30 days",
+        "150",
+        "View"
+      ],
+      [
+        "Belmont",
+        "NC",
+        "2",
+        "52,616",
+        "98",
+        "0.19%",
+        "Redacted",
+        "30 days",
+        "54",
+        "Redacted"
+      ],
+      [
+        "Benicia",
+        "CA",
+        "52",
+        "Redacted",
+        "Redacted",
+        "N/A",
+        "Redacted",
+        "30 days",
+        "Redacted",
+        "View"
+      ],
+      [
+        "Berkeley",
+        "CA",
+        "52",
+        "677,365",
+        "4,525",
+        "0.67%",
+        "33",
+        "30 days",
+        "414",
+        "Redacted"
+      ],
+      [
+        "Berlin",
+        "CT",
+        "12",
+        "287,013",
+        "1,967",
+        "0.69%",
+        "Redacted",
+        "30 days",
+        "138",
+        "View"
+      ],
+      [
+        "Berwyn",
+        "IL",
+        "35",
+        "502,141",
+        "4,716",
+        "0.94%",
+        "Redacted",
+        "90 days",
+        "452",
+        "View"
+      ],
+      [
+        "Bessemer City",
+        "NC",
+        "9",
+        "60,655",
+        "458",
+        "0.76%",
+        "1,705",
+        "30 days",
+        "5",
+        "View"
+      ],
+      [
+        "Beverly Hills",
+        "CA",
+        "118",
+        "1,234,345",
+        "9,930",
+        "0.80%",
+        "315",
+        "365 days",
+        "479",
+        "Redacted"
+      ],
+      [
+        "Blaine",
+        "MN",
+        "31",
+        "430,865",
+        "12,682",
+        "2.94%",
+        "70",
+        "30 days",
+        "144",
+        "Redacted"
+      ],
+      [
+        "Blairsville",
+        "GA",
+        "2",
+        "78,453",
+        "2,161",
+        "2.75%",
+        "344",
+        "30 days",
+        "3",
+        "View"
+      ],
+      [
+        "Blue Ash",
+        "OH",
+        "265",
+        "393,112",
+        "2,238",
+        "0.57%",
+        "Redacted",
+        "30 days",
+        "158",
+        "Redacted"
+      ],
+      [
+        "Blue Island",
+        "IL",
+        "14",
+        "270,001",
+        "6,885",
+        "2.55%",
+        "404",
+        "30 days",
+        "90",
+        "View"
+      ],
+      [
+        "Blue Springs",
+        "MO",
+        "70",
+        "335,259",
+        "5,423",
+        "1.62%",
+        "1,307",
+        "30 days",
+        "470",
+        "View"
+      ],
+      [
+        "Bluffton",
+        "IN",
+        "4",
+        "45,439",
+        "3,072",
+        "6.76%",
+        "Redacted",
+        "30 days",
+        "13",
+        "Redacted"
+      ],
+      [
+        "Boardman Township",
+        "OH",
+        "28",
+        "260,796",
+        "1,280",
+        "0.49%",
+        "1,598",
+        "30 days",
+        "150",
+        "View"
+      ],
+      [
+        "Bonney Lake",
+        "WA",
+        "22",
+        "0",
+        "Redacted",
+        "N/A",
+        "Redacted",
+        "30 days",
+        "0",
+        "View"
+      ],
+      [
+        "Boonsboro",
+        "MD",
+        "14",
+        "53,456",
+        "6",
+        "0.01%",
+        "Redacted",
+        "30 days",
+        "14",
+        "View"
+      ],
+      [
+        "Boston Heights",
+        "OH",
+        "8",
+        "84,812",
+        "96",
+        "0.11%",
+        "340",
+        "30 days",
+        "7",
+        "View"
+      ]
+    ],
+    "portal_links": [
+      {
+        "url": "https://transparency.flocksafety.com/-el-cajon-pd-ca",
+        "text": "El Cajon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/-spokane-county-wa-so",
+        "text": "Spokane"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/abington-ma-pd",
+        "text": "Abington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/accomack-county-va-so",
+        "text": "Accomack"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/akron-oh-pd",
+        "text": "Akron"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/alameda-ca-pd",
+        "text": "Alameda"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/albany-ca-pd",
+        "text": "Albany"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/albany-or-pd",
+        "text": "Albany"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/alexandria-mn-pd",
+        "text": "Alexandria"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/alexandria-va-pd",
+        "text": "Alexandria"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/allen-county-ky-so",
+        "text": "Allen"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/allen-park-pd-mi",
+        "text": "Allen Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/altoona-ia-pd",
+        "text": "Altoona"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/altoona-wi-pd",
+        "text": "Altoona"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/amberley-village-oh-pd",
+        "text": "Amberley Village"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/amherst-county-va-so",
+        "text": "Amherst"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/amherst-oh-pd",
+        "text": "Amherst"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ankeny-ia-pd",
+        "text": "Ankeny"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/anoka-county-mn-so",
+        "text": "Anoka"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/anoka-mn-pd",
+        "text": "Anoka"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/apache-junction-az-pd",
+        "text": "Apache Junction"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/app-state-university-nc-pd",
+        "text": "App State University"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/appleton-wi-pd",
+        "text": "Appleton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/aransas-pass-tx-pd",
+        "text": "Aransas Pass"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/arcanum-oh-pd",
+        "text": "Arcanum"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/arlington-county-va-pd",
+        "text": "Arlington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/arlington-pd-wa",
+        "text": "Arlington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/arlington-tx-pd",
+        "text": "Arlington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/arvada-co-pd",
+        "text": "Arvada"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/asheville-nc-pd",
+        "text": "Asheville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ashland-county-oh-so",
+        "text": "Ashland"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/atherton-ca-pd",
+        "text": "Atherton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/aubrey-tx-pd",
+        "text": "Aubrey"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/auburn-ca-pd",
+        "text": "Auburn"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/auburn-me-pd",
+        "text": "Auburn"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/auglaize-county-oh-so",
+        "text": "Auglaize"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/augusta-county-va-so",
+        "text": "Augusta"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/austin-tx-pd",
+        "text": "Austin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/avon-in-pd",
+        "text": "Avon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/avon-lake-oh-pd",
+        "text": "Avon Lake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bainbridge-township-oh-pd",
+        "text": "Bainbridge Township"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bakersfield-ca-pd",
+        "text": "Bakersfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/baraboo-wi-pd",
+        "text": "Baraboo"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/barling-ar-pd",
+        "text": "Barling"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/barrow-county-ga-so",
+        "text": "Barrow"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/barstow-ca-pd",
+        "text": "Barstow"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bartlesville-ok-pd-",
+        "text": "Bartlesville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/baytown-tx-pd",
+        "text": "Baytown"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/beaumont-ca-pd",
+        "text": "Beaumont"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/becker-county-mn-so",
+        "text": "Becker"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bedford-tx-pd",
+        "text": "Bedford"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bee-cave-tx-pd",
+        "text": "Bee Cave"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/beecher-il-pd",
+        "text": "Beecher"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bel-aire-ks-pd",
+        "text": "Bel Aire"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bell-ca-pd",
+        "text": "Bell"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bell-gardens-ca-pd",
+        "text": "Bell Gardens"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/belle-isle-fl-pd",
+        "text": "Belle Isle"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bellefontaine-oh-pd",
+        "text": "Bellefontaine"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bellevue-id-pd-",
+        "text": "Bellevue"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/belmont-ca-pd",
+        "text": "Belmont"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/belmont-nc-pd",
+        "text": "Belmont"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/benicia-ca-pd",
+        "text": "Benicia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/berkeley-ca-pd",
+        "text": "Berkeley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/berlin-ct-pd",
+        "text": "Berlin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/berwyn-il-pd",
+        "text": "Berwyn"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bessemer-city-nc-pd",
+        "text": "Bessemer City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/beverly-hills-ca-pd",
+        "text": "Beverly Hills"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/blaine-mn-pd",
+        "text": "Blaine"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/blairsville-ga-pd",
+        "text": "Blairsville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/blue-ash-oh-pd",
+        "text": "Blue Ash"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/blue-island-il-pd",
+        "text": "Blue Island"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/blue-springs-mo-pd",
+        "text": "Blue Springs"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bluffton-in-pd",
+        "text": "Bluffton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/boardman-township-oh-pd",
+        "text": "Boardman Township"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bonney-lake-wa-pd",
+        "text": "Bonney Lake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/boonsboro-md-pd",
+        "text": "Boonsboro"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/boston-heights-oh-pd",
+        "text": "Boston Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/boulder-co-pd",
+        "text": "Boulder"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bratenahl-oh-pd",
+        "text": "Bratenahl"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/brawley-ca-pd",
+        "text": "Brawley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/bridgewater-va-pd",
+        "text": "Bridgewater"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/brimfield-township-oh-pd",
+        "text": "Brimfield Township"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/brisbane-ca-pd",
+        "text": "Brisbane"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/brooklyn-center-mn-pd",
+        "text": "Brooklyn Center"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/brooklyn-park-mn-pd",
+        "text": "Brooklyn Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/brookville-oh-pd",
+        "text": "Brookville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/buckeye-az-pd",
+        "text": "Buckeye"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/buda-tx-pd",
+        "text": "Buda"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/buena-park-ca-pd",
+        "text": "Buena Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/burbank-ca-pd",
+        "text": "Burbank"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/burlington-ia-pd",
+        "text": "Burlington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/butler-county-ks-so",
+        "text": "Butler"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/butte-county-ca-so",
+        "text": "Butte"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cabot-ar-pd",
+        "text": "Cabot"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cal-maritime-ca",
+        "text": "Cal Maritime Academy"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/caldwell-id-pd-",
+        "text": "Caldwell"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/calistoga-ca-pd",
+        "text": "Calistoga"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/campbell-ca-pd",
+        "text": "Campbell"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/capitola-ca-pd",
+        "text": "Capitola"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/carlisle-ia-pd",
+        "text": "Carlisle"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/carmel-ca-pd",
+        "text": "Carmel"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/carroll-county-va-so",
+        "text": "Carroll"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/casa-grande-az-pd",
+        "text": "Casa Grande"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/case-western-reserve-university-oh-pd",
+        "text": "Case Western Reserve University"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/castle-rock-co-pd",
+        "text": "Castle Rock"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/catawba-nation-tribal-sc-pd-",
+        "text": "Catawba Nation Tribal"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cathedral-city-ca-pd",
+        "text": "Cathedral City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cayuga-heights-village-ny-pd",
+        "text": "Cayuga Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cedar-lake-in-pd",
+        "text": "Cedar Lake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cedar-rapids-ia-pd",
+        "text": "Cedar Rapids"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/celina-tx-pd-",
+        "text": "Celina"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/central-la-pd-",
+        "text": "Central"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/centralia-pd-wa",
+        "text": "Centralia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/chadbourn-nc-pd",
+        "text": "Chadbourn"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/champaign-county-so-oh",
+        "text": "Champaign"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/champaign-il-pd",
+        "text": "Champaign"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/chardon-oh-pd",
+        "text": "Chardon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/charlottesville-va-pd",
+        "text": "Charlottesville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/chase-city-va-pd",
+        "text": "Chase City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cheektowaga-town-ny-pd",
+        "text": "Cheektowaga"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/chesapeake-va-pd-",
+        "text": "Chesapeake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cheshire-ct-pd",
+        "text": "Cheshire"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/chester-county-sc-so",
+        "text": "Chester"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/chesterfield-mo-pd",
+        "text": "Chesterfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cheyenne-wy-pd",
+        "text": "Cheyenne"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/chisago-county-mn-so",
+        "text": "Chisago"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/chula-vista-ca-pd",
+        "text": "Chula Vista"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/citrus-heights-ca-pd",
+        "text": "Citrus Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/city-of-franklin-va-pd",
+        "text": "Franklin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/city-of-las-vegas-nv-department-of-public-safety",
+        "text": "Las Vegas Dept. Public Safety"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/city-of-willard-mo-pd",
+        "text": "Willard"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/claflin-university-sc-pd",
+        "text": "Claflin University"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/clark-county-oh-so",
+        "text": "Clark"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/clearlake-ca-pd",
+        "text": "Clearlake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/clinton-ct-pd",
+        "text": "Clinton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/clinton-ia-pd",
+        "text": "Clinton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/clive-ia-pd",
+        "text": "Clive"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/clover-sc-pd",
+        "text": "Clover"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/co-erie-pd",
+        "text": "Erie"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/co-lafayette-pd",
+        "text": "Lafayette"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/coastal-bend-college-campus-pd-",
+        "text": "Coastal Bend College"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/coconino-az-so",
+        "text": "Coconino"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cohasset-ma-pd",
+        "text": "Cohasset"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/coldwater-mi-pd",
+        "text": "Coldwater"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/colerain-township-oh-pd",
+        "text": "Colerain"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/college-place-wa-pd",
+        "text": "College Place"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/colma-ca-pd",
+        "text": "Colma"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/colonial-beach-va-pd",
+        "text": "Colonial Beach"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/colonial-heights-va-pd",
+        "text": "Colonial Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/colorado-springs-co-pd",
+        "text": "Colorado Springs"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/colton-ca-pd-",
+        "text": "Colton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/columbia-county-fl-so",
+        "text": "Columbia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/columbia-heights-mn-pd",
+        "text": "Columbia Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/columbia-mo-pd",
+        "text": "Columbia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/columbus-nc-pd",
+        "text": "Columbus"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/commerce-city-co-pd",
+        "text": "Commerce City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/contra-costa-county-ca-so",
+        "text": "Contra Costa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/coralville-ia-pd",
+        "text": "Coralville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/corcoran-mn-pd",
+        "text": "Corcoran"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/corinth-tx-pd",
+        "text": "Corinth"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/coronado-ca-pd",
+        "text": "Coronado"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/costa-mesa-ca-pd",
+        "text": "Costa Mesa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cottage-grove-wi-pd",
+        "text": "Cottage Grove"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/council-bluffs-ia-pd",
+        "text": "Council Bluffs"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cranbury-nj-pd",
+        "text": "Cranbury"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cranston-ri-pd",
+        "text": "Cranston"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/creedmoor-nc-pd",
+        "text": "Creedmoor"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/crow-wing-county-mn-so",
+        "text": "Crow Wing"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/culpeper-va-pd-",
+        "text": "Culpeper"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/culver-city-ca-pd",
+        "text": "Culver City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/cumberland-ri-pd",
+        "text": "Cumberland"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dakota-county-ne-so",
+        "text": "Dakota"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dallas-tx-pd",
+        "text": "Dallas"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/damascus-va-pd",
+        "text": "Damascus"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/danville-ca-pd",
+        "text": "Danville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/danville-va-pd",
+        "text": "Danville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/davenport-ia-pd",
+        "text": "Davenport"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/davie-county-nc-so",
+        "text": "Davie"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dayton-mn-pd",
+        "text": "Dayton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dayton-oh-pd",
+        "text": "Dayton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/defiance-county-oh-so",
+        "text": "Defiance"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/del-city-ok-pd",
+        "text": "Del City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/delano-ca-pd",
+        "text": "Delano"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/delphi-in-pd",
+        "text": "Delphi"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/denton-tx-pd",
+        "text": "Denton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/denver-co-pd",
+        "text": "Denver"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/derby-ks-pd",
+        "text": "Derby"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/des-moines-wa-pd",
+        "text": "Des Moines"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/detroit-lakes-mn-pd",
+        "text": "Detroit Lakes"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dinuba-ca-pd",
+        "text": "Dinuba"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dixon-ca-pd",
+        "text": "Dixon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/douglas-county-co-so",
+        "text": "Douglas"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dublin-oh-pd",
+        "text": "Dublin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dublin-va-pd",
+        "text": "Dublin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dubuque-ia-pd",
+        "text": "Dubuque"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/duck-nc-pd",
+        "text": "Duck"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dunwoody-ga-pd",
+        "text": "Dunwoody"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/durango-co-pd",
+        "text": "Durango"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/dutchess-county-ny-so",
+        "text": "Dutchess"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/east-hampton-village-ny-pd",
+        "text": "East Hampton Village"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/east-palo-alto-ca-pd",
+        "text": "East Palo Alto"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/east-providence-ri-pd",
+        "text": "East Providence"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/eatonville-wa-pd",
+        "text": "Eatonville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/edgewater-co-pd",
+        "text": "Edgewater"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/edina-mn-pd",
+        "text": "Edina"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/edinburg-tx-pd",
+        "text": "Edinburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/edison-nj-pd",
+        "text": "Edison"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/edmond-ok-pd",
+        "text": "Edmond"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/edmonds-wa-pd",
+        "text": "Edmonds"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/el-cerrito-ca-pd",
+        "text": "El Cerrito"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/el-paso-co-so",
+        "text": "El Paso"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/el-paso-tx-pd-",
+        "text": "El Paso"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/el-segundo-ca-pd",
+        "text": "El Segundo"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/elgin-sc-pd",
+        "text": "Elgin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/elizabethtown-nc-pd",
+        "text": "Elizabethtown"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ellensburg-wa-pd",
+        "text": "Ellensburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/elmira-city-ny-pd",
+        "text": "Elmira"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/elyria-oh-pd",
+        "text": "Elyria"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/emeryville-ca-pd",
+        "text": "Emeryville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/emporia-va-pd-",
+        "text": "Emporia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/escondido-ca-pd",
+        "text": "Escondido"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/euclid-oh-pd",
+        "text": "Euclid"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/eugene-or-pd",
+        "text": "Eugene"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/euharlee-ga-pd",
+        "text": "Euharlee"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/eureka-il-pd-",
+        "text": "Eureka"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/evanston-il-pd",
+        "text": "Evanston"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/evendale-oh-pd",
+        "text": "Evendale"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/everett-wa-pd",
+        "text": "Everett"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fair-oaks-ranch-tx-pd",
+        "text": "Fair Oaks Ranch"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fairfax-city-va-pd",
+        "text": "Fairfax"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fairfax-oh-pd",
+        "text": "Fairfax"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fairfield-ca-pd",
+        "text": "Fairfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fairfield-oh-pd",
+        "text": "Fairfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/falmouth-me-pd",
+        "text": "Falmouth"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/faribault-mn-pd",
+        "text": "Faribault"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/farmington-ct-pd",
+        "text": "Farmington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ferndale-mi-pd",
+        "text": "Ferndale"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/firestone-co-pd",
+        "text": "Firestone"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/flagstaff-az-pd",
+        "text": "Flagstaff"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/flock-safety-sales",
+        "text": "Flock Safety Sales"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/florence-or-pd",
+        "text": "Florence"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/floyd-county-va-so",
+        "text": "Floyd"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/folly-beach-sc-pd",
+        "text": "Folly Beach"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/folsom-ca-pd",
+        "text": "Folsom"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fontana-ca-pd",
+        "text": "Fontana"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/forest-heights-md-pd",
+        "text": "Forest Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/forest-park-oh-pd",
+        "text": "Forest Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fort-bragg-ca-pd",
+        "text": "Fort Bragg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fort-smith-ar-pd",
+        "text": "Fort Smith"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/foster-city-ca-pd",
+        "text": "Foster"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fountain-valley-ca-pd",
+        "text": "Fountain Valley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/franklin-county-il-so",
+        "text": "Franklin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/franklin-ma-pd",
+        "text": "Franklin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/franklin-nj-pd",
+        "text": "Franklin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/franklin-springs-ga-pd-",
+        "text": "Franklin Springs"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/franklinton-nc-pd",
+        "text": "Franklinton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fredericksburg-city-va-pd",
+        "text": "Fredericksburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/fremont-oh-pd",
+        "text": "Fremont"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/frisco-tx-pd",
+        "text": "Frisco"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/galt-ca-pd",
+        "text": "Galt"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/garner-nc-pd",
+        "text": "Garner"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/gastonia-nc-pd",
+        "text": "Gastonia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/geneseo-il-pd-",
+        "text": "Geneseo"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/genoa-township-oh-pd-",
+        "text": "Genoa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/georgetown-ky-pd",
+        "text": "Georgetown"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/gilroy-ca-pd",
+        "text": "Gilroy"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/glastonbury-ct-pd",
+        "text": "Glastonbury"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/glenarden-md-pd",
+        "text": "Glenarden"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/goodyear-az-pd",
+        "text": "Goodyear"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/grafton-ma-pd",
+        "text": "Grafton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/grain-valley-mo-pd",
+        "text": "Grain Valley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/granbury-tx-pd",
+        "text": "Granbury"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/granby-co-pd",
+        "text": "Granby"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/grand-island-ne-pd",
+        "text": "Grand Island"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/grand-junction-co-pd",
+        "text": "Grand Junction"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/grand-traverse-county-mi-so",
+        "text": "Grand Traverse"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/grandview-heights-oh-pd",
+        "text": "Grandview Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/grass-valley-ca-pd",
+        "text": "Grass Valley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/great-parks-of-hamilton-county-oh-pd",
+        "text": "Great Parks of Hamilton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/green-bay-wi-pd",
+        "text": "Green Bay"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/green-brook-twp-nj-pd",
+        "text": "Green Brook"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/greenfield-in-pd",
+        "text": "Greenfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/greensboro-nc-pd",
+        "text": "Greensboro"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/grove-city-oh-pd",
+        "text": "Grove City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/grover-beach-ca-pd",
+        "text": "Grover Beach"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/gurnee-il-pd",
+        "text": "Gurnee"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/guthrie-ok-pd",
+        "text": "Guthrie"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hagerstown-md-pd",
+        "text": "Hagerstown"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hall-county-ne-so",
+        "text": "Hall"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hamburg-town-ny-pd",
+        "text": "Hamburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hamilton-county-oh-so",
+        "text": "Hamilton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hamilton-township-oh-pd",
+        "text": "Hamilton Township"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hamlet-pd-",
+        "text": "Hamlet, NC"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hampton-va-pd",
+        "text": "Hampton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hanford-ca-pd",
+        "text": "Hanford"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hanover-park-il-pd-",
+        "text": "Hanover Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/harrisonburg-va-pd",
+        "text": "Harrisonburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/harvey-il-pd",
+        "text": "Harvey"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hayward-ca-pd",
+        "text": "Hayward"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hazelwood-mo-pd",
+        "text": "Hazelwood"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/healdsburg-ca-pd",
+        "text": "Healdsburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/heath-oh-pd",
+        "text": "Heath"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/heath-tx-dps",
+        "text": "Heath"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hemet-ca-pd-",
+        "text": "Hemet"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/henderson-county-nc-so-",
+        "text": "Henderson"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hendricks-county-in-so",
+        "text": "Hendricks"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hennepin-county-mn-so",
+        "text": "Hennepin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hercules-ca-pd",
+        "text": "Hercules"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hermitage-pa-pd",
+        "text": "Hermitage"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/herndon-va-pd",
+        "text": "Herndon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/herrin-il-pd",
+        "text": "Herrin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hesston-ks-pd",
+        "text": "Hesston"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/highland-park-mi-pd",
+        "text": "Highland Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/highland-village-tx",
+        "text": "Highland Village"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hilliard-oh-pd",
+        "text": "Hilliard"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hillsborough-ca-pd",
+        "text": "Hillsborough"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hillsborough-nc-pd",
+        "text": "Hillsborough"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hinckley-il-pd",
+        "text": "Hinckley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hingham-ma-pd",
+        "text": "Hingham"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hoffman-estates-il-pd",
+        "text": "Hoffman Estates"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hoke-county-nc-so",
+        "text": "Hoke"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/holland-oh-pd",
+        "text": "Holland"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hopewell-va-pd",
+        "text": "Hopewell"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hubbard-oh-pd",
+        "text": "Hubbard"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hudson-nc-pd",
+        "text": "Hudson"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hudson-wi-pd",
+        "text": "Hudson"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/humboldt-county-ca-so",
+        "text": "Humboldt"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/huntersville-pd-nc",
+        "text": "Huntersville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/huntsville-airport-al-pd",
+        "text": "Huntsville Airport"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/huron-oh-pd",
+        "text": "Huron"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/hutto-tx-pd",
+        "text": "Hutto"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ia-storm-lake-pd",
+        "text": "Storm Lake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/idaho-falls-id-pd",
+        "text": "Idaho Falls"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/indialantic-fl-pd",
+        "text": "Indialantic"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/indian-hill-oh-pd",
+        "text": "Indian Hill"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/indianola-ia-pd",
+        "text": "Indianola"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/iowa-colony-tx-pd",
+        "text": "Iowa Colony"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/isle-of-wight-county-va-so",
+        "text": "Isle of Wight"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ithaca-city-ny-pd",
+        "text": "Ithaca"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/jackson-mi-pd",
+        "text": "Jackson"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/james-city-county-va-pd",
+        "text": "James City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/jemison-al-pd",
+        "text": "Jemison"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/johnson-city-tn-pd",
+        "text": "Johnson City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/johnson-county-in-so",
+        "text": "Johnson"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/johnston-ia-pd",
+        "text": "Johnston"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/johnston-ri-pd",
+        "text": "Johnston"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/junction-city-ks-pd",
+        "text": "Junction City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/jupiter-inlet-colony-fl-pd",
+        "text": "Jupiter Inlet Colony"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/kearney-ne-pd",
+        "text": "Kearney"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/keller-tx-pd-",
+        "text": "Keller"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/kemah-tx-pd",
+        "text": "Kemah"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/kensington-ca-pd",
+        "text": "Kensington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/kent-wa-pd",
+        "text": "Kent"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/kern-county-ca-so-",
+        "text": "Kern"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/killeen-tx-pd",
+        "text": "Killeen"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/king-george-county-va-so",
+        "text": "King"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/king-william-county-va-so",
+        "text": "King William"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/kings-county-ca-das-office",
+        "text": "Kings County"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/kings-county-sheriffs-office-ca-",
+        "text": "Kings"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lafayette-la-pd",
+        "text": "Lafayette"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lafayette-pd-in",
+        "text": "Lafayette"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lake-bluff-il-pd-",
+        "text": "Lake Bluff"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lake-county-ca-so",
+        "text": "Lake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lake-stevens-wa-pd",
+        "text": "Lake Stevens"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lakeshore-homes-association-ca-",
+        "text": "Lakeshore Homes Assoc."
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lakeway-tx-pd",
+        "text": "Lakeway"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lakewood-wa-pd",
+        "text": "Lakewood"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lander-university-sc-pd",
+        "text": "Lander University"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/largo-fl-pd",
+        "text": "Largo"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lassen-county-so-ca",
+        "text": "Lassen"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lathrop-ca-pd-",
+        "text": "Lathrop"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lawton-ok-pd",
+        "text": "Lawton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/le-mars-ia-pd",
+        "text": "Le Mars"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/leavenworth-ks-pd",
+        "text": "Leavenworth"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lebanon-oh-pd",
+        "text": "Lebanon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lees-summit-mo-pd",
+        "text": "Lee's Summit"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/leitchfield-ky-pd",
+        "text": "Leitchfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lewisville-tx-pd",
+        "text": "Lewisville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lexington-sc-pd",
+        "text": "Lexington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lincoln-ca-pd",
+        "text": "Lincoln"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lincoln-county-so-ne",
+        "text": "Lincoln"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/live-oak-tx-pd-",
+        "text": "Live Oak"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/livingston-ca-pd",
+        "text": "Livingston"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/livonia-mi-pd",
+        "text": "Livonia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lockney-pd-tx",
+        "text": "Lockney"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lodi-ca-pd",
+        "text": "Lodi"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lompoc-ca-pd",
+        "text": "Lompoc"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lone-peak-ut-pd",
+        "text": "Lone Peak"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/longmont-co-pd",
+        "text": "Longmont"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lorain-oh-pd",
+        "text": "Lorain"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/los-altos-ca-pd",
+        "text": "Los Altos"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/los-gatos-ca-pd",
+        "text": "Los Gatos"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/louisville-co-pd",
+        "text": "Louisville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/loveland-oh-pd",
+        "text": "Loveland"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lubbock-county-tx-so-",
+        "text": "Lubbock"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lynchburg-va-pd",
+        "text": "Lynchburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/lynnwood-wa-pd",
+        "text": "Lynnwood"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/madeira-oh-pd",
+        "text": "Madeira"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/madera-ca-pd",
+        "text": "Madera"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/madison-sd-pd-",
+        "text": "Madison"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mahoning-twp-pa-pd",
+        "text": "Mahoning"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mammoth-lakes-ca-pd",
+        "text": "Mammoth Lakes"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/manassas-park-va-pd",
+        "text": "Manassas Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mansfield-oh-pd",
+        "text": "Mansfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/manteca-ca-pd",
+        "text": "Manteca"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/maple-bluff-wi-pd",
+        "text": "Maple Bluff"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/maple-grove-mn-pd",
+        "text": "Maple Grove"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/margaret-al-pd",
+        "text": "Margaret"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/marin-county-ca-so",
+        "text": "Marin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/marine-city-mi-pd",
+        "text": "Marine City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/marion-county-oh-so",
+        "text": "Marion"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/marion-oh-pd",
+        "text": "Marion"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/martinsville-in-pd",
+        "text": "Martinsville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/martinsville-va-pd",
+        "text": "Martinsville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/marysville-oh-pd",
+        "text": "Marysville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/marysville-wa-pd",
+        "text": "Marysville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/maryville-tn-pd",
+        "text": "Maryville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mathews-county-va-so",
+        "text": "Mathews"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mcdonough-ga-pd",
+        "text": "McDonough"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mchenry-il-pd",
+        "text": "McHenry"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mecklenburg-county-va-so",
+        "text": "Mecklenburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/medina-wa-pd",
+        "text": "Medina"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/menifee-ca-pd",
+        "text": "Menifee"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/menlo-park-ca-pd",
+        "text": "Menlo Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mentor-on-the-lake-oh-pd",
+        "text": "Mentor-on-the-Lake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/merced-county-ca-so",
+        "text": "Merced"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mesa-county-co-so",
+        "text": "Mesa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/metropolis-il-pd",
+        "text": "Metropolis"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/miami-county-oh-so",
+        "text": "Miami"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/miami-township-oh-pd-clermont",
+        "text": "Miami Township (Clermont)"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/michigan-city-in-pd",
+        "text": "Michigan City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/middleburg-heights-oh-pd",
+        "text": "Middleburg Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/midlothian-tx-pd",
+        "text": "Midlothian"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/milan-mi-pd",
+        "text": "Milan"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/milford-ct-pd",
+        "text": "Milford"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mill-creek-wa-pd",
+        "text": "Mill Creek"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/milton-in-pd",
+        "text": "Milton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mineral-county-nv-so",
+        "text": "Mineral"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/minerva-park-oh-pd",
+        "text": "Minerva Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/minster-oh-pd",
+        "text": "Minster"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mint-hill-nc-pd",
+        "text": "Mint Hill"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/modoc-county-ca-so",
+        "text": "Modoc"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/monroe-mi-pd",
+        "text": "Monroe"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/monroe-wa-pd",
+        "text": "Monroe"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/monrovia-ca-pd",
+        "text": "Monrovia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/monson-ma-pd",
+        "text": "Monson"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/montclair-ca-pd",
+        "text": "Montclair"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/monte-sereno-ca-pd",
+        "text": "Monte Sereno"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/monterey-ca-pd",
+        "text": "Monterey"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/monterey-park-ca-pd",
+        "text": "Monterey Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/montgomery-twp-nj-pd",
+        "text": "Montgomery"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mooresville-in-pd",
+        "text": "Mooresville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mooresville-nc-pd",
+        "text": "Mooresville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/moorhead-mn-pd",
+        "text": "Moorhead"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/morgan-hill-ca-pd",
+        "text": "Morgan Hill"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/morgans-point-pd-tx",
+        "text": "Morgan's Point"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/morgans-point-resort-tx-pd",
+        "text": "Morgan's Point Resort"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/morton-il-pd",
+        "text": "Morton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/moses-lake-wa-pd",
+        "text": "Moses Lake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/moundville-al-pd",
+        "text": "Moundville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mount-dora-fl-pd",
+        "text": "Mount Dora"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mount-orab-oh-pd",
+        "text": "Mount Orab"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mount-vernon-oh-pd",
+        "text": "Mount Vernon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mount-vernon-wa-pd",
+        "text": "Mount Vernon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mountain-view-ca-pd",
+        "text": "Mountain View"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mt-holly-nc-pd",
+        "text": "Mount Holly"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/mt-juliet-tn-pd",
+        "text": "Mt. Juliet"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/muncie-in-pd",
+        "text": "Muncie"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/murfreesboro-tn-pd",
+        "text": "Murfreesboro"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/murrieta-ca-pd",
+        "text": "Murrieta"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/muskegon-mi-pd",
+        "text": "Muskegon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/muskogee-ok-pd",
+        "text": "Muskogee"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/napa-ca-pd",
+        "text": "Napa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/napa-county-ca-so",
+        "text": "Napa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/napoleon-twp-mi-pd",
+        "text": "Napoleon Township"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/nashville-nc-pd-",
+        "text": "Nashville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/nassau-bay-tx-pd-",
+        "text": "Nassau Bay"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/national-city-ca-pd",
+        "text": "National City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/nc-fuquay-varina-pd",
+        "text": "Fuquay-Varina"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ncric",
+        "text": "NCRIC"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/nd-west-fargo-pd",
+        "text": "West Fargo"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ness-county-ks-so",
+        "text": "Ness"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/nevada-county-ca-so",
+        "text": "Nevada"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/new-braunfels-tx-pd",
+        "text": "New Braunfels"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/new-brighton-dept-of-pub-safety-mn",
+        "text": "New Brighton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/new-prague-mn-pd",
+        "text": "New Prague"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/newburgh-heights-oh-pd-",
+        "text": "Newburgh Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/newcastle-wa-pd",
+        "text": "Newcastle"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/newport-beach-pd-ca",
+        "text": "Newport Beach"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/newport-news-va-pd",
+        "text": "Newport News"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/newport-ri-pd",
+        "text": "Newport"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/newtown-ct-pd",
+        "text": "Newtown"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/niles-oh-pd",
+        "text": "Niles"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/norfolk-va-pd",
+        "text": "Norfolk"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/normal-il-pd-",
+        "text": "Normal"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/north-college-hill-oh-pd",
+        "text": "North College Hill"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/north-kingstown-ri-pd",
+        "text": "North Kingstown"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/north-liberty-ia-pd",
+        "text": "North Liberty"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/north-platte-ne-pd",
+        "text": "North Platte"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/north-providence-ri-pd",
+        "text": "North Providence"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/north-royalton-oh-pd",
+        "text": "North Royalton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/northglenn-co-pd",
+        "text": "Northglenn"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/northlake-tx-pd",
+        "text": "Northlake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/norton-oh-pd",
+        "text": "Norton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/norwalk-oh-pd",
+        "text": "Norwalk"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/norwell-ma-pd",
+        "text": "Norwell"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/novato-ca-pd",
+        "text": "Novato"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oak-park-il-pd",
+        "text": "Oak Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oakland-ca-pd",
+        "text": "Oakland"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oakley-ca-pd",
+        "text": "Oakley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oberlin-oh-pd",
+        "text": "Oberlin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/odessa-tx-pd",
+        "text": "Odessa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oh-chillicothe-pd",
+        "text": "Chillicothe"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oh-milford-pd",
+        "text": "Milford"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oh-university-heights-pd",
+        "text": "University Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oh-willard-pd",
+        "text": "Willard"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/olmsted-falls-oh-pd",
+        "text": "Olmsted Falls"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/olympia-wa-pd-",
+        "text": "Olympia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ontario-ca-pd",
+        "text": "Ontario"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ontario-oh-pd",
+        "text": "Ontario"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oregon-oh-pd",
+        "text": "Oregon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oro-valley-az-pd",
+        "text": "Oro Valley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oroville-ca-pd",
+        "text": "Oroville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/osage-county-ok-so",
+        "text": "Osage"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oshkosh-wi-pd",
+        "text": "Oshkosh"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ottawa-county-oh-so",
+        "text": "Ottawa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/oxnard-ca-pd-",
+        "text": "Oxnard"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pacific-grove-ca-pd",
+        "text": "Pacific Grove"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pacifica-ca-pd",
+        "text": "Pacifica"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/palm-springs-ca-pd",
+        "text": "Palm Springs"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/palmyra-mo-pd",
+        "text": "Palmyra"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/palo-alto-ca-pd",
+        "text": "Palo Alto"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/park-city-ks-pd",
+        "text": "Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/parma-oh-pd",
+        "text": "Parma"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/parsons-ks-pd",
+        "text": "Parsons"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pasadena-ca-pd",
+        "text": "Pasadena"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pawnee-county-ks-so",
+        "text": "Pawnee"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pawtucket-ri-pd",
+        "text": "Pawtucket"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/paxton-il-pd-",
+        "text": "Paxton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/payson-az-pd",
+        "text": "Payson"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/peotone-il-pd-",
+        "text": "Peotone"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/perry-county-oh-so",
+        "text": "Perry"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/petaluma-ca-pd",
+        "text": "Petaluma"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pflugerville-tx-pd",
+        "text": "Pflugerville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/piedmont-ca-pd",
+        "text": "Piedmont"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/piedmont-ok-pd-",
+        "text": "Piedmont"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pierce-township-oh-pd",
+        "text": "Pierce Township"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pineville-nc-pd",
+        "text": "Pineville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/piperton-tn-pd",
+        "text": "Piperton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pittsboro-in-pd",
+        "text": "Pittsboro"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pittsboro-nc-pd",
+        "text": "Pittsboro"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pittsburg-ks-pd",
+        "text": "Pittsburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/placer-county-ca-so",
+        "text": "Placer"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/platte-city-mo-pd",
+        "text": "Platte City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pleasanton-ca-pd",
+        "text": "Pleasanton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/plymouth-mn-pd",
+        "text": "Plymouth"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pocomoke-city-md-pd",
+        "text": "Pocomoke City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/polk-county-conservation-ia",
+        "text": "Polk County Conservation"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/polkton-nc-pd",
+        "text": "Polkton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/pontiac-il-pd",
+        "text": "Pontiac"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/poquoson-va-pd",
+        "text": "Poquoson"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/port-clinton-oh-pd",
+        "text": "Port Clinton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/port-hueneme-ca-pd",
+        "text": "Port Hueneme"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/port-wentworth-ga-pd",
+        "text": "Port Wentworth"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/portage-mi-pd",
+        "text": "Portage"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/porter-county-in-so",
+        "text": "Porter"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/porterville-ca-pd",
+        "text": "Porterville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/portsmouth-va-pd",
+        "text": "Portsmouth"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/powell-oh-pd",
+        "text": "Powell"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/powhatan-county-va-so",
+        "text": "Powhatan"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/prescott-valley-az-pd",
+        "text": "Prescott Valley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/prior-lake-mn-pd",
+        "text": "Prior Lake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/prospect-heights-il-pd",
+        "text": "Prospect Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/prosper-tx-pd",
+        "text": "Prosper"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/prosser-wa-pd",
+        "text": "Prosser"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/providence-pd-npd-lpr-study-ri",
+        "text": "Providence"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/putnam-ct-pd",
+        "text": "Putnam"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/puyallup-wa-pd",
+        "text": "Puyallup"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/radford-city-va-pd",
+        "text": "Radford"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/raleigh-nc-pd",
+        "text": "Raleigh"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rantoul-il-pd",
+        "text": "Rantoul"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/redlands-ca-pd",
+        "text": "Redlands"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/redwood-city-ca-pd",
+        "text": "Redwood City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/reedley-ca-pd",
+        "text": "Reedley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rehoboth-beach-de-pd",
+        "text": "Rehoboth Beach"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/reno-nv-pd",
+        "text": "Reno"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/renton-wa-pd",
+        "text": "Renton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rhode-island-college-campus-ri-pd",
+        "text": "Rhode Island College"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rich-creek-va-pd",
+        "text": "Rich Creek"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/richland-county-oh-so",
+        "text": "Richland"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/richland-pd-wa",
+        "text": "Richland"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/richmond-ca-pd",
+        "text": "Richmond"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/richmond-va-pd",
+        "text": "Richmond"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ridgecrest-ca-pd",
+        "text": "Ridgecrest"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rio-vista-ca-pd",
+        "text": "Rio Vista"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/river-rouge-mi-pd",
+        "text": "River Rouge"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/riverside-county-ca-sd",
+        "text": "Riverside"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/roanoke-county-va-pd",
+        "text": "Roanoke"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/roanoke-va-pd",
+        "text": "Roanoke"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rockbridge-county-va-so",
+        "text": "Rockbridge"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rockport-tx-pd-",
+        "text": "Rockport"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rocky-mount-va-pd",
+        "text": "Rocky Mount"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/roselle-il-pd-",
+        "text": "Roselle"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rossford-oh-pd",
+        "text": "Rossford"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/rossville-ga-pd",
+        "text": "Rossville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/round-lake-park-il-pd",
+        "text": "Round Lake Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/round-rock-tx-pd",
+        "text": "Round Rock"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/roxboro-nc-pd",
+        "text": "Roxboro"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/saginaw-tx-pd-",
+        "text": "Saginaw"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/saint-johns-az-pd",
+        "text": "St. Johns"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/saint-louis-park-mn-pd",
+        "text": "St. Louis Park"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-bernardino-ca-pd",
+        "text": "San Bernardino"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-diego-ca-pd",
+        "text": "San Diego"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-francisco-ca-pd",
+        "text": "San Francisco"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-gabriel-ca-pd",
+        "text": "San Gabriel"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-joaquin-county-ca-so",
+        "text": "San Joaquin"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-jose-ca-pd",
+        "text": "San Jose"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-juan-bautista-ca-",
+        "text": "San Juan Bautista"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-leandro-pd-ca",
+        "text": "San Leandro"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-marcos-tx-pd",
+        "text": "San Marcos"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-marino-ca-pd",
+        "text": "San Marino"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-mateo-ca-pd",
+        "text": "San Mateo"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-mateo-county-ca-so",
+        "text": "San Mateo"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/san-rafael-ca-pd",
+        "text": "San Rafael"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/santa-barbara-pd-ca",
+        "text": "Santa Barbara"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/santa-clara-ca-pd",
+        "text": "Santa Clara"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/santa-clara-county-ca-so",
+        "text": "Santa Clara"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/santa-cruz-ca-pd",
+        "text": "Santa Cruz"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/santa-paula-ca-pd",
+        "text": "Santa Paula"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/santa-rosa-ca-pd",
+        "text": "Santa Rosa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/saratoga-ca-pd",
+        "text": "Saratoga"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/saratoga-springs-ny-pd",
+        "text": "Saratoga Springs"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sarpy-county-ne-so",
+        "text": "Sarpy"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sartell-mn-pd",
+        "text": "Sartell"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sausalito-ca-pd",
+        "text": "Sausalito"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/savannah-ga-pd",
+        "text": "Savannah"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sc-college-of-charleston-department-of-public-safety",
+        "text": "College of Charleston DPS"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/scottsbluff-ne-pd",
+        "text": "Scottsbluff"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/scottsville-va-pd",
+        "text": "Scottsville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/seaside-ca-pd",
+        "text": "Seaside"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/seatac-wa-pd",
+        "text": "SeaTac"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/seelyville-in-pd",
+        "text": "Seelyville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/selah-wa-pd",
+        "text": "Selah"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sequoias-community-college-district-ca-pd",
+        "text": "Sequoias Community College"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sevierville-tn-pd",
+        "text": "Sevierville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sharpsburg-nc-pd",
+        "text": "Sharpsburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sheffield-village-oh-pd",
+        "text": "Sheffield Village"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/shelby-county-in-so",
+        "text": "Shelby"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/shelby-county-tn-so",
+        "text": "Shelby"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/shelby-township-mi-pd",
+        "text": "Shelby"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/shelton-pd-wa",
+        "text": "Shelton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/shenandoah-county-va-so",
+        "text": "Shenandoah"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/shrewsbury-mo-pd",
+        "text": "Shrewsbury"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sidney-oh-pd",
+        "text": "Sidney"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/simi-valley-ca-pd",
+        "text": "Simi Valley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sioux-falls-sd-pd",
+        "text": "Sioux Falls"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/slinger-wi-pd",
+        "text": "Slinger"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/smithfield-nc-pd",
+        "text": "Smithfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/smithfield-ri-pd",
+        "text": "Smithfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/smyth-county-va-so",
+        "text": "Smyth"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/snohomish-county-wa-so-",
+        "text": "Snohomish"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/solano-county-ca-so",
+        "text": "Solano"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/south-pasadena-ca-pd",
+        "text": "South Pasadena"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/south-saint-paul-mn-pd",
+        "text": "South St. Paul"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/south-san-francisco-ca-pd",
+        "text": "South San Francisco"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/south-sioux-city-ne-pd-",
+        "text": "South Sioux City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/spanish-fork-ut-pd",
+        "text": "Spanish Fork"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sparks-nv-pd",
+        "text": "Sparks"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/springdale-oh-pd",
+        "text": "Springdale"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/springfield-il-pd",
+        "text": "Springfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/springfield-or-pd",
+        "text": "Springfield"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/st-cloud-mn-pd",
+        "text": "St. Cloud"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/st-francois-county-mo-so",
+        "text": "St. Francois"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/st-helena-ca-pd",
+        "text": "St. Helena"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/st-joseph-mo-pd",
+        "text": "St. Joseph"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/st-louis-county-mn-so",
+        "text": "St Louis"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/st-lucie-county-fl-so",
+        "text": "St. Lucie"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/st-pauls-nc-pd",
+        "text": "St. Pauls"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/stanford-university-ca-pd",
+        "text": "Stanford University"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/stanwood-wa-pd",
+        "text": "Stanwood"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/staunton-va-pd",
+        "text": "Staunton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sterling-heights-mi-pd",
+        "text": "Sterling Heights"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sterling-il-pd",
+        "text": "Sterling"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/stillwater-mn-pd",
+        "text": "Stillwater"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/stockton-ca-pd",
+        "text": "Stockton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/storey-county-nv-so",
+        "text": "Storey"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/story-county-ia-so",
+        "text": "Story"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/stow-ma-pd",
+        "text": "Stow"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/suffolk-va-pd",
+        "text": "Suffolk"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sugar-grove-il-pd-",
+        "text": "Sugar Grove"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/suisun-city-ca-pd-",
+        "text": "Suisun City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/summerset-sd-pd",
+        "text": "Summerset"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sumner-wa-pd",
+        "text": "Sumner"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sumpter-twp-mi-pd",
+        "text": "Sumpter Township"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sun-prairie-wi-pd",
+        "text": "Sun Prairie"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sunnyvale-ca-pd",
+        "text": "Sunnyvale"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sunriver-or-pd",
+        "text": "Sunriver"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sunset-valley-tx-pd",
+        "text": "Sunset Valley"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/surfside-beach-sc-pd",
+        "text": "Surfside Beach"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/sylvania-oh-pd",
+        "text": "Sylvania"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tabor-city-nc-pd",
+        "text": "Tabor City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/taylor-mi-pd",
+        "text": "Taylor"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/taylor-tx-pd-",
+        "text": "Taylor"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/temple-ga-pd",
+        "text": "Temple"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/temple-tx-pd",
+        "text": "Temple"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/temple-university-campus-pa-pd",
+        "text": "Temple University"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tewksbury-ma-pd",
+        "text": "Tewksbury"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/the-colony-tx-pd",
+        "text": "The Colony"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/thomasville-ga-pd",
+        "text": "Thomasville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/thornton-co-pd",
+        "text": "Thornton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tiburon-ca-pd",
+        "text": "Tiburon"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tipp-city-oh-pd",
+        "text": "Tipp City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tiverton-ri-pd",
+        "text": "Tiverton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tompkins-county-ny-so",
+        "text": "Tompkins"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tonawanda-town-ny-pd",
+        "text": "Tonawanda"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/toppenish-wa-pd",
+        "text": "Toppenish"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/town-of-connelley-springs-nc",
+        "text": "Connelley Springs"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/town-of-woodside-ca-smcso",
+        "text": "Woodside"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tracy-ca-pd",
+        "text": "Tracy"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/trophy-club-tx-pd",
+        "text": "Trophy Club"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/trotwood-oh-pd",
+        "text": "Trotwood"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/troy-mi-pd-",
+        "text": "Troy"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/troy-oh-pd",
+        "text": "Troy"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/truckee-ca-pd",
+        "text": "Truckee"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tucson-az-pd",
+        "text": "Tucson"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tukwila-wa-pd",
+        "text": "Tukwila"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tulare-ca-pd-",
+        "text": "Tulare"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/tulsa-ok-pd",
+        "text": "Tulsa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ukiah-pd-ca",
+        "text": "Ukiah"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/union-city-ca-pd",
+        "text": "Union"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/union-county-sc-so",
+        "text": "Union"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/union-county-sd-so-",
+        "text": "Union"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/universal-city-pd-tx",
+        "text": "Universal City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/university-of-colorado-boulder-campus-pd-co",
+        "text": "University of Colorado Boulder"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/university-of-iowa-pd-ia",
+        "text": "University of Iowa"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/university-of-louisiana-at-lafayette-pd",
+        "text": "University of Louisiana"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/university-of-minnesota-mn-pd-twin-cities",
+        "text": "University of Minnesota"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/upland-ca-pd-",
+        "text": "Upland"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/urbandale-ia-pd",
+        "text": "Urbandale"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ut-cedar-city-pd",
+        "text": "Cedar City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/va-george-mason-university-campus-pd",
+        "text": "George Mason University"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/vacaville-ca-pd",
+        "text": "Vacaville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/vallejo-ca-pd",
+        "text": "Vallejo"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/vanderburgh-county-in-so-",
+        "text": "Vanderburgh"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/ventura-ca-pd",
+        "text": "Ventura"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/vernon-hills-il-pd",
+        "text": "Vernon Hills"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/vienna-va-pd",
+        "text": "Vienna"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/village-of-bloomingdale-il-pd",
+        "text": "Bloomingdale"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/visalia-ca-pd",
+        "text": "Visalia"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wadsworth-oh-pd",
+        "text": "Wadsworth"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/walla-walla-wa-pd",
+        "text": "Walla Walla"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/waltham-ma-pd-",
+        "text": "Waltham"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/warr-acres-ok-pd",
+        "text": "Warr Acres"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/warren-county-oh-so",
+        "text": "Warren"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/warsaw-nc-pd",
+        "text": "Warsaw"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/warwick-ri-pd",
+        "text": "Warwick"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/washington-county-tn-so",
+        "text": "Washington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/washington-ia-pd",
+        "text": "Washington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/watertown-ny-pd",
+        "text": "Watertown"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/watsonville-ca-pd",
+        "text": "Watsonville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wauconda-il-pd",
+        "text": "Wauconda"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/waukee-ia-pd",
+        "text": "Waukee"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/waxhaw-nc-pd",
+        "text": "Waxhaw"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wayzata-mn-pd",
+        "text": "Wayzata"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/webster-groves-mo-pd",
+        "text": "Webster Groves"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wellington-ks-pd",
+        "text": "Wellington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wells-county-in-so",
+        "text": "Wells"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wentzville-mo-pd",
+        "text": "Wentzville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/west-covina-ca-pd",
+        "text": "West Covina"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/west-des-moines-ia-pd",
+        "text": "West Des Moines"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/west-greenwich-ri-pd",
+        "text": "West Greenwich"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/west-lafayette-in-pd",
+        "text": "West Lafayette"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/west-milton-oh-pd",
+        "text": "West Milton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/west-sacramento-ca-pd",
+        "text": "West Sacramento"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/westerville-oh-pd",
+        "text": "Westerville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/westlake-tx-",
+        "text": "Westlake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/westminster-ca-pd",
+        "text": "Westminster"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/weymouth-ma-pd-",
+        "text": "Weymouth"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wheeler-county-ne-so-",
+        "text": "Wheeler"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/whitehall-oh-pd",
+        "text": "Whitehall"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/whiteville-nc-pd",
+        "text": "Whiteville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wichita-ks-pd",
+        "text": "Wichita"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wichita-state-university-ks-pd",
+        "text": "Wichita State University"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wilkesboro-nc-pd",
+        "text": "Wilkesboro"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/williams-ca-pd",
+        "text": "Williams"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/williamsburg-va-pd",
+        "text": "Williamsburg"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/willmar-mn-pd",
+        "text": "Willmar"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wilmette-il-pd-",
+        "text": "Wilmette"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wilmington-oh-pd",
+        "text": "Wilmington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wilton-ct-pd",
+        "text": "Wilton"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/windsor-co-pd",
+        "text": "Windsor"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/windsor-ct-pd",
+        "text": "Windsor"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wisconsin-rapids-wi-pd",
+        "text": "Wisconsin Rapids"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wise-county-va-so",
+        "text": "Wise"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wolverine-lake-mi-pd",
+        "text": "Wolverine Lake"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/woodburn-or-pd",
+        "text": "Woodburn"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/woodland-ca-pd",
+        "text": "Woodland"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/woodstock-ga-pd",
+        "text": "Woodstock"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/woodstock-va-pd",
+        "text": "Woodstock"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/woonsocket-ri-pd",
+        "text": "Woonsocket"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wooster-oh-pd",
+        "text": "Wooster"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/worthington-oh-pd",
+        "text": "Worthington"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wright-city-mo-pd",
+        "text": "Wright City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wyoming-mn-pd",
+        "text": "Wyoming"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wythe-county-va-so",
+        "text": "Wythe"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/wytheville-va-pd",
+        "text": "Wytheville"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/yakima-wa-pd",
+        "text": "Yakima"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/yelm-wa-pd",
+        "text": "Yelm"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/yolo-county-ca-so",
+        "text": "Yolo"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/york-county-va-so",
+        "text": "York County"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/york-me-pd",
+        "text": "York"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/yuba-city-ca-pd",
+        "text": "Yuba City"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/yuba-county-ca-so",
+        "text": "Yuba"
+      },
+      {
+        "url": "https://transparency.flocksafety.com/yukon-ok-pd",
+        "text": "Yukon"
+      }
+    ],
+    "statistics": [],
+    "page_text_preview": "+ Submit A Portal\nResources\nFAQ\nContact\nSupport\n* EyesOnFlock is not affiliated with Flock Safety\nEyes On Flock\nAggregating Flock Safety Transparency Portal Data\nWhat is a Flock Camera?\n\nFlock claims greater than 20 billion plate reads/month across 49 states\n\nEST. VEHICLES TRACKED DURING YOUR VISIT\n552,424\n\nTOTAL PORTALS FOUND\n814\n\nLargest number of cameras used for a single search - found in public search audits\n\nMOST CAMERAS USED IN A SEARCH\n102210\n\nData shown is only from departments that have opted to enable their Flock transparency portals. Flock cameras are in thousands of cities, this data is only a fraction. If your location is not listed, you can ask your local police department to enable their portal.\n\nAggregated Portal Stats\n\nCAMERAS REPORTED\n24643\n\nVEHICLES TRACKED\n183,451,494\n\nNumber of vehicle searches performed by departments\n\nSEARCHES\n163,909\n\nNumber of vehicles that triggered a hotlist alert\n\nHOTLIST HITS\n4,156,757\n\nThe percentage of vehicles that triggered a hotlist alert out of the total vehicles captured by cameras\n\nHOTLIST HIT RATE\n2.2659%\n\nPUBLIC SEARCH AUDITS\n291\nTop Search Reasons\nREASON\tCOUNT\nINVESTIGATION\t35,139\nINV\t20,836\nINVEST\t13,547\nSTOLEN\t9,534\n10851\t8,187\nDaytime search for best result\t7,549\nTHEFT\t7,420\nGTA\t6,764\nSTOLEN VEHICLE\t5,900\nWARRANT\t5,667\nPrevious\nPage 1 of 50\nNext\nTop Organizations Shared With\nORGANIZATION\tCOUNT\nEl Cajon CA PD\t252\nRiverside County CA District Attorney\t226\nSanta Ana CA PD\t208\nCalifornia Highway Patrol\t184\nIrvine CA PD\t177\nVacaville CA PD\t177\nFairfield CA PD\t166\n[Federal] US Postal Inspection Service\t157\nWichita Falls TX PD\t153\nSauk Village IL PD\t152\nPrevious\nPage 1 of 100\nNext\nTable Legend & Usage\nLocation Name\n\nClick the location name to visit the official Flock transparency portal data source.\n\n25\n\nClick the value in the Orgs Shared column to view a map of who the customer shares data with according to their portal.\n\nView\n\nClick View in the Search Audit column to see the full public search audit log for that location.\n\nRedacted\n\nIndicates the customer has specifically redacted this data point on their transparency portal.\n\nColumns\nLOCATION\n\t\nSTATE\n\t\nCAMERAS\n\t\nVEHICLES CAPTURED\n\t\nHOTLIST HITS\n\t\nHOTLIST HIT RATE\n\t\nORGS SHARED\n\t\nDATA RETENTION\n\t\nSEARCHES\n\t\nSEARCH AUDIT\n\n\nEl Cajon\n\tCA\t102\t682,613\t7,204\t1.06%\t\n688\n\t30 days\t605\tRedacted\n\nSpokane\n\tWA\tRedacted\tRedacted\tRedacted\tN/A\tRedacted\t30 days\tRedacted\tRedacted\n\nAbington\n\tMA\t10\t202,724\t735\t0.36%\t\n111\n\t30 days\t56\tRedacted\n\nAccomack\n\tVA\t43\t109,939\t178\t0.16%\tRedacted\t21 days\t94\tRedacted\n\nAkron\n\tOH\t147\t447,717\t6,687\t1.49%\tRedacted\t30 days\t2,169\tRedacted\n\nAlameda\n\tCA\t36\t429,556\t3,583\t0.83%\tRedacted\t30 days\t259\t\nView\n\n\nAlbany\n\tCA\t35\t289,496\t3,000\t1.04%\t\n287\n\t30 days\t122\t\nView\n\n\nAlbany\n\tOR\t4\t59,736\t3\t0.01%\t\n21\n\t30 days\t25\t\nView\n\n\nAlexandria\n\tMN\t11\t82,105\t1,053\t1.28%\t\n205\n\t30 days\t75\tRedacted\n\nAlexandria\n\tVA\t61\tRedacted\tRedacted\tN/A\tRedacted\t21 days\tRedacted\tRedacted\n\nAllen\n\tKY\t6\t66,454\t406\t0.61%\t\n96\n\t30 days\t69\tRedacted\n\nAllen Park\n\tMI\t10\t271,372\t"
+  }
+}

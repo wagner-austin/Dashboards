@@ -1,0 +1,410 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <link rel="preload" as="image" href="/hero.webp" fetchpriority="high">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="DeFlock is an open-source project that maps license plate readers across the US.">
+    
+    
+    <style type="text/css">@font-face {font-family:PT Serif;font-style:normal;font-weight:400;src:url(/cf-fonts/s/pt-serif/5.0.19/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:PT Serif;font-style:normal;font-weight:400;src:url(/cf-fonts/s/pt-serif/5.0.19/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:PT Serif;font-style:normal;font-weight:400;src:url(/cf-fonts/s/pt-serif/5.0.19/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:PT Serif;font-style:normal;font-weight:400;src:url(/cf-fonts/s/pt-serif/5.0.19/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:PT Serif;font-style:normal;font-weight:700;src:url(/cf-fonts/s/pt-serif/5.0.19/latin-ext/700/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:PT Serif;font-style:normal;font-weight:700;src:url(/cf-fonts/s/pt-serif/5.0.19/cyrillic-ext/700/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:PT Serif;font-style:normal;font-weight:700;src:url(/cf-fonts/s/pt-serif/5.0.19/cyrillic/700/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:PT Serif;font-style:normal;font-weight:700;src:url(/cf-fonts/s/pt-serif/5.0.19/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:PT Serif;font-style:italic;font-weight:400;src:url(/cf-fonts/s/pt-serif/5.0.19/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:PT Serif;font-style:italic;font-weight:400;src:url(/cf-fonts/s/pt-serif/5.0.19/cyrillic-ext/400/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:PT Serif;font-style:italic;font-weight:400;src:url(/cf-fonts/s/pt-serif/5.0.19/cyrillic/400/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:PT Serif;font-style:italic;font-weight:400;src:url(/cf-fonts/s/pt-serif/5.0.19/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:PT Serif;font-style:italic;font-weight:700;src:url(/cf-fonts/s/pt-serif/5.0.19/latin/700/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:PT Serif;font-style:italic;font-weight:700;src:url(/cf-fonts/s/pt-serif/5.0.19/latin-ext/700/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:PT Serif;font-style:italic;font-weight:700;src:url(/cf-fonts/s/pt-serif/5.0.19/cyrillic/700/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:PT Serif;font-style:italic;font-weight:700;src:url(/cf-fonts/s/pt-serif/5.0.19/cyrillic-ext/700/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="DeFlock">
+    <meta property="og:description" content="Find license plate readers (LPRs) near you.">
+    <meta property="og:image" content="https://deflock.me/og-banner.png">
+    <meta property="og:url" content="https://deflock.me">
+    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Find Nearby ALPRs | DeFlock</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DeFlock",
+        "url": "https://deflock.me",
+        "sameAs": [
+          "https://github.com/FoggedLens/deflock",
+          "https://blog.deflock.me/",
+          "https://apps.apple.com/us/app/deflock-me/id6752760780",
+          "https://play.google.com/store/apps/details?id=me.deflock.deflockapp&hl=en_US&pli=1"
+        ]
+      }
+    </script>
+    <script type="module" crossorigin="" src="/assets/index-C8j9Uaxm.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-C7PgyJf9.css">
+  <style id="vuetify-theme-stylesheet">:root {
+      --v-theme-background: 245,245,245;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,238,238;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 24,103,192;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 31,85,146;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 72,169,166;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 176,0,32;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--light {
+      color-scheme: normal;
+      --v-theme-background: 245,245,245;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,238,238;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 24,103,192;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 31,85,146;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 72,169,166;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 176,0,32;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--dark {
+      color-scheme: dark;
+      --v-theme-background: 18,18,18;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 33,33,33;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 204,191,214;
+      --v-theme-surface-bright-overlay-multiplier: 2;
+      --v-theme-surface-light: 66,66,66;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 200,200,200;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 0,0,0;
+      --v-theme-primary: 33,150,243;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 39,124,193;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 84,182,178;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 72,169,166;
+      --v-theme-secondary-darken-1-overlay-multiplier: 2;
+      --v-theme-error: 207,102,121;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 2;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 2;
+      --v-theme-on-background: 255,255,255;
+      --v-theme-on-surface: 255,255,255;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 255,255,255;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 255, 255, 255;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 1;
+      --v-medium-emphasis-opacity: 0.7;
+      --v-disabled-opacity: 0.5;
+      --v-idle-opacity: 0.1;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.16;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 66, 66, 66;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 52, 52, 52;
+      --v-theme-on-code: 204, 204, 204;
+    }
+    .bg-background {
+      --v-theme-overlay-multiplier: var(--v-theme-background-overlay-multiplier);
+      background-color: rgb(var(--v-theme-background)) !important;
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .bg-surface {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface)) !important;
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .bg-surface-bright {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-bright-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-bright)) !important;
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .bg-surface-light {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-light-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-light)) !important;
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .bg-surface-variant {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-variant-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-variant)) !important;
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .bg-primary {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary)) !important;
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .bg-primary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .bg-secondary {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary)) !important;
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .bg-secondary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .bg-error {
+      --v-theme-overlay-multiplier: var(--v-theme-error-overlay-multiplier);
+      background-color: rgb(var(--v-theme-error)) !important;
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .bg-info {
+      --v-theme-overlay-multiplier: var(--v-theme-info-overlay-multiplier);
+      background-color: rgb(var(--v-theme-info)) !important;
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .bg-success {
+      --v-theme-overlay-multiplier: var(--v-theme-success-overlay-multiplier);
+      background-color: rgb(var(--v-theme-success)) !important;
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .bg-warning {
+      --v-theme-overlay-multiplier: var(--v-theme-warning-overlay-multiplier);
+      background-color: rgb(var(--v-theme-warning)) !important;
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .text-background {
+      color: rgb(var(--v-theme-background)) !important;
+    }
+    .border-background {
+      --v-border-color: var(--v-theme-background);
+    }
+    .text-surface {
+      color: rgb(var(--v-theme-surface)) !important;
+    }
+    .border-surface {
+      --v-border-color: var(--v-theme-surface);
+    }
+    .text-surface-bright {
+      color: rgb(var(--v-theme-surface-bright)) !important;
+    }
+    .border-surface-bright {
+      --v-border-color: var(--v-theme-surface-bright);
+    }
+    .text-surface-light {
+      color: rgb(var(--v-theme-surface-light)) !important;
+    }
+    .border-surface-light {
+      --v-border-color: var(--v-theme-surface-light);
+    }
+    .text-surface-variant {
+      color: rgb(var(--v-theme-surface-variant)) !important;
+    }
+    .border-surface-variant {
+      --v-border-color: var(--v-theme-surface-variant);
+    }
+    .on-surface-variant {
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .text-primary {
+      color: rgb(var(--v-theme-primary)) !important;
+    }
+    .border-primary {
+      --v-border-color: var(--v-theme-primary);
+    }
+    .text-primary-darken-1 {
+      color: rgb(var(--v-theme-primary-darken-1)) !important;
+    }
+    .border-primary-darken-1 {
+      --v-border-color: var(--v-theme-primary-darken-1);
+    }
+    .text-secondary {
+      color: rgb(var(--v-theme-secondary)) !important;
+    }
+    .border-secondary {
+      --v-border-color: var(--v-theme-secondary);
+    }
+    .text-secondary-darken-1 {
+      color: rgb(var(--v-theme-secondary-darken-1)) !important;
+    }
+    .border-secondary-darken-1 {
+      --v-border-color: var(--v-theme-secondary-darken-1);
+    }
+    .text-error {
+      color: rgb(var(--v-theme-error)) !important;
+    }
+    .border-error {
+      --v-border-color: var(--v-theme-error);
+    }
+    .text-info {
+      color: rgb(var(--v-theme-info)) !important;
+    }
+    .border-info {
+      --v-border-color: var(--v-theme-info);
+    }
+    .text-success {
+      color: rgb(var(--v-theme-success)) !important;
+    }
+    .border-success {
+      --v-border-color: var(--v-theme-success);
+    }
+    .text-warning {
+      color: rgb(var(--v-theme-warning)) !important;
+    }
+    .border-warning {
+      --v-border-color: var(--v-theme-warning);
+    }
+    .on-background {
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .on-surface {
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .on-surface-bright {
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .on-surface-light {
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .on-primary {
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .on-primary-darken-1 {
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .on-secondary {
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .on-secondary-darken-1 {
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .on-error {
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .on-info {
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .on-success {
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .on-warning {
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+</style></head>
+  <body>
+    <div id="app" data-v-app=""><div data-v-a0d7e563="" class="v-application v-theme--light v-layout v-layout--full-height v-locale--is-ltr"><div class="v-application__wrap"><header data-v-a0d7e563="" class="v-toolbar v-toolbar--collapse-start v-toolbar--flat v-toolbar--density-default v-theme--light v-locale--is-ltr v-app-bar" style="top: 0px; z-index: 1006; transform: translateY(0px); position: fixed; left: 0px; width: calc(100% - 0px);" prominent=""><!----><div class="v-toolbar__content" style="height: 64px;"><!----><!----><button data-v-a0d7e563="" type="button" class="v-btn v-btn--icon v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text d-md-none v-app-bar-nav-icon" aria-label="Toggle Navigation Drawer"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!----><span class="v-btn__content" data-no-activator=""><i class="mdi-menu mdi v-icon notranslate v-theme--light v-icon--size-default" aria-hidden="true"></i></span><!----><!----></button><div data-v-a0d7e563="" class="v-toolbar-title" style="flex: unset;"><div class="v-toolbar-title__placeholder"><!----><div data-v-a0d7e563="" style="display: flex; align-items: center; cursor: pointer;"><div data-v-a0d7e563="" class="v-responsive v-img" style="height: 36px; width: 36px;" aria-label="DeFlock Icon" role="img"><div class="v-responsive__sizer" style="padding-bottom: 100%;"></div><img class="v-img__img v-img__img--contain" src="/favicons/apple-icon-144x144.png" alt="DeFlock Icon" style=""><!----><!----><!----><!----><!----></div><div data-v-a0d7e563="" class="v-responsive v-img" style="height: 36px; width: 130px; margin-left: 8px;" aria-label="DeFlock Logo" role="img"><div class="v-responsive__sizer" style="padding-bottom: 26%;"></div><img class="v-img__img v-img__img--contain" src="/deflock-logo.svg" alt="DeFlock Logo" style=""><!----><!----><!----><!----><!----></div></div></div></div><div data-v-a0d7e563="" class="d-none d-md-flex ml-8 flex-grow-1"><div data-v-a0d7e563="" class="d-flex align-center"><a data-v-a0d7e563="" href="/map" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text mx-1"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><span class="v-btn__prepend"><i class="mdi-map mdi v-icon notranslate v-theme--light v-icon--size-default" aria-hidden="true"></i></span><span class="v-btn__content" data-no-activator="">Map</span><!----><!----></a><a data-v-a0d7e563="" href="/what-is-an-alpr" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text mx-1"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><span class="v-btn__prepend"><i class="mdi-school mdi v-icon notranslate v-theme--light v-icon--size-default" aria-hidden="true"></i></span><span class="v-btn__content" data-no-activator="">Learn</span><!----><!----></a><a data-v-a0d7e563="" href="/blog" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text mx-1"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><span class="v-btn__prepend"><i class="mdi-newspaper mdi v-icon notranslate v-theme--light v-icon--size-default" aria-hidden="true"></i></span><span class="v-btn__content" data-no-activator="">News</span><!----><!----></a></div><div data-v-a0d7e563="" class="v-spacer"></div><div data-v-a0d7e563="" class="d-flex align-center"><button data-v-a0d7e563="" type="button" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text mx-1" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-5" aria-owns="v-menu-v-5"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!----><span class="v-btn__content" data-no-activator=""> Contribute </span><span class="v-btn__append"><i class="mdi-chevron-down mdi v-icon notranslate v-theme--light v-icon--size-default" aria-hidden="true"></i></span><!----></button><!----><button data-v-a0d7e563="" type="button" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text mx-1" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-7" aria-owns="v-menu-v-7"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!----><span class="v-btn__content" data-no-activator=""> Get Involved </span><span class="v-btn__append"><i class="mdi-chevron-down mdi v-icon notranslate v-theme--light v-icon--size-default" aria-hidden="true"></i></span><!----></button><!----></div></div><div data-v-a0d7e563="" class="v-spacer d-md-none"></div><button data-v-a0d7e563="" type="button" class="v-btn v-btn--icon v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text" aria-label="Toggle Theme"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!----><span class="v-btn__content" data-no-activator=""><i data-v-a0d7e563="" class="mdi-theme-light-dark mdi v-icon notranslate v-theme--light v-icon--size-default" aria-hidden="true"></i></span><!----><!----></button><!----></div><!----></header><nav class="v-navigation-drawer v-navigation-drawer--left v-navigation-drawer--temporary v-theme--light d-md-none" style="left: 0px; z-index: 1004; transform: translateX(-256px); position: fixed; height: calc(100% - 64px); top: 64px; bottom: 0px; width: 256px;" inert="" data-v-a0d7e563="" aria-label="Navigation Drawer"><!----><!----><div class="v-navigation-drawer__content"><div data-v-a0d7e563="" class="v-list v-list--nav v-theme--light bg-transparent v-list--density-default v-list--one-line" tabindex="0" role="list" aria-label="Main Navigation"><a data-v-a0d7e563="" href="/" tabindex="-2" class="v-list-item v-list-item--active v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option" aria-current="page"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-home mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i> Home</div><!----></a><a data-v-a0d7e563="" href="/map" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-map mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i> Map</div><!----></a><a data-v-a0d7e563="" href="/what-is-an-alpr" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-school mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i> Learn</div><!----></a><a data-v-a0d7e563="" href="/blog" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-newspaper mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i> News</div><!----></a></div><hr data-v-a0d7e563="" class="v-divider v-theme--light my-2" style="border-style: solid;" role="presentation" aria-hidden="true"><div data-v-a0d7e563="" class="v-list-subheader px-4"><div class="v-list-subheader__text">Contribute</div></div><div data-v-a0d7e563="" class="v-list v-list--nav v-theme--light bg-transparent v-list--density-default v-list--one-line" tabindex="0" role="list" aria-label="Contribute Links"><a data-v-a0d7e563="" href="/report" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-map-marker-plus mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i><span data-v-a0d7e563="" style="vertical-align: middle;">Submit Cameras</span></div><!----></a><a data-v-a0d7e563="" href="/store" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-sign-direction mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i><span data-v-a0d7e563="" style="vertical-align: middle;">Hang Signs</span></div><!----></a><a data-v-a0d7e563="" href="/foia" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-file-document mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i><span data-v-a0d7e563="" style="vertical-align: middle;">Public Records</span></div><!----></a><a data-v-a0d7e563="" href="/council" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-account-voice mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i><span data-v-a0d7e563="" style="vertical-align: middle;">City Council</span></div><!----></a></div><hr data-v-a0d7e563="" class="v-divider v-theme--light my-2" style="border-style: solid;" role="presentation" aria-hidden="true"><div data-v-a0d7e563="" class="v-list-subheader px-4"><div class="v-list-subheader__text">Get Involved</div></div><div data-v-a0d7e563="" class="v-list v-list--nav v-theme--light bg-transparent v-list--density-default v-list--one-line" tabindex="0" role="list" aria-label="Meta Links"><a data-v-a0d7e563="" href="https://discord.gg/aV7v4R3sKT" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option" target="_blank"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><div data-v-a0d7e563="" class="v-responsive v-img v-img--booting mr-2 custom-icon" style="height: 24px; width: 24px; vertical-align: middle;" contain=""><div class="v-responsive__sizer"></div><!----><!----><!----><!----><!----><!----></div><span data-v-a0d7e563="" style="vertical-align: middle;">Discord</span></div><!----></a><a data-v-a0d7e563="" href="/groups" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-account-group mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i><span data-v-a0d7e563="" style="vertical-align: middle;">Local Groups</span></div><!----></a><a data-v-a0d7e563="" href="/contact" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-email-outline mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i><span data-v-a0d7e563="" style="vertical-align: middle;">Contact</span></div><!----></a><a data-v-a0d7e563="" href="https://github.com/frillweeman/deflock" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option" target="_blank"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-github mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i><span data-v-a0d7e563="" style="vertical-align: middle;">GitHub</span></div><!----></a><a data-v-a0d7e563="" href="/donate" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--light v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text" role="option"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><i data-v-a0d7e563="" class="mdi-heart mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i><span data-v-a0d7e563="" style="vertical-align: middle;">Donate</span></div><!----></a></div></div><!----></nav><!----><main data-v-a0d7e563="" class="v-main" style="--v-layout-left: 0px; --v-layout-right: 0px; --v-layout-top: 64px; --v-layout-bottom: 0px;"><div data-v-a0d7e563=""><div class="v-container v-container--fluid v-locale--is-ltr hero-section"><div class="v-row justify-center"><div class="v-col-md-8 v-col-12 text-center"><h1 class="display-1 px-8">Welcome to DeFlock</h1><h2 class="bigger px-8"> An open-source project mapping license plate readers. </h2><div data-v-5bb2ff13="" class="counter my-6"><span data-v-5bb2ff13="" class="font-weight-bold">70,983</span><span data-v-5bb2ff13="" class="caption">&nbsp;LPRs mapped in the USA</span></div><button type="button" class="v-btn v-btn--elevated v-theme--light v-btn--density-default v-btn--size-large v-btn--variant-elevated" style="background-color: rgb(18, 151, 195); color: rgb(255, 255, 255); caret-color: rgb(255, 255, 255);" large=""><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!----><span class="v-btn__content" data-no-activator=""> Explore the Map <i class="mdi-map mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--end" aria-hidden="true"></i></span><!----><!----></button></div></div></div><main class=""><div class="v-container v-locale--is-ltr pb-10 text-center info-section"><h2 class="mb-4">What are ALPRs</h2><p class="text-left px-6"> Automated License Plate Readers (ALPRs or LPRs) are AI-powered cameras that capture and analyze images of <b>all passing vehicles</b>, storing details like your car's <b>location, date, and time</b>. They also capture your car's <b>make, model, color</b>, and <b>identifying features</b> such as dents, roof racks, and bumper stickers, often turning these into <b>searchable data points</b>. </p><p class="text-left px-6"> These cameras collect data on millions of vehicles <b>regardless of whether the driver is suspected of a crime</b>. These systems are marketed as indispensable tools to fight crime, but they ignore the powerful tools police already have to track criminals, such as cell phone location data, <b>creating a loophole that doesn't require a warrant</b>. </p><div class="alpr-demo-container my-8"><div class="v-responsive v-img mx-auto alpr-demo-image" style="max-width: 500px; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;"><div class="v-responsive__sizer" style="padding-bottom: 75%;"></div><img class="v-img__img v-img__img--contain" src="/lpr-demo.webp" style=""><!----><!----><!----><!----><!----></div><p class="text-caption text-center mt-3 px-4" style="opacity: 0.8; font-style: italic;"> Example of an annotated license plate reader photo showing captured vehicle details </p></div><hr class="v-divider v-theme--light my-8" style="border-style: solid;" aria-orientation="horizontal" role="separator"><h2 class="display-2 mb-4">The Dangers of ALPRs</h2><div class="v-row align-center mt-4"><div class="v-col-md-4 v-col-12 text-center"><div class="v-card v-theme--light v-card--density-default v-card--variant-elevated"><!----><div class="v-card__loader"><div class="v-progress-linear v-theme--light v-locale--is-ltr" style="top: 0px; height: 0px; --v-progress-linear-height: 2px;" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background"></div><div class="v-progress-linear__buffer" style="width: 0%;"></div><div class="v-progress-linear__indeterminate"><div class="v-progress-linear__indeterminate long"></div><div class="v-progress-linear__indeterminate short"></div></div><!----></div></div><!----><!----><div class="v-card-title headline"><i class="mdi-shield-alert mdi v-icon notranslate v-theme--light v-icon--size-default mr-2" aria-hidden="true" x-large=""></i> Privacy Violations </div><div class="v-card-text"> ALPRs <b>track your movements</b> and <b>store your data</b> for long periods of time, creating a detailed record of <b>your location history.</b></div><!----><!----><span class="v-card__underlay"></span></div></div><div class="v-col-md-4 v-col-12 text-center"><div class="v-card v-theme--light v-card--density-default v-card--variant-elevated"><!----><div class="v-card__loader"><div class="v-progress-linear v-theme--light v-locale--is-ltr" style="top: 0px; height: 0px; --v-progress-linear-height: 2px;" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background"></div><div class="v-progress-linear__buffer" style="width: 0%;"></div><div class="v-progress-linear__indeterminate"><div class="v-progress-linear__indeterminate long"></div><div class="v-progress-linear__indeterminate short"></div></div><!----></div></div><!----><!----><div class="v-card-title headline"><i class="mdi-robber mdi v-icon notranslate v-theme--light v-icon--size-default mr-2" aria-hidden="true" x-large=""></i> Risk of Misuse </div><div class="v-card-text"> Data from ALPRs has led to <a target="_blank" href="https://www.newsobserver.com/news/state/north-carolina/article287381160.html">wrongful arrests</a>, profiling, and <a target="_blank" href="https://www.kwch.com/2022/10/31/kechi-police-lieutenant-arrested-using-police-technology-stalk-wife/">stalking ex-partners</a> by police officers. </div><!----><!----><span class="v-card__underlay"></span></div></div><div class="v-col-md-4 v-col-12 text-center"><div class="v-card v-theme--light v-card--density-default v-card--variant-elevated"><!----><div class="v-card__loader"><div class="v-progress-linear v-theme--light v-locale--is-ltr" style="top: 0px; height: 0px; --v-progress-linear-height: 2px;" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background"></div><div class="v-progress-linear__buffer" style="width: 0%;"></div><div class="v-progress-linear__indeterminate"><div class="v-progress-linear__indeterminate long"></div><div class="v-progress-linear__indeterminate short"></div></div><!----></div></div><!----><!----><div class="v-card-title headline"><i class="mdi-handcuffs mdi v-icon notranslate v-theme--light v-icon--size-default mr-2" aria-hidden="true" x-large=""></i> Limited Benefits </div><div class="v-card-text"> There's <b>no substantial evidence</b> that ALPRs effectively prevent crime, despite <a target="_blank" href="https://www.404media.co/researcher-who-oversaw-flock-surveillance-study-now-has-concerns-about-it/">Flock's unethical attempts</a> to prove otherwise. </div><!----><!----><span class="v-card__underlay"></span></div></div></div><p class="px-6 mt-8"> ALPRs are a serious risk to your privacy and civil liberties. These systems <b>continuously record your movements without a warrant</b>, probable cause, or even reasonable suspicion. Your driving history is <b>rarely confined</b> to the town or city where the cameras are installed. It's typically shared with <a href="/what-is-an-alpr#faq-transparency" class="">thousands of other agencies nationwide (secretly)</a>. Once the data is out of your community, you have no control over how it's used or what rules apply, <b>leading to instances of misuse.</b></p><a href="/what-is-an-alpr" class="v-btn v-btn--elevated v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-elevated my-4" style="background-color: rgb(18, 151, 195); color: rgb(255, 255, 255); caret-color: rgb(255, 255, 255);" large=""><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!----><span class="v-btn__content" data-no-activator=""><i class="mdi-book-open-page-variant mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start" aria-hidden="true"></i> Learn about ALPRs </span><!----><!----></a><hr class="v-divider v-theme--light my-8" style="border-style: solid;" aria-orientation="horizontal" role="separator"><div class="flock-resources-section my-8"><h2 class="mb-4">What is Flock?</h2><p class="px-6 text-left"><a target="_blank" href="https://consumerrights.wiki/w/Flock_Safety">Flock Safety</a> is one of the largest ALPR vendors in the United States. Their cameras are installed for <b>police departments, businesses, and HOAs</b>. Captured vehicle data is uploaded to Flock's cloud system, where participating agencies can <b>search and share information across jurisdictions</b>. </p><p class="text-left px-6">Flock is <b>not the only ALPR vendor</b>, and other vendors still participate in similar practices. See this list of <a href="/identify" class="">other common ALPR vendors</a>.</p><a href="/what-is-an-alpr#similar" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-outlined mt-4" style="color: rgb(18, 151, 195); caret-color: rgb(18, 151, 195);"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!----><span class="v-btn__content" data-no-activator=""> Learn more about Flock <i class="mdi-arrow-right mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--end" aria-hidden="true"></i></span><!----><!----></a></div></div><div class="v-container v-container--fluid v-locale--is-ltr map-section py-10 text-center"><h2 class="display-2 mb-4">Explore ALPR Locations Near You</h2><button type="button" class="v-btn v-btn--elevated v-theme--light bg-white v-btn--density-default v-btn--size-default v-btn--variant-elevated" large=""><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!----><span class="v-btn__content" data-no-activator=""> View the Map <i class="mdi-map mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--end" aria-hidden="true"></i></span><!----><!----></button></div></main><footer data-v-c32467be="" class="v-footer v-theme--light" style="height: auto;"><div data-v-c32467be="" class="v-container v-locale--is-ltr"><div data-v-c32467be="" class="v-row justify-center" align-items="center"><div data-v-c32467be="" class="v-col v-col-12 mt-4"><div data-v-c32467be="" class="v-responsive v-img v-img--booting" style="height: 30px;" contain=""><div class="v-responsive__sizer"></div><!----><!----><!----><!----><!----><!----></div></div><div data-v-c32467be="" class="v-col-sm-3 v-col-7"><div data-v-c32467be="" class="v-list-subheader mx-4 font-weight-black text-subtitle-1 text-black" id="footer-info-heading"><div class="v-list-subheader__text">Info</div></div><div data-v-c32467be="" class="v-list v-theme--light v-list--density-compact v-list--one-line" tabindex="0" role="list" aria-labelledby="footer-info-heading"><a data-v-c32467be="" href="/about" tabindex="-2" class="v-list-item v-list-item--link v-list-item--slim v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text" role="listitem" aria-label="About"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><div data-v-c32467be="" class="v-list-item-title d-flex align-center"><i data-v-c32467be="" class="mdi-information mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start custom-icon" aria-hidden="true" alt="About"></i> About</div></div><!----></a><a data-v-c32467be="" href="/privacy" tabindex="-2" class="v-list-item v-list-item--link v-list-item--slim v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text" role="listitem" aria-label="Privacy Policy"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><div data-v-c32467be="" class="v-list-item-title d-flex align-center"><i data-v-c32467be="" class="mdi-shield-lock mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start custom-icon" aria-hidden="true" alt="Privacy Policy"></i> Privacy Policy</div></div><!----></a><a data-v-c32467be="" href="/terms" tabindex="-2" class="v-list-item v-list-item--link v-list-item--slim v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text" role="listitem" aria-label="Terms of Service"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><div data-v-c32467be="" class="v-list-item-title d-flex align-center"><i data-v-c32467be="" class="mdi-file-document mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start custom-icon" aria-hidden="true" alt="Terms of Service"></i> Terms of Service</div></div><!----></a><a data-v-c32467be="" href="/press" tabindex="-2" class="v-list-item v-list-item--link v-list-item--slim v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text" role="listitem" aria-label="Press"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><div data-v-c32467be="" class="v-list-item-title d-flex align-center"><i data-v-c32467be="" class="mdi-newspaper mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start custom-icon" aria-hidden="true" alt="Press"></i> Press</div></div><!----></a></div></div><div data-v-c32467be="" class="v-col-sm-3 v-col-5"><div data-v-c32467be="" class="v-list-subheader mx-4 font-weight-black text-subtitle-1 text-black" id="footer-involved-heading"><div class="v-list-subheader__text">Get Involved</div></div><div data-v-c32467be="" class="v-list v-theme--light v-list--density-compact v-list--one-line" tabindex="0" role="list" aria-labelledby="footer-involved-heading"><a data-v-c32467be="" href="https://discord.gg/aV7v4R3sKT" tabindex="-2" class="v-list-item v-list-item--link v-list-item--slim v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text" role="listitem" target="_blank"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><div data-v-c32467be="" class="v-list-item-title d-flex align-center justify-start"><img data-v-c32467be="" class="mr-2 custom-icon" width="24" height="24" src="/icon-discord.svg" alt="Discord Logo"> Discord</div></div><!----></a><a data-v-c32467be="" href="/donate" tabindex="-2" class="v-list-item v-list-item--link v-list-item--slim v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text" role="listitem"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><div data-v-c32467be="" class="v-list-item-title d-flex align-center justify-start"><i data-v-c32467be="" class="mdi-heart mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start custom-icon" aria-hidden="true"></i> Donate</div></div><!----></a><a data-v-c32467be="" href="https://github.com/FoggedLens/deflock" tabindex="-2" class="v-list-item v-list-item--link v-list-item--slim v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text" role="listitem" target="_blank"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><div data-v-c32467be="" class="v-list-item-title d-flex align-center justify-start"><i data-v-c32467be="" class="mdi-github mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start custom-icon" aria-hidden="true"></i> GitHub</div></div><!----></a><a data-v-c32467be="" href="/contact" tabindex="-2" class="v-list-item v-list-item--link v-list-item--slim v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text" role="listitem"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!----><div class="v-list-item__content" data-no-activator=""><!----><!----><div data-v-c32467be="" class="v-list-item-title d-flex align-center justify-start"><i data-v-c32467be="" class="mdi-email mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--start custom-icon" aria-hidden="true"></i> Contact</div></div><!----></a></div></div><div data-v-c32467be="" class="v-col-sm-6 v-col-12 text-center d-flex align-center justify-center text-grey-darken-1"><div data-v-c32467be="" class="copyright text-black"><p data-v-c32467be="">© 2026 DeFlock. All Rights Reserved</p><p data-v-c32467be="">Map data © <a data-v-c32467be="" href="https://www.openstreetmap.org/copyright" target="_blank" style="color: unset; font-weight: normal;">OpenStreetMap contributors</a></p><p data-v-c32467be="" class="mt-4">v1.1.0</p></div></div></div></div></footer></div></main><!----><!----></div></div></div>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c3bbd01082e0916',t:'MTc2OTM4NTcxMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe><script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;95d63abfbda24d93a0c6d63b8ffa079b&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+</body></html>
