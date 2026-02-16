@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=yes">
+    <title>ALPR Investigation | Flock & Vigilant</title>
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --primary-light: #ede9fe;
+            --accent: #a78bfa;
+            --success: #16a34a;
+            --success-light: #dcfce7;
+            --warning: #ca8a04;
+            --warning-light: #fef3c7;
+            --danger: #dc2626;
+            --danger-light: #fee2e2;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 50%, #e9e5ff 100%);
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
+        .header h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .header .subtitle { font-size: 1rem; opacity: 0.9; }
+        .header .updated { font-size: 0.85rem; opacity: 0.7; margin-top: 0.5rem; }
+        .content { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+
+        /* Summary cards */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15); }
+        .card h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-600); margin-bottom: 0.25rem; }
+        .card .value { font-size: 1.75rem; font-weight: 700; color: var(--gray-900); }
+        .card .subtext { font-size: 0.8rem; color: var(--gray-600); margin-top: 0.25rem; }
+        .card.verified { border-left: 4px solid var(--success); }
+        .card.unverified { border-left: 4px solid var(--warning); }
+
+        /* Flowchart styles */
+        .flowchart {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .flow-box {
+            background: var(--gray-100);
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            min-width: 120px;
+        }
+        .flow-box.verified {
+            background: var(--success-light);
+            border-color: var(--success);
+        }
+        .flow-box.danger {
+            background: var(--danger-light);
+            border-color: var(--danger);
+        }
+        .flow-arrow {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            text-align: center;
+            padding: 0 0.25rem;
+        }
+        .flow-citation {
+            background: var(--gray-50);
+            border-left: 3px solid var(--primary);
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        .flow-citation a {
+            color: var(--primary);
+        }
+
+        /* Sections */
+        .section { margin-bottom: 2.5rem; }
+        .section h2 {
+            font-size: 1.25rem;
+            color: var(--gray-800);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .section h3 {
+            font-size: 1rem;
+            color: var(--gray-700);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        /* Evidence table */
+        .evidence-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .evidence-table th, .evidence-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .evidence-table th {
+            background: var(--gray-100);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-600);
+        }
+        .evidence-table td { font-size: 0.95rem; }
+        .evidence-table tr:last-child td { border-bottom: none; }
+        .evidence-table a { color: var(--primary); text-decoration: none; }
+        .evidence-table a:hover { text-decoration: underline; }
+
+        /* Status badges */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge.verified { background: var(--success-light); color: var(--success); }
+        .badge.unverified { background: var(--warning-light); color: var(--warning); }
+        .badge.unknown { background: var(--gray-200); color: var(--gray-600); }
+
+        /* Document cards */
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .doc-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.2s;
+        }
+        .doc-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15); }
+        .doc-card h4 { color: var(--primary); margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .doc-card p { font-size: 0.85rem; color: var(--gray-600); margin-bottom: 0.75rem; }
+        .doc-card .links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .doc-card .links a {
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+            background: var(--primary-light);
+            border-radius: 4px;
+        }
+        .doc-card .links a:hover { background: var(--accent); color: white; }
+
+        /* Chain diagram */
+        .chain-diagram {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.95rem;
+            line-height: 2;
+            overflow-x: auto;
+        }
+        .chain-diagram .arrow { color: var(--primary); font-weight: bold; }
+        .chain-diagram .entity {
+            background: var(--primary-light);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 0.25rem;
+        }
+        .chain-diagram .entity.verified { border: 2px solid var(--success); }
+
+        /* CPRA section */
+        .cpra-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid var(--primary);
+        }
+        .cpra-box h3 { color: var(--primary); margin-bottom: 1rem; }
+        .cpra-box pre {
+            background: var(--gray-100);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .cpra-box .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .cpra-box .copy-btn:hover { background: var(--primary-dark); }
+
+        /* Info boxes */
+        .info-box {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+        .info-box.warning {
+            background: var(--warning-light);
+            border-left-color: var(--warning);
+        }
+        .info-box.success {
+            background: var(--success-light);
+            border-left-color: var(--success);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-600);
+            font-size: 0.85rem;
+        }
+        .footer a { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ALPR Investigation</h1>
+        <div class="subtitle">How ICE Accessed Irvine Plate Data via Vigilant — And What Happens Now with Flock</div>
+        <div class="updated">Last Updated: February 15, 2026 | All claims verified with primary sources</div>
+    </div>
+
+    <div class="content">
+        <!-- Summary Stats -->
+        <div class="summary-cards">
+            <div class="card verified">
+                <h4>Irvine Shared WITH ICE (2020)</h4>
+                <div class="value">YES</div>
+                <div class="subtext">DHS-HSI in data sharing list</div>
+            </div>
+            <div class="card verified">
+                <h4>OC Sheriff SB 34 Violations</h4>
+                <div class="value">100+</div>
+                <div class="subtext">ICE/CBP shares in May 2025</div>
+            </div>
+            <div class="card verified">
+                <h4>ICE/CBP Ops in Irvine (2025)</h4>
+                <div class="value">5+</div>
+                <div class="subtext">9+ detained June-August</div>
+            </div>
+            <div class="card unverified">
+                <h4>Irvine → ICE via Flock (2025)</h4>
+                <div class="value">?</div>
+                <div class="subtext">Not yet verified</div>
+            </div>
+        </div>
+
+        <!-- CITED FLOWCHART -->
+        <div class="section">
+            <h2>Evidence Flowchart (Cited)</h2>
+
+            <h3>1. Proven: Irvine PD Shared Data WITH Federal Agencies (2020)</h3>
+            <div class="flowchart">
+                <div class="flow-row">
+                    <div class="flow-box verified">
+                        <strong>Irvine PD</strong><br>
+                        <small>ALPR cameras</small>
+                    </div>
+                    <div class="flow-arrow">→<br><small>shared with</small></div>
+                    <div class="flow-box verified">
+                        <strong>DHS-HSI (Newark NJ)</strong><br>
+                        <small>ICE's Homeland Security Investigations</small>
+                    </div>
+                </div>
+                <div class="flow-citation">
+                    <strong>Source:</strong> <a href="https://www.muckrock.com/foi/irvine-3262/2020-vigilant-data-sharing-information-automated-license-plate-reader-alpr-irvine-police-department-86954/" target="_blank">MuckRock FOIA (2020)</a> - Data_Sharing.pdf lists "DHS - HSI (Newark NJ)" as recipient of Irvine ALPR data
+                </div>
+            </div>
+
+            <h3>2. Proven: National Data Pipeline to ICE</h3>
+            <div class="flowchart">
+                <div class="flow-row">
+                    <div class="flow-box verified">
+                        <strong>Local Police ALPRs</strong><br>
+                        <small>80+ agencies</small>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box verified">
+                        <strong>Vigilant LEARN</strong><br>
+                        <small>Motorola Solutions</small>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box verified">
+                        <strong>Thomson Reuters CLEAR</strong><br>
+                        <small>7B+ plate records</small>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box verified">
+                        <strong>ICE</strong><br>
+                        <small>9,000+ officers</small>
+                    </div>
+                </div>
+                <div class="flow-citation">
+                    <strong>Sources:</strong><br>
+                    • 80+ agencies share: <a href="https://www.aclunorcal.org/blog/documents-reveal-ice-using-driver-location-data-local-police-deportations" target="_blank">ACLU FOIA (2019)</a><br>
+                    • Vigilant→TR: <a href="https://investigate.afsc.org/company/thomson-reuters" target="_blank">AFSC Investigate</a><br>
+                    • 7B records: <a href="https://s3.documentcloud.org/documents/4546858/PI-Letter-TR-21-06.pdf" target="_blank">Privacy International Letter</a><br>
+                    • ICE access: <a href="https://www.dhs.gov/publication/dhs-ice-pia-039-acquisition-and-use-license-plate-reader-data-commercial-service" target="_blank">DHS PIA-039 (2017)</a>
+                </div>
+            </div>
+
+            <h3>3. Proven: OC Sheriff Violated SB 34 (2025)</h3>
+            <div class="flowchart">
+                <div class="flow-row">
+                    <div class="flow-box verified">
+                        <strong>OC Sheriff</strong><br>
+                        <small>Flock cameras</small>
+                    </div>
+                    <div class="flow-arrow">→<br><small>searched for</small></div>
+                    <div class="flow-box danger">
+                        <strong>ICE & CBP</strong><br>
+                        <small>100+ searches in May 2025</small>
+                    </div>
+                </div>
+                <div class="flow-citation">
+                    <strong>Source:</strong> <a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (June 13, 2025)</a> - Oakland Privacy obtained Flock audit logs showing SB 34 violations
+                </div>
+            </div>
+
+            <h3>4. Context: Irvine Receives Data FROM Federal Agencies (2025)</h3>
+            <div class="flowchart">
+                <div class="flow-row">
+                    <div class="flow-box">
+                        <strong>HSI MASTER</strong><br>
+                        <small>ICE hotlist</small>
+                    </div>
+                    <div class="flow-arrow">→<br><small>sends hotlist to</small></div>
+                    <div class="flow-box">
+                        <strong>Irvine PD</strong>
+                    </div>
+                    <div class="flow-arrow">←<br><small>receives data from</small></div>
+                    <div class="flow-box">
+                        <strong>SD Border Patrol</strong><br>
+                        <small>CBP data</small>
+                    </div>
+                </div>
+                <div class="flow-citation">
+                    <strong>Source:</strong> <a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a> - Excel shows A4 (hotlist sources) and A2 (data sources)<br>
+                    <strong>Note:</strong> This shows Irvine <em>receives</em> data from federal agencies. This could be for any law enforcement purpose (stolen vehicles, amber alerts, etc.), not necessarily immigration enforcement.
+                </div>
+            </div>
+
+            <h3>5. Proven: ICE/CBP Operations in Irvine (2025)</h3>
+            <div class="flowchart">
+                <div class="flow-row">
+                    <div class="flow-box danger">
+                        <strong>ICE/CBP</strong><br>
+                        <small>Operations in Irvine</small>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box danger">
+                        <strong>9+ Detained</strong><br>
+                        <small>June-August 2025</small>
+                    </div>
+                </div>
+                <div class="flow-citation">
+                    <strong>Source:</strong> <a href="https://cityofirvine.org/immigration-enforcement-updates" target="_blank">City of Irvine Official Page</a> - Documents 5 operations: June 12, June 29, July 19, July 21, August 23
+                </div>
+            </div>
+
+            <h3 style="color: var(--warning);">⚠️ What's NOT Proven</h3>
+            <div class="info-box warning">
+                <strong>Unknown:</strong> Whether ICE/CBP used ALPR data to locate specific targets in Irvine before the June 2025 raids. The operations are documented, and the data sharing infrastructure exists, but we don't have proof that ALPR data was used for these specific operations.
+            </div>
+        </div>
+
+        <!-- 2025 IRVINE EVIDENCE -->
+        <div class="section">
+            <h2>2025 Irvine Evidence Details</h2>
+
+            <h3>March 2025 CPRA Data (Incoming Data Only)</h3>
+            <div class="info-box warning">
+                <strong>Important context:</strong> The March 2025 CPRA shows data Irvine <em>receives from</em> federal agencies. This is used for various law enforcement purposes (stolen vehicles, amber alerts, federal warrants, etc.) and does not prove immigration-specific data sharing.
+            </div>
+            <table class="evidence-table">
+                <thead>
+                    <tr>
+                        <th>Finding</th>
+                        <th>Source</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Irvine receives hotlist from HSI</td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a></td>
+                        <td>"HSI MASTER" in A4 - could include stolen vehicles, federal fugitives, etc.</td>
+                    </tr>
+                    <tr>
+                        <td>Irvine receives data from Border Patrol</td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a></td>
+                        <td>"SAN DIEGO SECTOR BORDER PATROL (CA)" in A2 - purpose unknown</td>
+                    </tr>
+                    <tr>
+                        <td>107M+ plate scans since 2019</td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a></td>
+                        <td>107,472,041 detections between Jan 2019 - Feb 2025</td>
+                    </tr>
+                    <tr>
+                        <td><strong>350K+ monthly external accesses</strong></td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a></td>
+                        <td>352,289 external agency accesses in Jan 2025, 341,541 in Feb 2025</td>
+                    </tr>
+                    <tr>
+                        <td><strong>199 authorized IPD users</strong></td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a></td>
+                        <td>List of all officers with ALPR access provided</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>EFF Investigation: Irvine PD Flock Usage</h3>
+            <table class="evidence-table">
+                <thead>
+                    <tr>
+                        <th>Finding</th>
+                        <th>Source</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>IPD ran searches on Flock network</strong></td>
+                        <td><a href="https://www.eff.org/deeplinks/2025/11/license-plate-surveillance-logs-reveal-racist-policing-against-romani-people" target="_blank">EFF (Nov 3, 2025)</a></td>
+                        <td>8 searches in February and May 2025 using term "roma"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scope of IPD searches</strong></td>
+                        <td><a href="https://www.eff.org/deeplinks/2025/11/license-plate-surveillance-logs-reveal-racist-policing-against-romani-people" target="_blank">EFF (Nov 3, 2025)</a></td>
+                        <td>Searched <strong>1,420 networks</strong> representing <strong>29,364 ALPR devices</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>IPD acknowledged the issue</strong></td>
+                        <td><a href="https://www.eff.org/deeplinks/2025/11/license-plate-surveillance-logs-reveal-racist-policing-against-romani-people" target="_blank">EFF (Nov 3, 2025)</a></td>
+                        <td>"I think it's an opportunity for our agency to look at those entries and to use a case number or use a different term"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>ICE/CBP Operations in Irvine (2025)</h3>
+            <table class="evidence-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Agency</th>
+                        <th>Location</th>
+                        <th>Outcome</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>June 12, 2025</td>
+                        <td>ICE</td>
+                        <td>8-10 locations including Orchard Hills</td>
+                        <td>Operations confirmed by City Manager</td>
+                        <td><a href="https://cityofirvine.org/news-media/news-article/city-irvine-immigration-response" target="_blank">City of Irvine</a></td>
+                    </tr>
+                    <tr>
+                        <td>June 29, 2025</td>
+                        <td>Border Patrol</td>
+                        <td>Car wash</td>
+                        <td>5 people detained</td>
+                        <td><a href="https://cityofirvine.org/immigration-enforcement-updates" target="_blank">City of Irvine</a></td>
+                    </tr>
+                    <tr>
+                        <td>July 19, 2025</td>
+                        <td>Border Patrol</td>
+                        <td>Main & Executive Circle</td>
+                        <td>1 person detained</td>
+                        <td><a href="https://cityofirvine.org/immigration-enforcement-updates" target="_blank">City of Irvine</a></td>
+                    </tr>
+                    <tr>
+                        <td>July 21, 2025</td>
+                        <td>Border Patrol</td>
+                        <td>Irvine Spectrum Center</td>
+                        <td>2 people detained</td>
+                        <td><a href="https://cityofirvine.org/immigration-enforcement-updates" target="_blank">City of Irvine</a></td>
+                    </tr>
+                    <tr>
+                        <td>August 23, 2025</td>
+                        <td>ICE</td>
+                        <td>Quail Ridge & E. Knollcrest</td>
+                        <td>1 person detained (criminal investigation)</td>
+                        <td><a href="https://cityofirvine.org/immigration-enforcement-updates" target="_blank">City of Irvine</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Orange County Sheriff SB 34 Violations</h3>
+            <table class="evidence-table">
+                <thead>
+                    <tr>
+                        <th>Finding</th>
+                        <th>Source</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>OCSD shared ALPR data with ICE/CBP</strong></td>
+                        <td><a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (June 13, 2025)</a></td>
+                        <td>100+ violations in May 2025 alone</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data obtained from Flock audit logs</strong></td>
+                        <td><a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (June 13, 2025)</a></td>
+                        <td>Oakland Privacy obtained Riverside County Flock audit report</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Violates California SB 34</strong></td>
+                        <td><a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (June 13, 2025)</a></td>
+                        <td>"State law enforcement agencies are barred from sharing license plate reader data with out-of-state public agencies or federal entities"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Evidence Table -->
+        <div class="section">
+            <h2>Full Evidence Chain</h2>
+            <table class="evidence-table">
+                <thead>
+                    <tr>
+                        <th>Claim</th>
+                        <th>Status</th>
+                        <th>Primary Source</th>
+                        <th>Key Quote / Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ICE has contract with Thomson Reuters</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.usaspending.gov/recipient/65494435-f70c-9a3e-15e0-474723c82d88-C/latest" target="_blank">USAspending.gov</a></td>
+                        <td>$7.54M to ICE (56.82% of all TR Special Services contracts)</td>
+                    </tr>
+                    <tr>
+                        <td>Thomson Reuters CLEAR has LPR data</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://s3.documentcloud.org/documents/4546858/PI-Letter-TR-21-06.pdf" target="_blank">Privacy International Letter</a></td>
+                        <td>"Live access to more than 7 billion license plate detections"</td>
+                    </tr>
+                    <tr>
+                        <td>Thomson Reuters accesses Vigilant data</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://investigate.afsc.org/company/thomson-reuters" target="_blank">AFSC Investigate</a></td>
+                        <td>"Motorola Solutions subsidiary Vigilant Solutions"</td>
+                    </tr>
+                    <tr>
+                        <td>9,000+ ICE officers have access</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.aclunorcal.org/blog/documents-reveal-ice-using-driver-location-data-local-police-deportations" target="_blank">ACLU FOIA Release</a></td>
+                        <td>1,800 pages of documents released 2018-2019</td>
+                    </tr>
+                    <tr>
+                        <td>80+ agencies share data with ICE</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.aclunorcal.org/blog/documents-reveal-ice-using-driver-location-data-local-police-deportations" target="_blank">ACLU FOIA Release</a></td>
+                        <td>Internal report lists agencies that granted ICE ongoing access</td>
+                    </tr>
+                    <tr>
+                        <td>OC fusion center helped ICE search plates</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.aclunorcal.org/blog/documents-reveal-ice-using-driver-location-data-local-police-deportations" target="_blank">ACLU FOIA Release</a></td>
+                        <td>Emails show La Habra PD detective searching for ICE</td>
+                    </tr>
+                    <tr>
+                        <td>DHS officially confirmed LPR access</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.dhs.gov/publication/dhs-ice-pia-039-acquisition-and-use-license-plate-reader-data-commercial-service" target="_blank">DHS PIA-039</a></td>
+                        <td>Official Privacy Impact Assessment (Dec 2017)</td>
+                    </tr>
+                    <tr>
+                        <td>Irvine PD shared data with DHS-HSI (ICE)</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/2020-vigilant-data-sharing-information-automated-license-plate-reader-alpr-irvine-police-department-86954/" target="_blank">MuckRock FOIA (2020)</a></td>
+                        <td>Data Sharing report lists "DHS-HSI (Newark NJ)" as recipient</td>
+                    </tr>
+                    <tr>
+                        <td>Irvine used Vigilant (2018-2022)</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/automated-license-plate-readers-irvine-police-department-136259/" target="_blank">MuckRock FOIA (2023)</a></td>
+                        <td>504,494 detections in 2022 via Vigilant</td>
+                    </tr>
+                    <tr>
+                        <td>Irvine now uses Flock (2025)</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/flock-damage-costs-irvine-police-department-181097/" target="_blank">MuckRock FOIA (2025)</a></td>
+                        <td>Switched from Vigilant to Flock sometime 2022-2025</td>
+                    </tr>
+                    <tr>
+                        <td>OC Sheriff violated SB 34 (May 2025)</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters Investigation</a></td>
+                        <td>Shared Flock data with ICE & CBP, violating state law</td>
+                    </tr>
+                    <tr>
+                        <td>Flock admitted secret ICE/CBP pilot (Aug 2025)</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.flocksafety.com/blog/statement-network-sharing-use-cases-federal-cooperation" target="_blank">Flock Official Statement</a></td>
+                        <td>Federal agents had access to 80,000+ cameras nationwide</td>
+                    </tr>
+                    <tr>
+                        <td>Irvine PD receives hotlist FROM HSI</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a></td>
+                        <td>"HSI MASTER" in A4 - incoming only; purpose unclear (could be any federal crime)</td>
+                    </tr>
+                    <tr>
+                        <td>Irvine PD receives data FROM Border Patrol</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a></td>
+                        <td>"SAN DIEGO SECTOR BORDER PATROL" in A2 - incoming only; purpose unclear</td>
+                    </tr>
+                    <tr>
+                        <td>Irvine PD actively uses Flock network (2025)</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.eff.org/deeplinks/2025/11/license-plate-surveillance-logs-reveal-racist-policing-against-romani-people" target="_blank">EFF Investigation (Nov 2025)</a></td>
+                        <td>IPD searched 1,420 networks / 29,364 ALPR devices in Feb/May 2025</td>
+                    </tr>
+                    <tr>
+                        <td>ICE/CBP conducted operations in Irvine (2025)</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://cityofirvine.org/immigration-enforcement-updates" target="_blank">City of Irvine Official</a></td>
+                        <td>At least 5 documented operations, 9+ people detained June-August 2025</td>
+                    </tr>
+                    <tr>
+                        <td>107M+ plate scans, 350K+ monthly accesses</td>
+                        <td><span class="badge verified">VERIFIED</span></td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a></td>
+                        <td>External agencies accessed Irvine data 352,289 times in Jan 2025 alone</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Primary Source Documents -->
+        <div class="section">
+            <h2>Primary Source Documents</h2>
+            <div class="info-box success">
+                <strong>All documents downloaded and archived.</strong> These are the actual source files, not summaries or news articles.
+            </div>
+            <div class="doc-grid">
+                <div class="doc-card">
+                    <h4>DHS Privacy Impact Assessment (PIA-039)</h4>
+                    <p>Official government document confirming ICE procured LPR database access in December 2017. Does not name vendor (redacted).</p>
+                    <div class="links">
+                        <a href="https://www.dhs.gov/sites/default/files/publications/privacy-pia-ice-lpr-january2018.pdf" target="_blank">Original PDF</a>
+                        <a href="data/ice_evidence/dhs_pia_039_jan2018.pdf" target="_blank">Local Copy</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>Privacy International Letter to Thomson Reuters CEO</h4>
+                    <p>June 2018 letter citing federal procurement docs: $20M+ contract, "7 billion license plate detections"</p>
+                    <div class="links">
+                        <a href="https://s3.documentcloud.org/documents/4546858/PI-Letter-TR-21-06.pdf" target="_blank">DocumentCloud</a>
+                        <a href="data/ice_evidence/documentcloud/privacy_international_thomson_reuters_letter.pdf" target="_blank">Local Copy</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>ACLU v. ICE FOIA Case</h4>
+                    <p>1,800+ pages released 2018-2019. Names Thomson Reuters and Vigilant Solutions. Details $6.1M contract.</p>
+                    <div class="links">
+                        <a href="https://www.aclunorcal.org/our-work/legal-docket/aclu-northern-california-v-ice-license-plate-readers" target="_blank">Case Page</a>
+                        <a href="https://www.aclunorcal.org/blog/documents-reveal-ice-using-driver-location-data-local-police-deportations" target="_blank">Analysis</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>USAspending.gov Contract Data</h4>
+                    <p>Federal spending database showing $7.54M from ICE to Thomson Reuters Special Services LLC.</p>
+                    <div class="links">
+                        <a href="https://www.usaspending.gov/recipient/65494435-f70c-9a3e-15e0-474723c82d88-C/latest" target="_blank">Contract Page</a>
+                        <a href="data/ice_evidence/thomson_reuters_contracts.png" target="_blank">Screenshot</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>AFSC Investigate Database</h4>
+                    <p>Documents Thomson Reuters' $161M+ in DHS contracts. Confirms Vigilant Solutions data partnership.</p>
+                    <div class="links">
+                        <a href="https://investigate.afsc.org/company/thomson-reuters" target="_blank">Company Page</a>
+                        <a href="data/ice_evidence/afsc_thomson_reuters.html" target="_blank">Local Copy</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>EFF ALPR Dataset (2016-2017)</h4>
+                    <p>Shows which agencies participated in NVLS. Irvine PD: NVLS=YES, 1M+ detections, 95 sharing agencies.</p>
+                    <div class="links">
+                        <a href="https://www.eff.org/pages/explore-alpr" target="_blank">Interactive Table</a>
+                        <a href="https://www.eff.org/files/2020/01/28/alpr_2016-2017_update.zip" target="_blank">Download CSV</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>MuckRock: Irvine ALPR Audits (March 2025)</h4>
+                    <p><strong>CRITICAL NEW:</strong> Excel file shows "HSI MASTER" (ICE) in hotlist sources, "SAN DIEGO SECTOR BORDER PATROL" in data sources, 107M+ scans, 350K+ monthly external accesses.</p>
+                    <div class="links">
+                        <a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock Page</a>
+                        <a href="data/muckrock/alpr-audits-irvine-police-department-181267_doc5.xlsx" target="_blank">Excel Data</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>MuckRock: Irvine Data Sharing Report (2020)</h4>
+                    <p>Shows Irvine shared ALPR data with DHS-HSI (ICE), FBI, ATF, DEA, and hundreds of other agencies.</p>
+                    <div class="links">
+                        <a href="https://www.muckrock.com/foi/irvine-3262/2020-vigilant-data-sharing-information-automated-license-plate-reader-alpr-irvine-police-department-86954/" target="_blank">MuckRock Page</a>
+                        <a href="data/muckrock/2020-vigilant-data-sharing-information-automated-license-plate-reader-alpr-irvine-police-department-86954_doc0.pdf" target="_blank">Data Sharing PDF</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>MuckRock: Irvine ALPR Stats (2023)</h4>
+                    <p>Shows Irvine used Vigilant through 2022 with 504,494 detections that year.</p>
+                    <div class="links">
+                        <a href="https://www.muckrock.com/foi/irvine-3262/automated-license-plate-readers-irvine-police-department-136259/" target="_blank">MuckRock Page</a>
+                        <a href="data/muckrock/automated-license-plate-readers-irvine-police-department-136259_doc0.pdf" target="_blank">Local PDF</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>EFF: Racist Policing in Flock Logs (Nov 2025)</h4>
+                    <p><strong>CRITICAL:</strong> Documents Irvine PD running 8 searches across 1,420 networks (29,364 cameras) in Feb/May 2025.</p>
+                    <div class="links">
+                        <a href="https://www.eff.org/deeplinks/2025/11/license-plate-surveillance-logs-reveal-racist-policing-against-romani-people" target="_blank">EFF Article</a>
+                        <a href="data/news/eff_romani_irvine.txt" target="_blank">Local Copy</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>CalMatters: CA Police Sharing with ICE (June 2025)</h4>
+                    <p>Documents 100+ SB 34 violations by LAPD, OC Sheriff, San Diego Sheriff sharing Flock data with ICE/CBP.</p>
+                    <div class="links">
+                        <a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters Article</a>
+                        <a href="data/news/calmatters_ca_police_ice.txt" target="_blank">Local Copy</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>City of Irvine: Immigration Enforcement Updates</h4>
+                    <p>Official city timeline of ICE/CBP operations in Irvine throughout 2025.</p>
+                    <div class="links">
+                        <a href="https://cityofirvine.org/immigration-enforcement-updates" target="_blank">City Page</a>
+                        <a href="data/news/irvine_enforcement_updates.txt" target="_blank">Local Copy</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h4>New University: ICE Confirmed in Irvine</h4>
+                    <p>UCI student newspaper confirmed ICE operations on June 12, 2025 with Council Member Treseder.</p>
+                    <div class="links">
+                        <a href="https://newuniversity.org/2025/06/12/breaking-irvine-council-member-confirms-ice-is-in-irvine/" target="_blank">Article</a>
+                        <a href="data/news/newu_ice_irvine.txt" target="_blank">Local Copy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What's Now Known -->
+        <div class="section">
+            <h2>Summary: What's Proven vs Unknown</h2>
+            <table class="evidence-table">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Status</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: var(--success-light);">
+                        <td>Did Irvine PD share ALPR data WITH ICE (historically)?</td>
+                        <td><strong>YES</strong> - "DHS-HSI (Newark NJ)" listed as outgoing recipient</td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/2020-vigilant-data-sharing-information-automated-license-plate-reader-alpr-irvine-police-department-86954/" target="_blank">MuckRock FOIA (2020)</a></td>
+                    </tr>
+                    <tr style="background: var(--success-light);">
+                        <td>Did OC Sheriff violate SB 34 by sharing with ICE?</td>
+                        <td><strong>YES</strong> - 100+ violations documented in May 2025</td>
+                        <td><a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (June 2025)</a></td>
+                    </tr>
+                    <tr style="background: var(--success-light);">
+                        <td>Did ICE/CBP conduct operations in Irvine (2025)?</td>
+                        <td><strong>YES</strong> - 5+ operations, 9+ detained (June-Aug 2025)</td>
+                        <td><a href="https://cityofirvine.org/immigration-enforcement-updates" target="_blank">City of Irvine Official</a></td>
+                    </tr>
+                    <tr style="background: var(--success-light);">
+                        <td>Does Irvine PD receive data FROM federal agencies?</td>
+                        <td><strong>YES</strong> - HSI hotlist, Border Patrol data (purpose unclear)</td>
+                        <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (March 2025)</a></td>
+                    </tr>
+                    <tr style="background: var(--warning-light);">
+                        <td>Did Irvine PD share data with ICE via Flock (2025)?</td>
+                        <td><strong>UNKNOWN</strong> - OC Sheriff did, Irvine not named</td>
+                        <td>Would require new CPRA for Flock Network Audit</td>
+                    </tr>
+                    <tr style="background: var(--warning-light);">
+                        <td>Did ICE use ALPR to locate Irvine targets?</td>
+                        <td><strong>UNKNOWN</strong> - Operations happened, data use unproven</td>
+                        <td>Would require CPRA for Flock incoming search logs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- CPRA Request Template -->
+        <div class="section">
+            <h2>File a Public Records Request</h2>
+            <div class="info-box">
+                <strong>CPRA = California Public Records Act.</strong> It's your legal right to request government documents. It's completely legal and commonly used by journalists, researchers, and citizens. The government cannot retaliate against you for filing a request.
+            </div>
+            <div class="cpra-box">
+                <h3>Template: Irvine PD ALPR Data Sharing</h3>
+                <p style="margin-bottom: 0.5rem; color: var(--gray-600);"><strong>For Police/ALPR records:</strong> <a href="https://cityofirvine.org/irvine-police-department/public-safety-records-request" target="_blank">Public Safety Records Form</a></p>
+                <p style="margin-bottom: 0.5rem; color: var(--gray-600);">Email: <strong>irvinequickrec@cityofirvine.org</strong> | Phone: <strong>949-724-6281</strong></p>
+                <p style="margin-bottom: 1rem; color: var(--gray-600);">General portal: <a href="https://cityofirvine.org/office-records-and-information" target="_blank">cityofirvine.org/office-records-and-information</a></p>
+                <pre id="cpra-template">Subject: California Public Records Act Request - ALPR Data Sharing
+
+Dear City Clerk:
+
+Pursuant to the California Public Records Act (Government Code Section 6250 et seq.), I request copies of the following records related to the Irvine Police Department's Automated License Plate Reader (ALPR) program:
+
+1. CURRENT VENDOR CONTRACT
+   - The complete contract/agreement between the City of Irvine (or Irvine PD) and any ALPR vendor (Vigilant Solutions/Motorola Solutions, Flock Safety, or other)
+   - All amendments or modifications to said contract
+   - Current contract term and renewal dates
+
+2. NVLS PARTICIPATION STATUS
+   - Documentation showing whether Irvine PD ALPR data is currently uploaded to Vigilant Solutions' National Vehicle Location Service (NVLS)
+   - Any opt-in or opt-out documentation for national/regional data sharing networks
+
+3. AGENCY ACCESS LIST
+   - A complete list of all external agencies that currently have access to query Irvine PD's ALPR database
+   - Any Memoranda of Understanding (MOUs) or data sharing agreements with other agencies
+
+4. FEDERAL AGENCY ACCESS
+   - Any records of requests from federal agencies (including but not limited to ICE, CBP, HSI, DHS) to access Irvine PD ALPR data
+   - Any records of Irvine PD personnel conducting ALPR searches on behalf of federal agencies
+
+5. FLOCK NETWORK AUDIT LOGS
+   - Export from Flock Safety's "Network Audit" feature showing all external agencies that have searched Irvine PD's ALPR database between January 1, 2025 and present
+   - Export from Flock Safety showing "Networks that I'm sharing" configuration
+   - Any audit logs showing searches run by IPD through other agencies' Flock cameras
+
+If any records are available electronically, I request they be provided electronically to reduce copying costs.
+
+Per Government Code Section 6253(c), I request a response within 10 days.
+
+Thank you,
+[Your Name]
+[Your Email]</pre>
+                <button class="copy-btn" onclick="copyTemplate()">Copy to Clipboard</button>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Alternative: Use MuckRock</h3>
+            <p style="color: var(--gray-600); margin-bottom: 1rem;"><a href="https://www.muckrock.com" target="_blank">MuckRock.com</a> is a free service that files, tracks, and publishes public records requests. They handle follow-ups and appeals.</p>
+        </div>
+
+        <!-- Vigilant → Motorola -->
+        <div class="section">
+            <h2>Company Information</h2>
+            <table class="evidence-table">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Current Status</th>
+                        <th>Role in Data Chain</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Vigilant Solutions</strong></td>
+                        <td>Now a subsidiary of Motorola Solutions</td>
+                        <td>Operates the LEARN database; sells ALPR systems to police</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thomson Reuters</strong></td>
+                        <td>Parent company of West Publishing Corp</td>
+                        <td>Operates CLEAR platform; contracts directly with ICE</td>
+                    </tr>
+                    <tr>
+                        <td><strong>West Publishing Corporation</strong></td>
+                        <td>Thomson Reuters subsidiary</td>
+                        <td>$20M+ contract holder for ICE CLEAR access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flock Safety</strong></td>
+                        <td>Competitor to Vigilant; growing in CA</td>
+                        <td>Separate network; different ICE access concerns</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Legal Context -->
+        <div class="section">
+            <h2>Legal Context</h2>
+            <div class="doc-grid">
+                <div class="doc-card">
+                    <h4>California SB 34</h4>
+                    <p>Requires ALPR usage policies, restricts access to authorized purposes, requires audits, and <strong>prohibits sharing with federal agencies</strong>.</p>
+                </div>
+                <div class="doc-card">
+                    <h4>California Values Act (SB 54)</h4>
+                    <p>Prohibits local law enforcement from sharing personal information for immigration enforcement.</p>
+                </div>
+                <div class="doc-card">
+                    <h4>2025 Violations Found</h4>
+                    <p>CalMatters and SF Standard reported multiple CA agencies violated SB 34 by sharing ALPR data with ICE/CBP.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Investigation by Austin Wagner | <a href="/">austinwagner.org</a></p>
+        <p style="margin-top: 0.5rem;">All claims backed by primary sources. No guesswork.</p>
+    </div>
+
+    <script>
+        function copyTemplate() {
+            const template = document.getElementById('cpra-template').innerText;
+            navigator.clipboard.writeText(template).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = 'Copy to Clipboard'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
