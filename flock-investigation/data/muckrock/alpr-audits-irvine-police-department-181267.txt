@@ -1,0 +1,342 @@
+Donate
+Tools
+Newsletter
+Investigations
+About Us
+ Search
+File Request
+Sign Up
+Log In
+ALPR Audits (Irvine Police Department)
+Joey Scott filed this request with the Irvine Police Department of Irvine, CA.
+Multi Request	ALPR Audits
+Submitted	Feb. 10, 2025
+STATUS
+Completed
+
+MuckRock users can file, duplicate, track, and share public records requests like this one. Learn more.
+
+File a Request
+5 Communications
+ 
+7 Files
+Collapse All
+
+From: Joey Scott
+
+02/10/2025
+
+Subject: California Public Records Act Request: ALPR Audits (Irvine Police Department)
+
+Email
+
+To Whom It May Concern:
+
+Pursuant to the California Public Records Act, I hereby request the following records:
+
+Part A - Information related to ALPR data sharing.
+
+A1. The names of agencies and organizations with which the Agency shares ALPR data;
+
+A2. The names of agencies and organizations from which the Agency receives ALPR data;
+
+A3. The names of agencies and organizations with which the Agency shares “hot list” information;
+
+A4. The names of agencies and organizations from which the Agency receives “hot list” information.
+
+The information requested in items A1-A4 is readily available for extraction through the ALPR software you use. For example, with Vigilant Solutions/Motorola Solutions, this data can be exported easily using the Data Sharing Report function. With Flock Safety, this information is available through the transparency portal function. Other software, such as BOSS, has similar functionality.
+
+In a small number of cases, an agency has interpreted items A1-A4 as requesting the creation of a record that does not exist. We disagree: this data is maintained by your software, can be exported through software your agency has already purchased, and is therefore subject to CPRA.
+
+However, should you disagree, you may alternatively produce the following records:
+
+A5. All agreements, memoranda of understanding, requests, or other certifying documents that external agencies have signed to comply with Sec 1798.90.52(b) for accessing your agency's ALPR data. These documents are also often required under the "Releasing ALPR Data" subsection of a California law enforcement agency's SB 34 policy.
+
+A6. All agreements, memoranda of understanding, requests, or other certifying documents your agency has signed under Sec 1798.90.52(b) to access other agencies' ALPR data.
+
+A7. All "records of access" required by Sec. 1798.90.52(a) from 2019 until the date of processing this request.
+
+Items A5-A7 are unnecessary if your agency provides the information requested in items A1-A4. We feel that items A1-A4 are more focused and would require less labor from your agency to produce.
+
+Part B - Information Related to Numbers of “Detections” (plate scans) and “Hits” (plate scans that matched to a hotlist)
+
+B1. The aggregate number of "detections" collected 2019 to today's date
+
+B2. The aggregate number of “hits” 2019 to today's date
+
+The information requested in items B1-B4 is readily available through the ALPR software you use. For example, with Vigilant Solutions/Motorola Solutions, this data can be exported easily using the Hit Ratio Report function. With Flock Safety, this information is available through the transparency portal function. Other software, such as BOSS, has similar functionality. As noted above, this information exists within your system and can be easily exported with existing software.
+
+Records of:
+- Officers with authorized access to ALPR systems
+- Any audits that include records for the reason of the search, misuse, and how many times the ALPR search was run.
+- The number of times other agencies, including federal agencies, with access to the department's ALPR data.
+
+The requested documents will be made available to the general public, and this request is not being made for commercial purposes.
+
+In the event that there are fees, I would be grateful if you would inform me of the total charges in advance of fulfilling my request. I would prefer the request filled electronically, by e-mail attachment if available or CD-ROM if not.
+
+Thank you in advance for your anticipated cooperation in this matter. I look forward to receiving your response to this request within 10 calendar days, as the statute requires.
+
+Sincerely,
+
+Joey Scott
+
+From: Muckrock Staff
+
+02/20/2025
+
+From: Irvine Police Department
+
+02/20/2025
+
+Subject: RE: California Public Records Act Request: ALPR Audits (Irvine Police Department)
+
+Email
+
+Dear Mr. Scott.,
+
+In reference to your request under the California Public Records Act (Government Code Section 7920 et seq.), additional time is required for consultation, which shall be conducted with all practicable speed. Under the California Public Records Act (Government Code Section 7922.525(b) et seq.), an extension of an additional 14 days is appropriate under these circumstances.
+
+Based on the initial 10 day response period and the additional 14 day extension period, our office will contact you on or before March 7, 2025 regarding a response of the requested records.
+
+Thank you,
+
+[Image]
+Kailene Loza | Lead Records Specialist
+Irvine Police Department | Public Safety Records
+949-724-7492 | 1 Civic Center Plaza, Irvine, CA 92606
+kloza@cityofirvine.org<mailto:kloza@cityofirvine.org> | cityofirvine.org<http://cityofirvine.org/>
+[Logo Description automatically generated]<https://facebook.com/irvinepd> [Icon Description automatically generated] <https://x.com/irvinepolice> [Icon Description automatically generated] <https://instagram.com/irvinepolice> [Image] <https://nextdoor.com/agency/irvine-pd/?i=gdgzmjsrmzggcdmbdjly>
+
+﻿
+CAUTION: EXTERNAL EMAIL
+
+Irvine Police Department
+PRA Office
+1 Civic Center Plaza
+Irvine, CA 92606-5207
+
+February 20, 2025
+
+This is a follow up to a previous request:
+
+To Whom It May Concern:
+
+I wanted to follow up on the following California Public Records Act request, copied below, and originally submitted on Feb. 11, 2025. Please let me know when I can expect to receive a response.
+
+Thanks for your help, and let me know if further clarification is needed.
+
+View request history, upload responsive documents, and report problems here:
+https://www.muckrock.com/
+
+If prompted for a passcode, please enter:
+UAYUGEMP
+
+Filed via MuckRock.com
+E-mail (Preferred): requests@muckrock.com<mailto:requests@muckrock.com>
+
+PLEASE NOTE OUR NEW ADDRESS
+For mailed responses, please address (see note):
+MuckRock News
+DEPT MR 181267
+263 Huntington Ave
+Boston, MA 02115
+
+PLEASE NOTE: This request is not filed by a MuckRock staff member, but is being sent through MuckRock by the above in order to better track, share, and manage public records requests. Also note that improperly addressed (i.e., with the requester's name rather than "MuckRock News" and the department number) requests might be returned as undeliverable.
+
+---
+
+On Feb. 10, 2025:
+Subject: California Public Records Act Request: ALPR Audits (Irvine Police Department)
+To Whom It May Concern:
+
+Pursuant to the California Public Records Act, I hereby request the following records:
+
+Part A - Information related to ALPR data sharing.
+
+A1. The names of agencies and organizations with which the Agency shares ALPR data;
+
+A2. The names of agencies and organizations from which the Agency receives ALPR data;
+
+A3. The names of agencies and organizations with which the Agency shares “hot list” information;
+
+A4. The names of agencies and organizations from which the Agency receives “hot list” information.
+
+The information requested in items A1-A4 is readily available for extraction through the ALPR software you use. For example, with Vigilant Solutions/Motorola Solutions, this data can be exported easily using the Data Sharing Report function. With Flock Safety, this information is available through the transparency portal function. Other software, such as BOSS, has similar functionality.
+
+In a small number of cases, an agency has interpreted items A1-A4 as requesting the creation of a record that does not exist. We disagree: this data is maintained by your software, can be exported through software your agency has already purchased, and is therefore subject to CPRA.
+
+However, should you disagree, you may alternatively produce the following records:
+
+A5. All agreements, memoranda of understanding, requests, or other certifying documents that external agencies have signed to comply with Sec 1798.90.52(b) for accessing your agency's ALPR data. These documents are also often required under the "Releasing ALPR Data" subsection of a California law enforcement agency's SB 34 policy.
+
+A6. All agreements, memoranda of understanding, requests, or other certifying documents your agency has signed under Sec 1798.90.52(b) to access other agencies' ALPR data.
+
+A7. All "records of access" required by Sec. 1798.90.52(a) from 2019 until the date of processing this request.
+
+Items A5-A7 are unnecessary if your agency provides the information requested in items A1-A4. We feel that items A1-A4 are more focused and would require less labor from your agency to produce.
+
+Part B - Information Related to Numbers of “Detections” (plate scans) and “Hits” (plate scans that matched to a hotlist)
+
+B1. The aggregate number of "detections" collected 2019 to today's date
+
+B2. The aggregate number of “hits” 2019 to today's date
+
+The information requested in items B1-B4 is readily available through the ALPR software you use. For example, with Vigilant Solutions/Motorola Solutions, this data can be exported easily using the Hit Ratio Report function. With Flock Safety, this information is available through the transparency portal function. Other software, such as BOSS, has similar functionality. As noted above, this information exists within your system and can be easily exported with existing software.
+
+Records of:
+- Officers with authorized access to ALPR systems
+- Any audits that include records for the reason of the search, misuse, and how many times the ALPR search was run.
+- The number of times other agencies, including federal agencies, with access to the department's ALPR data.
+
+The requested documents will be made available to the general public, and this request is not being made for commercial purposes.
+
+In the event that there are fees, I would be grateful if you would inform me of the total charges in advance of fulfilling my request. I would prefer the request filled electronically, by e-mail attachment if available or CD-ROM if not.
+
+Thank you in advance for your anticipated cooperation in this matter. I look forward to receiving your response to this request within 10 calendar days, as the statute requires.
+
+Sincerely,
+
+Joey Scott
+
+View request history, upload responsive documents, and report problems here:
+https://www.muckrock.com/
+
+If prompted for a passcode, please enter:
+UAYUGEMP
+
+Filed via MuckRock.com
+E-mail (Preferred): requests@muckrock.com<mailto:requests@muckrock.com>
+
+PLEASE NOTE OUR NEW ADDRESS
+For mailed responses, please address (see note):
+MuckRock News
+DEPT MR 181267
+263 Huntington Ave
+Boston, MA 02115
+
+PLEASE NOTE: This request is not filed by a MuckRock staff member, but is being sent through MuckRock by the above in order to better track, share, and manage public records requests. Also note that improperly addressed (i.e., with the requester's name rather than "MuckRock News" and the department number) requests might be returned as undeliverable.
+
+
+image005
+
+ Download
+
+image004
+
+ Download
+
+image003
+
+ Download
+
+image002
+
+ Download
+
+image001
+
+ Download
+
+From: Muckrock Staff
+
+03/10/2025
+
+From: Irvine Police Department
+
+03/11/2025
+
+Subject: RE: California Public Records Act Request: ALPR Audits (Irvine Police Department)
+
+Email
+
+Good Afternoon Mr. Scott,
+
+As you know, our office is the City Attorney for the City of Irvine and Irvine Police Department (collectively, the “City”). Please allow this correspondence to serve as a follow-up response to the City’s prior correspondence to you in response to your public records act (“PRA”) request contained below.
+
+The City has now determined that it possesses records responsive to your request. These records are being concurrently produced with this correspondence. Please see attached. (Note: The first tab labeled “Request” in the Excel Spreadsheet indicates the City’s response to each category of information requested.)
+
+Please be further advised the attached Excel Spreadsheet does not include sworn officers placed in highly sensitive roles whose identities must remain anonymous/confidential for public safety purposes, and are therefore exempt pursuant to GC § 7922.000; International Federation of Professional and Technical Engineers, Local 21, AFL-CIO v. Superior Court (2007) 42 Cal.4th 319, 337.
+
+As all responsive information has now been produced, the City will close out this PRA request.
+
+Should you have any questions, please feel free to reach out to our office.
+
+Best,
+
+Kelsey
+
+Kelsey Quist<http://www.rutan.com/Kelsey-Quist>
+18575 Jamboree Road, 9th Floor | Irvine, CA 92612
+O. (714) 641-5100 | D. (714) 338-1864
+kquist@rutan.com<mailto:kquist@rutan.com> | www.rutan.com<http://www.rutan.com/>
+[cid:image001.png@01DB9294.D48BFA00]<https://www.rutan.com/>
+_____________________________________________________
+Privileged And Confidential Communication.
+This electronic transmission, and any documents attached hereto, (a) are protected by the Electronic Communications Privacy Act (18 USC §§ 2510-2521), (b) may contain confidential and/or legally privileged information, and (c) are for the sole use of the intended recipient named above. If you have received this electronic message in error, please notify the sender and delete the electronic message. Any disclosure, copying, distribution, or use of the contents of the information received in error is strictly prohibited.
+
+
+Copy of PRA Joey Scott ALPR Info
+
+ Download
+
+image001
+
+ Download
+
+For the Record
+
+Keep up on new releases, projects and reporting with MuckRock's weekly newsletter
+
+Subscribe with your email address
+Subscribe
+
+By subscribing, you agree to MuckRock's Terms of Service and Privacy Policy.
+
+Together, we hold power to account and shine a light on government transparency
+
+Your donation fuels vital tools such as MuckRock Requests, FOIA Machine, DocumentCloud and oTranscribe that promote civic engagement.
+
+To donate via Apple Pay, please visit our dedicated GiveButter page.
+Or mailed to:
+MuckRock Foundation
+263 Huntington Ave
+Boston, MA 02115
+
+You can always find our most current financial statements at MuckRock’s financial transparency page.
+
+If you’d like to support our work with a legacy, a gift of stocks or crypto currency, contact marcia@muckrock.com.
+
+MuckRock is a non-profit collaborative news site that gives you the tools to keep our government transparent and accountable.
+
+Make a Donation
+
+MuckRock is a 501(c)(3) organization.
+
+Our tax identification number is 81-1485228.
+
+Donations are tax-deductible.
+
+© 2010–2026 MuckRock
+
+SECTIONS
+News
+Projects
+Requests
+Agencies
+Jurisdictions
+Newsletter
+ABOUT
+About Us
+Staff
+FAQ
+API
+Editorial Policy
+Privacy Policy
+Terms of Service
+Financials
+FEEDS
+Latest Reporting
+Latest Questions
+Recently Filed Requests
+Recently Completed Requests

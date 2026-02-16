@@ -1,0 +1,429 @@
+Donate
+Tools
+Newsletter
+Investigations
+About Us
+ Search
+File Request
+Sign Up
+Log In
+Automated License Plate Readers (Orange Police Department)
+Dave Maass filed this request with the Orange Police Department of Orange, CA.
+
+It is a clone of this request.
+
+Multi Request	Automated License Plate Readers
+Submitted	Nov. 1, 2022
+STATUS
+Completed
+
+MuckRock users can file, duplicate, track, and share public records requests like this one. Learn more.
+
+File a Request
+7 Communications
+ 
+11 Files
+Collapse All
+
+From: Dave Maass
+
+11/01/2022
+
+Subject: California Public Records Act Request: Automated License Plate Readers (Orange Police Department)
+
+Mail
+
+Dear Custodian of Records:
+
+This letter constitutes a request under the California Public Records Act ("CPRA") from the Electronic Frontier Foundation, submitted with the assistance of MuckRock News.
+
+We request the following records related to Automated License Plate Readers ("ALPRs") and your law enforcement agency ("Agency").
+
+Part A - Information related to ALPR data sharing.
+
+A1. The names of agencies and organizations with which the Agency shares ALPR data;
+A2. The names of agencies and organizations from which the Agency receives ALPR data;
+A3. The names of agencies and organizations with which the Agency shares “hot list” information;
+A4. The names of agencies and organizations from which the Agency receives “hot list” information.
+The information requested in items A1-A4 is readily available for extraction through the ALPR software you use. For example, with Vigilant Solutions/Motorola Solutions, this data can be exported easily using the Data Sharing Report function. With Flock Safety, this information is available through the transparency portal function. Other software, such as BOSS, has similar functionality.
+
+Most agencies have encountered little difficulty in providing this information (see below). In a small number of cases, an agency has interpreted items A1-A4 as requesting the creation of a record that does not exist. We disagree: this data is maintained by your software, can be exported through software your agency has already purchased, and is therefore subject to CPRA.
+
+However, should you disagree, you may alternatively produce the following records:
+
+A5. All agreements, memoranda of understanding, requests, or other certifying documents that external agencies have signed to comply with Sec 1798.90.52(b) for accessing your agency's ALPR data. These documents are also often required under the "Releasing ALPR Data" subsection of a California law enforcement agency's SB 34 policy.
+A6. All agreements, memoranda of understanding, requests, or other certifying documents that your agency has signed pursuant to Sec 1798.90.52(b) to access other agencies' ALPR data.
+A7. All "records of access" required by Sec. 1798.90.52(a) for the periods January 1, 2021 until the date of processing this request.
+
+Items A5-A7 are not necessary if your agency provides the information requested in items A1-A4. We feel that items A1-A4 are more focused and would require less labor from your agency to produce.
+
+Part B - Information Related to Numbers of “Detections” (plate scans) and “Hits” (plate scans that matched to a hotlist)
+
+B1. The aggregate number of "detections" collected during 2021.
+B2. The aggregate number of “hits” during 2021.
+B3. The aggregate number of "detections" from January 1, 2022 until the date this request is processed. If your agency has a retention period shorter than 1 year, please provide whatever data is available based on your retention period. For example, most Flock Safety systems may not have this data beyond 30 days.
+B4. The aggregate number of “hits” from January 1, 2022 until the date this request is processed. If your agency has a retention period shorter than 1 year, please provide whatever data is available based on your retention period.
+
+The information requested in items B1-B4 is readily available through the ALPR software you use. For example, with Vigilant Solutions/Motorola Solutions, this data can be exported easily using the Hit Ratio Report function. With Flock Safety, this information is available through the transparency portal function. Other software, such as BOSS, has similar functionality. As noted above, this information exists within your system and can be easily exported with existing software.
+
+Part C - Assistance, Description, and Recommendations.
+
+We make the following requests under section 6253.1 of the California Public Records Act
+
+C1. A description of the information technology and physical location in which the records exist.
+C2. Assist us identifying records and information that will help the public understand how ALPR data and hotlists are shared, how much data is collected year-to-year, and how much of that data matches a hot list; and
+C3. Provide suggestions for overcoming any practical basis for denying access to the information sought.
+
+Please note that more than 80 California law enforcement agencies have provided the information requested in Parts A1-A4 and B1-B4 in previous years. For your reference we have included a list below with the names of the agencies that have historically provided these records.
+
+American Canyon Police Department
+Auburn Police Department
+Bakersfield Police Department
+Beaumont Police Department
+Bell Gardens Police Department
+Bell Police Department
+Belvedere Police Department
+Beverly Hills Police Department
+Brawley Police Department
+Brentwood Police Department
+Buena Park Police Department
+Burbank Police Department
+Carlsbad Police Department
+Cathedral City Police Department
+Chino Police Department
+Chula Vista Police Department
+Citrus Heights Police Department
+Claremont Police Department
+Clayton Police Department
+Contra Costa County Sheriff's Office
+Coronado Police Department
+CSU Fullerton Police Department
+Cypress Police Department
+El Segundo Police Department
+Fairfield Police Department
+Folsom Police Department
+Fontana Police Department
+Fresno Police Department
+Fullerton Police Department
+Galt Police Department
+Garden Grove Police Department
+Gardena Police Department
+Glendale Police Department
+Hemet Police Department
+Hermosa Beach Police Department
+Imperial Police Department
+Irvine Police Department
+La Habra Police Department
+La Mesa Police Department
+La Verne Police Department
+Laguna Beach Police Department
+Livermore Police Department
+Lodi Police Department
+Long Beach Police Department
+Marin County Sheriff's Office
+Martinez Police Department
+Merced Police Department
+Mill Valley Police Department
+Modesto Police Department
+Monterey Park Police Department
+Newport Beach Police Department
+Oakley Police Department
+Orange County Sheriff's Office
+Orange Police Department
+Palm Springs Police Department
+Palos Verdes Estates Police
+Pasadena Police Department
+Pleasant Hill Police Department
+Pomona Police Department
+Redlands Police Department
+Redondo Beach Police Department
+Ripon Police Department
+Roseville Police Department
+Salinas Police Department
+San Bernardino County Sheriff's Office
+San Diego County Sheriff's Office
+San Diego Police Department
+San Mateo County Sheriff's Office
+Sausalito Police Department
+Simi Valley Police Department
+Stanislaus County Sheriff's Office
+Stockton Police Department
+Tiburon Police Department
+Torrance Police Department
+Tracy Police Department
+Tustin Police Department
+West Sacramento Police Department
+Westminster Police Department
+Woodland Police Department
+Yolo County Sheriff's Office
+(This URL links to a dataset with links to the records: https://www.eff.org/document/data-driven-2-california-dragnet-data-set )
+
+CPRA requires you to undertake reasonable efforts to locate responsive records and to work in good faith with requesters to respond to their request. See CYAC v. City of National City, 220 Cal.App.4th 1385, 1430 (2013). Thus under the CPRA you are obligated to conduct a reasonable search and cannot deny a request merely because it might generate a large volume of records.
+
+We ask that you please respond to this request within 10 days either by providing all the requested records or by providing a written response setting forth the legal authority on which you rely in withholding or redacting any document, as well as stating when documents will be made available. Should you choose to withhold or reject this request, we ask that you provide an explanation of why your agency is responding differently compared to the many others that have complied with our request.
+
+We also request that any records maintained in an electronic format be provided in that same format (such as a PDF, CSV or XLS file), to avoid copying costs.
+
+However, should you be unable to do so, EFF will reimburse you for the direct costs of copying these records (if you elect to charge for copying) plus postage. If you anticipate that these costs will exceed $25.00, or that the time needed to copy the records will delay their release, please contact me so that I can arrange to inspect the documents or decide which documents I wish to have copied. Please also provide an invoice and a cost breakdown of the fee estimate. If the fees are less than $25.00, please copy and send the records and invoice as soon as possible, and we will promptly pay the required costs.
+
+Thank you for your consideration of this request. If you have any questions or concerns, or if I can provide any clarification that will help identify responsive documents or focus this request, please do not hesitate to contact me at (415) 436-9333 x151 or dm@eff.org. You may also mail correspondence to the Electronic Frontier Foundation, 815 Eddy. St. San Francisco, CA, 94109.
+
+Sincerely,
+
+
+Dave Maass
+Director of Investigations
+Electronic Frontier Foundation
+
+From: Muckrock Staff
+
+11/11/2022
+
+From: Orange Police Department
+
+11/21/2022
+
+Subject: Public Records Request - Orange PD - ALPR Data Sharing
+
+Email
+
+Good evening,
+
+Attached is the invoice for the records pertaining to your PRA request related to ALPR data.
+
+If you have any further questions, please contact me.
+
+Sincerely,
+
+[cid:image001.png@01D8FDC2.511F05E0]
+Kathy Palacio <mailto:KPalacio@orangepd.org>
+Police Records Manager
+Orange Police Department
+O: (714) 744-7350 <tel:7147447350;>
+F: (714) 744-7320<fax:7147447320>
+1107 North Batavia Street
+Orange, California 92867-4615
+
+E-mail correspondence, along with any attachments, may be subject to the California Public Records Act; and as such may be subject to public disclosure unless otherwise exempt under the Act.
+
+
+Invoice
+
+ View  Embed  Download
+
+image001
+
+ Download
+
+From: Dave Maass
+
+11/22/2022
+
+Subject: RE: California Public Records Act Request: Automated License Plate Readers (Orange Police Department)
+
+Mail
+
+To Whom It May Concern:
+
+Thank you for the invoice. However, I believe this is an impermissible fee.
+
+I have requested these records in an electronic format. So far, 54 law enforcement agencies across California have provided these records electronically and at no charge and zero other agencies have assessed a fee.
+
+However, could you please explain why the Orange Police Department faces special circumstances that are not experienced by any other law enforcement agency in California that we have surveyed so far.
+
+Thank you,
+
+Dave Maass
+Director of Investigations
+Electronic Frontier Foundation
+
+From: Orange Police Department
+
+01/11/2023
+
+Subject: RE: Public Records Request - Orange PD - ALPR Data Sharing
+
+Email
+
+Good evening,
+
+Attached are the disclosable records available in reference to your public records request related to ALPR data.
+
+You had mailed a response requesting a response regarding the initial invoice. Government code 7922.530, subd. (a) states that records shall be made available to any person upon payment of fees covering direct costs of duplication, or a statutory fee, if applicable. This fee also applies to records released via electronic format.
+
+Thank you.
+
+[cid:image001.png@01D925F4.23360110]
+Kathy Palacio <mailto:KPalacio@orangepd.org>
+Police Records Manager
+Orange Police Department
+O: (714) 744-7350 <tel:7147447350;>
+F: (714) 744-7320<fax:7147447320>
+1107 North Batavia Street
+Orange, California 92867-4615
+
+
+B4
+
+ View  Embed  Download
+
+B3
+
+ View  Embed  Download
+
+B2
+
+ View  Embed  Download
+
+B1
+
+ View  Embed  Download
+
+A1- A4 - Part 2
+
+ View  Embed  Download
+
+A1 - A4 - Part 1
+
+ View  Embed  Download
+
+image001
+
+ Download
+
+From: Dave Maass
+
+01/12/2023
+
+Subject: RE: California Public Records Act Request: Automated License Plate Readers (Orange Police Department)
+
+Mail
+
+I have forwarded the invoice to our accounting department.
+
+From: Orange Police Department
+
+01/26/2023
+
+Subject: Receipt from Orange Police Department - CPRA - ALPR Data Sharing Info
+
+Email
+
+From: Orange Police Department via Square <receipts@messaging.squareup.com>
+Sent: Thursday, January 26, 2023 7:37 PM
+To: Kathy Palacio <KPalacio@orangepd.org>
+Subject: Receipt from Orange Police Department
+
+Receipt for $11.70 at Orange Police Department on Jan 26 2023 at 7:35 PM.
+[cid:image002.png@01D931BF.7A30E6C0]
+Orange Police Department
+
+<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Faccount.squareup.com%2Fresponse%2Fr1CJVCACZJHXPES%2F1%3Fmerchant_token=GS6H5X6CAQF35/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/bVIFzB1_w7K3OAhXtt185NbIeSA=307>
+[Positive]<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Faccount.squareup.com%2Fresponse%2Fr1CJVCACZJHXPES%2F1%3Fmerchant_token=GS6H5X6CAQF35/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/bVIFzB1_w7K3OAhXtt185NbIeSA=307>
+
+<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Faccount.squareup.com%2Fresponse%2Fr1CJVCACZJHXPES%2F-1%3Fmerchant_token=GS6H5X6CAQF35/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/YuXJioBT7kG7bMARIzNOIj9I4T4=307>
+[Negative]<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Faccount.squareup.com%2Fresponse%2Fr1CJVCACZJHXPES%2F-1%3Fmerchant_token=GS6H5X6CAQF35/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/YuXJioBT7kG7bMARIzNOIj9I4T4=307>
+
+Let Orange Police Department know how your experience was
+
+$11.70
+
+Check 6202382
+
+PRA Requests × 78
+$11.70
+MuckRock - 21-22 ALPR Data Sharing Stats K 1261
+
+Total
+$11.70
+
+[https://api.mapbox.com/styles/v1/square/ck93u4swt1ztg1ip8o9brpbk8/static/url-http%3A%2F%2Fs3.amazonaws.com%2Fsquare-receipts-production%2Freceipts%2Fstatic-assets%2Fmap-pin-140924-546476.png(-117.862,33.807)/-117.862,33.807,15/375x120@2x?access_token=pk.eyJ1Ijoic3F1YXJlIiwiYSI6IlBvOHNOSGcifQ.UEuIIhAN8OO4uCCqLShcJw&attribution=true&logo=true]
+Orange Police Department
+1107 N. Batavia Street
+Orange, CA 92867
+714-744-7380<http://rfrtpc7s.r.us-west-2.awstrack.me/L0/tel:714-744-7380/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/NiVS70_ceCeZVcGD0rqFcGDjVDY=307>
+[https://d3g64w74of3jgu.cloudfront.net/receipts/assets/website-icon-f3f91153be499f8f6b26f76c2ab37397899a1aa719a22d8a8f2785286d2cef18.png]<http://rfrtpc7s.r.us-west-2.awstrack.me/L0/http:%2F%2Fwww.cityoforange.org/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/4Va-YU1Hlaki8908Qc5L_fw0xxg=307>
+
+Other (Check 6202382)
+[https://d3g64w74of3jgu.cloudfront.net/receipts/assets/tender-other-b5916dbf609afe08520933a4c214894b839c88809be9ba5e3932e372b62268f8.png]
+Jan 26 2023 at 7:35 PM
+#nfIp
+
+Please show receipt and ID when picking up ANY requested items.
+
+[https://d3g64w74of3jgu.cloudfront.net/receipts/assets/footer-logo-d354ee4f8b2a914ed1959eaa77323e1f444494f53a4d44f56b1abad8f028e8e8.png]<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Fsquareup.com/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/wOz8HvqKtpS-8_zHTKr_o5eJBuA=307>
+Receipt Settings
+Manage preferences<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Fprofile.squareup.com/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/YIWSSZCob33J_vSSq6bszK6q7O4=307>
+© 2023 Square Privacy Policy<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Fsquareup.com%2Fus%2Fen%2Flegal%2Fprivacy-no-account/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/neYKXtoROVff7VDCHWLv81bwXs4=307>
+1455 Market Street, Suite 600
+San Francisco, CA 94103
+Map data © OpenStreetMap<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Fwww.openstreetmap.org%2Fcopyright/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/aDqlzvq_sOI3mNGGXUYLsNrOJpM=307> contributors
+© Mapbox<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Fwww.mapbox.com%2Fabout%2Fmaps%2F/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/lo0KDGjSNMcyXIz-8XE4i4ztQNs=307> Improve this map<https://rfrtpc7s.r.us-west-2.awstrack.me/L0/https:%2F%2Fwww.mapbox.com%2Fmap-feedback/1/01010185f14c7b45-f0144dc1-aa9f-4cb7-b48c-bb6cd6e3380a-000000/w9Hl2-yncMHg1NKN_dn9VQAoV8o=307>
+
+E-mail correspondence, along with any attachments, may be subject to the California Public Records Act; and as such may be subject to public disclosure unless otherwise exempt under the Act.
+
+
+image002
+
+ Download
+
+image001
+
+ Download
+
+For the Record
+
+Keep up on new releases, projects and reporting with MuckRock's weekly newsletter
+
+Subscribe with your email address
+Subscribe
+
+By subscribing, you agree to MuckRock's Terms of Service and Privacy Policy.
+
+Together, we hold power to account and shine a light on government transparency
+
+Your donation fuels vital tools such as MuckRock Requests, FOIA Machine, DocumentCloud and oTranscribe that promote civic engagement.
+
+To donate via Apple Pay, please visit our dedicated GiveButter page.
+Or mailed to:
+MuckRock Foundation
+263 Huntington Ave
+Boston, MA 02115
+
+You can always find our most current financial statements at MuckRock’s financial transparency page.
+
+If you’d like to support our work with a legacy, a gift of stocks or crypto currency, contact marcia@muckrock.com.
+
+MuckRock is a non-profit collaborative news site that gives you the tools to keep our government transparent and accountable.
+
+Make a Donation
+
+MuckRock is a 501(c)(3) organization.
+
+Our tax identification number is 81-1485228.
+
+Donations are tax-deductible.
+
+© 2010–2026 MuckRock
+
+SECTIONS
+News
+Projects
+Requests
+Agencies
+Jurisdictions
+Newsletter
+ABOUT
+About Us
+Staff
+FAQ
+API
+Editorial Policy
+Privacy Policy
+Terms of Service
+Financials
+FEEDS
+Latest Reporting
+Latest Questions
+Recently Filed Requests
+Recently Completed Requests

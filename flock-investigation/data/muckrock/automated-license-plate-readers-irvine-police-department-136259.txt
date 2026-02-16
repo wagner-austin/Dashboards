@@ -1,0 +1,551 @@
+Donate
+Tools
+Newsletter
+Investigations
+About Us
+ Search
+File Request
+Sign Up
+Log In
+Automated License Plate Readers (Irvine Police Department)
+Dave Maass filed this request with the Irvine Police Department of Irvine, CA.
+
+It is a clone of this request.
+
+Multi Request	Automated License Plate Readers
+Submitted	Nov. 2, 2022
+STATUS
+Completed
+
+MuckRock users can file, duplicate, track, and share public records requests like this one. Learn more.
+
+File a Request
+14 Communications
+ 
+10 Files
+Collapse All
+
+From: Dave Maass
+
+11/02/2022
+
+Subject: California Public Records Act Request: Automated License Plate Readers (Irvine Police Department)
+
+Email
+
+Dear Custodian of Records:
+
+This letter constitutes a request under the California Public Records Act ("CPRA") from the Electronic Frontier Foundation, submitted with the assistance of MuckRock News.
+
+We request the following records related to Automated License Plate Readers ("ALPRs") and your law enforcement agency ("Agency").
+
+Part A - Information related to ALPR data sharing.
+
+A1. The names of agencies and organizations with which the Agency shares ALPR data;
+A2. The names of agencies and organizations from which the Agency receives ALPR data;
+A3. The names of agencies and organizations with which the Agency shares “hot list” information;
+A4. The names of agencies and organizations from which the Agency receives “hot list” information.
+The information requested in items A1-A4 is readily available for extraction through the ALPR software you use. For example, with Vigilant Solutions/Motorola Solutions, this data can be exported easily using the Data Sharing Report function. With Flock Safety, this information is available through the transparency portal function. Other software, such as BOSS, has similar functionality.
+
+Most agencies have encountered little difficulty in providing this information (see below). In a small number of cases, an agency has interpreted items A1-A4 as requesting the creation of a record that does not exist. We disagree: this data is maintained by your software, can be exported through software your agency has already purchased, and is therefore subject to CPRA.
+
+However, should you disagree, you may alternatively produce the following records:
+
+A5. All agreements, memoranda of understanding, requests, or other certifying documents that external agencies have signed to comply with Sec 1798.90.52(b) for accessing your agency's ALPR data. These documents are also often required under the "Releasing ALPR Data" subsection of a California law enforcement agency's SB 34 policy.
+A6. All agreements, memoranda of understanding, requests, or other certifying documents that your agency has signed pursuant to Sec 1798.90.52(b) to access other agencies' ALPR data.
+A7. All "records of access" required by Sec. 1798.90.52(a) for the periods January 1, 2021 until the date of processing this request.
+
+Items A5-A7 are not necessary if your agency provides the information requested in items A1-A4. We feel that items A1-A4 are more focused and would require less labor from your agency to produce.
+
+Part B - Information Related to Numbers of “Detections” (plate scans) and “Hits” (plate scans that matched to a hotlist)
+
+B1. The aggregate number of "detections" collected during 2021.
+B2. The aggregate number of “hits” during 2021.
+B3. The aggregate number of "detections" from January 1, 2022 until the date this request is processed. If your agency has a retention period shorter than 1 year, please provide whatever data is available based on your retention period. For example, most Flock Safety systems may not have this data beyond 30 days.
+B4. The aggregate number of “hits” from January 1, 2022 until the date this request is processed. If your agency has a retention period shorter than 1 year, please provide whatever data is available based on your retention period.
+
+The information requested in items B1-B4 is readily available through the ALPR software you use. For example, with Vigilant Solutions/Motorola Solutions, this data can be exported easily using the Hit Ratio Report function. With Flock Safety, this information is available through the transparency portal function. Other software, such as BOSS, has similar functionality. As noted above, this information exists within your system and can be easily exported with existing software.
+
+Part C - Assistance, Description, and Recommendations.
+
+We make the following requests under section 6253.1 of the California Public Records Act
+
+C1. A description of the information technology and physical location in which the records exist.
+C2. Assist us identifying records and information that will help the public understand how ALPR data and hotlists are shared, how much data is collected year-to-year, and how much of that data matches a hot list; and
+C3. Provide suggestions for overcoming any practical basis for denying access to the information sought.
+
+Please note that more than 80 California law enforcement agencies have provided the information requested in Parts A1-A4 and B1-B4 in previous years. For your reference we have included a list below with the names of the agencies that have historically provided these records.
+
+American Canyon Police Department
+Auburn Police Department
+Bakersfield Police Department
+Beaumont Police Department
+Bell Gardens Police Department
+Bell Police Department
+Belvedere Police Department
+Beverly Hills Police Department
+Brawley Police Department
+Brentwood Police Department
+Buena Park Police Department
+Burbank Police Department
+Carlsbad Police Department
+Cathedral City Police Department
+Chino Police Department
+Chula Vista Police Department
+Citrus Heights Police Department
+Claremont Police Department
+Clayton Police Department
+Contra Costa County Sheriff's Office
+Coronado Police Department
+CSU Fullerton Police Department
+Cypress Police Department
+El Segundo Police Department
+Fairfield Police Department
+Folsom Police Department
+Fontana Police Department
+Fresno Police Department
+Fullerton Police Department
+Galt Police Department
+Garden Grove Police Department
+Gardena Police Department
+Glendale Police Department
+Hemet Police Department
+Hermosa Beach Police Department
+Imperial Police Department
+Irvine Police Department
+La Habra Police Department
+La Mesa Police Department
+La Verne Police Department
+Laguna Beach Police Department
+Livermore Police Department
+Lodi Police Department
+Long Beach Police Department
+Marin County Sheriff's Office
+Martinez Police Department
+Merced Police Department
+Mill Valley Police Department
+Modesto Police Department
+Monterey Park Police Department
+Newport Beach Police Department
+Oakley Police Department
+Orange County Sheriff's Office
+Orange Police Department
+Palm Springs Police Department
+Palos Verdes Estates Police
+Pasadena Police Department
+Pleasant Hill Police Department
+Pomona Police Department
+Redlands Police Department
+Redondo Beach Police Department
+Ripon Police Department
+Roseville Police Department
+Salinas Police Department
+San Bernardino County Sheriff's Office
+San Diego County Sheriff's Office
+San Diego Police Department
+San Mateo County Sheriff's Office
+Sausalito Police Department
+Simi Valley Police Department
+Stanislaus County Sheriff's Office
+Stockton Police Department
+Tiburon Police Department
+Torrance Police Department
+Tracy Police Department
+Tustin Police Department
+West Sacramento Police Department
+Westminster Police Department
+Woodland Police Department
+Yolo County Sheriff's Office
+(This URL links to a dataset with links to the records: https://www.eff.org/document/data-driven-2-california-dragnet-data-set )
+
+CPRA requires you to undertake reasonable efforts to locate responsive records and to work in good faith with requesters to respond to their request. See CYAC v. City of National City, 220 Cal.App.4th 1385, 1430 (2013). Thus under the CPRA you are obligated to conduct a reasonable search and cannot deny a request merely because it might generate a large volume of records.
+
+We ask that you please respond to this request within 10 days either by providing all the requested records or by providing a written response setting forth the legal authority on which you rely in withholding or redacting any document, as well as stating when documents will be made available. Should you choose to withhold or reject this request, we ask that you provide an explanation of why your agency is responding differently compared to the many others that have complied with our request.
+
+We also request that any records maintained in an electronic format be provided in that same format (such as a PDF, CSV or XLS file), to avoid copying costs.
+
+However, should you be unable to do so, EFF will reimburse you for the direct costs of copying these records (if you elect to charge for copying) plus postage. If you anticipate that these costs will exceed $25.00, or that the time needed to copy the records will delay their release, please contact me so that I can arrange to inspect the documents or decide which documents I wish to have copied. Please also provide an invoice and a cost breakdown of the fee estimate. If the fees are less than $25.00, please copy and send the records and invoice as soon as possible, and we will promptly pay the required costs.
+
+Thank you for your consideration of this request. If you have any questions or concerns, or if I can provide any clarification that will help identify responsive documents or focus this request, please do not hesitate to contact me at (415) 436-9333 x151 or dm@eff.org. You may also mail correspondence to the Electronic Frontier Foundation, 815 Eddy. St. San Francisco, CA, 94109.
+
+Sincerely,
+
+
+Dave Maass
+Director of Investigations
+Electronic Frontier Foundation
+
+From: Irvine Police Department
+
+11/11/2022
+
+Subject: RE: California Public Records Act Request: Automated License Plate Readers (Irvine Police Department)
+
+Email
+
+Dear Mr. Maass,
+
+This email is in reference to your request under the California Public Records Act (Government Code
+Section 6250 et seq.). Due to the scope of your request, additional time is required to search for an
+collect the data.
+
+Under the California Public Records Act (Government Code Section 6253(c) et seq.), an extension of
+an additional 14 days is appropriate under these circumstances.
+
+Based on the initial 10 day response period and the additional 14 day extension period, our office
+will contact you on or before November 28, 2022 regarding the disposition of the requested records.
+
+Thank you,
+
+Julie Koger | Lead Record Specialist
+City of Irvine l Police Department
+1 Civic Center Plaza
+City of Irvine, CA 92606
+P. 949.724.7493 | F. 949.724-7077
+jkoger@cityofirvine.org<mailto:jkogerl@cityofirvine.org>
+[Description: cid:image001.png@01CFC78A.42BA3EB0]
+This transmission is intended for the use of the individuals or entity to which it is addressed and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient, or the employee responsible for delivering the message to the recipient, you are hereby notified that any dissemination, distribution or copying of this communication is PROHIBITED. If you receive this communication in error, please call (949) 724-7062 immediately.
+
+
+image001
+
+ Download
+
+From: Irvine Police Department
+
+11/23/2022
+
+Subject: None
+
+Web
+
+Dear Mr. Maass,
+
+This email is in reference to your request under the California Public Records Act (Government Code
+Section 6250 et seq.). Due to the scope of your request, additional time is required to search for an
+collect the data.
+
+Under the California Public Records Act (Government Code Section 6253(c) et seq.), an extension of
+an additional 14 days is appropriate under these circumstances.
+
+Based on the initial 10 day response period and the additional 14 day extension period, our office
+will contact you on or before December 12, 2022 regarding the disposition of the requested records.
+
+Thank you,
+
+Kailene Loza | Lead Record Specialist
+City of Irvine l Police Department
+1 Civic Center Plaza
+City of Irvine, CA 92606
+P. 949.724.7492 | F. 949.724-7077
+
+From: Irvine Police Department
+
+11/23/2022
+
+Subject: None
+
+Web
+
+Dear Mr. Maass,
+
+This email is in reference to your request under the California Public Records Act (Government Code
+Section 6250 et seq.). Due to the scope of your request, additional time is required to search for an
+collect the data.
+
+Under the California Public Records Act (Government Code Section 6253(c) et seq.), an extension of
+an additional 14 days is appropriate under these circumstances.
+
+Based on the initial 10 day response period and the additional 14 day extension period, our office
+will contact you on or before November 28, 2022 regarding the disposition of the requested records.
+
+Thank you,
+
+Kailene Loza | Lead Record Specialist
+City of Irvine l Police Department
+1 Civic Center Plaza
+City of Irvine, CA 92606
+P. 949.724.7492 | F. 949.724-7077
+kloza@cityofirvine.org
+
+This transmission is intended for the use of the individuals or entity to which it is addressed and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient, or the employee responsible for delivering the message to the recipient, you are hereby notified that any dissemination, distribution or copying of this communication is PROHIBITED. If you receive this communication in error, please call (949) 724-7062 immediately.
+
+From: Irvine Police Department
+
+12/06/2022
+
+Subject: None
+
+Web
+
+Dear Mr. Maass,
+
+This email is in reference to your request under the California Public Records Act (Government Code
+Section 6250 et seq.). Due to the scope of your request, additional time is required to search for an
+collect the data.
+
+Under the California Public Records Act (Government Code Section 6253(c) et seq.), an extension of
+an additional 14 days is appropriate under these circumstances.
+
+Based on the initial 10 day response period and the additional 14 day extension period, our office
+will contact you on or before December 26, 2022 regarding the disposition of the requested records.
+
+Thank you,
+
+Kailene Loza | Lead Record Specialist
+City of Irvine l Police Department
+1 Civic Center Plaza
+City of Irvine, CA 92606
+P. 949.724.7492 | F. 949.724-7077
+kloza@cityofirvine.org
+
+This transmission is intended for the use of the individuals or entity to which it is addressed and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient, or the employee responsible for delivering the message to the recipient, you are hereby notified that any dissemination, distribution or copying of this communication is PROHIBITED. If you receive this communication in error, please call (949) 724-7062 immediately.
+
+From: Muckrock Staff
+
+12/21/2022
+
+From: Irvine Police Department
+
+12/21/2022
+
+Subject: RE: California Public Records Act Request: Automated License Plate Readers (Irvine Police Department)
+
+Email
+
+Dear Mr. Maass,
+
+Our previous extension states we will respond on or before December 26, 2022. Due to the scope of the request we are still working on preparing the response.
+
+Sincerely,
+
+Julie Koger | Lead Record Specialist
+City of Irvine l Police Department
+1 Civic Center Plaza
+City of Irvine, CA 92606
+P. 949.724.7493 | F. 949.724-7077
+jkoger@cityofirvine.org<mailto:jkogerl@cityofirvine.org>
+[Description: cid:image001.png@01CFC78A.42BA3EB0]
+This transmission is intended for the use of the individuals or entity to which it is addressed and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient, or the employee responsible for delivering the message to the recipient, you are hereby notified that any dissemination, distribution or copying of this communication is PROHIBITED. If you receive this communication in error, please call (949) 724-7062 immediately.
+
+
+image001
+
+ Download
+
+From: Muckrock Staff
+
+01/06/2023
+
+From: Irvine Police Department
+
+01/07/2023
+
+Subject: None
+
+Web
+
+Dear Mr. Maass,
+
+This email is in reference to your request under the California Public Records Act (Government Code
+Section 6250 et seq.). Due to the scope of your request, additional time is required to search for an
+collect the data.
+
+Under the California Public Records Act (Government Code Section 6253(c) et seq.), an extension of
+an additional 14 days is appropriate under these circumstances.
+
+Based on the initial 10 day response period and the additional 14 day extension period, our office
+will contact you on or before January 23, 2023 regarding the disposition of the requested records.
+
+Thank you,
+
+Kailene Loza | Lead Record Specialist
+City of Irvine l Police Department
+1 Civic Center Plaza
+City of Irvine, CA 92606
+P. 949.724.7492 | F. 949.724-7077
+kloza@cityofirvine.org
+
+This transmission is intended for the use of the individuals or entity to which it is addressed and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient, or the employee responsible for delivering the message to the recipient, you are hereby notified that any dissemination, distribution or copying of this communication is PROHIBITED. If you receive this communication in error, please call (949) 724-7062 immediately.
+
+From: Irvine Police Department
+
+01/08/2023
+
+Subject: RE: California Public Records Act Request: Automated License Plate Readers (Irvine Police Department)
+
+Email
+
+Our extension states we will respond on or before January 23, 2023. Due to the scope of the request we are still working on preparing the response.
+
+Sincerely,
+
+Julie Koger | Lead Record Specialist
+City of Irvine l Police Department
+1 Civic Center Plaza
+City of Irvine, CA 92606
+P. 949.724.7493 | F. 949.724-7077
+jkoger@cityofirvine.org<mailto:jkogerl@cityofirvine.org>
+[Description: cid:image001.png@01CFC78A.42BA3EB0]
+This transmission is intended for the use of the individuals or entity to which it is addressed and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient, or the employee responsible for delivering the message to the recipient, you are hereby notified that any dissemination, distribution or copying of this communication is PROHIBITED. If you receive this communication in error, please call (949) 724-7062 immediately.
+
+
+image001
+
+ Download
+
+From: Muckrock Staff
+
+01/23/2023
+
+From: Irvine Police Department
+
+01/23/2023
+
+Subject: RE: California Public Records Act Request: Automated License Plate Readers (Irvine Police Department)
+
+Email
+
+Dear Mr. Maass,
+
+This email responds to your request under the California Public Records Act (Government Code § 6250 et seq.) Attached are responsive records.
+
+If you have questions, please feel free to contact me.
+
+Sincerely,
+
+Julie Koger | Lead Record Specialist
+City of Irvine l Police Department
+1 Civic Center Plaza
+City of Irvine, CA 92606
+P. 949.724.7493 | F. 949.724-7077
+jkoger@cityofirvine.org<mailto:jkogerl@cityofirvine.org>
+[Description: cid:image001.png@01CFC78A.42BA3EB0]
+This transmission is intended for the use of the individuals or entity to which it is addressed and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient, or the employee responsible for delivering the message to the recipient, you are hereby notified that any dissemination, distribution or copying of this communication is PROHIBITED. If you receive this communication in error, please call (949) 724-7062 immediately.
+
+
+LPR3
+
+ View  Embed  Download
+
+LPR2
+
+ View  Embed  Download
+
+LPRpdf
+
+ View  Embed  Download
+
+image001
+
+ Download
+
+From: Irvine Police Department
+
+01/23/2023
+
+Subject: None
+
+Web
+
+Dear Mr. Maass,
+
+This email responds to your request under the California Public Records Act (Government Code § 6250 et seq.) Attached are responsive records.
+
+If you have questions, please feel free to contact me.
+
+Sincerely,
+
+Julie Koger | Lead Record Specialist
+City of Irvine l Police Department
+1 Civic Center Plaza
+City of Irvine, CA 92606
+P. 949.724.7493 | F. 949.724-7077
+jkoger@cityofirvine.org
+
+This transmission is intended for the use of the individuals or entity to which it is addressed and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient, or the employee responsible for delivering the message to the recipient, you are hereby notified that any dissemination, distribution or copying of this communication is PROHIBITED. If you receive this communication in error, please call (949) 724-7062 immediately.
+
+LPR2.pdf
+
+ View  Embed  Download
+
+LPRpdf.pdf
+
+ View  Embed  Download
+
+LPR3.pdf
+
+ View  Embed  Download
+
+From: Dave Maass
+
+01/23/2023
+
+Subject: RE: California Public Records Act Request: Automated License Plate Readers (Irvine Police Department)
+
+Email
+
+Hi,
+
+Thanks so much for your help with this request! I really appreciate it.
+
+Sincerely,
+Dave Maass
+
+
+For the Record
+
+Keep up on new releases, projects and reporting with MuckRock's weekly newsletter
+
+Subscribe with your email address
+Subscribe
+
+By subscribing, you agree to MuckRock's Terms of Service and Privacy Policy.
+
+Together, we hold power to account and shine a light on government transparency
+
+Your donation fuels vital tools such as MuckRock Requests, FOIA Machine, DocumentCloud and oTranscribe that promote civic engagement.
+
+To donate via Apple Pay, please visit our dedicated GiveButter page.
+Or mailed to:
+MuckRock Foundation
+263 Huntington Ave
+Boston, MA 02115
+
+You can always find our most current financial statements at MuckRock’s financial transparency page.
+
+If you’d like to support our work with a legacy, a gift of stocks or crypto currency, contact marcia@muckrock.com.
+
+MuckRock is a non-profit collaborative news site that gives you the tools to keep our government transparent and accountable.
+
+Make a Donation
+
+MuckRock is a 501(c)(3) organization.
+
+Our tax identification number is 81-1485228.
+
+Donations are tax-deductible.
+
+© 2010–2026 MuckRock
+
+SECTIONS
+News
+Projects
+Requests
+Agencies
+Jurisdictions
+Newsletter
+ABOUT
+About Us
+Staff
+FAQ
+API
+Editorial Policy
+Privacy Policy
+Terms of Service
+Financials
+FEEDS
+Latest Reporting
+Latest Questions
+Recently Filed Requests
+Recently Completed Requests
