@@ -1,0 +1,678 @@
+Skip to main content
+A project of the Electronic Frontier Foundation
+HOME MAP SEARCH THE DATA DATA LIBRARY GLOSSARY ABOUT DONATE
+
+Documenting Police Tech in Our Communities
+with Open Source Research
+
+Enter a city, county, state, law enforcement agency or vendor in the United States, or leave blank to search the whole country:
+
+
+INCLUDE THE FOLLOWING TECHNOLOGIES:
+ Select/Deselect All
+ Automated License Plate Readers
+ Body-worn Cameras
+ Camera Registry
+ Cell-site Simulator
+ Drones
+ Face Recognition
+ Fusion Center
+ Gunshot Detection
+ Predictive Policing
+ Real-Time Crime Center
+ Third-party Investigative Platforms
+ Video Analytics
+Showing data for: Irvine, CA
+Displaying all 70 entries
+Download this dataset
+AGENCY ▼	CITY ▼	COUNTY ▼	STATE ▼	TECHNOLOGY ▼	VENDOR ▼
+University of California Irvine Police Department	Irvine	Orange County	CA	Body-worn Cameras	
+The University of California, Irvine Police Department began using body-worn cameras in 2019.
+
+Links:
+Social media (University of California, Irvine Police Department Facebook, Body-worn camera announcement)
+Policy (University of Irvine Police Department Policy Manual)
+Social media (University of California, Irvine Police Department Facebook)
+
+more info
+
+Irvine Police Department	Irvine	Orange County	CA	Real-Time Crime Center	
+The Irvine Police Department received funding from California's Organized Retail Theft Prevention Grant Program in 2023 for a Real Time Crime Center.
+
+Links:
+Government information (California Board of State and Community Corrections)
+https://web.archive.org/web/20240326192314/https://www.bscc.ca.gov/organized-retail-theft-grant-program/
+
+more info
+
+University of California Irvine Police Department	Irvine	Orange County	CA	Automated License Plate Readers	
+The University of California Irvine Police Department uses automated license plate readers.
+
+Links:
+University information (University of California, Irvine Police Department)
+
+more info
+
+Irvine Police Department	Irvine	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The Irvine Police Department uses Motorola Solutions (formerly Vigilant Solutions) automated license plate readers.
+
+Links:
+Public records (Irvine Police Department)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Irvine Police Department	Irvine	Orange County	CA	Drones	DJI
+The Irvine Police Department operates a Drone as First Responder (DFR) program.
+
+Links:
+News article (The Orange County Register)
+Academic report (Center for the Study of the Drone at Bard College)
+Annual report (City of Irvine)
+
+more info
+
+Irvine Police Department	Irvine	Orange County	CA	Camera Registry	Motorola Solutions
+The Irvine Police Department maintains a voluntary registry of private and personal surveillance cameras through Motorola Solutions' CityProtect platform.
+
+Links:
+Vendor information (CityProtect)
+
+more info
+
+Brea Police Department	Brea	Orange County	CA	Drones	
+The Brea Police Department launched a drone-as-first responder program in 2024.
+
+Links:
+Social media (Brea Police Department)
+Policy (Brea Police Department)
+Government information (Brea Police Department)
+
+more info
+
+Brea Police Department	Brea	Orange County	CA	Real-Time Crime Center	
+The Brea Police Department received approval to build an Integrated Crime Center in 2024.
+
+Links:
+Government information (Brea Police Department)
+Government budget/purchasing (Board of State and Community Corrections)
+
+more info
+
+Orange County Sheriff's Department	Santa Ana	Orange County	CA	Cell-site Simulator	
+The Orange County Sheriff's Department uses a cell-site simulator.
+
+Links:
+Policy (Orange County Sheriff)
+
+more info
+
+Orange County Sheriff’s Department	Santa Ana	Orange County	CA	Camera Registry	Axon
+The Orange County Sheriff’s Department uses Axon's Fusus camera registry.
+
+Links:
+News article (Sierra Sun Times)
+
+more info
+
+Newport Beach Police Department	Newport Beach	Orange County	CA	Camera Registry	Axon
+The Newport Beach Police Department uses Axon's Fusus camera registry.
+
+Links:
+News article (Newport Beach Independent)
+
+more info
+
+Buena Park Police Department	Buena Park	Orange County	CA	Third-party Investigative Platforms	SoundThinking
+The Buena Park Police Department uses SoundThinking's CrimeTracer investigative platform.
+
+Links:
+Government information (Buena Park)
+
+more info
+
+Buena Park Police Department	Buena Park	Orange County	CA	Third-party Investigative Platforms	LexisNexis
+The Buena Park Police Department uses LexisNexis' Accurint investigative platform.
+
+Links:
+Government information (Buena Park)
+
+more info
+
+Anaheim Police Department	Anaheim	Orange County	CA	Camera Registry	Axon
+The Anaheim Police Department began maintaining a community camera registry in 2025.
+
+Links:
+Government information (Anaheim Police Department)
+
+more info
+
+Seal Beach Police Department	Seal Beach	Orange County	CA	Third-party Investigative Platforms	SoundThinking
+The Seal Beach Police Department uses SoundThinking's CrimeTracer investigative platform.
+
+Links:
+Vendor information (SoundThinking)
+
+more info
+
+Orange County Sheriff's Department	Santa Ana	Orange County	CA	Third-party Investigative Platforms	SoundThinking
+The Orange County Sheriff's Office has used Coplink X, which has been renamed CrimeTracer.
+
+Links:
+Vendor information (SoundThinking)
+
+more info
+
+Cypress Police Department	Cypress	Orange County	CA	Third-party Investigative Platforms	SoundThinking
+The Cypress Police Department has endorsed CopLinkx, which has since been renamed CrimeTracer.
+
+Links:
+Vendor information (SoundThinking)
+
+more info
+
+Anaheim Police Department	Anaheim	Orange County	CA	Third-party Investigative Platforms	SoundThinking
+The Anaheim Police Department uses SoundThinking's CrimeTracer investigative platform (formerly known as CoplinkX).
+
+Links:
+Vendor information (SoundThinking)
+
+more info
+
+Santa Ana Police Department	Santa Ana	Orange County	CA	Third-party Investigative Platforms	LexisNexis Risk Solutions
+The Santa Ana Police Department uses the LexisNexis Accurint for Law Enforcement investigative platform.
+
+Links:
+Vendor information (LexisNexis)
+
+more info
+
+Buena Park Police Department	Buena Park	Orange County	CA	Body-worn Cameras	
+The Buena Park Police Department acquired approximately 70 body-worn cameras purchased by the Buena Park City Council.
+
+Links:
+News article (The Orange County Register)
+News article (Orange County Register)
+
+more info
+
+Orange Police Department	Orange	Orange County	CA	Face Recognition	
+The Orange Police Department uses an automated facial recognition (AFR) system.
+
+Links:
+Government information (Orange Police Department)
+Policy (Orange Police Department)
+
+more info
+
+Stanton Public Safety Services Department	Stanton	Orange County	CA	Automated License Plate Readers	Flock Safety
+The City of Stanton leased eight Flock Safety automated license plate readers in 2020. The cameras placed at Beach Boulevard and Katella Avenue.
+
+Links:
+Meeting documents (Stanton City Council)
+
+more info
+
+Lake Forest Police Department	Lake Forest	Orange County	CA	Automated License Plate Readers	Flock Safety
+The Lake Forest Police Department purchased 10 Flock Safety automated license plate readers in 2020.
+
+Links:
+Government budget/purchasing (City of Lake Forest)
+Meeting documents (Lake Forest Police Department)
+
+more info
+
+Anaheim Police Department	Anaheim	Orange County	CA	Face Recognition	Veritone
+The Anaheim Police Department began testing Veritone face recognition technology in 2018 and was formally approved to use the technology in 2020.
+
+Links:
+News article (GovTech)
+Vendor information (Veritone)
+News article (Voice of OC)
+
+more info
+
+Garden Grove Police Department	Garden Grove	Orange County	CA	Body-worn Cameras	WatchGuard
+The Garden Grove Police Department purchased WatchGuard body-worn cameras in 2018.
+
+Links:
+Press release (WatchGuard)
+
+more info
+
+California State University Fullerton Police Department	Fullerton	Orange County	CA	Body-worn Cameras	Axon
+The California State University Fullerton Police Department purchased 140 Axon body-worn cameras in 2014 for $650,300.
+
+Links:
+Government information (California State University Fullerton Police Department)
+News article (Daily Titan)
+
+more info
+
+Westminster Police Department	Westminster	Orange County	CA	Body-worn Cameras	Axon
+The Westminster Police Department equipped all of its patrol officers and detectives with Axon body-worn cameras in 2019.
+
+Links:
+News article (Behind the Badge)
+
+more info
+
+Huntington Beach Police Department	Huntington Beach	Orange County	CA	Camera Registry	
+The Huntington Beach Police Department maintains a voluntary registry of private and personal surveillance cameras.
+
+Links:
+Government information (City of Huntington Beach)
+
+more info
+
+Huntington Beach Police Department	Huntington Beach	Orange County	CA	Body-worn Cameras	Axon
+The Huntington Beach Police Department spent $19,200 on body-worn cameras in 2017.
+
+Links:
+Government information (City of Huntington Beach government website)
+Social media (Facebook)
+
+more info
+
+Orange County Intelligence Assessment Center	Santa Ana	Orange County	CA	Fusion Center	
+The Orange County Intelligence Assessment Center is one of 79 fusion centers in the United States. Operated by local and state law enforcement in partnership with the U.S. Department of Homeland Security, a fusion center serves as a command center for gathering, analyzing and disseminating intelligence and other public safety information.
+
+Links:
+Government information (U.S. Department of Homeland Security)
+Nonprofit report (Electronic Frontier Foundation)
+Government information (Orange County Intelligence Assessment Center)
+
+more info
+
+La Palma Police Department	La Palma	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The La Palma Police Department uses Motorola Solutions (formerly Vigilant Solutions) automated license plate readers.
+
+Links:
+Public records (La Palma Police Department)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Orange Police Department	Orange	Orange County	CA	Automated License Plate Readers	Flock Safety
+The Orange Police Department operates automated license plate readers. The agency entered an agreement in 2024 to lease 43 Flock Safety automated license plate readers and 13 video cameras for two years, costing the city just over $410,000.
+
+Links:
+News article (Los Angeles Times)
+Government budget/purchasing (Board of State and Community Corrections)
+Policy (Orange Police Department)
+
+more info
+
+California State University Fullerton Police Department	Fullerton	Orange County	CA	Automated License Plate Readers	
+The CSU Fullerton Police Department operates automated license plate readers.
+
+Links:
+Social media (CSU Fullerton Police Department's Facebook page)
+Policy (California State University Fullerton Police Department)
+
+more info
+
+La Habra Police Department	La Habra	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The La Habra Police Department collected more than 8,000,000 vehicle scans in 2022 using automated license plate readers.
+
+Links:
+Public records (La Habra Police Department)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Cypress Police Department	Cypress	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The Cypress Police Department uses automated license plate readers.
+
+Links:
+Public records (Cypress Police Department)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Garden Grove Police Department	Garden Grove	Orange County	CA	Automated License Plate Readers	Flock Safety, Motorola Solutions
+The Garden Grove Police Department uses Flock Safety and Motorola Solutions automated license plate reader technology.
+
+Links:
+Public records (Garden Grove Police Department)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Laguna Beach Police Department	Laguna Beach	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The Laguna Beach Police Department collected more than 20,000,000 vehicle scans in 2022 using automated license plate readers.
+
+Links:
+Public records (Laguna Beach Police Department)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Orange County Sheriff’s Department	Santa Ana	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The Orange County Sheriff's Office collected more than 471,000 vehicle scans in 2022 using automated license plate readers.
+
+Links:
+Public records (Orange County Sheriff's Office)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Buena Park Police Department	Buena Park	Orange County	CA	Automated License Plate Readers	Flock Safety
+As of April 2024, the Buena Park Police Department operates eight Flock Safety automated license plate readers. The agency stores ALPR data for 30 days.
+
+Links:
+Vendor information (Flock Safety)
+News article (The News & Observer)
+News article (The News & Observer)
+
+more info
+
+Fullerton Police Department	Fullerton	Orange County	CA	Automated License Plate Readers	Flock Safety, Motorola Solutions
+The Fullerton Police Department uses Flock Safety and Motorola Solutions automated license plate reader technology.
+
+Links:
+Public records (Fullerton Police Department)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Tustin Police Department	Tustin	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The Tustin Police Department collected more than 3,000,000 vehicle scans in 2022 using automated license plate readers.
+
+Links:
+Public records (Tustin Police Department)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Seal Beach Police Department	Seal Beach	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The Seal Beach Police Department collected more than 19,000,000 vehicle scans in 2022 using automated license plate readers.
+
+Links:
+Public records (Seal Beach Police Department)
+Public records (MuckRock)
+Audit (California State Auditor)
+
+more info
+
+Newport Beach Police Department	Newport Beach	Orange County	CA	Automated License Plate Readers	Flock Safety
+The Newport Beach Police Department operates automated license plate readers. The agency received approval for a $1.4 million, five-year contract with Flock Safety for 69 automated license plate readers in 2024.
+
+Links:
+News article (Newport Beach Independent)
+Policy (Newport Beach Police Department)
+
+more info
+
+Anaheim Police Department	Anaheim	Orange County	CA	Cell-site Simulator	Tactical Support Equipment
+The Anaheim Police Department purchased a cell-site simulator from Tactical Support Equipment in 2020. Previously, APD used CSSs from Harris Corporation, Digital Receiver Technologies, and KeyW, which is now Jacobs Technology.
+
+Links:
+Government information (Anaheim City Council minutes)
+News article (Vocativ)
+
+more info
+
+Orange Police Department	Orange	Orange County	CA	Drones	DJI
+The Orange Police Department operated eight DJI drones as of 2024.
+
+Links:
+Annual report (Orange Police Department)
+Annual report (Orange Police Department)
+Academic report (Center for the Study of the Drone at Bard College)
+
+more info
+
+Laguna Beach Police Department	Laguna Beach	Orange County	CA	Drones	DJI
+The Laguna Beach Police Department operated six DJI drones as of 2022.
+
+Links:
+Annual report (City of Laguna Beach)
+Academic report (Center for the Study of the Drone at Bard College)
+
+more info
+
+Huntington Beach Police Department	Huntington Beach	Orange County	CA	Drones	
+The Huntington Beach Police Department launched a drone as first responder program in 2025.
+
+Links:
+News article (Orange Coast Magazine)
+Annual report (City of Huntington Beach)
+Academic report (Center for the Study of the Drone at Bard College)
+
+more info
+
+Fullerton Police Department	Fullerton	Orange County	CA	Drones	DJI
+The Fullerton Police Department operated drones as of 2024.
+
+Links:
+Government information (Fullerton Police Department)
+Academic report (Center for the Study of the Drone at Bard College)
+
+more info
+
+Buena Park Police Department	Buena Park	Orange County	CA	Drones	DJI
+The Buena Park Police Department operated eight DJI drones as of 2023.
+
+Links:
+Annual report (Buena Park Police Department)
+Academic report (Center for the Study of the Drone at Bard College)
+
+more info
+
+Anaheim Police Department	Anaheim	Orange County	CA	Drones	DJI
+The Anaheim Police Department operates drones as of 2023.
+
+Links:
+Annual report (Anaheim Police Department)
+Annual report (Anaheim Police Department)
+Academic report (Center for the Study of the Drone at Bard College)
+
+more info
+
+Westminster Police Department	Westminster	Orange County	CA	Camera Registry	Motorola Solutions
+The Westminster Police Department maintains a voluntary registry of private and personal surveillance cameras through Motorola Solutions' CityProtect platform.
+
+Links:
+Vendor information (CityProtect)
+
+more info
+
+Placentia Police Department	Placentia	Orange County	CA	Body-worn Cameras	Axon
+The Placentia Police Department used body-worn cameras as of May 2022.
+
+Links:
+News article (Associated Press)
+Policy (City of Placentia)
+
+more info
+
+Seal Beach Police Department	Seal Beach	Orange County	CA	Body-worn Cameras	Axon
+The Seal Beach Police Department purchased 50 body worn cameras from Axon in 2020.
+
+Links:
+News article (Sun Newspapers)
+
+more info
+
+Anaheim Police Department	Anaheim	Orange County	CA	Body-worn Cameras	Axon
+The Anaheim Police Department provides body-worn cameras "to both uniformed and non-uniformed personnel for use while on-duty," according to the agency's policy manual.
+
+Links:
+Policy (Anaheim Police Department Policy Manual)
+Social media (Anaheim Police Department Facebook)
+Press release (City of Anaheim Website)
+
+more info
+
+Laguna Beach Police Department	Laguna Beach	Orange County	CA	Body-worn Cameras	Motorola Solutions
+The Laguna Beach Police Department was authorized to purchase $20,000 worth of body-worn camera replacements from Motorola in August of 2021.
+
+Links:
+Government budget/purchasing (Laguna Beach City Council)
+News article (Stu News Laguna)
+Social media (Laguna Beach Police Employees' Association)
+
+more info
+
+Orange Police Department	Orange	Orange County	CA	Body-worn Cameras	Axon
+The Orange Police Department entered into a 5-year contract with Axon for body-worn cameras, in-car cameras, and related services for $1.6 million in 2020.
+
+Links:
+Government budget/purchasing (Orange City Council)
+Government information (Orange Police Department)
+Social media (Orange Police Department Facebook)
+
+more info
+
+Santa Ana Police Department	Santa Ana	Orange County	CA	Face Recognition	LACRIS
+The Santa Ana Police Department has access to the Los Angeles County Regional Identification System (LACRIS) face recognition database.
+
+Links:
+Public records (LACRIS)
+Policy (LACRIS)
+
+more info
+
+Huntington Beach Police Department	Huntington Beach	Orange County	CA	Face Recognition	LACRIS
+The Huntington Beach Police Department has access to the Los Angeles County Regional Identification System (LACRIS) face recognition database.
+
+Links:
+Public records (LACRIS)
+Policy (LACRIS)
+
+more info
+
+Orange County District Attorney's Office	Santa Ana	Orange County	CA	Face Recognition	LACRIS
+The Orange County District Attorney's Office has access to the Los Angeles County Regional Identification System (LACRIS) face recognition database.
+
+Links:
+Public records (LACRIS)
+Policy (LACRIS)
+
+more info
+
+La Habra Police Department	La Habra	Orange County	CA	Body-worn Cameras	Axon
+The La Habra Police Depertment began using Axon body-worn cameras in 2017.
+
+Links:
+News article (Behind the Badge)
+
+more info
+
+Westminster Police Department	Westminster	Orange County	CA	Automated License Plate Readers	Flock Safety
+As of April 2024, the Westminster Police Department operates nine Flock Safety automated license plate readers. The agency stores ALPR data for 30 days.
+
+Links:
+Vendor information (Flock Safety)
+News article (The News & Observer)
+News article (The News & Observer)
+
+more info
+
+Placentia Police Department	Placentia	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The Placentia Police Department operates automated license plate readers.
+
+Links:
+Policy (Placentia Police Department)
+Meeting documents (City of Placentia)
+
+more info
+
+Los Alamitos Police Department	Los Alamitos	Orange County	CA	Automated License Plate Readers	Flock Safety, Vigilant Solutions
+The Los Alamitos City Council approved a one-year pilot program to lease 12 automated license plate readers from Flock Safety in June 2021, with installation scheduled to begin in February 2022 at various intersections in the city. Previously, the Los Alamitos Police Department contracted with Vigilant Solutins for automated license plate readers.
+
+Links:
+Government information (CIty of Los Alamintos)
+Audit (California State Auditor)
+
+more info
+
+Huntington Beach Police Department	Huntington Beach	Orange County	CA	Automated License Plate Readers	Flock Safety, Motorola Solutions
+The Huntington Beach Police Department usees Flock Safety and Motorola Solutions (formerly Vigilant Solutions) automated license plate readers).
+
+Links:
+Public records (Huntington Beach Police Department)
+Audit (California State Auditor)
+Government budget/purchasing (7/12/1905)
+
+more info
+
+Fountain Valley Police Department	Fountain Valley	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The Fountain Valley Police Department uses Motorola Volutions (formerly Vigilant Solutions) automated license plate readers.
+
+Links:
+Public records (Fountain Valley Police Department)
+Audit (California State Auditor)
+
+more info
+
+Costa Mesa Police Department	Costa Mesa	Orange County	CA	Automated License Plate Readers	Flock Safety
+As of April 2024, the Costa Mesa Police Department operates 30 Flock Safety automated license plate readers. The agency stores ALPR data for 365 days.
+
+Links:
+Vendor information (Flock Safety)
+News article (The News & Observer)
+News article (The News & Observer)
+
+more info
+
+Brea Police Department	Brea	Orange County	CA	Automated License Plate Readers	Motorola Solutions
+The Brea Police Department installed Motorola Solutions automated license plate readers at the major roads in and out of town in 2024.
+
+Links:
+Policy (Brea Police Department)
+Government information (Brea Police Department)
+Government information (Brea Police Depaartment)
+
+more info
+
+Anaheim Police Department	Anaheim	Orange County	CA	Automated License Plate Readers	Vigilant Solutions, Flock Safety
+The Anaheim Police Department operates automated license plate readers.
+
+Links:
+Policy (Anaheim Police Department)
+Public records (Anaheim Police Department)
+Meeting documents (Anaheim City Council)
+
+more info
+
+Santa Ana Police Department	Santa Ana	Orange County	CA	Body-worn Cameras	Axon
+The Santa Ana Police Department obtained body-worn cameras in 2017.
+
+Links:
+News article (The Orange County Register)
+News article (Voice of Orange County)
+News article (Orange County Register)
+
+more info
+
+Brea Police Department	Brea	Orange County	CA	Predictive Policing	Geolitica
+As of 2016, the Brea Police Department spent $9,000 each year on PredPol (now Geolitica) predictive policing software.
+
+Links:
+Meeting documents (Brea County)
+Meeting documents (Meeting agenda/minutes/budgeting document)
+
+more info
+
+Atlas of Surveillance is a project of the Electronic Frontier Foundation and the Reynolds School of Journalism at the University of Nevada, Reno
+
+About
+Methodology
+Collaborate
+Glossary
+Explore the Map
+Search the Data
+Data Library
+Privacy Policy
+CC-by

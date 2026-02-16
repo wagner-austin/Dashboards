@@ -1,0 +1,60 @@
+{
+  "https://www.muckrock.com/foi/list/?q=irvine+flock&status=done": {
+    "file": "muckrock_irvine_flock.txt",
+    "chars": 1640,
+    "status": "ok",
+    "requests": []
+  },
+  "https://www.muckrock.com/foi/list/?q=irvine+alpr&status=done": {
+    "file": "muckrock_irvine_alpr.txt",
+    "chars": 2153,
+    "status": "ok",
+    "requests": []
+  },
+  "https://www.muckrock.com/foi/list/?q=irvine+police+ice&status=done": {
+    "file": "muckrock_irvine_ice.txt",
+    "chars": 1640,
+    "status": "ok",
+    "requests": []
+  },
+  "https://www.muckrock.com/foi/list/?q=irvine+police+immigration&status=done": {
+    "file": "muckrock_irvine_immigration.txt",
+    "chars": 1990,
+    "status": "ok",
+    "requests": []
+  },
+  "https://www.muckrock.com/foi/list/?q=orange+county+flock&status=done": {
+    "file": "muckrock_oc_flock.txt",
+    "chars": 2166,
+    "status": "ok",
+    "requests": []
+  },
+  "https://www.muckrock.com/foi/list/?q=orange+county+sheriff+ice&status=done": {
+    "file": "muckrock_oc_sheriff_ice.txt",
+    "chars": 2133,
+    "status": "ok",
+    "requests": []
+  },
+  "https://www.muckrock.com/foi/list/?q=flock+ice+california&status=done": {
+    "file": "muckrock_flock_ice_ca.txt",
+    "chars": 1640,
+    "status": "ok",
+    "requests": []
+  },
+  "https://www.muckrock.com/foi/list/?q=flock+network+audit&status=done": {
+    "file": "muckrock_flock_audit.txt",
+    "chars": 5785,
+    "status": "ok",
+    "requests": []
+  },
+  "https://atlasofsurveillance.org/search?utf8=%E2%9C%93&location=Irvine%2C+CA": {
+    "file": "eff_atlas_irvine.txt",
+    "chars": 23523,
+    "status": "ok"
+  },
+  "https://oaklandprivacy.org/?s=flock": {
+    "file": "oakland_privacy_flock.txt",
+    "chars": 6761,
+    "status": "ok"
+  }
+}
