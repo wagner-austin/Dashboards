@@ -1,0 +1,143 @@
+About
+Our Work
+News
+Our Issues
+Know Your Rights
+Take Action
+Donate
+NEWS & COMMENTARY
+Records Reveal ICE Agents Run Thousands of License Plate Queries a Month in Massive Location Database
+
+June 5, 2019
+
+Share this page
+Share on Facebook
+Post
+Copy
+
+Vasudha Talla
+
+Immigrants' Rights Director
+
+Matt Cagle
+
+Senior Staff Attorney
+
+On February 27, 2018, at 4:54 p.m., a U.S. Immigration and Customs Enforcement agent typed a query into a database of driver locations collected by automated license plate readers across the United States. The license plate database returned nine results. As an explanation for why ICE was searching the database, the agent gave the following reason:
+
+"ADMINISTRATIVE SPOUSE OF TARGET"
+
+This was just one of thousands of queries that ICE ran that month.
+
+Across seven months in 2018, ICE queried a nationwide license plate location database operated by Vigilant Solutions thousands of times each month, according to search logs obtained through a Freedom of Information Act lawsuit filed by the ACLU of Northern California. Using the explanations provided by ICE’s lawyers about what query types constituted searches, it appears that ICE performed over 30,000 such queries of this database per month. Because of agency redactions, we cannot assess whether these queries represent individual, unique searches or whether some are multiple attempts to find information about the same license plate.
+
+The ACLU recently revealed that over 9,000 ICE agents have access to billions of license plate scans in the Vigilant database, collected by law enforcement agencies and private companies operating automated license plate readers (ALPR). Location information over time reveals, as the U.S. Supreme Court said last year, an individual’s “familial, political, professional, religious, and sexual associations.”
+
+In the logs, the reasons ICE provides for its searches of license plate location information raise serious concerns that the agency is using the database without meaningful safeguards and oversight. ICE’s use of the driver location database not only fuels its destructive deportation machine but also threatens the civil liberties and privacy of all drivers. Congress must investigate this program before it spins further out of control.
+
+The Search Logs Offer a Window into How ICE Carries Out Immigration Enforcement
+
+The search logs display the range of reasons ICE searches for immigrants and references ICE operations:
+
+"ADMINISTRATIVE VISA OVERSTAY"- February 23, 2018
+
+"ADMINISTRATIVE DACA DENIED"- April 29, 2019
+
+"ADMINISTRATIVE POSSIBLE ILLEGAL ALIEN LIVING IN IMPERIAL VALLEY WITHOUT LEGAL DOCUMENTS" – June 7, 2018
+
+"INVESTIGATIONS WORKSITE INVESTIGATION, ID OF POSSIBLE WORKSITES"– August 28, 2018
+
+"ADMINISTRATIVE CRIM REINSTATE-OPERATION KEEP SAFE" - February 8, 2018
+
+ICE carried out an operation called “Keep Safe” in Northern California in February 2018, and operations with similar names later in the year elsewhere. Oakland Mayor Libby Schaaf warned residents about the imminent arrests just before the Northern California raids began, which resulted in over 200 people being arrested.
+
+The logs also suggest that ICE uses the database to conduct surveillance of family members—with no apparent protections to ensure that U.S. citizens are not ensnared—in order to arrest and deport immigrants.
+
+"CRIMINAL INVESTIGATION OF OWNER'S SON FOR REMOVAL PURPOSES" – May 30, 2018
+
+"INVESTIGATIONS VEHICLE OF FAMILY MEMBER OF VISA OVERSTAY SUBJECT" – June 11, 2018
+
+"INVESTIGATIONS SEARCHING FOR PARENT OF POSSIBLE USC [US CITIZEN] CLAIM"– August 6, 2018
+
+Government Surveillance in Action
+
+The search logs contain reference to ICE using location information to reconstruct an individual’s private life through tracking their vehicle’s movements, assembling a detailed portrait of their daily habits and activity.
+
+"INVESTIGATIONS ATTEMPTING TO LOCATE TRAVEL PATTERNS AND MOST LIKELY LOCATIONS OF INTEREST WHERE TO LOCATE SUBJECT"– February 12, 2018
+
+"ADMINISTRATIVE TO SEE WHEN SUBJECT DEPARTS AND RETURNS TO RESIDENCE"– February 8, 2018
+
+"INVESTIGATIONS RUNNING PLATE TO DETERMINE BUSINESS LOCATIONS WHERE OWNER IS GOING TO" – March 27, 2018
+
+"INVESTIGATIONS PATTERN OF LIFE"– June 18, 2018
+
+In addition to being invasive, some searches appear to be wholly inappropriate. ICE justifies searches with vague, arbitrary descriptions that provide little detail on purposes of the searches.
+
+"INVESTIGATIONS INVESTIGATION INTO NEFARIOUS ACTIVITY"– February 12, 2018
+
+"CRIMINAL FINDING A BAD GUY"– February 12, 2018
+
+"CRIMINAL DOES SHAGGY LIVE IN THE BRONX?"– April 20, 2018
+
+"CRIMINAL NBA FINALS"– May 10, 2018
+
+ICE may also be tracking drivers on behalf of other federal and local agencies. The search logs also reference Interpol Red or Blue Notices, which foreign countries use to seek the arrest of government critics and individuals who haven’t been convicted of a crime.
+
+"INVESTIGATIONS HELPING THE FBI WITH THINGS THEY SHOULD HAVE DONE ON THEIR OWN"– February 21, 2018
+
+"ADMINISTRATIVE INTERPOL RED NOTICE INVESTIGATION" – June 15, 2018
+
+"INVESTIGATIONS HELP OTHER LEA [LAW ENFORCEMENT AGENCY]"– May 30, 2018
+
+"CRIMINAL ASSIST CUMBERLAND COUNTY SHERIFF'S OFFICE"– July 17, 2018
+
+The search logs also show ICE frequently using a feature called “Locate Analysis” that may attempt to predict where drivers will be in the future. According to Vigilant materials from 2015, “Locate Analysis” provides a “probabilistic assessment of where to most likely locate a suspect vehicle,” including the locations most recently visited and whether the vehicle is more likely to be seen at day or night.
+
+And on one occasion, ICE used a feature called “Stakeout Browsing Mobile.” According to Vigilant materials and training video, this allows a user to search for license plates scanned in the vicinity of a particular location. A “Stakeout Browsing Mobile” query by ICE in March 2018 yielded almost 10,000 results, potentially subjecting drivers to dragnet surveillance.
+
+Congress Must Curtail ICE’s Mass Surveillance
+
+The search logs are a chilling illustration of how a government agency can exploit powerful surveillance technology. The ACLU has long-warned that mass license plate surveillance can easily lead to institutional abuse. Agencies can cloak unconstitutional targeting of people by race or political speech by providing vague justifications for using surveillance.
+
+After the ACLU Foundation of Northern California first released FOIA documents on ICE’s use of this database, ICE issued a statement that it receives notifications if an agent uses the service in an “unauthorized manner,” and that any personnel using the database in an “inappropriate manner” could be disciplined. Repeated instances of seemingly inappropriate justifications across several months of search logs raise serious questions as to whether ICE is scrutinizing or disciplining agents who misuse the database.
+
+Congress and the Department of Homeland Security’s Inspector General should investigate ICE’s sweeping use of this database and act to protect the privacy of all drivers. At a minimum, ICE should not have access to a warrantless location tracking database for civil immigration enforcement. And ICE should not conduct searches for criminal investigations without a probable cause warrant. In addition, Congress should press DHS to release its legal interpretation policy and guidance regarding the Supreme Court's recent Carpenter case, which placed constitutional limits on government demands for location information.
+
+Finally, Congress must not reward ICE and other agencies that target immigrants with more resources for surveillance that tears families apart or creates a virtual border wall.
+
+ICE’s days with this surveillance database should be numbered.
+
+The search logs are available here. Please note that the ACLU redacted certain cells that contained personally-identifying information by placing a black box in that cell.
+
+Vasudha Talla is a staff attorney at the ACLU of Northern California.
+
+Matt Cagle is a Technology and Civil Liberties Attorney at the ACLU of Northern California.
+
+Related Issues
+Immigrants' Rights
+Privacy and Technology
+Racial Justice
+View All Issues
+STAY INFORMED
+
+Sign up to be the first to hear about how to take action.
+
+By completing this form, I agree to receive occasional emails per the terms of the ACLU’s privacy statement.
+
+All fields are required unless labeled optional.
+Email *
+Required
+ZIP code *
+Required
+Sign Up
+Need Legal Help?
+Financial Reports
+Annual Report
+Contact Us
+Search
+
+© 2026 ACLU of Northern California
+
+User Agreement
+Privacy Statement
+Fraud Alert

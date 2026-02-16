@@ -1,0 +1,422 @@
+{
+  "dhs_pia_039_jan2018.pdf": {
+    "mentions_thomson_reuters": false,
+    "mentions_west_publishing": false,
+    "mentions_vigilant": false,
+    "mentions_nvls": false,
+    "mentions_clear": true,
+    "contract_amounts": [],
+    "key_quotes": [
+      {
+        "term": "license plate",
+        "quote": "for the  Acquisition and Use of License Plate Reader (LPR)  Data from a Commercial Service"
+      },
+      {
+        "term": "commercial",
+        "quote": "Acquisition and Use of License Plate Reader (LPR)  Data from a Commercial Service  DHS/ICE/PIA-039(a)"
+      },
+      {
+        "term": "commercial",
+        "quote": "The Department of Homeland Security , U.S. Immigration and Customs  Enforcement (ICE) has procured query -based access to a vendor -owned commercial  License Plate Reader (LPR) data service that stores recorded vehicle license plate data from"
+      },
+      {
+        "term": "license plate",
+        "quote": "Enforcement (ICE) has procured query -based access to a vendor -owned commercial  License Plate Reader (LPR) data service that stores recorded vehicle license plate data from  cameras equipped with license plate reader technology. ICE uses  LPR data from this"
+      },
+      {
+        "term": "license plate",
+        "quote": "License Plate Reader (LPR) data service that stores recorded vehicle license plate data from  cameras equipped with license plate reader technology. ICE uses  LPR data from this  service in support of its criminal and administrative  law enforcement missions. In March"
+      },
+      {
+        "term": "commercial",
+        "quote": "2015, ICE published a Privacy Impact Assessment (PIA) announcing ICE\u2019s intention to  procure access to a commercial LPR database and describing the controls ICE would put  in place to ensure the agency complies with privacy a nd civil liberties requirements when"
+      },
+      {
+        "term": "vendor",
+        "quote": "procured and describes the privacy and civil liberties protections that have been  implemented by the agency and the vendor.  Overview"
+      },
+      {
+        "term": "commercial",
+        "quote": "In March 2015, ICE published the DHS/ICE/PIA\u2013039 \u201cAcquisition and Use of  License Plate Reader Data from a Commercial Service\u201d PIA,1 announcing its intention to  procure access to a vendor -owned commercial LPR data service to be used by the ICE"
+      },
+      {
+        "term": "commercial",
+        "quote": "License Plate Reader Data from a Commercial Service\u201d PIA,1 announcing its intention to  procure access to a vendor -owned commercial LPR data service to be used by the ICE  Offices of Enforcement and Removal Operations (ERO) and Homeland Security"
+      },
+      {
+        "term": "contract",
+        "quote": "Investigations (HSI). That PIA described the protective provisions that would be included  in any executed contract to ensure privacy and civil liberties requirements would be  implemented. ICE has now entered into a contract with a vendor to provide ERO and HSI"
+      },
+      {
+        "term": "contract",
+        "quote": "in any executed contract to ensure privacy and civil liberties requirements would be  implemented. ICE has now entered into a contract with a vendor to provide ERO and HSI  with access to a commercial LPR database operated by a commercial partner . Under the"
+      },
+      {
+        "term": "commercial",
+        "quote": "implemented. ICE has now entered into a contract with a vendor to provide ERO and HSI  with access to a commercial LPR database operated by a commercial partner . Under the  terms of the contract, the primary vendor has clear accountability and oversight"
+      },
+      {
+        "term": "contract",
+        "quote": "with access to a commercial LPR database operated by a commercial partner . Under the  terms of the contract, the primary vendor has clear accountability and oversight  responsibility to ensure the commercial partner  adheres to the requirements  discussed"
+      },
+      {
+        "term": "commercial",
+        "quote": "terms of the contract, the primary vendor has clear accountability and oversight  responsibility to ensure the commercial partner  adheres to the requirements  discussed  throughout this PIA Update. (Hereinafter, the vendor and commercial partner are referred"
+      },
+      {
+        "term": "commercial",
+        "quote": "responsibility to ensure the commercial partner  adheres to the requirements  discussed  throughout this PIA Update. (Hereinafter, the vendor and commercial partner are referred  to collectively as \u201cvendor\u201d)."
+      },
+      {
+        "term": "vendor",
+        "quote": "throughout this PIA Update. (Hereinafter, the vendor and commercial partner are referred  to collectively as \u201cvendor\u201d).  LPR data assists ICE in developing and validating criminal and administrative law"
+      },
+      {
+        "term": "commercial",
+        "quote": "LPR database to develop and corroborate other investigative information, including  information from government systems. The commercial LPR database stores vehicle"
+      },
+      {
+        "term": "commercial",
+        "quote": "1 See DHS/ICE/PIA-039 Acquisition and Use of License Plate Reader Data from a Commercial Service,  available at www.dhs.gov/privacy."
+      },
+      {
+        "term": "license plate",
+        "quote": "2 The principles and practices ICE adheres to when accessing and using LPR data are described in agency  guidance titled, \u201cPrivacy Guidance: Agency Access to and Use of License Plate Reader  Data and  Technology\u201d, issued December 2017, from the ICE Office of Information Governance & Privacy."
+      },
+      {
+        "term": "license plate",
+        "quote": "license plate numbers that are recorded from cameras equipped with LPR technology. The  commercial database receives data from a variety of governmental and private sources,"
+      },
+      {
+        "term": "commercial",
+        "quote": "license plate numbers that are recorded from cameras equipped with LPR technology. The  commercial database receives data from a variety of governmental and private sources,  including:"
+      },
+      {
+        "term": "vendor",
+        "quote": "\u2022 Law enforcement agencies.3  The vendor compiles LPR records  from at least 25  states and 24 of the top 30 most  populous metropolitan statistical areas 4 within the United States, to the extent that"
+      },
+      {
+        "term": "contract",
+        "quote": "collection of LPR data is authorized by law in those jurisdictions. ICE does not contribute  data to the commerci al LPR database.  Further, under the terms of the Contract, t he  commercial LPR vendor is not permitted to use any of ICE\u2019s query data, including"
+      },
+      {
+        "term": "commercial",
+        "quote": "data to the commerci al LPR database.  Further, under the terms of the Contract, t he  commercial LPR vendor is not permitted to use any of ICE\u2019s query data, including  photographs, for its own purposes or share information from ICE queries with other"
+      },
+      {
+        "term": "commercial",
+        "quote": "ICE users (ERO officers, HSI agents, and certain support staff) 5 access the  commercial LPR database via a web-based system . Before gaining access to the LPR  service, ICE users must obtain a unique username and password and choose security"
+      },
+      {
+        "term": "commercial",
+        "quote": "Querying the Database  All ICE queries of the commercial LPR database are based on known license plate  numbers. The data returned is  limited to matches of that license plate number within a"
+      },
+      {
+        "term": "license plate",
+        "quote": "All ICE queries of the commercial LPR database are based on known license plate  numbers. The data returned is  limited to matches of that license plate number within a"
+      },
+      {
+        "term": "commercial",
+        "quote": "3 For a discussion of the information that the LPR database stores, see DHS/ICE/PIA-039 Acquisition and  Use of License Plate Reader Data from a Commercial Service, available at www.dhs.gov/privacy.  4 A metropolitan statistical area is defined in the contract as: \u201ca geographical region with a relatively high"
+      },
+      {
+        "term": "contract",
+        "quote": "Use of License Plate Reader Data from a Commercial Service, available at www.dhs.gov/privacy.  4 A metropolitan statistical area is defined in the contract as: \u201ca geographical region with a relatively high  population density at its core and close economic ties throughout the area as defined by the Office of"
+      },
+      {
+        "term": "commercial",
+        "quote": "(e.g., criminal investigation).  To query the commercial LPR data service, authorized ICE users must provide a  license plate number, the state of the license plate, a reason code, and the time frame that"
+      },
+      {
+        "term": "license plate",
+        "quote": "To query the commercial LPR data service, authorized ICE users must provide a  license plate number, the state of the license plate, a reason code, and the time frame that  ICE wants to query ( e.g., previous 90 days). ICE users must also complete a mandatory"
+      },
+      {
+        "term": "commercial",
+        "quote": "indicate whether they are entering data for themselves or for another individual. Because  not all HSI agents or ERO officers have access to the commercial LPR data service, those  without access may request that an ICE user query the database on their behalf.  If so, the"
+      },
+      {
+        "term": "license plate",
+        "quote": "An example of a query may be as follows:  \u2022 License plate number: ABC123;  \u2022 State: Pennsylvania;"
+      },
+      {
+        "term": "commercial",
+        "quote": "\u2022 Time frame: Previous 60 days.  Based on the above query, t he commercial LPR service searches its records for license  plate related information (i.e., photographs and location information) on the queried license"
+      },
+      {
+        "term": "commercial",
+        "quote": "plate related information (i.e., photographs and location information) on the queried license  plate number over the past 60 days. No other law enforcement agency or commercial entity  will have access to ICE query information. Furthermore, the vendor only retains ICE query"
+      },
+      {
+        "term": "vendor",
+        "quote": "plate number over the past 60 days. No other law enforcement agency or commercial entity  will have access to ICE query information. Furthermore, the vendor only retains ICE query  information (including any PII) to maintain the audit log."
+      },
+      {
+        "term": "commercial",
+        "quote": "information (including any PII) to maintain the audit log.  The commercial LPR service\u2019s mobile application  also allows ICE users to query  the database using photographs to auto-populate the license plate and state of registration"
+      },
+      {
+        "term": "license plate",
+        "quote": "The commercial LPR service\u2019s mobile application  also allows ICE users to query  the database using photographs to auto-populate the license plate and state of registration"
+      },
+      {
+        "term": "license plate",
+        "quote": "fields. When ICE users conducting an investigation in the field encounter a vehicle for  which they need to query the LPR database, they  can take a picture of the license plate  from within the mobile app lication and submit the photograph as part of the query. The"
+      },
+      {
+        "term": "commercial",
+        "quote": "from within the mobile app lication and submit the photograph as part of the query. The  commercial LPR service then uses Optical Character Recognition technology to translate   the license plate number and the state of the license plate , and auto-populates these two"
+      },
+      {
+        "term": "license plate",
+        "quote": "commercial LPR service then uses Optical Character Recognition technology to translate   the license plate number and the state of the license plate , and auto-populates these two  fields within the query interface. ICE users still must manually enter the other required data"
+      },
+      {
+        "term": "contract",
+        "quote": "elements (e.g., reason code, timeframe) to complete the query. Pursuant to the terms of the  Contract, the vendor only retains these pictures for audit purposes, and is not permitted to  include them in its database for search purposes. Additionally, data within the mobile"
+      },
+      {
+        "term": "license plate",
+        "quote": "The search results contain two photographs of the vehicle, the nearest address of   where the LPR captured the license plate, Global Positioning System ( GPS) coordinates,  web-based interactive maps, the nearest intersection, date and time t he license plate w as"
+      },
+      {
+        "term": "license plate",
+        "quote": "where the LPR captured the license plate, Global Positioning System ( GPS) coordinates,  web-based interactive maps, the nearest intersection, date and time t he license plate w as  captured, and source of the record. The vendor reports 100% accuracy on query matches"
+      },
+      {
+        "term": "vendor",
+        "quote": "web-based interactive maps, the nearest intersection, date and time t he license plate w as  captured, and source of the record. The vendor reports 100% accuracy on query matches  to indexed data. For example, a search for plate XYZ -1234 will always return records"
+      },
+      {
+        "term": "vendor",
+        "quote": "to users. Further, ICE personnel are alerted to these possibilities in training and have the  ability to notify the vendor of any mistakes they discover during searching. Finally, ICE  personnel are trained to verify any data they receive during the course of investigations"
+      },
+      {
+        "term": "commercial",
+        "quote": "Alert lists  The Contract for the commercial LPR service requires the vendor to provide an  \u201calert list\u201d feature that enables users to save license plate numbers to be automatically"
+      },
+      {
+        "term": "license plate",
+        "quote": "The Contract for the commercial LPR service requires the vendor to provide an  \u201calert list\u201d feature that enables users to save license plate numbers to be automatically  queried against new records as they are loaded into the vendor\u2019s LPR data service.7 Users"
+      },
+      {
+        "term": "vendor",
+        "quote": "\u201calert list\u201d feature that enables users to save license plate numbers to be automatically  queried against new records as they are loaded into the vendor\u2019s LPR data service.7 Users  may add a license plate to an alert list in one of two ways: 1) A user may batch upload up"
+      },
+      {
+        "term": "license plate",
+        "quote": "queried against new records as they are loaded into the vendor\u2019s LPR data service.7 Users  may add a license plate to an alert list in one of two ways: 1) A user may batch upload up  to 2,500 license plates to a single alert list 8 and 2) a user may assign an alert to a single"
+      }
+    ]
+  },
+  "dhs_pia_039_june2021.pdf": {
+    "mentions_thomson_reuters": false,
+    "mentions_west_publishing": false,
+    "mentions_vigilant": false,
+    "mentions_nvls": false,
+    "mentions_clear": true,
+    "contract_amounts": [],
+    "key_quotes": [
+      {
+        "term": "license plate",
+        "quote": "for the  Acquisition and Use of License Plate Reader  (LPR) Data from a Commercial Service"
+      },
+      {
+        "term": "commercial",
+        "quote": "Acquisition and Use of License Plate Reader  (LPR) Data from a Commercial Service  DHS Reference No. DHS/ICE/PIA-039(b)"
+      },
+      {
+        "term": "commercial",
+        "quote": "In 2017, the U.S. Immigration and Customs Enforcement (ICE) procured query -based  access to a vendor -owned commercial License Plate Reader (LPR) data service that stores  recorded vehicle license plate data from cameras equipped with LPR technology. ICE uses LPR"
+      },
+      {
+        "term": "license plate",
+        "quote": "access to a vendor -owned commercial License Plate Reader (LPR) data service that stores  recorded vehicle license plate data from cameras equipped with LPR technology. ICE uses LPR  data from thi s service in support of administrative and criminal law enforcement missions. In"
+      },
+      {
+        "term": "commercial",
+        "quote": "March 2015, ICE published a Privacy Impact Assessment (PIA) announcing the intention to  procure access to a commercial LPR database. In December 2017, ICE updated this PIA  indicating that ICE had entered into a contract with a vendor to provide ICE Offices of"
+      },
+      {
+        "term": "contract",
+        "quote": "procure access to a commercial LPR database. In December 2017, ICE updated this PIA  indicating that ICE had entered into a contract with a vendor to provide ICE Offices of  Enforcement and Removal Operations (ERO) and Homeland Security Investigations (HSI)"
+      },
+      {
+        "term": "commercial",
+        "quote": "Enforcement and Removal Operations (ERO) and Homeland Security Investigations (HSI)  access to an LPR database operated by a commercial partner.   Both the 2015 and 2017 PIAs describe privacy and civil liberties compliance through ICE-"
+      },
+      {
+        "term": "license plate",
+        "quote": "public safety and national security missions.  In March 2015, ICE published the DHS/ICE/PIA-039 Acquisition and Use of License Plate  Reader Data from a Commercial Service PIA, 1 which documented ICE\u2019s intention to procure"
+      },
+      {
+        "term": "commercial",
+        "quote": "In March 2015, ICE published the DHS/ICE/PIA-039 Acquisition and Use of License Plate  Reader Data from a Commercial Service PIA, 1 which documented ICE\u2019s intention to procure   access to a vendor-owned commercial LPR data service to be used by ERO and HSI (hereinafter,"
+      },
+      {
+        "term": "commercial",
+        "quote": "Reader Data from a Commercial Service PIA, 1 which documented ICE\u2019s intention to procure   access to a vendor-owned commercial LPR data service to be used by ERO and HSI (hereinafter,  the vendor and commercial LPR partner are referred to collectively as \u201cvendor\u201d). The PIA also"
+      },
+      {
+        "term": "commercial",
+        "quote": "access to a vendor-owned commercial LPR data service to be used by ERO and HSI (hereinafter,  the vendor and commercial LPR partner are referred to collectively as \u201cvendor\u201d). The PIA also  described the privacy protections that would be included in any executed contract t o ensure"
+      },
+      {
+        "term": "contract",
+        "quote": "the vendor and commercial LPR partner are referred to collectively as \u201cvendor\u201d). The PIA also  described the privacy protections that would be included in any executed contract t o ensure   implementation of privacy and civil liberties requirements. These provisions included DHS and"
+      },
+      {
+        "term": "commercial",
+        "quote": "1 See U.S. DEPARTMENT OF HOMELAND SECURITY, U.S IMMIGRATION AND CUSTOMS ENFORCEMENT, PRIVACY  IMPACT ASSESSMENT FOR THE ACQUISITION AND USE OF LICENSE PLATE READER (LPR) DATA FROM A COMMERCIAL  SERVICE, DHS/ICE/PIA-039 (2015), available at https://www.dhs.gov/privacy-documents-ice."
+      },
+      {
+        "term": "vendor",
+        "quote": "identifying a vendor that could meet all the privacy requirements outlined in the document. ICE  did not enter into a contract with such a vendor until 2017."
+      },
+      {
+        "term": "contract",
+        "quote": "identifying a vendor that could meet all the privacy requirements outlined in the document. ICE  did not enter into a contract with such a vendor until 2017.  In December 2017, ICE published a PIA update 3 indicating that ICE had entered into a"
+      },
+      {
+        "term": "commercial",
+        "quote": "In December 2017, ICE published a PIA update 3 indicating that ICE had entered into a  contract with a vendor to obtain access to a commercial LPR database, owned and operated by  the vendor. The PIA update further explained ICE\u2019s operational use of the service and described"
+      },
+      {
+        "term": "vendor",
+        "quote": "contract with a vendor to obtain access to a commercial LPR database, owned and operated by  the vendor. The PIA update further explained ICE\u2019s operational use of the service and described  the agency and vendor implementation of privacy and civil liberties protections."
+      },
+      {
+        "term": "vendor",
+        "quote": "the vendor. The PIA update further explained ICE\u2019s operational use of the service and described  the agency and vendor implementation of privacy and civil liberties protections.   The commercial LPR database stores vehicle license plate numbers that are recorded from"
+      },
+      {
+        "term": "commercial",
+        "quote": "the agency and vendor implementation of privacy and civil liberties protections.   The commercial LPR database stores vehicle license plate numbers that are recorded from  cameras equipped with LPR technology. There are two primary sources of LPR data: (1) data"
+      },
+      {
+        "term": "commercial",
+        "quote": "cameras equipped with LPR technology. There are two primary sources of LPR data: (1) data  from law enforcement owned LPR cameras; and (2) data from commercial LPR cameras. When  ICE receives a query response of the LPR database, the returned data contains a photo of the"
+      },
+      {
+        "term": "license plate",
+        "quote": "ICE receives a query response of the LPR database, the returned data contains a photo of the  license plate on a vehicle, the location of the scan, and the time of the scan from the specific  camera. A variety of government and private sources provide data to the commercial database.4"
+      },
+      {
+        "term": "commercial",
+        "quote": "license plate on a vehicle, the location of the scan, and the time of the scan from the specific  camera. A variety of government and private sources provide data to the commercial database.4   ICE does not contribute data to the commercial LPR database in furtherance of any other"
+      },
+      {
+        "term": "commercial",
+        "quote": "camera. A variety of government and private sources provide data to the commercial database.4   ICE does not contribute data to the commercial LPR database in furtherance of any other  agency\u2019s use. Additionally, the commercial LPR vendor is not permitted to use any of ICE\u2019s"
+      },
+      {
+        "term": "commercial",
+        "quote": "ICE does not contribute data to the commercial LPR database in furtherance of any other  agency\u2019s use. Additionally, the commercial LPR vendor is not permitted to use any of ICE\u2019s  query data, including photographs, for its own purposes. The LPR vendor is not permitted to"
+      },
+      {
+        "term": "vendor",
+        "quote": "agency\u2019s use. Additionally, the commercial LPR vendor is not permitted to use any of ICE\u2019s  query data, including photographs, for its own purposes. The LPR vendor is not permitted to  share ICE query information with third parties without ICE\u2019s express permission, including other"
+      },
+      {
+        "term": "commercial",
+        "quote": "3 See U.S. DEPARTMENT OF HOMELAND SECURITY, U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT, PRIVACY  IMPACT ASSESSMENT FOR THE ACQUISITION AND USE OF LICENSE PLATE READER DATA FROM A COMMERCIAL  SERVICE, DHS/ICE/PIA-039(a) (2017), available at https://www.dhs.gov/privacy-documents-ice."
+      },
+      {
+        "term": "commercial",
+        "quote": "This PIA is being updated to inform the public of ICE\u2019s evolving uses of the following of  commercial enhanced LPR functionalities: (i) the geographic query; (ii) the partia l plate query;  and (iii) updates to the mobile application. These enhancements expand how ICE will use LPR"
+      },
+      {
+        "term": "license plate",
+        "quote": "mission.  ICE\u2019s 2017 PIA indicated that all queries must include a full license plate number. With  this update, ICE is outlining how authorized ICE personnel 7 can now conduct a query within a"
+      },
+      {
+        "term": "license plate",
+        "quote": "this update, ICE is outlining how authorized ICE personnel 7 can now conduct a query within a  specified geographic area or by entering a partial license plate. Authorized ICE personnel may  also use a mobile application to conduct queries, which permits use of a phone scanning feature."
+      },
+      {
+        "term": "contract",
+        "quote": "also use a mobile application to conduct queries, which permits use of a phone scanning feature.  ICE is working to update its R ules of Behavior and  contractual terms to reflect these changes.  All other LPR functionality identified in prior ICE PIAs remains the same (e.g., audit trails,"
+      },
+      {
+        "term": "vendor",
+        "quote": "criminal investigations, includes use of multiple geographic points that form a polygon or  polygonal coordinates. A map interface within the vendor\u2019s LPR database allows the user to draw  polygonal shapes to define a region of interest. The geographic query allows authorized HSI"
+      },
+      {
+        "term": "license plate",
+        "quote": "polygonal shapes to define a region of interest. The geographic query allows authorized HSI  users to look at a specific location and see which license plates were scanned during the specified"
+      },
+      {
+        "term": "license plate",
+        "quote": "ACCESS TO AND USE OF LICENSE PLATE READER DATA AND TECHNOLOGY (2017), which discusses ICE\u2019s adherence  to the First Amendment protections of the right to peaceably assemble, available at"
+      },
+      {
+        "term": "vendor",
+        "quote": "7 Only certain ICE personnel will be permitted to use the enhanced LPR functionality. In this PIA\u2019s Use and Access  sections, ICE describes how the vendor can limit access based on the use r\u2019s need to know, thereby ensuring that  only authorized personnel can conduct a geographic or partial plate query."
+      },
+      {
+        "term": "vendor",
+        "quote": "between two cities on a given date, authorized personnel can draw a polygon between these   locations and the vendor LPR database would return any vehicles traveling within this area during  the specified timeframe. If authorized HSI personnel know additional information about the"
+      },
+      {
+        "term": "license plate",
+        "quote": "frame.   Because HSI does not need a license plate number to run this query, the query results  could contain multiple license plates. When the LPR database sends results back to HSI,"
+      },
+      {
+        "term": "license plate",
+        "quote": "Because HSI does not need a license plate number to run this query, the query results  could contain multiple license plates. When the LPR database sends results back to HSI,   personnel can filter the results in multiple ways (e.g., make, model, year). The geographic query"
+      },
+      {
+        "term": "license plate",
+        "quote": "is extremely useful in situations where HSI may know certain aspects of the subject vehicle (e.g.,  make, model, color, year, or state of registration), but does not k now the license plate number.  By using the geographic query feature, HSI can cull the results to identify the vehicle(s) of"
+      },
+      {
+        "term": "vendor",
+        "quote": "interest. As documented in prior LPR PIAs, HSI does not collect or retain any information on  vehicles that are unrelated to an HSI investigation. The vendor maintains records that allow HSI  to conduct audits of its activity, such as query terms, user ID, and records responsive to queries."
+      },
+      {
+        "term": "license plate",
+        "quote": "Geographic queries also include a \u201ccommon plate\u201d query feature. A common plate query  allows author ized HSI personnel to analyze multiple locations to see if any license plate(s)   appeared in the selected locations. This query produces a report containing a list of plates that"
+      },
+      {
+        "term": "vendor",
+        "quote": "model, year). Further, HSI personnel also must enter a specific, limited timeframe for the query,  and the vendor\u2019s data service will return vehicle information for any plates present in the selected  locations during the specified time period. HSI will not take enforcement action based solely on"
+      },
+      {
+        "term": "vendor",
+        "quote": "locations during the specified time period. HSI will not take enforcement action based solely on  information provided from the vendor\u2019s LPR data service. LPR data will be supplemented with  other investigative information before enforcement action is taken."
+      },
+      {
+        "term": "license plate",
+        "quote": "example, if HSI investigators know that certain locations are routinely involved in criminal   activity, then they can draw polygons around those areas to receive a list of license plates scanned  during the specified date and time. If the query results indicate that a certain vehicle was present"
+      },
+      {
+        "term": "license plate",
+        "quote": "Partial Plate Query  A partial plate query is used when the full license plate character sequence is inaccessible  or unclear. Through a partial plate query, authorized ICE personnel could obtain matches from the"
+      },
+      {
+        "term": "clear",
+        "quote": "A partial plate query is used when the full license plate character sequence is inaccessible  or unclear. Through a partial plate query, authorized ICE personnel could obtain matches from the  vendor\u2019s LPR database even with incomplete license plate character strings. The full license plate"
+      },
+      {
+        "term": "vendor",
+        "quote": "or unclear. Through a partial plate query, authorized ICE personnel could obtain matches from the  vendor\u2019s LPR database even with incomplete license plate character strings. The full license plate  number might be inaccessible to ICE personnel for several reasons (e.g., snow on plate, angle of"
+      },
+      {
+        "term": "license plate",
+        "quote": "information to perform a query.9 An example partial plate query term is \u201cAB*123\u201d if a user does  not know that \u201cABC123\u201d is the full license plate number. Query results will return all vehicles  matching the characters entered by the user. If a user knows only one or two of a given plate\u2019s"
+      },
+      {
+        "term": "commercial",
+        "quote": "query results.   9 To query the commercial LPR data service, authorized ICE personnel must provide: a license plate number, the  state of the license plate, a reason code, and the timeframe that ICE wants to query ( e.g., previous 90 days), specific"
+      },
+      {
+        "term": "license plate",
+        "quote": "9 To query the commercial LPR data service, authorized ICE personnel must provide: a license plate number, the  state of the license plate, a reason code, and the timeframe that ICE wants to query ( e.g., previous 90 days), specific  case reference, subject identifying information, query for self or on be half of another person-and this other person\u2019s"
+      },
+      {
+        "term": "license plate",
+        "quote": "Mobile Application Functionality with Phone Scan Feature   In 2017, ICE explored the use of a mobile application to conduct license plate q ueries.  Since that time, ICE has not used this mobile application but instead has used a mobile -friendly"
+      }
+    ]
+  }
+}

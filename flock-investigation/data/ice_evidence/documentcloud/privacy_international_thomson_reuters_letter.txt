@@ -1,0 +1,580 @@
+ Company Limited by Guarantee (England & Wales): 4354366  Registered Charity (England & Wales): 1147471  
+  62 Britton Street  London EC1M 5UY United Kingdom Phone +44 (0)20 3422 4321 www.privacyinternational.org    James C. Smith President and Chief Executive Officer Thomson Reuters Corporation 3 Times Square New York, NY 10036 USA   Cc by email: david.crundwell@thomsonreuters.com; david.girardin@thomsonreuters.com  21 June 2018   Dear James C. Smith  We are writing to express concerns and seek urgent clarifications regarding your companies’ contractual relationships with United States immigration authorities.   As you will be aware, the US government's “zero tolerance” immigration policy has recently received widespread and international condemnation. In the past 2 months, over 2000 children have been forcibly separated from their parents. The American Academy of Pediatrics has said1 that such “sweeping cruelty” causes “irreparable harm” which can “carry lifelong consequences for children”; the United Nations High Commissioner for Human Rights has called the policy “unconscionable.”2  In addition to the policy's clear moral failure, it is also in violation of the US's international commitments. The US is a signatory to the International Covenant on Civil and Political Rights, which protects families from unnecessary interference by the government. Separating families at the US border is cruel, arbitrary, disproportionate, and a clear contravention of the Article 17 rights of thousands of children and parents.   President Trump’s Executive Order signed on 20 June 2018 will not end the “zero tolerance” approach; indeed, it remains unclear if families will continue to be separated or whether those already separated will be reunited, and it still foresees that families will be detained in detention centres indefinitely, including in military facilities.3  We are concerned that a number of the products and services sold by Thomson Reuters Corporation are being used by US immigration enforcement authorities.   Federal procurement documents show that US Immigration and Customs Enforcement (ICE) has contracts4:                                                   1 https://www.aap.org/en-us/about-the-aap/aap-press-room/Pages/StatementOpposingSeparationofChildrenandParents.aspx 2 https://news.un.org/en/story/2018/06/1012382 3 https://www.nytimes.com/2018/06/20/us/politics/family-separation-executive-order.html?hp&action=click&pgtype=Homepage&clickSource=story-heading&module=b-lede-package-region&region=top-news&WT.nav=top-news 4 https://annual-report.thomsonreuters.com/downloads/annual-report-2017-thomson-reuters.pdf 
+
+
+ Company Limited by Guarantee (England & Wales): 4354366  Registered Charity (England & Wales): 1147471  
+• With Thomson Reuters Special Services for a contract worth over $6.7 million in February 2018 to provide its Detention Compliance and Removal office with “subscription data services” (attached). Other documentation shows5 that the contract is for a “continuous monitoring and alert system to track 500,000 identities per month” which is “able to securely process and return aliens’ information and addresses using the following types of specified data: FBI numbers; State Identification Numbers; real time jail booking data; credit history; insurance claims; phone number account information; wireless phone accounts; wire transfer data; driver’s license information; vehicle registration information; property information; pay day loan information;  public court records; incarceration data; employment address data; Individual Taxpayer Identification Number (ITIN) data; and employer records.” • With West Publishing Corporation, a Thomson Reuters subsidiary, providing it with access to the Consolidated Lead Evaluation and Reporting (CLEAR) system as part of a contract value worth over $20 million (attached). The CLEAR system allows ICE access6 to a “vast collection of public and proprietary records” including phone records, consumer and credit bureau data, healthcare provider content, utilities data, DMV records, World-Check listing, business data, data from social networks and chatrooms, and “live access to more than 7 billion license plate detections”7.  • With West Publishing Corporation providing its Detention Compliance and Removal office with “access to license plate reader database” as part of a contract value worth over $6 million in December 2017 (attached).  We are concerned about the provision of these services and products to an agency enforcing cruel, arbitrary, and disproportionate measures in violation of the US’ international commitments.   We are writing therefore to ask:   • Whether any of the company’s or company subsidiaries’ products or services are being or have been used by US authorities to identity families for immigration enforcement purposes, including parents potentially separated from their children  • What human rights impact assessments of the company’s or company subsidiaries’ products or services have been completed, if any • Whether Thomson Reuters Corporation will commit to not providing products or services to US immigration agencies which may be used to enforce such cruel, arbitrary, and disproportionate measures • Whether Thomson Reuters Corporation will commit to not providing products or services to agencies worldwide which may be used to enforce cruel, arbitrary, and disproportionate measures  Thomson Reuters Corporation through its public commitment to corporate responsibility and inclusion, and foundation have shown a commitment to do business in ways that respect, protect, and benefit its customers, employees, communities, suppliers and environment. We therefore look forward to your quick response.  Yours sincerely    Edin Omanovic  Privacy International                                                  5 https://www.fbo.gov/index?s=opportunity&mode=form&id=71911de5fa638ed0a391f01f520c0e2a&tab=core&_cview=1 6 https://www.thomsonreuters.com/content/dam/openweb/documents/pdf/legal/fact-sheet/clear-brochure.pdf 7 https://legalsolutions.thomsonreuters.com/law-products/solutions/clear-investigation-software/law-enforcement 
+
+20/06/2018, 14*40FPDS-NG : ICDUSER [ Award ]
+Page 1 of 3https://www.fpds.gov/common/jsp/LaunchWebPage.jsp?command=execute&requestid=88309406&version=1.5
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+Transaction Information
+Award Type:Delivery/Task Order Prepared Date:01/19/2017 09:27:27 Prepared User:TRACY.RILEY@ICE.DHS.GOV
+Award Status:Final  Last Modified Date:01/19/2017 09:36:50 Last Modified User:TRACY.RILEY@ICE.DHS.GOV
+Closed Status:No  Closed Status Date:  Closed By:
+Document Information
+Agency Procurement Identifier Modification No Trans No
+Award ID: 7012
+ HSCEMD17F00008 0 0
+Referenced IDV ID:4732 GS02F026DA
+ 0
+Reason For Modification:
+Solicitation ID:
+AgencyIdentifierMainAccountSubAccount Initiative
+Treasury Account Symbol:700540
+ Select One
+Dates Amounts
+Date Signed (mm/dd/yyyy) : 01/19/2017
+Effective Date (mm/dd/yyyy) : 01/19/2017
+Completion Date (mm/dd/yyyy) : 03/31/2021
+Est. Ultimate Completion Date (mm/dd/yyyy) : 03/31/2021
+Action Obligation: $2,395,146.85
+Base And Exercised Options Value: $5,246,890.68
+Base and All Options Value (Total Contract Value):$20,486,416.32
+Fee Paid for Use of IDV: $0.00
+Purchaser Information
+Contracting Office Agency ID:7012
+ Contracting Office Agency Name:U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT
+Contracting Office ID:70CMSD
+ Contracting Office Name:MISSION SUPPORT DALLAS
+Funding Agency ID:7012
+ Funding Agency Name:U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT
+Funding Office ID:70CDV5
+ Funding Office Name:HOMELAND SECURITY INVEST - HQ DIV 5
+Foreign Funding:
+ Not Applicable
+Contractor Information
+SAMException:
+  
+DUNS No:148508286
+Vendor Name:WEST PUBLISHING CORPORATION
+DBAN:
+Street: 610 OPPERMAN DR
+Street2:
+City: SAINT PAUL
+State: MN Zip: 551231340
+Country:UNITED STATES
+Phone:(651) 244-3819
+Fax No:(800) 704-9378
+Congressional District:MINNESOTA 02
+Business Category
+Organization Type: CORPORATE NOT TAX EXEMPT
+Number of Employees: 6085
+State of Incorporation: MN
+Country of Incorporation: USA
+Annual Revenue: $3,332,000,000
+ 
+Business Types
+Corporate Entity, Not Tax ExemptLine Of Business
+Manufacturer of GoodsRelationship With Federal Government
+All AwardsOrganization Factors
+For Profit Organization
+Contract Data
+Type of Contract:
+ Firm Fixed Price
+Inherently Governmental Functions: CT
+Multiyear Contract:
+ Select One
+Major Program:
+National Interest Action:
+ None
+Cost Or Pricing Data:
+ Select One
+Purchase Card Used As Payment Method:
+ No
+Undefinitized Action:
+ No
+Performance Based Service Acquisition: * FY 2004 and prior; 80% or more specified as performance requirement * FY 2005 and later; 50% or more specified as performance requirement
+No - Service where PBA is not used.
+
+20/06/2018, 14*40FPDS-NG : ICDUSER [ Award ]
+Page 2 of 3https://www.fpds.gov/common/jsp/LaunchWebPage.jsp?command=execute&requestid=88309406&version=1.5
+Contingency Humanitarian Peacekeeping Operation:
+Not Applicable
+Contract Financing:
+ Select One
+Cost Accounting Standards Clause:
+ Select One
+Consolidated Contract:
+ No
+Number Of Actions: 1
+Legislative Mandates Principal Place of Performance
+Clinger-Cohen Act:
+ No
+Service Contract Act:
+Not Applicable
+Walsh-Healey Act:
+ Not Applicable
+Davis Bacon Act:
+ Not Applicable
+Interagency Contracting Authority:
+Not Applicable
+Other Interagency Contracting Statutory Authority: (1000 characters)
+Principal Place Of Performance Code:StateLocationCountry
+MD USA
+Principal Place Of Performance County Name:MONTGOMERY
+Principal Place Of Performance City Name:ROCKVILLE
+Congressional District Place Of Performance:08
+Place Of Performance Zip Code(+4):20850 - 1728
+ USPS ZIP Codes
+Product Or Service Information
+Product/Service Code: D317
+ Description:IT AND TELECOM- WEB-BASED SUBSCRIPTION
+Principal NAICS Code: 519130
+ Description:INTERNET PUBLISHING AND BROADCASTING AND WEB SEARCH PORTALS
+Bundled Contract:
+ Not a bundled requirement
+DOD Acquisition Program:
+ Description:
+Country of Product or Service Origin:USA
+UNITED STATES
+Place of Manufacture:
+ Not a manufactured end product
+Domestic or Foreign Entity:
+U.S. Owned Business
+Recovered Materials/Sustainability:
+No Clauses Included and No Sustainability IncludedOMB Policy on Sustainable Acquisition
+InfoTech Commercial Item Category:
+Select One
+Claimant Program Code:
+ Description:
+Sea Transportation:
+ Select One
+GFP Provided Under This Action:
+Transaction does not use GFP
+Use Of EPA Designated Products:
+Not Required
+Description Of Requirement: (4000 characters)
+ IGF::CT::IGF CONSOLIDATED LEAD EVALUATION AND REPORTING (CLEAR) SYSTEM ACCESS/SUBSCRIPTION
+Competition Information
+Extent Competed For Referenced IDV: Full and Open Competition
+Extent Competed:
+ Full and Open Competition
+Solicitation Procedures:
+ Subject to Multiple Award Fair Opportunity
+Type Of Set Aside:
+ No set aside used.
+Evaluated Preference:
+ No Preference used
+SBIR/STTR:
+ Select One
+Fair Opportunity/Limited Sources:
+ Only One Source - Other
+Other Than Full And Open Competition:
+ Select One
+Local Area Set Aside:
+ No
+FedBizOpps:
+ Yes
+A76 Action:
+ No
+Commercial Item Acquisition Procedures:
+ Commercial Item
+Number Of Offers Received: 1
+Small Business Competitiveness Demonstration Program:
+Commercial Item Test Program:
+ No
+Preference Programs / Other Data
+Contracting Officer's Business Size Selection:
+Other than Small Business
+Subcontract Plan:
+ Select One
+Price Evaluation Percent Difference: %
+
+20/06/2018, 17*06FPDS-NG : ICDUSER [ Award ]
+Page 1 of 3https://www.fpds.gov/common/jsp/LaunchWebPage.jsp?command=execute&requestid=88318723&version=1.5
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+Transaction Information
+Award Type:Purchase Order Prepared Date:02/14/2018 11:46:44 Prepared User:MICHELLE.BRITTON@ICE.DHS.GOV
+Award Status:Final  Last Modified Date:02/28/2018 12:06:09 Last Modified User:BENJAMIN.SHIH@ICE.DHS.GOV
+Closed Status:No  Closed Status Date:  Closed By:
+Document Information
+Agency Procurement Identifier Modification No Trans No
+Award ID: 7012
+ 70CDCR18P00000048 0 0
+Referenced IDV ID:
+Reason For Modification:
+Solicitation ID:
+AgencyIdentifierMainAccountSubAccount Initiative
+Treasury Account Symbol:700540
+ Select One
+Dates Amounts
+Date Signed (mm/dd/yyyy) : 02/27/2018
+Effective Date (mm/dd/yyyy) : 02/27/2018
+Completion Date (mm/dd/yyyy) : 02/28/2019
+Est. Ultimate Completion Date (mm/dd/yyyy) : 02/28/2023
+Solicitation Date (mm/dd/yyyy) :
+Action Obligation: $1,279,008.00
+Base And Exercised Options Value: $1,279,008.00
+Base and All Options Value (Total Contract Value):$6,790,488.00
+Fee Paid for Use of IDV: $0.00
+Purchaser Information
+Contracting Office Agency ID:7012
+ Contracting Office Agency Name:U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT
+Contracting Office ID:70CDCR
+ Contracting Office Name:DETENTION COMPLIANCE AND REMOVALS
+Funding Agency ID:7012
+ Funding Agency Name:U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT
+Funding Office ID:70CCED
+ Funding Office Name:ENFORCMNTREMOVL OPNS HQ COMPLIANCE
+Foreign Funding:
+ Not Applicable
+Contractor Information
+SAMException:
+  
+DUNS No:827821757
+Vendor Name:THOMSON REUTERS SPECIAL SERVICES LLC
+DBAN:
+Cage Code:5BDA7
+Street: 1410 SPRING HILL ROAD
+Street2:
+City: MCLEAN
+State: VA Zip: 221023058
+Country:UNITED STATES
+Phone:(571) 405-3202
+Fax No:(703) 219-2500
+Congressional District:VIRGINIA 11
+Business Category
+Organization Type: OTHER
+Number of Employees: 8000
+State of Incorporation: VA
+Country of Incorporation: USA
+Annual Revenue: $300,000,000
+ 
+Relationship With Federal Government
+All AwardsOrganization Factors
+For Profit Organization
+Limited Liability Corporation
+Contract Data
+Type of Contract:
+ Firm Fixed Price
+Inherently Governmental Functions:
+ Other Functions
+Multiyear Contract:
+ Select One
+Major Program:
+National Interest Action:
+ None
+Cost Or Pricing Data:
+ Select One
+Purchase Card Used As Payment Method:
+ No
+Undefinitized Action:
+ No
+Performance Based Service Acquisition: 
+
+20/06/2018, 17*06FPDS-NG : ICDUSER [ Award ]
+Page 2 of 3https://www.fpds.gov/common/jsp/LaunchWebPage.jsp?command=execute&requestid=88318723&version=1.5
+* FY 2004 and prior; 80% or more specified as performance requirement * FY 2005 and later; 50% or more specified as performance requirement
+No - Service where PBA is not used.
+Contingency Humanitarian Peacekeeping Operation:
+Not Applicable
+Contract Financing:
+ Select One
+Cost Accounting Standards Clause:
+ Select One
+Consolidated Contract:
+ Not Consolidated
+Number Of Actions: 1
+Legislative Mandates Principal Place of Performance
+Clinger-Cohen Act:
+ No
+Labor Standards:
+ No
+Materials, Supplies, Articles, and Equip:
+Not Applicable
+Construction Wage Rate Requirements:
+No
+Additional Reporting:
+Select One or More OptionsService Contract InventoryNone of the Above
+Interagency Contracting Authority:
+Not Applicable
+Other Interagency Contracting Statutory Authority: (1000 characters)
+Principal Place Of Performance Code:StateLocationCountry
+VA USA
+Principal Place Of Performance County Name:FAIRFAX
+Principal Place Of Performance City Name:MCLEAN
+Congressional District Place Of Performance:11
+Place Of Performance Zip Code(+4):22102 - 3058
+ USPS ZIP Codes
+Product Or Service Information
+Product/Service Code: R611
+ Description:SUPPORT- ADMINISTRATIVE: CREDIT REPORTING
+Principal NAICS Code: 541511
+ Description:CUSTOM COMPUTER PROGRAMMING SERVICES
+Bundled Contract:
+ Not Bundled
+DOD Acquisition Program:
+ Description:
+Country of Product or Service Origin:USA
+UNITED STATES
+Place of Manufacture:
+ Not a manufactured end product
+Domestic or Foreign Entity:
+U.S. Owned Business
+Recovered Materials/Sustainability:
+No Clauses Included and No Sustainability IncludedOMB Policy on Sustainable Acquisition
+InfoTech Commercial Item Category:
+Select One
+Claimant Program Code:
+ Description:
+Sea Transportation:
+ Select One
+GFP Provided Under This Action:
+Transaction does not use GFP
+Use Of EPA Designated Products:
+Not Required
+Description Of Requirement: (4000 characters)
+ IGF::CT::IGF SUBSCRIPTION DATA SERVICES
+Competition Information
+Extent Competed For Referenced IDV:
+Extent Competed:
+ Not Competed
+Solicitation Procedures:
+ Only One Source
+IDV Type Of Set Aside:
+Type Of Set Aside:
+ No set aside used.
+Type Of Set Aside Source: This Action
+Evaluated Preference:
+ No Preference used
+SBIR/STTR:
+ Select One
+Fair Opportunity/Limited Sources:
+ Select One
+Other Than Full And Open Competition:
+ Only One Source-Other (FAR 6.302-1 other)
+Local Area Set Aside:
+ No
+FedBizOpps:
+ No
+A76 Action:
+ No
+Commercial Item Acquisition Procedures:
+ Commercial Item
+IDV Number of Offers:
+
+20/06/2018, 17*06FPDS-NG : ICDUSER [ Award ]
+Page 3 of 3https://www.fpds.gov/common/jsp/LaunchWebPage.jsp?command=execute&requestid=88318723&version=1.5
+Number Of Offers Received: 1 Number of Offers Source:This Action
+Small Business Competitiveness Demonstration Program:
+Simplified Procedures for Certain Commercial Items:
+No
+Preference Programs / Other Data
+Contracting Officer's Business Size Selection:
+Other than Small Business
+Subcontract Plan:
+ Plan Not Required
+Price Evaluation Percent Difference:%
+
+20/06/2018, 14*23FPDS-NG : ICDUSER [ Award ]
+Page 1 of 3https://www.fpds.gov/common/jsp/LaunchWebPage.jsp?command=execute&requestid=88309125&version=1.5
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+Transaction Information
+Award Type:Purchase Order Prepared Date:12/21/2017 19:04:49 Prepared User:WILLIAM.QUIGLEY1@DHS.GOV
+Award Status:Final  Last Modified Date:12/22/2017 16:11:30 Last Modified User:WILLIAM.QUIGLEY1@DHS.GOV
+Closed Status:No  Closed Status Date:  Closed By:
+Document Information
+Agency Procurement Identifier Modification No Trans No
+Award ID: 7012
+ 70CDCR18P00000017 0 0
+Referenced IDV ID:
+Reason For Modification:
+Solicitation ID: 70CDCR18Q00000005
+AgencyIdentifierMainAccountSubAccount Initiative
+Treasury Account Symbol:700540
+ Select One
+Dates Amounts
+Date Signed (mm/dd/yyyy) : 12/22/2017
+Effective Date (mm/dd/yyyy) : 12/22/2017
+Completion Date (mm/dd/yyyy) : 09/21/2020
+Est. Ultimate Completion Date (mm/dd/yyyy) : 09/30/2020
+Solicitation Date (mm/dd/yyyy) :
+Action Obligation: $525,000.00
+Base And Exercised Options Value: $525,000.00
+Base and All Options Value (Total Contract Value):$6,373,488.00
+Fee Paid for Use of IDV: $0.00
+Purchaser Information
+Contracting Office Agency ID:7012
+ Contracting Office Agency Name:U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT
+Contracting Office ID:70CDCR
+ Contracting Office Name:DETENTION COMPLIANCE AND REMOVALS
+Funding Agency ID:7012
+ Funding Agency Name:U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT
+Funding Office ID:70CCED
+ Funding Office Name:ENFORCMNTREMOVL OPNS HQ COMPLIANCE
+Foreign Funding:
+ Not Applicable
+Contractor Information
+SAMException:
+  
+DUNS No:148508286
+Vendor Name:WEST PUBLISHING CORPORATION
+DBAN:
+Cage Code:89101
+Street: 610 OPPERMAN DR
+Street2:
+City: EAGAN
+State: MN Zip: 551231340
+Country:UNITED STATES
+Phone:(651) 244-3819
+Fax No:(800) 704-9378
+Congressional District:MINNESOTA 02
+Business Category
+Organization Type: CORPORATE NOT TAX EXEMPT
+Number of Employees: 1508
+State of Incorporation: MN
+Country of Incorporation: USA
+Annual Revenue: $3,332,000,000
+ 
+Business Types
+Corporate Entity, Not Tax ExemptLine Of Business
+Manufacturer of GoodsRelationship With Federal Government
+All AwardsOrganization Factors
+For Profit Organization
+Foreign Owned
+Contract Data
+Type of Contract:
+ Firm Fixed Price
+Inherently Governmental Functions:
+ Closely Associated
+Multiyear Contract:
+ Select One
+Major Program:
+National Interest Action:
+ None
+Cost Or Pricing Data:
+ Select One
+Purchase Card Used As Payment Method:
+ No
+Undefinitized Action:
+ No
+
+20/06/2018, 14*23FPDS-NG : ICDUSER [ Award ]
+Page 2 of 3https://www.fpds.gov/common/jsp/LaunchWebPage.jsp?command=execute&requestid=88309125&version=1.5
+Performance Based Service Acquisition: * FY 2004 and prior; 80% or more specified as performance requirement * FY 2005 and later; 50% or more specified as performance requirement
+No - Service where PBA is not used.
+Contingency Humanitarian Peacekeeping Operation:
+Not Applicable
+Contract Financing:
+ Select One
+Cost Accounting Standards Clause:
+ Select One
+Consolidated Contract:
+ Not Consolidated
+Number Of Actions: 1
+Legislative Mandates Principal Place of Performance
+Clinger-Cohen Act:
+ No
+Labor Standards:
+ Not Applicable
+Materials, Supplies, Articles, and Equip:
+Not Applicable
+Construction Wage Rate Requirements:
+Not Applicable
+Additional Reporting:
+Select One or More OptionsService Contract InventoryNone of the Above
+Interagency Contracting Authority:
+Not Applicable
+Other Interagency Contracting Statutory Authority: (1000 characters)
+Principal Place Of Performance Code:StateLocationCountry
+DC USA
+Principal Place Of Performance County Name:DISTRICT OF COLUMBIA
+Principal Place Of Performance City Name:WASHINGTON
+Congressional District Place Of Performance:00
+Place Of Performance Zip Code(+4):20024 - 6121
+ USPS ZIP Codes
+Product Or Service Information
+Product/Service Code: D317
+ Description:IT AND TELECOM- WEB-BASED SUBSCRIPTION
+Principal NAICS Code: 519190
+ Description:ALL OTHER INFORMATION SERVICES
+Bundled Contract:
+ Not Bundled
+DOD Acquisition Program:
+ Description:
+Country of Product or Service Origin:USA
+UNITED STATES
+Place of Manufacture:
+ Not a manufactured end product
+Domestic or Foreign Entity:
+Foreign-Owned Business Incorporated in the U.S.
+Recovered Materials/Sustainability:
+No Clauses Included and No Sustainability IncludedOMB Policy on Sustainable Acquisition
+InfoTech Commercial Item Category:
+Select One
+Claimant Program Code:
+ Description:
+Sea Transportation:
+ Select One
+GFP Provided Under This Action:
+Transaction does not use GFP
+Use Of EPA Designated Products:
+Not Required
+Description Of Requirement: (4000 characters)
+ IGF::CL::IGF ACCESS TO LICENSE PLATE READER DATABASE
+Competition Information
+Extent Competed For Referenced IDV:
+Extent Competed:
+ Not Competed under SAP
+Solicitation Procedures:
+ Simplified Acquisition
+IDV Type Of Set Aside:
+Type Of Set Aside:
+ No set aside used.
+Type Of Set Aside Source: This Action
+Evaluated Preference:
+ No Preference used
+SBIR/STTR:
+ Select One
+Fair Opportunity/Limited Sources:
+ Select One
+Other Than Full And Open Competition:
+ SAP Non-Competition (FAR 13)
+Local Area Set Aside:
+ No
+FedBizOpps:
+ Yes
+A76 Action:
+ No
+Commercial Item Acquisition Procedures:
+ Commercial Item
+IDV Number of Offers:
+
+20/06/2018, 14*23FPDS-NG : ICDUSER [ Award ]
+Page 3 of 3https://www.fpds.gov/common/jsp/LaunchWebPage.jsp?command=execute&requestid=88309125&version=1.5
+Number Of Offers Received: 1 Number of Offers Source:This Action
+Small Business Competitiveness Demonstration Program:
+Simplified Procedures for Certain Commercial Items:
+Yes
+Preference Programs / Other Data
+Contracting Officer's Business Size Selection:
+Other than Small Business
+Subcontract Plan:
+ Plan Not Included - No Subcontracting Possibilities
+Price Evaluation Percent Difference:%
+
