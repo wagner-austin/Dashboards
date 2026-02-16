@@ -1,0 +1,37 @@
+{
+  "https://www.eff.org/deeplinks/2025/11/license-plate-surveillance-logs-reveal-racist-policing-against-romani-people": {
+    "file": "eff_romani_irvine.txt",
+    "chars": 18022,
+    "status": "ok"
+  },
+  "https://newuniversity.org/2025/06/12/breaking-irvine-council-member-confirms-ice-is-in-irvine/": {
+    "file": "newu_ice_irvine.txt",
+    "chars": 6232,
+    "status": "ok"
+  },
+  "https://voiceofoc.org/2025/12/orange-countys-year-on-ice/": {
+    "file": "voiceofoc_year_on_ice.txt",
+    "chars": 13885,
+    "status": "ok"
+  },
+  "https://cityofirvine.org/news-media/news-article/city-irvine-immigration-response": {
+    "file": "irvine_immigration_response.txt",
+    "chars": 6740,
+    "status": "ok"
+  },
+  "https://cityofirvine.org/immigration-enforcement-updates": {
+    "file": "irvine_enforcement_updates.txt",
+    "chars": 6635,
+    "status": "ok"
+  },
+  "https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/": {
+    "file": "calmatters_ca_police_ice.txt",
+    "chars": 11421,
+    "status": "ok"
+  },
+  "https://themarkup.org/tools/2025/04/16/law-enforcement-ice-cooperation-tracker": {
+    "file": "markup_ice_tracker.txt",
+    "chars": 4268,
+    "status": "ok"
+  }
+}

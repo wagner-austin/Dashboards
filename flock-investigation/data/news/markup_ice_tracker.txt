@@ -1,0 +1,153 @@
+Investigations and Tools
+Amazon’s Advantage
+Organ Failure
+Blacklight
+Pixel Hunt
+Citizen Browser
+Privacy
+Languages of Misinformation
+Still Loading
+Machine Learning
+Working for an Algorithm
+Search term
+About Us
+Donate
+Awards
+Have a Tip?
+Team
+Show Your Work
+Jobs
+Newsletters
+Events
+ GitHub
+ Bluesky
+ RSS Feed
+ Facebook
+ Instagram
+ X
+ Mastodon
+Skip navigation
+Menu 
+The Markup
+About Us
+Donate
+
+Challenging technology to serve the public good.
+
+Tools
+
+Here’s Every Local Police Agency Enforcing for ICE
+
+Partnerships more than doubled during the first months of Trump's current term under a program known as 287(g)
+By Mohamed Al Elew and Wendy Fry
+
+April 16, 2025 8:00 a.m. UTC
+Gabriel Hongsdusit
+Share This Article
+Copy Link
+Copied!
+ 
+Republish
+
+The Markup, now a part of CalMatters, uses investigative reporting, data analysis, and software engineering to challenge technology to serve the public good. Sign up for Klaxon, a newsletter that delivers our stories and tools directly to your inbox.
+
+U.S. Immigration and Customs Enforcement can delegate immigration enforcement duties to state and local police under a law enacted in 1996 and known as 287(g), after a section of the Immigration and Nationality Act. 
+
+During the first months of President Donald Trump’s second term, through April 15 2025, the number of participants in the program more than doubled, a Markup analysis found. The Markup found use of the program was especially prevalent in Florida, where all residents live in a county where local police will be trained under the program. This database and visuals below are automatically updated with data from ICE.
+
+↩︎ link
+
+The extent of each ICE partnership is listed above as “support type,” which refers to the fact that s​tate and local agencies can choose to participate in 287(g) under one or more of three models:
+
+The Task Force Model deputizes local officers, while patrolling the communities they are sworn to protect, to question, detain, and arrest individuals they suspect of violating civil immigration laws. Advocates have been particularly critical of this model.
+The Jail Enforcement Model deputizes officers to interrogate incarcerated suspected noncitizens with pending or actual criminal charges in order to determine their immigration status. Then deputized officers can issue a an administrative hold request from ICE to keep the person up to 48 hours after they would otherwise be released, allowing ICE officers to pick the individual up.
+Under the Warrant Service Officer Model, ICE deputizes officers to execute ICE administrative warrants within the agency’s jails or correctional facilities but not interrogate alleged noncitizens about their immigration status. 
+
+↩︎ link
+
+↩︎ link
+
+↩︎ link
+
+For information on the models, see explanation above.
+
+Your donations power our award-winning reporting and our tools. Together we can do more. Give now.
+
+Donate Now
+You just read
+
+Here’s Every Local Police Agency Enforcing for ICE
+
+From the series — Tools
+
+Share This Article
+Copy Link
+Copied!
+ 
+Republish
+Credits
+
+Mohamed Al Elew
+Journalism Engineer
+
+Wendy Fry
+Reporter
+
+Editing
+Soo Oh
+Ryan Tate
+Sisi Wei
+Illustration
+Gabriel Hongsdusit
+Engagement
+Xinyan Fu
+The Latest
+
+Blacklight
+
+Blacklight, our privacy inspector tool, now tracks X and TikTok pixels
+
+We’ve updated Blacklight, our popular privacy tool, to check for TikTok and X trackers.
+
+February 9, 2026 11:44 a.m. UTC
+
+Artificial Intelligence
+
+Mamdani to kill the NYC AI chatbot we caught telling businesses to break the law
+
+New York mayor says terminating the ‘unusable’ bot will help close a budget gap
+
+January 30, 2026 12:00 p.m. UTC
+
+Privacy
+
+‘We’re basically pushers:’ How a battle over kids on social media is unfolding in two California courtrooms
+
+Lawsuits in California federal and state court are unearthing documents embarrassing to tech companies — and may be a tipping point into federal regulation.
+
+January 30, 2026 8:30 a.m. UTC
+Return to The Markup's homepage
+
+Your contributions help us investigate how technology influences our society.
+
+Donate
+About Us
+Our Donors
+Ethics Policy
+Events
+Governance
+Jobs
+Team
+Have a Tip?
+Newsletters
+A Letter from the President
+Awards
+Privacy Policy
+Terms of Use
+ GitHub
+ Bluesky
+ RSS Feed
+ Facebook
+ Instagram
+ X
+ Mastodon

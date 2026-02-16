@@ -1,0 +1,220 @@
+Skip to main content
+EFFecting Change: Get the Flock Out of Our City on February 19
+Electronic Frontier Foundation
+About
+Issues
+Our Work
+Take Action
+Tools
+Donate
+License Plate Surveillance Logs Reveal Racist Policing Against Romani People
+BY RINDALA ALAJAJI AND DAVE MAASS
+NOVEMBER 3, 2025
+ESPAÑOL
+
+More than 80 law enforcement agencies across the United States have used language perpetuating harmful stereotypes against Romani people when searching the nationwide Flock Safety automated license plate reader (ALPR) network, according to audit logs obtained and analyzed by the Electronic Frontier Foundation. 
+
+When police run a search through the Flock Safety network, which links thousands of ALPR systems, they are prompted to leave a reason and/or case number for the search. Between June 2024 and October 2025, cops performed hundreds of searches for license plates using terms such as "roma" and "g*psy," and in many instances, without any mention of a suspected crime. Other uses include "g*psy vehicle," "g*psy group," "possible g*psy," "roma traveler" and "g*psy ruse," perpetuating systemic harm by demeaning individuals based on their race or ethnicity. 
+
+These queries were run through thousands of police departments' systems—and it appears that none of these agencies flagged the searches as inappropriate. 
+
+These searches are, by definition, racist. 
+
+Word Choices and Flock Searches 
+
+We are using the terms "Roma" and “Romani people” as umbrella terms, recognizing that they represent different but related groups. Since 2020, the U.S. federal government has officially recognized "Anti-Roma Racism" as including behaviors such as "stereotyping Roma as persons who engage in criminal behavior" and using the slur "g*psy." According to the U.S. Department of State, this language “leads to the treatment of Roma as an alleged alien group and associates them with a series of pejorative stereotypes and distorted images that represent a specific form of racism.” 
+
+Nevertheless, police officers have run hundreds of searches for license plates using the terms "roma" and "g*psy." (Unlike the police ALPR queries we’ve uncovered, we substitute an asterisk for the Y to avoid repeating this racist slur). In many cases, these terms have been used on their own, with no mention of crime. In other cases, the terms have been used in contexts like "g*psy scam" and "roma burglary," when ethnicity should have no relevance to how a crime is investigated or prosecuted. 
+
+A “g*psy scam” and “roma burglary” do not exist in criminal law separate from any other type of fraud or burglary. Several agencies contacted by EFF have since acknowledged the inappropriate use and expressed efforts to address the issue internally. 
+
+"The use of the term does not reflect the values or expected practices of our department," a representative of the Palos Heights (IL) Police Department wrote to EFF after being confronted with two dozen searches involving the term "g*psy." "We do not condone the use of outdated or offensive terminology, and we will take this inquiry as an opportunity to educate those who are unaware of the negative connotation and to ensure that investigative notations and search reasons are documented in a manner that is accurate, professional, and free of potentially harmful language."
+
+Of course, the broader issue is that allowing "g*psy" or "Roma" as a reason for a search isn't just offensive, it implies the criminalization an ethnic group. In fact, the Grand Prairie Police Department in Texas searched for "g*psy" six times while using Flock's "Convoy" feature, which allows an agency to identify vehicles traveling together—in essence targeting an entire traveling community of Roma without specifying a crime. 
+
+At the bottom of this post is a list of agencies and the terms they used when searching the Flock system. 
+
+Anti-Roma Racism in an Age of Surveillance 
+
+Racism against Romani people has been a problem for centuries, with one of its most horrific manifestations  during the Holocaust, when the Third Reich and its allies perpetuated genocide by murdering hundreds of thousands of Romani people and sterilizing thousands more. Despite efforts by the UN and EU to combat anti-Roma discrimination, this form of racism persists. As scholars Margareta Matache and Mary T. Bassett explain, it is perpetuated by modern American policing practices: 
+
+In recent years, police departments have set up task forces specialised in “G*psy crimes”, appointed “G*psy crime” detectives, and organised police training courses on “G*psy criminality”. The National Association of Bunco Investigators (NABI), an organisation of law enforcement professionals focusing on “non-traditional organised crime”, has even created a database of individuals arrested or suspected of criminal activity, which clearly marked those who were Roma.
+
+Thus, it is no surprise that a 2020 Harvard University survey of Romani Americans found that 4 out of 10 respondents reported being subjected to racial profiling by police. This demonstrates the ongoing challenges they face due to systemic racism and biased policing. 
+
+Notably, many police agencies using surveillance technologies like ALPRs have adopted some sort of basic policy against biased policing or the use of these systems to target people based on race or ethnicity. But even when such policies are in place, an agency’s failure to enforce them allows these discriminatory practices to persist. These searches were also run through the systems of thousands of other police departments that may have their own policies and state laws that prohibit bias-based policing—yet none of those agencies appeared to have flagged the searches as inappropriate. 
+
+The Flock search data in question here shows that surveillance technology exacerbates racism, and even well-meaning policies to address bias can quickly fall apart without proper oversight and accountability. 
+
+Cops In Their Own Words
+
+EFF reached out to a sample of the police departments that ran these searches. Here are five representative responses we received from police departments in Illinois, California, and Virginia. They do not inspire confidence.
+
+1. Lake County Sheriff's Office, IL 
+
+In June 2025, the Lake County Sheriff's Office ran three searches for a dark colored pick-up truck, using the reason: "G*PSY Scam." The search covered 1,233 networks, representing 14,467 different ALPR devices. 
+
+In response to EFF, a sheriff's representative wrote via email:
+
+“Thank you for reaching out and for bringing this to our attention.  We certainly understand your concern regarding the use of that terminology, which we do not condone or support, and we want to assure you that we are looking into the matter.
+
+Any sort of discriminatory practice is strictly prohibited at our organization. If you have the time to take a look at our commitment to the community and our strong relationship with the community, I firmly believe you will see discrimination is not tolerated and is quite frankly repudiated by those serving in our organization. 
+
+We appreciate you bringing this to our attention so we can look further into this and address it.”
+
+2. Sacramento Police Department, CA
+
+In May 2025, the Sacramento Police Department ran six searches using the term "g*psy."  The search covered 468 networks, representing 12,885 different ALPR devices. 
+
+In response to EFF, a police representative wrote:
+
+“Thank you again for reaching out. We looked into the searches you mentioned and were able to confirm the entries. We’ve since reminded the team to be mindful about how they document investigative reasons. The entry reflected an investigative lead, not a disparaging reference. 
+
+We appreciate the chance to clarify.”
+
+3. Palos Heights Police Department, IL
+
+In September 2024, the Palos Heights Police Department ran more than two dozen searches using terms such as "g*psy vehicle," "g*psy scam" and "g*psy concrete vehicle." Most searches hit roughly 1,000 networks. 
+
+In response to EFF, a police representative said the searches were related to a singular criminal investigation into a vehicle involved in a "suspicious circumstance/fraudulent contracting incident" and is "not indicative of a general search based on racial or ethnic profiling." However, the agency acknowledged the language was inappropriate: 
+
+“The use of the term does not reflect the values or expected practices of our department. We do not condone the use of outdated or offensive terminology, and we will take this inquiry as an opportunity to educate those who are unaware of the negative connotation and to ensure that investigative notations and search reasons are documented in a manner that is accurate, professional, and free of potentially harmful language.
+
+We appreciate your outreach on this matter and the opportunity to provide clarification.”
+
+4. Irvine Police Department, CA
+
+In February and May 2025, the Irvine Police Department ran eight searches using the term "roma" in the reason field. The searches covered 1,420 networks, representing 29,364 different ALPR devices. 
+
+In a call with EFF, an IPD representative explained that the cases were related to a series of organized thefts. However, they acknowledged the issue, saying, "I think it's an opportunity for our agency to look at those entries and to use a case number or use a different term." 
+
+5. Fairfax County Police Department, VA
+
+Between December 2024 and April 2025, the Fairfax County Police Department ran more than 150 searches involving terms such as "g*psy case" and "roma crew burglaries." Fairfax County PD continued to defend its use of this language.
+
+In response to EFF, a police representative wrote:
+
+“Thank you for your inquiry. When conducting searches in investigative databases, our detectives must use the exact case identifiers, terms, or names connected to a criminal investigation in order to properly retrieve information. These entries reflect terminology already tied to specific cases and investigative files from other agencies, not a bias or judgment about any group of people. The use of such identifiers does not reflect bias or discrimination and is not inconsistent with our Bias-Based Policing policy within our Human Relations General Order.”
+
+A National Trend
+
+Roma individuals and families are not the only ones being systematically and discriminatorily targeted by ALPR surveillance technologies. For example, Flock audit logs show agencies ran 400 more searches using terms targeting Traveller communities more generally, with a specific focus on Irish Travellers, often without any mention of a crime. 
+
+Across the country, these tools are enabling and amplifying racial profiling by embedding longstanding policing biases into surveillance technologies. For example, data from Oak Park, IL, show that 84% of drivers stopped in Flock-related traffic incidents were Black—despite Black people making up only 19% of the local population. ALPR systems are far from being neutral tools for public safety and are increasingly being used to fuel discriminatory policing practices against historically marginalized people. 
+
+The racially coded language in Flock's logs mirrors long-standing patterns of discriminatory policing. Terms like "furtive movements," "suspicious behavior," and "high crime area" have always been cited by police to try to justify stops and searches of Black, Latine, and Native communities. These phrases might not appear in official logs because they're embedded earlier in enforcement—in the traffic stop without clear cause, the undocumented stop-and-frisk, the intelligence bulletin flagging entire neighborhoods as suspect. They function invisibly until a body-worn camera, court filing, or audit brings them to light. Flock's network didn’t create racial profiling; it industrialized it, turning deeply encoded and vague language into scalable surveillance that can search thousands of cameras across state lines. 
+
+The Path Forward
+
+U.S. Sen. Ron Wyden, D-OR, recently recommended that local governments reevaluate their decisions to install Flock Safety in their communities. We agree, but we also understand that sometimes elected officials need to see the abuse with their own eyes first. 
+
+We know which agencies ran these racist searches, and they should be held accountable. But we also know that the vast majority of Flock Safety's clients—thousands of police and sheriffs—also allowed those racist searches to run through their Flock Safety systems unchallenged. 
+
+Elected officials must act decisively to address the racist policing enabled by Flock's infrastructure. First, they should demand a complete audit of all ALPR searches conducted in their jurisdiction and a review of search logs to determine (a) whether their police agencies participated in discriminatory policing and (b) what safeguards, if any, exist to prevent such abuse. Second, officials should institute immediate restrictions on data-sharing through Flock's nationwide network. As demonstrated by California law, for example, police agencies should not be able to share their ALPR data with federal authorities or out-of-state agencies, thus eliminating a vehicle for discriminatory searches spreading across state lines.
+
+Ultimately, elected officials must terminate Flock Safety contracts entirely. The evidence is now clear: audit logs and internal policies alone cannot prevent a surveillance system from becoming a tool for racist policing. The fundamental architecture of Flock—thousands of cameras feeding into a nationwide searchable network—makes discrimination inevitable when enforcement mechanisms fail.
+
+As Sen. Wyden astutely explained, "local elected officials can best protect their constituents from the inevitable abuses of Flock cameras by removing Flock from their communities.”
+
+Table Overview and Notes
+
+The following table compiles terms used by agencies to describe the reasons for searching the Flock Safety ALPR database. In a small number of cases, we removed additional information such as case numbers, specific incident details, and officers' names that were present in the reason field. 
+
+We removed one agency from the list due to the agency indicating that the word was a person's name and not a reference to Romani people. 
+
+In general, we did not include searches that used the term "Romanian," although many of those may also be indicative of anti-Roma bias. We also did not include uses of "traveler" or “Traveller” when it did not include a clear ethnic modifier; however, we believe many of those searches are likely relevant.  
+
+A text-based version of the spreadsheet is available here. 
+
+November 12, 2025 update: Due to a clerical error a term was misattributed to Eugene Police Department in Oregon. We regret the error. 
+
+RELATED UPDATES
+PRESS RELEASE | FEBRUARY 10, 2026
+Coalition Urges California to Revoke Permits for Federal License Plate Reader Surveillance
+
+SAN FRANCISCO – California must revoke permits allowing federal agencies such as Customs and Border Patrol (CBP) and the Drug Enforcement Administration (DEA) to put automated license plate readers along border highways, a coalition led by the Electronic Frontier Foundation (EFF) and Imperial Valley Equity &...
+
+DEEPLINKS BLOG BY MELISSA SRAGO | FEBRUARY 9, 2026
+EFFecting Change: Get the Flock Out of Our City
+
+Flock contracts have quietly spread to cities across the country. But Flock ALPR (Automated License Plate Readers) erode civil liberties from the moment they're installed. While officials claim these cameras keep neighborhoods safe, the evidence tells a different story. The data reveals how Flock has enabled surveillance of people seeking...
+
+DEEPLINKS BLOG BY COOPER QUINTIN | JANUARY 7, 2026
+ICE Is Going on a Surveillance Shopping Spree
+We need to have a hard look at the surveillance industry. It is a key enabler of vast and untold violations of human rights and civil liberties, and it continues to be used by aspiring autocrats to threaten our very democracy. As long as it exists, the surveillance industry, and...
+DEEPLINKS BLOG BY DAVE MAASS, RINDALA ALAJAJI | NOVEMBER 20, 2025
+How Cops Are Using Flock Safety's ALPR Network to Surveil Protesters and Activists
+Through an analysis of 10 months of nationwide searches on Flock Safety's servers, we discovered that more than 50 federal, state, and local agencies ran hundreds of searches through Flock's national network of surveillance data in connection with protest activity. In some cases, law enforcement specifically targeted known activist groups...
+PRESS RELEASE | NOVEMBER 18, 2025
+Lawsuit Challenges San Jose’s Warrantless ALPR Mass Surveillance
+SAN JOSE, Calif. – San Jose and its police department routinely violate the California Constitution by conducting warrantless searches of the stored records of millions of drivers’ private habits, movements, and associations, the Electronic Frontier Foundation (EFF) and American Civil Liberties Union of Northern California (ACLU-NC) argue in a lawsuit...
+
+
+
+
+Discover more. 
+Join our email list for EFF news, events, campaigns, and ways to support digital freedom.
+POSTAL CODE (OPTIONAL)
+EMAIL ADDRESS
+SIGN UP NOW
+I would like to join EFF's email list for EFF news, events, campaigns, and ways to support digital freedom.
+Share on Mastodon
+Share on X
+Share on Facebook
+RELATED ISSUES
+FOLLOW EFF:
+mastodon
+facebook
+instagram
+x
+Blue Sky
+youtube
+flicker
+linkedin
+tiktok
+threads
+
+Check out our 4-star rating on Charity Navigator.
+
+CONTACT
+General
+Legal
+Security
+Membership
+Press
+ABOUT
+Calendar
+Volunteer
+Victories
+History
+Internships
+Jobs
+Staff
+Diversity & Inclusion
+ISSUES
+Free Speech
+Privacy
+Creativity & Innovation
+Transparency
+International
+Security
+UPDATES
+Blog
+Press Releases
+Events
+Legal Cases
+Whitepapers
+EFFector Newsletter
+PRESS
+Press Contact
+DONATE
+Join or Renew Membership Online
+One-Time Donation Online
+Giving Societies
+Corporate Giving and Sponsorship
+Shop
+Other Ways to Give
+COPYRIGHT (CC BY)
+TRADEMARK
+PRIVACY POLICY
+THANKS

@@ -1,0 +1,181 @@
+Nonprofit & Nonpartisan News
+About Us
+Newsletters
+Donate
+Track Your Legislator
+Politics
+Immigration
+Housing
+Education
+Economy
+Environment
+California Voices
+Impact
+Events
+POSTED IN
+TECHNOLOGY
+California police are illegally sharing license plate data with ICE and Border Patrol
+BY KHARI JOHNSON AND MOHAMED AL ELEW
+JUNE 13, 2025
+Republish
+A line of cars outside the County of Riverside Registrar of Voters office in Riverside on Nov. 5, 2024. Photo by Jules Hotz for CalMatters
+
+IN SUMMARY
+
+LAPD and the counties of San Diego, Orange, and Riverside have repeatedly shared automated license plate reader data to federal agencies
+
+Welcome to CalMatters, the only nonprofit newsroom devoted solely to covering issues that affect all Californians. Sign up for WhatMatters to receive the latest news and commentary on the most important issues in the Golden State.
+
+Law enforcement agencies across Southern California violated state law more than 100 times last month by sharing information from automated license plate readers with federal agents, records show.
+
+The Los Angeles Police Department and sheriff’s departments in San Diego and Orange counties searched license plate readings on behalf of Immigration and Customs Enforcement and Customs and Border Protection, according to a database of queries obtained by anti-surveillance group Oakland Privacy and provided to CalMatters.
+
+Under a 10-year-old California measure, known as Senate Bill 34, state law enforcement agencies are barred from sharing license plate reader data with out-of-state public agencies or federal entities. The law has been routinely violated; civil liberties groups in 2023 found that 71 California law enforcement agencies had broken it. Later that year, Attorney General Rob Bonta issued an advisory providing police with specific guidance on how to comply with the law.
+
+In addition to detailing the prohibition on out-of-state sharing, Bonta noted that operators of license plate readers must state the purpose of their use every time they access the information. 
+
+This log is where police searching Riverside County data revealed their cooperation with ICE, often using the term “HSI,” referring to the agency’s Homeland Security Investigations unit. The term “CBP” was also repeatedly listed as a search purpose.
+
+Among the 10 agencies that conducted searches on behalf of ICE, six are in Los Angeles County and nine are in Southern California. Two agencies, the sheriff’s departments for Orange and San Diego counties,  carried out searches on the behalf of Customs and Border Protection or the Border Patrol.
+
+“This is a big deal, it’s part of the problem, and we need the attorney general’s office to start litigating,” said Brian Hofer, former chair of the privacy commission for the City of Oakland.
+
+Hofer said cities can put all the sanctuary policies on the books that they want, but if they’re not shutting down the data sharing between local authorities and federal agencies like ICE, those protections are meaningless. 
+
+Just the right amount of news
+Just the right amount of news
+Get California’s most essential headlines without feeling overwhelmed.
+Get California’s most essential headlines without feeling overwhelmed.
+Email address
+By clicking subscribe, you agree to the terms.
+
+The Riverside County Sheriff’s Office, which logged four searches in the database with the purpose “hsinvest,” told CalMatters that it shares license plate data with federal agencies for criminal investigations of matters like narcotics and human trafficking but does not provide ICE with such data for immigration enforcement. It said the four searches last month were for one or more narcotics investigations and not in collaboration with a federal agency.
+
+“We acknowledge that some justifications entered by our personnel may not align with our policy, and this is an issue we need to address with those who are not complying,” said a representative from Riverside County Sheriff’s Office Media Information Bureau about vague justifications entered by their deputies.
+
+The Orange County Sheriff’s Office did not respond to a request for comment. The Los Angeles Police Department declined to respond to questions from CalMatters about the search records. Bonta’s office did not respond to a request for comment.
+
+San Diego County Sheriff’s Department provided a statement that said, “This matter requires further internal review. If any of our personnel are found in violation of our policies, we will take the appropriate action.”
+
+“This is a big deal, it’s part of the problem, and we need the attorney general’s office to start litigating.”
+
+BRIAN HOFER, CHAIR OF THE PRIVACY COMMISSION FOR THE CITY OF OAKLAND
+
+Tracy Rosenberg, advocacy director of Oakland Privacy, was disturbed by instances where police obscured the purpose of their searches by using vague terms, like “investigation” or “criminal justice,” raising the question of whether they were complying with Bonta’s guidance. By CalMatters’ count, this happened more than 64,000 times out of the 491,000 queries in the database of searches from April 28 to May 30.
+
+“I’ve always been told all of this is carefully logged and tracked and they know why these logs are being accessed,” Rosenberg said. “But now that I’m in this log it’s obvious that they don’t, and the reasons are completely obscured.” 
+
+Rosenberg found the vague reasons more disturbing than the openly disclosed federal searches — partly because they leave open the possibility that a search was carried out for a federal agency. Some agencies gave vague reasons for a majority of their queries.
+
+“It seems like no one, [Riverside] Sheriff [Chad] Bianco included, knows why those location data searches were done in Riverside’s [license plate] database,” she said.
+
+Automated license plate readers in Riverside County are part of a system powered by Flock, a company that works with law enforcement agencies in thousands of communities nationwide. The records obtained by Privacy Oakland came from a Flock audit report generated by the Riverside County Sheriff’s Office.
+
+The Falcon license plate-reading camera. Photo courtesy of Flock Safety
+
+Evidence of the sharing comes less than a week after President Trump ordered the deployment of Marines and the California National Guard to Los Angeles amid escalating protests there against deportations. Roughly two weeks ago, 404 Media reported that local police in Illinois carried out searches on behalf of ICE agents.
+
+The Riverside County Sheriff’s Department is headed by Sheriff Chad Bianco, a supporter of President Donald Trump. Bianco launched a run for California governor in February, shortly after telling local residents in a video posted on social media that Riverside County sheriff’s deputies “have not, are not, and will not engage in any type of immigration enforcement.” In the same video, Bianco said he plans to continue to fight to reform state sanctuary laws and that “I will do everything I can within the confines of the sanctuary state laws of California to cooperate with ICE to remove criminals from our jails.”
+
+“We already knew that Sheriff Bianco supports Trump and his deportation machine,” said Javier Hernandez, executive director of Inland Coalition for Immigrant Justice. The group of more than 35 organizations provides legal services for undocumented people and responds to alerts about ICE raids in Riverside and San Bernardino counties east of Los Angeles, a region known as the Inland Empire.
+
+But Hernandez said Bianco still “has to follow the laws of this state even if he doesn’t agree with them.” The coalition plans to urge the attorney general’s office to investigate any violations of state law.
+
+Seth Hall, a longtime member of the TRUST SD Coalition, which has called for controls on license plate readers in San Diego, hopes knowledge of local police sharing data with ICE can make a difference as TRUST SD mounts a campaign to convince the San Diego City Council to defund police use of Flock. An annual surveillance report released in February disclosed that the San Diego Police Department shared license plate reader data with several outside agencies including ICE and the Border Patrol. Cooperation with federal authorities, he said, is a sore point in San Diego after ICE raided an Italian restaurant earlier this month and community members fought back.
+
+“It just hits a little harder when there’s people on the street setting off flash bangs,”he said.
+
+State Senator Sabrina Cervantes, a Democrat from Riverside, introduced a bill to regulate automated license plate readers earlier this year, because “law enforcement agencies across our state are not following existing state law governing the use of automated license plate readers” and a audit by state employees in 2020 showed that. She did not respond to a request to comment on the sheriff’s license plate log.
+
+The risk of automatic license plate readers has been brought into focus by deportations, said Rosenberg of Oakland Privacy. The longtime argument against building a surveillance state used to be hypothetical.
+
+“It’s 2025 and it’s not hypothetical anymore,” she said.
+
+READ MORE FROM CALMATTERS
+
+Text
+
+Get breaking news on your phone.
+
+Download
+
+Keep up with the latest via our app.
+
+Sign up
+
+Receive free updates in your inbox.
+
+Nonpartisan, independent California news for all
+
+We’re CalMatters, your nonprofit and nonpartisan news guide.
+
+Our journalists are here to empower you and our mission continues to be essential.
+
+We are independent and nonpartisan. Our trustworthy journalism is free from partisan politics, free from corporate influence and actually free for all Californians.
+We are focused on California issues. From the environment to homelessness, economy and more, we publish the unfettered truth to keep you informed.
+We hold people in power accountable. We probe and reveal the actions and inactions of powerful people and institutions, and the consequences that follow.
+
+But we can’t keep doing this without support from readers like you.
+
+Please give what you can today. Every gift helps.
+
+GIVE NOW
+TAGGED:criminal justiceimmigration
+Khari JohnsonTECHNOLOGY REPORTER
+khari@calmatters.org
+
+Khari Johnson is part of the tech team and is CalMatters’ first tech reporter. He has covered artificial intelligence for nearly a decade and previously worked at WIRED, VentureBeat, and Imperial Beach... More by Khari Johnson
+
+Mohamed Al ElewJOURNALISM ENGINEER
+mohamed@calmatters.org
+
+Mohamed Al Elew is a journalism engineer, where they use data and software to produce investigative reporting. Before joining CalMatters and The Markup, Mohamed was a data reporter at Reveal from the Center... More by Mohamed Al Elew
+
+Bluesky
+Instagram
+Facebook
+X
+TikTok
+LinkedIn
+YouTube
+ABOUT
+Overview
+Impact
+Funding
+News and Awards
+Policies
+Programs
+Sponsorships
+Our Team
+Jobs
+Contact Us
+TOPICS
+Politics
+Justice
+Economy
+Education
+Environment
+Housing
+Health
+Commentary
+Inequality
+MORE
+Donate
+Manage donation
+Newsletters
+CalMatters en Español
+Inside the Newsroom
+Digital Democracy
+GENERAL INQUIRIES
+
+info@calmatters.org
+
+MEMBERSHIP INQUIRIES
+
+membership@calmatters.org
+
+Protect your nonprofit state news.
+Become a CalMatters member with a tax-deductible donation today to stay informed, bolster our journalism and expand how many people we reach across California.
+Donate
+Terms & Conditions Privacy Policy Sitemap
+© 2026 CalMatters
