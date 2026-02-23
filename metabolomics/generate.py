@@ -13,20 +13,24 @@ import polars as pl
 
 
 # =============================================================================
-# CENTRALIZED CONFIGURATION
+# CONFIGURATION — loaded from config.json (single source of truth)
 # =============================================================================
-# All thresholds and parameters in one place for easy modification
 
-# Blank filtering parameters (pmp/Bioconductor standard)
-BLANK_FOLD_THRESHOLD = 20.0  # Sample must be 20x higher than blank
-P_VALUE_CUTOFF = 0.05        # Statistical significance threshold
-FDR_CORRECTION = True        # Apply Benjamini-Hochberg correction
+def _load_thresholds() -> tuple[float, float, bool, float, float]:
+    """Load thresholds from config.json."""
+    config_path = Path(__file__).parent / "config.json"
+    with open(config_path, encoding="utf-8") as f:
+        cfg = json.load(f)
+    t = cfg["thresholds"]
+    return (
+        t["blank_filter"]["fold_change"],
+        t["blank_filter"]["p_value"],
+        t["blank_filter"]["fdr_correction"],
+        t["cumulative_filter"]["threshold"],
+        t["detection"]["min_value"],
+    )
 
-# Cumulative filtering
-CUMULATIVE_THRESHOLD = 0.80  # Keep peaks contributing to top 80% of signal
-
-# Chemical richness detection threshold
-DETECTION_THRESHOLD = 0.0    # Values > this are considered "detected"
+BLANK_FOLD_THRESHOLD, P_VALUE_CUTOFF, FDR_CORRECTION, CUMULATIVE_THRESHOLD, DETECTION_THRESHOLD = _load_thresholds()
 
 # =============================================================================
 # SAMPLE DEFINITIONS
@@ -130,6 +134,10 @@ def filter_blanks(
 
     compounds = df["Compound"].to_list()
     kept: set[str] = set()
+    # Per-compound category: "sample_only", "both_keep", "both_discard", "blank_only", "neither"
+    compound_category: dict[str, str] = {}
+    # Per-compound detail for "both" peaks: "fold_pass", "fold_fail", "stat_pass", "stat_fail", "insufficient"
+    compound_detail: dict[str, list[str]] = {}
     filter_stats = {
         "sample_only": 0,      # Peak in samples but not blanks (auto-keep)
         "both_keep": 0,        # Peak in both, passes all criteria
@@ -180,6 +188,7 @@ def filter_blanks(
             # Peak only in samples - keep it (no blank contamination possible)
             kept.add(compound)
             filter_stats["sample_only"] += 1
+            compound_category[compound] = "sample_only"
         elif has_sample and has_blank:
             sample_avg = sum(sample_vals) / len(sample_vals)
             blank_avg = sum(blank_vals) / len(blank_vals)
@@ -187,8 +196,10 @@ def filter_blanks(
             peak_data.append((compound, sample_vals, blank_vals, fold_change))
         elif has_blank and not has_sample:
             filter_stats["blank_only"] += 1
+            compound_category[compound] = "blank_only"
         else:
             filter_stats["neither"] += 1
+            compound_category[compound] = "neither"
 
     # Process peaks found in both samples and blanks
     if use_statistical_test and peak_data:
@@ -211,20 +222,26 @@ def filter_blanks(
                     valid_peaks.append((compound, fold_change, len(sample_vals), len(blank_vals)))
                 except Exception:
                     filter_stats["insufficient_data"] += 1
+                    compound_detail[compound] = ["insufficient"]
                     # Fall back to fold-change only
                     if fold_change >= threshold:
                         kept.add(compound)
                         filter_stats["both_keep"] += 1
+                        compound_category[compound] = "both_keep"
                     else:
                         filter_stats["both_discard"] += 1
+                        compound_category[compound] = "both_discard"
             else:
                 filter_stats["insufficient_data"] += 1
+                compound_detail[compound] = ["insufficient"]
                 # Not enough data for t-test - use fold-change only
                 if fold_change >= threshold:
                     kept.add(compound)
                     filter_stats["both_keep"] += 1
+                    compound_category[compound] = "both_keep"
                 else:
                     filter_stats["both_discard"] += 1
+                    compound_category[compound] = "both_discard"
 
         # Apply FDR correction (Benjamini-Hochberg)
         if fdr_correction and p_values:
@@ -264,11 +281,24 @@ def filter_blanks(
             else:
                 filter_stats["stat_test_fail"] += 1
 
+            details = []
+            if passes_fold:
+                details.append("fold_pass")
+            else:
+                details.append("fold_fail")
+            if passes_stat:
+                details.append("stat_pass")
+            else:
+                details.append("stat_fail")
+            compound_detail[compound] = details
+
             if passes_fold and passes_stat:
                 kept.add(compound)
                 filter_stats["both_keep"] += 1
+                compound_category[compound] = "both_keep"
             else:
                 filter_stats["both_discard"] += 1
+                compound_category[compound] = "both_discard"
     else:
         # No statistical test - use fold-change only (original behavior)
         for compound, sample_vals, blank_vals, fold_change in peak_data:
@@ -276,15 +306,21 @@ def filter_blanks(
                 kept.add(compound)
                 filter_stats["both_keep"] += 1
                 filter_stats["fold_change_pass"] += 1
+                compound_category[compound] = "both_keep"
+                compound_detail[compound] = ["fold_pass"]
             else:
                 filter_stats["both_discard"] += 1
                 filter_stats["fold_change_fail"] += 1
+                compound_category[compound] = "both_discard"
+                compound_detail[compound] = ["fold_fail"]
 
     filter_stats["total_clean"] = filter_stats["sample_only"] + filter_stats["both_keep"]
     filter_stats["statistical_test_used"] = use_statistical_test
     filter_stats["fdr_corrected"] = fdr_correction
     filter_stats["p_value_cutoff"] = p_value_cutoff
     filter_stats["fold_change_threshold"] = threshold
+    filter_stats["compound_category"] = compound_category
+    filter_stats["compound_detail"] = compound_detail
 
     return kept, filter_stats
 
@@ -352,116 +388,195 @@ def load_formulas() -> dict:
     return formulas
 
 
-def main() -> int:
-    # Use local copy of labeled data
-    data_path = Path(__file__).parent / "Emily_Data_Pruned_Labeled.xlsx"
+def calculate_richness(data: pl.DataFrame, sample_cols: list[str]) -> list[int]:
+    """Count non-zero peaks per sample."""
+    richness = []
+    for col in sample_cols:
+        if col not in data.columns:
+            continue
+        count = data.filter(
+            (pl.col(col).is_not_null()) & (pl.col(col) > DETECTION_THRESHOLD)
+        ).height
+        richness.append(count)
+    return richness
 
-    print("Loading data...")
-    df = pl.read_excel(
-        data_path,
-        sheet_name="Normalized",
-        infer_schema_length=None,
-    )
 
-    # Load formula assignments
-    formula_lookup = load_formulas()
+def calc_se(values: list[int | float]) -> float:
+    """Calculate standard error = stdev / sqrt(n)."""
+    if len(values) < 2:
+        return 0.0
+    mean = sum(values) / len(values)
+    variance = sum((x - mean) ** 2 for x in values) / (len(values) - 1)
+    return math.sqrt(variance / len(values))
+
+
+def calculate_shannon(data: pl.DataFrame, sample_col: str) -> float:
+    """Calculate Shannon diversity index for a sample."""
+    if sample_col not in data.columns:
+        return 0.0
+    vals = data.select(sample_col).drop_nulls().to_series().to_list()
+    vals = [v for v in vals if v > DETECTION_THRESHOLD]
+    if not vals:
+        return 0.0
+    total = sum(vals)
+    if total == 0:
+        return 0.0
+    h = 0.0
+    for v in vals:
+        p = v / total
+        if p > 0:
+            h -= p * math.log(p)
+    return h
+
+
+def run_pipeline(df: pl.DataFrame, formula_lookup: dict, sheet_name: str = "") -> dict:
+    """Run the full filtering pipeline on a DataFrame.
+
+    Returns a dict with all computed values needed for HTML generation.
+    """
+    label = f"[{sheet_name}] " if sheet_name else ""
 
     # Build sample columns from treatment definitions
-    SAMPLE_COLS = []
+    sample_cols = []
     for tissue_treatments in TREATMENTS.values():
         for samples in tissue_treatments.values():
-            SAMPLE_COLS.extend(samples)
+            sample_cols.extend(samples)
 
     # Build tissue-specific sample lists
-    LEAF_SAMPLES = []
-    ROOT_SAMPLES = []
+    leaf_samples = []
+    root_samples = []
     for treatment, samples in TREATMENTS["Leaf"].items():
-        LEAF_SAMPLES.extend(samples)
+        leaf_samples.extend(samples)
     for treatment, samples in TREATMENTS["Root"].items():
-        ROOT_SAMPLES.extend(samples)
+        root_samples.extend(samples)
 
     # Filter to blanks that exist in the data
-    LEAF_BLANKS = [c for c in TISSUE_BLANKS["Leaf"] if c in df.columns]
-    ROOT_BLANKS = [c for c in TISSUE_BLANKS["Root"] if c in df.columns]
+    leaf_blanks = [c for c in TISSUE_BLANKS["Leaf"] if c in df.columns]
+    root_blanks = [c for c in TISSUE_BLANKS["Root"] if c in df.columns]
 
-    print("\n" + "=" * 60)
-    print("BLANK FILTERING CONFIGURATION")
+    print(f"\n{'=' * 60}")
+    print(f"{label}BLANK FILTERING CONFIGURATION")
     print("=" * 60)
-    print(f"\nLEAF samples ({len(LEAF_SAMPLES)}): {', '.join(LEAF_SAMPLES)}")
-    print(f"LEAF blanks ({len(LEAF_BLANKS)}): {', '.join(LEAF_BLANKS)}")
-    print(f"\nROOT samples ({len(ROOT_SAMPLES)}): {', '.join(ROOT_SAMPLES)}")
-    print(f"ROOT blanks ({len(ROOT_BLANKS)}): {', '.join(ROOT_BLANKS)}")
+    print(f"\nLEAF samples ({len(leaf_samples)}): {', '.join(leaf_samples)}")
+    print(f"LEAF blanks ({len(leaf_blanks)}): {', '.join(leaf_blanks)}")
+    print(f"\nROOT samples ({len(root_samples)}): {', '.join(root_samples)}")
+    print(f"ROOT blanks ({len(root_blanks)}): {', '.join(root_blanks)}")
     print("=" * 60 + "\n")
 
-    print("Running filtering...")
+    print(f"{label}Running filtering...")
 
     total = df["Compound"].n_unique()
 
     # Step 1: Tissue-specific blank filtering
-    print("Step 1: Tissue-specific blank filtering...")
+    print(f"{label}Step 1: Tissue-specific blank filtering...")
 
-    # Filter leaf samples with leaf blanks (uses BLANK_FOLD_THRESHOLD from config)
-    print(f"  Filtering LEAF samples with {len(LEAF_BLANKS)} leaf blanks (threshold={BLANK_FOLD_THRESHOLD}x)...")
-    kept_leaf, leaf_blank_stats = filter_blanks(df, LEAF_SAMPLES, LEAF_BLANKS)
+    print(f"  Filtering LEAF samples with {len(leaf_blanks)} leaf blanks (threshold={BLANK_FOLD_THRESHOLD}x)...")
+    kept_leaf, leaf_blank_stats = filter_blanks(df, leaf_samples, leaf_blanks)
     print(f"    Leaf: kept {len(kept_leaf):,} peaks, removed {leaf_blank_stats['both_discard']:,} contamination")
 
-    # Filter root samples with root blanks (uses BLANK_FOLD_THRESHOLD from config)
-    print(f"  Filtering ROOT samples with {len(ROOT_BLANKS)} root blanks (threshold={BLANK_FOLD_THRESHOLD}x)...")
-    kept_root, root_blank_stats = filter_blanks(df, ROOT_SAMPLES, ROOT_BLANKS)
+    print(f"  Filtering ROOT samples with {len(root_blanks)} root blanks (threshold={BLANK_FOLD_THRESHOLD}x)...")
+    kept_root, root_blank_stats = filter_blanks(df, root_samples, root_blanks)
     print(f"    Root: kept {len(kept_root):,} peaks, removed {root_blank_stats['both_discard']:,} contamination")
 
     # Union of peaks kept from both tissues
     kept_blank = kept_leaf | kept_root
+
+    # Compute deduplicated per-compound stats across tissues
+    # A compound's combined category uses best outcome: kept in either tissue = kept
+    leaf_cat = leaf_blank_stats["compound_category"]
+    root_cat = root_blank_stats["compound_category"]
+    leaf_det = leaf_blank_stats["compound_detail"]
+    root_det = root_blank_stats["compound_detail"]
+    all_compounds = set(leaf_cat.keys()) | set(root_cat.keys())
+
+    # Priority: sample_only > both_keep > both_discard > blank_only > neither
+    _cat_priority = {"sample_only": 4, "both_keep": 3, "both_discard": 2, "blank_only": 1, "neither": 0}
+    combined_cat: dict[str, str] = {}
+    for comp in all_compounds:
+        lc = leaf_cat.get(comp)
+        rc = root_cat.get(comp)
+        if lc is None:
+            combined_cat[comp] = rc  # type: ignore[assignment]
+        elif rc is None:
+            combined_cat[comp] = lc
+        else:
+            combined_cat[comp] = lc if _cat_priority[lc] >= _cat_priority[rc] else rc
+
+    # Count deduplicated categories
+    cat_counts = {"sample_only": 0, "both_keep": 0, "both_discard": 0, "blank_only": 0, "neither": 0}
+    for cat in combined_cat.values():
+        cat_counts[cat] += 1
+
+    # Deduplicated detail stats - mutually exclusive groups
+    # "had_test_data" = had enough replicates for t-test in at least one tissue
+    # "insufficient_only" = lacked data in ALL tissues (fold-change only)
+    detail_counts = {"fold_change_pass": 0, "fold_change_fail": 0, "stat_test_pass": 0, "stat_test_fail": 0, "insufficient_data": 0}
+    both_compounds = {c for c, cat in combined_cat.items() if cat in ("both_keep", "both_discard")}
+    for comp in both_compounds:
+        ld = leaf_det.get(comp, [])
+        rd = root_det.get(comp, [])
+        all_details = set(ld) | set(rd)
+        had_test_data = "stat_pass" in all_details or "stat_fail" in all_details
+        if had_test_data:
+            # Count fold/stat results (best outcome across tissues)
+            if "fold_pass" in all_details:
+                detail_counts["fold_change_pass"] += 1
+            else:
+                detail_counts["fold_change_fail"] += 1
+            if "stat_pass" in all_details:
+                detail_counts["stat_test_pass"] += 1
+            else:
+                detail_counts["stat_test_fail"] += 1
+        else:
+            # Insufficient data in all tissues — used fold-change only
+            detail_counts["insufficient_data"] += 1
+
     blank_stats = {
-        "sample_only": leaf_blank_stats["sample_only"] + root_blank_stats["sample_only"],
-        "both_keep": leaf_blank_stats["both_keep"] + root_blank_stats["both_keep"],
-        "both_discard": leaf_blank_stats["both_discard"] + root_blank_stats["both_discard"],
-        "blank_only": leaf_blank_stats["blank_only"] + root_blank_stats["blank_only"],
-        "neither": leaf_blank_stats["neither"] + root_blank_stats["neither"],
+        "sample_only": cat_counts["sample_only"],
+        "both_keep": cat_counts["both_keep"],
+        "both_discard": cat_counts["both_discard"],
+        "blank_only": cat_counts["blank_only"],
+        "neither": cat_counts["neither"],
         "total_clean": len(kept_blank),
-        # Statistical validation details
-        "fold_change_pass": leaf_blank_stats.get("fold_change_pass", 0) + root_blank_stats.get("fold_change_pass", 0),
-        "fold_change_fail": leaf_blank_stats.get("fold_change_fail", 0) + root_blank_stats.get("fold_change_fail", 0),
-        "stat_test_pass": leaf_blank_stats.get("stat_test_pass", 0) + root_blank_stats.get("stat_test_pass", 0),
-        "stat_test_fail": leaf_blank_stats.get("stat_test_fail", 0) + root_blank_stats.get("stat_test_fail", 0),
-        "insufficient_data": leaf_blank_stats.get("insufficient_data", 0) + root_blank_stats.get("insufficient_data", 0),
+        "fold_change_pass": detail_counts["fold_change_pass"],
+        "fold_change_fail": detail_counts["fold_change_fail"],
+        "stat_test_pass": detail_counts["stat_test_pass"],
+        "stat_test_fail": detail_counts["stat_test_fail"],
+        "insufficient_data": detail_counts["insufficient_data"],
     }
     df_blank_filtered = df.filter(pl.col("Compound").is_in(list(kept_blank)))
     print(f"  Combined: {len(kept_blank):,} unique peaks after tissue-specific blank filtering")
 
     # Step 2: 80% cumulative filtering on blank-filtered data
-    print("Step 2: 80% cumulative filtering...")
+    print(f"{label}Step 2: 80% cumulative filtering...")
     kept_80: set[str] = set()
     sample_data_80: list[tuple[str, str, int, float]] = []
 
-    for col in SAMPLE_COLS:
+    for col in sample_cols:
         if col not in df_blank_filtered.columns:
             continue
         k80, n80, pct80 = filter_cumulative(df_blank_filtered, col, CUMULATIVE_THRESHOLD)
         kept_80.update(k80)
-        # Determine tissue from column name (e.g., "BL - Drought" -> Leaf, "AR - Drought" -> Root)
         tissue = "Leaf" if col[1] == "L" else "Root"
         sample_data_80.append((col, tissue, n80, pct80 * 100))
 
     # Create final filtered DataFrame
-    print("Creating filtered dataset...")
-    available_cols = [c for c in SAMPLE_COLS if c in df_blank_filtered.columns]
-    # Include m/z and RT for formula lookup
+    print(f"{label}Creating filtered dataset...")
+    available_cols = [c for c in sample_cols if c in df_blank_filtered.columns]
     extra_cols = [c for c in ["m/z", "Retention time (min)"] if c in df_blank_filtered.columns]
     df_80 = df_blank_filtered.filter(pl.col("Compound").is_in(list(kept_80))).select(["Compound"] + extra_cols + available_cols)
 
     # Convert to JSON
-    print("Converting to JSON...")
+    print(f"{label}Converting to JSON...")
     json_80 = df_to_json(df_80, available_cols, formula_lookup)
 
     # Calculate stats
     leaf_80 = [x for x in sample_data_80 if x[1] == "Leaf"]
     root_80 = [x for x in sample_data_80 if x[1] == "Root"]
 
-    # Venn diagram calculations - peaks by treatment
-    print("Calculating treatment overlaps...")
+    # Venn diagram calculations
+    print(f"{label}Calculating treatment overlaps...")
     venn_data = {}
-    treatment_peaks = {}  # Store actual peak sets for priority analysis
     for tissue in ["Leaf", "Root"]:
         drought_peaks = get_peaks_in_group(df_80, TREATMENTS[tissue]["Drought"])
         ambient_peaks = get_peaks_in_group(df_80, TREATMENTS[tissue]["Ambient"])
@@ -473,64 +588,33 @@ def main() -> int:
             "ambient": len(ambient_peaks),
             "watered": len(watered_peaks),
             "all": len(all_peaks),
-            # Unique to each treatment (not in the other two)
             "drought_only": len(drought_peaks - ambient_peaks - watered_peaks),
             "ambient_only": len(ambient_peaks - drought_peaks - watered_peaks),
             "watered_only": len(watered_peaks - drought_peaks - ambient_peaks),
-            # Shared between pairs (but not all three)
             "drought_ambient": len((drought_peaks & ambient_peaks) - watered_peaks),
             "drought_watered": len((drought_peaks & watered_peaks) - ambient_peaks),
             "ambient_watered": len((ambient_peaks & watered_peaks) - drought_peaks),
-            # Shared by all three
             "all_three": len(drought_peaks & ambient_peaks & watered_peaks),
         }
-        treatment_peaks[tissue] = {
-            "drought_only": drought_peaks - ambient_peaks - watered_peaks,
-            "ambient_only": ambient_peaks - drought_peaks - watered_peaks,
-            "watered_only": watered_peaks - drought_peaks - ambient_peaks,
-        }
 
-    # =============================================================================
-    # CHEMICAL RICHNESS CALCULATION
-    # =============================================================================
-    # Chemical richness = number of detected peaks per sample
-    #
-    # DATA SOURCE: df_blank_filtered (14,307 peaks after blank subtraction)
-    # NOT df_80 (1,626 peaks after 80% cumulative filter)
-    #
-    # For each sample column, count rows where value > 0 (detected)
-    # Group by treatment, calculate mean ± SE
-    #
-    print(f"Calculating chemical richness (from {df_blank_filtered.height:,} blank-filtered peaks)...")
+    # Cross-tissue overlap
+    leaf_all = get_peaks_in_group(df_80, [c for t in TREATMENTS["Leaf"].values() for c in t])
+    root_all = get_peaks_in_group(df_80, [c for t in TREATMENTS["Root"].values() for c in t])
+    venn_data["cross_tissue"] = {
+        "total": len(leaf_all | root_all),
+        "leaf_only": len(leaf_all - root_all),
+        "root_only": len(root_all - leaf_all),
+        "both": len(leaf_all & root_all),
+    }
 
-    def calculate_richness(data: pl.DataFrame, sample_cols: list[str]) -> list[int]:
-        """Count non-zero peaks per sample."""
-        richness = []
-        for col in sample_cols:
-            if col not in data.columns:
-                continue
-            # Count non-null, non-zero values
-            count = data.filter(
-                (pl.col(col).is_not_null()) & (pl.col(col) > DETECTION_THRESHOLD)
-            ).height
-            richness.append(count)
-        return richness
-
-    def calc_se(values: list[int | float]) -> float:
-        """Calculate standard error = stdev / sqrt(n)."""
-        if len(values) < 2:
-            return 0.0
-        mean = sum(values) / len(values)
-        variance = sum((x - mean) ** 2 for x in values) / (len(values) - 1)
-        return math.sqrt(variance / len(values))
-
+    # Chemical richness
+    print(f"{label}Calculating chemical richness (from {df_blank_filtered.height:,} blank-filtered peaks)...")
     chemical_richness = {}
-    total_blank_filtered = df_blank_filtered.height  # For transparency
+    total_blank_filtered = df_blank_filtered.height
     for tissue in ["Leaf", "Root"]:
         chemical_richness[tissue] = {}
         for treatment in ["Drought", "Ambient", "Watered"]:
             cols = TREATMENTS[tissue][treatment]
-            # USE df_blank_filtered, NOT df_80
             richness_vals = calculate_richness(df_blank_filtered, cols)
             if richness_vals:
                 mean_val = sum(richness_vals) / len(richness_vals)
@@ -542,47 +626,17 @@ def main() -> int:
                 "se": se_val,
                 "n": len(richness_vals),
                 "values": richness_vals,
-                "total_possible": total_blank_filtered,  # For transparency
+                "total_possible": total_blank_filtered,
             }
             print(f"    {tissue} {treatment}: {mean_val:.1f} ± {se_val:.1f} peaks (n={len(richness_vals)}) out of {total_blank_filtered:,}")
 
-    # =============================================================================
-    # SHANNON DIVERSITY CALCULATION
-    # =============================================================================
-    # Shannon diversity H = -Σ(p × ln(p)) where p = relative abundance
-    #
-    # DATA SOURCE: df_blank_filtered (14,307 peaks after blank subtraction)
-    # NOT df_80 (1,626 peaks after 80% cumulative filter)
-    #
-    # For each sample, calculate H using all detected peak abundances
-    # Higher H = more even distribution; Lower H = dominated by few peaks
-    #
-    print(f"Calculating Shannon diversity (from {df_blank_filtered.height:,} blank-filtered peaks)...")
-
-    def calculate_shannon(data: pl.DataFrame, sample_col: str) -> float:
-        """Calculate Shannon diversity index for a sample."""
-        if sample_col not in data.columns:
-            return 0.0
-        vals = data.select(sample_col).drop_nulls().to_series().to_list()
-        vals = [v for v in vals if v > DETECTION_THRESHOLD]
-        if not vals:
-            return 0.0
-        total = sum(vals)
-        if total == 0:
-            return 0.0
-        h = 0.0
-        for v in vals:
-            p = v / total
-            if p > 0:
-                h -= p * math.log(p)
-        return h
-
+    # Shannon diversity
+    print(f"{label}Calculating Shannon diversity (from {df_blank_filtered.height:,} blank-filtered peaks)...")
     shannon_diversity = {}
     for tissue in ["Leaf", "Root"]:
         shannon_diversity[tissue] = {}
         for treatment in ["Drought", "Ambient", "Watered"]:
             cols = TREATMENTS[tissue][treatment]
-            # USE df_blank_filtered, NOT df_80
             h_vals = [calculate_shannon(df_blank_filtered, col) for col in cols if col in df_blank_filtered.columns]
             if h_vals:
                 mean_val = sum(h_vals) / len(h_vals)
@@ -597,8 +651,8 @@ def main() -> int:
             }
             print(f"    {tissue} {treatment}: H = {mean_val:.3f} ± {se_val:.3f} (n={len(h_vals)})")
 
-    # Priority peaks analysis - get ALL peaks with treatment abundances
-    print("Building priority peaks data...")
+    # Priority peaks analysis
+    print(f"{label}Building priority peaks data...")
     meta_cols = ["Compound", "m/z", "Retention time (min)", "Anova (p)", "q Value", "Max Fold Change", "Minimum CV%"]
     meta_cols = [c for c in meta_cols if c in df.columns]
     df_meta = df.select(meta_cols)
@@ -617,7 +671,6 @@ def main() -> int:
             if data_row.height == 0:
                 continue
 
-            # Get average abundance AND occurrence count for each treatment
             abundances = {}
             occurrences = {}
             for treat_name in ["Drought", "Ambient", "Watered"]:
@@ -630,11 +683,9 @@ def main() -> int:
                     abundances[treat_name.lower()] = 0
                     occurrences[treat_name.lower()] = "0/0"
 
-            # Skip if not present in any treatment for this tissue
             if abundances["drought"] == 0 and abundances["ambient"] == 0 and abundances["watered"] == 0:
                 continue
 
-            # Determine which treatments have this peak
             in_drought = abundances["drought"] > 0
             in_ambient = abundances["ambient"] > 0
             in_watered = abundances["watered"] > 0
@@ -657,7 +708,6 @@ def main() -> int:
             except:
                 cv_pct = None
 
-            # Look up formula
             mz_val = meta_row.get("m/z", "")
             rt_val = meta_row.get("Retention time (min)", "")
             formula_info = formula_lookup.get(
@@ -684,12 +734,21 @@ def main() -> int:
                 "cv": cv_pct,
             })
 
-        # Sort by max abundance across treatments
         all_peaks_data[tissue].sort(key=lambda x: max(x["drought"], x["ambient"], x["watered"]), reverse=True)
 
-    all_peaks_json = json.dumps(all_peaks_data)
-
-    print("Generating HTML...")
+    # Count formula matches among filtered peaks and collect ppm errors
+    formula_matched = set()
+    formula_ppm_values: list[float] = []
+    for tissue_peaks in all_peaks_data.values():
+        for peak in tissue_peaks:
+            if peak["formula"] and peak["compound"] not in formula_matched:
+                formula_matched.add(peak["compound"])
+                mz_key = (round(float(peak["mz"]), 4), round(float(peak["rt"]), 2)) if peak["mz"] and peak["rt"] else (0, 0)
+                info = formula_lookup.get(mz_key, {})
+                if "err_ppm" in info:
+                    formula_ppm_values.append(abs(info["err_ppm"]))
+    formula_match_count = len(formula_matched)
+    formula_mean_ppm = round(sum(formula_ppm_values) / len(formula_ppm_values), 2) if formula_ppm_values else 0
 
     # Build column definitions for DataTables
     col_defs = [{"data": "Compound", "title": "Compound"}]
@@ -697,9 +756,8 @@ def main() -> int:
         col_defs.append({"data": "Formula", "title": "Formula"})
     for col in available_cols:
         col_defs.append({"data": col, "title": col})
-    col_defs_json = json.dumps(col_defs)
 
-    # Build per-sample table rows with sample numbers (bold numbers)
+    # Build per-sample table rows
     leaf_rows = ""
     root_rows = ""
     leaf_num = 1
@@ -713,6 +771,74 @@ def main() -> int:
             row = f'<tr><td>{root_num}</td><td>{col}</td><td><strong>{count:,}</strong></td><td><strong>{pct:.4f}%</strong></td></tr>'
             root_rows += row
             root_num += 1
+
+    # Package overview stats for JS
+    overview_stats = {
+        "total": total,
+        "kept_blank": len(kept_blank),
+        "kept_80": len(kept_80),
+        "pct_kept": round(100 * len(kept_80) / total, 1) if total > 0 else 0,
+        "total_removed": total - len(kept_blank),
+        "both_discard": blank_stats["both_discard"],
+        "sample_only": blank_stats["sample_only"],
+        "both_keep": blank_stats["both_keep"],
+        "blank_only": blank_stats["blank_only"],
+        "neither": blank_stats["neither"],
+        "fold_change_pass": blank_stats.get("fold_change_pass", 0),
+        "fold_change_fail": blank_stats.get("fold_change_fail", 0),
+        "stat_test_pass": blank_stats.get("stat_test_pass", 0),
+        "stat_test_fail": blank_stats.get("stat_test_fail", 0),
+        "insufficient_data": blank_stats.get("insufficient_data", 0),
+        "leaf_blanks": ", ".join(leaf_blanks),
+        "root_blanks": ", ".join(root_blanks),
+        "leaf_avg_80": round(sum(x[2] for x in leaf_80) / len(leaf_80)) if leaf_80 else 0,
+        "root_avg_80": round(sum(x[2] for x in root_80) / len(root_80)) if root_80 else 0,
+        "leaf_rows_html": leaf_rows,
+        "root_rows_html": root_rows,
+        "formula_match_count": formula_match_count,
+        "formula_match_pct": round(100 * formula_match_count / len(kept_80), 1) if len(kept_80) > 0 else 0,
+        "formula_mean_ppm": formula_mean_ppm,
+    }
+
+    return {
+        "total": total,
+        "kept_blank": kept_blank,
+        "blank_stats": blank_stats,
+        "kept_80": kept_80,
+        "sample_data_80": sample_data_80,
+        "leaf_80": leaf_80,
+        "root_80": root_80,
+        "json_80": json_80,
+        "col_defs_json": json.dumps(col_defs),
+        "available_cols": available_cols,
+        "chemical_richness": chemical_richness,
+        "shannon_diversity": shannon_diversity,
+        "venn_data": venn_data,
+        "all_peaks_data": all_peaks_data,
+        "all_peaks_json": json.dumps(all_peaks_data),
+        "leaf_rows": leaf_rows,
+        "root_rows": root_rows,
+        "overview_stats": overview_stats,
+    }
+
+
+def main() -> int:
+    # Use local copy of labeled data
+    data_path = Path(__file__).parent / "Emily_Data_Pruned_Labeled.xlsx"
+
+    # Load formula assignments
+    formula_lookup = load_formulas()
+
+    # Run pipeline for both sheets
+    print("Loading Normalized data...")
+    df_norm = pl.read_excel(data_path, sheet_name="Normalized", infer_schema_length=None)
+    norm = run_pipeline(df_norm, formula_lookup, "Normalized")
+
+    print("\nLoading Unnormalized data...")
+    df_unnorm = pl.read_excel(data_path, sheet_name="Unnormalized", infer_schema_length=None)
+    unnorm = run_pipeline(df_unnorm, formula_lookup, "Unnormalized")
+
+    print("\nGenerating HTML...")
 
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -741,7 +867,7 @@ def main() -> int:
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
             --gray-200: #e5e7eb;
-            --gray-600: #4b5563;
+            --gray-600: #374151;
             --gray-700: #374151;
             --gray-800: #1f2937;
             --gray-900: #111827;
@@ -1079,12 +1205,34 @@ def main() -> int:
             max-width: 100%;
             height: auto;
         }}
+        /* Normalized/Unnormalized toggle */
+        .norm-btn {{
+            padding: 0.5rem 1.25rem;
+            border: none;
+            background: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            color: var(--gray-600);
+        }}
+        .norm-btn.active {{
+            background: var(--primary);
+            color: white;
+        }}
+        .norm-btn:hover:not(.active) {{
+            background: var(--primary-light);
+        }}
     </style>
 </head>
 <body>
     <div class="header-container">
-        <div class="header">
+        <div class="header" style="display: flex; align-items: center; justify-content: space-between;">
             <h1>Metabolomics Filtering Analysis</h1>
+            <div id="norm-toggle" style="display: flex; gap: 0; border: 2px solid var(--primary); border-radius: 8px; overflow: hidden;">
+                <button class="norm-btn active" onclick="switchDataset('Normalized')">Normalized</button>
+                <button class="norm-btn" onclick="switchDataset('Unnormalized')">Unnormalized</button>
+            </div>
         </div>
 
         <div class="tabs">
@@ -1093,7 +1241,7 @@ def main() -> int:
         <button class="tab" onclick="showTab('priority')">Priority Peaks</button>
         <button class="tab" onclick="showTab('venn')">Treatment Overlap</button>
         <button class="tab" onclick="showTab('methods')">Methods</button>
-        <button class="tab" onclick="showTab('data80')">Filtered Data ({len(kept_80):,})</button>
+        <button class="tab" onclick="showTab('data80')">Filtered Data (<span id="tab-kept-80"></span>)</button>
         <button class="tab" onclick="showTab('peaks')">Understanding Peaks</button>
         </div>
     </div>
@@ -1106,18 +1254,18 @@ def main() -> int:
         <div class="summary-cards">
             <div class="card">
                 <h4>Original Data</h4>
-                <div class="value">{total:,} <span style="font-size: 0.5em; font-weight: normal;">Peaks</span></div>
+                <div class="value"><span id="ov-total"></span> <span style="font-size: 0.5em; font-weight: normal;">Peaks</span></div>
                 <div class="subtext">unique peaks before filtering</div>
             </div>
             <div class="card" style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-color: #f87171;">
                 <h4>After Blank Filter</h4>
-                <div class="value">{len(kept_blank):,} <span style="font-size: 0.5em; font-weight: normal;">Peaks</span></div>
-                <div class="subtext">{blank_stats['both_discard']:,} contamination peaks removed</div>
+                <div class="value"><span id="ov-kept-blank"></span> <span style="font-size: 0.5em; font-weight: normal;">Peaks</span></div>
+                <div class="subtext"><span id="ov-total-removed"></span> peaks removed</div>
             </div>
             <div class="card highlight">
                 <h4>Final (80% Filter)</h4>
-                <div class="value">{len(kept_80):,} <span style="font-size: 0.5em; font-weight: normal;">Peaks</span></div>
-                <div class="subtext">{100*len(kept_80)/total:.1f}% of original kept</div>
+                <div class="value"><span id="ov-kept-80"></span> <span style="font-size: 0.5em; font-weight: normal;">Peaks</span></div>
+                <div class="subtext"><span id="ov-pct-kept"></span>% of original kept</div>
             </div>
         </div>
 
@@ -1128,18 +1276,19 @@ def main() -> int:
         <h3>Blank Filtering Results</h3>
         <table class="info-table">
             <tr><th>Category</th><th>Count</th><th>Description</th></tr>
-            <tr><td class="kept">Sample Only</td><td>{blank_stats['sample_only']:,}</td><td>Peaks only in samples, not in blanks (auto-kept)</td></tr>
-            <tr><td class="kept">Passed Validation</td><td>{blank_stats['both_keep']:,}</td><td>Passed both fold-change (≥{BLANK_FOLD_THRESHOLD:.0f}x) AND statistical test (p&lt;{P_VALUE_CUTOFF}, FDR-corrected)</td></tr>
-            <tr><td class="filtered">Contamination</td><td>{blank_stats['both_discard']:,}</td><td>Failed fold-change or statistical test (removed)</td></tr>
-            <tr><td>Blank Only</td><td>{blank_stats['blank_only']:,}</td><td>Peaks only in blanks (not in samples)</td></tr>
+            <tr><td class="kept">Sample Only</td><td><span id="ov-sample-only"></span></td><td>Peaks only in samples, not in blanks (auto-kept)</td></tr>
+            <tr><td class="kept">Passed Validation</td><td><span id="ov-both-keep"></span></td><td>Passed both fold-change (≥{BLANK_FOLD_THRESHOLD:.0f}x) AND statistical test (p&lt;{P_VALUE_CUTOFF}, FDR-corrected)</td></tr>
+            <tr><td class="filtered">Contamination</td><td><span id="ov-both-discard2"></span></td><td>Failed fold-change or statistical test (removed)</td></tr>
+            <tr><td>Blank Only</td><td><span id="ov-blank-only"></span></td><td>Peaks only in blanks (not in samples)</td></tr>
+            <tr><td>No Signal</td><td><span id="ov-neither"></span></td><td>No detectable signal in any sample or blank</td></tr>
         </table>
 
         <h4 style="margin-top: 1.5rem;">Statistical Validation Details</h4>
         <table class="info-table">
             <tr><th>Criterion</th><th>Passed</th><th>Failed</th><th>Description</th></tr>
-            <tr><td>Fold-Change ≥{BLANK_FOLD_THRESHOLD:.0f}x</td><td class="kept">{blank_stats.get('fold_change_pass', 0):,}</td><td class="filtered">{blank_stats.get('fold_change_fail', 0):,}</td><td>Sample mean ≥ {BLANK_FOLD_THRESHOLD:.0f}× blank mean (<a href="https://bioconductor.org/packages/release/bioc/html/pmp.html" target="_blank">pmp/Bioconductor</a>)</td></tr>
-            <tr><td>Welch's t-test</td><td class="kept">{blank_stats.get('stat_test_pass', 0):,}</td><td class="filtered">{blank_stats.get('stat_test_fail', 0):,}</td><td>p &lt; {P_VALUE_CUTOFF} (FDR-corrected, one-sided)</td></tr>
-            <tr><td>Insufficient Data</td><td colspan="2">{blank_stats.get('insufficient_data', 0):,}</td><td>Not enough replicates for t-test (used fold-change only)</td></tr>
+            <tr><td>Fold-Change ≥{BLANK_FOLD_THRESHOLD:.0f}x</td><td class="kept"><span id="ov-fc-pass"></span></td><td class="filtered"><span id="ov-fc-fail"></span></td><td>Sample mean ≥ {BLANK_FOLD_THRESHOLD:.0f}× blank mean (<a href="https://bioconductor.org/packages/release/bioc/html/pmp.html" target="_blank">pmp/Bioconductor</a>)</td></tr>
+            <tr><td>Welch's t-test</td><td class="kept"><span id="ov-stat-pass"></span></td><td class="filtered"><span id="ov-stat-fail"></span></td><td>p &lt; {P_VALUE_CUTOFF} (FDR-corrected, one-sided)</td></tr>
+            <tr><td>Insufficient Data</td><td colspan="2"><span id="ov-insufficient"></span></td><td>Not enough replicates for t-test (used fold-change only)</td></tr>
         </table>
 
         <div class="alert alert-success" style="margin-top: 1rem;">
@@ -1149,14 +1298,14 @@ def main() -> int:
         <h3>Source Data</h3>
         <ul>
             <li><strong>File:</strong> Emily_Data_Pruned_Labeled.xlsx</li>
-            <li><strong>Sheet:</strong> Normalized</li>
+            <li><strong>Sheet:</strong> <span id="ov-sheet">Normalized</span></li>
             <li><strong>Samples:</strong> 23 total (12 Leaf, 11 Root) - Emily's samples only</li>
-            <li><strong>Leaf blanks:</strong> {', '.join(LEAF_BLANKS)}</li>
-            <li><strong>Root blanks:</strong> {', '.join(ROOT_BLANKS)}</li>
+            <li><strong>Leaf blanks:</strong> <span id="ov-leaf-blanks"></span></li>
+            <li><strong>Root blanks:</strong> <span id="ov-root-blanks"></span></li>
         </ul>
 
         <div class="alert alert-info" style="margin: 1.5rem 0;">
-            <strong>Key Finding:</strong> Root tissue reaches 80% much faster (avg ~{sum(x[2] for x in root_80)/len(root_80):,.0f} peaks) than leaf tissue (avg ~{sum(x[2] for x in leaf_80)/len(leaf_80):,.0f} peaks). This means roots have a few dominant compounds while leaves have signal spread across more compounds.
+            <strong>Key Finding:</strong> Root tissue reaches 80% much faster (avg ~<span id="ov-root-avg"></span> peaks) than leaf tissue (avg ~<span id="ov-leaf-avg"></span> peaks). This means roots have a few dominant compounds while leaves have signal spread across more compounds.
         </div>
 
         <h3>Leaf vs Root</h3>
@@ -1165,12 +1314,12 @@ def main() -> int:
         <div class="summary-cards">
             <div class="card leaf">
                 <h4>Leaf Avg</h4>
-                <div class="value">{sum(x[2] for x in leaf_80)/len(leaf_80):,.0f}</div>
+                <div class="value"><span id="ov-leaf-avg2"></span></div>
                 <div class="subtext">peaks to reach 80%</div>
             </div>
             <div class="card root">
                 <h4>Root Avg</h4>
-                <div class="value">{sum(x[2] for x in root_80)/len(root_80):,.0f}</div>
+                <div class="value"><span id="ov-root-avg2"></span></div>
                 <div class="subtext">peaks to reach 80%</div>
             </div>
         </div>
@@ -1183,14 +1332,14 @@ def main() -> int:
                 <h4 style="color: var(--leaf-color); padding: 0.5rem; background: var(--leaf-bg); border-radius: 6px; display: inline-block;">Leaf Tissue (12 samples)</h4>
                 <table class="info-table" style="margin-top: 0.75rem;">
                     <tr style="background: var(--leaf-bg);"><th>#</th><th>ID</th><th>Peaks Needed</th><th>Smallest Peak Kept</th></tr>
-                    {leaf_rows}
+                    <tbody id="ov-leaf-rows"></tbody>
                 </table>
             </div>
             <div>
                 <h4 style="color: var(--root-color); padding: 0.5rem; background: var(--root-bg); border-radius: 6px; display: inline-block;">Root Tissue (11 samples)</h4>
                 <table class="info-table" style="margin-top: 0.75rem;">
                     <tr style="background: var(--root-bg);"><th>#</th><th>ID</th><th>Peaks Needed</th><th>Smallest Peak Kept</th></tr>
-                    {root_rows}
+                    <tbody id="ov-root-rows"></tbody>
                 </table>
             </div>
         </div>
@@ -1212,8 +1361,8 @@ def main() -> int:
         <p>Comparison of metabolite richness (peak counts) and Shannon diversity index across treatments.</p>
 
         <div class="alert alert-info" style="margin-bottom: 1.5rem;">
-            <strong>Data Source:</strong> Blank-filtered dataset ({len(kept_blank):,} peaks after {BLANK_FOLD_THRESHOLD:.0f}x blank subtraction).<br>
-            <strong>NOT</strong> the 80% cumulative-filtered dataset ({len(kept_80):,} peaks).<br>
+            <strong>Data Source:</strong> Blank-filtered dataset (<span id="div-kept-blank"></span> peaks after {BLANK_FOLD_THRESHOLD:.0f}x blank subtraction).<br>
+            <strong>NOT</strong> the 80% cumulative-filtered dataset (<span id="div-kept-80"></span> peaks).<br>
             <em>Richness and diversity are calculated BEFORE the 80% filter to capture full metabolome complexity.</em>
         </div>
 
@@ -1221,26 +1370,16 @@ def main() -> int:
             <!-- Chemical Richness Section -->
             <div>
                 <h3>Chemical Richness (Peak Counts)</h3>
-                <p style="color: var(--gray-600); font-size: 0.9em;">Number of detected metabolites per sample (mean ± SE) out of {len(kept_blank):,} total peaks</p>
+                <p style="color: var(--gray-600); font-size: 0.9em;">Number of detected metabolites per sample (mean ± SE) out of <span id="div-kept-blank2"></span> total peaks</p>
 
                 <div style="margin-top: 1rem;">
                     <h4 style="color: var(--leaf-color);">Leaf Tissue</h4>
-                    <table class="info-table">
-                        <tr><th>Treatment</th><th>Mean</th><th>SE</th><th>n</th></tr>
-                        <tr><td style="background: #fee2e2;">Drought</td><td>{chemical_richness['Leaf']['Drought']['mean']:.1f}</td><td>±{chemical_richness['Leaf']['Drought']['se']:.1f}</td><td>{chemical_richness['Leaf']['Drought']['n']}</td></tr>
-                        <tr><td style="background: #dbeafe;">Ambient</td><td>{chemical_richness['Leaf']['Ambient']['mean']:.1f}</td><td>±{chemical_richness['Leaf']['Ambient']['se']:.1f}</td><td>{chemical_richness['Leaf']['Ambient']['n']}</td></tr>
-                        <tr><td style="background: #dcfce7;">Watered</td><td>{chemical_richness['Leaf']['Watered']['mean']:.1f}</td><td>±{chemical_richness['Leaf']['Watered']['se']:.1f}</td><td>{chemical_richness['Leaf']['Watered']['n']}</td></tr>
-                    </table>
+                    <div id="richness-table-leaf"></div>
                 </div>
 
                 <div style="margin-top: 1rem;">
                     <h4 style="color: var(--root-color);">Root Tissue</h4>
-                    <table class="info-table">
-                        <tr><th>Treatment</th><th>Mean</th><th>SE</th><th>n</th></tr>
-                        <tr><td style="background: #fee2e2;">Drought</td><td>{chemical_richness['Root']['Drought']['mean']:.1f}</td><td>±{chemical_richness['Root']['Drought']['se']:.1f}</td><td>{chemical_richness['Root']['Drought']['n']}</td></tr>
-                        <tr><td style="background: #dbeafe;">Ambient</td><td>{chemical_richness['Root']['Ambient']['mean']:.1f}</td><td>±{chemical_richness['Root']['Ambient']['se']:.1f}</td><td>{chemical_richness['Root']['Ambient']['n']}</td></tr>
-                        <tr><td style="background: #dcfce7;">Watered</td><td>{chemical_richness['Root']['Watered']['mean']:.1f}</td><td>±{chemical_richness['Root']['Watered']['se']:.1f}</td><td>{chemical_richness['Root']['Watered']['n']}</td></tr>
-                    </table>
+                    <div id="richness-table-root"></div>
                 </div>
 
                 <div id="richness-chart" style="margin-top: 1rem; min-height: 300px;"></div>
@@ -1253,22 +1392,12 @@ def main() -> int:
 
                 <div style="margin-top: 1rem;">
                     <h4 style="color: var(--leaf-color);">Leaf Tissue</h4>
-                    <table class="info-table">
-                        <tr><th>Treatment</th><th>Mean H</th><th>SE</th><th>n</th></tr>
-                        <tr><td style="background: #fee2e2;">Drought</td><td>{shannon_diversity['Leaf']['Drought']['mean']:.3f}</td><td>±{shannon_diversity['Leaf']['Drought']['se']:.3f}</td><td>{shannon_diversity['Leaf']['Drought']['n']}</td></tr>
-                        <tr><td style="background: #dbeafe;">Ambient</td><td>{shannon_diversity['Leaf']['Ambient']['mean']:.3f}</td><td>±{shannon_diversity['Leaf']['Ambient']['se']:.3f}</td><td>{shannon_diversity['Leaf']['Ambient']['n']}</td></tr>
-                        <tr><td style="background: #dcfce7;">Watered</td><td>{shannon_diversity['Leaf']['Watered']['mean']:.3f}</td><td>±{shannon_diversity['Leaf']['Watered']['se']:.3f}</td><td>{shannon_diversity['Leaf']['Watered']['n']}</td></tr>
-                    </table>
+                    <div id="shannon-table-leaf"></div>
                 </div>
 
                 <div style="margin-top: 1rem;">
                     <h4 style="color: var(--root-color);">Root Tissue</h4>
-                    <table class="info-table">
-                        <tr><th>Treatment</th><th>Mean H</th><th>SE</th><th>n</th></tr>
-                        <tr><td style="background: #fee2e2;">Drought</td><td>{shannon_diversity['Root']['Drought']['mean']:.3f}</td><td>±{shannon_diversity['Root']['Drought']['se']:.3f}</td><td>{shannon_diversity['Root']['Drought']['n']}</td></tr>
-                        <tr><td style="background: #dbeafe;">Ambient</td><td>{shannon_diversity['Root']['Ambient']['mean']:.3f}</td><td>±{shannon_diversity['Root']['Ambient']['se']:.3f}</td><td>{shannon_diversity['Root']['Ambient']['n']}</td></tr>
-                        <tr><td style="background: #dcfce7;">Watered</td><td>{shannon_diversity['Root']['Watered']['mean']:.3f}</td><td>±{shannon_diversity['Root']['Watered']['se']:.3f}</td><td>{shannon_diversity['Root']['Watered']['n']}</td></tr>
-                    </table>
+                    <div id="shannon-table-root"></div>
                 </div>
 
                 <div id="shannon-chart" style="margin-top: 1rem; min-height: 300px;"></div>
@@ -1285,8 +1414,8 @@ def main() -> int:
             <h4 style="margin-top: 0;">Methodology (Exact Calculations)</h4>
 
             <h5>Chemical Richness</h5>
-            <pre style="background: white; padding: 1rem; border-radius: 4px; overflow-x: auto;">
-Data source: df_blank_filtered ({len(kept_blank):,} peaks after {BLANK_FOLD_THRESHOLD:.0f}x blank subtraction)
+            <pre>
+Data source: df_blank_filtered (after {BLANK_FOLD_THRESHOLD:.0f}x blank subtraction)
 
 For each sample column (e.g., "BL - Drought"):
     richness = COUNT of rows WHERE value > {DETECTION_THRESHOLD}
@@ -1296,8 +1425,8 @@ For each treatment:
     SE = STDEV(sample_richness_values) / SQRT(n_samples)</pre>
 
             <h5 style="margin-top: 1rem;">Shannon Diversity Index</h5>
-            <pre style="background: white; padding: 1rem; border-radius: 4px; overflow-x: auto;">
-Data source: df_blank_filtered ({len(kept_blank):,} peaks after {BLANK_FOLD_THRESHOLD:.0f}x blank subtraction)
+            <pre>
+Data source: df_blank_filtered (after {BLANK_FOLD_THRESHOLD:.0f}x blank subtraction)
 
 For each sample column:
     1. Get all peak abundances where value > {DETECTION_THRESHOLD}
@@ -1318,7 +1447,7 @@ For each treatment:
         <div class="alert alert-success" style="margin-top: 1rem;">
             <strong>References:</strong><br>
             • Shannon diversity index: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3901240/" target="_blank">Vinaixa et al. 2012, Metabolites</a><br>
-            • Chemical richness methods: <a href="https://link.springer.com/article/10.1134/S1021443720030085" target="_blank">Fu et al. 2020, Russian J Plant Physiol</a>
+            • Chemical richness methods: <a href="https://link.springer.com/article/10.1134/S1021443720030085" target="_blank">Fu et al. 2020, Russian Journal of Plant Physiology</a>
         </div>
     </div>
 
@@ -1341,7 +1470,6 @@ For each treatment:
             <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
                 <span style="font-weight: 600; color: var(--gray-600);">View:</span>
                 <button class="viz-toggle active" data-viz="bubble" onclick="setVizType('bubble')">Bubble Chart</button>
-                <button class="viz-toggle" data-viz="treemap" onclick="setVizType('treemap')">Treemap</button>
                 <button class="viz-toggle" data-viz="bars" onclick="setVizType('bars')">Fold Change Bars</button>
             </div>
             <div class="two-col">
@@ -1388,42 +1516,38 @@ For each treatment:
 
         <div class="two-col" style="margin-top: 1.5rem;">
             <div class="method-section" style="background: linear-gradient(135deg, var(--leaf-bg) 0%, #d1fae5 100%); border-color: var(--leaf-color);">
-                <h3 style="color: var(--leaf-color); margin-top: 0;">Leaf Tissue ({venn_data['Leaf']['all']:,} peaks)</h3>
-                <table class="info-table">
-                    <tr><th>Region</th><th>Peaks</th><th>Meaning</th></tr>
-                    <tr><td><strong style="color: #dc2626;">Drought Only</strong></td><td><strong>{venn_data['Leaf']['drought_only']:,}</strong></td><td>Only in drought, not ambient or watered</td></tr>
-                    <tr><td><strong style="color: #2563eb;">Ambient Only</strong></td><td><strong>{venn_data['Leaf']['ambient_only']:,}</strong></td><td>Only in ambient, not drought or watered</td></tr>
-                    <tr><td><strong style="color: #16a34a;">Watered Only</strong></td><td><strong>{venn_data['Leaf']['watered_only']:,}</strong></td><td>Only in watered, not drought or ambient</td></tr>
-                    <tr><td>Drought + Ambient</td><td><strong>{venn_data['Leaf']['drought_ambient']:,}</strong></td><td>Shared by D &amp; A, not W</td></tr>
-                    <tr><td>Drought + Watered</td><td><strong>{venn_data['Leaf']['drought_watered']:,}</strong></td><td>Shared by D &amp; W, not A</td></tr>
-                    <tr><td>Ambient + Watered</td><td><strong>{venn_data['Leaf']['ambient_watered']:,}</strong></td><td>Shared by A &amp; W, not D</td></tr>
-                    <tr><td><strong>All Three</strong></td><td><strong>{venn_data['Leaf']['all_three']:,}</strong></td><td>Present in all treatments (core metabolites)</td></tr>
-                </table>
+                <h3 style="color: var(--leaf-color); margin-top: 0;">Leaf Tissue (<span id="venn-leaf-all"></span> peaks)</h3>
+                <div id="venn-leaf-table"></div>
                 <div class="alert alert-info" style="margin-top: 1rem;">
-                    <strong>{100*venn_data['Leaf']['all_three']/venn_data['Leaf']['all']:.1f}%</strong> of leaf peaks are shared across all treatments
+                    <strong><span id="venn-leaf-pct"></span>%</strong> of leaf peaks are shared across all treatments
                 </div>
             </div>
 
             <div class="method-section" style="background: linear-gradient(135deg, var(--root-bg) 0%, #fef3c7 100%); border-color: var(--root-color);">
-                <h3 style="color: var(--root-color); margin-top: 0;">Root Tissue ({venn_data['Root']['all']:,} peaks)</h3>
-                <table class="info-table">
-                    <tr><th>Region</th><th>Peaks</th><th>Meaning</th></tr>
-                    <tr><td><strong style="color: #dc2626;">Drought Only</strong></td><td><strong>{venn_data['Root']['drought_only']:,}</strong></td><td>Only in drought, not ambient or watered</td></tr>
-                    <tr><td><strong style="color: #2563eb;">Ambient Only</strong></td><td><strong>{venn_data['Root']['ambient_only']:,}</strong></td><td>Only in ambient, not drought or watered</td></tr>
-                    <tr><td><strong style="color: #16a34a;">Watered Only</strong></td><td><strong>{venn_data['Root']['watered_only']:,}</strong></td><td>Only in watered, not drought or ambient</td></tr>
-                    <tr><td>Drought + Ambient</td><td><strong>{venn_data['Root']['drought_ambient']:,}</strong></td><td>Shared by D &amp; A, not W</td></tr>
-                    <tr><td>Drought + Watered</td><td><strong>{venn_data['Root']['drought_watered']:,}</strong></td><td>Shared by D &amp; W, not A</td></tr>
-                    <tr><td>Ambient + Watered</td><td><strong>{venn_data['Root']['ambient_watered']:,}</strong></td><td>Shared by A &amp; W, not D</td></tr>
-                    <tr><td><strong>All Three</strong></td><td><strong>{venn_data['Root']['all_three']:,}</strong></td><td>Present in all treatments (core metabolites)</td></tr>
-                </table>
+                <h3 style="color: var(--root-color); margin-top: 0;">Root Tissue (<span id="venn-root-all"></span> peaks)</h3>
+                <div id="venn-root-table"></div>
                 <div class="alert alert-info" style="margin-top: 1rem;">
-                    <strong>{100*venn_data['Root']['all_three']/venn_data['Root']['all']:.1f}%</strong> of root peaks are shared across all treatments
+                    <strong><span id="venn-root-pct"></span>%</strong> of root peaks are shared across all treatments
                 </div>
             </div>
         </div>
 
+        <div class="method-section" style="margin-top: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-color: #3b82f6;">
+            <h3 style="color: #1e40af; margin-top: 0;">Cross-Tissue Overlap</h3>
+            <p style="margin-bottom: 0.75rem;">How peaks are shared between leaf and root tissues (<span id="venn-cross-total"></span> unique peaks total).</p>
+            <table class="info-table">
+                <tr><th>Region</th><th>Peaks</th><th>Meaning</th></tr>
+                <tr><td><strong style="color: var(--leaf-color);">Leaf Only</strong></td><td><strong><span id="venn-cross-leaf"></span></strong></td><td>Detected in leaf but not root</td></tr>
+                <tr><td><strong style="color: var(--root-color);">Root Only</strong></td><td><strong><span id="venn-cross-root"></span></strong></td><td>Detected in root but not leaf</td></tr>
+                <tr><td><strong>Both Tissues</strong></td><td><strong><span id="venn-cross-both"></span></strong></td><td>Detected in both leaf and root</td></tr>
+            </table>
+            <div class="alert alert-info" style="margin-top: 1rem;">
+                <strong><span id="venn-cross-pct"></span>%</strong> of peaks are found in both tissues
+            </div>
+        </div>
+
         <div class="alert alert-success" style="margin-top: 2rem;">
-            <strong>How to interpret:</strong> Peaks unique to a treatment (e.g., "Drought Only") are potential biomarkers for that stress condition. Peaks shared by all three are likely core metabolites present regardless of water availability.
+            <strong>How to interpret:</strong> Peaks unique to a treatment (e.g., "Drought Only") are potential biomarkers for that stress condition. Peaks shared by all three are likely core metabolites present regardless of water availability. Peaks unique to a tissue (leaf-only or root-only) may reflect tissue-specific metabolism.
         </div>
     </div>
 
@@ -1460,8 +1584,8 @@ Peaks ONLY in samples (not in blanks) → auto-KEEP</pre>
             </div>
 
             <div class="alert alert-success">
-                <strong>Leaf blanks ({len(LEAF_BLANKS)}):</strong> {', '.join(LEAF_BLANKS)}<br>
-                <strong>Root blanks ({len(ROOT_BLANKS)}):</strong> {', '.join(ROOT_BLANKS)}
+                <strong>Leaf blanks:</strong> <span id="meth-leaf-blanks"></span><br>
+                <strong>Root blanks:</strong> <span id="meth-root-blanks"></span>
             </div>
         </div>
 
@@ -1527,7 +1651,7 @@ Peaks ONLY in samples (not in blanks) → auto-KEEP</pre>
 
 Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
          ppm = (427.3778 - 427.3782) / 427.3782 × 1,000,000 = -0.9 ppm</pre>
-            <p>Lower ppm = higher confidence. Our assignments average <strong>1.27 ppm</strong>, which is excellent.</p>
+            <p>Lower ppm = higher confidence. Our assignments average <strong><span id="meth-formula-ppm2"></span> ppm</strong>, which is excellent.</p>
 
             <h4 style="margin-top: 1.5rem;">Formula Classes</h4>
             <table class="info-table">
@@ -1543,7 +1667,7 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             </div>
 
             <div class="alert alert-success" style="margin-top: 1rem;">
-                <strong>Assignment Results:</strong> 3,439 peaks assigned formulas (51.3% of filtered peaks). Mean mass error: 1.27 ppm.
+                <strong>Assignment Results:</strong> <span id="meth-formula-count"></span> peaks assigned formulas (<span id="meth-formula-pct"></span>% of filtered peaks). Mean mass error: <span id="meth-formula-ppm"></span> ppm.
             </div>
         </div>
     </div>
@@ -1555,18 +1679,18 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
         <div class="summary-cards">
             <div class="card">
                 <h4>Original Peaks</h4>
-                <div class="value">{total:,}</div>
+                <div class="value"><span id="dt-total"></span></div>
                 <div class="subtext">before any filtering</div>
             </div>
             <div class="card" style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-color: #f87171;">
                 <h4>After Blank Filter</h4>
-                <div class="value">{len(kept_blank):,}</div>
-                <div class="subtext">{blank_stats['both_discard']:,} contamination removed</div>
+                <div class="value"><span id="dt-kept-blank"></span></div>
+                <div class="subtext"><span id="dt-total-removed"></span> peaks removed</div>
             </div>
             <div class="card highlight">
                 <h4>Final Peaks</h4>
-                <div class="value">{len(kept_80):,}</div>
-                <div class="subtext">{100*len(kept_80)/total:.1f}% of original kept</div>
+                <div class="value"><span id="dt-kept-80"></span></div>
+                <div class="subtext"><span id="dt-pct-kept"></span>% of original kept</div>
             </div>
         </div>
         <div class="table-container">
@@ -1617,13 +1741,175 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
 
     <script>
-        // Data
-        const data80 = {json_80};
-        const columns = {col_defs_json};
+        // Both datasets
+        const DATASETS = {{
+            "Normalized": {{
+                data80: {norm["json_80"]},
+                columns: {norm["col_defs_json"]},
+                chemicalRichness: {json.dumps(norm["chemical_richness"])},
+                shannonDiversity: {json.dumps(norm["shannon_diversity"])},
+                allPeaksData: {norm["all_peaks_json"]},
+                overviewStats: {json.dumps(norm["overview_stats"])},
+                vennData: {json.dumps(norm["venn_data"])}
+            }},
+            "Unnormalized": {{
+                data80: {unnorm["json_80"]},
+                columns: {unnorm["col_defs_json"]},
+                chemicalRichness: {json.dumps(unnorm["chemical_richness"])},
+                shannonDiversity: {json.dumps(unnorm["shannon_diversity"])},
+                allPeaksData: {unnorm["all_peaks_json"]},
+                overviewStats: {json.dumps(unnorm["overview_stats"])},
+                vennData: {json.dumps(unnorm["venn_data"])}
+            }}
+        }};
 
-        // Diversity data
-        const chemicalRichness = {json.dumps(chemical_richness)};
-        const shannonDiversity = {json.dumps(shannon_diversity)};
+        var currentMode = "Normalized";
+
+        // Active dataset references
+        var data80 = DATASETS[currentMode].data80;
+        var columns = DATASETS[currentMode].columns;
+        var chemicalRichness = DATASETS[currentMode].chemicalRichness;
+        var shannonDiversity = DATASETS[currentMode].shannonDiversity;
+        var allPeaksData = DATASETS[currentMode].allPeaksData;
+
+        // Format number with commas
+        function fmt(n) {{ return n.toLocaleString(); }}
+
+        // Update overview tab from stats object
+        function updateOverview(s) {{
+            document.getElementById('ov-total').textContent = fmt(s.total);
+            document.getElementById('ov-kept-blank').textContent = fmt(s.kept_blank);
+            document.getElementById('ov-total-removed').textContent = fmt(s.total_removed);
+            document.getElementById('ov-kept-80').textContent = fmt(s.kept_80);
+            document.getElementById('ov-pct-kept').textContent = s.pct_kept;
+            document.getElementById('ov-sample-only').textContent = fmt(s.sample_only);
+            document.getElementById('ov-both-keep').textContent = fmt(s.both_keep);
+            document.getElementById('ov-both-discard2').textContent = fmt(s.both_discard);
+            document.getElementById('ov-blank-only').textContent = fmt(s.blank_only);
+            document.getElementById('ov-neither').textContent = fmt(s.neither);
+            document.getElementById('ov-fc-pass').textContent = fmt(s.fold_change_pass);
+            document.getElementById('ov-fc-fail').textContent = fmt(s.fold_change_fail);
+            document.getElementById('ov-stat-pass').textContent = fmt(s.stat_test_pass);
+            document.getElementById('ov-stat-fail').textContent = fmt(s.stat_test_fail);
+            document.getElementById('ov-insufficient').textContent = fmt(s.insufficient_data);
+            document.getElementById('ov-sheet').textContent = currentMode;
+            document.getElementById('ov-leaf-blanks').textContent = s.leaf_blanks;
+            document.getElementById('ov-root-blanks').textContent = s.root_blanks;
+            document.getElementById('ov-leaf-avg').textContent = fmt(s.leaf_avg_80);
+            document.getElementById('ov-root-avg').textContent = fmt(s.root_avg_80);
+            document.getElementById('ov-leaf-avg2').textContent = fmt(s.leaf_avg_80);
+            document.getElementById('ov-root-avg2').textContent = fmt(s.root_avg_80);
+            document.getElementById('ov-leaf-rows').innerHTML = s.leaf_rows_html;
+            document.getElementById('ov-root-rows').innerHTML = s.root_rows_html;
+            // Methods tab
+            document.getElementById('meth-leaf-blanks').textContent = s.leaf_blanks;
+            document.getElementById('meth-root-blanks').textContent = s.root_blanks;
+            document.getElementById('meth-formula-count').textContent = fmt(s.formula_match_count);
+            document.getElementById('meth-formula-pct').textContent = s.formula_match_pct;
+            document.getElementById('meth-formula-ppm').textContent = s.formula_mean_ppm;
+            document.getElementById('meth-formula-ppm2').textContent = s.formula_mean_ppm;
+        }}
+
+        // Update diversity tab tables
+        function updateDiversityTables(cr, sd) {{
+            document.getElementById('div-kept-blank').textContent = fmt(DATASETS[currentMode].overviewStats.kept_blank);
+            document.getElementById('div-kept-80').textContent = fmt(DATASETS[currentMode].overviewStats.kept_80);
+            document.getElementById('div-kept-blank2').textContent = fmt(DATASETS[currentMode].overviewStats.kept_blank);
+
+            ['Leaf', 'Root'].forEach(function(tissue) {{
+                var colors = {{Drought: '#fee2e2', Ambient: '#dbeafe', Watered: '#dcfce7'}};
+                // Richness table
+                var rhtml = '<table class="info-table"><tr><th>Treatment</th><th>Mean</th><th>SE</th><th>n</th></tr>';
+                ['Drought', 'Ambient', 'Watered'].forEach(function(t) {{
+                    rhtml += '<tr><td style="background:' + colors[t] + ';">' + t + '</td><td>' + cr[tissue][t].mean.toFixed(1) + '</td><td>±' + cr[tissue][t].se.toFixed(1) + '</td><td>' + cr[tissue][t].n + '</td></tr>';
+                }});
+                rhtml += '</table>';
+                document.getElementById('richness-table-' + tissue.toLowerCase()).innerHTML = rhtml;
+                // Shannon table
+                var shtml = '<table class="info-table"><tr><th>Treatment</th><th>Mean H</th><th>SE</th><th>n</th></tr>';
+                ['Drought', 'Ambient', 'Watered'].forEach(function(t) {{
+                    shtml += '<tr><td style="background:' + colors[t] + ';">' + t + '</td><td>' + sd[tissue][t].mean.toFixed(3) + '</td><td>±' + sd[tissue][t].se.toFixed(3) + '</td><td>' + sd[tissue][t].n + '</td></tr>';
+                }});
+                shtml += '</table>';
+                document.getElementById('shannon-table-' + tissue.toLowerCase()).innerHTML = shtml;
+            }});
+        }}
+
+        // Update venn tab
+        function updateVennTab(vd) {{
+            ['Leaf', 'Root'].forEach(function(tissue) {{
+                var t = tissue.toLowerCase();
+                var d = vd[tissue];
+                document.getElementById('venn-' + t + '-all').textContent = fmt(d.all);
+                var pct = d.all > 0 ? (100 * d.all_three / d.all).toFixed(1) : '0.0';
+                document.getElementById('venn-' + t + '-pct').textContent = pct;
+                var html = '<table class="info-table"><tr><th>Region</th><th>Peaks</th><th>Meaning</th></tr>';
+                html += '<tr><td><strong style="color:#dc2626;">Drought Only</strong></td><td><strong>' + fmt(d.drought_only) + '</strong></td><td>Only in drought, not ambient or watered</td></tr>';
+                html += '<tr><td><strong style="color:#2563eb;">Ambient Only</strong></td><td><strong>' + fmt(d.ambient_only) + '</strong></td><td>Only in ambient, not drought or watered</td></tr>';
+                html += '<tr><td><strong style="color:#16a34a;">Watered Only</strong></td><td><strong>' + fmt(d.watered_only) + '</strong></td><td>Only in watered, not drought or ambient</td></tr>';
+                html += '<tr><td>Drought + Ambient</td><td><strong>' + fmt(d.drought_ambient) + '</strong></td><td>Shared by D &amp; A, not W</td></tr>';
+                html += '<tr><td>Drought + Watered</td><td><strong>' + fmt(d.drought_watered) + '</strong></td><td>Shared by D &amp; W, not A</td></tr>';
+                html += '<tr><td>Ambient + Watered</td><td><strong>' + fmt(d.ambient_watered) + '</strong></td><td>Shared by A &amp; W, not D</td></tr>';
+                html += '<tr><td><strong>All Three</strong></td><td><strong>' + fmt(d.all_three) + '</strong></td><td>Present in all treatments (core metabolites)</td></tr>';
+                html += '</table>';
+                document.getElementById('venn-' + t + '-table').innerHTML = html;
+            }});
+            var ct = vd.cross_tissue;
+            document.getElementById('venn-cross-total').textContent = fmt(ct.total);
+            document.getElementById('venn-cross-leaf').textContent = fmt(ct.leaf_only);
+            document.getElementById('venn-cross-root').textContent = fmt(ct.root_only);
+            document.getElementById('venn-cross-both').textContent = fmt(ct.both);
+            document.getElementById('venn-cross-pct').textContent = ct.total > 0 ? (100 * ct.both / ct.total).toFixed(1) : '0.0';
+        }}
+
+        // Update filtered data tab stats
+        function updateDataTabStats(s) {{
+            document.getElementById('dt-total').textContent = fmt(s.total);
+            document.getElementById('dt-kept-blank').textContent = fmt(s.kept_blank);
+            document.getElementById('dt-total-removed').textContent = fmt(s.total_removed);
+            document.getElementById('dt-kept-80').textContent = fmt(s.kept_80);
+            document.getElementById('dt-pct-kept').textContent = s.pct_kept;
+            document.getElementById('tab-kept-80').textContent = fmt(s.kept_80);
+        }}
+
+        // Switch between Normalized/Unnormalized
+        function switchDataset(mode) {{
+            currentMode = mode;
+            var ds = DATASETS[mode];
+
+            // Update active references
+            data80 = ds.data80;
+            columns = ds.columns;
+            chemicalRichness = ds.chemicalRichness;
+            shannonDiversity = ds.shannonDiversity;
+            allPeaksData = ds.allPeaksData;
+
+            // Toggle button styling
+            document.querySelectorAll('.norm-btn').forEach(function(btn) {{
+                btn.classList.remove('active');
+            }});
+            event.target.classList.add('active');
+
+            // Update all tabs
+            updateOverview(ds.overviewStats);
+            updateDiversityTables(ds.chemicalRichness, ds.shannonDiversity);
+            updateVennTab(ds.vennData);
+            updateDataTabStats(ds.overviewStats);
+
+            // Destroy and recreate DataTable
+            if ($.fn.DataTable.isDataTable('#table80')) {{
+                $('#table80').DataTable().destroy();
+                $('#table80').empty();
+            }}
+            initTable('#table80', ds.data80, ds.columns);
+
+            // Re-render diversity charts
+            renderDiversityCharts();
+
+            // Re-render priority peaks
+            updateComparison();
+            updateVisualization();
+        }}
 
         // Tab switching
         function showTab(tabId) {{
@@ -1633,10 +1919,11 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             event.target.classList.add('active');
         }}
 
-        function initTable(selector, data) {{
+        function initTable(selector, tableData, tableCols) {{
+            if (tableCols === undefined) tableCols = columns;
             $(selector).DataTable({{
-                data: data,
-                columns: columns,
+                data: tableData,
+                columns: tableCols,
                 pageLength: 50,
                 scrollX: true,
                 dom: 'Bfrtip',
@@ -1658,15 +1945,18 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             }});
         }}
 
-        // Initialize table after page loads
+        // Initialize on page load
         $(document).ready(function() {{
+            // Populate all dynamic content
+            updateOverview(DATASETS[currentMode].overviewStats);
+            updateDiversityTables(DATASETS[currentMode].chemicalRichness, DATASETS[currentMode].shannonDiversity);
+            updateVennTab(DATASETS[currentMode].vennData);
+            updateDataTabStats(DATASETS[currentMode].overviewStats);
+
             setTimeout(function() {{
-                initTable('#table80', data80);
+                initTable('#table80', data80, columns);
             }}, 500);
         }});
-
-        // All peaks data with treatment abundances
-        var allPeaksData = {all_peaks_json};
 
         // Toggle state
         var toggleState = {{ drought: true, ambient: false, watered: false }};
@@ -1894,8 +2184,6 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
                 }}
             }} else if (currentVizType === 'bubble') {{
                 renderBubble(container, filtered, treatments);
-            }} else if (currentVizType === 'treemap') {{
-                renderTreemap(container, filtered, treatments);
             }}
         }}
 
@@ -2228,83 +2516,6 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             document.getElementById('viz-info').innerHTML = 'Bubble size = average abundance across selected treatments, color = dominant treatment. Hover for details.';
         }}
 
-        // TREEMAP - rectangles sized by abundance
-        function renderTreemap(container, data, treatments) {{
-            var width = 600, height = 520;
-
-            if (data.length === 0) {{
-                container.append('p').style('color', '#666').text('No peaks to display');
-                return;
-            }}
-
-            // Group by dominant treatment among SELECTED treatments only
-            function getDominant(d) {{
-                var vals = treatments.map(function(t) {{
-                    return {{ t: t, v: d[t] || 0 }};
-                }});
-                vals.sort(function(a, b) {{ return b.v - a.v; }});
-                return vals[0].t;
-            }}
-
-            // Helper to get max abundance from selected treatments only
-            function getSelectedMax(d) {{
-                var vals = treatments.map(function(t) {{ return d[t] || 0; }});
-                return Math.max.apply(null, vals);
-            }}
-
-            // Take top 100 by abundance (using selected treatments)
-            var sorted = data.slice().sort(function(a, b) {{
-                return getSelectedMax(b) - getSelectedMax(a);
-            }}).slice(0, 100);
-
-            var hierarchy = {{
-                name: 'root',
-                children: treatments.map(function(t) {{
-                    return {{
-                        name: t,
-                        children: sorted.filter(function(d) {{ return getDominant(d) === t; }}).map(function(d) {{
-                            return {{ name: d.mz ? parseFloat(d.mz).toFixed(2) : d.compound.substring(0,8), value: getSelectedMax(d), compound: d.compound, data: d }};
-                        }})
-                    }};
-                }}).filter(function(g) {{ return g.children.length > 0; }})
-            }};
-
-            var root = d3.hierarchy(hierarchy).sum(function(d) {{ return d.value || 0; }});
-            d3.treemap().size([width, height - 20]).padding(1)(root);
-
-            var svg = container.append('svg').attr('width', width).attr('height', height).attr('viewBox', '0 0 ' + width + ' ' + height).style('max-width', '100%').style('height', 'auto');
-
-            svg.selectAll('rect')
-                .data(root.leaves())
-                .enter()
-                .append('rect')
-                .attr('x', function(d) {{ return d.x0; }})
-                .attr('y', function(d) {{ return d.y0; }})
-                .attr('width', function(d) {{ return Math.max(0, d.x1 - d.x0); }})
-                .attr('height', function(d) {{ return Math.max(0, d.y1 - d.y0); }})
-                .attr('fill', function(d) {{ return treatmentColors[d.parent.data.name] || '#ccc'; }})
-                .attr('opacity', 0.8)
-                .attr('stroke', 'white')
-                .append('title')
-                .text(function(d) {{
-                    var data = d.data.data || {{}};
-                    return (d.data.compound || d.data.name) + (data.formula ? '\\nFormula: ' + data.formula : '') + '\\nm/z: ' + (data.mz || 'N/A') + '\\nValue: ' + (d.value ? d.value.toExponential(1) : '0');
-                }});
-
-            // Add labels to larger rectangles
-            svg.selectAll('text')
-                .data(root.leaves().filter(function(d) {{ return (d.x1 - d.x0) > 25 && (d.y1 - d.y0) > 12; }}))
-                .enter()
-                .append('text')
-                .attr('x', function(d) {{ return d.x0 + 2; }})
-                .attr('y', function(d) {{ return d.y0 + 10; }})
-                .attr('font-size', '8px')
-                .attr('fill', 'white')
-                .text(function(d) {{ return d.data.name; }});
-
-            document.getElementById('viz-info').innerHTML = 'Treemap: area = abundance, color = dominant treatment. Hover for details.';
-        }}
-
         // Initialize when priority tab is shown
         document.querySelector('[onclick*=\"priority\"]').addEventListener('click', function() {{
             setTimeout(function() {{
@@ -2316,6 +2527,10 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
 
         // Diversity charts
         function renderDiversityCharts() {{
+            // Clear existing charts before re-rendering
+            document.getElementById('richness-chart').innerHTML = '';
+            document.getElementById('shannon-chart').innerHTML = '';
+
             const treatments = ['Drought', 'Ambient', 'Watered'];
             const colors = {{'Drought': '#ef4444', 'Ambient': '#3b82f6', 'Watered': '#22c55e'}};
             const margin = {{top: 20, right: 30, bottom: 40, left: 60}};
@@ -2436,9 +2651,7 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
         // Initialize diversity charts when tab is shown
         document.querySelector('[onclick*=\"diversity\"]').addEventListener('click', function() {{
             setTimeout(function() {{
-                if (!document.querySelector('#richness-chart svg')) {{
-                    renderDiversityCharts();
-                }}
+                renderDiversityCharts();
             }}, 100);
         }});
 
@@ -2453,10 +2666,11 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
     output_path.write_text(html, encoding="utf-8")
     print(f"Report saved to: {output_path}")
     print(f"File size: {output_path.stat().st_size / 1024 / 1024:.1f} MB")
-    print(f"\nFiltering summary:")
-    print(f"  Original peaks: {total:,}")
-    print(f"  After blank filter: {len(kept_blank):,} ({blank_stats['both_discard']:,} contamination removed)")
-    print(f"  After 80% filter: {len(kept_80):,} ({100*len(kept_80)/total:.1f}% of original)")
+    for label, result in [("Normalized", norm), ("Unnormalized", unnorm)]:
+        print(f"\n{label} filtering summary:")
+        print(f"  Original peaks: {result['total']:,}")
+        print(f"  After blank filter: {len(result['kept_blank']):,} ({result['total'] - len(result['kept_blank']):,} removed)")
+        print(f"  After 80% filter: {len(result['kept_80']):,} ({100*len(result['kept_80'])/result['total']:.1f}% of original)")
 
     return 0
 
