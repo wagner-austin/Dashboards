@@ -125,15 +125,15 @@ def test_filter_blanks_single_tissue_high_fold_change() -> None:
         {
             "Compound": ["A"],
             "Sample1": [1000.0],
-            "Sample2": [1000.0],
+            "Sample2": [1010.0],
             "Blank1": [10.0],
-            "Blank2": [10.0],
+            "Blank2": [10.5],
         }
     )
     sample_cols = ["Sample1", "Sample2"]
     blank_cols = ["Blank1", "Blank2"]
 
-    # 100x fold change should pass 20x threshold
+    # ~98x fold change should pass 20x threshold
     kept, stats = _filter_blanks_single_tissue(
         df, sample_cols, blank_cols, threshold=20.0, p_value_cutoff=0.05, fdr_correction=True
     )
@@ -148,15 +148,15 @@ def test_filter_blanks_single_tissue_low_fold_change() -> None:
         {
             "Compound": ["A"],
             "Sample1": [100.0],
-            "Sample2": [100.0],
+            "Sample2": [102.0],
             "Blank1": [50.0],
-            "Blank2": [50.0],
+            "Blank2": [51.0],
         }
     )
     sample_cols = ["Sample1", "Sample2"]
     blank_cols = ["Blank1", "Blank2"]
 
-    # 2x fold change should fail 20x threshold
+    # ~2x fold change should fail 20x threshold
     kept, stats = _filter_blanks_single_tissue(
         df, sample_cols, blank_cols, threshold=20.0, p_value_cutoff=0.05, fdr_correction=True
     )
@@ -261,9 +261,9 @@ def test_filter_blanks_single_tissue_no_fdr_correction() -> None:
         {
             "Compound": ["A", "B"],
             "Sample1": [1000.0, 100.0],
-            "Sample2": [1000.0, 100.0],
+            "Sample2": [1010.0, 102.0],
             "Blank1": [10.0, 100.0],
-            "Blank2": [10.0, 100.0],
+            "Blank2": [10.5, 101.0],
         }
     )
     sample_cols = ["Sample1", "Sample2"]
@@ -273,6 +273,6 @@ def test_filter_blanks_single_tissue_no_fdr_correction() -> None:
         df, sample_cols, blank_cols, threshold=20.0, p_value_cutoff=0.05, fdr_correction=False
     )
 
-    # A has 100x fold change, B has 1x fold change
+    # A has ~98x fold change, B has ~1x fold change
     assert stats["fdr_corrected"] is False
     assert "A" in kept
