@@ -73,7 +73,7 @@
 
   "thresholds": {
     "blank_filter": {
-      "fold_change": 20.0,
+      "fold_change": 3.0,
       "p_value": 0.05,
       "fdr_correction": true,
       "reference": "https://bioconductor.org/packages/release/bioc/html/pmp.html",

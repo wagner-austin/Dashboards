@@ -50,7 +50,7 @@ def test_load_config_thresholds(config: Config) -> None:
 def test_get_threshold_blank_filter(config: Config) -> None:
     """Test getting blank filter threshold."""
     fold_change = get_threshold(config, "blank_filter", "fold_change")
-    assert fold_change == 20.0
+    assert fold_change == 3.0
 
     p_value = get_threshold(config, "blank_filter", "p_value")
     assert p_value == 0.05
