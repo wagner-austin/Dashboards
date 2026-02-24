@@ -1,0 +1,378 @@
+<!-- How Does It Work? - Data flow from cops to ICE -->
+
+<div class="page-intro">
+    <h2 class="page-title">How Does It Work?</h2>
+    <p class="page-subtitle">There is no single pipeline. Federal agencies access local ALPR data through at least four documented pathways — hot lists, relay searches, fusion centers, and a platform backdoor that Flock's own CEO admitted existed.</p>
+</div>
+
+<div class="collapsible open">
+    <div class="collapsible-header">
+        <div>
+            <h3 class="collapsible-title">Four Indirect Flock Pathways (Current)</h3>
+            <p class="collapsible-subtitle">Irvine's Flock lists don't include ICE/CBP directly — but these routes bypass that</p>
+        </div>
+        <span class="collapsible-icon">+</span>
+    </div>
+    <div class="collapsible-content">
+        <div class="info-box warning">
+            <strong>Key context:</strong> Irvine's A1/A3 sharing lists (316 + 156 agencies) do NOT include ICE, CBP, or HSI. But that doesn't mean federal agencies can't access the data.
+        </div>
+        <table class="evidence-table">
+            <thead>
+                <tr>
+                    <th>Pathway</th>
+                    <th>Evidence</th>
+                    <th>Why It Matters</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>HSI Hot List</strong></td>
+                    <td>"HSI MASTER" on A4 (hot lists received by Irvine)</td>
+                    <td>HSI pushes target plates into Irvine's system; cameras auto-alert when detected</td>
+                    <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a></td>
+                </tr>
+                <tr>
+                    <td><strong>OCSD Relay</strong></td>
+                    <td>CalMatters confirmed OCSD ran 100+ searches for ICE/CBP</td>
+                    <td>Irvine shares data with OCSD; OCSD is a confirmed SB 34 violator</td>
+                    <td><a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (Jun 2025)</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Fusion Centers</strong></td>
+                    <td>NCRIC on A1, JRIC on A3</td>
+                    <td>Fusion centers share with federal participants (including DHS) by design</td>
+                    <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Flock Backdoor</strong></td>
+                    <td>Flock CEO admitted CBP had access to 80K+ cameras via National Lookup pilot</td>
+                    <td>Paused Aug 2025, but was it active for Irvine before that? <strong>Unknown</strong></td>
+                    <td><a href="https://www.9news.com/article/news/local/flock-federal-immigration-agents-access-tracking-data/73-a8aee742-56d4-4a57-b5bb-0373286dfef8" target="_blank">9News (Aug 2025)</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="collapsible open">
+    <div class="collapsible-header">
+        <div>
+            <h3 class="collapsible-title">Flock CEO Admitted CBP Had Direct Access</h3>
+            <p class="collapsible-subtitle">80,000+ cameras, undisclosed pilot, paused August 2025</p>
+        </div>
+        <span class="collapsible-icon">+</span>
+    </div>
+    <div class="collapsible-content">
+        <div class="flowchart">
+            <div class="flow-row">
+                <div class="flow-box danger">
+                    <strong>CBP / Federal Agents</strong><br>
+                    <small>Direct access via pilot</small>
+                </div>
+                <div class="flow-arrow">&larr;<br><small>searched</small></div>
+                <div class="flow-box verified">
+                    <strong>80,000+ Flock Cameras</strong><br>
+                    <small>National Lookup feature</small>
+                </div>
+                <div class="flow-arrow">&larr;<br><small>includes</small></div>
+                <div class="flow-box">
+                    <strong>Irvine PD?</strong><br>
+                    <small>Unknown if included</small>
+                </div>
+            </div>
+            <div class="flow-citation">
+                <strong>Source:</strong> Flock CEO admitted in August 2025 that CBP had direct access to 80,000+ cameras via an undisclosed pilot program. Flock paused all federal pilot programs. Mountain View later discovered the "statewide lookup" feature had been active on 29 of 30 cameras for 17 months, during which 250+ agencies ran ~600,000 searches without data agreements.<br>
+                <a href="https://www.9news.com/article/news/local/flock-federal-immigration-agents-access-tracking-data/73-a8aee742-56d4-4a57-b5bb-0373286dfef8" target="_blank">9News</a> |
+                <a href="https://www.mv-voice.com/police/2026/02/20/mountain-view-police-recommend-terminating-license-plate-camera-contract/" target="_blank">MV Voice</a> |
+                <a href="https://jsis.washington.edu/humanrights/2025/10/28/flock-safety-ice-cbp/" target="_blank">UW Report</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="collapsible">
+    <div class="collapsible-header">
+        <div>
+            <h3 class="collapsible-title">OC Sheriff &rarr; ICE (Confirmed 2025)</h3>
+            <p class="collapsible-subtitle">100+ SB 34 violations via Flock in May 2025</p>
+        </div>
+        <span class="collapsible-icon">+</span>
+    </div>
+    <div class="collapsible-content">
+        <div class="flowchart">
+            <div class="flow-row">
+                <div class="flow-box verified">
+                    <strong>OC Sheriff</strong><br>
+                    <small>Flock cameras</small>
+                </div>
+                <div class="flow-arrow">&rarr;<br><small>searched for</small></div>
+                <div class="flow-box danger">
+                    <strong>ICE & CBP</strong><br>
+                    <small>100+ searches in May 2025</small>
+                </div>
+            </div>
+            <div class="flow-citation">
+                <strong>Source:</strong> <a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (Jun 2025)</a> — Oakland Privacy obtained Flock audit logs showing SB 34 violations. Irvine PD shares data with OCSD, making this a confirmed relay pathway.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="collapsible">
+    <div class="collapsible-header">
+        <div>
+            <h3 class="collapsible-title">Side Door: Local Officers Searching for Feds</h3>
+            <p class="collapsible-subtitle">4,000+ immigration-related lookups nationally (VPM investigation)</p>
+        </div>
+        <span class="collapsible-icon">+</span>
+    </div>
+    <div class="collapsible-content">
+        <div class="info-box warning">
+            <strong>Why this matters:</strong> Side door searches are invisible in network sharing configurations. They only show up in Organization Audit logs — which nobody has requested from Irvine PD.
+        </div>
+        <div class="flowchart">
+            <div class="flow-row">
+                <div class="flow-box danger">
+                    <strong>Federal Agent</strong><br>
+                    <small>ICE / CBP / HSI</small>
+                </div>
+                <div class="flow-arrow">&rarr;<br><small>asks</small></div>
+                <div class="flow-box">
+                    <strong>Local Officer</strong><br>
+                    <small>runs search using own credentials</small>
+                </div>
+                <div class="flow-arrow">&rarr;<br><small>relays results</small></div>
+                <div class="flow-box danger">
+                    <strong>Federal Agent</strong><br>
+                    <small>receives data</small>
+                </div>
+            </div>
+            <div class="flow-citation">
+                <strong>Sources:</strong><br>
+                &bull; VPM identified <strong>4,000+ immigration-related ALPR lookups</strong> by local officers on behalf of federal agents nationwide<br>
+                &bull; Warren County (VA) sheriff publicly confirmed deputies ran searches at ICE's request<br>
+                &bull; CalMatters documented OCSD officers searching on behalf of CBP/Border Patrol<br>
+                <a href="https://www.vpm.org/news/2025-01-27/license-plate-readers-police-ice-immigration" target="_blank">VPM</a> |
+                <a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="collapsible">
+    <div class="collapsible-header">
+        <div>
+            <h3 class="collapsible-title">Historical: Vigilant &rarr; Thomson Reuters &rarr; ICE</h3>
+            <p class="collapsible-subtitle">Irvine's legacy system (before Flock) — direct federal sharing confirmed in 2020</p>
+        </div>
+        <span class="collapsible-icon">+</span>
+    </div>
+    <div class="collapsible-content">
+        <div class="info-box">
+            <strong>Note:</strong> Irvine has fully transitioned from Vigilant to Flock (confirmed Feb 2025). This pathway is historical but demonstrates the relationship existed.
+        </div>
+        <div class="flowchart">
+            <div class="flow-row">
+                <div class="flow-box verified">
+                    <strong>Irvine PD ALPRs</strong><br>
+                    <small>Vigilant cameras</small>
+                </div>
+                <div class="flow-arrow">&rarr;</div>
+                <div class="flow-box verified">
+                    <strong>Vigilant LEARN</strong><br>
+                    <small>Motorola Solutions</small>
+                </div>
+                <div class="flow-arrow">&rarr;</div>
+                <div class="flow-box verified">
+                    <strong>Thomson Reuters CLEAR</strong><br>
+                    <small>7B+ plate records</small>
+                </div>
+                <div class="flow-arrow">&rarr;</div>
+                <div class="flow-box verified">
+                    <strong>ICE</strong><br>
+                    <small>9,000+ officers</small>
+                </div>
+            </div>
+            <div class="flow-citation">
+                <strong>2020 LEARN Report confirms direct sharing with:</strong> DHS-HSI (Newark NJ), CBP-NTC (bidirectional), San Diego Sector Border Patrol (bidirectional), FBI, DEA, ATF<br>
+                <a href="https://www.muckrock.com/foi/irvine-3262/2020-vigilant-data-sharing-information-automated-license-plate-reader-alpr-irvine-police-department-86954/" target="_blank">MuckRock #86954</a> |
+                <a href="https://www.dhs.gov/publication/dhs-ice-pia-039-acquisition-and-use-license-plate-reader-data-commercial-service" target="_blank">DHS PIA-039</a> |
+                <a href="https://www.aclunorcal.org/blog/documents-reveal-ice-using-driver-location-data-local-police-deportations" target="_blank">ACLU NorCal</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="collapsible">
+    <div class="collapsible-header">
+        <div>
+            <h3 class="collapsible-title">Federal Agencies &rarr; Irvine (Incoming Data)</h3>
+            <p class="collapsible-subtitle">Irvine receives hot lists from HSI and data from Border Patrol</p>
+        </div>
+        <span class="collapsible-icon">+</span>
+    </div>
+    <div class="collapsible-content">
+        <div class="info-box warning">
+            <strong>Note:</strong> This shows Irvine <em>receives</em> data from federal agencies. This could be for any law enforcement purpose (stolen vehicles, amber alerts, etc.), not necessarily immigration enforcement. But it means Irvine's cameras are scanning for federal targets.
+        </div>
+        <div class="flowchart">
+            <div class="flow-row">
+                <div class="flow-box">
+                    <strong>HSI MASTER</strong><br>
+                    <small>ICE hot list</small>
+                </div>
+                <div class="flow-arrow">&rarr;<br><small>sends plates to</small></div>
+                <div class="flow-box">
+                    <strong>Irvine PD Flock</strong><br>
+                    <small>auto-alerts on detection</small>
+                </div>
+                <div class="flow-arrow">&larr;<br><small>receives data from</small></div>
+                <div class="flow-box">
+                    <strong>SD Border Patrol</strong><br>
+                    <small>CBP data</small>
+                </div>
+            </div>
+            <div class="flow-citation">
+                <strong>Source:</strong> <a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a> — A4 tab shows hot list sources; A2 tab shows data sources
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="collapsible">
+    <div class="collapsible-header">
+        <div>
+            <h3 class="collapsible-title">Full Evidence Chain (18 verified claims)</h3>
+            <p class="collapsible-subtitle">Every claim with primary sources</p>
+        </div>
+        <span class="collapsible-icon">+</span>
+    </div>
+    <div class="collapsible-content">
+        <table class="evidence-table">
+            <thead>
+                <tr>
+                    <th>Claim</th>
+                    <th>Status</th>
+                    <th>Primary Source</th>
+                    <th>Key Quote / Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Flock CEO admitted CBP access to 80K+ cameras</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.9news.com/article/news/local/flock-federal-immigration-agents-access-tracking-data/73-a8aee742-56d4-4a57-b5bb-0373286dfef8" target="_blank">9News (Aug 2025)</a></td>
+                    <td>Undisclosed pilot program; all federal pilots paused</td>
+                </tr>
+                <tr>
+                    <td>OC Sheriff violated SB 34 (May 2025)</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (Jun 2025)</a></td>
+                    <td>100+ searches for ICE/CBP in one month</td>
+                </tr>
+                <tr>
+                    <td>AG Bonta sued El Cajon (Oct 2025)</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://calmatters.org/justice/2025/10/el-cajon-police-license-plate-data/" target="_blank">CalMatters (Oct 2025)</a></td>
+                    <td>Shared with 100+ out-of-state agencies</td>
+                </tr>
+                <tr>
+                    <td>ICE opened office in Irvine (Feb 2026)</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.ocregister.com/2026/02/10/ice-reportedly-leases-office-spaces-in-irvine-and-santa-ana/" target="_blank">OC Register (Feb 2026)</a></td>
+                    <td>2020 Main St, Irvine</td>
+                </tr>
+                <tr>
+                    <td>~30 cities canceled/deactivated Flock</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.npr.org/2026/02/17/nx-s1-5612825/flock-contracts-canceled-immigration-survillance-concerns" target="_blank">NPR (Feb 2026)</a></td>
+                    <td>Immigration surveillance concerns cited</td>
+                </tr>
+                <tr>
+                    <td>Mountain View found unauthorized federal access</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.mv-voice.com/police/2026/02/20/mountain-view-police-recommend-terminating-license-plate-camera-contract/" target="_blank">MV Voice (Feb 2026)</a></td>
+                    <td>ATF/Air Force accessed via statewide lookup; 250+ agencies, ~600K searches over 17 months</td>
+                </tr>
+                <tr>
+                    <td>ICE has $54M+ in Thomson Reuters contracts</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.usaspending.gov/recipient/65494435-f70c-9a3e-15e0-474723c82d88-C/latest" target="_blank">USAspending.gov</a></td>
+                    <td>Thomson Reuters Special Services contracts</td>
+                </tr>
+                <tr>
+                    <td>Thomson Reuters CLEAR has 7B+ LPR records</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://s3.documentcloud.org/documents/4546858/PI-Letter-TR-21-06.pdf" target="_blank">Privacy International</a></td>
+                    <td>"Live access to more than 7 billion license plate detections"</td>
+                </tr>
+                <tr>
+                    <td>9,000+ ICE officers have CLEAR accounts</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.aclunorcal.org/blog/documents-reveal-ice-using-driver-location-data-local-police-deportations" target="_blank">ACLU NorCal</a></td>
+                    <td>1,800+ pages of FOIA documents (2018-2019)</td>
+                </tr>
+                <tr>
+                    <td>Irvine PD directly shared with HSI/CBP (2020)</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.muckrock.com/foi/irvine-3262/2020-vigilant-data-sharing-information-automated-license-plate-reader-alpr-irvine-police-department-86954/" target="_blank">MuckRock #86954</a></td>
+                    <td>LEARN report: DHS-HSI, CBP-NTC, Border Patrol, FBI, DEA, ATF</td>
+                </tr>
+                <tr>
+                    <td>Irvine now uses Flock (2025)</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a></td>
+                    <td>~30 cameras, $112,500/yr BSCC grant</td>
+                </tr>
+                <tr>
+                    <td>Irvine receives HSI hot list via Flock</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a></td>
+                    <td>"HSI MASTER" in A4</td>
+                </tr>
+                <tr>
+                    <td>Irvine receives Border Patrol data via Flock</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a></td>
+                    <td>"SAN DIEGO SECTOR BORDER PATROL" in A2</td>
+                </tr>
+                <tr>
+                    <td>107M+ plate scans, 350K+ monthly external queries</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a></td>
+                    <td>352,289 external queries in Jan 2025 alone</td>
+                </tr>
+                <tr>
+                    <td>Irvine PD searched 29,364 cameras (EFF)</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.eff.org/deeplinks/2025/11/license-plate-surveillance-logs-reveal-racist-policing-against-romani-people" target="_blank">EFF (Nov 2025)</a></td>
+                    <td>8 searches across 1,420 networks in Feb/May 2025</td>
+                </tr>
+                <tr>
+                    <td>SFPD: 1.6M illegal out-of-state searches</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://sfstandard.com/2025/09/08/sfpd-flock-alpr-ice-data-sharing/" target="_blank">SF Standard (Sep 2025)</a></td>
+                    <td>Including 19+ marked as ICE-related</td>
+                </tr>
+                <tr>
+                    <td>SB 274 (ALPR reform) vetoed by Newsom</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://calmatters.org/economy/technology/2025/10/newsom-vetoes-license-plate-reader-regulations/" target="_blank">CalMatters (Oct 2025)</a></td>
+                    <td>No new legislative reform forthcoming</td>
+                </tr>
+                <tr>
+                    <td>DHS officially confirmed LPR access (PIA-039)</td>
+                    <td><span class="badge verified">VERIFIED</span></td>
+                    <td><a href="https://www.dhs.gov/publication/dhs-ice-pia-039-acquisition-and-use-license-plate-reader-data-commercial-service" target="_blank">DHS PIA-039 (Dec 2017)</a></td>
+                    <td>Official Privacy Impact Assessment</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="info-box warning">
+    <strong>What's NOT Proven:</strong> Whether Irvine PD's specific Flock data was accessed by ICE/CBP via any of these pathways. That answer is in the <strong>Network Audit</strong> log — which nobody has requested via CPRA. See the <a href="#cpra">Take Action</a> page for the template.
+</div>
