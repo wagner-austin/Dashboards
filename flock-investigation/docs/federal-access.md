@@ -164,8 +164,8 @@ A federal agent (ICE, CBP, HSI) contacts a local officer and asks them to look u
 
 ### Evidence
 
-**VPM Investigation (Virginia Public Media)**
-- VPM's investigation identified **4,000+ immigration-related ALPR lookups** conducted by local law enforcement agencies nationwide on behalf of federal immigration agents.
+**404 Media / VPM Investigations**
+- 404 Media identified **4,000+ immigration-related ALPR lookups** conducted by local law enforcement agencies nationwide on behalf of federal immigration agents. VPM separately reported ~3,000 immigration-related searches within Virginia specifically.
 - **Warren County, Virginia:** The sheriff publicly confirmed that his deputies ran ALPR searches at the request of federal immigration agents.
 
 **CalMatters / OCSD**
