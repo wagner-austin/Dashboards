@@ -6,7 +6,7 @@ Last Updated: February 22, 2026
 
 **Can ICE/federal immigration agencies access Irvine PD's license plate reader data?**
 
-**Answer: Yes, and it's getting worse.** Flock's CEO admitted in August 2025 that CBP had direct access to 80,000+ Flock cameras nationwide via an undisclosed pilot. OC Sheriff was caught running 100+ ALPR searches for ICE/CBP in a single month (CalMatters, June 2025). ICE opened a new office in Irvine in February 2026. Irvine PD has zero public oversight of its ALPR program -- no transparency portal, no city council discussion, and nobody has filed the CPRA that would expose the audit logs.
+**Answer: Yes, and it's getting worse.** Customs and Border Protection had direct access to 80,000+ Flock cameras, according to [police records](https://www.404media.co/cbp-had-access-to-more-than-80-000-flock-ai-cameras-nationwide/) and [admission from Flock's CEO](https://www.flocksafety.com/blog/ensuring-local-compliance). OC Sheriff ran plate searches for ICE and Border Patrol, violating California law (SB 34), according to [Flock audit logs obtained by Oakland Privacy](https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/). ICE opened an office in Irvine, according to [federal lease records reported by WIRED](https://www.ocregister.com/2026/02/10/ice-reportedly-leases-office-spaces-in-irvine-and-santa-ana/) and [confirmed by the City of Irvine](https://cityofirvine.org/news-media/news-article/immigration-enforcement-update). Nobody has publicly obtained or reviewed Irvine PD's Flock audit logs, despite [state law requiring annual audits](https://information.auditor.ca.gov/reports/2019-118/index.html).
 
 ## What's Happening Right Now (2025-2026)
 
@@ -14,10 +14,10 @@ Last Updated: February 22, 2026
 
 | Date | Event | Source |
 |------|-------|--------|
-| **Jun 2025** | CalMatters reveals LAPD, OC Sheriff, SD Sheriff ran 100+ ALPR searches for ICE/CBP in one month. OC Sheriff specifically searched for Border Patrol. | [CalMatters](https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/) |
-| **Aug 2025** | Flock CEO admits CBP had **direct access to 80,000+ Flock cameras** via undisclosed pilot. Flock pauses all federal pilot programs. | [9News](https://www.9news.com/article/news/local/flock-federal-immigration-agents-access-tracking-data/73-a8aee742-56d4-4a57-b5bb-0373286dfef8) |
+| **Jun 2025** | OC Sheriff ran plate searches for ICE and Border Patrol, violating SB 34, according to Flock audit logs obtained by Oakland Privacy. One of 10 SoCal agencies identified. | [CalMatters](https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/) |
+| **Aug 2025** | Customs and Border Protection had direct access to 80,000+ Flock cameras, according to [police records](https://www.404media.co/cbp-had-access-to-more-than-80-000-flock-ai-cameras-nationwide/) and [admission from Flock's CEO](https://www.flocksafety.com/blog/ensuring-local-compliance). Flock pauses all federal pilot programs. | [9News](https://www.9news.com/article/news/local/flock-federal-immigration-agents-access-tracking-data/73-a8aee742-56d4-4a57-b5bb-0373286dfef8) |
 | **Sep 2025** | SFPD's Flock database had **1.6M+ illegal out-of-state searches**, including 19+ marked as ICE-related. | [SF Standard](https://sfstandard.com/2025/09/08/sfpd-flock-alpr-ice-data-sharing/) |
-| **Oct 2025** | AG Bonta **sues El Cajon** for sharing ALPR data with 100+ out-of-state agencies. UW report proves Flock's "National Lookup" backdoor in WA state. **SB 274** (ALPR reform bill) **vetoed by Newsom**. | [CalMatters](https://calmatters.org/justice/2025/10/el-cajon-police-license-plate-data/), [CalMatters](https://calmatters.org/economy/technology/2025/10/newsom-vetoes-license-plate-reader-regulations/) |
+| **Oct 2025** | AG Bonta **sues El Cajon** for sharing ALPR data with 100+ out-of-state agencies. UW report proves Flock's "National Lookup" feature enabling unauthorized access in WA state. **SB 274** (ALPR reform bill) **vetoed by Newsom**. | [CalMatters](https://calmatters.org/justice/2025/10/el-cajon-police-license-plate-data/), [CalMatters](https://calmatters.org/economy/technology/2025/10/newsom-vetoes-license-plate-reader-regulations/) |
 | **Nov 2025** | Capitola PD admits ICE accessed their plate data ("a mistake"). Oakland PD sued for sharing Flock data with feds. | [Santa Cruz Local](https://santacruzlocal.org/2025/11/07/ice-accessed-capitola-license-plate-data-police-say-it-was-a-mistake/) |
 | **Feb 2026** | ICE **opens offices in Irvine** (2020 Main St) and Santa Ana. 3 women detained at Irvine business. Mountain View disables all 30 Flock cameras after discovering unauthorized ATF/Air Force access. **~30 cities** have deactivated or canceled Flock contracts. Amazon Ring terminates Flock integration. | [OC Register](https://www.ocregister.com/2026/02/10/ice-reportedly-leases-office-spaces-in-irvine-and-santa-ana/), [NPR](https://www.npr.org/2026/02/17/nx-s1-5612825/flock-contracts-canceled-immigration-survillance-concerns) |
 
@@ -42,7 +42,7 @@ Irvine's A1/A3 lists (316 + 156 agencies) do NOT include ICE/CBP/HSI. But:
 | **HSI hot list** | HSI MASTER on A4 (hot lists received) | HSI pushes target plates; Irvine's cameras auto-alert when detected |
 | **OCSD relay** | CalMatters confirmed OCSD ran searches for ICE/CBP | Irvine shares data with OCSD; OCSD is a confirmed SB 34 violator |
 | **Fusion centers** | NCRIC on A1, JRIC on A3 | Fusion centers share with federal participants by design |
-| **Flock back door** | CEO admitted CBP had access to 80K cameras via pilot | Paused Aug 2025, but was it active for Irvine before that? **Unknown.** |
+| **Flock National Lookup** | CBP had access to 80K cameras via pilot (police records); CEO acknowledged | Paused Aug 2025, but was it active for Irvine before that? **Unknown.** |
 
 ### Vigilant system (2020): DIRECT federal sharing (historical)
 
