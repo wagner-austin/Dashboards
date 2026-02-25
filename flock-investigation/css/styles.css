@@ -87,6 +87,30 @@ body {
 .card.verified { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: var(--success); }
 .card.unverified { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-color: var(--warning); }
 
+/* ---- Findings list ---- */
+.findings-list {
+    list-style: none; padding: 0; margin: 0 0 1.5rem 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;
+}
+.findings-list li {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--gray-800);
+    line-height: 1.5;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 1px solid var(--success);
+}
+.findings-list li.unverified {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border-color: var(--warning);
+}
+.findings-list li a {
+    color: var(--primary);
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
 /* ---- Collapsible sections ---- */
 .collapsible {
     background: linear-gradient(135deg, #fafafa 0%, var(--gray-50) 100%);
@@ -104,8 +128,8 @@ body {
 .collapsible-header:hover { background: rgba(0,0,0,0.02); }
 .collapsible-title { font-size: 0.95rem; font-weight: 600; color: var(--gray-800); }
 .collapsible-subtitle { font-size: 0.8rem; color: var(--gray-600); margin-top: 0.15rem; }
-.collapsible-icon { font-size: 1.25rem; color: var(--gray-600); transition: transform 0.2s; flex-shrink: 0; margin-left: 1rem; }
-.collapsible.open .collapsible-icon { transform: rotate(45deg); }
+.collapsible-icon { font-size: 0.7rem; color: var(--gray-600); transition: transform 0.2s; flex-shrink: 0; margin-left: 1rem; }
+.collapsible.open .collapsible-icon { transform: rotate(180deg); }
 .collapsible-content { display: none; padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--gray-200); }
 .collapsible.open .collapsible-content { display: block; }
 
