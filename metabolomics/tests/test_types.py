@@ -412,7 +412,7 @@ class TestCreateBlankFilterStats:
         assert result["statistical_test_used"] is True
         assert result["fdr_corrected"] is True
         assert result["p_value_cutoff"] == 0.05
-        assert result["fold_change_threshold"] == 20.0
+        assert result["fold_change_threshold"] == 3.0
 
     def test_total_clean_computed(self) -> None:
         """Test total_clean is computed from sample_only + both_keep."""

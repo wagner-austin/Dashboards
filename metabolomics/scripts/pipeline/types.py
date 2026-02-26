@@ -569,7 +569,7 @@ def create_blank_filter_stats(
     statistical_test_used: bool = True,
     fdr_corrected: bool = True,
     p_value_cutoff: float = 0.05,
-    fold_change_threshold: float = 20.0,
+    fold_change_threshold: float = 3.0,
 ) -> BlankFilterStats:
     """Create a BlankFilterStats with computed total_clean.
 

@@ -1,7 +1,7 @@
 """Blank subtraction stage for the metabolomics pipeline.
 
 Removes contamination peaks by comparing sample intensities to blank intensities.
-Uses fold-change threshold (20x) and statistical validation (Welch's t-test with FDR).
+Uses fold-change threshold (3x) and statistical validation (Welch's t-test with FDR).
 
 Extracted from generate.py lines 100-289, 400-430.
 
