@@ -10,7 +10,7 @@ Irvine PD operates **two separate ALPR platforms**, each with distinct federal a
 
 1. **Vigilant/Motorola (LEARN + NVLS)** -- Irvine's legacy system, confirmed in use from at least 2016 through 2022 (504,494 detections in 2022). Vigilant data flows into the **National Vehicle Location Service (NVLS)**, which is commercially resold to Thomson Reuters and from there to ICE.
 
-2. **Flock Safety** -- Irvine's current system, confirmed active by 2025. Flock operates a separate sharing network controlled by bilateral agency agreements, hot list exchanges, and (until October 2025) a "National Lookup" feature that bypassed bilateral agreements entirely.
+2. **Flock Safety** -- Irvine's current system, confirmed active by 2025. Flock operates a separate sharing network controlled by bilateral agency agreements, hot list exchanges, and (until August 2025) a "National Lookup" feature that bypassed bilateral agreements entirely.
 
 Whether Irvine still contributes data to NVLS after switching to Flock is **unknown**. The two systems create independent, parallel pipelines to federal agencies. Even if one is shut down, the other may remain open.
 
@@ -144,12 +144,12 @@ Irvine PD shares Flock data with the **Orange County Sheriff's Department (OCSD)
 
 The relay path: Irvine PD --> OCSD --> ICE/CBP (via OCSD officers running searches on federal behalf).
 
-#### 5. Flock National Lookup / Back Door
+#### 5. Flock National Lookup Feature
 
 Flock Safety operated a **"National Lookup"** pilot feature that allowed participating agencies to search across all Flock camera networks nationally, bypassing bilateral sharing agreements entirely. Under this feature, a federal agency did not need to appear in Irvine's "Networks I'm sharing" list to query Irvine's data.
 
 - **Proven in Washington State:** The University of Washington Center for Human Rights (October 2025) documented that at least 10 agencies accessed other agencies' Flock data through National Lookup without explicit sharing agreements.
-- **Status:** Flock paused the National Lookup pilot in October 2025 following the UW report and public backlash.
+- **Status:** Flock paused the National Lookup pilot in August 2025 following media reporting and public backlash.
 - **Unknown for Irvine:** Whether Irvine's data was accessed through National Lookup before it was paused has not been confirmed or denied. This would only be visible in Irvine's **Network Audit** logs, which have not been obtained.
 
 ---
@@ -185,7 +185,7 @@ The University of Washington Center for Human Rights published a detailed invest
 - **8 Washington agencies** had direct, bilateral Flock sharing agreements with federal agencies (ICE, CBP, HSI).
 - These agreements were visible in the agencies' Flock network sharing configurations.
 
-### Back Door
+### National Lookup
 - **10+ agencies** had their data accessed by federal agencies through **Flock's National Lookup** feature, without any bilateral sharing agreement in place.
 - The agencies whose data was accessed were not aware it was being queried by federal users.
 
@@ -221,7 +221,7 @@ The following OC agencies maintain Flock transparency portals that explicitly li
 - Fountain Valley PD (https://transparency.flocksafety.com/fountain-valley-ca-pd)
 - Westminster PD (https://transparency.flocksafety.com/westminster-ca-pd)
 
-**However:** Policy prohibitions do not prevent indirect access through fusion centers, OCSD relay, side door searches, or (before October 2025) National Lookup. The OCSD violations demonstrate that written policies are not enforced absent independent audit review.
+**However:** Policy prohibitions do not prevent indirect access through fusion centers, OCSD relay, side door searches, or (before August 2025) National Lookup. The OCSD violations demonstrate that written policies are not enforced absent independent audit review.
 
 ---
 
@@ -275,7 +275,7 @@ SB 34 has no designated enforcement agency. Violations are identified through pu
 | 2b. BP inbound | Border Patrol sends data to Irvine Flock | CBP/BP | YES (A2 data) | MuckRock CPRA March 2025 |
 | 2c. Fusion center | Irvine --> NCRIC/JRIC --> federal participants | DHS components | CONFIRMED (sharing exists); access NOT directly observed | MuckRock CPRA March 2025 |
 | 2d. OCSD relay | Irvine --> OCSD --> ICE/CBP | ICE, CBP | CONFIRMED (OCSD violations documented) | CalMatters June 2025 |
-| 2e. National Lookup | Flock back door (bypasses sharing agreements) | Any Flock user | CONFIRMED in WA; UNKNOWN for Irvine; PAUSED Oct 2025 | UW Center for Human Rights |
+| 2e. National Lookup | Flock National Lookup feature (bypasses sharing agreements) | Any Flock user | CONFIRMED in WA; UNKNOWN for Irvine; PAUSED Aug 2025 | UW Center for Human Rights |
 | 3. Side door | Local officer runs search for federal agent | Any federal agency | CONFIRMED nationally; CONFIRMED for OCSD; UNKNOWN for Irvine PD | VPM, CalMatters |
 
 ---
