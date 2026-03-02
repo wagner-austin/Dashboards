@@ -34,7 +34,7 @@
 
 | City | Vendor | Notes |
 |------|--------|-------|
-| Irvine | Vigilant/Motorola | Also uses Flock now per BSCC grant |
+| Irvine | Flock Safety | Fully transitioned from Vigilant (confirmed Feb 2025); ~30 cameras, $112,500/yr via BSCC grant |
 | Anaheim | Likely Vigilant | Collaborates with HSI on big cases |
 | Cypress | Vigilant | |
 
@@ -70,7 +70,7 @@
 
 - [Buena Park PD](https://transparency.flocksafety.com/buena-park-ca-pd)
 - [Costa Mesa PD](https://transparency.flocksafety.com/costa-mesa-ca-pd)
-- [Newport Beach PD](https://transparency.flocksafety.com/newport-beach-ca-pd)
+- [Newport Beach PD](https://transparency.flocksafety.com/newport-beach-pd-ca)
 - [Fountain Valley PD](https://transparency.flocksafety.com/fountain-valley-ca-pd)
 - [Westminster PD](https://transparency.flocksafety.com/westminster-ca-pd)
 
