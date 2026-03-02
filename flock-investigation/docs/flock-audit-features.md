@@ -74,7 +74,7 @@ Reference documentation proving the existence of audit and transparency features
 
 - **Definition:** A pilot program that allowed participating agencies to search across **all** Flock camera networks nationally, bypassing the normal bilateral network-sharing agreements.
 - **Impact:** This feature allowed federal agencies such as CBP and HSI to access local agency camera data **without explicit sharing agreements** being in place. An agency did not need to appear in Irvine PD's "Networks I'm sharing" list to have searched Irvine's data through this pathway.
-- **Status:** Paused by Flock Safety in **October 2025** following reporting by the University of Washington Center for Human Rights that documented how the feature was being used for immigration enforcement.
+- **Status:** Paused by Flock Safety in **August 2025** following media reporting and public backlash. The University of Washington Center for Human Rights later documented (October 2025) how the feature had been used for immigration enforcement.
 - **Source:** SeaTac Blog, "Back Door Loophole Closed for SeaTac's Flock Cameras Amid Growing Concern of Immigration Enforcement" (October 29, 2025)
   - https://seatacblog.com/2025/10/29/back-door-loophole-closed-for-seatacs-flock-cameras-amid-growing-concern-of-immigration-enforcement/
 
@@ -105,7 +105,7 @@ The following agencies have produced Flock audit exports in response to public r
 
 | Agency | State | Format | Audit Type | Period | Volume | Source |
 |---|---|---|---|---|---|---|
-| Aurora PD | IL | 18 XLSX files | Organization Audit + Network Audit | Jun 2025 - Feb 2026 | Multiple files | MuckRock #203951 |
+| Aurora PD | IL | 28 XLSX files | Organization Audit + Network Audit | Jun 2025 - Feb 2026 | Multiple files | MuckRock #203951 |
 | Lodi PD | CA | XLSX | Organization Audit only | 30 days | Single file | MuckRock #173098 |
 | Spokane County | WA | CSV | Network Audit | Jan - Jun 2025 | 2,000,000+ records | RANGE Media |
 | Riverside County SO | CA | XLSX | Hot List Action Log | 30 days | 3,753 entries | CPRA C001586 |
