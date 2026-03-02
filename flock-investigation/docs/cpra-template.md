@@ -117,7 +117,7 @@ anticipate resistance or want the request on the public record.
 > Records showing whether IPD has enabled or previously enabled the **National
 > Lookup** or **Statewide Search** features in Flock, including activation and
 > deactivation dates. (Note: Flock paused the National Lookup pilot program in
-> October 2025, but historical activation records remain in the system.)
+> August 2025, but historical activation records remain in the system.)
 >
 > ### 7. Vigilant / Motorola Solutions ALPR Status
 >
@@ -158,7 +158,7 @@ anticipate resistance or want the request on the public record.
 > **Precedent:** Other law enforcement agencies using Flock Safety have
 > successfully produced these exact exports in response to public records
 > requests, including **Aurora Police Department (IL)** (MuckRock #203951,
-> 18 XLSX files) and **Spokane County (WA)** (2M+ records via RANGE Media).
+> 28 XLSX files) and **Spokane County (WA)** (2M+ records via RANGE Media).
 >
 > I ask that you respond within the time period required by Gov. Code Section
 > 7922.535. If you determine that any portion of this request is unclear, please
@@ -238,7 +238,7 @@ objections:
   prove it. This eliminates the "novel request" stall tactic.
 
 - **"The National Lookup feature doesn't exist / we never used it."** -- The
-  request acknowledges the October 2025 pause of the pilot, signaling that the
+  request acknowledges the August 2025 pause of the pilot, signaling that the
   requester already knows the feature's history. Denying its existence when the
   request demonstrates specific knowledge invites a credibility problem in any
   subsequent legal proceeding.
