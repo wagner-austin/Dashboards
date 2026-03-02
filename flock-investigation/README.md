@@ -1,6 +1,6 @@
 # Orange County Flock Safety ALPR Investigation
 
-Last Updated: February 22, 2026
+Last Updated: March 1, 2026
 
 ## The Core Question
 
@@ -17,9 +17,9 @@ Last Updated: February 22, 2026
 | **Jun 2025** | OC Sheriff ran plate searches for ICE and Border Patrol, violating SB 34, according to Flock audit logs obtained by Oakland Privacy. One of 10 SoCal agencies identified. | [CalMatters](https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/) |
 | **Aug 2025** | Customs and Border Protection had direct access to 80,000+ Flock cameras, according to [police records](https://www.404media.co/cbp-had-access-to-more-than-80-000-flock-ai-cameras-nationwide/) and [admission from Flock's CEO](https://www.flocksafety.com/blog/ensuring-local-compliance). Flock pauses all federal pilot programs. | [9News](https://www.9news.com/article/news/local/flock-federal-immigration-agents-access-tracking-data/73-a8aee742-56d4-4a57-b5bb-0373286dfef8) |
 | **Sep 2025** | SFPD's Flock database had **1.6M+ illegal out-of-state searches**, including 19+ marked as ICE-related. | [SF Standard](https://sfstandard.com/2025/09/08/sfpd-flock-alpr-ice-data-sharing/) |
-| **Oct 2025** | AG Bonta **sues El Cajon** for sharing ALPR data with 100+ out-of-state agencies. UW report proves Flock's "National Lookup" feature enabling unauthorized access in WA state. **SB 274** (ALPR reform bill) **vetoed by Newsom**. | [CalMatters](https://calmatters.org/justice/2025/10/el-cajon-police-license-plate-data/), [CalMatters](https://calmatters.org/economy/technology/2025/10/newsom-vetoes-license-plate-reader-regulations/) |
+| **Oct 2025** | AG Bonta **sues El Cajon** for sharing ALPR data with agencies in more than two dozen states. UW report proves Flock's "National Lookup" feature enabling unauthorized access in WA state. **SB 274** (ALPR reform bill) **vetoed by Newsom**. | [CalMatters](https://calmatters.org/justice/2025/10/el-cajon-police-license-plate-data/), [CalMatters](https://calmatters.org/economy/technology/2025/10/newsom-vetoes-license-plate-reader-regulations/) |
 | **Nov 2025** | Capitola PD admits ICE accessed their plate data ("a mistake"). Oakland PD sued for sharing Flock data with feds. | [Santa Cruz Local](https://santacruzlocal.org/2025/11/07/ice-accessed-capitola-license-plate-data-police-say-it-was-a-mistake/) |
-| **Feb 2026** | ICE **opens offices in Irvine** (2020 Main St) and Santa Ana. 3 women detained at Irvine business. Mountain View disables all 30 Flock cameras after discovering unauthorized ATF/Air Force access. **~30 cities** have deactivated or canceled Flock contracts. Amazon Ring terminates Flock integration. | [OC Register](https://www.ocregister.com/2026/02/10/ice-reportedly-leases-office-spaces-in-irvine-and-santa-ana/), [NPR](https://www.npr.org/2026/02/17/nx-s1-5612825/flock-contracts-canceled-immigration-survillance-concerns) |
+| **Feb 2026** | ICE **opens offices in Irvine** (2000 block of Main St) and Santa Ana. 3 women detained at Irvine business. Mountain View disables all 30 Flock cameras after discovering unauthorized ATF/Air Force access. **~30 cities** have deactivated or canceled Flock contracts. Amazon Ring terminates Flock integration. | [OC Register](https://www.ocregister.com/2026/02/10/ice-reportedly-leases-office-spaces-in-irvine-and-santa-ana/), [NPR](https://www.npr.org/2026/02/17/nx-s1-5612825/flock-contracts-canceled-immigration-survillance-concerns) |
 
 ### Irvine PD's current setup
 
@@ -27,7 +27,7 @@ Last Updated: February 22, 2026
 - **Cameras:** ~30 stationary ALPR cameras ($112,500/yr via BSCC grant, contract since Oct 2023)
 - **Detections:** 107,472,041 plate scans (2019-2025)
 - **Real-Time Crime Center:** $2M facility opened Dec 2024, monitors 1,000+ camera feeds including LPRs, drones
-- **Transparency portal:** None. (Costa Mesa, Buena Park, Newport Beach, Fountain Valley, Westminster all have one.)
+- **Transparency portal:** None. (Costa Mesa, Buena Park, Newport Beach, Westminster all have one.)
 - **City council oversight:** None found in 2025-2026
 - **CalMatters investigation:** Irvine PD was **not named** as a violator (OC Sheriff was). But nobody has checked Irvine's logs.
 
@@ -82,8 +82,10 @@ Before switching to Flock, the 2020 Vigilant LEARN report (`data/muckrock/*86954
 ## Filing the CPRA
 
 **Submit to:** Irvine Police Department, Public Safety Records
-- Email: kloza@cityofirvine.org (Kailene Loza, Lead Records Specialist)
+- Online: [IPD Public Records Request Form](https://irvineca.seamlessdocs.com/f/requestforpolicerecords) (SeamlessDocs)
+- Email: PS_PublicRecordsSubmittal@cityofirvine.org
 - Address: 1 Civic Center Plaza, Irvine, CA 92606
+- Phone: (949) 724-7062
 - Or file via [MuckRock](https://www.muckrock.com/agency/irvine-3262/irvine-police-department-5232/)
 
 **Timeline:** Joey Scott's similar request took 29 days (Feb 10 -> Mar 11, 2025). The immigration request (#184958) took 3 months with multiple 14-day extensions.
