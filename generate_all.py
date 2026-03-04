@@ -13,7 +13,7 @@ ROOT = Path(__file__).parent
 DASHBOARDS = [
     "asuci",
     # "oc-cities",  # Removed - oc-city-councils uses build_dashboard.py instead
-    # "irvine-city-council",  # Deprecated - now part of oc-cities
+    "irvine-city-council",
     # Add new dashboards here:
     # "metabolomics",
 ]

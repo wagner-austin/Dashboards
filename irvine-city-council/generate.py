@@ -156,8 +156,15 @@ def fetch_meetings_granicus():
                     lines = [l.strip() for l in row_text.split('\n') if l.strip()]
                     name_text = lines[0] if lines else "City Council Meeting"
 
-                    # Clean up the name
+                    # Clean up the name: strip date/time suffix and link text
                     name_text = re.sub(r'\s+', ' ', name_text).strip()
+                    # Remove trailing date like "March 10, 2026 - 03:00 PM"
+                    name_text = re.sub(r'\s+[A-Z][a-z]+ \d{1,2},? \d{4}\s*[-–].*$', '', name_text)
+                    # Remove trailing link text like "Agenda", "eComment", "Minutes", "Video"
+                    name_text = re.sub(r'\s+(Agenda|eComment|Minutes|Video)\b.*$', '', name_text)
+                    name_text = name_text.strip()
+                    if not name_text:
+                        name_text = "City Council Meeting"
                     if len(name_text) > 100:
                         name_text = name_text[:100]
 
