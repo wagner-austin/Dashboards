@@ -118,37 +118,44 @@ export function initializeAudio(
   let system: AudioSystem | null = null;
 
   const start = (): void => {
-    if (system !== null) {
+    if (system === null) {
+      const context = deps.createContext();
+
+      const player = createAudioPlayer({
+        context,
+        fetchFn: deps.fetchFn,
+        masterVolume: audioConfig.masterVolume,
+      });
+
+      system = {
+        context,
+        player,
+        tracks: audioConfig.tracks,
+        currentIndex: 0,
+        cleanup: (): void => {
+          deps.removeEventListenerFn("click", start);
+          deps.removeEventListenerFn("touchstart", start);
+          deps.removeEventListenerFn("touchend", start);
+          deps.removeEventListenerFn("keydown", start);
+        },
+      };
+
+      player.play(track);
       return;
     }
 
-    const context = deps.createContext();
+    if (system.context.state !== "suspended") {
+      return;
+    }
 
-    const player = createAudioPlayer({
-      context,
-      fetchFn: deps.fetchFn,
-      masterVolume: audioConfig.masterVolume,
+    system.context.resume().then(() => {
+      if (system !== null && !system.player.getState().isPlaying) {
+        const currentTrack = getTrackAtIndex(system.tracks, system.currentIndex) ?? track;
+        system.player.play(currentTrack);
+      }
+    }).catch(() => {
+      /* resume failed */
     });
-
-    system = {
-      context,
-      player,
-      tracks: audioConfig.tracks,
-      currentIndex: 0,
-      cleanup: (): void => {
-        deps.removeEventListenerFn("click", start);
-        deps.removeEventListenerFn("touchstart", start);
-        deps.removeEventListenerFn("touchend", start);
-        deps.removeEventListenerFn("keydown", start);
-      },
-    };
-
-    player.play(track);
-
-    deps.removeEventListenerFn("click", start);
-    deps.removeEventListenerFn("touchstart", start);
-    deps.removeEventListenerFn("touchend", start);
-    deps.removeEventListenerFn("keydown", start);
   };
 
   deps.addEventListenerFn("click", start);
