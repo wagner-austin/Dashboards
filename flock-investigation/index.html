@@ -752,9 +752,16 @@
             </div>
             <div class="doc-card">
                 <h4>Flock Safety ALPR User Guide</h4>
-                <p>28-page official document confirming "Insights > Organization Audit" and "Insights > Network Audit" menu paths.</p>
+                <p>28-page official document (2020) covering basic camera setup and plate search. Does not cover the Insights/Audit features added later.</p>
                 <div class="links">
                     <a href="https://www.documentcloud.org/documents/20419116-flock-safety-alpr-user-guide/" target="_blank">DocumentCloud</a>
+                </div>
+            </div>
+            <div class="doc-card">
+                <h4>Flock "Policy Pulse" Blog Post</h4>
+                <p>Oct 30, 2025 post confirming Organization Audit and Network Audit exports, mandatory Offense Type (NIBRS) field, and agency control over transparency portal search data.</p>
+                <div class="links">
+                    <a href="https://www.flocksafety.com/blog/policy-pulse-transparency-control-and-the-path-forward" target="_blank">Flock Blog</a>
                 </div>
             </div>
         </div>
@@ -956,11 +963,11 @@ Pursuant to the California Public Records Act (Gov. Code Section 7920 et seq.) a
 
 1. ORGANIZATION AUDIT (Insights tab)
 
-The exportable log found under Insights > Organization Audit in the Flock web portal (per Flock's ALPR User Guide; also accessible via analytics.flocksafety.com). This report documents every search, alert review, and plate lookup performed by IPD users. Fields: Name, Org Name, License Plate, Case #, Filters, Reason, Offense Type, Search Date/Time.
+The exportable log found under Insights > Organization Audit in the Flock web portal (also accessible via analytics.flocksafety.com). This report documents every search, alert review, and plate lookup performed by IPD users. Per Flock's "Policy Pulse" blog post (Oct 30, 2025), Offense Type (NIBRS category), Search Reason, and Case Number are included in Organization Audits. Fields: ID, Name, Org Name, License Plate, Reason, Case #, Filters, Search Time, Search Type.
 
 2. NETWORK AUDIT (Insights tab)
 
-The exportable log found under Insights > Network Audit in the Flock web portal (per Flock's ALPR User Guide; also accessible via analytics.flocksafety.com). This report documents every cross-agency or network-level query. Fields: Name, Org Name, Total Networks Searched, Total Devices Searched, Time Frame, License Plate, Case #, Filters, Reason, Offense Type, Search Date/Time.
+The exportable log found under Insights > Network Audit in the Flock web portal (also accessible via analytics.flocksafety.com). This report documents every cross-agency or network-level query. Per Aurora PD's production (MuckRock #203951), the export contains these fields: ID, Name, Org Name, Total Networks Searched, Total Devices Searched, Time Frame, License Plate, Reason, Case #, Filters, Search Time, Search Type, Text Prompt, Moderation.
 
 3. HOT LIST ACTION LOG
 
@@ -992,9 +999,9 @@ Records showing the current status of IPD's use of Vigilant Solutions (now Motor
 
 FORMAT: I request all responsive records in machine-readable format (CSV or XLSX), as the Flock web portal natively supports these export formats. PDF printouts of tabular data are not an adequate substitute.
 
-REDACTION OFFER: Should IPD determine that specific license plate numbers qualify for exemption under Gov. Code Section 7923.600, I request that the Department redact only the plate values and produce the remaining audit fields (user name, date/time, reason, case number, offense type, filters, network counts). Civil Code Section 1798.90.52 requires ALPR operators to maintain usage and access logs, and the CPRA independently requires their production.
+REDACTION OFFER: Should IPD determine that specific license plate numbers qualify for exemption under Gov. Code Section 7923.600, I request that the Department redact only the plate values and produce the remaining audit fields (user name, search time, reason, case number, filters, search type, network counts). Civil Code Section 1798.90.52 requires ALPR operators to maintain usage and access logs, and the CPRA independently requires their production.
 
-PRECEDENT: Aurora Police Department (IL) (MuckRock #203951, 28 XLSX files) and Spokane County (WA) (2M+ records via RANGE Media) have produced these exact exports.
+PRECEDENT: Aurora Police Department (IL) (MuckRock #203951, 18 XLSX files) and Spokane County (WA) (2M+ records via RANGE Media) have produced these exact exports.
 
 I ask that you respond within the time period required by Gov. Code Section 7922.535. If any portion of this request is unclear, please contact me for clarification rather than treating the request as deficient.
 
@@ -1028,7 +1035,7 @@ Sincerely,
             <tbody>
                 <tr>
                     <td><strong>"We don't have that record."</strong></td>
-                    <td>The request names Flock's own features (Organization Audit, Network Audit) and the exact menu path (Insights tab, per Flock's ALPR User Guide). Any Flock admin can export these in minutes.</td>
+                    <td>The request names Flock's own features (Organization Audit, Network Audit) and the exact menu path (Insights tab, per Flock's Oct 2025 "Policy Pulse" blog post). Any Flock admin can export these in minutes.</td>
                 </tr>
                 <tr>
                     <td><strong>"It's an investigatory record."</strong></td>
@@ -1040,7 +1047,7 @@ Sincerely,
                 </tr>
                 <tr>
                     <td><strong>"No other agency has done this."</strong></td>
-                    <td>Aurora PD (IL) produced 28 XLSX files. Spokane County produced 2M+ records. Riverside County SO produced a hot list export. We link to the example file on MuckRock.</td>
+                    <td>Aurora PD (IL) produced 18 XLSX files. Spokane County produced 2M+ records. Riverside County SO produced a hot list export. We link to the example file on MuckRock.</td>
                 </tr>
                 <tr>
                     <td><strong>"National Lookup doesn't exist."</strong></td>
