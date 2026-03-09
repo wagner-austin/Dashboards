@@ -4,8 +4,8 @@ ASUCI Dashboard HTML Generator
 Run this script to generate a fresh HTML dashboard with live data.
 
 Usage:
-    python generate_asuci_html.py           # Full scrape with Playwright
-    python generate_asuci_html.py --quick   # Quick refresh (Google Sheets only)
+    python generate.py           # Full scrape with Playwright
+    python generate.py --quick   # Quick refresh (Google Sheets only)
 """
 
 import json
