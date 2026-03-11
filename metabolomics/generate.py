@@ -349,8 +349,22 @@ def df_to_json(df: pl.DataFrame, sample_cols: list[str], formula_lookup: dict = 
             if mz and rt:
                 formula_info = lookup_formula(formula_lookup, float(mz), float(rt))
                 record["Formula"] = formula_info.get("formula", "")
+                record["H/C"] = formula_info.get("H_C") or ""
+                record["O/C"] = formula_info.get("O_C") or ""
+                record["C/N"] = formula_info.get("C_N") or ""
+                record["DBE"] = formula_info.get("DBE") or ""
+                record["Class"] = formula_info.get("class", "")
+                record["Group"] = formula_info.get("group", "")
+                record["ppm"] = formula_info.get("err_ppm") or ""
             else:
                 record["Formula"] = ""
+                record["H/C"] = ""
+                record["O/C"] = ""
+                record["C/N"] = ""
+                record["DBE"] = ""
+                record["Class"] = ""
+                record["Group"] = ""
+                record["ppm"] = ""
 
         for col in sample_cols:
             val = row.get(col)
@@ -386,9 +400,23 @@ def load_formulas() -> dict:
             try:
                 mz = float(row["exp_mass"])
                 rt = round(float(row["RT"]), 2)
+                n_val = int(row.get("N", 0) or 0)
+                c_val = int(row.get("C", 0) or 0)
                 info = {
                     "formula": row["formula"],
                     "err_ppm": round(float(row["err_ppm"]), 2),
+                    "C": c_val,
+                    "H": int(row.get("H", 0) or 0),
+                    "O": int(row.get("O", 0) or 0),
+                    "N": n_val,
+                    "S": int(row.get("S", 0) or 0),
+                    "P": int(row.get("P", 0) or 0),
+                    "DBE": round(float(row.get("DBE", 0) or 0), 1),
+                    "H_C": round(float(row.get("H_C", 0) or 0), 2),
+                    "O_C": round(float(row.get("O_C", 0) or 0), 2),
+                    "C_N": round(c_val / n_val, 2) if n_val > 0 else None,
+                    "class": row.get("class", ""),
+                    "group": row.get("group", ""),
                 }
                 by_rt[rt].append((mz, info))
                 count += 1
@@ -743,6 +771,19 @@ def run_pipeline(df: pl.DataFrame, formula_lookup: dict, sheet_name: str = "") -
                 "mz": mz_val,
                 "rt": rt_val,
                 "formula": formula_info.get("formula", ""),
+                "f_C": formula_info.get("C", None),
+                "f_H": formula_info.get("H", None),
+                "f_O": formula_info.get("O", None),
+                "f_N": formula_info.get("N", None),
+                "f_S": formula_info.get("S", None),
+                "f_P": formula_info.get("P", None),
+                "f_DBE": formula_info.get("DBE", None),
+                "f_HC": formula_info.get("H_C", None),
+                "f_OC": formula_info.get("O_C", None),
+                "f_CN": formula_info.get("C_N", None),
+                "f_class": formula_info.get("class", ""),
+                "f_group": formula_info.get("group", ""),
+                "f_err_ppm": formula_info.get("err_ppm", None),
                 "drought": abundances["drought"],
                 "ambient": abundances["ambient"],
                 "watered": abundances["watered"],
@@ -776,6 +817,13 @@ def run_pipeline(df: pl.DataFrame, formula_lookup: dict, sheet_name: str = "") -
     col_defs = [{"data": "Compound", "title": "Compound"}]
     if formula_lookup:
         col_defs.append({"data": "Formula", "title": "Formula"})
+        col_defs.append({"data": "H/C", "title": "H/C"})
+        col_defs.append({"data": "O/C", "title": "O/C"})
+        col_defs.append({"data": "C/N", "title": "C/N"})
+        col_defs.append({"data": "DBE", "title": "DBE"})
+        col_defs.append({"data": "Class", "title": "Class"})
+        col_defs.append({"data": "Group", "title": "Group"})
+        col_defs.append({"data": "ppm", "title": "ppm"})
     for col in available_cols:
         col_defs.append({"data": col, "title": col})
 
@@ -2109,6 +2157,10 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             headerRow.append('div').style('width', '25px').style('text-align', 'center').text('#');
             headerRow.append('div').style('width', '130px').style('margin-right', '8px').text('Compound');
             headerRow.append('div').style('width', '100px').style('margin-right', '8px').text('Formula');
+            headerRow.append('div').style('width', '35px').style('text-align', 'right').style('margin-right', '8px').text('H/C');
+            headerRow.append('div').style('width', '35px').style('text-align', 'right').style('margin-right', '8px').text('O/C');
+            headerRow.append('div').style('width', '30px').style('text-align', 'right').style('margin-right', '8px').text('DBE');
+            headerRow.append('div').style('width', '50px').style('margin-right', '8px').text('Class');
             headerRow.append('div').style('width', '75px').style('text-align', 'right').style('margin-right', '8px').text('m/z');
             headerRow.append('div').style('width', '40px').style('text-align', 'right').style('margin-right', '8px').text('RT');
             headerRow.append('div').style('width', '45px').style('text-align', 'right').style('margin-right', '8px').text('CV%');
@@ -2139,6 +2191,10 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
                 var name = d.compound.length > 16 ? d.compound.substring(0, 13) + '...' : d.compound;
                 row.append('div').style('width', '130px').style('margin-right', '8px').style('font-family', 'monospace').style('font-size', '0.95em').attr('title', d.compound).text(name);
                 row.append('div').style('width', '100px').style('margin-right', '8px').style('font-family', 'monospace').style('font-size', '0.95em').style('color', d.formula ? '#2563eb' : '#ccc').text(d.formula || '-');
+                row.append('div').style('width', '35px').style('margin-right', '8px').style('text-align', 'right').style('font-family', 'monospace').style('font-size', '0.9em').style('color', d.f_HC ? '#333' : '#ccc').text(d.f_HC ? d.f_HC.toFixed(2) : '-');
+                row.append('div').style('width', '35px').style('margin-right', '8px').style('text-align', 'right').style('font-family', 'monospace').style('font-size', '0.9em').style('color', d.f_OC ? '#333' : '#ccc').text(d.f_OC ? d.f_OC.toFixed(2) : '-');
+                row.append('div').style('width', '30px').style('margin-right', '8px').style('text-align', 'right').style('font-family', 'monospace').style('font-size', '0.9em').style('color', d.f_DBE ? '#333' : '#ccc').text(d.f_DBE != null ? d.f_DBE : '-');
+                row.append('div').style('width', '50px').style('margin-right', '8px').style('font-size', '0.85em').style('color', d.f_class ? '#333' : '#ccc').text(d.f_class || '-');
                 row.append('div').style('width', '75px').style('margin-right', '8px').style('text-align', 'right').style('font-family', 'monospace').text(d.mz ? parseFloat(d.mz).toFixed(4) : '-');
                 row.append('div').style('width', '40px').style('margin-right', '8px').style('text-align', 'right').style('font-family', 'monospace').text(d.rt ? parseFloat(d.rt).toFixed(1) : '-');
 
@@ -2407,7 +2463,13 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             nodes.append('title')
                 .text(function(d) {{
                     var data = d.data;
-                    return data.compound + (data.formula ? '\\nFormula: ' + data.formula : '') + '\\nm/z: ' + (data.mz || 'N/A') + '\\nRT: ' + (data.rt || 'N/A') + '\\nDrought: ' + (data.drought ? data.drought.toExponential(1) : '0') + '\\nAmbient: ' + (data.ambient ? data.ambient.toExponential(1) : '0') + '\\nWatered: ' + (data.watered ? data.watered.toExponential(1) : '0');
+                    var t = data.compound + (data.formula ? '\\nFormula: ' + data.formula : '');
+                    if (data.f_HC) t += '\\nH/C: ' + data.f_HC.toFixed(2) + '  O/C: ' + data.f_OC.toFixed(2) + (data.f_CN ? '  C/N: ' + data.f_CN.toFixed(1) : '');
+                    if (data.f_DBE != null && data.formula) t += '  DBE: ' + data.f_DBE;
+                    if (data.f_class) t += '\\nClass: ' + data.f_class + (data.f_group ? ' (' + data.f_group + ')' : '');
+                    t += '\\nm/z: ' + (data.mz || 'N/A') + '\\nRT: ' + (data.rt || 'N/A');
+                    t += '\\nDrought: ' + (data.drought ? data.drought.toExponential(1) : '0') + '\\nAmbient: ' + (data.ambient ? data.ambient.toExponential(1) : '0') + '\\nWatered: ' + (data.watered ? data.watered.toExponential(1) : '0');
+                    return t;
                 }});
 
             document.getElementById('viz-info').innerHTML = 'Circle size = abundance, color = dominant treatment. Hover for details.';
@@ -2557,7 +2619,14 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
             nodes.append('title')
                 .text(function(d) {{
                     if (!d.data.compound) return '';
-                    return d.data.compound + (d.data.formula ? '\\nFormula: ' + d.data.formula : '') + '\\nm/z: ' + (d.data.mz || 'N/A') + '\\nRT: ' + (d.data.rt || 'N/A') + '\\nDrought: ' + (d.data.drought ? d.data.drought.toExponential(1) : '0') + '\\nAmbient: ' + (d.data.ambient ? d.data.ambient.toExponential(1) : '0') + '\\nWatered: ' + (d.data.watered ? d.data.watered.toExponential(1) : '0');
+                    var dd = d.data;
+                    var t = dd.compound + (dd.formula ? '\\nFormula: ' + dd.formula : '');
+                    if (dd.f_HC) t += '\\nH/C: ' + dd.f_HC.toFixed(2) + '  O/C: ' + dd.f_OC.toFixed(2) + (dd.f_CN ? '  C/N: ' + dd.f_CN.toFixed(1) : '');
+                    if (dd.f_DBE != null && dd.formula) t += '  DBE: ' + dd.f_DBE;
+                    if (dd.f_class) t += '\\nClass: ' + dd.f_class + (dd.f_group ? ' (' + dd.f_group + ')' : '');
+                    t += '\\nm/z: ' + (dd.mz || 'N/A') + '\\nRT: ' + (dd.rt || 'N/A');
+                    t += '\\nDrought: ' + (dd.drought ? dd.drought.toExponential(1) : '0') + '\\nAmbient: ' + (dd.ambient ? dd.ambient.toExponential(1) : '0') + '\\nWatered: ' + (dd.watered ? dd.watered.toExponential(1) : '0');
+                    return t;
                 }});
 
             document.getElementById('viz-info').innerHTML = 'Bubble size = average abundance across selected treatments, color = dominant treatment. Hover for details.';
