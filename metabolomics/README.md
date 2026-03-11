@@ -5,10 +5,26 @@ Interactive visualization tool for analyzing metabolomics data across treatment 
 ## Data Processing
 
 ### Two-Step Filtering
-1. **Blank Subtraction** - Removes contamination peaks where sample signal < 20x blank signal (per pmp/Bioconductor)
+1. **Blank Subtraction** - Removes contamination peaks where sample signal < 3x blank signal (per [pmp/Bioconductor](https://bioconductor.org/packages/release/bioc/html/pmp.html)), with Welch's t-test and [Benjamini-Hochberg FDR correction](https://doi.org/10.1111/j.2517-6161.1995.tb02031.x)
    - Leaf samples filtered against leaf blanks (Blk1, Blk2)
    - Root samples filtered against root blanks (ebtruong_blank1-4)
 2. **80% Cumulative Threshold** - Keeps only peaks that contribute to the top 80% of signal in any sample
+
+### Molecular Formula Assignment (MFAssignR)
+
+After filtering, molecular formulas are assigned using [MFAssignR](https://github.com/skschum/MFAssignR) ([Schum et al. 2020](https://doi.org/10.1016/j.envres.2020.110114)), a peer-reviewed R package for ultrahigh resolution mass spectrometry.
+
+The pipeline runs in `run_mfassignr.Rmd`:
+
+1. **KMDNoise** - Estimates noise floor via Kendrick Mass Defect analysis
+2. **IsoFiltR** - Separates monoisotopic peaks from isotope partners (13C, 34S)
+3. **MFAssignCHO** - Preliminary CHO-only assignment for recalibration
+4. **Recal** - Internal mass recalibration using homologous series (mzRange=80 Da, 6 auto-selected series)
+5. **MFAssign** - Full formula assignment (C, H, O, N≤5, S≤2, P≤3) within 3 ppm, validated against [Koch et al. 2007](https://doi.org/10.1021/ac061949s) and [Kind & Fiehn 2007](https://doi.org/10.1186/1471-2105-8-105) elemental ratio rules
+
+Doubly charged ions (z=2) are processed separately using MFAssignCHO (CHO-only) due to a [known MFAssignR limitation](https://github.com/skschum/MFAssignR/issues) with MFAssign_RMD at z=2.
+
+Output: `formulas_assigned.csv` → merged into `Emily_Data_WITH_FORMULAS.xlsx` via `merge_formulas.R`.
 
 ### Source Data
 - File: `Emily_Data_Pruned_Labeled.xlsx`
@@ -71,7 +87,7 @@ Venn-style breakdown showing:
 - Peaks in all three treatments
 
 ### Methods
-Detailed explanation of the filtering process.
+Detailed explanation of the filtering process, MFAssignR pipeline, parameters, and cited references.
 
 ### Filtered Data
 Full DataTable with export to CSV/Excel.
@@ -84,4 +100,6 @@ Explains compound naming convention (e.g., `3.90_564.1489n` = RT 3.90 min, m/z 5
 - Uses D3.js for visualizations
 - Uses DataTables for interactive tables
 - All data embedded in HTML (no server required after generation)
-- Regenerate with: `python generate.py`
+- Regenerate dashboard: `poetry run python generate.py`
+- Rerun formula assignment: open `run_mfassignr.Rmd` in RStudio and knit (requires `stage1_state.RData` from `run_stage1.R`)
+- Rerun merge: `Rscript merge_formulas.R` (requires `formulas_assigned.csv` and `Emily_Data_Pruned_Labeled.xlsx`)
