@@ -1,0 +1,759 @@
+---
+title: "MFAssignR Molecular Formula Assignment"
+subtitle: "Emily's Metabolomics Data"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+**Citation (REQUIRED):**
+Schum SK, Brown LE, Mazzoleni LR. MFAssignR: Molecular formula assignment
+software for ultrahigh resolution mass spectrometry analysis of environmental
+complex mixtures. *Environmental Research*, 191, 2020.
+
+**Workflow:** Lucia Liu's MFAssignR guide (05/01/25).
+**Parameters:** MFAssignR package defaults (from GitHub `skschum/MFAssignR`).
+Code from Dr. Amna Ijaz and Dr. Gregory Vandergrift.
+
+---
+
+# Section 0: Installation
+
+Run once. Not needed every time.
+
+```{r install, eval=FALSE}
+library(devtools)
+devtools::install_github("skschum/MFAssignR")
+```
+
+```{r setup, message=FALSE, warning=FALSE}
+library(MFAssignR)
+library(readxl)
+library(dplyr)
+library(ggplot2)
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,
+                      fig.height = 5, fig.width = 7,
+                      paged.print = FALSE, results = TRUE)
+```
+
+---
+
+# Section 1: File Setting and Noise Prescreening
+
+(Lucia slides 8-9)
+
+```{r load-data}
+## Load Emily's data from Excel
+## The original guide reads CSV; we read Excel and convert to the same format
+df_raw <- read_excel("Emily_Data_Pruned_Labeled.xlsx")
+cat("Loaded", nrow(df_raw), "rows\n")
+
+## MFAssignR expects: column 1 = mass, column 2 = abundance
+Data_all <- df_raw %>%
+  select(`m/z`, `Maximum Abundance`, `Retention time (min)`, Charge) %>%
+  rename(mass = `m/z`, Abundance = `Maximum Abundance`, RT = `Retention time (min)`) %>%
+  filter(!is.na(mass), !is.na(Abundance), Abundance > 0) %>%
+  arrange(mass)
+
+cat("Total input peaks:", nrow(Data_all), "\n")
+
+## Split by charge state for two-pass workflow
+## 24% of Emily's peaks are z=2 — running them with Zx=1 gives wrong formulas
+Data_z1 <- Data_all %>% filter(Charge == 1) %>% select(-Charge)
+Data_z2 <- Data_all %>% filter(Charge == 2) %>% select(-Charge)
+cat("z=1 peaks:", nrow(Data_z1), "\n")
+cat("z=2 peaks:", nrow(Data_z2), "\n")
+
+## Sections 2-9 below run on z=1 peaks first
+## Section 10 at the end runs the same pipeline for z=2 peaks (with Zx=2)
+Data <- Data_z1
+Data_4 <- Data
+```
+
+**NOTE from Lucia (slide 9):** The script may contain a chunk that removes noise
+based on standard deviation. This is NOT recommended. We skip it and use
+KMDNoise instead (the proper method).
+
+---
+
+# Section 2: KMD Noise Assessment
+
+(Lucia slides 10-14)
+
+## 2a: KMD Noise - Describe and Plot
+
+(Lucia slide 12, step 1)
+
+Set the slice boundaries. These define a region in the KMD plot where only
+noise exists (the "sea"), avoiding the analyte "islands".
+
+**USER INPUT:** Look at the plot. If the red slice line cuts through analyte
+islands, adjust `upper.y`, `lower.y`, `upper.x`, `lower.x`.
+
+```{r kmd-noise}
+## USER INPUT: Describe and plot KMD Noise
+## Adjust slice boundaries if needed to avoid analyte islands
+Noise <- KMDNoise(Data_4)
+plot <- Noise[["KMD"]]
+plot
+KMDN <- Noise[["Noise"]]
+cat("KMD Noise level (KMDN):", KMDN, "\n")
+```
+
+## 2b: Set Noise Threshold
+
+(Lucia slide 12, step 2)
+
+**USER INPUT:** Set the noise threshold multiplier. This is multiplied with the
+average noise intensity (KMDN). The default is 0 (removes nothing). You MUST
+change this based on your data.
+
+Lucia's example uses 5 (slide 12) or 6-10 (slide 13). Start with 6.
+
+```{r noise-threshold}
+## USER INPUT: Assign noise threshold
+## This number is multiplied with KMDN to set the absolute threshold.
+## Lucia recommends starting at 5-6, check SN plots to verify.
+## SET THIS TO A VALUE > 0 or no noise will be removed!
+noise_threshold_1 <- 6
+
+## Number of peaks above the threshold
+peaks <- Data_4 %>% filter(Abundance > noise_threshold_1 * KMDN)
+count(peaks)
+```
+
+## 2c: KMD Plot After Noise Removal
+
+(Lucia slide 12, step 3)
+
+Check before and after. The scattered noise "sea" should be gone.
+
+```{r kmd-after}
+## New KMD plot with noise removed
+peaks_minus_noise <- KMDNoise(peaks)
+plot2 <- peaks_minus_noise[["KMD"]]
+plot2
+```
+
+## 2d: SNplot - Additional Noise Visualization
+
+(Lucia slide 14)
+
+Red peaks = below threshold. Blue peaks = above threshold. Change parameters
+to check different mass regions.
+
+**USER INPUT:** Adjust `noise_threshold_2` if you want a different threshold for
+the final analysis. Otherwise keep it the same as `noise_threshold_1`.
+
+```{r snplot}
+## USER INPUT: Update noise threshold if needed
+## Otherwise keep the same as noise_threshold_1
+noise_threshold_2 <- noise_threshold_1
+
+## Visualization of noise cutoffs
+SNplot(Data, cut = noise_threshold_2 * KMDN, mass = 375, window.x = 500, window.y = 150)
+```
+
+**Check different mass regions as needed:**
+
+```{r snplot-extra, eval=FALSE}
+## Uncomment and run to check specific regions
+# SNplot(Data, cut = noise_threshold_2 * KMDN, mass = 200, window.x = 15, window.y = 10)
+# SNplot(Data, cut = noise_threshold_2 * KMDN, mass = 500, window.x = 15, window.y = 10)
+```
+
+**USER INPUT:** Change parameter based on how you want to visualize the SN Plot.
+Change the parameter until you are satisfied with your data (Lucia slide 12, step 4).
+
+---
+
+# Section 3: Isotope Prescreening (IsoFiltR)
+
+(Lucia slide 16)
+
+Separates monoisotopic peaks from 13C and 34S isotope partners.
+
+- **Carbrat = 60**: 13C peak must be >= ~1.7% of monoisotopic peak to be valid
+- **Sulfrat = 30**: 34S intensity ratio threshold
+- **Carberr = 5**: mass accuracy for 12C/13C matching (ppm)
+- **Sulferr = 5**: mass accuracy for 32S/34S matching (ppm)
+
+These match both the package defaults and Lucia slide 16. Change only if you have reason to.
+
+```{r isofilt}
+## Isotope prescreening (Lucia slide 16 - exact parameters)
+Isotopes <- IsoFiltR(Data_4,
+                     SN = noise_threshold_2 * KMDN,
+                     Carbrat = 60,
+                     Sulfrat = 30,
+                     Sulferr = 5,
+                     Carberr = 5)
+
+Mono <- Isotopes[["Mono"]]
+Iso <- Isotopes[["Iso"]]
+countmono <- count(Mono)
+countiso <- count(Iso)
+df0 <- data.frame(countmono, countiso) %>%
+  rename(Monoisotopes = n, Polyisotopes = n.1)
+df0
+```
+
+---
+
+# Section 4: Preliminary CHO Assignment (MFAssignCHO)
+
+(Lucia slides 17-22)
+
+MFAssignCHO is a simpler version that only assigns C, H, O formulas.
+This is done BEFORE recalibration.
+
+**CRITICAL: Check your ion mode!** Emily's data: is it positive [M+H]+ or
+negative [M-H]-?
+
+**Parameter values below are MFAssignR package defaults** (from GitHub source
+`skschum/MFAssignR`). Lucia's SOA-specific values are noted where they differ.
+
+If Emily's data is negative mode, change `ionMode` to `"neg"`.
+
+```{r cho-assignment, fig.height=5, fig.width=7, paged.print=FALSE, echo=TRUE}
+## CHO assignments
+## Parameters: MFAssignR package defaults (verified from GitHub source code)
+Assign <- MFAssignCHO_RMD(
+  Mono, Iso,
+  ionMode = "pos",               # Set for your data's ionization mode
+  SN = noise_threshold_2 * KMDN, # Consistent with noise assessment
+  ppm_err = 3,                   # Package default: 3 (Lucia used 4)
+  NMScut = "on",                 # Package default: "on"
+  DeNovo = 1000,                 # Package default: 1000 (Lucia used 750)
+  lowMW = 100,                   # Package default: 50; keep 100 for Emily's range
+  highMW = 1000,                 # Package default: 1000 (Lucia used 750; Emily has peaks up to 999)
+  H_Cmin = 0.3,                  # Package default: 0.3
+  H_Cmax = 3,                    # Package default: 3
+  O_Cmax = 1.2,                  # Package default: 1.2 (Lucia used 2.5)
+  DBEOmax = 13,                  # Package default: 13 (Lucia used 80)
+  DBEOmin = -13                  # Package default: -13 (Lucia used -20)
+)
+
+## Preliminary assignment plotting
+Unambig1.temp <- Assign[["Unambig"]]
+Unambig1 <- Unambig1.temp %>% arrange(desc(abundance)) %>% distinct(formula, .keep_all = TRUE)
+Ambig1 <- Assign[["Ambig"]]
+Unassigned1 <- Assign[["None"]]
+MSAssign_CHO <- Assign[["MSAssign"]]
+Error_CHO <- Assign[["Error"]]
+MSgroups_CHO <- Assign[["MSgroups"]]
+VK_CHO <- Assign[["VK"]]
+
+## 4 output plots (Lucia slide 20):
+## Mass spectra (red=unassigned, blue=ambiguous, green=assigned)
+MSAssign_CHO
+## Error plot
+Error_CHO
+## Assigned mass spectra
+MSgroups_CHO
+## Van Krevelen Plot
+VK_CHO
+```
+
+## 4b: Number of Preliminary CHO Assignments
+
+(Lucia slide 22)
+
+```{r cho-counts, results=TRUE, paged.print=TRUE}
+countunambig1.temp <- count(Unambig1.temp)
+countunambig1 <- count(Unambig1)
+countambig1 <- count(Ambig1)
+countunassigned1 <- count(Unassigned1)
+
+df <- data.frame(countunambig1.temp, countunambig1, countambig1, countunassigned1) %>%
+  rename("Preliminary unambiguous CHO MF" = n,
+         "Preliminary unambiguous MF (no duplicates)" = n.1,
+         "Preliminary ambiguous CHO MF" = n.2,
+         "Preliminary unassigned CHO MF" = n.3)
+df
+```
+
+---
+
+# Section 5: Mass Recalibration
+
+(Lucia slides 23-27)
+
+## 5a: Recalibrant List
+
+(Lucia slide 24, step 1)
+
+RecalList ranks homologous series from the CHO assignment by their suitability
+as recalibrants.
+
+```{r recallist}
+## Recalibrant list (Lucia slide 24)
+RecalList <- RecalList(df = Unambig1)
+```
+
+## 5b: Auto-Select Recalibration Series
+
+Selects the best 3 series from RecalList automatically using the documented
+criteria: lowest Peak_Score, Peak_Distance closest to 1, widest mass range,
+and coverage of different mass regions.
+
+```{r auto-select-recal}
+## Parse mass range into numeric low/high columns
+RL <- as.data.frame(RecalList)
+RL$mass_low <- as.numeric(sub("-.*", "", RL$`Mass Range`))
+RL$mass_high <- as.numeric(sub(".*-", "", RL$`Mass Range`))
+RL$mass_span <- RL$mass_high - RL$mass_low
+
+## Score each series: lower is better
+## Combine Peak_Score (closer to 0 = better) and Peak_Distance deviation from 1
+RL$quality <- RL$`Peak Score` + abs(RL$`Peak Distance` - 1)
+
+## Require at least 4 observed peaks and mass span > 50 Da
+candidates <- RL %>%
+  filter(`Number Observed` >= 4, mass_span > 50) %>%
+  arrange(quality)
+
+## Selection strategy (from MFAssignR docs + Galaxy tutorial):
+## Take 6 best-quality series (lowest Peak Score + Peak Distance deviation).
+## Recal() divides spectrum into mzRange-wide bins, each needs >2 recalibrants.
+## Docs say to increase mzRange up to 80 if gaps occur (default 30 is too narrow).
+## We use mzRange=80 in the Recal call below (Galaxy tutorial uses 50).
+selected <- head(candidates, 6)
+
+cat("Auto-selected recalibration series:\n")
+print(selected[, c("Series", "Number Observed", "Mass Range", "Peak Score",
+                    "Peak Distance", "quality")])
+
+series_names <- selected$Series
+cat("\nSeries names:", paste(series_names, collapse = ", "), "\n")
+cat("Combined mass range:",
+    round(min(selected$mass_low), 1), "-",
+    round(max(selected$mass_high), 1), "Da\n")
+```
+
+## 5c: Run Recalibration
+
+(Lucia slides 25-26)
+
+```{r recal, fig.height=5, fig.width=7}
+## Recalibration using auto-selected series
+## mzRange=80: MFAssignR docs say "increase to even values as 80" if gap error occurs.
+## Galaxy tutorial uses mzRange=50. Default 30 is too narrow for our data.
+n_series <- length(series_names)
+Recalibration <- Recal(
+  Unambig1,
+  peaks = Mono,
+  isopeaks = Iso,
+  mode = "pos",
+  mzRange = 80,
+  SN = noise_threshold_2 * KMDN,
+  series1 = if (n_series >= 1) series_names[1] else NA,
+  series2 = if (n_series >= 2) series_names[2] else NA,
+  series3 = if (n_series >= 3) series_names[3] else NA,
+  series4 = if (n_series >= 4) series_names[4] else NA,
+  series5 = if (n_series >= 5) series_names[5] else NA,
+  series6 = if (n_series >= 6) series_names[6] else NA,
+  series7 = if (n_series >= 7) series_names[7] else NA,
+  series8 = if (n_series >= 8) series_names[8] else NA,
+  step_O = 3,
+  step_H2 = 5,
+  CalPeak = 150
+)
+```
+
+**CHECK (Lucia slide 24):** The output prints two numbers. The error should
+DECREASE after recalibration. If it increased, re-examine the selected series.
+
+## 5d: Recalibration Plotting
+
+(Lucia slide 27)
+
+```{r recal-plot, fig.height=5, fig.width=4.5}
+## Recalibration plotting (Lucia slide 27)
+Plot_Recalibration <- Recalibration[["Plot"]]
+Plot_Recalibration
+
+## Extract recalibrated peaks
+Mono2 <- Recalibration[["Mono"]]
+Iso2 <- Recalibration[["Iso"]]
+List <- Recalibration[["RecalList"]]
+
+cat("Recalibrated monoisotopic peaks:", nrow(Mono2), "\n")
+cat("Recalibrated isotope peaks:", nrow(Iso2), "\n")
+```
+
+**CHECK (Lucia slide 27):** Mass spectrum with recalibration series highlighted
+in blue. It's nearly impossible to cover the whole range. That's fine as long
+as you see the error decrease.
+
+---
+
+# Section 6: Final MF Assignment with Heteroatoms
+
+(Lucia slides 28-30)
+
+MFAssign does the final assignment using RECALIBRATED masses. Now includes
+N, S, P heteroatoms.
+
+**Parameter values below are MFAssignR package defaults** (from GitHub source
+`skschum/MFAssignR`). Lucia's SOA-specific values are noted where they differ.
+
+**NOTE on Nx/Sx/Px (heteroatoms):** Package defaults are all 0 (CHO only).
+For plant metabolomics with amino acids, glucosinolates, phospholipids, etc.,
+you likely need Nx > 0, Sx > 0, and/or Px > 0. D'Andrilli et al. 2013 used
+Nx=2 and Sx=2. **Discuss with your PI before changing these.**
+
+```{r final-assignment, fig.height=5, fig.width=7, paged.print=FALSE, echo=TRUE}
+## Final assignments - MFAssignR package defaults (verified from GitHub source)
+Assign <- MFAssign_RMD(
+  peaks = Mono2,
+  isopeaks = Iso2,
+  lowMW = 100,                   # Package default: 50; keep 100 for Emily's range
+  highMW = 1000,                 # Package default: 1000 (Lucia used 750; Emily has peaks up to 999)
+  ionMode = "pos",               # Set for your data's ionization mode
+  SN = noise_threshold_2 * KMDN,
+  ppm_err = 3,                   # Package default: 3
+  iso_err = 3,                   # Package default: 3 (Lucia used 1.5)
+  H_Cmin = 0.3,                  # Package default: 0.3
+  O_Cmax = 1.2,                  # Package default: 1.2 (Lucia used 2.5)
+  H_Cmax = 3,                    # Package default: 3
+  DBEOmax = 13,                  # Package default: 13 (Lucia used 25)
+  DBEOmin = -13,                 # Package default: -13 (Lucia used -20)
+  HetCut = "off",                # Package default: "off"
+  NMScut = "on",                 # Package default: "on"
+  SulfCheck = "on",              # Package default: "on"
+  Ambig = "off",                 # Package default: "off"
+  MSMS = "off",                  # Package default: "off"
+  N3corr = "on",                 # Package default: "on"
+  DeNovo = 300,                  # Package default: 300 (Lucia used 350)
+  Nx = 5,                        # Prior run: 667 formulas hit N=4 ceiling; raised to 5
+  Sx = 2,                        # Prior run: 0 S-containing formulas found; keep at 2 in case
+  Px = 3                         # Prior run: 260 formulas hit P=2 ceiling; raised to 3
+)
+
+## Extract results
+Unambig2 <- Assign[["Unambig"]]
+Ambig2 <- Assign[["Ambig"]]
+Unassigned2 <- Assign[["None"]]
+MSAssign_MF <- Assign[["MSAssign"]]
+Error_MF <- Assign[["Error"]]
+MSgroups_MF <- Assign[["MSgroups"]]
+VK_MF <- Assign[["VK"]]
+KMD_MF <- Assign[["KMD"]]
+MSgroupstwo_MF <- Assign[["MSgroupstwo"]]
+DBEO_MF <- Assign[["DBEO"]]
+VK2_MF <- Assign[["VK2"]]
+
+## 4 output plots (same as CHO step - Lucia slide 29)
+MSAssign_MF
+Error_MF
+MSgroups_MF
+VK_MF
+```
+
+---
+
+# Section 7: Final Unambiguous Assignments
+
+(Lucia slide 31)
+
+Run this chunk (no user input needed).
+
+```{r final-counts, results=TRUE, paged.print=TRUE}
+## Final unambiguous assignments (Lucia slide 31)
+All.unambig.temp <- Unambig2
+All.unambig <- All.unambig.temp %>%
+  arrange(desc(abundance)) %>%
+  distinct(formula, .keep_all = TRUE)
+All.ambig <- Ambig2
+
+countallunambig.temp <- count(All.unambig.temp)
+countallunambig <- count(All.unambig)
+countallambig <- count(All.ambig)
+countallunassigned <- count(Unassigned2)
+
+## Isotope validation (Lucia slide 31)
+C13isotopes <- All.unambig %>% filter(C13_mass != 0)
+countC13 <- count(C13isotopes)
+C13isotopes2 <- All.unambig %>% filter(C13_mass2 != 0)
+countC13two <- count(C13isotopes2)
+S34isotopes <- All.unambig %>% filter(S34_mass != 0)
+countS34 <- count(S34isotopes)
+
+df2 <- data.frame(countallunambig.temp, countallunambig, countallambig,
+                   countallunassigned, countC13, countC13two, countS34) %>%
+  rename("Monoisotopic MF (duplicates included)" = n,
+         "Final monoisotopic MF (duplicates removed)" = n.1,
+         "Number of ambiguous MF" = n.2,
+         "Masses not assigned an MF" = n.3,
+         "13C isotopologues" = n.4,
+         "13C2 isotopologues" = n.5,
+         "34S isotopologues" = n.6)
+df2
+
+Percent_Assigned <- (countallunambig.temp + countC13 + countC13two + countS34) /
+  (count(Mono2) + count(Iso2)) * 100
+df3 <- data.frame(Percent_Assigned) %>%
+  rename("Percent of Peaks Assigned" = n)
+df3
+
+## Composition breakdown
+All.unambig$group <- factor(All.unambig$group,
+                            levels = c("CHO", "CHNO", "CHOS", "CHNOS",
+                                       "CH", "CHN", "CHNS", "CHS",
+                                       "CHOP", "CHNOP"))
+Unambigstat <- All.unambig %>%
+  group_by(group) %>%
+  summarize(total = n())
+Unambigstat
+```
+
+---
+
+# Section 8: Bulk Properties
+
+(Lucia slide 33)
+
+```{r bulk-properties, results=TRUE}
+average <- All.unambig %>%
+  summarise(" " = "Average",
+            "O/C" = mean(O_C), "H/C" = mean(H_C), "DBE" = mean(DBE),
+            "#C" = mean(C), "#O" = mean(O), "#N" = mean(N),
+            "#S" = mean(S), "#P" = mean(P),
+            "Absolute error" = mean(AE_ppm), "m/z" = mean(exp_mass))
+
+sd <- All.unambig %>%
+  summarise(" " = "Standard deviation",
+            "O/C" = sd(O_C), "H/C" = sd(H_C), "DBE" = sd(DBE),
+            "#C" = sd(C), "#O" = sd(O), "#N" = sd(N),
+            "#S" = sd(S), "#P" = sd(P),
+            "Absolute error" = sd(AE_ppm), "m/z" = sd(exp_mass))
+
+table1 <- bind_rows(average, sd)
+table1
+```
+
+---
+
+# Section 9: Save Output Files
+
+(Lucia slide 32)
+
+```{r save-files}
+## Write files (Lucia slide 32 - exact format)
+max.abundance <- max(Data$Abundance)
+
+All.unambig <- All.unambig %>%
+  mutate(SNR = abundance / KMDN, n_abundance = abundance / max.abundance)
+write.csv(All.unambig, "formulas_assigned.csv", row.names = FALSE)
+
+if (nrow(All.ambig) > 0) {
+  All.ambig <- All.ambig %>%
+    mutate(SNR = abundance / KMDN, n_abundance = abundance / max.abundance)
+}
+write.csv(All.ambig, "formulas_ambiguous.csv", row.names = FALSE)
+
+Unassigned2 <- Unassigned2 %>%
+  mutate(SNR = abundance / KMDN, n_abundance = abundance / max.abundance,
+         tag = "Unassigned")
+write.csv(Unassigned2, "formulas_unassigned.csv", row.names = FALSE)
+
+all <- bind_rows(All.unambig, All.ambig, Unassigned2)
+write.csv(all, "formulas_full.csv", row.names = FALSE)
+
+cat("Saved:\n")
+cat("  formulas_assigned.csv    (UMF - unambiguous)\n")
+cat("  formulas_ambiguous.csv   (AMF - ambiguous)\n")
+cat("  formulas_unassigned.csv  (NoMF - not assigned)\n")
+cat("  formulas_full.csv        (Full - all combined)\n")
+```
+
+---
+
+# Section 10: z=2 Pass (Doubly Charged Peaks)
+
+24% of Emily's peaks are doubly charged (z=2). MFAssignR defaults to z=1,
+which would give wrong neutral masses for these peaks. This section runs the
+full pipeline again on z=2 peaks only, then combines results.
+
+**If you have no z=2 peaks, skip this section.**
+
+## 10a: Run MFAssignR Pipeline for z=2
+
+This repeats the core pipeline (KMDNoise → IsoFiltR → MFAssignCHO → Recal →
+MFAssign) for doubly charged peaks. You will need to:
+1. Re-examine the KMD noise plot (may differ from z=1)
+2. Pick new recalibration series from the z=2 RecalList
+3. Verify the diagnostic plots
+
+```{r z2-check}
+cat("z=2 peaks available:", nrow(Data_z2), "\n")
+if (nrow(Data_z2) == 0) {
+  cat("No z=2 peaks — skipping Section 10.\n")
+}
+```
+
+```{r z2-pipeline, eval=(nrow(Data_z2) > 0)}
+## ---- KMDNoise for z=2 ----
+Noise_z2 <- KMDNoise(Data_z2)
+Noise_z2[["KMD"]]
+KMDN_z2 <- Noise_z2[["Noise"]]
+cat("z=2 KMD Noise level:", KMDN_z2, "\n")
+
+## USER INPUT: Adjust noise threshold for z=2 if needed
+noise_threshold_z2 <- noise_threshold_1  # Start with same as z=1
+
+peaks_z2 <- Data_z2 %>% filter(Abundance > noise_threshold_z2 * KMDN_z2)
+cat("z=2 peaks above noise:", nrow(peaks_z2), "\n")
+
+## ---- IsoFiltR for z=2 ----
+Isotopes_z2 <- IsoFiltR(Data_z2,
+                         SN = noise_threshold_z2 * KMDN_z2,
+                         Carbrat = 60, Sulfrat = 30,
+                         Sulferr = 5, Carberr = 5)
+Mono_z2 <- Isotopes_z2[["Mono"]]
+Iso_z2 <- Isotopes_z2[["Iso"]]
+cat("z=2 monoisotopic:", nrow(Mono_z2), "\n")
+cat("z=2 polyisotopic:", nrow(Iso_z2), "\n")
+
+## ---- MFAssignCHO for z=2 (Zx=2) ----
+## NOTE: Zx=2 tells MFAssignR these are doubly charged peaks
+Assign_z2_cho <- MFAssignCHO_RMD(
+  Mono_z2, Iso_z2,
+  ionMode = "pos",
+  SN = noise_threshold_z2 * KMDN_z2,
+  ppm_err = 3, NMScut = "on",
+  DeNovo = 1000, lowMW = 100, highMW = 1000,
+  H_Cmin = 0.3, H_Cmax = 3, O_Cmax = 1.2,
+  DBEOmax = 13, DBEOmin = -13,
+  Zx = 2                         # DOUBLY CHARGED
+)
+
+Unambig1_z2_temp <- Assign_z2_cho[["Unambig"]]
+Unambig1_z2 <- Unambig1_z2_temp %>% arrange(desc(abundance)) %>% distinct(formula, .keep_all = TRUE)
+cat("z=2 preliminary CHO assignments:", nrow(Unambig1_z2), "\n")
+
+## Diagnostic plots for z=2 CHO
+Assign_z2_cho[["MSAssign"]]
+Assign_z2_cho[["Error"]]
+Assign_z2_cho[["VK"]]
+```
+
+## 10b: z=2 Recalibration (Auto-Selected)
+
+```{r z2-recal, eval=(nrow(Data_z2) > 0)}
+## RecalList for z=2
+RecalList_z2 <- RecalList(df = Unambig1_z2)
+
+## Auto-select series using same logic as z=1
+RL_z2 <- as.data.frame(RecalList_z2)
+RL_z2$mass_low <- as.numeric(sub("-.*", "", RL_z2$`Mass Range`))
+RL_z2$mass_high <- as.numeric(sub(".*-", "", RL_z2$`Mass Range`))
+RL_z2$mass_span <- RL_z2$mass_high - RL_z2$mass_low
+RL_z2$quality <- RL_z2$`Peak Score` + abs(RL_z2$`Peak Distance` - 1)
+
+candidates_z2 <- RL_z2 %>%
+  filter(`Number Observed` >= 4, mass_span > 50) %>%
+  arrange(quality)
+
+selected_z2 <- head(candidates_z2, 6)
+cat("z=2 auto-selected series:\n")
+print(selected_z2[, c("Series", "Number Observed", "Mass Range", "Peak Score",
+                       "Peak Distance", "quality")])
+series_names_z2 <- selected_z2$Series
+n_z2 <- length(series_names_z2)
+
+Recalibration_z2 <- Recal(
+  Unambig1_z2,
+  peaks = Mono_z2,
+  isopeaks = Iso_z2,
+  mode = "pos",
+  mzRange = 80, CalPeak = 150,
+  SN = noise_threshold_z2 * KMDN_z2,
+  series1 = if (n_z2 >= 1) series_names_z2[1] else NA,
+  series2 = if (n_z2 >= 2) series_names_z2[2] else NA,
+  series3 = if (n_z2 >= 3) series_names_z2[3] else NA,
+  series4 = if (n_z2 >= 4) series_names_z2[4] else NA,
+  series5 = if (n_z2 >= 5) series_names_z2[5] else NA,
+  series6 = if (n_z2 >= 6) series_names_z2[6] else NA,
+  step_O = 3, step_H2 = 5
+)
+
+Recalibration_z2[["Plot"]]
+Mono2_z2 <- Recalibration_z2[["Mono"]]
+Iso2_z2 <- Recalibration_z2[["Iso"]]
+cat("z=2 recalibrated monoisotopic:", nrow(Mono2_z2), "\n")
+```
+
+## 10c: z=2 Final Assignment
+
+```{r z2-final, eval=(nrow(Data_z2) > 0)}
+## MFAssignR KNOWN ISSUES: "Only singly charged compounds can be assigned."
+## MFAssign/MFAssign_RMD crash with Zx=2 (object 'E' not found).
+## MFAssignCHO_RMD handles Zx=2 correctly, so we re-run CHO on recalibrated peaks.
+## This gives CHO-only formulas for z=2 (no N/S/P), which is the best we can do.
+Assign_z2_final <- MFAssignCHO_RMD(
+  Mono2_z2, Iso2_z2,
+  ionMode = "pos",
+  SN = noise_threshold_z2 * KMDN_z2,
+  ppm_err = 3, NMScut = "on",
+  DeNovo = 1000, lowMW = 100, highMW = 1000,
+  H_Cmin = 0.3, H_Cmax = 3, O_Cmax = 1.2,
+  DBEOmax = 13, DBEOmin = -13,
+  Zx = 2
+)
+
+Unambig2_z2 <- Assign_z2_final[["Unambig"]] %>%
+  arrange(desc(abundance)) %>%
+  distinct(formula, .keep_all = TRUE)
+
+cat("z=2 CHO assignments (recalibrated):", nrow(Unambig2_z2), "\n")
+
+Assign_z2_final[["MSAssign"]]
+Assign_z2_final[["Error"]]
+Assign_z2_final[["VK"]]
+```
+
+## 10d: Combine z=1 and z=2 Results
+
+```{r combine-results}
+## Add charge state column to track which pass each formula came from
+All.unambig$charge <- 1
+
+if (nrow(Data_z2) > 0 && exists("Unambig2_z2") && nrow(Unambig2_z2) > 0) {
+  ## Process z=2 results (same as Section 7)
+  All.unambig.z2 <- Unambig2_z2 %>%
+    arrange(desc(abundance)) %>%
+    distinct(formula, .keep_all = TRUE)
+  All.unambig.z2$charge <- 2
+
+  max.abundance.z2 <- max(Data_z2$Abundance)
+  All.unambig.z2 <- All.unambig.z2 %>%
+    mutate(SNR = abundance / KMDN_z2, n_abundance = abundance / max.abundance.z2)
+
+  ## Combine z=1 and z=2
+  All.unambig.combined <- bind_rows(All.unambig, All.unambig.z2)
+
+  cat("\n=== COMBINED RESULTS ===\n")
+  cat("z=1 formulas:", nrow(All.unambig), "\n")
+  cat("z=2 formulas:", nrow(All.unambig.z2), "\n")
+  cat("Total:", nrow(All.unambig.combined), "\n")
+} else {
+  All.unambig.combined <- All.unambig
+  cat("No z=2 results to combine. Using z=1 only.\n")
+}
+
+## Overwrite the output CSV with combined results
+write.csv(All.unambig.combined, "formulas_assigned.csv", row.names = FALSE)
+cat("\nSaved combined results to formulas_assigned.csv\n")
+```
+
+---
+
+# NEXT STEPS
+
+After completing this notebook:
+
+1. Run `merge_formulas.R` to merge assignments back to the original data
+2. This produces `Emily_Data_WITH_FORMULAS.xlsx` for the dashboard
+3. Run the dashboard pipeline
