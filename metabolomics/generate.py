@@ -347,8 +347,7 @@ def df_to_json(df: pl.DataFrame, sample_cols: list[str], formula_lookup: dict = 
             mz = row.get("m/z")
             rt = row.get("Retention time (min)")
             if mz and rt:
-                key = (round(float(mz), 4), round(float(rt), 2))
-                formula_info = formula_lookup.get(key, {})
+                formula_info = lookup_formula(formula_lookup, float(mz), float(rt))
                 record["Formula"] = formula_info.get("formula", "")
             else:
                 record["Formula"] = ""
@@ -364,28 +363,55 @@ def df_to_json(df: pl.DataFrame, sample_cols: list[str], formula_lookup: dict = 
 
 
 def load_formulas() -> dict:
-    """Load formula assignments and create lookup dict by (mz_round, rt_round)."""
+    """Load formula assignments.
+
+    Returns a dict with two keys:
+      "by_rt" -> {rt_round: [(mz, info), ...]} for closest-mz lookup
+      "entries" -> [(mz, rt, info), ...] flat list
+    Because recalibration shifts m/z, exact rounding fails.
+    We match on RT (exact at 2 decimals) then closest m/z within 5 ppm.
+    """
     formula_path = Path(__file__).parent / "formulas_assigned.csv"
     if not formula_path.exists():
         print("No formulas_assigned.csv found, skipping formula integration")
         return {}
 
     import csv
-    formulas = {}
+    from collections import defaultdict
+    by_rt: dict[float, list[tuple[float, dict]]] = defaultdict(list)
+    count = 0
     with open(formula_path, "r") as f:
         reader = csv.DictReader(f)
         for row in reader:
             try:
-                mz = round(float(row["exp_mass"]), 4)
+                mz = float(row["exp_mass"])
                 rt = round(float(row["RT"]), 2)
-                formulas[(mz, rt)] = {
+                info = {
                     "formula": row["formula"],
                     "err_ppm": round(float(row["err_ppm"]), 2),
                 }
+                by_rt[rt].append((mz, info))
+                count += 1
             except (ValueError, KeyError):
                 continue
-    print(f"Loaded {len(formulas)} formula assignments")
-    return formulas
+    print(f"Loaded {count} formula assignments")
+    return dict(by_rt)
+
+
+def lookup_formula(formula_lookup: dict, mz: float, rt: float, ppm_tol: float = 5.0) -> dict:
+    """Find the closest formula match for a given m/z and RT."""
+    if not formula_lookup:
+        return {}
+    rt_round = round(rt, 2)
+    candidates = formula_lookup.get(rt_round, [])
+    best = {}
+    best_ppm = ppm_tol
+    for cand_mz, info in candidates:
+        ppm = abs(mz - cand_mz) / mz * 1e6
+        if ppm < best_ppm:
+            best_ppm = ppm
+            best = info
+    return best
 
 
 def calculate_richness(data: pl.DataFrame, sample_cols: list[str]) -> list[int]:
@@ -710,10 +736,7 @@ def run_pipeline(df: pl.DataFrame, formula_lookup: dict, sheet_name: str = "") -
 
             mz_val = meta_row.get("m/z", "")
             rt_val = meta_row.get("Retention time (min)", "")
-            formula_info = formula_lookup.get(
-                (round(float(mz_val), 4), round(float(rt_val), 2)) if mz_val and rt_val else (0, 0),
-                {}
-            )
+            formula_info = lookup_formula(formula_lookup, float(mz_val), float(rt_val)) if mz_val and rt_val else {}
 
             all_peaks_data[tissue].append({
                 "compound": compound,
@@ -743,8 +766,7 @@ def run_pipeline(df: pl.DataFrame, formula_lookup: dict, sheet_name: str = "") -
         for peak in tissue_peaks:
             if peak["formula"] and peak["compound"] not in formula_matched:
                 formula_matched.add(peak["compound"])
-                mz_key = (round(float(peak["mz"]), 4), round(float(peak["rt"]), 2)) if peak["mz"] and peak["rt"] else (0, 0)
-                info = formula_lookup.get(mz_key, {})
+                info = lookup_formula(formula_lookup, float(peak["mz"]), float(peak["rt"])) if peak["mz"] and peak["rt"] else {}
                 if "err_ppm" in info:
                     formula_ppm_values.append(abs(info["err_ppm"]))
     formula_match_count = len(formula_matched)
@@ -1580,7 +1602,7 @@ Peaks ONLY in samples (not in blanks) → auto-KEEP</pre>
                 <strong>Statistical Details:</strong><br>
                 • <strong>Welch's t-test:</strong> Compares sample vs blank means without assuming equal variance<br>
                 • <strong>One-sided test:</strong> Tests if sample > blank (not just different)<br>
-                • <strong>FDR correction:</strong> Benjamini-Hochberg method controls false discovery rate at 5%
+                • <strong>FDR correction:</strong> Benjamini-Hochberg method controls false discovery rate at 5% (<a href="https://doi.org/10.1111/j.2517-6161.1995.tb02031.x" target="_blank">Benjamini &amp; Hochberg, 1995</a>)
             </div>
 
             <div class="alert alert-success">
@@ -1619,31 +1641,49 @@ Peaks ONLY in samples (not in blanks) → auto-KEEP</pre>
 
         <div class="method-section" style="margin-top: 2rem; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color: #3b82f6;">
             <h3>Step 3: Molecular Formula Assignment (MFAssignR)</h3>
-            <p>After filtering, we assign molecular formulas to peaks using the <strong>MFAssignR</strong> R package, which calculates which chemical formulas could produce each measured mass.</p>
+            <p>After filtering, we assign molecular formulas to peaks using <strong>MFAssignR</strong> (<a href="https://doi.org/10.1016/j.envres.2020.110114" target="_blank">Schum et al., 2020</a>; <a href="https://github.com/skschum/MFAssignR" target="_blank">GitHub</a>), an R package for molecular formula assignment of ultrahigh resolution mass spectrometry data. The pipeline runs in five stages:</p>
 
-            <div class="alert alert-info">
-                <strong>How it works:</strong>
-            </div>
+            <h4>Stage 1: Noise Estimation (KMDNoise)</h4>
+            <p>Estimates the noise level using Kendrick Mass Defect analysis. Peaks in a KMD region where no real analyte signals are expected provide a noise floor estimate (<strong>KMDN</strong>). All subsequent steps use a signal-to-noise threshold of <strong>6 &times; KMDN</strong>.</p>
 
-            <pre>For each peak's m/z value:
-1. Calculate neutral mass: m/z - 1.007276 (remove proton from [M+H]+)
-2. Find all formulas (combinations of C, H, O, N, S, P) that match within 3 ppm
-3. Apply chemical rules to filter invalid formulas:
-   - H/C ratio between 0.2 and 3.0
-   - O/C ratio between 0 and 1.2
-   - Nitrogen rule (even/odd mass)
-   - Valid double bond equivalents (DBE)
-4. Use isotope patterns (13C, 34S) to confirm assignments
-5. Select best-matching formula</pre>
+            <h4 style="margin-top: 1rem;">Stage 2: Isotope Filtering (IsoFiltR)</h4>
+            <p>Separates monoisotopic peaks from their polyisotopic partners (<sup>13</sup>C, <sup>34</sup>S). Parameters: Carbrat&nbsp;=&nbsp;60, Sulfrat&nbsp;=&nbsp;30, mass accuracy&nbsp;=&nbsp;5&nbsp;ppm for both. This prevents isotope peaks from being assigned their own (incorrect) formulas.</p>
+
+            <h4 style="margin-top: 1rem;">Stage 3: Preliminary CHO Assignment (MFAssignCHO)</h4>
+            <p>Assigns CHO-only formulas first, producing a set of high-confidence reference assignments used to select recalibration series.</p>
+
+            <h4 style="margin-top: 1rem;">Stage 4: Internal Mass Recalibration (Recal)</h4>
+            <p>Corrects systematic mass errors across the spectrum using homologous series from the CHO assignments. The spectrum is divided into <strong>80&nbsp;Da</strong> segments, and a polynomial correction is applied within each segment using up to <strong>6 recalibrant series</strong> (auto-selected by quality score: lowest peak score + peak distance closest to&nbsp;1, &ge;4 observed members, &gt;50&nbsp;Da span). Expansion parameters: step_O&nbsp;=&nbsp;3, step_H2&nbsp;=&nbsp;5, CalPeak&nbsp;=&nbsp;150.</p>
+
+            <h4 style="margin-top: 1rem;">Stage 5: Full Formula Assignment (MFAssign)</h4>
+            <p>Assigns molecular formulas to the recalibrated peaks. For each peak:</p>
+            <pre>1. Calculate neutral mass: m/z - 1.007276 (remove proton from [M+H]+)
+2. Find all formulas (C, H, O, N, S, P) matching within 3 ppm
+3. Apply chemical validity rules:
+   - H/C ratio: 0.3 to 3.0
+   - O/C ratio: 0 to 1.2
+   - Double bond equivalents (DBE-O): -13 to 13
+   - Nitrogen rule (NMScut = on)
+   - Sulfur isotope check (SulfCheck = on)
+4. Confirm with isotope patterns (13C, 34S; iso_err = 3 ppm)
+5. Select unambiguous best match</pre>
+            <p>Elemental ratio constraints follow <a href="https://doi.org/10.1021/ac061949s" target="_blank">Koch et al. (2007)</a> and the Seven Golden Rules of <a href="https://doi.org/10.1186/1471-2105-8-105" target="_blank">Kind &amp; Fiehn (2007)</a>.</p>
 
             <h4 style="margin-top: 1.5rem;">Parameters Used</h4>
             <table class="info-table">
                 <tr><th>Parameter</th><th>Value</th><th>Meaning</th></tr>
                 <tr><td>Ion Mode</td><td>Positive [M+H]+</td><td>Compounds detected as protonated molecules</td></tr>
-                <tr><td>Mass Error</td><td>3 ppm</td><td>Maximum allowed difference between measured and theoretical mass</td></tr>
-                <tr><td>Mass Range</td><td>100-1000 Da</td><td>Only assign formulas to peaks in this range</td></tr>
-                <tr><td>Elements</td><td>C, H, O, N≤4, S≤2, P≤2</td><td>Allowed elements and maximum counts</td></tr>
+                <tr><td>Mass Error</td><td>3 ppm</td><td>Max allowed difference between measured and theoretical mass</td></tr>
+                <tr><td>Isotope Error</td><td>3 ppm</td><td>Max error for isotope pattern confirmation</td></tr>
+                <tr><td>Mass Range</td><td>100&ndash;1000 Da</td><td>Only assign formulas to peaks in this range</td></tr>
+                <tr><td>Elements</td><td>C, H, O, N&le;5, S&le;2, P&le;3</td><td>Allowed elements and maximum heteroatom counts</td></tr>
+                <tr><td>DeNovo</td><td>300</td><td>Above this mass, extend existing series rather than assign de novo</td></tr>
+                <tr><td>Recal mzRange</td><td>80 Da</td><td>Width of each recalibration segment</td></tr>
+                <tr><td>S/N Threshold</td><td>6 &times; KMDN</td><td>Signal-to-noise cutoff for all stages</td></tr>
             </table>
+
+            <h4 style="margin-top: 1.5rem;">Doubly Charged Peaks (z=2)</h4>
+            <p>Peaks with charge state z=2 are processed through the same pipeline separately. Due to a <a href="https://github.com/skschum/MFAssignR/issues" target="_blank">known limitation</a> in MFAssignR (MFAssign_RMD does not support Zx=2), the final z=2 assignment uses MFAssignCHO, which assigns CHO-only formulas for doubly charged ions.</p>
 
             <h4 style="margin-top: 1.5rem;">Understanding PPM Error</h4>
             <p><strong>PPM (parts per million)</strong> measures how close the measured mass is to the theoretical formula mass:</p>
@@ -1651,7 +1691,7 @@ Peaks ONLY in samples (not in blanks) → auto-KEEP</pre>
 
 Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
          ppm = (427.3778 - 427.3782) / 427.3782 × 1,000,000 = -0.9 ppm</pre>
-            <p>Lower ppm = higher confidence. Our assignments average <strong><span id="meth-formula-ppm2"></span> ppm</strong>, which is excellent.</p>
+            <p>Lower ppm = higher confidence. Our assignments average <strong><span id="meth-formula-ppm2"></span> ppm</strong>.</p>
 
             <h4 style="margin-top: 1.5rem;">Formula Classes</h4>
             <table class="info-table">
@@ -1668,6 +1708,13 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
 
             <div class="alert alert-success" style="margin-top: 1rem;">
                 <strong>Assignment Results:</strong> <span id="meth-formula-count"></span> peaks assigned formulas (<span id="meth-formula-pct"></span>% of filtered peaks). Mean mass error: <span id="meth-formula-ppm"></span> ppm.
+            </div>
+
+            <div class="alert alert-info" style="margin-top: 1rem;">
+                <strong>References:</strong><br>
+                &bull; Schum, S.K., Brown, L.E., Mazzoleni, L.R. (2020). MFAssignR: Molecular formula assignment software for ultrahigh resolution mass spectrometry analysis of environmental complex mixtures. <em>Environmental Research</em>, 191, 110114. <a href="https://doi.org/10.1016/j.envres.2020.110114" target="_blank">doi:10.1016/j.envres.2020.110114</a><br>
+                &bull; Koch, B.P., Dittmar, T., Witt, M., Kattner, G. (2007). Fundamentals of molecular formula assignment to ultrahigh resolution mass data of natural organic matter. <em>Analytical Chemistry</em>, 79(4), 1758&ndash;1763. <a href="https://doi.org/10.1021/ac061949s" target="_blank">doi:10.1021/ac061949s</a><br>
+                &bull; Kind, T., Fiehn, O. (2007). Seven Golden Rules for heuristic filtering of molecular formulas obtained by accurate mass spectrometry. <em>BMC Bioinformatics</em>, 8, 105. <a href="https://doi.org/10.1186/1471-2105-8-105" target="_blank">doi:10.1186/1471-2105-8-105</a>
             </div>
         </div>
     </div>
@@ -2660,9 +2707,7 @@ Example: m/z 427.3778 vs C26H50O4+H theoretical 427.3782
 </html>'''
 
     # Write to file
-    output_path = Path(
-        r"C:\Users\austi\PROJECTS\Dashboards\metabolomics\index.html"
-    )
+    output_path = Path(__file__).parent / "index.html"
     output_path.write_text(html, encoding="utf-8")
     print(f"Report saved to: {output_path}")
     print(f"File size: {output_path.stat().st_size / 1024 / 1024:.1f} MB")
