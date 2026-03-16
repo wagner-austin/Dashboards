@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="classic">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formality and Honorifics in Kazakh — LSCI 169</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+
+  /* ═══════════════════════════════════════════════
+     THEMES — Modify or add themes below.
+     All styling references these CSS custom props.
+     To add a theme: copy a block, change the values,
+     and add an <option> to the #themeSelect dropdown.
+     ═══════════════════════════════════════════════ */
+
+  [data-theme="classic"] {
+    --bg: #D4D0C8;
+    --card: #FFFFFF;
+    --card-border: #808080;
+    --text: #1A1A1A;
+    --text-dim: #555555;
+    --accent: #000080;
+    --accent2: #800000;
+    --accent-bg: rgba(0,0,128,0.07);
+    --accent2-bg: rgba(128,0,0,0.07);
+    --heading: #000080;
+    --overlay: rgba(212,208,200,0.96);
+    --code-bg: #F0F0EA;
+    --cite-bg: rgba(0,0,128,0.04);
+    --error-bg: rgba(180,0,0,0.08);
+    --error-border: rgba(180,0,0,0.4);
+    --radius: 2px;
+    --shadow: 1px 1px 0 rgba(0,0,0,0.08);
+    --font-body: Tahoma, Verdana, 'Segoe UI', sans-serif;
+    --font-heading: Tahoma, Verdana, 'Segoe UI', sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+    --bar-text: #FFFFFF;
+    --svg-text: #1A1A1A;
+    --svg-dim: #555555;
+  }
+
+  [data-theme="paper"] {
+    --bg: #F5F0E6;
+    --card: #FFFDF7;
+    --card-border: #D0C7B6;
+    --text: #33302A;
+    --text-dim: #7A7468;
+    --accent: #2E6B62;
+    --accent2: #996B2F;
+    --accent-bg: rgba(46,107,98,0.08);
+    --accent2-bg: rgba(153,107,47,0.08);
+    --heading: #2E6B62;
+    --overlay: rgba(245,240,230,0.96);
+    --code-bg: #EDE8DC;
+    --cite-bg: rgba(46,107,98,0.04);
+    --error-bg: rgba(180,0,0,0.07);
+    --error-border: rgba(180,0,0,0.3);
+    --radius: 6px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --font-heading: Georgia, 'Noto Serif', serif;
+    --font-serif: Georgia, 'Noto Serif', serif;
+    --bar-text: #FFFFFF;
+    --svg-text: #33302A;
+    --svg-dim: #7A7468;
+  }
+
+  [data-theme="dark"] {
+    --bg: #1A1A1E;
+    --card: #242428;
+    --card-border: rgba(255,255,255,0.08);
+    --text: #D8D4CC;
+    --text-dim: #888480;
+    --accent: #6BB3A0;
+    --accent2: #D4A84A;
+    --accent-bg: rgba(107,179,160,0.1);
+    --accent2-bg: rgba(212,168,74,0.08);
+    --heading: #E8E4DC;
+    --overlay: rgba(26,26,30,0.96);
+    --code-bg: #1E1E22;
+    --cite-bg: rgba(107,179,160,0.05);
+    --error-bg: rgba(220,50,50,0.12);
+    --error-border: rgba(220,50,50,0.4);
+    --radius: 8px;
+    --shadow: 0 4px 16px rgba(0,0,0,0.2);
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --font-heading: 'Inter', 'Segoe UI', sans-serif;
+    --font-serif: Georgia, 'Noto Serif', serif;
+    --bar-text: #FFFFFF;
+    --svg-text: #D8D4CC;
+    --svg-dim: #888480;
+  }
+
+  [data-theme="steppe"] {
+    --bg: #F0EBE0;
+    --card: #FDFBF6;
+    --card-border: #C8BEA8;
+    --text: #2A2520;
+    --text-dim: #6D6458;
+    --accent: #3A7B8A;
+    --accent2: #B8722A;
+    --accent-bg: rgba(58,123,138,0.08);
+    --accent2-bg: rgba(184,114,42,0.08);
+    --heading: #2A2520;
+    --overlay: rgba(240,235,224,0.96);
+    --code-bg: #E8E2D5;
+    --cite-bg: rgba(58,123,138,0.04);
+    --error-bg: rgba(180,0,0,0.07);
+    --error-border: rgba(180,0,0,0.3);
+    --radius: 4px;
+    --shadow: 0 1px 4px rgba(0,0,0,0.06);
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --font-heading: 'Inter', 'Segoe UI', sans-serif;
+    --font-serif: Georgia, 'Noto Serif', serif;
+    --bar-text: #FFFFFF;
+    --svg-text: #2A2520;
+    --svg-dim: #6D6458;
+  }
+
+  /* ═══════════════════════════════════
+     BASE STYLES — Uses theme variables
+     ═══════════════════════════════════ */
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh; width: 100vw;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  /* ── Top bar ── */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.6rem 1.5rem;
+    z-index: 100;
+    background: var(--overlay);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .topbar-left {
+    font-size: 0.75rem; font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .topbar-right { display: flex; align-items: center; gap: 0.8rem; }
+  .slide-counter {
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--text-dim); font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Theme selector ── */
+  .theme-select {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+
+  /* ── Progress bar ── */
+  .progress-bar {
+    position: fixed; bottom: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 0.5s ease;
+    z-index: 100;
+  }
+
+  /* ── Slides ── */
+  .slides-wrapper { position: relative; width: 100%; height: 100vh; z-index: 1; }
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 4rem 2rem 2.5rem;
+    opacity: 0; transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    overflow-y: auto;
+  }
+  .slide.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .slide-inner { max-width: 1050px; width: 100%; padding-bottom: 2rem; }
+
+  /* ── Title slide ── */
+  .slide-title { position: relative; }
+  .slide-title .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/dc/Steppes_of_Kazakhstan.jpg');
+    background-size: cover; background-position: center;
+    opacity: 0.15; z-index: 0;
+  }
+  .slide-title .slide-inner {
+    text-align: center; position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    min-height: calc(100vh - 6rem);
+  }
+  .slide-title .flags-row {
+    display: flex; justify-content: center; align-items: center; gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .slide-title .flags-row img {
+    height: 48px; width: auto; border-radius: var(--radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    object-fit: contain;
+  }
+  .slide-title .flags-divider { font-size: 1.5rem; color: var(--text-dim); }
+  .slide-title h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    font-weight: 700; color: var(--heading);
+    line-height: 1.15; margin-bottom: 0.4rem;
+  }
+  .slide-title h1 .highlight { color: var(--accent); }
+  .slide-title .subtitle {
+    font-size: 1.2rem; color: var(--text-dim);
+    margin-top: 1.5rem;
+  }
+  .slide-title .meta {
+    margin-top: 3rem;
+    display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+  }
+  .meta-chip {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    font-size: 0.9rem; color: var(--text-dim);
+  }
+  .meta-chip .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+  }
+
+  /* ── Divider ── */
+  .ornament {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.5rem; margin: 1rem 0; color: var(--accent); opacity: 0.4;
+  }
+  .ornament-line { width: 30px; height: 1px; background: var(--accent); }
+  .ornament-diamond { width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg); }
+
+  /* ── Fixed image area above title — always same height ── */
+  .slide-image-area {
+    width: 100%;
+    height: 220px;
+    margin-bottom: 0.8rem;
+    display: flex;
+    gap: 0.8rem;
+  }
+  .slide-image-area img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    opacity: 0.85;
+  }
+  .slide-image-area.empty {
+    border: none;
+  }
+
+  /* ── Content headings ── */
+  .slide-heading {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700; color: var(--heading);
+    margin-bottom: 0.3rem;
+  }
+  .slide-heading .num { color: var(--accent); font-weight: 800; margin-right: 0.3rem; }
+  .slide-subtext {
+    font-size: 1rem; color: var(--text-dim);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── Tags ── */
+  .tag {
+    display: inline-block; padding: 0.25rem 0.6rem;
+    font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    border-radius: var(--radius); margin-bottom: 0.8rem;
+  }
+  .tag-blue { background: var(--accent-bg); color: var(--accent); }
+  .tag-gold { background: var(--accent2-bg); color: var(--accent2); }
+
+  /* ── Bullet list ── */
+  .bullets { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .bullets li {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    font-size: 1.05rem; line-height: 1.55;
+  }
+  .bullets li::before {
+    content: ''; flex-shrink: 0;
+    width: 6px; height: 6px; margin-top: 0.5rem;
+    border-radius: 1px; background: var(--accent);
+    transform: rotate(45deg);
+  }
+
+  /* ── Citations ── */
+  .cite {
+    display: block; margin-top: 1rem;
+    padding: 0.5rem 0.8rem;
+    background: var(--cite-bg);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 0.8rem; color: var(--text-dim);
+    font-style: italic; line-height: 1.5;
+  }
+  .cite strong { color: var(--accent); font-style: normal; font-weight: 600; }
+  .cite a, .sources-list a { color: var(--accent); text-decoration: none; }
+  .cite a:hover, .sources-list a:hover { text-decoration: underline; }
+
+  /* ── Example blocks ── */
+  .example-block {
+    background: var(--code-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem; margin: 0.8rem 0;
+    font-family: var(--font-serif);
+    font-size: 0.95rem; line-height: 1.6;
+  }
+  .example-block .label {
+    font-family: var(--font-body);
+    font-size: 0.65rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--accent);
+    font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .example-block .kz { color: var(--accent); font-weight: 600; }
+  .example-block .jp { color: var(--accent2); font-weight: 600; }
+  .example-block .dim { color: var(--text-dim); font-style: italic; }
+
+  /* ── Comparison cards ── */
+  .compare-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-top: 0.8rem;
+  }
+  @media (max-width: 700px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius); padding: 1.2rem;
+    box-shadow: var(--shadow);
+  }
+  .compare-card h3 {
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.1em; font-weight: 700;
+    margin-bottom: 0.7rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .compare-card.kazakh h3 { color: var(--accent); }
+  .compare-card.japanese h3 { color: var(--accent2); }
+  .compare-card .card-flag {
+    height: 14px; border-radius: 1px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  .compare-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .compare-card ul li {
+    font-size: 0.9rem; line-height: 1.45;
+    padding-left: 0.8rem; position: relative;
+  }
+  .compare-card ul li::before {
+    content: '—'; position: absolute; left: 0; color: var(--text-dim);
+  }
+  .compare-card .card-photo {
+    width: 100%; height: 90px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin-bottom: 0.6rem;
+    border: 1px solid var(--card-border);
+  }
+
+  /* ── SVG diagrams ── */
+  .diagram-container {
+    display: flex; justify-content: center; align-items: center;
+    margin: 1.5rem 0;
+  }
+  .diagram-container svg { max-width: 100%; width: 100%; height: auto; overflow: visible; }
+
+  /* ── Sources ── */
+  .sources-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .sources-list li {
+    font-size: 0.82rem; color: var(--text-dim);
+    padding-left: 1rem; position: relative;
+    line-height: 1.5; font-family: var(--font-serif);
+  }
+  .sources-list li::before {
+    content: ''; position: absolute;
+    left: 0; top: 0.5rem;
+    width: 4px; height: 4px;
+    border-radius: 50%; background: var(--accent);
+  }
+  .sources-list li .src-num {
+    display: inline-block; width: 1.4rem;
+    font-family: var(--font-body);
+    font-size: 0.65rem; font-weight: 700; color: var(--accent);
+  }
+
+  /* ── Nav ── */
+  .nav-arrows {
+    position: fixed; bottom: 1.2rem; right: 1.5rem;
+    display: flex; gap: 0.4rem; z-index: 100;
+  }
+  .nav-btn {
+    width: 36px; height: 36px;
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    background: var(--card); color: var(--text);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .nav-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.3; pointer-events: none; }
+
+  .kbd-hint { display: none; }
+
+  /* ── Floating background accents ── */
+  .bg-accent {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.08;
+    font-size: 140px;
+    color: var(--accent);
+    animation: float 20s ease-in-out infinite;
+  }
+  .bg-accent:nth-child(1) { top: 10%; right: 5%; animation-delay: 0s; }
+  .bg-accent:nth-child(2) { bottom: 15%; left: 3%; animation-delay: -7s; font-size: 90px; }
+  .bg-accent:nth-child(3) { top: 50%; right: 10%; animation-delay: -13s; font-size: 70px; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(2deg); }
+    50% { transform: translateY(5px) rotate(-1deg); }
+    75% { transform: translateY(-8px) rotate(1deg); }
+  }
+
+  /* ── Slide entrance animations ── */
+  .slide.active .slide-heading {
+    animation: fadeUp 0.5s ease both;
+  }
+  .slide.active .tag {
+    animation: fadeUp 0.4s ease 0.1s both;
+  }
+  .slide.active .slide-subtext {
+    animation: fadeUp 0.4s ease 0.15s both;
+  }
+  .slide.active .diagram-container {
+    animation: fadeUp 0.5s ease 0.2s both;
+  }
+  .slide.active .bullets li {
+    animation: fadeUp 0.4s ease both;
+  }
+  .slide.active .bullets li:nth-child(1) { animation-delay: 0.25s; }
+  .slide.active .bullets li:nth-child(2) { animation-delay: 0.35s; }
+  .slide.active .bullets li:nth-child(3) { animation-delay: 0.45s; }
+  .slide.active .bullets li:nth-child(4) { animation-delay: 0.55s; }
+  .slide.active .bullets li:nth-child(5) { animation-delay: 0.65s; }
+  .slide.active .compare-grid {
+    animation: fadeUp 0.5s ease 0.3s both;
+  }
+  .slide.active .example-block {
+    animation: fadeUp 0.5s ease 0.3s both;
+  }
+  .slide.active .cite {
+    animation: fadeUp 0.4s ease 0.5s both;
+  }
+  .slide.active .slide-image-area {
+    animation: fadeUp 0.5s ease 0.05s both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .topbar { padding: 0.5rem 0.8rem; }
+    .slide { padding: 3.5rem 1rem 2.5rem; }
+    .nav-arrows { right: 0.8rem; bottom: 0.8rem; }
+    .kbd-hint { display: none; }
+    .meta { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating background accents -->
+<div class="bg-accent">&#x2736;</div>
+<div class="bg-accent">&#x273D;</div>
+<div class="bg-accent">&#x2726;</div>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-left">LSCI 169 — Japanese Sociolinguistics</div>
+  <div class="topbar-right">
+    <span class="slide-counter" id="counter">1 / 10</span>
+    <select class="theme-select" id="themeSelect" title="Switch theme">
+      <option value="classic">Classic</option>
+      <option value="paper">Paper</option>
+      <option value="dark">Dark</option>
+      <option value="steppe">Steppe</option>
+    </select>
+  </div>
+</div>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progress"></div>
+
+<!-- Slides -->
+<div class="slides-wrapper" id="slidesWrapper">
+
+  <!-- SLIDE 1 — TITLE -->
+  <div class="slide slide-title active" data-slide="0">
+    <div class="hero-bg"></div>
+    <div class="slide-inner">
+      <div class="flags-row">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Flag_of_Kazakhstan.svg" alt="Kazakhstan flag">
+        <span class="flags-divider">&amp;</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" alt="Japan flag">
+      </div>
+      <h1>Formality &amp; Honorifics in Kazakh<br><span class="highlight">The Sen/Siz System</span></h1>
+      <div class="ornament">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond"></div>
+        <div class="ornament-line"></div>
+      </div>
+      <p class="subtitle">Compared to Japanese Keigo</p>
+      <div class="meta">
+        <span class="meta-chip"><span class="dot"></span> Austin Wagner</span>
+        <span class="meta-chip"><span class="dot"></span> LSCI 169 — Japanese Sociolinguistics</span>
+        <span class="meta-chip"><span class="dot"></span> UC Irvine — Winter 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 — WHY THIS TOPIC? -->
+  <div class="slide" data-slide="1">
+    <div class="slide-inner">
+      <div class="slide-image-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kazakh_yurt_in_Bayan-Olgii%2C_Mongolia_2009.jpg" alt="Traditional Kazakh yurt on the steppe">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Itsukushima_torii_angle.jpg" alt="Japanese torii gate at Itsukushima Shrine">
+      </div>
+      <span class="tag tag-blue">Motivation</span>
+      <h2 class="slide-heading"><span class="num">01</span> Why This Topic?</h2>
+      <p class="slide-subtext">Connecting Japanese sociolinguistics to Turkic language research.</p>
+
+      <ul class="bullets">
+        <li>This course covers Japanese keigo — three levels of honorific speech</li>
+        <li>I also research Turkic languages at UCI, including a paper on mutual intelligibility across six Turkic languages (accepted at HSP 2026 and Tu+11 at MIT)</li>
+        <li>Through that work, I noticed Kazakh has a pronoun-based formality system (сен/сіз) that parallels keigo</li>
+        <li>Two unrelated languages, same question: how do you encode respect through speech?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — SEN VS SIZ -->
+  <div class="slide" data-slide="2">
+    <div class="slide-inner">
+      <div class="slide-image-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Steppes_of_Kazakhstan.jpg" alt="Kazakh steppe landscape">
+      </div>
+      <span class="tag tag-blue">Kazakh Pronouns</span>
+      <h2 class="slide-heading"><span class="num">02</span> Сен vs. Сіз</h2>
+      <p class="slide-subtext">Linguists call this the T-V distinction (Brown &amp; Gilman, 1960). Kazakh has a clear binary version.</p>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="10" width="310" height="120" rx="10" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <text x="25" y="42" fill="var(--accent)" font-family="'Noto Serif',serif" font-size="26" font-weight="700">Сен</text>
+          <text x="100" y="42" fill="var(--svg-dim)" font-family="inherit" font-size="13">(sen) — informal</text>
+          <text x="25" y="68" fill="var(--svg-text)" font-family="inherit" font-size="12">&#x2192; Friends &amp; peers</text>
+          <text x="25" y="88" fill="var(--svg-text)" font-family="inherit" font-size="12">&#x2192; Younger people</text>
+          <text x="25" y="108" fill="var(--svg-text)" font-family="inherit" font-size="12">&#x2192; Close family</text>
+          <text x="348" y="78" text-anchor="middle" fill="var(--svg-dim)" font-size="22">&#x27F7;</text>
+          <rect x="385" y="10" width="310" height="120" rx="10" fill="none" stroke="var(--accent2)" stroke-width="2"/>
+          <text x="405" y="42" fill="var(--accent2)" font-family="'Noto Serif',serif" font-size="26" font-weight="700">Сіз</text>
+          <text x="470" y="42" fill="var(--svg-dim)" font-family="inherit" font-size="13">(siz) — formal</text>
+          <text x="405" y="68" fill="var(--svg-text)" font-family="inherit" font-size="12">&#x2192; Elders</text>
+          <text x="405" y="88" fill="var(--svg-text)" font-family="inherit" font-size="12">&#x2192; Strangers, bosses</text>
+          <text x="405" y="108" fill="var(--svg-text)" font-family="inherit" font-size="12">&#x2192; Teachers, officials</text>
+        </svg>
+      </div>
+
+      <ul class="bullets">
+        <li>The choice is based on <strong>age, social status, and closeness</strong> — and it's mandatory in every interaction</li>
+        <li>A younger person speaking to an older relative <strong>always</strong> uses сіз, even within the family — age hierarchy overrides closeness</li>
+        <li>In Japanese, family members typically use casual speech — in Kazakh, <strong>formality is mandatory regardless of intimacy</strong></li>
+        <li>Using the wrong form has <strong>real social consequences</strong> — it's not just grammar, it's a social statement</li>
+      </ul>
+
+      <div class="cite">
+        <strong>[2]</strong> <a href="https://slaviccenters.duke.edu/sites/slaviccenters.duke.edu/files/file-attachments/kazakh-grammar.pdf" target="_blank">Dotton &amp; Wagner. "A Grammar of Kazakh." <em>Duke University Slavic Centers.</em></a><br>
+        <strong>[3]</strong> <a href="https://kazakhtili.wordpress.com/2011/02/06/pronouns-possessive-pronouns-to-be-form-endings-in-kazakh/" target="_blank">"Kazakh Pronouns &amp; Possessive Pronouns." <em>Kazakh Language for English Speakers.</em></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 — VERB ENDINGS -->
+  <div class="slide" data-slide="3">
+    <div class="slide-inner">
+      <div class="slide-image-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Japanese-Calligraphy-art.jpg" alt="Japanese calligraphy art">
+      </div>
+      <span class="tag tag-blue">Grammar</span>
+      <h2 class="slide-heading"><span class="num">03</span> Verb Endings Change Too</h2>
+      <p class="slide-subtext">It's not just the pronoun — the entire verb conjugation shifts.</p>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 680 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="320" height="90" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="20" y="30" fill="var(--accent)" font-family="inherit" font-size="10" font-weight="700" letter-spacing="0.08em">INFORMAL</text>
+          <text x="20" y="55" fill="var(--svg-text)" font-family="'Noto Serif',serif" font-size="16">Sen qalai<tspan fill="var(--accent)" font-weight="700">сын</tspan>?</text>
+          <text x="20" y="80" fill="var(--svg-dim)" font-family="inherit" font-size="12">-сын (-syn) = informal verb ending</text>
+          <text x="345" y="55" fill="var(--svg-dim)" font-size="20">&#x2192;</text>
+          <rect x="365" y="5" width="310" height="90" rx="8" fill="none" stroke="var(--accent2)" stroke-width="1.5"/>
+          <text x="380" y="30" fill="var(--accent2)" font-family="inherit" font-size="10" font-weight="700" letter-spacing="0.08em">FORMAL</text>
+          <text x="380" y="55" fill="var(--svg-text)" font-family="'Noto Serif',serif" font-size="16">Сіз қалай<tspan fill="var(--accent2)" font-weight="700">сыз</tspan>?</text>
+          <text x="380" y="80" fill="var(--svg-dim)" font-family="inherit" font-size="12">-сыз (-syz) = formal verb ending</text>
+        </svg>
+      </div>
+
+      <div class="example-block">
+        <div class="label">Japanese — Parallel structure</div>
+        <span class="jp">Casual:</span>&nbsp; "genki?" (元気？) <br>
+        <span class="jp">Polite:</span>&nbsp;&nbsp; "ogenki desu ka?" (お元気ですか？) <span class="dim">— teineigo (丁寧語)</span>
+      </div>
+
+      <ul class="bullets">
+        <li>The verb ending changes from <strong>-сын (-syn)</strong> to <strong>-сыз (-syz)</strong> to match the formality of the pronoun</li>
+        <li>This isn't optional — the entire sentence structure shifts with the pronoun choice</li>
+        <li>Japanese has a parallel pattern: casual <strong>元気？</strong> vs. polite <strong>お元気ですか？</strong> adds prefix お-, copula です, and question particle か</li>
+      </ul>
+
+      <div class="cite">
+        <strong>[2]</strong> <a href="https://slaviccenters.duke.edu/sites/slaviccenters.duke.edu/files/file-attachments/kazakh-grammar.pdf" target="_blank">Dotton &amp; Wagner. "A Grammar of Kazakh."</a> — Verb conjugation paradigms.<br>
+        <strong>[3]</strong> <a href="https://kazakhtili.wordpress.com/2011/02/06/pronouns-possessive-pronouns-to-be-form-endings-in-kazakh/" target="_blank">"Kazakh Pronouns." <em>Kazakh Language for English Speakers.</em></a> — Agreement patterns.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 — HONORIFIC TITLES -->
+  <div class="slide" data-slide="4">
+    <div class="slide-inner">
+      <div class="slide-image-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Kazakh_girls_wear_traditional_Kazakh_costumes.JPEG" alt="Traditional Kazakh costumes">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Itsukushima_torii_angle.jpg" alt="Japanese torii gate">
+      </div>
+      <span class="tag tag-gold">Honorifics</span>
+      <h2 class="slide-heading"><span class="num">04</span> Honorific Titles</h2>
+      <p class="slide-subtext">Both languages require speakers to mark respect through forms of address.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card kazakh">
+          <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Kazakh_girls_wear_traditional_Kazakh_costumes.JPEG" alt="Traditional Kazakh costumes">
+          <h3>
+            <img class="card-flag" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Flag_of_Kazakhstan.svg" alt="KZ">
+            Kazakh Titles
+          </h3>
+          <ul>
+            <li><strong>Аға (Aga)</strong> — respected older male</li>
+            <li><strong>Апай (Apay)</strong> — respected older female</li>
+            <li><strong>Құрметті (Qurmetti)</strong> — "respected" (formal speeches, letters)</li>
+          </ul>
+        </div>
+        <div class="compare-card japanese">
+          <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Itsukushima_torii_angle.jpg" alt="Itsukushima torii gate">
+          <h3>
+            <img class="card-flag" src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" alt="JP">
+            Japanese Titles
+          </h3>
+          <ul>
+            <li><strong>-さん (-san)</strong> — general polite</li>
+            <li><strong>-さま (-sama)</strong> — very formal / customers</li>
+            <li><strong>-先生 (-sensei)</strong> — teacher / doctor</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cite">
+        <strong>[4]</strong> <a href="https://www.azbyka.kz/national-features-speech-etiquette-kazakh-russian-english" target="_blank">Amanbaeva, Ayym. "National Features of Speech Etiquette." <em>Azbuka.kz.</em></a><br>
+        <strong>[5]</strong> <a href="https://www.languagesgulper.com/eng/Kazakh.html" target="_blank">"Kazakh Language." <em>Languages Gulper.</em></a> — Forms of address overview.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 — SENDELESEYIK -->
+  <div class="slide" data-slide="5">
+    <div class="slide-inner">
+      <div class="slide-image-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kazakh_yurt_in_Bayan-Olgii%2C_Mongolia_2009.jpg" alt="Traditional Kazakh yurt — social gatherings happen here">
+      </div>
+      <span class="tag tag-blue">Social Ritual</span>
+      <h2 class="slide-heading"><span class="num">05</span> Сенделесейік — Permission to Be Informal</h2>
+      <p class="slide-subtext">An explicit invitation to drop formality — unique to Kazakh.</p>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="15" width="180" height="100" rx="8" fill="none" stroke="var(--accent2)" stroke-width="1.5"/>
+          <text x="95" y="45" text-anchor="middle" fill="var(--accent2)" font-family="inherit" font-size="10" font-weight="700" letter-spacing="0.08em">STRANGERS</text>
+          <text x="95" y="68" text-anchor="middle" fill="var(--svg-text)" font-family="'Noto Serif',serif" font-size="15">Default: Сіз</text>
+          <text x="95" y="90" text-anchor="middle" fill="var(--svg-dim)" font-family="inherit" font-size="11">(formal, respectful)</text>
+          <line x1="195" y1="65" x2="245" y2="65" stroke="var(--svg-dim)" stroke-width="1.5"/>
+          <polygon points="245,60 255,65 245,70" fill="var(--svg-dim)"/>
+          <rect x="260" y="15" width="190" height="100" rx="8" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6,3"/>
+          <text x="355" y="40" text-anchor="middle" fill="var(--accent)" font-family="inherit" font-size="10" font-weight="700" letter-spacing="0.08em">INVITATION</text>
+          <text x="355" y="66" text-anchor="middle" fill="var(--accent)" font-family="'Noto Serif',serif" font-size="16" font-weight="700">"Сенделесейік"</text>
+          <text x="355" y="88" text-anchor="middle" fill="var(--svg-dim)" font-family="inherit" font-size="11">"Let's use sen"</text>
+          <text x="355" y="105" text-anchor="middle" fill="var(--svg-dim)" font-family="inherit" font-size="10">(said by elder/superior)</text>
+          <line x1="460" y1="65" x2="510" y2="65" stroke="var(--svg-dim)" stroke-width="1.5"/>
+          <polygon points="510,60 520,65 510,70" fill="var(--svg-dim)"/>
+          <rect x="525" y="15" width="170" height="100" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="610" y="45" text-anchor="middle" fill="var(--accent)" font-family="inherit" font-size="10" font-weight="700" letter-spacing="0.08em">CLOSE RELATIONSHIP</text>
+          <text x="610" y="68" text-anchor="middle" fill="var(--svg-text)" font-family="'Noto Serif',serif" font-size="15">Now: Сен</text>
+          <text x="610" y="90" text-anchor="middle" fill="var(--svg-dim)" font-family="inherit" font-size="11">(informal, familiar)</text>
+        </svg>
+      </div>
+
+      <ul class="bullets">
+        <li>When two strangers meet, they <strong>default to сіз</strong> — formality is the safe starting point</li>
+        <li>The <strong>older or higher-status person</strong> initiates the switch — it's never presumed by the younger person</li>
+        <li>This is an <strong>explicit, spoken moment</strong> — a social ritual that marks a change in the relationship</li>
+        <li>Japanese has no equivalent — the shift from keigo to casual happens <strong>gradually</strong>, without a single defining moment</li>
+      </ul>
+
+      <div class="cite">
+        <strong>[4]</strong> <a href="https://www.azbyka.kz/national-features-speech-etiquette-kazakh-russian-english" target="_blank">Amanbaeva. "National Features of Speech Etiquette." <em>Azbuka.kz.</em></a> — The сенделесейік ritual.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 — GETTING IT WRONG -->
+  <div class="slide" data-slide="6">
+    <div class="slide-inner">
+      <div class="slide-image-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Steppes_of_Kazakhstan.jpg" alt="Kazakh steppe">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Itsukushima_torii_angle.jpg" alt="Japanese torii gate">
+      </div>
+      <span class="tag tag-gold">Social Weight</span>
+      <h2 class="slide-heading"><span class="num">06</span> What Happens When You Get It Wrong</h2>
+      <p class="slide-subtext">The words you choose reveal how you see the relationship.</p>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="340" height="130" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="175" y="30" text-anchor="middle" fill="var(--accent)" font-family="inherit" font-size="10" font-weight="700" letter-spacing="0.08em">KAZAKH</text>
+          <text x="25" y="58" fill="var(--svg-text)" font-family="inherit" font-size="13">To an elder:</text>
+          <rect x="25" y="68" width="135" height="28" rx="4" fill="var(--error-bg)" stroke="var(--error-border)" stroke-width="1"/>
+          <text x="92" y="87" text-anchor="middle" fill="var(--svg-text)" font-family="'Noto Serif',serif" font-size="13">&#x2717; "Sen qalaisyn?"</text>
+          <text x="180" y="87" fill="var(--svg-dim)" font-size="16">&#x2192;</text>
+          <rect x="200" y="68" width="130" height="28" rx="4" fill="var(--accent-bg)" stroke="var(--accent)" stroke-width="1"/>
+          <text x="265" y="87" text-anchor="middle" fill="var(--svg-text)" font-family="'Noto Serif',serif" font-size="13">&#x2713; "Siz qalaisyz?"</text>
+          <text x="175" y="120" text-anchor="middle" fill="var(--svg-dim)" font-family="inherit" font-size="11" font-style="italic">Using "sen" = disrespectful, can insult</text>
+          <rect x="365" y="5" width="330" height="130" rx="8" fill="none" stroke="var(--accent2)" stroke-width="1.5"/>
+          <text x="530" y="30" text-anchor="middle" fill="var(--accent2)" font-family="inherit" font-size="10" font-weight="700" letter-spacing="0.08em">JAPANESE</text>
+          <text x="385" y="58" fill="var(--svg-text)" font-family="inherit" font-size="13">To a superior:</text>
+          <rect x="385" y="68" width="100" height="28" rx="4" fill="var(--error-bg)" stroke="var(--error-border)" stroke-width="1"/>
+          <text x="435" y="87" text-anchor="middle" fill="var(--svg-text)" font-family="'Noto Serif',serif" font-size="13">&#x2717; "行く" (iku)</text>
+          <text x="500" y="87" fill="var(--svg-dim)" font-size="16">&#x2192;</text>
+          <rect x="515" y="68" width="165" height="28" rx="4" fill="var(--accent2-bg)" stroke="var(--accent2)" stroke-width="1"/>
+          <text x="598" y="87" text-anchor="middle" fill="var(--svg-text)" font-family="'Noto Serif',serif" font-size="13">&#x2713; "いらっしゃいます"</text>
+          <text x="530" y="120" text-anchor="middle" fill="var(--svg-dim)" font-family="inherit" font-size="11" font-style="italic">Dropping keigo = rude, unprofessional</text>
+        </svg>
+      </div>
+
+      <ul class="bullets">
+        <li>In Kazakh, using <strong>сен</strong> with a stranger or elder is considered disrespectful — the pronoun itself carries social weight</li>
+        <li>In Japanese, failing to use keigo with a client or superior signals <strong>disregard for the relationship</strong></li>
+        <li>The consequences are social, not grammatical — people <em>judge</em> you by your register choice</li>
+        <li>In both languages: <strong>your word choice reveals how you see the social hierarchy</strong></li>
+      </ul>
+
+      <div class="cite">
+        <strong>[2]</strong> <a href="https://slaviccenters.duke.edu/sites/slaviccenters.duke.edu/files/file-attachments/kazakh-grammar.pdf" target="_blank">Dotton &amp; Wagner. "A Grammar of Kazakh."</a> — Social implications of pronoun misuse.<br>
+        <strong>[4]</strong> <a href="https://www.azbyka.kz/national-features-speech-etiquette-kazakh-russian-english" target="_blank">Amanbaeva. "Speech Etiquette." <em>Azbuka.kz.</em></a> — Formality violations.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 — COMPARISON -->
+  <div class="slide" data-slide="7">
+    <div class="slide-inner">
+      <div class="slide-image-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kazakh_yurt_in_Bayan-Olgii%2C_Mongolia_2009.jpg" alt="Kazakh yurt">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Japanese-Calligraphy-art.jpg" alt="Japanese calligraphy">
+      </div>
+      <span class="tag tag-blue">Analysis</span>
+      <h2 class="slide-heading"><span class="num">07</span> Kazakh vs. Japanese — Side by Side</h2>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 700 80" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="10" width="340" height="25" rx="4" fill="var(--accent)" opacity="0.25"/>
+          <rect x="5" y="10" width="170" height="25" rx="4" fill="var(--accent)" opacity="0.5"/>
+          <text x="90" y="27" text-anchor="middle" fill="var(--bar-text)" font-family="inherit" font-size="10" font-weight="600">СЕН (informal)</text>
+          <text x="260" y="27" text-anchor="middle" fill="var(--bar-text)" font-family="inherit" font-size="10" font-weight="600">СІЗ (formal)</text>
+          <text x="175" y="55" text-anchor="middle" fill="var(--svg-dim)" font-family="inherit" font-size="11">Binary system — 2 levels</text>
+          <rect x="365" y="10" width="330" height="25" rx="4" fill="var(--accent2)" opacity="0.15"/>
+          <rect x="365" y="10" width="110" height="25" rx="4" fill="var(--accent2)" opacity="0.3"/>
+          <rect x="475" y="10" width="110" height="25" rx="4" fill="var(--accent2)" opacity="0.45"/>
+          <rect x="585" y="10" width="110" height="25" rx="4" fill="var(--accent2)" opacity="0.6"/>
+          <text x="420" y="27" text-anchor="middle" fill="var(--bar-text)" font-family="inherit" font-size="9" font-weight="600">丁寧語</text>
+          <text x="530" y="27" text-anchor="middle" fill="var(--bar-text)" font-family="inherit" font-size="9" font-weight="600">謙譲語</text>
+          <text x="640" y="27" text-anchor="middle" fill="var(--bar-text)" font-family="inherit" font-size="9" font-weight="600">尊敬語</text>
+          <text x="530" y="55" text-anchor="middle" fill="var(--svg-dim)" font-family="inherit" font-size="11">Multi-layered system — 3+ levels</text>
+        </svg>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card kazakh">
+          <h3>
+            <img class="card-flag" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Flag_of_Kazakhstan.svg" alt="KZ">
+            Kazakh System
+          </h3>
+          <ul>
+            <li><strong>Binary:</strong> sen (informal) vs. siz (formal)</li>
+            <li>Based on age, status, closeness</li>
+            <li>Boundaries are mostly <strong>fixed</strong></li>
+            <li>Formality built into <strong>pronouns &amp; verb endings</strong></li>
+          </ul>
+        </div>
+        <div class="compare-card japanese">
+          <h3>
+            <img class="card-flag" src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" alt="JP">
+            Japanese Keigo (敬語)
+          </h3>
+          <ul>
+            <li><strong>Three levels:</strong> sonkeigo, kenjōgo, teineigo</li>
+            <li>Based on uchi/soto (内/外) and social rank</li>
+            <li>Boundaries <strong>shift</strong> with context &amp; audience</li>
+            <li>Formality built into <strong>verb forms, vocabulary &amp; speech levels</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cite">
+        <strong>[1–5]</strong> Synthesis of all sources — binary vs. multi-layered comparison from <a href="https://slaviccenters.duke.edu/sites/slaviccenters.duke.edu/files/file-attachments/kazakh-grammar.pdf" target="_blank">Dotton &amp; Wagner [2]</a> and standard keigo taxonomy.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 — CONCLUSION -->
+  <div class="slide" data-slide="8">
+    <div class="slide-inner">
+      <div class="slide-image-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Steppes_of_Kazakhstan.jpg" alt="Kazakh steppe">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Itsukushima_torii_angle.jpg" alt="Japanese torii gate">
+      </div>
+      <span class="tag tag-gold">Conclusion</span>
+      <h2 class="slide-heading"><span class="num">08</span> Different Tools, Same Goal</h2>
+      <p class="slide-subtext">Making social hierarchy visible in everyday conversation.</p>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="10" width="220" height="55" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="115" y="32" text-anchor="middle" fill="var(--accent)" font-family="inherit" font-size="11" font-weight="700">KAZAKH</text>
+          <text x="115" y="52" text-anchor="middle" fill="var(--svg-text)" font-family="inherit" font-size="12">Binary pronoun system</text>
+          <rect x="5" y="95" width="220" height="55" rx="8" fill="none" stroke="var(--accent2)" stroke-width="1.5"/>
+          <text x="115" y="117" text-anchor="middle" fill="var(--accent2)" font-family="inherit" font-size="11" font-weight="700">JAPANESE</text>
+          <text x="115" y="137" text-anchor="middle" fill="var(--svg-text)" font-family="inherit" font-size="12">Multi-layered keigo</text>
+          <line x1="230" y1="37" x2="370" y2="75" stroke="var(--accent)" stroke-width="1.5" opacity="0.6"/>
+          <line x1="230" y1="122" x2="370" y2="85" stroke="var(--accent2)" stroke-width="1.5" opacity="0.6"/>
+          <rect x="375" y="50" width="220" height="60" rx="8" fill="var(--accent-bg)" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4"/>
+          <text x="485" y="75" text-anchor="middle" fill="var(--svg-text)" font-family="inherit" font-size="12" font-weight="600">Social hierarchy</text>
+          <text x="485" y="97" text-anchor="middle" fill="var(--svg-dim)" font-family="inherit" font-size="12">made audible</text>
+        </svg>
+      </div>
+
+      <ul class="bullets">
+        <li>Both languages require social calculations before every utterance</li>
+        <li>Kazakh: binary сен/сіз system — fixed boundaries based on age and status</li>
+        <li>Japanese: three-level keigo system — boundaries shift with context and audience</li>
+        <li>Different structures, same principle: respect is not just felt, it is spoken</li>
+      </ul>
+
+      <div class="ornament" style="margin-top:1.2rem;">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond"></div>
+        <div class="ornament-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10 — SOURCES -->
+  <div class="slide" data-slide="9">
+    <div class="slide-inner">
+      <div class="slide-image-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Steppes_of_Kazakhstan.jpg" alt="Kazakh steppe">
+      </div>
+      <span class="tag tag-blue">References</span>
+      <h2 class="slide-heading"><span class="num">09</span> Sources</h2>
+
+      <ul class="sources-list">
+        <li><span class="src-num">[1]</span> <a href="https://en.wikipedia.org/wiki/T%E2%80%93V_distinction" target="_blank">"T-V Distinction." <em>Wikipedia.</em></a> Overview of Brown &amp; Gilman's (1960) power/solidarity framework for formal/informal pronoun systems.</li>
+        <li><span class="src-num">[2]</span> <a href="https://slaviccenters.duke.edu/sites/slaviccenters.duke.edu/files/file-attachments/kazakh-grammar.pdf" target="_blank">Dotton &amp; Wagner. "A Grammar of Kazakh." <em>Duke University Slavic Centers.</em></a> Comprehensive Kazakh grammar reference covering pronoun systems, verb conjugation paradigms, and social usage norms.</li>
+        <li><span class="src-num">[3]</span> <a href="https://kazakhtili.wordpress.com/2011/02/06/pronouns-possessive-pronouns-to-be-form-endings-in-kazakh/" target="_blank">"Kazakh Pronouns &amp; Possessive Pronouns." <em>Kazakh Language for English Speakers.</em></a> Pronoun forms and pronoun-verb agreement patterns in modern Kazakh.</li>
+        <li><span class="src-num">[4]</span> <a href="https://www.azbyka.kz/national-features-speech-etiquette-kazakh-russian-english" target="_blank">Amanbaeva, Ayym. "National Features of Speech Etiquette." <em>Azbuka.kz.</em></a> Kazakh speech etiquette conventions, honorific titles, and the сенделесейік ritual.</li>
+        <li><span class="src-num">[5]</span> <a href="https://www.languagesgulper.com/eng/Kazakh.html" target="_blank">"Kazakh Language." <em>Languages Gulper.</em></a> Overview of Kazakh linguistic features including address forms and social register.</li>
+      </ul>
+
+      <div style="margin-top:1.5rem; padding-top:0.8rem; border-top:1px solid var(--card-border);">
+        <p style="font-size:0.7rem; color:var(--text-dim);">
+          Images: Kazakh steppe photograph &amp; national flags via Wikimedia Commons (CC BY-SA / Public Domain).<br>
+          All diagrams are original visualizations of data from the sources above.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Nav arrows -->
+<div class="nav-arrows">
+  <button class="nav-btn" id="prevBtn" title="Previous">&#8592;</button>
+  <button class="nav-btn" id="nextBtn" title="Next">&#8594;</button>
+</div>
+
+<!-- Keyboard hint -->
+<div class="kbd-hint">
+  <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> navigate
+</div>
+
+<script>
+(function () {
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const themeSelect = document.getElementById('themeSelect');
+
+  function goTo(index) {
+    if (index < 0 || index >= total) return;
+    slides[current].classList.remove('active');
+    current = index;
+    // Force animation replay by triggering reflow
+    var el = slides[current];
+    el.style.animation = 'none';
+    el.offsetHeight; // trigger reflow
+    el.style.animation = '';
+    el.classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + total;
+    progress.style.width = ((current + 1) / total * 100) + '%';
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  // Theme switching
+  themeSelect.addEventListener('change', function () {
+    document.documentElement.setAttribute('data-theme', this.value);
+    localStorage.setItem('pres-theme', this.value);
+  });
+
+  // Restore saved theme
+  var saved = localStorage.getItem('pres-theme');
+  if (saved && themeSelect.querySelector('option[value="' + saved + '"]')) {
+    document.documentElement.setAttribute('data-theme', saved);
+    themeSelect.value = saved;
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'd' || e.key === 'D') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') { e.preventDefault(); prev(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); goTo(total - 1); }
+  });
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // Touch navigation
+  var touchStartX = 0;
+  document.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].screenX; });
+  document.addEventListener('touchend', function (e) {
+    var diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 60) { diff < 0 ? next() : prev(); }
+  });
+
+  goTo(0);
+})();
+</script>
+</body>
+</html>
