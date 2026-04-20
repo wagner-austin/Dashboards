@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCULC 2026 — Quantifying Mutual Intelligibility Using Language Models</title>
+    <style>
+        :root {
+            --primary: #0064a4;
+            --primary-dark: #003d66;
+            --primary-light: #e6f2fa;
+            --gold: #ffc72c;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-400: #9ca3af;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: var(--gray-100);
+            color: var(--gray-800);
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .header .venue {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            margin-bottom: 0.75rem;
+        }
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.3;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .header .authors {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        .header .affiliation {
+            margin-top: 0.3rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+        .header .header-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .poster-embed {
+            margin-bottom: 1.25rem;
+        }
+        .poster-embed img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section h2 .icon {
+            font-size: 1.1rem;
+        }
+        .abstract {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--gray-800);
+        }
+        .abstract p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .abstract p:last-child {
+            margin-bottom: 0;
+        }
+        .references {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--gray-600);
+            list-style: none;
+        }
+        .references li {
+            margin-bottom: 0.6rem;
+            padding-left: 1.8rem;
+            text-indent: -1.8rem;
+        }
+        .references a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .references a:hover {
+            text-decoration: underline;
+        }
+        .poster-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--primary-light);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--primary-dark);
+            transition: all 0.2s;
+        }
+        .poster-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,100,164,0.2);
+        }
+        .poster-link .poster-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        .poster-link .poster-text h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+        .poster-link .poster-text p {
+            font-size: 0.82rem;
+            opacity: 0.8;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .header { padding: 1.5rem 1rem; }
+            .header h1 { font-size: 1.3rem; }
+            .container { padding: 1rem; }
+            .section { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="venue">SCULC 2026 &mdash; Southern California Undergraduate Linguistics Conference</div>
+        <h1>Quantifying Mutual Intelligibility Using Language Models: Evidence from Turkic Languages</h1>
+        <div class="authors">Moldir Baidildinova, Shiva Upadhye, Austin Wagner, Connor Mayer, Richard Futrell</div>
+        <div class="header-bottom">
+            <span class="affiliation">University of California, Irvine &mdash; Department of Language Science</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="https://austinwagner.org" class="back-link">&larr; austinwagner.org</a>
+        <div class="poster-embed">
+            <a href="poster.pdf" target="_blank" title="Click to open full PDF">
+                <img src="poster.png" alt="Research Poster — Quantifying Mutual Intelligibility Using Language Models">
+            </a>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">&#128221;</span> Abstract</h2>
+            <div class="abstract">
+                <p>Mutual intelligibility, the degree to which speakers of one language can understand another without prior study, varies across the Turkic language family due to shared vocabulary, sound systems, and grammatical structure. Kazakh and Kyrgyz, both members of the Kipchak branch, share roughly 91% of their core vocabulary, while Kazakh and Turkish share only 60&ndash;65%. Traditional methods for measuring mutual intelligibility rely on hand-curated word lists or large-scale comprehension tests that are either too coarse-grained or too expensive to scale (Gooskens &amp; van Heuven, 2021). This study asks whether computational language models, trained only on phonetic representations of text, can capture these known patterns of cross-linguistic similarity.</p>
+
+                <p>A key challenge in comparing Turkic languages computationally is that they use different writing systems&mdash;Cyrillic, Latin, and Arabic script&mdash;making direct textual comparison unreliable. To address this, all text data was converted into the International Phonetic Alphabet (IPA) using language-specific transliteration rules developed for nine Turkic languages: Kazakh, Kyrgyz, Turkish, Azerbaijani, Uzbek, Turkmen, Uyghur, Tatar, and Bashkir (McCollum &amp; Chen, 2021; McCollum, 2020; Zimmer &amp; Orgun, 1992). This standardized phonetic representation allows comparison based on how languages sound rather than how they are written.</p>
+
+                <p>Character-level LSTM language models (Hochreiter &amp; Schmidhuber, 1997) were trained on IPA-transcribed text from each language. To measure mutual intelligibility, a model trained on one language was fine-tuned on a related language, and cross-lingual transfer loss was computed. A model that finds a related language less surprising is effectively recognizing greater similarity between the two languages. This transfer loss metric serves as a continuous, reproducible proxy for mutual intelligibility.</p>
+
+                <p>The data pipeline involved several preprocessing steps. Text was drawn from publicly available corpora and filtered using fastText-based language identification to remove code-switched or misclassified sentences (Abadji et al., 2022). Datasets were balanced by size and topic domain to ensure fair cross-linguistic comparison.</p>
+
+                <p>Results across multiple language pairs aligned with known patterns of mutual intelligibility. A model trained on Kazakh transferred more efficiently to Kyrgyz than to Turkish, consistent with their close genealogical relationship and high lexical overlap. Similarly, a model trained on Turkish transferred more efficiently to Azerbaijani, another Oghuz-branch language, than to Kazakh. These asymmetries held across training runs and were consistent when experiments were repeated with different random seeds, supporting the reliability of the metric.</p>
+
+                <p>These findings suggest that character-level language model prediction accuracy, measured through cross-lingual transfer, can serve as a simple and scalable proxy for mutual intelligibility. Unlike traditional methods, this approach requires only existing text data and minimal manual annotation, making it particularly useful for low-resource languages with limited experimental infrastructure (Mirzakhalov et al., 2021). The method is also extensible: by substituting different model architectures or input representations, researchers can investigate which levels of linguistic structure contribute most to cross-linguistic understanding.</p>
+
+                <p>Future work will validate these computational predictions against human listener judgments through a controlled comprehension study, and will extend the method to transformer-based architectures to assess whether more powerful models capture additional dimensions of language similarity.</p>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">&#128218;</span> References</h2>
+            <ul class="references">
+                <li>Abadji, J., Ortiz Suarez, P. J., Romary, L., &amp; Sagot, B. (2022). <a href="https://aclanthology.org/2022.lrec-1.463/" target="_blank">Toward a cleaner document-oriented multilingual crawled corpus.</a> <em>LREC 2022</em>.</li>
+                <li>Gooskens, C., &amp; van Heuven, V. J. (2021). <a href="https://research.rug.nl/en/publications/mutual-intelligibility" target="_blank">Mutual intelligibility.</a> In Zampieri &amp; Nakov (Eds.), <em>Similar Languages, Varieties, and Dialects</em>, pp. 51&ndash;95. Cambridge University Press.</li>
+                <li>Hochreiter, S., &amp; Schmidhuber, J. (1997). <a href="https://direct.mit.edu/neco/article/9/8/1735/6109/Long-Short-Term-Memory" target="_blank">Long short-term memory.</a> <em>Neural Computation</em>, 9(8), 1735&ndash;1780.</li>
+                <li>McCollum, A. G. (2020). <a href="https://www.journal-labphon.org/articles/10.5334/labphon.247/" target="_blank">Vowel harmony and positional variation in Kyrgyz.</a> <em>Laboratory Phonology</em>, 11(1).</li>
+                <li>McCollum, A. G., &amp; Chen, S. (2021). <a href="https://www.cambridge.org/core/journals/journal-of-the-international-phonetic-association/article/kazakh/353A10BD35418B48B5A6370D9F7D8CE0" target="_blank">Kazakh.</a> <em>Journal of the International Phonetic Association</em>, 51(2), 276&ndash;298.</li>
+                <li>Mirzakhalov, J., et al. (2021). <a href="https://aclanthology.org/2021.emnlp-main.475/" target="_blank">A large-scale study of machine translation in the Turkic languages.</a> <em>EMNLP 2021</em>, 5876&ndash;5890.</li>
+                <li>Zimmer, K., &amp; Orgun, O. (1992). <a href="https://www.cambridge.org/core/journals/journal-of-the-international-phonetic-association/article/turkish/56DC1966B34BD05ACCFB1963C03A7911" target="_blank">Turkish.</a> <em>Journal of the International Phonetic Association</em>, 22(1&ndash;2), 43&ndash;45.</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
