@@ -46,3 +46,6 @@ oc-city-councils/election_data/*.csv
 oc-city-councils/election_data/*.txt
 oc-city-councils/election_data/*.zip
 oc-city-councils/election_data/*_data/
+
+# metabolomics is its own repo (Dashboards/metabolomics/.git) — do not track here
+metabolomics/
