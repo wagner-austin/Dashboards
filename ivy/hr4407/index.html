@@ -53,6 +53,15 @@ body {
   transition: all 0.15s;
 }
 .downloads a:hover { background: rgba(255,255,255,0.28); }
+.downloads button {
+  background: white; color: var(--primary-dark);
+  border: 1px solid white; border-radius: 6px;
+  padding: 0.4rem 0.9rem; font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+  transition: all 0.15s;
+}
+.downloads button:hover { background: var(--gray-100); }
+.downloads button.copied { background: #10b981; color: white; border-color: #10b981; }
 .wrapper { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 .ai-instructions {
   background: var(--amber-50);
@@ -112,11 +121,41 @@ footer {
   <p>Primary-source policy brief on the House bill (Kim R-CA-40, 119th Congress) and its Senate companion S.1482 (Blunt Rochester D-DE).</p>
   <p class="prepared">Updated 2026-07-11 · Prepared by Austin Wagner · <a href="mailto:austin.o.wagner@gmail.com" style="color:white;">austin.o.wagner@gmail.com</a></p>
   <div class="downloads">
+    <button id="copy-all" type="button">📋 Copy all content</button>
     <a href="hr4407.md" download>Download Markdown</a>
     <a href="../">← All topics</a>
     <a href="../de-escalation/">De-escalation research →</a>
   </div>
 </header>
+
+<script>
+document.getElementById('copy-all').addEventListener('click', async function() {
+  const btn = this;
+  const original = btn.textContent;
+  const aside = document.querySelector('aside.ai-instructions');
+  const main = document.querySelector('main');
+  const parts = [];
+  parts.push(document.querySelector('h1').innerText);
+  parts.push(document.querySelector('.header > p').innerText);
+  if (aside) parts.push(aside.innerText);
+  const factBox = document.querySelector('.fact-box');
+  if (factBox) parts.push(factBox.innerText);
+  if (main) parts.push(main.innerText);
+  const text = parts.join('\n\n');
+  try {
+    await navigator.clipboard.writeText(text);
+    btn.textContent = '✓ Copied ' + Math.round(text.length / 1000) + 'k chars';
+    btn.classList.add('copied');
+  } catch (e) {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); ta.remove();
+    btn.textContent = '✓ Copied ' + Math.round(text.length / 1000) + 'k chars';
+    btn.classList.add('copied');
+  }
+  setTimeout(function() { btn.textContent = original; btn.classList.remove('copied'); }, 3000);
+});
+</script>
 
 <div class="wrapper">
 
