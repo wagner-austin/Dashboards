@@ -1,6 +1,6 @@
 # De-escalation & Restraint-Reduction Research Corpus
 
-**Prepared for:** Ivy Iroy's DNP Project Charter
+**Prepared for:** Ivy Iroy's Master's Project Charter
 **Draft project title:** Implementation of Structured De-escalation Strategies to Reduce Emergency Behavioral Medication Use in Adult Psychiatric Inpatients
 **Updated:** 2026-07-11
 **Prepared by:** Austin Wagner (austin.o.wagner@gmail.com)
@@ -17,7 +17,7 @@ This document is a research corpus synthesised from 35+ primary sources on struc
 
 ## 1. Charter context and problem framing
 
-Ivy Iroy is a DNP (Doctor of Nursing Practice) student developing a Project Charter to reduce inappropriate use of emergency behavioral medication (EBM, i.e. PRN intramuscular antipsychotics and/or benzodiazepines administered acutely to manage agitation) on an adult inpatient psychiatric unit. The intervention is the consistent, documented use of structured de-escalation strategies as a first-line response to acute agitation, before pharmacological intervention.
+Ivy Iroy is a master's-level nursing student developing a Project Charter to reduce inappropriate use of emergency behavioral medication (EBM, i.e. PRN intramuscular antipsychotics and/or benzodiazepines administered acutely to manage agitation) on an adult inpatient psychiatric unit. The intervention is the consistent, documented use of structured de-escalation strategies as a first-line response to acute agitation, before pharmacological intervention.
 
 Draft project title: *Implementation of Structured De-escalation Strategies to Reduce Emergency Behavioral Medication Use in Adult Psychiatric Inpatients.*
 
@@ -88,7 +88,7 @@ Citation hooks: Baker 2021 (variability); NICE NG10 (first-line authority); Garr
 
 > **AIM:** By [project end + 8 weeks], reduce the rate of intramuscular emergency behavioral medication administration on [unit name] by 30% from baseline, by implementing a structured de-escalation protocol as the first-line response to acute agitation, with documented de-escalation attempt required prior to PRN intramuscular medication in 100% of agitation events.
 
-- **30% reduction target** is conservative vs published evidence (Celofiga 73%, Safewards 26.4% containment, Duxbury 22% average / 60% best) and realistic for a single-unit DNP-scale intervention.
+- **30% reduction target** is conservative vs published evidence (Celofiga 73%, Safewards 26.4% containment, Duxbury 22% average / 60% best) and realistic for a single-unit master's-scale intervention.
 - **100% documented de-escalation attempt** is the process measure; 100% is the right ambition for a process measure tied to the intervention.
 - **8-week post-intervention measurement window** matches the EDITION trial's pre/embed/post 8-8-8 phase structure (Price et al., 2024, p. viii).
 
@@ -96,7 +96,7 @@ Citation hooks: Baker 2021 (variability); NICE NG10 (first-line authority); Garr
 
 ## 5. Gap-identification methods
 
-Standard DNP-project 5-method gap-identification framework:
+Standard master's-project 5-method gap-identification framework:
 
 1. **Literature review** — this document is the deliverable.
 2. **Stakeholder interviews** — unit nursing staff, charge nurse, medical director, patients (if appropriate).
@@ -112,7 +112,7 @@ First two are pre-charter; latter three are typical first deliverables after cha
 
 ### Gaynes et al. (2016/2017) — AHRQ Comparative Effectiveness Review #180
 
-The single most directly-relevant US systematic review. AHRQ CER of de-escalation strategies in psychiatric care. Strength of evidence **"low" for risk-assessment-instrument effectiveness** and **"insufficient" for everything else including de-escalation strategies specifically**. "Insufficient" does not mean interventions don't work — it means too few high-quality trials in this population. The Gaynes finding establishes both the need for the Charter (AHRQ has officially named this an evidence gap) and the realistic expectations for a single-unit DNP project (preliminary feasibility evidence, not definitive efficacy).
+The single most directly-relevant US systematic review. AHRQ CER of de-escalation strategies in psychiatric care. Strength of evidence **"low" for risk-assessment-instrument effectiveness** and **"insufficient" for everything else including de-escalation strategies specifically**. "Insufficient" does not mean interventions don't work — it means too few high-quality trials in this population. The Gaynes finding establishes both the need for the Charter (AHRQ has officially named this an evidence gap) and the realistic expectations for a single-unit master's project (preliminary feasibility evidence, not definitive efficacy).
 
 ### Baker et al. (2021) — COMPARE systematic mapping review
 
@@ -156,7 +156,7 @@ Strongest contemporary causal evidence. Cluster RCT across **all 6 Slovenian psy
 
 ### Price et al. (2024) — EDITION feasibility trial (UK NIHR HTA)
 
-488-page HTA monograph. 10 UK wards across 2 NHS trusts (acute + PICU + forensic). Multi-component intervention (de-escalation training + reflective practice + debriefing + collaborative prescribing + environment + sensory modulation + support planning); 24-week pre/embed/post 8-8-8 phase structure. Primary-outcome completion 68% overall (76% post). Uncontrolled feasibility. Most-relevant 2024 UK trial and closest published precedent for a DNP-scale multi-component intervention. Trial ISRCTN12826685.
+488-page HTA monograph. 10 UK wards across 2 NHS trusts (acute + PICU + forensic). Multi-component intervention (de-escalation training + reflective practice + debriefing + collaborative prescribing + environment + sensory modulation + support planning); 24-week pre/embed/post 8-8-8 phase structure. Primary-outcome completion 68% overall (76% post). Uncontrolled feasibility. Most-relevant 2024 UK trial and closest published precedent for a master's-scale multi-component intervention. Trial ISRCTN12826685.
 
 ### Duxbury et al. (2019) — REsTRAIN Yourself (7+7 controlled-before-after)
 
@@ -351,7 +351,7 @@ PC.03.05.01 through PC.03.05.19 cover Provision of Care, Treatment, and Services
 
 ### APNA position + standards (see §10)
 
-APNA 2018 Position Statement + APNA 2022 Standards of Practice are the US-psychiatric-nursing professional-society layer — operational expectations against which Charter's intervention will be evaluated by any DNP or IRB reviewer.
+APNA 2018 Position Statement + APNA 2022 Standards of Practice are the US-psychiatric-nursing professional-society layer — operational expectations against which Charter's intervention will be evaluated by any master's-project or IRB reviewer.
 
 ### SAMHSA Six Core Strategies (Huckshorn / NASMHPD, 2006)
 
@@ -407,7 +407,7 @@ with corollary "p.r.n. medication used alone is not de-escalation" (National Ins
 ## 20. Implications for the Charter (evidence-based)
 
 1. **The intervention should be multi-component, not training-only.** EDITION, Safewards, REsTRAIN Yourself all decompose into multiple practice-change components beyond training. Training-only has a documented history of failed implementation.
-2. **Use a documented pre/embed/post phase structure.** EDITION's 8-week pre / 8-week embedding / 8-week post is a realistic DNP-project cadence.
+2. **Use a documented pre/embed/post phase structure.** EDITION's 8-week pre / 8-week embedding / 8-week post is a realistic master's-project cadence.
 3. **The Patient-Staff Conflict Checklist is a candidate outcome instrument.** Used by EDITION; pairs with a unit-level run chart of EBM rate per 1,000 patient-days.
 4. **Distinguish PO vs IM PRN.** Liu (2026) demonstrates the IM PRN signal is most-clinically-meaningful; oral PRN may move in confounded directions.
 5. **Post-event debriefing is a load-bearing component.** Butterworth 2022 names "lack of post-restraint support" as a problem for both patients and staff.
