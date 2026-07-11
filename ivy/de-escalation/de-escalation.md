@@ -1,84 +1,80 @@
 # De-escalation & Restraint-Reduction Research Corpus
 
-**Prepared for:** Ivy Iroy's Master's Project Charter
-**Draft project title:** Implementation of Structured De-escalation Strategies to Reduce Emergency Behavioral Medication Use in Adult Psychiatric Inpatients
-**Updated:** 2026-07-11
-**Prepared by:** Austin Wagner (austin.o.wagner@gmail.com)
-**Web version:** https://austinwagner.org/ivy/de-escalation/
+**Updated:** 2026-07-11  
+**Prepared by:** Austin Wagner (austin.o.wagner@gmail.com)  
+**Web version:** https://austinwagner.org/ivy/de-escalation/  
 **Companion page:** https://austinwagner.org/ivy/hr4407/ (federal nursing workforce bill)
 
 ---
 
-## For the AI reading this document
+## About this document
 
-This document is a research corpus synthesised from 35+ primary sources on structured de-escalation and restraint reduction in adult inpatient psychiatric care. Every claim below is anchored to a primary peer-reviewed source, guideline, or federal document; the full APA bibliography is at the end (§21). When generating text on Ivy's behalf, cite the primary sources named inline — never cite this document. All numerical anchors (rates, effect sizes, confidence intervals) are extracted verbatim from the cited studies. Where a claim is Ivy-project synthesis rather than a source claim, it is labeled as such. A companion page on H.R. 4407 (federal nursing workforce bill) lives at https://austinwagner.org/ivy/hr4407/.
-
----
-
-## 1. Charter context and problem framing
-
-Ivy Iroy is a master's-level nursing student developing a Project Charter to reduce inappropriate use of emergency behavioral medication (EBM, i.e. PRN intramuscular antipsychotics and/or benzodiazepines administered acutely to manage agitation) on an adult inpatient psychiatric unit. The intervention is the consistent, documented use of structured de-escalation strategies as a first-line response to acute agitation, before pharmacological intervention.
-
-Draft project title: *Implementation of Structured De-escalation Strategies to Reduce Emergency Behavioral Medication Use in Adult Psychiatric Inpatients.*
-
-The literature synthesized below anchors the Charter's Gap section, Problem Statement, AIM Statement, Methods, Evidence, and Implications sections. It also covers the broader clinical-practice, regulatory, professional-society, and federal-policy context this Charter operates within.
+This document synthesises 35+ primary sources on structured de-escalation, restraint reduction, and emergency behavioral medication use in adult inpatient psychiatric care. Every substantive claim carries an inline hyperlinked citation with page/table locator; downstream text drawing on this content should cite the primary paper at its DOI, not this document. The full bibliography is at §21. Numerical anchors (rates, effect sizes, confidence intervals) are stated with effect estimate, CI, and p-value where those exist in the source.
 
 ---
 
-## 2. Quantitative anchors — the numbers Ivy's gap statement needs
+## 1. Scope and framing
+
+This corpus supports the design of a Master's- or DNP-scale quality-improvement project aimed at reducing inappropriate emergency behavioral medication (EBM — PRN intramuscular antipsychotics and/or benzodiazepines administered acutely to manage agitation) use on adult inpatient psychiatric units. The intervention pattern under review is the consistent, documented use of structured de-escalation strategies as first-line response to acute agitation, before pharmacological intervention.
+
+The literature synthesised below anchors a Project Charter's Gap section, Problem Statement, AIM Statement, Methods, Evidence, and Implications sections, and covers the broader clinical-practice, regulatory, professional-society, and federal-policy context this class of QI project operates within.
+
+---
+
+## 2. Quantitative anchors
 
 ### 2.1 US baseline restrictive-practice and EBM rates
 
-- **Restraint use in US adult inpatient psychiatry: 29.8% to 34.1% of admissions** across studies cited in Ye et al. (2021)'s review of US figures. This is the cleanest published US baseline range and the headline number for Ivy's Charter introduction (Ye et al., 2021).
-- **Restraints in US Psychiatric Emergency Services: 8.5% of presentations** (SD 7.8); **involuntary medications in 16% of cases**; **70.3% of protocols used a parenteral IM combination of high-potency typical antipsychotic plus benzodiazepine** for agitation (Allen & Currier, 2004, pp. 44–45).
-- **44% of PES medical directors endorsed application of physical restraints before less-invasive interventions** in acutely agitated psychotic patients with unknown history; 25% endorsed immediate administration of emergency medication first (Allen & Currier, 2004, p. 44).
-- Liu, Saito & Linder (2026) documented that on a general adult psychiatric unit, **loss of outdoor-space access caused IM PRN medication to increase by 1.57 orders per day (95% CI [0.81, 2.33])** and seclusion/restraint by 0.63 orders per day (95% CI [0.35, 0.91]). Most-recent 2026 US empirical measurement of PRN medication directly as an outcome (Liu et al., 2026, p. 1).
+- **Restraint use in US adult inpatient psychiatry: 29.8% to 34.1% of admissions** — a widely-cited US baseline range ([Ye et al., 2021, p. 2](https://doi.org/10.1111/ppc.12768)). This figure is one hop from primary: Ye's introduction cites Beghi 2013 systematic review, Steinert 2010, Lorenzo 2012, and Staggs 2015 (Psychiatric Services trends study). For manuscript use, trace back to those primaries.
+- **Restraints in US Psychiatric Emergency Services: 8.5% of presentations** (SD 7.8); **involuntary medications in 16% of cases**; **70.3% of protocols used a parenteral IM combination of high-potency typical antipsychotic plus benzodiazepine** for agitation ([Allen & Currier, 2004, pp. 44–45](https://doi.org/10.1016/j.genhosppsych.2003.08.002)).
+- **44% of PES medical directors endorsed application of physical restraints before less-invasive interventions** in acutely agitated psychotic patients with unknown history; 25% endorsed immediate administration of emergency medication first ([Allen & Currier, 2004, p. 44](https://doi.org/10.1016/j.genhosppsych.2003.08.002)).
+- Liu, Saito & Linder (2026) documented that on a general adult psychiatric unit, loss of outdoor-space access was associated with an increase in IM PRN medication of 1.57 orders/day (95% CI [0.81, 2.33]) and seclusion/restraint by 0.63 orders/day (95% CI [0.35, 0.91]) ([Liu et al., 2026, p. 1](https://doi.org/10.3389/fpsyt.2025.1731925)). A 2026 US empirical measurement of PRN medication as an outcome. Retrospective cohort / natural experiment, not an RCT — the causal claim depends on the plausibility of the outdoor-access manipulation as exogenous.
 
 ### 2.2 International restrictive-practice rate variation
 
-- International restraint-rate variation across systematic reviews: **0.4% to 66% of admissions**. German multicentre study reported 10.4% mechanical restraint across 10 sites (Chieze et al., 2019, p. 2).
+- International restraint-rate variation across systematic reviews: **0.4% to 66% of admissions**. German multicentre study reported 10.4% mechanical restraint across 10 sites ([Chieze et al., 2019, p. 2](https://doi.org/10.3389/fpsyt.2019.00491)).
 - UK psychiatric hospital **violence incidence rate >32%** per Bowers 2011 (cited in Spencer et al., 2018).
-- Finnish high-security forensic baseline: **30% of patient-days with seclusion/restraint/observation** pre-intervention (Putkonen et al., 2013).
+- Finnish high-security forensic baseline: **30% of patient-days with seclusion/restraint/observation** pre-intervention ([Putkonen et al., 2013](https://doi.org/10.1176/appi.ps.201200393)).
 
 ### 2.3 Achievable magnitudes from the intervention literature
 
-- **Celofiga et al. (2022) Slovenia cluster RCT**: 73% reduction aggressive events, 86% reduction severe aggression, restraint IRR 0.304. Trial NCT05166278.
-- **Bowers et al. (2015) Safewards UK cluster RCT** (31 wards, 15 hospitals): 15% reduction conflict, 26.4% reduction containment. "Containment" includes coerced medication — closest published proxy for EBM. Trial ISRCTN38001825.
+- **Celofiga et al. (2022) Slovenia cluster RCT** (Table 3, p. 6): aggressive incidents IRR 0.268 (95% CI 0.221–0.342, p<0.001) — 73% reduction; severe aggression IRR 0.142 — 86% reduction; all-restraint episodes IRR 0.537 (95% CI 0.450–0.640) — 46% reduction; restraint due to aggression IRR 0.304 (95% CI 0.238–0.386) — reduced to ~30% of control rate. The "30% of control" figure applies to the aggression-restraint subgroup, not all restraints. EBM not measured directly. Trial NCT05166278.
+- **Bowers et al. (2015) Safewards UK cluster RCT** (31 wards, 15 hospitals; Table 2, p. 1417): conflict rate ratio 0.850 (95% CI 0.763–0.943, p=0.001) — 15% reduction; containment rate ratio 0.768 (95% CI 0.655–0.901, p=0.004) — 26.4% reduction. Safewards defines containment as including coerced medication as one of 8 measured events, so this is a published RCT proxy for EBM. Trial ISRCTN38001825.
 - **Putkonen et al. (2013) Finnish forensic cluster RCT** (88-bed high-security): S/R time IRR 0.85 intervention vs 1.09 control; no increase in violence; pharmacology unchanged.
-- **Duxbury et al. (2019) REsTRAIN Yourself UK 7+7 controlled-before-after**: average 22% reduction physical restraint (up to 60% best); restraint events per 1000 bed-days 9.38 → 6.62.
+- **Duxbury et al. (2019) REsTRAIN Yourself UK 7+7 controlled-before-after**: average 22% restraint reduction (up to 60% best); restraint events per 1000 bed-days 9.38 → 6.62 ([Duxbury et al., 2019, p. 846](https://doi.org/10.1111/inm.12577)).
 - **Smith et al. (2005) Pennsylvania state hospital system** (9 hospitals): 93% seclusion reduction, 66% restraint reduction; mean seclusion duration 11.6 → 1.3 hours.
 - **Donat (2003) single public psychiatric hospital**: 75% S/R reduction over 39 months via individualised behavioural plans + administrative case review + leadership prioritisation.
 - **LeBel et al. (2004) Massachusetts state child/adolescent**: child 84.03 → 22.78 episodes/1000 patient-days (72.9%), adolescent 47.4%, mixed 59% — no regulatory change.
 
 ### 2.4 US national-scope volume + harm data
 
-- **1.7 million ED visits per year** in US involve agitated psychiatric patients (Allen & Currier 2004, in Garriga et al., 2016).
+- **1.7 million ED visits per year** in US involve agitated psychiatric patients ([Allen & Currier 2004, in Garriga et al., 2016](https://doi.org/10.1016/j.genhosppsych.2003.08.002)).
 - **900,000 annual visits** to US psychiatric emergency services involve agitation (Piechniczek-Buczek 2006, in Garriga et al., 2016).
-- **142 restraint-related deaths over one decade in the US** (Weiss 1998 Hartford Courant, ~40% unintentional asphyxiation) — trigger for 1998 Joint Commission Sentinel Event Alert #8 and 1999 CMS Conditions of Participation restraint standard.
-- **PTSD incidence 25–47%** among psychiatric inpatients post-restraint (Chieze et al., 2019).
+- **142 restraint-related deaths over one decade in the US**, ~40% unintentional asphyxiation — originally Weiss (1998) Hartford Courant investigation, subsequently cited across Knox & Holloman 2012, Du 2017, and other reviews. This figure has become near-folklore in the restraint-reduction literature; for academic manuscript use, trace back to the primary Hartford Courant reporting rather than the summary citations. It was the trigger for the 1998 Joint Commission Sentinel Event Alert #8 and the 1999 CMS Conditions of Participation restraint standard.
+- **PTSD incidence 25–47%** among psychiatric inpatients post-restraint across included studies ([Chieze et al., 2019, abstract p. 1; upper bound from Impact of Event Scale-Revised at probable-PTSD threshold, p. 14](https://doi.org/10.3389/fpsyt.2019.00491)). The 25–47% range reflects between-study heterogeneity, not a confidence interval on a single estimate.
 - **OSHA workplace-violence in healthcare: ~$151 billion annually, ~$250K per incident** (cited in JAPNA 2025 QI paper).
 
 ### 2.5 UK reference volume
 
 - **67,864 physical assaults per year against NHS staff, 67% in mental health settings** (NHS Protect 2015, in Spencer et al., 2018).
-- **POMH-UK 2017 audit of 2,172 rapid-tranquillisation episodes**: only **4% NICE-compliant drug combination**; **42% no post-RT physical monitoring**; ~20% no monitoring at all (Patel et al., 2018).
-- Leeds and York Partnerships NHS Trust 2012: 5,153 critical incidents/year; ~20% involved restraint; ~2,200 person-hours/year on aggression (Du et al., 2017).
+- **POMH-UK 2017 audit of 2,172 rapid-tranquillisation episodes** across 58 UK specialist mental health Trusts: only 4% NICE-compliant drug combination (IM promethazine + IM antipsychotic); 42% no post-RT physical monitoring; ~20% no monitoring at all. Reported in Patel et al. 2018 BAP-NAPICU consensus (originally POMH-UK Topic 16b Supplementary Audit; report available via Royal College of Psychiatrists).
+- Leeds and York Partnerships NHS Trust 2012: 5,153 critical incidents/year; ~20% involved restraint; ~2,200 person-hours/year on aggression ([Du et al., 2017](https://doi.org/10.1002/14651858.CD009922.pub2)).
 
-### 2.6 Gap-statement template Ivy can adapt
+### 2.6 Gap-statement template
 
-> Adult inpatient psychiatric units in the United States currently administer intramuscular emergency behavioral medication in approximately [X]% of patient days, with structured de-escalation documented in [Y]% of cases prior to medication. The literature establishes that structured de-escalation interventions can achieve 22–73% reductions in restraint, coerced medication, and aggressive events (Bowers et al., 2015; Celofiga et al., 2022; Duxbury et al., 2019; Putkonen et al., 2013). The gap between current practice and the achievable benchmark is the implementation deficit this project addresses.
+> Adult inpatient psychiatric units in the United States currently administer intramuscular emergency behavioral medication in approximately [X]% of patient days, with structured de-escalation documented in [Y]% of cases prior to medication. The literature establishes that structured de-escalation interventions can achieve 22–73% reductions in restraint, coerced medication, and aggressive events ([Bowers et al., 2015; Celofiga et al., 2022; Duxbury et al., 2019; Putkonen et al., 2013](https://doi.org/10.1016/j.ijnurstu.2015.05.001)). The gap between current practice and the achievable benchmark is the implementation deficit this project addresses.
 
-Ivy fills in [X] and [Y] with unit-specific baseline data extracted from the electronic health record over an 8–12 week pre-intervention window.
+The project lead fills in [X] and [Y] with unit-specific baseline data extracted from the electronic health record over an 8–12 week pre-intervention window.
 
 ---
 
 ## 3. Problem Statement (drafted with citations)
 
-Ivy's current draft: *"Adult inpatient psychiatric units lack consistent implementation of structured de-escalation strategies as a first-line response to acute agitation, resulting in the increased use of emergency behavioral medications."*
+A common draft framing: *"Adult inpatient psychiatric units lack consistent implementation of structured de-escalation strategies as a first-line response to acute agitation, resulting in the increased use of emergency behavioral medications."*
 
 Strengthened with citations:
 
-> Adult inpatient psychiatric units lack consistent implementation of structured de-escalation strategies as a first-line response to acute agitation, resulting in increased use of emergency behavioral medications and other restrictive interventions (Baker et al., 2021; National Institute for Health and Care Excellence, 2015). Structured de-escalation is recommended as first-line by every major UK and international clinical practice guideline (Garriga et al., 2016; National Institute for Health and Care Excellence, 2015; Patel et al., 2018; Richmond et al., 2012) and is endorsed as a sustained-reduction direction by the American Psychiatric Nurses Association (APNA, 2018). The implementation deficit persists despite the recommendation: the 2017 UK POMH audit of 2,172 rapid-tranquillisation episodes found only 4% NICE-compliant practice with 42% lacking required post-event physical monitoring (Patel et al., 2018), and a 2024 NIHR feasibility trial noted that "All National Health Service staff are trained in de-escalation but there is little to no evidence supporting training's effectiveness" (Price et al., 2024, p. viii).
+> Adult inpatient psychiatric units lack consistent implementation of structured de-escalation strategies as a first-line response to acute agitation, resulting in increased use of emergency behavioral medications and other restrictive interventions ([Baker et al., 2021; National Institute for Health and Care Excellence, 2015](https://doi.org/10.3310/hsdr09050)). Structured de-escalation is recommended as a first-line response by major UK and international clinical practice guidelines ([Garriga et al., 2016; National Institute for Health and Care Excellence, 2015; Patel et al., 2018; Richmond et al., 2012](https://doi.org/10.3109/15622975.2015.1132007)) and is endorsed as a sustained-reduction direction by the American Psychiatric Nurses Association (APNA, 2018). The implementation deficit persists despite the recommendation: the 2017 UK POMH audit of 2,172 rapid-tranquillisation episodes found only 4% NICE-compliant practice with 42% lacking required post-event physical monitoring ([Patel et al., 2018](https://doi.org/10.1177/0269881118776738)), and a 2024 NIHR feasibility trial noted that "All National Health Service staff are trained in de-escalation but there is little to no evidence supporting training's effectiveness" ([Price et al., 2024, p. viii](https://doi.org/10.3310/FGGW6874)).
 
 Citation hooks: Baker 2021 (variability); NICE NG10 (first-line authority); Garriga 2016 + Patel 2018 + Richmond 2012 (international/UK consensus); APNA 2018 (US professional-society); Patel 2018 (POMH audit gap); Price 2024 EDITION (recent training-gap framing).
 
@@ -90,7 +86,7 @@ Citation hooks: Baker 2021 (variability); NICE NG10 (first-line authority); Garr
 
 - **30% reduction target** is conservative vs published evidence (Celofiga 73%, Safewards 26.4% containment, Duxbury 22% average / 60% best) and realistic for a single-unit master's-scale intervention.
 - **100% documented de-escalation attempt** is the process measure; 100% is the right ambition for a process measure tied to the intervention.
-- **8-week post-intervention measurement window** matches the EDITION trial's pre/embed/post 8-8-8 phase structure (Price et al., 2024, p. viii).
+- **8-week post-intervention measurement window** matches the EDITION trial's pre/embed/post 8-8-8 phase structure ([Price et al., 2024, p. viii](https://doi.org/10.3310/FGGW6874)).
 
 ---
 
@@ -112,15 +108,15 @@ First two are pre-charter; latter three are typical first deliverables after cha
 
 ### Gaynes et al. (2016/2017) — AHRQ Comparative Effectiveness Review #180
 
-The single most directly-relevant US systematic review. AHRQ CER of de-escalation strategies in psychiatric care. Strength of evidence **"low" for risk-assessment-instrument effectiveness** and **"insufficient" for everything else including de-escalation strategies specifically**. "Insufficient" does not mean interventions don't work — it means too few high-quality trials in this population. The Gaynes finding establishes both the need for the Charter (AHRQ has officially named this an evidence gap) and the realistic expectations for a single-unit master's project (preliminary feasibility evidence, not definitive efficacy).
+A directly-relevant US systematic review. AHRQ CER of de-escalation strategies in psychiatric care. Strength of evidence **"low" for risk-assessment-instrument effectiveness** and **"insufficient" for everything else including de-escalation strategies specifically**. "Insufficient" does not mean interventions don't work — it means too few high-quality trials in this population. The Gaynes finding establishes both the need for the Charter (AHRQ has officially named this an evidence gap) and the realistic expectations for a single-unit master's project (preliminary feasibility evidence, not definitive efficacy).
 
 ### Baker et al. (2021) — COMPARE systematic mapping review
 
-NIHR-funded review; PROSPERO CRD42018086985. Screened **18,451 records** and included **150 non-pharmacological interventions across 175 records (1999–2019)**. Critically: **only 11 interventions specifically targeted PRN medication reduction, and 0 targeted rapid tranquillisation**. The "no winner" conclusion — no single intervention has emerged as clearly superior — is the strongest defensible framing for the Problem Statement's "variability of practice" claim (Baker et al., 2021, pp. iv–v).
+NIHR-funded review; PROSPERO CRD42018086985. Screened **18,451 records** and included **150 non-pharmacological interventions across 175 records (1999–2019)**. Critically: **only 11 interventions specifically targeted PRN medication reduction, and 0 targeted rapid tranquillisation**. The "no winner" conclusion — no single intervention has emerged as clearly superior — supports the Problem Statement's "variability of practice" framing ([Baker et al., 2021, pp. iv–v](https://doi.org/10.3310/hsdr09050)).
 
 ### Chieze et al. (2019) — patient-harm systematic review
 
-PRISMA-compliant systematic review (Frontiers in Psychiatry). Most-cited finding: **PTSD incidence after restraint/seclusion ranges 25% to 47%** across included studies, upper bound from IES-R at probable-PTSD threshold. Also documented: physical injuries, re-traumatisation for patients with prior trauma history, quality-of-life decrement. Load-bearing harm-side anchor for the Charter's "why this matters" framing.
+PRISMA-compliant systematic review (Frontiers in Psychiatry). A frequently-cited finding: PTSD incidence after restraint/seclusion ranges 25% to 47% across included studies ([Chieze et al., 2019, abstract p. 1](https://doi.org/10.3389/fpsyt.2019.00491)); upper bound from IES-R at probable-PTSD threshold (p. 14). The 25–47% range reflects between-study heterogeneity, not a confidence interval on a single estimate. Also documented: physical injuries, re-traumatisation for patients with prior trauma history, quality-of-life decrement. Supports the "why this matters" framing on the harm side.
 
 ### Butterworth, Wood & Rowe (2022) — patient + staff experience thematic synthesis
 
@@ -128,11 +124,11 @@ BJPsych Open review + thematic synthesis of 21 qualitative papers (PROSPERO CRD4
 
 ### Price et al. (2015) — de-escalation training systematic review
 
-Manchester team (incl. same Owen Price who later led EDITION 2024). 20-database systematic review. Training improves cognitive/affective/simulated-skills outcomes; clinical-and-organisational outcome evidence base is weak with conflicting results. Foundational implementation-fidelity citation for **training alone is insufficient**.
+Manchester team (incl. same Owen Price who later led EDITION 2024). 20-database systematic review. Training improves cognitive/affective/simulated-skills outcomes; clinical-and-organisational outcome evidence base is weak with conflicting results. A key implementation-fidelity citation for **training alone is insufficient**.
 
 ### Heckemann et al. (2015) — general-hospital aggression-management training
 
-Narrative review of 9 studies (2 weak / 6 moderate / 1 strong). All 9 reported post-training improvement in confidence, attitude, skills, knowledge — but **no significant change in incidence of patient aggression**. Authors recommend organisational-level intervention. Strongest single-cite Charter rationale for going multi-component beyond training.
+Narrative review of 9 studies (2 weak / 6 moderate / 1 strong). All 9 reported post-training improvement in confidence, attitude, skills, knowledge — but **no significant change in incidence of patient aggression**. Authors recommend organisational-level intervention. A relevant single-cite Charter rationale for going multi-component beyond training.
 
 ---
 
@@ -140,27 +136,27 @@ Narrative review of 9 studies (2 weak / 6 moderate / 1 strong). All 9 reported p
 
 ### Bowers et al. (2015) — Safewards UK cluster RCT
 
-Cluster RCT across **31 acute psychiatric wards in 15 UK NHS hospitals**. Safewards is a 10-intervention conflict-and-containment-reduction package ("clear mutual expectations," "soft words," "talk down," "positive words," "bad news mitigation," "know each other," "mutual help meeting," "calm down methods," "reassurance," "discharge messages"). **15% reduction in conflict, 26.4% reduction in containment**. Safewards "containment" explicitly includes coerced medication → closest published proxy for EBM reduction. Trial ISRCTN38001825.
+Cluster RCT across 31 acute psychiatric wards in 15 UK NHS hospitals. Safewards is a 10-intervention conflict-and-containment-reduction package ("clear mutual expectations," "soft words," "talk down," "positive words," "bad news mitigation," "know each other," "mutual help meeting," "calm down methods," "reassurance," "discharge messages"). Primary results (Table 2, p. 1417): conflict rate ratio 0.850 (95% CI 0.763–0.943, p=0.001) — 15% reduction; containment rate ratio 0.768 (95% CI 0.655–0.901, p=0.004) — 26.4% reduction. Safewards defines containment as including coerced medication as one of 8 measured containment events → a published RCT proxy for EBM. Trial ISRCTN38001825.
 
 ### Putkonen et al. (2013) — Six Core Strategies forensic cluster RCT (Finland)
 
-**First cluster RCT of the Six Core Strategies framework**. 88-bed Finnish high-security forensic ward, men with schizophrenia. S/R time-per-patient-day: **IRR 0.85 intervention vs 1.09 control**. Reduction with **no increase in violence** and pharmacology unchanged across arms — isolating structural effect from medication. Also noted: staff-training injuries increased in intervention arm (honest surprise finding). Strongest single piece of causal evidence that structured restraint-reduction works without compromising safety.
+The first cluster RCT of the Six Core Strategies framework. 88-bed Finnish high-security forensic ward, men with schizophrenia. S/R time-per-patient-day: IRR 0.85 intervention vs 1.09 control. Reduction with no increase in violence and pharmacology unchanged across arms — isolating structural effect from medication. Also noted: staff-training injuries increased in intervention arm (a surprise finding the authors flag). Causal evidence that structured restraint-reduction can work without compromising safety, in a forensic setting.
 
 ### Celofiga et al. (2022) — Slovenia cluster RCT
 
-Strongest contemporary causal evidence. Cluster RCT across **all 6 Slovenian psychiatric hospitals (3 per arm)**. Structured de-escalation training: **73% reduction aggressive events**, **86% reduction severe aggression**, physical restraint use decreased to **30% of control-group rate**, restraint due to aggression IRR 0.304. EBM not measured directly. Trial NCT05166278.
+Recent cluster RCT causal evidence. Conducted across all 6 Slovenian psychiatric hospitals (3 per arm). Primary outcomes (Table 3, p. 6): aggressive incidents IRR 0.268 (95% CI 0.221–0.342, p<0.001) — 73% reduction; severe aggression IRR 0.142 — 86% reduction; all-restraint episodes IRR 0.537 (95% CI 0.450–0.640) — 46% reduction; restraint due to aggression IRR 0.304 (95% CI 0.238–0.386) — reduced to ~30% of control rate. The commonly-quoted "30% of control" figure applies to the aggression-restraint subgroup, not to all restraints. EBM not measured directly. Trial NCT05166278.
 
 ### Ye et al. (2021) — CRSCE-based de-escalation cluster RCT (China)
 
-80-bed forensic psychiatric unit, Guangdong. Five-module CRSCE protocol (Communication, Response, Solution-focused, Care, Environment); 24h training (17h lecture + 7h practice) in 1 month. Physical restraint frequency fell substantially; nurse injuries 15 → 4. Ye's intro cites the US restraint rates of 29.8–34.1% that provide Ivy's cleanest baseline. Trial ChiCTR1900022211.
+1,920-bed provincial psychiatric hospital in Guangdong, 12 wards enrolled (6 experimental + 6 control). Five-module CRSCE protocol (Communication, Response, Solution-focused, Care, Environment); 24h training (17h lecture + 7h practice) in 1 month. PR of inpatients ~0.83% → ~0.67% patient-days (F=5.374, p=0.043); PR of patients admitted within 24h ~10.5% → ~5.6% (F=12.065, p=0.006); nurse injuries from PR 15 → 4 (χ²=4.184, p=0.041). Ye's intro cites US restraint rates of 29.8–34.1% (p. 2), tracing to Beghi 2013, Steinert 2010, Lorenzo 2012, Staggs 2015. Trial ChiCTR1900022211.
 
 ### Price et al. (2024) — EDITION feasibility trial (UK NIHR HTA)
 
-488-page HTA monograph. 10 UK wards across 2 NHS trusts (acute + PICU + forensic). Multi-component intervention (de-escalation training + reflective practice + debriefing + collaborative prescribing + environment + sensory modulation + support planning); 24-week pre/embed/post 8-8-8 phase structure. Primary-outcome completion 68% overall (76% post). Uncontrolled feasibility. Most-relevant 2024 UK trial and closest published precedent for a master's-scale multi-component intervention. Trial ISRCTN12826685.
+488-page HTA monograph. 10 UK wards across 2 NHS trusts (acute + PICU + forensic). Multi-component intervention (de-escalation training + reflective practice + debriefing + collaborative prescribing + environment + sensory modulation + support planning); 24-week pre/embed/post 8-8-8 phase structure. Primary-outcome completion 68% overall (76% post). Uncontrolled feasibility design — effect estimates carry non-causal caveats. A recent UK trial and a published precedent for a multi-component intervention on a master's-project scale. Trial ISRCTN12826685.
 
 ### Duxbury et al. (2019) — REsTRAIN Yourself (7+7 controlled-before-after)
 
-Quantitative companion to the Duxbury 2019 qualitative arm. UK adaptation of Six Core Strategies; 7 intervention + 7 control wards. **Restraint events per 1000 bed-days 9.38 → 6.62** intervention arm; average **22% restraint reduction** (up to **60% on some wards**). Implementation fidelity drove between-ward variation. Closest published UK analogue to Ivy's proposed initiative.
+Quantitative companion to the Duxbury 2019 qualitative arm. UK adaptation of Six Core Strategies; 7 intervention + 7 control wards. **Restraint events per 1000 bed-days 9.38 → 6.62** intervention arm; average **22% restraint reduction** (up to **60% on some wards**). Implementation fidelity drove between-ward variation. A UK analogue to a QI restraint-reduction initiative.
 
 ### Fletcher et al. (2019) — Safewards Victoria staff perspectives
 
@@ -176,11 +172,11 @@ Statewide Australian replication; staff thematic-analysis (Frontiers in Psychiat
 
 ### Moran Jimenez et al. (2025) JAPNA — seclusion + workplace violence on a psych ED unit
 
-Southeast US public state hospital QI project (Journal of the American Psychiatric Nurses Association). **Pre-intervention seclusion rate 5.57 per 1000 patient care hours** vs CMS IPFQR state average 0.26 and national average 0.35 — ~16x national. OSHA workplace-violence cost figures (~$151B annually, ~$250K/incident). Closest 2025-vintage publication template for the QI manuscript Ivy's project could produce.
+Southeast US public state hospital QI project (Journal of the American Psychiatric Nurses Association). **Pre-intervention seclusion rate 5.57 per 1000 patient care hours** vs CMS IPFQR state average 0.26 and national average 0.35 — ~16x national. OSHA workplace-violence cost figures (~$151B annually, ~$250K/incident). Closest 2025-vintage publication template for the QI manuscript a comparable QI project could produce.
 
 ### Liu, Saito & Linder (2026) — Healing spaces natural experiment
 
-Northwell/Zucker Hillside Hospital retrospective cohort on effect of outdoor spaces on PRN, S/R, constant observation. Loss of outdoor-space access on general adult unit: **IM PRN +1.57 orders/day** (95% CI [0.81, 2.33]), S/R +0.63 orders/day (95% CI [0.35, 0.91]), constant observation -0.40 orders/day (95% CI [0.17, 0.63]). Most-directly Charter-relevant 2026 paper because **PRN medication is its primary outcome** and PRN-orders-per-day is directly transferable to Ivy's measurement plan.
+Northwell/Zucker Hillside Hospital retrospective cohort on effect of outdoor spaces on PRN, S/R, constant observation. Loss of outdoor-space access on general adult unit: **IM PRN +1.57 orders/day** (95% CI [0.81, 2.33]), S/R +0.63 orders/day (95% CI [0.35, 0.91]), constant observation -0.40 orders/day (95% CI [0.17, 0.63]). Most-directly Charter-relevant 2026 paper because **PRN medication is its primary outcome** and PRN-orders-per-day is directly transferable to the project lead's measurement plan.
 
 ---
 
@@ -204,7 +200,7 @@ See §6. Key patient themes: psychological effects (fear, anger, powerlessness),
 
 ### NICE NG10 (2015) — UK clinical practice guideline
 
-UK CPG for short-term management of violence and aggression. 63 pages, 7 sections covering inpatient psych + ED + community + children. Load-bearing operational definition Ivy's Charter outcome variable depends on:
+UK CPG for short-term management of violence and aggression. 63 pages, 7 sections covering inpatient psych + ED + community + children. An operational definition the QI project outcome variable depends on:
 
 > "p.r.n. medication can be used as part of a de-escalation strategy but p.r.n. medication used alone is not de-escalation."
 
@@ -226,7 +222,7 @@ US psychiatric-nursing professional-society. Adopted 2000, revised 2007, 2014, 2
 
 Operational companion to 2018 Position. **3 Standards of Professional Performance** (leadership, staff training, performance improvement) + **6 Standards of Care** (admission, treatment planning, initiation, monitoring, release, documentation). Uses CMS §482.13 definitions verbatim. Most-current US-psychiatric-nursing practice expectations for any S/R reduction QI project.
 
-### NASMHPD / Huckshorn (2006) — Six Core Strategies foundational document
+### NASMHPD / Huckshorn (2006) — Six Core Strategies primary source
 
 SAMHSA-registry-listed framework's primary source. Six strategies: (1) Leadership toward organisational change; (2) Use of data to inform practice; (3) Workforce development; (4) Use of specific prevention tools; (5) Consumer roles; (6) Rigorous debriefing techniques. Includes Planning Tool template + Example Debriefing Procedures. Foundational for Duxbury 2019 REsTRAIN Yourself + Putkonen 2013 forensic RCT descendants.
 
@@ -316,7 +312,7 @@ Foundational explanatory model for Safewards intervention class. Six domains of 
 
 ### Liberman (2006) — elimination-as-goal cautionary letter
 
-Letter arguing "elimination" as stated goal risks becoming its own harm when reduction pressure translates into under-treatment of dangerous behaviour. Dissenting voice against strongest APNA/NASMHPD framing.
+Letter arguing "elimination" as stated goal risks becoming its own harm when reduction pressure translates into under-treatment of dangerous behaviour. A dissenting voice against the APNA/NASMHPD elimination framing.
 
 ---
 
@@ -353,13 +349,13 @@ PC.03.05.01 through PC.03.05.19 cover Provision of Care, Treatment, and Services
 
 APNA 2018 Position Statement + APNA 2022 Standards of Practice are the US-psychiatric-nursing professional-society layer — operational expectations against which Charter's intervention will be evaluated by any master's-project or IRB reviewer.
 
-### SAMHSA Six Core Strategies (Huckshorn / NASMHPD, 2006)
+### SAMHSA Six Core Strategies ([Huckshorn / NASMHPD, 2006](https://www.nasmhpd.org/sites/default/files/Consolidated%20Six%20Core%20Strategies%20Document.pdf))
 
 SAMHSA-registry-listed evidence-based framework (§10). Any US Charter proposing restraint reduction should either name Six Core Strategies as its framework or explicitly justify choosing a different one.
 
 ### Selected state-regulatory context
 
-- **California LPS Act (Welfare & Institutions Code §5000 et seq.):** governs involuntary treatment holds (5150, 5250) and by extension Ivy's Charter's patient population. Includes least-restrictive-treatment requirements.
+- **California LPS Act (Welfare & Institutions Code §5000 et seq.):** governs involuntary treatment holds (5150, 5250) and by extension the QI project's patient population. Includes least-restrictive-treatment requirements.
 - **Massachusetts 104 CMR 28.05:** state Department of Mental Health regulations on restraint and seclusion; more restrictive than CMS federal floor.
 - **Pennsylvania OMHSAS:** Office of Mental Health and Substance Abuse Services standards; framework under which Smith et al. (2005) reported 93%-seclusion / 66%-restraint reduction.
 
@@ -400,7 +396,7 @@ with corollary "p.r.n. medication used alone is not de-escalation" (National Ins
 - **PANSS-EC** — Positive and Negative Syndrome Scale-Excited Component. 5-item clinician-rated agitation.
 - **OAS / MOAS** — Overt Aggression Scale and Modified Overt Aggression Scale.
 - **MPCS-5** — Modified Perceived Coercion Scale (5-item).
-- **PCC** — Patient-Staff Conflict Checklist. Used in EDITION (Price 2024) and Safewards.
+- **PCC** — Patient-Staff Conflict Checklist. Used in EDITION ([Price 2024](https://doi.org/10.3310/FGGW6874)) and Safewards.
 
 ---
 
@@ -410,7 +406,7 @@ with corollary "p.r.n. medication used alone is not de-escalation" (National Ins
 2. **Use a documented pre/embed/post phase structure.** EDITION's 8-week pre / 8-week embedding / 8-week post is a realistic master's-project cadence.
 3. **The Patient-Staff Conflict Checklist is a candidate outcome instrument.** Used by EDITION; pairs with a unit-level run chart of EBM rate per 1,000 patient-days.
 4. **Distinguish PO vs IM PRN.** Liu (2026) demonstrates the IM PRN signal is most-clinically-meaningful; oral PRN may move in confounded directions.
-5. **Post-event debriefing is a load-bearing component.** Butterworth 2022 names "lack of post-restraint support" as a problem for both patients and staff.
+5. **Include post-event debriefing.** Butterworth 2022 names "lack of post-restraint support" as a problem for both patients and staff.
 6. **Expect implementation barriers around resourcing.** Duxbury 2019 notes even successful UK restraint-reduction initiatives identify resource constraints as the cap on further reduction.
 7. **Consider a policy-context / sustainability paragraph on federal nursing workforce infrastructure.** See the companion page on H.R. 4407 at https://austinwagner.org/ivy/hr4407/ for the current federal-policy backdrop.
 
