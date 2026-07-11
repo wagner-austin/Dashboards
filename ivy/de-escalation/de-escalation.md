@@ -25,7 +25,7 @@ The literature synthesised below anchors a Project Charter's Gap section, Proble
 
 ### 2.1 US baseline restrictive-practice and EBM rates
 
-- **Restraint use in US adult inpatient psychiatry: 29.8% to 34.1% of admissions** — a widely-cited US baseline range ([Ye et al., 2021, p. 2](https://doi.org/10.1111/ppc.12768)). This figure is one hop from primary: Ye's introduction cites Beghi 2013 systematic review, Steinert 2010, Lorenzo 2012, and Staggs 2015 (Psychiatric Services trends study). For manuscript use, trace back to those primaries.
+- **Restraint use in US adult inpatient psychiatry: 29.8% to 34.1% of admissions** — a widely-cited US baseline range ([Ye et al., 2021, p. 2](https://doi.org/10.3389/fpsyt.2021.576662)). This figure is one hop from primary: Ye's introduction cites Beghi 2013 systematic review, Steinert 2010, Lorenzo 2012, and Staggs 2015 (Psychiatric Services trends study). For manuscript use, trace back to those primaries.
 - **Restraints in US Psychiatric Emergency Services: 8.5% of presentations** (SD 7.8); **involuntary medications in 16% of cases**; **70.3% of protocols used a parenteral IM combination of high-potency typical antipsychotic plus benzodiazepine** for agitation ([Allen & Currier, 2004, pp. 44–45](https://doi.org/10.1016/j.genhosppsych.2003.08.002)).
 - **44% of PES medical directors endorsed application of physical restraints before less-invasive interventions** in acutely agitated psychotic patients with unknown history; 25% endorsed immediate administration of emergency medication first ([Allen & Currier, 2004, p. 44](https://doi.org/10.1016/j.genhosppsych.2003.08.002)).
 - Liu, Saito & Linder (2026) documented that on a general adult psychiatric unit, loss of outdoor-space access was associated with an increase in IM PRN medication of 1.57 orders/day (95% CI [0.81, 2.33]) and seclusion/restraint by 0.63 orders/day (95% CI [0.35, 0.91]) ([Liu et al., 2026, p. 1](https://doi.org/10.3389/fpsyt.2025.1731925)). A 2026 US empirical measurement of PRN medication as an outcome. Retrospective cohort / natural experiment, not an RCT — the causal claim depends on the plausibility of the outdoor-access manipulation as exogenous.
@@ -442,11 +442,11 @@ Duxbury, J., Baker, J., Downe, S., Jones, F., Greenwood, P., Thygesen, H., McKeo
 
 Duxbury, J., Thomson, G., Scholes, A., Jones, F., Baker, J., Downe, S., Greenwood, P., Price, O., Whittington, R., & McKeown, M. (2019). Staff experiences and understandings of the REsTRAIN Yourself initiative to minimize the use of physical restraint on mental health wards. *International Journal of Mental Health Nursing, 28*(4), 845–856. https://doi.org/10.1111/inm.12577
 
-Fletcher, J., Buchanan-Hagen, S., Brophy, L., Kinner, S. A., & Hamilton, B. (2019). Consumer perspectives of Safewards impact in acute inpatient mental health wards in Victoria, Australia. *Frontiers in Psychiatry, 10*, 461. https://doi.org/10.3389/fpsyt.2019.00461
+Fletcher, J., Buchanan-Hagen, S., Brophy, L., Kinner, S. A., & Hamilton, B. (2019). Consumer perspectives of Safewards impact in acute inpatient mental health wards in Victoria, Australia. *Frontiers in Psychiatry, 10*, 461. https://doi.org/10.3389/fpsyt.2019.00462
 
 Garriga, M., Pacchiarotti, I., Kasper, S., Zeller, S. L., Allen, M. H., Vázquez, G., Baldaçara, L., San, L., McAllister-Williams, R. H., Fountoulakis, K. N., Courtet, P., Naber, D., Chan, E. W., Fagiolini, A., Möller, H. J., Grunze, H., Llorca, P. M., Jaffe, R. L., Yatham, L. N., … Vieta, E. (2016). Assessment and management of agitation in psychiatry: Expert consensus. *World Journal of Biological Psychiatry, 17*(2), 86–128. https://doi.org/10.3109/15622975.2015.1132007
 
-Gaynes, B. N., Brown, C. L., Lux, L. J., Brownley, K. A., Van Dorn, R. A., Edlund, M. J., Coker-Schwimmer, E., Palmieri Weber, R., Sheitman, B., Zarzar, T., Viswanathan, M., & Lohr, K. N. (2016). *Strategies to de-escalate aggressive behavior in psychiatric patients (Comparative Effectiveness Review No. 180; AHRQ Publication No. 16-EHC032-EF)*. Agency for Healthcare Research and Quality. https://doi.org/10.23970/AHRQEPCCER180
+Gaynes, B. N., Brown, C. L., Lux, L. J., Sheitman, B., Van Dorn, R. A., Edlund, M. J., & Viswanathan, M. (2017). Preventing and de-escalating aggressive behavior among adult psychiatric patients: A systematic review of the evidence. *Psychiatric Services, 68*(8), 819–831. https://doi.org/10.1176/appi.ps.201600314
 
 Heckemann, B., Zeller, A., Hahn, S., Dassen, T., Schols, J. M. G. A., & Halfens, R. J. G. (2015). The effect of aggression management training programmes for nursing staff and students working in an acute hospital setting: A narrative review. *Nurse Education Today, 35*(1), 212–219. https://doi.org/10.1016/j.nedt.2014.08.003
 
@@ -482,7 +482,7 @@ Richmond, J. S., Berlin, J. S., Fishkind, A. B., Holloman, G. H., Zeller, S. L.,
 
 Roppolo, L. P., Morris, D. W., Khan, F., Downs, R., Metzger, J., Carder, T., Wong, A. H., & Wilson, M. P. (2020). Improving the management of acutely agitated patients in the emergency department through implementation of Project BETA (Best Practices in the Evaluation and Treatment of Agitation). *JACEP Open, 1*(5), 898–907. https://doi.org/10.1002/emp2.12138
 
-Sailas, E., & Wahlbeck, K. (2005). Restraint and seclusion in psychiatric inpatient wards. *Current Opinion in Psychiatry, 18*(5), 555–559. https://doi.org/10.1097/01.yco.0000179496.34372.6b
+Sailas, E., & Wahlbeck, K. (2005). Restraint and seclusion in psychiatric inpatient wards. *Current Opinion in Psychiatry, 18*(5), 555–559. https://doi.org/10.1097/01.yco.0000179497.46182.6f
 
 Smith, G. M., Davis, R. H., Bixler, E. O., Lin, H.-M., Altenor, A., Altenor, R. J., Hardentstine, B. D., & Kopchick, G. A. (2005). Pennsylvania State Hospital System's seclusion and restraint reduction program. *Psychiatric Services, 56*(9), 1115–1122. https://doi.org/10.1176/appi.ps.56.9.1115
 
@@ -492,4 +492,4 @@ Wilson, M. P., Pepper, D., Currier, G. W., Holloman, G. H., & Feifel, D. (2012).
 
 Wong, A. H., Ray, J. M., Rosenberg, A., Crispino-O'Connell, G., Iennaco, J. D., Bernstein, S. L., Crispino-O'Connell, G., Ling, S., Joseph, T. P., Bonenfant, N. R., Pavlo, A., Lee, K. S., Wang, F., Bryce, P., Bao, H., Wears, R. L., & Bouland, A. (2020). Experiences of individuals who were physically restrained in the emergency department. *JAMA Network Open, 3*(1), e1919381. https://doi.org/10.1001/jamanetworkopen.2019.19381
 
-Ye, J., Xia, Z., Wang, C., Liao, Y., Xu, Y., Zhang, Y., Xiao, A., Yu, L., & Lin, J. (2021). Effectiveness of a CRSCE-based de-escalation training program in reducing physical restraint in psychiatric hospitals: A cluster randomized controlled trial. *Perspectives in Psychiatric Care, 57*(4), 1928–1936. https://doi.org/10.1111/ppc.12768
+Ye, J., Xia, Z., Wang, C., Liao, Y., Xu, Y., Zhang, Y., Xiao, A., Yu, L., Li, S., & Lin, J. (2021). Effectiveness of CRSCE-based de-escalation training on reducing physical restraint in psychiatric hospitals: A cluster randomized controlled trial. *Frontiers in Psychiatry, 12*, 576662. https://doi.org/10.3389/fpsyt.2021.576662
