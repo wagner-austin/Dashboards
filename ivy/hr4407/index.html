@@ -53,15 +53,22 @@ body {
   transition: all 0.15s;
 }
 .downloads a:hover { background: rgba(255,255,255,0.28); }
-.downloads button {
+#copy-all {
+  position: fixed;
+  top: 1rem; right: 1rem;
+  z-index: 100;
   background: white; color: var(--primary-dark);
-  border: 1px solid white; border-radius: 6px;
-  padding: 0.4rem 0.9rem; font-size: 0.9rem; font-weight: 600;
+  border: 1px solid white; border-radius: 8px;
+  padding: 0.55rem 1rem; font-size: 0.9rem; font-weight: 600;
   cursor: pointer; font-family: inherit;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   transition: all 0.15s;
 }
-.downloads button:hover { background: var(--gray-100); }
-.downloads button.copied { background: #10b981; color: white; border-color: #10b981; }
+#copy-all:hover { background: var(--gray-100); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+#copy-all.copied { background: #10b981; color: white; border-color: #10b981; }
+@media (max-width: 640px) {
+  #copy-all { top: 0.5rem; right: 0.5rem; padding: 0.4rem 0.7rem; font-size: 0.82rem; }
+}
 .wrapper { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 .ai-instructions {
   background: var(--amber-50);
@@ -121,12 +128,13 @@ footer {
   <p>Primary-source policy brief on the House bill (Kim R-CA-40, 119th Congress) and its Senate companion S.1482 (Blunt Rochester D-DE).</p>
   <p class="prepared">Updated 2026-07-11 · Prepared by Austin Wagner · <a href="mailto:austin.o.wagner@gmail.com" style="color:white;">austin.o.wagner@gmail.com</a></p>
   <div class="downloads">
-    <button id="copy-all" type="button">📋 Copy all content</button>
     <a href="hr4407.md" download>Download Markdown</a>
     <a href="../">← All topics</a>
     <a href="../de-escalation/">De-escalation research →</a>
   </div>
 </header>
+
+<button id="copy-all" type="button">📋 Copy all</button>
 
 <script>
 document.getElementById('copy-all').addEventListener('click', async function() {
