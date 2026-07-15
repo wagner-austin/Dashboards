@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 
 import requests
-from playwright.sync_api import sync_playwright
+from bs4 import BeautifulSoup, Tag
 
 
 def fetch_council_members():
@@ -89,191 +89,142 @@ def fetch_council_members():
     return members
 
 
+# Granicus meeting-list constants — mirror mcp-shared/.../granicus/constants.ts
+_VIEW_ID = 68
+_SUBDOMAIN = "irvine"
+_DATE_PATTERN = re.compile(
+    r"(January|February|March|April|May|June|July|August|September|October|November|December|"
+    r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2}),?\s+(\d{4})"
+)
+_CLIP_ID_PATTERN = re.compile(r"clip_id=([\w-]+)")
+_EVENT_ID_PATTERN = re.compile(r"event_id=([\w-]+)")
+_PLACEHOLDER_EVENT_ID = "99999"
+_MONTH_TO_FULL = {
+    "Jan": "January", "Feb": "February", "Mar": "March", "Apr": "April",
+    "May": "May", "Jun": "June", "Jul": "July", "Aug": "August",
+    "Sep": "September", "Oct": "October", "Nov": "November", "Dec": "December",
+}
+
+
+def _clean_text(node) -> str:
+    return re.sub(r"\s+", " ", node.get_text(" ", strip=True)).strip()
+
+
+def _normalize_url(url: str, base_url: str) -> str:
+    if url.startswith("//"):
+        return "https:" + url
+    if url.startswith("/"):
+        return f"{base_url}{url}"
+    return url
+
+
+def _parse_date_display(text: str) -> str | None:
+    m = _DATE_PATTERN.search(text.replace("\xa0", " "))
+    if not m:
+        return None
+    month = _MONTH_TO_FULL.get(m.group(1), m.group(1))
+    return f"{month} {m.group(2)}, {m.group(3)}"
+
+
+def _find_parent_row(node: Tag) -> Tag | None:
+    parent = node.parent
+    while parent is not None:
+        if isinstance(parent, Tag) and parent.name == "tr":
+            return parent
+        parent = parent.parent
+    return None
+
+
+def _extract_meeting_name(row: Tag | None) -> str:
+    # Granicus tags the name cell with headers~="Name". More robust than
+    # scraping row text — leaves no room for trailing link-label artifacts.
+    if row is None:
+        return ""
+    cell = row.select_one('td[headers~="Name"]')
+    if cell is None:
+        return ""
+    name = _clean_text(cell)
+    return re.sub(r"\s*Open Only in Windows Media Player\s*$", "", name, flags=re.IGNORECASE).strip()
+
+
+def _find_minutes_url(row: Tag | None, base_url: str) -> str | None:
+    if row is None:
+        return None
+    for link in row.find_all("a"):
+        href = link.get("href")
+        if isinstance(href, str) and "MinutesViewer" in href:
+            return _normalize_url(href, base_url)
+    return None
+
+
 def fetch_meetings_granicus():
-    """Fetch meeting data from Granicus portal using Playwright."""
-    meetings = []
-    seen_keys = set()  # Deduplicate
+    """Fetch meeting data from Granicus via plain HTTP + BeautifulSoup.
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
+    Ports mcp-shared/src/clients/granicus/meeting-list-walker.ts. The
+    ViewPublisher listing is server-rendered HTML — no JS execution
+    needed, so no Playwright / Chromium install.
+    """
+    base_url = f"https://{_SUBDOMAIN}.granicus.com"
+    resp = requests.get(f"{base_url}/ViewPublisher.php?view_id={_VIEW_ID}", timeout=30)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, "html.parser")
 
+    meetings: list[dict] = []
+    seen_event_ids: set[str] = set()
+
+    for link in soup.find_all("a"):
+        href = link.get("href")
+        if not isinstance(href, str) or "AgendaViewer" not in href:
+            continue
+
+        agenda_url = _normalize_url(href, base_url)
+        raw_event_id = _EVENT_ID_PATTERN.search(agenda_url)
+        raw_event_id = raw_event_id.group(1) if raw_event_id else None
+        # 99999 is Granicus's pre-publication sentinel, not an id (see
+        # constants.ts::GRANICUS_PLACEHOLDER_EVENT_ID for the incident record).
+        event_id = None if raw_event_id == _PLACEHOLDER_EVENT_ID else raw_event_id
+        clip_match = _CLIP_ID_PATTERN.search(agenda_url)
+        clip_id = clip_match.group(1) if clip_match else None
+
+        if event_id is not None and event_id in seen_event_ids:
+            continue
+        if event_id is not None:
+            seen_event_ids.add(event_id)
+
+        row = _find_parent_row(link)
+        row_text = _clean_text(row) if row is not None else ""
+        date_str = _parse_date_display(row_text)
+        if date_str is None:
+            continue
+
+        name = _extract_meeting_name(row)
+        if len(name) > 100:
+            name = name[:100]
+        if not name:
+            name = "City Council Meeting"
+
+        # view_id=68 is council-scoped so this filter is effectively a no-op,
+        # but preserved for defense against future joint-meeting rows.
+        if "CITY COUNCIL" not in name.upper():
+            continue
+
+        meetings.append({
+            "name": name,
+            "date": date_str,
+            "agenda_url": agenda_url,
+            "minutes_url": _find_minutes_url(row, base_url),
+            "video_url": f"{base_url}/player/clip/{clip_id}?view_id={_VIEW_ID}" if clip_id else None,
+            "event_id": event_id,
+        })
+
+    def _sort_key(m: dict) -> datetime:
         try:
-            # Load the Granicus meeting archive
-            page.goto("https://irvine.granicus.com/ViewPublisher.php?view_id=68", wait_until="networkidle")
-            page.wait_for_timeout(2000)
-
-            # Scroll to load all content (Granicus lazy loads)
-            for _ in range(10):
-                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-                page.wait_for_timeout(500)
-
-            # Get all links that have AgendaViewer - these are meeting rows
-            agenda_links = page.query_selector_all('a[href*="AgendaViewer"]')
-
-            for link in agenda_links:
-                try:
-                    # Get the parent row
-                    row = link.evaluate_handle("el => el.closest('tr')")
-                    if not row:
-                        continue
-
-                    row_el = row.as_element()
-                    if not row_el:
-                        continue
-
-                    # Get all text in row to find meeting info
-                    row_text = row_el.inner_text()
-
-                    # Skip non-council meetings
-                    if "CITY COUNCIL" not in row_text.upper():
-                        continue
-
-                    # Parse date from row text - handles "Jan 13, 2026" or "January 27, 2026"
-                    # Also handles non-breaking spaces
-                    row_text_clean = row_text.replace('\xa0', ' ')
-                    date_match = re.search(r"([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})", row_text_clean)
-                    if not date_match:
-                        continue
-
-                    month_str = date_match.group(1)
-                    day_str = date_match.group(2)
-                    year_str = date_match.group(3)
-
-                    # Convert abbreviated month to full name for consistency
-                    month_map = {
-                        'Jan': 'January', 'Feb': 'February', 'Mar': 'March',
-                        'Apr': 'April', 'May': 'May', 'Jun': 'June',
-                        'Jul': 'July', 'Aug': 'August', 'Sep': 'September',
-                        'Oct': 'October', 'Nov': 'November', 'Dec': 'December'
-                    }
-                    if month_str in month_map:
-                        month_str = month_map[month_str]
-
-                    date_str = f"{month_str} {day_str}, {year_str}"
-
-                    # Get meeting name (first line or first part)
-                    lines = [l.strip() for l in row_text.split('\n') if l.strip()]
-                    name_text = lines[0] if lines else "City Council Meeting"
-
-                    # Clean up the name: strip date/time suffix and link text
-                    name_text = re.sub(r'\s+', ' ', name_text).strip()
-                    # Remove trailing date like "March 10, 2026 - 03:00 PM"
-                    name_text = re.sub(r'\s+[A-Z][a-z]+ \d{1,2},? \d{4}\s*[-–].*$', '', name_text)
-                    # Remove trailing link text like "Agenda", "eComment", "Minutes", "Video"
-                    name_text = re.sub(r'\s+(Agenda|eComment|Minutes|Video)\b.*$', '', name_text)
-                    name_text = name_text.strip()
-                    if not name_text:
-                        name_text = "City Council Meeting"
-                    if len(name_text) > 100:
-                        name_text = name_text[:100]
-
-                    # Get agenda URL
-                    agenda_url = link.get_attribute("href")
-                    if agenda_url and agenda_url.startswith("//"):
-                        agenda_url = "https:" + agenda_url
-
-                    # Get minutes link from same row
-                    minutes_link = row_el.query_selector('a[href*="MinutesViewer"]')
-                    minutes_url = minutes_link.get_attribute("href") if minutes_link else None
-                    if minutes_url and minutes_url.startswith("//"):
-                        minutes_url = "https:" + minutes_url
-
-                    # Get video player link (not MP4 download)
-                    # Extract clip_id from agenda URL to build player URL
-                    video_url = None
-                    if agenda_url:
-                        clip_match = re.search(r"clip_id=(\d+)", agenda_url)
-                        if clip_match:
-                            clip_id = clip_match.group(1)
-                            video_url = f"https://irvine.granicus.com/player/clip/{clip_id}?view_id=68"
-
-                    # Get event_id for agenda fetching
-                    event_id = None
-                    if agenda_url:
-                        event_match = re.search(r"event_id=(\d+)", agenda_url)
-                        if event_match:
-                            event_id = event_match.group(1)
-
-                    # Create unique key to avoid duplicates
-                    key = f"{date_str}|{event_id or agenda_url}"
-                    if key in seen_keys:
-                        continue
-                    seen_keys.add(key)
-
-                    meetings.append({
-                        "name": name_text,
-                        "date": date_str,
-                        "agenda_url": agenda_url,
-                        "minutes_url": minutes_url,
-                        "video_url": video_url,
-                        "event_id": event_id
-                    })
-
-                except Exception:
-                    continue
-
-        finally:
-            browser.close()
-
-    # Sort meetings by date (newest first)
-    def parse_date(date_str):
-        try:
-            # Handle dates like "January 27, 2026" or "January  2, 2026"
-            return datetime.strptime(date_str, "%B %d, %Y")
+            return datetime.strptime(m["date"], "%B %d, %Y")
         except ValueError:
-            try:
-                return datetime.strptime(date_str, "%B  %d, %Y")
-            except ValueError:
-                return datetime.min
+            return datetime.min
 
-    meetings.sort(key=lambda m: parse_date(m["date"]), reverse=True)
+    meetings.sort(key=_sort_key, reverse=True)
     return meetings
-
-
-def fetch_upcoming_agenda(event_id: str):
-    """Fetch agenda items for an upcoming meeting."""
-    agenda_items = []
-
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-
-        try:
-            url = f"https://irvine.granicus.com/AgendaViewer.php?view_id=68&event_id={event_id}"
-            page.goto(url, wait_until="networkidle")
-            page.wait_for_timeout(2000)
-
-            # Get the text content
-            body = page.query_selector("body")
-            text = body.inner_text() if body else ""
-
-            # Parse agenda sections
-            lines = text.split("\n")
-            current_section = None
-
-            for line in lines:
-                line = line.strip()
-                if not line:
-                    continue
-
-                # Detect section headers
-                if re.match(r"^\d+\.\s+", line) or line.upper() in ["CLOSED SESSION", "PRESENTATIONS", "CONSENT CALENDAR", "PUBLIC HEARINGS", "COUNCIL BUSINESS"]:
-                    current_section = line
-
-                # Detect agenda items (numbered like 3.1, 4.1, etc.)
-                item_match = re.match(r"^(\d+\.\d+)\s+(.+)", line)
-                if item_match:
-                    agenda_items.append({
-                        "number": item_match.group(1),
-                        "title": item_match.group(2)[:200],
-                        "section": current_section
-                    })
-
-        finally:
-            browser.close()
-
-    return agenda_items
 
 
 def generate_html(data: dict) -> str:
@@ -780,7 +731,7 @@ def main(quick_mode=False):
         print("\n[*] Quick mode - skipping Playwright scrape...")
         meetings = []
     else:
-        print("\n[*] Fetching meetings from Granicus (Playwright)...")
+        print("\n[*] Fetching meetings from Granicus (HTTP)...")
         meetings = fetch_meetings_granicus()
         print(f"    Meetings found: {len(meetings)}")
 
