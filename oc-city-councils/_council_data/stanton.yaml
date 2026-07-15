@@ -2,7 +2,7 @@ city: stanton
 city_name: Stanton
 website: https://www.stantonca.gov
 council_url: https://www.stantonca.gov/government/city_council.php
-last_updated: '2026-01-26'
+last_updated: '2026-07-15'
 email: ''
 phone: ''
 instagram: ''
@@ -13,8 +13,7 @@ members:
     email: DShawver@StantonCA.gov
     phone: (714) 379-9222
     city_page: https://www.stantonca.gov/government/bio-dshawver.php
-    photo_url: https://www.stantonca.gov/revize_photo_gallery/Government/City Council/David 
-      Shawver.jpg?t=202505230901400
+    photo_url: https://www.stantonca.gov/revize_photo_gallery/Government/City%20Council/David%20Shawver.jpg?t=202505230901400
     bio: Mayor David John Shawver has lived in the Stanton community for 47 years, where he and his wife Jennifer raised
       their family of David, Matthew, Stephanie, Katrina and Joseph. Today three still live in Stanton and the grandkids
       attend local schools. Mayor Shawver attended the University of the Pacific on an athletic scholarship playing both
@@ -39,7 +38,7 @@ members:
     email: GTaylor@StantonCA.gov
     phone: (714) 379-9222
     city_page: https://www.stantonca.gov/government/bio-gtaylor.php
-    photo_url: https://www.stantonca.gov/revize_photo_gallery/Government/City Council/Gary Taylor.jpg?t=202505230901430
+    photo_url: https://www.stantonca.gov/revize_photo_gallery/Government/City%20Council/Gary%20Taylor.jpg?t=202505230901430
     bio: Mr. Gary Taylor grew up in Anaheim and attended local schools. He graduated from Cal State Fullerton with a BA 
       and later from Webster University in Irvine with a MA in Management. Mr. Taylor, his wife Lynne, and two sons 
       moved to Stanton in 1985. He served on the Stanton Planning Commission from June of 2012 and was elected to the 
@@ -55,7 +54,7 @@ members:
     email: DTorres@StantonCA.gov
     phone: (714) 379-9222
     city_page: https://www.stantonca.gov/government/city_council.php
-    photo_url: https://www.stantonca.gov/Document_center/City Council/Untitled design (17).png?t=202505230902200
+    photo_url: https://www.stantonca.gov/Document_center/City%20Council/Untitled%20design%20%2817%29.png?t=202505230902200
     bio:
     term_start: 2022
     term_end: 2026
@@ -87,7 +86,7 @@ members:
     email: JOHNWarren@StantonCA.gov
     phone: (714) 379-9222
     city_page: https://www.stantonca.gov/government/bio_for_john_d_warren.php
-    photo_url: https://www.stantonca.gov/JDWarren2 - Copy.jpg?t=202505230901480
+    photo_url: https://www.stantonca.gov/JDWarren2%20-%20Copy.jpg?t=202505230901480
     bio: John Douglas Warren is a third-generation Stanton resident and a proud graduate of local public schools, having
       attended Bryant Elementary, Alamitos Intermediate, and Rancho Alamitos High School. His commitment to public 
       service began with his Eagle Scout project, marking the start of a lasting dedication to his hometown. John earned

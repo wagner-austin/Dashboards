@@ -2,7 +2,7 @@ city: los-alamitos
 city_name: Los Alamitos
 website: https://cityoflosalamitos.org
 council_url: https://cityoflosalamitos.org/165/City-Council
-last_updated: '2026-01-26'
+last_updated: '2026-07-15'
 email: ''
 phone: ''
 instagram: ''
@@ -110,7 +110,7 @@ members:
       Chapter. Her family owns a manufacturing company started in 1949.
     term_start: 2022
     term_end: 2026
-    website: https://emilyserves.com/
+    website:
     instagram:
 meetings:
   schedule: 3rd Monday
