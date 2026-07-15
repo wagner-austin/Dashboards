@@ -20,13 +20,13 @@ from bs4 import BeautifulSoup, Tag
 def fetch_council_members():
     """Fetch current council members from City of Irvine website."""
     # Hardcoded data since the city website structure is stable
-    # Photos and links are scraped from https://cityofirvine.org/city-council
+    # Photos and links are scraped from https://cityofirvine.gov/city-council
     members = [
         {
             "name": "Larry Agran",
             "position": "Mayor",
             "district": "At-Large",
-            "photo": "https://www.cityofirvine.org/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg",
+            "photo": "https://cityofirvine.gov/sites/default/files/city-files/PIO/Images/Website/Ziba%20Photo%20Video%20-%20Mayor%20Larry%20Agran%203.jpg",
             "email": "LarryAgran@cityofirvine.org",
             "bio": "First served on Irvine City Council 1978-1990, including six years as Mayor. Elected Mayor in 2024 for his eighth nonconsecutive term. Harvard Law School graduate.",
             "website": "https://mayorlarryagran.org"
@@ -35,7 +35,7 @@ def fetch_council_members():
             "name": "James Mai",
             "position": "Vice Mayor",
             "district": "District 3",
-            "photo": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Mai_5x7.jpg",
+            "photo": "https://cityofirvine.gov/sites/default/files/file-repository/CM%20Mai_5x7.jpg",
             "email": "JamesMai@cityofirvine.org",
             "bio": "Vice Mayor representing District 3 on the Irvine City Council.",
             "website": None
@@ -44,7 +44,7 @@ def fetch_council_members():
             "name": "Melinda Liu",
             "position": "Councilmember",
             "district": "District 1",
-            "photo": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Liu_5x7.jpg",
+            "photo": "https://cityofirvine.gov/sites/default/files/file-repository/CM%20Liu_5x7.jpg",
             "email": "MelindaLiu@cityofirvine.org",
             "bio": "Councilmember representing District 1.",
             "website": "https://www.melindaliuirvine.com"
@@ -53,7 +53,7 @@ def fetch_council_members():
             "name": "William Go",
             "position": "Councilmember",
             "district": "District 2",
-            "photo": "https://www.cityofirvine.org/sites/default/files/file-repository/CM%20Go_5x7.jpg",
+            "photo": "https://cityofirvine.gov/sites/default/files/file-repository/CM%20Go_5x7.jpg",
             "email": "WilliamGo@cityofirvine.org",
             "bio": "Councilmember representing District 2.",
             "website": None
@@ -62,7 +62,7 @@ def fetch_council_members():
             "name": "Mike Carroll",
             "position": "Councilmember",
             "district": "District 4",
-            "photo": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png",
+            "photo": "https://cityofirvine.gov/sites/default/files/City%20Council/2024/Mike%20Carroll_with%20pin_.png",
             "email": "MikeCarroll@cityofirvine.org",
             "bio": "Serving second term on City Council. Vice Chairman of the Great Park. Corporate attorney, OCTA Board Member, and New York Times bestselling author.",
             "website": None
@@ -71,7 +71,7 @@ def fetch_council_members():
             "name": "Betty Martinez Franco",
             "position": "Councilmember",
             "district": "District 5",
-            "photo": "https://cityofirvine.org/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg",
+            "photo": "https://cityofirvine.gov/sites/default/files/City%20Council/2024/Betty%20Martinez%20Franco_400x560px.jpg",
             "email": "BettyMartinezFranco@cityofirvine.org",
             "bio": "Councilmember representing District 5.",
             "website": None
@@ -80,7 +80,7 @@ def fetch_council_members():
             "name": "Kathleen Treseder",
             "position": "Councilmember",
             "district": "At-Large",
-            "photo": "https://www.cityofirvine.org/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg",
+            "photo": "https://cityofirvine.gov/sites/default/files/City%20Council/2024/CM%20Treseder_2x3.jpg",
             "email": "KathleenTreseder@cityofirvine.org",
             "bio": "At-Large Councilmember on the Irvine City Council.",
             "website": None
@@ -507,7 +507,7 @@ def generate_html(data: dict) -> str:
                     <h4>Submit eComment</h4>
                     <p>Submit public comments on agenda items</p>
                 </a>
-                <a href="https://cityofirvine.org/city-council" target="_blank" class="link-card">
+                <a href="https://cityofirvine.gov/city-council" target="_blank" class="link-card">
                     <h4>City Council</h4>
                     <p>Council member profiles and contact info</p>
                 </a>
@@ -539,7 +539,7 @@ def generate_html(data: dict) -> str:
         <div class="section">
             <h3>Meeting Information</h3>
             <div class="links-grid">
-                <a href="https://cityofirvine.org/city-council/city-council-meetings" target="_blank" class="link-card">
+                <a href="https://cityofirvine.gov/city-council/city-council-meetings" target="_blank" class="link-card">
                     <h4>Meeting Schedule</h4>
                     <p>2nd and 4th Tuesdays at 4:00 PM</p>
                 </a>
@@ -564,7 +564,7 @@ def generate_html(data: dict) -> str:
                     <h4>eComment System</h4>
                     <p>Submit written comments on agenda items</p>
                 </a>
-                <a href="https://cityofirvine.org/city-council/contact-council" target="_blank" class="link-card">
+                <a href="https://cityofirvine.gov/city-council/contact-council" target="_blank" class="link-card">
                     <h4>Contact the Council</h4>
                     <p>Email or call your representatives</p>
                 </a>
