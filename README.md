@@ -1,6 +1,16 @@
 # Dashboards
 
-Public dashboard collection hosted at [wagner-austin.github.io/Dashboards](https://wagner-austin.github.io/Dashboards)
+Public dashboard collection hosted at [austinwagner.org](https://austinwagner.org).
+
+## For recruiters — start here
+
+If evaluating this repo, skim these three dashboards (10 min total):
+
+1. [`oc-city-councils/`](oc-city-councils/) — Civic-data pipeline covering all 34 OC cities. YAML source-of-truth → build script → JSON → dashboard, auto-rebuilt via GitHub Actions.
+2. [`ivy/de-escalation/`](ivy/de-escalation/) — Primary-source research synthesis (21 sections, 35+ sources). Design pattern for AI-readable research corpora with citation traceability.
+3. [`asuci/`](asuci/) — Playwright web scraper + daily GitHub Actions cron pulling UC Irvine student-government voting records.
+
+Skip the game/fun stuff (`rabbit/`) and personal coursework (`ics5/`, `presentation/`, `sculc2026/`) unless curious.
 
 ## Active Dashboards
 
@@ -8,9 +18,12 @@ Public dashboard collection hosted at [wagner-austin.github.io/Dashboards](https
 |-----------|-------------|---------|
 | [OC City Councils](oc-city-councils/) | Contact info and governance data for all 34 Orange County city councils | Auto via GitHub Actions |
 | [ASUCI Senate](asuci/) | UC Irvine student government voting records and senator info | Daily via GitHub Actions |
-| [Metabolomics](metabolomics/) | Interactive visualization of plant metabolomics data with filtering and analysis | Manual |
 | [Irvine City Council](irvine-city-council/) | Current Irvine city council members and governance info | Manual |
-| [Flock Investigation](flock-investigation/) | Research on Orange County ALPR camera deployment and surveillance networks | Manual |
+| [Document Search](doc-search/) | California public-records document search tool | Manual |
+| [Metabolomics](metabolomics/) | Interactive visualization of plant metabolomics data with filtering and analysis | Manual |
+| [Nursing Research Corpus](ivy/) | Primary-source research synthesis on structured de-escalation & restraint reduction in adult inpatient psychiatric care | Manual |
+| [SCULC 2026](sculc2026/) | Conference presentation: Quantifying Mutual Intelligibility Using Language Models | Manual |
+| [Kazakh Formality Presentation](presentation/) | LSCI 169 coursework: Formality and Honorifics in Kazakh | Manual |
 | [ICS 5 Field Trips](ics5/) | UC Irvine ICS 5 sustainability field trip information | Manual |
 | [Rabbit](rabbit/) | ASCII art animation engine with interactive bunny character | Manual |
 
@@ -42,11 +55,20 @@ Dashboards/
 │   ├── generate.py             # Dashboard generator
 │   └── index.html              # Council member dashboard
 │
-├── flock-investigation/        # ALPR surveillance research
-│   ├── index.html              # Investigation dashboard
-│   ├── README.md               # Detailed findings and analysis
-│   ├── scripts/                # FOIA scrapers and data tools
-│   └── data/                   # PDFs, documents, and evidence
+├── doc-search/                 # California public-records search tool
+│   └── index.html              # Search interface
+│
+├── ivy/                        # Nursing research corpus (primary-source synthesis)
+│   ├── index.html              # Landing page
+│   └── de-escalation/          # Structured de-escalation & restraint-reduction research
+│       ├── index.html          # 21-section synthesis
+│       └── de-escalation.md    # Downloadable Markdown for AI ingest
+│
+├── sculc2026/                  # SCULC 2026 conference presentation
+│   └── index.html              # Quantifying Mutual Intelligibility Using Language Models
+│
+├── presentation/               # LSCI 169 coursework
+│   └── index.html              # Formality and Honorifics in Kazakh
 │
 ├── rabbit/                     # ASCII animation engine
 │   ├── src/                    # TypeScript source

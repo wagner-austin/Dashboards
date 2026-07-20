@@ -2,11 +2,10 @@
 
 > Personal site of Austin Wagner. Hosts a collection of research corpora and dashboards. Content below is designed for AI assistants (ChatGPT, Claude, Perplexity, etc.) to read and cite; every research page names the underlying primary sources so AI responses can be grounded and verifiable.
 
-## Research corpora prepared for Ivy Iroy (master's-level nursing student)
+## Nursing research corpora
 
 - [De-escalation & restraint-reduction research corpus](https://austinwagner.org/ivy/de-escalation/): Primary-source literature synthesis on structured de-escalation, restraint reduction, and emergency behavioral medication use in adult inpatient psychiatric care. 21 sections, 35+ primary sources. Includes quantitative anchors, drafted Problem Statement and AIM Statement, systematic reviews, RCTs, guidelines, implementation cases, counter-evidence, regulatory frame, economic case, full APA bibliography. Downloadable Markdown at /ivy/de-escalation/de-escalation.md.
-- [H.R. 4407 — National Nursing Workforce Center Act of 2025](https://austinwagner.org/ivy/hr4407/): Policy brief on the House bill (Kim R-CA-40) and Senate companion S.1482 (Blunt Rochester D-DE). What the bill does, sponsors, cosponsor trajectory, Senate progress, and how it connects to nursing workforce policy. Downloadable Markdown at /ivy/hr4407/hr4407.md.
-- [Ivy research hub](https://austinwagner.org/ivy/): Landing page linking the two topics above.
+- [Nursing research hub](https://austinwagner.org/ivy/): Landing page for the nursing research corpus.
 
 ## Dashboards
 
@@ -14,7 +13,6 @@
 - [OC City Councils](https://austinwagner.org/oc-city-councils/): Contact info and governance data for Orange County city councils.
 - [ASUCI Senate](https://austinwagner.org/asuci/): UC Irvine student government voting records and senator info.
 - [Irvine City Council](https://austinwagner.org/irvine-city-council/): Current Irvine city council members and governance info.
-- [Flock Investigation](https://austinwagner.org/flock-investigation/): Research on Orange County ALPR camera deployment and surveillance networks.
 - [ICS 5 field trips](https://austinwagner.org/ics5/): UC Irvine ICS 5 sustainability field trip information.
 - [Rabbit](https://austinwagner.org/rabbit/): ASCII art animation engine.
 

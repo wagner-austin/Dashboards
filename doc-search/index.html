@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Search | California Public Records</title>
+    <style>
+        :root {
+            --primary: #0064a4;
+            --primary-dark: #003d66;
+            --primary-light: #e6f2fa;
+            --gold: #ffc72c;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-400: #9ca3af;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --green-700: #15803d;
+            --red-600: #dc2626;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: var(--gray-100);
+            color: var(--gray-800);
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+        }
+        .header h1 { font-size: 1.75rem; font-weight: 600; }
+        .header p { opacity: 0.9; margin-top: 0.5rem; font-size: 0.95rem; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Search bar */
+        .search-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-bar input:focus { border-color: var(--primary); }
+        .search-bar button {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .search-bar button:hover { background: var(--primary-dark); }
+        .search-bar button:disabled {
+            background: var(--gray-400);
+            cursor: not-allowed;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .filters select {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            background: white;
+            color: var(--gray-800);
+        }
+
+        /* Status */
+        .status {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+        .status.error { color: var(--red-600); }
+        .spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--gray-200);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 0.5rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Results */
+        .results-meta {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+        .result-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 0.75rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .result-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,100,164,0.12);
+        }
+        .result-title {
+            color: var(--primary);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .result-snippet {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        .result-snippet mark {
+            background: var(--gold);
+            color: var(--gray-800);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        .result-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+        .result-meta .badge {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Document viewer */
+        .doc-viewer {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .doc-viewer-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .doc-viewer-header h2 {
+            font-size: 1.1rem;
+            color: var(--gray-800);
+        }
+        .doc-viewer-header a {
+            color: var(--primary);
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .doc-viewer-header a:hover { text-decoration: underline; }
+        .doc-viewer-back {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .doc-viewer-back:hover { text-decoration: underline; }
+        .doc-page {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--gray-100);
+            white-space: pre-wrap;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--gray-800);
+        }
+        .doc-page-number {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        .pagination button {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            background: white;
+            color: var(--gray-800);
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .pagination button:hover { border-color: var(--primary); }
+        .pagination button:disabled {
+            color: var(--gray-400);
+            cursor: not-allowed;
+        }
+        .pagination .page-info {
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>California Public Records Search</h1>
+        <p>Search council meetings, budgets, commissions, and public documents</p>
+    </div>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search documents..." autofocus>
+            <button id="searchBtn" onclick="doSearch()">Search</button>
+        </div>
+        <div class="filters">
+            <select id="categoryPrefix">
+                <option value="">All jurisdictions</option>
+                <option value="irvine">Irvine</option>
+                <option value="garden-grove">Garden Grove</option>
+                <option value="oc-san">OC San</option>
+                <option value="irwd">IRWD</option>
+                <option value="iusd">IUSD</option>
+                <option value="ocmvcd">OCMVCD</option>
+            </select>
+        </div>
+
+        <div id="content">
+            <div class="status">Enter a search query to find public documents.</div>
+        </div>
+    </div>
+
+<script>
+const API_BASE = "https://mcp.austinwagner.org";
+const SEARCH_LIMIT = 20;
+const PAGE_LIMIT = 10;
+
+let currentOffset = 0;
+let currentQuery = "";
+let currentTotal = 0;
+
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+const categoryPrefix = document.getElementById("categoryPrefix");
+const content = document.getElementById("content");
+
+searchInput.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") doSearch();
+});
+
+function doSearch(offset) {
+    const q = searchInput.value.trim();
+    if (!q) return;
+    currentQuery = q;
+    currentOffset = offset || 0;
+    searchBtn.disabled = true;
+    content.innerHTML = '<div class="status"><div class="spinner"></div><br>Searching...</div>';
+
+    const params = new URLSearchParams({ q: q, limit: String(SEARCH_LIMIT), offset: String(currentOffset) });
+    const prefix = categoryPrefix.value;
+    if (prefix) params.set("category_prefix", prefix);
+
+    fetch(API_BASE + "/public/search?" + params.toString())
+        .then(function(r) {
+            if (!r.ok) return r.json().then(function(b) { throw new Error(b.error || "Search failed"); });
+            return r.json();
+        })
+        .then(function(data) {
+            searchBtn.disabled = false;
+            currentTotal = data.total;
+            renderResults(data);
+        })
+        .catch(function(err) {
+            searchBtn.disabled = false;
+            content.innerHTML = '<div class="status error">' + escapeHtml(err.message) + '</div>';
+        });
+}
+
+function renderResults(data) {
+    if (data.results.length === 0) {
+        content.innerHTML = '<div class="status">No documents found.</div>';
+        return;
+    }
+
+    var html = '<div class="results-meta">' + String(data.total) + ' results';
+    if (data.offset > 0) html += ' (showing ' + String(data.offset + 1) + '-' + String(Math.min(data.offset + data.limit, data.total)) + ')';
+    html += '</div>';
+
+    for (var i = 0; i < data.results.length; i++) {
+        var hit = data.results[i];
+        var snippet = formatSnippet(hit.snippet);
+        var category = hit.documentId ? extractCategory(hit) : "";
+        html += '<div class="result-card" onclick="viewDocument(\'' + escapeAttr(hit.documentId) + '\')">';
+        html += '<div class="result-title">' + escapeHtml(hit.title) + '</div>';
+        html += '<div class="result-snippet">' + snippet + '</div>';
+        html += '<div class="result-meta">';
+        html += '<span>Page ' + String(hit.pageNumber) + '</span>';
+        html += '<span>Score: ' + String(hit.rank) + '</span>';
+        if (category) html += '<span class="badge">' + escapeHtml(category) + '</span>';
+        html += '</div></div>';
+    }
+
+    if (data.total > SEARCH_LIMIT) {
+        html += renderPagination(data.offset, data.total, SEARCH_LIMIT);
+    }
+
+    content.innerHTML = html;
+}
+
+function viewDocument(docId) {
+    loadDocPages(docId, 0);
+}
+
+function loadDocPages(docId, offset) {
+    content.innerHTML = '<div class="status"><div class="spinner"></div><br>Loading document...</div>';
+
+    fetch(API_BASE + "/public/documents/" + encodeURIComponent(docId) + "/pages?offset=" + String(offset) + "&limit=" + String(PAGE_LIMIT))
+        .then(function(r) {
+            if (!r.ok) return r.json().then(function(b) { throw new Error(b.error || "Failed to load document"); });
+            return r.json();
+        })
+        .then(function(data) { renderDocument(data, docId); })
+        .catch(function(err) {
+            content.innerHTML = '<div class="status error">' + escapeHtml(err.message) + '</div>';
+        });
+}
+
+function renderDocument(data, docId) {
+    var doc = data.document;
+    var html = '<a class="doc-viewer-back" onclick="doSearch(' + String(currentOffset) + ')">&larr; Back to results</a>';
+    html += '<div class="doc-viewer">';
+    html += '<div class="doc-viewer-header">';
+    html += '<div><h2>' + escapeHtml(doc.title) + '</h2>';
+    html += '<div class="result-meta" style="margin-top:0.4rem">';
+    html += '<span class="badge">' + escapeHtml(doc.category) + '</span>';
+    html += '<span>' + String(doc.pageCount) + ' pages</span>';
+    if (doc.meetingDate) html += '<span>' + escapeHtml(doc.meetingDate) + '</span>';
+    html += '</div></div>';
+    if (doc.source) html += '<a href="' + escapeAttr(doc.source) + '" target="_blank" rel="noopener">View original</a>';
+    html += '</div>';
+
+    for (var i = 0; i < data.pages.length; i++) {
+        var page = data.pages[i];
+        html += '<div class="doc-page">';
+        html += '<div class="doc-page-number">Page ' + String(page.pageNumber) + '</div>';
+        html += escapeHtml(page.content);
+        html += '</div>';
+    }
+    html += '</div>';
+
+    if (data.total > PAGE_LIMIT) {
+        html += renderPagination(data.offset, data.total, PAGE_LIMIT, docId);
+    }
+
+    content.innerHTML = html;
+}
+
+function renderPagination(offset, total, limit, docId) {
+    var hasPrev = offset > 0;
+    var hasNext = offset + limit < total;
+    var pageNum = Math.floor(offset / limit) + 1;
+    var totalPages = Math.ceil(total / limit);
+
+    var html = '<div class="pagination">';
+    if (docId) {
+        html += '<button ' + (hasPrev ? 'onclick="loadDocPages(\'' + escapeAttr(docId) + '\',' + String(offset - limit) + ')"' : 'disabled') + '>&larr; Previous</button>';
+        html += '<span class="page-info">Page ' + String(pageNum) + ' of ' + String(totalPages) + '</span>';
+        html += '<button ' + (hasNext ? 'onclick="loadDocPages(\'' + escapeAttr(docId) + '\',' + String(offset + limit) + ')"' : 'disabled') + '>Next &rarr;</button>';
+    } else {
+        html += '<button ' + (hasPrev ? 'onclick="doSearch(' + String(offset - limit) + ')"' : 'disabled') + '>&larr; Previous</button>';
+        html += '<span class="page-info">Page ' + String(pageNum) + ' of ' + String(totalPages) + '</span>';
+        html += '<button ' + (hasNext ? 'onclick="doSearch(' + String(offset + limit) + ')"' : 'disabled') + '>Next &rarr;</button>';
+    }
+    html += '</div>';
+    return html;
+}
+
+function formatSnippet(snippet) {
+    var escaped = escapeHtml(snippet);
+    return escaped.replace(/&lt;&lt;/g, '<mark>').replace(/&gt;&gt;/g, '</mark>');
+}
+
+function extractCategory(hit) {
+    return "";
+}
+
+function escapeHtml(str) {
+    var div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+}
+
+function escapeAttr(str) {
+    return str.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+</body>
+</html>

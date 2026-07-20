@@ -1,5 +1,7 @@
 # Orange County Flock Safety ALPR Investigation
 
+Live: <https://austinwagner.org/flock-investigation/>
+
 Last Updated: March 1, 2026
 
 ## The Core Question
@@ -19,7 +21,7 @@ Last Updated: March 1, 2026
 | **Sep 2025** | SFPD's Flock database had **1.6M+ illegal out-of-state searches**, including 19+ marked as ICE-related. | [SF Standard](https://sfstandard.com/2025/09/08/sfpd-flock-alpr-ice-data-sharing/) |
 | **Oct 2025** | AG Bonta **sues El Cajon** for sharing ALPR data with agencies in more than two dozen states. UW report proves Flock's "National Lookup" feature enabling unauthorized access in WA state. **SB 274** (ALPR reform bill) **vetoed by Newsom**. | [CalMatters](https://calmatters.org/justice/2025/10/el-cajon-police-license-plate-data/), [CalMatters](https://calmatters.org/economy/technology/2025/10/newsom-vetoes-license-plate-reader-regulations/) |
 | **Nov 2025** | Capitola PD admits ICE accessed their plate data ("a mistake"). Oakland PD sued for sharing Flock data with feds. | [Santa Cruz Local](https://santacruzlocal.org/2025/11/07/ice-accessed-capitola-license-plate-data-police-say-it-was-a-mistake/) |
-| **Feb 2026** | ICE **opens offices in Irvine** (2000 block of Main St) and Santa Ana. 3 women detained at Irvine business. Mountain View disables all 30 Flock cameras after discovering unauthorized ATF/Air Force access. **~30 cities** have deactivated or canceled Flock contracts. Amazon Ring terminates Flock integration. | [OC Register](https://www.ocregister.com/2026/02/10/ice-reportedly-leases-office-spaces-in-irvine-and-santa-ana/), [NPR](https://www.npr.org/2026/02/17/nx-s1-5612825/flock-contracts-canceled-immigration-survillance-concerns) |
+| **Feb 2026** | ICE **opens offices in Irvine** (2000 block of Main St) and Santa Ana. 3 women detained at Irvine business. Mountain View disables all 30 Flock cameras after discovering unauthorized ATF/Air Force access. **~30 cities** have deactivated or canceled Flock contracts. Amazon Ring cancels planned Flock integration (per Ring's statement, the partnership was never active and no video ever shared). | [OC Register](https://www.ocregister.com/2026/02/10/ice-reportedly-leases-office-spaces-in-irvine-and-santa-ana/), [NPR](https://www.npr.org/2026/02/17/nx-s1-5612825/flock-contracts-canceled-immigration-survillance-concerns) |
 
 ### Irvine PD's current setup
 
