@@ -47,5 +47,12 @@ oc-city-councils/election_data/*.txt
 oc-city-councils/election_data/*.zip
 oc-city-councils/election_data/*_data/
 
-# metabolomics is its own repo (Dashboards/metabolomics/.git) — do not track here
-metabolomics/
+# metabolomics source lives in its own repo at ~/PROJECTS/metabolomics-dashboard
+# (remote: wagner-austin/metabolomics-dashboard). Only the built page is tracked
+# here, because it IS the deploy artifact for austinwagner.org/metabolomics/.
+# Must be `metabolomics/*` not `metabolomics/` — git cannot re-include a file
+# whose parent directory is excluded, so the negation below needs the directory
+# entry left unexcluded. Regression this guards: 2026-06-14..2026-07-30, when
+# untracking the folder silently 404'd the published page.
+metabolomics/*
+!metabolomics/index.html
