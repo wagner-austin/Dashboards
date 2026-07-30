@@ -46,10 +46,9 @@ Dashboards/
 │   ├── generate.py             # Playwright web scraper
 │   └── index.html              # Generated dashboard
 │
-├── metabolomics/               # Metabolomics data visualization
-│   ├── generate.py             # Data processing pipeline
-│   ├── index.html              # Interactive dashboard (D3.js + DataTables)
-│   └── *.xlsx, *.csv           # Source data files
+├── metabolomics/               # Deploy artifact only — source is a separate repo
+│   └── index.html              # Interactive dashboard (D3.js + DataTables)
+│                               # built in ~/PROJECTS/metabolomics-dashboard
 │
 ├── irvine-city-council/        # Irvine city council info
 │   ├── generate.py             # Dashboard generator
@@ -140,9 +139,16 @@ python asuci/generate.py --quick
 
 ### Metabolomics
 
+Source lives in its own repo (`wagner-austin/metabolomics-dashboard`), checked out
+at `~/PROJECTS/metabolomics-dashboard`. Build there, then copy the artifact here —
+`metabolomics/index.html` in this repo is what GitHub Pages serves, so the copy
+step is the deploy.
+
 ```bash
-# Generate dashboard from Excel data
-python metabolomics/generate.py
+cd ~/PROJECTS/metabolomics-dashboard
+make build            # poetry run python generate.py
+cp index.html ~/PROJECTS/Dashboards/metabolomics/index.html
+# then commit metabolomics/index.html here
 ```
 
 ### Rabbit
