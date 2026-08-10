@@ -11,7 +11,7 @@
     <header class="header">
         <h1>Irvine Flock Investigation</h1>
         <div class="subtitle">Automated license plate reader data and federal access</div>
-        <div class="updated">Last Updated: March 1, 2026</div>
+        <div class="updated">Last Updated: August 10, 2026</div>
     </header>
 
     <nav class="nav">
@@ -138,7 +138,7 @@
                 </tr>
                 <tr class="row-warning">
                     <td>Who queries Irvine's Flock system?</td>
-                    <td><strong>UNKNOWN</strong> - 350K+ outside queries/month, no agency breakdown</td>
+                    <td><strong>UNKNOWN</strong> - 352,289 accesses in Jan 2025, up from 18,453/month in Feb 2024; the CPRA returns monthly totals with no agency names</td>
                     <td>Requires CPRA (California Public Records Act) request for Flock Network Audit</td>
                 </tr>
                 <tr class="row-warning">
@@ -168,7 +168,9 @@
         <div class="doc-grid">
             <div class="doc-card">
                 <h4>Flock Safety (Current Vendor)</h4>
-                <p>Confirmed Feb 2025; fully transitioned from Vigilant Solutions. BSCC (Board of State and Community Corrections) grant application (July 2023) requested ~30 stationary Flock-tagged cameras at $112,500 year 1 and $90,000 years 2-3, plus a separate ~70-camera "Flock or similar" line item; the currently deployed camera count is not publicly disclosed.</p>
+                <p>Flock confirmed Feb 2025 — but <strong>not</strong> a full transition from Vigilant. The CPRA response states verbatim: "Department accesses 2 ALPR systems, data only extractable from one," and OpenStreetMap still tags 16 Irvine PD cameras as Motorola Solutions (the former Vigilant). The BSCC grant budget separates two lines that are often conflated: <strong>LPR</strong> — "approximately 70 stationary LPR cameras," $578,500 year 1 and $493,500 years 2-3, $1,565,500 over the grant — and <strong>Stationary Cameras</strong>, "approximately 30," at $112,500 year 1 and $90,000 years 2-3. <strong>The $112,500 figure widely cited as Irvine's Flock cost is the recordable-video-camera line, not the plate-reader line.</strong> Both are quoted "Flock or similar" because Flock sells both. Irvine's own Local Evaluation Plan filed with the State confirms the split: "a minimum of 30 stationary, recordable video cameras."</p>
+
+                <p><strong>Deployed count, Aug 2026.</strong> No City document reports a number above 43. IPD told the State it had "selected 104 locations" against an application proposing "a minimum of 70 LPRs," because "negotiations and pricing may allow for more." The FY 2025-27 Adopted Budget (p.246) says "144 fixed LPR locations." An OpenStreetMap query clipped to the city boundary finds <strong>141 Irvine PD ALPR nodes — 123 Flock, 16 Motorola</strong> — which cluster at 150m into <strong>101 distinct Flock sites, 82 of them a single camera</strong>. So ~101 observed sites against the 104 reported to Sacramento is a 3% match, and <strong>2.3x the 43 locations described to the Council that approved the money.</strong> The cameras span 12.2 km north-south by 15.5 km east-west with a median 4.7 km from centre — citywide and interior-weighted, not the perimeter ring the grant described.</p>
                 <div class="links">
                     <a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">CPRA Source</a>
                 </div>
@@ -205,7 +207,7 @@
     <div class="collapsible-header">
         <div>
             <h3 class="collapsible-title">Key Statistics</h3>
-            <p class="collapsible-subtitle">107M plate scans, 350K monthly external queries, 199 users</p>
+            <p class="collapsible-subtitle">107M plate scans (one of two ALPR systems), external access up 19x in 11 months, 290 users</p>
         </div>
         <span class="collapsible-icon">&#9660;</span>
     </div>
@@ -272,15 +274,21 @@
                     <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a></td>
                 </tr>
                 <tr>
-                    <td><strong>OCSD Relay</strong></td>
+                    <td><strong>Federal data inbound</strong></td>
+                    <td>ATF National Account, four HIDTA centers (AZ, Houston, Indiana, Ohio), US Postal Inspection Service and NCRIC all appear on A2 (data received by Irvine)</td>
+                    <td>Federal and fusion-center data flows into Irvine's system. A2 runs to 1,553 organizations in total</td>
+                    <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a></td>
+                </tr>
+                <tr>
+                    <td><strong>OCSD relay</strong> <span style="color:#b45309">(direction unproven)</span></td>
                     <td>CalMatters confirmed OCSD ran plate searches for ICE and Border Patrol</td>
-                    <td>Irvine shares data with OCSD (Orange County Sheriff's Dept.); OCSD is a confirmed SB 34 violator</td>
+                    <td><strong>Corrected Aug 2026:</strong> OCSD appears on Irvine's <em>inbound</em> tab (A2), not on either outbound tab. This production does not show Irvine data reaching OCSD — nor rule it out, since a cross-agency query would surface in the unattributed access counts rather than in A1</td>
                     <td><a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (Jun 2025)</a></td>
                 </tr>
                 <tr>
-                    <td><strong>Fusion Centers</strong></td>
-                    <td>NCRIC (Northern CA Regional Intelligence Center) on A1, JRIC (Joint Regional Intelligence Center) on A3</td>
-                    <td>Fusion centers share with federal participants (including DHS) by design</td>
+                    <td><strong>Unattributed query surface</strong></td>
+                    <td>The CPRA answers "how many times other agencies, including federal agencies, accessed the department's ALPR data" with monthly totals and <strong>no agency names</strong></td>
+                    <td>This is exactly where an ICE or CBP query would appear, and it is the field the production leaves blank. Access grew from 18,453/month (Feb 2024) to 352,289 (Jan 2025)</td>
                     <td><a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock CPRA (Mar 2025)</a></td>
                 </tr>
                 <tr>
@@ -353,7 +361,7 @@
                 </div>
             </div>
             <div class="flow-citation">
-                <strong>Source:</strong> <a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (Jun 2025)</a> — Oakland Privacy obtained Flock audit logs showing SB 34 violations. Irvine PD shares data with OCSD, making this a confirmed relay pathway.
+                <strong>Source:</strong> <a href="https://calmatters.org/economy/technology/2025/06/california-police-sharing-license-plate-reader-data/" target="_blank">CalMatters (Jun 2025)</a> — Oakland Privacy obtained Flock audit logs showing SB 34 violations by OCSD. <strong>Corrected Aug 2026:</strong> an earlier version of this page called this a confirmed relay pathway on the basis that Irvine shares data with OCSD. Reading the CPRA workbook tab by tab, OCSD appears only on A2 (organizations Irvine receives data <em>from</em>). It is on neither outbound tab, so this production does not establish that Irvine data reached OCSD.
             </div>
         </div>
     </div>
@@ -677,7 +685,7 @@
         <div class="doc-grid">
             <div class="doc-card">
                 <h4>MuckRock: Irvine ALPR Audits (March 2025)</h4>
-                <p><strong>KEY SOURCE:</strong> Excel file shows "HSI MASTER" in hot list sources, "SAN DIEGO SECTOR BORDER PATROL" in data sources, 107M+ scans, 350K+ monthly external accesses, 199 users.</p>
+                <p><strong>KEY SOURCE:</strong> Excel file shows "HSI MASTER" in hot list sources, "SAN DIEGO SECTOR BORDER PATROL" in data sources, 107M+ scans, external access rising from 18,453/month (Feb 2024) to 352,289 (Jan 2025), 290 users, 44,659 audit rows. The same workbook states: "Department accesses 2 ALPR systems, data only extractable from one" - every figure here describes one system.</p>
                 <div class="links">
                     <a href="https://www.muckrock.com/foi/irvine-3262/alpr-audits-irvine-police-department-181267/" target="_blank">MuckRock Page</a>
 

@@ -2,7 +2,7 @@
 
 Live: <https://austinwagner.org/flock-investigation/>
 
-Last Updated: March 1, 2026
+Last Updated: August 10, 2026
 
 ## The Core Question
 
@@ -26,7 +26,7 @@ Last Updated: March 1, 2026
 ### Irvine PD's current setup
 
 - **Vendor:** Flock Safety (confirmed Feb 2025; fully transitioned from Vigilant)
-- **Cameras:** ~30 stationary ALPR cameras ($112,500/yr via BSCC grant, contract since Oct 2023)
+- **Cameras:** **123 Flock ALPR cameras across ~101 distinct sites**, plus 16 legacy Motorola/Vigilant units (OpenStreetMap, boundary-clipped, June 2026 snapshot). The city's FY 25-27 budget says "144 fixed LPR locations." Council was told **43**. The often-cited "$112,500" is the grant's ~30 **recordable video camera** line, not the plate-reader line — the LPR line is $578,500 year 1 / $1,565,500 over the grant
 - **Detections:** 107,472,041 plate scans (2019-2025)
 - **Real-Time Crime Center:** $2M facility opened Dec 2024, monitors 1,000+ camera feeds including LPRs, drones
 - **Transparency portal:** None. (Costa Mesa, Buena Park, Newport Beach, Westminster all have one.)
@@ -42,8 +42,8 @@ Irvine's A1/A3 lists (316 + 156 agencies) do NOT include ICE/CBP/HSI. But:
 | Pathway | Evidence | Why it matters |
 |---------|----------|----------------|
 | **HSI hot list** | HSI MASTER on A4 (hot lists received) | HSI pushes target plates; Irvine's cameras auto-alert when detected |
-| **OCSD relay** | CalMatters confirmed OCSD ran searches for ICE/CBP | Irvine shares data with OCSD; OCSD is a confirmed SB 34 violator |
-| **Fusion centers** | NCRIC on A1, JRIC on A3 | Fusion centers share with federal participants by design |
+| **OCSD relay** *(direction unproven)* | CalMatters confirmed OCSD ran searches for ICE/CBP | **Corrected Aug 2026:** OCSD is on Irvine's *inbound* tab (A2), not either outbound tab. This production does not show Irvine data reaching OCSD |
+| **Federal inbound (A2)** | ATF National Account, 4 HIDTAs, US Postal Inspection Service, NCRIC | Federal and fusion-center data flows *into* Irvine. NCRIC is on A2/A4 only. **JRIC appears nowhere in the workbook** |
 | **Flock National Lookup** | CBP had access to 80K cameras via pilot (police records); CEO acknowledged | Paused Aug 2025, but was it active for Irvine before that? **Unknown.** |
 
 ### Vigilant system (2020): DIRECT federal sharing (historical)
@@ -68,7 +68,7 @@ Before switching to Flock, the 2020 Vigilant LEARN report (`data/muckrock/*86954
 | File | What it contains | Source |
 |------|-----------------|--------|
 | `muckrock/*86954_doc0.pdf` | Irvine PD: 2020 Vigilant LEARN report -- direct HSI/CBP/BP sharing | [MuckRock #86954](https://www.muckrock.com/foi/irvine-3262/2020-vigilant-data-sharing-information-automated-license-plate-reader-alpr-irvine-police-department-86954/) |
-| `muckrock/alpr-audits-*_doc5.xlsx` | Irvine PD: A1-A4 Flock sharing lists, 107M detections, 31K hits, 199 users, 44K audit entries | [MuckRock #181267](https://www.muckrock.com/foi/irvine-3262/) |
+| `muckrock/alpr-audits-*_doc5.xlsx` | Irvine PD: A1 316 outbound / A2 1,553 inbound / A3 156 outbound hotlist / A4 1,065 inbound hotlist; 107,472,041 detections and 31,278 hits (1/1/19-2/11/25); **290 users**; **44,659 audit rows** (columns: Reason, DateTime only); monthly external access 18,453 (Feb 2024) rising to 352,289 (Jan 2025). Request tab states: "Department accesses 2 ALPR systems, data only extractable from one" | [MuckRock #181267](https://www.muckrock.com/foi/irvine-3262/) |
 | `A1-A4_Data_Sharing.pdf` | OCSD: Full data sharing report (IRS, JRIC, 150+ agencies) | [MuckRock OCIAC](https://cdn.muckrock.com/foia_files/2025/03/20/A1-_A4__XBKg6U3.pdf) |
 | `SharedNetworks_2025_December.xlsx` | OCSD: 391 network organizations | MuckRock CPRA |
 
