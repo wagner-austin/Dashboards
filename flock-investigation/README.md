@@ -68,7 +68,7 @@ Before switching to Flock, the 2020 Vigilant LEARN report (`data/muckrock/*86954
 | File | What it contains | Source |
 |------|-----------------|--------|
 | `muckrock/*86954_doc0.pdf` | Irvine PD: 2020 Vigilant LEARN report -- direct HSI/CBP/BP sharing | [MuckRock #86954](https://www.muckrock.com/foi/irvine-3262/2020-vigilant-data-sharing-information-automated-license-plate-reader-alpr-irvine-police-department-86954/) |
-| `muckrock/alpr-audits-*_doc5.xlsx` | Irvine PD: A1 316 outbound / A2 1,553 inbound / A3 156 outbound hotlist / A4 1,065 inbound hotlist; 107,472,041 detections and 31,278 hits (1/1/19-2/11/25); **290 users**; **44,659 audit rows** (columns: Reason, DateTime only); monthly external access 18,453 (Feb 2024) rising to 352,289 (Jan 2025). Request tab states: "Department accesses 2 ALPR systems, data only extractable from one" | [MuckRock #181267](https://www.muckrock.com/foi/irvine-3262/) |
+| `muckrock/alpr-audits-*_doc5.xlsx` | Irvine PD: A1 316 outbound / A2 1,553 inbound / A3 156 outbound hotlist / A4 1,065 inbound hotlist; 107,472,041 detections and 31,278 hits (1/1/19-2/11/25); **199 users**; **44,659 audit rows** (columns: Reason, DateTime only); monthly external access 18,453 (Feb 2024) rising to 352,289 (Jan 2025). Request tab states: "Department accesses 2 ALPR systems, data only extractable from one" | [MuckRock #181267](https://www.muckrock.com/foi/irvine-3262/) |
 | `A1-A4_Data_Sharing.pdf` | OCSD: Full data sharing report (IRS, JRIC, 150+ agencies) | [MuckRock OCIAC](https://cdn.muckrock.com/foia_files/2025/03/20/A1-_A4__XBKg6U3.pdf) |
 | `SharedNetworks_2025_December.xlsx` | OCSD: 391 network organizations | MuckRock CPRA |
 
