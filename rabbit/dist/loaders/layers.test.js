@@ -4,6 +4,7 @@
 import { describe, it, expect } from "vitest";
 import { _test_hooks } from "./layers.js";
 import { LAYER_BEHAVIORS } from "../types.js";
+import { DEFAULT_AUTORUN_CONFIG } from "../input/index.js";
 import { layerToWorldZ } from "../layers/widths.js";
 import { createMutableSpriteRegistry } from "./progressive.js";
 const { calculateZoomWidths, calculateLayerWidths, getSpriteWidths, createLayerInstances, createProgressiveLayerInstances } = _test_hooks;
@@ -31,6 +32,7 @@ function createTestConfig() {
         },
         layers: [],
         settings: { fps: 10, jumpSpeed: 5, scrollSpeed: 10 },
+        autorun: DEFAULT_AUTORUN_CONFIG,
     };
 }
 describe("calculateZoomWidths", () => {

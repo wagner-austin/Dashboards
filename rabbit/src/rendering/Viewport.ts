@@ -35,3 +35,10 @@ export function createBuffer(width: number, height: number): string[][] {
 export function renderBuffer(buffer: string[][]): string {
   return buffer.map((row) => row.join("")).join("\n");
 }
+
+/** Test hooks for internal functions */
+export const _test_hooks = {
+  measureViewport,
+  createBuffer,
+  renderBuffer,
+};

@@ -9,12 +9,19 @@ import type { AudioTrack, AudioConfig, AudioDependencies, AudioContextLike } fro
 
 export type { AudioDependencies };
 
-/** Audio system state for track switching. */
+/**
+ * Audio system state for track switching.
+ *
+ * currentTrack is held alongside currentIndex so resuming a suspended context
+ * never has to look a track back up by index, and therefore never needs a
+ * fallback for an index that cannot occur.
+ */
 export interface AudioSystem {
   context: AudioContextLike;
   player: AudioPlayer;
   tracks: readonly AudioTrack[];
   currentIndex: number;
+  currentTrack: AudioTrack;
   cleanup: () => void;
 }
 
@@ -54,6 +61,7 @@ export function switchToNextTrack(audio: AudioSystem): void {
     return;
   }
   audio.currentIndex = nextIndex;
+  audio.currentTrack = nextTrack;
   audio.player.play(nextTrack);
 }
 
@@ -132,6 +140,7 @@ export function initializeAudio(
         player,
         tracks: audioConfig.tracks,
         currentIndex: 0,
+        currentTrack: track,
         cleanup: (): void => {
           deps.removeEventListenerFn("click", start);
           deps.removeEventListenerFn("touchstart", start);
@@ -150,8 +159,7 @@ export function initializeAudio(
 
     system.context.resume().then(() => {
       if (system !== null && !system.player.getState().isPlaying) {
-        const currentTrack = getTrackAtIndex(system.tracks, system.currentIndex) ?? track;
-        system.player.play(currentTrack);
+        system.player.play(system.currentTrack);
       }
     }).catch(() => {
       /* resume failed */

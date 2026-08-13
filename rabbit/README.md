@@ -40,10 +40,20 @@ rabbit/
 │   │   ├── validation.ts    # Config parsing and auto-layer generation
 │   │   ├── renderer.ts      # 3D projected layer rendering with Z-wrapping
 │   │   └── widths.ts        # Depth-to-width mapping with power curve
-│   ├── input/               # User input
-│   │   ├── Keyboard.ts      # Keyboard controls and camera movement
+│   ├── input/               # Input layer (see "Input Architecture")
+│   │   ├── intent.ts        # MovementIntent value type (leaf, no imports)
+│   │   ├── state.ts         # InputState; effective intent lives here
+│   │   ├── arbiter.ts       # Source priority; sole writer of the intent
+│   │   ├── reducer.ts       # Intent change -> bunny state machine
+│   │   ├── Autopilot.ts     # Pure wander state machine (idle autorun)
+│   │   ├── controller.ts    # Frame driver around the autopilot
+│   │   ├── activity.ts      # Seconds since the user last acted
+│   │   ├── movement.ts      # Camera integration from effective intent
+│   │   ├── Keyboard.ts      # Keyboard source
 │   │   ├── Touch.ts         # Invisible virtual joystick (8-way + tap)
-│   │   └── handlers.ts      # Shared input-to-animation handlers
+│   │   ├── handlers.ts      # Shared input-to-animation handlers
+│   │   ├── validation.ts    # Autorun config decoding
+│   │   └── factory.ts       # Assembles and wires the layer
 │   ├── loaders/             # Asset loading
 │   │   ├── progressive.ts   # Ordered sprite loading (ground → grass → bunny → trees)
 │   │   ├── sprites.ts       # Animation timer factory and sprite loaders
@@ -128,6 +138,83 @@ Each animation runs on an independent timer, decoupled from the render loop:
 - **N**: Switch music track
 - **R**: Reset camera position
 - **Touch**: Invisible joystick (drag for 8-way movement, tap to jump)
+
+Leave the page alone and the bunny takes over by itself — see Autorun below.
+
+## Input Architecture
+
+Three sources can drive the bunny: keyboard, touch, and the autopilot. They are
+joined by two explicit state machines and a typed boundary between them.
+
+```
+Keyboard ─┐
+Touch  ───┼──> MovementIntent ──> Arbiter ──> reducer ──> Bunny state machine
+Autopilot ┘                     (sole writer)            (idle/walk/jump/hop)
+```
+
+- **Intent** (`intent.ts`) is what a source *wants*: a horizontal axis, a
+  vertical axis, both immutable. Sources produce intent and nothing else.
+- **The arbiter** (`arbiter.ts`) resolves competing intents by priority — a
+  non-neutral user intent always beats the autopilot — and is the only writer of
+  `state.intent`. A fourth source cannot introduce a second writer.
+- **The reducer** (`reducer.ts`) turns an intent *change* into state machine
+  calls. It has no idea which source won, so every source produces identical
+  animation behaviour for identical intent.
+- **The autopilot** (`Autopilot.ts`) is the upper of the two state machines. It
+  decides what the bunny should want; the bunny's own machine decides how that
+  is performed. `stepAutopilot` is pure — same state, input, config, and draws
+  in, same state out — so the wander logic is tested with real arithmetic rather
+  than timers.
+
+## Autorun
+
+When nobody has touched the keyboard or screen for `idleDelay` seconds, the
+autopilot engages and wanders: walking legs in one direction, occasional hops
+into depth, occasional jumps, and pauses to idle in between. Any real key press
+or touch takes control back immediately, and the autopilot stands down until
+the page goes quiet again.
+
+The autopilot is a four-state machine:
+
+| Phase | Meaning |
+|-------|---------|
+| Dormant | Standing down; the user is present |
+| Pause | Idling between movement legs |
+| Walk | Walking a leg left or right |
+| Hop | Hopping a leg into or out of depth |
+
+Tuned in `config.json`. Every field is optional; an omitted block decodes to
+these defaults.
+
+```json
+{
+  "autorun": {
+    "enabled": true,
+    "idleDelay": 5,
+    "minLeg": 2,
+    "maxLeg": 7,
+    "minPause": 0.8,
+    "maxPause": 3,
+    "turnChance": 0.5,
+    "hopChance": 0.25,
+    "jumpChance": 0.2
+  }
+}
+```
+
+| Field | Meaning |
+|-------|---------|
+| enabled | Whether the autopilot may engage at all |
+| idleDelay | Seconds of no user input before it takes over |
+| minLeg / maxLeg | Shortest and longest movement leg, in seconds |
+| minPause / maxPause | Shortest and longest idle pause, in seconds |
+| turnChance | Probability (0-1) a new walk leg reverses direction |
+| hopChance | Probability (0-1) a leg is a depth hop instead of a walk |
+| jumpChance | Probability (0-1) a walk leg ends with a jump |
+
+Set `"enabled": false` to switch it off entirely. Note that browsers only start
+audio after a real user gesture, so a page left completely untouched animates
+silently.
 
 ## Progressive Loading
 

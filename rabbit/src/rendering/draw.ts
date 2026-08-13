@@ -215,3 +215,13 @@ export function drawSpriteFade(
     }
   }
 }
+
+/** Test hooks for internal functions */
+export const _test_hooks = {
+  densityToChar,
+  clampToDensity,
+  getFadedChar,
+  drawSprite,
+  sampleSprite,
+  drawSpriteFade,
+};

@@ -9,12 +9,21 @@ import type { Config } from "./types.js";
 import type { BunnyFrames } from "./entities/Bunny.js";
 import type { MutableSpriteRegistry, ProgressCallback } from "./loaders/progressive.js";
 import type { BunnyLoadedCallback } from "./io/sprites.js";
-import { measureViewport, type ViewportState } from "./rendering/Viewport.js";
+import { measureViewport } from "./rendering/Viewport.js";
 import { renderFrame, type RenderState } from "./rendering/SceneRenderer.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers } from "./entities/Bunny.js";
-import { setupKeyboardControls, processDepthMovement, processHorizontalMovement, type InputState } from "./input/Keyboard.js";
-import { setupTouchControls } from "./input/Touch.js";
+import {
+  DEFAULT_TOUCH_CONFIG,
+  createHorizontalHeldProbe,
+  createInputState,
+  createInputSystem,
+  type InputState,
+  type InputSystem,
+  type KeyboardEventSource,
+  type RandomSource,
+  type TouchEventSource,
+} from "./input/index.js";
 import { processLayersConfig, createSceneState, type SceneState } from "./layers/index.js";
 import { createProgressiveLayerInstances } from "./loaders/layers.js";
 import { createLayerAnimationCallback } from "./entities/SceneSprite.js";
@@ -30,6 +39,8 @@ import {
   loadConfig,
   runProgressiveLoad,
   createDefaultAudioDependencies,
+  createDocumentKeyboardSource,
+  createDocumentTouchSource,
 } from "./io/index.js";
 
 /**
@@ -40,6 +51,9 @@ import {
  * runProgressiveLoadFn: Runs progressive sprite loading.
  * requestAnimationFrameFn: Schedules next frame.
  * audioDeps: Audio system dependencies.
+ * random: Source of draws in [0, 1) shaping the autopilot wander.
+ * keyboardEvents: Event target for keyboard listeners.
+ * touchEvents: Event target and clock for touch listeners.
  */
 export interface MainDependencies {
   getScreenElement: () => HTMLPreElement | null;
@@ -52,6 +66,9 @@ export interface MainDependencies {
   ) => Promise<void>;
   requestAnimationFrameFn: (callback: (time: number) => void) => number;
   audioDeps: AudioDependencies;
+  random: RandomSource;
+  keyboardEvents: KeyboardEventSource;
+  touchEvents: TouchEventSource;
 }
 
 /**
@@ -62,11 +79,17 @@ export interface MainDependencies {
  */
 function createDefaultDependencies(): MainDependencies {
   return {
-    getScreenElement: () => document.getElementById("screen") as HTMLPreElement | null,
+    getScreenElement: (): HTMLPreElement | null => {
+      const element = document.getElementById("screen");
+      return element instanceof HTMLPreElement ? element : null;
+    },
     loadConfigFn: loadConfig,
     runProgressiveLoadFn: runProgressiveLoad,
     requestAnimationFrameFn: (callback) => requestAnimationFrame(callback),
     audioDeps: createDefaultAudioDependencies(),
+    random: () => Math.random(),
+    keyboardEvents: createDocumentKeyboardSource(),
+    touchEvents: createDocumentTouchSource(),
   };
 }
 
@@ -160,13 +183,11 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
   // Mutable reference for bunny frames (set when bunny loading completes)
   let bunnyFrames: BunnyFrames | null = null;
 
-  const state: InputState & { viewport: ViewportState; scene: SceneState } = {
-    bunny: bunnyState,
-    viewport,
-    camera,
-    depthBounds,
-    horizontalHeld: null,
-    verticalHeld: null,
+  // Input layer is assembled once the bunny frames arrive; null until then.
+  let inputSystem: InputSystem | null = null;
+
+  const state: InputState & { scene: SceneState } = {
+    ...createInputState(bunnyState, viewport, camera, depthBounds),
     scene: sceneState,
   };
 
@@ -196,10 +217,9 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
     // Calculate delta time for frame-rate independent movement
     const deltaTime = lastTime > 0 ? (currentTime - lastTime) / 1000 : 0;
 
-    // Process movement input only if bunny is loaded
-    if (bunnyFrames !== null) {
-      processDepthMovement(state, deltaTime);
-      processHorizontalMovement(state, deltaTime);
+    // Advance autopilot and camera movement once the input layer exists
+    if (inputSystem !== null) {
+      inputSystem.update(deltaTime);
     }
 
     // Sync camera from input state to scene state
@@ -256,21 +276,27 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
       // Bunny loaded callback - set up controls immediately
       bunnyFrames = loadedBunnyFrames;
 
-      // Create callback to check horizontal input for animation completion
-      const isHorizontalHeld = (): boolean => state.horizontalHeld !== null;
-
-      // Create timers now that bunny is loaded
-      const bunnyTimers = createBunnyTimers(bunnyState, bunnyFrames, {
+      // Create timers now that bunny is loaded. Animation completion consults
+      // the effective intent, whichever source produced it.
+      const bunnyTimers = createBunnyTimers(bunnyState, loadedBunnyFrames, {
         walk: 120,
         idle: 500,
         jump: 58,
         transition: 50,
         hop: 150,
-      }, isHorizontalHeld);
+      }, createHorizontalHeldProbe(state));
 
-      // Setup input controls
-      setupKeyboardControls(state, bunnyFrames, bunnyTimers);
-      setupTouchControls(state, bunnyFrames, bunnyTimers);
+      // Assemble the input layer: arbiter, autopilot, keyboard, and touch
+      inputSystem = createInputSystem({
+        state,
+        frames: loadedBunnyFrames,
+        timers: bunnyTimers,
+        autorun: config.autorun,
+        random: deps.random,
+        keyboardEvents: deps.keyboardEvents,
+        touchEvents: deps.touchEvents,
+        touch: DEFAULT_TOUCH_CONFIG,
+      });
 
       // Start bunny animation timers
       bunnyTimers.walk.start();
@@ -305,21 +331,9 @@ function createEmptyBunnyFrames(): BunnyFrames {
   };
 }
 
-/**
- * Check if running in test environment.
- *
- * Returns:
- *     True if MODE is 'test'.
- */
-function isTestEnvironment(): boolean {
-  const meta = import.meta as { env?: { MODE?: string } };
-  return meta.env?.MODE === "test";
-}
-
 /** Test hooks for internal functions */
 export const _test_hooks = {
   createDefaultDependencies,
-  isTestEnvironment,
   collectAllSpriteNames,
   createEmptyBunnyFrames,
 };

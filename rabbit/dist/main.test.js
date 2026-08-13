@@ -4,14 +4,8 @@
  */
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { init, _test_hooks } from "./main.js";
-import { advanceAllSceneSpriteFrames, createLayerAnimationCallback } from "./entities/SceneSprite.js";
-import { createSceneState } from "./layers/index.js";
-import { LAYER_BEHAVIORS } from "./types.js";
-import { createCamera } from "./world/Projection.js";
-/** Test depth bounds (minZ=-110, maxZ=160, range=270) */
-function createTestDepthBounds() {
-    return { minZ: -110, maxZ: 160, range: 270 };
-}
+import { DEFAULT_AUTORUN_CONFIG } from "./input/index.js";
+import { createConstantRandom, createTestKeyboardSource, createTestTouchSource, } from "./testing/fixtures.js";
 function createTestBunnyFrames() {
     return {
         walkLeft: ["walk_l_0", "walk_l_1"],
@@ -35,6 +29,7 @@ function createTestConfig() {
         sprites: {},
         layers: [],
         settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+        autorun: DEFAULT_AUTORUN_CONFIG,
         autoLayers: {
             sprites: ["tree1", "tree2"],
             minLayer: 8,
@@ -125,6 +120,9 @@ describe("init", () => {
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
             audioDeps: createTestAudioDeps(),
+            random: createConstantRandom(0.5),
+            keyboardEvents: createTestKeyboardSource(),
+            touchEvents: createTestTouchSource(),
         };
         await expect(init(deps)).rejects.toThrow("Screen element not found");
     });
@@ -133,6 +131,7 @@ describe("init", () => {
             sprites: {},
             layers: [],
             settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
             // No autoLayers
         };
         const deps = {
@@ -141,6 +140,9 @@ describe("init", () => {
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
             audioDeps: createTestAudioDeps(),
+            random: createConstantRandom(0.5),
+            keyboardEvents: createTestKeyboardSource(),
+            touchEvents: createTestTouchSource(),
         };
         await expect(init(deps)).rejects.toThrow("config.autoLayers is required for depth movement");
     });
@@ -154,6 +156,9 @@ describe("init", () => {
                 return rafCallbacks.length;
             },
             audioDeps: createTestAudioDeps(),
+            random: createConstantRandom(0.5),
+            keyboardEvents: createTestKeyboardSource(),
+            touchEvents: createTestTouchSource(),
         };
         await init(deps);
         // Should have queued multiple render callbacks (one at start, more as frames run)
@@ -188,6 +193,9 @@ describe("init", () => {
                 return rafCallbacks.length;
             },
             audioDeps: createTestAudioDeps(),
+            random: createConstantRandom(0.5),
+            keyboardEvents: createTestKeyboardSource(),
+            touchEvents: createTestTouchSource(),
         };
         // Start init but don't await - it will block waiting for load
         const initPromise = init(deps);
@@ -224,6 +232,9 @@ describe("init", () => {
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
             audioDeps: createTestAudioDeps(),
+            random: createConstantRandom(0.5),
+            keyboardEvents: createTestKeyboardSource(),
+            touchEvents: createTestTouchSource(),
         };
         await init(deps);
         // Dispatch resize event - should not throw
@@ -245,6 +256,9 @@ describe("init", () => {
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
             audioDeps,
+            random: createConstantRandom(0.5),
+            keyboardEvents: createTestKeyboardSource(),
+            touchEvents: createTestTouchSource(),
         };
         await init(deps);
         // Audio event listeners should be registered
@@ -268,6 +282,9 @@ describe("init", () => {
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
             audioDeps,
+            random: createConstantRandom(0.5),
+            keyboardEvents: createTestKeyboardSource(),
+            touchEvents: createTestTouchSource(),
         };
         await init(deps);
         // No event listeners should be registered
@@ -292,6 +309,9 @@ describe("init", () => {
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
             audioDeps,
+            random: createConstantRandom(0.5),
+            keyboardEvents: createTestKeyboardSource(),
+            touchEvents: createTestTouchSource(),
         };
         await init(deps);
         // Trigger N key - this exercises the getAudio callback passed to setupTrackSwitcher
@@ -308,6 +328,9 @@ describe("init", () => {
                 return rafCallbacks.length;
             },
             audioDeps: createTestAudioDeps(),
+            random: createConstantRandom(0.5),
+            keyboardEvents: createTestKeyboardSource(),
+            touchEvents: createTestTouchSource(),
         };
         await init(deps);
         // Trigger a jump with space key
@@ -332,6 +355,7 @@ describe("collectAllSpriteNames", () => {
                 { name: "rocks", sprites: ["rock1", "rock2"] },
             ],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const names = _test_hooks.collectAllSpriteNames(config);
         expect(names).toContain("grass");
@@ -343,6 +367,7 @@ describe("collectAllSpriteNames", () => {
             sprites: {},
             layers: [],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
             autoLayers: {
                 sprites: ["tree1", "tree2"],
                 minLayer: 8,
@@ -358,6 +383,7 @@ describe("collectAllSpriteNames", () => {
             sprites: {},
             layers: [{ name: "layer1", sprites: ["tree1"] }],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
             autoLayers: {
                 sprites: ["tree1", "tree2"],
                 minLayer: 8,
@@ -373,6 +399,7 @@ describe("collectAllSpriteNames", () => {
             sprites: {},
             layers: [{ name: "sky", type: "static" }],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const names = _test_hooks.collectAllSpriteNames(config);
         expect(names).toEqual([]);
@@ -421,10 +448,6 @@ describe("_test_hooks", () => {
         expect(result).toBe(screen);
         document.body.removeChild(screen);
     });
-    it("isTestEnvironment returns true in test environment", () => {
-        // When running under Vitest, this should return true
-        expect(_test_hooks.isTestEnvironment()).toBe(true);
-    });
     it("requestAnimationFrameFn schedules callback", () => {
         const deps = _test_hooks.createDefaultDependencies();
         const noop = () => { };
@@ -433,122 +456,19 @@ describe("_test_hooks", () => {
         // Cancel to prevent callback from running after test
         cancelAnimationFrame(id);
     });
-});
-describe("createLayerAnimationCallback", () => {
-    it("returns a callback that advances all scene sprite frames", () => {
-        const entity = {
-            spriteName: "test",
-            sizes: [{ width: 10, frames: ["a", "b", "c"] }],
-            sizeIdx: 0,
-            frameIdx: 0,
-            worldX: 0,
-            worldZ: 100,
-        };
-        const layerConfig = {
-            name: "test-layer",
-            type: "sprites",
-            layer: 10,
-            spriteNames: ["test"],
-            positions: [],
-            zIndex: 0,
-            tile: false,
-            behavior: LAYER_BEHAVIORS.midground,
-        };
-        const layer = {
-            config: layerConfig,
-            entities: [entity],
-        };
-        const camera = createCamera();
-        const depthBounds = createTestDepthBounds();
-        const scene = createSceneState([layer], camera, depthBounds);
-        const callback = createLayerAnimationCallback(scene);
-        // Initial state
-        expect(entity.frameIdx).toBe(0);
-        // Call the callback
-        callback();
-        // Frame should have advanced
-        expect(entity.frameIdx).toBe(1);
-        // Call again
-        callback();
-        expect(entity.frameIdx).toBe(2);
+    it("random draws inside the unit interval", () => {
+        const deps = _test_hooks.createDefaultDependencies();
+        for (let draw = 0; draw < 20; draw += 1) {
+            const value = deps.random();
+            expect(value).toBeGreaterThanOrEqual(0);
+            expect(value).toBeLessThan(1);
+        }
     });
-});
-describe("advanceAllSceneSpriteFrames", () => {
-    it("advances frame index for all entities in all layers", () => {
-        const entity1 = {
-            spriteName: "test1",
-            sizes: [{ width: 10, frames: ["a", "b", "c"] }],
-            sizeIdx: 0,
-            frameIdx: 0,
-            worldX: 0,
-            worldZ: 100,
-        };
-        const entity2 = {
-            spriteName: "test2",
-            sizes: [{ width: 10, frames: ["x", "y"] }],
-            sizeIdx: 0,
-            frameIdx: 0,
-            worldX: 50,
-            worldZ: 100,
-        };
-        const layerConfig = {
-            name: "test-layer",
-            type: "sprites",
-            layer: 10,
-            spriteNames: ["test1", "test2"],
-            positions: [],
-            zIndex: 0,
-            tile: false,
-            behavior: LAYER_BEHAVIORS.midground,
-        };
-        const layer = {
-            config: layerConfig,
-            entities: [entity1, entity2],
-        };
-        const camera = createCamera();
-        const depthBounds = createTestDepthBounds();
-        const scene = createSceneState([layer], camera, depthBounds);
-        // Initial state
-        expect(entity1.frameIdx).toBe(0);
-        expect(entity2.frameIdx).toBe(0);
-        // Advance frames
-        advanceAllSceneSpriteFrames(scene);
-        // Both entities should have advanced
-        expect(entity1.frameIdx).toBe(1);
-        expect(entity2.frameIdx).toBe(1);
-        // Advance again
-        advanceAllSceneSpriteFrames(scene);
-        // entity1 has 3 frames, entity2 has 2 frames (wraps to 0)
-        expect(entity1.frameIdx).toBe(2);
-        expect(entity2.frameIdx).toBe(0);
-    });
-    it("handles empty scene", () => {
-        const camera = createCamera();
-        const depthBounds = createTestDepthBounds();
-        const scene = createSceneState([], camera, depthBounds);
-        // Should not throw
-        advanceAllSceneSpriteFrames(scene);
-    });
-    it("handles layer with no entities", () => {
-        const layerConfig = {
-            name: "empty-layer",
-            type: "sprites",
-            layer: 10,
-            spriteNames: [],
-            positions: [],
-            zIndex: 0,
-            tile: false,
-            behavior: LAYER_BEHAVIORS.midground,
-        };
-        const layer = {
-            config: layerConfig,
-            entities: [],
-        };
-        const camera = createCamera();
-        const depthBounds = createTestDepthBounds();
-        const scene = createSceneState([layer], camera, depthBounds);
-        // Should not throw
-        advanceAllSceneSpriteFrames(scene);
+    it("binds real document event sources", () => {
+        const deps = _test_hooks.createDefaultDependencies();
+        expect(typeof deps.keyboardEvents.addKeyListener).toBe("function");
+        expect(typeof deps.touchEvents.addTouchListener).toBe("function");
+        expect(deps.touchEvents.now()).toBeGreaterThan(0);
     });
 });
 //# sourceMappingURL=main.test.js.map

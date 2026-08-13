@@ -91,4 +91,11 @@ export declare function getTreeTransitionFrames(state: TreeState, sizes: TreeSiz
     };
     targetIdx: number;
 } | null;
+/** Test hooks for internal functions */
+export declare const _test_hooks: {
+    createInitialTreeState: typeof createInitialTreeState;
+    createTreeTimer: typeof createTreeTimer;
+    getTreeFrame: typeof getTreeFrame;
+    getTreeTransitionFrames: typeof getTreeTransitionFrames;
+};
 //# sourceMappingURL=Tree.d.ts.map

@@ -38,6 +38,7 @@ export function switchToNextTrack(audio) {
         return;
     }
     audio.currentIndex = nextIndex;
+    audio.currentTrack = nextTrack;
     audio.player.play(nextTrack);
 }
 /**
@@ -95,6 +96,7 @@ export function initializeAudio(audioConfig, deps) {
                 player,
                 tracks: audioConfig.tracks,
                 currentIndex: 0,
+                currentTrack: track,
                 cleanup: () => {
                     deps.removeEventListenerFn("click", start);
                     deps.removeEventListenerFn("touchstart", start);
@@ -110,8 +112,7 @@ export function initializeAudio(audioConfig, deps) {
         }
         system.context.resume().then(() => {
             if (system !== null && !system.player.getState().isPlaying) {
-                const currentTrack = getTrackAtIndex(system.tracks, system.currentIndex) ?? track;
-                system.player.play(currentTrack);
+                system.player.play(system.currentTrack);
             }
         }).catch(() => {
             /* resume failed */

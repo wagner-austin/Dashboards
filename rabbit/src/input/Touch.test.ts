@@ -1,601 +1,397 @@
 /**
- * @vitest-environment happy-dom
- * Tests for touch input handling with unified input model.
+ * @vitest-environment jsdom
+ * Tests for the touch input source.
+ *
+ * The joystick works on plain touch points, so these tests supply real point
+ * values and assert on the intent that reaches engine state.
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import {
+  DEFAULT_TOUCH_CONFIG,
+  _test_hooks,
+  type JoystickState,
+  type TouchDeps,
+  type TouchPoint,
+  type TouchState,
+} from "./Touch.js";
+import { createInputArbiter, type InputArbiter } from "./arbiter.js";
+import { createActivityTracker, type ActivityTracker } from "./activity.js";
+import { NEUTRAL_INTENT, createIntent } from "./intent.js";
+import type { InputState } from "./state.js";
+import type { BunnyFrames, BunnyState, BunnyTimers } from "../entities/Bunny.js";
+import {
+  createTestBunnyState,
+  createTestFrames,
+  createTestInputState,
+  createTestTimers,
+  createTestTouchSource,
+  type TestTouchSource,
+} from "../testing/fixtures.js";
+
+const {
   createTouchState,
   calculateDirection,
   isTap,
+  directionToHorizontal,
+  directionToVertical,
+  directionToIntent,
   processDirectionChange,
   handleTouchEnd,
   handleTouchStart,
   handleTouchMove,
   handleTouchEndEvent,
+  findTouchByIdentifier,
   setupTouchControls,
-  DEFAULT_TOUCH_CONFIG,
-  _test_hooks,
-  type JoystickState,
-  type TouchState,
-} from "./Touch.js";
-import type { InputState } from "./Keyboard.js";
-import { createBunnyTimers, type BunnyFrames, type BunnyState, type BunnyTimers, type AnimationState } from "../entities/Bunny.js";
-import { calculateDepthBounds, createProjectionConfig, type DepthBounds } from "../world/Projection.js";
-import { layerToWorldZ } from "../layers/widths.js";
+} = _test_hooks;
 
-const { directionToHorizontal, directionToVertical } = _test_hooks;
-
-function createTestDepthBounds(): DepthBounds {
-  const projectionConfig = createProjectionConfig();
-  return calculateDepthBounds(layerToWorldZ(8), layerToWorldZ(30), projectionConfig);
-}
-
-const TEST_DEPTH_BOUNDS = createTestDepthBounds();
-
-function createTestFrames(): BunnyFrames {
-  return {
-    walkLeft: ["wL0", "wL1"],
-    walkRight: ["wR0", "wR1"],
-    jumpLeft: ["jL0"],
-    jumpRight: ["jR0"],
-    idleLeft: ["iL0"],
-    idleRight: ["iR0"],
-    walkToIdleLeft: ["t0", "t1", "t2"],
-    walkToIdleRight: ["t0", "t1", "t2"],
-    walkToTurnAwayLeft: ["ta0", "ta1"],
-    walkToTurnAwayRight: ["ta0", "ta1"],
-    walkToTurnTowardLeft: ["tt0", "tt1"],
-    walkToTurnTowardRight: ["tt0", "tt1"],
-    hopAway: ["ha0", "ha1"],
-    hopToward: ["ht0", "ht1"],
-  };
-}
-
-function createTestBunnyState(animation: AnimationState): BunnyState {
-  return { facingRight: false, animation };
-}
-
-function createTestInputState(bunny: BunnyState): InputState {
-  return {
-    bunny,
-    viewport: { width: 100, height: 50, charW: 10, charH: 20 },
-    camera: { x: 0, z: 0 },
-    depthBounds: TEST_DEPTH_BOUNDS,
-    horizontalHeld: null,
-    verticalHeld: null,
-  };
-}
-
-function createJoystick(dx: number, dy: number, startTime = 0): JoystickState {
+/**
+ * Build a joystick anchored at the origin and dragged to a point.
+ *
+ * Args:
+ *     dx: Horizontal drag distance.
+ *     dy: Vertical drag distance.
+ *     startTime: Timestamp the touch began.
+ *
+ * Returns:
+ *     JoystickState reflecting that drag.
+ */
+function joystickAt(dx: number, dy: number, startTime = 0): JoystickState {
   return {
     anchorX: 100,
     anchorY: 100,
     currentX: 100 + dx,
     currentY: 100 + dy,
     startTime,
-    identifier: 0,
+    identifier: 1,
   };
 }
 
 /**
- * Create mock TouchList for testing.
+ * Build a touch point.
+ *
+ * Args:
+ *     identifier: Touch identifier.
+ *     clientX: Horizontal position.
+ *     clientY: Vertical position.
+ *
+ * Returns:
+ *     A TouchPoint with those values.
  */
-function createMockTouchList(touches: readonly { identifier: number; clientX: number; clientY: number }[]): TouchList {
-  const list = touches.map(t => t as Touch);
-  return Object.assign(list, {
-    item: (i: number): Touch | null => list[i] ?? null,
-  }) as unknown as TouchList;
+function point(identifier: number, clientX: number, clientY: number): TouchPoint {
+  return { identifier, clientX, clientY };
 }
 
 describe("createTouchState", () => {
-  it("creates initial state with no joystick", () => {
-    const state = createTouchState();
-    expect(state.joystick).toBe(null);
-    expect(state.currentDirection).toBe(null);
+  it("starts with no joystick and no direction", () => {
+    expect(createTouchState()).toStrictEqual({ joystick: null, currentDirection: null });
   });
 });
 
 describe("calculateDirection", () => {
-  const config = DEFAULT_TOUCH_CONFIG;
-
-  it("returns null within deadzone", () => {
-    expect(calculateDirection(createJoystick(0, 0), config)).toBe(null);
-    expect(calculateDirection(createJoystick(10, 10), config)).toBe(null);
+  it("is null inside the deadzone", () => {
+    expect(calculateDirection(joystickAt(5, 5), DEFAULT_TOUCH_CONFIG)).toBeNull();
   });
 
-  it("returns correct 8-way directions", () => {
-    expect(calculateDirection(createJoystick(50, 0), config)).toBe("right");
-    expect(calculateDirection(createJoystick(-50, 0), config)).toBe("left");
-    expect(calculateDirection(createJoystick(0, -50), config)).toBe("up");
-    expect(calculateDirection(createJoystick(0, 50), config)).toBe("down");
-    expect(calculateDirection(createJoystick(50, -50), config)).toBe("up-right");
-    expect(calculateDirection(createJoystick(-50, -50), config)).toBe("up-left");
-    expect(calculateDirection(createJoystick(50, 50), config)).toBe("down-right");
-    expect(calculateDirection(createJoystick(-50, 50), config)).toBe("down-left");
+  it("resolves the four cardinal directions", () => {
+    expect(calculateDirection(joystickAt(50, 0), DEFAULT_TOUCH_CONFIG)).toBe("right");
+    expect(calculateDirection(joystickAt(-50, 0), DEFAULT_TOUCH_CONFIG)).toBe("left");
+    expect(calculateDirection(joystickAt(0, -50), DEFAULT_TOUCH_CONFIG)).toBe("up");
+    expect(calculateDirection(joystickAt(0, 50), DEFAULT_TOUCH_CONFIG)).toBe("down");
   });
 
-  it("handles boundary angles correctly", () => {
-    expect(calculateDirection(createJoystick(50, 10), config)).toBe("right");
-    expect(calculateDirection(createJoystick(50, -10), config)).toBe("right");
-    expect(calculateDirection(createJoystick(10, -50), config)).toBe("up");
-    expect(calculateDirection(createJoystick(-10, -50), config)).toBe("up");
+  it("resolves the four diagonals", () => {
+    expect(calculateDirection(joystickAt(50, -50), DEFAULT_TOUCH_CONFIG)).toBe("up-right");
+    expect(calculateDirection(joystickAt(-50, -50), DEFAULT_TOUCH_CONFIG)).toBe("up-left");
+    expect(calculateDirection(joystickAt(-50, 50), DEFAULT_TOUCH_CONFIG)).toBe("down-left");
+    expect(calculateDirection(joystickAt(50, 50), DEFAULT_TOUCH_CONFIG)).toBe("down-right");
+  });
+
+  it("registers a drag exactly at the deadzone edge", () => {
+    expect(calculateDirection(joystickAt(DEFAULT_TOUCH_CONFIG.deadzone, 0), DEFAULT_TOUCH_CONFIG)).toBe(
+      "right"
+    );
   });
 });
 
-describe("directionToHorizontal", () => {
-  it("extracts left from directions containing left", () => {
+describe("direction decomposition", () => {
+  it("extracts the horizontal component", () => {
+    expect(directionToHorizontal(null)).toBeNull();
     expect(directionToHorizontal("left")).toBe("left");
-    expect(directionToHorizontal("up-left")).toBe("left");
-    expect(directionToHorizontal("down-left")).toBe("left");
-  });
-
-  it("extracts right from directions containing right", () => {
-    expect(directionToHorizontal("right")).toBe("right");
     expect(directionToHorizontal("up-right")).toBe("right");
-    expect(directionToHorizontal("down-right")).toBe("right");
+    expect(directionToHorizontal("up")).toBeNull();
   });
 
-  it("returns null for pure vertical or null", () => {
-    expect(directionToHorizontal("up")).toBe(null);
-    expect(directionToHorizontal("down")).toBe(null);
-    expect(directionToHorizontal(null)).toBe(null);
-  });
-});
-
-describe("directionToVertical", () => {
-  it("extracts up from directions containing up", () => {
+  it("extracts the vertical component", () => {
+    expect(directionToVertical(null)).toBeNull();
     expect(directionToVertical("up")).toBe("up");
-    expect(directionToVertical("up-left")).toBe("up");
-    expect(directionToVertical("up-right")).toBe("up");
-  });
-
-  it("extracts down from directions containing down", () => {
-    expect(directionToVertical("down")).toBe("down");
     expect(directionToVertical("down-left")).toBe("down");
-    expect(directionToVertical("down-right")).toBe("down");
+    expect(directionToVertical("right")).toBeNull();
   });
 
-  it("returns null for pure horizontal or null", () => {
-    expect(directionToVertical("left")).toBe(null);
-    expect(directionToVertical("right")).toBe(null);
-    expect(directionToVertical(null)).toBe(null);
+  it("builds an intent from a diagonal", () => {
+    expect(directionToIntent("down-left")).toStrictEqual(createIntent("left", "down"));
+  });
+
+  it("builds a neutral intent from no direction", () => {
+    expect(directionToIntent(null)).toStrictEqual(NEUTRAL_INTENT);
   });
 });
 
 describe("isTap", () => {
-  const config = DEFAULT_TOUCH_CONFIG;
-
-  it("returns true for quick touch with minimal movement", () => {
-    expect(isTap(createJoystick(5, 5, 1000), 1100, config)).toBe(true);
-    expect(isTap(createJoystick(0, 0, 1000), 1050, config)).toBe(true);
+  it("accepts a quick, still touch", () => {
+    expect(isTap(joystickAt(2, 2), 100, DEFAULT_TOUCH_CONFIG)).toBe(true);
   });
 
-  it("returns false for long touch or too much movement", () => {
-    expect(isTap(createJoystick(5, 5, 1000), 1300, config)).toBe(false);
-    expect(isTap(createJoystick(50, 0, 1000), 1100, config)).toBe(false);
-  });
-});
-
-describe("processDirectionChange", () => {
-  let inputState: InputState;
-  let touchState: TouchState;
-  let timers: BunnyTimers;
-  let frames: BunnyFrames;
-
-  beforeEach(() => {
-    vi.useFakeTimers();
-    inputState = createTestInputState(createTestBunnyState({ kind: "idle", frameIdx: 0 }));
-    touchState = createTouchState();
-    frames = createTestFrames();
-    timers = createBunnyTimers(inputState.bunny, frames, {
-      walk: 100, idle: 200, jump: 50, transition: 80, hop: 100,
-    }, () => false);
+  it("rejects a touch held too long", () => {
+    expect(isTap(joystickAt(2, 2), 500, DEFAULT_TOUCH_CONFIG)).toBe(false);
   });
 
-  afterEach(() => {
-    vi.useRealTimers();
-  });
-
-  it("sets verticalHeld when moving up/down", () => {
-    processDirectionChange(null, "up", touchState, inputState, frames, timers);
-    expect(inputState.verticalHeld).toBe("up");
-
-    inputState = createTestInputState(createTestBunnyState({ kind: "idle", frameIdx: 0 }));
-    touchState = createTouchState();
-    processDirectionChange(null, "down", touchState, inputState, frames, timers);
-    expect(inputState.verticalHeld).toBe("down");
-  });
-
-  it("sets horizontalHeld when moving left/right", () => {
-    processDirectionChange(null, "left", touchState, inputState, frames, timers);
-    expect(inputState.horizontalHeld).toBe("left");
-
-    inputState = createTestInputState(createTestBunnyState({ kind: "idle", frameIdx: 0 }));
-    touchState = createTouchState();
-    processDirectionChange(null, "right", touchState, inputState, frames, timers);
-    expect(inputState.horizontalHeld).toBe("right");
-  });
-
-  it("sets both inputs for diagonal movement", () => {
-    processDirectionChange(null, "up-right", touchState, inputState, frames, timers);
-    expect(inputState.horizontalHeld).toBe("right");
-    expect(inputState.verticalHeld).toBe("up");
-  });
-
-  it("clears inputs when returning to deadzone", () => {
-    processDirectionChange(null, "up-right", touchState, inputState, frames, timers);
-    expect(inputState.horizontalHeld).toBe("right");
-    expect(inputState.verticalHeld).toBe("up");
-
-    processDirectionChange("up-right", null, touchState, inputState, frames, timers);
-    expect(inputState.horizontalHeld).toBe(null);
-    expect(inputState.verticalHeld).toBe(null);
-  });
-
-  it("starts hop transition when vertical input begins", () => {
-    processDirectionChange(null, "up", touchState, inputState, frames, timers);
-    expect(inputState.bunny.animation.kind).toBe("transition");
-  });
-
-  it("starts walk when horizontal input without vertical", () => {
-    processDirectionChange(null, "left", touchState, inputState, frames, timers);
-    expect(inputState.bunny.animation.kind).toBe("transition");
-    expect(inputState.bunny.facingRight).toBe(false);
-  });
-
-  it("switches walk direction from left to right", () => {
-    processDirectionChange(null, "left", touchState, inputState, frames, timers);
-    expect(inputState.horizontalHeld).toBe("left");
-
-    processDirectionChange("left", "right", touchState, inputState, frames, timers);
-    expect(inputState.horizontalHeld).toBe("right");
-    expect(inputState.bunny.facingRight).toBe(true);
-  });
-
-  it("switches walk direction from right to left", () => {
-    processDirectionChange(null, "right", touchState, inputState, frames, timers);
-    expect(inputState.horizontalHeld).toBe("right");
-
-    processDirectionChange("right", "left", touchState, inputState, frames, timers);
-    expect(inputState.horizontalHeld).toBe("left");
-    expect(inputState.bunny.facingRight).toBe(false);
-  });
-
-  it("updates touchState.currentDirection", () => {
-    processDirectionChange(null, "up-left", touchState, inputState, frames, timers);
-    expect(touchState.currentDirection).toBe("up-left");
+  it("rejects a touch that moved too far", () => {
+    expect(isTap(joystickAt(80, 0), 100, DEFAULT_TOUCH_CONFIG)).toBe(false);
   });
 });
 
-describe("handleTouchEnd", () => {
-  let inputState: InputState;
-  let touchState: TouchState;
-  let timers: BunnyTimers;
-  let frames: BunnyFrames;
-  const config = DEFAULT_TOUCH_CONFIG;
-
-  beforeEach(() => {
-    vi.useFakeTimers();
-    inputState = createTestInputState(createTestBunnyState({ kind: "idle", frameIdx: 0 }));
-    touchState = createTouchState();
-    frames = createTestFrames();
-    timers = createBunnyTimers(inputState.bunny, frames, {
-      walk: 100, idle: 200, jump: 50, transition: 80, hop: 100,
-    }, () => false);
+describe("findTouchByIdentifier", () => {
+  it("finds a tracked point", () => {
+    expect(findTouchByIdentifier([point(1, 5, 5), point(2, 9, 9)], 2)).toStrictEqual(point(2, 9, 9));
   });
 
-  afterEach(() => {
-    vi.useRealTimers();
+  it("returns undefined when the point is gone", () => {
+    expect(findTouchByIdentifier([point(1, 5, 5)], 2)).toBeUndefined();
   });
 
-  it("does nothing if no joystick", () => {
-    handleTouchEnd(touchState, inputState, frames, timers, Date.now(), config);
-    expect(inputState.bunny.animation.kind).toBe("idle");
-  });
-
-  it("triggers jump on tap", () => {
-    touchState.joystick = createJoystick(0, 0, Date.now() - 100);
-    handleTouchEnd(touchState, inputState, frames, timers, Date.now(), config);
-    expect(inputState.bunny.animation.kind).toBe("transition");
-  });
-
-  it("does not trigger jump on tap while hopping", () => {
-    touchState.joystick = createJoystick(0, 0, Date.now() - 100);
-    inputState.bunny.animation = { kind: "hop", direction: "away", frameIdx: 0 };
-
-    handleTouchEnd(touchState, inputState, frames, timers, Date.now(), config);
-    expect(inputState.bunny.animation.kind).toBe("hop");
-  });
-
-  it("clears inputs on drag release", () => {
-    touchState.joystick = createJoystick(50, 0, Date.now() - 300);
-    inputState.horizontalHeld = "right";
-
-    handleTouchEnd(touchState, inputState, frames, timers, Date.now(), config);
-    expect(inputState.horizontalHeld).toBe(null);
-  });
-
-  it("clears vertical input on drag release", () => {
-    touchState.joystick = createJoystick(0, -50, Date.now() - 300);
-    inputState.verticalHeld = "up";
-    inputState.bunny.animation = { kind: "hop", direction: "away", frameIdx: 0 };
-    timers.hop.start();
-
-    handleTouchEnd(touchState, inputState, frames, timers, Date.now(), config);
-    expect(inputState.verticalHeld).toBe(null);
-  });
-
-  it("clears joystick and direction", () => {
-    touchState.joystick = createJoystick(50, 0, Date.now() - 300);
-    touchState.currentDirection = "right";
-
-    handleTouchEnd(touchState, inputState, frames, timers, Date.now(), config);
-    expect(touchState.joystick).toBe(null);
-    expect(touchState.currentDirection).toBe(null);
+  it("returns undefined for no points at all", () => {
+    expect(findTouchByIdentifier([], 1)).toBeUndefined();
   });
 });
 
 describe("handleTouchStart", () => {
-  it("creates joystick at touch point", () => {
+  it("anchors a joystick at the touch point", () => {
     const touchState = createTouchState();
-    const touches = createMockTouchList([{ identifier: 5, clientX: 200, clientY: 300 }]);
 
-    const handled = handleTouchStart(touchState, touches, 1000);
-
-    expect(handled).toBe(true);
-    expect(touchState.joystick).not.toBe(null);
-    expect(touchState.joystick?.anchorX).toBe(200);
-    expect(touchState.joystick?.anchorY).toBe(300);
-    expect(touchState.joystick?.identifier).toBe(5);
+    expect(handleTouchStart(touchState, [point(7, 30, 40)], 123)).toBe(true);
+    expect(touchState.joystick).toStrictEqual({
+      anchorX: 30,
+      anchorY: 40,
+      currentX: 30,
+      currentY: 40,
+      startTime: 123,
+      identifier: 7,
+    });
   });
 
-  it("ignores if joystick already exists", () => {
+  it("ignores a second finger while a joystick is active", () => {
     const touchState = createTouchState();
-    touchState.joystick = createJoystick(0, 0);
-    const touches = createMockTouchList([{ identifier: 1, clientX: 50, clientY: 50 }]);
+    handleTouchStart(touchState, [point(7, 30, 40)], 0);
 
-    const handled = handleTouchStart(touchState, touches, 1000);
-
-    expect(handled).toBe(false);
-    expect(touchState.joystick).not.toBe(null);
-    expect(touchState.joystick.anchorX).toBe(100);
+    expect(handleTouchStart(touchState, [point(8, 90, 90)], 5)).toBe(false);
+    expect(touchState.joystick?.identifier).toBe(7);
   });
 
-  it("returns false for empty touch list", () => {
+  it("does nothing when the event carries no points", () => {
     const touchState = createTouchState();
-    const touches = createMockTouchList([]);
 
-    const handled = handleTouchStart(touchState, touches, 1000);
-
-    expect(handled).toBe(false);
-    expect(touchState.joystick).toBe(null);
+    expect(handleTouchStart(touchState, [], 0)).toBe(false);
+    expect(touchState.joystick).toBeNull();
   });
 });
 
-describe("handleTouchMove", () => {
-  let inputState: InputState;
+describe("touch source", () => {
+  let bunny: BunnyState;
+  let state: InputState;
+  let frames: BunnyFrames;
+  let timers: BunnyTimers;
+  let arbiter: InputArbiter;
+  let activity: ActivityTracker;
+  let events: TestTouchSource;
+  let deps: TouchDeps;
   let touchState: TouchState;
-  let timers: BunnyTimers;
-  let frames: BunnyFrames;
-  const config = DEFAULT_TOUCH_CONFIG;
 
   beforeEach(() => {
     vi.useFakeTimers();
-    inputState = createTestInputState(createTestBunnyState({ kind: "idle", frameIdx: 0 }));
+    bunny = createTestBunnyState({ kind: "idle", frameIdx: 0 });
+    state = createTestInputState(bunny);
+    frames = createTestFrames();
+    timers = createTestTimers(bunny, frames, () => state.intent.horizontal !== null);
+    arbiter = createInputArbiter({ state, frames, timers });
+    activity = createActivityTracker();
+    events = createTestTouchSource();
+    deps = { arbiter, activity, events, config: DEFAULT_TOUCH_CONFIG };
     touchState = createTouchState();
-    touchState.joystick = createJoystick(0, 0);
-    frames = createTestFrames();
-    timers = createBunnyTimers(inputState.bunny, frames, {
-      walk: 100, idle: 200, jump: 50, transition: 80, hop: 100,
-    }, () => false);
   });
 
   afterEach(() => {
     vi.useRealTimers();
   });
 
-  it("updates joystick position", () => {
-    const touches = createMockTouchList([{ identifier: 0, clientX: 150, clientY: 100 }]);
+  describe("processDirectionChange", () => {
+    it("submits the intent for the new direction", () => {
+      processDirectionChange("left", touchState, deps);
 
-    handleTouchMove(touchState, inputState, frames, timers, touches, config);
+      expect(state.intent).toStrictEqual(createIntent("left", null));
+      expect(touchState.currentDirection).toBe("left");
+    });
 
-    expect(touchState.joystick?.currentX).toBe(150);
-    expect(touchState.joystick?.currentY).toBe(100);
+    it("records user activity", () => {
+      activity.advance(9);
+      processDirectionChange("left", touchState, deps);
+
+      expect(activity.idleSeconds()).toBe(0);
+    });
   });
 
-  it("triggers direction change when moving out of deadzone", () => {
-    const touches = createMockTouchList([{ identifier: 0, clientX: 150, clientY: 100 }]);
+  describe("handleTouchMove", () => {
+    it("does nothing without an active joystick", () => {
+      expect(handleTouchMove(touchState, deps, [point(1, 0, 0)])).toBe(false);
+    });
 
-    handleTouchMove(touchState, inputState, frames, timers, touches, config);
+    it("does nothing when the tracked finger is absent", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
 
-    expect(touchState.currentDirection).toBe("right");
-    expect(inputState.horizontalHeld).toBe("right");
+      expect(handleTouchMove(touchState, deps, [point(2, 150, 100)])).toBe(false);
+    });
+
+    it("consumes the gesture and submits intent when dragged", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+
+      expect(handleTouchMove(touchState, deps, [point(1, 200, 100)])).toBe(true);
+      expect(state.intent).toStrictEqual(createIntent("right", null));
+    });
+
+    it("consumes the gesture but submits nothing when the direction is unchanged", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+      handleTouchMove(touchState, deps, [point(1, 200, 100)]);
+      vi.advanceTimersByTime(500);
+      const walking = { ...bunny.animation };
+
+      expect(handleTouchMove(touchState, deps, [point(1, 210, 100)])).toBe(true);
+      expect(bunny.animation).toStrictEqual(walking);
+    });
+
+    it("drives the bunny into a real walk", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+      handleTouchMove(touchState, deps, [point(1, 200, 100)]);
+      vi.advanceTimersByTime(500);
+
+      expect(bunny.animation.kind).toBe("walk");
+    });
   });
 
-  it("returns false if no joystick", () => {
-    touchState.joystick = null;
-    const touches = createMockTouchList([{ identifier: 0, clientX: 150, clientY: 100 }]);
+  describe("handleTouchEnd", () => {
+    it("does nothing without an active joystick", () => {
+      handleTouchEnd(touchState, deps, 100);
 
-    const handled = handleTouchMove(touchState, inputState, frames, timers, touches, config);
+      expect(state.intent).toStrictEqual(NEUTRAL_INTENT);
+    });
 
-    expect(handled).toBe(false);
+    it("jumps on a tap", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+      handleTouchEnd(touchState, deps, 50);
+      // Jumping from idle runs the transition first, then a single jump frame.
+      vi.advanceTimersByTime(250);
+
+      expect(bunny.animation.kind).toBe("jump");
+      expect(touchState.joystick).toBeNull();
+    });
+
+    it("releases movement after a drag", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+      handleTouchMove(touchState, deps, [point(1, 200, 100)]);
+      handleTouchEnd(touchState, deps, 50);
+
+      expect(state.intent).toStrictEqual(NEUTRAL_INTENT);
+      expect(touchState.currentDirection).toBeNull();
+    });
+
+    it("records user activity", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+      activity.advance(9);
+      handleTouchEnd(touchState, deps, 50);
+
+      expect(activity.idleSeconds()).toBe(0);
+    });
   });
 
-  it("returns false if touch not found", () => {
-    const touches = createMockTouchList([{ identifier: 99, clientX: 150, clientY: 100 }]);
+  describe("handleTouchEndEvent", () => {
+    it("does nothing without an active joystick", () => {
+      handleTouchEndEvent(touchState, deps, [], 100);
 
-    const handled = handleTouchMove(touchState, inputState, frames, timers, touches, config);
+      expect(touchState.joystick).toBeNull();
+    });
 
-    expect(handled).toBe(false);
-  });
-});
+    it("keeps the joystick while the finger is still down", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+      handleTouchEndEvent(touchState, deps, [point(1, 100, 100)], 50);
 
-describe("handleTouchEndEvent", () => {
-  let inputState: InputState;
-  let touchState: TouchState;
-  let timers: BunnyTimers;
-  let frames: BunnyFrames;
-  const config = DEFAULT_TOUCH_CONFIG;
+      expect(touchState.joystick).not.toBeNull();
+    });
 
-  beforeEach(() => {
-    vi.useFakeTimers();
-    inputState = createTestInputState(createTestBunnyState({ kind: "idle", frameIdx: 0 }));
-    touchState = createTouchState();
-    touchState.joystick = createJoystick(50, 0, Date.now() - 300);
-    frames = createTestFrames();
-    timers = createBunnyTimers(inputState.bunny, frames, {
-      walk: 100, idle: 200, jump: 50, transition: 80, hop: 100,
-    }, () => false);
+    it("ends the gesture once the finger is gone", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+      handleTouchEndEvent(touchState, deps, [], 50);
+
+      expect(touchState.joystick).toBeNull();
+    });
   });
 
-  afterEach(() => {
-    vi.useRealTimers();
-  });
+  describe("setupTouchControls", () => {
+    it("binds all four touch events", () => {
+      setupTouchControls(deps);
 
-  it("does nothing if joystick is null", () => {
-    touchState.joystick = null;
-    const touches = createMockTouchList([]);
+      expect(events.passiveFor("touchstart")).toBe(true);
+      expect(events.passiveFor("touchmove")).toBe(false);
+      expect(events.passiveFor("touchend")).toBe(true);
+      expect(events.passiveFor("touchcancel")).toBe(true);
+    });
 
-    handleTouchEndEvent(touchState, inputState, frames, timers, touches, Date.now(), config);
-    expect(inputState.bunny.animation.kind).toBe("idle");
-  });
+    it("never consumes touchstart, so audio can unlock", () => {
+      setupTouchControls(deps);
 
-  it("ends touch if identifier no longer in list", () => {
-    const touches = createMockTouchList([]);
+      expect(events.emit("touchstart", [point(1, 100, 100)])).toBe(false);
+    });
 
-    handleTouchEndEvent(touchState, inputState, frames, timers, touches, Date.now(), config);
-    expect(touchState.joystick).toBe(null);
-  });
+    it("consumes touchmove once a joystick is active", () => {
+      setupTouchControls(deps);
+      events.emit("touchstart", [point(1, 100, 100)]);
 
-  it("keeps touch if identifier still in list", () => {
-    const touches = createMockTouchList([{ identifier: 0, clientX: 150, clientY: 100 }]);
+      expect(events.emit("touchmove", [point(1, 200, 100)])).toBe(true);
+      expect(state.intent).toStrictEqual(createIntent("right", null));
+    });
 
-    handleTouchEndEvent(touchState, inputState, frames, timers, touches, Date.now(), config);
-    expect(touchState.joystick).not.toBe(null);
-  });
-});
+    it("does not consume touchmove without a joystick", () => {
+      setupTouchControls(deps);
 
-describe("setupTouchControls", () => {
-  let inputState: InputState;
-  let frames: BunnyFrames;
-  let timers: BunnyTimers;
+      expect(events.emit("touchmove", [point(1, 200, 100)])).toBe(false);
+    });
 
-  beforeEach(() => {
-    vi.useFakeTimers();
-    inputState = createTestInputState(createTestBunnyState({ kind: "idle", frameIdx: 0 }));
-    frames = createTestFrames();
-    timers = createBunnyTimers(inputState.bunny, frames, {
-      walk: 100, idle: 200, jump: 50, transition: 80, hop: 100,
-    }, () => false);
-  });
+    it("ends the gesture on touchend without consuming it", () => {
+      setupTouchControls(deps);
+      events.emit("touchstart", [point(1, 100, 100)]);
+      events.emit("touchmove", [point(1, 200, 100)]);
+      events.setNow(50);
 
-  afterEach(() => {
-    vi.useRealTimers();
-  });
+      expect(events.emit("touchend", [])).toBe(false);
+      expect(state.intent).toStrictEqual(NEUTRAL_INTENT);
+    });
 
-  /**
-   * Create a TouchEvent with specified touches.
-   */
-  function createTouchEvent(
-    type: string,
-    touches: { identifier: number; clientX: number; clientY: number }[]
-  ): TouchEvent {
-    const touchArray = touches.map(t => ({
-      identifier: t.identifier,
-      clientX: t.clientX,
-      clientY: t.clientY,
-      screenX: t.clientX,
-      screenY: t.clientY,
-      pageX: t.clientX,
-      pageY: t.clientY,
-      target: document.body,
-      radiusX: 1,
-      radiusY: 1,
-      rotationAngle: 0,
-      force: 1,
-    })) as unknown as Touch[];
+    it("ends the gesture on touchcancel", () => {
+      const cancelled = setupTouchControls(deps);
+      events.emit("touchstart", [point(1, 100, 100)]);
+      events.emit("touchcancel", []);
 
-    const mockTouchList: TouchList = {
-      length: touchArray.length,
-      item: (index: number): Touch | null => touchArray[index] ?? null,
-      [Symbol.iterator]: function* (): Generator<Touch> {
-        for (const touch of touchArray) {
-          yield touch;
-        }
-      },
-    } as TouchList;
+      expect(cancelled.joystick).toBeNull();
+    });
 
-    for (let i = 0; i < touchArray.length; i++) {
-      const touch = touchArray[i];
-      if (touch !== undefined) {
-        (mockTouchList as Record<number, Touch>)[i] = touch;
-      }
-    }
+    it("uses the injected clock for tap detection", () => {
+      setupTouchControls(deps);
+      events.setNow(0);
+      events.emit("touchstart", [point(1, 100, 100)]);
+      events.setNow(1000);
+      events.emit("touchend", []);
+      vi.advanceTimersByTime(500);
 
-    const event = new TouchEvent(type, { cancelable: true });
-    Object.defineProperty(event, "touches", { value: mockTouchList });
-    return event;
-  }
-
-  it("creates joystick on touchstart", () => {
-    const touchState = setupTouchControls(inputState, frames, timers);
-
-    const event = createTouchEvent("touchstart", [{ identifier: 0, clientX: 100, clientY: 100 }]);
-    document.dispatchEvent(event);
-
-    expect(touchState.joystick).not.toBe(null);
-    expect(touchState.joystick?.anchorX).toBe(100);
-  });
-
-  it("updates direction on touchmove", () => {
-    const touchState = setupTouchControls(inputState, frames, timers);
-
-    const startEvent = createTouchEvent("touchstart", [{ identifier: 0, clientX: 100, clientY: 100 }]);
-    document.dispatchEvent(startEvent);
-
-    const moveEvent = createTouchEvent("touchmove", [{ identifier: 0, clientX: 150, clientY: 100 }]);
-    document.dispatchEvent(moveEvent);
-
-    expect(touchState.currentDirection).toBe("right");
-    expect(inputState.horizontalHeld).toBe("right");
-  });
-
-  it("clears state on touchend", () => {
-    const touchState = setupTouchControls(inputState, frames, timers);
-
-    const startEvent = createTouchEvent("touchstart", [{ identifier: 0, clientX: 100, clientY: 100 }]);
-    document.dispatchEvent(startEvent);
-
-    const moveEvent = createTouchEvent("touchmove", [{ identifier: 0, clientX: 150, clientY: 100 }]);
-    document.dispatchEvent(moveEvent);
-
-    const endEvent = createTouchEvent("touchend", []);
-    document.dispatchEvent(endEvent);
-
-    expect(touchState.joystick).toBe(null);
-    expect(touchState.currentDirection).toBe(null);
-  });
-
-  it("clears state on touchcancel", () => {
-    const touchState = setupTouchControls(inputState, frames, timers);
-
-    const startEvent = createTouchEvent("touchstart", [{ identifier: 0, clientX: 100, clientY: 100 }]);
-    document.dispatchEvent(startEvent);
-
-    const cancelEvent = createTouchEvent("touchcancel", []);
-    document.dispatchEvent(cancelEvent);
-
-    expect(touchState.joystick).toBe(null);
-  });
-
-  it("ignores touchmove when no joystick active", () => {
-    const touchState = setupTouchControls(inputState, frames, timers);
-
-    const moveEvent = createTouchEvent("touchmove", [{ identifier: 0, clientX: 150, clientY: 100 }]);
-    document.dispatchEvent(moveEvent);
-
-    expect(touchState.joystick).toBe(null);
-    expect(touchState.currentDirection).toBe(null);
+      expect(bunny.animation.kind).not.toBe("jump");
+    });
   });
 });

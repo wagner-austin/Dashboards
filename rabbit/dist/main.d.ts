@@ -8,6 +8,7 @@ import type { Config } from "./types.js";
 import type { BunnyFrames } from "./entities/Bunny.js";
 import type { MutableSpriteRegistry, ProgressCallback } from "./loaders/progressive.js";
 import type { BunnyLoadedCallback } from "./io/sprites.js";
+import { type KeyboardEventSource, type RandomSource, type TouchEventSource } from "./input/index.js";
 import { type AudioDependencies } from "./audio/index.js";
 /**
  * Dependencies that can be injected for testing.
@@ -17,6 +18,9 @@ import { type AudioDependencies } from "./audio/index.js";
  * runProgressiveLoadFn: Runs progressive sprite loading.
  * requestAnimationFrameFn: Schedules next frame.
  * audioDeps: Audio system dependencies.
+ * random: Source of draws in [0, 1) shaping the autopilot wander.
+ * keyboardEvents: Event target for keyboard listeners.
+ * touchEvents: Event target and clock for touch listeners.
  */
 export interface MainDependencies {
     getScreenElement: () => HTMLPreElement | null;
@@ -24,6 +28,9 @@ export interface MainDependencies {
     runProgressiveLoadFn: (config: Config, registry: MutableSpriteRegistry, onProgress: ProgressCallback, onBunnyLoaded: BunnyLoadedCallback) => Promise<void>;
     requestAnimationFrameFn: (callback: (time: number) => void) => number;
     audioDeps: AudioDependencies;
+    random: RandomSource;
+    keyboardEvents: KeyboardEventSource;
+    touchEvents: TouchEventSource;
 }
 /**
  * Create default dependencies using real implementations.
@@ -65,17 +72,9 @@ export declare function init(deps?: MainDependencies): Promise<void>;
  *     BunnyFrames with empty arrays for all animations.
  */
 declare function createEmptyBunnyFrames(): BunnyFrames;
-/**
- * Check if running in test environment.
- *
- * Returns:
- *     True if MODE is 'test'.
- */
-declare function isTestEnvironment(): boolean;
 /** Test hooks for internal functions */
 export declare const _test_hooks: {
     createDefaultDependencies: typeof createDefaultDependencies;
-    isTestEnvironment: typeof isTestEnvironment;
     collectAllSpriteNames: typeof collectAllSpriteNames;
     createEmptyBunnyFrames: typeof createEmptyBunnyFrames;
 };

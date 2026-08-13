@@ -113,4 +113,11 @@ export function getTreeTransitionFrames(state, sizes) {
         targetIdx,
     };
 }
+/** Test hooks for internal functions */
+export const _test_hooks = {
+    createInitialTreeState,
+    createTreeTimer,
+    getTreeFrame,
+    getTreeTransitionFrames,
+};
 //# sourceMappingURL=Tree.js.map

@@ -4,6 +4,7 @@
 
 import { describe, it, expect } from "vitest";
 import type { Config, FrameSet } from "../types.js";
+import { DEFAULT_AUTORUN_CONFIG } from "../input/index.js";
 import { _test_hooks } from "./progressive.js";
 
 const {
@@ -38,6 +39,7 @@ function createTestConfig(): Config {
       jumpSpeed: 58,
       scrollSpeed: 36,
     },
+    autorun: DEFAULT_AUTORUN_CONFIG,
     autoLayers: {
       sprites: ["tree1", "tree2"],
       minLayer: 8,
@@ -208,6 +210,7 @@ describe("collectTreeWidths", () => {
       },
       layers: [],
       settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+      autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
     const entries = collectTreeWidths(config, ["tree1"]);
@@ -238,6 +241,7 @@ describe("getGrassSpriteNames", () => {
       sprites: {},
       layers: [{ name: "sky", type: "static" }],
       settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+      autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
     const names = getGrassSpriteNames(config);
@@ -253,6 +257,7 @@ describe("getGrassSpriteNames", () => {
         { name: "grass-back", sprites: ["grassBack"] },
       ],
       settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+      autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
     const names = getGrassSpriteNames(config);
@@ -265,6 +270,7 @@ describe("getGrassSpriteNames", () => {
       sprites: {},
       layers: [{ name: "other", sprites: ["tree1", "rock"] }],
       settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+      autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
     const names = getGrassSpriteNames(config);
@@ -287,6 +293,7 @@ describe("getTreeSpriteNames", () => {
       sprites: {},
       layers: [],
       settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+      autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
     const names = getTreeSpriteNames(config);
@@ -319,6 +326,7 @@ describe("getSpriteWidthsFromConfig", () => {
       },
       layers: [],
       settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+      autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
     const widths = getSpriteWidthsFromConfig(config, "noWidths");

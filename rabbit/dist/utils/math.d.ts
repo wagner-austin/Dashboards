@@ -7,4 +7,10 @@ export declare function getSpeedMultiplier(treeSizeIdx: number): number;
 export declare function easeInOut(progress: number): number;
 /** Lerp between two values with optional easing */
 export declare function lerp(start: number, end: number, progress: number, eased?: boolean): number;
+/** Test hooks for internal functions */
+export declare const _test_hooks: {
+    getSpeedMultiplier: typeof getSpeedMultiplier;
+    easeInOut: typeof easeInOut;
+    lerp: typeof lerp;
+};
 //# sourceMappingURL=math.d.ts.map

@@ -1,27 +1,20 @@
 /**
- * Touch input handling with dynamic invisible joystick.
+ * Touch input source - dynamic invisible joystick.
  *
- * Implements a virtual joystick that anchors at the touch point and
- * translates drag direction into 8-way movement input. Tap gestures
- * trigger jump. Uses the unified input model shared with keyboard.
+ * A joystick anchors wherever the touch starts and translates drag direction
+ * into 8-way movement; a quick tap requests a jump. Like the keyboard, this
+ * source only produces intent and submits it to the arbiter.
  */
 
+import type { ActivityTracker } from "./activity.js";
+import type { InputArbiter } from "./arbiter.js";
 import {
-  isHopping,
-  isJumping,
-  type BunnyFrames,
-  type BunnyTimers,
-} from "../entities/Bunny.js";
-import {
-  type InputState,
+  NEUTRAL_INTENT,
+  createIntent,
   type HorizontalInput,
+  type MovementIntent,
   type VerticalInput,
-  processInputChange,
-} from "./Keyboard.js";
-import {
-  isPendingJump,
-  handleJumpInput,
-} from "./handlers.js";
+} from "./intent.js";
 
 /**
  * Touch joystick state tracking.
@@ -30,7 +23,7 @@ import {
  * anchorY: Y coordinate where the touch started (joystick center).
  * currentX: Current touch X position.
  * currentY: Current touch Y position.
- * startTime: When touch started (for tap detection).
+ * startTime: When the touch started, for tap detection.
  * identifier: Touch.identifier for multi-touch tracking.
  */
 export interface JoystickState {
@@ -45,8 +38,8 @@ export interface JoystickState {
 /**
  * Touch input state.
  *
- * joystick: Active joystick or null if no touch.
- * currentDirection: Current direction derived from joystick angle.
+ * joystick: Active joystick, or null when no touch is down.
+ * currentDirection: Direction derived from the joystick angle.
  */
 export interface TouchState {
   joystick: JoystickState | null;
@@ -54,9 +47,9 @@ export interface TouchState {
 }
 
 /**
- * Direction calculated from touch joystick angle.
+ * Direction calculated from the touch joystick angle.
  *
- * Represents the 8 cardinal + diagonal directions plus null (no movement/deadzone).
+ * The 8 cardinal and diagonal directions, plus null for the deadzone.
  */
 export type TouchDirection =
   | "up"
@@ -70,16 +63,67 @@ export type TouchDirection =
   | null;
 
 /**
- * Configuration for touch behavior.
+ * Configuration for touch behaviour.
  *
- * deadzone: Minimum drag distance to register as direction (pixels).
- * tapThreshold: Maximum time for tap detection (milliseconds).
- * tapMaxDistance: Maximum movement for tap detection (pixels).
+ * deadzone: Minimum drag distance to register a direction, in pixels.
+ * tapThreshold: Maximum duration for tap detection, in milliseconds.
+ * tapMaxDistance: Maximum movement for tap detection, in pixels.
  */
 export interface TouchConfig {
   readonly deadzone: number;
   readonly tapThreshold: number;
   readonly tapMaxDistance: number;
+}
+
+/** Touch event types this source binds to. */
+export type TouchEventType = "touchstart" | "touchmove" | "touchend" | "touchcancel";
+
+/**
+ * The only properties of a DOM Touch this module needs.
+ *
+ * Depending on this rather than on Touch/TouchList keeps the joystick free of
+ * the DOM: the adapter parses browser events at the edge, and everything
+ * downstream works on plain values.
+ *
+ * identifier: Stable id used to follow one finger across events.
+ * clientX: Horizontal position in viewport pixels.
+ * clientY: Vertical position in viewport pixels.
+ */
+export interface TouchPoint {
+  readonly identifier: number;
+  readonly clientX: number;
+  readonly clientY: number;
+}
+
+/**
+ * Minimal interface over the event target the joystick binds to.
+ *
+ * A handler returns true when it has consumed the gesture, which the adapter
+ * turns into preventDefault. `now` is injected rather than read from the clock
+ * so tap detection is exercised with exact timestamps.
+ */
+export interface TouchEventSource {
+  readonly addTouchListener: (
+    type: TouchEventType,
+    handler: (points: readonly TouchPoint[]) => boolean,
+    passive: boolean
+  ) => void;
+  readonly now: () => number;
+}
+
+/**
+ * Dependencies required to run the touch source.
+ *
+ * arbiter: Receives this source's intent and jump requests.
+ * activity: Idle timer reset on every touch.
+ * events: Event target to bind listeners to.
+ * config: Joystick tuning values.
+ */
+export interface TouchDeps {
+  readonly arbiter: InputArbiter;
+  readonly activity: ActivityTracker;
+  readonly events: TouchEventSource;
+  readonly config: TouchConfig;
 }
 
 /** Default touch configuration. */
@@ -103,17 +147,17 @@ export function createTouchState(): TouchState {
 }
 
 /**
- * Calculate direction from anchor to current touch position.
+ * Calculate direction from the joystick anchor to the current touch position.
  *
- * Uses 8-direction calculation with deadzone. Returns null if within deadzone.
- * Directions are mapped using 45-degree sectors centered on each direction.
+ * Uses 45-degree sectors centred on each of the 8 directions, with a deadzone
+ * around the anchor.
  *
  * Args:
  *     joystick: Current joystick state.
  *     config: Touch configuration.
  *
  * Returns:
- *     TouchDirection or null if within deadzone.
+ *     TouchDirection, or null when inside the deadzone.
  */
 export function calculateDirection(
   joystick: JoystickState,
@@ -127,17 +171,11 @@ export function calculateDirection(
     return null;
   }
 
-  // Angle in radians, 0 = right, counter-clockwise
-  // Negate dy because screen Y is inverted (down is positive)
+  // Angle in radians, 0 = right, counter-clockwise.
+  // Negate dy because screen Y is inverted (down is positive).
   const angle = Math.atan2(-dy, dx);
-
-  // Convert angle to degrees for easier sector calculation
-  // Normalize to 0-360 range
   const degrees = ((angle * 180) / Math.PI + 360) % 360;
 
-  // Map to 8 directions using 45-degree sectors
-  // Each direction has a 45-degree range centered on it
-  // Right: 337.5-22.5, Up-Right: 22.5-67.5, Up: 67.5-112.5, etc.
   if (degrees >= 337.5 || degrees < 22.5) {
     return "right";
   } else if (degrees >= 22.5 && degrees < 67.5) {
@@ -158,13 +196,13 @@ export function calculateDirection(
 }
 
 /**
- * Extract horizontal component from touch direction.
+ * Extract the horizontal component of a touch direction.
  *
  * Args:
- *     direction: Touch direction to extract from.
+ *     direction: Touch direction to decompose.
  *
  * Returns:
- *     HorizontalInput extracted from direction.
+ *     The horizontal component, or null.
  */
 function directionToHorizontal(direction: TouchDirection): HorizontalInput {
   if (direction === null) return null;
@@ -174,13 +212,13 @@ function directionToHorizontal(direction: TouchDirection): HorizontalInput {
 }
 
 /**
- * Extract vertical component from touch direction.
+ * Extract the vertical component of a touch direction.
  *
  * Args:
- *     direction: Touch direction to extract from.
+ *     direction: Touch direction to decompose.
  *
  * Returns:
- *     VerticalInput extracted from direction.
+ *     The vertical component, or null.
  */
 function directionToVertical(direction: TouchDirection): VerticalInput {
   if (direction === null) return null;
@@ -190,15 +228,28 @@ function directionToVertical(direction: TouchDirection): VerticalInput {
 }
 
 /**
- * Check if a touch qualifies as a tap (quick touch-release).
+ * Convert a touch direction into a movement intent.
+ *
+ * Args:
+ *     direction: Touch direction to convert.
+ *
+ * Returns:
+ *     The intent that direction requests.
+ */
+export function directionToIntent(direction: TouchDirection): MovementIntent {
+  return createIntent(directionToHorizontal(direction), directionToVertical(direction));
+}
+
+/**
+ * Check whether a touch qualifies as a tap.
  *
  * Args:
  *     joystick: Joystick state at release.
- *     releaseTime: Time of release (ms since epoch).
+ *     releaseTime: Time of release, in milliseconds.
  *     config: Touch configuration.
  *
  * Returns:
- *     True if touch qualifies as a tap.
+ *     True if the touch was short and barely moved.
  */
 export function isTap(
   joystick: JoystickState,
@@ -214,93 +265,45 @@ export function isTap(
 }
 
 /**
- * Process a new direction and update input state.
- *
- * Converts touch direction to horizontal/vertical components and
- * calls the shared processInputChange function.
+ * Submit the intent for a new joystick direction.
  *
  * Args:
- *     prevDirection: Previous touch direction.
- *     newDirection: New touch direction.
+ *     newDirection: Direction the joystick now points.
  *     touchState: Touch state to update.
- *     inputState: Game input state to update.
- *     bunnyFrames: Bunny animation frames.
- *     bunnyTimers: Bunny animation timers.
+ *     deps: Touch dependencies.
  */
 export function processDirectionChange(
-  prevDirection: TouchDirection,
   newDirection: TouchDirection,
   touchState: TouchState,
-  inputState: InputState,
-  bunnyFrames: BunnyFrames,
-  bunnyTimers: BunnyTimers
+  deps: TouchDeps
 ): void {
-  const prevHorizontal = directionToHorizontal(prevDirection);
-  const prevVertical = directionToVertical(prevDirection);
-  const newHorizontal = directionToHorizontal(newDirection);
-  const newVertical = directionToVertical(newDirection);
-
-  // Update raw input state
-  inputState.horizontalHeld = newHorizontal;
-  inputState.verticalHeld = newVertical;
-
-  // Use shared input change processor
-  processInputChange(
-    prevHorizontal,
-    prevVertical,
-    newHorizontal,
-    newVertical,
-    inputState,
-    bunnyFrames,
-    bunnyTimers
-  );
-
+  deps.activity.record();
+  deps.arbiter.submit("user", directionToIntent(newDirection));
   touchState.currentDirection = newDirection;
 }
 
 /**
- * Handle touch release - end all inputs or trigger jump on tap.
+ * Handle a completed touch: jump on a tap, otherwise release all input.
  *
  * Args:
  *     touchState: Touch state to update.
- *     inputState: Game input state to update.
- *     bunnyFrames: Bunny animation frames.
- *     bunnyTimers: Bunny animation timers.
- *     releaseTime: Time of release (ms since epoch).
- *     config: Touch configuration.
+ *     deps: Touch dependencies.
+ *     releaseTime: Time of release, in milliseconds.
  */
 export function handleTouchEnd(
   touchState: TouchState,
-  inputState: InputState,
-  bunnyFrames: BunnyFrames,
-  bunnyTimers: BunnyTimers,
-  releaseTime: number,
-  config: TouchConfig
+  deps: TouchDeps,
+  releaseTime: number
 ): void {
-  if (touchState.joystick === null) return;
+  const joystick = touchState.joystick;
+  if (joystick === null) return;
 
-  // Check for tap (jump)
-  if (isTap(touchState.joystick, releaseTime, config)) {
-    if (!isJumping(inputState.bunny) && !isPendingJump(inputState.bunny) && !isHopping(inputState.bunny)) {
-      handleJumpInput(inputState.bunny, bunnyFrames, bunnyTimers);
-    }
+  deps.activity.record();
+
+  if (isTap(joystick, releaseTime, deps.config)) {
+    deps.arbiter.requestJump("user");
   } else {
-    // Regular release - end all inputs via processInputChange
-    const prevHorizontal = inputState.horizontalHeld;
-    const prevVertical = inputState.verticalHeld;
-
-    inputState.horizontalHeld = null;
-    inputState.verticalHeld = null;
-
-    processInputChange(
-      prevHorizontal,
-      prevVertical,
-      null,
-      null,
-      inputState,
-      bunnyFrames,
-      bunnyTimers
-    );
+    deps.arbiter.submit("user", NEUTRAL_INTENT);
   }
 
   touchState.joystick = null;
@@ -308,59 +311,46 @@ export function handleTouchEnd(
 }
 
 /**
- * Find a touch by identifier in a TouchList.
+ * Find a touch point by identifier.
  *
  * Args:
- *     touches: TouchList to search.
+ *     points: Active touch points.
  *     identifier: Touch identifier to find.
  *
  * Returns:
- *     Touch if found, undefined otherwise.
+ *     The matching point, or undefined.
  */
-function findTouchByIdentifier(touches: TouchList, identifier: number): Touch | undefined {
-  for (const touch of touches) {
-    if (touch.identifier === identifier) {
-      return touch;
+function findTouchByIdentifier(
+  points: readonly TouchPoint[],
+  identifier: number
+): TouchPoint | undefined {
+  for (const point of points) {
+    if (point.identifier === identifier) {
+      return point;
     }
   }
   return undefined;
 }
 
 /**
- * Check if a touch with given identifier exists in a TouchList.
- *
- * Args:
- *     touches: TouchList to search.
- *     identifier: Touch identifier to find.
- *
- * Returns:
- *     True if touch with identifier exists.
- */
-function hasTouchWithIdentifier(touches: TouchList, identifier: number): boolean {
-  return findTouchByIdentifier(touches, identifier) !== undefined;
-}
-
-/**
- * Handle touchstart event.
- *
- * Creates a new joystick at the touch point if none exists.
+ * Handle a touchstart event by anchoring a joystick.
  *
  * Args:
  *     touchState: Touch state to update.
- *     touches: TouchList from the event.
+ *     points: Active touch points from the event.
  *     now: Current timestamp in milliseconds.
  *
  * Returns:
- *     True if a joystick was created (event should be prevented).
+ *     True if a joystick was created.
  */
 export function handleTouchStart(
   touchState: TouchState,
-  touches: TouchList,
+  points: readonly TouchPoint[],
   now: number
 ): boolean {
   if (touchState.joystick !== null) return false;
 
-  const touch = touches[0];
+  const touch = points[0];
   if (touch === undefined) return false;
 
   touchState.joystick = {
@@ -376,134 +366,99 @@ export function handleTouchStart(
 }
 
 /**
- * Handle touchmove event.
- *
- * Updates joystick position and triggers direction changes.
+ * Handle a touchmove event by re-aiming the joystick.
  *
  * Args:
  *     touchState: Touch state to update.
- *     inputState: Game input state.
- *     bunnyFrames: Bunny animation frames.
- *     bunnyTimers: Bunny animation timers.
- *     touches: TouchList from the event.
- *     config: Touch configuration.
+ *     deps: Touch dependencies.
+ *     points: Active touch points from the event.
  *
  * Returns:
- *     True if the touch was handled (event should be prevented).
+ *     True if the tracked touch was handled.
  */
 export function handleTouchMove(
   touchState: TouchState,
-  inputState: InputState,
-  bunnyFrames: BunnyFrames,
-  bunnyTimers: BunnyTimers,
-  touches: TouchList,
-  config: TouchConfig
+  deps: TouchDeps,
+  points: readonly TouchPoint[]
 ): boolean {
-  if (touchState.joystick === null) return false;
+  const joystick = touchState.joystick;
+  if (joystick === null) return false;
 
-  const touch = findTouchByIdentifier(touches, touchState.joystick.identifier);
+  const touch = findTouchByIdentifier(points, joystick.identifier);
   if (touch === undefined) return false;
 
-  const prevDirection = touchState.currentDirection;
+  joystick.currentX = touch.clientX;
+  joystick.currentY = touch.clientY;
 
-  touchState.joystick.currentX = touch.clientX;
-  touchState.joystick.currentY = touch.clientY;
+  const newDirection = calculateDirection(joystick, deps.config);
 
-  const newDirection = calculateDirection(touchState.joystick, config);
-
-  if (newDirection !== prevDirection) {
-    processDirectionChange(
-      prevDirection,
-      newDirection,
-      touchState,
-      inputState,
-      bunnyFrames,
-      bunnyTimers
-    );
+  if (newDirection !== touchState.currentDirection) {
+    processDirectionChange(newDirection, touchState, deps);
   }
 
   return true;
 }
 
 /**
- * Handle touchend or touchcancel event.
- *
- * Ends the touch interaction if our tracked touch is no longer active.
+ * Handle touchend or touchcancel, ending the gesture when our touch is gone.
  *
  * Args:
  *     touchState: Touch state to update.
- *     inputState: Game input state.
- *     bunnyFrames: Bunny animation frames.
- *     bunnyTimers: Bunny animation timers.
- *     touches: TouchList from the event (remaining active touches).
+ *     deps: Touch dependencies.
+ *     points: Remaining active touch points from the event.
  *     now: Current timestamp in milliseconds.
- *     config: Touch configuration.
  */
 export function handleTouchEndEvent(
   touchState: TouchState,
-  inputState: InputState,
-  bunnyFrames: BunnyFrames,
-  bunnyTimers: BunnyTimers,
-  touches: TouchList,
-  now: number,
-  config: TouchConfig
+  deps: TouchDeps,
+  points: readonly TouchPoint[],
+  now: number
 ): void {
-  if (touchState.joystick === null) return;
+  const joystick = touchState.joystick;
+  if (joystick === null) return;
 
-  const stillActive = hasTouchWithIdentifier(touches, touchState.joystick.identifier);
-
-  if (!stillActive) {
-    handleTouchEnd(
-      touchState,
-      inputState,
-      bunnyFrames,
-      bunnyTimers,
-      now,
-      config
-    );
+  if (findTouchByIdentifier(points, joystick.identifier) === undefined) {
+    handleTouchEnd(touchState, deps, now);
   }
 }
 
 /**
- * Setup touch controls for the game.
+ * Bind touch listeners and start producing intent.
  *
- * Attaches touch event listeners to the document and translates
- * touch gestures into input state changes using the shared input model.
+ * touchstart is deliberately not prevented: preventing it blocks audio
+ * autoplay unlocking on mobile.
  *
  * Args:
- *     inputState: Game input state.
- *     bunnyFrames: Bunny animation frames.
- *     bunnyTimers: Bunny animation timers.
- *     config: Touch configuration (optional, uses defaults).
+ *     deps: Touch dependencies.
  *
  * Returns:
- *     TouchState for external access if needed.
+ *     The joystick state this source maintains.
  */
-export function setupTouchControls(
-  inputState: InputState,
-  bunnyFrames: BunnyFrames,
-  bunnyTimers: BunnyTimers,
-  config: TouchConfig = DEFAULT_TOUCH_CONFIG
-): TouchState {
+export function setupTouchControls(deps: TouchDeps): TouchState {
   const touchState = createTouchState();
 
-  document.addEventListener("touchstart", (e: TouchEvent) => {
-    handleTouchStart(touchState, e.touches, Date.now());
-    // Note: Do NOT call preventDefault() here - it blocks audio autoplay on mobile
-  });
+  deps.events.addTouchListener(
+    "touchstart",
+    (points: readonly TouchPoint[]): boolean => {
+      handleTouchStart(touchState, points, deps.events.now());
+      return false;
+    },
+    true
+  );
 
-  document.addEventListener("touchmove", (e: TouchEvent) => {
-    if (handleTouchMove(touchState, inputState, bunnyFrames, bunnyTimers, e.touches, config)) {
-      e.preventDefault();
-    }
-  }, { passive: false });
+  deps.events.addTouchListener(
+    "touchmove",
+    (points: readonly TouchPoint[]): boolean => handleTouchMove(touchState, deps, points),
+    false
+  );
 
-  const onEnd = (e: TouchEvent): void => {
-    handleTouchEndEvent(touchState, inputState, bunnyFrames, bunnyTimers, e.touches, Date.now(), config);
+  const onEnd = (points: readonly TouchPoint[]): boolean => {
+    handleTouchEndEvent(touchState, deps, points, deps.events.now());
+    return false;
   };
 
-  document.addEventListener("touchend", onEnd);
-  document.addEventListener("touchcancel", onEnd);
+  deps.events.addTouchListener("touchend", onEnd, true);
+  deps.events.addTouchListener("touchcancel", onEnd, true);
 
   return touchState;
 }
@@ -513,14 +468,15 @@ export const _test_hooks = {
   createTouchState,
   calculateDirection,
   isTap,
+  directionToHorizontal,
+  directionToVertical,
+  directionToIntent,
   processDirectionChange,
   handleTouchEnd,
   handleTouchStart,
   handleTouchMove,
   handleTouchEndEvent,
-  directionToHorizontal,
-  directionToVertical,
   findTouchByIdentifier,
-  hasTouchWithIdentifier,
+  setupTouchControls,
   DEFAULT_TOUCH_CONFIG,
 };

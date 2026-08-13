@@ -122,6 +122,17 @@
     "jumpSpeed": 58,
     "scrollSpeed": 36
   },
+  "autorun": {
+    "enabled": true,
+    "idleDelay": 5,
+    "minLeg": 2,
+    "maxLeg": 7,
+    "minPause": 0.8,
+    "maxPause": 3,
+    "turnChance": 0.5,
+    "hopChance": 0.25,
+    "jumpChance": 0.2
+  },
   "audio": {
     "enabled": true,
     "masterVolume": 0.5,

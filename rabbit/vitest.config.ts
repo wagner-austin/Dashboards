@@ -2,6 +2,9 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
+    // Source tests only. Without this, compiled copies under dist/ are
+    // collected as well, so a stale build silently reruns old tests.
+    include: ["src/**/*.test.ts"],
     coverage: {
       provider: "v8",
       include: ["src/**/*.ts"],

@@ -5,12 +5,19 @@
 import { type AudioPlayer } from "./AudioPlayer.js";
 import type { AudioTrack, AudioConfig, AudioDependencies, AudioContextLike } from "./types.js";
 export type { AudioDependencies };
-/** Audio system state for track switching. */
+/**
+ * Audio system state for track switching.
+ *
+ * currentTrack is held alongside currentIndex so resuming a suspended context
+ * never has to look a track back up by index, and therefore never needs a
+ * fallback for an index that cannot occur.
+ */
 export interface AudioSystem {
     context: AudioContextLike;
     player: AudioPlayer;
     tracks: readonly AudioTrack[];
     currentIndex: number;
+    currentTrack: AudioTrack;
     cleanup: () => void;
 }
 /**

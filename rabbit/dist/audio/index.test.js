@@ -228,6 +228,13 @@ describe("audio module exports", () => {
         });
         it("exports AudioSystem type", () => {
             const context = createTestContext();
+            const track = {
+                id: "test",
+                path: "audio/test.mp3",
+                volume: 1.0,
+                loop: true,
+                tags: {},
+            };
             const system = {
                 context,
                 player: {
@@ -239,8 +246,9 @@ describe("audio module exports", () => {
                         currentTrackId: null, isPlaying: false, volume: 1,
                     }),
                 },
-                tracks: [],
+                tracks: [track],
                 currentIndex: 0,
+                currentTrack: track,
                 cleanup: () => { },
             };
             expect(system.currentIndex).toBe(0);

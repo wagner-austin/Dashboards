@@ -2,6 +2,7 @@
  * Sprite loading and animation timer utilities.
  */
 import { validateAudioConfig } from "../audio/index.js";
+import { validateAutorunConfig } from "../input/validation.js";
 /** Type guard for checking if value is a record */
 function isRecord(value) {
     return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -62,25 +63,18 @@ function validateConfig(data) {
     }
     const audio = validateOptionalAudio(data.audio);
     const autoLayers = data.autoLayers;
-    // After validation, we construct a properly typed object
-    // Build base config and add optional properties conditionally
-    const base = {
+    // An absent autorun block decodes to defaults, so the field is always present.
+    const autorun = validateAutorunConfig(data.autorun);
+    return {
         sprites: sprites,
         layers: layers,
         settings,
+        autorun,
+        ...(audio !== undefined ? { audio } : {}),
+        ...(autoLayers !== undefined
+            ? { autoLayers: autoLayers }
+            : {}),
     };
-    const hasAudio = audio !== undefined;
-    const hasAutoLayers = autoLayers !== undefined;
-    if (hasAudio && hasAutoLayers) {
-        return { ...base, audio, autoLayers: autoLayers };
-    }
-    if (hasAudio) {
-        return { ...base, audio };
-    }
-    if (hasAutoLayers) {
-        return { ...base, autoLayers: autoLayers };
-    }
-    return base;
 }
 export function createAnimationTimer(intervalMs, onTick) {
     let id = null;

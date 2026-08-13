@@ -30,4 +30,8 @@ export function drawGround(buffer, offsetX, width, height) {
         }
     }
 }
+/** Test hooks for internal functions */
+export const _test_hooks = {
+    drawGround,
+};
 //# sourceMappingURL=Ground.js.map

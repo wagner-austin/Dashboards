@@ -4,6 +4,7 @@
 
 import type { Config, Settings, AudioConfigRef } from "../types.js";
 import { validateAudioConfig } from "../audio/index.js";
+import { validateAutorunConfig } from "../input/validation.js";
 
 /** Module interface for sprite frame exports */
 export interface SpriteModule {
@@ -74,25 +75,19 @@ function validateConfig(data: unknown): Config {
   }
   const audio = validateOptionalAudio(data.audio);
   const autoLayers = data.autoLayers;
-  // After validation, we construct a properly typed object
-  // Build base config and add optional properties conditionally
-  const base: Config = {
+  // An absent autorun block decodes to defaults, so the field is always present.
+  const autorun = validateAutorunConfig(data.autorun);
+
+  return {
     sprites: sprites as Config["sprites"],
     layers: layers as Config["layers"],
     settings,
+    autorun,
+    ...(audio !== undefined ? { audio } : {}),
+    ...(autoLayers !== undefined
+      ? { autoLayers: autoLayers as NonNullable<Config["autoLayers"]> }
+      : {}),
   };
-  const hasAudio = audio !== undefined;
-  const hasAutoLayers = autoLayers !== undefined;
-  if (hasAudio && hasAutoLayers) {
-    return { ...base, audio, autoLayers: autoLayers as NonNullable<Config["autoLayers"]> };
-  }
-  if (hasAudio) {
-    return { ...base, audio };
-  }
-  if (hasAutoLayers) {
-    return { ...base, autoLayers: autoLayers as NonNullable<Config["autoLayers"]> };
-  }
-  return base;
 }
 
 

@@ -1,208 +1,169 @@
 /**
- * Keyboard input handling with unified input model.
+ * Keyboard input source.
  *
- * Uses raw input tracking (horizontalHeld, verticalHeld) that both keyboard
- * and touch inputs set. Movement processing interprets these based on bunny
- * animation state, ensuring consistent behavior across input methods.
+ * Translates key presses into a MovementIntent and submits it to the arbiter.
+ * The keyboard owns only its own held-key model; it never writes engine state,
+ * so it cannot disagree with the touch or autopilot sources about what the
+ * bunny is currently being told to do.
  */
-import { isHopping, isJumping, } from "../entities/Bunny.js";
-import { DEFAULT_CAMERA_Z, wrapDepth } from "../world/Projection.js";
-import { isPendingJump, handleJumpInput, handleWalkKeyDown, handleWalkKeyUp, handleHopInput, handleHopRelease, } from "./handlers.js";
+import { createIntent, } from "./intent.js";
+import { resetCamera } from "./movement.js";
+/** Key that triggers a jump. */
+const JUMP_KEY = " ";
+/** Key that returns the camera to its starting position. */
+const RESET_KEY = "r";
+/** Movement keys, indexed by lower-cased KeyboardEvent.key. */
+const KEY_BINDINGS = new Map([
+    ["arrowleft", { axis: "horizontal", value: "left" }],
+    ["a", { axis: "horizontal", value: "left" }],
+    ["arrowright", { axis: "horizontal", value: "right" }],
+    ["d", { axis: "horizontal", value: "right" }],
+    ["arrowup", { axis: "vertical", value: "up" }],
+    ["w", { axis: "vertical", value: "up" }],
+    ["arrowdown", { axis: "vertical", value: "down" }],
+    ["s", { axis: "vertical", value: "down" }],
+]);
 /**
- * Process input state change and trigger appropriate animations.
+ * Create the held-key model with nothing pressed.
  *
- * Called when raw input changes (key press/release or touch direction change).
- * Compares previous and new input to determine which handlers to call.
- * This is the single source of truth for input-to-animation mapping.
- *
- * Args:
- *     prevHorizontal: Previous horizontal input.
- *     prevVertical: Previous vertical input.
- *     newHorizontal: New horizontal input.
- *     newVertical: New vertical input.
- *     state: Input state containing bunny.
- *     bunnyFrames: Bunny animation frames.
- *     bunnyTimers: Bunny animation timers.
+ * Returns:
+ *     KeyboardKeys with both axes released.
  */
-export function processInputChange(prevHorizontal, prevVertical, newHorizontal, newVertical, state, bunnyFrames, bunnyTimers) {
-    // Callback to check current horizontal input for animation completion
-    const isHorizontalHeld = () => state.horizontalHeld !== null;
-    // Handle vertical (hop) changes first
-    const wasVertical = prevVertical !== null;
-    const isVertical = newVertical !== null;
-    if (!wasVertical && isVertical) {
-        // Started vertical movement - begin hop
-        const direction = newVertical === "up" ? "away" : "toward";
-        handleHopInput(state.bunny, bunnyTimers, direction);
-    }
-    else if (wasVertical && !isVertical) {
-        // Ended vertical movement - stop hop
-        handleHopRelease(state.bunny, bunnyTimers, isHorizontalHeld);
-    }
-    else if (prevVertical === "up" && newVertical === "down") {
-        // Switched from up to down
-        handleHopRelease(state.bunny, bunnyTimers, isHorizontalHeld);
-        handleHopInput(state.bunny, bunnyTimers, "toward");
-    }
-    else if (prevVertical === "down" && newVertical === "up") {
-        // Switched from down to up
-        handleHopRelease(state.bunny, bunnyTimers, isHorizontalHeld);
-        handleHopInput(state.bunny, bunnyTimers, "away");
-    }
-    // Handle horizontal changes
-    const inAir = isHopping(state.bunny) || isJumping(state.bunny) || newVertical !== null;
-    if (inAir) {
-        // While in air: update facing direction so bunny faces correct way when landing
-        if (newHorizontal === "left") {
-            state.bunny.facingRight = false;
-        }
-        else if (newHorizontal === "right") {
-            state.bunny.facingRight = true;
-        }
-    }
-    else {
-        // Not in air: horizontal controls walk
-        if (newHorizontal === "left" && prevHorizontal !== "left") {
-            handleWalkKeyDown(state.bunny, bunnyFrames, bunnyTimers, false);
-        }
-        else if (newHorizontal === "right" && prevHorizontal !== "right") {
-            handleWalkKeyDown(state.bunny, bunnyFrames, bunnyTimers, true);
-        }
-        else if (newHorizontal === null && prevHorizontal !== null) {
-            handleWalkKeyUp(state.bunny, bunnyTimers);
-        }
-    }
+export function createKeyboardKeys() {
+    return { horizontal: null, vertical: null };
 }
 /**
- * Setup keyboard controls for the game.
- *
- * Attaches keydown and keyup listeners that update raw input state
- * and call processInputChange for animation handling.
+ * Convert held keys into a movement intent.
  *
  * Args:
- *     state: Mutable input state.
- *     bunnyFrames: Bunny animation frames.
- *     bunnyTimers: Bunny animation timers.
+ *     keys: Currently held keys.
+ *
+ * Returns:
+ *     The intent those keys request.
  */
-export function setupKeyboardControls(state, bunnyFrames, bunnyTimers) {
-    document.addEventListener("keydown", (e) => {
-        if (e.repeat) {
-            return;
-        }
-        const key = e.key.toLowerCase();
-        const isLeftKey = e.key === "ArrowLeft" || key === "a";
-        const isRightKey = e.key === "ArrowRight" || key === "d";
-        const isUpKey = e.key === "ArrowUp" || key === "w";
-        const isDownKey = e.key === "ArrowDown" || key === "s";
-        const prevHorizontal = state.horizontalHeld;
-        const prevVertical = state.verticalHeld;
-        if (isLeftKey) {
-            state.horizontalHeld = "left";
-        }
-        else if (isRightKey) {
-            state.horizontalHeld = "right";
-        }
-        else if (isUpKey) {
-            state.verticalHeld = "up";
-        }
-        else if (isDownKey) {
-            state.verticalHeld = "down";
-        }
-        else if (e.key === " " && !isJumping(state.bunny) && !isPendingJump(state.bunny)) {
-            handleJumpInput(state.bunny, bunnyFrames, bunnyTimers);
-            e.preventDefault();
-            return;
-        }
-        else if (key === "r") {
-            state.camera = { x: 0, z: DEFAULT_CAMERA_Z };
-            return;
-        }
-        else {
-            return;
-        }
-        processInputChange(prevHorizontal, prevVertical, state.horizontalHeld, state.verticalHeld, state, bunnyFrames, bunnyTimers);
-    });
-    document.addEventListener("keyup", (e) => {
-        const key = e.key.toLowerCase();
-        const isLeftKey = e.key === "ArrowLeft" || key === "a";
-        const isRightKey = e.key === "ArrowRight" || key === "d";
-        const isUpKey = e.key === "ArrowUp" || key === "w";
-        const isDownKey = e.key === "ArrowDown" || key === "s";
-        const prevHorizontal = state.horizontalHeld;
-        const prevVertical = state.verticalHeld;
-        if (isLeftKey && state.horizontalHeld === "left") {
-            state.horizontalHeld = null;
-        }
-        else if (isRightKey && state.horizontalHeld === "right") {
-            state.horizontalHeld = null;
-        }
-        else if (isUpKey && state.verticalHeld === "up") {
-            state.verticalHeld = null;
-        }
-        else if (isDownKey && state.verticalHeld === "down") {
-            state.verticalHeld = null;
-        }
-        else {
-            return;
-        }
-        processInputChange(prevHorizontal, prevVertical, state.horizontalHeld, state.verticalHeld, state, bunnyFrames, bunnyTimers);
-    });
+function intentFromKeys(keys) {
+    return createIntent(keys.horizontal, keys.vertical);
 }
-/** Camera Z movement speed per second. */
-const CAMERA_Z_SPEED = 30;
 /**
- * Process camera depth movement based on hop state.
- *
- * Camera moves when bunny is hopping, with infinite wrapping at depth bounds.
- * Moving "toward" decreases Z (toward viewer).
- * Moving "away" increases Z (into scene).
+ * Record a key press against the held-key model.
  *
  * Args:
- *     state: Input state with bunny, camera, and depthBounds.
- *     deltaTime: Time since last frame in seconds.
+ *     keys: Held-key model to update.
+ *     binding: Axis and direction of the pressed key.
  */
-export function processDepthMovement(state, deltaTime) {
-    const anim = state.bunny.animation;
-    if (anim.kind !== "hop") {
+function pressBinding(keys, binding) {
+    if (binding.axis === "horizontal") {
+        keys.horizontal = binding.value;
         return;
     }
-    const delta = anim.direction === "toward" ? -CAMERA_Z_SPEED : CAMERA_Z_SPEED;
-    const newZ = wrapDepth(state.camera.z + delta * deltaTime, state.depthBounds.minZ, state.depthBounds.maxZ);
-    state.camera = { ...state.camera, z: newZ };
+    keys.vertical = binding.value;
 }
-/** Camera X movement speed per second. */
-const CAMERA_X_SPEED = 120;
 /**
- * Process horizontal camera movement.
+ * Record a key release against the held-key model.
  *
- * Camera moves horizontally when bunny is hopping or walking and
- * horizontal input is held. Uses same speed for both modes.
+ * A release only clears the axis if that exact direction is the one currently
+ * held, so releasing a key that was already overridden changes nothing.
  *
  * Args:
- *     state: Input state with bunny, camera, and horizontalHeld.
- *     deltaTime: Time since last frame in seconds.
+ *     keys: Held-key model to update.
+ *     binding: Axis and direction of the released key.
+ *
+ * Returns:
+ *     True if the axis was cleared.
  */
-export function processHorizontalMovement(state, deltaTime) {
-    const anim = state.bunny.animation;
-    const isMoving = anim.kind === "hop" || anim.kind === "walk" || anim.kind === "jump";
-    if (!isMoving || state.horizontalHeld === null) {
+function releaseBinding(keys, binding) {
+    if (binding.axis === "horizontal") {
+        if (keys.horizontal !== binding.value) {
+            return false;
+        }
+        keys.horizontal = null;
+        return true;
+    }
+    if (keys.vertical !== binding.value) {
+        return false;
+    }
+    keys.vertical = null;
+    return true;
+}
+/**
+ * Handle a key press.
+ *
+ * Args:
+ *     event: The keydown event.
+ *     keys: Held-key model to update.
+ *     deps: Keyboard dependencies.
+ */
+export function handleKeyDown(event, keys, deps) {
+    deps.activity.record();
+    if (event.repeat) {
         return;
     }
-    const direction = state.horizontalHeld === "left" ? -1 : 1;
-    state.camera = { ...state.camera, x: state.camera.x + CAMERA_X_SPEED * deltaTime * direction };
+    const key = event.key.toLowerCase();
+    if (key === JUMP_KEY) {
+        deps.arbiter.requestJump("user");
+        event.preventDefault();
+        return;
+    }
+    if (key === RESET_KEY) {
+        resetCamera(deps.state);
+        return;
+    }
+    const binding = KEY_BINDINGS.get(key);
+    if (binding === undefined) {
+        return;
+    }
+    pressBinding(keys, binding);
+    deps.arbiter.submit("user", intentFromKeys(keys));
+}
+/**
+ * Handle a key release.
+ *
+ * Args:
+ *     event: The keyup event.
+ *     keys: Held-key model to update.
+ *     deps: Keyboard dependencies.
+ */
+export function handleKeyUp(event, keys, deps) {
+    const binding = KEY_BINDINGS.get(event.key.toLowerCase());
+    if (binding === undefined) {
+        return;
+    }
+    if (!releaseBinding(keys, binding)) {
+        return;
+    }
+    deps.activity.record();
+    deps.arbiter.submit("user", intentFromKeys(keys));
+}
+/**
+ * Bind keyboard listeners and start producing intent.
+ *
+ * Args:
+ *     deps: Keyboard dependencies.
+ *
+ * Returns:
+ *     The held-key model this source maintains.
+ */
+export function setupKeyboardControls(deps) {
+    const keys = createKeyboardKeys();
+    deps.events.addKeyListener("keydown", (event) => {
+        handleKeyDown(event, keys, deps);
+    });
+    deps.events.addKeyListener("keyup", (event) => {
+        handleKeyUp(event, keys, deps);
+    });
+    return keys;
 }
 /** Test hooks for internal functions */
 export const _test_hooks = {
-    handleJumpInput,
-    handleWalkKeyDown,
-    handleWalkKeyUp,
-    handleHopInput,
-    handleHopRelease,
-    isPendingJump,
-    processInputChange,
-    processDepthMovement,
-    processHorizontalMovement,
-    CAMERA_Z_SPEED,
-    CAMERA_X_SPEED,
+    createKeyboardKeys,
+    intentFromKeys,
+    pressBinding,
+    releaseBinding,
+    handleKeyDown,
+    handleKeyUp,
+    setupKeyboardControls,
+    KEY_BINDINGS,
+    JUMP_KEY,
+    RESET_KEY,
 };
 //# sourceMappingURL=Keyboard.js.map

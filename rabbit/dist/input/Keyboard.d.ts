@@ -1,104 +1,137 @@
 /**
- * Keyboard input handling with unified input model.
+ * Keyboard input source.
  *
- * Uses raw input tracking (horizontalHeld, verticalHeld) that both keyboard
- * and touch inputs set. Movement processing interprets these based on bunny
- * animation state, ensuring consistent behavior across input methods.
+ * Translates key presses into a MovementIntent and submits it to the arbiter.
+ * The keyboard owns only its own held-key model; it never writes engine state,
+ * so it cannot disagree with the touch or autopilot sources about what the
+ * bunny is currently being told to do.
  */
-import { type BunnyState, type BunnyFrames, type BunnyTimers } from "../entities/Bunny.js";
-import type { ViewportState } from "../rendering/Viewport.js";
-import type { Camera, DepthBounds } from "../world/Projection.js";
-import { isPendingJump, handleJumpInput, handleWalkKeyDown, handleWalkKeyUp, handleHopInput, handleHopRelease } from "./handlers.js";
+import type { ActivityTracker } from "./activity.js";
+import type { InputArbiter } from "./arbiter.js";
+import { type HorizontalDirection, type HorizontalInput, type MovementIntent, type VerticalDirection, type VerticalInput } from "./intent.js";
+import type { InputState } from "./state.js";
+/** Keyboard event types this source binds to. */
+export type KeyEventType = "keydown" | "keyup";
 /**
- * Horizontal input direction.
- */
-export type HorizontalInput = "left" | "right" | null;
-/**
- * Vertical input direction.
- */
-export type VerticalInput = "up" | "down" | null;
-/**
- * Input state containing all mutable game state.
+ * Minimal interface over the event target the keyboard binds to.
  *
- * bunny: Bunny animation state.
- * viewport: Screen dimensions.
- * camera: Camera position.
- * depthBounds: Bounds for depth wrapping (from config).
- * horizontalHeld: Raw horizontal input (A/D or touch left/right).
- * verticalHeld: Raw vertical input (W/S or touch up/down).
+ * Narrower than EventTarget on purpose: the input layer needs exactly this
+ * much of the DOM, and nothing here forces a browser to exist.
  */
-export interface InputState {
-    bunny: BunnyState;
-    viewport: ViewportState;
-    camera: Camera;
-    depthBounds: DepthBounds;
-    horizontalHeld: HorizontalInput;
-    verticalHeld: VerticalInput;
+export interface KeyboardEventSource {
+    readonly addKeyListener: (type: KeyEventType, handler: (event: KeyboardEvent) => void) => void;
+}
+/** A key bound to one axis of movement. */
+export type AxisBinding = {
+    readonly axis: "horizontal";
+    readonly value: HorizontalDirection;
+} | {
+    readonly axis: "vertical";
+    readonly value: VerticalDirection;
+};
+/**
+ * Keys the user is currently holding.
+ *
+ * horizontal: Held horizontal direction, or null.
+ * vertical: Held depth direction, or null.
+ */
+export interface KeyboardKeys {
+    horizontal: HorizontalInput;
+    vertical: VerticalInput;
 }
 /**
- * Process input state change and trigger appropriate animations.
+ * Dependencies required to run the keyboard source.
  *
- * Called when raw input changes (key press/release or touch direction change).
- * Compares previous and new input to determine which handlers to call.
- * This is the single source of truth for input-to-animation mapping.
- *
- * Args:
- *     prevHorizontal: Previous horizontal input.
- *     prevVertical: Previous vertical input.
- *     newHorizontal: New horizontal input.
- *     newVertical: New vertical input.
- *     state: Input state containing bunny.
- *     bunnyFrames: Bunny animation frames.
- *     bunnyTimers: Bunny animation timers.
+ * state: Engine state, used for the camera reset key.
+ * arbiter: Receives this source's intent and jump requests.
+ * activity: Idle timer reset on every key press.
+ * events: Event target to bind listeners to.
  */
-export declare function processInputChange(prevHorizontal: HorizontalInput, prevVertical: VerticalInput, newHorizontal: HorizontalInput, newVertical: VerticalInput, state: InputState, bunnyFrames: BunnyFrames, bunnyTimers: BunnyTimers): void;
+export interface KeyboardDeps {
+    readonly state: InputState;
+    readonly arbiter: InputArbiter;
+    readonly activity: ActivityTracker;
+    readonly events: KeyboardEventSource;
+}
 /**
- * Setup keyboard controls for the game.
+ * Create the held-key model with nothing pressed.
  *
- * Attaches keydown and keyup listeners that update raw input state
- * and call processInputChange for animation handling.
- *
- * Args:
- *     state: Mutable input state.
- *     bunnyFrames: Bunny animation frames.
- *     bunnyTimers: Bunny animation timers.
+ * Returns:
+ *     KeyboardKeys with both axes released.
  */
-export declare function setupKeyboardControls(state: InputState, bunnyFrames: BunnyFrames, bunnyTimers: BunnyTimers): void;
+export declare function createKeyboardKeys(): KeyboardKeys;
 /**
- * Process camera depth movement based on hop state.
- *
- * Camera moves when bunny is hopping, with infinite wrapping at depth bounds.
- * Moving "toward" decreases Z (toward viewer).
- * Moving "away" increases Z (into scene).
+ * Convert held keys into a movement intent.
  *
  * Args:
- *     state: Input state with bunny, camera, and depthBounds.
- *     deltaTime: Time since last frame in seconds.
+ *     keys: Currently held keys.
+ *
+ * Returns:
+ *     The intent those keys request.
  */
-export declare function processDepthMovement(state: InputState, deltaTime: number): void;
+declare function intentFromKeys(keys: KeyboardKeys): MovementIntent;
 /**
- * Process horizontal camera movement.
- *
- * Camera moves horizontally when bunny is hopping or walking and
- * horizontal input is held. Uses same speed for both modes.
+ * Record a key press against the held-key model.
  *
  * Args:
- *     state: Input state with bunny, camera, and horizontalHeld.
- *     deltaTime: Time since last frame in seconds.
+ *     keys: Held-key model to update.
+ *     binding: Axis and direction of the pressed key.
  */
-export declare function processHorizontalMovement(state: InputState, deltaTime: number): void;
+declare function pressBinding(keys: KeyboardKeys, binding: AxisBinding): void;
+/**
+ * Record a key release against the held-key model.
+ *
+ * A release only clears the axis if that exact direction is the one currently
+ * held, so releasing a key that was already overridden changes nothing.
+ *
+ * Args:
+ *     keys: Held-key model to update.
+ *     binding: Axis and direction of the released key.
+ *
+ * Returns:
+ *     True if the axis was cleared.
+ */
+declare function releaseBinding(keys: KeyboardKeys, binding: AxisBinding): boolean;
+/**
+ * Handle a key press.
+ *
+ * Args:
+ *     event: The keydown event.
+ *     keys: Held-key model to update.
+ *     deps: Keyboard dependencies.
+ */
+export declare function handleKeyDown(event: KeyboardEvent, keys: KeyboardKeys, deps: KeyboardDeps): void;
+/**
+ * Handle a key release.
+ *
+ * Args:
+ *     event: The keyup event.
+ *     keys: Held-key model to update.
+ *     deps: Keyboard dependencies.
+ */
+export declare function handleKeyUp(event: KeyboardEvent, keys: KeyboardKeys, deps: KeyboardDeps): void;
+/**
+ * Bind keyboard listeners and start producing intent.
+ *
+ * Args:
+ *     deps: Keyboard dependencies.
+ *
+ * Returns:
+ *     The held-key model this source maintains.
+ */
+export declare function setupKeyboardControls(deps: KeyboardDeps): KeyboardKeys;
 /** Test hooks for internal functions */
 export declare const _test_hooks: {
-    handleJumpInput: typeof handleJumpInput;
-    handleWalkKeyDown: typeof handleWalkKeyDown;
-    handleWalkKeyUp: typeof handleWalkKeyUp;
-    handleHopInput: typeof handleHopInput;
-    handleHopRelease: typeof handleHopRelease;
-    isPendingJump: typeof isPendingJump;
-    processInputChange: typeof processInputChange;
-    processDepthMovement: typeof processDepthMovement;
-    processHorizontalMovement: typeof processHorizontalMovement;
-    CAMERA_Z_SPEED: number;
-    CAMERA_X_SPEED: number;
+    createKeyboardKeys: typeof createKeyboardKeys;
+    intentFromKeys: typeof intentFromKeys;
+    pressBinding: typeof pressBinding;
+    releaseBinding: typeof releaseBinding;
+    handleKeyDown: typeof handleKeyDown;
+    handleKeyUp: typeof handleKeyUp;
+    setupKeyboardControls: typeof setupKeyboardControls;
+    KEY_BINDINGS: ReadonlyMap<string, AxisBinding>;
+    JUMP_KEY: string;
+    RESET_KEY: string;
 };
+export {};
 //# sourceMappingURL=Keyboard.d.ts.map

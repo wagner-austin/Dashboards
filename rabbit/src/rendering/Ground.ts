@@ -38,3 +38,8 @@ export function drawGround(
     }
   }
 }
+
+/** Test hooks for internal functions */
+export const _test_hooks = {
+  drawGround,
+};

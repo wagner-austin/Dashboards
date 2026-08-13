@@ -2,6 +2,7 @@
  * Tests for progressive sprite loading module.
  */
 import { describe, it, expect } from "vitest";
+import { DEFAULT_AUTORUN_CONFIG } from "../input/index.js";
 import { _test_hooks } from "./progressive.js";
 const { createMutableSpriteRegistry, getOrCreateSpriteArray, insertSortedByWidth, collectTreeWidths, getGrassSpriteNames, getTreeSpriteNames, getSpriteWidthsFromConfig, } = _test_hooks;
 function createTestConfig() {
@@ -26,6 +27,7 @@ function createTestConfig() {
             jumpSpeed: 58,
             scrollSpeed: 36,
         },
+        autorun: DEFAULT_AUTORUN_CONFIG,
         autoLayers: {
             sprites: ["tree1", "tree2"],
             minLayer: 8,
@@ -151,6 +153,7 @@ describe("collectTreeWidths", () => {
             },
             layers: [],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const entries = collectTreeWidths(config, ["tree1"]);
         expect(entries).toEqual([]);
@@ -172,6 +175,7 @@ describe("getGrassSpriteNames", () => {
             sprites: {},
             layers: [{ name: "sky", type: "static" }],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const names = getGrassSpriteNames(config);
         expect(names).toEqual([]);
@@ -184,6 +188,7 @@ describe("getGrassSpriteNames", () => {
                 { name: "grass-back", sprites: ["grassBack"] },
             ],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const names = getGrassSpriteNames(config);
         expect(names).toEqual(["grass1", "grass2", "grassBack"]);
@@ -193,6 +198,7 @@ describe("getGrassSpriteNames", () => {
             sprites: {},
             layers: [{ name: "other", sprites: ["tree1", "rock"] }],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const names = getGrassSpriteNames(config);
         expect(names).toEqual([]);
@@ -209,6 +215,7 @@ describe("getTreeSpriteNames", () => {
             sprites: {},
             layers: [],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const names = getTreeSpriteNames(config);
         expect(names).toEqual([]);
@@ -232,6 +239,7 @@ describe("getSpriteWidthsFromConfig", () => {
             },
             layers: [],
             settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const widths = getSpriteWidthsFromConfig(config, "noWidths");
         expect(widths).toEqual([]);

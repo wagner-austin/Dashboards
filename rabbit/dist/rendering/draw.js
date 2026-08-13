@@ -178,4 +178,13 @@ visibility = 1 // 0 = fully hidden, 1 = fully visible
         }
     }
 }
+/** Test hooks for internal functions */
+export const _test_hooks = {
+    densityToChar,
+    clampToDensity,
+    getFadedChar,
+    drawSprite,
+    sampleSprite,
+    drawSpriteFade,
+};
 //# sourceMappingURL=draw.js.map

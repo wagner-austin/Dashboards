@@ -6,10 +6,16 @@ from pathlib import Path
 import pytest
 from scripts import _test_hooks as hooks
 from scripts.guard import (
+    _engine_sources,
     _get_forbidden_patterns,
+    check_colocated_tests,
     check_no_pyi_stubs,
+    check_no_ts_any,
+    check_no_ts_declaration_files,
+    check_no_ts_suppressions,
     check_no_type_ignore,
     check_required_files,
+    check_test_hooks_exported,
     main,
 )
 
@@ -213,3 +219,202 @@ def test_main_failure(tmp_path: Path) -> None:
 
     assert result == 1
     assert "Guard check failed:" in fake.messages
+
+
+def _make_src(tmp_path: Path, relative: str, content: str) -> Path:
+    """Create a TypeScript source file under a temporary src/ tree.
+
+    Args:
+        tmp_path: Temporary project root.
+        relative: Path of the module relative to src/.
+        content: File contents to write.
+
+    Returns:
+        The path that was written.
+    """
+    path = tmp_path / "src" / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(content, encoding="utf-8")
+    return path
+
+
+def _hooked(body: str = "export function run(): void {}") -> str:
+    """Build a module body that satisfies the test-hook rule.
+
+    Args:
+        body: Module contents to place above the hooks export.
+
+    Returns:
+        Module source exporting _test_hooks.
+    """
+    return f"{body}\nexport const _test_hooks = {{ run }};\n"
+
+
+def test_engine_sources_skips_generated_sprites(tmp_path: Path) -> None:
+    """Generated sprite modules are not treated as engine code."""
+    _make_src(tmp_path, "input/intent.ts", _hooked())
+    _make_src(tmp_path, "sprites/bunny/walk.ts", "export const frames = [];")
+
+    found = [path.name for path in _engine_sources(tmp_path)]
+
+    assert found == ["intent.ts"]
+
+
+def test_engine_sources_without_src_dir(tmp_path: Path) -> None:
+    """A project with no src/ tree yields no engine sources."""
+    assert _engine_sources(tmp_path) == []
+
+
+def test_check_no_ts_suppressions_clean(tmp_path: Path) -> None:
+    """A module with no suppression comments passes."""
+    _make_src(tmp_path, "input/intent.ts", _hooked())
+
+    assert check_no_ts_suppressions(tmp_path) == []
+
+
+def test_check_no_ts_suppressions_detects_each_form(tmp_path: Path) -> None:
+    """Each suppression comment form is reported."""
+    _make_src(tmp_path, "a.ts", "// @" + "ts-ignore\n")
+    _make_src(tmp_path, "b.ts", "// @" + "ts-expect-error\n")
+    _make_src(tmp_path, "c.ts", "// eslint-disable-next-line\n")
+
+    errors = check_no_ts_suppressions(tmp_path)
+
+    assert len(errors) == 3
+
+
+def test_check_no_ts_suppressions_defaults_to_cwd() -> None:
+    """The check runs against the current directory when given no base."""
+    assert check_no_ts_suppressions() == []
+
+
+def test_check_no_ts_any_clean(tmp_path: Path) -> None:
+    """Precisely typed modules pass the any check."""
+    _make_src(tmp_path, "input/intent.ts", "const x: string = 'a';\n")
+
+    assert check_no_ts_any(tmp_path) == []
+
+
+def test_check_no_ts_any_detects_each_form(tmp_path: Path) -> None:
+    """Annotation, generic, and assertion forms of any are all reported."""
+    _make_src(tmp_path, "a.ts", "let x: any;\n")
+    _make_src(tmp_path, "b.ts", "const y = <any>z;\n")
+    _make_src(tmp_path, "c.ts", "const w = v as any;\n")
+
+    errors = check_no_ts_any(tmp_path)
+
+    assert len(errors) == 3
+    assert "a.ts:1" in errors[0]
+
+
+def test_check_no_ts_any_defaults_to_cwd() -> None:
+    """The check runs against the current directory when given no base."""
+    assert check_no_ts_any() == []
+
+
+def test_check_no_ts_declaration_files_clean(tmp_path: Path) -> None:
+    """A tree with no hand-written declarations passes."""
+    _make_src(tmp_path, "input/intent.ts", _hooked())
+
+    assert check_no_ts_declaration_files(tmp_path) == []
+
+
+def test_check_no_ts_declaration_files_detects_stub(tmp_path: Path) -> None:
+    """A hand-written declaration file is reported."""
+    _make_src(tmp_path, "shims.d.ts", "declare module 'x';\n")
+
+    errors = check_no_ts_declaration_files(tmp_path)
+
+    assert len(errors) == 1
+    assert "shims.d.ts" in errors[0]
+
+
+def test_check_no_ts_declaration_files_without_src_dir(tmp_path: Path) -> None:
+    """A project with no src/ tree has nothing to report."""
+    assert check_no_ts_declaration_files(tmp_path) == []
+
+
+def test_check_no_ts_declaration_files_defaults_to_cwd() -> None:
+    """The check runs against the current directory when given no base."""
+    assert check_no_ts_declaration_files() == []
+
+
+def test_check_test_hooks_exported_clean(tmp_path: Path) -> None:
+    """A module exporting hooks passes."""
+    _make_src(tmp_path, "input/intent.ts", _hooked())
+
+    assert check_test_hooks_exported(tmp_path) == []
+
+
+def test_check_test_hooks_exported_detects_missing(tmp_path: Path) -> None:
+    """A module without hooks is reported."""
+    _make_src(tmp_path, "input/intent.ts", "export function run(): void {}\n")
+
+    errors = check_test_hooks_exported(tmp_path)
+
+    assert len(errors) == 1
+    assert "intent.ts" in errors[0]
+
+
+def test_check_test_hooks_exported_skips_exempt_modules(tmp_path: Path) -> None:
+    """Barrels, boundary code, and fixtures are exempt from the hook rule."""
+    _make_src(tmp_path, "input/index.ts", "export {};\n")
+    _make_src(tmp_path, "types.ts", "export interface A { a: string }\n")
+    _make_src(tmp_path, "io/browser.ts", "export function boot(): void {}\n")
+    _make_src(tmp_path, "testing/fixtures.ts", "export function f(): void {}\n")
+    _make_src(tmp_path, "input/intent.test.ts", "// suite\n")
+
+    assert check_test_hooks_exported(tmp_path) == []
+
+
+def test_check_test_hooks_exported_defaults_to_cwd() -> None:
+    """The check runs against the current directory when given no base."""
+    assert check_test_hooks_exported() == []
+
+
+def test_check_colocated_tests_accepts_direct_suite(tmp_path: Path) -> None:
+    """A module with a matching suite passes."""
+    _make_src(tmp_path, "input/intent.ts", _hooked())
+    _make_src(tmp_path, "input/intent.test.ts", "// suite\n")
+
+    assert check_colocated_tests(tmp_path) == []
+
+
+def test_check_colocated_tests_accepts_split_suites(tmp_path: Path) -> None:
+    """A module split across several suites still passes."""
+    _make_src(tmp_path, "input/handlers.ts", _hooked())
+    _make_src(tmp_path, "input/handlers.walk.test.ts", "// suite\n")
+    _make_src(tmp_path, "input/handlers.hop.test.ts", "// suite\n")
+
+    assert check_colocated_tests(tmp_path) == []
+
+
+def test_check_colocated_tests_detects_missing(tmp_path: Path) -> None:
+    """A module with no suite is reported."""
+    _make_src(tmp_path, "input/intent.ts", _hooked())
+
+    errors = check_colocated_tests(tmp_path)
+
+    assert len(errors) == 1
+    assert "intent.ts" in errors[0]
+
+
+def test_check_colocated_tests_defaults_to_cwd() -> None:
+    """The check runs against the current directory when given no base."""
+    assert check_colocated_tests() == []
+
+
+def test_main_reports_typescript_failures(tmp_path: Path) -> None:
+    """A TypeScript violation fails the guard and is printed."""
+    fake = setup_fake_hooks()
+    try:
+        for filename in ("pyproject.toml", "package.json", "tsconfig.json", "config.json"):
+            (tmp_path / filename).write_text("", encoding="utf-8")
+        _make_src(tmp_path, "input/intent.ts", "let x: any;\n")
+
+        result = main(tmp_path)
+
+        assert result == 1
+        assert any("explicit any" in message for message in fake.messages)
+    finally:
+        teardown_hooks()

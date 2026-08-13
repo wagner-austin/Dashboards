@@ -10,4 +10,10 @@ export interface ViewportState {
 export declare function measureViewport(screen: HTMLPreElement): ViewportState;
 export declare function createBuffer(width: number, height: number): string[][];
 export declare function renderBuffer(buffer: string[][]): string;
+/** Test hooks for internal functions */
+export declare const _test_hooks: {
+    measureViewport: typeof measureViewport;
+    createBuffer: typeof createBuffer;
+    renderBuffer: typeof renderBuffer;
+};
 //# sourceMappingURL=Viewport.d.ts.map

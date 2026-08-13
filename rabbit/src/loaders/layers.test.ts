@@ -5,6 +5,7 @@
 import { describe, it, expect } from "vitest";
 import { _test_hooks } from "./layers.js";
 import { LAYER_BEHAVIORS, type Config, type TreeZoomConfig, type LayerSpriteConfig } from "../types.js";
+import { DEFAULT_AUTORUN_CONFIG } from "../input/index.js";
 import type { ValidatedLayer } from "../layers/types.js";
 import { layerToWorldZ } from "../layers/widths.js";
 import { createMutableSpriteRegistry } from "./progressive.js";
@@ -35,6 +36,7 @@ function createTestConfig(): Config {
     },
     layers: [],
     settings: { fps: 10, jumpSpeed: 5, scrollSpeed: 10 },
+    autorun: DEFAULT_AUTORUN_CONFIG,
   };
 }
 

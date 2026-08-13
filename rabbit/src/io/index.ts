@@ -10,6 +10,11 @@ export {
 } from "./browser.js";
 
 export {
+  createDocumentKeyboardSource,
+  createDocumentTouchSource,
+} from "./events.js";
+
+export {
   loadConfig,
   loadSpriteFrames,
   loadStaticSpriteFrames,

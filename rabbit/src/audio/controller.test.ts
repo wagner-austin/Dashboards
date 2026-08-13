@@ -15,6 +15,24 @@ import {
 } from "./controller.js";
 import type { AudioTrack, AudioContextLike, AudioBufferSourceNodeLike, GainNodeLike, AudioParamLike } from "./types.js";
 
+/** First track of the standard two-track playlist used across these tests. */
+const TRACK_ONE: AudioTrack = {
+  id: "track1",
+  path: "audio/track1.mp3",
+  volume: 1.0,
+  loop: true,
+  tags: {},
+};
+
+/** Second track of the standard two-track playlist used across these tests. */
+const TRACK_TWO: AudioTrack = {
+  id: "track2",
+  path: "audio/track2.mp3",
+  volume: 1.0,
+  loop: true,
+  tags: {},
+};
+
 /** Test audio param that tracks value changes. */
 interface TestAudioParam extends AudioParamLike {
   readonly ramps: readonly { value: number; endTime: number }[];
@@ -337,9 +355,12 @@ describe("initializeAudio", () => {
     expect(system?.player).toBeDefined();
   });
 
-  it("removes event listeners after user interaction", () => {
+  it("keeps event listeners bound after the first user interaction", () => {
+    // The gesture listeners stay bound on purpose: a later gesture is what
+    // resumes a context the browser suspended after the first one. Releasing
+    // them is the caller's job, via cleanup().
     const audioDeps = createTestAudioDeps();
-    initializeAudio(
+    const deferred = initializeAudio(
       {
         enabled: true,
         masterVolume: 0.5,
@@ -349,6 +370,13 @@ describe("initializeAudio", () => {
     );
 
     audioDeps.triggerEvent("click");
+
+    expect(audioDeps.handlers.get("click")?.length).toBe(1);
+    expect(audioDeps.handlers.get("touchstart")?.length).toBe(1);
+    expect(audioDeps.handlers.get("touchend")?.length).toBe(1);
+    expect(audioDeps.handlers.get("keydown")?.length).toBe(1);
+
+    deferred?.cleanup();
 
     expect(audioDeps.handlers.get("click")?.length).toBe(0);
     expect(audioDeps.handlers.get("touchstart")?.length).toBe(0);
@@ -422,12 +450,116 @@ describe("initializeAudio", () => {
     expect(audioDeps.context.sources.length).toBeGreaterThan(0);
   });
 
+  it("resumes a suspended context on a later gesture", async () => {
+    const audioDeps = createTestAudioDeps("suspended");
+    initializeAudio(
+      {
+        enabled: true,
+        masterVolume: 0.5,
+        tracks: [{ id: "test", path: "audio/test.mp3", volume: 1.0, loop: true, tags: {} }],
+      },
+      audioDeps
+    );
+
+    audioDeps.triggerEvent("click");
+    await flushPromises();
+    expect(audioDeps.context.resumeCalled).toBe(false);
+
+    audioDeps.triggerEvent("click");
+    await flushPromises();
+
+    expect(audioDeps.context.resumeCalled).toBe(true);
+  });
+
+  it("does not restart a track that is already playing on resume", async () => {
+    const audioDeps = createTestAudioDeps("suspended");
+    initializeAudio(
+      {
+        enabled: true,
+        masterVolume: 0.5,
+        tracks: [{ id: "test", path: "audio/test.mp3", volume: 1.0, loop: true, tags: {} }],
+      },
+      audioDeps
+    );
+
+    audioDeps.triggerEvent("click");
+    await flushPromises();
+    const playingSources = audioDeps.context.sources.length;
+
+    audioDeps.triggerEvent("click");
+    await flushPromises();
+
+    expect(audioDeps.context.sources.length).toBe(playingSources);
+  });
+
+  it("leaves a running context alone on a later gesture", () => {
+    const audioDeps = createTestAudioDeps("running");
+    initializeAudio(
+      {
+        enabled: true,
+        masterVolume: 0.5,
+        tracks: [{ id: "test", path: "audio/test.mp3", volume: 1.0, loop: true, tags: {} }],
+      },
+      audioDeps
+    );
+
+    audioDeps.triggerEvent("click");
+    audioDeps.triggerEvent("click");
+
+    expect(audioDeps.context.resumeCalled).toBe(false);
+  });
+
+  it("replays the current track when resume finds nothing playing", async () => {
+    const audioDeps = createTestAudioDeps("suspended");
+    initializeAudio(
+      {
+        enabled: true,
+        masterVolume: 0.5,
+        tracks: [{ id: "test", path: "audio/test.mp3", volume: 1.0, loop: true, tags: {} }],
+      },
+      audioDeps
+    );
+
+    audioDeps.triggerEvent("click");
+    await flushPromises();
+
+    // The track finishing is what leaves the player idle on a suspended context.
+    const playing = audioDeps.context.sources[0];
+    if (playing === undefined) {
+      throw new Error("Expected a source to have started");
+    }
+    playing.onended?.();
+
+    audioDeps.triggerEvent("click");
+    await flushPromises();
+
+    expect(audioDeps.context.sources.length).toBe(2);
+  });
+
+  it("survives a rejected resume", async () => {
+    const audioDeps = createTestAudioDeps("suspended");
+    initializeAudio(
+      {
+        enabled: true,
+        masterVolume: 0.5,
+        tracks: [{ id: "test", path: "audio/test.mp3", volume: 1.0, loop: true, tags: {} }],
+      },
+      audioDeps
+    );
+
+    audioDeps.triggerEvent("click");
+    await flushPromises();
+    audioDeps.context.setResumeRejects(true);
+
+    audioDeps.triggerEvent("click");
+    await flushPromises();
+
+    expect(audioDeps.context.resumeCalled).toBe(true);
+  });
+
   it("returns tracks and currentIndex starting at 0", () => {
     const audioDeps = createTestAudioDeps();
-    const tracks = [
-      { id: "track1", path: "audio/track1.mp3", volume: 1.0, loop: true, tags: {} },
-      { id: "track2", path: "audio/track2.mp3", volume: 1.0, loop: true, tags: {} },
-    ];
+    const tracks: readonly AudioTrack[] = [TRACK_ONE, TRACK_TWO];
     const result = initializeAudio(
       { enabled: true, masterVolume: 0.5, tracks },
       audioDeps
@@ -517,15 +649,12 @@ describe("initializeAudio", () => {
 describe("switchToNextTrack", () => {
   it("cycles through tracks", () => {
     const player = createTestPlayer();
-    const tracks = [
-      { id: "track1", path: "audio/track1.mp3", volume: 1.0, loop: true, tags: {} },
-      { id: "track2", path: "audio/track2.mp3", volume: 1.0, loop: true, tags: {} },
-    ];
     const audio: AudioSystem = {
       context: createTestContext(),
       player,
-      tracks,
+      tracks: [TRACK_ONE, TRACK_TWO],
       currentIndex: 0,
+      currentTrack: TRACK_ONE,
       cleanup: (): void => { /* no-op */ },
     };
 
@@ -540,12 +669,13 @@ describe("switchToNextTrack", () => {
 
   it("does nothing with single track", () => {
     const player = createTestPlayer();
-    const tracks = [{ id: "only", path: "audio/only.mp3", volume: 1.0, loop: true, tags: {} }];
+    const only: AudioTrack = { id: "only", path: "audio/only.mp3", volume: 1.0, loop: true, tags: {} };
     const audio: AudioSystem = {
       context: createTestContext(),
       player,
-      tracks,
+      tracks: [only],
       currentIndex: 0,
+      currentTrack: only,
       cleanup: (): void => { /* no-op */ },
     };
 
@@ -558,8 +688,12 @@ describe("switchToNextTrack", () => {
     const audio: AudioSystem = {
       context: createTestContext(),
       player,
-      tracks: [undefined, undefined] as unknown as readonly AudioTrack[],
+      // A sparse list really does yield no track at the next index, which is
+      // the only way to reach the guard that stops the player being handed
+      // undefined. Previously this test cast a list of undefined instead.
+      tracks: new Array<AudioTrack>(2),
       currentIndex: 0,
+      currentTrack: TRACK_ONE,
       cleanup: (): void => { /* no-op */ },
     };
 
@@ -571,15 +705,12 @@ describe("switchToNextTrack", () => {
 describe("setupTrackSwitcher", () => {
   it("responds to N key when system is initialized", () => {
     const player = createTestPlayer();
-    const tracks = [
-      { id: "track1", path: "audio/track1.mp3", volume: 1.0, loop: true, tags: {} },
-      { id: "track2", path: "audio/track2.mp3", volume: 1.0, loop: true, tags: {} },
-    ];
     const audio: AudioSystem = {
       context: createTestContext(),
       player,
-      tracks,
+      tracks: [TRACK_ONE, TRACK_TWO],
       currentIndex: 0,
+      currentTrack: TRACK_ONE,
       cleanup: (): void => { /* no-op */ },
     };
 
@@ -600,15 +731,12 @@ describe("setupTrackSwitcher", () => {
 
   it("responds to uppercase N key", () => {
     const player = createTestPlayer();
-    const tracks = [
-      { id: "track1", path: "audio/track1.mp3", volume: 1.0, loop: true, tags: {} },
-      { id: "track2", path: "audio/track2.mp3", volume: 1.0, loop: true, tags: {} },
-    ];
     const audio: AudioSystem = {
       context: createTestContext(),
       player,
-      tracks,
+      tracks: [TRACK_ONE, TRACK_TWO],
       currentIndex: 0,
+      currentTrack: TRACK_ONE,
       cleanup: (): void => { /* no-op */ },
     };
 
@@ -632,15 +760,12 @@ describe("setupTrackSwitcher", () => {
 
   it("ignores other keys", () => {
     const player = createTestPlayer();
-    const tracks = [
-      { id: "track1", path: "audio/track1.mp3", volume: 1.0, loop: true, tags: {} },
-      { id: "track2", path: "audio/track2.mp3", volume: 1.0, loop: true, tags: {} },
-    ];
     const audio: AudioSystem = {
       context: createTestContext(),
       player,
-      tracks,
+      tracks: [TRACK_ONE, TRACK_TWO],
       currentIndex: 0,
+      currentTrack: TRACK_ONE,
       cleanup: (): void => { /* no-op */ },
     };
 
@@ -655,15 +780,12 @@ describe("setupTrackSwitcher", () => {
 
   it("ignores non-keyboard events", () => {
     const player = createTestPlayer();
-    const tracks = [
-      { id: "track1", path: "audio/track1.mp3", volume: 1.0, loop: true, tags: {} },
-      { id: "track2", path: "audio/track2.mp3", volume: 1.0, loop: true, tags: {} },
-    ];
     const audio: AudioSystem = {
       context: createTestContext(),
       player,
-      tracks,
+      tracks: [TRACK_ONE, TRACK_TWO],
       currentIndex: 0,
+      currentTrack: TRACK_ONE,
       cleanup: (): void => { /* no-op */ },
     };
 
@@ -689,10 +811,7 @@ describe("_test_hooks", () => {
   });
 
   it("getTrackAtIndex returns track at valid index", () => {
-    const tracks = [
-      { id: "track1", path: "audio/track1.mp3", volume: 1.0, loop: true, tags: {} },
-      { id: "track2", path: "audio/track2.mp3", volume: 1.0, loop: true, tags: {} },
-    ];
+    const tracks: readonly AudioTrack[] = [TRACK_ONE, TRACK_TWO];
     expect(_test_hooks.getTrackAtIndex(tracks, 0)?.id).toBe("track1");
     expect(_test_hooks.getTrackAtIndex(tracks, 1)?.id).toBe("track2");
   });

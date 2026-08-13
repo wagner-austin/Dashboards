@@ -1,6 +1,7 @@
 /**
  * Core type definitions for the ASCII animation engine.
  */
+import type { AutorunConfig } from "./input/validation.js";
 /** A set of frames at a specific width */
 export interface FrameSet {
     readonly width: number;
@@ -204,5 +205,7 @@ export interface Config {
     readonly settings: Settings;
     readonly audio?: AudioConfigRef;
     readonly autoLayers?: AutoLayersConfig;
+    /** Always populated by the config decoder; omitted blocks decode to defaults. */
+    readonly autorun: AutorunConfig;
 }
 //# sourceMappingURL=types.d.ts.map

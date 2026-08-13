@@ -1,44 +1,28 @@
 /**
  * @vitest-environment jsdom
- * Tests for shared input handlers.
+ * Tests for the walk and jump input handlers.
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { _test_hooks } from "./handlers.js";
-import { createBunnyTimers, type BunnyFrames, type BunnyState, type BunnyTimers, type AnimationState } from "../entities/Bunny.js";
+import type { AnimationState, BunnyFrames, BunnyState, BunnyTimers } from "../entities/Bunny.js";
+import {
+  createTestBunnyState,
+  createTestFrames,
+  createTestTimers,
+} from "../testing/fixtures.js";
 
-const {
-  isPendingJump,
-  handleJumpInput,
-  handleWalkKeyDown,
-  handleWalkKeyUp,
-  handleHopInput,
-  handleHopRelease,
-} = _test_hooks;
+const { isPendingJump, handleJumpInput, handleWalkKeyDown, handleWalkKeyUp } = _test_hooks;
 
-function createTestFrames(): BunnyFrames {
-  return {
-    walkLeft: ["walkL0", "walkL1"],
-    walkRight: ["walkR0", "walkR1"],
-    jumpLeft: ["jumpL0"],
-    jumpRight: ["jumpR0"],
-    idleLeft: ["idleL0"],
-    idleRight: ["idleR0"],
-    walkToIdleLeft: ["transL0", "transL1", "transL2"],
-    walkToIdleRight: ["transR0", "transR1", "transR2"],
-    walkToTurnAwayLeft: ["turnAwayL0", "turnAwayL1"],
-    walkToTurnAwayRight: ["turnAwayR0", "turnAwayR1"],
-    walkToTurnTowardLeft: ["turnTowardL0", "turnTowardL1"],
-    walkToTurnTowardRight: ["turnTowardR0", "turnTowardR1"],
-    hopAway: ["hopAway0", "hopAway1"],
-    hopToward: ["hopToward0", "hopToward1"],
-  };
-}
-
-function createTestBunnyState(animation: AnimationState, facingRight = false): BunnyState {
-  return { facingRight, animation };
-}
-
+/**
+ * Read the animation out of a bunny state.
+ *
+ * Args:
+ *     s: Bunny state to read.
+ *
+ * Returns:
+ *     The current animation state.
+ */
 function getBunnyAnim(s: BunnyState): AnimationState {
   return s.animation;
 }
@@ -89,13 +73,7 @@ describe("handleJumpInput", () => {
     vi.useFakeTimers();
     bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
     frames = createTestFrames();
-    timers = createBunnyTimers(bunnyState, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-      hop: 100,
-    }, () => false);
+    timers = createTestTimers(bunnyState, frames, () => false);
   });
 
   afterEach(() => {
@@ -197,13 +175,7 @@ describe("handleWalkKeyDown", () => {
     vi.useFakeTimers();
     bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
     frames = createTestFrames();
-    timers = createBunnyTimers(bunnyState, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-      hop: 100,
-    }, () => false);
+    timers = createTestTimers(bunnyState, frames, () => false);
   });
 
   afterEach(() => {
@@ -295,13 +267,7 @@ describe("handleWalkKeyUp", () => {
     vi.useFakeTimers();
     bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
     frames = createTestFrames();
-    timers = createBunnyTimers(bunnyState, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-      hop: 100,
-    }, () => false);
+    timers = createTestTimers(bunnyState, frames, () => false);
   });
 
   afterEach(() => {
@@ -390,272 +356,3 @@ describe("handleWalkKeyUp", () => {
   });
 });
 
-describe("handleHopInput", () => {
-  let bunnyState: BunnyState;
-  let timers: BunnyTimers;
-  let frames: BunnyFrames;
-
-  beforeEach(() => {
-    vi.useFakeTimers();
-    bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
-    frames = createTestFrames();
-    timers = createBunnyTimers(bunnyState, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-      hop: 100,
-    }, () => false);
-  });
-
-  afterEach(() => {
-    vi.useRealTimers();
-  });
-
-  it("starts turn away transition when called from idle with away direction", () => {
-    handleHopInput(bunnyState, timers, "away");
-
-    const anim = getBunnyAnim(bunnyState);
-    expect(anim.kind).toBe("transition");
-    if (anim.kind === "transition") {
-      expect(anim.type).toBe("walk_to_turn_away");
-      expect(anim.returnTo).toBe("idle");
-      expect(anim.pendingAction).toBe(null);
-    }
-    expect(timers.idle.isRunning()).toBe(false);
-    expect(timers.transition.isRunning()).toBe(true);
-  });
-
-  it("starts turn toward transition when called from idle with toward direction", () => {
-    handleHopInput(bunnyState, timers, "toward");
-
-    const anim = getBunnyAnim(bunnyState);
-    expect(anim.kind).toBe("transition");
-    if (anim.kind === "transition") {
-      expect(anim.type).toBe("walk_to_turn_toward");
-      expect(anim.returnTo).toBe("idle");
-    }
-  });
-
-  it("starts turn away transition when called from walk", () => {
-    bunnyState.animation = { kind: "walk", frameIdx: 0 };
-    timers.walk.start();
-
-    handleHopInput(bunnyState, timers, "away");
-
-    const anim = getBunnyAnim(bunnyState);
-    expect(anim.kind).toBe("transition");
-    if (anim.kind === "transition") {
-      expect(anim.type).toBe("walk_to_turn_away");
-      expect(anim.returnTo).toBe("walk");
-    }
-    expect(timers.walk.isRunning()).toBe(false);
-    expect(timers.transition.isRunning()).toBe(true);
-  });
-
-  it("starts turn toward transition when called from walk", () => {
-    bunnyState.animation = { kind: "walk", frameIdx: 0 };
-    timers.walk.start();
-
-    handleHopInput(bunnyState, timers, "toward");
-
-    const anim = getBunnyAnim(bunnyState);
-    expect(anim.kind).toBe("transition");
-    if (anim.kind === "transition") {
-      expect(anim.type).toBe("walk_to_turn_toward");
-      expect(anim.returnTo).toBe("walk");
-    }
-  });
-
-  it("sets pendingAction when called during transition", () => {
-    bunnyState.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 1, pendingAction: "walk", returnTo: "idle" };
-
-    handleHopInput(bunnyState, timers, "away");
-
-    const anim = getBunnyAnim(bunnyState);
-    if (anim.kind === "transition") {
-      expect(anim.pendingAction).toBe("hop_away");
-    }
-  });
-
-  it("sets pendingAction to hop_toward when called with toward direction during transition", () => {
-    bunnyState.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 1, pendingAction: "walk", returnTo: "idle" };
-
-    handleHopInput(bunnyState, timers, "toward");
-
-    const anim = getBunnyAnim(bunnyState);
-    if (anim.kind === "transition") {
-      expect(anim.pendingAction).toBe("hop_toward");
-    }
-  });
-
-  it("does nothing when already jumping", () => {
-    bunnyState.animation = { kind: "jump", frameIdx: 0 };
-
-    handleHopInput(bunnyState, timers, "away");
-
-    expect(bunnyState.animation.kind).toBe("jump");
-  });
-
-  it("does nothing when already hopping", () => {
-    bunnyState.animation = { kind: "hop", direction: "away", frameIdx: 0 };
-
-    handleHopInput(bunnyState, timers, "toward");
-
-    const anim = getBunnyAnim(bunnyState);
-    expect(anim.kind).toBe("hop");
-    if (anim.kind === "hop") {
-      expect(anim.direction).toBe("away");
-    }
-  });
-});
-
-describe("handleHopRelease", () => {
-  let bunnyState: BunnyState;
-  let timers: BunnyTimers;
-  let frames: BunnyFrames;
-
-  beforeEach(() => {
-    vi.useFakeTimers();
-    bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
-    frames = createTestFrames();
-    timers = createBunnyTimers(bunnyState, frames, {
-      walk: 100,
-      idle: 200,
-      jump: 50,
-      transition: 80,
-      hop: 100,
-    }, () => false);
-  });
-
-  afterEach(() => {
-    vi.useRealTimers();
-  });
-
-  it("clears hop pendingAction from idle_to_walk transition", () => {
-    bunnyState.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 2, pendingAction: "hop_away", returnTo: "idle" };
-    timers.transition.start();
-
-    handleHopRelease(bunnyState, timers, () => false);
-
-    const anim = getBunnyAnim(bunnyState);
-    expect(anim.kind).toBe("transition");
-    if (anim.kind === "transition") {
-      expect(anim.type).toBe("idle_to_walk");
-      expect(anim.pendingAction).toBe(null);
-    }
-    expect(timers.transition.isRunning()).toBe(true);
-  });
-
-  it("clears hop_toward pendingAction from idle_to_walk same as hop_away", () => {
-    bunnyState.animation = { kind: "transition", type: "idle_to_walk", frameIdx: 1, pendingAction: "hop_toward", returnTo: "idle" };
-    timers.transition.start();
-
-    handleHopRelease(bunnyState, timers, () => false);
-
-    const anim = getBunnyAnim(bunnyState);
-    expect(anim.kind).toBe("transition");
-    if (anim.kind === "transition") {
-      expect(anim.pendingAction).toBe(null);
-    }
-  });
-
-  it("cancels walk_to_turn_away transition and returns to walk when horizontal held", () => {
-    bunnyState.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 1, pendingAction: null, returnTo: "idle" };
-    timers.transition.start();
-
-    handleHopRelease(bunnyState, timers, () => true);
-
-    expect(bunnyState.animation.kind).toBe("walk");
-    expect(timers.walk.isRunning()).toBe(true);
-    expect(timers.transition.isRunning()).toBe(false);
-  });
-
-  it("cancels walk_to_turn_away transition and returns to idle when no horizontal held", () => {
-    bunnyState.animation = { kind: "transition", type: "walk_to_turn_away", frameIdx: 1, pendingAction: null, returnTo: "idle" };
-    timers.transition.start();
-
-    handleHopRelease(bunnyState, timers, () => false);
-
-    expect(bunnyState.animation.kind).toBe("idle");
-    expect(timers.idle.isRunning()).toBe(true);
-    expect(timers.transition.isRunning()).toBe(false);
-  });
-
-  it("cancels walk_to_turn_toward transition and returns to walk when horizontal held", () => {
-    bunnyState.animation = { kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: "idle" };
-    timers.transition.start();
-
-    handleHopRelease(bunnyState, timers, () => true);
-
-    expect(bunnyState.animation.kind).toBe("walk");
-    expect(timers.walk.isRunning()).toBe(true);
-  });
-
-  it("cancels walk_to_turn_toward transition and returns to idle when no horizontal held", () => {
-    bunnyState.animation = { kind: "transition", type: "walk_to_turn_toward", frameIdx: 0, pendingAction: null, returnTo: "idle" };
-    timers.transition.start();
-
-    handleHopRelease(bunnyState, timers, () => false);
-
-    expect(bunnyState.animation.kind).toBe("idle");
-    expect(timers.idle.isRunning()).toBe(true);
-  });
-
-  it("does nothing for walk_to_idle transition", () => {
-    bunnyState.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 1, pendingAction: null, returnTo: "idle" };
-    timers.transition.start();
-
-    handleHopRelease(bunnyState, timers, () => false);
-
-    expect(bunnyState.animation.kind).toBe("transition");
-    expect(timers.transition.isRunning()).toBe(true);
-  });
-
-  it("does nothing for non-transition, non-hop state", () => {
-    bunnyState.animation = { kind: "walk", frameIdx: 0 };
-
-    handleHopRelease(bunnyState, timers, () => false);
-
-    expect(bunnyState.animation.kind).toBe("walk");
-  });
-
-  it("does nothing for idle state", () => {
-    bunnyState.animation = { kind: "idle", frameIdx: 0 };
-
-    handleHopRelease(bunnyState, timers, () => false);
-
-    expect(bunnyState.animation.kind).toBe("idle");
-  });
-
-  it("stops hop and returns to walk when horizontal held", () => {
-    bunnyState.animation = { kind: "hop", direction: "away", frameIdx: 1 };
-    timers.hop.start();
-
-    handleHopRelease(bunnyState, timers, () => true);
-
-    expect(bunnyState.animation.kind).toBe("walk");
-    expect(timers.walk.isRunning()).toBe(true);
-    expect(timers.hop.isRunning()).toBe(false);
-  });
-
-  it("stops hop and returns to idle when no horizontal held", () => {
-    bunnyState.animation = { kind: "hop", direction: "toward", frameIdx: 0 };
-    timers.hop.start();
-
-    handleHopRelease(bunnyState, timers, () => false);
-
-    expect(bunnyState.animation.kind).toBe("idle");
-    expect(timers.idle.isRunning()).toBe(true);
-    expect(timers.hop.isRunning()).toBe(false);
-  });
-
-  it("does not cancel walk_to_idle transition even with pending hop", () => {
-    bunnyState.animation = { kind: "transition", type: "walk_to_idle", frameIdx: 1, pendingAction: "hop_away", returnTo: "idle" };
-    timers.transition.start();
-
-    handleHopRelease(bunnyState, timers, () => false);
-
-    expect(bunnyState.animation.kind).toBe("transition");
-  });
-});

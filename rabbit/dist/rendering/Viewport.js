@@ -23,4 +23,10 @@ export function createBuffer(width, height) {
 export function renderBuffer(buffer) {
     return buffer.map((row) => row.join("")).join("\n");
 }
+/** Test hooks for internal functions */
+export const _test_hooks = {
+    measureViewport,
+    createBuffer,
+    renderBuffer,
+};
 //# sourceMappingURL=Viewport.js.map

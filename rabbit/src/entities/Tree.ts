@@ -165,3 +165,11 @@ export function getTreeTransitionFrames(
     targetIdx,
   };
 }
+
+/** Test hooks for internal functions */
+export const _test_hooks = {
+  createInitialTreeState,
+  createTreeTimer,
+  getTreeFrame,
+  getTreeTransitionFrames,
+};

@@ -4,5 +4,6 @@
  * All functions here are testable through dependency injection in consuming modules.
  */
 export { createBrowserAudioContext, createDefaultAudioDependencies, } from "./browser.js";
+export { createDocumentKeyboardSource, createDocumentTouchSource, } from "./events.js";
 export { loadConfig, loadSpriteFrames, loadStaticSpriteFrames, loadBunnyFrames, loadTreeSizes, loadLayerSprites, loadGrassSprites, loadTreeSpritesProgressive, runProgressiveLoad, } from "./sprites.js";
 //# sourceMappingURL=index.js.map
