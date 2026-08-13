@@ -3,183 +3,29 @@ ASUCI Dashboard HTML Generator
 
 Run this script to generate a fresh HTML dashboard with live data.
 
+Reads the senate roster and the agenda and minutes archives over plain HTTP
+via the asuci client; no browser is involved.
+
 Usage:
-    python generate.py           # Full scrape with Playwright
-    python generate.py --quick   # Quick refresh (Google Sheets only)
+    python generate.py           # Full refresh
+    python generate.py --quick   # Skip the meeting archives
 """
 
 import json
-import csv
-import re
-from io import StringIO
 from datetime import datetime
 from pathlib import Path
 
-import requests
-
-
-def fetch_senators_playwright():
-    """Fetch current senators from ASUCI website with photos."""
-    from playwright.sync_api import sync_playwright
-    import re
-
-    senators = []
-    leadership = []
-
-    # Leadership positions to identify
-    leadership_titles = [
-        "senate president", "president pro tempore", "senate parliamentarian",
-        "senate secretary", "senate historian", "senate sergeant"
-    ]
-
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-
-        page.goto("https://asuci.uci.edu/senate/", wait_until="networkidle")
-        page.wait_for_timeout(3000)
-
-        # Scroll to load lazy content
-        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        page.wait_for_timeout(2000)
-
-        # Find all fusion-text elements that contain ASUCI emails
-        text_elements = page.query_selector_all(".fusion-text")
-
-        for text_el in text_elements:
-            try:
-                html = text_el.inner_html()
-                text = text_el.inner_text()
-
-                # Check if this element has an ASUCI email
-                if "@asuci.uci.edu" not in text:
-                    continue
-
-                # Parse the text - typically "Name\nPosition\nemail"
-                lines = [l.strip() for l in text.split("\n") if l.strip()]
-                if len(lines) < 2:
-                    continue
-
-                name = lines[0]
-                position = ""
-                email = ""
-
-                for line in lines[1:]:
-                    if "@asuci.uci.edu" in line:
-                        email = line
-                    elif not position:
-                        position = line
-
-                if not name or "Vacant" in name:
-                    continue
-
-                # Find associated image - look in the parent column
-                parent = text_el.evaluate_handle("el => el.closest('.fusion-layout-column')")
-                photo = ""
-                if parent:
-                    img = parent.as_element().query_selector("img")
-                    if img:
-                        photo = img.get_attribute("src") or img.get_attribute("data-orig-src") or ""
-
-                senator = {"name": name, "position": position, "email": email, "photo": photo}
-
-                # Check if this is a leadership position
-                is_leader = any(title in position.lower() for title in leadership_titles)
-                if is_leader:
-                    leadership.append(senator)
-                else:
-                    senators.append(senator)
-
-            except Exception:
-                continue
-
-        browser.close()
-
-    # Deduplicate by email - keep first occurrence (usually the more important role)
-    seen_emails = set()
-    deduped_leadership = []
-    for s in leadership:
-        if s["email"] and s["email"] not in seen_emails:
-            seen_emails.add(s["email"])
-            deduped_leadership.append(s)
-
-    deduped_senators = []
-    for s in senators:
-        if s["email"] and s["email"] not in seen_emails:
-            seen_emails.add(s["email"])
-            deduped_senators.append(s)
-
-    return {"leadership": deduped_leadership, "senators": deduped_senators}
-
-
-def fetch_meeting_links_playwright():
-    """Fetch meeting links using Playwright."""
-    from playwright.sync_api import sync_playwright
-
-    meeting_links = {"agendas": {}, "minutes": {}}
-
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-
-        # First, fetch CURRENT agendas (2025-2026)
-        page.goto("https://asuci.uci.edu/senate/agendas/", wait_until="networkidle")
-        page.wait_for_timeout(2000)
-
-        current_meetings = []
-        links = page.query_selector_all("a")
-        for link in links:
-            href = link.get_attribute("href") or ""
-            text = link.inner_text().strip()
-            if "agendas/print" in href and re.search(r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d+,?\s*\d{4}", text):
-                current_meetings.append({"date": text, "url": href})
-
-        if current_meetings:
-            meeting_links["agendas"]["25-26"] = current_meetings
-
-        # Then fetch archive (historical years)
-        page.goto("https://asuci.uci.edu/senate/agendas/archive/", wait_until="networkidle")
-        page.wait_for_selector(".fusion-tabs", timeout=10000)
-
-        tabs = page.query_selector_all(".fusion-tabs .nav-tabs a")
-
-        for tab in tabs[:7]:
-            tab_text = tab.inner_text().strip()
-            if not re.match(r"\d{2}-\d{2}", tab_text):
-                continue
-
-            tab.click()
-            page.wait_for_timeout(500)
-
-            active_panel = page.query_selector(".fusion-tabs .tab-pane.active")
-            if active_panel:
-                links = active_panel.query_selector_all("a")
-                year_links = []
-                for link in links:
-                    href = link.get_attribute("href") or ""
-                    text = link.inner_text().strip()
-                    if text and "agendas/print" in href:
-                        year_links.append({"date": text, "url": href})
-                if year_links:
-                    meeting_links["agendas"][tab_text] = year_links
-
-        browser.close()
-
-    return meeting_links
+from asuci.client import create_fetcher, fetch_meeting_links, fetch_roster
+from asuci.models import MeetingLinks, encode_meeting_links, encode_roster
 
 
 def generate_html(data: dict) -> str:
     """Generate the complete HTML dashboard."""
 
-    # Calculate stats
-    num_leadership = len(data["senators"].get("leadership", []))
-    num_senators = len(data["senators"].get("senators", []))
-    total_agendas = sum(len(v) for v in data["meeting_links"].get("agendas", {}).values())
-
     # Convert data to JSON for embedding
     data_json = json.dumps(data, ensure_ascii=False)
 
-    html = f'''<!DOCTYPE html>
+    html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -644,7 +490,7 @@ def generate_html(data: dict) -> str:
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
-</html>'''
+</html>"""
 
     return html
 
@@ -655,30 +501,31 @@ def main(quick_mode=False):
     print("ASUCI Dashboard Generator")
     print("=" * 60)
 
-    session = requests.Session()
-    session.headers.update({"User-Agent": "Mozilla/5.0"})
+    fetcher = create_fetcher()
 
     # Fetch senators from website
     print("\n[*] Fetching current senators...")
-    senators = fetch_senators_playwright()
-    print(f"    Leadership: {len(senators.get('leadership', []))}")
-    print(f"    Senators: {len(senators.get('senators', []))}")
+    roster = fetch_roster(fetcher)
+    print(f"    Leadership: {len(roster['leadership'])}")
+    print(f"    Senators: {len(roster['senators'])}")
 
     # Fetch meeting links
     if quick_mode:
-        print("\n[*] Quick mode - skipping Playwright...")
-        meeting_links = {"agendas": {}, "minutes": {}}
+        print("\n[*] Quick mode - skipping meeting archives...")
+        meeting_links = MeetingLinks(agendas={}, minutes={})
     else:
-        print("\n[*] Fetching meeting links (Playwright)...")
-        meeting_links = fetch_meeting_links_playwright()
-        total = sum(len(v) for v in meeting_links.get("agendas", {}).values())
-        print(f"    Agendas: {total}")
+        print("\n[*] Fetching meeting links...")
+        meeting_links = fetch_meeting_links(fetcher)
+        agenda_total = sum(len(v) for v in meeting_links["agendas"].values())
+        minutes_total = sum(len(v) for v in meeting_links["minutes"].values())
+        print(f"    Agendas: {agenda_total}")
+        print(f"    Minutes: {minutes_total}")
 
     # Compile data
     data = {
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "senators": senators,
-        "meeting_links": meeting_links,
+        "senators": encode_roster(roster),
+        "meeting_links": encode_meeting_links(meeting_links),
     }
 
     # Generate HTML
@@ -698,5 +545,6 @@ def main(quick_mode=False):
 
 if __name__ == "__main__":
     import sys
+
     quick = "--quick" in sys.argv
     main(quick_mode=quick)

@@ -15,6 +15,77 @@ jinja2 = ">=3.1"
 pillow = "^12.1.0"
 opencv-python = "^4.13.0.90"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.0"
+pytest-cov = "^7.0.0"
+pytest-xdist = "^3.6.1"
+mypy = "^1.15.0"
+ruff = "^0.14.0"
+types-requests = "^2.32.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+# Type checking, linting, and coverage are scoped to the code that has been
+# brought up to this standard. The older dashboard generators predate it; widen
+# these lists as each one is migrated.
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+disallow_any_generics = true
+no_implicit_optional = true
+check_untyped_defs = true
+no_implicit_reexport = true
+show_error_codes = true
+pretty = true
+files = ["asuci/models.py", "asuci/parse.py", "asuci/client.py", "scripts", "tests"]
+mypy_path = ["."]
+explicit_package_bases = true
+disallow_any_explicit = true
+
+[[tool.mypy.overrides]]
+module = "bs4.*"
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+src = ["asuci", "scripts", "tests"]
+exclude = [".venv", "node_modules", "rabbit", "flock-investigation", "oc-city-councils"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "BLE", "UP", "N", "C4", "SIM", "RET", "C90", "RUF", "ANN"]
+
+[tool.ruff.lint.per-file-ignores]
+"asuci/generate.py" = ["ANN", "E501", "C901", "RUF", "SIM", "RET", "B", "N", "UP"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"typing.cast" = { msg = "Do not use typing.cast; prefer adapters or precise types." }
+"typing.TypeAlias" = { msg = "Do not use TypeAlias; use Literal types or expand unions explicitly." }
+
+[tool.coverage.run]
+source = ["asuci", "scripts"]
+# The legacy HTML generator predates this standard; it is exercised end to end
+# by `make generate`, not by unit tests. Remove this once it is migrated.
+omit = ["asuci/generate.py"]
+branch = true
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+fail_under = 100
+exclude_lines = [
+    'if __name__ == "__main__":',
+    'sys\.exit\(main\(\)\)',
+    # Protocol method bodies declare a signature; there is nothing to execute.
+    '^\s*\.\.\.$',
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q -n auto --dist loadscope"

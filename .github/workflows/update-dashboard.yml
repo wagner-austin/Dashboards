@@ -39,13 +39,14 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-interaction --no-root
 
-      - name: Install Playwright browsers
-        run: poetry run playwright install chromium
-
       - name: Generate all dashboards
+        id: generate
         run: poetry run python generate_all.py
 
+      # Runs even when a dashboard failed, so the ones that regenerated are not
+      # discarded. The job still reports failure via the step above.
       - name: Commit and push if changed
+        if: always()
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
