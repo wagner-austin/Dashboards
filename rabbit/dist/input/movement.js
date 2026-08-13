@@ -1,15 +1,14 @@
 /**
  * Camera movement driven by the effective movement intent.
  *
+ * This is the only place the camera moves. Rendering used to pan it as well,
+ * which meant two writers adding their speeds together and only one of them
+ * being configurable; now `settings.scrollSpeed` really is the pan speed.
+ *
  * Separate from any one input source: the camera integrates whatever intent
- * won arbitration, so keyboard, touch, and autopilot all scroll the world
- * identically.
+ * won arbitration, so keyboard, touch, and autopilot all scroll identically.
  */
 import { DEFAULT_CAMERA_Z, wrapDepth } from "../world/Projection.js";
-/** Camera Z movement speed per second. */
-const CAMERA_Z_SPEED = 30;
-/** Camera X movement speed per second. */
-const CAMERA_X_SPEED = 120;
 /**
  * Move the camera through depth while the bunny is hopping.
  *
@@ -19,24 +18,29 @@ const CAMERA_X_SPEED = 120;
  * Args:
  *     state: Input state with bunny, camera, and depthBounds.
  *     deltaTime: Seconds since the previous frame.
+ *     speed: Depth speed in world units per second.
  */
-export function processDepthMovement(state, deltaTime) {
+export function processDepthMovement(state, deltaTime, speed) {
     const anim = state.bunny.animation;
     if (anim.kind !== "hop") {
         return;
     }
-    const delta = anim.direction === "toward" ? -CAMERA_Z_SPEED : CAMERA_Z_SPEED;
+    const delta = anim.direction === "toward" ? -speed : speed;
     const newZ = wrapDepth(state.camera.z + delta * deltaTime, state.depthBounds.minZ, state.depthBounds.maxZ);
     state.camera = { ...state.camera, z: newZ };
 }
 /**
  * Move the camera horizontally while the bunny is moving under intent.
  *
+ * Jumping counts as moving, so a jump taken mid-stride carries forward
+ * instead of stopping the world in mid-air.
+ *
  * Args:
  *     state: Input state with bunny, camera, and effective intent.
  *     deltaTime: Seconds since the previous frame.
+ *     speed: Pan speed in world units per second.
  */
-export function processHorizontalMovement(state, deltaTime) {
+export function processHorizontalMovement(state, deltaTime, speed) {
     const anim = state.bunny.animation;
     const isMoving = anim.kind === "hop" || anim.kind === "walk" || anim.kind === "jump";
     const horizontal = state.intent.horizontal;
@@ -44,7 +48,7 @@ export function processHorizontalMovement(state, deltaTime) {
         return;
     }
     const direction = horizontal === "left" ? -1 : 1;
-    state.camera = { ...state.camera, x: state.camera.x + CAMERA_X_SPEED * deltaTime * direction };
+    state.camera = { ...state.camera, x: state.camera.x + speed * deltaTime * direction };
 }
 /**
  * Return the camera to its starting position.
@@ -60,7 +64,5 @@ export const _test_hooks = {
     processDepthMovement,
     processHorizontalMovement,
     resetCamera,
-    CAMERA_Z_SPEED,
-    CAMERA_X_SPEED,
 };
 //# sourceMappingURL=movement.js.map

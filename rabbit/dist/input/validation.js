@@ -13,11 +13,11 @@ export const DEFAULT_AUTORUN_CONFIG = {
     idleDelay: 5,
     minLeg: 2,
     maxLeg: 7,
-    minPause: 0.8,
-    maxPause: 3,
+    minPause: 3,
+    maxPause: 9,
     turnChance: 0.5,
     hopChance: 0.25,
-    jumpChance: 0.2,
+    jumpChance: 0.35,
 };
 /** Type guard for checking if value is a record */
 function isRecord(value) {

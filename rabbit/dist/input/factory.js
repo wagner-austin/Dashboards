@@ -10,7 +10,7 @@ import { createActivityTracker } from "./activity.js";
 import { createInputArbiter } from "./arbiter.js";
 import { createAutopilotController } from "./controller.js";
 import { setupKeyboardControls, } from "./Keyboard.js";
-import { processDepthMovement, processHorizontalMovement } from "./movement.js";
+import { processDepthMovement, processHorizontalMovement, } from "./movement.js";
 import { setupTouchControls, } from "./Touch.js";
 /**
  * Build and wire the input layer.
@@ -55,8 +55,8 @@ export function createInputSystem(deps) {
         touchState,
         update(deltaTime) {
             autopilot.update(deltaTime);
-            processDepthMovement(deps.state, deltaTime);
-            processHorizontalMovement(deps.state, deltaTime);
+            processDepthMovement(deps.state, deltaTime, deps.speeds.depth);
+            processHorizontalMovement(deps.state, deltaTime, deps.speeds.horizontal);
         },
     };
 }

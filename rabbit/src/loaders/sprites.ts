@@ -31,7 +31,8 @@ function isSettings(value: unknown): value is Settings {
   return (
     typeof value.fps === "number" &&
     typeof value.jumpSpeed === "number" &&
-    typeof value.scrollSpeed === "number"
+    typeof value.scrollSpeed === "number" &&
+    typeof value.depthSpeed === "number"
   );
 }
 

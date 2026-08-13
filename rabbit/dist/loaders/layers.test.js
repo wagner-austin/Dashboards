@@ -31,7 +31,7 @@ function createTestConfig() {
             },
         },
         layers: [],
-        settings: { fps: 10, jumpSpeed: 5, scrollSpeed: 10 },
+        settings: { fps: 10, jumpSpeed: 5, scrollSpeed: 10, depthSpeed: 30 },
         autorun: DEFAULT_AUTORUN_CONFIG,
     };
 }

@@ -19,7 +19,7 @@
  * maxPause: Longest idle pause between legs in seconds.
  * turnChance: Probability (0-1) a new walk leg reverses direction.
  * hopChance: Probability (0-1) a leg is a depth hop instead of a walk.
- * jumpChance: Probability (0-1) a walk leg ends with a jump.
+ * jumpChance: Probability (0-1) a walk leg jumps somewhere along its length.
  */
 export interface AutorunConfig {
   readonly enabled: boolean;
@@ -39,11 +39,11 @@ export const DEFAULT_AUTORUN_CONFIG: AutorunConfig = {
   idleDelay: 5,
   minLeg: 2,
   maxLeg: 7,
-  minPause: 0.8,
-  maxPause: 3,
+  minPause: 3,
+  maxPause: 9,
   turnChance: 0.5,
   hopChance: 0.25,
-  jumpChance: 0.2,
+  jumpChance: 0.35,
 };
 
 /** Type guard for checking if value is a record */

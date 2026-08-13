@@ -57,12 +57,14 @@ describe("renderFrame", () => {
             projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        const result = renderFrame(renderState, bunnyFrames, screen, 1000, 100);
+        const result = renderFrame(renderState, bunnyFrames, screen, 1000);
         expect(result.lastTime).toBe(1000);
         expect(screen.textContent).not.toBe("");
         expect(screen.textContent.length).toBeGreaterThan(0);
     });
-    it("updates camera when bunny is walking right", () => {
+    it("leaves the camera alone while the bunny walks right", () => {
+        // Panning belongs to the input layer's movement module, which is the
+        // camera's only writer. Rendering used to pan it too and the speeds added.
         const bunnyState = createTestBunnyState({ kind: "walk", frameIdx: 0 }, true);
         const sceneState = createTestSceneState();
         const initialCameraX = sceneState.camera.x;
@@ -73,13 +75,13 @@ describe("renderFrame", () => {
             lastTime: 1000,
             projectionConfig,
         };
-        const bunnyFrames = createTestBunnyFrames();
-        renderFrame(renderState, bunnyFrames, screen, 2000, 100);
-        expect(sceneState.camera.x).toBeGreaterThan(initialCameraX);
+        renderFrame(renderState, createTestBunnyFrames(), screen, 2000);
+        expect(sceneState.camera.x).toBe(initialCameraX);
     });
-    it("updates camera when bunny walks left", () => {
+    it("leaves the camera alone while the bunny walks left", () => {
         const bunnyState = createTestBunnyState({ kind: "walk", frameIdx: 0 }, false);
         const sceneState = createTestSceneState();
+        const initialCameraX = sceneState.camera.x;
         const renderState = {
             bunnyState,
             sceneState,
@@ -87,10 +89,8 @@ describe("renderFrame", () => {
             lastTime: 1000,
             projectionConfig,
         };
-        const bunnyFrames = createTestBunnyFrames();
-        const initialCameraX = sceneState.camera.x;
-        renderFrame(renderState, bunnyFrames, screen, 2000, 100);
-        expect(sceneState.camera.x).toBeLessThan(initialCameraX);
+        renderFrame(renderState, createTestBunnyFrames(), screen, 2000);
+        expect(sceneState.camera.x).toBe(initialCameraX);
     });
     it("handles first frame with zero lastTime", () => {
         const bunnyState = createInitialBunnyState();
@@ -103,10 +103,10 @@ describe("renderFrame", () => {
             projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        const result = renderFrame(renderState, bunnyFrames, screen, 1000, 100);
+        const result = renderFrame(renderState, bunnyFrames, screen, 1000);
         expect(result.lastTime).toBe(1000);
     });
-    it("does not update camera when bunny is idle", () => {
+    it("leaves the camera alone while the bunny is idle", () => {
         const bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
         const sceneState = createTestSceneState();
         const initialCameraX = sceneState.camera.x;
@@ -118,10 +118,10 @@ describe("renderFrame", () => {
             projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        renderFrame(renderState, bunnyFrames, screen, 2000, 100);
+        renderFrame(renderState, bunnyFrames, screen, 2000);
         expect(sceneState.camera.x).toBe(initialCameraX);
     });
-    it("does not update camera when bunny is jumping", () => {
+    it("leaves the camera alone while the bunny is jumping", () => {
         const bunnyState = createTestBunnyState({ kind: "jump", frameIdx: 0 });
         const sceneState = createTestSceneState();
         const initialCameraX = sceneState.camera.x;
@@ -133,10 +133,10 @@ describe("renderFrame", () => {
             projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        renderFrame(renderState, bunnyFrames, screen, 2000, 100);
+        renderFrame(renderState, bunnyFrames, screen, 2000);
         expect(sceneState.camera.x).toBe(initialCameraX);
     });
-    it("does not update camera when in transition", () => {
+    it("leaves the camera alone during a transition", () => {
         const bunnyState = createTestBunnyState({ kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" });
         const sceneState = createTestSceneState();
         const initialCameraX = sceneState.camera.x;
@@ -148,7 +148,7 @@ describe("renderFrame", () => {
             projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        renderFrame(renderState, bunnyFrames, screen, 2000, 100);
+        renderFrame(renderState, bunnyFrames, screen, 2000);
         expect(sceneState.camera.x).toBe(initialCameraX);
     });
     it("renders with scene layers", () => {
@@ -162,7 +162,7 @@ describe("renderFrame", () => {
             projectionConfig,
         };
         const bunnyFrames = createTestBunnyFrames();
-        const result = renderFrame(renderState, bunnyFrames, screen, 1000, 100);
+        const result = renderFrame(renderState, bunnyFrames, screen, 1000);
         expect(result.lastTime).toBe(1000);
         expect(screen.textContent).not.toBe("");
         expect(screen.textContent.length).toBeGreaterThan(0);

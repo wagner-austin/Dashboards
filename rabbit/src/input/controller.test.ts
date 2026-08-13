@@ -93,7 +93,7 @@ describe("createAutopilotController", () => {
       activity,
       state,
       config: WALK_ONLY,
-      random: createSequenceRandom([0, 0.5, 0.5]),
+      random: createSequenceRandom([0, 0.5, 0.5, 0.5]),
     });
 
     controller.update(0.5);
@@ -112,7 +112,7 @@ describe("createAutopilotController", () => {
       activity,
       state,
       config: WALK_ONLY,
-      random: createSequenceRandom([0, 0.5, 0.5]),
+      random: createSequenceRandom([0, 0.5, 0.5, 0.5]),
     });
 
     controller.update(0.4);
@@ -145,7 +145,7 @@ describe("createAutopilotController", () => {
       activity,
       state,
       config: WALK_ONLY,
-      random: createSequenceRandom([0, 0.5, 0.5]),
+      random: createSequenceRandom([0, 0.5, 0.5, 0.5]),
     });
 
     controller.update(1.5);
@@ -165,7 +165,7 @@ describe("createAutopilotController", () => {
       activity,
       state,
       config: WALK_ONLY,
-      random: createSequenceRandom([0, 0.5, 0.5]),
+      random: createSequenceRandom([0, 0.5, 0.5, 0.5]),
     });
 
     controller.update(1.5);
@@ -176,7 +176,8 @@ describe("createAutopilotController", () => {
     expect(state.intent).toStrictEqual(NEUTRAL_INTENT);
   });
 
-  it("jumps at the end of a walk leg when the jump roll succeeds", () => {
+  it("jumps mid-leg and keeps walking through the air", () => {
+    // Draws: leg 4s, walk, keep direction, jump roll hits, jump at the 2s mark.
     const alwaysJump: AutorunConfig = { ...WALK_ONLY, jumpChance: 1 };
     const controller = createAutopilotController({
       arbiter,
@@ -190,10 +191,33 @@ describe("createAutopilotController", () => {
     vi.advanceTimersByTime(500);
     expect(bunny.animation.kind).toBe("walk");
 
-    controller.update(4);
+    controller.update(2.5);
 
     expect(bunny.animation.kind).toBe("jump");
-    expect(controller.phase().kind).toBe("pause");
+    // The leg continues: still walking, intent still held, so the world keeps
+    // scrolling instead of stopping dead in mid-air.
+    expect(controller.phase().kind).toBe("walk");
+    expect(state.intent).toStrictEqual(createIntent("left", null));
+  });
+
+  it("jumps only once per leg", () => {
+    const alwaysJump: AutorunConfig = { ...WALK_ONLY, jumpChance: 1 };
+    const controller = createAutopilotController({
+      arbiter,
+      activity,
+      state,
+      config: alwaysJump,
+      random: createSequenceRandom([0, 0.5, 0.5, 0.5, 0.5]),
+    });
+
+    controller.update(1.5);
+    controller.update(2.5);
+    expect(bunny.animation.kind).toBe("jump");
+
+    bunny.animation = { kind: "walk", frameIdx: 0 };
+    controller.update(0.5);
+
+    expect(bunny.animation.kind).toBe("walk");
   });
 
   it("does not jump when the jump roll fails", () => {

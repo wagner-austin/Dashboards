@@ -7,7 +7,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { _test_hooks, type AutopilotState, type HopState, type WalkState } from "./Autopilot.js";
+import { _test_hooks, type AutopilotState } from "./Autopilot.js";
 import type { AutorunConfig } from "./validation.js";
 import { createSequenceRandom, createConstantRandom } from "../testing/fixtures.js";
 
@@ -19,7 +19,7 @@ const {
   chooseWalkDirection,
   beginLeg,
   outputOf,
-  endLeg,
+  advanceWalk,
   stepAutopilot,
   DORMANT_STATE,
 } = _test_hooks;
@@ -83,7 +83,7 @@ describe("intentOf", () => {
   });
 
   it("maps walk to its horizontal direction", () => {
-    expect(intentOf({ kind: "walk", direction: "right", remaining: 1 })).toStrictEqual({
+    expect(intentOf({ kind: "walk", direction: "right", remaining: 1, jumpAt: null })).toStrictEqual({
       horizontal: "right",
       vertical: null,
     });
@@ -106,10 +106,11 @@ describe("withRemaining", () => {
   });
 
   it("rebuilds a walk keeping its direction", () => {
-    expect(withRemaining({ kind: "walk", direction: "left", remaining: 5 }, 2)).toStrictEqual({
+    expect(withRemaining({ kind: "walk", direction: "left", remaining: 5, jumpAt: null }, 2)).toStrictEqual({
       kind: "walk",
       direction: "left",
       remaining: 2,
+      jumpAt: null,
     });
   });
 
@@ -150,8 +151,8 @@ describe("chooseWalkDirection", () => {
 
 describe("beginLeg", () => {
   it("draws duration, then the hop roll, then the turn roll for a walk", () => {
-    const leg = beginLeg(false, BASE, createSequenceRandom([0.5, 0.9, 0.8]));
-    expect(leg).toStrictEqual({ kind: "walk", direction: "left", remaining: 4 });
+    const leg = beginLeg(false, BASE, createSequenceRandom([0.5, 0.9, 0.8, 0.9]));
+    expect(leg).toStrictEqual({ kind: "walk", direction: "left", remaining: 4, jumpAt: null });
   });
 
   it("draws duration, then the hop roll, then the direction roll for a hop", () => {
@@ -166,7 +167,7 @@ describe("beginLeg", () => {
 
   it("never hops at a zero hop chance", () => {
     const config: AutorunConfig = { ...BASE, hopChance: 0 };
-    const leg = beginLeg(true, config, createSequenceRandom([0.5, 0, 0.9]));
+    const leg = beginLeg(true, config, createSequenceRandom([0.5, 0, 0.9, 0.9]));
     expect(leg.kind).toBe("walk");
   });
 
@@ -179,34 +180,97 @@ describe("beginLeg", () => {
 
 describe("outputOf", () => {
   it("pairs a state with its intent and no jump", () => {
-    expect(outputOf({ kind: "walk", direction: "right", remaining: 3 })).toStrictEqual({
-      state: { kind: "walk", direction: "right", remaining: 3 },
+    expect(outputOf({ kind: "walk", direction: "right", remaining: 3, jumpAt: null })).toStrictEqual({
+      state: { kind: "walk", direction: "right", remaining: 3, jumpAt: null },
       intent: { horizontal: "right", vertical: null },
       jump: false,
     });
   });
 });
 
-describe("endLeg", () => {
-  const walk: WalkState = { kind: "walk", direction: "left", remaining: 0 };
-  const hop: HopState = { kind: "hop", direction: "up", remaining: 0 };
+describe("beginLeg jump scheduling", () => {
+  it("schedules a jump inside the leg when the jump roll succeeds", () => {
+    // duration 4, walk, keep direction, jump roll hits, jump at the midpoint
+    const leg = beginLeg(false, BASE, createSequenceRandom([0.5, 0.9, 0.8, 0.1, 0.5]));
 
-  it("jumps out of a walk when the jump roll succeeds", () => {
-    const output = endLeg(walk, BASE, createSequenceRandom([0.1, 0.5]));
+    expect(leg).toStrictEqual({ kind: "walk", direction: "left", remaining: 4, jumpAt: 2 });
+  });
+
+  it("never schedules a jump at a zero jump chance", () => {
+    const config: AutorunConfig = { ...BASE, jumpChance: 0 };
+    const leg = beginLeg(false, config, createSequenceRandom([0.5, 0.9, 0.8, 0]));
+
+    expect(leg.kind === "walk" ? leg.jumpAt : "not-a-walk").toBeNull();
+  });
+
+  it("hop legs never schedule a jump", () => {
+    const leg = beginLeg(false, BASE, createSequenceRandom([0.25, 0.1, 0.4]));
+
+    expect(leg.kind).toBe("hop");
+  });
+});
+
+describe("advanceWalk", () => {
+  it("keeps walking and does not jump before the mark", () => {
+    const output = advanceWalk(
+      { kind: "walk", direction: "right", remaining: 4, jumpAt: 2 },
+      3
+    );
+
+    expect(output.jump).toBe(false);
+    expect(output.state).toStrictEqual({
+      kind: "walk",
+      direction: "right",
+      remaining: 3,
+      jumpAt: 2,
+    });
+  });
+
+  it("fires the jump on the frame that crosses the mark", () => {
+    const output = advanceWalk(
+      { kind: "walk", direction: "right", remaining: 2.1, jumpAt: 2 },
+      1.9
+    );
+
     expect(output.jump).toBe(true);
-    expect(output.state).toStrictEqual({ kind: "pause", remaining: 2 });
-    expect(output.intent).toStrictEqual({ horizontal: null, vertical: null });
   });
 
-  it("does not jump out of a walk when the jump roll fails", () => {
-    const output = endLeg(walk, BASE, createSequenceRandom([0.9, 0.5]));
-    expect(output.jump).toBe(false);
+  it("keeps the walk intent while jumping so the bunny carries forward", () => {
+    const output = advanceWalk(
+      { kind: "walk", direction: "right", remaining: 2.1, jumpAt: 2 },
+      1.9
+    );
+
+    expect(output.intent).toStrictEqual({ horizontal: "right", vertical: null });
+    expect(output.state.kind).toBe("walk");
   });
 
-  it("never jumps out of a hop and skips the jump roll", () => {
-    const output = endLeg(hop, BASE, createSequenceRandom([0.5]));
+  it("clears the mark so the leg jumps only once", () => {
+    const fired = advanceWalk(
+      { kind: "walk", direction: "left", remaining: 2.1, jumpAt: 2 },
+      1.9
+    );
+    expect(fired.state).toStrictEqual({
+      kind: "walk",
+      direction: "left",
+      remaining: 1.9,
+      jumpAt: null,
+    });
+
+    const after = advanceWalk(
+      { kind: "walk", direction: "left", remaining: 1.9, jumpAt: null },
+      1.5
+    );
+    expect(after.jump).toBe(false);
+  });
+
+  it("never jumps on a leg that scheduled none", () => {
+    const output = advanceWalk(
+      { kind: "walk", direction: "left", remaining: 4, jumpAt: null },
+      3
+    );
+
     expect(output.jump).toBe(false);
-    expect(output.state).toStrictEqual({ kind: "pause", remaining: 2 });
   });
 });
 
@@ -214,7 +278,7 @@ describe("stepAutopilot", () => {
   it("stands down while autorun is disabled, however idle the user is", () => {
     const config: AutorunConfig = { ...BASE, enabled: false };
     const output = stepAutopilot(
-      { kind: "walk", direction: "left", remaining: 3 },
+      { kind: "walk", direction: "left", remaining: 3, jumpAt: null },
       input(0.016, 9999),
       config,
       createSequenceRandom([])
@@ -232,7 +296,7 @@ describe("stepAutopilot", () => {
 
   it("abandons an active leg the moment the user acts", () => {
     const output = stepAutopilot(
-      { kind: "walk", direction: "right", remaining: 3 },
+      { kind: "walk", direction: "right", remaining: 3, jumpAt: null },
       input(0.016, 0),
       BASE,
       createSequenceRandom([])
@@ -247,10 +311,10 @@ describe("stepAutopilot", () => {
       DORMANT_STATE,
       input(0.016, 5),
       BASE,
-      createSequenceRandom([0.5, 0.9, 0.8])
+      createSequenceRandom([0.5, 0.9, 0.8, 0.9])
     );
 
-    expect(output.state).toStrictEqual({ kind: "walk", direction: "left", remaining: 4 });
+    expect(output.state).toStrictEqual({ kind: "walk", direction: "left", remaining: 4, jumpAt: null });
     expect(output.intent).toStrictEqual({ horizontal: "left", vertical: null });
   });
 
@@ -259,21 +323,21 @@ describe("stepAutopilot", () => {
       DORMANT_STATE,
       input(0.016, 10, true),
       BASE,
-      createSequenceRandom([0.5, 0.9, 0.8])
+      createSequenceRandom([0.5, 0.9, 0.8, 0.9])
     );
 
-    expect(output.state).toStrictEqual({ kind: "walk", direction: "right", remaining: 4 });
+    expect(output.state).toStrictEqual({ kind: "walk", direction: "right", remaining: 4, jumpAt: null });
   });
 
   it("counts down an active leg without drawing", () => {
     const output = stepAutopilot(
-      { kind: "walk", direction: "right", remaining: 3 },
+      { kind: "walk", direction: "right", remaining: 3, jumpAt: null },
       input(0.5, 10),
       BASE,
       createSequenceRandom([])
     );
 
-    expect(output.state).toStrictEqual({ kind: "walk", direction: "right", remaining: 2.5 });
+    expect(output.state).toStrictEqual({ kind: "walk", direction: "right", remaining: 2.5, jumpAt: null });
     expect(output.intent).toStrictEqual({ horizontal: "right", vertical: null });
   });
 
@@ -302,10 +366,10 @@ describe("stepAutopilot", () => {
 
   it("drops into a pause when a walk leg expires", () => {
     const output = stepAutopilot(
-      { kind: "walk", direction: "left", remaining: 0.25 },
+      { kind: "walk", direction: "left", remaining: 0.25, jumpAt: null },
       input(0.5, 10),
       BASE,
-      createSequenceRandom([0.9, 0.5])
+      createSequenceRandom([0.5])
     );
 
     expect(output.state).toStrictEqual({ kind: "pause", remaining: 2 });
@@ -326,10 +390,10 @@ describe("stepAutopilot", () => {
 
   it("treats a leg reaching exactly zero as expired", () => {
     const output = stepAutopilot(
-      { kind: "walk", direction: "left", remaining: 0.5 },
+      { kind: "walk", direction: "left", remaining: 0.5, jumpAt: null },
       input(0.5, 10),
       BASE,
-      createSequenceRandom([0.9, 0.5])
+      createSequenceRandom([0.5])
     );
 
     expect(output.state.kind).toBe("pause");

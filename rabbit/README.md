@@ -193,11 +193,11 @@ these defaults.
     "idleDelay": 5,
     "minLeg": 2,
     "maxLeg": 7,
-    "minPause": 0.8,
-    "maxPause": 3,
+    "minPause": 3,
+    "maxPause": 9,
     "turnChance": 0.5,
     "hopChance": 0.25,
-    "jumpChance": 0.2
+    "jumpChance": 0.35
   }
 }
 ```
@@ -210,7 +210,7 @@ these defaults.
 | minPause / maxPause | Shortest and longest idle pause, in seconds |
 | turnChance | Probability (0-1) a new walk leg reverses direction |
 | hopChance | Probability (0-1) a leg is a depth hop instead of a walk |
-| jumpChance | Probability (0-1) a walk leg ends with a jump |
+| jumpChance | Probability (0-1) a walk leg jumps somewhere along its length |
 
 Set `"enabled": false` to switch it off entirely. Note that browsers only start
 audio after a real user gesture, so a page left completely untouched animates
@@ -284,7 +284,8 @@ Web Audio API with deferred initialization (created on first user interaction to
   "settings": {
     "fps": 60,
     "jumpSpeed": 58,
-    "scrollSpeed": 36
+    "scrollSpeed": 70,
+    "depthSpeed": 30
   },
   "audio": {
     "enabled": true,
@@ -330,6 +331,25 @@ poetry run python -m tools.gif_to_ascii input.gif --width 50 --contrast 1.8 --in
 | minimalist | ` . - + #` | Trees, bunny, most sprites |
 | standard | ` . : - = + * # % @` | Higher detail |
 | detailed | 70+ characters | Maximum detail |
+
+## Movement Speed
+
+The camera has exactly one mover, `input/movement.ts`, driven by config:
+
+| Setting | Meaning |
+|---------|---------|
+| scrollSpeed | Horizontal pan speed, world units per second |
+| depthSpeed | Depth speed while hopping, world units per second |
+| jumpSpeed | Jump animation frame interval, milliseconds |
+
+These are movement speeds only — animation frame rates are separate (see the
+animation interval table above), so slowing the world down does not make the
+bunny's legs move in slow motion.
+
+A jump keeps whatever horizontal movement was in effect, so jumping mid-stride
+carries forward through the arc rather than stopping in mid-air. That applies
+to the autopilot too: it schedules its jump inside a walk leg, not at the end
+of one.
 
 ## Development
 

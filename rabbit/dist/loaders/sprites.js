@@ -23,7 +23,8 @@ function isSettings(value) {
         return false;
     return (typeof value.fps === "number" &&
         typeof value.jumpSpeed === "number" &&
-        typeof value.scrollSpeed === "number");
+        typeof value.scrollSpeed === "number" &&
+        typeof value.depthSpeed === "number");
 }
 /** Validates that a module has the required frames property */
 function validateSpriteModule(module, path) {

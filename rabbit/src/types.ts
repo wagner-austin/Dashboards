@@ -180,11 +180,19 @@ export interface AutoLayersConfig {
   readonly seed?: number;
 }
 
-/** Global settings */
+/**
+ * Global settings.
+ *
+ * fps: Target frame rate.
+ * jumpSpeed: Jump animation frame interval, in milliseconds.
+ * scrollSpeed: Horizontal camera pan speed, in world units per second.
+ * depthSpeed: Depth camera speed while hopping, in world units per second.
+ */
 export interface Settings {
   readonly fps: number;
   readonly jumpSpeed: number;
-  readonly scrollSpeed: number; // characters per second
+  readonly scrollSpeed: number;
+  readonly depthSpeed: number;
 }
 
 /** Audio configuration (imported from audio module at runtime) */

@@ -37,20 +37,20 @@ declare function drawBunny(buffer: string[][], bunnyState: BunnyState, bunnyFram
 /**
  * Render a single frame.
  *
- * Handles layer rendering, bunny drawing, ground scrolling, and camera updates.
- * Trees are rendered via the layer system with 3D projection.
+ * Draws only: layers, ground, bunny, foreground. Moving the camera belongs to
+ * the input layer's movement module, which is its sole writer - rendering used
+ * to pan it too, so the two speeds silently added together.
  *
  * Args:
  *     state: Current render state.
  *     bunnyFrames: Bunny animation frames.
  *     screen: Target pre element.
  *     currentTime: Current timestamp.
- *     scrollSpeed: Base scroll speed.
  *
  * Returns:
  *     Updated lastTime.
  */
-export declare function renderFrame(state: RenderState, bunnyFrames: BunnyFrames, screen: HTMLPreElement, currentTime: number, scrollSpeed: number): {
+export declare function renderFrame(state: RenderState, bunnyFrames: BunnyFrames, screen: HTMLPreElement, currentTime: number): {
     lastTime: number;
 };
 /** Test hooks for internal functions */

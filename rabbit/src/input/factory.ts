@@ -17,7 +17,11 @@ import {
   type KeyboardEventSource,
   type KeyboardKeys,
 } from "./Keyboard.js";
-import { processDepthMovement, processHorizontalMovement } from "./movement.js";
+import {
+  processDepthMovement,
+  processHorizontalMovement,
+  type CameraSpeeds,
+} from "./movement.js";
 import type { InputState } from "./state.js";
 import {
   setupTouchControls,
@@ -38,6 +42,7 @@ import type { AutorunConfig } from "./validation.js";
  * keyboardEvents: Event target for keyboard listeners.
  * touchEvents: Event target and clock for touch listeners.
  * touch: Joystick tuning values.
+ * speeds: Camera pan and depth speeds, in world units per second.
  */
 export interface InputSystemDeps {
   readonly state: InputState;
@@ -48,6 +53,7 @@ export interface InputSystemDeps {
   readonly keyboardEvents: KeyboardEventSource;
   readonly touchEvents: TouchEventSource;
   readonly touch: TouchConfig;
+  readonly speeds: CameraSpeeds;
 }
 
 /**
@@ -117,8 +123,8 @@ export function createInputSystem(deps: InputSystemDeps): InputSystem {
     touchState,
     update(deltaTime: number): void {
       autopilot.update(deltaTime);
-      processDepthMovement(deps.state, deltaTime);
-      processHorizontalMovement(deps.state, deltaTime);
+      processDepthMovement(deps.state, deltaTime, deps.speeds.depth);
+      processHorizontalMovement(deps.state, deltaTime, deps.speeds.horizontal);
     },
   };
 }

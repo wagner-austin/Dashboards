@@ -69,6 +69,7 @@ describe("createInputSystem", () => {
       keyboardEvents,
       touchEvents,
       touch: DEFAULT_TOUCH_CONFIG,
+      speeds: { horizontal: 120, depth: 30 },
     });
   }
 

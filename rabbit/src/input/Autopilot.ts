@@ -36,11 +36,19 @@ export interface PauseState {
   readonly remaining: number;
 }
 
-/** Autopilot is walking a leg in one direction. */
+/**
+ * Autopilot is walking a leg in one direction.
+ *
+ * jumpAt is the remaining-time mark at which this leg jumps, or null when it
+ * has no jump left. The jump fires mid-leg rather than at the boundary so the
+ * walk intent is still in effect while airborne, and the bunny carries forward
+ * through the arc instead of stopping dead.
+ */
 export interface WalkState {
   readonly kind: "walk";
   readonly direction: HorizontalDirection;
   readonly remaining: number;
+  readonly jumpAt: number | null;
 }
 
 /** Autopilot is hopping a leg into or out of depth. */
@@ -140,10 +148,36 @@ function withRemaining(state: TimedState, remaining: number): TimedState {
     case "pause":
       return { kind: "pause", remaining };
     case "walk":
-      return { kind: "walk", direction: state.direction, remaining };
+      return { kind: "walk", direction: state.direction, remaining, jumpAt: state.jumpAt };
     case "hop":
       return { kind: "hop", direction: state.direction, remaining };
   }
+}
+
+/**
+ * Advance a walk leg, firing its jump if this frame crosses the mark.
+ *
+ * The returned state keeps walking either way: a jump does not interrupt the
+ * leg, it happens during it.
+ *
+ * Args:
+ *     state: The walk leg being advanced.
+ *     remaining: Time left in the leg after this frame.
+ *
+ * Returns:
+ *     AutopilotOutput continuing the walk, with jump set when it fires.
+ */
+function advanceWalk(state: WalkState, remaining: number): AutopilotOutput {
+  const jumpAt = state.jumpAt;
+  const firing = jumpAt !== null && remaining <= jumpAt;
+  const next: WalkState = {
+    kind: "walk",
+    direction: state.direction,
+    remaining,
+    jumpAt: firing ? null : jumpAt,
+  };
+
+  return { state: next, intent: intentOf(next), jump: firing };
 }
 
 /**
@@ -187,8 +221,9 @@ function chooseWalkDirection(
 /**
  * Start a movement leg, either a depth hop or a walk.
  *
- * Consumes three random draws in order: leg duration, the hop-versus-walk
- * roll, then either the hop direction roll or the turn roll.
+ * Consumes draws in order: leg duration, the hop-versus-walk roll, then either
+ * the hop direction roll, or the turn roll followed by the jump roll and - if
+ * that jump is taken - the point within the leg at which it fires.
  *
  * Args:
  *     facingRight: Direction the bunny currently faces.
@@ -210,7 +245,10 @@ function beginLeg(
     return { kind: "hop", direction, remaining };
   }
 
-  return { kind: "walk", direction: chooseWalkDirection(facingRight, config, random), remaining };
+  const direction = chooseWalkDirection(facingRight, config, random);
+  const jumpAt = random() < config.jumpChance ? randomRange(random, 0, remaining) : null;
+
+  return { kind: "walk", direction, remaining, jumpAt };
 }
 
 /**
@@ -224,29 +262,6 @@ function beginLeg(
  */
 function outputOf(state: AutopilotState): AutopilotOutput {
   return { state, intent: intentOf(state), jump: false };
-}
-
-/**
- * Finish a movement leg and drop into a pause.
- *
- * A walk leg may end with a jump; a hop leg never does, because the bunny is
- * already airborne. Consumes the jump roll only for walk legs.
- *
- * Args:
- *     state: The leg that just finished.
- *     config: Autorun tuning values.
- *     random: Source of draws in [0, 1).
- *
- * Returns:
- *     AutopilotOutput entering a pause, possibly requesting a jump.
- */
-function endLeg(
-  state: WalkState | HopState,
-  config: AutorunConfig,
-  random: RandomSource
-): AutopilotOutput {
-  const jump = state.kind === "walk" && random() < config.jumpChance;
-  return { state: beginPause(config, random), intent: NEUTRAL_INTENT, jump };
 }
 
 /**
@@ -282,6 +297,9 @@ export function stepAutopilot(
   const remaining = state.remaining - input.deltaTime;
 
   if (remaining > 0) {
+    if (state.kind === "walk") {
+      return advanceWalk(state, remaining);
+    }
     return outputOf(withRemaining(state, remaining));
   }
 
@@ -289,7 +307,7 @@ export function stepAutopilot(
     return outputOf(beginLeg(input.facingRight, config, random));
   }
 
-  return endLeg(state, config, random);
+  return outputOf(beginPause(config, random));
 }
 
 /** Test hooks for internal functions */
@@ -297,11 +315,11 @@ export const _test_hooks = {
   randomRange,
   intentOf,
   withRemaining,
+  advanceWalk,
   beginPause,
   chooseWalkDirection,
   beginLeg,
   outputOf,
-  endLeg,
   stepAutopilot,
   DORMANT_STATE,
 };

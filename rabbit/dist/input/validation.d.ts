@@ -18,7 +18,7 @@
  * maxPause: Longest idle pause between legs in seconds.
  * turnChance: Probability (0-1) a new walk leg reverses direction.
  * hopChance: Probability (0-1) a leg is a depth hop instead of a walk.
- * jumpChance: Probability (0-1) a walk leg ends with a jump.
+ * jumpChance: Probability (0-1) a walk leg jumps somewhere along its length.
  */
 export interface AutorunConfig {
     readonly enabled: boolean;

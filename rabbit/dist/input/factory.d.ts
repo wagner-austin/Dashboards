@@ -12,6 +12,7 @@ import { type InputArbiter } from "./arbiter.js";
 import type { RandomSource } from "./Autopilot.js";
 import { type AutopilotController } from "./controller.js";
 import { type KeyboardEventSource, type KeyboardKeys } from "./Keyboard.js";
+import { type CameraSpeeds } from "./movement.js";
 import type { InputState } from "./state.js";
 import { type TouchConfig, type TouchEventSource, type TouchState } from "./Touch.js";
 import type { AutorunConfig } from "./validation.js";
@@ -26,6 +27,7 @@ import type { AutorunConfig } from "./validation.js";
  * keyboardEvents: Event target for keyboard listeners.
  * touchEvents: Event target and clock for touch listeners.
  * touch: Joystick tuning values.
+ * speeds: Camera pan and depth speeds, in world units per second.
  */
 export interface InputSystemDeps {
     readonly state: InputState;
@@ -36,6 +38,7 @@ export interface InputSystemDeps {
     readonly keyboardEvents: KeyboardEventSource;
     readonly touchEvents: TouchEventSource;
     readonly touch: TouchConfig;
+    readonly speeds: CameraSpeeds;
 }
 /**
  * The assembled input layer.

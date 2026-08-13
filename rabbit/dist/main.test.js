@@ -28,7 +28,7 @@ function createTestConfig() {
     return {
         sprites: {},
         layers: [],
-        settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+        settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
         autorun: DEFAULT_AUTORUN_CONFIG,
         autoLayers: {
             sprites: ["tree1", "tree2"],
@@ -130,7 +130,7 @@ describe("init", () => {
         const configWithoutAutoLayers = {
             sprites: {},
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
             autorun: DEFAULT_AUTORUN_CONFIG,
             // No autoLayers
         };
@@ -354,7 +354,7 @@ describe("collectAllSpriteNames", () => {
                 { name: "grass-front", sprites: ["grass"] },
                 { name: "rocks", sprites: ["rock1", "rock2"] },
             ],
-            settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
             autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const names = _test_hooks.collectAllSpriteNames(config);
@@ -366,7 +366,7 @@ describe("collectAllSpriteNames", () => {
         const config = {
             sprites: {},
             layers: [],
-            settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
             autorun: DEFAULT_AUTORUN_CONFIG,
             autoLayers: {
                 sprites: ["tree1", "tree2"],
@@ -382,7 +382,7 @@ describe("collectAllSpriteNames", () => {
         const config = {
             sprites: {},
             layers: [{ name: "layer1", sprites: ["tree1"] }],
-            settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
             autorun: DEFAULT_AUTORUN_CONFIG,
             autoLayers: {
                 sprites: ["tree1", "tree2"],
@@ -398,7 +398,7 @@ describe("collectAllSpriteNames", () => {
         const config = {
             sprites: {},
             layers: [{ name: "sky", type: "static" }],
-            settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36 },
+            settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
             autorun: DEFAULT_AUTORUN_CONFIG,
         };
         const names = _test_hooks.collectAllSpriteNames(config);

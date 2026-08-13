@@ -42,7 +42,7 @@ describe("isStringArray", () => {
 });
 describe("isSettings", () => {
     it("returns true for valid settings", () => {
-        expect(isSettings({ fps: 60, jumpSpeed: 10, scrollSpeed: 100 })).toBe(true);
+        expect(isSettings({ fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 })).toBe(true);
     });
     it("returns false for missing fps", () => {
         expect(isSettings({ jumpSpeed: 10, scrollSpeed: 100 })).toBe(false);
@@ -103,7 +103,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
         };
         const result = validateConfig(config);
         expect(result.settings.fps).toBe(60);
@@ -112,7 +112,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
             audio: {
                 enabled: true,
                 masterVolume: 0.5,
@@ -127,7 +127,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
         };
         const result = validateConfig(config);
         expect(result.audio).toBeUndefined();
@@ -136,7 +136,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
             autoLayers: {
                 sprites: ["tree1"],
                 minLayer: 8,
@@ -152,7 +152,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
             audio: {
                 enabled: true,
                 masterVolume: 0.5,
@@ -175,13 +175,13 @@ describe("validateConfig", () => {
     it("throws for missing sprites", () => {
         expect(() => validateConfig({
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
         })).toThrow("Invalid config: missing sprites object");
     });
     it("throws for missing layers", () => {
         expect(() => validateConfig({
             sprites: {},
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
         })).toThrow("Invalid config: missing layers array");
     });
     it("throws for missing settings", () => {
@@ -201,7 +201,7 @@ describe("validateConfig", () => {
         expect(() => validateConfig({
             sprites: {},
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100 },
+            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
             audio: { enabled: "yes" },
         })).toThrow('audio: "enabled" must be a boolean');
     });

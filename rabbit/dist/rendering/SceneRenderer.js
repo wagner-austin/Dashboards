@@ -6,7 +6,7 @@
 import { createBuffer, renderBuffer } from "./Viewport.js";
 import { drawSprite } from "./draw.js";
 import { drawGround } from "./Ground.js";
-import { getBunnyFrame, isWalking } from "../entities/Bunny.js";
+import { getBunnyFrame } from "../entities/Bunny.js";
 import { renderAllLayers, renderForegroundLayers } from "../layers/index.js";
 /**
  * Draw the bunny entity to buffer.
@@ -27,21 +27,20 @@ function drawBunny(buffer, bunnyState, bunnyFrames, width, height) {
 /**
  * Render a single frame.
  *
- * Handles layer rendering, bunny drawing, ground scrolling, and camera updates.
- * Trees are rendered via the layer system with 3D projection.
+ * Draws only: layers, ground, bunny, foreground. Moving the camera belongs to
+ * the input layer's movement module, which is its sole writer - rendering used
+ * to pan it too, so the two speeds silently added together.
  *
  * Args:
  *     state: Current render state.
  *     bunnyFrames: Bunny animation frames.
  *     screen: Target pre element.
  *     currentTime: Current timestamp.
- *     scrollSpeed: Base scroll speed.
  *
  * Returns:
  *     Updated lastTime.
  */
-export function renderFrame(state, bunnyFrames, screen, currentTime, scrollSpeed) {
-    const deltaTime = state.lastTime > 0 ? (currentTime - state.lastTime) / 1000 : 0;
+export function renderFrame(state, bunnyFrames, screen, currentTime) {
     const { width, height } = state.viewport;
     const buffer = createBuffer(width, height);
     const config = state.projectionConfig;
@@ -55,15 +54,6 @@ export function renderFrame(state, bunnyFrames, screen, currentTime, scrollSpeed
     renderForegroundLayers(buffer, state.sceneState, width, height, config);
     // Render to screen
     screen.textContent = renderBuffer(buffer);
-    // Update camera position when walking
-    if (isWalking(state.bunnyState)) {
-        const scrollAmount = scrollSpeed * deltaTime;
-        const direction = state.bunnyState.facingRight ? 1 : -1;
-        state.sceneState.camera = {
-            ...state.sceneState.camera,
-            x: state.sceneState.camera.x + scrollAmount * direction,
-        };
-    }
     return { lastTime: currentTime };
 }
 /** Test hooks for internal functions */

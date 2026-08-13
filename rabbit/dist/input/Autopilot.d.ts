@@ -24,11 +24,19 @@ export interface PauseState {
     readonly kind: "pause";
     readonly remaining: number;
 }
-/** Autopilot is walking a leg in one direction. */
+/**
+ * Autopilot is walking a leg in one direction.
+ *
+ * jumpAt is the remaining-time mark at which this leg jumps, or null when it
+ * has no jump left. The jump fires mid-leg rather than at the boundary so the
+ * walk intent is still in effect while airborne, and the bunny carries forward
+ * through the arc instead of stopping dead.
+ */
 export interface WalkState {
     readonly kind: "walk";
     readonly direction: HorizontalDirection;
     readonly remaining: number;
+    readonly jumpAt: number | null;
 }
 /** Autopilot is hopping a leg into or out of depth. */
 export interface HopState {
@@ -102,6 +110,20 @@ declare function intentOf(state: AutopilotState): MovementIntent;
  */
 declare function withRemaining(state: TimedState, remaining: number): TimedState;
 /**
+ * Advance a walk leg, firing its jump if this frame crosses the mark.
+ *
+ * The returned state keeps walking either way: a jump does not interrupt the
+ * leg, it happens during it.
+ *
+ * Args:
+ *     state: The walk leg being advanced.
+ *     remaining: Time left in the leg after this frame.
+ *
+ * Returns:
+ *     AutopilotOutput continuing the walk, with jump set when it fires.
+ */
+declare function advanceWalk(state: WalkState, remaining: number): AutopilotOutput;
+/**
  * Start an idle pause between movement legs.
  *
  * Consumes one random draw: the pause duration.
@@ -131,8 +153,9 @@ declare function chooseWalkDirection(facingRight: boolean, config: AutorunConfig
 /**
  * Start a movement leg, either a depth hop or a walk.
  *
- * Consumes three random draws in order: leg duration, the hop-versus-walk
- * roll, then either the hop direction roll or the turn roll.
+ * Consumes draws in order: leg duration, the hop-versus-walk roll, then either
+ * the hop direction roll, or the turn roll followed by the jump roll and - if
+ * that jump is taken - the point within the leg at which it fires.
  *
  * Args:
  *     facingRight: Direction the bunny currently faces.
@@ -153,21 +176,6 @@ declare function beginLeg(facingRight: boolean, config: AutorunConfig, random: R
  *     AutopilotOutput carrying the state's implied intent.
  */
 declare function outputOf(state: AutopilotState): AutopilotOutput;
-/**
- * Finish a movement leg and drop into a pause.
- *
- * A walk leg may end with a jump; a hop leg never does, because the bunny is
- * already airborne. Consumes the jump roll only for walk legs.
- *
- * Args:
- *     state: The leg that just finished.
- *     config: Autorun tuning values.
- *     random: Source of draws in [0, 1).
- *
- * Returns:
- *     AutopilotOutput entering a pause, possibly requesting a jump.
- */
-declare function endLeg(state: WalkState | HopState, config: AutorunConfig, random: RandomSource): AutopilotOutput;
 /**
  * Advance the autopilot by one frame.
  *
@@ -190,11 +198,11 @@ export declare const _test_hooks: {
     randomRange: typeof randomRange;
     intentOf: typeof intentOf;
     withRemaining: typeof withRemaining;
+    advanceWalk: typeof advanceWalk;
     beginPause: typeof beginPause;
     chooseWalkDirection: typeof chooseWalkDirection;
     beginLeg: typeof beginLeg;
     outputOf: typeof outputOf;
-    endLeg: typeof endLeg;
     stepAutopilot: typeof stepAutopilot;
     DORMANT_STATE: DormantState;
 };

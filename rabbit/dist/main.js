@@ -134,7 +134,7 @@ export async function init(deps = createDefaultDependencies()) {
     const layerAnimationTimer = createAnimationTimer(400, layerAnimationCallback);
     layerAnimationTimer.start();
     // Render loop - starts immediately (ground visible, sprites appear as they load)
-    const SCROLL_SPEED = config.settings.scrollSpeed;
+    const emptyBunnyFrames = createEmptyBunnyFrames();
     let lastTime = 0;
     function render(currentTime) {
         // Calculate delta time for frame-rate independent movement
@@ -152,16 +152,9 @@ export async function init(deps = createDefaultDependencies()) {
             lastTime,
             projectionConfig,
         };
-        // Only render bunny if frames are loaded
-        if (bunnyFrames !== null) {
-            const result = renderFrame(renderState, bunnyFrames, screen, currentTime, SCROLL_SPEED);
-            lastTime = result.lastTime;
-        }
-        else {
-            // Render without bunny (just layers and ground)
-            const result = renderFrame(renderState, createEmptyBunnyFrames(), screen, currentTime, SCROLL_SPEED);
-            lastTime = result.lastTime;
-        }
+        // Until the bunny loads, the scene renders with empty frames
+        const frames = bunnyFrames ?? emptyBunnyFrames;
+        lastTime = renderFrame(renderState, frames, screen, currentTime).lastTime;
         // Sync camera back from scene state to input state
         state.camera = state.scene.camera;
         deps.requestAnimationFrameFn(render);
@@ -180,7 +173,7 @@ export async function init(deps = createDefaultDependencies()) {
         const bunnyTimers = createBunnyTimers(bunnyState, loadedBunnyFrames, {
             walk: 120,
             idle: 500,
-            jump: 58,
+            jump: config.settings.jumpSpeed,
             transition: 50,
             hop: 150,
         }, createHorizontalHeldProbe(state));
@@ -194,6 +187,10 @@ export async function init(deps = createDefaultDependencies()) {
             keyboardEvents: deps.keyboardEvents,
             touchEvents: deps.touchEvents,
             touch: DEFAULT_TOUCH_CONFIG,
+            speeds: {
+                horizontal: config.settings.scrollSpeed,
+                depth: config.settings.depthSpeed,
+            },
         });
         // Start bunny animation timers
         bunnyTimers.walk.start();
