@@ -35,7 +35,7 @@ function createTestConfig(): Config {
       },
     },
     layers: [],
-    settings: { fps: 10, jumpSpeed: 5, scrollSpeed: 10, depthSpeed: 30 },
+    settings: { fps: 10, scrollSpeed: 10, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
     autorun: DEFAULT_AUTORUN_CONFIG,
   };
 }

@@ -36,9 +36,9 @@ function createTestConfig(): Config {
     ],
     settings: {
       fps: 60,
-      jumpSpeed: 58,
       scrollSpeed: 36,
       depthSpeed: 30,
+      animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 },
     },
     autorun: DEFAULT_AUTORUN_CONFIG,
     autoLayers: {
@@ -210,7 +210,7 @@ describe("collectTreeWidths", () => {
         tree1: { source: "test.gif" }, // No widths
       },
       layers: [],
-      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
+      settings: { fps: 60, scrollSpeed: 36, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
       autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
@@ -241,7 +241,7 @@ describe("getGrassSpriteNames", () => {
     const config: Config = {
       sprites: {},
       layers: [{ name: "sky", type: "static" }],
-      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
+      settings: { fps: 60, scrollSpeed: 36, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
       autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
@@ -257,7 +257,7 @@ describe("getGrassSpriteNames", () => {
         { name: "grass-front", sprites: ["grass1", "grass2"] },
         { name: "grass-back", sprites: ["grassBack"] },
       ],
-      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
+      settings: { fps: 60, scrollSpeed: 36, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
       autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
@@ -270,7 +270,7 @@ describe("getGrassSpriteNames", () => {
     const config: Config = {
       sprites: {},
       layers: [{ name: "other", sprites: ["tree1", "rock"] }],
-      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
+      settings: { fps: 60, scrollSpeed: 36, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
       autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
@@ -293,7 +293,7 @@ describe("getTreeSpriteNames", () => {
     const config: Config = {
       sprites: {},
       layers: [],
-      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
+      settings: { fps: 60, scrollSpeed: 36, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
       autorun: DEFAULT_AUTORUN_CONFIG,
     };
 
@@ -326,7 +326,7 @@ describe("getSpriteWidthsFromConfig", () => {
         noWidths: { source: "test.gif" },
       },
       layers: [],
-      settings: { fps: 60, jumpSpeed: 58, scrollSpeed: 36, depthSpeed: 30 },
+      settings: { fps: 60, scrollSpeed: 36, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
       autorun: DEFAULT_AUTORUN_CONFIG,
     };
 

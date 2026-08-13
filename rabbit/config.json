@@ -119,9 +119,15 @@
   },
   "settings": {
     "fps": 60,
-    "jumpSpeed": 58,
-    "scrollSpeed": 70,
-    "depthSpeed": 30
+    "scrollSpeed": 90,
+    "depthSpeed": 30,
+    "animation": {
+      "walk": 120,
+      "idle": 500,
+      "jump": 58,
+      "transition": 85,
+      "hop": 150
+    }
   },
   "autorun": {
     "enabled": true,

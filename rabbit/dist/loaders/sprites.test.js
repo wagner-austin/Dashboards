@@ -4,7 +4,7 @@
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { createAnimationTimer, _test_hooks } from "./sprites.js";
-const { isRecord, isStringArray, isSettings, validateSpriteModule, validateOptionalAudio, validateConfig } = _test_hooks;
+const { isRecord, isStringArray, isAnimationIntervals, isSettings, validateSpriteModule, validateOptionalAudio, validateConfig } = _test_hooks;
 describe("isRecord", () => {
     it("returns true for plain objects", () => {
         expect(isRecord({})).toBe(true);
@@ -40,9 +40,37 @@ describe("isStringArray", () => {
         expect(isStringArray(null)).toBe(false);
     });
 });
+describe("isAnimationIntervals", () => {
+    it("accepts a full set of intervals", () => {
+        expect(isAnimationIntervals({ walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 })).toBe(true);
+    });
+    it("rejects a non-record", () => {
+        expect(isAnimationIntervals(null)).toBe(false);
+        expect(isAnimationIntervals([])).toBe(false);
+        expect(isAnimationIntervals(120)).toBe(false);
+    });
+    it("rejects a missing walk interval", () => {
+        expect(isAnimationIntervals({ idle: 500, jump: 58, transition: 85, hop: 150 })).toBe(false);
+    });
+    it("rejects a missing idle interval", () => {
+        expect(isAnimationIntervals({ walk: 120, jump: 58, transition: 85, hop: 150 })).toBe(false);
+    });
+    it("rejects a missing jump interval", () => {
+        expect(isAnimationIntervals({ walk: 120, idle: 500, transition: 85, hop: 150 })).toBe(false);
+    });
+    it("rejects a missing transition interval", () => {
+        expect(isAnimationIntervals({ walk: 120, idle: 500, jump: 58, hop: 150 })).toBe(false);
+    });
+    it("rejects a missing hop interval", () => {
+        expect(isAnimationIntervals({ walk: 120, idle: 500, jump: 58, transition: 85 })).toBe(false);
+    });
+    it("rejects a non-numeric interval", () => {
+        expect(isAnimationIntervals({ walk: "120", idle: 500, jump: 58, transition: 85, hop: 150 })).toBe(false);
+    });
+});
 describe("isSettings", () => {
     it("returns true for valid settings", () => {
-        expect(isSettings({ fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 })).toBe(true);
+        expect(isSettings({ fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } })).toBe(true);
     });
     it("returns false for missing fps", () => {
         expect(isSettings({ jumpSpeed: 10, scrollSpeed: 100 })).toBe(false);
@@ -103,7 +131,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
+            settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
         };
         const result = validateConfig(config);
         expect(result.settings.fps).toBe(60);
@@ -112,7 +140,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
+            settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
             audio: {
                 enabled: true,
                 masterVolume: 0.5,
@@ -127,7 +155,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
+            settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
         };
         const result = validateConfig(config);
         expect(result.audio).toBeUndefined();
@@ -136,7 +164,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
+            settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
             autoLayers: {
                 sprites: ["tree1"],
                 minLayer: 8,
@@ -152,7 +180,7 @@ describe("validateConfig", () => {
         const config = {
             sprites: { bunny: {} },
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
+            settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
             audio: {
                 enabled: true,
                 masterVolume: 0.5,
@@ -175,13 +203,13 @@ describe("validateConfig", () => {
     it("throws for missing sprites", () => {
         expect(() => validateConfig({
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
+            settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
         })).toThrow("Invalid config: missing sprites object");
     });
     it("throws for missing layers", () => {
         expect(() => validateConfig({
             sprites: {},
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
+            settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
         })).toThrow("Invalid config: missing layers array");
     });
     it("throws for missing settings", () => {
@@ -201,7 +229,7 @@ describe("validateConfig", () => {
         expect(() => validateConfig({
             sprites: {},
             layers: [],
-            settings: { fps: 60, jumpSpeed: 10, scrollSpeed: 100, depthSpeed: 30 },
+            settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
             audio: { enabled: "yes" },
         })).toThrow('audio: "enabled" must be a boolean');
     });

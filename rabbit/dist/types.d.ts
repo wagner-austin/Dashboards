@@ -178,18 +178,37 @@ export interface AutoLayersConfig {
     readonly seed?: number;
 }
 /**
+ * Frame intervals for each bunny animation, in milliseconds.
+ *
+ * These are durations, not rates: a larger number holds each frame longer and
+ * plays the animation more slowly.
+ *
+ * walk: Walk cycle.
+ * idle: Idle loop.
+ * jump: One-shot jump.
+ * transition: Turns and walk-to-idle changeovers.
+ * hop: Depth hop loop.
+ */
+export interface AnimationIntervals {
+    readonly walk: number;
+    readonly idle: number;
+    readonly jump: number;
+    readonly transition: number;
+    readonly hop: number;
+}
+/**
  * Global settings.
  *
  * fps: Target frame rate.
- * jumpSpeed: Jump animation frame interval, in milliseconds.
  * scrollSpeed: Horizontal camera pan speed, in world units per second.
  * depthSpeed: Depth camera speed while hopping, in world units per second.
+ * animation: Per-animation frame intervals, in milliseconds.
  */
 export interface Settings {
     readonly fps: number;
-    readonly jumpSpeed: number;
     readonly scrollSpeed: number;
     readonly depthSpeed: number;
+    readonly animation: AnimationIntervals;
 }
 /** Audio configuration (imported from audio module at runtime) */
 export interface AudioConfigRef {

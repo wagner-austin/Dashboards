@@ -170,13 +170,7 @@ export async function init(deps = createDefaultDependencies()) {
         bunnyFrames = loadedBunnyFrames;
         // Create timers now that bunny is loaded. Animation completion consults
         // the effective intent, whichever source produced it.
-        const bunnyTimers = createBunnyTimers(bunnyState, loadedBunnyFrames, {
-            walk: 120,
-            idle: 500,
-            jump: config.settings.jumpSpeed,
-            transition: 50,
-            hop: 150,
-        }, createHorizontalHeldProbe(state));
+        const bunnyTimers = createBunnyTimers(bunnyState, loadedBunnyFrames, config.settings.animation, createHorizontalHeldProbe(state));
         // Assemble the input layer: arbiter, autopilot, keyboard, and touch
         inputSystem = createInputSystem({
             state,

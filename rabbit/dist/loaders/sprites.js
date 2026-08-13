@@ -17,14 +17,24 @@ function isStringArray(value) {
     }
     return true;
 }
+/** Type guard for AnimationIntervals */
+function isAnimationIntervals(value) {
+    if (!isRecord(value))
+        return false;
+    return (typeof value.walk === "number" &&
+        typeof value.idle === "number" &&
+        typeof value.jump === "number" &&
+        typeof value.transition === "number" &&
+        typeof value.hop === "number");
+}
 /** Type guard for Settings */
 function isSettings(value) {
     if (!isRecord(value))
         return false;
     return (typeof value.fps === "number" &&
-        typeof value.jumpSpeed === "number" &&
         typeof value.scrollSpeed === "number" &&
-        typeof value.depthSpeed === "number");
+        typeof value.depthSpeed === "number" &&
+        isAnimationIntervals(value.animation));
 }
 /** Validates that a module has the required frames property */
 function validateSpriteModule(module, path) {
@@ -100,6 +110,7 @@ export function createAnimationTimer(intervalMs, onTick) {
 export const _test_hooks = {
     isRecord,
     isStringArray,
+    isAnimationIntervals,
     isSettings,
     validateSpriteModule,
     validateOptionalAudio,

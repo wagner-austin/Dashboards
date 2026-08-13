@@ -2,7 +2,7 @@
  * Sprite loading and animation timer utilities.
  */
 
-import type { Config, Settings, AudioConfigRef } from "../types.js";
+import type { AnimationIntervals, Config, Settings, AudioConfigRef } from "../types.js";
 import { validateAudioConfig } from "../audio/index.js";
 import { validateAutorunConfig } from "../input/validation.js";
 
@@ -25,14 +25,26 @@ function isStringArray(value: unknown): value is string[] {
   return true;
 }
 
+/** Type guard for AnimationIntervals */
+function isAnimationIntervals(value: unknown): value is AnimationIntervals {
+  if (!isRecord(value)) return false;
+  return (
+    typeof value.walk === "number" &&
+    typeof value.idle === "number" &&
+    typeof value.jump === "number" &&
+    typeof value.transition === "number" &&
+    typeof value.hop === "number"
+  );
+}
+
 /** Type guard for Settings */
 function isSettings(value: unknown): value is Settings {
   if (!isRecord(value)) return false;
   return (
     typeof value.fps === "number" &&
-    typeof value.jumpSpeed === "number" &&
     typeof value.scrollSpeed === "number" &&
-    typeof value.depthSpeed === "number"
+    typeof value.depthSpeed === "number" &&
+    isAnimationIntervals(value.animation)
   );
 }
 
@@ -126,6 +138,7 @@ export function createAnimationTimer(
 export const _test_hooks = {
   isRecord,
   isStringArray,
+  isAnimationIntervals,
   isSettings,
   validateSpriteModule,
   validateOptionalAudio,

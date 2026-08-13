@@ -119,16 +119,9 @@ The bunny uses a discriminated union with 5 animation states:
 
 Transitions are first-class -- walk-to-idle, idle-to-walk, walk-to-turn-away, walk-to-turn-toward -- with pending actions so inputs during transitions queue correctly.
 
-Each animation runs on an independent timer, decoupled from the render loop:
-
-| Animation | Interval |
-|-----------|----------|
-| Walk | 120ms |
-| Idle | 500ms |
-| Jump | 58ms |
-| Transition | 50ms |
-| Hop | 150ms |
-| Scene sprites | 400ms |
+Each animation runs on an independent timer, decoupled from the render loop.
+The intervals come from `settings.animation` in `config.json` — see Movement
+Speed below. Scene sprites animate on their own fixed 400ms timer.
 
 ## Controls
 
@@ -283,9 +276,15 @@ Web Audio API with deferred initialization (created on first user interaction to
   },
   "settings": {
     "fps": 60,
-    "jumpSpeed": 58,
-    "scrollSpeed": 70,
-    "depthSpeed": 30
+    "scrollSpeed": 90,
+    "depthSpeed": 30,
+    "animation": {
+      "walk": 120,
+      "idle": 500,
+      "jump": 58,
+      "transition": 85,
+      "hop": 150
+    }
   },
   "audio": {
     "enabled": true,
@@ -340,11 +339,21 @@ The camera has exactly one mover, `input/movement.ts`, driven by config:
 |---------|---------|
 | scrollSpeed | Horizontal pan speed, world units per second |
 | depthSpeed | Depth speed while hopping, world units per second |
-| jumpSpeed | Jump animation frame interval, milliseconds |
 
-These are movement speeds only — animation frame rates are separate (see the
-animation interval table above), so slowing the world down does not make the
-bunny's legs move in slow motion.
+Movement speed and animation speed are independent, so slowing the world down
+does not make the bunny's legs move in slow motion, and vice versa.
+
+Animation frame intervals live under `settings.animation`, in milliseconds.
+They are durations, not rates: a larger number holds each frame longer and
+plays that animation more slowly.
+
+| Interval | Animation |
+|----------|-----------|
+| walk | Walk cycle |
+| idle | Idle loop |
+| jump | One-shot jump |
+| transition | Turns and walk-to-idle changeovers |
+| hop | Depth hop loop |
 
 A jump keeps whatever horizontal movement was in effect, so jumping mid-stride
 carries forward through the arc rather than stopping in mid-air. That applies
