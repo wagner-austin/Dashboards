@@ -3,18 +3,66 @@ Irvine City Council Dashboard HTML Generator
 
 Run this script to generate a fresh HTML dashboard with live data.
 
+Reads meetings from Granicus over plain HTTP. The next meeting comes from
+actual dates - the curated schedule.json merged with anything Granicus already
+publishes - never from a recurrence rule.
+
 Usage:
-    python generate.py           # Full scrape with Playwright
-    python generate.py --quick   # Quick refresh (cached data only)
+    python generate.py           # Full refresh
+    python generate.py --quick   # Skip the Granicus scrape
 """
 
 import json
 import re
-from datetime import datetime
+import sys
+from datetime import date, datetime
 from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup, Tag
+
+# The directory name is not importable, so the repository root is added
+# explicitly to reach the shared utilities.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from shared.utils.meeting_schedule import (  # noqa: E402
+    format_meeting,
+    load_schedule,
+    merge_upcoming,
+    select_next_meeting,
+    upcoming_meetings,
+)
+
+
+def granicus_upcoming_dates(meetings: list[dict]) -> list[date]:
+    """Read future meeting dates out of the scraped Granicus listing.
+
+    Granicus lists a meeting under Upcoming Events once its agenda is posted,
+    roughly a week ahead. Anything it already knows about is authoritative.
+
+    Args:
+        meetings: Meeting records from the Granicus scrape.
+
+    Returns:
+        Parsed dates for meetings that are in the future, without duplicates.
+    """
+    today = date.today()
+    found: set[date] = set()
+
+    for meeting in meetings:
+        raw = meeting.get("date")
+        if not isinstance(raw, str):
+            continue
+        for fmt in ("%B %d, %Y", "%b %d, %Y", "%Y-%m-%d"):
+            try:
+                parsed = datetime.strptime(raw.strip(), fmt).date()
+            except ValueError:
+                continue
+            if parsed >= today:
+                found.add(parsed)
+            break
+
+    return sorted(found)
 
 
 def fetch_council_members():
@@ -603,44 +651,23 @@ def generate_html(data: dict) -> str:
         }}
 
         function getNextMeeting() {{
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = now.getMonth();
+            // Dates are supplied by the generator: curated schedule plus
+            // anything Granicus already publishes. Nothing is inferred here,
+            // because the council's calendar has recesses and cancellations
+            // that a "2nd and 4th Tuesday" rule cannot express.
+            const upcoming = DATA.upcoming_meetings || [];
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-            // Find 2nd and 4th Tuesday of current month
-            function getNthTuesday(year, month, n) {{
-                let count = 0;
-                for (let day = 1; day <= 31; day++) {{
-                    const date = new Date(year, month, day);
-                    if (date.getMonth() !== month) break;
-                    if (date.getDay() === 2) {{ // Tuesday
-                        count++;
-                        if (count === n) return date;
-                    }}
+            for (const iso of upcoming) {{
+                const when = new Date(iso + 'T00:00:00');
+                if (!isNaN(when.getTime()) && when >= today) {{
+                    return when.toLocaleDateString('en-US', {{
+                        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                    }}) + ' at ' + (DATA.meeting_time || '4:00 PM');
                 }}
-                return null;
             }}
-
-            const secondTue = getNthTuesday(year, month, 2);
-            const fourthTue = getNthTuesday(year, month, 4);
-
-            let nextMeeting = null;
-            const today = new Date(year, month, now.getDate());
-            today.setHours(16, 0, 0, 0); // 4 PM
-
-            if (secondTue && secondTue >= now) {{
-                nextMeeting = secondTue;
-            }} else if (fourthTue && fourthTue >= now) {{
-                nextMeeting = fourthTue;
-            }} else {{
-                // Next month
-                nextMeeting = getNthTuesday(year, month + 1, 2);
-            }}
-
-            if (nextMeeting) {{
-                return nextMeeting.toLocaleDateString('en-US', {{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }}) + ' at 4:00 PM';
-            }}
-            return 'Check schedule';
+            return 'Not yet published';
         }}
 
         function parseDate(dateStr) {{
@@ -735,9 +762,27 @@ def main(quick_mode=False):
         meetings = fetch_meetings_granicus()
         print(f"    Meetings found: {len(meetings)}")
 
+    # Upcoming meetings: curated dates merged with whatever Granicus already
+    # publishes. Never inferred from a recurrence rule.
+    print("\n[*] Resolving upcoming meetings...")
+    schedule = load_schedule(Path(__file__).parent / "schedule.json")
+    today = date.today()
+    upcoming = merge_upcoming(
+        upcoming_meetings(schedule, today),
+        granicus_upcoming_dates(meetings),
+        today,
+    )
+    next_meeting = select_next_meeting(upcoming)
+    if next_meeting is None:
+        print("    No upcoming meeting known; the dashboard will say so.")
+    else:
+        print(f"    Next meeting: {format_meeting(next_meeting, schedule['meeting_time'])}")
+
     # Compile data
     data = {
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "upcoming_meetings": [d.isoformat() for d in upcoming],
+        "meeting_time": schedule["meeting_time"],
         "council_members": council_members,
         "meetings": meetings,
     }

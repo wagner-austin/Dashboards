@@ -42,7 +42,14 @@ check_untyped_defs = true
 no_implicit_reexport = true
 show_error_codes = true
 pretty = true
-files = ["asuci/models.py", "asuci/parse.py", "asuci/client.py", "scripts", "tests"]
+files = [
+    "asuci/models.py",
+    "asuci/parse.py",
+    "asuci/client.py",
+    "shared/utils/meeting_schedule.py",
+    "scripts",
+    "tests",
+]
 mypy_path = ["."]
 explicit_package_bases = true
 disallow_any_explicit = true
@@ -54,8 +61,15 @@ ignore_missing_imports = true
 [tool.ruff]
 line-length = 110
 target-version = "py311"
-src = ["asuci", "scripts", "tests"]
-exclude = [".venv", "node_modules", "rabbit", "flock-investigation", "oc-city-councils"]
+src = ["asuci", "shared", "scripts", "tests"]
+exclude = [
+    ".venv",
+    "node_modules",
+    "rabbit",
+    "flock-investigation",
+    "oc-city-councils",
+    "shared/scrapers",
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "BLE", "UP", "N", "C4", "SIM", "RET", "C90", "RUF", "ANN"]
@@ -68,10 +82,15 @@ select = ["E", "F", "I", "B", "BLE", "UP", "N", "C4", "SIM", "RET", "C90", "RUF"
 "typing.TypeAlias" = { msg = "Do not use TypeAlias; use Literal types or expand unions explicitly." }
 
 [tool.coverage.run]
-source = ["asuci", "scripts"]
+source = ["asuci", "scripts", "shared"]
 # The legacy HTML generator predates this standard; it is exercised end to end
 # by `make generate`, not by unit tests. Remove this once it is migrated.
-omit = ["asuci/generate.py"]
+omit = [
+    "asuci/generate.py",
+    # Predate this standard; exercised end to end by `make generate`.
+    "shared/scrapers/*",
+    "shared/utils/__init__.py",
+]
 branch = true
 
 [tool.coverage.report]

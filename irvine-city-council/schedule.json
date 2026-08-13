@@ -1,0 +1,29 @@
+{
+  "_comment": [
+    "Known Irvine City Council meeting dates, in ISO form.",
+    "",
+    "Why this file exists: the dashboard used to derive the next meeting from",
+    "a '2nd and 4th Tuesday' rule. The council's real calendar has exceptions -",
+    "summer recess, cancellations, special sessions - that no recurrence rule",
+    "can express, so the rule confidently displayed meetings that were not",
+    "happening. Actual dates are now the source of truth.",
+    "",
+    "Granicus is preferred when it has them: once an agenda is posted, that",
+    "meeting appears under Upcoming Events on the ViewPublisher listing and is",
+    "merged with this list automatically. Agendas post roughly a week ahead, so",
+    "this file covers what is known earlier than that.",
+    "",
+    "Anything not listed here and not yet on Granicus is simply unknown, and",
+    "the dashboard says so rather than guessing.",
+    "",
+    "To add a date: append it in YYYY-MM-DD form and note where it came from.",
+    "Past dates are ignored, so old entries can be left or pruned freely."
+  ],
+  "meeting_time": "4:00 PM",
+  "meetings": [
+    {
+      "date": "2026-09-22",
+      "source": "Confirmed by CM office, recorded 2026-08-12. Council is in recess through the August and early-September meeting slots."
+    }
+  ]
+}

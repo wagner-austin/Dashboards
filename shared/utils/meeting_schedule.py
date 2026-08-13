@@ -1,126 +1,199 @@
-"""Utilities for calculating meeting schedules."""
+"""Reading and selecting scheduled meeting dates.
 
-from datetime import date, datetime, timedelta
-from typing import Optional
+This module deals in actual dates. It used to derive the next meeting from a
+recurrence rule such as "2nd and 4th Tuesday", which cannot express recesses,
+cancellations, or special sessions, so it reported meetings that were not
+happening. Nothing here infers a date that was not supplied.
+
+When no upcoming meeting is known, ``select_next_meeting`` returns None and the
+caller is expected to say so rather than fill the gap.
+"""
+
+import json
+from datetime import date
+from pathlib import Path
+from typing import TypedDict
 
 
-def get_nth_weekday(year: int, month: int, weekday: int, n: int) -> Optional[date]:
-    """Get the nth occurrence of a weekday in a month.
+class ScheduleError(ValueError):
+    """Raised when a schedule file does not match the expected shape."""
+
+
+class ScheduledMeeting(TypedDict):
+    """One scheduled meeting.
+
+    date: Meeting date.
+    source: Where the date came from, for auditing.
+    """
+
+    date: date
+    source: str
+
+
+class MeetingSchedule(TypedDict):
+    """A body's known meeting dates.
+
+    meeting_time: Display time, e.g. "4:00 PM".
+    meetings: Known meetings, in the order the file listed them.
+    """
+
+    meeting_time: str
+    meetings: list[ScheduledMeeting]
+
+
+def require_str(payload: dict[str, object], field: str, context: str) -> str:
+    """Read a required string field.
 
     Args:
-        year: The year.
-        month: The month (1-12).
-        weekday: The day of week (0=Monday, 1=Tuesday, ..., 6=Sunday).
-        n: Which occurrence (1=first, 2=second, etc.).
+        payload: Decoded JSON object.
+        field: Field name to read.
+        context: Description of the object, used in error messages.
 
     Returns:
-        The date, or None if it doesn't exist in that month.
+        The field value.
+
+    Raises:
+        ScheduleError: If the field is absent or not a string.
     """
-    count = 0
-    for day in range(1, 32):
-        try:
-            d = date(year, month, day)
-        except ValueError:
-            break
-        if d.weekday() == weekday:
-            count += 1
-            if count == n:
-                return d
-    return None
+    value = payload.get(field)
+    if not isinstance(value, str):
+        raise ScheduleError(f"{context}: {field!r} must be a string, got {type(value).__name__}")
+    return value
 
 
-def calculate_next_meeting(
-    schedule: str,
-    meeting_time: str = "4:00 PM",
-    from_date: Optional[date] = None,
-) -> str:
-    """Calculate the next meeting date based on a schedule string.
+def require_date(payload: dict[str, object], field: str, context: str) -> date:
+    """Read a required ISO date field.
 
     Args:
-        schedule: Schedule description like "2nd and 4th Tuesday" or "1st and 3rd Monday".
-        meeting_time: Time of the meeting (for display).
-        from_date: Reference date (defaults to today).
+        payload: Decoded JSON object.
+        field: Field name to read.
+        context: Description of the object, used in error messages.
 
     Returns:
-        Formatted string like "Tuesday, January 28, 2025 at 4:00 PM".
+        The parsed date.
+
+    Raises:
+        ScheduleError: If the field is absent, not a string, or not an ISO date.
     """
-    if from_date is None:
-        from_date = date.today()
-
-    # Parse the schedule string
-    schedule_lower = schedule.lower()
-
-    # Map weekday names to numbers (Monday=0)
-    weekday_map = {
-        "monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3,
-        "friday": 4, "saturday": 5, "sunday": 6,
-    }
-
-    # Find the weekday
-    weekday = None
-    for name, num in weekday_map.items():
-        if name in schedule_lower:
-            weekday = num
-            break
-
-    if weekday is None:
-        return "Check schedule"
-
-    # Parse ordinals (1st, 2nd, 3rd, 4th)
-    ordinal_map = {"1st": 1, "2nd": 2, "3rd": 3, "4th": 4, "5th": 5}
-    occurrences = []
-    for ordinal, n in ordinal_map.items():
-        if ordinal in schedule_lower:
-            occurrences.append(n)
-
-    if not occurrences:
-        return "Check schedule"
-
-    # Find the next meeting date
-    year = from_date.year
-    month = from_date.month
-
-    # Check current month and next 2 months
-    for _ in range(3):
-        for n in sorted(occurrences):
-            meeting_date = get_nth_weekday(year, month, weekday, n)
-            if meeting_date and meeting_date >= from_date:
-                # Format the date
-                return meeting_date.strftime(f"%A, %B %d, %Y at {meeting_time}")
-
-        # Move to next month
-        month += 1
-        if month > 12:
-            month = 1
-            year += 1
-
-    return "Check schedule"
+    raw = require_str(payload, field, context)
+    try:
+        return date.fromisoformat(raw)
+    except ValueError as error:
+        raise ScheduleError(f"{context}: {field!r} must be an ISO date, got {raw!r}") from error
 
 
-def parse_meeting_time(time_str: str) -> tuple[int, int]:
-    """Parse a time string like '4:00 PM' into (hour, minute) in 24h format.
+def decode_schedule(payload: object) -> MeetingSchedule:
+    """Decode a schedule file's contents.
 
     Args:
-        time_str: Time string like "4:00 PM" or "16:00".
+        payload: Object parsed from the file's JSON.
 
     Returns:
-        Tuple of (hour, minute) in 24-hour format.
+        The validated schedule.
+
+    Raises:
+        ScheduleError: If the payload or any meeting does not match the shape.
     """
-    time_str = time_str.strip().upper()
+    if not isinstance(payload, dict):
+        raise ScheduleError(f"schedule: expected an object, got {type(payload).__name__}")
 
-    # Try 12-hour format first
-    import re
-    match = re.match(r"(\d{1,2}):(\d{2})\s*(AM|PM)?", time_str)
-    if match:
-        hour = int(match.group(1))
-        minute = int(match.group(2))
-        period = match.group(3)
+    fields: dict[str, object] = {str(key): value for key, value in payload.items()}
+    meeting_time = require_str(fields, "meeting_time", "schedule")
 
-        if period == "PM" and hour != 12:
-            hour += 12
-        elif period == "AM" and hour == 12:
-            hour = 0
+    raw_meetings = fields.get("meetings")
+    if not isinstance(raw_meetings, list):
+        raise ScheduleError("schedule: 'meetings' must be a list")
 
-        return (hour, minute)
+    meetings: list[ScheduledMeeting] = []
+    for index, raw in enumerate(raw_meetings):
+        context = f"schedule.meetings[{index}]"
+        if not isinstance(raw, dict):
+            raise ScheduleError(f"{context}: expected an object, got {type(raw).__name__}")
+        entry: dict[str, object] = {str(key): value for key, value in raw.items()}
+        meetings.append(
+            ScheduledMeeting(
+                date=require_date(entry, "date", context),
+                source=require_str(entry, "source", context),
+            )
+        )
 
-    return (16, 0)  # Default to 4:00 PM
+    return MeetingSchedule(meeting_time=meeting_time, meetings=meetings)
+
+
+def load_schedule(path: Path) -> MeetingSchedule:
+    """Read and decode a schedule file.
+
+    Args:
+        path: Path to the schedule JSON.
+
+    Returns:
+        The validated schedule.
+
+    Raises:
+        ScheduleError: If the file is missing, is not JSON, or does not match
+            the expected shape.
+    """
+    if not path.is_file():
+        raise ScheduleError(f"schedule file not found: {path}")
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        raise ScheduleError(f"schedule file {path} is not JSON: {error}") from error
+
+    return decode_schedule(payload)
+
+
+def upcoming_meetings(schedule: MeetingSchedule, today: date) -> list[date]:
+    """Select the meetings that have not happened yet.
+
+    Args:
+        schedule: The decoded schedule.
+        today: The date to measure from; a meeting today still counts.
+
+    Returns:
+        Future meeting dates, earliest first, without duplicates.
+    """
+    future = {meeting["date"] for meeting in schedule["meetings"] if meeting["date"] >= today}
+    return sorted(future)
+
+
+def merge_upcoming(known: list[date], published: list[date], today: date) -> list[date]:
+    """Combine curated dates with dates a publishing system already lists.
+
+    Args:
+        known: Dates from the curated schedule file.
+        published: Dates carried by the upstream publisher, such as Granicus.
+        today: The date to measure from.
+
+    Returns:
+        Every future date from either source, earliest first, without duplicates.
+    """
+    return sorted({d for d in [*known, *published] if d >= today})
+
+
+def select_next_meeting(meetings: list[date]) -> date | None:
+    """Pick the meeting that happens next.
+
+    Args:
+        meetings: Future meeting dates, in any order.
+
+    Returns:
+        The earliest date, or None when no upcoming meeting is known.
+    """
+    if not meetings:
+        return None
+    return min(meetings)
+
+
+def format_meeting(meeting: date, meeting_time: str) -> str:
+    """Render a meeting date for display.
+
+    Args:
+        meeting: The meeting date.
+        meeting_time: Display time, e.g. "4:00 PM".
+
+    Returns:
+        A string such as "Tuesday, September 22, 2026 at 4:00 PM".
+    """
+    return f"{meeting.strftime('%A, %B')} {meeting.day}, {meeting.year} at {meeting_time}"
