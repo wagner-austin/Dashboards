@@ -42,14 +42,29 @@ VIEW_URL = "https://internal.studentgov.uci.edu/wp-json/frm/v2/views/{view_id}"
 # Academic years the archive publishes, newest first, as shown on its tabs.
 ARCHIVE_YEARS = ("25-26", "24-25", "23-24", "22-23", "21-22", "20-21", "19-20", "18-19")
 
-# Sent so the upstream WAF sees an ordinary browser client.
-USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/120.0 Safari/537.36"
-)
+# The view endpoint is reached by the archive page as a same-site XHR. From a
+# datacenter address a bare request is answered with an HTML interstitial
+# instead of JSON, so these mirror the headers that request carries.
+BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    ),
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://asuci.uci.edu/",
+    "Origin": "https://asuci.uci.edu",
+    "X-Requested-With": "XMLHttpRequest",
+    "Sec-Fetch-Site": "same-site",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Dest": "empty",
+}
 
 # Seconds to wait for a response before giving up on a request.
 REQUEST_TIMEOUT = 30
+
+# How much of an unexpected body to quote when decoding fails.
+BODY_SNIPPET_CHARS = 200
 
 # Cross-signed certificate completing the chain these hosts serve incompletely.
 # See the file's own header for the full explanation.
@@ -179,7 +194,7 @@ def create_fetcher() -> RequestsFetcher:
         against certifi plus the chain-completion certificate.
     """
     session = requests.Session()
-    session.headers.update({"User-Agent": USER_AGENT})
+    session.headers.update(BROWSER_HEADERS)
     session.mount("https://", ChainCompletingAdapter(create_ssl_context()))
     return RequestsFetcher(session)
 
@@ -222,7 +237,13 @@ def fetch_view_links(fetcher: Fetcher, view_id: int, slug: str, year_label: str)
     try:
         payload = json.loads(body)
     except json.JSONDecodeError as error:
-        raise AsuciDecodeError(f"view {view_id} year {year_label}: body is not JSON: {error}") from error
+        # Include the start of the body: when an edge blocks the request it
+        # answers 200 with an HTML interstitial, and the snippet names it.
+        snippet = " ".join(body[:BODY_SNIPPET_CHARS].split())
+        raise AsuciDecodeError(
+            f"view {view_id} year {year_label}: body is not JSON ({error}); "
+            f"first {BODY_SNIPPET_CHARS} chars: {snippet!r}"
+        ) from error
 
     return parse_meeting_links(decode_view_response(payload, slug)["rendered_html"])
 

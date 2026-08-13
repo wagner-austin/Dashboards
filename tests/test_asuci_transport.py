@@ -103,6 +103,7 @@ def test_create_fetcher_sends_a_browser_user_agent() -> None:
     fetcher = create_fetcher()
 
     assert "Mozilla/5.0" in str(fetcher._session.headers["User-Agent"])
+    assert fetcher._session.headers["Referer"] == "https://asuci.uci.edu/"
 
 
 def test_adapter_applies_its_context_to_new_pools(server: str) -> None:
