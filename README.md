@@ -19,7 +19,6 @@ Skip the game/fun stuff (`rabbit/`) and personal coursework (`ics5/`, `presentat
 | [OC City Councils](oc-city-councils/) | Contact info and governance data for all 34 Orange County city councils | Auto via GitHub Actions |
 | [ASUCI Senate](asuci/) | UC Irvine student government voting records and senator info | Daily via GitHub Actions |
 | [Irvine City Council](irvine-city-council/) | Current Irvine city council members and governance info | Manual |
-| [Flock ALPR Investigation](flock-investigation/) | Primary-source investigation into whether federal immigration agencies can reach Irvine PD's license-plate-reader data — sourced timeline, obtained MOUs and BSCC grant records | Manual |
 | [ICE 287(g) Cooperation Tracker](ice-cooperation-tracker/) | Which local law-enforcement agencies hold 287(g) agreements with ICE, and who signed them — 1,314 agreements across 40 states, with signer identification for 18 states | Manual |
 | [Document Search](doc-search/) | California public-records document search tool | Manual |
 | [Metabolomics](metabolomics/) | Interactive visualization of plant metabolomics data with filtering and analysis | Manual |
@@ -58,12 +57,6 @@ Dashboards/
 │
 ├── doc-search/                 # California public-records search tool
 │   └── index.html              # Search interface
-│
-├── flock-investigation/        # OC Flock Safety ALPR investigation
-│   ├── index.html              # Sourced timeline + findings
-│   ├── data/                   # Obtained records: MOUs, BSCC grants, shared-network exports
-│   ├── docs/                   # Research notes
-│   └── Makefile                # `make dev` local preview, `make urls` link check
 │
 ├── ice-cooperation-tracker/    # ICE 287(g) agreements + who signed them
 │   ├── index.html              # Dashboard UI
@@ -181,14 +174,6 @@ python fetch_sheriffs.py        # per-state directory scrape
 python extract_signers.py       # match signatories to named officials
 python audit_data_quality.py    # coverage + match-rate report
 python generate.py              # rebuild index.html
-```
-
-### Flock ALPR Investigation
-
-```bash
-cd flock-investigation
-make dev     # local preview
-make urls    # check every cited link still resolves
 ```
 
 ### Rabbit
