@@ -19,7 +19,6 @@ Skip the game/fun stuff (`rabbit/`) and personal coursework (`ics5/`, `presentat
 | [OC City Councils](oc-city-councils/) | Contact info and governance data for all 34 Orange County city councils | Auto via GitHub Actions |
 | [ASUCI Senate](asuci/) | UC Irvine student government voting records and senator info | Daily via GitHub Actions |
 | [Irvine City Council](irvine-city-council/) | Current Irvine city council members and governance info | Manual |
-| [ICE 287(g) Cooperation Tracker](ice-cooperation-tracker/) | Which local law-enforcement agencies hold 287(g) agreements with ICE, and who signed them — 1,314 agreements across 40 states, with signer identification for 18 states | Manual |
 | [Document Search](doc-search/) | California public-records document search tool | Manual |
 | [Metabolomics](metabolomics/) | Interactive visualization of plant metabolomics data with filtering and analysis | Manual |
 | [Nursing Research Corpus](ivy/) | Primary-source research synthesis on structured de-escalation & restraint reduction in adult inpatient psychiatric care | Manual |
@@ -57,15 +56,6 @@ Dashboards/
 │
 ├── doc-search/                 # California public-records search tool
 │   └── index.html              # Search interface
-│
-├── ice-cooperation-tracker/    # ICE 287(g) agreements + who signed them
-│   ├── index.html              # Dashboard UI
-│   ├── generate.py             # Builds the dashboard from the scraped signer DB
-│   ├── fetch_sheriffs.py       # Per-state sheriff directory scrapers
-│   ├── extract_signers.py      # Matches agreement signatories to named officials
-│   ├── audit_data_quality.py   # Coverage + match-rate audit
-│   ├── SCRAPING_METHODOLOGY.md # How each state's directory was obtained
-│   └── archive/                # Raw scrape captures, kept for provenance
 │
 ├── ivy/                        # Nursing research corpus (primary-source synthesis)
 │   ├── index.html              # Landing page
@@ -159,21 +149,6 @@ cd ~/PROJECTS/metabolomics-dashboard
 make build            # poetry run python generate.py
 cp index.html ~/PROJECTS/Dashboards/metabolomics/index.html
 # then commit metabolomics/index.html here
-```
-
-### ICE 287(g) Cooperation Tracker
-
-Signer identification is a scrape-then-match pipeline: per-state sheriff and
-police-chief directories are fetched, then matched against the agency list in
-ICE's own 287(g) Excel export. `SCRAPING_METHODOLOGY.md` records how each
-state's directory was obtained, because the sources are not uniform.
-
-```bash
-cd ice-cooperation-tracker
-python fetch_sheriffs.py        # per-state directory scrape
-python extract_signers.py       # match signatories to named officials
-python audit_data_quality.py    # coverage + match-rate report
-python generate.py              # rebuild index.html
 ```
 
 ### Rabbit
