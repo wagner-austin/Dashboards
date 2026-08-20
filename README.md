@@ -2,15 +2,15 @@
 
 Public dashboard collection hosted at [austinwagner.org](https://austinwagner.org).
 
-## For recruiters — start here
+## Start here
 
-If evaluating this repo, skim these three dashboards (10 min total):
+The three dashboards that show what this repo actually does:
 
 1. [`oc-city-councils/`](oc-city-councils/) — Civic-data pipeline covering all 34 OC cities. YAML source-of-truth → build script → JSON → dashboard, auto-rebuilt via GitHub Actions.
-2. [`ivy/de-escalation/`](ivy/de-escalation/) — Primary-source research synthesis (21 sections, 35+ sources). Design pattern for AI-readable research corpora with citation traceability.
+2. [`ivy/de-escalation/`](ivy/de-escalation/) — Primary-source research synthesis. Design pattern for AI-readable research corpora with citation traceability.
 3. [`asuci/`](asuci/) — Playwright web scraper + daily GitHub Actions cron pulling UC Irvine student-government voting records.
 
-Skip the game/fun stuff (`rabbit/`) and personal coursework (`ics5/`, `presentation/`, `sculc2026/`) unless curious.
+The rest is smaller: a game (`rabbit/`) and coursework (`ics5/`, `presentation/`, `sculc2026/`).
 
 ## Active Dashboards
 
