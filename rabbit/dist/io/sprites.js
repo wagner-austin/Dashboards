@@ -9,6 +9,27 @@ import { _test_hooks as spritesHooks } from "../loaders/sprites.js";
 const { validateSpriteModule } = spritesHooks;
 /** Cache bust version timestamp - updated on each build. */
 const CACHE_VERSION = Date.now();
+/**
+ * Resolve an asset path against the PAGE, not against this module.
+ *
+ * A relative specifier passed to dynamic `import()` resolves against the
+ * importing module's URL, which makes sprite loading depend on where the
+ * built JavaScript happens to sit. Bundling moved this module from
+ * `dist/io/` to `bundle/`, and every sprite 404'd because `../sprites/`
+ * silently started resolving one directory higher.
+ *
+ * Anchoring to `document.baseURI` removes that coupling: the sprites live at
+ * a fixed place relative to the page, so the bundle can be emitted anywhere.
+ *
+ * Args:
+ *     path: Path relative to the page, e.g. `dist/sprites/tree1/w40.js`.
+ *
+ * Returns:
+ *     Absolute URL string for the module, carrying the cache-bust query.
+ */
+function assetUrl(path) {
+    return new URL(`${path}?v=${String(CACHE_VERSION)}`, document.baseURI).href;
+}
 /** Cache for loaded sprite modules to prevent duplicate downloads */
 const spriteModuleCache = new Map();
 /** Dynamic import with validation and caching */
@@ -20,8 +41,7 @@ async function importSpriteModule(path) {
     }
     // Create promise and cache it immediately to handle concurrent requests
     const promise = (async () => {
-        const versionedPath = `${path}?v=${String(CACHE_VERSION)}`;
-        const module = await import(versionedPath);
+        const module = await import(assetUrl(path));
         return validateSpriteModule(module, path);
     })();
     spriteModuleCache.set(path, promise);
@@ -32,7 +52,7 @@ async function importSpriteModule(path) {
  */
 export async function loadSpriteFrames(spriteName, animationName, width, direction) {
     const suffix = direction !== undefined ? `_${direction}` : "";
-    const path = `../sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
+    const path = `dist/sprites/${spriteName}/${animationName}/w${String(width)}${suffix}.js`;
     const module = await importSpriteModule(path);
     return {
         width,
@@ -43,7 +63,7 @@ export async function loadSpriteFrames(spriteName, animationName, width, directi
  * Load sprite frames for static sprites (no direction).
  */
 export async function loadStaticSpriteFrames(spriteName, width) {
-    const path = `../sprites/${spriteName}/w${String(width)}.js`;
+    const path = `dist/sprites/${spriteName}/w${String(width)}.js`;
     const module = await importSpriteModule(path);
     return {
         width,
@@ -55,7 +75,7 @@ export async function loadStaticSpriteFrames(spriteName, width) {
  */
 export async function loadConfig() {
     const { validateConfig } = spritesHooks;
-    const response = await fetch(`./config.json?v=${String(CACHE_VERSION)}`);
+    const response = await fetch(assetUrl("config.json"));
     const data = await response.json();
     return validateConfig(data);
 }
