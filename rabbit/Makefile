@@ -25,7 +25,7 @@ check: lint test
 
 build:
 	poetry run python scripts/generate_sprites.py
-	npm run build
+	npm run bundle
 
 clean:
 	if (Test-Path "dist") { Remove-Item -Recurse -Force "dist" }
@@ -34,7 +34,7 @@ clean:
 	if (Test-Path ".coverage") { Remove-Item -Force ".coverage" }
 
 dev:
-	npm run build
+	npm run bundle
 	@netstat -ano 2>$$null | Select-String ":5173.*LISTENING" | ForEach-Object { Stop-Process -Id (($$_ -split '\s+')[-1]) -Force -ErrorAction SilentlyContinue }
 	Write-Host "Starting server at http://localhost:5173" -ForegroundColor Green
 	python -m http.server 5173 --bind 0.0.0.0

@@ -263,6 +263,53 @@ def check_colocated_tests(base: Path | None = None) -> list[str]:
     return errors
 
 
+def check_bundled_entry_point(base: Path | None = None) -> list[str]:
+    """Check that index.html loads a content-hashed bundle, not the dev entry.
+
+    The page is served with ``Cache-Control: max-age=14400``. Sprites and
+    config.json are fetched with a ``?v=`` query so they always come fresh,
+    but a raw ES module entry pulls its transitive imports with no version at
+    all — so a deploy leaves every visitor running up to four hours of stale
+    engine code against a fresh config. ``npm run bundle`` solves it by
+    emitting ``bundle/app.<contenthash>.js``: the filename changes whenever
+    the code does, which makes caching correct instead of hazardous.
+
+    This check exists because that only holds if index.html actually points at
+    the bundle. It shipped pointing at ``dist/io/autostart.js`` for months.
+
+    Args:
+        base: Project root to scan. Defaults to the current directory.
+
+    Returns:
+        One error string per problem found. Empty when index.html references a
+        hashed bundle that exists on disk.
+    """
+    if base is None:
+        base = Path(".")
+
+    index = base / "index.html"
+    if not index.exists():
+        return ["Missing required file: index.html"]
+
+    html = index.read_text(encoding="utf-8")
+    match = re.search(r'<script[^>]*\bsrc="\./([^"]+)"', html)
+    if match is None:
+        return ["index.html has no module script tag to load the engine"]
+
+    src = match.group(1)
+    if not re.fullmatch(r"bundle/app\.[a-f0-9]+\.js", src):
+        return [
+            f"index.html loads {src!r}, which is not a content-hashed bundle. "
+            "Unhashed sources are cached for four hours after a deploy; run "
+            "`npm run bundle` so the filename changes with the code."
+        ]
+
+    if not (base / src).exists():
+        return [f"index.html references {src!r} but that bundle does not exist"]
+
+    return []
+
+
 def main(base: Path | None = None) -> int:
     """Run all guard checks."""
     all_errors: list[str] = []
@@ -275,6 +322,7 @@ def main(base: Path | None = None) -> int:
     all_errors.extend(check_no_ts_declaration_files(base))
     all_errors.extend(check_test_hooks_exported(base))
     all_errors.extend(check_colocated_tests(base))
+    all_errors.extend(check_bundled_entry_point(base))
 
     if all_errors:
         hooks.print_message("Guard check failed:")

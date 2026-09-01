@@ -200,6 +200,11 @@ def test_main_success(tmp_path: Path) -> None:
     (tmp_path / "config.json").write_text("")
     (tmp_path / "scripts").mkdir()
     (tmp_path / "tests").mkdir()
+    (tmp_path / "bundle").mkdir()
+    (tmp_path / "bundle" / "app.51bd75da.js").write_text("")
+    (tmp_path / "index.html").write_text(
+        '<script type="module" src="./bundle/app.51bd75da.js"></script>'
+    )
 
     result = main(tmp_path)
 
