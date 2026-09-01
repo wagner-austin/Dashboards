@@ -4,7 +4,7 @@
  * Renders all layers using 3D projection to buffer.
  * Handles entity wrapping for infinite scrolling.
  */
-import type { SceneState, LayerInstance, SceneSpriteState, RenderCandidate, DepthRange } from "./types.js";
+import type { SceneState, LayerInstance, SceneSpriteState, RenderCandidate } from "./types.js";
 import type { Camera, ProjectionConfig } from "../world/Projection.js";
 /**
  * Wrap entity position for infinite scrolling.
@@ -161,7 +161,7 @@ declare function collectLayerCandidates(layer: LayerInstance, camera: Camera, co
  *     viewportHeight: Screen height in characters.
  *     config: Projection configuration.
  */
-export declare function renderAllLayers(buffer: string[][], scene: SceneState, viewportWidth: number, viewportHeight: number, config: ProjectionConfig, depthRange: DepthRange): void;
+export declare function renderAllLayers(buffer: string[][], scene: SceneState, viewportWidth: number, viewportHeight: number, config: ProjectionConfig): void;
 /**
  * Render tiled foreground layer with infinite wrapping.
  *

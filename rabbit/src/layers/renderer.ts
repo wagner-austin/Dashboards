@@ -5,13 +5,7 @@
  * Handles entity wrapping for infinite scrolling.
  */
 
-import type {
-  SceneState,
-  LayerInstance,
-  SceneSpriteState,
-  RenderCandidate,
-  DepthRange,
-} from "./types.js";
+import type { SceneState, LayerInstance, SceneSpriteState, RenderCandidate } from "./types.js";
 import { createRenderCandidate } from "./types.js";
 import type { Camera, ProjectionConfig } from "../world/Projection.js";
 import { project, scaleToSizeIndex, WORLD_WIDTH } from "../world/Projection.js";
@@ -345,8 +339,7 @@ export function renderAllLayers(
   scene: SceneState,
   viewportWidth: number,
   viewportHeight: number,
-  config: ProjectionConfig,
-  depthRange: DepthRange
+  config: ProjectionConfig
 ): void {
   const allCandidates: RenderCandidate[] = [];
 
@@ -360,11 +353,6 @@ export function renderAllLayers(
   allCandidates.sort(compareByDepth);
 
   for (const candidate of allCandidates) {
-    // Half-open [minZ, maxZ): a pair of calls split at one value covers every
-    // candidate exactly once, with nothing drawn twice and nothing dropped.
-    if (candidate.effectiveZ < depthRange.minZ || candidate.effectiveZ >= depthRange.maxZ) {
-      continue;
-    }
     renderCandidate(buffer, candidate, scene.camera, viewportWidth, viewportHeight, config);
   }
 }

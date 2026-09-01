@@ -6,7 +6,7 @@
 import { type ViewportState } from "./Viewport.js";
 import { type BunnyFrames, type BunnyState } from "../entities/Bunny.js";
 import { type SceneState } from "../layers/index.js";
-import { type Camera, type ProjectionConfig } from "../world/Projection.js";
+import type { ProjectionConfig } from "../world/Projection.js";
 /**
  * Render state for a single frame.
  *
@@ -24,43 +24,16 @@ export interface RenderState {
     projectionConfig: ProjectionConfig;
 }
 /**
- * Draw the bunny standing on the ground plane at his own depth.
- *
- * He is projected exactly as layer sprites are — feet on the ground point for
- * BUNNY_LAYER — rather than pinned to the bottom edge of the viewport. Pinning
- * placed him below every projected tree base, so no tree could overlap him
- * vertically and depth ordering alone could never occlude him.
- *
- * Horizontally he stays put: the camera tracks him, so his world X is the
- * camera's X and he projects to the same screen column every frame.
+ * Draw the bunny entity to buffer.
  *
  * Args:
  *     buffer: Render buffer.
  *     bunnyState: Bunny state.
  *     bunnyFrames: Bunny animation frames.
- *     camera: Current camera position.
  *     width: Buffer width.
  *     height: Buffer height.
- *     config: Projection configuration.
- *
- * Raises:
- *     Error: BUNNY_LAYER projects outside the visible band for this config, so
- *         the bunny cannot be drawn. Not recovered from: the alternative is
- *         silently drawing him at the top of the screen, and a scene whose
- *         subject is unplaceable is a configuration bug, not a frame to skip.
  */
-declare function drawBunny(buffer: string[][], bunnyState: BunnyState, bunnyFrames: BunnyFrames, camera: Camera, width: number, height: number, config: ProjectionConfig): void;
-/**
- * Depth the bunny occupies, in world units.
- *
- * Args:
- *     camera: Current camera position.
- *
- * Returns:
- *     World Z for the bunny. Constant, since the camera only advances in Z
- *     during a hop and the bunny hops with it.
- */
-declare function bunnyWorldZ(camera: Camera): number;
+declare function drawBunny(buffer: string[][], bunnyState: BunnyState, bunnyFrames: BunnyFrames, width: number, height: number): void;
 /**
  * Render a single frame.
  *
@@ -82,8 +55,6 @@ export declare function renderFrame(state: RenderState, bunnyFrames: BunnyFrames
 };
 /** Test hooks for internal functions */
 export declare const _test_hooks: {
-    BUNNY_LAYER: number;
-    bunnyWorldZ: typeof bunnyWorldZ;
     drawBunny: typeof drawBunny;
     renderFrame: typeof renderFrame;
 };

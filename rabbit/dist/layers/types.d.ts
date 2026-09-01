@@ -91,24 +91,6 @@ export interface RenderCandidate {
     readonly effectiveZ: number;
 }
 /**
- * A slice of the depth-sorted background pass.
- *
- * The bunny is not a layer entity — he is drawn at a fixed screen position —
- * so without a way to split the pass he lands on top of every background
- * sprite and can never be occluded. Rendering the far slice, then the bunny,
- * then the near slice puts him at a real depth: anything nearer draws over him.
- *
- * Both bounds are required so a caller must state the slice it wants; an
- * unbounded side is written as an explicit infinity rather than an omission.
- *
- * minZ: Inclusive near bound.
- * maxZ: Exclusive far bound.
- */
-export interface DepthRange {
-    readonly minZ: number;
-    readonly maxZ: number;
-}
-/**
  * Create a render candidate.
  *
  * Args:
