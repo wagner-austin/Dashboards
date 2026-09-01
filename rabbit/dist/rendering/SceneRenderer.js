@@ -8,21 +8,78 @@ import { drawSprite } from "./draw.js";
 import { drawGround } from "./Ground.js";
 import { getBunnyFrame } from "../entities/Bunny.js";
 import { renderAllLayers, renderForegroundLayers } from "../layers/index.js";
+import { layerToWorldZ } from "../layers/widths.js";
+import { project, DEFAULT_CAMERA_Z, } from "../world/Projection.js";
 /**
- * Draw the bunny entity to buffer.
+ * Layer the bunny stands on.
+ *
+ * Two invariants ride on this value, and both were broken before it existed:
+ *
+ * 1. It must sit inside the visible band. Projection discards anything closer
+ *    than `nearZ` (40) from the camera (55), so worldZ below 95 — layer 9 — is
+ *    never drawn. A bunny below that could not be occluded by any tree, since
+ *    the trees that would cover him would themselves be clipped.
+ * 2. Trees between layer 9 and this value render in front of him, so the value
+ *    also sets how much of the forest can pass between him and the viewer.
+ *
+ * Layer 11 leaves layers 9 and 10 in front. Measured: layer 12 put three ranks
+ * in front and hid him permanently; layer 10 left only one rank, and with two
+ * trees per layer spread across the world width a front tree almost never
+ * passed him. Two ranks is the middle that actually reads as occlusion.
+ * `SceneRenderer.test.ts` asserts both directions against a real frame.
+ */
+const BUNNY_LAYER = 11;
+/**
+ * Draw the bunny standing on the ground plane at his own depth.
+ *
+ * He is projected exactly as layer sprites are — feet on the ground point for
+ * BUNNY_LAYER — rather than pinned to the bottom edge of the viewport. Pinning
+ * placed him below every projected tree base, so no tree could overlap him
+ * vertically and depth ordering alone could never occlude him.
+ *
+ * Horizontally he stays put: the camera tracks him, so his world X is the
+ * camera's X and he projects to the same screen column every frame.
  *
  * Args:
  *     buffer: Render buffer.
  *     bunnyState: Bunny state.
  *     bunnyFrames: Bunny animation frames.
+ *     camera: Current camera position.
  *     width: Buffer width.
  *     height: Buffer height.
+ *     config: Projection configuration.
+ *
+ * Raises:
+ *     Error: BUNNY_LAYER projects outside the visible band for this config, so
+ *         the bunny cannot be drawn. Not recovered from: the alternative is
+ *         silently drawing him at the top of the screen, and a scene whose
+ *         subject is unplaceable is a configuration bug, not a frame to skip.
  */
-function drawBunny(buffer, bunnyState, bunnyFrames, width, height) {
+function drawBunny(buffer, bunnyState, bunnyFrames, camera, width, height, config) {
     const bunny = getBunnyFrame(bunnyState, bunnyFrames);
+    const worldZ = bunnyWorldZ(camera);
+    const screen = project(camera.x, worldZ, camera, width, height, config);
+    if (!screen.visible) {
+        throw new Error(`BUNNY_UNPLACEABLE: bunny at layer ${String(BUNNY_LAYER)} projects to ` +
+            `worldZ ${String(worldZ)}, which is ${String(worldZ - camera.z)} from the ` +
+            `camera and outside the visible band [${String(config.nearZ)}, ` +
+            `${String(config.farZ)}]. Move BUNNY_LAYER inside it.`);
+    }
     const bunnyX = Math.floor(width / 2) - 20;
-    const bunnyY = height - bunny.lines.length - 2;
-    drawSprite(buffer, bunny.lines, bunnyX, bunnyY, width, height);
+    drawSprite(buffer, bunny.lines, bunnyX, screen.y - bunny.lines.length, width, height);
+}
+/**
+ * Depth the bunny occupies, in world units.
+ *
+ * Args:
+ *     camera: Current camera position.
+ *
+ * Returns:
+ *     World Z for the bunny. Constant, since the camera only advances in Z
+ *     during a hop and the bunny hops with it.
+ */
+function bunnyWorldZ(camera) {
+    return layerToWorldZ(BUNNY_LAYER) + camera.z - DEFAULT_CAMERA_Z;
 }
 /**
  * Render a single frame.
@@ -44,12 +101,21 @@ export function renderFrame(state, bunnyFrames, screen, currentTime) {
     const { width, height } = state.viewport;
     const buffer = createBuffer(width, height);
     const config = state.projectionConfig;
-    // Render background layers (includes trees via 3D projection)
-    renderAllLayers(buffer, state.sceneState, width, height, config);
+    const bunnyZ = bunnyWorldZ(state.sceneState.camera);
+    // Background layers behind the bunny (includes trees via 3D projection)
+    renderAllLayers(buffer, state.sceneState, width, height, config, {
+        minZ: bunnyZ,
+        maxZ: Number.POSITIVE_INFINITY,
+    });
     // Draw ground using camera position
     drawGround(buffer, -Math.floor(state.sceneState.camera.x), width, height);
-    // Draw bunny at fixed screen position
-    drawBunny(buffer, state.bunnyState, bunnyFrames, width, height);
+    // Draw the bunny on the ground plane at his own depth
+    drawBunny(buffer, state.bunnyState, bunnyFrames, state.sceneState.camera, width, height, config);
+    // Background layers NEARER than the bunny, so they draw over him.
+    renderAllLayers(buffer, state.sceneState, width, height, config, {
+        minZ: Number.NEGATIVE_INFINITY,
+        maxZ: bunnyZ,
+    });
     // Render foreground layers
     renderForegroundLayers(buffer, state.sceneState, width, height, config);
     // Render to screen
@@ -58,6 +124,8 @@ export function renderFrame(state, bunnyFrames, screen, currentTime) {
 }
 /** Test hooks for internal functions */
 export const _test_hooks = {
+    BUNNY_LAYER,
+    bunnyWorldZ,
     drawBunny,
     renderFrame,
 };

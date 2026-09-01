@@ -12,7 +12,47 @@ import type { RandomSource } from "../input/Autopilot.js";
 import type { KeyEventType, KeyboardEventSource } from "../input/Keyboard.js";
 import { type InputState } from "../input/state.js";
 import type { TouchEventSource, TouchEventType, TouchPoint } from "../input/Touch.js";
+import type { LayerInstance, SceneSpriteState } from "../layers/types.js";
+import { type FrameSet, type LayerBehavior } from "../types.js";
 import { type DepthBounds } from "../world/Projection.js";
+/**
+ * Build a single-size frame set from one frame of art.
+ *
+ * Args:
+ *     frame: Newline-separated glyph rows for the sole frame.
+ *     width: Character width of the frame.
+ *
+ * Returns:
+ *     A one-entry FrameSet list, matching the shape sprites carry at runtime.
+ */
+export declare function createTestSizes(frame?: string, width?: number): FrameSet[];
+/**
+ * Build a scene sprite positioned in world space.
+ *
+ * Args:
+ *     worldX: Horizontal world position.
+ *     worldZ: Depth. Compare against layerToWorldZ to reason about occlusion.
+ *     sizes: Frame sets the sprite draws from.
+ *
+ * Returns:
+ *     A SceneSpriteState at the requested position.
+ */
+export declare function createTestEntity(worldX: number, worldZ: number, sizes?: FrameSet[]): SceneSpriteState;
+/**
+ * Build a sprite layer holding the given entities.
+ *
+ * Args:
+ *     name: Layer name. A name containing "front" routes it to the foreground pass.
+ *     zIndex: Draw index within its pass.
+ *     layer: Layer number, convertible to depth via layerToWorldZ.
+ *     entities: Sprites the layer owns.
+ *     positions: World X positions declared by config.
+ *     behavior: Wrapping behavior for the layer.
+ *
+ * Returns:
+ *     A LayerInstance ready to hand to the renderer.
+ */
+export declare function createTestLayer(name: string, zIndex: number, layer: number, entities: SceneSpriteState[], positions?: readonly number[], behavior?: LayerBehavior): LayerInstance;
 /**
  * Create bunny frames with distinguishable labels per animation.
  *

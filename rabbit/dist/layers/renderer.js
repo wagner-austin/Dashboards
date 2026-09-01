@@ -240,7 +240,7 @@ function collectLayerCandidates(layer, camera, config) {
  *     viewportHeight: Screen height in characters.
  *     config: Projection configuration.
  */
-export function renderAllLayers(buffer, scene, viewportWidth, viewportHeight, config) {
+export function renderAllLayers(buffer, scene, viewportWidth, viewportHeight, config, depthRange) {
     const allCandidates = [];
     for (const layer of scene.layers) {
         if (!layer.config.name.includes("front")) {
@@ -250,6 +250,11 @@ export function renderAllLayers(buffer, scene, viewportWidth, viewportHeight, co
     }
     allCandidates.sort(compareByDepth);
     for (const candidate of allCandidates) {
+        // Half-open [minZ, maxZ): a pair of calls split at one value covers every
+        // candidate exactly once, with nothing drawn twice and nothing dropped.
+        if (candidate.effectiveZ < depthRange.minZ || candidate.effectiveZ >= depthRange.maxZ) {
+            continue;
+        }
         renderCandidate(buffer, candidate, scene.camera, viewportWidth, viewportHeight, config);
     }
 }

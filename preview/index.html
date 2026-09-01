@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>Austin Wagner</title>
+<style>
+    :root {
+        --primary: #0064a4;
+        --primary-dark: #003d66;
+        --primary-light: #e6f2fa;
+        --gold: #ffc72c;
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-400: #9ca3af;
+        --gray-600: #4b5563;
+        --gray-800: #1f2937;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Only a backstop behind .page, which carries the real gradient. */
+    html, body { background: #0a0a0a; }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+        color: var(--gray-800);
+        min-width: 1200px;
+    }
+
+    /* ONE continuous ground for the entire document. A block element, so its
+       box is exactly the content width and the full content height — no canvas
+       or viewport measurement to resolve, which is what made the earlier body
+       and html versions break in mobile desktop mode. Everything else on the
+       page is transparent and simply sits on this. */
+    .page {
+        position: relative;
+        background: linear-gradient(
+            to bottom,
+            var(--gray-100) 0%,
+            var(--gray-100) 8%,
+            #e6e9ed 15%,
+            #cdd3da 22%,
+            #aeb6c0 29%,
+            #8b939f 37%,
+            #6a727e 45%,
+            #4c535d 53%,
+            #333941 61%,
+            #1e232a 69%,
+            #0a0a0a 79%
+        );
+    }
+
+    /* Transparent: the .page gradient is the only ground. Text sits above the
+       forest, which is why this needs a stacking context above the iframe. */
+    .upper {
+        position: relative;
+        z-index: 2;
+        padding-bottom: 2rem;
+    }
+
+    /* ---- hero: a thin band, no colour block. The raven carries it. ---- */
+    /* Full-bleed so the raven can sit against the left edge; only the text
+       column is held to the content width. */
+    .header {
+        padding: 1.5rem 0 0;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    .hero-bird {
+        width: 200px;
+        height: auto;
+        flex: none;
+        margin-left: -14px;
+        /* The keyed WebP has real alpha, so it sits on the page gradient
+           without a plate behind it. */
+    }
+    .hero-text { flex: 1; max-width: 760px; }
+    .header h1 {
+        font-size: 3.6rem;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        color: var(--gray-800);
+    }
+
+    .header p.role { color: var(--gray-600); margin-top: 0.4rem; font-size: 1.15rem; }
+
+    /* Links inside the About panel; same treatment the hero buttons had. */
+    .panel .links { margin-top: 1rem; display: flex; gap: 0.6rem; }
+    .panel .links a {
+        color: var(--primary-dark);
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--gray-200);
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+        transition: background 0.2s, border-color 0.2s;
+    }
+    .panel .links a:hover { background: #fff; border-color: var(--primary); }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 1rem 2rem 0; }
+
+    h2.section {
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gray-800);
+        margin: 0 0 1rem;
+    }
+    h2.section.light { color: #fff; }
+    h2.section + * { margin-top: 0; }
+    .block { margin-bottom: 2.25rem; }
+
+    /* ---- one panel style, used by BOTH sections ----
+       A white rule across the top of each item, and a fill that fades to fully
+       transparent at the bottom so the page gradient and the forest come
+       through. Square corners. Defined once: two near-identical card styles is
+       how the sections drifted apart in the first place. */
+    .panel {
+        border-top: 1px solid rgba(255, 255, 255, 0.85);
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.88) 0%,
+            rgba(255, 255, 255, 0.68) 40%,
+            rgba(255, 255, 255, 0.45) 72%,
+            rgba(255, 255, 255, 0.26) 100%
+        );
+        padding: 0.95rem 1.75rem 1.05rem;
+    }
+
+    .work, .dashboards { list-style: none; display: grid; gap: 0.8rem; }
+
+    .work h3, .dashboards h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.28rem;
+    }
+    .dashboards h3 { color: var(--gray-800); }
+    .work h3 { color: #000; }
+
+    .dashboards p { color: var(--gray-600); }
+    .work p { color: #000; }
+    .work p, .dashboards p {
+        font-size: 1.12rem;
+        line-height: 1.6;
+        max-width: 78ch;
+    }
+    .dashboards p strong { color: var(--gray-800); font-weight: 600; }
+    .work p strong { color: #000; font-weight: 600; }
+
+    /* Dashboard panels are links, so they get the affordance the work list
+       does not need. */
+    .dashboards a.panel {
+        display: block;
+        text-decoration: none;
+        color: var(--gray-800);
+        transition: background 0.2s, border-color 0.2s;
+        position: relative;
+    }
+    /* Arrow marks these panels as links; the work panels are not clickable and
+       deliberately do not get one. */
+    .dashboards a.panel h3::after {
+        content: " 🔗";
+        font-size: 0.8em;
+        opacity: 0.75;
+    }
+    .dashboards a.panel:hover h3::after { opacity: 1; }
+    .dashboards a.panel:hover {
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.98) 0%,
+            rgba(255, 255, 255, 0.82) 40%,
+            rgba(255, 255, 255, 0.60) 72%,
+            rgba(255, 255, 255, 0.40) 100%
+        );
+        border-top-color: var(--primary);
+    }
+
+    .badge {
+        display: inline-block;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        padding: 0.18rem 0.5rem;
+        font-size: 0.88rem;
+        margin-top: 0.7rem;
+    }
+
+    /* ---- the ASCII forest ----
+       The band reserves layout space; the iframe inside it is TALLER and
+       anchored to the band's bottom, so it overhangs upward into the content
+       area. Those extra rows are real scene the engine draws. It sits ON the
+       .page gradient at z-index 1, with the text above it at z-index 2. */
+    #forest-band {
+        position: relative;
+        z-index: 1;
+        /* Negative margin pulls the band up over the content above it. The
+           scene's trees sit at the ground line near the iframe's bottom, so
+           this — not iframe height — is what raises the forest on the page. */
+        margin-top: -40px;
+        /* Fixed px, in the same 1200px design space as the rest of the
+           layout. vh is unreliable here: with <meta viewport width=1200>
+           it resolves against the layout viewport, which a phone inflates
+           when it scales the page down. */
+        height: 520px;
+        overflow: visible;
+    }
+    #backdrop {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1360px;
+        border: 0;
+        /* No pointer-events:none here. The overhang reaches up behind .upper,
+           but .upper is a real element at z-index 2 and captures events across
+           its whole box even with a transparent background — so the hidden
+           part is already shielded, and disabling the iframe would only kill
+           interaction on the visible band as well. */
+        /* Fade the iframe's own pixels out at the top so tree crowns dissolve
+           instead of being cut off by the frame edge. Transparent here reveals
+           the page, which is the same #0a0a0a the scene paints, so the trees
+           read as fading into the dark rather than into a different colour. */
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.12) 40%,
+            rgba(0, 0, 0, 0.42) 64%,
+            rgba(0, 0, 0, 0.80) 82%,
+            #000 92%,
+            #000 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.12) 40%,
+            rgba(0, 0, 0, 0.42) 64%,
+            rgba(0, 0, 0, 0.80) 82%,
+            #000 92%,
+            #000 100%
+        );
+    }
+    /* Caption sits BELOW the band in normal flow — nothing overlaps the scene,
+       because the engine draws the ground and the rabbit at the very bottom. */
+    .forest-caption {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #8b8b8b;
+        padding: 0.9rem 2rem 1.2rem;
+    }
+    .forest-caption a { color: #b9c7d4; }
+
+    footer {
+        text-align: center;
+        color: #6f6f6f;
+        font-size: 0.8rem;
+        padding: 0 2rem 2.5rem;
+    }
+    footer a { color: #8b9aa8; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<div class="upper">
+
+<div class="header">
+    <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    <div class="hero-text">
+        <h1>Austin Wagner</h1>
+        <p class="role">Software engineer &middot; MCP &amp; agent infrastructure &middot; Irvine, California</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <h2 class="section">About me</h2>
+        <ul class="work">
+            <li class="panel">
+                <p>Backend and ML infrastructure: MCP servers and agent tool-routing,
+                   document ingestion pipelines, typed clients for undocumented APIs, and
+                   evaluation harnesses for machine-learning experiments. TypeScript, Python,
+                   Rust, PostgreSQL.</p>
+                <div class="links">
+                    <a href="https://www.linkedin.com/in/the-austin-wagner">LinkedIn</a>
+                    <a href="https://github.com/wagner-austin">GitHub</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Dashboards</h2>
+        <ul class="dashboards">
+            <li><a class="panel" href="https://search.austinwagner.org">
+                <h3>Public records search</h3>
+                <p>Full-text and semantic search across ingested California civic documents — agendas,
+                   minutes, staff reports — kept current by a deterministic parser fleet.</p>
+                <span class="badge">34 agencies</span>
+            </a></li>
+            <li><a class="panel" href="/irvine-city-council/">
+                <h3>Irvine City Council</h3>
+                <p>City of Irvine meetings, agendas, minutes, videos, and council member profiles</p>
+            </a></li>
+            <li><a class="panel" href="/oc-city-councils/">
+                <h3>OC City Councils</h3>
+                <p>Contact info and public comment details for all 34 Orange County city councils</p>
+                <span class="badge">34 cities</span>
+            </a></li>
+            <li><a class="panel" href="/asuci/">
+                <h3>ASUCI Senate</h3>
+                <p>UC Irvine student government meetings, attendance, and voting records</p>
+            </a></li>
+            <li><a class="panel" href="/metabolomics/">
+                <h3>Metabolomics Analysis</h3>
+                <p>Tree metabolomics data filtering and analysis report</p>
+            </a></li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <h2 class="section light">What I work on</h2>
+        <ul class="work">
+            <li class="panel">
+                <h3>Reproducible GPU inference</h3>
+                <p>One model, four NVIDIA architectures, four different answers. The cause was a
+                   shortcut in NVIDIA's matrix-multiply library. With it disabled,
+                   <strong>900 of 900 test items are bit-identical across all four cards</strong> —
+                   against 198 on the defaults.</p>
+            </li>
+            <li class="panel">
+                <h3>LightGBM</h3>
+                <p><strong>Nine merged pull requests</strong> — Python type annotations, a POSIX
+                   socket-timeout fix, and test coverage.</p>
+            </li>
+            <li class="panel">
+                <h3>SCiL 2026</h3>
+                <p>Co-author, <strong>Quantifying Mutual Intelligibility Gradients in Turkic
+                   Languages Using Language Models</strong>. Also accepted at HSP 2026 and Tu+11,
+                   both at MIT.</p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</div><!-- /.upper -->
+
+<div id="forest-band">
+    <iframe id="backdrop" src="/rabbit/" title="ASCII forest" scrolling="no"></iframe>
+</div>
+<div class="forest-caption">
+    ASCII engine &middot; touch drag / WASD to move around &middot; <a href="/rabbit/">full screen</a>
+</div>
+
+</div><!-- /.page -->
+
+</body>
+</html>

@@ -19,8 +19,88 @@ import type { RandomSource } from "../input/Autopilot.js";
 import type { KeyEventType, KeyboardEventSource } from "../input/Keyboard.js";
 import { createInputState, type InputState } from "../input/state.js";
 import type { TouchEventSource, TouchEventType, TouchPoint } from "../input/Touch.js";
+import type { LayerInstance, SceneSpriteState, ValidatedLayer } from "../layers/types.js";
 import { layerToWorldZ } from "../layers/widths.js";
+import { LAYER_BEHAVIORS, type FrameSet, type LayerBehavior } from "../types.js";
 import { calculateDepthBounds, createProjectionConfig, type DepthBounds } from "../world/Projection.js";
+
+/**
+ * Build a single-size frame set from one frame of art.
+ *
+ * Args:
+ *     frame: Newline-separated glyph rows for the sole frame.
+ *     width: Character width of the frame.
+ *
+ * Returns:
+ *     A one-entry FrameSet list, matching the shape sprites carry at runtime.
+ */
+export function createTestSizes(
+  frame = "ABC\nDEF",
+  width = 3
+): FrameSet[] {
+  return [{ width, frames: [frame] }];
+}
+
+/**
+ * Build a scene sprite positioned in world space.
+ *
+ * Args:
+ *     worldX: Horizontal world position.
+ *     worldZ: Depth. Compare against layerToWorldZ to reason about occlusion.
+ *     sizes: Frame sets the sprite draws from.
+ *
+ * Returns:
+ *     A SceneSpriteState at the requested position.
+ */
+export function createTestEntity(
+  worldX: number,
+  worldZ: number,
+  sizes: FrameSet[] = createTestSizes()
+): SceneSpriteState {
+  return {
+    spriteName: "test",
+    sizes,
+    sizeIdx: 0,
+    frameIdx: 0,
+    worldX,
+    worldZ,
+  };
+}
+
+/**
+ * Build a sprite layer holding the given entities.
+ *
+ * Args:
+ *     name: Layer name. A name containing "front" routes it to the foreground pass.
+ *     zIndex: Draw index within its pass.
+ *     layer: Layer number, convertible to depth via layerToWorldZ.
+ *     entities: Sprites the layer owns.
+ *     positions: World X positions declared by config.
+ *     behavior: Wrapping behavior for the layer.
+ *
+ * Returns:
+ *     A LayerInstance ready to hand to the renderer.
+ */
+export function createTestLayer(
+  name: string,
+  zIndex: number,
+  layer: number,
+  entities: SceneSpriteState[],
+  positions: readonly number[] = [],
+  behavior: LayerBehavior = LAYER_BEHAVIORS.midground
+): LayerInstance {
+  const config: ValidatedLayer = {
+    name,
+    type: "sprites",
+    layer,
+    spriteNames: [],
+    positions,
+    zIndex,
+    tile: false,
+    behavior,
+  };
+  return { config, entities };
+}
 
 /**
  * Create bunny frames with distinguishable labels per animation.

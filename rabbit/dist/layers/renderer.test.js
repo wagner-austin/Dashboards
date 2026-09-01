@@ -6,6 +6,7 @@ import { renderAllLayers, renderForegroundLayers, _test_hooks } from "./renderer
 import { createSceneState, createRenderCandidate } from "./types.js";
 import { createProjectionConfig, createCamera, DEFAULT_WRAP_ITERATIONS, WORLD_WIDTH } from "../world/Projection.js";
 import { LAYER_BEHAVIORS } from "../types.js";
+import { createTestEntity, createTestLayer } from "../testing/fixtures.js";
 const { wrapEntityPosition, getWrappedZPositions, renderEntityAtZ, renderEntitiesDepthSorted, renderLayer, renderForegroundLayer, renderTiledForeground, collectWrappedCandidates, collectDirectCandidates, compareByDepth, renderCandidate, collectLayerCandidates, } = _test_hooks;
 /** Test depth bounds using visibleDepth as range (160) */
 function createTestDepthBounds() {
@@ -14,34 +15,6 @@ function createTestDepthBounds() {
 }
 function createBuffer(width, height) {
     return Array.from({ length: height }, () => Array(width).fill(" "));
-}
-function createTestSizes() {
-    return [
-        { width: 3, frames: ["ABC\nDEF"] },
-    ];
-}
-function createTestLayer(name, zIndex, layer, entities, positions = [], behavior = LAYER_BEHAVIORS.midground) {
-    const config = {
-        name,
-        type: "sprites",
-        layer,
-        spriteNames: [],
-        positions,
-        zIndex,
-        tile: false,
-        behavior,
-    };
-    return { config, entities };
-}
-function createTestEntity(worldX, worldZ) {
-    return {
-        spriteName: "test",
-        sizes: createTestSizes(),
-        sizeIdx: 0,
-        frameIdx: 0,
-        worldX,
-        worldZ,
-    };
 }
 describe("wrapEntityPosition", () => {
     it("does not wrap entity within half world width", () => {
@@ -447,6 +420,10 @@ describe("renderForegroundLayer", () => {
         expect(entity.worldZ).toBe(100);
     });
 });
+const UNBOUNDED = {
+    minZ: Number.NEGATIVE_INFINITY,
+    maxZ: Number.POSITIVE_INFINITY,
+};
 describe("renderAllLayers", () => {
     const config = createProjectionConfig();
     const VIEWPORT_WIDTH = 100;
@@ -458,7 +435,7 @@ describe("renderAllLayers", () => {
         const entity = createTestEntity(0, 100);
         const layer = createTestLayer("background", 0, 15, [entity]);
         const scene = createSceneState([layer], camera, depthBounds);
-        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config);
+        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config, UNBOUNDED);
         const hasContent = buffer.some(row => row.some(c => c !== " "));
         expect(hasContent).toBe(true);
     });
@@ -468,7 +445,7 @@ describe("renderAllLayers", () => {
         const entity = createTestEntity(0, 60);
         const layer = createTestLayer("grass-front", 0, 6, [entity]);
         const scene = createSceneState([layer], camera, depthBounds);
-        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config);
+        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config, UNBOUNDED);
         const allEmpty = buffer.every(row => row.every(c => c === " "));
         expect(allEmpty).toBe(true);
     });
@@ -476,7 +453,7 @@ describe("renderAllLayers", () => {
         const buffer = createBuffer(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
         const camera = createCamera();
         const scene = createSceneState([], camera, depthBounds);
-        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config);
+        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config, UNBOUNDED);
     });
     it("uses scene camera for projection", () => {
         const buffer = createBuffer(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
@@ -484,9 +461,48 @@ describe("renderAllLayers", () => {
         const entity = createTestEntity(50, 100);
         const layer = createTestLayer("bg", 0, 10, [entity]);
         const scene = createSceneState([layer], camera, depthBounds);
-        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config);
+        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config, UNBOUNDED);
         const hasContent = buffer.some(row => row.some(c => c !== " "));
         expect(hasContent).toBe(true);
+    });
+    it("draws nothing when every candidate is nearer than minZ", () => {
+        const buffer = createBuffer(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
+        const camera = createCamera();
+        const entity = createTestEntity(0, 100);
+        const layer = createTestLayer("background", 0, 15, [entity]);
+        const scene = createSceneState([layer], camera, depthBounds);
+        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config, {
+            minZ: 500,
+            maxZ: Number.POSITIVE_INFINITY,
+        });
+        const allEmpty = buffer.every(row => row.every(c => c === " "));
+        expect(allEmpty).toBe(true);
+    });
+    it("draws nothing when every candidate is at or beyond maxZ", () => {
+        const buffer = createBuffer(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
+        const camera = createCamera();
+        const entity = createTestEntity(0, 100);
+        const layer = createTestLayer("background", 0, 15, [entity]);
+        const scene = createSceneState([layer], camera, depthBounds);
+        renderAllLayers(buffer, scene, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config, {
+            minZ: Number.NEGATIVE_INFINITY,
+            maxZ: 10,
+        });
+        const allEmpty = buffer.every(row => row.every(c => c === " "));
+        expect(allEmpty).toBe(true);
+    });
+    it("splits candidates at one boundary without dropping or duplicating any", () => {
+        const camera = createCamera();
+        const near = createTestEntity(-20, 80);
+        const far = createTestEntity(20, 140);
+        const layer = createTestLayer("background", 0, 15, [near, far]);
+        const whole = createBuffer(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
+        renderAllLayers(whole, createSceneState([layer], camera, depthBounds), VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config, UNBOUNDED);
+        const split = createBuffer(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
+        const boundary = 100;
+        renderAllLayers(split, createSceneState([layer], camera, depthBounds), VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config, { minZ: boundary, maxZ: Number.POSITIVE_INFINITY });
+        renderAllLayers(split, createSceneState([layer], camera, depthBounds), VIEWPORT_WIDTH, VIEWPORT_HEIGHT, config, { minZ: Number.NEGATIVE_INFINITY, maxZ: boundary });
+        expect(split.map(row => row.join(""))).toEqual(whole.map(row => row.join("")));
     });
 });
 describe("renderForegroundLayers", () => {

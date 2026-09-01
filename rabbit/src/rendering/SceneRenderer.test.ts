@@ -6,10 +6,13 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { renderFrame, _test_hooks, type RenderState } from "./SceneRenderer.js";
 
-const { drawBunny } = _test_hooks;
+const { bunnyWorldZ, drawBunny } = _test_hooks;
 import { createInitialBunnyState, type BunnyFrames, type BunnyState, type AnimationState } from "../entities/Bunny.js";
 import { createSceneState, type SceneState } from "../layers/index.js";
 import { createCamera, createProjectionConfig, type DepthBounds } from "../world/Projection.js";
+import type { SceneSpriteState } from "../layers/types.js";
+import type { ViewportState } from "./Viewport.js";
+import { createTestEntity, createTestLayer, createTestSizes } from "../testing/fixtures.js";
 
 /** Test depth bounds (minZ=-110, maxZ=160, range=270) */
 function createTestDepthBounds(): DepthBounds {
@@ -246,7 +249,7 @@ describe("drawBunny", () => {
     const bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 }, true);
     const bunnyFrames = createTestBunnyFrames();
 
-    drawBunny(buffer, bunnyState, bunnyFrames, 80, 24);
+    drawBunny(buffer, bunnyState, bunnyFrames, createCamera(), 80, 24, createProjectionConfig());
 
     // Check that bunny was drawn (has non-space content)
     const hasContent = buffer.some((row) => row.some((char) => char !== " "));
@@ -258,9 +261,90 @@ describe("drawBunny", () => {
     const bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 }, false);
     const bunnyFrames = createTestBunnyFrames();
 
-    drawBunny(buffer, bunnyState, bunnyFrames, 80, 24);
+    drawBunny(buffer, bunnyState, bunnyFrames, createCamera(), 80, 24, createProjectionConfig());
 
     const hasContent = buffer.some((row) => row.some((char) => char !== " "));
     expect(hasContent).toBe(true);
+  });
+});
+
+describe("bunny depth occlusion", () => {
+  const projectionConfig = createProjectionConfig();
+  const VIEWPORT: ViewportState = { width: 120, height: 40, charW: 10, charH: 20 };
+
+  /** Read from the source, never mirrored: copied values here would silently
+      stop testing the real placement the moment BUNNY_LAYER moved. */
+  const CAMERA = createCamera();
+  const BUNNY_WORLD_Z = bunnyWorldZ(CAMERA);
+
+  /** Closest depth projection will draw. Anything nearer is clipped, so a
+      "near" tree chosen below this would never render and the occlusion test
+      would pass vacuously. */
+  const NEAREST_VISIBLE_Z = CAMERA.z + projectionConfig.nearZ;
+
+  /** A tree wide and tall enough to cover the bunny wherever he is drawn. */
+  function createCoveringTree(worldZ: number): SceneSpriteState {
+    const row = "T".repeat(VIEWPORT.width);
+    const art = Array.from({ length: VIEWPORT.height }, () => row).join("\n");
+    return createTestEntity(0, worldZ, createTestSizes(art, VIEWPORT.width));
+  }
+
+  function renderWithTreeAt(worldZ: number): string {
+    const screen = document.createElement("pre");
+    document.body.appendChild(screen);
+
+    const tree = createCoveringTree(worldZ);
+    const layer = createTestLayer("trees", 0, 12, [tree]);
+    const state: RenderState = {
+      bunnyState: createInitialBunnyState(),
+      sceneState: createSceneState([layer], createCamera(), createTestDepthBounds()),
+      viewport: VIEWPORT,
+      lastTime: 0,
+      projectionConfig,
+    };
+
+    renderFrame(state, createTestBunnyFrames(), screen, 16);
+    const text = screen.textContent;
+    document.body.removeChild(screen);
+    return text;
+  }
+
+  it("lets a tree nearer than the bunny draw over him", () => {
+    // Midway between the clip plane and the bunny: nearer than him, still drawn.
+    const nearZ = (NEAREST_VISIBLE_Z + BUNNY_WORLD_Z) / 2;
+    expect(nearZ).toBeLessThan(BUNNY_WORLD_Z);
+    expect(nearZ).toBeGreaterThanOrEqual(NEAREST_VISIBLE_Z);
+
+    const text = renderWithTreeAt(nearZ);
+
+    expect(text).toContain("T");
+    expect(text).not.toContain("idle_l_0");
+  });
+
+  it("keeps the bunny visible in front of a tree further away than him", () => {
+    const farZ = BUNNY_WORLD_Z + 40;
+    expect(farZ).toBeGreaterThan(BUNNY_WORLD_Z);
+
+    const text = renderWithTreeAt(farZ);
+
+    expect(text).toContain("T");
+    expect(text).toContain("idle_l_0");
+  });
+});
+
+describe("drawBunny placement invariant", () => {
+  it("throws a traceable error when the bunny projects outside the visible band", () => {
+    const buffer = Array.from({ length: 24 }, () => Array<string>(80).fill(" "));
+    const bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 }, true);
+    const camera = createCamera();
+
+    // Pull the far plane inside the bunny's own distance from the camera, so
+    // he becomes unplaceable. Derived, so it holds at any BUNNY_LAYER.
+    const distance = bunnyWorldZ(camera) - camera.z;
+    const config = { ...createProjectionConfig(), farZ: distance - 1 };
+
+    expect(() => {
+      drawBunny(buffer, bunnyState, createTestBunnyFrames(), camera, 80, 24, config);
+    }).toThrowError(/BUNNY_UNPLACEABLE/);
   });
 });

@@ -14,6 +14,11 @@
 
         #screen {
             font-family: "Courier New", monospace;
+            /* Character size sets the WHOLE scene's scale — trees, rabbit and
+               glyphs alike — because Viewport.ts derives the grid as
+               floor(viewportHeight / charH). Raise it and everything grows;
+               it is not the knob for how far up the trees reach. Use the
+               iframe's height for that. */
             font-size: 10px;
             line-height: 1.0;
             white-space: pre;
