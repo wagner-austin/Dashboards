@@ -22,15 +22,14 @@ import { project, DEFAULT_CAMERA_Z, } from "../world/Projection.js";
  * 2. Trees between layer 9 and this value render in front of him, so the value
  *    also sets how much of the forest can pass between him and the viewer.
  *
- * Layer 11 leaves layers 9 and 10 rendering in front of him. Moving him
- * further forward was tried and reverted: layer 9 is the clip plane, so
- * reaching it needed `nearZ` widened, and that rescaled the whole scene and
- * moved his projected position — four suites failed. The occlusion budget is
- * bounded by the clip plane, not by preference. Measured: four ranks (layer
- * 12+) hid him permanently, one rank almost never crossed him, two is right.
+ * Layer 10 leaves only layer 9 rendering in front of him, and puts him one
+ * step nearer the camera than 11 did. Layer 9 is the clip plane, so this is
+ * one short of as far forward as he can go while anything can still pass in
+ * front; reaching 9 itself would leave nothing nearer than him, and going
+ * nearer than 9 needs `nearZ` widened, which rescales the whole scene.
  * `SceneRenderer.test.ts` asserts both directions against a real frame.
  */
-const BUNNY_LAYER = 11;
+const BUNNY_LAYER = 10;
 /**
  * Draw the bunny standing on the ground plane at his own depth.
  *
