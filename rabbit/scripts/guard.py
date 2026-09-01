@@ -11,6 +11,7 @@ hand-written declaration files) and that every module ships the test hooks and
 co-located suite the project relies on.
 """
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -263,26 +264,59 @@ def check_colocated_tests(base: Path | None = None) -> list[str]:
     return errors
 
 
+def _manifest_entry(text: str) -> str | None:
+    """Decode a build manifest and return the entry filename it names.
+
+    ``json.loads`` yields ``Any``, which this project forbids, so the decoded
+    value is narrowed explicitly rather than trusted. Anything that is not an
+    object carrying a string ``entry`` is reported as absent, and the caller
+    turns that into an error naming what it found.
+
+    Args:
+        text: Raw contents of bundle/manifest.json.
+
+    Returns:
+        The entry filename, or None when the manifest does not carry one.
+
+    Raises:
+        json.JSONDecodeError: The manifest is not valid JSON. Not caught: a
+            manifest the build wrote cannot be malformed without the build
+            itself being broken, and hiding that would ship a dead page.
+    """
+    decoded: object = json.loads(text)
+    if not isinstance(decoded, dict):
+        return None
+    entry: object = decoded.get("entry")
+    if not isinstance(entry, str):
+        return None
+    return entry
+
+
 def check_bundled_entry_point(base: Path | None = None) -> list[str]:
-    """Check that index.html loads a content-hashed bundle, not the dev entry.
+    """Check the page loads its engine through the manifest, not a fixed name.
 
-    The page is served with ``Cache-Control: max-age=14400``. Sprites and
-    config.json are fetched with a ``?v=`` query so they always come fresh,
-    but a raw ES module entry pulls its transitive imports with no version at
-    all — so a deploy leaves every visitor running up to four hours of stale
-    engine code against a fresh config. ``npm run bundle`` solves it by
-    emitting ``bundle/app.<contenthash>.js``: the filename changes whenever
-    the code does, which makes caching correct instead of hazardous.
+    Two caches sit in front of this page and each defeats a naive fix:
 
-    This check exists because that only holds if index.html actually points at
-    the bundle. It shipped pointing at ``dist/io/autostart.js`` for months.
+    * The engine's own modules are served with ``max-age=14400``. Shipping
+      unbundled ES modules therefore left visitors on four-hour-old code.
+      ``bundle/app.<contenthash>.js`` fixes that — the name changes with the
+      content, so the bundle is safe to cache indefinitely.
+    * ``index.html`` is served with ``max-age=600``. So a hash written *into
+      the document* is only as fresh as the document: a returning visitor kept
+      requesting the previous hash for ten minutes after a deploy, which is
+      indistinguishable from the deploy not having happened.
+
+    The contract that survives both: the document never names the bundle. It
+    reads ``bundle/manifest.json`` with a cache-busting query, and imports
+    whatever that names. This check enforces it in both directions — no
+    hard-coded hash in the markup, and a manifest that points at a real file.
 
     Args:
         base: Project root to scan. Defaults to the current directory.
 
     Returns:
-        One error string per problem found. Empty when index.html references a
-        hashed bundle that exists on disk.
+        One error string per problem found. Empty when the page bootstraps
+        through a manifest naming a bundle that exists.
     """
     if base is None:
         base = Path(".")
@@ -292,20 +326,28 @@ def check_bundled_entry_point(base: Path | None = None) -> list[str]:
         return ["Missing required file: index.html"]
 
     html = index.read_text(encoding="utf-8")
-    match = re.search(r'<script[^>]*\bsrc="\./([^"]+)"', html)
-    if match is None:
-        return ["index.html has no module script tag to load the engine"]
 
-    src = match.group(1)
-    if not re.fullmatch(r"bundle/app\.[a-f0-9]+\.js", src):
+    hardcoded = re.search(r'src="\./(?:bundle/app\.[a-f0-9]+\.js|dist/[^"]+)"', html)
+    if hardcoded is not None:
         return [
-            f"index.html loads {src!r}, which is not a content-hashed bundle. "
-            "Unhashed sources are cached for four hours after a deploy; run "
-            "`npm run bundle` so the filename changes with the code."
+            f"index.html hard-codes {hardcoded.group(0)!r}. The document is cached "
+            "for ten minutes, so a name written here goes stale independently of "
+            "the bundle it points at. Load bundle/manifest.json instead."
         ]
 
-    if not (base / src).exists():
-        return [f"index.html references {src!r} but that bundle does not exist"]
+    if "bundle/manifest.json" not in html:
+        return ["index.html does not read bundle/manifest.json to find its entry"]
+
+    manifest_path = base / "bundle" / "manifest.json"
+    if not manifest_path.exists():
+        return ["bundle/manifest.json is missing; run `npm run bundle`"]
+
+    entry = _manifest_entry(manifest_path.read_text(encoding="utf-8"))
+    if entry is None or not re.fullmatch(r"app\.[a-f0-9]+\.js", entry):
+        return [f"bundle/manifest.json names {entry!r}, which is not a hashed bundle"]
+
+    if not (base / "bundle" / entry).exists():
+        return [f"bundle/manifest.json names {entry!r} but that file does not exist"]
 
     return []
 

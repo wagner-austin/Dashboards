@@ -202,8 +202,9 @@ def test_main_success(tmp_path: Path) -> None:
     (tmp_path / "tests").mkdir()
     (tmp_path / "bundle").mkdir()
     (tmp_path / "bundle" / "app.51bd75da.js").write_text("")
+    (tmp_path / "bundle" / "manifest.json").write_text('{"entry": "app.51bd75da.js"}')
     (tmp_path / "index.html").write_text(
-        '<script type="module" src="./bundle/app.51bd75da.js"></script>'
+        '<script type="module">fetch("bundle/manifest.json?v=1")</script>'
     )
 
     result = main(tmp_path)

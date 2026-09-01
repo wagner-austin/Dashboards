@@ -31,6 +31,23 @@
 </head>
 <body>
     <pre id="screen"></pre>
-    <script type="module" src="./bundle/app.4f93ab3d.js"></script>
+    <!--
+      The bundle filename carries a content hash, which makes the bundle itself
+      safe to cache forever. But this page is served with max-age=600, so a
+      hard-coded <script src> would leave a returning visitor pointing at the
+      PREVIOUS hash for ten minutes after a deploy — the hash is only as fresh
+      as the document naming it, and that was the bug.
+
+      So the name is not in the document. It is read from a manifest fetched
+      with a cache-busting query on every load. This markup never changes, so
+      caching it is harmless.
+    -->
+    <script type="module">
+      const manifest = await fetch(
+        new URL(`bundle/manifest.json?v=${Date.now()}`, document.baseURI),
+        { cache: "no-store" }
+      ).then((r) => r.json());
+      await import(new URL(`bundle/${manifest.entry}`, document.baseURI).href);
+    </script>
 </body>
 </html>
