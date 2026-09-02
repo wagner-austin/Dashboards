@@ -40,7 +40,27 @@
   .hudwrap .hudname { font:600 .8rem "Segoe UI",sans-serif; color:#9aa3b5;
                       margin:0 0 .35rem .2rem; text-transform:uppercase;
                       letter-spacing:.08em; height:1.1rem;
-                      overflow:hidden; white-space:nowrap; }
+                      overflow:hidden; white-space:nowrap;
+                      display:flex; justify-content:space-between; }
+  .hudwrap .viewtag { color:#6d7585; letter-spacing:.04em;
+                      text-transform:none; font-weight:400; }
+  /* The game view sits ABOVE the HUD rather than under it. Upstream
+     overlays the card on a full browser window, where 272px is a corner
+     of it; over a 272px-wide view the same card would cover the picture
+     it is annotating. Stacked, both stay readable and the tile keeps
+     the 272px column the grid is built on. */
+  .hudwrap .view { display:block; width:272px; aspect-ratio:4/3;
+                   object-fit:cover; border-radius:10px 10px 0 0;
+                   background:#080a0f; border:2px solid;
+                   border-color:rgba(255,255,255,.22) rgba(0,0,0,.8)
+                     rgba(0,0,0,.35) rgba(255,255,255,.14);
+                   border-bottom:none; }
+  /* Two absences, one treatment: `kind: none` (nothing published) and a
+     url that 404s (frames rotate). A broken-image glyph would report our
+     bug as the game's. */
+  .hudwrap div.view { display:grid; place-items:center; color:#6d7585;
+                      font-size:.82rem; }
+  .hudwrap .view + .tph-card { border-radius:0 0 10px 10px; border-top:none; }
 
   .panel { background:rgba(24,34,80,.28); border-radius:10px;
            border:2px solid; padding:.2rem;
@@ -169,6 +189,41 @@ function esc(t) {
 }
 
 /**
+ * The game view above each HUD.
+ *
+ * `view.kind` is a closed set, not a chain of fallbacks — the publisher
+ * states which it produced and the page renders that:
+ *
+ *   still  — a JPEG the publisher wrote from `GET /frame`. One file
+ *            serves every viewer, so a shared link costs nothing extra.
+ *   stream — an MJPEG URL from `GET /video`. `multipart/x-mixed-replace`
+ *            renders natively in an <img>, but it holds a connection
+ *            PER VIEWER against the machine running the bots. Only
+ *            appropriate behind the authenticated host.
+ *   none   — no view published. Said plainly rather than shown as a
+ *            broken image.
+ *
+ * A `still` also carries how old it is, because a picture with no age
+ * on it is a claim of liveness the publisher did not make.
+ */
+function viewTag(view) {
+  if (view.kind === "stream") { return "live"; }
+  if (view.kind === "still") { return `${view.age_seconds}s ago`; }
+  return "";
+}
+
+function viewMarkup(b) {
+  const v = b.view;
+  if (v.kind === "none") {
+    return `<div class="view none">no view published</div>`;
+  }
+  return `<img class="view" src="${esc(v.url)}" alt="Game view from ${esc(b.instance)}"
+       loading="lazy"
+       onerror="this.replaceWith(Object.assign(document.createElement('div'),
+                {className:'view none', textContent:'view unavailable'}))">`;
+}
+
+/**
  * Paint the per-bot HUD cards.
  *
  * This is the same card the bot injects into its own page and the
@@ -187,7 +242,8 @@ function paintHuds(bots) {
   const host = document.getElementById("huds");
   host.innerHTML = bots.map((b) => `
     <div class="hudwrap">
-      <div class="hudname">${esc(b.instance)}</div>
+      <div class="hudname">${esc(b.instance)}<span class="viewtag">${esc(viewTag(b.view))}</span></div>
+      ${viewMarkup(b)}
       <div class="tph-card" data-hud="${esc(b.instance)}">${HUD_BODY}</div>
     </div>`).join("");
 
@@ -275,6 +331,9 @@ const REQUIRED = [
   ["fleet.control.reason", (d) => d.fleet !== undefined && d.fleet.control !== undefined
       && typeof d.fleet.control.reason === "string"],
   ["bots", (d) => Array.isArray(d.bots)],
+  ["bots[].view.kind", (d) => Array.isArray(d.bots) && d.bots.every(
+      (b) => b.view !== undefined && ["still", "stream", "none"].includes(b.view.kind))],
+  ["bots[].hud", (d) => Array.isArray(d.bots) && d.bots.every((b) => b.hud !== undefined)],
 ];
 
 function refuse(html) {

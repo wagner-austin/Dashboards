@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T05:34:10Z",
+  "generated_at": "2026-09-02T05:56:24Z",
   "fleet": {
     "status": "live",
     "room": "Practice",
@@ -20,7 +20,7 @@
       "role": "line",
       "alive": true,
       "returncode": null,
-      "started_ms": 1788327046616,
+      "started_ms": 1788328380373,
       "kills_bound": 20,
       "seconds_bound": 420,
       "kills_scored": 3,
@@ -58,6 +58,11 @@
         "hits": 11,
         "misses": 2,
         "rejects": 0
+      },
+      "view": {
+        "kind": "still",
+        "url": "frames/demo-1.jpg",
+        "age_seconds": 3
       }
     },
     {
@@ -68,7 +73,7 @@
       "role": "line",
       "alive": true,
       "returncode": null,
-      "started_ms": 1788327059616,
+      "started_ms": 1788328393373,
       "kills_bound": 20,
       "seconds_bound": 420,
       "kills_scored": 1,
@@ -106,6 +111,11 @@
         "hits": 4,
         "misses": 3,
         "rejects": 1
+      },
+      "view": {
+        "kind": "still",
+        "url": "frames/demo-2.jpg",
+        "age_seconds": 3
       }
     },
     {
@@ -116,7 +126,7 @@
       "role": "scout",
       "alive": true,
       "returncode": null,
-      "started_ms": 1788327082616,
+      "started_ms": 1788328416373,
       "kills_bound": 20,
       "seconds_bound": 420,
       "kills_scored": 0,
@@ -154,6 +164,11 @@
         "hits": 0,
         "misses": 0,
         "rejects": 0
+      },
+      "view": {
+        "kind": "still",
+        "url": "frames/demo-3.jpg",
+        "age_seconds": 4
       }
     },
     {
@@ -164,7 +179,7 @@
       "role": "line",
       "alive": false,
       "returncode": 0,
-      "started_ms": 1788326508616,
+      "started_ms": 1788327842373,
       "kills_bound": 20,
       "seconds_bound": 300,
       "kills_scored": 6,
@@ -174,6 +189,11 @@
       "state": "ended",
       "hud": {
         "available": false
+      },
+      "view": {
+        "kind": "none",
+        "url": null,
+        "age_seconds": null
       }
     }
   ]
