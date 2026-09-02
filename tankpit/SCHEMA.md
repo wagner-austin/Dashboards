@@ -1,23 +1,46 @@
 # `fleet.json` — the contract between the bot fleet and this page
 
-This page renders one file and nothing else. Whatever writes `fleet.json`
-owns this contract; the page never talks to the fleet, never proxies, and
-never reaches the machine the bots run on.
+This page renders one file and nothing else. `tankpit/` writes that file;
+the page never talks to the fleet, never proxies, and never reaches the
+machine the bots run on.
 
-Written before the publisher exists, deliberately. The page is the thing
-whose shape is hard to agree on in the abstract, so it was built first
-against hand-written data and the schema fell out of it. A publisher that
-emits this needs no further negotiation.
+**Schema version 2.** Every field is now decoded from a live fleet
+manager response. Version 1 was hand-authored ahead of the publisher, on
+the theory that the page was the hard thing to agree on and a schema
+would fall out of it. The schema that fell out disagreed with the running
+manager in six ways, each caught the first time the publisher was pointed
+at port 27300:
+
+| v1 said | The manager actually sends |
+|---|---|
+| `manager_boot_id` as an int | `boot`, a **string** |
+| `role: "line"`, `role: "scout"` | only `fighter` / `gatherer` — a spawn with `line` is rejected 400 |
+| three doctrines | four; `swarm` was missing |
+| hex colours (`#5ecb71`) | CSS `rgb(57, 255, 20)` strings |
+| HUD without `dealt` / `taken` | both present on every frame |
+| `hud.available: true` beside the fields | a present frame carries **no** `available` key at all |
+
+The lesson is recorded rather than quietly fixed: a contract written
+against imagination is a guess with a table around it. Payloads captured
+from the running manager now live in `tests/tankpit_payloads.py` and the
+decoders are tested against those bytes.
 
 ## Where the fields come from
 
-Most of the roster is `GET /bots` on the fleet manager (port 27300),
-which returns `FleetBotDict` — `instance`, `account`, `role`, `room`,
-`troop`, `doctrine`, `pid`, `alive`, `returncode`, `kills`, `seconds`,
-`started_ms`. No new instrumentation is required for those.
+The roster is `GET /bots` on the fleet manager (port 27300), which
+returns `FleetBotDict` — `instance`, `account`, `role`, `room`, `troop`,
+`doctrine`, `pid`, `alive`, `returncode`, `kills`, `seconds`,
+`started_ms`. The HUD is `GET /bots/{instance}/hud`, one call per bot.
 
 **`pid` is deliberately NOT in this schema.** It is an operational detail
 about the host and has no business on a public page.
+
+**There is no `/stats` data here.** The endpoint exists and answers
+`{"available": false}` until a run writes a digest; its populated shape
+has never been captured, so nothing is modelled from it. The v1 fields
+that would have come from it — `kills_scored`, `rank`, `fuel`, `extras`,
+`state` — are **gone** rather than emitted as `null` forever. Live kills
+come from the HUD frame, which is real.
 
 ## The one field that must not be copied straight across
 
@@ -26,32 +49,27 @@ with (0 unbounded)"*. **It is a limit, not a score.** A dashboard that
 renders it as "kills" shows every freshly-spawned bot already holding its
 maximum, which is wrong in the most flattering possible direction.
 
-So this schema splits them:
+So the publisher renames it on the way out:
 
 | Field | Meaning | Source |
 |---|---|---|
 | `kills_bound` | the ceiling the bot was spawned with; `0` = unbounded | `FleetBotDict.kills` |
-| `kills_scored` | kills actually made this session | telemetry, **not** `/bots` |
+| `hud.frame.kills` | kills actually made this session | the HUD frame |
 
 `seconds_bound` is the same shape and the same trap — a duration limit,
 not an elapsed time. Elapsed is computed by the page from `started_ms`.
-
-`kills_scored`, `rank`, `fuel`, `extras` and `state` come from the
-per-bot telemetry / events stream rather than the roster call, so a
-publisher has to merge two sources. If any of them is unavailable, emit
-`null` rather than `0` — zero is a real value for all five, and imputing
-it invents a fact.
 
 ## Top level
 
 | Field | Type | Notes |
 |---|---|---|
 | `schema_version` | int | Bump on any breaking change. The page refuses a version it does not know rather than rendering a guess. |
-| `generated_at` | ISO 8601 UTC | The page derives staleness from this, so it must be the write time, not the poll time. |
-| `fleet.status` | `"live"` \| `"idle"` | `idle` means the manager is up with no bots, or is down. |
-| `fleet.room` | string | Always `"Practice"` for the public demo. Rendered so a reader can see it, because the room is the safety property. |
-| `fleet.manager_boot_id` | int | Changes when the manager restarts; lets the page notice a restart rather than showing continuity that did not happen. |
-| `fleet.bots_max` | int | The concurrent cap. Shown so the page can render "3 of 5" honestly. |
+| `generated_at` | ISO 8601 UTC, `Z` | Write time, not poll time; the page derives staleness from it. |
+| `boot` | string | The manager's boot id, verbatim. Changes on restart, so the page can notice a restart rather than showing continuity that did not happen. |
+| `draining` | bool | The manager has been asked to shut its bots down. |
+| `control.enabled` | `false` | Always. The manager's mutating routes are loopback-only. |
+| `control.reason` | string | Why control is unavailable. Shown instead of dead buttons. |
+| `bots` | array | Every managed instance, **alive or dead**. A finished run is part of what the fleet did. |
 
 ## Per bot
 
@@ -59,23 +77,29 @@ it invents a fact.
 |---|---|---|
 | `instance` | string | Artifact namespace; the stable id. |
 | `account` | string | Demo account name. Never a ranked account. |
+| `role` | `fighter` \| `gatherer` | Fleet role. |
+| `room` | string | Per bot, not fleet-wide — nothing stops two bots sitting in different rooms. |
 | `doctrine` | `skirmish` \| `swarm` \| `duelist` \| `passive` | Spawn-only — see below. |
 | `troop` | string | Tank colour. |
-| `role` | string | Fleet role. |
 | `alive` | bool | |
-| `returncode` | int \| null | `null` while alive. |
+| `returncode` | int \| null | `null` while alive. A non-zero code is rendered as `exit N`, not flattened to "ended": a crash and a completed bounded session are different outcomes. |
 | `started_ms` | int | Wall-clock spawn. Elapsed is computed from this. |
 | `kills_bound` / `seconds_bound` | int | Limits. `0` = unbounded. |
-| `kills_scored` / `rank` / `fuel` / `extras` | int \| null | Live values. `null` when unknown. |
-| `state` | string | Short human-readable activity, e.g. `foraging`, `engaging`, `ended`. |
-| `hud` | object | **Required.** The per-tick HUD dict — byte-for-byte what `GET /bots/{i}/hud` returns. See below. |
+| `hud` | object | **Required.** Two states, below. |
+| `view` | object | **Required.** `{"kind": "none"}` — see Frames. |
 
 ## `hud` — the decoded state, not a screenshot
 
-`hud` is the same dict the operator's fleet page feeds to its cards, and
-this page renders it with the same markup and CSS. Publishers must pass
-it through unchanged; reshaping it here would make the two renderings
-disagree about what a key means.
+Two states, and the publisher owns the discriminant:
+
+- `{"available": false}` — the bot has written no tick yet. The card dims.
+- `{"available": true, "frame": { … }}` — `frame` is the bot's own
+  `hud.json`, passed through byte-for-byte.
+
+The nesting exists because the manager returns that file **verbatim**, and
+a real frame carries no `available` key of its own. The flag is the
+publisher's; the numbers are the bot's. Flattening them would put a
+publisher-invented key in the same object as measured values.
 
 An earlier draft of this page published **JPEG screenshots** instead.
 That was wrong and worth recording: a screenshot shows the game, and the
@@ -83,13 +107,12 @@ game is not the achievement — the decode is. The HUD shows `do`, `why`
 and `tgt`, i.e. the bot stating its own reason for its current action,
 which a screenshot cannot.
 
-Keys, matching `service/fleet_page.py::paintHud` exactly:
+Frame keys:
 
 | Key | Notes |
 |---|---|
-| `available` | `false` means the bot has no tick to report yet; the card dims and every other key is ignored. |
-| `state_text` | Chip at top right, e.g. `ENGAGED`. |
-| `mode_text` / `mode_color` / `mode_band` | The coloured band; colours come from the bot, not this page. |
+| `state_text` | Chip at top right, e.g. `COLLECTING`. |
+| `mode_text` / `mode_color` / `mode_band` | The coloured band; CSS colour strings from the bot, not this page. |
 | `pos_text` / `fuel_text` | Rendered verbatim. |
 | `fuel_pct` / `fuel_color` | Drive the meter's width and colour. |
 | `s0`–`s4` and `s0c`–`s4c` | Stock counts and their colours: AR, DU, MI, HO, RA. |
@@ -97,7 +120,7 @@ Keys, matching `service/fleet_page.py::paintHud` exactly:
 | `sent_text` / `sent_color` | The one-glyph sent indicator. |
 | `why_text` | **The bot's stated reason.** The most interesting field on the page. |
 | `tgt_text` / `act_text` | Target and act. |
-| `kills` / `hits` / `misses` / `rejects` | Footer counters — session totals, unlike `kills_bound`. |
+| `kills` / `hits` / `misses` / `rejects` / `dealt` / `taken` | Session counters, unlike `kills_bound`. |
 
 ### The markup is generated, not copied
 
@@ -122,9 +145,35 @@ doctrine change is **stop + respawn**, not a live toggle. The page must
 present it that way — a control that silently restarts a bot while
 looking like a setting is a lie about what happened.
 
-## Frames
+## Frames — why `view.kind` is always `none`
 
-Published as files beside this one, not proxied. One viewer and a hundred
-viewers cost the same, and no visitor request ever reaches the machine
-running the bots. A stale frame is better than a live proxy: it fails by
-being old rather than by exposing a control surface.
+There is no game view, and this is a fact about the fleet rather than a
+gap in the publisher.
+
+`GET /video` (MJPEG) and `GET /frame` are wired only in
+`service/service_main.py`, the **standalone single-bot** service, which
+builds the `FrameBus` and starts `browser/live_view.py`. Fleet children
+are spawned through `_CHILD_BOOTSTRAP` onto `bot/entry.py`, which starts
+no HTTP server at all — so there is no per-bot endpoint to address, no
+port allocated, and no port field in `FleetBotDict`. Nothing per-tick is
+written to the shared `runs` mount either; the only images there are
+sporadic diagnostic combat screenshots behind a debug flag.
+
+Capture itself does not need a visible window — `live_view.py` composites
+the game's stacked canvases in-page and calls `toDataURL`, which works
+headless. The missing piece is purely that fleet children serve no HTTP.
+
+Giving them one is a change in the bot repo, not here. When it lands, the
+publisher gains a `kind: "stream"` producer and the page gains the
+matching branch **in the same change**, so that neither side carries a
+branch the other cannot feed.
+
+## Regenerating
+
+```
+poetry run python -m tankpit.cli
+```
+
+Reads `http://127.0.0.1:27300` and rewrites `fleet.json`. Fails loudly if
+the manager is down or answers something other than this contract: a
+stale document that still looks current is worse than a failed run.

@@ -135,12 +135,11 @@
   <div class="panel">
     <table>
       <thead><tr>
-        <th>name</th><th>account</th><th>doctrine</th><th>status</th>
-        <th class="num">kills</th><th class="num">limit</th>
-        <th class="num">rank</th><th class="num">fuel</th>
-        <th class="num">extras</th><th class="num">time</th><th>actions</th>
+        <th>name</th><th>account</th><th>role</th><th>room</th><th>doctrine</th>
+        <th>status</th><th class="num">kills</th><th class="num">limit</th>
+        <th class="num">time</th><th>actions</th>
       </tr></thead>
-      <tbody id="rows"><tr><td colspan="11" class="empty">loading…</td></tr></tbody>
+      <tbody id="rows"><tr><td colspan="10" class="empty">loading…</td></tr></tbody>
     </table>
   </div>
 
@@ -177,8 +176,9 @@ document.head.appendChild(
   Object.assign(document.createElement("style"), { textContent: HUD_CSS }));
 
 // Reads one published file. No proxying, no polling of the fleet: the
-// contract is SCHEMA.md, written before the publisher existed.
-const SUPPORTED_SCHEMA = 1;
+// contract is SCHEMA.md, and every field now comes from a decoded fleet
+// manager response rather than from a hand-written sample.
+const SUPPORTED_SCHEMA = 2;
 const STALE_AFTER_MS = 90_000;
 const REFRESH_MS = 5_000;
 const DOCTRINES = new Set(["skirmish", "swarm", "duelist", "passive"]);
@@ -191,36 +191,24 @@ function esc(t) {
 /**
  * The game view above each HUD.
  *
- * `view.kind` is a closed set, not a chain of fallbacks — the publisher
- * states which it produced and the page renders that:
+ * `kind` is `none` for every bot, and that is a fact about the fleet
+ * rather than a gap in this page. `/video` (MJPEG) and `/frame` are
+ * built only in the standalone single-bot service; fleet children run
+ * the bot entry point, which starts no HTTP server at all, so there is
+ * no per-bot endpoint to address. Nothing per-tick is written to the
+ * shared `runs` mount either — only sporadic diagnostic screenshots
+ * behind a debug flag.
  *
- *   still  — a JPEG the publisher wrote from `GET /frame`. One file
- *            serves every viewer, so a shared link costs nothing extra.
- *   stream — an MJPEG URL from `GET /video`. `multipart/x-mixed-replace`
- *            renders natively in an <img>, but it holds a connection
- *            PER VIEWER against the machine running the bots. Only
- *            appropriate behind the authenticated host.
- *   none   — no view published. Said plainly rather than shown as a
- *            broken image.
- *
- * A `still` also carries how old it is, because a picture with no age
- * on it is a claim of liveness the publisher did not make.
+ * This page therefore renders the one state the publisher can produce.
+ * The rendering for a live stream lands in the same change that gives a
+ * fleet child something to stream, so that neither side carries a branch
+ * the other cannot feed.
  */
-function viewTag(view) {
-  if (view.kind === "stream") { return "live"; }
-  if (view.kind === "still") { return `${view.age_seconds}s ago`; }
-  return "";
-}
-
 function viewMarkup(b) {
-  const v = b.view;
-  if (v.kind === "none") {
-    return `<div class="view none">no view published</div>`;
+  if (b.view.kind !== "none") {
+    return `<div class="view none">unexpected view kind ${esc(b.view.kind)}</div>`;
   }
-  return `<img class="view" src="${esc(v.url)}" alt="Game view from ${esc(b.instance)}"
-       loading="lazy"
-       onerror="this.replaceWith(Object.assign(document.createElement('div'),
-                {className:'view none', textContent:'view unavailable'}))">`;
+  return `<div class="view none">no game view — fleet bots publish no frames</div>`;
 }
 
 /**
@@ -242,18 +230,21 @@ function paintHuds(bots) {
   const host = document.getElementById("huds");
   host.innerHTML = bots.map((b) => `
     <div class="hudwrap">
-      <div class="hudname">${esc(b.instance)}<span class="viewtag">${esc(viewTag(b.view))}</span></div>
+      <div class="hudname">${esc(b.instance)}<span class="viewtag">${b.alive ? "running" : "ended"}</span></div>
       ${viewMarkup(b)}
       <div class="tph-card" data-hud="${esc(b.instance)}">${HUD_BODY}</div>
     </div>`).join("");
 
   for (const b of bots) {
     const card = host.querySelector(`[data-hud="${CSS.escape(b.instance)}"]`);
-    const h = b.hud;
-    // `available: false` is the bot's own statement that it has no tick
-    // to report yet — dim the card rather than painting stale or empty
-    // fields as though they were measured.
-    if (h.available === false) { card.style.opacity = ".45"; continue; }
+    // `available: false` is the fleet's own statement that this bot has
+    // written no tick yet — dim the card rather than painting stale or
+    // empty fields as though they were measured. The frame itself is
+    // nested under `frame` because the manager returns the bot's
+    // hud.json verbatim, and that object carries no `available` key of
+    // its own; the flag is the publisher's, the numbers are the bot's.
+    if (b.hud.available === false) { card.style.opacity = ".45"; continue; }
+    const h = b.hud.frame;
     card.style.opacity = b.alive ? "1" : ".6";
 
     const set = (id, text) => { card.querySelector("#" + id).textContent = text; };
@@ -284,14 +275,41 @@ function paintHuds(bots) {
   }
 }
 
+/**
+ * What happened to a bot, from the manager's own two fields.
+ *
+ * There is no published `state` string: the manager reports `alive` and,
+ * once dead, the child's `returncode`. A non-zero code is shown rather
+ * than flattened to "ended", because a bot that crashed and a bot that
+ * finished its bounded session are different outcomes and the page is
+ * the only place anyone would notice the difference.
+ */
+function statusCell(b) {
+  if (b.alive) { return '<span class="alive">running</span>'; }
+  if (b.returncode === 0) { return '<span class="done">ended</span>'; }
+  return `<span class="done">exit ${esc(b.returncode)}</span>`;
+}
+
 /** Integer, or a dash when the publisher sent null. Zero is a real value. */
 function num(v) {
   return (v === null || v === undefined)
     ? '<span class="unknown" title="not reported">—</span>' : String(v);
 }
 
-function elapsed(startedMs, nowMs) {
-  const s = Math.max(0, Math.floor((nowMs - startedMs) / 1000));
+/**
+ * How long a bot has been running.
+ *
+ * Only meaningful while it is alive. The manager publishes `started_ms`
+ * but no end time, so counting to `now` for a dead bot reports the age
+ * of the spawn rather than the length of the run — a bot that died in
+ * five seconds read `68:41` an hour later. There is no honest duration
+ * to show for a finished run, so it is not shown.
+ */
+function elapsed(b, nowMs) {
+  if (!b.alive) {
+    return '<span class="unknown" title="the fleet publishes no end time">—</span>';
+  }
+  const s = Math.max(0, Math.floor((nowMs - b.started_ms) / 1000));
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 }
 
@@ -306,11 +324,17 @@ function headlineFor(data, nowMs) {
   if (age * 1000 > STALE_AFTER_MS) {
     return { dot: "off", text: `snapshot stale — last written ${age}s ago` };
   }
-  if (data.fleet.status === "live") {
-    const alive = data.bots.filter((b) => b.alive).length;
-    return { dot: "", text: `${alive} of ${data.fleet.bots_max} running` };
+  if (data.draining) {
+    return { dot: "idle", text: "draining — the fleet is shutting bots down" };
   }
-  return { dot: "idle", text: `idle — no bots running, snapshot ${age}s old` };
+  const alive = data.bots.filter((b) => b.alive).length;
+  if (alive === 0) {
+    return { dot: "idle", text: `idle — no bots running, snapshot ${age}s old` };
+  }
+  // No ceiling is published: the manager reports what it is running, not
+  // a maximum, and a fleet size invented here would be a number nobody
+  // measured.
+  return { dot: "", text: `${alive} running` };
 }
 
 /**
@@ -323,17 +347,22 @@ function headlineFor(data, nowMs) {
  */
 const REQUIRED = [
   ["generated_at", (d) => typeof d.generated_at === "string"],
-  ["fleet.status", (d) => d.fleet !== undefined && typeof d.fleet.status === "string"],
-  ["fleet.room", (d) => d.fleet !== undefined && typeof d.fleet.room === "string"],
-  ["fleet.bots_max", (d) => d.fleet !== undefined && Number.isInteger(d.fleet.bots_max)],
-  ["fleet.control.enabled", (d) => d.fleet !== undefined && d.fleet.control !== undefined
-      && typeof d.fleet.control.enabled === "boolean"],
-  ["fleet.control.reason", (d) => d.fleet !== undefined && d.fleet.control !== undefined
-      && typeof d.fleet.control.reason === "string"],
+  ["boot", (d) => typeof d.boot === "string"],
+  ["draining", (d) => typeof d.draining === "boolean"],
+  ["control.enabled", (d) => d.control !== undefined && typeof d.control.enabled === "boolean"],
+  ["control.reason", (d) => d.control !== undefined && typeof d.control.reason === "string"],
   ["bots", (d) => Array.isArray(d.bots)],
+  ["bots[].alive", (d) => Array.isArray(d.bots) && d.bots.every((b) => typeof b.alive === "boolean")],
+  ["bots[].room", (d) => Array.isArray(d.bots) && d.bots.every((b) => typeof b.room === "string")],
   ["bots[].view.kind", (d) => Array.isArray(d.bots) && d.bots.every(
-      (b) => b.view !== undefined && ["still", "stream", "none"].includes(b.view.kind))],
-  ["bots[].hud", (d) => Array.isArray(d.bots) && d.bots.every((b) => b.hud !== undefined)],
+      (b) => b.view !== undefined && b.view.kind === "none")],
+  // The HUD card is a two-state union and both states are checked, so a
+  // publisher that sent `available: true` with no frame is caught here
+  // rather than throwing partway through painting a card.
+  ["bots[].hud", (d) => Array.isArray(d.bots) && d.bots.every(
+      (b) => b.hud !== undefined
+        && (b.hud.available === false
+            || (b.hud.available === true && b.hud.frame !== undefined)))],
 ];
 
 function refuse(html) {
@@ -361,24 +390,26 @@ function render(data) {
 
   document.getElementById("headline").innerHTML =
     `<span class="dot ${h.dot}"></span>${esc(h.text)}`;
-  document.getElementById("room").textContent = data.fleet.room;
+  // Rooms come per bot; the manager publishes no fleet-wide room and
+  // nothing stops two bots sitting in different ones.
+  const rooms = [...new Set(data.bots.map((b) => b.room))];
+  document.getElementById("room").textContent = rooms.length === 0 ? "—" : rooms.join(", ");
 
   paintHuds(data.bots);
 
   document.getElementById("rows").innerHTML = data.bots.length === 0
-    ? `<tr><td colspan="11" class="empty">no bots running</td></tr>`
+    ? `<tr><td colspan="10" class="empty">no bots running</td></tr>`
     : data.bots.map((b) => `
       <tr class="${b.alive ? "" : "dead"}">
         <td>${esc(b.instance)}</td>
         <td>${esc(b.account)}</td>
+        <td>${esc(b.role)}</td>
+        <td>${esc(b.room)}</td>
         <td class="doctrine">${DOCTRINES.has(b.doctrine) ? esc(b.doctrine) : '<span class="unknown">?</span>'}</td>
-        <td>${b.alive ? '<span class="alive">running</span>' : `<span class="done">${esc(b.state)}</span>`}</td>
-        <td class="num">${num(b.kills_scored)}</td>
+        <td>${statusCell(b)}</td>
+        <td class="num">${b.hud.available ? num(b.hud.frame.kills) : num(null)}</td>
         <td class="num">${b.kills_bound === 0 ? '<span class="unknown">∞</span>' : num(b.kills_bound)}</td>
-        <td class="num"><span class="rank">${num(b.rank)}</span></td>
-        <td class="num">${num(b.fuel)}</td>
-        <td class="num">${num(b.extras)}</td>
-        <td class="num">${elapsed(b.started_ms, now)}</td>
+        <td class="num">${elapsed(b, now)}</td>
         <td><button disabled>Stop</button></td>
       </tr>`).join("");
 
@@ -390,13 +421,12 @@ function render(data) {
   // A publisher that omits it has not decided whether control is open,
   // and inventing "closed" on its behalf would hide that — the same
   // silence this page refuses everywhere else.
-  const control = data.fleet.control;
+  const control = data.control;
   const btn = document.getElementById("launchbtn");
   const sel = document.getElementById("doctrine");
   btn.disabled = !control.enabled;
   sel.disabled = !control.enabled;
-  document.getElementById("launchhint").textContent =
-    control.enabled ? `${data.fleet.room} · bounded session` : control.reason;
+  document.getElementById("launchhint").textContent = control.reason;
 }
 
 function load() {

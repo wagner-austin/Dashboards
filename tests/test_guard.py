@@ -7,6 +7,8 @@ import pytest
 from scripts import _test_hooks as hooks
 from scripts.guard import (
     CHAIN_CERT,
+    DAILY_PATH_MODULES,
+    GUARDED_MODULES,
     _suppression_patterns,
     check_chain_certificate,
     check_no_browser_automation,
@@ -52,8 +54,20 @@ def recorded() -> Iterator[RecordingHooks]:
     hooks.reset_hooks()
 
 
+# The single daily-path module the browser check is exercised against.
+# Every other module is written plain, so `browser_import=True` yields
+# exactly one finding and asserting the count stays meaningful.
+BROWSER_PROBE_MODULE = "asuci/generate.py"
+
+
 def _make_project(root: Path, *, browser_import: bool = False, cert: str | None = VALID_CERT) -> None:
     """Build a minimal project tree satisfying the guard.
+
+    The file list is derived from the guard's own module tuples rather
+    than restated here. A hand-kept copy is a second place that has to
+    agree: when the publisher joined ``GUARDED_MODULES`` the copy did not
+    grow with it, and the guard correctly reported five modules missing
+    from a tree the fixture called clean.
 
     Args:
         root: Directory to populate.
@@ -61,15 +75,28 @@ def _make_project(root: Path, *, browser_import: bool = False, cert: str | None 
         cert: Contents for the chain certificate, or None to omit the file.
     """
     (root / "asuci" / "certs").mkdir(parents=True, exist_ok=True)
-    for name in ("models.py", "parse.py", "client.py"):
-        (root / "asuci" / name).write_text("VALUE = 1\n", encoding="utf-8")
+    for relative in sorted(set(GUARDED_MODULES) | set(DAILY_PATH_MODULES)):
+        path = root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("VALUE = 1\n", encoding="utf-8")
 
     body = "import playwright\n" if browser_import else "import requests\n"
-    (root / "asuci" / "generate.py").write_text(body, encoding="utf-8")
-    (root / "generate_all.py").write_text("VALUE = 1\n", encoding="utf-8")
+    (root / BROWSER_PROBE_MODULE).write_text(body, encoding="utf-8")
 
     if cert is not None:
         (root / CHAIN_CERT).write_text(cert, encoding="utf-8")
+
+
+def test_the_fixture_tree_covers_every_guarded_module(tmp_path: Path) -> None:
+    """The fixture is built from the guard's lists, not a copy of them."""
+    _make_project(tmp_path)
+
+    assert [module for module in GUARDED_MODULES if not (tmp_path / module).is_file()] == []
+
+
+def test_the_browser_probe_module_is_on_the_daily_path() -> None:
+    """The module the browser check is aimed at is one the check reads."""
+    assert BROWSER_PROBE_MODULE in DAILY_PATH_MODULES
 
 
 def test_suppression_patterns_cover_both_spacings() -> None:
