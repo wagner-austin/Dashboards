@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Tankpit Fleet — Austin Wagner</title>
+<meta name="description" content="Autonomous bots playing TankPit, driven by a reverse-engineered binary protocol. Every value shown is decoded from the wire.">
+<style>
+  /* Palette and panel treatment lifted from the fleet manager's own
+     control page (service/fleet_page.py) rather than invented. This is
+     the public, read-only cut of that screen: same room, fewer columns,
+     none of the operational detail a visitor cannot act on. */
+  body { margin:0; color:#e9e9f0;
+         font-family:"Segoe UI",system-ui,sans-serif;
+         background:#0c0f16 radial-gradient(1100px 700px at 18% -8%,
+           rgba(37,52,120,.55), transparent 62%) no-repeat fixed;
+         min-width:1080px; }
+  header { padding:1rem 1.6rem; display:flex; align-items:baseline;
+           gap:1rem; border-bottom:1px solid rgba(255,255,255,.09);
+           background:rgba(24,34,80,.22);
+           backdrop-filter:blur(6px) saturate(1.1); }
+  header h1 { margin:0; font-size:1.2rem; letter-spacing:.06em;
+              color:rgb(57,255,20);
+              text-shadow:0 0 8px rgba(57,255,20,.45); }
+  header .sub { color:#9aa3b5; font-size:.85rem; }
+  header .spacer { flex:1; }
+  header .room { color:#9aa3b5; font-size:.82rem; }
+  header .room b { color:#d6dae2; font-weight:600; }
+  .dot { display:inline-block; width:.55em; height:.55em;
+         border-radius:50%; margin-right:.4em;
+         background:#5ecb71; box-shadow:0 0 6px #5ecb71; }
+  .dot.off { background:#e0656a; box-shadow:0 0 6px #e0656a; }
+  .dot.idle { background:#d9b45b; box-shadow:0 0 6px #d9b45b; }
+  main { padding:1.3rem 1.6rem 3rem; display:grid; gap:1.3rem; max-width:1240px; }
+
+  #huds { display:grid; gap:1.1rem;
+          grid-template-columns:repeat(auto-fill, 272px);
+          align-items:start; justify-content:start; }
+  .hudwrap { width:272px; }
+  .hudwrap .hudname { font:600 .8rem "Segoe UI",sans-serif; color:#9aa3b5;
+                      margin:0 0 .35rem .2rem; text-transform:uppercase;
+                      letter-spacing:.08em; height:1.1rem;
+                      overflow:hidden; white-space:nowrap; }
+
+  .panel { background:rgba(24,34,80,.28); border-radius:10px;
+           border:2px solid; padding:.2rem;
+           border-color:rgba(255,255,255,.22) rgba(0,0,0,.8)
+             rgba(0,0,0,.8) rgba(255,255,255,.14);
+           box-shadow:0 8px 24px rgba(0,0,0,.6),
+             0 0 22px rgba(25,50,230,.14);
+           backdrop-filter:blur(6px) saturate(1.1); }
+  table { border-collapse:collapse; width:100%; font-size:.9rem; }
+  th, td { border-bottom:1px solid rgba(255,255,255,.07);
+           padding:.5rem .8rem; text-align:left; white-space:nowrap; }
+  tr:last-child td { border-bottom:none; }
+  th { color:#9aa3b5; font-size:.76rem; text-transform:uppercase;
+       letter-spacing:.07em; border-bottom:1px solid rgba(255,255,255,.14); }
+  td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  tr.dead td { color:#6d7585; }
+  .alive { color:#5ecb71; font-weight:600; }
+  .done { color:#8a93a3; }
+  .rank { color:#d9b45b; font-weight:600; }
+  .doctrine { color:#c8cfdd; }
+  .unknown { color:#6d7585; }
+  .empty { color:#6d7585; text-align:center; padding:1.4rem; }
+
+  button { background:#1d232d; color:#d6dae2; border:1px solid #39424f;
+           padding:.3rem .8rem; border-radius:6px; margin-right:.35rem;
+           cursor:pointer; font-size:.82rem; }
+  button:hover:not(:disabled) { background:#242c38; }
+  button:disabled { color:#555e6b; border-color:#2a313c; cursor:default; }
+  button.primary { background:#67b0e8; color:#0d141b; border-color:#67b0e8;
+                   font-weight:600; height:34px; padding:0 1.4rem;
+                   box-sizing:border-box; }
+  button.primary:disabled { background:#2a3742; color:#5b6673;
+                            border-color:#2a3742; }
+
+  form { display:flex; flex-wrap:nowrap; gap:1.1rem; align-items:flex-start;
+         padding:1rem 1.2rem; background:rgba(24,34,80,.28);
+         border-radius:10px; border:2px solid;
+         backdrop-filter:blur(6px) saturate(1.1);
+         border-color:rgba(255,255,255,.22) rgba(0,0,0,.8)
+           rgba(0,0,0,.8) rgba(255,255,255,.14);
+         box-shadow:0 8px 24px rgba(0,0,0,.6); }
+  form .field { display:flex; flex-direction:column; flex:0 0 auto; width:150px; }
+  form label { font-size:.76rem; color:#9aa3b5; text-transform:uppercase;
+               letter-spacing:.07em; margin-bottom:.3rem; }
+  form select { background:#151b24; color:#d6dae2; border:1px solid #39424f;
+                border-radius:6px; padding:.4rem .5rem; height:34px;
+                font-size:.85rem; }
+  form select:disabled { color:#5b6673; }
+  form .hint { font-size:.74rem; color:#6d7585; margin-top:.3rem;
+               white-space:normal; min-height:2.1em; }
+  form .spacer { flex:1; }
+
+  .about { color:#9aa3b5; font-size:.88rem; line-height:1.6;
+           max-width:78ch; padding:1rem 1.2rem; }
+  .about b { color:#d6dae2; }
+  .about code { color:#c8cfdd; background:rgba(255,255,255,.06);
+                padding:.05rem .3rem; border-radius:3px; }
+  .err { color:#e0656a; padding:1rem 1.2rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Tankpit Fleet</h1>
+  <span class="sub" id="headline"><span class="dot off"></span>loading…</span>
+  <span class="spacer"></span>
+  <span class="room">room <b id="room">—</b></span>
+</header>
+
+<main>
+  <div id="huds"></div>
+
+  <div class="panel">
+    <table>
+      <thead><tr>
+        <th>name</th><th>account</th><th>doctrine</th><th>status</th>
+        <th class="num">kills</th><th class="num">limit</th>
+        <th class="num">rank</th><th class="num">fuel</th>
+        <th class="num">extras</th><th class="num">time</th><th>actions</th>
+      </tr></thead>
+      <tbody id="rows"><tr><td colspan="11" class="empty">loading…</td></tr></tbody>
+    </table>
+  </div>
+
+  <form id="launch" onsubmit="return false;">
+    <div class="field">
+      <label for="doctrine">Doctrine</label>
+      <select id="doctrine" disabled>
+        <option value="skirmish">skirmish</option>
+        <option value="passive">passive</option>
+        <option value="duelist">duelist</option>
+      </select>
+      <div class="hint">how it picks a fight</div>
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <button type="submit" class="primary" id="launchbtn" disabled>Launch</button>
+      <div class="hint" id="launchhint">read-only view</div>
+    </div>
+    <span class="spacer"></span>
+  </form>
+
+  <div class="panel about">
+    <p>Every tank here is a separate process speaking TankPit's <b>binary WebSocket protocol</b> directly. The game publishes no API — position, fuel, rank and kills are all decoded from the wire, backed by about 75 pages of protocol notes.</p>
+    <p>The fleet plays the <b>Practice</b> room, which is consequence-free: no rank is at stake for anyone involved. <code>doctrine</code> is a bot's engagement policy and is fixed when its process starts, so changing it restarts that bot rather than toggling a setting.</p>
+    <p>This page reads one published snapshot and never reaches the machine the bots run on — a hundred viewers cost what one does.</p>
+  </div>
+
+  <div id="error"></div>
+</main>
+
+<script type="module">
+import { HUD_CSS, HUD_BODY } from "./hud.js";
+document.head.appendChild(
+  Object.assign(document.createElement("style"), { textContent: HUD_CSS }));
+
+// Reads one published file. No proxying, no polling of the fleet: the
+// contract is SCHEMA.md, written before the publisher existed.
+const SUPPORTED_SCHEMA = 1;
+const STALE_AFTER_MS = 90_000;
+const REFRESH_MS = 5_000;
+const DOCTRINES = new Set(["skirmish", "swarm", "duelist", "passive"]);
+
+function esc(t) {
+  return String(t).replace(/[&<>"']/g, (c) =>
+    ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+}
+
+/**
+ * Paint the per-bot HUD cards.
+ *
+ * This is the same card the bot injects into its own page and the
+ * operator's fleet page renders, driven by the same per-tick dict —
+ * `HUD_BODY` and `HUD_CSS` are generated from `overlay_hud.py` by
+ * `regen-hud.py`, not transcribed.
+ *
+ * Rendering the decoded state rather than a screenshot is the point: a
+ * screenshot shows the game, and the game is not the achievement. `why`
+ * is the bot stating its own reason for the current action.
+ *
+ * Field names mirror `fleet_page.py::paintHud` exactly so the two
+ * renderings cannot drift into disagreeing about what a key means.
+ */
+function paintHuds(bots) {
+  const host = document.getElementById("huds");
+  host.innerHTML = bots.map((b) => `
+    <div class="hudwrap">
+      <div class="hudname">${esc(b.instance)}</div>
+      <div class="tph-card" data-hud="${esc(b.instance)}">${HUD_BODY}</div>
+    </div>`).join("");
+
+  for (const b of bots) {
+    const card = host.querySelector(`[data-hud="${CSS.escape(b.instance)}"]`);
+    const h = b.hud;
+    // `available: false` is the bot's own statement that it has no tick
+    // to report yet — dim the card rather than painting stale or empty
+    // fields as though they were measured.
+    if (h.available === false) { card.style.opacity = ".45"; continue; }
+    card.style.opacity = b.alive ? "1" : ".6";
+
+    const set = (id, text) => { card.querySelector("#" + id).textContent = text; };
+    set("tph-state", h.state_text);
+    const mode = card.querySelector("#tph-mode");
+    mode.textContent = h.mode_text;
+    mode.style.color = h.mode_color;
+    mode.style.background = h.mode_band;
+    set("tph-pos", h.pos_text);
+    set("tph-fuel", h.fuel_text);
+    const fill = card.querySelector("#tph-fill");
+    fill.style.width = h.fuel_pct + "%";
+    fill.style.background = h.fuel_color;
+    for (const i of [0, 1, 2, 3, 4]) {
+      const slot = card.querySelector("#tph-s" + i);
+      slot.textContent = String(h["s" + i]);
+      slot.style.color = h["s" + i + "c"];
+    }
+    set("tph-do", h.do_text);
+    const sent = card.querySelector("#tph-sent");
+    sent.textContent = h.sent_text;
+    sent.style.color = h.sent_color;
+    set("tph-why", h.why_text);
+    set("tph-tgt", h.tgt_text);
+    set("tph-act", h.act_text);
+    set("tph-k", h.kills); set("tph-h", h.hits);
+    set("tph-m", h.misses); set("tph-rj", h.rejects);
+  }
+}
+
+/** Integer, or a dash when the publisher sent null. Zero is a real value. */
+function num(v) {
+  return (v === null || v === undefined)
+    ? '<span class="unknown" title="not reported">—</span>' : String(v);
+}
+
+function elapsed(startedMs, nowMs) {
+  const s = Math.max(0, Math.floor((nowMs - startedMs) / 1000));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+}
+
+/**
+ * Three states, not two. An idle fleet (manager up, no bots) and a dead
+ * publisher (nobody writing the snapshot) look identical if collapsed —
+ * and "idle" during an outage is the reassuring answer rather than the
+ * true one.
+ */
+function headlineFor(data, nowMs) {
+  const age = Math.round((nowMs - Date.parse(data.generated_at)) / 1000);
+  if (age * 1000 > STALE_AFTER_MS) {
+    return { dot: "off", text: `snapshot stale — last written ${age}s ago` };
+  }
+  if (data.fleet.status === "live") {
+    const alive = data.bots.filter((b) => b.alive).length;
+    return { dot: "", text: `${alive} of ${data.fleet.bots_max} running` };
+  }
+  return { dot: "idle", text: `idle — no bots running, snapshot ${age}s old` };
+}
+
+/**
+ * Every top-level field the page reads, and the reason it is required.
+ * Checked up front so a publisher bug surfaces as a named absence
+ * rather than as a blank cell or a thrown TypeError halfway through a
+ * render. Nothing here is defaulted: a missing field means the
+ * publisher has not decided, and deciding on its behalf is how a page
+ * ends up reporting something nobody measured.
+ */
+const REQUIRED = [
+  ["generated_at", (d) => typeof d.generated_at === "string"],
+  ["fleet.status", (d) => d.fleet !== undefined && typeof d.fleet.status === "string"],
+  ["fleet.room", (d) => d.fleet !== undefined && typeof d.fleet.room === "string"],
+  ["fleet.bots_max", (d) => d.fleet !== undefined && Number.isInteger(d.fleet.bots_max)],
+  ["fleet.control.enabled", (d) => d.fleet !== undefined && d.fleet.control !== undefined
+      && typeof d.fleet.control.enabled === "boolean"],
+  ["fleet.control.reason", (d) => d.fleet !== undefined && d.fleet.control !== undefined
+      && typeof d.fleet.control.reason === "string"],
+  ["bots", (d) => Array.isArray(d.bots)],
+];
+
+function refuse(html) {
+  document.getElementById("headline").innerHTML =
+    '<span class="dot off"></span>snapshot rejected';
+  document.getElementById("error").innerHTML = `<div class="err">${html}</div>`;
+}
+
+function render(data) {
+  if (data.schema_version !== SUPPORTED_SCHEMA) {
+    refuse(`This page reads <code>fleet.json</code> schema ${SUPPORTED_SCHEMA};
+      the published file is schema ${esc(data.schema_version)}. Refusing to render
+      rather than guess at fields that may have moved.`);
+    return;
+  }
+  const missing = REQUIRED.filter(([, ok]) => !ok(data)).map(([name]) => name);
+  if (missing.length > 0) {
+    refuse(`<code>fleet.json</code> is missing or mistyped:
+      <code>${esc(missing.join("</code>, <code>"))}</code>.
+      Refusing to render a partial snapshot.`);
+    return;
+  }
+  const now = Date.now();
+  const h = headlineFor(data, now);
+
+  document.getElementById("headline").innerHTML =
+    `<span class="dot ${h.dot}"></span>${esc(h.text)}`;
+  document.getElementById("room").textContent = data.fleet.room;
+
+  paintHuds(data.bots);
+
+  document.getElementById("rows").innerHTML = data.bots.length === 0
+    ? `<tr><td colspan="11" class="empty">no bots running</td></tr>`
+    : data.bots.map((b) => `
+      <tr class="${b.alive ? "" : "dead"}">
+        <td>${esc(b.instance)}</td>
+        <td>${esc(b.account)}</td>
+        <td class="doctrine">${DOCTRINES.has(b.doctrine) ? esc(b.doctrine) : '<span class="unknown">?</span>'}</td>
+        <td>${b.alive ? '<span class="alive">running</span>' : `<span class="done">${esc(b.state)}</span>`}</td>
+        <td class="num">${num(b.kills_scored)}</td>
+        <td class="num">${b.kills_bound === 0 ? '<span class="unknown">∞</span>' : num(b.kills_bound)}</td>
+        <td class="num"><span class="rank">${num(b.rank)}</span></td>
+        <td class="num">${num(b.fuel)}</td>
+        <td class="num">${num(b.extras)}</td>
+        <td class="num">${elapsed(b.started_ms, now)}</td>
+        <td><button disabled>Stop</button></td>
+      </tr>`).join("");
+
+  // Controls are rendered but inert until the publisher says a control
+  // endpoint exists. Showing a live-looking Launch button that silently
+  // does nothing is worse than showing a disabled one that says why.
+  //
+  // `fleet.control` is REQUIRED by the schema and is not defaulted here.
+  // A publisher that omits it has not decided whether control is open,
+  // and inventing "closed" on its behalf would hide that — the same
+  // silence this page refuses everywhere else.
+  const control = data.fleet.control;
+  const btn = document.getElementById("launchbtn");
+  const sel = document.getElementById("doctrine");
+  btn.disabled = !control.enabled;
+  sel.disabled = !control.enabled;
+  document.getElementById("launchhint").textContent =
+    control.enabled ? `${data.fleet.room} · bounded session` : control.reason;
+}
+
+function load() {
+  fetch(`fleet.json?t=${Date.now()}`, { cache: "no-store" })
+    .then((r) => { if (!r.ok) { throw new Error(`fleet.json responded ${r.status}`); } return r.json(); })
+    .then((d) => { document.getElementById("error").innerHTML = ""; render(d); })
+    .catch((err) => {
+      // Named, not swallowed: a blank page is indistinguishable from a
+      // fleet with nothing to show, and those need different fixes.
+      document.getElementById("headline").innerHTML =
+        '<span class="dot off"></span>fleet snapshot unreachable';
+      document.getElementById("error").innerHTML =
+        `<div class="err">Could not load <code>fleet.json</code>: ${esc(err.message)}
+         ${location.protocol === "file:"
+           ? "<br>Opened over <code>file://</code> — browsers block <code>fetch</code> there. Serve the directory over HTTP instead."
+           : ""}</div>`;
+    });
+}
+
+load();
+setInterval(load, REFRESH_MS);
+</script>
+</body>
+</html>
