@@ -47,12 +47,6 @@ files = [
     "asuci/parse.py",
     "asuci/client.py",
     "shared/utils/meeting_schedule.py",
-    "tankpit/__init__.py",
-    "tankpit/models.py",
-    "tankpit/client.py",
-    "tankpit/publish.py",
-    "tankpit/cli.py",
-    "tankpit/_test_hooks.py",
     "scripts",
     "tests",
 ]
@@ -67,7 +61,7 @@ ignore_missing_imports = true
 [tool.ruff]
 line-length = 110
 target-version = "py311"
-src = ["asuci", "shared", "scripts", "tankpit", "tests"]
+src = ["asuci", "shared", "scripts", "tests"]
 exclude = [
     ".venv",
     "node_modules",
@@ -82,20 +76,13 @@ select = ["E", "F", "I", "B", "BLE", "UP", "N", "C4", "SIM", "RET", "C90", "RUF"
 
 [tool.ruff.lint.per-file-ignores]
 "asuci/generate.py" = ["ANN", "E501", "C901", "RUF", "SIM", "RET", "B", "N", "UP"]
-# BaseHTTPRequestHandler names its own override do_GET; the loopback server
-# in this test must match that signature exactly to be dispatched at all.
-"tests/test_tankpit_client.py" = ["N802"]
-# A hand-run build tool, never imported. The dashed name is the documented
-# command in SCHEMA.md, index.html, and the header of the hud.js it emits,
-# so it is deliberately not an importable module name.
-"tankpit/regen-hud.py" = ["N999"]
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]
 "typing.cast" = { msg = "Do not use typing.cast; prefer adapters or precise types." }
 "typing.TypeAlias" = { msg = "Do not use TypeAlias; use Literal types or expand unions explicitly." }
 
 [tool.coverage.run]
-source = ["asuci", "scripts", "shared", "tankpit"]
+source = ["asuci", "scripts", "shared"]
 # The legacy HTML generator predates this standard; it is exercised end to end
 # by `make generate`, not by unit tests. Remove this once it is migrated.
 omit = [
@@ -103,10 +90,6 @@ omit = [
     # Predate this standard; exercised end to end by `make generate`.
     "shared/scrapers/*",
     "shared/utils/__init__.py",
-    # A build-time tool, not part of the publisher: it regenerates hud.js
-    # from the bot's own overlay source and is run by hand when that
-    # source changes. Its dashed filename is not importable.
-    "tankpit/regen-hud.py",
 ]
 branch = true
 

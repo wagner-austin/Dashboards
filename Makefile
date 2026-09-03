@@ -6,8 +6,8 @@ SHELL := powershell.exe
 lint:
 	poetry install --with dev --no-interaction --no-root
 	poetry run python -m scripts.guard; if ($$LASTEXITCODE -ne 0) { exit $$LASTEXITCODE }
-	poetry run ruff check asuci scripts tankpit tests --fix
-	poetry run ruff format asuci scripts tankpit tests
+	poetry run ruff check asuci scripts tests --fix
+	poetry run ruff format asuci scripts tests
 	poetry run mypy
 
 test:

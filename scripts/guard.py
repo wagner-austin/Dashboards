@@ -22,11 +22,6 @@ GUARDED_MODULES = (
     "asuci/models.py",
     "asuci/parse.py",
     "asuci/client.py",
-    "tankpit/models.py",
-    "tankpit/client.py",
-    "tankpit/publish.py",
-    "tankpit/cli.py",
-    "tankpit/_test_hooks.py",
 )
 
 # Modules that run on the daily schedule and must stay browser-free.
@@ -36,12 +31,6 @@ DAILY_PATH_MODULES = (
     "asuci/client.py",
     "asuci/generate.py",
     "generate_all.py",
-    # The fleet publisher reads the manager's HTTP surface. Driving a
-    # browser here would be doubly wrong: the data is already JSON, and
-    # the thing being published is itself a browser automation fleet.
-    "tankpit/client.py",
-    "tankpit/publish.py",
-    "tankpit/cli.py",
 )
 
 # Vendored certificate completing the ASUCI chain.
