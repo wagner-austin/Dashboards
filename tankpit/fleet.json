@@ -1,114 +1,11 @@
 {
-  "boot": "1788418642744",
-  "bots": [
-    {
-      "account": "Artax",
-      "alive": true,
-      "doctrine": "skirmish",
-      "hud": {
-        "available": true,
-        "frame": {
-          "act_text": "none",
-          "dealt": 0,
-          "do_text": "hold → (0,0)",
-          "fuel_color": "rgb(200, 0, 200)",
-          "fuel_pct": 75,
-          "fuel_text": "751/1000",
-          "hits": 0,
-          "kills": 0,
-          "misses": 0,
-          "mode_band": "rgba(200, 0, 200, 0.20)",
-          "mode_color": "rgb(200, 0, 200)",
-          "mode_text": "UNSET",
-          "pos_text": "131,126",
-          "rejects": 0,
-          "s0": 8,
-          "s0c": "rgb(255, 20, 147)",
-          "s1": 6,
-          "s1c": "rgb(255, 20, 147)",
-          "s2": 16,
-          "s2c": "#e9e9f0",
-          "s3": 20,
-          "s3c": "rgb(57, 255, 20)",
-          "s4": 0,
-          "s4c": "rgb(255, 20, 147)",
-          "sent_color": "rgb(57, 255, 20)",
-          "sent_text": "●",
-          "state_text": "IDLE",
-          "taken": 0,
-          "tgt_text": "—",
-          "why_text": "HUNT: manual_hold"
-        }
-      },
-      "instance": "live-1",
-      "kills_bound": 0,
-      "returncode": null,
-      "role": "fighter",
-      "room": "Practice",
-      "seconds_bound": 1800,
-      "started_ms": 1788419532318,
-      "troop": "orange",
-      "view": {
-        "kind": "none"
-      }
-    },
-    {
-      "account": "Artax",
-      "alive": false,
-      "doctrine": "skirmish",
-      "hud": {
-        "available": true,
-        "frame": {
-          "act_text": "none",
-          "dealt": 0,
-          "do_text": "hold → (0,0)",
-          "fuel_color": "rgb(200, 0, 200)",
-          "fuel_pct": 75,
-          "fuel_text": "751/1000",
-          "hits": 0,
-          "kills": 0,
-          "misses": 0,
-          "mode_band": "rgba(200, 0, 200, 0.20)",
-          "mode_color": "rgb(200, 0, 200)",
-          "mode_text": "UNSET",
-          "pos_text": "131,126",
-          "rejects": 0,
-          "s0": 8,
-          "s0c": "rgb(255, 20, 147)",
-          "s1": 6,
-          "s1c": "rgb(255, 20, 147)",
-          "s2": 16,
-          "s2c": "#e9e9f0",
-          "s3": 20,
-          "s3c": "rgb(57, 255, 20)",
-          "s4": 0,
-          "s4c": "rgb(255, 20, 147)",
-          "sent_color": "rgb(57, 255, 20)",
-          "sent_text": "●",
-          "state_text": "IDLE",
-          "taken": 0,
-          "tgt_text": "—",
-          "why_text": "HUNT: manual_hold"
-        }
-      },
-      "instance": "video-probe",
-      "kills_bound": 0,
-      "returncode": 0,
-      "role": "fighter",
-      "room": "Practice",
-      "seconds_bound": 300,
-      "started_ms": 1788418660734,
-      "troop": "orange",
-      "view": {
-        "kind": "none"
-      }
-    }
-  ],
+  "boot": "1788423071263",
+  "bots": [],
   "control": {
     "enabled": false,
     "reason": "the fleet manager is loopback-only; the public page is read-only"
   },
   "draining": false,
-  "generated_at": "2026-09-03T07:13:27Z",
+  "generated_at": "2026-09-03T08:11:13Z",
   "schema_version": 3
 }
