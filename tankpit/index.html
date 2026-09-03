@@ -158,11 +158,17 @@
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
   .tile { padding: 0; }
+  /* The bot casts 672x532 (the game canvas plus its HUD strip), which is
+     1.263:1 — not 4:3. The box was 4:3 with object-fit:cover, so the frame
+     was scaled up until it filled the wider box and the top and bottom were
+     cut off: the picture read as zoomed in, because it was.
+     The box now carries the source's own ratio, and `contain` means a future
+     change in cast geometry letterboxes rather than silently cropping. */
   .tile img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+    aspect-ratio: 672 / 532;
+    object-fit: contain;
     background: #000;
   }
   .tile .cap {
