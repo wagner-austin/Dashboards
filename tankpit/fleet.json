@@ -1,20 +1,52 @@
 {
-  "boot": "1788341122781",
+  "boot": "1788410106441",
   "bots": [
     {
       "account": "Artax",
       "alive": false,
       "doctrine": "skirmish",
       "hud": {
-        "available": false
+        "available": true,
+        "frame": {
+          "act_text": "scope",
+          "dealt": 0,
+          "do_text": "scope_shift → (163,151)",
+          "fuel_color": "rgb(200, 0, 200)",
+          "fuel_pct": 75,
+          "fuel_text": "751/1000",
+          "hits": 0,
+          "kills": 0,
+          "misses": 0,
+          "mode_band": "rgba(57, 255, 20, 0.20)",
+          "mode_color": "rgb(57, 255, 20)",
+          "mode_text": "COLLECT · APPROACH",
+          "pos_text": "153,143",
+          "rejects": 0,
+          "s0": 8,
+          "s0c": "rgb(255, 20, 147)",
+          "s1": 6,
+          "s1c": "rgb(255, 20, 147)",
+          "s2": 16,
+          "s2c": "#e9e9f0",
+          "s3": 20,
+          "s3c": "rgb(57, 255, 20)",
+          "s4": 0,
+          "s4c": "rgb(255, 20, 147)",
+          "sent_color": "rgb(57, 255, 20)",
+          "sent_text": "●",
+          "state_text": "IDLE",
+          "taken": 0,
+          "tgt_text": "—",
+          "why_text": "COLLECT: harvest_frame_shift(direction=3)"
+        }
       },
-      "instance": "probe-1",
+      "instance": "tick-probe",
       "kills_bound": 0,
-      "returncode": 1,
+      "returncode": 0,
       "role": "fighter",
       "room": "Practice",
-      "seconds_bound": 300,
-      "started_ms": 1788341194558,
+      "seconds_bound": 240,
+      "started_ms": 1788410123551,
       "troop": "orange",
       "view": {
         "kind": "none"
@@ -26,6 +58,6 @@
     "reason": "the fleet manager is loopback-only; the public page is read-only"
   },
   "draining": false,
-  "generated_at": "2026-09-02T10:30:39Z",
-  "schema_version": 2
+  "generated_at": "2026-09-03T06:46:15Z",
+  "schema_version": 3
 }

@@ -22,9 +22,9 @@ from tankpit.publish import (
     DocumentWriter,
     FileDocumentWriter,
     SystemClock,
-    absent_view,
     build_published_bot,
     build_published_fleet,
+    build_view,
     encode_published_fleet,
     publish,
 )
@@ -95,24 +95,52 @@ def _live_hud() -> BotHud:
 
 
 def test_the_view_is_absent_for_every_bot_today() -> None:
-    assert absent_view() == {"kind": "none"}
+    assert build_view(None, "probe-1") == {"kind": "none"}
+
+
+def test_a_configured_base_publishes_a_stream_for_that_instance() -> None:
+    assert build_view("https://fleet.example", "probe-1") == {
+        "kind": "stream",
+        "url": "https://fleet.example/bots/probe-1/video",
+    }
+
+
+def test_a_trailing_slash_on_the_video_base_does_not_double_up() -> None:
+    assert build_view("https://fleet.example/", "probe-1")["kind"] == "stream"
+    assert build_view("https://fleet.example/", "probe-1") == {
+        "kind": "stream",
+        "url": "https://fleet.example/bots/probe-1/video",
+    }
+
+
+def test_the_stream_url_addresses_the_manager_relay_not_a_child() -> None:
+    """Children bind loopback inside the container and are never dialled.
+
+    The relay path is the manager's, so one published port serves every
+    bot; an URL naming a child's own port could not be reached and would
+    expose the fleet's internals if it could.
+    """
+    view = build_view("https://fleet.example", "probe-1")
+    if view["kind"] != "stream":
+        raise AssertionError("a configured base must publish a stream")
+    assert view["url"].endswith("/bots/probe-1/video")
 
 
 def test_a_bot_with_no_frame_publishes_an_absent_hud_card() -> None:
     roster = decode_fleet_roster(json.loads(LIVE_BOT_ROSTER_TEXT))
-    published = build_published_bot(roster["bots"][0], None)
+    published = build_published_bot(roster["bots"][0], None, None)
     assert published["hud"] == {"available": False}
 
 
 def test_a_bot_with_a_frame_publishes_it_verbatim() -> None:
     roster = decode_fleet_roster(json.loads(LIVE_BOT_ROSTER_TEXT))
-    published = build_published_bot(roster["bots"][0], _live_hud())
+    published = build_published_bot(roster["bots"][0], _live_hud(), None)
     assert published["hud"] == {"available": True, "frame": _live_hud()}
 
 
 def test_a_published_bot_carries_the_roster_identity() -> None:
     roster = decode_fleet_roster(json.loads(DEAD_BOT_ROSTER_TEXT))
-    published = build_published_bot(roster["bots"][0], None)
+    published = build_published_bot(roster["bots"][0], None, None)
     assert published == {
         "instance": "probe-1",
         "account": "Artax",
@@ -132,7 +160,7 @@ def test_a_published_bot_carries_the_roster_identity() -> None:
 
 def test_an_empty_fleet_publishes_an_empty_bot_list() -> None:
     roster = decode_fleet_roster(json.loads(EMPTY_ROSTER_TEXT))
-    fleet = build_published_fleet(roster, {}, FIXED_NOW)
+    fleet = build_published_fleet(roster, {}, FIXED_NOW, None)
     assert fleet == {
         "schema_version": SCHEMA_VERSION,
         "generated_at": FIXED_NOW,
@@ -145,19 +173,19 @@ def test_an_empty_fleet_publishes_an_empty_bot_list() -> None:
 
 def test_a_dead_bot_is_still_published() -> None:
     roster = decode_fleet_roster(json.loads(DEAD_BOT_ROSTER_TEXT))
-    fleet = build_published_fleet(roster, {"probe-1": None}, FIXED_NOW)
+    fleet = build_published_fleet(roster, {"probe-1": None}, FIXED_NOW, None)
     assert [bot["instance"] for bot in fleet["bots"]] == ["probe-1"]
 
 
 def test_a_roster_that_changed_mid_pass_fails_rather_than_publishing_a_gap() -> None:
     roster = decode_fleet_roster(json.loads(DEAD_BOT_ROSTER_TEXT))
     with pytest.raises(KeyError, match="probe-1"):
-        build_published_fleet(roster, {}, FIXED_NOW)
+        build_published_fleet(roster, {}, FIXED_NOW, None)
 
 
 def test_the_document_encodes_as_sorted_json_with_a_trailing_newline() -> None:
     roster = decode_fleet_roster(json.loads(EMPTY_ROSTER_TEXT))
-    text = encode_published_fleet(build_published_fleet(roster, {}, FIXED_NOW))
+    text = encode_published_fleet(build_published_fleet(roster, {}, FIXED_NOW, None))
     assert text.endswith("}\n")
     assert list(json.loads(text).keys()) == [
         "boot",
@@ -171,7 +199,7 @@ def test_the_document_encodes_as_sorted_json_with_a_trailing_newline() -> None:
 
 def test_the_encoded_document_keeps_hud_text_unescaped() -> None:
     roster = decode_fleet_roster(json.loads(LIVE_BOT_ROSTER_TEXT))
-    fleet = build_published_fleet(roster, {"probe-1": _live_hud()}, FIXED_NOW)
+    fleet = build_published_fleet(roster, {"probe-1": _live_hud()}, FIXED_NOW, None)
     assert "pickup_fuel → (149,109)" in encode_published_fleet(fleet)
 
 
@@ -184,7 +212,7 @@ def test_publish_reads_the_fleet_and_writes_the_document(tmp_path: Path) -> None
     )
     writer = CollectingWriter()
     destination = tmp_path / "fleet.json"
-    fleet = publish(FleetClient(fetcher, "http://fleet"), FixedClock(FIXED_NOW), writer, destination)
+    fleet = publish(FleetClient(fetcher, "http://fleet"), FixedClock(FIXED_NOW), writer, destination, None)
     assert fleet["generated_at"] == FIXED_NOW
     assert [path for path, _ in writer.written] == [destination]
 
@@ -201,8 +229,79 @@ def test_publish_reads_one_hud_per_roster_row() -> None:
         FixedClock(FIXED_NOW),
         CollectingWriter(),
         Path("unused.json"),
+        None,
     )
     assert fetcher.requested == ["http://fleet/bots", "http://fleet/bots/probe-1/hud"]
+
+
+def test_publish_carries_a_configured_video_base_into_every_bot(tmp_path: Path) -> None:
+    """A reachable base turns the pane into a live stream."""
+    fetcher = RecordingFetcher(
+        {
+            "http://fleet/bots": LIVE_BOT_ROSTER_TEXT,
+            "http://fleet/bots/probe-1/hud": HUD_PRESENT_TEXT,
+        }
+    )
+    fleet = publish(
+        FleetClient(fetcher, "http://fleet"),
+        FixedClock(FIXED_NOW),
+        CollectingWriter(),
+        tmp_path / "fleet.json",
+        "https://fleet.example",
+    )
+
+    assert fleet["bots"][0]["view"] == {
+        "kind": "stream",
+        "url": "https://fleet.example/bots/probe-1/video",
+    }
+
+
+def test_the_real_env_hook_reads_a_set_variable(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A configured root is returned verbatim."""
+    hooks.reset_hooks()
+    monkeypatch.setenv("TANKPIT_VIDEO_BASE_PROBE", "https://fleet.example")
+    assert hooks.get_env("TANKPIT_VIDEO_BASE_PROBE") == "https://fleet.example"
+
+
+def test_the_real_env_hook_treats_unset_as_absent(monkeypatch: pytest.MonkeyPatch) -> None:
+    """An unset variable publishes no stream."""
+    hooks.reset_hooks()
+    monkeypatch.delenv("TANKPIT_VIDEO_BASE_PROBE", raising=False)
+    assert hooks.get_env("TANKPIT_VIDEO_BASE_PROBE") is None
+
+
+def test_the_real_env_hook_treats_empty_as_absent(monkeypatch: pytest.MonkeyPatch) -> None:
+    """An exported-but-blank variable must not root a URL at nothing.
+
+    ``TANKPIT_VIDEO_BASE=`` is how a shell leaves a variable when the
+    operator meant to unset it; treating it as configured would publish
+    ``/bots/probe-1/video`` with no host.
+    """
+    hooks.reset_hooks()
+    monkeypatch.setenv("TANKPIT_VIDEO_BASE_PROBE", "")
+    assert hooks.get_env("TANKPIT_VIDEO_BASE_PROBE") is None
+
+
+def test_main_publishes_streams_when_a_video_base_is_configured(tmp_path: Path) -> None:
+    """The entry point threads the env through to the view pane."""
+    printed: list[str] = []
+    writer = CollectingWriter()
+    hooks.make_fetcher = lambda: RecordingFetcher(
+        {
+            "http://fleet/bots": LIVE_BOT_ROSTER_TEXT,
+            "http://fleet/bots/probe-1/hud": HUD_PRESENT_TEXT,
+        }
+    )
+    hooks.make_clock = lambda: FixedClock(FIXED_NOW)
+    hooks.make_writer = lambda: writer
+    hooks.print_message = printed.append
+    hooks.get_env = lambda name: "https://fleet.example" if name == cli.VIDEO_BASE_ENV else None
+    try:
+        cli.main(tmp_path / "fleet.json", "http://fleet")
+    finally:
+        hooks.reset_hooks()
+
+    assert printed == [f"Wrote {tmp_path / 'fleet.json'} at {FIXED_NOW}: 1 live of 1 bot(s), 1 with video"]
 
 
 def test_the_file_writer_creates_missing_parents(tmp_path: Path) -> None:
@@ -241,7 +340,7 @@ def test_main_wires_the_hooks_and_writes_the_document(tmp_path: Path) -> None:
     finally:
         hooks.reset_hooks()
     assert code == 0
-    assert printed == [f"Wrote {tmp_path / 'fleet.json'} at {FIXED_NOW}: 0 live of 1 bot(s)"]
+    assert printed == [f"Wrote {tmp_path / 'fleet.json'} at {FIXED_NOW}: 0 live of 1 bot(s), 0 with video"]
 
 
 def test_main_counts_live_bots(tmp_path: Path) -> None:
@@ -259,12 +358,13 @@ def test_main_counts_live_bots(tmp_path: Path) -> None:
         cli.main(tmp_path / "fleet.json", "http://fleet")
     finally:
         hooks.reset_hooks()
-    assert printed == [f"Wrote {tmp_path / 'fleet.json'} at {FIXED_NOW}: 1 live of 1 bot(s)"]
+    assert printed == [f"Wrote {tmp_path / 'fleet.json'} at {FIXED_NOW}: 1 live of 1 bot(s), 0 with video"]
 
 
 def test_reset_hooks_restores_the_real_implementations() -> None:
     hooks.reset_hooks()
     assert hooks.print_message is hooks._real_print
+    assert hooks.get_env is hooks._real_get_env
     assert hooks.make_fetcher is hooks._real_make_fetcher
     assert hooks.make_clock is hooks._real_make_clock
     assert hooks.make_writer is hooks._real_make_writer

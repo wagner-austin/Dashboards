@@ -4,7 +4,11 @@ This page renders one file and nothing else. `tankpit/` writes that file;
 the page never talks to the fleet, never proxies, and never reaches the
 machine the bots run on.
 
-**Schema version 2.** Every field is now decoded from a live fleet
+**Schema version 3.** Version 3 admits `view.kind == "stream"`; a
+version 2 page requires `none` and refuses anything else, so a document
+carrying a stream is not a version 2 document.
+
+Every field is decoded from a live fleet
 manager response. Version 1 was hand-authored ahead of the publisher, on
 the theory that the page was the hard thing to agree on and a schema
 would fall out of it. The schema that fell out disagreed with the running
@@ -86,7 +90,7 @@ not an elapsed time. Elapsed is computed by the page from `started_ms`.
 | `started_ms` | int | Wall-clock spawn. Elapsed is computed from this. |
 | `kills_bound` / `seconds_bound` | int | Limits. `0` = unbounded. |
 | `hud` | object | **Required.** Two states, below. |
-| `view` | object | **Required.** `{"kind": "none"}` — see Frames. |
+| `view` | object | **Required.** `{"kind": "none"}` or `{"kind": "stream", "url": …}` — see Frames. |
 
 ## `hud` — the decoded state, not a screenshot
 
@@ -145,28 +149,40 @@ doctrine change is **stop + respawn**, not a live toggle. The page must
 present it that way — a control that silently restarts a bot while
 looking like a setting is a lie about what happened.
 
-## Frames — why `view.kind` is always `none`
+## Frames — `none` and `stream`
 
-There is no game view, and this is a fact about the fleet rather than a
-gap in the publisher.
+Fleet children now serve their own video. They are spawned onto the
+**service** entry rather than `bot/entry.py`, so `/video` and `/frame`
+exist per child off the frame bus that was already there, and the fleet
+manager relays one at `GET /bots/{instance}/video`.
 
-`GET /video` (MJPEG) and `GET /frame` are wired only in
-`service/service_main.py`, the **standalone single-bot** service, which
-builds the `FrameBus` and starts `browser/live_view.py`. Fleet children
-are spawned through `_CHILD_BOOTSTRAP` onto `bot/entry.py`, which starts
-no HTTP server at all — so there is no per-bot endpoint to address, no
-port allocated, and no port field in `FleetBotDict`. Nothing per-tick is
-written to the shared `runs` mount either; the only images there are
-sporadic diagnostic combat screenshots behind a debug flag.
+The URL this schema publishes is always the **manager's relay**, never a
+child. Children bind loopback inside the manager's container and only
+`27300` is published; exposing a port per bot would put the fleet's
+internal surface on the network to show a picture.
 
-Capture itself does not need a visible window — `live_view.py` composites
-the game's stacked canvases in-page and calls `toDataURL`, which works
-headless. The missing piece is purely that fleet children serve no HTTP.
+`multipart/x-mixed-replace` renders natively in an `<img>`, so there is
+no player and no polling. The bytes are the game's own composited
+canvases — which is what makes this 1:1 rather than a redrawing that can
+drift. Capture does not need a visible window: `live_view.py` composites
+in-page and calls `toDataURL`, so a headless containerized bot streams
+exactly what a headed one does.
 
-Giving them one is a change in the bot repo, not here. When it lands, the
-publisher gains a `kind: "stream"` producer and the page gains the
-matching branch **in the same change**, so that neither side carries a
-branch the other cannot feed.
+### Why `none` is still the normal state of the published file
+
+**This page is served over HTTPS, and a browser will not load an
+`http://127.0.0.1` stream into an HTTPS page.** Mixed content is blocked
+outright. So a loopback URL baked into the document austinwagner.org
+serves would be a permanently broken image for every visitor.
+
+The publisher therefore emits a stream **only** when told where the
+viewer can reach the manager, via `TANKPIT_VIDEO_BASE`. There is no
+default and the manager's own address is not used as one — guessing it
+is precisely the mistake that would put the broken image on the site.
+
+Publishing video publicly needs an HTTPS route to the fleet manager,
+which is an exposure decision, not a code change. Until one exists, the
+public file says `none` and says it honestly.
 
 ## Regenerating
 
@@ -177,3 +193,13 @@ poetry run python -m tankpit.cli
 Reads `http://127.0.0.1:27300` and rewrites `fleet.json`. Fails loudly if
 the manager is down or answers something other than this contract: a
 stale document that still looks current is worse than a failed run.
+
+To publish streams as well, name a root the viewer's browser can reach:
+
+```
+TANKPIT_VIDEO_BASE=http://127.0.0.1:27300 poetry run python -m tankpit.cli
+```
+
+That value is right for viewing locally over HTTP and wrong for the
+public HTTPS site, which is why it is a deliberate argument rather than a
+default.

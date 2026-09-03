@@ -25,15 +25,22 @@ from .models import (
     PublishedFleet,
     PublishedHudAbsent,
     PublishedHudPresent,
-    PublishedView,
+    PublishedViewAbsent,
+    PublishedViewStream,
 )
 
-# Contract version the page checks before rendering. Bumped to 2 when the
-# publisher replaced the hand-authored sample: the HUD frame moved under
+# Contract version the page checks before rendering.
+#
+# 2 replaced the hand-authored sample: the HUD frame moved under
 # ``hud.frame``, ``manager_boot_id`` became the manager's own ``boot``
 # string, and the invented per-bot fields that no endpoint served were
 # dropped rather than guessed.
-SCHEMA_VERSION = 2
+#
+# 3 admits ``view.kind == "stream"``. A version 2 page requires ``none``
+# and refuses anything else, so a document carrying a stream is not a
+# version 2 document -- the bump is what stops an older page rendering a
+# field it was written to reject.
+SCHEMA_VERSION = 3
 
 # Why the page shows no control surface. The manager's mutating routes
 # are bound to loopback and deliberately not exposed.
@@ -91,25 +98,40 @@ class FileDocumentWriter:
         path.write_text(text, encoding="utf-8")
 
 
-def absent_view() -> PublishedView:
-    """Build the game-view pane for a bot with no frame source.
+def build_view(video_base: str | None, instance: str) -> PublishedViewAbsent | PublishedViewStream:
+    """Build the game-view pane for one bot.
 
-    Every bot gets this today. Fleet children run the bot entry point,
-    which serves no HTTP, so there is no ``/video`` or ``/frame`` to
-    address and nothing per-tick on the shared ``runs`` mount either.
+    A stream is published only when the caller names a base the VIEWER's
+    browser can reach. There is no default, and the fleet manager's own
+    loopback address is not used as one: the public site is HTTPS, and a
+    browser refuses to load an ``http://127.0.0.1`` stream into an HTTPS
+    page, so guessing it would put a permanently broken image on the
+    site. Absent is the honest answer when nobody has said where the
+    stream lives.
+
+    Args:
+        video_base: Root the viewer can reach the fleet manager at, or
+            ``None`` when no reachable route exists.
+        instance: Instance whose relay is being addressed.
 
     Returns:
-        The absent view pane.
+        The stream pane when a base is configured, else the absent pane.
     """
-    return PublishedView(kind="none")
+    if video_base is None:
+        return PublishedViewAbsent(kind="none")
+    return PublishedViewStream(
+        kind="stream",
+        url=f"{video_base.rstrip('/')}/bots/{instance}/video",
+    )
 
 
-def build_published_bot(bot: FleetBot, hud: BotHud | None) -> PublishedBot:
-    """Combine a roster row with its HUD frame.
+def build_published_bot(bot: FleetBot, hud: BotHud | None, video_base: str | None) -> PublishedBot:
+    """Combine a roster row with its HUD frame and view pane.
 
     Args:
         bot: One decoded row of ``GET /bots``.
         hud: That bot's decoded HUD frame, or ``None`` when it has none.
+        video_base: Root the viewer can reach the relay at, or ``None``.
 
     Returns:
         The bot as the dashboard consumes it.
@@ -132,7 +154,7 @@ def build_published_bot(bot: FleetBot, hud: BotHud | None) -> PublishedBot:
         seconds_bound=bot["seconds"],
         started_ms=bot["started_ms"],
         hud=card,
-        view=absent_view(),
+        view=build_view(video_base, bot["instance"]),
     )
 
 
@@ -140,6 +162,7 @@ def build_published_fleet(
     roster: FleetRoster,
     huds: dict[str, BotHud | None],
     generated_at: str,
+    video_base: str | None,
 ) -> PublishedFleet:
     """Assemble the whole document.
 
@@ -148,6 +171,8 @@ def build_published_fleet(
         huds: Decoded HUD frame per instance name; ``None`` where the bot
             has written none.
         generated_at: UTC ISO-8601 timestamp for this publish.
+        video_base: Root the viewer can reach the relay at, or ``None``
+            when no reachable route exists.
 
     Returns:
         The document to write.
@@ -163,7 +188,7 @@ def build_published_fleet(
         boot=roster["boot"],
         draining=roster["draining"],
         control=PublishedControl(enabled=False, reason=CONTROL_DISABLED_REASON),
-        bots=[build_published_bot(bot, huds[bot["instance"]]) for bot in roster["bots"]],
+        bots=[build_published_bot(bot, huds[bot["instance"]], video_base) for bot in roster["bots"]],
     )
 
 
@@ -179,7 +204,13 @@ def encode_published_fleet(fleet: PublishedFleet) -> str:
     return json.dumps(fleet, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
 
 
-def publish(client: FleetClient, clock: Clock, writer: DocumentWriter, path: Path) -> PublishedFleet:
+def publish(
+    client: FleetClient,
+    clock: Clock,
+    writer: DocumentWriter,
+    path: Path,
+    video_base: str | None,
+) -> PublishedFleet:
     """Read the fleet and write the dashboard document.
 
     Args:
@@ -187,6 +218,8 @@ def publish(client: FleetClient, clock: Clock, writer: DocumentWriter, path: Pat
         clock: Supplies the publish timestamp.
         writer: Writes the finished document.
         path: Where to write ``fleet.json``.
+        video_base: Root the viewer can reach the relay at, or ``None``
+            when no reachable route exists.
 
     Returns:
         The document that was written.
@@ -199,6 +232,6 @@ def publish(client: FleetClient, clock: Clock, writer: DocumentWriter, path: Pat
     huds: dict[str, BotHud | None] = {
         bot["instance"]: client.read_hud(bot["instance"]) for bot in roster["bots"]
     }
-    fleet = build_published_fleet(roster, huds, clock.utc_now_iso())
+    fleet = build_published_fleet(roster, huds, clock.utc_now_iso(), video_base)
     writer.write_text(path, encode_published_fleet(fleet))
     return fleet

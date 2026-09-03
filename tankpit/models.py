@@ -398,22 +398,41 @@ def decode_hud(payload: object) -> BotHud | None:
     )
 
 
-class PublishedView(TypedDict):
-    """The game-view pane for one bot, as published.
+class PublishedViewAbsent(TypedDict):
+    """The game-view pane for a bot whose stream cannot be reached.
 
-    ``kind`` is ``none`` for every bot today and that is a fact about the
-    fleet, not a placeholder: ``/video`` and ``/frame`` are built only in
-    the standalone single-bot service, while fleet children run the bot
-    entry point and serve no HTTP at all. There is therefore no frame to
-    address, and nothing per-tick is written to the shared ``runs`` mount
-    either. When a fleet child gains that surface, the producing function
-    lands here beside :func:`absent_view` with its own tests.
+    Emitted whenever no reachable video base is configured. That is the
+    ordinary case for the PUBLIC file: austinwagner.org is served over
+    HTTPS, and a browser will not load an ``http://127.0.0.1`` stream
+    into an HTTPS page at any cost -- mixed content is blocked outright.
+    Baking a loopback URL into the published document would therefore
+    put a permanently broken image on the site, which is worse than
+    saying plainly that there is no view.
 
     Attributes:
-        kind: Always ``none`` while no fleet child publishes frames.
+        kind: Always ``none``.
     """
 
     kind: Literal["none"]
+
+
+class PublishedViewStream(TypedDict):
+    """A live MJPEG stream the viewer's browser can reach.
+
+    The URL addresses the fleet manager's relay, never a child directly:
+    children bind loopback inside the manager's container and only one
+    port is published. ``multipart/x-mixed-replace`` renders natively in
+    an ``<img>``, but it holds a connection per viewer against the
+    machine running the bots, so this is only appropriate where that
+    machine is meant to be reachable.
+
+    Attributes:
+        kind: Always ``stream``.
+        url: Absolute URL of the relay for one instance.
+    """
+
+    kind: Literal["stream"]
+    url: str
 
 
 class PublishedHudAbsent(TypedDict):
@@ -472,7 +491,7 @@ class PublishedBot(TypedDict):
     seconds_bound: int
     started_ms: int
     hud: PublishedHudAbsent | PublishedHudPresent
-    view: PublishedView
+    view: PublishedViewAbsent | PublishedViewStream
 
 
 class PublishedControl(TypedDict):

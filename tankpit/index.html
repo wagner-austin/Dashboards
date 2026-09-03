@@ -178,7 +178,7 @@ document.head.appendChild(
 // Reads one published file. No proxying, no polling of the fleet: the
 // contract is SCHEMA.md, and every field now comes from a decoded fleet
 // manager response rather than from a hand-written sample.
-const SUPPORTED_SCHEMA = 2;
+const SUPPORTED_SCHEMA = 3;
 const STALE_AFTER_MS = 90_000;
 const REFRESH_MS = 5_000;
 const DOCTRINES = new Set(["skirmish", "swarm", "duelist", "passive"]);
@@ -191,24 +191,31 @@ function esc(t) {
 /**
  * The game view above each HUD.
  *
- * `kind` is `none` for every bot, and that is a fact about the fleet
- * rather than a gap in this page. `/video` (MJPEG) and `/frame` are
- * built only in the standalone single-bot service; fleet children run
- * the bot entry point, which starts no HTTP server at all, so there is
- * no per-bot endpoint to address. Nothing per-tick is written to the
- * shared `runs` mount either — only sporadic diagnostic screenshots
- * behind a debug flag.
+ * `stream` is an MJPEG URL addressing the fleet manager's relay.
+ * `multipart/x-mixed-replace` renders natively in an <img>, so no
+ * player, no polling and no canvas work is needed — the bytes are the
+ * game's own composited canvases, which is what makes this 1:1 rather
+ * than a redrawing that can drift.
  *
- * This page therefore renders the one state the publisher can produce.
- * The rendering for a live stream lands in the same change that gives a
- * fleet child something to stream, so that neither side carries a branch
- * the other cannot feed.
+ * `none` means the publisher was given no root the viewer could reach,
+ * and it says so plainly instead of emitting a URL that cannot load.
+ * That is the normal state of the PUBLIC file: this page is served over
+ * HTTPS, and a browser will not load an `http://127.0.0.1` stream into
+ * an HTTPS page at any cost.
+ *
+ * A stream that fails is reported, not hidden. The connection is held
+ * per viewer against the machine running the bots, so "the stream
+ * stopped" and "there was never a stream" are different facts and the
+ * reader is told which one they are looking at.
  */
 function viewMarkup(b) {
-  if (b.view.kind !== "none") {
-    return `<div class="view none">unexpected view kind ${esc(b.view.kind)}</div>`;
+  if (b.view.kind === "stream") {
+    return `<img class="view" src="${esc(b.view.url)}"
+       alt="Live game view from ${esc(b.instance)}"
+       onerror="this.replaceWith(Object.assign(document.createElement('div'),
+                {className:'view none', textContent:'stream unreachable'}))">`;
   }
-  return `<div class="view none">no game view — fleet bots publish no frames</div>`;
+  return `<div class="view none">no game view published</div>`;
 }
 
 /**
@@ -354,8 +361,13 @@ const REQUIRED = [
   ["bots", (d) => Array.isArray(d.bots)],
   ["bots[].alive", (d) => Array.isArray(d.bots) && d.bots.every((b) => typeof b.alive === "boolean")],
   ["bots[].room", (d) => Array.isArray(d.bots) && d.bots.every((b) => typeof b.room === "string")],
-  ["bots[].view.kind", (d) => Array.isArray(d.bots) && d.bots.every(
-      (b) => b.view !== undefined && b.view.kind === "none")],
+  // A stream without a URL is rejected here rather than rendered as a
+  // broken image: the publisher declaring a stream and not saying where
+  // is a publisher bug, and it should read as one.
+  ["bots[].view", (d) => Array.isArray(d.bots) && d.bots.every(
+      (b) => b.view !== undefined
+        && (b.view.kind === "none"
+            || (b.view.kind === "stream" && typeof b.view.url === "string")))],
   // The HUD card is a two-state union and both states are checked, so a
   // publisher that sent `available: true` with no frame is caught here
   // rather than throwing partway through painting a card.
