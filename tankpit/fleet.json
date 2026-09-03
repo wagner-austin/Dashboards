@@ -1,5 +1,5 @@
 {
-  "boot": "1788410106441",
+  "boot": "1788418642744",
   "bots": [
     {
       "account": "Artax",
@@ -8,19 +8,19 @@
       "hud": {
         "available": true,
         "frame": {
-          "act_text": "scope",
+          "act_text": "none",
           "dealt": 0,
-          "do_text": "scope_shift → (163,151)",
+          "do_text": "hold → (0,0)",
           "fuel_color": "rgb(200, 0, 200)",
           "fuel_pct": 75,
           "fuel_text": "751/1000",
           "hits": 0,
           "kills": 0,
           "misses": 0,
-          "mode_band": "rgba(57, 255, 20, 0.20)",
-          "mode_color": "rgb(57, 255, 20)",
-          "mode_text": "COLLECT · APPROACH",
-          "pos_text": "153,143",
+          "mode_band": "rgba(200, 0, 200, 0.20)",
+          "mode_color": "rgb(200, 0, 200)",
+          "mode_text": "UNSET",
+          "pos_text": "131,126",
           "rejects": 0,
           "s0": 8,
           "s0c": "rgb(255, 20, 147)",
@@ -37,16 +37,16 @@
           "state_text": "IDLE",
           "taken": 0,
           "tgt_text": "—",
-          "why_text": "COLLECT: harvest_frame_shift(direction=3)"
+          "why_text": "HUNT: manual_hold"
         }
       },
-      "instance": "tick-probe",
+      "instance": "video-probe",
       "kills_bound": 0,
       "returncode": 0,
       "role": "fighter",
       "room": "Practice",
-      "seconds_bound": 240,
-      "started_ms": 1788410123551,
+      "seconds_bound": 300,
+      "started_ms": 1788418660734,
       "troop": "orange",
       "view": {
         "kind": "none"
@@ -58,6 +58,6 @@
     "reason": "the fleet manager is loopback-only; the public page is read-only"
   },
   "draining": false,
-  "generated_at": "2026-09-03T06:46:15Z",
+  "generated_at": "2026-09-03T07:01:50Z",
   "schema_version": 3
 }
