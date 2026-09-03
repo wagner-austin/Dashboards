@@ -244,6 +244,13 @@ const API = "https://tankpit.austinwagner.org";
 
 const POLL_MS = 2000;
 
+// A fresh bot answers 503 with Retry-After: 3 until its browser is up,
+// which takes on the order of fifteen seconds. Ten tries at three
+// seconds covers that with room to spare and stops well short of
+// hammering a slot whose bot has ended.
+const VIDEO_RETRY_MS = 3000;
+const VIDEO_RETRIES = 10;
+
 const led = document.getElementById("led");
 const stateLabel = document.getElementById("state");
 const startButton = document.getElementById("start");
@@ -279,8 +286,30 @@ function tile(bot) {
   // The MJPEG relay holds this connection open for as long as the tile
   // lives. alt text carries the slot so a stalled stream still says which
   // bot is missing rather than showing an anonymous broken frame.
-  picture.src = `${API}/demo/video/${encodeURIComponent(bot.slot)}`;
+  const source = `${API}/demo/video/${encodeURIComponent(bot.slot)}`;
   picture.alt = `Live view of ${bot.slot}`;
+
+  // A bot is listed the moment it is forked; its video port opens a
+  // few seconds later, once the browser it drives is up. So the FIRST
+  // request for a fresh tile is expected to be refused, and an <img>
+  // does not retry on its own — without this the tile a visitor just
+  // created would stay empty until they reloaded the page. The cache
+  // buster is required: a failed image is remembered by URL, so
+  // re-assigning the same src is a no-op.
+  let attempt = 0;
+  const load = () => {
+    attempt += 1;
+    picture.src = `${source}?a=${attempt}`;
+  };
+  picture.addEventListener("error", () => {
+    // Bounded: a bot that never serves is a bot that has ended, and
+    // the next poll drops its tile. Retrying forever would hold a
+    // request loop against a slot nobody is in.
+    if (attempt < VIDEO_RETRIES) {
+      setTimeout(load, VIDEO_RETRY_MS);
+    }
+  });
+  load();
 
   const caption = document.createElement("div");
   caption.className = "cap";
