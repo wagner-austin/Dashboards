@@ -287,7 +287,7 @@ function elapsed(seconds) {
   return `${minutes}:${String(seconds % 60).padStart(2, "0")}`;
 }
 
-/** Build one tile for a slot. Called only when the slot list changes. */
+/** Build one tile for a slot. Called once per slot, when it appears. */
 function tile(bot) {
   const item = document.createElement("li");
   item.className = "panel tile";
@@ -317,14 +317,38 @@ function tile(bot) {
     state: "connecting",
     uptime: bot.uptime_seconds,
     stat,
+    item,
+    picture,
+    // Set by close(). Every path that could restart this stream checks
+    // it, so a tile removed while a retry was pending cannot reopen a
+    // connection to a slot that no longer exists.
+    dead: false,
+    timer: 0,
     // The cache buster is not optional: a browser remembers a failed or
     // completed image by URL, so re-assigning the same src is a no-op
     // and the tile would stay black forever.
     reload() {
+      if (this.dead) {
+        return;
+      }
       this.attempt = (this.attempt || 0) + 1;
       this.state = this.attempt === 1 ? "connecting" : "reconnecting";
       picture.src = `${source}?a=${this.attempt}`;
       render(this);
+    },
+    // Tearing a tile down is not just dropping the element. The <img>
+    // holds an MJPEG connection that the manager relays from the bot's
+    // own service, so a tile discarded without aborting leaves the
+    // relay holding an upstream against a child for as long as the
+    // browser feels like keeping the request alive. Removing the src
+    // attribute runs the spec's "update the image data" step, which
+    // aborts the in-flight fetch; clearing the timer stops the retry
+    // that would otherwise open a fresh one.
+    close() {
+      this.dead = true;
+      clearTimeout(this.timer);
+      picture.removeAttribute("src");
+      item.remove();
     },
   };
 
@@ -339,10 +363,13 @@ function tile(bot) {
   // from the fleet: when the slot stops being listed, the tile is
   // removed and its retries stop with it.
   picture.addEventListener("error", () => {
+    if (feed.dead) {
+      return;
+    }
     feed.reconnects += 1;
     feed.state = "reconnecting";
     render(feed);
-    setTimeout(() => {
+    feed.timer = setTimeout(() => {
       if (streams.get(feed.slot) === feed) {
         feed.reload();
       }
@@ -353,7 +380,15 @@ function tile(bot) {
   feed.reload();
 
   item.append(picture, caption);
-  return item;
+  return feed;
+}
+
+/** Discard every live tile and release the connection each one holds. */
+function closeAllStreams() {
+  for (const feed of streams.values()) {
+    feed.close();
+  }
+  streams.clear();
 }
 
 /** Write one tile's telemetry into its caption. */
@@ -365,25 +400,39 @@ function render(feed) {
       : `${age} · ${feed.state}`;
 }
 
-/** Draw the fleet, reusing the tiles whose slots are unchanged. */
+/** Draw the fleet, reusing the tiles whose slots are unchanged.
+ *
+ * Reconciled PER SLOT, not per slot-list. The previous version compared
+ * the joined slot names and rebuilt every tile when they differed, so
+ * starting a second bot tore down the first one's <img> and the visitor
+ * watched a running game go black to make room for a new tile beside
+ * it. A tile now survives for exactly as long as its slot is listed.
+ */
 function draw(fleet) {
   runningOut.textContent = String(fleet.running);
   capacityOut.textContent = String(fleet.capacity);
   idle.hidden = fleet.bots.length > 0;
 
   const slots = fleet.bots.map((bot) => bot.slot);
-  if (slots.join() !== drawn.join()) {
-    streams.clear();
-    views.replaceChildren(...fleet.bots.map(tile));
-    drawn = slots;
-  }
-  for (const bot of fleet.bots) {
-    const feed = streams.get(bot.slot);
-    if (feed !== undefined) {
-      feed.uptime = bot.uptime_seconds;
-      render(feed);
+  for (const slot of drawn) {
+    if (!slots.includes(slot)) {
+      const gone = streams.get(slot);
+      if (gone !== undefined) {
+        gone.close();
+        streams.delete(slot);
+      }
     }
   }
+  for (const bot of fleet.bots) {
+    let feed = streams.get(bot.slot);
+    if (feed === undefined) {
+      feed = tile(bot);
+      views.append(feed.item);
+    }
+    feed.uptime = bot.uptime_seconds;
+    render(feed);
+  }
+  drawn = slots;
 
   if (fleet.draining) {
     setState("busy", "shutting down");
@@ -404,7 +453,7 @@ function draw(fleet) {
 /** Show that the fleet is unreachable, without guessing why. */
 function offline(reason) {
   setState("", "offline");
-  streams.clear();
+  closeAllStreams();
   startButton.disabled = true;
   runningOut.textContent = "—";
   capacityOut.textContent = "—";
@@ -446,6 +495,14 @@ document.addEventListener("visibilitychange", () => {
   }
   void poll();
 });
+
+// Leaving the page releases the relays NOW rather than whenever the
+// browser gets round to tearing the requests down. Each open tile pins
+// one upstream connection from the manager to a bot's own service for
+// as long as the request lives, so a visitor closing the tab should
+// hand those back immediately. pagehide rather than beforeunload: it
+// fires for the back/forward cache too, which beforeunload does not.
+window.addEventListener("pagehide", closeAllStreams);
 
 startButton.addEventListener("click", async () => {
   startButton.disabled = true;
