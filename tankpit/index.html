@@ -255,7 +255,11 @@ const POLL_MS = 2000;
 // seconds covers that with room to spare and stops well short of
 // hammering a slot whose bot has ended.
 const VIDEO_RETRY_MS = 3000;
-const VIDEO_RETRIES = 10;
+
+// Every live tile's stream, keyed by slot. Needed because the streams
+// have to be revived from OUTSIDE the tile: a backgrounded tab is the
+// one failure that fires no error event at all.
+const streams = new Map();
 
 const led = document.getElementById("led");
 const stateLabel = document.getElementById("state");
@@ -295,40 +299,70 @@ function tile(bot) {
   const source = `${API}/demo/video/${encodeURIComponent(bot.slot)}`;
   picture.alt = `Live view of ${bot.slot}`;
 
-  // A bot is listed the moment it is forked; its video port opens a
-  // few seconds later, once the browser it drives is up. So the FIRST
-  // request for a fresh tile is expected to be refused, and an <img>
-  // does not retry on its own — without this the tile a visitor just
-  // created would stay empty until they reloaded the page. The cache
-  // buster is required: a failed image is remembered by URL, so
-  // re-assigning the same src is a no-op.
-  let attempt = 0;
-  const load = () => {
-    attempt += 1;
-    picture.src = `${source}?a=${attempt}`;
-  };
-  picture.addEventListener("error", () => {
-    // Bounded: a bot that never serves is a bot that has ended, and
-    // the next poll drops its tile. Retrying forever would hold a
-    // request loop against a slot nobody is in.
-    if (attempt < VIDEO_RETRIES) {
-      setTimeout(load, VIDEO_RETRY_MS);
-    }
-  });
-  load();
-
   const caption = document.createElement("div");
   caption.className = "cap";
   const name = document.createElement("b");
   name.textContent = bot.slot;
-  const age = document.createElement("span");
-  age.className = "up";
-  age.dataset.slot = bot.slot;
-  age.textContent = elapsed(bot.uptime_seconds);
-  caption.append(name, age);
+  const stat = document.createElement("span");
+  stat.className = "up";
+  stat.dataset.slot = bot.slot;
+  caption.append(name, stat);
+
+  // Telemetry, because a black rectangle that explains nothing is the
+  // whole complaint this exists to answer. Every tile says what its
+  // stream is doing and how many times it has had to come back.
+  const feed = {
+    slot: bot.slot,
+    reconnects: 0,
+    state: "connecting",
+    uptime: bot.uptime_seconds,
+    stat,
+    // The cache buster is not optional: a browser remembers a failed or
+    // completed image by URL, so re-assigning the same src is a no-op
+    // and the tile would stay black forever.
+    reload() {
+      this.attempt = (this.attempt || 0) + 1;
+      this.state = this.attempt === 1 ? "connecting" : "reconnecting";
+      picture.src = `${source}?a=${this.attempt}`;
+      render(this);
+    },
+  };
+
+  picture.addEventListener("load", () => {
+    feed.state = "live";
+    render(feed);
+  });
+  // No retry cap. The old ten-try limit meant a stream that died after
+  // the cap -- a backgrounded tab, a dropped connection, a bot whose
+  // browser restarted -- stayed black until the visitor reloaded the
+  // whole page, which is exactly the reported bug. The bound now comes
+  // from the fleet: when the slot stops being listed, the tile is
+  // removed and its retries stop with it.
+  picture.addEventListener("error", () => {
+    feed.reconnects += 1;
+    feed.state = "reconnecting";
+    render(feed);
+    setTimeout(() => {
+      if (streams.get(feed.slot) === feed) {
+        feed.reload();
+      }
+    }, VIDEO_RETRY_MS);
+  });
+
+  streams.set(bot.slot, feed);
+  feed.reload();
 
   item.append(picture, caption);
   return item;
+}
+
+/** Write one tile's telemetry into its caption. */
+function render(feed) {
+  const age = elapsed(feed.uptime);
+  feed.stat.textContent =
+    feed.state === "live"
+      ? `${age}${feed.reconnects > 0 ? ` · ${feed.reconnects} reconnects` : ""}`
+      : `${age} · ${feed.state}`;
 }
 
 /** Draw the fleet, reusing the tiles whose slots are unchanged. */
@@ -339,13 +373,15 @@ function draw(fleet) {
 
   const slots = fleet.bots.map((bot) => bot.slot);
   if (slots.join() !== drawn.join()) {
+    streams.clear();
     views.replaceChildren(...fleet.bots.map(tile));
     drawn = slots;
   }
   for (const bot of fleet.bots) {
-    const age = views.querySelector(`.up[data-slot="${CSS.escape(bot.slot)}"]`);
-    if (age !== null) {
-      age.textContent = elapsed(bot.uptime_seconds);
+    const feed = streams.get(bot.slot);
+    if (feed !== undefined) {
+      feed.uptime = bot.uptime_seconds;
+      render(feed);
     }
   }
 
@@ -368,6 +404,7 @@ function draw(fleet) {
 /** Show that the fleet is unreachable, without guessing why. */
 function offline(reason) {
   setState("", "offline");
+  streams.clear();
   startButton.disabled = true;
   runningOut.textContent = "—";
   capacityOut.textContent = "—";
@@ -392,6 +429,23 @@ async function poll() {
     offline(error.message);
   }
 }
+
+// THE BLACKOUT FIX. Backgrounding a tab lets the browser tear the MJPEG
+// connection down, and it does so WITHOUT firing an error event on the
+// image -- the element simply stops receiving parts and keeps showing
+// nothing. There is no event that says "your stream died quietly", so
+// the only reliable trigger is the visitor coming back: on return to a
+// visible page every live stream is reopened. This is what made a tile
+// black until a manual refresh.
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState !== "visible") {
+    return;
+  }
+  for (const feed of streams.values()) {
+    feed.reload();
+  }
+  void poll();
+});
 
 startButton.addEventListener("click", async () => {
   startButton.disabled = true;
