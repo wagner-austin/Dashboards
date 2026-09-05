@@ -158,16 +158,16 @@
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
   .tile { padding: 0; }
-  /* The capture screen is 704x544 — the bot's whole kiosk display,
-     recorded by ffmpeg on the machine the bot runs on. The box carries
-     the source's own ratio, and `contain` means a future change in
-     capture geometry letterboxes rather than silently cropping (the
-     4:3 + cover version of this box read as zoomed in, because it
-     was). */
+  /* The capture screen is 1280x768 — the game client at a forced
+     device scale of 2, filling its own fullscreen with working
+     margin. The box carries the source's ratio, and `contain` means
+     a future change in capture geometry letterboxes rather than
+     silently cropping (the 4:3 + cover version of this box read as
+     zoomed in, because it was). */
   .tile video {
     display: block;
     width: 100%;
-    aspect-ratio: 704 / 544;
+    aspect-ratio: 1280 / 768;
     object-fit: contain;
     background: #000;
   }
