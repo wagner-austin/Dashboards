@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TankPit Bots</title>
-<meta name="description" content="Start a bot and watch it play TankPit. The tank is driven by a reverse-engineered binary protocol; the picture is the bot's own browser, relayed live.">
+<meta name="description" content="Start a bot and watch it play TankPit. The tank is driven by a reverse-engineered binary protocol; the picture is a live video stream of the bot's own screen.">
 <style>
   /* The palette, the panel treatment and the type scale are the ones
      austinwagner.org/preview uses — one light-to-dark ground, translucent
@@ -158,16 +158,16 @@
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
   .tile { padding: 0; }
-  /* The bot casts 672x532 (the game canvas plus its HUD strip), which is
-     1.263:1 — not 4:3. The box was 4:3 with object-fit:cover, so the frame
-     was scaled up until it filled the wider box and the top and bottom were
-     cut off: the picture read as zoomed in, because it was.
-     The box now carries the source's own ratio, and `contain` means a future
-     change in cast geometry letterboxes rather than silently cropping. */
-  .tile img {
+  /* The capture screen is 704x544 — the bot's whole kiosk display,
+     recorded by ffmpeg on the machine the bot runs on. The box carries
+     the source's own ratio, and `contain` means a future change in
+     capture geometry letterboxes rather than silently cropping (the
+     4:3 + cover version of this box read as zoomed in, because it
+     was). */
+  .tile video {
     display: block;
     width: 100%;
-    aspect-ratio: 672 / 532;
+    aspect-ratio: 704 / 544;
     object-fit: contain;
     background: #000;
   }
@@ -205,8 +205,8 @@
       <h1>TankPit Bots</h1>
       <p class="role">
         Press the button and a tank joins the practice room, plays on its own,
-        and stops after fifteen minutes. What you see in each window is the
-        bot's own browser, streamed frame by frame — no replay, no recording.
+        and stops after fifteen minutes. Each window is a live video stream of
+        the bot's own screen — no replay, a few seconds behind the game.
       </p>
     </header>
 
@@ -241,6 +241,7 @@
   </div>
 </div>
 
+<script src="hls.min.js"></script>
 <script type="module">
 // The fleet manager runs on the machine the bots run on, behind a proxy that
 // publishes ONLY these three routes. Everything else it serves — accounts,
@@ -250,10 +251,10 @@ const API = "https://tankpit.austinwagner.org";
 
 const POLL_MS = 2000;
 
-// A fresh bot answers 503 with Retry-After: 3 until its browser is up,
-// which takes on the order of fifteen seconds. Ten tries at three
-// seconds covers that with room to spare and stops well short of
-// hammering a slot whose bot has ended.
+// A fresh bot's playlist answers 503 with Retry-After: 3 until its
+// browser is up and ffmpeg has cut the first segment — on the order of
+// fifteen seconds. Three-second retries cover that without hammering a
+// slot whose bot has ended.
 const VIDEO_RETRY_MS = 3000;
 
 // Every live tile's stream, keyed by slot. Needed because the streams
@@ -292,12 +293,16 @@ function tile(bot) {
   const item = document.createElement("li");
   item.className = "panel tile";
 
-  const picture = document.createElement("img");
-  // The MJPEG relay holds this connection open for as long as the tile
-  // lives. alt text carries the slot so a stalled stream still says which
-  // bot is missing rather than showing an anonymous broken frame.
-  const source = `${API}/demo/video/${encodeURIComponent(bot.slot)}`;
-  picture.alt = `Live view of ${bot.slot}`;
+  const picture = document.createElement("video");
+  // `autoplay muted playsinline` together are what let this start
+  // without a gesture: an unmuted autoplay is blocked outright, and on
+  // iOS a video without playsinline is hoisted into the fullscreen
+  // player.
+  picture.autoplay = true;
+  picture.muted = true;
+  picture.playsInline = true;
+  const source = `${API}/demo/video/${encodeURIComponent(bot.slot)}/index.m3u8`;
+  picture.setAttribute("aria-label", `Live view of ${bot.slot}`);
 
   const caption = document.createElement("div");
   caption.className = "cap";
@@ -319,62 +324,88 @@ function tile(bot) {
     stat,
     item,
     picture,
+    // The hls.js instance driving the <video>, when this browser has
+    // Media Source Extensions; null on native-HLS players (iOS
+    // Safari), which take the playlist as a plain src instead. BOTH
+    // paths are needed to cover real devices — iOS Safari has native
+    // HLS and no MSE, Chrome has MSE and no native HLS.
+    hls: null,
     // Set by close(). Every path that could restart this stream checks
     // it, so a tile removed while a retry was pending cannot reopen a
-    // connection to a slot that no longer exists.
+    // stream for a slot that no longer exists.
     dead: false,
     timer: 0,
-    // The cache buster is not optional: a browser remembers a failed or
-    // completed image by URL, so re-assigning the same src is a no-op
-    // and the tile would stay black forever.
     reload() {
       if (this.dead) {
         return;
       }
       this.attempt = (this.attempt || 0) + 1;
       this.state = this.attempt === 1 ? "connecting" : "reconnecting";
-      picture.src = `${source}?a=${this.attempt}`;
+      if (this.hls !== null) {
+        this.hls.destroy();
+        this.hls = null;
+      }
+      if (window.Hls && window.Hls.isSupported()) {
+        this.hls = new window.Hls();
+        this.hls.on(window.Hls.Events.ERROR, (event, data) => {
+          if (data.fatal) {
+            this.retry();
+          }
+        });
+        this.hls.loadSource(source);
+        this.hls.attachMedia(picture);
+      } else {
+        // Native HLS. The cache buster is not optional: a browser
+        // remembers a failed media URL, so re-assigning the same src
+        // is a no-op and the tile would stay black forever.
+        picture.src = `${source}?a=${this.attempt}`;
+      }
       render(this);
     },
-    // Tearing a tile down is not just dropping the element. The <img>
-    // holds an MJPEG connection that the manager relays from the bot's
-    // own service, so a tile discarded without aborting leaves the
-    // relay holding an upstream against a child for as long as the
-    // browser feels like keeping the request alive. Removing the src
-    // attribute runs the spec's "update the image data" step, which
-    // aborts the in-flight fetch; clearing the timer stops the retry
-    // that would otherwise open a fresh one.
+    // One scheduled comeback at a time. No retry cap: the bound comes
+    // from the fleet — when the slot stops being listed, the tile is
+    // removed and its retries stop with it.
+    retry() {
+      if (this.dead) {
+        return;
+      }
+      this.reconnects += 1;
+      this.state = "reconnecting";
+      render(this);
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        if (streams.get(this.slot) === this) {
+          this.reload();
+        }
+      }, VIDEO_RETRY_MS);
+    },
+    // Tearing a tile down is not just dropping the element: a live
+    // hls.js instance keeps fetching segments for as long as it
+    // exists, so it is destroyed first; clearing the timer stops the
+    // retry that would otherwise build a fresh one.
     close() {
       this.dead = true;
       clearTimeout(this.timer);
+      if (this.hls !== null) {
+        this.hls.destroy();
+        this.hls = null;
+      }
+      picture.pause();
       picture.removeAttribute("src");
+      picture.load();
       item.remove();
     },
   };
 
-  picture.addEventListener("load", () => {
+  picture.addEventListener("playing", () => {
     feed.state = "live";
     render(feed);
   });
-  // No retry cap. The old ten-try limit meant a stream that died after
-  // the cap -- a backgrounded tab, a dropped connection, a bot whose
-  // browser restarted -- stayed black until the visitor reloaded the
-  // whole page, which is exactly the reported bug. The bound now comes
-  // from the fleet: when the slot stops being listed, the tile is
-  // removed and its retries stop with it.
-  picture.addEventListener("error", () => {
-    if (feed.dead) {
-      return;
-    }
-    feed.reconnects += 1;
-    feed.state = "reconnecting";
-    render(feed);
-    feed.timer = setTimeout(() => {
-      if (streams.get(feed.slot) === feed) {
-        feed.reload();
-      }
-    }, VIDEO_RETRY_MS);
-  });
+  // Native-path failures (the hls.js path reports through its own
+  // ERROR event above). A live stream also has no end, so `ended`
+  // means the source dropped.
+  picture.addEventListener("error", () => feed.retry());
+  picture.addEventListener("ended", () => feed.retry());
 
   streams.set(bot.slot, feed);
   feed.reload();
@@ -479,13 +510,13 @@ async function poll() {
   }
 }
 
-// THE BLACKOUT FIX. Backgrounding a tab lets the browser tear the MJPEG
-// connection down, and it does so WITHOUT firing an error event on the
-// image -- the element simply stops receiving parts and keeps showing
-// nothing. There is no event that says "your stream died quietly", so
-// the only reliable trigger is the visitor coming back: on return to a
-// visible page every live stream is reopened. This is what made a tile
-// black until a manual refresh.
+// THE BLACKOUT FIX. Backgrounding a tab lets the browser throttle or
+// stall media pipelines without firing any error event -- the element
+// simply stops and keeps showing nothing. There is no event that says
+// "your stream died quietly", so the only reliable trigger is the
+// visitor coming back: on return to a visible page every live stream
+// is rebuilt at the live edge, which also skips the backlog the tile
+// missed while hidden.
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState !== "visible") {
     return;
@@ -496,12 +527,10 @@ document.addEventListener("visibilitychange", () => {
   void poll();
 });
 
-// Leaving the page releases the relays NOW rather than whenever the
-// browser gets round to tearing the requests down. Each open tile pins
-// one upstream connection from the manager to a bot's own service for
-// as long as the request lives, so a visitor closing the tab should
-// hand those back immediately. pagehide rather than beforeunload: it
-// fires for the back/forward cache too, which beforeunload does not.
+// Leaving the page stops the segment fetch loops NOW rather than
+// whenever the browser gets round to it. pagehide rather than
+// beforeunload: it fires for the back/forward cache too, which
+// beforeunload does not.
 window.addEventListener("pagehide", closeAllStreams);
 
 startButton.addEventListener("click", async () => {
