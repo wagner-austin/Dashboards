@@ -103,6 +103,18 @@
           "contrast": 1.4,
           "invert": true,
           "directions": ["left", "right"]
+        },
+        "hop_away": {
+          "source": "originals/lion/lion_hop_away_animation/hop_away.gif",
+          "widths": [40],
+          "contrast": 1.4,
+          "invert": true
+        },
+        "hop_toward": {
+          "source": "originals/lion/lion_hop_toward_animation/hop_toward.gif",
+          "widths": [40],
+          "contrast": 1.4,
+          "invert": true
         }
       }
     },
