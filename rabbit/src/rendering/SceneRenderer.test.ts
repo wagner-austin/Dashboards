@@ -4,7 +4,13 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { renderFrame, _test_hooks, type RenderState } from "./SceneRenderer.js";
+import {
+  renderFrame,
+  applyLayerColors,
+  _test_hooks,
+  type RenderState,
+  type ScreenLayers,
+} from "./SceneRenderer.js";
 
 const { drawBunny } = _test_hooks;
 import { createInitialBunnyState, type BunnyFrames, type BunnyState, type AnimationState } from "../entities/Bunny.js";
@@ -44,193 +50,221 @@ function createTestSceneState(): SceneState {
 }
 
 describe("renderFrame", () => {
-  let screen: HTMLPreElement;
+  let layers: ScreenLayers;
   const projectionConfig = createProjectionConfig();
 
   beforeEach(() => {
-    screen = document.createElement("pre");
-    document.body.appendChild(screen);
+    const world = document.createElement("pre");
+    const actor = document.createElement("pre");
+    const foreground = document.createElement("pre");
+    document.body.append(world, actor, foreground);
+    layers = { world, actor, foreground };
   });
 
   afterEach(() => {
-    document.body.removeChild(screen);
+    document.body.replaceChildren();
   });
 
-  it("renders frame and returns updated state", () => {
-    const bunnyState = createInitialBunnyState();
-    const sceneState = createTestSceneState();
-
-    const renderState: RenderState = {
+  function createRenderState(
+    bunnyState: BunnyState,
+    sceneState: SceneState,
+    lastTime = 0
+  ): RenderState {
+    return {
       bunnyState,
       sceneState,
       viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-      lastTime: 0,
+      lastTime,
       projectionConfig,
     };
+  }
 
-    const bunnyFrames = createTestBunnyFrames();
+  it("renders frame and returns updated state", () => {
+    const renderState = createRenderState(createInitialBunnyState(), createTestSceneState());
 
-    const result = renderFrame(
-      renderState,
-      bunnyFrames,
-      screen,
-      1000
-    );
+    const result = renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
 
     expect(result.lastTime).toBe(1000);
-    expect(screen.textContent).not.toBe("");
-    expect(screen.textContent.length).toBeGreaterThan(0);
+    expect(layers.world.textContent).not.toBe("");
+    expect(layers.world.textContent.length).toBeGreaterThan(0);
+  });
+
+  it("writes every layer, not just the world", () => {
+    const renderState = createRenderState(createInitialBunnyState(), createTestSceneState());
+
+    renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
+
+    expect(layers.world.textContent.length).toBeGreaterThan(0);
+    expect(layers.actor.textContent.length).toBeGreaterThan(0);
+    expect(layers.foreground.textContent.length).toBeGreaterThan(0);
+  });
+
+  it("gives all three layers identical grid dimensions", () => {
+    // The layers are stacked with no positioning arithmetic, so they only stay
+    // aligned while every one of them is the full viewport grid. A layer that
+    // trimmed its trailing spaces would drift out of registration.
+    const renderState = createRenderState(createInitialBunnyState(), createTestSceneState());
+
+    renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
+
+    const rows = [layers.world, layers.actor, layers.foreground].map((el) =>
+      el.textContent.split("\n")
+    );
+
+    for (const grid of rows) {
+      expect(grid).toHaveLength(24);
+      for (const row of grid) {
+        expect(row).toHaveLength(80);
+      }
+    }
+  });
+
+  it("draws the bunny onto the actor layer and nowhere else", () => {
+    const renderState = createRenderState(
+      createTestBunnyState({ kind: "idle", frameIdx: 0 }),
+      createTestSceneState()
+    );
+
+    renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
+
+    expect(layers.actor.textContent).toContain("idle_l_0");
+    expect(layers.world.textContent).not.toContain("idle_l_0");
+    expect(layers.foreground.textContent).not.toContain("idle_l_0");
+  });
+
+  it("leaves the foreground layer empty when no foreground layers exist", () => {
+    // Occlusion depends on unwritten cells staying spaces: a foreground layer
+    // that painted anything opaque would hide the actor everywhere.
+    const renderState = createRenderState(createInitialBunnyState(), createTestSceneState());
+
+    renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
+
+    expect(layers.foreground.textContent.trim()).toBe("");
+  });
+
+  it("draws the ground onto the world layer, not the actor layer", () => {
+    const renderState = createRenderState(createInitialBunnyState(), createTestSceneState());
+
+    renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
+
+    // The actor layer holds the bunny frame and nothing else, so removing the
+    // frame's own glyphs must leave it blank.
+    const actorWithoutBunny = layers.actor.textContent.replace(/idle_l_0/g, "");
+    expect(actorWithoutBunny.trim()).toBe("");
+    expect(layers.world.textContent.trim()).not.toBe("");
   });
 
   it("leaves the camera alone while the bunny walks right", () => {
     // Panning belongs to the input layer's movement module, which is the
     // camera's only writer. Rendering used to pan it too and the speeds added.
-    const bunnyState = createTestBunnyState({ kind: "walk", frameIdx: 0 }, true);
     const sceneState = createTestSceneState();
     const initialCameraX = sceneState.camera.x;
-
-    const renderState: RenderState = {
-      bunnyState,
+    const renderState = createRenderState(
+      createTestBunnyState({ kind: "walk", frameIdx: 0 }, true),
       sceneState,
-      viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-      lastTime: 1000,
-      projectionConfig,
-    };
+      1000
+    );
 
-    renderFrame(renderState, createTestBunnyFrames(), screen, 2000);
+    renderFrame(renderState, createTestBunnyFrames(), layers, 2000);
 
     expect(sceneState.camera.x).toBe(initialCameraX);
   });
 
   it("leaves the camera alone while the bunny walks left", () => {
-    const bunnyState = createTestBunnyState({ kind: "walk", frameIdx: 0 }, false);
     const sceneState = createTestSceneState();
     const initialCameraX = sceneState.camera.x;
-
-    const renderState: RenderState = {
-      bunnyState,
+    const renderState = createRenderState(
+      createTestBunnyState({ kind: "walk", frameIdx: 0 }, false),
       sceneState,
-      viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-      lastTime: 1000,
-      projectionConfig,
-    };
+      1000
+    );
 
-    renderFrame(renderState, createTestBunnyFrames(), screen, 2000);
+    renderFrame(renderState, createTestBunnyFrames(), layers, 2000);
 
     expect(sceneState.camera.x).toBe(initialCameraX);
   });
 
   it("handles first frame with zero lastTime", () => {
-    const bunnyState = createInitialBunnyState();
-    const sceneState = createTestSceneState();
+    const renderState = createRenderState(createInitialBunnyState(), createTestSceneState());
 
-    const renderState: RenderState = {
-      bunnyState,
-      sceneState,
-      viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-      lastTime: 0,
-      projectionConfig,
-    };
-
-    const bunnyFrames = createTestBunnyFrames();
-
-    const result = renderFrame(
-      renderState,
-      bunnyFrames,
-      screen,
-      1000
-    );
+    const result = renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
 
     expect(result.lastTime).toBe(1000);
   });
 
   it("leaves the camera alone while the bunny is idle", () => {
-    const bunnyState = createTestBunnyState({ kind: "idle", frameIdx: 0 });
-
     const sceneState = createTestSceneState();
     const initialCameraX = sceneState.camera.x;
-
-    const renderState: RenderState = {
-      bunnyState,
+    const renderState = createRenderState(
+      createTestBunnyState({ kind: "idle", frameIdx: 0 }),
       sceneState,
-      viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-      lastTime: 1000,
-      projectionConfig,
-    };
+      1000
+    );
 
-    const bunnyFrames = createTestBunnyFrames();
-
-    renderFrame(renderState, bunnyFrames, screen, 2000);
+    renderFrame(renderState, createTestBunnyFrames(), layers, 2000);
 
     expect(sceneState.camera.x).toBe(initialCameraX);
   });
 
   it("leaves the camera alone while the bunny is jumping", () => {
-    const bunnyState = createTestBunnyState({ kind: "jump", frameIdx: 0 });
-
     const sceneState = createTestSceneState();
     const initialCameraX = sceneState.camera.x;
-
-    const renderState: RenderState = {
-      bunnyState,
+    const renderState = createRenderState(
+      createTestBunnyState({ kind: "jump", frameIdx: 0 }),
       sceneState,
-      viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-      lastTime: 1000,
-      projectionConfig,
-    };
+      1000
+    );
 
-    const bunnyFrames = createTestBunnyFrames();
-
-    renderFrame(renderState, bunnyFrames, screen, 2000);
+    renderFrame(renderState, createTestBunnyFrames(), layers, 2000);
 
     expect(sceneState.camera.x).toBe(initialCameraX);
   });
 
   it("leaves the camera alone during a transition", () => {
-    const bunnyState = createTestBunnyState({ kind: "transition", type: "walk_to_idle", frameIdx: 0, pendingAction: null, returnTo: "idle" });
-
     const sceneState = createTestSceneState();
     const initialCameraX = sceneState.camera.x;
-
-    const renderState: RenderState = {
-      bunnyState,
+    const renderState = createRenderState(
+      createTestBunnyState({
+        kind: "transition",
+        type: "walk_to_idle",
+        frameIdx: 0,
+        pendingAction: null,
+        returnTo: "idle",
+      }),
       sceneState,
-      viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-      lastTime: 1000,
-      projectionConfig,
-    };
+      1000
+    );
 
-    const bunnyFrames = createTestBunnyFrames();
-
-    renderFrame(renderState, bunnyFrames, screen, 2000);
+    renderFrame(renderState, createTestBunnyFrames(), layers, 2000);
 
     expect(sceneState.camera.x).toBe(initialCameraX);
   });
 
   it("renders with scene layers", () => {
-    const bunnyState = createInitialBunnyState();
-    const sceneState = createTestSceneState();
+    const renderState = createRenderState(createInitialBunnyState(), createTestSceneState());
 
-    const renderState: RenderState = {
-      bunnyState,
-      sceneState,
-      viewport: { width: 80, height: 24, charW: 10, charH: 20 },
-      lastTime: 0,
-      projectionConfig,
-    };
-
-    const bunnyFrames = createTestBunnyFrames();
-
-    const result = renderFrame(
-      renderState,
-      bunnyFrames,
-      screen,
-      1000
-    );
+    const result = renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
 
     expect(result.lastTime).toBe(1000);
-    expect(screen.textContent).not.toBe("");
-    expect(screen.textContent.length).toBeGreaterThan(0);
+    expect(layers.world.textContent).not.toBe("");
+    expect(layers.world.textContent.length).toBeGreaterThan(0);
+  });
+});
+
+describe("applyLayerColors", () => {
+  it("sets each layer's colour independently", () => {
+    const world = document.createElement("pre");
+    const actor = document.createElement("pre");
+    const foreground = document.createElement("pre");
+
+    applyLayerColors(
+      { world, actor, foreground },
+      { world: "#111111", actor: "#6db3ff", foreground: "#222222" }
+    );
+
+    expect(world.style.color).toBe("rgb(17, 17, 17)");
+    expect(actor.style.color).toBe("rgb(109, 179, 255)");
+    expect(foreground.style.color).toBe("rgb(34, 34, 34)");
   });
 });
 

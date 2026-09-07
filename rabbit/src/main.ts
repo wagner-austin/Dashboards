@@ -10,7 +10,13 @@ import type { BunnyFrames } from "./entities/Bunny.js";
 import type { MutableSpriteRegistry, ProgressCallback } from "./loaders/progressive.js";
 import type { BunnyLoadedCallback } from "./io/sprites.js";
 import { measureViewport } from "./rendering/Viewport.js";
-import { renderFrame, type RenderState } from "./rendering/SceneRenderer.js";
+import {
+  applyLayerColors,
+  renderFrame,
+  type RenderState,
+  type ScreenLayers,
+} from "./rendering/SceneRenderer.js";
+import { validateColorsConfig } from "./rendering/colors.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers } from "./entities/Bunny.js";
 import {
@@ -46,7 +52,7 @@ import {
 /**
  * Dependencies that can be injected for testing.
  *
- * getScreenElement: Returns the pre element for rendering.
+ * getScreenLayers: Returns the three stacked pre elements for rendering.
  * loadConfigFn: Loads the config.json file.
  * runProgressiveLoadFn: Runs progressive sprite loading.
  * requestAnimationFrameFn: Schedules next frame.
@@ -56,7 +62,7 @@ import {
  * touchEvents: Event target and clock for touch listeners.
  */
 export interface MainDependencies {
-  getScreenElement: () => HTMLPreElement | null;
+  getScreenLayers: () => ScreenLayers | null;
   loadConfigFn: () => Promise<Config>;
   runProgressiveLoadFn: (
     config: Config,
@@ -79,9 +85,21 @@ export interface MainDependencies {
  */
 function createDefaultDependencies(): MainDependencies {
   return {
-    getScreenElement: (): HTMLPreElement | null => {
-      const element = document.getElementById("screen");
-      return element instanceof HTMLPreElement ? element : null;
+    getScreenLayers: (): ScreenLayers | null => {
+      const world = document.getElementById("screen");
+      const actor = document.getElementById("screen-actor");
+      const foreground = document.getElementById("screen-foreground");
+
+      // All three or none: a page missing one element would otherwise render a
+      // scene with the actor or the grass silently absent.
+      if (
+        !(world instanceof HTMLPreElement) ||
+        !(actor instanceof HTMLPreElement) ||
+        !(foreground instanceof HTMLPreElement)
+      ) {
+        return null;
+      }
+      return { world, actor, foreground };
     },
     loadConfigFn: loadConfig,
     runProgressiveLoadFn: runProgressiveLoad,
@@ -141,14 +159,18 @@ function collectAllSpriteNames(config: Config): readonly string[] {
  */
 export async function init(deps: MainDependencies = createDefaultDependencies()): Promise<void> {
   const config = await deps.loadConfigFn();
-  const screenEl = deps.getScreenElement();
+  const screenLayers = deps.getScreenLayers();
 
-  if (screenEl === null) {
+  if (screenLayers === null) {
     throw new Error("Screen element not found");
   }
 
-  const screen = screenEl;
-  const viewport = measureViewport(screen);
+  const layers = screenLayers;
+  applyLayerColors(layers, validateColorsConfig(config.colors));
+
+  // All three layers carry the same font metrics and the same grid, so
+  // measuring one measures all of them.
+  const viewport = measureViewport(layers.world);
 
   // Require autoLayers config for depth bounds
   if (config.autoLayers === undefined) {
@@ -193,7 +215,7 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
 
   // Handle resize
   window.addEventListener("resize", () => {
-    state.viewport = measureViewport(screen);
+    state.viewport = measureViewport(layers.world);
   });
 
   // Initialize audio
@@ -235,7 +257,7 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
 
     // Until the bunny loads, the scene renders with empty frames
     const frames = bunnyFrames ?? emptyBunnyFrames;
-    lastTime = renderFrame(renderState, frames, screen, currentTime).lastTime;
+    lastTime = renderFrame(renderState, frames, layers, currentTime).lastTime;
 
     // Sync camera back from scene state to input state
     state.camera = state.scene.camera;

@@ -360,6 +360,59 @@ carries forward through the arc rather than stopping in mid-air. That applies
 to the autopilot too: it schedules its jump inside a walk leg, not at the end
 of one.
 
+## Layer colours
+
+The scene draws into three stacked `<pre>` elements rather than one, so the
+actor can carry its own colour. Draw order is DOM stacking order — world, then
+actor, then foreground — and a space is transparent in all three, so occlusion
+is identical to when they shared a single buffer: foreground grass still covers
+the actor, and the actor still covers the trees.
+
+```json
+{
+  "colors": {
+    "world": "#e0e0e0",
+    "actor": "#6db3ff",
+    "foreground": "#e0e0e0"
+  }
+}
+```
+
+Every field is optional and defaults to `#e0e0e0`, so a config with no `colors`
+block renders exactly as the engine did before the split. Any CSS colour works —
+the browser is the authority on the syntax, not the validator.
+
+This is the knob for a character that is not the same colour as the world. It is
+not per-sprite: everything on the actor layer shares one colour, and colouring
+individual trees would need the buffer to carry a colour per cell.
+
+## Previewing sprites
+
+`preview.html` plays every generated sprite module side by side, at the real
+`settings.animation` interval, without starting the engine. Open
+`http://localhost:5173/preview.html` after `make dev` (it also works on the
+deployed site, since `dist/` is tracked).
+
+It exists because the engine only ever shows one animation at a time, in
+motion, behind trees — which is the worst possible place to judge whether a new
+set of frames belongs to the same character.
+
+| Control | What it answers |
+|---------|-----------------|
+| Onion skin | Is the character registered the same way frame to frame? Drift shows as a doubled outline. |
+| Churn highlight | *Which* cells change between frames. |
+| Churn % | How much changes, next to the same animation's bunny figure. |
+| ink / paper | How the sprite reads at a different colour, before committing to one. |
+
+Churn is a comparison, not a score. The 5-character gradient flips a cell on any
+small brightness change, so the shipped bunny already spans 15% (idle) to 85%
+(the 2-frame turns). The number is only meaningful against the same animation's
+bunny baseline, which each card prints beside it.
+
+The page probes for `_left` / `_right` variants config does not declare and
+marks any it finds **ORPHAN** — a module the engine loads but
+`generate_sprites.py` can no longer produce.
+
 ## Development
 
 ```bash

@@ -18,11 +18,9 @@ from scripts.generate_sprites import (
     _coerce_optional_str,
     _coerce_str,
     _extract_animation_params,
-    _parse_sprite_filename,
     _process_animated_sprite,
     _process_animation,
     _process_static_sprite,
-    generate_index_files,
     generate_sprite_module,
     load_config,
     main,
@@ -324,27 +322,6 @@ def test_coerce_directions_with_empty_list() -> None:
 def test_coerce_directions_filters_non_strings() -> None:
     """Test _coerce_directions filters non-string items."""
     assert _coerce_directions([123, "left", None, "right"]) == ["left", "right"]
-
-
-def test_parse_sprite_filename_no_direction() -> None:
-    """Test _parse_sprite_filename with no direction suffix."""
-    width, direction = _parse_sprite_filename("w50")
-    assert width == "50"
-    assert direction is None
-
-
-def test_parse_sprite_filename_left() -> None:
-    """Test _parse_sprite_filename with left direction."""
-    width, direction = _parse_sprite_filename("w50_left")
-    assert width == "50"
-    assert direction == "left"
-
-
-def test_parse_sprite_filename_right() -> None:
-    """Test _parse_sprite_filename with right direction."""
-    width, direction = _parse_sprite_filename("w50_right")
-    assert width == "50"
-    assert direction == "right"
 
 
 def test_extract_animation_params_valid() -> None:
@@ -1053,120 +1030,6 @@ def test_process_sprite_none_animations(tmp_path: Path) -> None:
         process_sprite("tree", config, tmp_path)
 
     assert len(fakes.commands) == 1
-
-
-def test_generate_index_files_with_subdirs(tmp_path: Path) -> None:
-    """Test generate_index_files creates index.ts for sprites with subdirs."""
-    sprites_dir = tmp_path / "src" / "sprites" / "bunny"
-    walk_dir = sprites_dir / "walk"
-    walk_dir.mkdir(parents=True)
-    (walk_dir / "w30.ts").write_text("export const frames = [];", encoding="utf-8")
-    (walk_dir / "w50.ts").write_text("export const frames = [];", encoding="utf-8")
-
-    jump_dir = sprites_dir / "jump"
-    jump_dir.mkdir(parents=True)
-    (jump_dir / "w30.ts").write_text("export const frames = [];", encoding="utf-8")
-
-    with fake_hooks_context() as fakes:
-        generate_index_files(tmp_path)
-
-    index_path = sprites_dir / "index.ts"
-    assert index_path.exists()
-    content = index_path.read_text(encoding="utf-8")
-    assert "walkW30" in content
-    assert "walkW50" in content
-    assert "jumpW30" in content
-    # Imports use .js extension for runtime (TypeScript convention)
-    assert "./walk/w30.js" in content
-    generated_msgs = [m for m in fakes.messages if "Generated" in m]
-    assert len(generated_msgs) == 1
-
-
-def test_generate_index_files_static_sprite(tmp_path: Path) -> None:
-    """Test generate_index_files creates index.ts for static sprites with direct TS files."""
-    sprites_dir = tmp_path / "src" / "sprites" / "tree"
-    sprites_dir.mkdir(parents=True)
-    (sprites_dir / "w60.ts").write_text("export const frames = [];", encoding="utf-8")
-    (sprites_dir / "w120.ts").write_text("export const frames = [];", encoding="utf-8")
-
-    with fake_hooks_context():
-        generate_index_files(tmp_path)
-
-    index_path = sprites_dir / "index.ts"
-    assert index_path.exists()
-    content = index_path.read_text(encoding="utf-8")
-    assert "w120" in content
-    assert "w60" in content
-    # Imports use .js extension for runtime (TypeScript convention)
-    assert "./w60.js" in content
-    assert "./w120.js" in content
-
-
-def test_generate_index_files_with_directions(tmp_path: Path) -> None:
-    """Test generate_index_files handles directional sprite files."""
-    sprites_dir = tmp_path / "src" / "sprites" / "bunny"
-    walk_dir = sprites_dir / "walk"
-    walk_dir.mkdir(parents=True)
-    (walk_dir / "w30_left.ts").write_text("export const frames = [];", encoding="utf-8")
-    (walk_dir / "w30_right.ts").write_text("export const frames = [];", encoding="utf-8")
-
-    with fake_hooks_context():
-        generate_index_files(tmp_path)
-
-    index_path = sprites_dir / "index.ts"
-    assert index_path.exists()
-    content = index_path.read_text(encoding="utf-8")
-    # Check variable names include direction suffix
-    assert "walkW30Left" in content
-    assert "walkW30Right" in content
-    # Check imports
-    assert "./walk/w30_left.js" in content
-    assert "./walk/w30_right.js" in content
-
-
-def test_generate_index_files_empty_sprite_dir(tmp_path: Path) -> None:
-    """Test generate_index_files skips sprite dirs with no TS files."""
-    sprites_dir = tmp_path / "src" / "sprites" / "empty"
-    sprites_dir.mkdir(parents=True)
-    # No JS files, just an empty directory
-
-    with fake_hooks_context():
-        generate_index_files(tmp_path)
-
-    index_path = sprites_dir / "index.ts"
-    assert not index_path.exists()
-
-
-def test_generate_index_files_nonexistent_dir(tmp_path: Path) -> None:
-    """Test generate_index_files handles nonexistent sprites directory."""
-    with fake_hooks_context() as fakes:
-        generate_index_files(tmp_path)
-
-    assert len(fakes.messages) == 0
-
-
-def test_generate_index_files_skips_files(tmp_path: Path) -> None:
-    """Test generate_index_files skips non-directory items."""
-    sprites_dir = tmp_path / "src" / "sprites"
-    sprites_dir.mkdir(parents=True)
-    (sprites_dir / "README.md").write_text("# Sprites", encoding="utf-8")
-
-    with fake_hooks_context() as fakes:
-        generate_index_files(tmp_path)
-
-    assert len(fakes.messages) == 0
-
-
-def test_generate_index_files_default_base(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    """Test generate_index_files uses default base path."""
-    # Change to a temp directory to avoid finding real files
-    monkeypatch.chdir(tmp_path)
-
-    with fake_hooks_context() as fakes:
-        generate_index_files()
-
-    # Should not crash, just return early if no sprites dir
-    assert len(fakes.messages) == 0
 
 
 def test_main_success(tmp_path: Path) -> None:

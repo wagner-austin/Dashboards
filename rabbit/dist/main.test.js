@@ -101,21 +101,30 @@ function createTestAudioDeps() {
         handlers,
     };
 }
+/** Create and mount one of the three stacked render layers. */
+function createLayerElement(id) {
+    const element = document.createElement("pre");
+    element.id = id;
+    document.body.appendChild(element);
+    return element;
+}
 describe("init", () => {
-    let screen;
+    let layers;
     let rafCallbacks;
     beforeEach(() => {
-        screen = document.createElement("pre");
-        screen.id = "screen";
-        document.body.appendChild(screen);
+        layers = {
+            world: createLayerElement("screen"),
+            actor: createLayerElement("screen-actor"),
+            foreground: createLayerElement("screen-foreground"),
+        };
         rafCallbacks = [];
     });
     afterEach(() => {
-        document.body.removeChild(screen);
+        document.body.replaceChildren();
     });
     it("throws when screen element not found", async () => {
         const deps = {
-            getScreenElement: () => null,
+            getScreenLayers: () => null,
             loadConfigFn: () => Promise.resolve(createTestConfig()),
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
@@ -135,7 +144,7 @@ describe("init", () => {
             // No autoLayers
         };
         const deps = {
-            getScreenElement: () => screen,
+            getScreenLayers: () => layers,
             loadConfigFn: () => Promise.resolve(configWithoutAutoLayers),
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
@@ -148,7 +157,7 @@ describe("init", () => {
     });
     it("initializes and starts render loop", async () => {
         const deps = {
-            getScreenElement: () => screen,
+            getScreenLayers: () => layers,
             loadConfigFn: () => Promise.resolve(createTestConfig()),
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: (callback) => {
@@ -180,7 +189,7 @@ describe("init", () => {
             resolveLoad = resolve;
         });
         const deps = {
-            getScreenElement: () => screen,
+            getScreenLayers: () => layers,
             loadConfigFn: () => Promise.resolve(createTestConfig()),
             runProgressiveLoadFn: (_config, _registry, onProgress, onBunnyLoaded) => {
                 onProgress({ phase: "ground", current: 1, total: 1, spriteName: "ground", width: 0 });
@@ -209,8 +218,15 @@ describe("init", () => {
             throw new Error("Expected callback to be defined");
         }
         firstCallback(1000);
-        // Screen should have rendered (without bunny, using empty frames)
-        expect(screen.textContent).toBeDefined();
+        // jsdom performs no layout, so measureViewport reads a 0x0 character box
+        // and the grid comes out empty: every layer renders "" here regardless of
+        // what was drawn. What this test pins is that the pre-bunny path runs to
+        // completion and writes all three layers rather than throwing on the null
+        // frames. Grid content is asserted in SceneRenderer.test.ts, which sets
+        // the viewport explicitly instead of measuring it.
+        expect(layers.world.textContent).toBe("");
+        expect(layers.actor.textContent).toBe("");
+        expect(layers.foreground.textContent).toBe("");
         // Should have queued another callback
         expect(rafCallbacks.length).toBeGreaterThan(1);
         // Now call the bunny loaded callback - simulates bunny finished loading
@@ -227,7 +243,7 @@ describe("init", () => {
     });
     it("handles resize event", async () => {
         const deps = {
-            getScreenElement: () => screen,
+            getScreenLayers: () => layers,
             loadConfigFn: () => Promise.resolve(createTestConfig()),
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
@@ -251,7 +267,7 @@ describe("init", () => {
             },
         };
         const deps = {
-            getScreenElement: () => screen,
+            getScreenLayers: () => layers,
             loadConfigFn: () => Promise.resolve(configWithAudio),
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
@@ -277,7 +293,7 @@ describe("init", () => {
             },
         };
         const deps = {
-            getScreenElement: () => screen,
+            getScreenLayers: () => layers,
             loadConfigFn: () => Promise.resolve(configWithDisabledAudio),
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
@@ -304,7 +320,7 @@ describe("init", () => {
             },
         };
         const deps = {
-            getScreenElement: () => screen,
+            getScreenLayers: () => layers,
             loadConfigFn: () => Promise.resolve(configWithAudio),
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: () => 0,
@@ -320,7 +336,7 @@ describe("init", () => {
     it("exercises isHorizontalHeld callback via jump completion", async () => {
         vi.useFakeTimers();
         const deps = {
-            getScreenElement: () => screen,
+            getScreenLayers: () => layers,
             loadConfigFn: () => Promise.resolve(createTestConfig()),
             runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
             requestAnimationFrameFn: (callback) => {
@@ -427,26 +443,52 @@ describe("createEmptyBunnyFrames", () => {
 describe("_test_hooks", () => {
     it("createDefaultDependencies returns functions", () => {
         const deps = _test_hooks.createDefaultDependencies();
-        expect(typeof deps.getScreenElement).toBe("function");
+        expect(typeof deps.getScreenLayers).toBe("function");
         expect(typeof deps.loadConfigFn).toBe("function");
         expect(typeof deps.runProgressiveLoadFn).toBe("function");
         expect(typeof deps.requestAnimationFrameFn).toBe("function");
         expect(typeof deps.audioDeps).toBe("object");
     });
-    it("createDefaultDependencies getScreenElement returns null when no screen", () => {
+    it("createDefaultDependencies getScreenLayers returns null when no screen", () => {
         const deps = _test_hooks.createDefaultDependencies();
-        // No #screen element in DOM
-        const result = deps.getScreenElement();
+        // No layer elements in DOM
+        const result = deps.getScreenLayers();
         expect(result).toBeNull();
     });
-    it("createDefaultDependencies getScreenElement returns element when present", () => {
-        const screen = document.createElement("pre");
-        screen.id = "screen";
-        document.body.appendChild(screen);
+    it("createDefaultDependencies getScreenLayers returns all three when present", () => {
+        const world = createLayerElement("screen");
+        const actor = createLayerElement("screen-actor");
+        const foreground = createLayerElement("screen-foreground");
         const deps = _test_hooks.createDefaultDependencies();
-        const result = deps.getScreenElement();
-        expect(result).toBe(screen);
-        document.body.removeChild(screen);
+        const result = deps.getScreenLayers();
+        expect(result).toEqual({ world, actor, foreground });
+        document.body.replaceChildren();
+    });
+    // A page carrying only some of the three would otherwise render a scene with
+    // the actor or the grass silently missing, so each absence is its own case.
+    it.each([
+        ["world", ["screen-actor", "screen-foreground"]],
+        ["actor", ["screen", "screen-foreground"]],
+        ["foreground", ["screen", "screen-actor"]],
+    ])("createDefaultDependencies getScreenLayers returns null without the %s layer", (_name, present) => {
+        for (const id of present) {
+            createLayerElement(id);
+        }
+        const deps = _test_hooks.createDefaultDependencies();
+        expect(deps.getScreenLayers()).toBeNull();
+        document.body.replaceChildren();
+    });
+    it("createDefaultDependencies getScreenLayers rejects a non-pre element", () => {
+        // getElementById finds any element; only a <pre> has the grid metrics the
+        // viewport measurement depends on.
+        const world = document.createElement("div");
+        world.id = "screen";
+        document.body.appendChild(world);
+        createLayerElement("screen-actor");
+        createLayerElement("screen-foreground");
+        const deps = _test_hooks.createDefaultDependencies();
+        expect(deps.getScreenLayers()).toBeNull();
+        document.body.replaceChildren();
     });
     it("requestAnimationFrameFn schedules callback", () => {
         const deps = _test_hooks.createDefaultDependencies();

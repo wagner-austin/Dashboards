@@ -240,4 +240,12 @@ export interface Config {
   readonly autoLayers?: AutoLayersConfig;
   /** Always populated by the config decoder; omitted blocks decode to defaults. */
   readonly autorun: AutorunConfig;
+  /**
+   * Raw colours block, validated at startup by validateColorsConfig.
+   *
+   * Left as unknown here rather than typed as LayerColors because types.ts is
+   * the shape of the JSON document, and the document may carry anything. The
+   * decode happens once, in init.
+   */
+  readonly colors?: unknown;
 }

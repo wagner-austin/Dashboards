@@ -8,12 +8,13 @@ import type { Config } from "./types.js";
 import type { BunnyFrames } from "./entities/Bunny.js";
 import type { MutableSpriteRegistry, ProgressCallback } from "./loaders/progressive.js";
 import type { BunnyLoadedCallback } from "./io/sprites.js";
+import { type ScreenLayers } from "./rendering/SceneRenderer.js";
 import { type KeyboardEventSource, type RandomSource, type TouchEventSource } from "./input/index.js";
 import { type AudioDependencies } from "./audio/index.js";
 /**
  * Dependencies that can be injected for testing.
  *
- * getScreenElement: Returns the pre element for rendering.
+ * getScreenLayers: Returns the three stacked pre elements for rendering.
  * loadConfigFn: Loads the config.json file.
  * runProgressiveLoadFn: Runs progressive sprite loading.
  * requestAnimationFrameFn: Schedules next frame.
@@ -23,7 +24,7 @@ import { type AudioDependencies } from "./audio/index.js";
  * touchEvents: Event target and clock for touch listeners.
  */
 export interface MainDependencies {
-    getScreenElement: () => HTMLPreElement | null;
+    getScreenLayers: () => ScreenLayers | null;
     loadConfigFn: () => Promise<Config>;
     runProgressiveLoadFn: (config: Config, registry: MutableSpriteRegistry, onProgress: ProgressCallback, onBunnyLoaded: BunnyLoadedCallback) => Promise<void>;
     requestAnimationFrameFn: (callback: (time: number) => void) => number;

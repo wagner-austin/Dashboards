@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprite Preview</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --bg: #0a0a0a;
+        --panel: #141414;
+        --edge: #2a2a2a;
+        --text: #e0e0e0;
+        --dim: #8a8a8a;
+        --accent: #7fd1ff;
+        --warn: #ffb454;
+        --bad: #ff6b6b;
+        --good: #7fe08a;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-size: 13px;
+        padding: 0 0 3rem;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--panel);
+        border-bottom: 1px solid var(--edge);
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+        align-items: center;
+    }
+
+    h1 { font-size: 14px; font-weight: 600; letter-spacing: 0.04em; }
+    h1 small { color: var(--dim); font-weight: 400; margin-left: 0.5rem; }
+
+    .ctl { display: flex; align-items: center; gap: 0.4rem; }
+    .ctl label { color: var(--dim); user-select: none; }
+
+    button {
+        background: #202020;
+        color: var(--text);
+        border: 1px solid var(--edge);
+        border-radius: 3px;
+        padding: 0.25rem 0.6rem;
+        font: inherit;
+        cursor: pointer;
+    }
+    button:hover { background: #2c2c2c; }
+    button.on { background: var(--accent); color: #001018; border-color: var(--accent); }
+
+    input[type="range"] { width: 110px; }
+    input[type="color"] {
+        width: 28px; height: 22px; padding: 0;
+        background: none; border: 1px solid var(--edge); cursor: pointer;
+    }
+
+    #grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+        gap: 0.75rem;
+        padding: 1rem;
+        align-items: start;
+    }
+
+    .card {
+        background: var(--panel);
+        border: 1px solid var(--edge);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .card-head {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding: 0.5rem 0.7rem;
+        border-bottom: 1px solid var(--edge);
+    }
+    .card-head .name { font-weight: 600; }
+    .card-head .meta { color: var(--dim); font-size: 11px; margin-left: auto; }
+
+    /* Mirrors index.html exactly so what you see here is what the engine draws. */
+    .stage {
+        position: relative;
+        padding: 0.6rem;
+        overflow: auto;
+    }
+    .stage pre {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        line-height: 1.0;
+        white-space: pre;
+        margin: 0;
+    }
+    /* The onion layer sits exactly under the live frame, same grid metrics. */
+    .stage .onion {
+        position: absolute;
+        top: 0.6rem;
+        left: 0.6rem;
+        pointer-events: none;
+        opacity: 0.35;
+    }
+    .stage .live { position: relative; }
+    .stage .live b { font-weight: normal; }
+
+    .card-foot {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.7rem;
+        border-top: 1px solid var(--edge);
+        color: var(--dim);
+        font-size: 11px;
+    }
+    .card-foot .idx { font-variant-numeric: tabular-nums; min-width: 4.5em; }
+    .card-foot .churn { margin-left: auto; font-variant-numeric: tabular-nums; }
+
+    .missing {
+        padding: 1rem 0.7rem;
+        color: var(--warn);
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        white-space: pre-wrap;
+    }
+
+    #orphanNote {
+        margin: 0.5rem 1rem 0;
+        padding: 0.6rem 0.8rem;
+        border: 1px solid var(--warn);
+        border-radius: 4px;
+        color: var(--warn);
+        max-width: 90ch;
+        line-height: 1.5;
+    }
+
+    #legend {
+        padding: 0 1rem;
+        color: var(--dim);
+        line-height: 1.6;
+        max-width: 70ch;
+    }
+    #legend b { color: var(--text); }
+    #legend code {
+        font-family: "Courier New", monospace;
+        color: var(--accent);
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Sprite Preview <small id="subtitle">loading config…</small></h1>
+
+    <div class="ctl">
+        <button id="playPause" class="on">Pause</button>
+        <button id="stepBack">&#9664;</button>
+        <button id="stepFwd">&#9654;</button>
+    </div>
+
+    <div class="ctl">
+        <label for="speed">speed</label>
+        <input type="range" id="speed" min="0.1" max="3" step="0.1" value="1">
+        <span id="speedOut">1.0&times;</span>
+    </div>
+
+    <div class="ctl">
+        <button id="onion">Onion skin</button>
+        <button id="churn">Churn highlight</button>
+    </div>
+
+    <div class="ctl">
+        <label for="ink">ink</label>
+        <input type="color" id="ink" value="#e0e0e0">
+        <label for="paper">paper</label>
+        <input type="color" id="paper" value="#0a0a0a">
+    </div>
+
+    <div class="ctl">
+        <button id="showScenery">Show scenery</button>
+    </div>
+</header>
+
+<div id="legend">
+    <p>Every card is one generated sprite module, played at its real
+    <code>settings.animation</code> interval from <code>config.json</code> — this is
+    exactly what the engine loads.</p>
+    <p><b>Onion skin</b> draws the previous frame underneath the live one. Registration
+    drift (the character sliding or resizing between frames) shows up as a doubled
+    outline.</p>
+    <p><b>Churn</b> is the share of occupied cells that change between consecutive
+    frames. It is <b>not</b> an absolute quality score — the 5-character gradient flips a
+    cell on any small brightness change, so the shipped bunny sprites already span 15%
+    (idle) to 85% (the 2-frame turns). Each card prints the matching bunny figure beside
+    it, and the colour is the gap: green within 5 points of the bunny baseline, amber
+    within 15, red beyond. A new character whose <code>walk</code> churns far above the
+    bunny's 70% is being redrawn each frame rather than animated.
+    <b>Churn highlight</b> marks the changed cells in red inside the live frame, which is
+    where you see <i>which</i> parts are drifting.</p>
+</div>
+
+<p id="orphanNote" hidden></p>
+
+<div id="grid"></div>
+
+<script type="module">
+"use strict";
+
+/* ------------------------------------------------------------------ *
+ * Model
+ * ------------------------------------------------------------------ */
+
+/** One playable animation: its frames plus where they came from. */
+class Clip {
+    constructor(entry, frames) {
+        this.label = entry.label;
+        this.path = entry.path;
+        this.anim = entry.anim;
+        this.frames = frames;
+        this.intervalMs = entry.intervalMs;
+        this.idx = 0;
+        this.acc = 0;
+        this.grids = frames.map(splitGrid);
+        this.churn = meanChurn(this.grids);
+    }
+
+    get frame() {
+        return this.frames[this.idx] ?? "";
+    }
+
+    get prevFrame() {
+        const n = this.frames.length;
+        return n === 0 ? "" : this.frames[(this.idx - 1 + n) % n];
+    }
+
+    advance(by) {
+        const n = this.frames.length;
+        if (n === 0) return;
+        this.idx = (this.idx + by + n) % n;
+    }
+
+    tick(dtMs, rate) {
+        const n = this.frames.length;
+        if (n === 0 || this.intervalMs <= 0) return false;
+        this.acc += dtMs * rate;
+        let stepped = false;
+        while (this.acc >= this.intervalMs) {
+            this.acc -= this.intervalMs;
+            this.idx = (this.idx + 1) % n;
+            stepped = true;
+        }
+        return stepped;
+    }
+}
+
+/** Split a frame string into a padded rectangular grid of characters. */
+function splitGrid(frame) {
+    const rows = frame.split("\n");
+    const w = rows.reduce((m, r) => Math.max(m, r.length), 0);
+    return rows.map((r) => r.padEnd(w, " "));
+}
+
+/** Cells that differ between two grids, as a Set of "row,col" keys. */
+function changedCells(a, b) {
+    const out = new Set();
+    const rows = Math.max(a.length, b.length);
+    for (let y = 0; y < rows; y++) {
+        const ra = a[y] ?? "";
+        const rb = b[y] ?? "";
+        const cols = Math.max(ra.length, rb.length);
+        for (let x = 0; x < cols; x++) {
+            if ((ra[x] ?? " ") !== (rb[x] ?? " ")) out.add(`${y},${x}`);
+        }
+    }
+    return out;
+}
+
+/** Occupied cells (non-space) across two grids. */
+function occupiedCount(a, b) {
+    let n = 0;
+    const rows = Math.max(a.length, b.length);
+    for (let y = 0; y < rows; y++) {
+        const ra = a[y] ?? "";
+        const rb = b[y] ?? "";
+        const cols = Math.max(ra.length, rb.length);
+        for (let x = 0; x < cols; x++) {
+            if ((ra[x] ?? " ") !== " " || (rb[x] ?? " ") !== " ") n++;
+        }
+    }
+    return n;
+}
+
+/**
+ * Mean churn over consecutive frame pairs.
+ *
+ * The wrap from last frame back to first is deliberately excluded. Loops play
+ * that seam and one-shots (jump, the transitions) never do, so including it
+ * would make the two kinds incomparable — and comparison is the only thing
+ * this number is good for. Measured on the shipped bunny corpus it spans
+ * 15% (idle) to 85% (the 2-frame turns); see BASELINE below.
+ */
+function meanChurn(grids) {
+    if (grids.length < 2) return null;
+    let total = 0;
+    for (let i = 0; i < grids.length - 1; i++) {
+        const occ = occupiedCount(grids[i], grids[i + 1]);
+        if (occ > 0) total += changedCells(grids[i], grids[i + 1]).size / occ;
+    }
+    return total / (grids.length - 1);
+}
+
+/**
+ * Churn measured on the shipped bunny sprites, 2026-09-06.
+ *
+ * These are the reference values a second character is judged against —
+ * per animation, not against an absolute bar. The 5-character gradient flips
+ * whole cells on small brightness changes, so even a clean animation scores
+ * high in absolute terms; only the comparison carries information.
+ */
+const BASELINE = {
+    idle: 0.15,
+    hop_away: 0.40,
+    hop_toward: 0.53,
+    walk_to_turn_away: 0.57,
+    walk_to_idle: 0.65,
+    jump: 0.67,
+    walk: 0.70,
+    walk_to_turn_toward: 0.84,
+};
+
+/** Colour a churn reading by how far it sits above its bunny baseline. */
+function churnColor(anim, value) {
+    const base = BASELINE[anim];
+    if (base === undefined) return "var(--dim)";
+    if (value <= base + 0.05) return "var(--good)";
+    if (value <= base + 0.15) return "var(--warn)";
+    return "var(--bad)";
+}
+
+/* ------------------------------------------------------------------ *
+ * Discovery — read config.json the same way io/sprites.ts does
+ * ------------------------------------------------------------------ */
+
+/**
+ * Enumerate every sprite module that could exist for this config.
+ *
+ * Animated sprites live at dist/sprites/<name>/<anim>/w<W>[_dir].js; static
+ * ones at dist/sprites/<name>/w<W>.js. Keep this in step with
+ * loadSpriteFrames / loadStaticSpriteFrames in src/io/sprites.ts.
+ *
+ * All three variants (plain, _left, _right) are probed for every animation,
+ * not just the ones config declares, because the two sources disagree and the
+ * disagreement is invisible from either side alone. generate_sprites.py emits
+ * a bare w<W>.js when an animation declares fewer than two directions, while
+ * io/sprites.ts calls loadDirectionalFrames — which asks for _left/_right —
+ * for a hardcoded list of animations. Where a file exists that config does not
+ * declare, the engine is running art the generator can no longer reproduce.
+ * A card marked ORPHAN is exactly that case.
+ */
+function enumerateModules(config) {
+    const out = [];
+    const intervals = config.settings.animation;
+
+    for (const [name, spec] of Object.entries(config.sprites)) {
+        if (spec.animations) {
+            for (const [anim, aspec] of Object.entries(spec.animations)) {
+                const declared = new Set(
+                    (aspec.directions ?? []).length > 1
+                        ? aspec.directions.map((d) => `_${d}`)
+                        : [""]
+                );
+                for (const width of aspec.widths ?? []) {
+                    for (const suffix of ["", "_left", "_right"]) {
+                        const isDeclared = declared.has(suffix);
+                        const dir = suffix === "" ? null : suffix.slice(1);
+                        out.push({
+                            kind: "character",
+                            anim,
+                            declared: isDeclared,
+                            label:
+                                `${name} / ${anim}${dir === null ? "" : ` (${dir})`} · w${width}` +
+                                (isDeclared ? "" : "  ⚠ ORPHAN"),
+                            path: `dist/sprites/${name}/${anim}/w${width}${suffix}.js`,
+                            intervalMs: intervalFor(anim, intervals),
+                        });
+                    }
+                }
+            }
+        } else {
+            for (const width of spec.widths ?? []) {
+                out.push({
+                    kind: "scenery",
+                    anim: null,
+                    declared: true,
+                    label: `${name} · w${width}`,
+                    path: `dist/sprites/${name}/w${width}.js`,
+                    intervalMs: 400, // scene sprites run on the engine's fixed timer
+                });
+            }
+        }
+    }
+    return out;
+}
+
+/**
+ * Map an animation name onto its settings.animation interval.
+ *
+ * The engine buckets every transition animation onto one `transition`
+ * interval, so anything that is not a named bucket lands there too.
+ */
+function intervalFor(anim, intervals) {
+    if (anim === "walk") return intervals.walk;
+    if (anim === "idle") return intervals.idle;
+    if (anim === "jump") return intervals.jump;
+    if (anim.startsWith("hop")) return intervals.hop;
+    return intervals.transition;
+}
+
+/* ------------------------------------------------------------------ *
+ * Rendering
+ * ------------------------------------------------------------------ */
+
+const state = {
+    playing: true,
+    rate: 1,
+    onion: false,
+    churn: false,
+    scenery: false,
+};
+
+const cards = [];
+
+function escapeHtml(s) {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/** Render the live frame, optionally marking cells that changed. */
+function renderLive(clip) {
+    if (!state.churn || clip.frames.length < 2) {
+        return escapeHtml(clip.frame);
+    }
+    const n = clip.frames.length;
+    const cur = clip.grids[clip.idx];
+    const prev = clip.grids[(clip.idx - 1 + n) % n];
+    const diff = changedCells(prev, cur);
+
+    let html = "";
+    for (let y = 0; y < cur.length; y++) {
+        const row = cur[y];
+        for (let x = 0; x < row.length; x++) {
+            const ch = escapeHtml(row[x]);
+            html += diff.has(`${y},${x}`)
+                ? `<b style="color:var(--bad)">${ch}</b>`
+                : ch;
+        }
+        if (y < cur.length - 1) html += "\n";
+    }
+    return html;
+}
+
+function paint(card) {
+    const { clip, live, onion, idxOut } = card;
+    live.innerHTML = renderLive(clip);
+    onion.textContent = state.onion ? clip.prevFrame : "";
+    idxOut.textContent = `${clip.idx + 1}/${clip.frames.length}`;
+}
+
+function buildCard(clip) {
+    const el = document.createElement("div");
+    el.className = "card";
+
+    const base = clip.anim === null ? undefined : BASELINE[clip.anim];
+    const churnText =
+        clip.churn === null
+            ? "single frame"
+            : base === undefined
+              ? `churn ${(clip.churn * 100).toFixed(0)}%`
+              : `churn ${(clip.churn * 100).toFixed(0)}% · bunny ${(base * 100).toFixed(0)}%`;
+    const color =
+        clip.churn === null ? "var(--dim)" : churnColor(clip.anim, clip.churn);
+
+    el.innerHTML = `
+        <div class="card-head">
+            <span class="name"></span>
+            <span class="meta">${clip.frames.length} frames · ${clip.intervalMs}ms</span>
+        </div>
+        <div class="stage">
+            <pre class="onion"></pre>
+            <pre class="live"></pre>
+        </div>
+        <div class="card-foot">
+            <button data-step="-1">&#9664;</button>
+            <button data-step="1">&#9654;</button>
+            <span class="idx"></span>
+            <span class="churn" style="color:${color}">${churnText}</span>
+        </div>`;
+
+    el.querySelector(".name").textContent = clip.label;
+
+    const card = {
+        clip,
+        el,
+        live: el.querySelector(".live"),
+        onion: el.querySelector(".onion"),
+        idxOut: el.querySelector(".idx"),
+    };
+
+    for (const btn of el.querySelectorAll("[data-step]")) {
+        btn.addEventListener("click", () => {
+            clip.advance(Number(btn.dataset.step));
+            paint(card);
+        });
+    }
+
+    return card;
+}
+
+function buildMissingCard(entry, error) {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML = `
+        <div class="card-head">
+            <span class="name"></span>
+            <span class="meta">not generated</span>
+        </div>
+        <div class="missing"></div>`;
+    el.querySelector(".name").textContent = entry.label;
+    el.querySelector(".missing").textContent =
+        `${entry.path}\n\n${error}\n\nRun: poetry run python -m scripts.generate_sprites`;
+    return { clip: null, el, kind: entry.kind };
+}
+
+/* ------------------------------------------------------------------ *
+ * Boot
+ * ------------------------------------------------------------------ */
+
+const grid = document.getElementById("grid");
+
+const config = await fetch(`config.json?v=${Date.now()}`, { cache: "no-store" })
+    .then((r) => r.json());
+
+const entries = enumerateModules(config);
+document.getElementById("subtitle").textContent =
+    `${entries.length} sprite modules from config.json`;
+
+let orphans = 0;
+
+for (const entry of entries) {
+    let card;
+    try {
+        const mod = await import(
+            new URL(`${entry.path}?v=${Date.now()}`, document.baseURI).href
+        );
+        if (!Array.isArray(mod.frames)) throw new Error("module has no frames array");
+        card = buildCard(new Clip(entry, mod.frames));
+        card.kind = entry.kind;
+        if (!entry.declared) orphans++;
+    } catch (err) {
+        // An undeclared variant that is simply absent is the normal case — it
+        // is a probe that found nothing, not a problem. Only a variant config
+        // asked for and the generator did not produce is worth a card.
+        if (!entry.declared) continue;
+        card = buildMissingCard(entry, String(err));
+    }
+    cards.push(card);
+    grid.append(card.el);
+    if (card.clip) paint(card);
+}
+
+if (orphans > 0) {
+    const note = document.getElementById("orphanNote");
+    note.hidden = false;
+    note.textContent =
+        `${orphans} sprite module(s) exist on disk that config.json does not declare. ` +
+        `The engine loads them, but scripts/generate_sprites.py cannot reproduce them — ` +
+        `a clean regeneration would break those animations. Cards marked ORPHAN below.`;
+}
+
+applyVisibility();
+
+/* ------------------------------------------------------------------ *
+ * Controls
+ * ------------------------------------------------------------------ */
+
+function applyVisibility() {
+    for (const card of cards) {
+        card.el.style.display =
+            card.kind === "scenery" && !state.scenery ? "none" : "";
+    }
+}
+
+function repaintAll() {
+    for (const card of cards) {
+        if (card.clip) paint(card);
+    }
+}
+
+function toggle(id, key, after) {
+    const btn = document.getElementById(id);
+    btn.addEventListener("click", () => {
+        state[key] = !state[key];
+        btn.classList.toggle("on", state[key]);
+        if (after) after();
+    });
+}
+
+toggle("onion", "onion", repaintAll);
+toggle("churn", "churn", repaintAll);
+toggle("showScenery", "scenery", applyVisibility);
+
+const playBtn = document.getElementById("playPause");
+playBtn.addEventListener("click", () => {
+    state.playing = !state.playing;
+    playBtn.textContent = state.playing ? "Pause" : "Play";
+    playBtn.classList.toggle("on", state.playing);
+});
+
+for (const [id, delta] of [["stepBack", -1], ["stepFwd", 1]]) {
+    document.getElementById(id).addEventListener("click", () => {
+        for (const card of cards) {
+            if (card.clip) card.clip.advance(delta);
+        }
+        repaintAll();
+    });
+}
+
+const speed = document.getElementById("speed");
+const speedOut = document.getElementById("speedOut");
+speed.addEventListener("input", () => {
+    state.rate = Number(speed.value);
+    speedOut.textContent = `${state.rate.toFixed(1)}×`;
+});
+
+const ink = document.getElementById("ink");
+const paper = document.getElementById("paper");
+ink.addEventListener("input", () => {
+    document.documentElement.style.setProperty("--text", ink.value);
+});
+paper.addEventListener("input", () => {
+    document.documentElement.style.setProperty("--bg", paper.value);
+    document.documentElement.style.setProperty("--panel", paper.value);
+});
+
+/* ------------------------------------------------------------------ *
+ * Loop — one rAF for every card, each on its own config interval
+ * ------------------------------------------------------------------ */
+
+let last = performance.now();
+
+function loop(now) {
+    const dt = now - last;
+    last = now;
+
+    if (state.playing) {
+        for (const card of cards) {
+            if (!card.clip) continue;
+            if (card.el.style.display === "none") continue;
+            if (card.clip.tick(dt, state.rate)) paint(card);
+        }
+    }
+    requestAnimationFrame(loop);
+}
+
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

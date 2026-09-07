@@ -7,6 +7,7 @@
 import { createBuffer, renderBuffer, type ViewportState } from "./Viewport.js";
 import { drawSprite } from "./draw.js";
 import { drawGround } from "./Ground.js";
+import type { LayerColors } from "./colors.js";
 import { getBunnyFrame, type BunnyFrames, type BunnyState } from "../entities/Bunny.js";
 import { renderAllLayers, renderForegroundLayers, type SceneState } from "../layers/index.js";
 import type { ProjectionConfig } from "../world/Projection.js";
@@ -26,6 +27,29 @@ export interface RenderState {
   viewport: ViewportState;
   lastTime: number;
   projectionConfig: ProjectionConfig;
+}
+
+/**
+ * The three stacked <pre> elements the scene draws into.
+ *
+ * The scene used to render into a single element, which meant every glyph on
+ * screen carried one CSS colour. Splitting it in three lets the actor be
+ * coloured independently without the buffer having to hold a colour per cell
+ * and without putting innerHTML on the 60fps path.
+ *
+ * Draw order is preserved by DOM stacking order: world, then actor, then
+ * foreground. A space is transparent in all three, so occlusion works exactly
+ * as it did when the layers shared one buffer - foreground grass still covers
+ * the actor, and the actor still covers the trees.
+ *
+ * world: Background layers, trees, and the ground.
+ * actor: The character, and nothing else.
+ * foreground: Layers drawn in front of the actor.
+ */
+export interface ScreenLayers {
+  readonly world: HTMLPreElement;
+  readonly actor: HTMLPreElement;
+  readonly foreground: HTMLPreElement;
 }
 
 /**
@@ -58,10 +82,14 @@ function drawBunny(
  * the input layer's movement module, which is its sole writer - rendering used
  * to pan it too, so the two speeds silently added together.
  *
+ * Each of the three buffers is the full viewport grid, so all three elements
+ * carry identical dimensions and stay aligned without any positioning
+ * arithmetic. Cells no layer writes stay spaces, which are transparent.
+ *
  * Args:
  *     state: Current render state.
  *     bunnyFrames: Bunny animation frames.
- *     screen: Target pre element.
+ *     layers: The three stacked target elements.
  *     currentTime: Current timestamp.
  *
  * Returns:
@@ -70,33 +98,55 @@ function drawBunny(
 export function renderFrame(
   state: RenderState,
   bunnyFrames: BunnyFrames,
-  screen: HTMLPreElement,
+  layers: ScreenLayers,
   currentTime: number
 ): { lastTime: number } {
   const { width, height } = state.viewport;
-  const buffer = createBuffer(width, height);
   const config = state.projectionConfig;
 
+  const worldBuffer = createBuffer(width, height);
+  const actorBuffer = createBuffer(width, height);
+  const foregroundBuffer = createBuffer(width, height);
+
   // Render background layers (includes trees via 3D projection)
-  renderAllLayers(buffer, state.sceneState, width, height, config);
+  renderAllLayers(worldBuffer, state.sceneState, width, height, config);
 
   // Draw ground using camera position
-  drawGround(buffer, -Math.floor(state.sceneState.camera.x), width, height);
+  drawGround(worldBuffer, -Math.floor(state.sceneState.camera.x), width, height);
 
-  // Draw bunny at fixed screen position
-  drawBunny(buffer, state.bunnyState, bunnyFrames, width, height);
+  // Draw bunny at fixed screen position, alone on its own layer
+  drawBunny(actorBuffer, state.bunnyState, bunnyFrames, width, height);
 
   // Render foreground layers
-  renderForegroundLayers(buffer, state.sceneState, width, height, config);
+  renderForegroundLayers(foregroundBuffer, state.sceneState, width, height, config);
 
   // Render to screen
-  screen.textContent = renderBuffer(buffer);
+  layers.world.textContent = renderBuffer(worldBuffer);
+  layers.actor.textContent = renderBuffer(actorBuffer);
+  layers.foreground.textContent = renderBuffer(foregroundBuffer);
 
   return { lastTime: currentTime };
+}
+
+/**
+ * Apply layer colours to the three stacked elements.
+ *
+ * Called once at startup rather than per frame: the colours come from
+ * config.json and nothing mutates them afterwards.
+ *
+ * Args:
+ *     layers: The three stacked target elements.
+ *     colors: Validated colours from the config's colours block.
+ */
+export function applyLayerColors(layers: ScreenLayers, colors: LayerColors): void {
+  layers.world.style.color = colors.world;
+  layers.actor.style.color = colors.actor;
+  layers.foreground.style.color = colors.foreground;
 }
 
 /** Test hooks for internal functions */
 export const _test_hooks = {
   drawBunny,
   renderFrame,
+  applyLayerColors,
 };

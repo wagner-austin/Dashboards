@@ -12,7 +12,17 @@
             overflow: hidden;
         }
 
-        #screen {
+        /* The scene draws into three stacked elements, not one, so the actor
+           can carry its own colour without the renderer tracking a colour per
+           character cell. Every one of them is the full viewport grid and they
+           share these metrics exactly, so they align with no positioning
+           arithmetic. Spaces are transparent, so DOM stacking order reproduces
+           the old single-buffer draw order: world, actor, foreground.
+
+           Colours come from the `colors` block in config.json and are applied
+           at startup by applyLayerColors. The values here are only what shows
+           before the config lands. */
+        #screen, #screen-actor, #screen-foreground {
             font-family: "Courier New", monospace;
             /* Character size sets the WHOLE scene's scale — trees, rabbit and
                glyphs alike — because Viewport.ts derives the grid as
@@ -27,10 +37,16 @@
             bottom: 0;
             left: 0;
         }
+
+        /* Pointer events would otherwise be swallowed by whichever layer sits
+           on top, which is not the one the touch handler listens on. */
+        #screen-actor, #screen-foreground { pointer-events: none; }
     </style>
 </head>
 <body>
     <pre id="screen"></pre>
+    <pre id="screen-actor"></pre>
+    <pre id="screen-foreground"></pre>
     <!--
       The bundle filename carries a content hash, which makes the bundle itself
       safe to cache forever. But this page is served with max-age=600, so a

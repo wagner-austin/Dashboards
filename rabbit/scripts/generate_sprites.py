@@ -250,69 +250,6 @@ def process_sprite(name: str, sprite_config: dict[str, object], base: Path | Non
         _process_static_sprite(name, sprite_config, base)
 
 
-def _parse_sprite_filename(stem: str) -> tuple[str, str | None]:
-    """Parse sprite filename to extract width and optional direction.
-
-    Examples:
-        "w50" -> ("50", None)
-        "w50_left" -> ("50", "left")
-        "w50_right" -> ("50", "right")
-    """
-    # Check for direction suffix
-    for direction in ["_left", "_right"]:
-        if stem.endswith(direction):
-            width_part = stem[1 : -len(direction)]  # Remove 'w' prefix and direction suffix
-            return width_part, direction[1:]  # Remove underscore from direction
-    # No direction suffix
-    return stem[1:], None  # Remove 'w' prefix
-
-
-def generate_index_files(base: Path | None = None) -> None:
-    """Generate index.ts files for sprite modules."""
-    if base is None:
-        base = Path(".")
-
-    sprites_dir = base / "src/sprites"
-    if not sprites_dir.exists():
-        return
-
-    for sprite_dir in sprites_dir.iterdir():
-        if not sprite_dir.is_dir():
-            continue
-
-        exports: list[str] = []
-
-        # Check for animated sprite (has subdirectories with TS files)
-        subdirs = [d for d in sprite_dir.iterdir() if d.is_dir()]
-        for subdir in subdirs:
-            ts_files = list(subdir.glob("w*.ts"))
-            for ts_file in ts_files:
-                width, direction = _parse_sprite_filename(ts_file.stem)
-                # Import with .js extension (TypeScript ES module convention)
-                rel_path = f"./{subdir.name}/{ts_file.stem}.js"
-                # Build variable name: walkW50 or walkW50Left
-                dir_suffix = direction.capitalize() if direction else ""
-                var_name = f"{subdir.name}W{width}{dir_suffix}"
-                exports.append(f'export {{ frames as {var_name} }} from "{rel_path}";')
-
-        # Check for static sprite (TS files directly in sprite dir)
-        direct_ts_files = list(sprite_dir.glob("w*.ts"))
-        for ts_file in direct_ts_files:
-            width, direction = _parse_sprite_filename(ts_file.stem)
-            # Import with .js extension (TypeScript ES module convention)
-            rel_path = f"./{ts_file.stem}.js"
-            # Build variable name: w50 or w50Left
-            dir_suffix = direction.capitalize() if direction else ""
-            var_name = f"w{width}{dir_suffix}"
-            exports.append(f'export {{ frames as {var_name} }} from "{rel_path}";')
-
-        if exports:
-            index_content = "\n".join(sorted(exports)) + "\n"
-            index_path = sprite_dir / "index.ts"
-            index_path.write_text(index_content, encoding="utf-8")
-            hooks.print_message(f"Generated {index_path}")
-
-
 def main(base: Path | None = None) -> int:
     """Generate all sprite modules from config."""
     config = load_config(base)
@@ -325,8 +262,6 @@ def main(base: Path | None = None) -> int:
     for name, sprite_config in sprites.items():
         if isinstance(sprite_config, dict):
             process_sprite(name, sprite_config, base)
-
-    generate_index_files(base)
 
     hooks.print_message("Sprite generation complete")
     return 0

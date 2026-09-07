@@ -203,6 +203,29 @@ describe("validateConfig", () => {
     expect(result.audio).toBeUndefined();
   });
 
+  it("carries a colours block through untouched", () => {
+    // The loader passes colours through raw; validateColorsConfig decodes it
+    // once at startup, so an invalid colour must not fail config loading here.
+    const config = {
+      sprites: { bunny: {} },
+      layers: [],
+      settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
+      colors: { actor: "#6db3ff" },
+    };
+    const result = validateConfig(config);
+    expect(result.colors).toEqual({ actor: "#6db3ff" });
+  });
+
+  it("leaves colours absent when the block is omitted", () => {
+    const config = {
+      sprites: { bunny: {} },
+      layers: [],
+      settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
+    };
+    const result = validateConfig(config);
+    expect(result.colors).toBeUndefined();
+  });
+
   it("validates config with autoLayers only", () => {
     const config = {
       sprites: { bunny: {} },
