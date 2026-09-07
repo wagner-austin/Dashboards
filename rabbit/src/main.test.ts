@@ -8,7 +8,7 @@ import { init, _test_hooks, type MainDependencies } from "./main.js";
 import type { ScreenLayers } from "./rendering/SceneRenderer.js";
 import type { BunnyFrames } from "./entities/Bunny.js";
 import type { MutableSpriteRegistry, ProgressCallback } from "./loaders/progressive.js";
-import type { Config } from "./types.js";
+import type { Config, SpriteAnimationConfig } from "./types.js";
 import { DEFAULT_AUTORUN_CONFIG } from "./input/index.js";
 import {
   createConstantRandom,
@@ -36,9 +36,43 @@ function createTestBunnyFrames(): BunnyFrames {
   };
 }
 
+/** One animation entry, directional or not, for a test character. */
+function testAnimation(directional: boolean, width: number): SpriteAnimationConfig {
+  return {
+    source: "originals/x.gif",
+    widths: [width],
+    contrast: 1.4,
+    invert: true,
+    ...(directional ? { directions: ["left", "right"] as const } : {}),
+  };
+}
+
+/**
+ * A character block the resolver accepts.
+ *
+ * init resolves the character's animations before loading anything, so a
+ * config with no character no longer reaches the render loop.
+ */
+function testCharacterSprites(): Config["sprites"] {
+  return {
+    bunny: {
+      animations: {
+        walk: testAnimation(true, 50),
+        jump: testAnimation(true, 50),
+        idle: testAnimation(true, 40),
+        walk_to_idle: testAnimation(true, 40),
+        walk_to_turn_away: testAnimation(true, 40),
+        walk_to_turn_toward: testAnimation(true, 40),
+        hop_away: testAnimation(false, 40),
+        hop_toward: testAnimation(false, 40),
+      },
+    },
+  };
+}
+
 function createTestConfig(): Config {
   return {
-    sprites: {},
+    sprites: testCharacterSprites(),
     layers: [],
     settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
     autorun: DEFAULT_AUTORUN_CONFIG,
@@ -65,8 +99,8 @@ function createTestConfig(): Config {
  */
 function createTestRunProgressiveLoadFn(
   bunnyFrames: BunnyFrames
-): (_config: Config, _registry: MutableSpriteRegistry, _onProgress: ProgressCallback, onBunnyLoaded: (frames: BunnyFrames) => void) => Promise<void> {
-  return (_config, _registry, onProgress, onBunnyLoaded) => {
+): (_config: Config, _character: string, _registry: MutableSpriteRegistry, _onProgress: ProgressCallback, onBunnyLoaded: (frames: BunnyFrames) => void) => Promise<void> {
+  return (_config, _character, _registry, onProgress, onBunnyLoaded) => {
     // Call progress callback to ensure coverage
     onProgress({ phase: "ground", current: 1, total: 1, spriteName: "ground", width: 0 });
     // Call bunny loaded callback
@@ -151,6 +185,7 @@ describe("init", () => {
   it("throws when screen element not found", async () => {
     const deps: MainDependencies = {
       getScreenLayers: () => null,
+      getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
       runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
@@ -165,7 +200,7 @@ describe("init", () => {
 
   it("throws when autoLayers not in config", async () => {
     const configWithoutAutoLayers: Config = {
-      sprites: {},
+      sprites: testCharacterSprites(),
       layers: [],
       settings: { fps: 60, scrollSpeed: 100, depthSpeed: 30, animation: { walk: 120, idle: 500, jump: 58, transition: 85, hop: 150 } },
       autorun: DEFAULT_AUTORUN_CONFIG,
@@ -174,6 +209,7 @@ describe("init", () => {
 
     const deps: MainDependencies = {
       getScreenLayers: () => layers,
+      getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(configWithoutAutoLayers),
       runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
@@ -189,6 +225,7 @@ describe("init", () => {
   it("initializes and starts render loop", async () => {
     const deps: MainDependencies = {
       getScreenLayers: () => layers,
+      getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
       runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: (callback) => {
@@ -227,8 +264,9 @@ describe("init", () => {
 
     const deps: MainDependencies = {
       getScreenLayers: () => layers,
+      getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
-      runProgressiveLoadFn: (_config, _registry, onProgress, onBunnyLoaded) => {
+      runProgressiveLoadFn: (_config, _character, _registry, onProgress, onBunnyLoaded) => {
         onProgress({ phase: "ground", current: 1, total: 1, spriteName: "ground", width: 0 });
         // Capture callback but don't call it yet - simulates bunny still loading
         capturedOnBunnyLoaded = onBunnyLoaded;
@@ -292,6 +330,7 @@ describe("init", () => {
   it("handles resize event", async () => {
     const deps: MainDependencies = {
       getScreenLayers: () => layers,
+      getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
       runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
@@ -320,6 +359,7 @@ describe("init", () => {
 
     const deps: MainDependencies = {
       getScreenLayers: () => layers,
+      getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(configWithAudio),
       runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
@@ -350,6 +390,7 @@ describe("init", () => {
 
     const deps: MainDependencies = {
       getScreenLayers: () => layers,
+      getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(configWithDisabledAudio),
       runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
@@ -381,6 +422,7 @@ describe("init", () => {
 
     const deps: MainDependencies = {
       getScreenLayers: () => layers,
+      getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(configWithAudio),
       runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: () => 0,
@@ -401,6 +443,7 @@ describe("init", () => {
 
     const deps: MainDependencies = {
       getScreenLayers: () => layers,
+      getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
       runProgressiveLoadFn: createTestRunProgressiveLoadFn(createTestBunnyFrames()),
       requestAnimationFrameFn: (callback) => {
@@ -583,6 +626,28 @@ describe("_test_hooks", () => {
     expect(deps.getScreenLayers()).toBeNull();
 
     document.body.replaceChildren();
+  });
+
+  it("createDefaultDependencies getCharacterOverride reads the page URL", () => {
+    // The override is how a candidate character is viewed in the real scene
+    // before its art is committed, so it has to come off the address bar.
+    const original = window.location.href;
+    window.history.replaceState({}, "", "?character=lion");
+
+    const deps = _test_hooks.createDefaultDependencies();
+    expect(deps.getCharacterOverride()).toBe("lion");
+
+    window.history.replaceState({}, "", original);
+  });
+
+  it("createDefaultDependencies getCharacterOverride is null without the param", () => {
+    const original = window.location.href;
+    window.history.replaceState({}, "", "?other=1");
+
+    const deps = _test_hooks.createDefaultDependencies();
+    expect(deps.getCharacterOverride()).toBeNull();
+
+    window.history.replaceState({}, "", original);
   });
 
   it("requestAnimationFrameFn schedules callback", () => {

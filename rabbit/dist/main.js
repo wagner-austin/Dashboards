@@ -7,6 +7,7 @@
 import { measureViewport } from "./rendering/Viewport.js";
 import { applyLayerColors, renderFrame, } from "./rendering/SceneRenderer.js";
 import { validateColorsConfig } from "./rendering/colors.js";
+import { resolveCharacterAnimations, resolveCharacterName, } from "./loaders/character.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers } from "./entities/Bunny.js";
 import { DEFAULT_TOUCH_CONFIG, createHorizontalHeldProbe, createInputState, createInputSystem, } from "./input/index.js";
@@ -39,6 +40,7 @@ function createDefaultDependencies() {
             }
             return { world, actor, foreground };
         },
+        getCharacterOverride: () => new URL(window.location.href).searchParams.get("character"),
         loadConfigFn: loadConfig,
         runProgressiveLoadFn: runProgressiveLoad,
         requestAnimationFrameFn: (callback) => requestAnimationFrame(callback),
@@ -98,6 +100,10 @@ export async function init(deps = createDefaultDependencies()) {
     }
     const layers = screenLayers;
     applyLayerColors(layers, validateColorsConfig(config.colors));
+    // Resolved before anything loads, so a character config cannot satisfy
+    // fails at startup naming the animation rather than 404ing a sprite later.
+    const character = resolveCharacterName(config, deps.getCharacterOverride());
+    resolveCharacterAnimations(config, character);
     // All three layers carry the same font metrics and the same grid, so
     // measuring one measures all of them.
     const viewport = measureViewport(layers.world);
@@ -175,7 +181,7 @@ export async function init(deps = createDefaultDependencies()) {
     // Start render loop immediately
     deps.requestAnimationFrameFn(render);
     // Run progressive loading in parallel (sprites appear as they load)
-    await deps.runProgressiveLoadFn(config, spriteRegistry, (_progress) => {
+    await deps.runProgressiveLoadFn(config, character, spriteRegistry, (_progress) => {
         // Progress callback - could update a loading indicator here
         // Sprites are automatically visible as they're added to registry
     }, (loadedBunnyFrames) => {

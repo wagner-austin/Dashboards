@@ -3,8 +3,7 @@
  *
  * The input sources depend on the narrow KeyboardEventSource and
  * TouchEventSource interfaces; these are the only implementations that touch
- * the document. Excluded from unit test coverage as an I/O boundary - the
- * behaviour behind them is exercised through dependency injection.
+ * the document.
  */
 
 import type { KeyEventType, KeyboardEventSource } from "../input/Keyboard.js";
@@ -67,3 +66,8 @@ export function createDocumentTouchSource(): TouchEventSource {
     now: (): number => Date.now(),
   };
 }
+
+/** Test hooks for internal functions */
+export const _test_hooks = {
+  readTouchPoints,
+};

@@ -242,5 +242,13 @@ export interface Config {
      * decode happens once, in init.
      */
     readonly colors?: unknown;
+    /**
+     * Which sprite the scene draws as the character.
+     *
+     * Raw, like `colors`: types.ts is the shape of the JSON document, and the
+     * document may carry anything. resolveCharacterName decodes it once at
+     * startup. Absent means DEFAULT_CHARACTER.
+     */
+    readonly character?: unknown;
 }
 //# sourceMappingURL=types.d.ts.map

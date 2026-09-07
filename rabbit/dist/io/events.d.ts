@@ -3,11 +3,10 @@
  *
  * The input sources depend on the narrow KeyboardEventSource and
  * TouchEventSource interfaces; these are the only implementations that touch
- * the document. Excluded from unit test coverage as an I/O boundary - the
- * behaviour behind them is exercised through dependency injection.
+ * the document.
  */
 import type { KeyboardEventSource } from "../input/Keyboard.js";
-import type { TouchEventSource } from "../input/Touch.js";
+import type { TouchEventSource, TouchPoint } from "../input/Touch.js";
 /**
  * Create a keyboard event source bound to the document.
  *
@@ -16,6 +15,19 @@ import type { TouchEventSource } from "../input/Touch.js";
  */
 export declare function createDocumentKeyboardSource(): KeyboardEventSource;
 /**
+ * Read the active touch points out of a DOM touch event.
+ *
+ * This is the parse-at-the-edge step: DOM Touch objects already carry the
+ * three fields TouchPoint declares, so the input layer never sees a TouchList.
+ *
+ * Args:
+ *     event: The DOM touch event.
+ *
+ * Returns:
+ *     The event's active touch points.
+ */
+declare function readTouchPoints(event: TouchEvent): readonly TouchPoint[];
+/**
  * Create a touch event source bound to the document.
  *
  * Returns:
@@ -23,4 +35,9 @@ export declare function createDocumentKeyboardSource(): KeyboardEventSource;
  *     wall clock for tap detection.
  */
 export declare function createDocumentTouchSource(): TouchEventSource;
+/** Test hooks for internal functions */
+export declare const _test_hooks: {
+    readTouchPoints: typeof readTouchPoints;
+};
+export {};
 //# sourceMappingURL=events.d.ts.map

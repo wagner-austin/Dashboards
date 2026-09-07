@@ -8,7 +8,7 @@
 import type { Config } from "./types.js";
 import type { BunnyFrames } from "./entities/Bunny.js";
 import type { MutableSpriteRegistry, ProgressCallback } from "./loaders/progressive.js";
-import type { BunnyLoadedCallback } from "./io/sprites.js";
+import type { BunnyLoadedCallback } from "./io/progressive-io.js";
 import { measureViewport } from "./rendering/Viewport.js";
 import {
   applyLayerColors,
@@ -17,6 +17,10 @@ import {
   type ScreenLayers,
 } from "./rendering/SceneRenderer.js";
 import { validateColorsConfig } from "./rendering/colors.js";
+import {
+  resolveCharacterAnimations,
+  resolveCharacterName,
+} from "./loaders/character.js";
 import { createAnimationTimer } from "./loaders/sprites.js";
 import { createInitialBunnyState, createBunnyTimers } from "./entities/Bunny.js";
 import {
@@ -63,9 +67,11 @@ import {
  */
 export interface MainDependencies {
   getScreenLayers: () => ScreenLayers | null;
+  getCharacterOverride: () => string | null;
   loadConfigFn: () => Promise<Config>;
   runProgressiveLoadFn: (
     config: Config,
+    character: string,
     registry: MutableSpriteRegistry,
     onProgress: ProgressCallback,
     onBunnyLoaded: BunnyLoadedCallback
@@ -101,6 +107,8 @@ function createDefaultDependencies(): MainDependencies {
       }
       return { world, actor, foreground };
     },
+    getCharacterOverride: (): string | null =>
+      new URL(window.location.href).searchParams.get("character"),
     loadConfigFn: loadConfig,
     runProgressiveLoadFn: runProgressiveLoad,
     requestAnimationFrameFn: (callback) => requestAnimationFrame(callback),
@@ -167,6 +175,11 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
 
   const layers = screenLayers;
   applyLayerColors(layers, validateColorsConfig(config.colors));
+
+  // Resolved before anything loads, so a character config cannot satisfy
+  // fails at startup naming the animation rather than 404ing a sprite later.
+  const character = resolveCharacterName(config, deps.getCharacterOverride());
+  resolveCharacterAnimations(config, character);
 
   // All three layers carry the same font metrics and the same grid, so
   // measuring one measures all of them.
@@ -271,6 +284,7 @@ export async function init(deps: MainDependencies = createDefaultDependencies())
   // Run progressive loading in parallel (sprites appear as they load)
   await deps.runProgressiveLoadFn(
     config,
+    character,
     spriteRegistry,
     (_progress) => {
       // Progress callback - could update a loading indicator here

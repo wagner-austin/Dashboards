@@ -7,7 +7,7 @@
 import type { Config } from "./types.js";
 import type { BunnyFrames } from "./entities/Bunny.js";
 import type { MutableSpriteRegistry, ProgressCallback } from "./loaders/progressive.js";
-import type { BunnyLoadedCallback } from "./io/sprites.js";
+import type { BunnyLoadedCallback } from "./io/progressive-io.js";
 import { type ScreenLayers } from "./rendering/SceneRenderer.js";
 import { type KeyboardEventSource, type RandomSource, type TouchEventSource } from "./input/index.js";
 import { type AudioDependencies } from "./audio/index.js";
@@ -25,8 +25,9 @@ import { type AudioDependencies } from "./audio/index.js";
  */
 export interface MainDependencies {
     getScreenLayers: () => ScreenLayers | null;
+    getCharacterOverride: () => string | null;
     loadConfigFn: () => Promise<Config>;
-    runProgressiveLoadFn: (config: Config, registry: MutableSpriteRegistry, onProgress: ProgressCallback, onBunnyLoaded: BunnyLoadedCallback) => Promise<void>;
+    runProgressiveLoadFn: (config: Config, character: string, registry: MutableSpriteRegistry, onProgress: ProgressCallback, onBunnyLoaded: BunnyLoadedCallback) => Promise<void>;
     requestAnimationFrameFn: (callback: (time: number) => void) => number;
     audioDeps: AudioDependencies;
     random: RandomSource;
