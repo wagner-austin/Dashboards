@@ -7,6 +7,7 @@
 import { createBuffer, renderBuffer, type ViewportState } from "./Viewport.js";
 import { drawSprite } from "./draw.js";
 import { drawGround } from "./Ground.js";
+import { occludeStackedBuffers, type LayerBuffers } from "./occlusion.js";
 import type { LayerColors } from "./colors.js";
 import { getBunnyFrame, type BunnyFrames, type BunnyState } from "../entities/Bunny.js";
 import { renderAllLayers, renderForegroundLayers, type SceneState } from "../layers/index.js";
@@ -38,9 +39,10 @@ export interface RenderState {
  * and without putting innerHTML on the 60fps path.
  *
  * Draw order is preserved by DOM stacking order: world, then actor, then
- * foreground. A space is transparent in all three, so occlusion works exactly
- * as it did when the layers shared one buffer - foreground grass still covers
- * the actor, and the actor still covers the trees.
+ * foreground. Draw order is NOT occlusion, though - these elements have no
+ * background, so a glyph is transparent everywhere its ink is not and two
+ * layers writing one cell are both painted. occludeStackedBuffers resolves
+ * that in the buffers before they are emitted; see occlusion.ts.
  *
  * world: Background layers, trees, and the ground.
  * actor: The character, and nothing else.
@@ -86,6 +88,11 @@ function drawBunny(
  * carry identical dimensions and stay aligned without any positioning
  * arithmetic. Cells no layer writes stay spaces, which are transparent.
  *
+ * The buffers are drawn back to front and then occluded against each other,
+ * because stacking three transparent elements reproduces draw order but not
+ * overwrite: without that pass a cell written by two layers shows both glyphs
+ * at once.
+ *
  * Args:
  *     state: Current render state.
  *     bunnyFrames: Bunny animation frames.
@@ -104,26 +111,33 @@ export function renderFrame(
   const { width, height } = state.viewport;
   const config = state.projectionConfig;
 
-  const worldBuffer = createBuffer(width, height);
-  const actorBuffer = createBuffer(width, height);
-  const foregroundBuffer = createBuffer(width, height);
+  const buffers: LayerBuffers = {
+    world: createBuffer(width, height),
+    actor: createBuffer(width, height),
+    foreground: createBuffer(width, height),
+  };
 
   // Render background layers (includes trees via 3D projection)
-  renderAllLayers(worldBuffer, state.sceneState, width, height, config);
+  renderAllLayers(buffers.world, state.sceneState, width, height, config);
 
   // Draw ground using camera position
-  drawGround(worldBuffer, -Math.floor(state.sceneState.camera.x), width, height);
+  drawGround(buffers.world, -Math.floor(state.sceneState.camera.x), width, height);
 
   // Draw bunny at fixed screen position, alone on its own layer
-  drawBunny(actorBuffer, state.bunnyState, bunnyFrames, width, height);
+  drawBunny(buffers.actor, state.bunnyState, bunnyFrames, width, height);
 
   // Render foreground layers
-  renderForegroundLayers(foregroundBuffer, state.sceneState, width, height, config);
+  renderForegroundLayers(buffers.foreground, state.sceneState, width, height, config);
+
+  // Resolve the overlap the split created: a nearer layer's glyph must erase
+  // the one behind it, which a shared buffer got from overwriting and stacked
+  // transparent elements do not get at all.
+  occludeStackedBuffers(buffers);
 
   // Render to screen
-  layers.world.textContent = renderBuffer(worldBuffer);
-  layers.actor.textContent = renderBuffer(actorBuffer);
-  layers.foreground.textContent = renderBuffer(foregroundBuffer);
+  layers.world.textContent = renderBuffer(buffers.world);
+  layers.actor.textContent = renderBuffer(buffers.actor);
+  layers.foreground.textContent = renderBuffer(buffers.foreground);
 
   return { lastTime: currentTime };
 }

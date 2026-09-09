@@ -16,8 +16,12 @@
            can carry its own colour without the renderer tracking a colour per
            character cell. Every one of them is the full viewport grid and they
            share these metrics exactly, so they align with no positioning
-           arithmetic. Spaces are transparent, so DOM stacking order reproduces
-           the old single-buffer draw order: world, actor, foreground.
+           arithmetic. DOM stacking order gives the old single-buffer draw
+           order — world, actor, foreground — but not its occlusion: these
+           elements have no background, so a glyph is transparent everywhere
+           its ink is not, and two layers writing one cell would paint both
+           characters. occlusion.ts resolves that in the buffers, before the
+           text ever reaches these elements.
 
            Colours come from the `colors` block in config.json and are applied
            at startup by applyLayerColors. The values here are only what shows

@@ -33,9 +33,10 @@ export interface RenderState {
  * and without putting innerHTML on the 60fps path.
  *
  * Draw order is preserved by DOM stacking order: world, then actor, then
- * foreground. A space is transparent in all three, so occlusion works exactly
- * as it did when the layers shared one buffer - foreground grass still covers
- * the actor, and the actor still covers the trees.
+ * foreground. Draw order is NOT occlusion, though - these elements have no
+ * background, so a glyph is transparent everywhere its ink is not and two
+ * layers writing one cell are both painted. occludeStackedBuffers resolves
+ * that in the buffers before they are emitted; see occlusion.ts.
  *
  * world: Background layers, trees, and the ground.
  * actor: The character, and nothing else.
@@ -67,6 +68,11 @@ declare function drawBunny(buffer: string[][], bunnyState: BunnyState, bunnyFram
  * Each of the three buffers is the full viewport grid, so all three elements
  * carry identical dimensions and stay aligned without any positioning
  * arithmetic. Cells no layer writes stay spaces, which are transparent.
+ *
+ * The buffers are drawn back to front and then occluded against each other,
+ * because stacking three transparent elements reproduces draw order but not
+ * overwrite: without that pass a cell written by two layers shows both glyphs
+ * at once.
  *
  * Args:
  *     state: Current render state.

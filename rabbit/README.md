@@ -364,15 +364,27 @@ of one.
 
 The scene draws into three stacked `<pre>` elements rather than one, so the
 actor can carry its own colour. Draw order is DOM stacking order — world, then
-actor, then foreground — and a space is transparent in all three, so occlusion
-is identical to when they shared a single buffer: foreground grass still covers
-the actor, and the actor still covers the trees.
+actor, then foreground.
+
+**Draw order is not occlusion, and the split did not get that for free.** These
+elements have no background, so each one is transparent everywhere its glyphs'
+ink is not — not only where it holds spaces. Two layers writing a non-space
+character into the same cell were therefore both painted, superimposed, and the
+rabbit standing in front of a tree rendered as the rabbit's glyph and the
+tree's glyph in one cell. The single-buffer engine wrote `bufferRow[col] = ch`,
+a replacement, so the last writer was the only writer.
+
+`src/rendering/occlusion.ts` restores that before anything reaches the DOM:
+each cell keeps only its frontmost non-space character and the layers behind it
+are blanked back to spaces, which really are transparent. What the three
+elements emit is then cell-for-cell what one shared buffer emitted — foreground
+grass covers the actor, the actor covers the trees.
 
 ```json
 {
   "colors": {
     "world": "#e0e0e0",
-    "actor": "#6db3ff",
+    "actor": "#ffffff",
     "foreground": "#e0e0e0"
   }
 }

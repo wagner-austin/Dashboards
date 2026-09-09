@@ -49,6 +49,16 @@ function createTestSceneState(): SceneState {
   return createSceneState([], createCamera(), createTestDepthBounds());
 }
 
+/** Whether a rendered layer holds a visible character at this cell. */
+function paintedAt(grid: readonly string[], row: number, col: number): boolean {
+  const line = grid[row];
+  if (line === undefined) {
+    return false;
+  }
+  const cell = line[col];
+  return cell !== undefined && cell !== " ";
+}
+
 describe("renderFrame", () => {
   let layers: ScreenLayers;
   const projectionConfig = createProjectionConfig();
@@ -152,6 +162,66 @@ describe("renderFrame", () => {
     const actorWithoutBunny = layers.actor.textContent.replace(/idle_l_0/g, "");
     expect(actorWithoutBunny.trim()).toBe("");
     expect(layers.world.textContent.trim()).not.toBe("");
+  });
+
+  it("erases the ground from under the bunny's own glyphs", () => {
+    // The bunny stands inside the ground band, so the world layer and the
+    // actor layer write the same cells. Stacked <pre> elements have no
+    // background - a glyph is transparent everywhere its ink is not - so
+    // before the buffers occluded each other the browser painted the ground's
+    // dots and the bunny's characters into the same cell, on top of one
+    // another.
+    const renderState = createRenderState(
+      createTestBunnyState({ kind: "idle", frameIdx: 0 }),
+      createTestSceneState()
+    );
+
+    renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
+
+    const worldRows = layers.world.textContent.split("\n");
+    const actorRows = layers.actor.textContent.split("\n");
+    const bunnyRow = actorRows.findIndex((row) => row.includes("idle_l_0"));
+    expect(bunnyRow).toBeGreaterThan(-1);
+
+    const world = worldRows[bunnyRow];
+    const actor = actorRows[bunnyRow];
+    expect(world).toBeDefined();
+    expect(actor).toBeDefined();
+    if (world === undefined || actor === undefined) {
+      return;
+    }
+
+    const start = actor.indexOf("idle_l_0");
+    expect(world.slice(start, start + "idle_l_0".length)).toBe("        ");
+
+    // Not vacuous: the ground still draws on that row either side of the
+    // bunny, so the blank span above is occlusion and not an empty row.
+    expect(world.trim()).not.toBe("");
+  });
+
+  it("never paints two layers into the same character cell", () => {
+    const renderState = createRenderState(
+      createTestBunnyState({ kind: "idle", frameIdx: 0 }),
+      createTestSceneState()
+    );
+
+    renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
+
+    const grids = [layers.world, layers.actor, layers.foreground].map((el) =>
+      el.textContent.split("\n")
+    );
+
+    const collisions: string[] = [];
+    for (let row = 0; row < 24; row++) {
+      for (let col = 0; col < 80; col++) {
+        const painted = grids.filter((grid) => paintedAt(grid, row, col));
+        if (painted.length > 1) {
+          collisions.push(`${String(row)},${String(col)}`);
+        }
+      }
+    }
+
+    expect(collisions).toEqual([]);
   });
 
   it("leaves the camera alone while the bunny walks right", () => {

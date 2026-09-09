@@ -191,7 +191,7 @@
   },
   "colors": {
     "world": "#e0e0e0",
-    "actor": "#6db3ff",
+    "actor": "#ffffff",
     "foreground": "#e0e0e0"
   },
   "autorun": {
