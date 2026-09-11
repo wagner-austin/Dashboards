@@ -11,6 +11,7 @@ scoped to the modules that have been brought up to the project's standard:
   the ASUCI hosts serve an incomplete certificate chain without it.
 """
 
+import hashlib
 import re
 import sys
 from pathlib import Path
@@ -50,6 +51,31 @@ SITE_CSS = "assets/site.css"
 # Directories with no page of ours in them.
 PAGE_SCAN_EXCLUDES = frozenset({".venv", "node_modules", "rabbit"})
 
+# sha256 of each stylesheet mcp-proxy serves a byte-identical copy of, so its
+# corvis dashboard is an extension of this site rather than a second design.
+#
+# This gate exists because the copies cannot import each other: one is static
+# CSS on GitHub Pages, the other a file served by a Node process behind
+# Keycloak. mcp-proxy pins the bytes it SERVES, which makes a change on its
+# side deliberate and is blind to a change on ours. This pins the bytes it
+# copied FROM. Neither alone closes the loop -- without this one, moving a
+# shade here turns nothing red anywhere and somebody has to notice with their
+# eyes, which is how the palette drifted in the first place.
+#
+# WHEN THIS TURNS RED: that is the gate working. Update the hash in the same
+# commit as the stylesheet change, then tell the mcp-proxy side to re-copy --
+# board label opus-rebuild-deadlock-0910, who asked to be messaged rather than
+# discover it. Updating the hash without telling them converts a caught
+# divergence into a silent one.
+#
+# Hash the FILE, not a shell redirect of it: `git show ... > file` in PowerShell
+# rewrites LF as CRLF and inflates a 4713-byte stylesheet to 4851, which fails
+# this check for a reason that reads as corruption.
+MIRRORED_STYLESHEETS = {
+    "assets/tokens.css": "bd9f6a968bba1ef07b0e49a060ee2e12201946de5372443dc1c82217b6a648ec",
+    "assets/site.css": "f77d69aa4bab176f3215dc22de9aa1b3cf61ec304ad1362ac682174fed9d04a2",
+}
+
 _ROOT_BLOCK_RE = re.compile(r":root\s*\{(.*?)\}", re.DOTALL)
 _TOKEN_RE = re.compile(r"(--[a-z0-9-]+)\s*:\s*([^;]+);")
 _TOKENS_HREF = "/assets/tokens.css"
@@ -72,26 +98,37 @@ def palette_tokens(text: str) -> dict[str, str]:
 
 
 def site_pages(base: Path) -> list[Path]:
-    """Return every HTML page of ours under ``base``.
+    """Return every HTML page the site actually publishes.
 
-    A page of ours is a route -- an ``index.html``, which is what GitHub Pages
-    serves a directory as -- or a top-level document beside it. Everything else
-    with an ``.html`` extension in this repository is captured source: the
-    nineteen files under ``ice-cooperation-tracker/`` are scraped sheriff
-    directories, and linting somebody else's markup for our palette is noise
-    that trains people to skim the guard's output.
+    Tracked-ness is the definition, not a filename shape. GitHub Pages serves
+    what is committed, so ``git ls-files`` answers "what is the site" exactly,
+    and it answers the same on every machine.
+
+    An earlier version walked the filesystem for ``index.html`` plus top-level
+    documents. It gave the right answer here by luck and the wrong one in
+    general: it reported the nineteen scraped sheriff directories under the
+    gitignored ``ice-cooperation-tracker/`` -- a tree that 404s in production --
+    and it would have found nothing there on a fresh clone, so the guard's
+    verdict depended on which machine ran it.
+
+    Args:
+        base: Project root to scan.
+
+    Tracked AND present: ``git ls-files`` still lists a file whose deletion is
+    not yet staged, and a page that is not on disk is a deletion in progress
+    rather than something to lint. Without that, deleting a page crashes the
+    guard with a traceback instead of reporting on the pages that remain.
 
     Args:
         base: Project root to scan.
 
     Returns:
-        Sorted paths, excluding vendored trees and captured source.
+        Absolute paths to tracked HTML files, excluding vendored trees.
     """
     return sorted(
         path
-        for path in base.rglob("*.html")
-        if not PAGE_SCAN_EXCLUDES & set(path.relative_to(base).parts)
-        and (path.name == "index.html" or path.parent == base)
+        for path in (base / relative for relative in hooks.list_tracked_html(str(base)))
+        if not PAGE_SCAN_EXCLUDES & set(path.relative_to(base).parts) and path.is_file()
     )
 
 
@@ -139,6 +176,36 @@ def check_pages_share_one_palette(base: Path | None = None) -> list[str]:
                 continue
             how = "restates" if value == owned[name] else f"DIVERGES from {owned[name]!r} with"
             errors.append(f"{relative}: {how} {name}: {value!r}; {TOKENS_CSS} owns it")
+
+    return errors
+
+
+def check_mirrored_stylesheets_are_pinned(base: Path | None = None) -> list[str]:
+    """Check each mirrored stylesheet still hashes to its recorded value.
+
+    Args:
+        base: Project root to scan. Defaults to the current directory.
+
+    Returns:
+        One error per missing or changed stylesheet, each carrying the new
+        hash so the fix is a copy-paste and the message is actionable.
+    """
+    if base is None:
+        base = Path(".")
+
+    errors: list[str] = []
+    for relative, recorded in sorted(MIRRORED_STYLESHEETS.items()):
+        path = base / relative
+        if not path.is_file():
+            errors.append(f"Mirrored stylesheet missing: {relative}")
+            continue
+        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual != recorded:
+            errors.append(
+                f"{relative} changed: recorded {recorded}, now {actual}. "
+                f"Update MIRRORED_STYLESHEETS in this commit AND tell the mcp-proxy "
+                f"side (board label opus-rebuild-deadlock-0910) to re-copy."
+            )
 
     return errors
 
@@ -276,6 +343,7 @@ def main(base: Path | None = None) -> int:
     all_errors.extend(check_no_browser_automation(base))
     all_errors.extend(check_chain_certificate(base))
     all_errors.extend(check_pages_share_one_palette(base))
+    all_errors.extend(check_mirrored_stylesheets_are_pinned(base))
 
     if all_errors:
         hooks.print_message("Guard check failed:")

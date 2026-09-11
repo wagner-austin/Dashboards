@@ -45,6 +45,34 @@ def _real_list_article_dirs(preview_root: str) -> list[str]:
     return [child.as_posix() for child in found]
 
 
+def _real_list_tracked_html(base: str) -> list[str]:
+    """Return every git-tracked ``.html`` path under ``base``.
+
+    Tracked is the exact definition of "part of the site": GitHub Pages serves
+    what is committed. Asking git rather than the filesystem is what keeps the
+    guard's verdict identical on every machine -- ``ice-cooperation-tracker/``
+    is gitignored working material that 404s in production, and a filesystem
+    walk finds it here and not on a fresh clone.
+
+    Args:
+        base: Repository root.
+
+    Returns:
+        Repository-relative POSIX paths, sorted.
+
+    Raises:
+        CalledProcessError: If git fails, which means the guard cannot
+            establish what the site is and must not guess.
+    """
+    completed = subprocess.run(
+        ["git", "-C", base, "ls-files", "*.html"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return sorted(line for line in completed.stdout.splitlines() if line)
+
+
 def _real_dir_exists(path: str) -> bool:
     """Return whether ``path`` names an existing directory.
 
@@ -167,6 +195,7 @@ def _real_run_validator(deliverable_path: str, validator_script: str) -> int:
 
 print_message = _real_print
 list_article_dirs = _real_list_article_dirs
+list_tracked_html = _real_list_tracked_html
 file_exists = _real_file_exists
 dir_exists = _real_dir_exists
 run_validator = _real_run_validator
@@ -174,9 +203,11 @@ run_validator = _real_run_validator
 
 def reset_hooks() -> None:
     """Restore every hook to its real implementation."""
-    global print_message, list_article_dirs, file_exists, dir_exists, run_validator
+    global print_message, list_article_dirs, list_tracked_html
+    global file_exists, dir_exists, run_validator
     print_message = _real_print
     list_article_dirs = _real_list_article_dirs
+    list_tracked_html = _real_list_tracked_html
     file_exists = _real_file_exists
     dir_exists = _real_dir_exists
     run_validator = _real_run_validator

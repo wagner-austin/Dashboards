@@ -1,5 +1,6 @@
 """Tests for the repository guard checks."""
 
+import hashlib
 from collections.abc import Iterator
 from pathlib import Path
 
@@ -9,9 +10,11 @@ from scripts.guard import (
     CHAIN_CERT,
     DAILY_PATH_MODULES,
     GUARDED_MODULES,
+    MIRRORED_STYLESHEETS,
     TOKENS_CSS,
     _suppression_patterns,
     check_chain_certificate,
+    check_mirrored_stylesheets_are_pinned,
     check_no_browser_automation,
     check_no_stub_files,
     check_no_suppressions,
@@ -95,11 +98,14 @@ def _make_project(root: Path, *, browser_import: bool = False, cert: str | None 
     if cert is not None:
         (root / CHAIN_CERT).write_text(cert, encoding="utf-8")
 
-    # Derived from the guard's own constant for the same reason the module list
-    # above is: a hand-written path here is a second place that has to agree.
-    tokens = root / TOKENS_CSS
-    tokens.parent.mkdir(parents=True, exist_ok=True)
-    tokens.write_text(FIXTURE_PALETTE, encoding="utf-8")
+    # Copied from the real files rather than written fresh, for two reasons:
+    # the palette check then runs against the real token names, and the pin
+    # check sees the bytes it recorded. A fixture palette of its own would make
+    # every main() case fail the pin for a reason unrelated to what it tests.
+    for relative in sorted(MIRRORED_STYLESHEETS):
+        target = root / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((REPO_ROOT / relative).read_bytes())
 
 
 def test_the_fixture_tree_covers_every_guarded_module(tmp_path: Path) -> None:
@@ -276,17 +282,41 @@ def test_main_reports_every_failure(tmp_path: Path, recorded: RecordingHooks) ->
 # --------------------------------------------------------------------------
 
 
-def _write_page(root: Path, relative: str, body: str) -> None:
-    """Write a page into the fixture tree.
+def _write_page(root: Path, relative: str, body: str, *, tracked: bool = True) -> None:
+    """Write a page into the fixture tree and record whether git tracks it.
 
     Args:
         root: Project root.
         relative: Page path relative to the root.
         body: Page contents.
+        tracked: Whether the page should appear in ``git ls-files``. An
+            untracked page is working material the site does not publish.
     """
     path = root / relative
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(body, encoding="utf-8")
+    if tracked:
+        _TRACKED.append(relative)
+
+
+# Scripted `git ls-files *.html` output for the fixture tree. The guard asks
+# git what the site is rather than walking the filesystem, so the tests script
+# git's answer rather than making a real repository per test.
+_TRACKED: list[str] = []
+
+
+@pytest.fixture(autouse=True)
+def tracked_pages() -> Iterator[None]:
+    """Route the guard's tracked-file lookup at the fixture's own list.
+
+    Yields:
+        None. Clears the list and restores the real hook on teardown.
+    """
+    _TRACKED.clear()
+    hooks.list_tracked_html = lambda base: sorted(_TRACKED)
+    yield
+    _TRACKED.clear()
+    hooks.reset_hooks()
 
 
 def test_palette_tokens_reads_the_root_block() -> None:
@@ -299,8 +329,8 @@ def test_palette_tokens_is_empty_without_a_root_block() -> None:
     assert palette_tokens("<p>no css here</p>") == {}
 
 
-def test_site_pages_finds_routes_and_top_level_documents(tmp_path: Path) -> None:
-    """index.html anywhere, plus any .html beside the repo root.
+def test_site_pages_returns_what_git_tracks(tmp_path: Path) -> None:
+    """Every tracked page counts, whatever it is named.
 
     Args:
         tmp_path: Temporary project root.
@@ -312,23 +342,42 @@ def test_site_pages_finds_routes_and_top_level_documents(tmp_path: Path) -> None
     assert found == {"index.html", "privacypolicy.html", "asuci/index.html"}
 
 
-def test_site_pages_skips_captured_source(tmp_path: Path) -> None:
-    """A scraped page in a subdirectory is not one of ours.
+def test_site_pages_skips_untracked_working_material(tmp_path: Path) -> None:
+    """An untracked page is not part of the site.
+
+    This is the gitignored ``ice-cooperation-tracker/`` case: present on this
+    machine, absent from a fresh clone, and 404 in production. A filesystem
+    walk made the guard's verdict depend on which machine ran it.
 
     Args:
         tmp_path: Temporary project root.
     """
-    _write_page(tmp_path, "tracker/ky_ksa_sheriffs.html", "<p>somebody else's markup</p>")
+    _write_page(tmp_path, "tracker/index.html", "<p>working material</p>", tracked=False)
     assert site_pages(tmp_path) == []
 
 
 def test_site_pages_skips_excluded_directories(tmp_path: Path) -> None:
-    """Vendored trees hold no pages of ours.
+    """Vendored trees hold no pages of ours even if committed.
 
     Args:
         tmp_path: Temporary project root.
     """
     _write_page(tmp_path, "node_modules/pkg/index.html", "<p>vendored</p>")
+    assert site_pages(tmp_path) == []
+
+
+def test_site_pages_skips_a_tracked_page_deleted_from_disk(tmp_path: Path) -> None:
+    """A deletion in progress is not a page, and must not crash the guard.
+
+    git keeps listing a file until its deletion is staged, so reading the
+    tracked list blindly turns an ordinary `rm` into a traceback.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _write_page(tmp_path, "gone/index.html", "<p>about to go</p>")
+    (tmp_path / "gone" / "index.html").unlink()
+
     assert site_pages(tmp_path) == []
 
 
@@ -408,15 +457,30 @@ def test_palette_check_ignores_the_asset_files_themselves(tmp_path: Path) -> Non
     assert check_pages_share_one_palette(tmp_path) == []
 
 
-def test_palette_check_defaults_to_the_repo(monkeypatch: pytest.MonkeyPatch) -> None:
-    """The real site passes: one palette across every page.
+def test_palette_check_runs_against_the_real_repository(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The real site passes, read through real git rather than the fake hook.
+
+    The rest of these cases script ``git ls-files``; this one does not, so the
+    production lookup is exercised against the repository it was written for.
 
     Args:
         monkeypatch: Used to run against the repository root.
     """
+    hooks.reset_hooks()
     monkeypatch.chdir(REPO_ROOT)
 
     assert check_pages_share_one_palette() == []
+
+
+def test_real_tracked_html_lookup_finds_the_sites_pages() -> None:
+    """The production hook returns committed pages and no untracked ones."""
+    hooks.reset_hooks()
+
+    tracked = hooks.list_tracked_html(str(REPO_ROOT))
+
+    assert "index.html" in tracked
+    assert all(path.endswith(".html") for path in tracked)
+    assert not any(path.startswith("ice-cooperation-tracker/") for path in tracked)
 
 
 def test_the_fixture_palette_is_a_subset_of_the_real_one() -> None:
@@ -424,6 +488,74 @@ def test_the_fixture_palette_is_a_subset_of_the_real_one() -> None:
     real = palette_tokens((REPO_ROOT / TOKENS_CSS).read_text(encoding="utf-8"))
     for name, value in palette_tokens(FIXTURE_PALETTE).items():
         assert real[name] == value
+
+
+# --------------------------------------------------------------------------
+# The stylesheets mcp-proxy mirrors.
+# --------------------------------------------------------------------------
+
+
+def test_the_pin_matches_the_real_stylesheets(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The recorded hashes describe the files actually in the repository.
+
+    Args:
+        monkeypatch: Used to run against the repository root.
+    """
+    monkeypatch.chdir(REPO_ROOT)
+
+    assert check_mirrored_stylesheets_are_pinned() == []
+
+
+def test_the_pin_fails_when_a_stylesheet_changes(tmp_path: Path) -> None:
+    """Editing a mirrored stylesheet turns this repository red.
+
+    That redness is the whole mechanism: mcp-proxy pins the bytes it serves
+    and is blind to a change here, so without this a shade could move and
+    nothing anywhere would notice.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _make_project(tmp_path)
+    target = tmp_path / TOKENS_CSS
+    target.write_text(target.read_text(encoding="utf-8") + "\n/* a stray edit */\n", "utf-8")
+
+    errors = check_mirrored_stylesheets_are_pinned(tmp_path)
+
+    assert len(errors) == 1
+    assert TOKENS_CSS in errors[0]
+    assert "tell the mcp-proxy" in errors[0]
+
+
+def test_the_pin_reports_the_new_hash_so_the_fix_is_a_paste(tmp_path: Path) -> None:
+    """The message carries the value to record, not just a complaint.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _make_project(tmp_path)
+    target = tmp_path / TOKENS_CSS
+    target.write_bytes(b"/* replaced */\n")
+    expected = hashlib.sha256(b"/* replaced */\n").hexdigest()
+
+    assert any(expected in error for error in check_mirrored_stylesheets_are_pinned(tmp_path))
+
+
+def test_the_pin_reports_a_missing_stylesheet(tmp_path: Path) -> None:
+    """A mirrored stylesheet that is gone is reported, not skipped.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _make_project(tmp_path)
+    (tmp_path / TOKENS_CSS).unlink()
+
+    assert any("missing" in error for error in check_mirrored_stylesheets_are_pinned(tmp_path))
+
+
+def test_every_mirrored_stylesheet_is_a_real_file() -> None:
+    """The pin names files that exist, so it cannot rot into vacuous truth."""
+    assert [name for name in MIRRORED_STYLESHEETS if not (REPO_ROOT / name).is_file()] == []
 
 
 def test_real_print_hook_writes_to_stdout(capsys: pytest.CaptureFixture[str]) -> None:
