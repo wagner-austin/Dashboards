@@ -28,41 +28,28 @@
         min-height: 100vh;
     }
 
-    /* The index is a card grid at 1140px and caps its blurbs at 78ch, which
-       is right for two-line copy inside a wide card. Carried onto an article
-       it broke every line ~250px short of the panel edge and left a gutter
-       down the right. The measure is the good part, so the COLUMN is narrowed
-       to match it instead: 880px here is ~76 characters at this size, and the
-       paragraphs below set no max-width of their own. */
-    .container { max-width: 880px; }
+    /* NO .container override. This page uses site.css's 1140px, the same
+       column the index uses, so a panel is the same width on both and the two
+       pages read as one site. An earlier revision narrowed this to 880px to
+       fix prose wrapping short; removing the 78ch cap on the paragraphs was
+       the whole fix, and the narrowing only made every element here a
+       different size from its counterpart on the index. */
 
-    /* ---- masthead: the index's hero, reduced to a back-link and a title.
-       The back-link is .chip, the same button the index's profile links use. */
-    .masthead { padding: 1.5rem 0 0; }
-
-    .masthead h1 {
-        font-size: 2.9rem;
-        font-weight: 600;
-        letter-spacing: -0.015em;
-        color: var(--gray-800);
-        margin-top: 1.4rem;
-        max-width: 24ch;
-    }
-    .masthead p.standfirst {
+    /* The masthead is site.css's .header, unchanged: same raven, same 3.6rem
+       heading, same metrics as the index. Only the two lines under it are the
+       article's own. No .panel override either -- a panel is the same size on
+       both pages. */
+    .standfirst {
         color: var(--gray-600);
-        margin-top: 0.7rem;
+        margin-top: 1rem;
         font-size: 1.15rem;
         line-height: 1.55;
     }
-    .masthead p.dateline {
+    .dateline {
         color: var(--gray-400);
-        margin-top: 0.9rem;
+        margin-top: 0.6rem;
         font-size: 0.9rem;
     }
-
-    /* Articles run long, so their panels take more vertical padding than the
-       index's list items. The rest of .panel is inherited from site.css. */
-    .panel { padding: 1.4rem 1.75rem 1.5rem; }
 
     .prose h3 {
         font-size: 1.3rem;
@@ -71,9 +58,11 @@
         margin-bottom: 0.5rem;
     }
     .prose h3 + p { margin-top: 0; }
+    /* Same size and leading as the index's card copy (.work p / .dashboards p),
+       so a paragraph is the same paragraph on both pages. */
     .prose p {
         font-size: 1.12rem;
-        line-height: 1.65;
+        line-height: 1.6;
         color: #000;
         margin-top: 0.9rem;
     }
@@ -156,17 +145,23 @@
 
 <div class="page">
 
+<!-- Full-bleed, outside .container, exactly as on the index: the raven sits
+     against the left edge of the page rather than the content column. -->
+<div class="header">
+    <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    <div class="hero-text">
+        <h1>Reproducible GPU inference</h1>
+        <p class="role"><a href="/preview/">&larr; Austin Wagner</a></p>
+    </div>
+</div>
+
 <div class="container">
 
-    <div class="masthead">
-        <a class="chip" href="/preview/">&larr; Austin Wagner</a>
-        <h1>Reproducible GPU inference</h1>
-        <p class="standfirst">One model and one set of weights, run on nine NVIDIA cards, produced nine
-           different sets of numbers. Closing that gap took three interventions, and the first two
-           were not enough.</p>
-        <p class="dateline">Measurements dated 2026-08-26 to 2026-09-05. Each figure below names the
-           run that produced it; the source-verification section at the end carries the chain.</p>
-    </div>
+    <p class="standfirst">One model and one set of weights, run on nine NVIDIA cards, produced nine
+       different sets of numbers. Closing that gap took three interventions, and the first two
+       were not enough.</p>
+    <p class="dateline">Measurements dated 2026-08-26 to 2026-09-05. Each figure below names the
+       run that produced it; the source-verification section at the end carries the chain.</p>
 
     <div class="block" style="margin-top:2.25rem">
         <h2 class="section">The observation</h2>

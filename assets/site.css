@@ -40,6 +40,36 @@ body {
 
 .container { max-width: 1140px; margin: 0 auto; padding: 1rem 2rem 0; }
 
+/* ---- the masthead, shared by the index and every article ----
+   Full-bleed so the raven can sit against the left edge; only the text column
+   is held to the content width. An article puts its own title in the h1 and a
+   back-link in the role line, but the metrics are the same on both, which is
+   what makes an article read as the same site rather than a separate one. */
+.header {
+    padding: 1.5rem 0 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.hero-bird {
+    width: 200px;
+    height: auto;
+    flex: none;
+    margin-left: -14px;
+    /* The keyed WebP has real alpha, so it sits on the page gradient without a
+       plate behind it. */
+}
+.hero-text { flex: 1; max-width: 760px; }
+.header h1 {
+    font-size: 3.6rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--gray-800);
+    line-height: 1.05;
+}
+.header p.role { color: var(--gray-600); margin-top: 0.4rem; font-size: 1.15rem; }
+.header p.role a { color: var(--primary-dark); }
+
 h2.section {
     font-size: 0.95rem;
     font-weight: 700;

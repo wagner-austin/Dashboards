@@ -42,32 +42,8 @@
         padding-bottom: 2rem;
     }
 
-    /* ---- hero: a thin band, no colour block. The raven carries it. ---- */
-    /* Full-bleed so the raven can sit against the left edge; only the text
-       column is held to the content width. */
-    .header {
-        padding: 1.5rem 0 0;
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-    }
-    .hero-bird {
-        width: 200px;
-        height: auto;
-        flex: none;
-        margin-left: -14px;
-        /* The keyed WebP has real alpha, so it sits on the page gradient
-           without a plate behind it. */
-    }
-    .hero-text { flex: 1; max-width: 760px; }
-    .header h1 {
-        font-size: 3.6rem;
-        font-weight: 600;
-        letter-spacing: -0.015em;
-        color: var(--gray-800);
-    }
-
-    .header p.role { color: var(--gray-600); margin-top: 0.4rem; font-size: 1.15rem; }
+    /* The hero — .header, .hero-bird, .hero-text — is in site.css, shared with
+       every article page so the two carry the same masthead. */
 
     /* Layout of the link row only. The buttons are .chip from site.css, which
        an article's back-link uses too. */
