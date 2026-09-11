@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>Gradient boosting, written twice then halved — Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner — home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>Gradient boosting, written twice then halved</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">I implemented gradient boosting from scratch in numpy, ported
+               the compute to a Rust core, and then <strong>deleted the numpy version</strong>
+               — roughly 10k lines — because keeping two implementations means maintaining
+               two things that can disagree.</p>
+            <dl class="facts">
+                <dt>What it is</dt>
+                <dd>The algorithm behind most machine learning on spreadsheet-shaped data.
+                    Nearly everyone uses an existing implementation; this is one written from
+                    the histogram up.</dd>
+                <dt>Result</dt>
+                <dd>A Rust core doing histogram building, tree construction and prediction,
+                    bridged with PyO3 <strong>0.27.2</strong>, behind a strictly-typed Python
+                    façade.</dd>
+                <dt>The deletion</dt>
+                <dd>Suite went <strong>555</strong> tests to <strong>182</strong> at 100%
+                    coverage when the reference implementation was retired.</dd>
+                <dt>Stack</dt>
+                <dd>Rust, PyO3, numpy, mypy under strict settings.</dd>
+                <dt>Verify</dt>
+                <dd><a href="https://github.com/wagner-austin/API/tree/main/libs/cleargbm" target="_blank" rel="noopener noreferrer">libs/cleargbm on GitHub</a></dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The sequence is the point, not the Rust</h2>
+        <div class="panel prose">
+            <p>Histogram binning, split-gain computation and the leaf-value update are where
+               the algorithm actually lives, and they are exactly the parts a library hides.
+               Writing them once is the part that teaches you the algorithm.</p>
+            <p>Writing them <em>twice</em> is what made the port safe. The numpy version was
+               an executable specification the Rust core had to agree with — an oracle to port
+               against, which most from-scratch implementations never have, because they have
+               nothing to be wrong relative to.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Then the oracle was deleted</h2>
+        <div class="panel prose">
+            <p>Once the Rust core matched and was fully covered, the numpy implementation
+               became a liability rather than an asset: two implementations that can drift,
+               and a tempting fallback path that would hide a broken build.</p>
+            <p>So it went. The native library is now a hard dependency — if it is absent the
+               package raises at import time rather than quietly running a slower, different
+               answer. What remains in Python is a typed façade that pins every native
+               callable to a protocol, so the type checker sees real signatures instead of an
+               opaque object.</p>
+            <div class="callout">
+                <p>The port is the achievement. The reference implementation was scaffolding,
+                   and scaffolding comes down.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">It competes in someone else's harness</h2>
+        <div class="panel prose">
+            <p>It is not a standalone repository with a benchmark notebook. It is one of the
+               model backends in a risk-prediction service, sitting behind the same interface
+               as XGBoost and LightGBM and selectable per request — so it is evaluated on the
+               same datasets, through the same training and explainability machinery, as the
+               production libraries it was written to understand.</p>
+            <p>The companion evidence is the opposite shape: <a href="/preview/lightgbm-contributions/">nine merged patches into
+               LightGBM itself</a>. One shows the algorithm is understood; the other shows a
+               large unfamiliar codebase can be worked in under review.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki page
+               <code>cleargbm</code> and checked mechanically before this page can deploy.
+               That page pins the retirement to the commit that performed it and separates it
+               from a later packaging change four weeks afterwards, because the two are
+               routinely collapsed into one story and only the first one removed compute.</p>
+            <p><strong>Known limits.</strong> "Pure Rust" is true of the compute path and of
+               the crate's contents, not of the shipped package — a typed Python API surface
+               remains, and it has grown by about a third since August. No benchmark is
+               claimed here: being selectable alongside XGBoost and LightGBM in one harness
+               is a statement about structure, not about winning.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

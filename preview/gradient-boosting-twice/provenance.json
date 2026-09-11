@@ -1,0 +1,10 @@
+{
+  "deliverable": "preview/gradient-boosting-twice/index.html",
+  "demonstrates": "Implemented gradient boosting from scratch in numpy, used that implementation as the oracle to port a Rust compute core against, and then deleted the oracle rather than carrying it as a fallback -- leaving a hard native dependency that fails at import rather than silently running a different answer.",
+  "claims": [
+    {"figure": "555", "wiki": "me", "wiki_page": "cleargbm", "section": "The retirement, and what remains", "note": "Tests before the numpy implementation was retired. Pinned to commit f7c61172, so it is historical and does not rot."},
+    {"figure": "182", "wiki": "me", "wiki_page": "cleargbm", "section": "The retirement, and what remains", "note": "Tests immediately after that retirement. The suite now holds 257; this pair describes the deletion, not the present, which is why the article does not quote it as a current size."},
+    {"figure": "100%", "wiki": "me", "wiki_page": "cleargbm", "section": "The retirement, and what remains", "note": "Coverage the reduced suite held after the deletion -- the condition that made deleting the oracle defensible rather than reckless."}
+  ],
+  "allowed_non_figures": ["0.27", "0.27.2"]
+}
