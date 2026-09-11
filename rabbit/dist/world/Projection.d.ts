@@ -70,11 +70,12 @@ export declare function createProjectionConfig(): ProjectionConfig;
  * shipped config, so the camera started pinned against the top of its range and
  * the first thing a visitor could do was back away from it.
  *
- * 37 is three hops in: `settings.depthSpeed` is 30 world units per second and a
- * tapped hop holds for roughly 0.2s, so each press is worth about 6 units. Raise
+ * 46 is 9 units in, half of the 18 that three tapped hops were worth: three
+ * proved to be an overshoot. `settings.depthSpeed` is 30 world units per second
+ * and a tapped hop holds for roughly 0.2s, so a press moves about 6 units. Raise
  * this number to open further back, lower it to open closer in.
  */
-export declare const DEFAULT_CAMERA_Z = 37;
+export declare const DEFAULT_CAMERA_Z = 46;
 /** World width for entity wrapping (must be large enough for sprites to fully exit screen). */
 export declare const WORLD_WIDTH = 800;
 /**
