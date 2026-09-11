@@ -248,6 +248,22 @@
                    output <strong>byte-identical across all nine</strong> — five architecture
                    generations, two operating systems, one SHA-256.</p>
             </a></li>
+            <li><a class="panel" href="/preview/inferring-an-engine-from-inside/">
+                <h3>Inferring an engine from the inside</h3>
+                <p>A game ships as an obfuscated Java binary whose class names change between
+                   releases. I inject code into its running JVM to read real state and issue
+                   real orders — <strong>no pixels, no synthetic input</strong> — and made
+                   runs bit-identical per seed, so a better strategy can be told apart from a
+                   lucky map.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/architecture-as-code/">
+                <h3>MCP &amp; agent infrastructure</h3>
+                <p>Thirteen services and twenty-two shared libraries in one repository, held
+                   together by <strong>47 architecture rules that fail the build</strong> —
+                   design decisions enforced by CI rather than remembered in review. Written
+                   across Python and Rust, because an invariant that holds in one language
+                   isn't one.</p>
+            </a></li>
             <li><a class="panel" href="/preview/composite-model-compartments/">
                 <h3>Composing one model out of several</h3>
                 <p>A serving design assumed several separately trained compartments could be wired

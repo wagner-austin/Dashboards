@@ -1,0 +1,15 @@
+{
+  "deliverable": "preview/architecture-as-code/index.html",
+  "demonstrates": "Built a custom static-analysis framework that enforces 47 architectural invariants across Python and Rust at CI time, so the design decisions holding a 13-service monorepo together fail the build when broken rather than depending on a reviewer remembering them.",
+  "claims": [
+    {"figure": "47", "wiki": "me", "wiki_page": "api-monorepo", "section": "Start here — the README says so too", "note": "Total architecture-enforcement rules in libs/monorepo_guards. Re-derived 2026-09-11 by parsing the registration literal; the page records it at 31 on 2026-08-12 and 35 on 2026-08-20, so it is a dated floor."},
+    {"figure": "41", "wiki": "me", "wiki_page": "api-monorepo", "section": "Start here — the README says so too", "note": "Python rules, including the one registered conditionally on a config segment."},
+    {"figure": "6", "wiki": "me", "wiki_page": "api-monorepo", "section": "Start here — the README says so too", "note": "Rust rules. Unchanged across all three counts, which is why the article says an invariant holding in one language only is not an invariant."},
+
+    {"figure": "13", "wiki": "me", "wiki_page": "api-monorepo", "section": "Scale", "note": "Services, counted as directories under services/. Went DOWN from 14 when doc-extract-api was deleted rather than duplicated."},
+    {"figure": "22", "wiki": "me", "wiki_page": "api-monorepo", "section": "Scale", "note": "Shared libraries: 23 directories under libs/ less one dotfile directory."},
+
+    {"figure": "57", "wiki": "me", "wiki_page": "api-monorepo", "section": "Other services worth naming", "note": "Languages the Grandma API accepts as speech and returns as English text."}
+  ],
+  "allowed_non_figures": []
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>Architecture you cannot violate — Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner — home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>Architecture you cannot violate</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">Thirteen services and twenty-two shared libraries in one
+               repository, with <strong>47 architecture rules that fail the build</strong> —
+               so the design decisions are enforced by CI rather than remembered in review.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>Conventions in a document decay. In a monorepo, the second copy of a
+                    pattern is cheaper to write than the first is to find.</dd>
+                <dt>Result</dt>
+                <dd>A custom static-analysis framework: <strong>47</strong> rules across two
+                    languages, 41 Python and 6 Rust, run on every commit.</dd>
+                <dt>Scale</dt>
+                <dd><strong>13</strong> services, <strong>22</strong> shared libraries, under
+                    strict typing and full branch coverage.</dd>
+                <dt>Stack</dt>
+                <dd>Python, FastAPI, Rust, Redis, RQ, Kafka, PostgreSQL.</dd>
+                <dt>Verify</dt>
+                <dd><a href="https://github.com/wagner-austin/API" target="_blank" rel="noopener noreferrer">The repository</a>
+                    — its README opens with the three things worth fifteen minutes.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Why a rule rather than a review comment</h2>
+        <div class="panel prose">
+            <p>Every rule in the framework exists because something went wrong once and the
+               fix would otherwise have lasted exactly as long as the person who remembered
+               it. A convention that lives in a document is enforced by whoever happens to
+               read the diff; a rule that fails the build is enforced by the build.</p>
+            <p>The framework covers both languages in the repository, because an invariant
+               that holds in the Python half and not the Rust half is not an invariant. Forty-six
+               rules always run; the forty-seventh registers only when the config segment it
+               polices is set, which is stated rather than hidden because a conditional rule
+               is a rule that can silently not exist.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The three things worth fifteen minutes</h2>
+        <div class="panel prose">
+            <div class="tablewrap">
+            <table>
+                <thead><tr><th>Component</th><th>What it is</th></tr></thead>
+                <tbody>
+                    <tr><td>ClearGBM</td><td>Gradient boosting written from scratch twice — a numpy orchestration layer, then a Rust core doing histogram building, tree construction and prediction, bridged with PyO3. Most engineers use a boosting library; fewer have written one</td></tr>
+                    <tr><td>Covenant Radar</td><td>The deepest single service: multi-domain risk prediction over a pluggable backend registry, with Kafka and hyperparameter search</td></tr>
+                    <tr><td><code>monorepo_guards</code></td><td>The rule framework above — architecture linted at CI time rather than argued at review time</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p>Alongside them: speech in 57 languages to English text, GPT-2 and
+               character-LSTM training with LoRA and QLoRA, image-model LoRA training, and
+               the corpus-construction service behind the Turkic research.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">A service count that went down</h2>
+        <div class="panel prose">
+            <p>There were fourteen services. A document-extraction service was deleted once
+               the platform it fed grew its own, rather than kept alive in two places — which
+               is the decision the whole rule framework exists to make automatic.</p>
+            <div class="callout">
+                <p>The interesting number in a monorepo is not how much it holds. It is how
+                   much it refuses to hold twice.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki page
+               <code>api-monorepo</code> and checked mechanically before this page can deploy.
+               That page carries the exact command behind each count, and the note that the
+               obvious command is wrong — a plain directory listing counts the Makefile and
+               the README as services.</p>
+            <p><strong>Known limits.</strong> The rule count is the fastest-moving number
+               here and has grown by a third in the three weeks before this was written, so
+               treat it as a floor with a date on it rather than a fixed property. It is
+               re-derived by parsing the registration literal rather than by text search,
+               which over-counts by also matching constructor names that merely end in the
+               same word. Services and libraries are directory counts — they say how the
+               repository is divided, not how much of each division carries weight.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

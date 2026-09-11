@@ -1,0 +1,13 @@
+{
+  "deliverable": "preview/inferring-an-engine-from-inside/index.html",
+  "demonstrates": "Built a headless harness that reads real simulation state from inside an obfuscated game's own JVM rather than from pixels, gates every engine claim against the jar version it was established on, and makes solo runs bit-identical per seed so a strategy improvement can be distinguished from a lucky map.",
+  "claims": [
+    {"figure": "729", "wiki": "me", "wiki_page": "rustedwarfarebot", "section": "Experiments that are controlled by construction", "note": "Doctrine files on disk, re-counted 2026-09-11. Was 95 on 2026-08-08 -- the page carries the full series because this number moves faster than anything else on it."},
+    {"figure": "247", "wiki": "me", "wiki_page": "rustedwarfarebot", "section": "Experiments that are controlled by construction", "note": "Sweep definitions (.txt), excluding the .sh driver scripts in the same directory. Re-counted 2026-09-11."},
+    {"figure": "95", "wiki": "me", "wiki_page": "rustedwarfarebot", "section": "Experiments that are controlled by construction", "note": "The doctrine count on 2026-08-08, quoted in the article's limits to show the rate of change rather than imply the figure is stable."},
+
+    {"figure": "5", "wiki": "me", "wiki_page": "rustedwarfarebot", "section": "The rest", "note": "Hubs in the project's own wiki. The only count on this page that has not moved since 2026-08-08."},
+    {"figure": "55", "wiki": "me", "wiki_page": "rustedwarfarebot", "section": "The rest", "note": "Pages in the project's own wiki, re-counted 2026-09-11; was 47 on 2026-08-20."}
+  ],
+  "allowed_non_figures": []
+}

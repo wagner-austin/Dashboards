@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>Inferring an engine from the inside — Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner — home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>Inferring an engine from the inside</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">A game ships as an obfuscated Java binary whose class names
+               change between releases. I inject code into its running JVM to read real state
+               and issue real orders — <strong>no pixels, no synthetic input</strong> — and
+               made the result bit-identical per seed so a better strategy can be told apart
+               from a lucky map.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>Measure strategies against a closed engine, when the engine is
+                    deliberately scrambled and any claim about its internals rots on the next
+                    release.</dd>
+                <dt>Result</dt>
+                <dd>A headless harness reading real state from inside the JVM, with runs
+                    that reproduce bit-for-bit per seed.</dd>
+                <dt>Scale</dt>
+                <dd><strong>729</strong> doctrine files and <strong>247</strong> sweeps on
+                    disk — the record of what was refuted, not only what worked.</dd>
+                <dt>Stack</dt>
+                <dd>Java agent and bytecode patching, Python planning and evaluation,
+                    Postgres-backed match queue.</dd>
+                <dt>Full record</dt>
+                <dd>Its own wiki — 5 hubs, <strong>55</strong> pages — with a dated log of
+                    every measurement and verdict.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Inside the runtime, not looking at the screen</h2>
+        <div class="panel prose">
+            <p>A Java agent injected into the game's own JVM dispatches orders and serializes
+               simulation state out; a Python package does the planning. The game boots fully
+               headless, so there is no virtual framebuffer, no screen scraping and no
+               synthetic input anywhere in the loop.</p>
+            <p>That is the distinction against most work described as game AI: nothing here
+               reads pixels or fakes clicks, so nothing here is measuring a vision pipeline by
+               accident.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The obfuscation problem, gated rather than noted</h2>
+        <div class="panel prose">
+            <p>The jar is obfuscated and class names change silently between releases, so
+               every claim about engine internals carries the game version it was established
+               against. An unpinned claim rots without announcing it.</p>
+            <p>The build patches the real jar and lets the JVM's own bytecode verifier check
+               the result, so a moved obfuscated class fails at the build gate rather than
+               inside a live engine. The verifier is someone else's, which is the point — it
+               has no reason to agree with me.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The control that makes the rest mean anything</h2>
+        <div class="panel prose">
+            <p>Seeded generators, lockstep world handoff and a pinned frame delta make a solo
+               run bit-identical per seed, with a world digest in the trace that proves it.
+               Without that, a better strategy is indistinguishable from a lucky map.</p>
+            <p>Experiments are controlled by construction too: the file declaring behaviour
+               flags has no optional fields, so an experimental arm differs from its control
+               by exactly what the experiment says it does. Sweeps freeze a code snapshot per
+               batch, which keeps the working tree editable while a run is in flight.</p>
+            <div class="callout">
+                <p>Keeping the refutations is deliberate. A directory holding only the
+                   configurations that worked is not an experimental record.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki page
+               <code>rustedwarfarebot</code> and checked mechanically before this page can
+               deploy. The project keeps a second, deeper wiki of its own for engine
+               internals and mechanics, versioned against the jar it was read from.</p>
+            <p><strong>Known limits.</strong> The counts move fast and are dated rather than
+               fixed: the doctrine count was 95 a month before it was 729. The standing
+               target — a measured win rate against the built-in AI at its hardest setting —
+               is a goal on that page, not a result claimed here. The project was paused
+               green in August and is active again; the page said "paused" for three weeks
+               after it was not, which its own dated-count rule is what caught.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>
