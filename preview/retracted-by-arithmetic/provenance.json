@@ -1,0 +1,30 @@
+{
+  "deliverable": "preview/retracted-by-arithmetic/index.html",
+  "claims": [
+    {"figure": "0.0521", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The arithmetic, which needed no new measurement", "note": "One of the two reported cartridge-versus-retrieval accuracy differences that were withdrawn."},
+    {"figure": "0.0417", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The arithmetic, which needed no new measurement", "note": "The other withdrawn difference, and the smaller of the two."},
+    {"figure": "32", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The arithmetic, which needed no new measurement", "note": "Items in the question set those differences were measured over."},
+    {"figure": "1.7", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The arithmetic, which needed no new measurement", "note": "0.0521 expressed in items rather than accuracy."},
+    {"figure": "1.3", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The arithmetic, which needed no new measurement", "note": "0.0417 expressed in items. Below the smallest difference the test can ever reject on."},
+    {"figure": "0.05", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The arithmetic, which needed no new measurement", "note": "The alpha of the McNemar test with the mid-p correction. A property of the test, not a measurement of this stack."},
+
+    {"figure": "8.7", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "What survives, stated separately because it is a different comparison", "note": "Items moved by cartridge against the un-augmented base, at the same rungs. Above the floor and above the seed spread."},
+    {"figure": "8.3", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "What survives, stated separately because it is a different comparison", "note": "The other surviving cartridge-versus-base figure."},
+
+    {"figure": "12", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The same question was also answered in the opposite direction", "note": "Pages of the corpus the opposite-direction run covered."},
+    {"figure": "24", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The same question was also answered in the opposite direction", "note": "Held-out items in that run. Further below the five-pair floor than the 32-item set."},
+    {"figure": "0.6389", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The same question was also answered in the opposite direction", "note": "Cartridge accuracy in that run. Reported here as an under-powered reading, not as a result."},
+    {"figure": "0.8333", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The same question was also answered in the opposite direction", "note": "Lexical-retrieval accuracy in the same run, the figure that made it look like a settled loss for the cartridge."},
+
+    {"figure": "120", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The repair is a refusal, not a better analysis", "note": "The cap the 32-item plan declared. A gate reading the cap rather than the realised count would have passed the run."},
+
+    {"figure": "0", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "Why it went unnoticed for as long as it did", "note": "The count of committed run documents, index lines and tracked artifacts the command appeared in. Same figure, three places."},
+    {"figure": "571", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "Why it went unnoticed for as long as it did", "note": "Committed run documents at the time, the denominator the zero is measured against."},
+
+    {"figure": "3,740", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The re-run, and what is not yet known", "note": "Items in the replacement question set."},
+    {"figure": "841", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The re-run, and what is not yet known", "note": "Pages in the full corpus the replacement run covers, against the 12 of the opposite-direction run."},
+    {"figure": "0.00134", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The re-run, and what is not yet known", "note": "The replacement instrument's resolvable floor."},
+    {"figure": "0.02", "wiki": "personal", "wiki_page": "a-claim-four-times-below-its-instruments-floor", "section": "The re-run, and what is not yet known", "note": "The effect the replacement plan declares, well above its own floor."}
+  ],
+  "allowed_non_figures": []
+}

@@ -1,0 +1,138 @@
+/* austinwagner.org — the article layer.
+ *
+ * Everything an article page needs beyond site.css, declared once. Extracted
+ * when the second article was written and before a line of it was copied,
+ * because a copied treatment is invisible until two pages sit side by side and
+ * by then both have drifted. The index's own .panel had already been forked
+ * once for exactly that reason.
+ *
+ * site.css is still required and is linked separately: this file styles prose,
+ * tables and the source block, and site.css carries the palette, the masthead,
+ * the column and the panel. Two links, not an @import, because an article needs
+ * both layers and neither is a subset of the other.
+ *
+ * Sizes here deliberately match the index's card copy — .prose p is the
+ * 1.12rem / 1.6 that .work p and .dashboards p use — so a paragraph is the
+ * same paragraph wherever it appears.
+ */
+
+/* One continuous ground, same construction as the index: a block element
+   carrying the gradient, everything above it transparent. The dark end sits at
+   the very bottom because an article has no forest on it, only the
+   source-verification block and the footer. */
+.page {
+    position: relative;
+    background: linear-gradient(
+        to bottom,
+        var(--gray-100) 0%,
+        var(--gray-100) 72%,
+        #e6e9ed 82%,
+        #aeb6c0 90%,
+        #4c535d 96%,
+        #0a0a0a 100%
+    );
+    min-height: 100vh;
+}
+
+/* The two intro lines sit in a .panel like every other block on the site, so
+   they are not the one thing on the page floating bare on the gradient. That
+   panel deliberately does NOT take .prose: .prose p wins on specificity and
+   would flatten both lines to body colour, losing the grey hierarchy. */
+.standfirst {
+    color: var(--gray-600);
+    font-size: 1.15rem;
+    line-height: 1.55;
+}
+.dateline {
+    color: var(--gray-400);
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+}
+
+.prose h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 0.5rem;
+}
+.prose h3 + p { margin-top: 0; }
+.prose p {
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: #000;
+    margin-top: 0.9rem;
+}
+.prose p strong { color: #000; font-weight: 600; }
+.prose ul { margin: 0.9rem 0 0 1.3rem; }
+.prose li {
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: #000;
+    margin-bottom: 0.5rem;
+}
+
+/* Tables carry the evidence, so they take the panel's own palette rather than
+   a borrowed one. Wide content scrolls inside its own box so the page body
+   never scrolls sideways. */
+.tablewrap { overflow-x: auto; margin-top: 1.1rem; }
+table {
+    border-collapse: collapse;
+    font-size: 1.02rem;
+    min-width: 100%;
+}
+th, td {
+    text-align: left;
+    padding: 0.5rem 1.1rem 0.5rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    color: #000;
+    white-space: nowrap;
+}
+th {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    border-bottom: 1px solid var(--gray-400);
+}
+td.num { font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: none; }
+
+code {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.92em;
+    background: rgba(255, 255, 255, 0.66);
+    border: 1px solid var(--gray-200);
+    padding: 0.08em 0.34em;
+}
+
+.callout {
+    border-left: 3px solid var(--primary);
+    padding-left: 1.1rem;
+    margin-top: 1.1rem;
+}
+.callout p { margin-top: 0; }
+
+/* The source-verification block sits on the dark end of the gradient. */
+.sources { color: #c9ced6; }
+.sources h2.section { color: #fff; }
+.sources .panel {
+    border-top: 1px solid rgba(255, 255, 255, 0.28);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.10) 0%,
+        rgba(255, 255, 255, 0.05) 60%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+}
+.sources p, .sources li { color: #c9ced6; font-size: 1.02rem; line-height: 1.6; }
+.sources code {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: #e4e8ee;
+}
+.sources strong { color: #fff; }
+
+/* site.css opens the footer tight against the index's forest caption; an
+   article needs air above it instead. */
+footer { padding-top: 2.5rem; }
