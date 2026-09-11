@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>Nine patches into LightGBM — Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    <div class="hero-text">
+        <h1>Nine patches into LightGBM</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">Nine pull requests reviewed by LightGBM's maintainers and merged,
+               including a C++ networking bug in the distributed-training path.</p>
+            <dl class="facts">
+                <dt>Project</dt>
+                <dd>LightGBM — the gradient-boosting framework, then at
+                    <code>microsoft/LightGBM</code>, now its own organisation.</dd>
+                <dt>Merged</dt>
+                <dd><strong>9</strong>, between January and March 2026.</dd>
+                <dt>Attempted</dt>
+                <dd><strong>12</strong> authored: 9 merged, 2 open, 1 closed without merging.</dd>
+                <dt>Languages</dt>
+                <dd>C++ and Python — networking, test coverage, and the typed scikit-learn
+                    predict path.</dd>
+                <dt>Verify</dt>
+                <dd><a href="https://github.com/lightgbm-org/LightGBM/pulls?q=is%3Apr+author%3Awagner-austin+is%3Amerged" target="_blank" rel="noopener noreferrer">The merged-PR query on GitHub</a>
+                    — ten seconds, no portfolio required.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">What the patches did</h2>
+        <div class="panel prose">
+            <div class="tablewrap">
+            <table>
+                <thead><tr><th>PR</th><th>Change</th></tr></thead>
+                <tbody>
+                    <tr><td class="num">7137</td><td>C++ networking: socket timeout was broken on POSIX because <code>setsockopt</code> was given the wrong type</td></tr>
+                    <tr><td class="num">7131</td><td>Fixed a test that was not exercising all of its parameter combinations</td></tr>
+                    <tr><td class="num">7133</td><td>Test coverage for <code>Booster.rollback_one_iter()</code></td></tr>
+                    <tr><td class="num">7130</td><td>Fixed a numpy integer cast in <code>plot_importance</code></td></tr>
+                    <tr><td class="num">7115</td><td>Python type annotations through <code>7119</code>: <code>TypeGuard</code>, <code>Literal</code>, <code>DTypeLike</code> and return types on the scikit-learn predict path</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p>The socket fix is the one worth reading. It was a real defect in distributed
+               training rather than a documentation change, and it was wrong in a way that only
+               shows up on POSIX.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Nine of twelve, and where the three went</h2>
+        <div class="panel prose">
+            <p>Twelve were authored. Nine merged, two are open, and <strong>one was closed without
+               merging</strong>.</p>
+            <p>All three of the unmerged are C++ in the distributed-training path — the hardest
+               part of that codebase, and the part where a maintainer will not merge something
+               they are unsure of. <code>7139</code> was closed; <code>7178</code> is the same fix
+               reopened in a different shape; <code>7138</code> is open in the same area.</p>
+            <div class="callout">
+                <p>Nine merged with the denominator left off would read better and say less. Nine
+                   of twelve, with the failures concentrated in the hardest area, is the more
+                   useful number.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Why a merged patch is different evidence</h2>
+        <div class="panel prose">
+            <p>Getting a change into a library at this level of use means passing review by
+               maintainers with no reason to be generous. It is also checkable in ten seconds by
+               someone with no time to read a portfolio, which is rarer than it sounds.</p>
+            <p>The companion evidence is the opposite shape: a gradient-boosting implementation
+               written from scratch, benchmarked against LightGBM inside one harness. One shows the
+               algorithm is understood; the other shows a large unfamiliar codebase can be worked
+               in under review.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki page
+               <code>lightgbm-contributions</code> and checked mechanically before this page can
+               deploy. That page carries the GitHub API query behind each count and the date it was
+               last re-run.</p>
+            <p><strong>One thing to watch when verifying.</strong> The project moved organisations.
+               The old API path answers a permanent redirect with no body, so a script following it
+               reads a missing key and reports zero merged rather than failing. Query the current
+               organisation.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

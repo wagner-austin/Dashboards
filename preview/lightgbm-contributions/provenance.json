@@ -1,0 +1,21 @@
+{
+  "deliverable": "preview/lightgbm-contributions/index.html",
+  "claims": [
+    {"figure": "9", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "Two more open, and one closed without merging", "note": "Pull requests merged. Verified against the GitHub API on 2026-08-26 and unchanged across three earlier checks."},
+    {"figure": "12", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "Two more open, and one closed without merging", "note": "Pull requests authored in total: the denominator the merged count is measured against."},
+    {"figure": "2", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "Two more open, and one closed without merging", "note": "Still open at the time of verification."},
+    {"figure": "1", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "Two more open, and one closed without merging", "note": "Closed without merging. Stated rather than omitted, because nine of twelve is the honest picture."},
+
+    {"figure": "7137", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "The contributions", "note": "The C++ socket-timeout fix: setsockopt given the wrong type, broken on POSIX."},
+    {"figure": "7131", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "The contributions", "note": "Repaired a test that was not exercising all of its parameter combinations."},
+    {"figure": "7133", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "The contributions", "note": "Added test coverage for Booster.rollback_one_iter()."},
+    {"figure": "7130", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "The contributions", "note": "Fixed a numpy integer cast in plot_importance."},
+    {"figure": "7115", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "The contributions", "note": "First of the Python type-annotation series on the scikit-learn predict path."},
+    {"figure": "7119", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "The contributions", "note": "Last of that series; the wiki records the range as 7115 through 7119."},
+
+    {"figure": "7139", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "Two more open, and one closed without merging", "note": "The one closed without merging: connection-closed socket errors in distributed training."},
+    {"figure": "7178", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "Two more open, and one closed without merging", "note": "The same fix as 7139, reopened in a different shape."},
+    {"figure": "7138", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "Two more open, and one closed without merging", "note": "Open: fail fast when distributed connection retries are exhausted."}
+  ],
+  "allowed_non_figures": []
+}

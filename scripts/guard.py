@@ -73,7 +73,7 @@ PAGE_SCAN_EXCLUDES = frozenset({".venv", "node_modules", "rabbit"})
 # this check for a reason that reads as corruption.
 MIRRORED_STYLESHEETS = {
     "assets/tokens.css": "bd9f6a968bba1ef07b0e49a060ee2e12201946de5372443dc1c82217b6a648ec",
-    "assets/site.css": "f77d69aa4bab176f3215dc22de9aa1b3cf61ec304ad1362ac682174fed9d04a2",
+    "assets/site.css": "aa48d984c042112eb672ba0be5e8950610ab424ccd4bde576342f3c0007ff55c",
 }
 
 _ROOT_BLOCK_RE = re.compile(r":root\s*\{(.*?)\}", re.DOTALL)

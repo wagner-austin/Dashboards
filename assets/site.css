@@ -126,10 +126,17 @@ h2.section + * { margin-top: 0; }
 }
 .chip:hover { background: #fff; border-color: var(--primary); }
 
+/* Top padding is deliberately NOT set here. The index wants its footer tight
+   under the forest caption and an article wants air above it, so that one
+   property belongs to the page layer. Writing the `padding` shorthand here
+   would set padding-top to 0 and force article.css to override it -- the same
+   fact stated in two files, which is the shape that drifts. */
 footer {
     text-align: center;
     color: #6f6f6f;
     font-size: 0.8rem;
-    padding: 0 2rem 2.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2.5rem;
 }
 footer a { color: #8b9aa8; }
