@@ -49,6 +49,34 @@
     font-size: 0.9rem;
 }
 
+/* The 30-second read. A reader deciding whether to keep going needs the
+   outcome, the scale and the stack before any prose, so these sit above it as
+   a scannable grid rather than as sentences they have to extract them from. */
+.facts {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 0.55rem 1.5rem;
+    margin-top: 1.1rem;
+}
+.facts dt {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    padding-top: 0.2rem;
+}
+.facts dd { font-size: 1.08rem; line-height: 1.5; color: #000; }
+.facts dd strong { font-weight: 600; }
+
+/* The headline result, stated before anything explains it. */
+.result {
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: #000;
+    font-weight: 600;
+}
+
 .prose h3 {
     font-size: 1.3rem;
     font-weight: 600;

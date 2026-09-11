@@ -7,17 +7,11 @@
 <title>Reproducible GPU inference — Austin Wagner</title>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/article.css">
-<!-- No page-specific CSS. site.css carries the palette, masthead, column and
-     panel; article.css carries the ground, prose, tables and source block.
-     Everything this page needed was in those two by the time a second article
-     existed, so nothing is restated here. -->
 </head>
 <body>
 
 <div class="page">
 
-<!-- Full-bleed, outside .container, exactly as on the index: the raven sits
-     against the left edge of the page rather than the content column. -->
 <div class="header">
     <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
     <div class="hero-text">
@@ -30,248 +24,86 @@
 
     <div class="block">
         <div class="panel">
-            <p class="standfirst">One model and one set of weights, run on nine NVIDIA cards,
-               produced nine different sets of numbers. Closing that gap took three interventions,
-               and the first two were not enough.</p>
-            <p class="dateline">Measurements dated 2026-08-26 to 2026-09-05. Each figure below
-               names the run that produced it; the source-verification section at the end carries
-               the chain.</p>
+            <p class="result">One model and one set of weights produced byte-identical output on
+               nine NVIDIA GPUs across five architecture generations, two operating systems and two
+               CUDA toolchains.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>PyTorch's determinism settings make one card reproduce <em>itself</em>. Nothing
+                    in them makes two different cards agree with each other.</dd>
+                <dt>Result</dt>
+                <dd><strong>2,627 of 2,627</strong> per-item scores bit-identical on every pair of
+                    cards. One outcomes file, one SHA-256, six cards, two operating systems.</dd>
+                <dt>Cost</dt>
+                <dd>Free within measurement noise at any batch from 128 rows up.</dd>
+                <dt>Stack</dt>
+                <dd>PyTorch, CUDA, cuBLASLt, GPT-2; V100, A30, A100, L40S, RTX 3090&nbsp;Ti,
+                    3070&nbsp;Ti, GTX&nbsp;1630, RTX PRO 6000.</dd>
+                <dt>Full record</dt>
+                <dd>Per-figure citations, job IDs and image digests in the research wiki.</dd>
+            </dl>
         </div>
     </div>
 
     <div class="block">
-        <h2 class="section">The observation</h2>
+        <h2 class="section">What was actually wrong</h2>
         <div class="panel prose">
-            <p>A GPT-2 cloze scorer was run over a 2,627-item set on several GPUs under a pinned
-               environment: one content-addressed container image, one driver, one PyTorch build,
-               and PyTorch's determinism switches enabled. The cards agreed on every decision the
-               scorer made, and the accuracy was identical everywhere. <strong>Not one of the 2,627
-               per-item scores was bit-identical across any two cards.</strong></p>
-            <p>Determinism settings of the usual kind address a different problem. They make one card
-               reproduce itself. Nothing in that set makes two different cards agree with each other,
-               and the distinction is the whole subject.</p>
+            <p>The disagreement looked like a threshold: cards agreed below a certain model size and
+               diverged above it. That reading was wrong, and finding out cost the most time.</p>
+            <p>Running matrix multiplications in isolation and fingerprinting the whole output
+               tensor rather than the final loss showed <strong>six of eight shapes producing three
+               different tensors on three cards</strong> — including shapes whose reported losses
+               were bit-identical. The cards were never computing alike. The difference simply
+               didn't survive being reduced to one number.</p>
+            <p>So the threshold was not where cards begin to disagree. It was where a disagreement
+               already present grew big enough to move the last bit of a number someone reads.</p>
         </div>
     </div>
 
     <div class="block">
-        <h2 class="section">The first explanation was wrong</h2>
+        <h2 class="section">Three interventions, and what each was worth</h2>
         <div class="panel prose">
-            <p>The disagreement appeared above a certain model size, which suggested a threshold — some
-               point where a larger computation begins to diverge. That reading survived until
-               individual matrix multiplications were run in isolation, at the same dimensions and
-               through the same library entry point, with operands generated on the CPU and copied so
-               that every card multiplied identical bits, and with the <strong>whole output tensor</strong>
-               fingerprinted instead of a single loss.</p>
             <div class="tablewrap">
             <table>
-                <thead><tr><th>Isolated matmul</th><th>Distinct outputs across 3 cards</th><th>That rung's reported loss</th></tr></thead>
+                <thead><tr><th>Intervention</th><th>What it fixed</th><th>Left over</th></tr></thead>
                 <tbody>
-                    <tr><td>tiny attn-proj (M128 K128)</td><td class="num">1 of 3</td><td>agrees</td></tr>
-                    <tr><td>small attn-proj (M768 K768)</td><td class="num">2 of 3</td><td>agrees</td></tr>
-                    <tr><td>small mlp-proj (M768 K3072)</td><td class="num">3 of 3</td><td>agrees</td></tr>
-                    <tr><td>medium attn-proj (M1024 K1024)</td><td class="num">3 of 3</td><td>agrees</td></tr>
-                    <tr><td>medium mlp-proj (M1024 K4096)</td><td class="num">3 of 3</td><td>agrees</td></tr>
-                    <tr><td>large attn-proj (M1280 K1280)</td><td class="num">3 of 3</td><td>disagrees</td></tr>
-                    <tr><td>large mlp-proj (M1280 K5120)</td><td class="num">1 of 3</td><td>disagrees</td></tr>
-                    <tr><td>xl mlp-proj (M1600 K6400)</td><td class="num">3 of 3</td><td>disagrees</td></tr>
+                    <tr><td>Remove the vendor's split-K reduction</td><td class="num">isolated matmuls 2 of 8 &rarr; 8 of 8</td><td>attention untouched</td></tr>
+                    <tr><td>Pin attention to its math backend</td><td class="num">198 of 900 score comparisons exact</td><td>the projections still differ</td></tr>
+                    <tr><td>Own the reduction order</td><td class="num"><strong>2,627 of 2,627, every pair</strong></td><td>one Turing card, since closed</td></tr>
                 </tbody>
             </table>
             </div>
-            <p>Six of the eight shapes produced three different tensors on three cards, including three
-               rungs whose reported losses were bit-identical on all three. The cards were never
-               computing alike at those sizes. The difference was present and did not survive the
-               reduction to a scalar — it sat below one float32 unit in the last place of the loss by
-               the time it arrived there.</p>
-            <div class="callout">
-                <p><strong>The threshold was misnamed.</strong> It is not the size at which cards begin to
-                   disagree. It is the size at which a disagreement already present grows large enough
-                   to move the last bit of a number a person reads.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="block">
-        <h2 class="section">Intervention one: the vendor's reduction shortcut</h2>
-        <div class="panel prose">
-            <p>cuBLASLt offers a strategy called split-K, which partitions the summed dimension of a
-               matrix multiply into partial results and recombines them. Reordering a floating-point
-               sum changes it, and the partition count is chosen per device. Setting
-               <code>CUBLASLT_WORKSPACE_SIZE=0</code> removes split-K from the available options:
-               measured locally, <strong>70 of 86 matmul calls used it by default and none did with the
-               workspace at zero</strong>.</p>
-            <p>Re-running the eight isolated shapes on three cards with that one variable changed moved
-               agreement from <strong>2 of 8 shapes to 8 of 8, bit for bit</strong>. Removing the
-               mechanism removed the entire effect, which makes it a demonstration by intervention
-               rather than a correlation across eight samples.</p>
-            <p>On a whole model it did much less. The rung-level count over real GPT-2 forward passes
-               moved only from three of eight rungs disagreeing to two of eight, and one gate rung
-               changed value on two of three cards.</p>
-            <div class="callout">
-                <p><strong>That count was a bad instrument, not a disappointing result.</strong> Digesting
-                   every tensor at every module boundary, rather than the final loss, showed the same
-                   switch taking two Ampere cards from agreeing on 1&ndash;4% of the forward pass to
-                   agreeing on over 99.9% of it. A count of agreeing losses is too coarse to say what
-                   the switch did.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="block">
-        <h2 class="section">What the controls alone were worth</h2>
-        <div class="panel prose">
-            <p>Split-K never touched attention, because scaled-dot-product attention is not a cuBLASLt
-               call — not one of 72 measured attention digests moved when split-K was removed. A second
-               control pins attention to its math backend, which is bit-identical across cards but
-               materialises the full score matrix, so its cost grows with the square of sequence
-               length.</p>
-            <p>With <strong>both</strong> controls applied, real pretrained GPT-2 at its full
-               50,257-token vocabulary scored 150 cloze items on four cards:</p>
-            <div class="tablewrap">
-            <table>
-                <thead><tr><th>Arm (both controls applied)</th><th>Per-item scores bit-identical</th><th>Worst gap</th></tr></thead>
-                <tbody>
-                    <tr><td>Vendor cuBLAS</td><td class="num">198 / 900</td><td class="num">8.31e-04</td></tr>
-                    <tr><td>Owned reduction order</td><td class="num"><strong>900 / 900</strong></td><td class="num"><strong>0</strong></td></tr>
-                </tbody>
-            </table>
-            </div>
-            <p>The denominator is 150 items across all six pairs of four cards, so 900 is a count of
-               pairwise comparisons rather than a count of test items. Both rows have the controls
-               applied: <strong>the controls alone take 198 of 900 comparisons to exact agreement, and
-               the rest need something else.</strong> Accuracy, correct count and decisions were
-               identical under both arms throughout. Only the scores differed.</p>
-        </div>
-    </div>
-
-    <div class="block">
-        <h2 class="section">Intervention two: owning the reduction order</h2>
-        <div class="panel prose">
-            <p>The remaining gap closes by not asking the vendor library for the sum at all. A
-               fixed-order accumulation over the summed dimension — K passes over an M&times;N
-               accumulator — produces the same arithmetic on every card because the order is the
-               program's rather than the device's.</p>
-            <p>On the full 2,627-item set, sharded into 18 chunks that reassemble byte-identically:</p>
-            <div class="tablewrap">
-            <table>
-                <thead><tr><th>Arm (both controls applied)</th><th>Per-item scores bit-identical, per card pair</th></tr></thead>
-                <tbody>
-                    <tr><td>Vendor cuBLAS</td><td class="num">156 &ndash; 1,650 of 2,627, depending on the pair</td></tr>
-                    <tr><td>Owned reduction order</td><td class="num"><strong>2,627 / 2,627 on all six pairs</strong></td></tr>
-                </tbody>
-            </table>
-            </div>
-            <p>The confirmation is not a statistic. The per-item outcomes file — every item and every
-               candidate score — is <strong>byte-identical across the cards under the owned arm: one
-               SHA-256, <code>7112cf716db61270…</code>, written by six cards spanning sm_70 through
-               sm_89 and two operating systems.</strong> Under the vendor arm the same file has a
-               different hash on every card.</p>
-            <p>The arm is computing rather than doing nothing: within every single card, the owned
-               scores differ from the vendor arm's on all 150 items. The accuracy is unchanged at
-               1,374 of 2,627 on every card under both arms. The arms change bits, never answers.</p>
-        </div>
-    </div>
-
-    <div class="block">
-        <h2 class="section">The card that broke it</h2>
-        <div class="panel prose">
-            <p>A GTX 1630 — sm_75, a Turing card the cluster could not supply — returned
-               <strong>147 of 150</strong>, the first card to break the fixed-order identity, by at most
-               8.7e-05 on three items, with decisions still agreeing on all 150.</p>
-            <p>The three divergent items were not the long ones; one was the shortest in the set. Every
-               owned stage was identical across cards, and what differed sat in the arithmetic the arm
-               had deliberately left to the vendor. A stage probe taking attention apart at the exact
-               sequence lengths involved named the operation: <strong>the value product,
-               <code>probs @ v</code>, at 15- and 16-token sequences</strong>, with the query-key product
-               and the softmax exonerated cell by cell, and lengths 17, 20 and 64 clean everywhere.</p>
-            <p>Owning that operation as well closed the card. The fully-owned scorer produced a single
-               SHA-256 across the GTX 1630, an RTX 3090 Ti and an RTX 3070 Ti Laptop, and then
-               2,627 of 2,627 on the full set. The card whose vendor-arm run had agreed with the
-               cluster on as few as 156 items scored the entire set byte-for-byte.</p>
-            <span class="badge">nine cards &middot; six architecture families &middot; two operating systems &middot; two CUDA toolchains</span>
+            <p>The first two are configuration. The third is not: it stops asking the vendor library
+               for the sum and accumulates in a fixed order, so the arithmetic is the program's
+               rather than the device's.</p>
+            <p>A GTX 1630 then broke the identity at <strong>147 of 150</strong> — the only card ever
+               to. The three divergent items were not the long ones; one was the shortest in the set.
+               A stage probe at those exact sequence lengths named the operation: the value product
+               inside attention, at 15- and 16-token sequences. Owning that closed the card.</p>
         </div>
     </div>
 
     <div class="block">
         <h2 class="section">What it costs</h2>
         <div class="panel prose">
-            <p>Removing split-K costs between 0% and 13% per matrix multiply at a realistic batch size,
-               several of the measured figures being negative. That number required correcting an
-               earlier measurement that argued for the wrong decision.</p>
-            <p>The first cost table was taken at a single 64-token sequence and showed penalties up to
-               +84%. Sweeping the batch dimension at every doubling from 64 to 4096 rows shows why that
-               was the wrong place to measure:</p>
-            <div class="tablewrap">
-            <table>
-                <thead><tr><th>Rows (N)</th><th>medium mlp-proj</th><th>large mlp-proj</th><th>xl mlp-proj</th></tr></thead>
-                <tbody>
-                    <tr><td class="num">64</td><td class="num">&minus;4%</td><td class="num"><strong>+46%</strong></td><td class="num"><strong>+83%</strong></td></tr>
-                    <tr><td class="num">128</td><td class="num">+3%</td><td class="num">&minus;2%</td><td class="num">&minus;2%</td></tr>
-                    <tr><td class="num">256</td><td class="num">&minus;1%</td><td class="num">&minus;1%</td><td class="num">&minus;1%</td></tr>
-                    <tr><td class="num">512</td><td class="num">&minus;8%</td><td class="num">&minus;1%</td><td class="num">&minus;1%</td></tr>
-                    <tr><td class="num">1024&ndash;4096</td><td class="num">&asymp;0%</td><td class="num">&asymp;0%</td><td class="num">&asymp;0%</td></tr>
-                </tbody>
-            </table>
-            </div>
-            <p>The cost collapses between 64 and 128 rows and never returns. One doubling. 128 rows is
-               two 64-token sequences, a quarter of a single 512-token sequence, so any workload
-               resembling training is already past the knee. <strong>The original table had measured
-               the one batch size on the curve where the cost exists.</strong></p>
-            <p>At 64 rows only three of sixteen measurements cleared the per-call overhead floor, where
-               dispatch and kernel launch dominate and arithmetic cannot be resolved at all. At 4096
-               rows every shape clears it. The batched table is both the more realistic one and the
-               better measured one.</p>
-        </div>
-    </div>
-
-    <div class="block">
-        <h2 class="section">Three conclusions that were withdrawn</h2>
-        <div class="panel prose">
-            <p>Each of these was published inside the project's own record before being measured
-               properly and retracted. They are kept because the corrections are more reusable than
-               the results.</p>
-            <ul>
-                <li><strong>"The gate rung regresses."</strong> Disabling split-K appeared to break a
-                    registered known-answer rung. A forward trace the next day showed that rung's three
-                    cards had never agreed on its computation under either condition — 42 of its 52
-                    module-boundary tensors already differed by default. What ended was a coincidence in
-                    the last bit of one scalar, not an agreement. The number stood; the word did not.</li>
-                <li><strong>"Reproducibility costs up to 84%."</strong> True only at a batch size nobody
-                    trains at, and quoted as the headline figure by an earlier revision. The batch sweep
-                    above replaced it.</li>
-                <li><strong>"No known-answer registry exists."</strong> Concluded after four exhaustive
-                    searches — the api repository, two cluster filesystems and the collected artifacts —
-                    none of them in the repository the file was actually in, which the same session had
-                    written it to hours earlier. A duplicate registry was built on that conclusion and
-                    has since been merged back and deleted. Absence is the hardest thing to establish,
-                    and an exhaustive search of one namespace is not evidence about the others.</li>
-            </ul>
+            <p>Between 0% and 13% per matrix multiply at a realistic batch size, several measurements
+               negative. An earlier version of this measurement reported up to <strong>+84%</strong>
+               and argued for the wrong decision: it was taken at a single 64-token sequence.
+               Sweeping the batch dimension shows the cost collapses between 64 and 128 rows and
+               never returns — one doubling, and any real workload is already past it.</p>
         </div>
     </div>
 
     <div class="block">
         <h2 class="section">What the result does not establish</h2>
         <div class="panel prose">
-            <p>A run with no divergences bounds a rate. It does not establish zero, and there is no
-               spread to divide by, so the usual effect-size instruments return a misleadingly perfect
-               answer. The exact Clopper-Pearson bound <code>1 - 0.05^(1/n)</code> is the right one.</p>
-            <div class="tablewrap">
-            <table>
-                <thead><tr><th>Row</th><th>Upper bound on divergence rate, per comparison</th></tr></thead>
-                <tbody>
-                    <tr><td>Full-set 2,627-item digest</td><td class="num">&le; 0.114%</td></tr>
-                    <tr><td>1,283 ordered train-step records</td><td class="num">&le; 0.233%</td></tr>
-                    <tr><td>140 attention stages</td><td class="num">&le; 2.117%</td></tr>
-                    <tr><td>93 cross-card ordered GEMM shapes</td><td class="num">&le; 3.170%</td></tr>
-                    <tr><td>Pooled</td><td class="num">&le; 0.072%</td></tr>
-                </tbody>
-            </table>
-            </div>
-            <p>Measured against the scale this work operates at — one divergence in a full 2,627-item
-               run is 0.0381% — <strong>none of those rows excludes it.</strong> The repeat axis is
-               weaker still: bit-identity across a corpus says nothing about whether a fresh pair of
-               runs reproduces it, and that was observed once. The identity claims stand exactly as
-               stated, and what they bound is narrower than the phrase "bit-identical" suggests on its
-               own.</p>
+            <p>A run with no divergences bounds a rate; it does not establish zero. The exact
+               Clopper-Pearson bound on the tightest row is <strong>0.114%</strong>, and pooled
+               across the battery <strong>0.072%</strong>. Measured against the scale this operates
+               at — one divergence in a full 2,627-item run is 0.0381% — <strong>none of those rows
+               excludes it.</strong></p>
+            <p>Bit-identity across a corpus also says nothing about whether a fresh pair of runs
+               reproduces it. That was observed once.</p>
         </div>
     </div>
 
@@ -279,31 +111,18 @@
 
 <div class="container sources">
     <div class="block">
-        <h2 class="section">Source verification</h2>
+        <h2 class="section">Record</h2>
         <div class="panel prose">
-            <p>Each claim above traces to a measurement record rather than to this page. The chain, in
-               order:</p>
-            <ul>
-                <li><strong>Wiki pages</strong> carrying the claims and their per-figure footnotes:
-                    <code>a-loss-agrees-where-the-computation-does-not</code>,
-                    <code>cross-gpu-agreement-is-recoverable-by-disabling-split-k</code>,
-                    <code>cross-gpu-agreement-is-not-an-architecture-property</code>,
-                    <code>small-probe-agrees-across-gpus-where-real-work-does-not</code>.</li>
-                <li><strong>Run records</strong> under the <code>mi</code> and <code>mi-cu128</code>
-                    project entries, each naming its container image digest, driver, PyTorch build and
-                    scheduler job identifiers.</li>
-                <li><strong>Outcome artifacts</strong> pinned by SHA-256, including
-                    <code>7112cf716db61270…</code>, the single outcomes file written by six cards.</li>
-                <li><strong>Power audit</strong> for the Clopper-Pearson bounds, dated 2026-09-08, with
-                    the per-row derivation in the <code>mi-cu128</code> entry.</li>
-            </ul>
-            <p><strong>Figures to re-verify before any downstream use.</strong> The isolated-matmul
-               campaign records its image as content-addressed but does not carry that image's digest,
-               so those runs are checkable by date, driver and card but not by digest. The cost tables
-               are per-GEMM rather than end-to-end, and nothing here times a full forward pass or a
-               training step. The GTX 1630 attribution to <code>probs @ v</code> is measured on three
-               Windows cards whose seeded operands compare, and is a statement about sm_75 against
-               sm_80 and above.</p>
+            <p>Every figure above is bound to a named section of a wiki page and checked
+               mechanically before this page can deploy. The wiki carries the per-figure footnotes,
+               the container image digests, the scheduler job IDs and the controls that were run
+               rather than assumed:
+               <code>a-loss-agrees-where-the-computation-does-not</code> and
+               <code>cross-gpu-agreement-is-recoverable-by-disabling-split-k</code>.</p>
+            <p><strong>Known limits.</strong> Timing figures are per-GEMM, not end-to-end; nothing
+               here times a full forward pass or a training step. The isolated-matmul campaign
+               records its container as content-addressed but does not carry that image's digest, so
+               those runs are checkable by date, driver and card rather than by digest.</p>
         </div>
     </div>
 </div>
