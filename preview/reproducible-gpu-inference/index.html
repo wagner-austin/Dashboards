@@ -28,6 +28,14 @@
         min-height: 100vh;
     }
 
+    /* The index is a card grid at 1140px and caps its blurbs at 78ch, which
+       is right for two-line copy inside a wide card. Carried onto an article
+       it broke every line ~250px short of the panel edge and left a gutter
+       down the right. The measure is the good part, so the COLUMN is narrowed
+       to match it instead: 880px here is ~76 characters at this size, and the
+       paragraphs below set no max-width of their own. */
+    .container { max-width: 880px; }
+
     /* ---- masthead: the index's hero, reduced to a back-link and a title.
        The back-link is .chip, the same button the index's profile links use. */
     .masthead { padding: 1.5rem 0 0; }
@@ -45,7 +53,6 @@
         margin-top: 0.7rem;
         font-size: 1.15rem;
         line-height: 1.55;
-        max-width: 78ch;
     }
     .masthead p.dateline {
         color: var(--gray-400);
@@ -67,12 +74,11 @@
     .prose p {
         font-size: 1.12rem;
         line-height: 1.65;
-        max-width: 78ch;
         color: #000;
         margin-top: 0.9rem;
     }
     .prose p strong { color: #000; font-weight: 600; }
-    .prose ul { margin: 0.9rem 0 0 1.3rem; max-width: 78ch; }
+    .prose ul { margin: 0.9rem 0 0 1.3rem; }
     .prose li {
         font-size: 1.12rem;
         line-height: 1.6;
@@ -118,7 +124,6 @@
         border-left: 3px solid var(--primary);
         padding-left: 1.1rem;
         margin-top: 1.1rem;
-        max-width: 78ch;
     }
     .callout p { margin-top: 0; }
 

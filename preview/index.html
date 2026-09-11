@@ -85,10 +85,14 @@
 
     .dashboards p { color: var(--gray-600); }
     .work p { color: #000; }
+    /* No max-width. The panel already bounds the line, so a character cap on
+       top of it only stopped the text ~300px short of the panel edge and left
+       a gutter down the right of every card. A measure cap belongs on an
+       article, where the column is set by the text; here the card is the
+       column. */
     .work p, .dashboards p {
         font-size: 1.12rem;
         line-height: 1.6;
-        max-width: 78ch;
     }
     .dashboards p strong { color: var(--gray-800); font-weight: 600; }
     .work p strong { color: #000; font-weight: 600; }
