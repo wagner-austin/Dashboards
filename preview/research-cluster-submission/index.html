@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>Submitting to a shared GPU cluster, safely — Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner — home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>Submitting to a shared GPU cluster, safely</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">Eight research projects run on a shared university GPU cluster
+               through one tool that will not let a job be built if it would fail, and can
+               answer afterwards which job produced which artifact.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>UCI's HPC3 is a Slurm cluster with <strong>102 distinct users</strong> holding
+                    jobs when this was measured against it. Its expensive failure modes are
+                    invisible to the obvious check.</dd>
+                <dt>Result</dt>
+                <dd>Failure modes encoded as rules that execute rather than documentation
+                    somebody has to remember — a job that would break one cannot be
+                    constructed.</dd>
+                <dt>Scale</dt>
+                <dd><strong>16,924</strong> lines of source against <strong>19,278</strong> lines
+                    of tests; 15 commands over one workspace document.</dd>
+                <dt>Stack</dt>
+                <dd>Python, Slurm, containerised environments pinned by digest.</dd>
+                <dt>Verify</dt>
+                <dd><a href="https://github.com/wagner-austin/API/tree/main/tools/hpc3" target="_blank" rel="noopener noreferrer">tools/hpc3 on GitHub</a>
+                    — the command reference is its README.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Three conditions that look like health</h2>
+        <div class="panel prose">
+            <p>This is the part worth descending into. Each of these is invisible to the check
+               anyone would actually run, which is why a job can burn a week without anything
+               reporting a problem.</p>
+            <div class="tablewrap">
+            <table>
+                <thead><tr><th>Condition</th><th>What it looks like</th><th>Why the obvious check misses it</th></tr></thead>
+                <tbody>
+                    <tr><td>blocked</td><td>Pending, for a reason that will never resolve</td><td><strong>261 of 621</strong> pending GPU jobs sat on <code>DependencyNeverSatisfied</code>, which in <code>squeue</code>'s state column is indistinguishable from healthily waiting on resources</td></tr>
+                    <tr><td>unaccounted</td><td>Submitted here, unknown to the cluster</td><td>No cluster-side query can find these — the evidence is the <em>absence</em> of a cluster-side record, which is the whole reason a local ledger exists</td></tr>
+                    <tr><td>silent</td><td><code>RUNNING</code>, holding GPUs, log no longer growing</td><td>Log age is measured against the cluster's own clock, because a few minutes of skew would either invent staleness or hide it</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Rules that run</h2>
+        <div class="panel prose">
+            <p><strong>Preflight is non-skippable.</strong> Submission probes the environment,
+               uploads the real rendered script, and asks the scheduler to test it by path. There
+               is no flag to skip it and no code path that reaches the cluster without it — and
+               the same rendered file is then submitted, so preflight and submission cannot
+               drift.</p>
+            <p><strong>A budget, because nothing else says stop.</strong> The cluster's quality-of-service
+               limits bound what runs at once; nothing bounds the total, and the free partitions do
+               not bill. A 24-GPU three-day sweep is <strong>1,728 GPU-hours</strong> — inside every
+               limit the cluster enforces, and not a reasonable share of a shared machine. So the
+               tool enforces one, before submission and again while running.</p>
+            <div class="callout">
+                <p>Both rules exist because the cluster will happily let you do the wrong thing.
+                   Neither is a warning the user can dismiss.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Which job produced this file</h2>
+        <div class="panel prose">
+            <p>Four claims are enforced rather than asserted: the environment is the pinned one,
+               the staged bytes are the published ones, the run's numerical determinism is declared
+               and recorded, and a result traces back to the run that made it. The ledger is an
+               index from job to image to artifact, so a hash off a results file answers <em>which
+               job trained this?</em></p>
+            <p>That last one is what makes a negative result trustworthy. A null that cannot be
+               traced to a specific image and a specific job is not a finding, it is a file.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki page
+               <code>hpc3-cli</code> and checked mechanically before this page can deploy. The
+               design record — every rule's incident, every measured fact's measurement — is a
+               wiki inside the package itself, which is where the cluster figures on this page
+               are cited from.</p>
+            <p><strong>Known limits.</strong> The 102-user and 261-of-621 figures are single
+               observations of a shared cluster at one moment, not averages; they say the
+               condition is common enough to design for, not how common it is. The line counts
+               were re-measured on 2026-09-11 and will decay — an earlier set on the source page
+               was three weeks old and understated the package by roughly a third.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

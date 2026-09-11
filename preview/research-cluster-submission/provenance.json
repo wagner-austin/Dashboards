@@ -1,0 +1,18 @@
+{
+  "deliverable": "preview/research-cluster-submission/index.html",
+  "demonstrates": "Built the submission layer that eight research projects run on against a shared 102-user GPU cluster, encoding its expensive failure modes as rules that execute -- a non-skippable preflight, an enforced budget, and a ledger that answers which job produced a given artifact.",
+  "claims": [
+    {"figure": "102", "wiki": "me", "wiki_page": "hpc3-cli", "section": "The problem it encodes", "note": "Distinct users holding jobs when the package was measured against HPC3. A single observation of a shared cluster, which the article says on the page."},
+
+    {"figure": "261", "wiki": "me", "wiki_page": "hpc3-cli", "section": "The three conditions that look like health", "note": "Pending GPU jobs sitting on DependencyNeverSatisfied in one squeue sample. Cited from the hpc3 sibling wiki's triage-conditions page, not the README, which no longer carries it."},
+    {"figure": "621", "wiki": "me", "wiki_page": "hpc3-cli", "section": "The three conditions that look like health", "note": "The denominator: total pending GPU jobs in that sample. Quoted because 261 alone says nothing about how common the condition is."},
+
+    {"figure": "24", "wiki": "me", "wiki_page": "hpc3-cli", "section": "Rules that run", "note": "GPUs in the worked budget example. Three days is written as a word on the page, so it is not a figure here."},
+    {"figure": "1,728", "wiki": "me", "wiki_page": "hpc3-cli", "section": "Rules that run", "note": "GPU-hours that example consumes: inside every limit the cluster enforces, which is the point of enforcing one locally."},
+
+    {"figure": "16,924", "wiki": "me", "wiki_page": "hpc3-cli", "section": "Shape", "note": "Lines of source under tools/hpc3/src, re-counted 2026-09-11. The previous figure on the source page was 10,422, taken 2026-08-26."},
+    {"figure": "19,278", "wiki": "me", "wiki_page": "hpc3-cli", "section": "Shape", "note": "Lines of test code, same count and date. Tests exceed source, which is the claim worth making."},
+    {"figure": "15", "wiki": "me", "wiki_page": "hpc3-cli", "section": "Shape", "note": "Console scripts under [tool.poetry.scripts]. The source page read 'Eight commands' while naming seven; both were wrong and were corrected against pyproject.toml before this article was written."}
+  ],
+  "allowed_non_figures": []
+}
