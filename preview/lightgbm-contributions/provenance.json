@@ -1,5 +1,6 @@
 {
   "deliverable": "preview/lightgbm-contributions/index.html",
+  "demonstrates": "Nine patches written, reviewed by LightGBM's maintainers and merged into the library, including a C++ socket-timeout defect in the distributed-training path -- work that landed in someone else's large codebase under review rather than in a repository of my own.",
   "claims": [
     {"figure": "9", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "Two more open, and one closed without merging", "note": "Pull requests merged. Verified against the GitHub API on 2026-08-26 and unchanged across three earlier checks."},
     {"figure": "12", "wiki": "me", "wiki_page": "lightgbm-contributions", "section": "Two more open, and one closed without merging", "note": "Pull requests authored in total: the denominator the merged count is measured against."},

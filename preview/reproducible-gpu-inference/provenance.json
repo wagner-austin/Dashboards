@@ -1,5 +1,6 @@
 {
   "deliverable": "preview/reproducible-gpu-inference/index.html",
+  "demonstrates": "Built a fixed-order arithmetic path that makes one model produce byte-identical output across nine NVIDIA GPUs, five architecture generations, two operating systems and two CUDA toolchains -- a property the vendor stack does not provide and PyTorch's determinism settings do not address.",
   "claims": [
     {"figure": "2,627", "wiki": "personal", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Items in the cloze set the historical claim was measured on, and the denominator of the headline result."},
     {"figure": "900", "wiki": "personal", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "150 items across all six pairs of four cards. A count of pairwise comparisons, NOT of test items."},
