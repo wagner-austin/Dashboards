@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>How many compartments fit in one model — Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner — home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>How many compartments fit in one model</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">A serving design assumed several separately trained compartments
+               could be wired into one request. Measuring it first put the naive limit at two —
+               and then a training recipe moved four-compartment retention from
+               <strong>&minus;45.4% to +44.6%</strong>.</p>
+            <dl class="facts">
+                <dt>Question</dt>
+                <dd>Can one model hold several specialisations that stay distinct and stay
+                    separately addressable?</dd>
+                <dt>Result</dt>
+                <dd>Under naive training, no — past two compartments the primary's gain is
+                    erased. Train the base to expect a crowd and the limit moves.</dd>
+                <dt>Method</dt>
+                <dd>A sweep with its own artifact detectors, replicated across three roster
+                    rotations, with a bit-identity certificate: two separate processes produced
+                    SHA-256-identical records.</dd>
+                <dt>Stack</dt>
+                <dd>Python, PyTorch, a pretrained transformer, run on an RTX 3090 Ti offline.</dd>
+                <dt>Full record</dt>
+                <dd>The wiki pages below, pinned to the exact source blobs that produced the
+                    numbers.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The controls caught the result before a reader did</h2>
+        <div class="panel prose">
+            <p>This is the part I would want to be asked about. The first roster read
+               <strong>+27%</strong> retention at eight compartments — a good number, in the
+               direction the design wanted, and wrong.</p>
+            <p>It was leakage. Compartments trained on two technical corpora were predicting a
+               third corpus they had never seen, because all three share vocabulary
+               (<strong>+0.18</strong> and <strong>+0.41</strong> cross-gain). The sweep scores
+               every foreign compartment alone against the primary's held-out text precisely to
+               catch that, so the artifact surfaced as a measurement rather than as a
+               conclusion. The clean rerun put eight compartments at <strong>&minus;7.0%</strong>.</p>
+            <div class="callout">
+                <p>Relatedness between compartments is measured, never assumed. Without that
+                   control the headline would have been the opposite of the truth, and nothing
+                   downstream would have contradicted it.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Moving the limit rather than reporting it</h2>
+        <div class="panel prose">
+            <p>A ceiling is only a finding if you try to break it. The published literature names
+               the escape route — concatenation works when it is trained for, not when it is
+               assumed — so the next run trained the base to expect company instead of training
+               each compartment alone.</p>
+            <p>At four compartments that took retention from <strong>&minus;45.4%</strong> to
+               <strong>+44.6%</strong>. The naive numbers stand as the baseline the recipe is
+               judged against, which is the only reason the second result means anything.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">What this does not settle</h2>
+        <div class="panel prose">
+            <p>Every compartment measured here is a <em>corpus</em>. Whether the same curve holds
+               when the compartments are dispositions — personas rather than bodies of knowledge —
+               is open, and the published work suggests it is harder: the substrate that carries
+               disposition degrades after very few composed directions, and the components a
+               learned router selects track syntax and position rather than subject.</p>
+            <p>So a design that succeeds at composing corpora should not be assumed to transfer to
+               composing characters. That is the next experiment, and it is deliberately
+               unstarted rather than quietly skipped.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of
+               <code>model-trainer-composition-ceiling</code> and checked mechanically before this
+               page can deploy. That page and
+               <code>model-trainer-companioned-training-recipe</code> are pinned to the git blob
+               hashes of the source files that produced the numbers, so a change to the
+               measurement code invalidates the citation rather than silently outdating it. The
+               survey of what the published literature permits is a separate page,
+               <code>many-personas-in-one-model-feasibility</code>.</p>
+            <p><strong>Known limits.</strong> One model family at one scale, measured offline on a
+               single card; these are retention ratios on held-out text, not a serving benchmark,
+               and nothing here times a request. The composition ladder belongs to a wider
+               programme that has had published claims withdrawn for sitting below what its
+               question set could resolve — the figures on this page are ratios with margins in
+               the tens of points, not the near-ties that were withdrawn, and the withdrawal is
+               recorded in the wiki rather than being left for a reader to discover.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

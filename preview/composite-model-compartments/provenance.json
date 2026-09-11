@@ -1,0 +1,14 @@
+{
+  "deliverable": "preview/composite-model-compartments/index.html",
+  "demonstrates": "Built a composition measurement harness whose own controls caught a leakage artifact that read in the direction the design wanted, established that naive compartment composition ceilings at two, and then measured a training recipe that lifts four-compartment retention from -45.4% to +44.6%.",
+  "claims": [
+    {"figure": "27%", "wiki": "api-codebase", "wiki_page": "model-trainer-composition-ceiling", "section": "The run caught two of its own artifacts", "note": "The first roster's eight-compartment retention. Quoted BECAUSE it was wrong: it is the artifact the cross-gain control caught, not a result."},
+    {"figure": "0.18", "wiki": "api-codebase", "wiki_page": "model-trainer-composition-ceiling", "section": "The run caught two of its own artifacts", "note": "Cross-gain of one foreign compartment scored alone on the primary's held-out text -- the evidence that the +27% was shared vocabulary rather than composition."},
+    {"figure": "0.41", "wiki": "api-codebase", "wiki_page": "model-trainer-composition-ceiling", "section": "The run caught two of its own artifacts", "note": "The larger of the two cross-gains, from the corpus sharing most vocabulary with the primary."},
+    {"figure": "7.0%", "wiki": "api-codebase", "wiki_page": "model-trainer-composition-ceiling", "section": "The run caught two of its own artifacts", "note": "Eight-compartment retention on the clean roster, after the leaking corpora were removed. The real number the +27% was hiding."},
+
+    {"figure": "45.4%", "wiki": "api-codebase", "wiki_page": "model-trainer-composition-ceiling", "section": "What this binds, and the way past it, which has since been measured", "note": "Four-compartment retention under naive training, fixed-slot policy. The baseline, and negative."},
+    {"figure": "44.6%", "wiki": "api-codebase", "wiki_page": "model-trainer-composition-ceiling", "section": "What this binds, and the way past it, which has since been measured", "note": "Four-compartment retention under the trained-p0.5 composition-aware recipe, measured the following day. Full grid and dose curve are on model-trainer-companioned-training-recipe."}
+  ],
+  "allowed_non_figures": ["3090"]
+}
