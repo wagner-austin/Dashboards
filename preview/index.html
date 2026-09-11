@@ -243,11 +243,10 @@
         <ul class="work">
             <li><a class="panel" href="/preview/reproducible-gpu-inference/">
                 <h3>Reproducible GPU inference</h3>
-                <p>One model and one set of weights, run on nine NVIDIA cards, produced nine different
-                   sets of numbers. Disabling the vendor library's reduction shortcut and pinning
-                   attention closed 198 of 900 pairwise score comparisons; owning the reduction order
-                   closed the rest, and then <strong>2,627 of 2,627 on the full set, on every pair of
-                   cards</strong> — one outcomes file, one SHA-256, six cards, two operating systems.</p>
+                <p>One model and one set of weights produced a different answer on every NVIDIA card
+                   it ran on. Owning the arithmetic order instead of the vendor library's made the
+                   output <strong>byte-identical across all nine</strong> — five architecture
+                   generations, two operating systems, one SHA-256.</p>
             </a></li>
             <li><a class="panel" href="/preview/lightgbm-contributions/">
                 <h3>LightGBM</h3>

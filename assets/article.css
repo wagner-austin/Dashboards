@@ -17,37 +17,40 @@
  */
 
 /* One continuous ground, same construction as the index: a block element
-   carrying the gradient, everything above it transparent. The dark end sits at
-   the very bottom because an article has no forest on it, only the
-   source-verification block and the footer. */
+   carrying the gradient, everything above it transparent.
+ *
+ * LIGHT THE WHOLE WAY DOWN, which it was not at first. The original faded to
+ * #0a0a0a at the bottom, copying the index -- but the index goes dark to hand
+ * off to the ASCII forest, and an article has no forest. What it has there is
+ * the Record block and the footer, both of which then had to be restyled in
+ * light-on-dark to survive the ground they had been given.
+ *
+ * That treatment failed on the page, not in principle: a gradient stop is a
+ * percentage of the ELEMENT, so where the dark end lands depends on how long
+ * the article is. On a long one the Record block sits well above the fade and
+ * its #c9ced6 prose rendered on near-white. Illegible, and illegible in a way
+ * that gets worse the more an article has to say.
+ *
+ * So the dark end is gone rather than the stops retuned. Retuning would make
+ * legibility a function of word count and leave the next article to rediscover
+ * it. */
 .page {
     position: relative;
     background: linear-gradient(
         to bottom,
         var(--gray-100) 0%,
-        var(--gray-100) 72%,
-        #e6e9ed 82%,
-        #aeb6c0 90%,
-        #4c535d 96%,
-        #0a0a0a 100%
+        var(--gray-100) 62%,
+        #eef0f3 100%
     );
     min-height: 100vh;
 }
 
-/* The two intro lines sit in a .panel like every other block on the site, so
-   they are not the one thing on the page floating bare on the gradient. That
-   panel deliberately does NOT take .prose: .prose p wins on specificity and
-   would flatten both lines to body colour, losing the grey hierarchy. */
-.standfirst {
-    color: var(--gray-600);
-    font-size: 1.15rem;
-    line-height: 1.55;
-}
-.dateline {
-    color: var(--gray-400);
-    margin-top: 0.6rem;
-    font-size: 0.9rem;
-}
+/* .standfirst and .dateline were defined here and are gone: no page on the
+   site carries either class. They were the first draft's grey intro lines,
+   replaced by .result -- a black one-sentence outcome -- when the article
+   format was cut to a 30-second read, and the rules outlived the markup. Left
+   in place they are what the next article gets styled against by whoever greps
+   this file for something to use. */
 
 /* The 30-second read. A reader deciding whether to keep going needs the
    outcome, the scale and the stack before any prose, so these sit above it as
@@ -141,26 +144,26 @@ code {
 }
 .callout p { margin-top: 0; }
 
-/* The source-verification block sits on the dark end of the gradient. */
-.sources { color: #c9ced6; }
-.sources h2.section { color: #fff; }
-.sources .panel {
-    border-top: 1px solid rgba(255, 255, 255, 0.28);
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.10) 0%,
-        rgba(255, 255, 255, 0.05) 60%,
-        rgba(255, 255, 255, 0.02) 100%
-    );
+/* The Record block is end matter, not a different kind of writing, so it takes
+   the same black prose as the body and is set off by a rule rather than by a
+   ground of its own. Every colour it used to declare -- #c9ced6 text, #fff
+   headings and strongs, a translucent-white panel, inverted code -- existed
+   only to survive the dark gradient end that is now gone, and each one was a
+   second definition of something .prose already said. */
+.sources {
+    border-top: 1px solid var(--gray-400);
+    padding-top: 2rem;
+    margin-top: 1.25rem;
 }
-.sources p, .sources li { color: #c9ced6; font-size: 1.02rem; line-height: 1.6; }
-.sources code {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.18);
-    color: #e4e8ee;
-}
-.sources strong { color: #fff; }
+/* Type one step down from the body: this is the provenance record, which a
+   reader consults rather than reads through. Size is the only thing separating
+   it, because size does not depend on what is behind it. */
+.sources .prose p { font-size: 1.02rem; }
 
 /* site.css opens the footer tight against the index's forest caption; an
-   article needs air above it instead. */
-footer { padding-top: 2.5rem; }
+   article needs air above it instead. Colour is set here for the same reason
+   the padding is -- site.css's #6f6f6f body and #8b9aa8 link are pitched for
+   the index's black footer strip, and an article's footer now sits on light
+   ground, where both are far too faint to read. */
+footer { padding-top: 2.5rem; color: var(--gray-600); }
+footer a { color: var(--primary-dark); }
