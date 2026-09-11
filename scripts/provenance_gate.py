@@ -85,6 +85,13 @@ def gate(preview_root: str = PREVIEW_ROOT) -> int:
         hooks.print_message("Set DELIVERABLE_VALIDATOR, or install the deliverable-write skill.")
         return 1
 
+    # A missing root fails rather than reading as an empty one. Renaming or
+    # deleting preview/ would otherwise retire the gate silently, and a check
+    # that disappears with the directory it guards is not a check.
+    if not hooks.dir_exists(preview_root):
+        hooks.print_message(f"PROVENANCE GATE: {preview_root}/ does not exist")
+        return 1
+
     articles = hooks.list_article_dirs(preview_root)
     if not articles:
         hooks.print_message(f"PROVENANCE GATE: no articles under {preview_root}/")

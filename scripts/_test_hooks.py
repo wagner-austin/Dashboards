@@ -25,17 +25,36 @@ def _real_list_article_dirs(preview_root: str) -> list[str]:
     landing page at ``preview/index.html`` is not an article and is
     excluded by only looking one level down.
 
+    A missing root is NOT tolerated here. Returning an empty list for one would
+    make a renamed or deleted ``preview/`` read as "no articles to check" and
+    pass the gate. The caller establishes the root exists first, so reaching
+    this function with a bad path is a defect and raises.
+
     Args:
         preview_root: Path to the ``preview`` directory.
 
     Returns:
         Sorted POSIX-style paths of article directories.
+
+    Raises:
+        FileNotFoundError: If ``preview_root`` does not exist.
+        NotADirectoryError: If it exists but is not a directory.
     """
     root = Path(preview_root)
-    if not root.is_dir():
-        return []
     found = [child for child in sorted(root.iterdir()) if (child / "index.html").is_file()]
     return [child.as_posix() for child in found]
+
+
+def _real_dir_exists(path: str) -> bool:
+    """Return whether ``path`` names an existing directory.
+
+    Args:
+        path: Filesystem path.
+
+    Returns:
+        True when the path is an existing directory.
+    """
+    return Path(path).is_dir()
 
 
 def _real_file_exists(path: str) -> bool:
@@ -50,34 +69,49 @@ def _real_file_exists(path: str) -> bool:
     return Path(path).is_file()
 
 
-GIT_BASH_CANDIDATES = (
+BASH_CANDIDATES = (
     r"C:\Program Files\Git\bin\bash.exe",
     r"C:\Program Files\Git\usr\bin\bash.exe",
+    "/bin/bash",
+    "/usr/bin/bash",
 )
 
 
-def resolve_bash() -> str:
-    """Return the bash interpreter the validator script should run under.
+class BashNotFoundError(RuntimeError):
+    """Raised when no usable bash interpreter can be located.
 
-    On this machine ``bash`` on PATH resolves to ``C:\\WINDOWS\\system32\\
-    bash.exe``, which is WSL. WSL mounts the Windows drives at ``/mnt/c``
-    rather than ``/c``, so an MSYS-style path handed to it does not exist
-    and the run fails with exit 127 -- indistinguishable from a missing
-    validator. Git Bash is the interpreter the path conversion in
-    :func:`to_bash_path` targets, so it is selected explicitly rather than
-    left to PATH order.
+    Carries the paths that were tried and the variable that overrides them,
+    so the message says what to do rather than only what failed.
+    """
+
+
+def resolve_bash() -> str:
+    """Return the bash interpreter the validator script runs under.
+
+    Every candidate is an absolute path and PATH is never consulted. On this
+    machine ``bash`` on PATH resolves to ``C:\\WINDOWS\\system32\\bash.exe``,
+    which is WSL, and WSL mounts the Windows drives at ``/mnt/c`` rather than
+    ``/c`` -- so an MSYS-style path from :func:`to_bash_path` does not exist
+    there and the run fails with exit 127, indistinguishable from a missing
+    validator. Falling back to PATH would reintroduce exactly that.
 
     Returns:
-        ``BASH_EXECUTABLE`` when set, else the first Git Bash found, else
-        ``"bash"`` for platforms where PATH is already correct.
+        ``BASH_EXECUTABLE`` when set, otherwise the first existing entry of
+        :data:`BASH_CANDIDATES`.
+
+    Raises:
+        BashNotFoundError: If no candidate exists and no override is set.
+            Raised rather than defaulting, because a wrong interpreter here
+            reports as a broken gate rather than as a misconfigured one.
     """
     override = os.environ.get("BASH_EXECUTABLE", "")
     if override:
         return override
-    for candidate in GIT_BASH_CANDIDATES:
+    for candidate in BASH_CANDIDATES:
         if Path(candidate).is_file():
             return candidate
-    return "bash"
+    tried = ", ".join(BASH_CANDIDATES)
+    raise BashNotFoundError(f"no bash interpreter found; tried {tried}. Set BASH_EXECUTABLE to one.")
 
 
 def to_bash_path(path: str) -> str:
@@ -134,13 +168,15 @@ def _real_run_validator(deliverable_path: str, validator_script: str) -> int:
 print_message = _real_print
 list_article_dirs = _real_list_article_dirs
 file_exists = _real_file_exists
+dir_exists = _real_dir_exists
 run_validator = _real_run_validator
 
 
 def reset_hooks() -> None:
     """Restore every hook to its real implementation."""
-    global print_message, list_article_dirs, file_exists, run_validator
+    global print_message, list_article_dirs, file_exists, dir_exists, run_validator
     print_message = _real_print
     list_article_dirs = _real_list_article_dirs
     file_exists = _real_file_exists
+    dir_exists = _real_dir_exists
     run_validator = _real_run_validator

@@ -22,6 +22,10 @@ GUARDED_MODULES = (
     "asuci/models.py",
     "asuci/parse.py",
     "asuci/client.py",
+    "scripts/guard.py",
+    "scripts/provenance_gate.py",
+    "scripts/_test_hooks.py",
+    "tests/test_provenance_gate.py",
 )
 
 # Modules that run on the daily schedule and must stay browser-free.

@@ -30,6 +30,7 @@ class Recorder:
         articles: list[str],
         existing: set[str],
         exit_codes: dict[str, int],
+        dirs: set[str] | None = None,
     ) -> None:
         """Store the scripted responses.
 
@@ -37,12 +38,26 @@ class Recorder:
             articles: Article directories to report from ``list_article_dirs``.
             existing: Paths ``file_exists`` should answer True for.
             exit_codes: Deliverable path to validator exit code.
+            dirs: Paths ``dir_exists`` should answer True for. Defaults to the
+                preview root so the common case needs no scripting.
         """
         self.lines: list[str] = []
         self.articles = articles
         self.existing = existing
         self.exit_codes = exit_codes
+        self.dirs = {provenance_gate.PREVIEW_ROOT} if dirs is None else dirs
         self.validator_calls: list[str] = []
+
+    def dir_exists(self, path: str) -> bool:
+        """Return whether the path was scripted as an existing directory.
+
+        Args:
+            path: The path to test.
+
+        Returns:
+            True when scripted as a directory.
+        """
+        return path in self.dirs
 
     def print_message(self, message: str) -> None:
         """Record a printed line.
@@ -100,6 +115,7 @@ def _install(recorder: Recorder) -> None:
     hooks.print_message = recorder.print_message
     hooks.list_article_dirs = recorder.list_article_dirs
     hooks.file_exists = recorder.file_exists
+    hooks.dir_exists = recorder.dir_exists
     hooks.run_validator = recorder.run_validator
 
 
@@ -176,6 +192,18 @@ def test_gate_passes_when_there_are_no_articles() -> None:
     assert any("no articles under" in line for line in recorder.lines)
 
 
+def test_gate_fails_when_the_preview_root_is_missing() -> None:
+    """A missing preview/ fails; it does not read as an empty one.
+
+    A check that retires itself when the directory it guards is renamed is
+    not a check.
+    """
+    recorder = Recorder(articles=[], existing={_VALIDATOR}, exit_codes={}, dirs=set())
+    _install(recorder)
+    assert provenance_gate.gate() == 1
+    assert any("does not exist" in line for line in recorder.lines)
+
+
 def test_resolve_validator_prefers_the_environment(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -229,15 +257,29 @@ def test_real_list_article_dirs_finds_subdirectories_with_an_index(
     assert [Path(p).name for p in found] == ["article"]
 
 
-def test_real_list_article_dirs_returns_empty_for_a_missing_root(
-    tmp_path: Path,
-) -> None:
-    """A nonexistent preview root yields no articles rather than raising.
+def test_real_list_article_dirs_raises_for_a_missing_root(tmp_path: Path) -> None:
+    """A nonexistent preview root raises rather than reading as empty.
+
+    Returning an empty list here would make a renamed or deleted preview/
+    pass the gate as though there were nothing to check.
 
     Args:
         tmp_path: Temporary directory root.
     """
-    assert hooks._real_list_article_dirs(str(tmp_path / "absent")) == []
+    with pytest.raises(FileNotFoundError):
+        hooks._real_list_article_dirs(str(tmp_path / "absent"))
+
+
+def test_real_dir_exists_distinguishes_directories_from_files(tmp_path: Path) -> None:
+    """Only directories count as existing.
+
+    Args:
+        tmp_path: Temporary directory root.
+    """
+    target = tmp_path / "f.json"
+    target.write_text("{}", encoding="utf-8")
+    assert hooks._real_dir_exists(str(tmp_path)) is True
+    assert hooks._real_dir_exists(str(target)) is False
 
 
 def test_real_file_exists_distinguishes_files_from_directories(
@@ -264,21 +306,26 @@ def test_resolve_bash_prefers_the_environment(monkeypatch: pytest.MonkeyPatch) -
     assert hooks.resolve_bash() == "/custom/bash"
 
 
-def test_resolve_bash_falls_back_to_path_when_nothing_is_found(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """With no override and no Git Bash, PATH resolution is used.
+def test_resolve_bash_raises_when_no_candidate_exists(monkeypatch: pytest.MonkeyPatch) -> None:
+    """With no override and no candidate, resolution fails loudly.
+
+    Defaulting to PATH here is what would hand the run to WSL, whose drive
+    layout makes every converted path a miss and every miss look like a
+    broken gate rather than a misconfigured one.
 
     Args:
         monkeypatch: Used to clear the override and empty the candidates.
     """
     monkeypatch.delenv("BASH_EXECUTABLE", raising=False)
-    monkeypatch.setattr(hooks, "GIT_BASH_CANDIDATES", ())
-    assert hooks.resolve_bash() == "bash"
+    monkeypatch.setattr(hooks, "BASH_CANDIDATES", ())
+    with pytest.raises(hooks.BashNotFoundError, match="BASH_EXECUTABLE"):
+        hooks.resolve_bash()
 
 
-def test_resolve_bash_finds_git_bash_when_present(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
-    """A present candidate is selected ahead of PATH.
+def test_resolve_bash_selects_the_first_existing_candidate(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """Candidates are tried in order and the first that exists wins.
 
     Args:
         monkeypatch: Used to clear the override and script the candidates.
@@ -287,7 +334,7 @@ def test_resolve_bash_finds_git_bash_when_present(monkeypatch: pytest.MonkeyPatc
     fake = tmp_path / "bash.exe"
     fake.write_text("", encoding="utf-8")
     monkeypatch.delenv("BASH_EXECUTABLE", raising=False)
-    monkeypatch.setattr(hooks, "GIT_BASH_CANDIDATES", (str(tmp_path / "absent.exe"), str(fake)))
+    monkeypatch.setattr(hooks, "BASH_CANDIDATES", (str(tmp_path / "absent.exe"), str(fake)))
     assert hooks.resolve_bash() == str(fake)
 
 
