@@ -1,0 +1,70 @@
+{
+  "deliverable": "preview/reproducible-gpu-inference/index.html",
+  "claims": [
+    {"figure": "2,627", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Items in the cloze set the historical claim was measured on; the full-set arm scores all of them."},
+    {"figure": "198", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Pairwise score comparisons exact under the VENDOR arm WITH BOTH CONTROLS APPLIED. Not a defaults baseline: the published page said 'on the defaults' and was wrong."},
+    {"figure": "900", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "150 items across all six pairs of four cards. A count of pairwise comparisons, NOT of test items."},
+    {"figure": "150", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Items in the reduced set used for the four-card and cross-machine runs."},
+    {"figure": "8.31e-04", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Worst per-item score gap under the vendor arm with both controls applied."},
+    {"figure": "0", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Worst per-item score gap under the owned-order arm."},
+    {"figure": "1,374", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Correct answers on the full set, identical on every card under both arms."},
+    {"figure": "156", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Lower end of per-pair vendor-arm agreement on the full set."},
+    {"figure": "1,650", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Upper end of per-pair vendor-arm agreement on the full set."},
+    {"figure": "18", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "Chunks the full set was sharded into so the owned arm fits a preemptible wall."},
+    {"figure": "50,257", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A real workload, four cards, byte-identical (2026-08-31)", "note": "The real gpt2 vocabulary size, as against the 512-token probe vocabulary."},
+
+    {"figure": "99.9%", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "The intervention is far better than the rung count said", "note": "Forward-pass agreement between the two Ampere cards after removing split-K, by tensor digest."},
+    {"figure": "4%", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "The intervention is far better than the rung count said", "note": "Upper bound of the same pair's agreement BEFORE the intervention."},
+
+    {"figure": "42", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "Nothing about the cards' agreement changes; a rounding coincidence does", "note": "Module-boundary tensors already differing by default on the gate rung."},
+    {"figure": "52", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "Nothing about the cards' agreement changes; a rounding coincidence does", "note": "Total module-boundary tensors on that rung; the denominator for 42."},
+
+    {"figure": "147", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "Two more machines, and the residual finds its address", "note": "Items the GTX 1630 matched under the fixed-order arm, of 150."},
+    {"figure": "8.7e-05", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "Two more machines, and the residual finds its address", "note": "Largest divergence on the three items the sm_75 card broke."},
+    {"figure": "1630", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "Two more machines, and the residual finds its address", "note": "GTX 1630, the sm_75 card; a model name rather than a measured quantity."},
+    {"figure": "3090", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "Two more machines, and the residual finds its address", "note": "RTX 3090 Ti, sm_86; a model name rather than a measured quantity."},
+    {"figure": "3070", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "Two more machines, and the residual finds its address", "note": "RTX 3070 Ti Laptop, sm_86; a model name rather than a measured quantity."},
+
+    {"figure": "15", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "The sm_75 residual is caught, named, and closed (2026-09-01)", "note": "Token length at which the value product diverges on sm_75."},
+    {"figure": "16", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "The sm_75 residual is caught, named, and closed (2026-09-01)", "note": "The other diverging token length."},
+    {"figure": "17", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "The sm_75 residual is caught, named, and closed (2026-09-01)", "note": "A probed length that is clean everywhere, bracketing the split from above."},
+    {"figure": "20", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "The sm_75 residual is caught, named, and closed (2026-09-01)", "note": "A probed length that is clean everywhere."},
+
+    {"figure": "1", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "The numerator of the Clopper-Pearson expression 1 - 0.05^(1/n)."},
+    {"figure": "0.05", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "The alpha in the same expression."},
+    {"figure": "0.114%", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "Upper bound on the divergence rate from the full-set digest; the tightest row."},
+    {"figure": "0.233%", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "Upper bound from the 1,283 ordered train-step records."},
+    {"figure": "2.117%", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "Upper bound from the 140 attention stages."},
+    {"figure": "3.170%", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "Upper bound from the 93 cross-card ordered GEMM shapes."},
+    {"figure": "0.072%", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "Pooled upper bound across the rows above."},
+    {"figure": "0.0381%", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "One divergence in a full 2,627-item run, the scale none of the bounds excludes."},
+    {"figure": "1,283", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "Ordered train-step records carried across the toolchain jump."},
+    {"figure": "140", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "Attention-stage digests compared across cards."},
+    {"figure": "93", "wiki_page": "a-loss-agrees-where-the-computation-does-not", "section": "A new toolchain and a Blackwell card change nothing the owned arms touch (2026-09-04)", "note": "Cross-card ordered GEMM shapes; the shape count, not the 186 observations those files hold."},
+
+    {"figure": "3", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Isolating one matmul at a time", "note": "Cards in the isolated-matmul campaign; the denominator of every 'N of 3' in that table."},
+    {"figure": "2", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "The intervention, which is the part that settles it", "note": "Shapes agreeing across three cards under the default condition, of eight."},
+    {"figure": "8", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "The intervention, which is the part that settles it", "note": "Shapes agreeing once split-K is removed, of eight."},
+    {"figure": "70", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "The intervention, which is the part that settles it", "note": "Matmul calls using split-K by default."},
+    {"figure": "86", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "The intervention, which is the part that settles it", "note": "Total matmul calls measured; the denominator for 70."},
+    {"figure": "72", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "The switch is now applied by default, and the gate is untouched (2026-08-28)", "note": "SDPA digests measured, none of which move when split-K is removed."},
+
+    {"figure": "0%", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "What it costs, measured", "note": "Lower end of the per-GEMM cost at a realistic batch size."},
+    {"figure": "13%", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "What it costs, measured", "note": "Upper end of that cost range, on the noisiest card."},
+    {"figure": "1%", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "What it costs, measured", "note": "A single-percent entry in the batched cost table."},
+    {"figure": "84%", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "What it costs, measured", "note": "Largest single-sequence penalty, the figure an earlier revision quoted as the headline."},
+
+    {"figure": "46%", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "large mlp-proj penalty on the A100 at 64 rows."},
+    {"figure": "83%", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "xl mlp-proj penalty on the A100 at 64 rows."},
+    {"figure": "2%", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "The same shapes at 128 rows, where the cost has already collapsed."},
+    {"figure": "3%", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "medium mlp-proj at 128 rows."},
+    {"figure": "8%", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "medium mlp-proj at 512 rows."},
+    {"figure": "64", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "The batch size at which the cost exists, and the only one on the curve where it does."},
+    {"figure": "128", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "The batch size at which the cost has already collapsed. One doubling."},
+    {"figure": "256", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "A row of the batch sweep."},
+    {"figure": "512", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "A row of the batch sweep, and the sequence length a real workload uses."},
+    {"figure": "1024", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "Start of the flat tail of the batch sweep."},
+    {"figure": "4096", "wiki_page": "cross-gpu-agreement-is-recoverable-by-disabling-split-k", "section": "Where the cost actually goes away", "note": "End of the batch sweep; eight 512-token sequences flattened."}
+  ],
+  "allowed_non_figures": []
+}

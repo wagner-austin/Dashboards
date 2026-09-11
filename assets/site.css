@@ -1,0 +1,100 @@
+/* austinwagner.org — the styles shared by more than one page.
+ *
+ * Page-specific rules stay in that page's own <style> block. What lives here is
+ * only what two or more pages need identically: the palette, the reset, the
+ * content column, the section heading, and the one panel treatment.
+ *
+ * The panel in particular is why this file exists. It was defined twice before
+ * this file did — once for the dashboard list and once for the work list — and
+ * the two near-identical copies are how those sections drifted apart. One
+ * definition, used by everything.
+ *
+ * NOT here: the .page gradient. Each page carries its own, because the index
+ * fades to black behind the ASCII forest and an article fades only behind its
+ * footer. A shared gradient would have to be overridden by both.
+ */
+
+:root {
+    --primary: #0064a4;
+    --primary-dark: #003d66;
+    --primary-light: #e6f2fa;
+    --gold: #ffc72c;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-400: #9ca3af;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Only a backstop behind .page, which carries the real gradient. */
+html, body { background: #0a0a0a; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    color: var(--gray-800);
+    min-width: 1200px;
+}
+
+.container { max-width: 1140px; margin: 0 auto; padding: 1rem 2rem 0; }
+
+h2.section {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-800);
+    margin: 0 0 1rem;
+}
+h2.section.light { color: #fff; }
+h2.section + * { margin-top: 0; }
+
+.block { margin-bottom: 2.25rem; }
+
+/* One panel style, used by every section on every page. A white rule across the
+   top, and a fill that fades to fully transparent at the bottom so the page
+   gradient comes through. Square corners. */
+.panel {
+    border-top: 1px solid rgba(255, 255, 255, 0.85);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.88) 0%,
+        rgba(255, 255, 255, 0.68) 40%,
+        rgba(255, 255, 255, 0.45) 72%,
+        rgba(255, 255, 255, 0.26) 100%
+    );
+    padding: 0.95rem 1.75rem 1.05rem;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    padding: 0.18rem 0.5rem;
+    font-size: 0.88rem;
+    margin-top: 0.7rem;
+}
+
+/* The bordered-button treatment, used by the index's profile links and by an
+   article's back-link. */
+.chip {
+    display: inline-block;
+    color: var(--primary-dark);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--gray-200);
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    transition: background 0.2s, border-color 0.2s;
+}
+.chip:hover { background: #fff; border-color: var(--primary); }
+
+footer {
+    text-align: center;
+    color: #6f6f6f;
+    font-size: 0.8rem;
+    padding: 0 2rem 2.5rem;
+}
+footer a { color: #8b9aa8; }
