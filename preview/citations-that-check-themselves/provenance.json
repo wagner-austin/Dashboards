@@ -1,0 +1,6 @@
+{
+  "deliverable": "preview/citations-that-check-themselves/index.html",
+  "demonstrates": "Built a citation-audit engine where each wiki declares which kind of proof its sources owe -- PDF hash, captured-HTML hash, resolving vault query, or git blob hash -- and the same rules run on the filesystem, inside the database write transaction, and through the tool an agent calls, so an unanchored claim cannot land.",
+  "claims": [],
+  "allowed_non_figures": []
+}
