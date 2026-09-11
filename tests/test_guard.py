@@ -13,6 +13,8 @@ from scripts.guard import (
     MIRRORED_STYLESHEETS,
     TOKENS_CSS,
     _suppression_patterns,
+    article_body_words,
+    check_articles_are_readable,
     check_chain_certificate,
     check_mirrored_stylesheets_are_pinned,
     check_no_browser_automation,
@@ -23,6 +25,7 @@ from scripts.guard import (
     palette_tokens,
     site_pages,
 )
+from scripts.provenance_gate import PREVIEW_ROOT
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -106,6 +109,11 @@ def _make_project(root: Path, *, browser_import: bool = False, cert: str | None 
         target = root / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes((REPO_ROOT / relative).read_bytes())
+
+    # A real project has an article root, and listing a missing one raises by
+    # design rather than reporting zero articles. Named from the guard's own
+    # constant so the fixture cannot drift from what the check reads.
+    (root / PREVIEW_ROOT).mkdir(parents=True, exist_ok=True)
 
 
 def test_the_fixture_tree_covers_every_guarded_module(tmp_path: Path) -> None:
@@ -556,6 +564,142 @@ def test_the_pin_reports_a_missing_stylesheet(tmp_path: Path) -> None:
 def test_every_mirrored_stylesheet_is_a_real_file() -> None:
     """The pin names files that exist, so it cannot rot into vacuous truth."""
     assert [name for name in MIRRORED_STYLESHEETS if not (REPO_ROOT / name).is_file()] == []
+
+
+# --------------------------------------------------------------------------
+# Articles are readable, which is independent of their figures being true.
+# --------------------------------------------------------------------------
+
+
+def _article(
+    root: Path, slug: str, *, words: int = 50, sections: int = 2, result: bool = True, facts: bool = True
+) -> None:
+    """Write a synthetic article under preview/.
+
+    Args:
+        root: Project root.
+        slug: Article directory name.
+        words: Body word count to generate.
+        sections: Number of section headings.
+        result: Whether to include the result block.
+        facts: Whether to include the facts grid.
+    """
+    head = '<html><head><link rel="stylesheet" href="/assets/site.css"></head><body>'
+    parts = [head]
+    if result:
+        parts.append('<p class="result">It worked.</p>')
+    if facts:
+        parts.append('<dl class="facts"><dt>Scale</dt><dd>large</dd></dl>')
+    for _ in range(sections):
+        parts.append('<h2 class="section">A heading</h2>')
+    parts.append("<p>" + " ".join(["word"] * words) + "</p></body></html>")
+    page = root / "preview" / slug / "index.html"
+    page.parent.mkdir(parents=True, exist_ok=True)
+    page.write_text("".join(parts), encoding="utf-8")
+
+
+def _install_articles(dirs: list[str]) -> None:
+    """Point the article-directory hook at a scripted list.
+
+    Args:
+        dirs: Article directory paths to report.
+    """
+    hooks.list_article_dirs = lambda preview_root: list(dirs)
+
+
+def test_article_body_words_counts_prose_not_markup() -> None:
+    """Tags, entities and comments are not words a reader sees."""
+    html = (
+        "<html><head><title>x y z</title></head><body><!-- a b c --><p>one two&nbsp;three</p></body></html>"
+    )
+    assert article_body_words(html) == 3
+
+
+def test_article_body_words_counts_whole_file_without_a_body_tag() -> None:
+    """A fragment with no <body> is still counted rather than skipped."""
+    assert article_body_words("<p>one two</p>") == 2
+
+
+def test_readable_check_accepts_a_well_shaped_article(tmp_path: Path) -> None:
+    """Short, result-first, with a facts grid: no findings.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _article(tmp_path, "good")
+    _install_articles([str(tmp_path / "preview" / "good")])
+    assert check_articles_are_readable(tmp_path) == []
+
+
+def test_readable_check_rejects_the_length_the_first_article_shipped_at(tmp_path: Path) -> None:
+    """A 1,929-word draft fails, which is the case this exists for.
+
+    That article passed every other check in this repository on the day it
+    shipped, because every other check asks whether its figures are true.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _article(tmp_path, "long", words=1929)
+    _install_articles([str(tmp_path / "preview" / "long")])
+    errors = check_articles_are_readable(tmp_path)
+    assert any("over the 900 ceiling" in error for error in errors)
+
+
+def test_readable_check_rejects_too_many_sections(tmp_path: Path) -> None:
+    """Ten sections of equal weight is a page with no shape.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _article(tmp_path, "many", sections=10)
+    _install_articles([str(tmp_path / "preview" / "many")])
+    assert any("sections, over the" in e for e in check_articles_are_readable(tmp_path))
+
+
+def test_readable_check_requires_the_result_block(tmp_path: Path) -> None:
+    """A page that opens on the problem buries its own point.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _article(tmp_path, "noresult", result=False)
+    _install_articles([str(tmp_path / "preview" / "noresult")])
+    assert any('class="result"' in e for e in check_articles_are_readable(tmp_path))
+
+
+def test_readable_check_requires_the_facts_grid(tmp_path: Path) -> None:
+    """The facts grid is the thirty-second read.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _article(tmp_path, "nofacts", facts=False)
+    _install_articles([str(tmp_path / "preview" / "nofacts")])
+    assert any('class="facts"' in e for e in check_articles_are_readable(tmp_path))
+
+
+def test_readable_check_skips_a_directory_without_an_index(tmp_path: Path) -> None:
+    """A listed directory holding no page is not an article.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    (tmp_path / "preview" / "empty").mkdir(parents=True)
+    _install_articles([str(tmp_path / "preview" / "empty")])
+    assert check_articles_are_readable(tmp_path) == []
+
+
+def test_readable_check_runs_against_the_real_articles(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Both published articles are inside every ceiling.
+
+    Args:
+        monkeypatch: Used to run against the repository root.
+    """
+    hooks.reset_hooks()
+    monkeypatch.chdir(REPO_ROOT)
+
+    assert check_articles_are_readable() == []
 
 
 def test_real_print_hook_writes_to_stdout(capsys: pytest.CaptureFixture[str]) -> None:

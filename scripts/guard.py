@@ -17,6 +17,7 @@ import sys
 from pathlib import Path
 
 from scripts import _test_hooks as hooks
+from scripts.provenance_gate import PREVIEW_ROOT
 
 # Modules held to the current standard. Older generators are exempt until they
 # are migrated; add them here as that happens.
@@ -50,6 +51,30 @@ SITE_CSS = "assets/site.css"
 
 # Directories with no page of ours in them.
 PAGE_SCAN_EXCLUDES = frozenset({".venv", "node_modules", "rabbit"})
+
+# Shape limits for an article under preview/.
+#
+# The provenance gate proves every figure on a page is TRUE. Nothing proved a
+# page was READABLE, and the two failures are independent: the first article
+# shipped at 1,929 words over 10 sections, opening on the problem rather than
+# the result, and passed every check this repository had. A reader deciding
+# whether to hire someone gives a page thirty seconds.
+#
+# The ceilings are deliberately generous -- they catch the 1,900-word draft,
+# not a well-judged 700-word one. The required blocks are the thirty-second
+# read: a one-sentence result before any prose, and a facts grid carrying the
+# scale and the stack. A page missing those buries its own point.
+ARTICLE_MAX_WORDS = 900
+ARTICLE_MAX_SECTIONS = 6
+ARTICLE_REQUIRED_MARKERS = (
+    ('class="result"', "the one-sentence result, before any prose"),
+    ('class="facts"', "the facts grid carrying scale and stack"),
+)
+
+_HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+_HTML_TAG_RE = re.compile(r"<[^>]+>")
+_HTML_ENTITY_RE = re.compile(r"&[a-zA-Z]+;")
+_SECTION_RE = re.compile(r'<h2 class="section"')
 
 # sha256 of each stylesheet mcp-proxy serves a byte-identical copy of, so its
 # corvis dashboard is an extension of this site rather than a second design.
@@ -210,6 +235,68 @@ def check_mirrored_stylesheets_are_pinned(base: Path | None = None) -> list[str]
     return errors
 
 
+def article_body_words(html: str) -> int:
+    """Count the words a reader actually sees.
+
+    Comments, tags and entities are stripped, so the count is prose rather
+    than markup. Everything before ``<body>`` is excluded: the head carries
+    stylesheet links and a title that nobody reads as content.
+
+    Args:
+        html: The full page source.
+
+    Returns:
+        Number of whitespace-separated words in the rendered body.
+    """
+    start = html.find("<body>")
+    body = html if start == -1 else html[start:]
+    body = _HTML_COMMENT_RE.sub(" ", body)
+    text = _HTML_ENTITY_RE.sub(" ", _HTML_TAG_RE.sub(" ", body))
+    return len(text.split())
+
+
+def check_articles_are_readable(base: Path | None = None) -> list[str]:
+    """Check every article is short enough and leads with its result.
+
+    Independent of the provenance gate, which proves a page's figures are
+    true and says nothing about whether anyone will read them. Both failures
+    shipped here on the same day.
+
+    Args:
+        base: Project root to scan. Defaults to the current directory.
+
+    Returns:
+        One error per article over a ceiling or missing a required block.
+    """
+    if base is None:
+        base = Path(".")
+
+    errors: list[str] = []
+    for article in sorted(hooks.list_article_dirs(str(base / PREVIEW_ROOT))):
+        page = Path(article) / "index.html"
+        if not page.is_file():
+            continue
+        relative = page.as_posix()
+        html = page.read_text(encoding="utf-8")
+
+        words = article_body_words(html)
+        if words > ARTICLE_MAX_WORDS:
+            errors.append(
+                f"{relative}: {words} words, over the {ARTICLE_MAX_WORDS} ceiling. "
+                f"Move depth to the wiki rather than trimming adjectives."
+            )
+
+        sections = len(_SECTION_RE.findall(html))
+        if sections > ARTICLE_MAX_SECTIONS:
+            errors.append(f"{relative}: {sections} sections, over the {ARTICLE_MAX_SECTIONS} ceiling.")
+
+        for marker, what in ARTICLE_REQUIRED_MARKERS:
+            if marker not in html:
+                errors.append(f"{relative}: missing {marker} -- {what}")
+
+    return errors
+
+
 # Built from parts so this file does not trip its own check.
 _TYPE = "type"
 _IGNORE = "ignore"
@@ -344,6 +431,7 @@ def main(base: Path | None = None) -> int:
     all_errors.extend(check_chain_certificate(base))
     all_errors.extend(check_pages_share_one_palette(base))
     all_errors.extend(check_mirrored_stylesheets_are_pinned(base))
+    all_errors.extend(check_articles_are_readable(base))
 
     if all_errors:
         hooks.print_message("Guard check failed:")
