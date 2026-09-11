@@ -5,21 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TankPit Bots</title>
 <meta name="description" content="Start a bot and watch it play TankPit. The tank is driven by a reverse-engineered binary protocol; the picture is a live video stream of the bot's own screen.">
+<link rel="stylesheet" href="/assets/tokens.css">
 <style>
-  /* The palette, the panel treatment and the type scale are the ones
-     austinwagner.org/preview uses — one light-to-dark ground, translucent
-     white panels with a white top rule, square corners, system sans. This
-     page adds exactly one saturated element, the status light, because it
-     is the only thing here whose colour carries meaning. */
+  /* The panel treatment and type scale are the ones austinwagner.org/preview
+     uses — one light-to-dark ground, translucent white panels with a white top
+     rule, square corners, system sans. This page adds exactly one saturated
+     element, the status light, because it is the only thing here whose colour
+     carries meaning. */
+  /* The palette is /assets/tokens.css, linked above, which is the same one
+     austinwagner.org/preview uses -- it is not restated here. Only --ground
+     is this page's own. */
   :root {
-    --primary: #0064a4;
-    --primary-dark: #003d66;
-    --gold: #ffc72c;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-400: #9ca3af;
-    --gray-600: #4b5563;
-    --gray-800: #1f2937;
     --ground: #0a0a0a;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }

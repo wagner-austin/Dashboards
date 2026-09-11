@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=yes">
     <title>ASUCI Senate Dashboard</title>
+    <link rel="stylesheet" href="/assets/tokens.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <style>
+        /* Shared palette from /assets/tokens.css; only this dashboard's status
+           colours and extra greys are declared here. */
         :root {
-            --primary: #0064a4;
-            --primary-dark: #003d66;
-            --primary-light: #e6f2fa;
-            --gold: #ffc72c;
             --gold-light: #fff9e6;
             --success: #16a34a;
             --success-light: #dcfce7;
@@ -18,12 +17,7 @@
             --warning-light: #fef3c7;
             --danger: #dc2626;
             --danger-light: #fee2e2;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-600: #4b5563;
             --gray-700: #374151;
-            --gray-800: #1f2937;
             --gray-900: #111827;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }

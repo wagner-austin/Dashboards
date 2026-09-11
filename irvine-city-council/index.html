@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=yes">
     <title>Irvine City Council Dashboard</title>
+    <link rel="stylesheet" href="/assets/tokens.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <style>
+        /* Shared palette from /assets/tokens.css. This page previously carried
+           its own --primary: #0066a1 / --primary-dark: #004d7a /
+           --primary-light: #e8f4fc, three hex digits off the site's values in
+           each case -- a re-typing drift, not a decision, and identical to the
+           one in oc-city-councils. Converged; only the status and accent
+           colours below are this page's own. */
         :root {
-            --primary: #0066a1;
-            --primary-dark: #004d7a;
-            --primary-light: #e8f4fc;
             --accent: #4da6d9;
             --accent-light: #d9eef8;
             --success: #16a34a;
@@ -18,12 +22,7 @@
             --warning-light: #fef3c7;
             --danger: #dc2626;
             --danger-light: #fee2e2;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-600: #4b5563;
             --gray-700: #374151;
-            --gray-800: #1f2937;
             --gray-900: #111827;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }

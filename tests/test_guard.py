@@ -9,12 +9,16 @@ from scripts.guard import (
     CHAIN_CERT,
     DAILY_PATH_MODULES,
     GUARDED_MODULES,
+    TOKENS_CSS,
     _suppression_patterns,
     check_chain_certificate,
     check_no_browser_automation,
     check_no_stub_files,
     check_no_suppressions,
+    check_pages_share_one_palette,
     main,
+    palette_tokens,
+    site_pages,
 )
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -23,6 +27,11 @@ VALID_CERT = (
     "# Provenance: downloaded from http://yr.i.lencr.org/\n"
     "-----BEGIN CERTIFICATE-----\nAAAA\n-----END CERTIFICATE-----\n"
 )
+
+# Two tokens is enough to exercise owned-versus-local: a page restating
+# --primary fails, a page declaring --leaf-bg does not.
+FIXTURE_PALETTE = ":root {\n    --primary: #0064a4;\n    --gray-800: #1f2937;\n}\n"
+PALETTE_LINK = '<link rel="stylesheet" href="/assets/tokens.css">'
 
 
 class RecordingHooks:
@@ -85,6 +94,12 @@ def _make_project(root: Path, *, browser_import: bool = False, cert: str | None 
 
     if cert is not None:
         (root / CHAIN_CERT).write_text(cert, encoding="utf-8")
+
+    # Derived from the guard's own constant for the same reason the module list
+    # above is: a hand-written path here is a second place that has to agree.
+    tokens = root / TOKENS_CSS
+    tokens.parent.mkdir(parents=True, exist_ok=True)
+    tokens.write_text(FIXTURE_PALETTE, encoding="utf-8")
 
 
 def test_the_fixture_tree_covers_every_guarded_module(tmp_path: Path) -> None:
@@ -254,6 +269,161 @@ def test_main_reports_every_failure(tmp_path: Path, recorded: RecordingHooks) ->
     assert recorded.messages[0] == "Guard check failed:"
     assert any("playwright" in message for message in recorded.messages)
     assert any("Missing chain completion" in message for message in recorded.messages)
+
+
+# --------------------------------------------------------------------------
+# One palette, every page.
+# --------------------------------------------------------------------------
+
+
+def _write_page(root: Path, relative: str, body: str) -> None:
+    """Write a page into the fixture tree.
+
+    Args:
+        root: Project root.
+        relative: Page path relative to the root.
+        body: Page contents.
+    """
+    path = root / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(body, encoding="utf-8")
+
+
+def test_palette_tokens_reads_the_root_block() -> None:
+    """Tokens are parsed with their values."""
+    assert palette_tokens(FIXTURE_PALETTE) == {"--primary": "#0064a4", "--gray-800": "#1f2937"}
+
+
+def test_palette_tokens_is_empty_without_a_root_block() -> None:
+    """A page with no :root declares no tokens."""
+    assert palette_tokens("<p>no css here</p>") == {}
+
+
+def test_site_pages_finds_routes_and_top_level_documents(tmp_path: Path) -> None:
+    """index.html anywhere, plus any .html beside the repo root.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _write_page(tmp_path, "index.html", "<p>root</p>")
+    _write_page(tmp_path, "privacypolicy.html", "<p>policy</p>")
+    _write_page(tmp_path, "asuci/index.html", "<p>route</p>")
+    found = {p.relative_to(tmp_path).as_posix() for p in site_pages(tmp_path)}
+    assert found == {"index.html", "privacypolicy.html", "asuci/index.html"}
+
+
+def test_site_pages_skips_captured_source(tmp_path: Path) -> None:
+    """A scraped page in a subdirectory is not one of ours.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _write_page(tmp_path, "tracker/ky_ksa_sheriffs.html", "<p>somebody else's markup</p>")
+    assert site_pages(tmp_path) == []
+
+
+def test_site_pages_skips_excluded_directories(tmp_path: Path) -> None:
+    """Vendored trees hold no pages of ours.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _write_page(tmp_path, "node_modules/pkg/index.html", "<p>vendored</p>")
+    assert site_pages(tmp_path) == []
+
+
+def test_palette_check_accepts_a_page_with_only_local_tokens(tmp_path: Path) -> None:
+    """A page may declare tokens the shared palette does not own.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _make_project(tmp_path)
+    _write_page(tmp_path, "m/index.html", f"{PALETTE_LINK}<style>:root {{ --leaf-bg: #ecfdf5; }}")
+    assert check_pages_share_one_palette(tmp_path) == []
+
+
+def test_palette_check_rejects_a_restated_token(tmp_path: Path) -> None:
+    """Restating an owned token with the same value still fails.
+
+    Duplication is the cheaper half of the defect: it is what lets the
+    values drift apart later without anyone editing two files on purpose.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _make_project(tmp_path)
+    _write_page(tmp_path, "m/index.html", f"{PALETTE_LINK}<style>:root {{ --primary: #0064a4; }}")
+    errors = check_pages_share_one_palette(tmp_path)
+    assert any("restates --primary" in error for error in errors)
+
+
+def test_palette_check_reports_divergence_with_both_values(tmp_path: Path) -> None:
+    """A drifted value names what it drifted from.
+
+    This is the #0066a1-against-#0064a4 case: three hex digits apart, and
+    invisible to anyone not holding the two files side by side.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _make_project(tmp_path)
+    _write_page(tmp_path, "m/index.html", f"{PALETTE_LINK}<style>:root {{ --primary: #0066a1; }}")
+    errors = check_pages_share_one_palette(tmp_path)
+    assert any("DIVERGES from '#0064a4' with --primary: '#0066a1'" in error for error in errors)
+
+
+def test_palette_check_requires_the_link_when_tokens_are_declared(tmp_path: Path) -> None:
+    """A page declaring tokens without linking the palette is reported.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _make_project(tmp_path)
+    _write_page(tmp_path, "m/index.html", "<style>:root { --leaf-bg: #ecfdf5; }")
+    errors = check_pages_share_one_palette(tmp_path)
+    assert any("declares tokens without linking" in error for error in errors)
+
+
+def test_palette_check_accepts_the_site_css_link(tmp_path: Path) -> None:
+    """Linking the component layer counts, since it imports the palette.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _make_project(tmp_path)
+    body = '<link rel="stylesheet" href="/assets/site.css"><style>:root { --leaf-bg: #0f0; }'
+    _write_page(tmp_path, "m/index.html", body)
+    assert check_pages_share_one_palette(tmp_path) == []
+
+
+def test_palette_check_ignores_the_asset_files_themselves(tmp_path: Path) -> None:
+    """tokens.css is the owner and is not checked against itself.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _make_project(tmp_path)
+    _write_page(tmp_path, "assets/index.html", FIXTURE_PALETTE)
+    assert check_pages_share_one_palette(tmp_path) == []
+
+
+def test_palette_check_defaults_to_the_repo(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The real site passes: one palette across every page.
+
+    Args:
+        monkeypatch: Used to run against the repository root.
+    """
+    monkeypatch.chdir(REPO_ROOT)
+
+    assert check_pages_share_one_palette() == []
+
+
+def test_the_fixture_palette_is_a_subset_of_the_real_one() -> None:
+    """The fixture's tokens are real ones, so the tests exercise real names."""
+    real = palette_tokens((REPO_ROOT / TOKENS_CSS).read_text(encoding="utf-8"))
+    for name, value in palette_tokens(FIXTURE_PALETTE).items():
+        assert real[name] == value
 
 
 def test_real_print_hook_writes_to_stdout(capsys: pytest.CaptureFixture[str]) -> None:

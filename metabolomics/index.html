@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=yes">
     <title>Metabolomics Filtering Analysis</title>
+    <link rel="stylesheet" href="/assets/tokens.css">
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
 
     <style>
+        /* Shared palette from /assets/tokens.css. This page previously carried
+           a different blue entirely (--primary: #2563eb) and a --gray-600 of
+           #374151 against the site's #4b5563, so it is now visibly on the site
+           palette rather than near it. Only the assay-specific colours below
+           are its own. */
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #dbeafe;
             --success: #16a34a;
             --success-light: #dcfce7;
             --warning: #ca8a04;
@@ -22,12 +25,7 @@
             --leaf-bg: #ecfdf5;
             --root-color: #f59e0b;
             --root-bg: #fffbeb;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-600: #374151;
             --gray-700: #374151;
-            --gray-800: #1f2937;
             --gray-900: #111827;
         }
 

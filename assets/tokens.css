@@ -1,0 +1,33 @@
+/* austinwagner.org — the palette. One declaration, every page.
+ *
+ * Split out of site.css because the two layers have different blast radii.
+ * TOKENS are inert: linking this file cannot move anything, it only supplies
+ * values. COMPONENTS are not: site.css styles `.header`, `.container` and
+ * `.panel`, and several pages already use those class names for their own
+ * unrelated things — the root index.html's `.header` is a centred gradient
+ * banner, not the preview hero. Linking the component layer there would leak
+ * `display: flex` onto it and break the page.
+ *
+ * So every page links THIS file and stops restating the palette, which is what
+ * actually drifted. A page adopting the full theme links site.css, which pulls
+ * this in itself.
+ *
+ * What drifted, measured 2026-09-11 across the 16 pages that carry their own
+ * <style>: eight restated this palette verbatim, and four diverged from it --
+ * `irvine-city-council` and `oc-city-councils` both carry `--primary: #0066a1`
+ * against `#0064a4`, three hex digits apart, which is what re-typing a colour
+ * from reading it looks like. scripts/guard.py fails the build on either now.
+ */
+
+:root {
+    --primary: #0064a4;
+    --primary-dark: #003d66;
+    --primary-light: #e6f2fa;
+    --gold: #ffc72c;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-400: #9ca3af;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+}
