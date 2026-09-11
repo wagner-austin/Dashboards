@@ -39,9 +39,12 @@
        heading, same metrics as the index. Only the two lines under it are the
        article's own. No .panel override either -- a panel is the same size on
        both pages. */
+    /* The two intro lines sit in a .panel like every other block on both
+       pages, so they are not the one thing on the article floating bare on the
+       gradient. No .prose on that panel: .prose p would win on specificity and
+       flatten both of these to body colour. */
     .standfirst {
         color: var(--gray-600);
-        margin-top: 1rem;
         font-size: 1.15rem;
         line-height: 1.55;
     }
@@ -151,19 +154,24 @@
     <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
     <div class="hero-text">
         <h1>Reproducible GPU inference</h1>
-        <p class="role"><a href="/preview/">&larr; Austin Wagner</a></p>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
     </div>
 </div>
 
 <div class="container">
 
-    <p class="standfirst">One model and one set of weights, run on nine NVIDIA cards, produced nine
-       different sets of numbers. Closing that gap took three interventions, and the first two
-       were not enough.</p>
-    <p class="dateline">Measurements dated 2026-08-26 to 2026-09-05. Each figure below names the
-       run that produced it; the source-verification section at the end carries the chain.</p>
+    <div class="block">
+        <div class="panel">
+            <p class="standfirst">One model and one set of weights, run on nine NVIDIA cards,
+               produced nine different sets of numbers. Closing that gap took three interventions,
+               and the first two were not enough.</p>
+            <p class="dateline">Measurements dated 2026-08-26 to 2026-09-05. Each figure below
+               names the run that produced it; the source-verification section at the end carries
+               the chain.</p>
+        </div>
+    </div>
 
-    <div class="block" style="margin-top:2.25rem">
+    <div class="block">
         <h2 class="section">The observation</h2>
         <div class="panel prose">
             <p>A GPT-2 cloze scorer was run over a 2,627-item set on several GPUs under a pinned

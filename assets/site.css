@@ -71,7 +71,17 @@ body {
     color: var(--gray-800);
 }
 .header p.role { color: var(--gray-600); margin-top: 0.4rem; font-size: 1.15rem; }
-.header p.role a { color: var(--primary-dark); }
+/* An article's role line is its way home, so the link reads as part of the
+   line rather than as a breadcrumb pinned in front of it: no arrow, no chip,
+   the underline only on hover. */
+.header p.role a {
+    color: var(--primary-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gray-400);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+}
+.header p.role a:hover { color: var(--primary); border-bottom-color: var(--primary); }
 
 h2.section {
     font-size: 0.95rem;
