@@ -61,8 +61,20 @@ export declare const DEFAULT_WRAP_ITERATIONS = 2;
  *     ProjectionConfig: Configuration with balanced perspective settings.
  */
 export declare function createProjectionConfig(): ProjectionConfig;
-/** Default camera Z position (distance from origin). */
-export declare const DEFAULT_CAMERA_Z = 55;
+/**
+ * Default camera Z position (distance from origin).
+ *
+ * Lower Z is further toward the viewer, which is the direction ArrowDown drives
+ * through `processDepthMovement`. The scene opens partway along that travel
+ * rather than at the far wall: 55 was `calculateDepthBounds`'s own maxZ for the
+ * shipped config, so the camera started pinned against the top of its range and
+ * the first thing a visitor could do was back away from it.
+ *
+ * 37 is three hops in: `settings.depthSpeed` is 30 world units per second and a
+ * tapped hop holds for roughly 0.2s, so each press is worth about 6 units. Raise
+ * this number to open further back, lower it to open closer in.
+ */
+export declare const DEFAULT_CAMERA_Z = 37;
 /** World width for entity wrapping (must be large enough for sprites to fully exit screen). */
 export declare const WORLD_WIDTH = 800;
 /**

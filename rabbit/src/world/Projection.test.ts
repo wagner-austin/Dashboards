@@ -169,16 +169,22 @@ describe("project", () => {
     });
 
     it("moves close objects below ground level", () => {
-      // Object at relativeZ < Y_BASE (50) should be below groundY (Y increases downward)
-      // worldZ=100, camera.z=55, relativeZ=45, yScale = 50/45 > 1
-      const closeResult = project(0, 100, camera, viewportWidth, viewportHeight, config);
+      // Object at relativeZ < Y_BASE (50) should be below groundY (Y increases downward).
+      // relativeZ=45, so yScale = 50/45 > 1. Derived from the camera rather than
+      // written as a literal worldZ: "close" is a statement about the distance to
+      // the camera, and a literal only means it for one DEFAULT_CAMERA_Z.
+      const closeWorldZ = camera.z + 45;
+      const closeResult = project(0, closeWorldZ, camera, viewportWidth, viewportHeight, config);
       const groundY = viewportHeight * config.groundY;
       expect(closeResult.y).toBeGreaterThan(groundY);
     });
 
     it("raises far objects toward horizon", () => {
-      // Far object should be between horizon and ground
-      const farResult = project(0, 150, camera, viewportWidth, viewportHeight, config);
+      // Far object should be between horizon and ground: relativeZ=100 is past
+      // Y_BASE (50) and inside farZ (200), so yScale = 50/100 < 1. Derived from
+      // the camera for the same reason as the close case above.
+      const farWorldZ = camera.z + 100;
+      const farResult = project(0, farWorldZ, camera, viewportWidth, viewportHeight, config);
       const horizonY = viewportHeight * config.horizonY;
       const groundY = viewportHeight * config.groundY;
       expect(farResult.y).toBeGreaterThan(horizonY);
