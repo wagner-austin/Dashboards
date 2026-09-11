@@ -51,6 +51,20 @@ body {
     /* The keyed WebP has real alpha, so it sits on the page gradient without a
        plate behind it. */
 }
+/* On an article the raven is the way home, which is what a site mark is for
+   everywhere else on the web. The anchor becomes the flex child, so it takes
+   the sizing the image had and the image stops applying its own offset twice.
+   line-height: 0 removes the descender gap under an inline image, which would
+   otherwise shift the whole masthead down by a few pixels on articles only.
+   The index does NOT wrap its raven: linking a page to itself is noise. */
+a.hero-home {
+    display: block;
+    flex: none;
+    margin-left: -14px;
+    line-height: 0;
+}
+a.hero-home .hero-bird { margin-left: 0; }
+
 .hero-text { flex: 1; max-width: 760px; }
 /* Byte-for-byte the index's original rule. A line-height was added here once
    while lifting this block, for an article title long enough to wrap, and it

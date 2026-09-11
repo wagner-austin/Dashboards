@@ -98,7 +98,7 @@ _SECTION_RE = re.compile(r'<h2 class="section"')
 # this check for a reason that reads as corruption.
 MIRRORED_STYLESHEETS = {
     "assets/tokens.css": "bd9f6a968bba1ef07b0e49a060ee2e12201946de5372443dc1c82217b6a648ec",
-    "assets/site.css": "aa48d984c042112eb672ba0be5e8950610ab424ccd4bde576342f3c0007ff55c",
+    "assets/site.css": "1332a630eaafb95eaa2ef3be64345135b8f60faf635757a70bd31e2c2537aca0",
 }
 
 _ROOT_BLOCK_RE = re.compile(r":root\s*\{(.*?)\}", re.DOTALL)
