@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>A model that checks itself &middot; Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner, home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>A model that checks itself</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">I reverse-engineered the private protocol of an online game
+               that publishes no documentation, then built an instrument that keeps proving
+               the model is still right. It has since <strong>caught three of its own
+               conclusions being wrong</strong>, including the ending of its best result.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>No documentation, an encrypted wire, and a subtype byte that is
+                    scrambled per session so it cannot be trusted.</dd>
+                <dt>Result</dt>
+                <dd><strong>32</strong> message types decoded, each pinned to a signature,
+                    driving an autonomous bot that plays full sessions.</dd>
+                <dt>Best session</dt>
+                <dd><strong>84 kills, 0 deaths, 149 minutes</strong>, unbroken. It ended
+                    because a fresh map held no affordable enemy.</dd>
+                <dt>Stack</dt>
+                <dd>Python, Playwright and the Chrome DevTools Protocol, a hierarchical
+                    state machine, a simulated server.</dd>
+                <dt>Gate</dt>
+                <dd><strong>6,879</strong> tests at full statement and branch coverage, no
+                    mocks, mutation testing on top.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The byte that cannot be trusted</h2>
+        <div class="panel prose">
+            <p>Traffic is captured through the browser's own socket, because synthetic
+               events do not work: commands have to travel the real connection. The codec is
+               XOR with a static key and a per-session magic key, and I reversed both
+               directions, encode and decode.</p>
+            <p>One container is the detail worth an interview. Its payloads cannot be
+               identified by their subtype byte, because that byte is scrambled per session.
+               So the decoder identifies them <em>structurally</em>, by length and byte
+               pattern. The obvious approach fails, and it fails because of a property of the
+               system rather than a mistake in the code.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Three conclusions the instrument refuted</h2>
+        <div class="panel prose">
+            <p>The marathon session was real. Its <em>ending</em> was not: I had written that
+               the bot ran out of opponents, and the operator said that was impossible
+               because enemies respawn and there are always <strong>27</strong>. He was
+               right. The record showed every enemy rejected as stale map data, including one
+               ten tiles away, because a map open had completed in <strong>12</strong>
+               milliseconds by consuming an orphan flag from an earlier stalled open.</p>
+            <p>Then my explanation of <em>that</em> was refuted the same night. I had written
+               that the connection was dying. It was not. The last frame the session ever
+               received was the answer to its final question, arriving <strong>5.7</strong>
+               seconds after dispatch and <strong>3.7</strong> seconds after the bot had
+               already quit. What degraded was latency, not the wire.</p>
+            <p>The same disease then turned up a third time, in a different subsystem: every
+               reported movement stall was fuel-starved latency crossing a fixed local
+               deadline. The over-budget tail counts matched the stall counts exactly,
+               <strong>102</strong> to <strong>102</strong>. The stalls were never stalls.</p>
+            <div class="callout">
+                <p>One mechanism, three disguises: a slow answer crossing a fixed deadline,
+                   minting evidence that something downstream then believes.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Measurements that fail the build</h2>
+        <div class="panel prose">
+            <p>Beliefs carry provenance and confidence, so every observed entity records
+               where the knowledge came from. Validators price the model against the real
+               capture archive, and every archived binary message must survive a decode and
+               re-encode unchanged. Invariants raise where they are violated rather than
+               after several observations of the consequence.</p>
+            <p>The part I would keep in any project: each machine-checked claim about the
+               game's physics is one executable symbol, re-derived from the run archive on
+               every build. <strong>A measured claim that stops holding fails the build
+               instead of quietly rotting.</strong></p>
+            <p>It earned that discipline. An optimisation probed ten clean runs out of ten,
+               so I built and gated it; a second probe minutes later dropped <strong>7</strong>
+               of 10, and it was reverted the same night, before it ever ran live. Round one
+               alone would have shipped a change that cost time on every teleport.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki page
+               <code>tankpitbot</code> and checked mechanically before this page can deploy.
+               The project keeps its own wiki of 6 hubs and <strong>83</strong> pages as the
+               source of truth for wire protocol and mechanics, and its README defers to that
+               wiki when the two disagree.</p>
+            <p><strong>Known limits.</strong> The session figures are one session, recorded
+               with its artifact id, not an average over many. The line counts move and are
+               dated: re-measuring for this article found the probe suite had moved
+               directories entirely, so the reproduction command recorded on the source page
+               returned a count of zero rather than an error, which is the failure mode a
+               dated figure is supposed to prevent and did.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

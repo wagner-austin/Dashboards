@@ -1,0 +1,23 @@
+{
+  "deliverable": "preview/a-model-that-checks-itself/index.html",
+  "demonstrates": "Reverse-engineered an undocumented game's encrypted protocol from captured traffic, including a container whose subtype byte is scrambled per session and must be identified structurally, and built truth-keeping machinery that has since refuted three of my own conclusions -- including the stated ending of the best session it ever ran.",
+  "claims": [
+    {"figure": "32", "wiki": "me", "wiki_page": "tankpitbot", "section": "Knowledge — the decoded protocol", "note": "Message types decoded, each pinned to a minimum-length signature. Re-counted 2026-09-12 from MSG_MIN_LENGTHS and unchanged since 2026-08-12; the keys are ord() character literals, so a hex-anchored grep returns zero."},
+
+    {"figure": "84", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Kills in the marathon session, artifact bot-20260825-212920. One session, recorded with its id, not an average."},
+    {"figure": "0", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Deaths in that session."},
+    {"figure": "149", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Minutes, unbroken: no disconnect, no death, no idle."},
+    {"figure": "27", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Enemies always present, which is why the operator knew the stated ending was impossible. The figure that refuted the conclusion, not one that supported it."},
+    {"figure": "12", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Milliseconds in which a map open falsely completed by consuming an orphan flag from an earlier stalled open."},
+    {"figure": "5.7", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Seconds after dispatch that the session's final frame arrived, disproving my own claim that the connection had died."},
+    {"figure": "3.7", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Seconds after the bot had already quit that the same frame arrived. Latency degraded, the wire did not."},
+    {"figure": "102", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Over-budget latency observations, matching the reported stall count exactly. The exact match is the evidence that the stalls were never stalls."},
+    {"figure": "7", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Of ten runs that the second probe of a shipped optimisation dropped, after the first probed ten of ten clean."},
+    {"figure": "10", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "The probe size in both rounds; the first was 10/10 clean, which alone would have shipped the change."},
+    {"figure": "6,879", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Tests at full statement and branch coverage, re-counted 2026-09-12; was 6,208 on 2026-08-26."},
+
+    {"figure": "6", "wiki": "me", "wiki_page": "tankpitbot", "section": "Test discipline", "note": "Hubs in the project's own wiki. Unchanged across every count since 2026-08-08."},
+    {"figure": "83", "wiki": "me", "wiki_page": "tankpitbot", "section": "Test discipline", "note": "Pages in that wiki, re-counted 2026-09-12; was 74 on 2026-08-26."}
+  ],
+  "allowed_non_figures": []
+}
