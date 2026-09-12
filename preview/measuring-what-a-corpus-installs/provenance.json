@@ -16,7 +16,9 @@
 
     {"figure": "91", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The defect the controls surfaced", "note": "End-to-end training-test fixtures affected by the splitter's single-file branch returning the same file as train, validation and test."},
 
-    {"figure": "6.21%", "wiki": "me", "wiki_page": "extraction-ablation", "section": "Why this belongs in a portfolio", "note": "Share of prose sentences admitting a deterministic rewrite, measured rather than assumed, which is why the augmentation arm is a lower bound."}
+    {"figure": "6.21%", "wiki": "me", "wiki_page": "extraction-ablation", "section": "Why this belongs in a portfolio", "note": "Share of prose sentences admitting a deterministic rewrite, measured rather than assumed, which is why the augmentation arm is a lower bound."},
+
+    {"figure": "1.5", "wiki": "personal", "wiki_page": "marker-effect-across-four-scales", "section": "The marker contrast, paired by seed", "note": "Billions of parameters at the largest rung, where the marker contrast turns negative. Cited to the scale page rather than to extraction-ablation, whose own prose described this arm as still running until 2026-09-12."}
   ],
   "allowed_non_figures": []
 }
