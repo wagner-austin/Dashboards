@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>Scoring a model you do not ship &middot; Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner, home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>Scoring a model you do not ship</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">Three ordinary training decisions compose into publishing a
+               test score for a model that never leaves the machine. It was in my own
+               pipeline: <strong>the manifest carried a validation loss from epoch 17 beside
+               a test loss measured on epoch 20</strong>, neither labelled. I measured it,
+               fixed it, and confirmed the fix on the cluster.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>Best-checkpoint selection and final-model evaluation look independent.
+                    They are not, and nothing errors when they disagree.</dd>
+                <dt>Result</dt>
+                <dd>The reported score now describes the bytes that get uploaded, verified on
+                    a run where the best epoch was not the last.</dd>
+                <dt>Cost of the defect</dt>
+                <dd><strong>0.0011</strong> test loss, in the direction the mechanism
+                    predicts, on the one arm measured both ways.</dd>
+                <dt>Stack</dt>
+                <dd>PyTorch, GPT-2, Slurm on a university cluster, digest-pinned container
+                    images.</dd>
+                <dt>Full record</dt>
+                <dd>The wiki page below, with the job IDs and the log lines for each claim.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Three correct decisions, one wrong model</h2>
+        <div class="panel prose">
+            <p>Each of these is defensible alone. The best-checkpoint save overwrites the
+               output directory on every validation improvement, so after the last
+               improvement that directory holds the best epoch. The final-model save is
+               skipped when a best checkpoint exists, which is right, because it would
+               overwrite the selected model with a worse one. Test evaluation then runs
+               against the model still resident in memory.</p>
+            <p>That resident model is the <em>last</em> epoch, not the selected one. So a run
+               with a holdout ends with one model on disk and a different one in memory, and
+               reports a number for the one nobody receives.</p>
+            <div class="callout">
+                <p>Nothing fails. Early stopping behaved correctly, the checkpoint machinery
+                   worked, the evaluation worked. There is no error state anywhere, which is
+                   why the only thing wrong is which object the second feature was pointed
+                   at.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The test was harder to write than the fix</h2>
+        <div class="panel prose">
+            <p>The fix is one idea: reload the selected weights before scoring. Reloading
+               from disk rather than from an in-memory copy is the stronger form, because it
+               also proves the artifact is loadable, so a truncated save surfaces at scoring
+               time instead of in whatever consumes it months later.</p>
+            <p>Testing it needs a fixture whose best epoch is <em>not</em> its last, and that
+               is the difficult part. A uniform corpus drives validation down monotonically,
+               measured at <strong>0.3326</strong>, <strong>0.0231</strong>,
+               <strong>0.0046</strong> and <strong>0.0024</strong> across four epochs. When
+               the best epoch is the last one, disk and memory agree whether or not the
+               restore runs, <strong>so the test passes against the very defect it exists to
+               catch</strong>.</p>
+            <p>What worked was twelve training lines over thirty epochs: small enough to
+               memorise, long enough for validation to turn. The test now asserts that
+               premise explicitly and reports itself blind if a later change flattens the
+               curve.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">What it cost, and what that does not prove</h2>
+        <div class="panel prose">
+            <p>The same arm, same configuration, before and after: reported test loss
+               <strong>0.8634</strong> against <strong>0.8623</strong>. The published number
+               had been <strong>0.0011</strong> too high, in the direction the mechanism
+               predicts, since a non-selected epoch scores worse than the selected one.</p>
+            <p><strong>That delta is not attributable to the fix.</strong> The two runs were
+               in different environments, one under a conda environment and one inside the
+               pinned image, and I made no attempt to separate the two effects. What is
+               attributable is which model got scored, because the log names it: the restore
+               is recorded three seconds before the test result.</p>
+            <p>Both branches were exercised in one submission rather than asserted separately
+               in unit tests. One arm had a best epoch earlier than its last, so the restore
+               had to fire. The other runs with no holdout, so there is no checkpoint and the
+               restore must correctly do nothing.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki page
+               <code>shipped-checkpoint-and-reported-score-can-be-different-models</code> and
+               checked mechanically before this page can deploy. That page carries the
+               scheduler job IDs, the artifact digest and byte count, and a section naming
+               which evidence supports which claim.</p>
+            <p><strong>Known limits.</strong> One run on each side of the fix, so the
+               agreement of the two best-validation losses to four decimals across a conda
+               environment and a container is an observation rather than a result, and the
+               page says so. The comparability consequence, that two arms shipping different
+               epochs are not the same kind of object, is a reading rather than something
+               either manifest records.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

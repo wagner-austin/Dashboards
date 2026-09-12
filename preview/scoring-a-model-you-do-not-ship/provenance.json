@@ -1,0 +1,18 @@
+{
+  "deliverable": "preview/scoring-a-model-you-do-not-ship/index.html",
+  "demonstrates": "Found a silent correctness defect in my own training pipeline where three individually-correct decisions compose into reporting a test score for a model that is never shipped, fixed it by reloading the selected weights from disk before scoring, and confirmed both branches of the fix on real cluster runs rather than in isolated unit tests.",
+  "claims": [
+    {"figure": "17", "wiki": "personal", "wiki_page": "shipped-checkpoint-and-reported-score-can-be-different-models", "section": "The measurement", "note": "Epoch of the last validation improvement, whose loss the manifest reports as best_val_loss."},
+    {"figure": "20", "wiki": "personal", "wiki_page": "shipped-checkpoint-and-reported-score-can-be-different-models", "section": "The measurement", "note": "Epochs actually run; 18, 19 and 20 were all worse, so the resident model that got scored was not the selected one."},
+
+    {"figure": "0.3326", "wiki": "personal", "wiki_page": "shipped-checkpoint-and-reported-score-can-be-different-models", "section": "The fix and what it required", "note": "First of four validation losses on a uniform corpus, showing the monotonic curve that makes a naive fixture useless for this test."},
+    {"figure": "0.0231", "wiki": "personal", "wiki_page": "shipped-checkpoint-and-reported-score-can-be-different-models", "section": "The fix and what it required", "note": "Second epoch of that curve."},
+    {"figure": "0.0046", "wiki": "personal", "wiki_page": "shipped-checkpoint-and-reported-score-can-be-different-models", "section": "The fix and what it required", "note": "Third epoch."},
+    {"figure": "0.0024", "wiki": "personal", "wiki_page": "shipped-checkpoint-and-reported-score-can-be-different-models", "section": "The fix and what it required", "note": "Fourth epoch: still falling, so the best epoch is the last and the test would pass against the defect it exists to catch."},
+
+    {"figure": "0.8634", "wiki": "personal", "wiki_page": "shipped-checkpoint-and-reported-score-can-be-different-models", "section": "The fix, confirmed on a real run", "note": "Reported test loss before the fix, measured on the non-selected final epoch."},
+    {"figure": "0.8623", "wiki": "personal", "wiki_page": "shipped-checkpoint-and-reported-score-can-be-different-models", "section": "The fix, confirmed on a real run", "note": "Reported test loss after the fix, measured on the selected checkpoint."},
+    {"figure": "0.0011", "wiki": "personal", "wiki_page": "shipped-checkpoint-and-reported-score-can-be-different-models", "section": "The fix, confirmed on a real run", "note": "The difference, explicitly NOT attributed to the fix on the source page, because the two runs were in different environments."}
+  ],
+  "allowed_non_figures": []
+}
