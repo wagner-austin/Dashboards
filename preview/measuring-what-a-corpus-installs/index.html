@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>Measuring what a corpus installs &middot; Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner, home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>Measuring what a corpus installs</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">A seven-arm ablation on two published corpus-design
+               interventions, run against real cited prose. One survived, one was
+               <strong>inert under every condition its source specifies</strong>, and a third
+               contrast came out decisively negative. Three of five results are nulls, and
+               they are the reason the other two mean anything.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>Perplexity cannot grade a corpus intervention. A model can memorise text
+                    word for word and extract none of the facts in it.</dd>
+                <dt>Instrument</dt>
+                <dd><strong>2,627</strong> four-way cloze items generated from a wiki's own
+                    citation apparatus, masking only numeric values.</dd>
+                <dt>The floor, set first</dt>
+                <dd>An unexposed model already scores <strong>52.3%</strong> against a
+                    <strong>25.0%</strong> chance baseline, because surrounding prose
+                    constrains the answer. Every result is lift over that floor.</dd>
+                <dt>Design</dt>
+                <dd>Seven arms, three seeds each, exact McNemar over the items each pair
+                    disagrees on, run per seed and deliberately not pooled.</dd>
+                <dt>Stack</dt>
+                <dd>Python, PyTorch, GPT-2, Slurm on a university cluster.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The floor is the finding nobody publishes</h2>
+        <div class="panel prose">
+            <p>Establishing that an unexposed model already answers <strong>52.3%</strong> of
+               the items, against <strong>25.0%</strong> by chance, is what makes every later
+               number interpretable. Surrounding prose constrains a masked value far more than
+               the chance baseline suggests, so an intervention that lifts raw accuracy to
+               sixty percent has done almost nothing.</p>
+            <p>Doing that before reading any result is the part that matters. A floor
+               established afterwards is a floor chosen with knowledge of the answer.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">What survived and what did not</h2>
+        <div class="panel prose">
+            <div class="tablewrap">
+            <table>
+                <thead><tr><th>Contrast</th><th>Mean</th><th>Verdict</th></tr></thead>
+                <tbody>
+                    <tr><td>Dilution with web text</td><td class="num">&minus;6.14</td><td>decisive, every seed</td></tr>
+                    <tr><td>Sentence-permuted copies</td><td class="num">+2.94</td><td>decisive, every seed</td></tr>
+                    <tr><td>Domain marker</td><td class="num">+0.36</td><td>not distinguishable from noise</td></tr>
+                    <tr><td>Marker with cooldown</td><td class="num">&minus;0.22</td><td>null</td></tr>
+                    <tr><td>Marker with loss-masking</td><td class="num">+0.06</td><td>null, seeds disagree on sign</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p>The marker intervention is inert here under all three conditions its source
+               specifies, supplied individually and together. That is a published result
+               failing to replicate on a different corpus type, and reporting it plainly is
+               the point rather than an embarrassment.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The error I corrected in my own analysis</h2>
+        <div class="panel prose">
+            <p>An earlier version of this reported markers as a real effect, on a one-sample
+               t of <strong>14.0</strong> over three per-seed differences. That was an
+               artifact. The arms share one deterministic item set, so the same items are
+               consistently easy or hard, and the small spread was measuring that correlation
+               rather than the effect.</p>
+            <p>The paired test over all <strong>2,627</strong> items finds nothing. The
+               finding was retracted and the page rewritten. This is precisely the failure
+               mode paired testing exists to prevent, and I walked into it before catching
+               it.</p>
+            <div class="callout">
+                <p>A suspiciously clean t-statistic is a reason to check the independence
+                   assumption, not a reason to celebrate.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">What the controls turned up</h2>
+        <div class="panel prose">
+            <p>Writing the controls section surfaced a real defect in the training service:
+               the corpus splitter divides by file, and its single-file branch returns the
+               same file as train, validation and test. Every arm's corpus is a single file,
+               so every validation and test loss in every run manifest is a training-set loss,
+               and so is every end-to-end training test in that service, <strong>91</strong>
+               fixtures deep.</p>
+            <p>The published results are unaffected, and that is checkable rather than
+               asserted: no arm uses validation loss for anything, and the cloze set is the
+               only cross-arm metric. It is why the controls section names the metric it does
+               <em>not</em> use. The defect was pinned with a test that declares it known, so
+               a fix turns the test red.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki page
+               <code>extraction-ablation</code> and checked mechanically before this page can
+               deploy. The underlying experiment has its own page in a second wiki carrying
+               the per-arm data and the primary sources the interventions come from.</p>
+            <p><strong>Known limits.</strong> One model family at one scale; a larger-scale
+               arm is running, and its own limits are stated up front, since the next size up
+               is still below the smallest model the source reports. The augmentation arm is
+               reported as a lower bound rather than as the intervention, because coverage was
+               measured rather than assumed: of the prose sentences available, only
+               <strong>6.21%</strong> admit a deterministic rewrite. There is no public
+               repository to link for the corpus, which is the author's own wiki.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

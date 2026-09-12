@@ -1,0 +1,22 @@
+{
+  "deliverable": "preview/measuring-what-a-corpus-installs/index.html",
+  "demonstrates": "Built a 2,627-item extraction instrument and established its floor before reading any result, then ran a seven-arm ablation that found one published corpus intervention inert under every condition its source specifies, caught and retracted a statistical error in my own analysis, and surfaced a training-service defect while writing the controls.",
+  "claims": [
+    {"figure": "2,627", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The instrument came first", "note": "Four-way cloze items generated from the wiki's own citation apparatus, masking only numeric values."},
+    {"figure": "52.3%", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The instrument came first", "note": "Score of an unexposed model: the floor every result is read as lift over, established before any arm was scored."},
+    {"figure": "25.0%", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The instrument came first", "note": "Chance baseline for four-way items. The gap between this and 52.3% is the reason raw accuracy is uninterpretable here."},
+
+    {"figure": "6.14", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The result, including the part that failed", "note": "Dilution contrast, negative and decisive on every seed."},
+    {"figure": "2.94", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The result, including the part that failed", "note": "Augmentation contrast, positive and decisive on every seed. Reported as a lower bound, not as the intervention."},
+    {"figure": "0.36", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The result, including the part that failed", "note": "Marker contrast: not distinguishable from noise. The published result that failed to replicate."},
+    {"figure": "0.22", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The result, including the part that failed", "note": "Marker with cooldown, null."},
+    {"figure": "0.06", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The result, including the part that failed", "note": "Marker with loss-masking, null, and the seeds disagree on sign."},
+
+    {"figure": "14.0", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The error I caught in my own work", "note": "The one-sample t that made markers look real. Quoted BECAUSE it was an artifact of a shared item set, not because it supported anything."},
+
+    {"figure": "91", "wiki": "me", "wiki_page": "extraction-ablation", "section": "The defect the controls surfaced", "note": "End-to-end training-test fixtures affected by the splitter's single-file branch returning the same file as train, validation and test."},
+
+    {"figure": "6.21%", "wiki": "me", "wiki_page": "extraction-ablation", "section": "Why this belongs in a portfolio", "note": "Share of prose sentences admitting a deterministic rewrite, measured rather than assumed, which is why the augmentation arm is a lower bound."}
+  ],
+  "allowed_non_figures": []
+}
