@@ -72,14 +72,6 @@
 .facts dd { font-size: 1.08rem; line-height: 1.5; color: #000; }
 .facts dd strong { font-weight: 600; }
 
-/* The headline result, stated before anything explains it. */
-.result {
-    font-size: 1.35rem;
-    line-height: 1.45;
-    color: #000;
-    font-weight: 600;
-}
-
 .prose h3 {
     font-size: 1.3rem;
     font-weight: 600;
@@ -100,6 +92,32 @@
     line-height: 1.6;
     color: #000;
     margin-bottom: 0.5rem;
+}
+
+/* The headline result, stated before anything explains it.
+ *
+ * WRITTEN `p.result` AND PLACED AFTER `.prose p` ON PURPOSE, both halves.
+ * As a bare `.result` it was (0,1,0) and sat above `.prose p` at (0,1,1), so
+ * the instant anyone added `prose` to the panel holding it -- the natural
+ * thing to do, since it IS prose -- the headline would have dropped from
+ * 1.35rem to 1.12rem with nothing failing. `p.result` ties `.prose p` at
+ * (0,1,1) and wins on source order, so it now survives that edit.
+ *
+ * Not a bug that had fired: audited 2026-09-11 across all eight articles and
+ * every `.result` sits in a plain `.panel`, so it was rendering correctly.
+ * It was one sensible edit away from being wrong, silently.
+ *
+ * Found because mcps-04 hit the fired version of exactly this in the corvis
+ * dashboard when the 18px base landed: their `.panel p` (0,1,1) had always
+ * outranked a bare `.updated` (0,1,0), so the small print had never once been
+ * small, and at a 16px base the wrongness looked plausible enough to survive.
+ * Their point is the one worth keeping: a rule can be correct in isolation
+ * and lose in the cascade, and reading the file cannot tell you which won. */
+p.result {
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: #000;
+    font-weight: 600;
 }
 
 /* Tables carry the evidence, so they take the panel's own palette rather than
