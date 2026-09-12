@@ -51,6 +51,37 @@
 
     .work, .dashboards { list-style: none; display: grid; gap: 0.8rem; }
 
+    /* ---- category labels in "What I work on" ----
+       Twelve cards in one flat list is a wall, and the operator's ask was that
+       a reader be able to skim the headers and open only what interests them.
+       So the list is broken into four groups by KIND OF WORK rather than by
+       project: a reader deciding whether to keep going is asking what this
+       person can do, not which repository it lived in.
+
+       Written `h3.workcat` rather than `.workcat`, and the lead `p.worklead`,
+       for the reason recorded in article.css beside `p.result`: a bare class
+       at (0,1,0) loses to any descendant rule at (0,1,1), and `.work h3`
+       already exists three lines below. These sit OUTSIDE `.work` so it does
+       not match them today, but the tie is one markup edit away and the
+       failure would be silent. */
+    h3.workcat {
+        color: #fff;
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin: 2.2rem 0 0.9rem;
+    }
+    /* The first category follows the lead paragraph, not a card list, so it
+       does not need the separation the others do. */
+    p.worklead + h3.workcat { margin-top: 1.4rem; }
+    p.worklead {
+        color: #c9ced6;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        max-width: 68ch;
+    }
+
     .work h3, .dashboards h3 {
         font-size: 1.3rem;
         font-weight: 600;
@@ -240,6 +271,30 @@
 
     <div class="block">
         <h2 class="section light">What I work on</h2>
+        <p class="worklead">Grouped by the kind of work rather than by project. Each write-up is a
+           two-minute read, and every figure in one is bound to a cited source and checked before
+           the page can deploy.</p>
+
+        <h3 class="workcat">Machine learning research</h3>
+        <ul class="work">
+            <li><a class="panel" href="/preview/measuring-what-a-corpus-installs/">
+                <h3>Measuring what a corpus installs</h3>
+                <p>A seven-arm ablation on two published corpus-design interventions, run
+                   against real cited prose. One survived, one was <strong>inert under every
+                   condition its source specifies</strong>. Three of five results are nulls,
+                   and they are the reason the other two mean anything.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/composite-model-compartments/">
+                <h3>Composing one model out of several</h3>
+                <p>A serving design assumed several separately trained compartments could be wired
+                   into one request. Measuring it first put the naive limit at two, and the run's
+                   own controls caught a result that read the right way and was not. A
+                   composition-aware recipe then moved four-compartment retention
+                   <strong>from &minus;45.4% to +44.6%</strong>.</p>
+            </a></li>
+        </ul>
+
+        <h3 class="workcat">Reproducibility and research infrastructure</h3>
         <ul class="work">
             <li><a class="panel" href="/preview/reproducible-gpu-inference/">
                 <h3>Reproducible GPU inference</h3>
@@ -247,6 +302,22 @@
                    I ran it on. Owning the arithmetic order instead of the vendor library's made the
                    output <strong>byte-identical across all nine</strong>: five architecture
                    generations, two operating systems, one SHA-256.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/scoring-a-model-you-do-not-ship/">
+                <h3>Scoring a model you do not ship</h3>
+                <p>Three ordinary training decisions compose into publishing a test score for
+                   a model that never leaves the machine. The manifest carried
+                   <strong>a validation loss from epoch 17 beside a test loss from epoch
+                   20</strong>, neither labelled, and nothing errored. Measured, fixed, and
+                   confirmed on the cluster with both branches exercised.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/research-cluster-submission/">
+                <h3>Research cluster infrastructure</h3>
+                <p>Eight research projects run on a shared university GPU cluster through one tool
+                   that will not let a job be built if it would fail, and can answer afterwards
+                   <strong>which job produced which artifact</strong>. Preflight that cannot be
+                   skipped, a budget the cluster itself does not enforce, and three failure
+                   conditions that look like health.</p>
             </a></li>
             <li><a class="panel" href="/preview/citations-that-check-themselves/">
                 <h3>Research wikis that audit themselves</h3>
@@ -256,6 +327,10 @@
                    cannot be checked that way fails the write, in the transaction and in the
                    tool an agent calls.</p>
             </a></li>
+        </ul>
+
+        <h3 class="workcat">Reverse engineering and system identification</h3>
+        <ul class="work">
             <li><a class="panel" href="/preview/a-model-that-checks-itself/">
                 <h3>A model that checks itself</h3>
                 <p>I reverse-engineered the private protocol of an online game that publishes
@@ -272,6 +347,10 @@
                    made runs bit-identical per seed so a better strategy can be told apart from
                    a lucky map.</p>
             </a></li>
+        </ul>
+
+        <h3 class="workcat">Architecture and open source</h3>
+        <ul class="work">
             <li><a class="panel" href="/preview/architecture-as-code/">
                 <h3>MCP &amp; agent infrastructure</h3>
                 <p>Thirteen services and twenty-two shared libraries in one repository, held
@@ -279,37 +358,6 @@
                    my design decisions are enforced by CI rather than remembered in review. I
                    wrote them across Python and Rust, because an invariant that holds in one
                    language is not one.</p>
-            </a></li>
-            <li><a class="panel" href="/preview/measuring-what-a-corpus-installs/">
-                <h3>Measuring what a corpus installs</h3>
-                <p>A seven-arm ablation on two published corpus-design interventions, run
-                   against real cited prose. One survived, one was <strong>inert under every
-                   condition its source specifies</strong>. Three of five results are nulls,
-                   and they are the reason the other two mean anything.</p>
-            </a></li>
-            <li><a class="panel" href="/preview/scoring-a-model-you-do-not-ship/">
-                <h3>Scoring a model you do not ship</h3>
-                <p>Three ordinary training decisions compose into publishing a test score for
-                   a model that never leaves the machine. The manifest carried
-                   <strong>a validation loss from epoch 17 beside a test loss from epoch
-                   20</strong>, neither labelled, and nothing errored. Measured, fixed, and
-                   confirmed on the cluster with both branches exercised.</p>
-            </a></li>
-            <li><a class="panel" href="/preview/composite-model-compartments/">
-                <h3>Composing one model out of several</h3>
-                <p>A serving design assumed several separately trained compartments could be wired
-                   into one request. Measuring it first put the naive limit at two, and the run's
-                   own controls caught a result that read the right way and was not. A
-                   composition-aware recipe then moved four-compartment retention
-                   <strong>from &minus;45.4% to +44.6%</strong>.</p>
-            </a></li>
-            <li><a class="panel" href="/preview/research-cluster-submission/">
-                <h3>Research cluster infrastructure</h3>
-                <p>Eight research projects run on a shared university GPU cluster through one tool
-                   that will not let a job be built if it would fail, and can answer afterwards
-                   <strong>which job produced which artifact</strong>. Preflight that cannot be
-                   skipped, a budget the cluster itself does not enforce, and three failure
-                   conditions that look like health.</p>
             </a></li>
             <li><a class="panel" href="/preview/adding-a-domain-without-a-fork/">
                 <h3>Covenant Radar</h3>
