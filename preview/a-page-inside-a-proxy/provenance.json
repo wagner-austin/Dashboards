@@ -1,0 +1,35 @@
+{
+  "deliverable": "preview/a-page-inside-a-proxy/index.html",
+  "demonstrates": "Added the first human-facing surface to an MCP proxy that had only ever served machines: a server-rendered, identity-gated page on its own origin, where the authorization question is answered by one selector shared with the index rather than a second lookup, and where the hostname's two required declarations are now bound by a validator that is itself guarded against gaining an unchecked fourth input.",
+  "claims": [
+    {
+      "figure": "302",
+      "wiki": "mcps-codebase",
+      "wiki_page": "corvis-dashboard-human-surface",
+      "section": "A hostname must be declared TWICE, and since 2026-09-11 that IS checked",
+      "note": "Response to a request carrying the machine-protocol Host header, measured on the live fleet 2026-09-11T04:17Z. A redirect to the identity provider is the correct outcome for that host and is the control the 403 is read against."
+    },
+    {
+      "figure": "403",
+      "wiki": "mcps-codebase",
+      "wiki_page": "corvis-dashboard-human-surface",
+      "section": "A hostname must be declared TWICE, and since 2026-09-11 that IS checked",
+      "note": "Response to a request carrying the dashboard Host header, measured in the same 2026-09-11T04:17Z pair, with the route registered and the boot log confirming it. The DNS-rebinding allowlist refused the request before any handler ran, and named no cause. Appears four times in the article, always this measurement."
+    },
+    {
+      "figure": "404",
+      "wiki": "mcps-codebase",
+      "wiki_page": "corvis-dashboard-human-surface",
+      "section": "It is an index and a detail page, not one scroll",
+      "note": "Status returned for a workspace slug the account has no membership for, and identically for a slug that exists nowhere in the deployment. The symmetry is the claim: the page cannot be used to enumerate which tenants the deployment has."
+    },
+    {
+      "figure": "29",
+      "wiki": "mcps-codebase",
+      "wiki_page": "corvis-dashboard-human-surface",
+      "section": "The view model, and what it deliberately does not carry",
+      "note": "Services that would require rebuilding if the wiki list were read from the canonical source registry instead of the tenant row, because reaching it needs a root re-export that moves the shared contract hash. Counts services in the cascade, not packages."
+    }
+  ],
+  "allowed_non_figures": []
+}

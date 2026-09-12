@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>A page inside a proxy &middot; Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner, home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>A page inside a proxy</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">A proxy that had only ever spoken to machines now renders a page
+               for a person, on its own hostname, and every safety question it answers has
+               exactly one implementation. The one question that briefly had two answers cost a
+               <strong>403 that named no cause</strong>, and the fix is a guard that is itself
+               guarded.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>Every surface was addressed to software: tool calls, an OAuth endpoint, a
+                    queue read. Inviting a person in means serving HTML from a process whose job
+                    is forwarding requests elsewhere.</dd>
+                <dt>Result</dt>
+                <dd>A server-rendered, identity-gated page on its own origin. One route serves
+                    both views, and one selector decides whether an account may see a
+                    workspace.</dd>
+                <dt>Scale</dt>
+                <dd>Three dynamic sources feed the host allowlist, a hostname must be declared
+                    in two files, and reaching the wrong registry for one list would have forced
+                    a 29-service rebuild.</dd>
+                <dt>Stack</dt>
+                <dd>TypeScript, Express, Keycloak, PostgreSQL, Cloudflare Tunnel, Docker.</dd>
+                <dt>Full record</dt>
+                <dd>Sources, blob pins and the measured requests: the wiki page under Record.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2>One question, one answer</h2>
+        <p>The index says what you belong to and how much is in each workspace. The tables live
+           one click away, on the same route, chosen by a query parameter.</p>
+        <p>I made the detail view a pure selector over the result the index already renders
+           from, rather than a second lookup keyed by slug. A dedicated fetch would have been a
+           second implementation of "may this person see this", and two implementations of one
+           authorization question drift: eventually the index lists a workspace the detail view
+           refuses, or the reverse.</p>
+        <p>A slug you have no membership for returns 404, and so does a slug that exists nowhere.
+           Same answer to both, so the page cannot be used to enumerate tenants.</p>
+    </div>
+
+    <div class="block">
+        <h2>Why a separate origin</h2>
+        <p>Web Push subscriptions are scoped to an origin and die if it moves, so the origin is a
+           one-time choice. The existing hostname names a machine protocol endpoint and carries
+           registered clients and OAuth callbacks; a page for people should inherit neither the
+           name nor the migration risk. It cost nothing structurally: several hostnames already
+           resolved to that container, so multiplexing on <code>Host</code> was existing
+           behaviour.</p>
+    </div>
+
+    <div class="block">
+        <h2>The 403 that named nothing</h2>
+        <p>Routing the hostname at the tunnel is not enough. The proxy builds a DNS-rebinding
+           allowlist from three sources: its Docker service name, the hostname in its OAuth
+           resource URL, and every host it proxies to a backend. A hostname the proxy
+           <em>serves itself</em> is none of those, so the request is refused before any handler
+           runs.</p>
+        <table>
+            <thead><tr><th>Request</th><th>Result</th><th>Reading</th></tr></thead>
+            <tbody>
+                <tr><td><code>Host: mcp.&hellip;</code></td><td>302</td><td>redirect to sign-in, correct</td></tr>
+                <tr><td><code>Host: corvis.&hellip;</code></td><td>403</td><td>refused before the route it had just registered</td></tr>
+            </tbody>
+        </table>
+        <p>The boot log said the route was registered, and it was. The allowlist had never been
+           told the hostname existed, and a rebinding guard declines without explaining itself,
+           so the symptom was a bare 403 while every log line looked healthy.</p>
+        <p>It cannot borrow the mechanism for proxied hosts, which requires a backend to forward
+           to when there is nothing to forward to. I gave it its own config field, declared
+           beside the other two dynamic sources instead of written as a literal in the function,
+           so nobody has to find it by reading code.</p>
+    </div>
+
+    <div class="block">
+        <h2>The guard is itself guarded</h2>
+        <p>A validator now reads the ingress configuration and refuses any hostname routed at the
+           proxy that none of the declaring fields carries. Deleting the declaration and
+           re-running it reproduces the original incident as a lint failure naming the cause and
+           the places to fix.</p>
+        <p>That check has its own failure mode: it re-derives what feeds the allowlist from
+           configuration, so the day a fourth source appears it keeps passing while measuring an
+           incomplete set, reporting a safety it stopped checking. So I pinned the argument list.
+           Adding a source fails the build and names the package to update. A behavioural test
+           could not catch that, because a new source contributing no hostnames changes the call
+           without changing the result.</p>
+    </div>
+
+    <div class="block">
+        <h2>Record</h2>
+        <p>The codebase wiki page <code>corvis-dashboard-human-surface</code> carries every claim
+           here with its source files pinned by git blob hash, including the measured 302 and 403
+           and the boot line that made them confusing.</p>
+        <p>Known limits. The wiki list reads from the tenant row rather than the canonical source
+           registry, a deliberate trade: reaching that registry needs a new export path or a root
+           re-export, and the latter moves a contract hash and forces a 29-service rebuild. This
+           describes the surface as of its first week.</p>
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>
