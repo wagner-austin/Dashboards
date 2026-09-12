@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>Adding a domain without a fork &middot; Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner, home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>Adding a domain without a fork</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">I built a risk-prediction service for loan covenants, then
+               generalised it so a new subject is a registration rather than a fork. Two more
+               domains have since been added <strong>without editing the shared training,
+               explainability or streaming machinery at all</strong>.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>A model service written for one subject usually has that subject's
+                    assumptions baked through it, so the second subject means a copy.</dd>
+                <dt>Result</dt>
+                <dd>Weather and esports added behind one protocol, reusing the original
+                    machinery unchanged. Covenant, the original, is still served directly.</dd>
+                <dt>Models</dt>
+                <dd><strong>12</strong> backends behind one interface: <strong>7</strong>
+                    classifiers and <strong>5</strong> regressors, swappable per request.</dd>
+                <dt>Data</dt>
+                <dd><strong>40</strong> real public datasets, not synthetic ones.</dd>
+                <dt>Stack</dt>
+                <dd>Python, PyTorch, XGBoost, LightGBM, Optuna, Kafka on Confluent Cloud.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The claim, stated exactly</h2>
+        <div class="panel prose">
+            <p>Pluggability is easy to assert and the assertion is usually worth nothing,
+               so here is the testable version: <strong>the second and third domains
+               required no edits to the shared machinery.</strong> Weather and esports each
+               implement one protocol and register. Covenant, being first, is served by the
+               service directly and is not itself a plug-in.</p>
+            <p>That distinction matters because the interesting evidence is not "three
+               things exist". It is that generalising an existing system did not require
+               rewriting it, which only the two added afterwards can demonstrate.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Rules and models kept deliberately apart</h2>
+        <div class="panel prose">
+            <p>Covenant compliance is exact rule evaluation: formulas, thresholds,
+               frequencies. Breach <em>risk</em> is the learned path. They are separate code
+               paths on purpose.</p>
+            <p>Conflating them would make a compliance answer probabilistic, which is worse
+               than useless. A lender asking whether a borrower is in breach needs an exact
+               answer from the contract terms, not a confidence score. The temptation is real
+               because one model could nominally produce both.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Substitutable underneath, stable on top</h2>
+        <div class="panel prose">
+            <p>The same idea runs through the model layer and the explanation layer. Twelve
+               backends sit behind one interface, including gradient boosting I wrote from
+               scratch competing against the production libraries in the same harness, and
+               they are selectable per request.</p>
+            <p>Explainability follows the model rather than the endpoint: permutation
+               importance for anything, tree explanations for tree models, gradient-based
+               attribution for the neural ones. One contract, three strategies, chosen by
+               what is actually loaded.</p>
+            <div class="callout">
+                <p>Training on <strong>40</strong> real public credit, loan, default and
+                   bankruptcy datasets rather than generated data is the unglamorous half.
+                   Synthetic data is the usual shortcut, and it flatters everything.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki page
+               <code>covenant-radar</code> and checked mechanically before this page can
+               deploy. That page records how each count is reproduced and three ways of
+               getting it wrong, including one met while re-checking for this article.</p>
+            <p><strong>Known limits.</strong> No accuracy figures are claimed here: this is
+               a statement about architecture, not about how well the models score. The
+               headline was also corrected while writing it. The source page had said all
+               three domains were plug-ins behind a shared protocol, and exactly two are, so
+               it now says that instead. A reviewer would have found it by listing one
+               directory.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

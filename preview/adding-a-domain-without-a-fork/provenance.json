@@ -1,0 +1,12 @@
+{
+  "deliverable": "preview/adding-a-domain-without-a-fork/index.html",
+  "demonstrates": "Generalised a single-subject risk-prediction service into a pluggable architecture and proved it by adding two further domains behind one protocol without editing the shared training, explainability or streaming machinery, with twelve model backends swappable per request behind a single interface.",
+  "claims": [
+    {"figure": "12", "wiki": "me", "wiki_page": "covenant-radar", "section": "Twelve model backends behind one interface", "note": "Total model backends: 7 classifiers plus 5 regressors. Re-verified 2026-09-12 and unchanged."},
+    {"figure": "7", "wiki": "me", "wiki_page": "covenant-radar", "section": "Twelve model backends behind one interface", "note": "Classifiers, cross-checked two ways that agree: the Literal lists seven and seven backend directories exist across the two libraries."},
+    {"figure": "5", "wiki": "me", "wiki_page": "covenant-radar", "section": "Twelve model backends behind one interface", "note": "Regressors, read from the RegressorBackendName Literal rather than the default registry, which wires only three and understates it."},
+
+    {"figure": "40", "wiki": "me", "wiki_page": "covenant-radar", "section": "The rest of the machinery", "note": "Real public datasets vendored for training and evaluation. Counted as directories: a plain listing returns 41 because a README sits alongside them."}
+  ],
+  "allowed_non_figures": []
+}
