@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
 <meta name="robots" content="noindex, nofollow">
-<title>Reproducible GPU inference — Austin Wagner</title>
+<title>Reproducible GPU inference &middot; Austin Wagner</title>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/article.css">
 </head>
@@ -13,7 +13,7 @@
 <div class="page">
 
 <div class="header">
-    <a class="hero-home" href="/preview/" aria-label="Austin Wagner — home">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner, home">
         <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
     </a>
     <div class="hero-text">
@@ -54,9 +54,9 @@
                diverged above it. That reading was wrong, and finding out cost the most time.</p>
             <p>Running matrix multiplications in isolation and fingerprinting the whole output
                tensor rather than the final loss showed <strong>six of eight shapes producing three
-               different tensors on three cards</strong> — including shapes whose reported losses
+               different tensors on three cards</strong>, including shapes whose reported losses
                were bit-identical. The cards were never computing alike. The difference simply
-               didn't survive being reduced to one number.</p>
+               did not survive being reduced to one number.</p>
             <p>So the threshold was not where cards begin to disagree. It was where a disagreement
                already present grew big enough to move the last bit of a number someone reads.</p>
         </div>
@@ -78,7 +78,7 @@
             <p>The first two are configuration. The third is not: it stops asking the vendor library
                for the sum and accumulates in a fixed order, so the arithmetic is the program's
                rather than the device's.</p>
-            <p>A GTX 1630 then broke the identity at <strong>147 of 150</strong> — the only card ever
+            <p>A GTX 1630 then broke the identity at <strong>147 of 150</strong>, the only card ever
                to. The three divergent items were not the long ones; one was the shortest in the set.
                A stage probe at those exact sequence lengths named the operation: the value product
                inside attention, at 15- and 16-token sequences. Owning that closed the card.</p>
@@ -92,7 +92,7 @@
                negative. An earlier version of this measurement reported up to <strong>+84%</strong>
                and argued for the wrong decision: it was taken at a single 64-token sequence.
                Sweeping the batch dimension shows the cost collapses between 64 and 128 rows and
-               never returns — one doubling, and any real workload is already past it.</p>
+               never returns: one doubling, and any real workload is already past it.</p>
         </div>
     </div>
 
@@ -102,8 +102,8 @@
             <p>A run with no divergences bounds a rate; it does not establish zero. The exact
                Clopper-Pearson bound on the tightest row is <strong>0.114%</strong>, and pooled
                across the battery <strong>0.072%</strong>. Measured against the scale this operates
-               at — one divergence in a full 2,627-item run is 0.0381% — <strong>none of those rows
-               excludes it.</strong></p>
+               at, where one divergence in a full 2,627-item run is 0.0381%, <strong>none of those
+               rows excludes it.</strong></p>
             <p>Bit-identity across a corpus also says nothing about whether a fresh pair of runs
                reproduces it. That was observed once.</p>
         </div>

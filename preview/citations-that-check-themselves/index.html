@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
 <meta name="robots" content="noindex, nofollow">
-<title>Citations that check themselves — Austin Wagner</title>
+<title>Citations that check themselves &middot; Austin Wagner</title>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/article.css">
 </head>
@@ -13,7 +13,7 @@
 <div class="page">
 
 <div class="header">
-    <a class="hero-home" href="/preview/" aria-label="Austin Wagner — home">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner, home">
         <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
     </a>
     <div class="hero-text">
@@ -27,7 +27,7 @@
     <div class="block">
         <div class="panel">
             <p class="result">Seventeen research wikis share one audit engine, and each
-               declares <strong>which kind of proof its citations owe</strong> — a PDF hash, a
+               declares <strong>which kind of proof its citations owe</strong>: a PDF hash, a
                captured-page hash, a resolving document query, or a git blob. A claim that
                cannot be checked that way fails the write.</p>
             <dl class="facts">
@@ -36,7 +36,7 @@
                     written is indistinguishable, later, from one that never did.</dd>
                 <dt>Result</dt>
                 <dd>Five source-contract kinds, one per class of evidence, dispatched by the
-                    wiki's own declaration — plus a separate guard that checks the container
+                    wiki's own declaration, plus a separate guard that checks the container
                     rather than the claims.</dd>
                 <dt>Scale</dt>
                 <dd>Papers, scraped technical sources, a civic document vault, nine codebase
@@ -60,19 +60,19 @@
             <table>
                 <thead><tr><th>Contract</th><th>What a page must pin</th></tr></thead>
                 <tbody>
-                    <tr><td>PDF archive</td><td>A local PDF, its SHA-256, and the vault document id — so the paper a claim rests on is the one still on disk</td></tr>
-                    <tr><td>Captured HTML</td><td>The saved page, its hash, its URL and the date captured — for technical sources that change under you</td></tr>
+                    <tr><td>PDF archive</td><td>A local PDF, its SHA-256, and the vault document id, so the paper a claim rests on is the one still on disk</td></tr>
+                    <tr><td>Captured HTML</td><td>The saved page, its hash, its URL and the date captured, for technical sources that change under you</td></tr>
                     <tr><td>Document vault</td><td>A query that must resolve to at least one hit in the document store, re-checked rather than assumed</td></tr>
                     <tr><td>Code paths</td><td>Source paths plus each cited file's git blob hash, so editing the code invalidates the citation</td></tr>
-                    <tr><td>External URLs</td><td>Nothing — and the contract says so explicitly, because those wikis are autobiographical or personal collections with no local archive to pin</td></tr>
+                    <tr><td>External URLs</td><td>Nothing, and the contract says so explicitly, because those wikis are autobiographical or personal collections with no local archive to pin</td></tr>
                 </tbody>
             </table>
             </div>
             <p>The last row is the one worth arguing about. Declaring "these wikis pin
                nothing, and here is why" is a stronger position than quietly exempting them,
-               because the exemption is then visible and has to be defended — and the rules
-               that remain universal still apply, so every footnote must name a page,
-               section, URL, line anchor or commit.</p>
+               because the exemption is then visible and has to be defended. The rules that
+               remain universal still apply, so every footnote must name a page, section,
+               URL, line anchor or commit.</p>
         </div>
     </div>
 
@@ -80,7 +80,7 @@
         <h2 class="section">The rule that made this page possible</h2>
         <div class="panel prose">
             <p>The code-paths contract records the git blob hash of every file a page cites.
-               Change the file and the citation stops matching — the page is flagged as
+               Change the file and the citation stops matching, so the page is flagged as
                describing code that has moved, rather than continuing to read as current.</p>
             <p>It is the same mechanism the article you are reading depends on. Every figure
                on this site is bound to a named wiki page <em>and section</em>, checked before
@@ -89,7 +89,7 @@
                mothballed and one that said "eight commands" while naming seven against a real
                fifteen.</p>
             <div class="callout">
-                <p>The audit checks the claims. Something else has to check the container — a
+                <p>The audit checks the claims. Something else has to check the container, so a
                    separate guard verifies that each wiki's index counts match what is on
                    disk, which is how a page moved between two wikis was caught leaving four
                    numbers behind.</p>
@@ -118,7 +118,7 @@
         <h2 class="section">Record</h2>
         <div class="panel prose">
             <p>This page describes a system rather than a measurement, and it is documented in
-               the codebase wiki that is itself under the code-paths contract — so the pages
+               the codebase wiki that is itself under the code-paths contract, so the pages
                explaining the audit engine pin the blob hashes of the audit engine. The
                contract kinds and their per-kind rules are on
                <code>wiki-check-audit-chain</code>; the structural guard is on
@@ -126,7 +126,7 @@
             <p><strong>Known limits.</strong> The rule count moves and is deliberately not
                quoted here; that page carries it with the date it was last re-read from the
                built module, and it had grown by eleven rules between two readings without the
-               audit noticing — because a pin covering one file attests to one file. None of
+               audit noticing, because a pin covering one file attests to one file. None of
                this checks whether a claim is <em>true</em>, only whether it is anchored to
                something a reader can open.</p>
         </div>

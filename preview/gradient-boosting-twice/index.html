@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
 <meta name="robots" content="noindex, nofollow">
-<title>Gradient boosting, written twice then halved — Austin Wagner</title>
+<title>Gradient boosting, written twice then halved &middot; Austin Wagner</title>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/article.css">
 </head>
@@ -13,7 +13,7 @@
 <div class="page">
 
 <div class="header">
-    <a class="hero-home" href="/preview/" aria-label="Austin Wagner — home">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner, home">
         <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
     </a>
     <div class="hero-text">
@@ -28,7 +28,7 @@
         <div class="panel">
             <p class="result">I implemented gradient boosting from scratch in numpy, ported
                the compute to a Rust core, and then <strong>deleted the numpy version</strong>
-               — roughly 10k lines — because keeping two implementations means maintaining
+               of roughly 10k lines, because keeping two implementations means maintaining
                two things that can disagree.</p>
             <dl class="facts">
                 <dt>What it is</dt>
@@ -57,7 +57,7 @@
                the algorithm actually lives, and they are exactly the parts a library hides.
                Writing them once is the part that teaches you the algorithm.</p>
             <p>Writing them <em>twice</em> is what made the port safe. The numpy version was
-               an executable specification the Rust core had to agree with — an oracle to port
+               an executable specification the Rust core had to agree with: an oracle to port
                against, which most from-scratch implementations never have, because they have
                nothing to be wrong relative to.</p>
         </div>
@@ -69,7 +69,7 @@
             <p>Once the Rust core matched and was fully covered, the numpy implementation
                became a liability rather than an asset: two implementations that can drift,
                and a tempting fallback path that would hide a broken build.</p>
-            <p>So it went. The native library is now a hard dependency — if it is absent the
+            <p>So it went. The native library is now a hard dependency: if it is absent the
                package raises at import time rather than quietly running a slower, different
                answer. What remains in Python is a typed façade that pins every native
                callable to a protocol, so the type checker sees real signatures instead of an
@@ -86,9 +86,9 @@
         <div class="panel prose">
             <p>It is not a standalone repository with a benchmark notebook. It is one of the
                model backends in a risk-prediction service, sitting behind the same interface
-               as XGBoost and LightGBM and selectable per request — so it is evaluated on the
+               as XGBoost and LightGBM and selectable per request, so it is evaluated on the
                same datasets, through the same training and explainability machinery, as the
-               production libraries it was written to understand.</p>
+               production libraries I wrote it to understand.</p>
             <p>The companion evidence is the opposite shape: <a href="/preview/lightgbm-contributions/">nine merged patches into
                LightGBM itself</a>. One shows the algorithm is understood; the other shows a
                large unfamiliar codebase can be worked in under review.</p>
@@ -107,7 +107,7 @@
                from a later packaging change four weeks afterwards, because the two are
                routinely collapsed into one story and only the first one removed compute.</p>
             <p><strong>Known limits.</strong> "Pure Rust" is true of the compute path and of
-               the crate's contents, not of the shipped package — a typed Python API surface
+               the crate's contents, not of the shipped package: a typed Python API surface
                remains, and it has grown by about a third since August. No benchmark is
                claimed here: being selectable alongside XGBoost and LightGBM in one harness
                is a statement about structure, not about winning.</p>

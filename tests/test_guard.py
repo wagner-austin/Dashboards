@@ -18,6 +18,7 @@ from scripts.guard import (
     check_chain_certificate,
     check_mirrored_stylesheets_are_pinned,
     check_no_browser_automation,
+    check_no_em_dashes,
     check_no_stub_files,
     check_no_suppressions,
     check_pages_share_one_palette,
@@ -700,6 +701,81 @@ def test_readable_check_runs_against_the_real_articles(monkeypatch: pytest.Monke
     monkeypatch.chdir(REPO_ROOT)
 
     assert check_articles_are_readable() == []
+
+
+def test_em_dash_check_accepts_a_page_without_one(tmp_path: Path) -> None:
+    """Prose punctuated with commas and colons yields nothing.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _write_page(tmp_path, "preview/clean/index.html", "<p>One thing, then another: done.</p>")
+    assert check_no_em_dashes(tmp_path) == []
+
+
+@pytest.mark.parametrize("spelling", ["—", "&mdash;", "&#8212;", "&#x2014;"])
+def test_em_dash_check_catches_every_spelling(tmp_path: Path, spelling: str) -> None:
+    """All four renderings are caught, not only the literal character.
+
+    A sweep for the literal character alone leaves ``&mdash;`` rendering an
+    em dash on a page that greps clean. The real cleanup on 2026-09-11 found
+    exactly one such instance among ninety-one, on the index page.
+
+    Args:
+        tmp_path: Temporary project root.
+        spelling: The spelling under test.
+    """
+    _write_page(tmp_path, "preview/dashed/index.html", f"<p>One thing {spelling} then another</p>")
+    errors = check_no_em_dashes(tmp_path)
+    assert len(errors) == 1
+    assert "preview/dashed/index.html" in errors[0]
+    assert spelling in errors[0]
+
+
+def test_em_dash_check_counts_every_occurrence_in_a_page(tmp_path: Path) -> None:
+    """The message carries the count, so a sweep knows when it is done.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _write_page(tmp_path, "preview/many/index.html", "<p>a — b — c — d</p>")
+    assert "3 em dash(es)" in check_no_em_dashes(tmp_path)[0]
+
+
+def test_em_dash_check_ignores_generated_dashboards(tmp_path: Path) -> None:
+    """Scraped civic pages outside preview/ are not ours to rewrite.
+
+    An em dash inside a council agenda title is the source's punctuation.
+    Rewriting it would falsify a record, so the rule is scoped to the prose
+    this site authors rather than exempted case by case.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _write_page(tmp_path, "irvine-city-council/index.html", "<p>Item 3.1 — Budget</p>")
+    assert check_no_em_dashes(tmp_path) == []
+
+
+def test_em_dash_check_ignores_an_untracked_page(tmp_path: Path) -> None:
+    """A page git does not track is not published, so it is not linted.
+
+    Args:
+        tmp_path: Temporary project root.
+    """
+    _write_page(tmp_path, "preview/draft/index.html", "<p>a — b</p>", tracked=False)
+    assert check_no_em_dashes(tmp_path) == []
+
+
+def test_em_dash_check_defaults_to_the_repo(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Called with no base it scans the working directory.
+
+    Args:
+        monkeypatch: Used to run against the repository root.
+    """
+    hooks.reset_hooks()
+    monkeypatch.chdir(REPO_ROOT)
+
+    assert check_no_em_dashes() == []
 
 
 def test_real_print_hook_writes_to_stdout(capsys: pytest.CaptureFixture[str]) -> None:

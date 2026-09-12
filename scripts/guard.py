@@ -312,6 +312,53 @@ def _suppression_patterns() -> list[str]:
     return [f"# {_TYPE}: {_IGNORE}", f"#{_TYPE}:{_IGNORE}", _NOQA]
 
 
+#: Dash characters banned from every page on the site, with the entity and
+#: numeric spellings that render identically. The operator's rule, extended
+#: from outbound email to the site and the research write-ups on 2026-09-11:
+#: no em dashes. A prose rule is only a rule if something checks it, and the
+#: three spellings matter because a sweep for the literal character leaves
+#: ``&mdash;`` rendering an em dash on a page that greps clean.
+EM_DASH_SPELLINGS: tuple[str, ...] = ("—", "&mdash;", "&#8212;", "&#x2014;")
+
+
+def check_no_em_dashes(base: Path | None = None) -> list[str]:
+    """Check no page on the site contains an em dash in any spelling.
+
+    Scoped to tracked HTML, which is what a reader sees. The replacement is
+    a comma, a colon, parentheses or a full stop chosen per sentence -- a
+    mechanical swap produces the run-on the dash was hiding, which is most of
+    why the rule exists.
+
+    Args:
+        base: Project root to scan. Defaults to the current directory.
+
+    Returns:
+        One error per file holding one, naming the count and the spelling.
+    """
+    if base is None:
+        base = Path(".")
+
+    errors: list[str] = []
+    for path in site_pages(base):
+        relative = path.relative_to(base).as_posix()
+        # Scoped to the written pages, not every tracked page. The generated
+        # dashboards render scraped civic data -- an em dash inside a council
+        # agenda title is the source's punctuation, not ours, and rewriting it
+        # would falsify a record. This is a scope, not an exemption list: the
+        # rule is about prose we author.
+        if not relative.startswith(f"{PREVIEW_ROOT}/"):
+            continue
+        text = path.read_text(encoding="utf-8")
+        for spelling in EM_DASH_SPELLINGS:
+            count = text.count(spelling)
+            if count:
+                errors.append(
+                    f"{relative}: {count} em dash(es) spelled {spelling!r}; "
+                    f"use a comma, colon, parentheses or a full stop"
+                )
+    return errors
+
+
 def check_no_suppressions(base: Path | None = None) -> list[str]:
     """Check that guarded modules carry no suppression comments.
 
@@ -432,6 +479,7 @@ def main(base: Path | None = None) -> int:
     all_errors.extend(check_pages_share_one_palette(base))
     all_errors.extend(check_mirrored_stylesheets_are_pinned(base))
     all_errors.extend(check_articles_are_readable(base))
+    all_errors.extend(check_no_em_dashes(base))
 
     if all_errors:
         hooks.print_message("Guard check failed:")

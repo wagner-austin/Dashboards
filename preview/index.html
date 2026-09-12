@@ -12,7 +12,7 @@
        every article page. */
 
     /* ONE continuous ground for the entire document. A block element, so its
-       box is exactly the content width and the full content height — no canvas
+       box is exactly the content width and the full content height, with no canvas
        or viewport measurement to resolve, which is what made the earlier body
        and html versions break in mobile desktop mode. Everything else on the
        page is transparent and simply sits on this. */
@@ -42,7 +42,7 @@
         padding-bottom: 2rem;
     }
 
-    /* The hero — .header, .hero-bird, .hero-text — is in site.css, shared with
+    /* The hero (.header, .hero-bird, .hero-text) is in site.css, shared with
        every article page so the two carry the same masthead. */
 
     /* Layout of the link row only. The buttons are .chip from site.css, which
@@ -113,7 +113,7 @@
         z-index: 1;
         /* Negative margin pulls the band up over the content above it. The
            scene's trees sit at the ground line near the iframe's bottom, so
-           this — not iframe height — is what raises the forest on the page. */
+           this, not iframe height, is what raises the forest on the page. */
         margin-top: -40px;
         /* Fixed px, in the same 1200px design space as the rest of the
            layout. vh is unreliable here: with <meta viewport width=1200>
@@ -132,7 +132,7 @@
         border: 0;
         /* No pointer-events:none here. The overhang reaches up behind .upper,
            but .upper is a real element at z-index 2 and captures events across
-           its whole box even with a transparent background — so the hidden
+           its whole box even with a transparent background, so the hidden
            part is already shielded, and disabling the iframe would only kill
            interaction on the visible band as well. */
         /* Fade the iframe's own pixels out at the top so tree crowns dissolve
@@ -158,7 +158,7 @@
             #000 100%
         );
     }
-    /* Caption sits BELOW the band in normal flow — nothing overlaps the scene,
+    /* Caption sits BELOW the band in normal flow, so nothing overlaps the scene,
        because the engine draws the ground and the rabbit at the very bottom. */
     .forest-caption {
         text-align: center;
@@ -208,14 +208,14 @@
                 <h3>corvis</h3>
                 <p>The MCP and agent platform the rest of this list runs on. Shows every workspace an
                    account belongs to, the tool families it can reach and the wikis it may read, across
-                   <strong>27 backends behind one router</strong>. Sign-in required &mdash; the link goes
+                   <strong>27 backends behind one router</strong>. Sign-in required: the link goes
                    to a login page, not a demo.</p>
                 <span class="badge">sign-in required</span>
             </a></li>
             <li><a class="panel" href="https://search.austinwagner.org">
                 <h3>Public records search</h3>
-                <p>Full-text and semantic search across ingested California civic documents — agendas,
-                   minutes, staff reports — kept current by a deterministic parser fleet.</p>
+                <p>Full-text and semantic search across ingested California civic documents
+                   (agendas, minutes, staff reports), kept current by a deterministic parser fleet.</p>
                 <span class="badge">34 agencies</span>
             </a></li>
             <li><a class="panel" href="/irvine-city-council/">
@@ -244,39 +244,39 @@
             <li><a class="panel" href="/preview/reproducible-gpu-inference/">
                 <h3>Reproducible GPU inference</h3>
                 <p>One model and one set of weights produced a different answer on every NVIDIA card
-                   it ran on. Owning the arithmetic order instead of the vendor library's made the
-                   output <strong>byte-identical across all nine</strong> — five architecture
+                   I ran it on. Owning the arithmetic order instead of the vendor library's made the
+                   output <strong>byte-identical across all nine</strong>: five architecture
                    generations, two operating systems, one SHA-256.</p>
             </a></li>
             <li><a class="panel" href="/preview/citations-that-check-themselves/">
                 <h3>Research wikis that audit themselves</h3>
-                <p>Seventeen research wikis share one audit engine, and each declares
-                   <strong>which kind of proof its citations owe</strong> — a PDF hash, a
+                <p>My seventeen research wikis share one audit engine, and each declares
+                   <strong>which kind of proof its citations owe</strong>: a PDF hash, a
                    captured-page hash, a resolving vault query, or a git blob. A claim that
-                   can't be checked that way fails the write, in the transaction and in the
+                   cannot be checked that way fails the write, in the transaction and in the
                    tool an agent calls.</p>
             </a></li>
             <li><a class="panel" href="/preview/inferring-an-engine-from-inside/">
                 <h3>Inferring an engine from the inside</h3>
                 <p>A game ships as an obfuscated Java binary whose class names change between
                    releases. I inject code into its running JVM to read real state and issue
-                   real orders — <strong>no pixels, no synthetic input</strong> — and made
-                   runs bit-identical per seed, so a better strategy can be told apart from a
-                   lucky map.</p>
+                   real orders, with <strong>no pixels and no synthetic input</strong>, and I
+                   made runs bit-identical per seed so a better strategy can be told apart from
+                   a lucky map.</p>
             </a></li>
             <li><a class="panel" href="/preview/architecture-as-code/">
                 <h3>MCP &amp; agent infrastructure</h3>
                 <p>Thirteen services and twenty-two shared libraries in one repository, held
-                   together by <strong>47 architecture rules that fail the build</strong> —
-                   design decisions enforced by CI rather than remembered in review. Written
-                   across Python and Rust, because an invariant that holds in one language
-                   isn't one.</p>
+                   together by <strong>47 architecture rules that fail the build</strong>, so
+                   my design decisions are enforced by CI rather than remembered in review. I
+                   wrote them across Python and Rust, because an invariant that holds in one
+                   language is not one.</p>
             </a></li>
             <li><a class="panel" href="/preview/composite-model-compartments/">
                 <h3>Composing one model out of several</h3>
                 <p>A serving design assumed several separately trained compartments could be wired
-                   into one request. Measuring it first put the naive limit at two — and the run's
-                   own controls caught a result that read the right way and wasn't. A
+                   into one request. Measuring it first put the naive limit at two, and the run's
+                   own controls caught a result that read the right way and was not. A
                    composition-aware recipe then moved four-compartment retention
                    <strong>from &minus;45.4% to +44.6%</strong>.</p>
             </a></li>
@@ -290,14 +290,14 @@
             </a></li>
             <li><a class="panel" href="/preview/gradient-boosting-twice/">
                 <h3>ClearGBM</h3>
-                <p>Gradient boosting written from scratch in numpy, ported to a Rust core, and
-                   then the numpy version <strong>deleted</strong> — roughly 10k lines — because
-                   two implementations can disagree. The first one was the oracle the port was
-                   checked against; scaffolding comes down.</p>
+                <p>I wrote gradient boosting from scratch in numpy, ported it to a Rust core, and
+                   then <strong>deleted the numpy version</strong>, roughly 10k lines, because two
+                   implementations can disagree. The first one was the oracle I checked the port
+                   against; scaffolding comes down.</p>
             </a></li>
             <li><a class="panel" href="/preview/lightgbm-contributions/">
                 <h3>LightGBM</h3>
-                <p><strong>Nine merged pull requests</strong> — Python type annotations, a POSIX
+                <p><strong>Nine merged pull requests</strong>: Python type annotations, a POSIX
                    socket-timeout fix, and test coverage. Nine of twelve attempted, with the three
                    that did not land in the distributed-training path.</p>
             </a></li>
