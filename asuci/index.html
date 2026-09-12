@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=yes">
     <title>ASUCI Senate Dashboard</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/assets/tokens.css">
     <style>
+        /* THE SHARED PALETTE IS LINKED ABOVE, NOT RESTATED HERE.
+           Only tokens `assets/tokens.css` does not own are declared: the
+           status colours and the two extra greys this dashboard uses.
+           The page HTML had been cleaned of the duplicated palette once
+           already; this generator had not, so the scheduled regeneration on
+           2026-09-12 put every owned token straight back and turned
+           `make check` red on main. Fixing the output without fixing the
+           thing that writes it lasts exactly until the next run. */
         :root {
-            --primary: #0064a4;
-            --primary-dark: #003d66;
-            --primary-light: #e6f2fa;
-            --gold: #ffc72c;
             --gold-light: #fff9e6;
             --success: #16a34a;
             --success-light: #dcfce7;
@@ -18,12 +23,7 @@
             --warning-light: #fef3c7;
             --danger: #dc2626;
             --danger-light: #fee2e2;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-600: #4b5563;
             --gray-700: #374151;
-            --gray-800: #1f2937;
             --gray-900: #111827;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }

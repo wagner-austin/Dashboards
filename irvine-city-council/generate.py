@@ -288,11 +288,21 @@ def generate_html(data: dict) -> str:
     <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=yes">
     <title>Irvine City Council Dashboard</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/assets/tokens.css">
     <style>
+        /* THE SHARED PALETTE IS LINKED ABOVE, NOT RESTATED HERE.
+           Only tokens `assets/tokens.css` does not own are declared: the
+           accent pair, the status colours and the two extra greys.
+
+           THIS ONE DID NOT MERELY DUPLICATE THE PALETTE, IT DIVERGED FROM IT.
+           `--primary: #0066a1` against the shared `#0064a4`, with
+           `--primary-dark` and `--primary-light` differing too: three blues
+           near enough to look deliberate and far enough to be a second
+           palette. That fork is the reason `assets/tokens.css` exists, and
+           this generator is where it was still being written. Adopting the
+           shared values is a visible change to this page's blues, and it is
+           the intended one. */
         :root {{
-            --primary: #0066a1;
-            --primary-dark: #004d7a;
-            --primary-light: #e8f4fc;
             --accent: #4da6d9;
             --accent-light: #d9eef8;
             --success: #16a34a;
@@ -301,12 +311,7 @@ def generate_html(data: dict) -> str:
             --warning-light: #fef3c7;
             --danger: #dc2626;
             --danger-light: #fee2e2;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-600: #4b5563;
             --gray-700: #374151;
-            --gray-800: #1f2937;
             --gray-900: #111827;
         }}
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
