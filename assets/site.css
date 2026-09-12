@@ -24,6 +24,27 @@
 /* Only a backstop behind .page, which carries the real gradient. */
 html, body { background: #0a0a0a; }
 
+/* THE TYPE SCALE'S ONE DIAL.
+ *
+ * Until 2026-09-11 nothing set a base size, so every `rem` on the site
+ * resolved against the browser default of 16px and the reading text landed at
+ * about 18px inside a 1140px column. Too small, reported by the operator
+ * looking at it rather than by any check.
+ *
+ * 112.5% makes 1rem = 18px, so every size declared in rem here, in
+ * article.css and in each page's own block moves together: body copy, the
+ * section headings, the facts grid, the table headers, the footer. That is
+ * the reason to turn one dial instead of editing twenty declarations, which
+ * is how a type scale stops being a scale.
+ *
+ * Px sizes are deliberately NOT swept along: .hero-bird's width, the forest
+ * band's height and .container's max-width are layout, and growing the raven
+ * because the prose grew would be a different change wearing this one's
+ * clothes.
+ *
+ * `.header h1` is compensated below so the masthead does not move. */
+html { font-size: 112.5%; }
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     color: var(--gray-800);
@@ -71,7 +92,13 @@ a.hero-home .hero-bird { margin-left: 0; }
    silently retightened the homepage's own name as well. A shared rule inherits
    no licence to change the page it was lifted from. */
 .header h1 {
-    font-size: 3.6rem;
+    /* 3.2rem x 18px = 57.6px, byte-for-byte the pixel size 3.6rem x 16px
+       rendered before the root scale above. The masthead is deliberately the
+       one thing the type bump does NOT move: it was already the size the
+       operator wanted, and a shared rule inherits no licence to change the
+       page it was lifted from -- the note on this rule's line-height, added
+       once and silently retightening the homepage name, is the same lesson. */
+    font-size: 3.2rem;
     font-weight: 600;
     letter-spacing: -0.015em;
     color: var(--gray-800);
