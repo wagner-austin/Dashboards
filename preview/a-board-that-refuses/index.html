@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex, nofollow">
+<title>A board that refuses &middot; Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/article.css">
+</head>
+<body>
+
+<div class="page">
+
+<div class="header">
+    <a class="hero-home" href="/preview/" aria-label="Austin Wagner, home">
+        <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="hero-text">
+        <h1>A board that refuses</h1>
+        <p class="role"><a href="/preview/">Austin Wagner</a></p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <div class="panel">
+            <p class="result">Many AI sessions coordinate through one append-only board, and
+               the board <strong>refuses what it cannot trust</strong>: a label that is not
+               yours, a closure with no result, a delivery claim with no commit, a session id
+               one keystroke from a real one. A surface that records is a log. One that
+               refuses is infrastructure.</p>
+            <dl class="facts">
+                <dt>Problem</dt>
+                <dd>A dozen AI sessions on several machines editing shared trees, with no way
+                    to know who holds what, who read what, or whether a claimed result
+                    happened.</dd>
+                <dt>Result</dt>
+                <dd>A Postgres queue and a session-stamped trail no role can update or delete,
+                    typed refusals at the write path, a read receipt with no revoke.</dd>
+                <dt>Identity</dt>
+                <dd>One session, one label, forever. A relabel is refused. A session id one
+                    character from a known one is refused.</dd>
+                <dt>Stack</dt>
+                <dd>TypeScript, PostgreSQL with row-level grants, an MCP server the sessions
+                    call.</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Append-only is a grant, not a promise</h2>
+        <div class="panel prose">
+            <p>The trail's table carries no update or delete grant for the application role
+               and no policy that would admit one, so a session cannot retract what it said
+               and neither can anyone acting as one. A later reader can trust the trail was
+               not edited after the fact, which is the property every retraction on this site
+               depends on.</p>
+            <p>Identity is enforced at the same chokepoint. A session's first write binds its
+               real id to a label, and a later write under a different label is refused. That
+               fired on a real session the night before this was written, one that had
+               reconstructed its label from what it was working on rather than what it had
+               registered.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The typo the identity check could not see</h2>
+        <div class="panel prose">
+            <p>One session posted forty times under its id and once under an id that
+               differed at index <strong>33</strong>. A person had typed it. The identity check
+               could not catch that: a mistyped id does not look like a session changing its
+               label, it looks like a new session, and new sessions are admitted. The phantom
+               is permanent, since the trail cannot be edited.</p>
+            <p>So a second check runs only for an id the board has never seen, and refuses one
+               that differs from an established id at exactly one character, naming both. The
+               window is sound because a version-4 id carries <strong>122</strong> random
+               bits: a fresh id landing one hex character from a known one is vanishingly
+               unlikely, so the only plausible cause is a person typing it.</p>
+            <div class="callout">
+                <p>The suite ran red first, against the unguarded module: <strong>4</strong>
+                   failed and <strong>3</strong> passed, with the phantom write succeeding
+                   beside the real id exactly as it had in production. Then green. A guard that
+                   cannot be made to fail on purpose has not been shown to work.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The read nobody could see</h2>
+        <div class="panel prose">
+            <p>Mentions reach a session only when it asks for its own queue, and nothing said
+               whether it ever had. One session read the feed about ten times across a long
+               shift and its own queue zero times, while holding <strong>85</strong> unread
+               events addressed to it, among them a check-in naming the exact fix that session
+               then reported as an unfixed bug.</p>
+            <p>The existing audit log could not answer the question: <strong>735</strong> of
+               <strong>736</strong> post rows carried an agent label and <strong>0</strong> of
+               <strong>21</strong> queue reads did, because that read took no identity. A check
+               built on it would have reported every session as never having read.</p>
+            <p>So the receipt is a row written only when an agent is actually served its own
+               queue, keyed to the agent rather than the filter, with no delete grant. A
+               receipt has no revoke. And every post reply now carries the count of unread
+               mentions since the last read, in the write path that used to say nothing.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="section">The audit that found eleven problems in five rows</h2>
+        <div class="panel prose">
+            <p>The audit lists agents that post repeatedly without being served their own
+               queue. Its first scheduled run used a <strong>1440</strong>-minute window
+               against a table <strong>75</strong> minutes old and printed eleven findings from
+               five receipts. It was judging time in which no agent could have held one.</p>
+            <p>The window is now floored at the migration's own applied-at timestamp, read
+               from the schema table rather than the receipts, since the earliest receipt moves
+               forward every time anyone re-reads. The judged span renders beside the count,
+               because "nobody is behind" and "the table is too young to tell" otherwise look
+               identical.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="container sources">
+    <div class="block">
+        <h2 class="section">Record</h2>
+        <div class="panel prose">
+            <p>Every figure above is bound to a named section of the wiki pages
+               <code>agent-task-board-service</code> and <code>agent-session-ledger</code>,
+               checked mechanically before this page can deploy. Both pin the git blob hash of
+               every source file they cite, so a change to the enforcing code invalidates the
+               citation rather than outdating it silently.</p>
+            <p><strong>Known limits.</strong> The identity guard binds a label on first write
+               and can catch nothing before that. A label exported to a tool that never
+               consults the board is still unvalidated, and that gap is filed as an open task
+               rather than claimed as closed here.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="/preview/">Back to austinwagner.org</a>
+</footer>
+
+</div><!-- /.page -->
+
+</body>
+</html>

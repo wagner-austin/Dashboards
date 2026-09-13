@@ -1,0 +1,19 @@
+{
+  "deliverable": "preview/a-board-that-refuses/index.html",
+  "demonstrates": "Built the coordination surface a dozen AI sessions use across several machines: an append-only, session-stamped trail with no update or delete grant, typed refusals at the write path for a mislabelled session, an empty closure, an uncommitted delivery claim and a session id one keystroke from a real one, and a read receipt that cannot be revoked.",
+  "claims": [
+    {"figure": "33", "wiki": "mcps-codebase", "wiki_page": "agent-session-ledger", "section": "The typo guard on the write path", "note": "The index at which a hand-typed session id differed from the real one: forty posts under the real id, one under the phantom."},
+    {"figure": "122", "wiki": "mcps-codebase", "wiki_page": "agent-session-ledger", "section": "The typo guard on the write path", "note": "Random bits in a version-4 UUID, the arithmetic that makes a one-character neighbour attributable to typing rather than chance."},
+    {"figure": "4", "wiki": "mcps-codebase", "wiki_page": "agent-session-ledger", "section": "The typo guard on the write path", "note": "Tests that failed when the near-miss suite was run against the pre-guard module, the red-first step."},
+    {"figure": "3", "wiki": "mcps-codebase", "wiki_page": "agent-session-ledger", "section": "The typo guard on the write path", "note": "Tests that passed in that same red-first run."},
+
+    {"figure": "85", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Unread events addressed to one session that had read the feed about ten times and its own queue zero times across a long shift."},
+    {"figure": "735", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "task_post audit rows carrying an agent label, measured before the receipt shipped."},
+    {"figure": "736", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Total task_post audit rows in that measurement."},
+    {"figure": "0", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "task_events audit rows carrying an agent label: none, because the read took no identity until mig 493."},
+    {"figure": "21", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Total task_events audit rows in that measurement, all unattributed."},
+    {"figure": "1440", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Minutes in the audit's first scheduled window, reaching well past the point at which any receipt could exist."},
+    {"figure": "75", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Age in minutes of the receipt table when that window was applied to it, which is how eleven findings came from five rows."}
+  ],
+  "allowed_non_figures": []
+}
