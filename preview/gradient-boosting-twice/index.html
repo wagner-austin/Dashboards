@@ -27,9 +27,10 @@
     <div class="block">
         <div class="panel">
             <p class="result">I implemented gradient boosting from scratch in numpy, ported
-               the compute to a Rust core, and then <strong>deleted the numpy version</strong>
-               of roughly 10k lines, because keeping two implementations means maintaining
-               two things that can disagree.</p>
+               the compute to a Rust core, and then <strong>deleted the numpy version</strong>,
+               <strong>6,910</strong> lines of source and <strong>7,677</strong> of tests,
+               because keeping two implementations means maintaining two things that can
+               disagree.</p>
             <dl class="facts">
                 <dt>What it is</dt>
                 <dd>The algorithm behind most machine learning on spreadsheet-shaped data.
@@ -44,8 +45,6 @@
                     coverage when the reference implementation was retired.</dd>
                 <dt>Stack</dt>
                 <dd>Rust, PyO3, numpy, mypy under strict settings.</dd>
-                <dt>Verify</dt>
-                <dd><a href="https://github.com/wagner-austin/API/tree/main/libs/cleargbm" target="_blank" rel="noopener noreferrer">libs/cleargbm on GitHub</a></dd>
             </dl>
         </div>
     </div>
@@ -73,7 +72,11 @@
                package raises at import time rather than quietly running a slower, different
                answer. What remains in Python is a typed façade that pins every native
                callable to a protocol, so the type checker sees real signatures instead of an
-               opaque object.</p>
+               opaque object. The façade's own statement of the rule:</p>
+<pre><code>Strict typing only: no ``Any``, no ``cast``, no ``type: ignore``. If
+``cleargbm_rs`` is not installed, this module raises ``ImportError`` at import
+time -- there is no Python fallback.</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/wagner-austin/API/blob/d89684561/libs/cleargbm/src/cleargbm/_rust.py">libs/cleargbm/src/cleargbm/_rust.py</a>, module docstring.</p>
             <div class="callout">
                 <p>The port is the achievement. The reference implementation was scaffolding,
                    and scaffolding comes down.</p>
@@ -84,8 +87,9 @@
     <div class="block">
         <h2 class="section">It competes in someone else's harness</h2>
         <div class="panel prose">
-            <p>It is not a standalone repository with a benchmark notebook. It is one of the
-               model backends in a risk-prediction service, sitting behind the same interface
+            <p>It is not a standalone repository with a benchmark notebook. It is two of the
+               <strong>12</strong> model backends in a risk-prediction service, a classifier
+               and a regressor, sitting behind the same interface
                as XGBoost and LightGBM and selectable per request, so it is evaluated on the
                same datasets, through the same training and explainability machinery, as the
                production libraries I wrote it to understand.</p>
@@ -108,9 +112,23 @@
                routinely collapsed into one story and only the first one removed compute.</p>
             <p><strong>Known limits.</strong> "Pure Rust" is true of the compute path and of
                the crate's contents, not of the shipped package: a typed Python API surface
-               remains, and it has grown by about a third since August. No benchmark is
+               remains, and it has grown by about half since mid-August. No benchmark is
                claimed here: being selectable alongside XGBoost and LightGBM in one harness
-               is a statement about structure, not about winning.</p>
+               is a statement about structure, not about winning. Until 2026-09-14 this page
+               said "roughly 10k lines" were deleted, a figure that matched neither the
+               source nor the source-plus-tests count.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The Python package: <a href="https://github.com/wagner-austin/API/tree/d89684561/libs/cleargbm">API/libs/cleargbm</a>; the Rust crate: <a href="https://github.com/wagner-austin/API/tree/d89684561/libs/cleargbm_rs">libs/cleargbm_rs</a>, with <code>pyo3 = "0.27.2"</code> in its <a href="https://github.com/wagner-austin/API/blob/d89684561/libs/cleargbm_rs/Cargo.toml">Cargo.toml</a>.</li>
+                <li>The retirement commit: <a href="https://github.com/wagner-austin/API/commit/f7c61172">f7c61172</a>, 2026-07-21, whose diff carries the 6,910 and 7,677 deleted lines and the 555 to 182 test counts.</li>
+                <li>The typed façade quoted above: <a href="https://github.com/wagner-austin/API/blob/d89684561/libs/cleargbm/src/cleargbm/_rust.py">_rust.py</a>; the single native call: <a href="https://github.com/wagner-austin/API/blob/d89684561/libs/cleargbm/src/cleargbm/ensemble.py">ensemble.py</a>.</li>
+                <li>Where it competes: the <code>cleargbm</code> and <code>cleargbm_reg</code> backends in <a href="https://github.com/wagner-austin/API/tree/d89684561/libs/covenant_ml/src/covenant_ml/backends/cleargbm">covenant_ml/backends/cleargbm</a>.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/gradient-boosting-twice/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
