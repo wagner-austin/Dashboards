@@ -44,8 +44,6 @@
                 <dt>Stack</dt>
                 <dd>PyTorch, GPT-2, Slurm on a university cluster, digest-pinned container
                     images.</dd>
-                <dt>Full record</dt>
-                <dd>The wiki page below, with the job IDs and the log lines for each claim.</dd>
             </dl>
         </div>
     </div>
@@ -88,7 +86,15 @@
             <p>What worked was twelve training lines over thirty epochs: small enough to
                memorise, long enough for validation to turn. The test now asserts that
                premise explicitly and reports itself blind if a later change flattens the
-               curve.</p>
+               curve:</p>
+<pre><code>    best_epoch = min(epochs, key=_val_at)
+    if best_epoch == epochs[-1]:
+        raise AssertionError(
+            f"fixture's best epoch is its last ({best_epoch}); "
+            f"val curve {(...)} "
+            "cannot distinguish a restored model from an unrestored one"
+        )</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/tests/test_base_trainer_best_checkpoint.py">services/Model-Trainer/tests/test_base_trainer_best_checkpoint.py</a>, the premise guard, one expression elided.</p>
         </div>
     </div>
 
@@ -127,7 +133,20 @@
                environment and a container is an observation rather than a result, and the
                page says so. The comparability consequence, that two arms shipping different
                epochs are not the same kind of object, is a reading rather than something
-               either manifest records.</p>
+               either manifest records. Every figure and every mechanism claim on this page
+               was re-checked against the current training code on 2026-09-14 and holds.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The wiki page with the job ids, the artifact digest and the log lines is in the author's private research wiki.</li>
+                <li>The restore, with its docstring naming the run that motivated it: <a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/src/model_trainer/core/services/training/base_trainer_checkpoints.py">base_trainer_checkpoints.py</a>, which logs <code>best_checkpoint_restored</code>; the reload from disk it calls: <a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/src/model_trainer/core/services/training/reload.py">reload.py</a>.</li>
+                <li>The test quoted above, and the two that exercise each branch of the restore: <a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/tests/test_base_trainer_best_checkpoint.py">test_base_trainer_best_checkpoint.py</a>, <a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/tests/test_reload_shipped_weights.py">test_reload_shipped_weights.py</a>.</li>
+                <li>The cluster runs went through <a href="/preview/research-cluster-submission/">the submission tool described on this site</a>.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/scoring-a-model-you-do-not-ship/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
