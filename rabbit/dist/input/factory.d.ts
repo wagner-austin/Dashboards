@@ -16,6 +16,7 @@ import { type CameraSpeeds } from "./movement.js";
 import type { InputState } from "./state.js";
 import { type TouchConfig, type TouchEventSource, type TouchState } from "./Touch.js";
 import type { AutorunConfig } from "./validation.js";
+import type { Awareness } from "./Awareness.js";
 /**
  * Dependencies required to build the input system.
  *
@@ -30,6 +31,7 @@ import type { AutorunConfig } from "./validation.js";
  * speeds: Camera pan and depth speeds, in world units per second.
  */
 export interface InputSystemDeps {
+    readonly sense: () => Awareness;
     readonly state: InputState;
     readonly frames: BunnyFrames;
     readonly timers: BunnyTimers;

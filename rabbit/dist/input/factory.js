@@ -29,6 +29,7 @@ export function createInputSystem(deps) {
     });
     const activity = createActivityTracker();
     const autopilot = createAutopilotController({
+        sense: deps.sense,
         arbiter,
         activity,
         state: deps.state,
@@ -56,7 +57,7 @@ export function createInputSystem(deps) {
         update(deltaTime) {
             autopilot.update(deltaTime);
             processDepthMovement(deps.state, deltaTime, deps.speeds.depth);
-            processHorizontalMovement(deps.state, deltaTime, deps.speeds.horizontal);
+            processHorizontalMovement(deps.state, deltaTime, deps.speeds.horizontal * (keys.sprinting ? 1.8 : 1));
         },
     };
 }

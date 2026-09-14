@@ -4,6 +4,9 @@
  * Orchestrates modules for rendering, entities, and input.
  * Uses progressive loading to populate scene as sprites load.
  */
+import { createAdventure } from "./entities/Adventure.js";
+import { loadAdventureAssets } from "./io/adventure-io.js";
+import { senseWorld } from "./input/Awareness.js";
 import { measureViewport } from "./rendering/Viewport.js";
 import { applyLayerColors, renderFrame, } from "./rendering/SceneRenderer.js";
 import { validateColorsConfig } from "./rendering/colors.js";
@@ -27,18 +30,21 @@ import { loadConfig, runProgressiveLoad, createDefaultAudioDependencies, createD
  */
 function createDefaultDependencies() {
     return {
+        loadAdventureFn: loadAdventureAssets,
         getScreenLayers: () => {
             const world = document.getElementById("screen");
             const actor = document.getElementById("screen-actor");
             const foreground = document.getElementById("screen-foreground");
+            const companion = document.getElementById("screen-companion");
             // All three or none: a page missing one element would otherwise render a
             // scene with the actor or the grass silently absent.
             if (!(world instanceof HTMLPreElement) ||
                 !(actor instanceof HTMLPreElement) ||
-                !(foreground instanceof HTMLPreElement)) {
+                !(foreground instanceof HTMLPreElement) ||
+                !(companion instanceof HTMLPreElement)) {
                 return null;
             }
-            return { world, actor, foreground };
+            return { world, actor, foreground, companion };
         },
         getCharacterOverride: () => new URL(window.location.href).searchParams.get("character"),
         loadConfigFn: loadConfig,
@@ -104,6 +110,8 @@ export async function init(deps = createDefaultDependencies()) {
     // fails at startup naming the animation rather than 404ing a sprite later.
     const character = resolveCharacterName(config, deps.getCharacterOverride());
     resolveCharacterAnimations(config, character);
+    if (character === "lion")
+        layers.actor.style.color = "#58baff";
     // All three layers carry the same font metrics and the same grid, so
     // measuring one measures all of them.
     const viewport = measureViewport(layers.world);
@@ -133,6 +141,8 @@ export async function init(deps = createDefaultDependencies()) {
     let bunnyFrames = null;
     // Input layer is assembled once the bunny frames arrive; null until then.
     let inputSystem = null;
+    let adventure = null;
+    let adventureVisual = null;
     const state = {
         ...createInputState(bunnyState, viewport, camera, depthBounds),
         scene: sceneState,
@@ -157,14 +167,17 @@ export async function init(deps = createDefaultDependencies()) {
     let lastTime = 0;
     function render(currentTime) {
         // Calculate delta time for frame-rate independent movement
-        const deltaTime = lastTime > 0 ? (currentTime - lastTime) / 1000 : 0;
+        const deltaTime = lastTime > 0 ? Math.max(0, Math.min((currentTime - lastTime) / 1000, 0.1)) : 0;
         // Advance autopilot and camera movement once the input layer exists
         if (inputSystem !== null) {
             inputSystem.update(deltaTime);
         }
         // Sync camera from input state to scene state
         state.scene.camera = state.camera;
+        if (adventure !== null && inputSystem !== null)
+            adventureVisual = adventure.update(deltaTime, state.camera, bunnyState, inputSystem.keys.sprinting);
         const renderState = {
+            adventure: adventureVisual,
             bunnyState,
             sceneState: state.scene,
             viewport: state.viewport,
@@ -192,6 +205,7 @@ export async function init(deps = createDefaultDependencies()) {
         const bunnyTimers = createBunnyTimers(bunnyState, loadedBunnyFrames, config.settings.animation, createHorizontalHeldProbe(state));
         // Assemble the input layer: arbiter, autopilot, keyboard, and touch
         inputSystem = createInputSystem({
+            sense: () => senseWorld(state.scene, adventureVisual === null ? null : adventureVisual.companion, bunnyState.facingRight),
             state,
             frames: loadedBunnyFrames,
             timers: bunnyTimers,
@@ -209,6 +223,8 @@ export async function init(deps = createDefaultDependencies()) {
         bunnyTimers.walk.start();
         bunnyTimers.idle.start();
     });
+    const adventureAssets = await deps.loadAdventureFn(config, character);
+    adventure = createAdventure(adventureAssets, character, state.camera, depthBounds.range);
 }
 /**
  * Create empty bunny frames for rendering before bunny is loaded.

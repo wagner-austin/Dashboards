@@ -1,0 +1,1 @@
+{"version":3,"file":"adventure-io.d.ts","sourceRoot":"","sources":["../../src/io/adventure-io.ts"],"names":[],"mappings":"AAAA,yEAAyE;AACzE,OAAO,KAAK,EAAE,MAAM,EAAE,MAAM,aAAa,CAAC;AAC1C,OAAO,KAAK,EAAE,eAAe,EAAE,MAAM,0BAA0B,CAAC;AAIhE;;;;;;;;;;;GAWG;AACH,wBAAsB,mBAAmB,CAAC,MAAM,EAAE,MAAM,EAAE,MAAM,EAAE,MAAM,GAAG,OAAO,CAAC,eAAe,CAAC,CAkBlG;AAED,eAAO,MAAM,WAAW;;CAA0B,CAAC"}

@@ -15,15 +15,15 @@ import { createTestBunnyState, createTestFrames, createTestInputState, createTes
 const { createKeyboardKeys, intentFromKeys, pressBinding, releaseBinding, handleKeyDown, handleKeyUp, setupKeyboardControls, KEY_BINDINGS, } = _test_hooks;
 describe("createKeyboardKeys", () => {
     it("starts with nothing held", () => {
-        expect(createKeyboardKeys()).toStrictEqual({ horizontal: null, vertical: null });
+        expect(createKeyboardKeys()).toStrictEqual({ horizontal: null, vertical: null, sprinting: false });
     });
 });
 describe("intentFromKeys", () => {
     it("mirrors the held keys onto both axes", () => {
-        expect(intentFromKeys({ horizontal: "left", vertical: "down" })).toStrictEqual(createIntent("left", "down"));
+        expect(intentFromKeys({ horizontal: "left", vertical: "down", sprinting: false })).toStrictEqual(createIntent("left", "down"));
     });
     it("is neutral when nothing is held", () => {
-        expect(intentFromKeys({ horizontal: null, vertical: null })).toStrictEqual(NEUTRAL_INTENT);
+        expect(intentFromKeys({ horizontal: null, vertical: null, sprinting: false })).toStrictEqual(NEUTRAL_INTENT);
     });
 });
 describe("KEY_BINDINGS", () => {
@@ -43,39 +43,39 @@ describe("KEY_BINDINGS", () => {
 });
 describe("pressBinding", () => {
     it("sets the horizontal axis", () => {
-        const keys = { horizontal: null, vertical: null };
+        const keys = { horizontal: null, vertical: null, sprinting: false };
         pressBinding(keys, { axis: "horizontal", value: "right" });
-        expect(keys).toStrictEqual({ horizontal: "right", vertical: null });
+        expect(keys).toStrictEqual({ horizontal: "right", vertical: null, sprinting: false });
     });
     it("sets the vertical axis", () => {
-        const keys = { horizontal: null, vertical: null };
+        const keys = { horizontal: null, vertical: null, sprinting: false };
         pressBinding(keys, { axis: "vertical", value: "down" });
-        expect(keys).toStrictEqual({ horizontal: null, vertical: "down" });
+        expect(keys).toStrictEqual({ horizontal: null, vertical: "down", sprinting: false });
     });
     it("replaces the direction already held on an axis", () => {
-        const keys = { horizontal: "left", vertical: null };
+        const keys = { horizontal: "left", vertical: null, sprinting: false };
         pressBinding(keys, { axis: "horizontal", value: "right" });
         expect(keys.horizontal).toBe("right");
     });
 });
 describe("releaseBinding", () => {
     it("clears the horizontal axis when the held direction is released", () => {
-        const keys = { horizontal: "left", vertical: null };
+        const keys = { horizontal: "left", vertical: null, sprinting: false };
         expect(releaseBinding(keys, { axis: "horizontal", value: "left" })).toBe(true);
         expect(keys.horizontal).toBeNull();
     });
     it("ignores release of a horizontal direction that was overridden", () => {
-        const keys = { horizontal: "right", vertical: null };
+        const keys = { horizontal: "right", vertical: null, sprinting: false };
         expect(releaseBinding(keys, { axis: "horizontal", value: "left" })).toBe(false);
         expect(keys.horizontal).toBe("right");
     });
     it("clears the vertical axis when the held direction is released", () => {
-        const keys = { horizontal: null, vertical: "up" };
+        const keys = { horizontal: null, vertical: "up", sprinting: false };
         expect(releaseBinding(keys, { axis: "vertical", value: "up" })).toBe(true);
         expect(keys.vertical).toBeNull();
     });
     it("ignores release of a vertical direction that was overridden", () => {
-        const keys = { horizontal: null, vertical: "down" };
+        const keys = { horizontal: null, vertical: "down", sprinting: false };
         expect(releaseBinding(keys, { axis: "vertical", value: "up" })).toBe(false);
         expect(keys.vertical).toBe("down");
     });
@@ -228,7 +228,7 @@ describe("keyboard source", () => {
             expect(keys.horizontal).toBe("left");
         });
         it("handleKeyUp updates the supplied key model", () => {
-            const keys = { horizontal: "left", vertical: null };
+            const keys = { horizontal: "left", vertical: null, sprinting: false };
             handleKeyUp(new KeyboardEvent("keyup", { key: "a" }), keys, deps);
             expect(keys.horizontal).toBeNull();
         });

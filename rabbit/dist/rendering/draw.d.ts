@@ -37,12 +37,12 @@ declare function clampToDensity(n: number): DensityLevel;
  *     Faded character from the density gradient.
  */
 declare function getFadedChar(ch: string, visibility: number): string;
-export declare function drawSprite(buffer: string[][], lines: string[], x: number, y: number, width: number, height: number): void;
+export declare function drawSprite(buffer: string[][], lines: readonly string[], x: number, y: number, width: number, height: number): void;
 /**
  * Sample a character from sprite at normalized coordinates.
  * Coordinates are relative to bottom-center anchor (0,0 = center-bottom).
  */
-declare function sampleSprite(lines: string[], spriteWidth: number, normX: number, // -0.5 to 0.5 (left to right)
+declare function sampleSprite(lines: readonly string[], spriteWidth: number, normX: number, // -0.5 to 0.5 (left to right)
 normY: number): string | undefined;
 export declare function drawSpriteFade(buffer: string[][], oldLines: string[], newLines: string[], oldCenterX: number, oldCenterY: number, newCenterX: number, newCenterY: number, oldWidth: number, newWidth: number, width: number, height: number, progress: number, // 0 = all old, 1 = all new
 visibility?: number): void;

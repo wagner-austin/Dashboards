@@ -10,6 +10,7 @@ import type { InputArbiter } from "./arbiter.js";
 import { type AutopilotState, type RandomSource } from "./Autopilot.js";
 import type { InputState } from "./state.js";
 import type { AutorunConfig } from "./validation.js";
+import type { Awareness } from "./Awareness.js";
 /**
  * Dependencies required to drive the autopilot each frame.
  *
@@ -20,6 +21,7 @@ import type { AutorunConfig } from "./validation.js";
  * random: Source of draws in [0, 1) shaping the wander.
  */
 export interface AutopilotDeps {
+    readonly sense: () => Awareness;
     readonly arbiter: InputArbiter;
     readonly activity: ActivityTracker;
     readonly state: InputState;

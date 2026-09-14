@@ -43,6 +43,7 @@ describe("createInputSystem", () => {
      */
     function build(autorun) {
         return createInputSystem({
+            sense: () => ({ wait: false, blocked: false, direction: "left" }),
             state,
             frames,
             timers,
@@ -68,6 +69,15 @@ describe("createInputSystem", () => {
         vi.useRealTimers();
     });
     it("binds both input sources", () => {
+        keyboardEvents.press("Shift");
+        keyboardEvents.press("d");
+        vi.advanceTimersByTime(500);
+        system.update(0.1);
+        expect(state.camera.x).toBeCloseTo(21.6);
+        keyboardEvents.release("Shift");
+        system.update(0.1);
+        expect(state.camera.x).toBeCloseTo(33.6);
+        expect(system.keys.sprinting).toBe(false);
         expect(keyboardEvents.boundCount("keydown")).toBe(1);
         expect(keyboardEvents.boundCount("keyup")).toBe(1);
         expect(touchEvents.passiveFor("touchmove")).toBe(false);
@@ -76,7 +86,7 @@ describe("createInputSystem", () => {
         expect(system.arbiter.intentFor("user")).toStrictEqual(NEUTRAL_INTENT);
         expect(system.activity.idleSeconds()).toBe(0);
         expect(system.autopilot.phase().kind).toBe("dormant");
-        expect(system.keys).toStrictEqual({ horizontal: null, vertical: null });
+        expect(system.keys).toStrictEqual({ horizontal: null, vertical: null, sprinting: false });
         expect(system.touchState.joystick).toBeNull();
     });
     it("scrolls the camera while the user walks", () => {

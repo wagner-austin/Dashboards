@@ -30,7 +30,7 @@ const KEY_BINDINGS = new Map([
  *     KeyboardKeys with both axes released.
  */
 export function createKeyboardKeys() {
-    return { horizontal: null, vertical: null };
+    return { horizontal: null, vertical: null, sprinting: false };
 }
 /**
  * Convert held keys into a movement intent.
@@ -99,6 +99,10 @@ export function handleKeyDown(event, keys, deps) {
         return;
     }
     const key = event.key.toLowerCase();
+    if (key === "shift") {
+        keys.sprinting = true;
+        return;
+    }
     if (key === JUMP_KEY) {
         deps.arbiter.requestJump("user");
         event.preventDefault();
@@ -124,6 +128,10 @@ export function handleKeyDown(event, keys, deps) {
  *     deps: Keyboard dependencies.
  */
 export function handleKeyUp(event, keys, deps) {
+    if (event.key.toLowerCase() === "shift") {
+        keys.sprinting = false;
+        return;
+    }
     const binding = KEY_BINDINGS.get(event.key.toLowerCase());
     if (binding === undefined) {
         return;

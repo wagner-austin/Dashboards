@@ -8,6 +8,7 @@ const { drawBunny } = _test_hooks;
 import { createInitialBunnyState } from "../entities/Bunny.js";
 import { createSceneState } from "../layers/index.js";
 import { createCamera, createProjectionConfig } from "../world/Projection.js";
+import { createCompanion } from "../entities/Companion.js";
 /** Test depth bounds (minZ=-110, maxZ=160, range=270) */
 function createTestDepthBounds() {
     return { minZ: -110, maxZ: 160, range: 270 };
@@ -53,13 +54,14 @@ describe("renderFrame", () => {
         const actor = document.createElement("pre");
         const foreground = document.createElement("pre");
         document.body.append(world, actor, foreground);
-        layers = { world, actor, foreground };
+        layers = { world, actor, foreground, companion: document.createElement("pre") };
     });
     afterEach(() => {
         document.body.replaceChildren();
     });
     function createRenderState(bunnyState, sceneState, lastTime = 0) {
         return {
+            adventure: null,
             bunnyState,
             sceneState,
             viewport: { width: 80, height: 24, charW: 10, charH: 20 },
@@ -67,6 +69,28 @@ describe("renderFrame", () => {
             projectionConfig,
         };
     }
+    it("renders upright poses and independently colored companions without overlapping cells", () => {
+        const assets = { companion: createTestBunnyFrames(), alertLeft: ["upright"], alertRight: ["upright"], lionSprint: { left: ["runL"], right: ["runR"] } };
+        const visual = { companion: { ...createCompanion(), x: 0, z: 0 }, assets,
+            alert: ["upright"], companionSprint: assets.lionSprint, companionColor: "#58baff", status: "resting" };
+        const state = { ...createRenderState(createInitialBunnyState(), createTestSceneState()), adventure: visual };
+        renderFrame(state, createTestBunnyFrames(), layers, 1000);
+        expect(layers.actor.textContent).toContain("upright");
+        expect(layers.companion.style.color).toBe("rgb(88, 186, 255)");
+        expect(layers.companion.textContent.trim()).not.toBe("");
+        const grids = [layers.world, layers.companion, layers.actor, layers.foreground].map((layer) => layer.textContent.split("\n"));
+        for (let row = 0; row < 24; row++) {
+            for (let col = 0; col < 80; col++)
+                expect(grids.filter((grid) => paintedAt(grid, row, col)).length).toBeLessThanOrEqual(1);
+        }
+        renderFrame({ ...state, adventure: { ...visual, companion: { ...visual.companion, z: 300 } } }, createTestBunnyFrames(), layers, 2000);
+        expect(layers.companion.textContent.trim()).toBe("");
+    });
+    it("resamples character canvases and fails explicitly on missing rows", () => {
+        expect(_test_hooks.scaleCharacter(["ABCD", "EFGH"], 0.5)).toStrictEqual(["AC"]);
+        expect(_test_hooks.scaleCharacter(["A", "BC"], 1)).toStrictEqual(["A ", "BC"]);
+        expect(() => _test_hooks.scaleCharacter([], 1)).toThrow("RABBIT_SPRITE_EMPTY");
+    });
     it("renders frame and returns updated state", () => {
         const renderState = createRenderState(createInitialBunnyState(), createTestSceneState());
         const result = renderFrame(renderState, createTestBunnyFrames(), layers, 1000);
@@ -220,7 +244,7 @@ describe("applyLayerColors", () => {
         const world = document.createElement("pre");
         const actor = document.createElement("pre");
         const foreground = document.createElement("pre");
-        applyLayerColors({ world, actor, foreground }, { world: "#111111", actor: "#6db3ff", foreground: "#222222" });
+        applyLayerColors({ world, actor, foreground, companion: document.createElement("pre") }, { world: "#111111", actor: "#6db3ff", foreground: "#222222" });
         expect(world.style.color).toBe("rgb(17, 17, 17)");
         expect(actor.style.color).toBe("rgb(109, 179, 255)");
         expect(foreground.style.color).toBe("rgb(34, 34, 34)");

@@ -8,6 +8,7 @@ import type { LayerColors } from "./colors.js";
 import { type BunnyFrames, type BunnyState } from "../entities/Bunny.js";
 import { type SceneState } from "../layers/index.js";
 import type { ProjectionConfig } from "../world/Projection.js";
+import type { AdventureVisual } from "../entities/Adventure.js";
 /**
  * Render state for a single frame.
  *
@@ -18,6 +19,7 @@ import type { ProjectionConfig } from "../world/Projection.js";
  * projectionConfig: 3D projection settings for layers.
  */
 export interface RenderState {
+    readonly adventure: AdventureVisual | null;
     bunnyState: BunnyState;
     sceneState: SceneState;
     viewport: ViewportState;
@@ -43,6 +45,7 @@ export interface RenderState {
  * foreground: Layers drawn in front of the actor.
  */
 export interface ScreenLayers {
+    readonly companion: HTMLPreElement;
     readonly world: HTMLPreElement;
     readonly actor: HTMLPreElement;
     readonly foreground: HTMLPreElement;
@@ -86,6 +89,8 @@ declare function drawBunny(buffer: string[][], bunnyState: BunnyState, bunnyFram
 export declare function renderFrame(state: RenderState, bunnyFrames: BunnyFrames, layers: ScreenLayers, currentTime: number): {
     lastTime: number;
 };
+/** Resample a rectangular character canvas while preserving its margins. */
+declare function scaleCharacter(lines: readonly string[], scale: number): readonly string[];
 /**
  * Apply layer colours to the three stacked elements.
  *
@@ -99,6 +104,7 @@ export declare function renderFrame(state: RenderState, bunnyFrames: BunnyFrames
 export declare function applyLayerColors(layers: ScreenLayers, colors: LayerColors): void;
 /** Test hooks for internal functions */
 export declare const _test_hooks: {
+    scaleCharacter: typeof scaleCharacter;
     drawBunny: typeof drawBunny;
     renderFrame: typeof renderFrame;
     applyLayerColors: typeof applyLayerColors;

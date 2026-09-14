@@ -5,6 +5,7 @@
  * Uses progressive loading to populate scene as sprites load.
  */
 import type { Config } from "./types.js";
+import { type AdventureAssets } from "./entities/Adventure.js";
 import type { BunnyFrames } from "./entities/Bunny.js";
 import type { MutableSpriteRegistry, ProgressCallback } from "./loaders/progressive.js";
 import type { BunnyLoadedCallback } from "./io/progressive-io.js";
@@ -24,6 +25,7 @@ import { type AudioDependencies } from "./audio/index.js";
  * touchEvents: Event target and clock for touch listeners.
  */
 export interface MainDependencies {
+    readonly loadAdventureFn: (config: Config, character: string) => Promise<AdventureAssets>;
     getScreenLayers: () => ScreenLayers | null;
     getCharacterOverride: () => string | null;
     loadConfigFn: () => Promise<Config>;
