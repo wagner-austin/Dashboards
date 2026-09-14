@@ -39,9 +39,6 @@
                 <dt>Languages</dt>
                 <dd>C++ and Python: networking, test coverage, and the typed scikit-learn
                     predict path.</dd>
-                <dt>Verify</dt>
-                <dd><a href="https://github.com/lightgbm-org/LightGBM/pulls?q=is%3Apr+author%3Awagner-austin+is%3Amerged" target="_blank" rel="noopener noreferrer">The merged-PR query on GitHub</a>
-                    takes ten seconds, no portfolio required.</dd>
             </dl>
         </div>
     </div>
@@ -57,13 +54,31 @@
                     <tr><td class="num">7131</td><td>Fixed a test that was not exercising all of its parameter combinations</td></tr>
                     <tr><td class="num">7133</td><td>Test coverage for <code>Booster.rollback_one_iter()</code></td></tr>
                     <tr><td class="num">7130</td><td>Fixed a numpy integer cast in <code>plot_importance</code></td></tr>
-                    <tr><td class="num">7115</td><td>Python type annotations through <code>7119</code>: <code>TypeGuard</code>, <code>Literal</code>, <code>DTypeLike</code> and return types on the scikit-learn predict path</td></tr>
+                    <tr><td class="num">7115</td><td>Python type annotations through <code>7118</code>: <code>TypeGuard</code>, return types on the scikit-learn predict methods, <code>DTypeLike</code> and <code>Literal</code></td></tr>
+                    <tr><td class="num">7119</td><td>Positional arguments for <code>np.arange</code> in the predictor</td></tr>
                 </tbody>
             </table>
             </div>
             <p>The socket fix is the one worth reading. It was a real defect in distributed
                training rather than a documentation change, and it was wrong in a way that only
-               shows up on POSIX.</p>
+               shows up on POSIX: the old call handed <code>setsockopt</code> an <code>int</code>
+               where POSIX wants a <code>struct timeval</code>, so it failed with
+               <code>EINVAL</code> and the timeout was never set. The merged change,
+               <strong>11</strong> lines added and <strong>2</strong> removed in the wrapper:</p>
+<pre><code>-  inline void SetTimeout(int timeout) {
+-    setsockopt(sockfd_, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast&lt;char*&gt;(&amp;timeout), sizeof(timeout));
++  inline void SetTimeout(int timeout_ms) {
++#if defined(_WIN32)
++    DWORD timeout = static_cast&lt;DWORD&gt;(timeout_ms);
++    setsockopt(sockfd_, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast&lt;const char*&gt;(&amp;timeout), sizeof(timeout));
++#else
++    struct timeval tv;
++    tv.tv_sec = timeout_ms / 1000;
++    tv.tv_usec = (timeout_ms % 1000) * 1000;
++    setsockopt(sockfd_, SOL_SOCKET, SO_RCVTIMEO, &amp;tv, sizeof(tv));
++#endif
+   }</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/lightgbm-org/LightGBM/pull/7137/files">PR 7137</a>, <code>src/network/socket_wrapper.hpp</code>, the diff as merged in <code>80ab6d3</code>.</p>
         </div>
     </div>
 
@@ -106,11 +121,23 @@
             <p>Every figure above is bound to a named section of the wiki page
                <code>lightgbm-contributions</code> and checked mechanically before this page can
                deploy. That page carries the GitHub API query behind each count and the date it was
-               last re-run.</p>
-            <p><strong>One thing to watch when verifying.</strong> The project moved organisations.
-               The old API path answers a permanent redirect with no body, so a script following it
-               reads a missing key and reports zero merged rather than failing. Query the current
-               organisation.</p>
+               last re-run, 2026-09-14, when every count was unchanged.</p>
+            <p><strong>Known limits.</strong> The project moved organisations. The old API path
+               answers a permanent redirect with no body, so a script following it reads a
+               missing key and reports zero merged rather than failing; query the current
+               organisation. Until 2026-09-14 the table folded <code>7119</code> into the
+               annotations row; its title is a positional-argument fix, so it has its own.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>Every pull request, on GitHub: <a href="https://github.com/lightgbm-org/LightGBM/pulls?q=is%3Apr+author%3Awagner-austin">the author query</a> lists the twelve; <a href="https://github.com/lightgbm-org/LightGBM/pulls?q=is%3Apr+author%3Awagner-austin+is%3Amerged">the merged filter</a> lists the nine. Ten seconds, no portfolio required.</li>
+                <li>The socket fix: <a href="https://github.com/lightgbm-org/LightGBM/pull/7137">#7137</a>, merged 2026-01-23; the unmerged three: <a href="https://github.com/lightgbm-org/LightGBM/pull/7139">#7139</a> (closed), <a href="https://github.com/lightgbm-org/LightGBM/pull/7178">#7178</a> and <a href="https://github.com/lightgbm-org/LightGBM/pull/7138">#7138</a> (open).</li>
+                <li>The API call that reproduces the counts: <code>gh api --paginate 'search/issues?q=is:pr+author:wagner-austin+repo:lightgbm-org/LightGBM'</code>, twelve items, <code>merged_at</code> non-null on nine.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/lightgbm-contributions/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
