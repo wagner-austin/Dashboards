@@ -62,6 +62,7 @@ describe("createAutopilotController", () => {
 
   it("starts dormant", () => {
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -74,6 +75,7 @@ describe("createAutopilotController", () => {
 
   it("stays dormant before the idle delay elapses", () => {
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -89,6 +91,7 @@ describe("createAutopilotController", () => {
 
   it("takes over and walks the bunny once the user has been idle", () => {
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -108,6 +111,7 @@ describe("createAutopilotController", () => {
 
   it("accumulates idle time while the user holds nothing", () => {
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -125,6 +129,7 @@ describe("createAutopilotController", () => {
     arbiter.submit("user", createIntent("right", null));
 
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -141,6 +146,7 @@ describe("createAutopilotController", () => {
 
   it("stands down again when the user takes over mid-leg", () => {
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -161,6 +167,7 @@ describe("createAutopilotController", () => {
 
   it("releases the world back to a standstill after standing down", () => {
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -180,6 +187,7 @@ describe("createAutopilotController", () => {
     // Draws: leg 4s, walk, keep direction, jump roll hits, jump at the 2s mark.
     const alwaysJump: AutorunConfig = { ...WALK_ONLY, jumpChance: 1 };
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -203,6 +211,7 @@ describe("createAutopilotController", () => {
   it("jumps only once per leg", () => {
     const alwaysJump: AutorunConfig = { ...WALK_ONLY, jumpChance: 1 };
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -222,6 +231,7 @@ describe("createAutopilotController", () => {
 
   it("does not jump when the jump roll fails", () => {
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -240,6 +250,7 @@ describe("createAutopilotController", () => {
   it("hops into depth when the hop roll succeeds", () => {
     const alwaysHop: AutorunConfig = { ...WALK_ONLY, hopChance: 1 };
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
@@ -259,6 +270,7 @@ describe("createAutopilotController", () => {
   it("stays put entirely when autorun is disabled", () => {
     const disabled: AutorunConfig = { ...WALK_ONLY, enabled: false };
     const controller = createAutopilotController({
+      sense: () => ({ wait: false, blocked: false, direction: "left" }),
       arbiter,
       activity,
       state,
