@@ -26,9 +26,9 @@
 
     <div class="block">
         <div class="panel">
-            <p class="result">Eight research projects run on a shared university GPU cluster
-               through one tool that will not let a job be built if it would fail, and can
-               answer afterwards which job produced which artifact.</p>
+            <p class="result"><strong>8</strong> research projects run on a shared university GPU
+               cluster through one tool that will not let a job be built if it would fail, and
+               can answer afterwards which job produced which artifact.</p>
             <dl class="facts">
                 <dt>Problem</dt>
                 <dd>UCI's HPC3 is a Slurm cluster with <strong>102 distinct users</strong> holding
@@ -39,33 +39,36 @@
                     somebody has to remember, so a job that would break one cannot be
                     constructed.</dd>
                 <dt>Scale</dt>
-                <dd><strong>16,924</strong> lines of source against <strong>19,278</strong> lines
-                    of tests; 15 commands over one workspace document.</dd>
+                <dd><strong>17,432</strong> lines of source against <strong>19,849</strong> lines
+                    of tests; <strong>15</strong> commands over one workspace document.</dd>
                 <dt>Stack</dt>
                 <dd>Python, Slurm, containerised environments pinned by digest.</dd>
-                <dt>Verify</dt>
-                <dd><a href="https://github.com/wagner-austin/API/tree/main/tools/hpc3" target="_blank" rel="noopener noreferrer">tools/hpc3 on GitHub</a>
-                    (the command reference is its README).</dd>
             </dl>
         </div>
     </div>
 
     <div class="block">
-        <h2 class="section">Three conditions that look like health</h2>
+        <h2 class="section">Five conditions that look like health</h2>
         <div class="panel prose">
-            <p>This is the part worth descending into. Each of these is invisible to the check
-               anyone would actually run, which is why a job can burn a week without anything
-               reporting a problem.</p>
+            <p>Each of these is invisible to the check anyone would actually run, which is why
+               a job can burn a week without anything reporting a problem. Three existed at
+               first; the fourth and fifth were built the same day, and the fourth found
+               something on its first run.</p>
             <div class="tablewrap">
             <table>
                 <thead><tr><th>Condition</th><th>What it looks like</th><th>Why the obvious check misses it</th></tr></thead>
                 <tbody>
                     <tr><td>blocked</td><td>Pending, for a reason that will never resolve</td><td><strong>261 of 621</strong> pending GPU jobs sat on <code>DependencyNeverSatisfied</code>, which in <code>squeue</code>'s state column is indistinguishable from healthily waiting on resources</td></tr>
                     <tr><td>unaccounted</td><td>Submitted here, unknown to the cluster</td><td>No cluster-side query can find these: the evidence is the <em>absence</em> of a cluster-side record, which is the whole reason a local ledger exists</td></tr>
+                    <tr><td>unclaimed</td><td>Running under the account, unknown to the ledger</td><td>The mirror of unaccounted, and the direction that went unbuilt: <strong>21</strong> image builds had run unrecorded through a documented raw <code>sbatch</code>, and the check found the twenty-second on its first run</td></tr>
                     <tr><td>silent</td><td><code>RUNNING</code>, holding GPUs, log no longer growing</td><td>Log age is measured against the cluster's own clock, because a few minutes of skew would either invent staleness or hide it</td></tr>
+                    <tr><td>oversized</td><td>Asks for far more wall clock than its work has ever taken</td><td>Slurm backfills a job into a hole its own size, so it waits for one it never needed. Caught a project declaring <strong>720</strong> minutes for members that finished in <strong>27</strong></td></tr>
                 </tbody>
             </table>
             </div>
+<pre><code>CLOCK_PROBE = r'echo "now $(date +%s)"'
+"""Reads the cluster's own clock. Every batch carries one -- see below."""</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/wagner-austin/API/blob/d89684561/tools/hpc3/src/hpc3/core/logs.py">tools/hpc3/src/hpc3/core/logs.py</a>, the clock probe the silent check reads instead of this machine's time.</p>
         </div>
     </div>
 
@@ -73,15 +76,16 @@
         <h2 class="section">Rules that run</h2>
         <div class="panel prose">
             <p><strong>Preflight is non-skippable.</strong> Submission probes the environment,
-               uploads the real rendered script, and asks the scheduler to test it by path. There
-               is no flag to skip it and no code path that reaches the cluster without it, and
-               the same rendered file is then submitted, so preflight and submission cannot
-               drift.</p>
-            <p><strong>A budget, because nothing else says stop.</strong> The cluster's quality-of-service
-               limits bound what runs at once; nothing bounds the total, and the free partitions do
-               not bill. A 24-GPU three-day sweep is <strong>1,728 GPU-hours</strong>, inside every
-               limit the cluster enforces, and not a reasonable share of a shared machine. So the
-               tool enforces one, before submission and again while running.</p>
+               uploads the real rendered script, and asks the scheduler to test it by path.
+               There is no flag to skip it and no code path that reaches the cluster without
+               it, and the same rendered file is then submitted, so preflight and submission
+               cannot drift.</p>
+            <p><strong>A budget, because nothing else says stop.</strong> The cluster's
+               quality-of-service limits bound what runs at once; nothing bounds the total,
+               and the free partitions do not bill. A 24-GPU three-day sweep is
+               <strong>1,728 GPU-hours</strong>, inside every limit the cluster enforces, and
+               not a reasonable share of a shared machine. So the tool enforces one, before
+               submission and again while running.</p>
             <div class="callout">
                 <p>Both rules exist because the cluster will happily let you do the wrong thing.
                    Neither is a warning the user can dismiss.</p>
@@ -93,10 +97,10 @@
         <h2 class="section">Which job produced this file</h2>
         <div class="panel prose">
             <p>Four claims are enforced rather than asserted: the environment is the pinned one,
-               the staged bytes are the published ones, the run's numerical determinism is declared
-               and recorded, and a result traces back to the run that made it. The ledger is an
-               index from job to image to artifact, so a hash off a results file answers <em>which
-               job trained this?</em></p>
+               the staged bytes are the published ones, the run's numerical determinism is
+               declared and recorded, and a result traces back to the run that made it. The
+               ledger is an index from job to image to artifact, so a hash off a results file
+               answers <em>which job trained this?</em></p>
             <p>That last one is what makes a negative result trustworthy. A null that cannot be
                traced to a specific image and a specific job is not a finding, it is a file.</p>
         </div>
@@ -108,16 +112,29 @@
     <div class="block">
         <h2 class="section">Record</h2>
         <div class="panel prose">
-            <p>Every figure above is bound to a named section of the wiki page
-               <code>hpc3-cli</code> and checked mechanically before this page can deploy. The
-               design record, every rule's incident and every measured fact's measurement, lives
-               in a wiki inside the package itself, which is where the cluster figures on this
-               page are cited from.</p>
+            <p>Every figure above is bound to a named section of a wiki page and checked
+               mechanically before this page can deploy: the counts to <code>hpc3-cli</code>,
+               the cluster measurements to the package's own wiki, which is public and linked
+               below.</p>
             <p><strong>Known limits.</strong> The 102-user and 261-of-621 figures are single
                observations of a shared cluster at one moment, not averages; they say the
-               condition is common enough to design for, not how common it is. The line counts
-               were re-measured on 2026-09-11 and will decay: an earlier set on the source page
-               was three weeks old and understated the package by roughly a third.</p>
+               condition is common enough to design for, not how common it is. The line
+               counts were re-measured on 2026-09-14 and decay: each moved by several hundred
+               lines in the three days before that. This page said "three conditions" until
+               2026-09-14; the fourth and fifth had existed for seventeen days.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The package: <a href="https://github.com/wagner-austin/API/tree/d89684561/tools/hpc3">API/tools/hpc3</a> at <code>d896845</code>; the 102-user measurement is in its <a href="https://github.com/wagner-austin/API/blob/d89684561/tools/hpc3/README.md">README</a>, the 15 commands under <code>[tool.poetry.scripts]</code> in its <a href="https://github.com/wagner-austin/API/blob/d89684561/tools/hpc3/pyproject.toml">pyproject.toml</a>.</li>
+                <li>The five conditions and their measurements: <a href="https://github.com/wagner-austin/API/blob/d89684561/tools/hpc3/wiki/pages/triage-conditions.md">wiki/pages/triage-conditions.md</a>; the code is <a href="https://github.com/wagner-austin/API/blob/d89684561/tools/hpc3/src/hpc3/core/triage.py">core/triage.py</a>.</li>
+                <li>The 21 unrecorded builds: <a href="https://github.com/wagner-austin/API/blob/d89684561/tools/hpc3/wiki/pages/image-ledger-lessons.md">wiki/pages/image-ledger-lessons.md</a>.</li>
+                <li>The budget and the 1,728 GPU-hour example: <a href="https://github.com/wagner-austin/API/blob/d89684561/tools/hpc3/wiki/pages/budget-model.md">wiki/pages/budget-model.md</a>.</li>
+                <li>Preflight: <a href="https://github.com/wagner-austin/API/blob/d89684561/tools/hpc3/src/hpc3/contracts/preflight.py">contracts/preflight.py</a>.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/research-cluster-submission/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
