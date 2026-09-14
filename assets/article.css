@@ -16,6 +16,26 @@
  * same paragraph wherever it appears.
  */
 
+/* The article title, one size down from the site name.
+ *
+ * site.css sets `.header h1` at 3.2rem for the index, where the h1 is a
+ * two-word name and 57.6px is the masthead the operator chose. On an article
+ * the same element holds a full sentence ("How many compartments fit in one
+ * model") and at that size it reads as a banner rather than a title. The
+ * operator said so, looking at it.
+ *
+ * Overridden HERE and not in site.css, for two reasons: the index masthead
+ * must not move, and site.css is hash-pinned by the guard and mirrored into
+ * mcp-proxy, so a change there costs two re-pins for something only articles
+ * want. `.header h1` is (0,1,1); this is (0,2,1) and wins on specificity
+ * rather than on source order, so it survives either file being reordered.
+ * A tighter line-height because a wrapped title at 3.2rem was carrying the
+ * index's looser leading, which is sized for one line. */
+.page .header h1 {
+    font-size: 2.3rem;
+    line-height: 1.15;
+}
+
 /* One continuous ground, same construction as the index: a block element
    carrying the gradient, everything above it transparent.
  *

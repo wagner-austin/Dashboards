@@ -51,36 +51,86 @@
 
     .work, .dashboards { list-style: none; display: grid; gap: 0.8rem; }
 
-    /* ---- category labels in "What I work on" ----
-       Twelve cards in one flat list is a wall, and the operator's ask was that
-       a reader be able to skim the headers and open only what interests them.
-       So the list is broken into four groups by KIND OF WORK rather than by
-       project: a reader deciding whether to keep going is asking what this
-       person can do, not which repository it lived in.
+    /* ---- collapsible categories in "What I work on" ----
+       Fourteen cards in one list is a wall. The operator's ask was that a
+       reader skim the group headers and open only what interests them, so each
+       group is a native <details>, closed by default: no script, keyboard and
+       screen-reader behaviour for free, and the open state survives nothing,
+       which is right for a page a recruiter sees once.
 
-       Written `h3.workcat` rather than `.workcat`, and the lead `p.worklead`,
-       for the reason recorded in article.css beside `p.result`: a bare class
-       at (0,1,0) loses to any descendant rule at (0,1,1), and `.work h3`
-       already exists three lines below. These sit OUTSIDE `.work` so it does
-       not match them today, but the tie is one markup edit away and the
-       failure would be silent. */
-    h3.workcat {
-        color: #fff;
-        font-size: 0.92rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        margin: 2.2rem 0 0.9rem;
+       EVERYTHING HERE SITS ON ITS OWN LIGHT GROUND, NOT BARE ON THE GRADIENT.
+       The previous headers were white text placed directly on the page
+       gradient, and legibility then depended on where the section happened to
+       fall as a percentage of a page whose height changes every time an
+       article is added. Collapsing the groups changes that height again. The
+       same defect was removed from the article pages' Record block on
+       2026-09-11; this is the index instance. So the lead paragraph and each
+       summary row carry the .panel treatment, the text is black, and the
+       gradient underneath is decoration rather than a dependency.
+
+       Written `details.workcat` / `p.worklead` rather than bare classes for
+       the reason beside `p.result` in article.css: a bare class at (0,1,0)
+       loses to a descendant rule at (0,1,1), `.work h3` already exists below,
+       and the tie is one markup edit from a silent failure. */
+    .worklead-panel {
+        border-top: 1px solid rgba(255, 255, 255, 0.85);
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.88) 0%,
+            rgba(255, 255, 255, 0.68) 40%,
+            rgba(255, 255, 255, 0.45) 72%,
+            rgba(255, 255, 255, 0.26) 100%
+        );
+        padding: 0.95rem 1.75rem 1.05rem;
+        margin-bottom: 0.8rem;
     }
-    /* The first category follows the lead paragraph, not a card list, so it
-       does not need the separation the others do. */
-    p.worklead + h3.workcat { margin-top: 1.4rem; }
+    .worklead-panel h2.section { margin-bottom: 0.5rem; color: #000; }
     p.worklead {
-        color: #c9ced6;
+        color: #000;
         font-size: 1.05rem;
         line-height: 1.6;
         max-width: 68ch;
     }
+    details.workcat { margin-top: 0.8rem; }
+    details.workcat > summary {
+        cursor: pointer;
+        list-style: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.85);
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.88) 0%,
+            rgba(255, 255, 255, 0.68) 40%,
+            rgba(255, 255, 255, 0.45) 72%,
+            rgba(255, 255, 255, 0.26) 100%
+        );
+        padding: 0.85rem 1.75rem;
+        color: #000;
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: background 0.2s;
+    }
+    details.workcat > summary::-webkit-details-marker { display: none; }
+    /* A disclosure triangle drawn by us so it is the same in every browser and
+       rotates when open, which the default marker does not do consistently. */
+    details.workcat > summary::before {
+        content: "\25B8";
+        display: inline-block;
+        width: 1.2em;
+        transition: transform 0.15s;
+    }
+    details.workcat[open] > summary::before { transform: rotate(90deg); }
+    details.workcat > summary:hover { background: rgba(255, 255, 255, 0.98); }
+    details.workcat > summary .count {
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--gray-600);
+        margin-left: 0.5rem;
+    }
+    /* The card list inside an open group sits directly under its summary. */
+    details.workcat > ul.work { margin-top: 0.8rem; }
 
     .work h3, .dashboards h3 {
         font-size: 1.3rem;
@@ -236,7 +286,7 @@
         <h2 class="section">Dashboards</h2>
         <ul class="dashboards">
             <li><a class="panel" href="https://corvis.austinwagner.org/dashboard">
-                <h3>corvis</h3>
+                <h3>Corvis</h3>
                 <p>The MCP and agent platform the rest of this list runs on. Shows every workspace an
                    account belongs to, the tool families it can reach and the wikis it may read, across
                    <strong>27 backends behind one router</strong>. Sign-in required: the link goes
@@ -270,12 +320,15 @@
     </div>
 
     <div class="block">
-        <h2 class="section light">What I work on</h2>
-        <p class="worklead">Grouped by the kind of work rather than by project. Each write-up is a
-           two-minute read, and every figure in one is bound to a cited source and checked before
-           the page can deploy.</p>
+        <div class="worklead-panel">
+            <h2 class="section">What I work on</h2>
+            <p class="worklead">Grouped by the kind of work rather than by project. Open a
+               group to see its write-ups. Each is a two-minute read, and every figure in one
+               is bound to a cited source and checked before the page can deploy.</p>
+        </div>
 
-        <h3 class="workcat">Machine learning research</h3>
+        <details class="workcat">
+            <summary>Machine learning research <span class="count">2</span></summary>
         <ul class="work">
             <li><a class="panel" href="/preview/measuring-what-a-corpus-installs/">
                 <h3>Measuring what a corpus installs</h3>
@@ -293,8 +346,10 @@
                    <strong>from &minus;45.4% to +44.6%</strong>.</p>
             </a></li>
         </ul>
+        </details>
 
-        <h3 class="workcat">Reproducibility and research infrastructure</h3>
+        <details class="workcat">
+            <summary>Reproducibility and research infrastructure <span class="count">4</span></summary>
         <ul class="work">
             <li><a class="panel" href="/preview/reproducible-gpu-inference/">
                 <h3>Reproducible GPU inference</h3>
@@ -328,8 +383,10 @@
                    tool an agent calls.</p>
             </a></li>
         </ul>
+        </details>
 
-        <h3 class="workcat">Reverse engineering and system identification</h3>
+        <details class="workcat">
+            <summary>Reverse engineering and system identification <span class="count">2</span></summary>
         <ul class="work">
             <li><a class="panel" href="/preview/a-model-that-checks-itself/">
                 <h3>A model that checks itself</h3>
@@ -348,8 +405,10 @@
                    a lucky map.</p>
             </a></li>
         </ul>
+        </details>
 
-        <h3 class="workcat">Coordinating AI sessions</h3>
+        <details class="workcat">
+            <summary>Coordinating AI sessions <span class="count">2</span></summary>
         <ul class="work">
             <li><a class="panel" href="/preview/a-board-that-refuses/">
                 <h3>A board that refuses</h3>
@@ -368,8 +427,10 @@
                    itself guarded against gaining an unchecked fourth input.</p>
             </a></li>
         </ul>
+        </details>
 
-        <h3 class="workcat">Architecture and open source</h3>
+        <details class="workcat">
+            <summary>Architecture and open source <span class="count">4</span></summary>
         <ul class="work">
             <li><a class="panel" href="/preview/architecture-as-code/">
                 <h3>MCP &amp; agent infrastructure</h3>
@@ -400,13 +461,8 @@
                    socket-timeout fix, and test coverage. Nine of twelve attempted, with the three
                    that did not land in the distributed-training path.</p>
             </a></li>
-            <li class="panel">
-                <h3>SCiL 2026</h3>
-                <p>Co-author, <strong>Quantifying Mutual Intelligibility Gradients in Turkic
-                   Languages Using Language Models</strong>. Also accepted at HSP 2026 and Tu+11,
-                   both at MIT.</p>
-            </li>
         </ul>
+        </details>
     </div>
 
 </div>
