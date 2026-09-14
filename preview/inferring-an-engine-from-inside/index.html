@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
 <meta name="robots" content="noindex, nofollow">
-<title>Inferring an engine from the inside &middot; Austin Wagner</title>
+<title>Inferring an engine from inside &middot; Austin Wagner</title>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/article.css">
 </head>
@@ -17,7 +17,7 @@
         <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
     </a>
     <div class="hero-text">
-        <h1>Inferring an engine from the inside</h1>
+        <h1>Inferring an engine from inside</h1>
         <p class="role"><a href="/preview/">Austin Wagner</a></p>
     </div>
 </div>
@@ -29,8 +29,8 @@
             <p class="result">A game ships as an obfuscated Java binary whose class names
                change between releases. I inject code into its running JVM to read real state
                and issue real orders, with <strong>no pixels and no synthetic input</strong>,
-               and I made the result bit-identical per seed so a better strategy can be told
-               apart from a lucky map.</p>
+               and I made the result bit-identical per seed within one environment so a
+               better strategy can be told apart from a lucky map.</p>
             <dl class="facts">
                 <dt>Problem</dt>
                 <dd>Measure strategies against a closed engine, when the engine is
@@ -38,15 +38,17 @@
                     release.</dd>
                 <dt>Result</dt>
                 <dd>A headless harness reading real state from inside the JVM, with runs
-                    that reproduce bit-for-bit per seed.</dd>
+                    certified bit-identical <strong>12</strong> of 12 pairs over
+                    <strong>250</strong> samples each, same seed and same environment.</dd>
                 <dt>Scale</dt>
-                <dd><strong>729</strong> doctrine files and <strong>247</strong> sweeps on
-                    disk: the record of what was refuted, not only what worked.</dd>
+                <dd><strong>201</strong> authored doctrine files and <strong>235</strong> sweep
+                    definitions committed, plus <strong>554</strong> generated candidates the
+                    repository refuses on purpose.</dd>
                 <dt>Stack</dt>
                 <dd>Java agent and bytecode patching, Python planning and evaluation,
                     Postgres-backed match queue.</dd>
                 <dt>Full record</dt>
-                <dd>Its own wiki of 5 hubs and <strong>55</strong> pages, with a dated log of
+                <dd>Its own wiki of 5 hubs and <strong>56</strong> pages, with a dated log of
                     every measurement and verdict.</dd>
             </dl>
         </div>
@@ -83,15 +85,27 @@
         <div class="panel prose">
             <p>Seeded generators, lockstep world handoff and a pinned frame delta make a solo
                run bit-identical per seed, with a world digest in the trace that proves it.
-               Without that, a better strategy is indistinguishable from a lucky map.</p>
+               The digest is computed each sample from every visible entity's identity and
+               position, so two traces that agree on it agreed about the whole board, and the
+               frame where they stop agreeing names the leak.</p>
+<pre><code>WHY THE WORLD COLUMN AND NOT THE SCORECARD. A scorecard is an endpoint, and
+two runs can reach the same verdict by different routes -- the determinism
+campaign's forked pairs frequently ended alike. The trace's world digest is
+computed per sample from every visible entity's identity and position, so two
+traces agreeing on it agreed about the whole board at every step.</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/wagner-austin/API/blob/d89684561/clients/RustedWarfareBot/src/rw_bot/harness/replication.py">clients/RustedWarfareBot/src/rw_bot/harness/replication.py</a>, module docstring.</p>
+            <p>The certified property is exact and narrower than it sounds: same seed, same
+               environment, same match, held across a <strong>24</strong>-member panel in
+               Docker and on the cluster alike. The same members compared <em>across</em>
+               the two environments diverge from frame <strong>300</strong>, so
+               cross-environment identity is an open question, and the pinned delta is a new
+               regime whose numbers are not comparable to earlier batches.</p>
             <p>Experiments are controlled by construction too: the file declaring behaviour
                flags has no optional fields, so an experimental arm differs from its control
                by exactly what the experiment says it does. Sweeps freeze a code snapshot per
-               batch, which keeps the working tree editable while a run is in flight.</p>
-            <div class="callout">
-                <p>Keeping the refutations is deliberate. A directory holding only the
-                   configurations that worked is not an experimental record.</p>
-            </div>
+               batch, which keeps the working tree editable while a run is in flight.
+               Keeping the refutations is deliberate: a directory holding only the
+               configurations that worked is not an experimental record.</p>
         </div>
     </div>
 
@@ -104,13 +118,30 @@
             <p>Every figure above is bound to a named section of the wiki page
                <code>rustedwarfarebot</code> and checked mechanically before this page can
                deploy. The project keeps a second, deeper wiki of its own for engine
-               internals and mechanics, versioned against the jar it was read from.</p>
+               internals and mechanics, versioned against the jar it was read from, and it
+               is public.</p>
             <p><strong>Known limits.</strong> The counts move fast and are dated rather than
-               fixed: the doctrine count was 95 a month before it was 729. The standing
-               target, a measured win rate against the built-in AI at its hardest setting,
-               is a goal on that page, not a result claimed here. The project was paused
-               green in August and is active again; the page said "paused" for three weeks
-               after it was not, which its own dated-count rule is what caught.</p>
+               fixed. Until 2026-09-14 this page said <strong>729</strong> doctrine files; that
+               was a working-tree count that summed the authored files with the search
+               drivers' per-round candidates, which the repository ignores because a
+               committed round would read as a hand-designed arm. The standing target, a
+               measured win rate against the built-in AI at its hardest setting, is a goal
+               on that page, not a result claimed here. The project was paused green in
+               August and is active again; the source page said "paused" for three weeks
+               after it was not.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The project: <a href="https://github.com/wagner-austin/API/tree/d89684561/clients/RustedWarfareBot">API/clients/RustedWarfareBot</a> at <code>d896845</code>; the agent under <a href="https://github.com/wagner-austin/API/tree/d89684561/clients/RustedWarfareBot/agent">agent/</a>, the authored doctrines under <a href="https://github.com/wagner-austin/API/tree/d89684561/clients/RustedWarfareBot/doctrines">doctrines/</a>, the sweeps under <a href="https://github.com/wagner-austin/API/tree/d89684561/clients/RustedWarfareBot/sweeps">sweeps/</a>.</li>
+                <li>Why the generated candidates are not committed: <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/RustedWarfareBot/.gitignore">.gitignore</a>, the two comments above <code>doctrines/search/</code> and <code>doctrines/evolve/</code>.</li>
+                <li>The determinism certification and its scope: <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/RustedWarfareBot/wiki/pages/policy-determinism.md">wiki/pages/policy-determinism.md</a>; the pinned delta is <code>PINNED_DELTA_MS</code> in <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/RustedWarfareBot/src/rw_bot/harness/campaign_match.py">harness/campaign_match.py</a>.</li>
+                <li>The verifier-as-oracle gate: the <code>agent-selftest</code> target in the project <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/RustedWarfareBot/Makefile">Makefile</a>.</li>
+                <li>The project wiki: <a href="https://github.com/wagner-austin/API/tree/d89684561/clients/RustedWarfareBot/wiki">wiki/</a>, every engine page carrying a <code>game_version</code>.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/inferring-an-engine-from-inside/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
