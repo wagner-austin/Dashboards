@@ -14,7 +14,7 @@
       "wiki": "mcps-codebase",
       "wiki_page": "corvis-dashboard-human-surface",
       "section": "A hostname must be declared TWICE, and since 2026-09-11 that IS checked",
-      "note": "Response to a request carrying the dashboard Host header, measured in the same 2026-09-11T04:17Z pair, with the route registered and the boot log confirming it. The DNS-rebinding allowlist refused the request before any handler ran, and named no cause. Appears four times in the article, always this measurement."
+      "note": "Response to a request carrying the dashboard Host header, measured in the same 2026-09-11T04:17Z pair, with the route registered and the boot log confirming it. The DNS-rebinding allowlist refused the request before any handler ran, and named no cause. Every occurrence in the article is this measurement."
     },
     {
       "figure": "404",
@@ -28,7 +28,7 @@
       "wiki": "mcps-codebase",
       "wiki_page": "corvis-dashboard-human-surface",
       "section": "The view model, and what it deliberately does not carry",
-      "note": "Services that would require rebuilding if the wiki list were read from the canonical source registry instead of the tenant row, because reaching it needs a root re-export that moves the shared contract hash. Counts services in the cascade, not packages."
+      "note": "Services that would have required rebuilding had the wiki list been read from the canonical source registry, because reaching it needs a root re-export that moves the shared contract hash. The list was removed the same day (bfdf1436), so this is the cost of a road not taken. Counts services in the cascade, not packages."
     }
   ],
   "allowed_non_figures": []
