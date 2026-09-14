@@ -2,6 +2,13 @@
   "sprites": {
     "bunny": {
       "animations": {
+        "alert": {
+          "source": "originals/bunny/bunny_upright_animation/upright.gif",
+          "widths": [40],
+          "contrast": 1.8,
+          "invert": true,
+          "directions": ["left", "right"]
+        },
         "walk": {
           "source": "originals/bunny/bunny_walk_animation/bunny.gif",
           "widths": [50],
@@ -62,6 +69,13 @@
     },
     "lion": {
       "animations": {
+        "run": {
+          "source": "originals/lion/lion_run_animation/run.gif",
+          "widths": [64],
+          "contrast": 1.4,
+          "invert": true,
+          "directions": ["left", "right"]
+        },
         "walk": {
           "source": "originals/lion/lion_walk_animation/walk.gif",
           "widths": [64],
@@ -196,13 +210,13 @@
   },
   "autorun": {
     "enabled": true,
-    "idleDelay": 1.5,
+    "idleDelay": 4,
     "minLeg": 3,
-    "maxLeg": 9,
-    "minPause": 0.8,
-    "maxPause": 3,
-    "turnChance": 0,
-    "hopChance": 0,
+    "maxLeg": 6,
+    "minPause": 2,
+    "maxPause": 5,
+    "turnChance": 0.2,
+    "hopChance": 0.2,
     "jumpChance": 0.45
   },
   "audio": {

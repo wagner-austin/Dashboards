@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rabbit & Blue Lion · Animation Gallery</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #0a1018; color: #e7edf4; }
+    * { box-sizing: border-box; } body { margin: 0; }
+    main { max-width: 1180px; margin: auto; padding: 48px 24px 80px; }
+    .eyebrow { color: #70c3ff; letter-spacing: .16em; text-transform: uppercase; font-size: 12px; }
+    h1 { font-size: clamp(32px, 6vw, 62px); letter-spacing: -.045em; margin: 12px 0; }
+    p { color: #aebdcc; line-height: 1.65; max-width: 780px; }
+    nav { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0; }
+    a { color: #86ccff; } nav a { padding: 12px 18px; border: 1px solid #304357; border-radius: 9px; text-decoration: none; }
+    nav a:first-child { background: #7ac7ff; color: #0a1828; border-color: #7ac7ff; }
+    iframe { border: 1px solid #293c50; width: 100%; height: 430px; border-radius: 14px; background: #0a0a0a; }
+    section { margin-top: 48px; } h2 { font-size: 26px; margin-bottom: 10px; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    figure { margin: 0; padding: 12px; background: #14202c; border: 1px solid #28394b; border-radius: 12px; }
+    figure img { display: block; width: 100%; height: 190px; object-fit: contain; background: white; border-radius: 6px; image-rendering: pixelated; }
+    figcaption { font-size: 12px; margin-top: 12px; color: #b8c9d9; }
+    .loop { display: grid; grid-template-columns: 250px 1fr; gap: 24px; align-items: center; margin: 24px 0; }
+    .loop img { width: 250px; height: 210px; object-fit: contain; background: white; border-radius: 12px; }
+    .links { display: flex; flex-wrap: wrap; gap: 18px; }
+    @media (max-width: 640px) { main { padding: 28px 16px; } .cards { grid-template-columns: repeat(2, 1fr); } .loop { grid-template-columns: 1fr; } figure img { height: 150px; } }
+  </style>
+</head>
+<body><main>
+  <div class="eyebrow">A small forest, two friends</div>
+  <h1>Rabbit & Blue Lion</h1>
+  <p>A blue lion that keeps up, a rabbit that stops to look around, and a forest drawn entirely in text. Play either character; the other comes along.</p>
+  <nav><a href="./">Play together</a><a href="./?character=lion">Take the lion for a run</a><a href="preview.html">Inspect every ASCII animation</a></nav>
+  <iframe src="./" title="Playable rabbit and lion ASCII world" loading="lazy"></iframe>
+  <p>WASD / arrows move · Shift runs · Space jumps · R resets. On touch screens, drag to move and tap to jump. Leave the controls alone to watch the rabbit explore, avoid nearby trees, wait for its friend, and sit upright.</p>
+  <section>
+    <div class="eyebrow">Four-frame cycle</div><h2>The lion's sprint</h2>
+    <p>A separate gallop for catching up or holding Shift. Walking, jumping, front/back movement, and turns retain their own sequences.</p>
+    <div class="loop"><img src="originals/lion/lion_run_animation/run.gif" alt="Blue lion galloping through four poses"><div><p>The source frames become 64-character-wide ASCII sprites. Left and right use the same art mirrored by the converter.</p><div class="links"><a href="originals/lion/lion_run_animation/sheet.png" download>Download sheet</a><a href="originals/lion/lion_run_animation/run.gif" download>Download GIF</a></div></div></div>
+    <div class="cards">
+      <figure><img src="originals/lion/lion_run_animation/frame_0_delay-0.08s.png" alt="Lion pushing off"><figcaption>01 · Push off</figcaption></figure>
+      <figure><img src="originals/lion/lion_run_animation/frame_1_delay-0.08s.png" alt="Lion airborne"><figcaption>02 · Airborne</figcaption></figure>
+      <figure><img src="originals/lion/lion_run_animation/frame_2_delay-0.08s.png" alt="Lion landing"><figcaption>03 · Land</figcaption></figure>
+      <figure><img src="originals/lion/lion_run_animation/frame_3_delay-0.08s.png" alt="Lion gathering legs"><figcaption>04 · Gather</figcaption></figure>
+    </div>
+  </section>
+  <section>
+    <div class="eyebrow">Four-frame pose sequence</div><h2>A moment to look around</h2>
+    <p>The rabbit raises its chest, sits on its hind legs, and perks up its ears. In the game the final pose holds while resting; moving takes control back immediately.</p>
+    <div class="loop"><img src="originals/bunny/bunny_upright_animation/upright.gif" alt="Rabbit sitting up on its hind legs"><div><p>Every pose shares one canvas and baseline. The rabbit grows taller by standing up, with no per-frame resizing.</p><div class="links"><a href="originals/bunny/bunny_upright_animation/sheet.png" download>Download sheet</a><a href="originals/bunny/bunny_upright_animation/upright.gif" download>Download GIF</a></div></div></div>
+    <div class="cards">
+      <figure><img src="originals/bunny/bunny_upright_animation/frame_0_delay-0.3s.png" alt="Rabbit crouching"><figcaption>01 · Rest</figcaption></figure>
+      <figure><img src="originals/bunny/bunny_upright_animation/frame_1_delay-0.3s.png" alt="Rabbit lifting chest"><figcaption>02 · Rise</figcaption></figure>
+      <figure><img src="originals/bunny/bunny_upright_animation/frame_2_delay-0.3s.png" alt="Rabbit upright in profile"><figcaption>03 · Sit upright</figcaption></figure>
+      <figure><img src="originals/bunny/bunny_upright_animation/frame_3_delay-0.3s.png" alt="Rabbit upright looking toward viewer"><figcaption>04 · Look around</figcaption></figure>
+    </div>
+  </section>
+</main></body></html>

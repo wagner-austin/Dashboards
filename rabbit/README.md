@@ -1,5 +1,39 @@
 # Rabbit ASCII Animation Engine
 
+## Rabbit and blue lion companion
+
+- Play: <https://austinwagner.org/rabbit/>
+- Control the lion: <https://austinwagner.org/rabbit/?character=lion>
+- Source frames and GIFs: <https://austinwagner.org/rabbit/gallery.html>
+- ASCII animation inspector: <https://austinwagner.org/rabbit/preview.html>
+
+Both characters appear together. WASD/arrows control the leader, Shift increases
+horizontal speed by 1.8x, and Space jumps. The lion has a distinct four-frame
+sprint; the companion walks nearby, runs to catch up, turns before depth hops,
+and joins jumps. It tracks relative world displacement, including depth wrapping
+and camera resets. Separate enter/leave distances prevent walk/run flicker.
+
+After resting for 0.65 seconds, the rabbit plays four upright poses and holds the
+last one. Movement immediately returns to the normal locomotion state machine.
+Autopilot takes over after four seconds without input, senses tree trunks in its
+path, reverses away from nearby obstacles, and waits when its companion is more
+than 225 world units away. It remains a local rules-based controller, with no
+remote model calls or long-range pathfinding. User input retains priority.
+
+`entities/Adventure.ts` owns companion and idle-pose timing;
+`entities/Companion.ts` advances immutable snapshots;
+`input/Awareness.ts` reads the periodic world. Asset loading uses the existing
+transport through `io/adventure-io.ts`. The renderer uses a fourth text layer
+for companion color and resolves occlusion across all four buffers.
+
+Art generation prompts and reproducible sheet registration are recorded in
+[`originals/GENERATION.md`](originals/GENERATION.md). New source sheets and PNGs
+are retained alongside GIFs and generated ASCII modules.
+
+Run `make check` for guards, Ruff, strict mypy, ESLint, TypeScript, pytest/xdist,
+and Vitest. Both coverage suites require 100%. Run `make build` to regenerate
+and bundle; `make dev` serves the game and gallery at `http://localhost:5173`.
+
 A 3D ASCII art engine that renders an interactive world entirely as text. A bunny walks, jumps, and hops through an infinite forest of animated trees -- all drawn with characters like `# + - .` in a monospace font, updated 60 times per second.
 
 ## Quick Start

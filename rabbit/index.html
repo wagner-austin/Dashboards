@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1024, viewport-fit=cover, user-scalable=no">
-    <title>Bunny Scroller</title>
+    <title>Rabbit & Blue Lion</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -26,7 +26,7 @@
            Colours come from the `colors` block in config.json and are applied
            at startup by applyLayerColors. The values here are only what shows
            before the config lands. */
-        #screen, #screen-actor, #screen-foreground {
+        #screen, #screen-actor, #screen-foreground, #screen-companion {
             font-family: "Courier New", monospace;
             /* Character size sets the WHOLE scene's scale — trees, rabbit and
                glyphs alike — because Viewport.ts derives the grid as
@@ -44,13 +44,24 @@
 
         /* Pointer events would otherwise be swallowed by whichever layer sits
            on top, which is not the one the touch handler listens on. */
-        #screen-actor, #screen-foreground { pointer-events: none; }
+        #screen-actor, #screen-foreground, #screen-companion { pointer-events: none; }
+        nav { position: fixed; top: 16px; left: 20px; z-index: 10; color: #bcc6ce;
+            font: 13px/1.7 system-ui, sans-serif; background: #0a0a0ae8; padding: 10px 16px; border: 1px solid #263440; border-radius: 12px; }
+        nav strong { color: #fff; } nav a { color: #7fd1ff; margin-right: 14px; }
+        @media (max-height: 400px) { nav { display: none; } }
     </style>
 </head>
 <body>
     <pre id="screen"></pre>
+    <pre id="screen-companion" aria-hidden="true"></pre>
     <pre id="screen-actor"></pre>
     <pre id="screen-foreground"></pre>
+    <nav aria-label="Game controls">
+      <strong>Rabbit & Blue Lion</strong><br>
+      WASD / arrows move · Shift runs · Space jumps · R resets<br>
+      Drag to move · Tap to jump · Rest to look around<br>
+      <a href="?character=bunny">Play rabbit</a><a href="?character=lion">Play lion</a><a href="gallery.html">Animation gallery</a>
+    </nav>
     <!--
       The bundle filename carries a content hash, which makes the bundle itself
       safe to cache forever. But this page is served with max-age=600, so a
