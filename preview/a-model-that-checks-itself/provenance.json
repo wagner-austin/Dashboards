@@ -1,8 +1,10 @@
 {
   "deliverable": "preview/a-model-that-checks-itself/index.html",
-  "demonstrates": "Reverse-engineered an undocumented game's encrypted protocol from captured traffic, including a container whose subtype byte is scrambled per session and must be identified structurally, and built truth-keeping machinery that has since refuted three of my own conclusions -- including the stated ending of the best session it ever ran.",
+  "demonstrates": "Reverse-engineered an undocumented game's encrypted protocol from captured traffic, built one dispatcher per wire byte that a corpus sweep then pruned, and built truth-keeping machinery that has since refuted three of my own conclusions, including the stated ending of the best session it ever ran.",
   "claims": [
-    {"figure": "32", "wiki": "me", "wiki_page": "tankpitbot", "section": "Knowledge — the decoded protocol", "note": "Message types decoded, each pinned to a minimum-length signature. Re-counted 2026-09-12 from MSG_MIN_LENGTHS and unchanged since 2026-08-12; the keys are ord() character literals, so a hex-anchored grep returns zero."},
+    {"figure": "32", "wiki": "me", "wiki_page": "tankpitbot", "section": "Knowledge — the decoded protocol", "note": "Message types decoded, each pinned to a minimum-length signature. Re-counted 2026-09-14 from MSG_MIN_LENGTHS and unchanged since 2026-08-12; the keys are ord() character literals, so a hex-anchored grep returns zero."},
+    {"figure": "150", "wiki": "me", "wiki_page": "tankpitbot", "section": "Knowledge — the decoded protocol", "note": "Sessions in the 2026-06-20 corpus sweep that justified deleting six length-based container decoders; recorded on the project wiki's decode-coverage page."},
+    {"figure": "48,304", "wiki": "me", "wiki_page": "tankpitbot", "section": "Knowledge — the decoded protocol", "note": "Container bodies in that sweep, none of which fired any of the six decoders."},
 
     {"figure": "84", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Kills in the marathon session, artifact bot-20260825-212920. One session, recorded with its id, not an average."},
     {"figure": "0", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Deaths in that session."},
@@ -11,13 +13,16 @@
     {"figure": "12", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Milliseconds in which a map open falsely completed by consuming an orphan flag from an earlier stalled open."},
     {"figure": "5.7", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Seconds after dispatch that the session's final frame arrived, disproving my own claim that the connection had died."},
     {"figure": "3.7", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Seconds after the bot had already quit that the same frame arrived. Latency degraded, the wire did not."},
-    {"figure": "102", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Over-budget latency observations, matching the reported stall count exactly. The exact match is the evidence that the stalls were never stalls."},
+    {"figure": "102", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Over-budget latency observations in the larger paralysis run, matching its stall count exactly; the smaller run matched 11 against 12 and the article says so by claiming the exact match for the larger run only."},
     {"figure": "7", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Of ten runs that the second probe of a shipped optimisation dropped, after the first probed ten of ten clean."},
     {"figure": "10", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "The probe size in both rounds; the first was 10/10 clean, which alone would have shipped the change."},
-    {"figure": "6,879", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Tests at full statement and branch coverage, re-counted 2026-09-12; was 6,208 on 2026-08-26."},
+    {"figure": "7,007", "wiki": "me", "wiki_page": "tankpitbot", "section": "What it actually does, and the four days that are worth the interview", "note": "Tests collected by pytest --co on 2026-09-14 at d2bb1e4dc, the count the gate runs. Replaces a 6,879 def-test count whose command was not recorded and could not be reproduced."},
 
-    {"figure": "6", "wiki": "me", "wiki_page": "tankpitbot", "section": "Test discipline", "note": "Hubs in the project's own wiki. Unchanged across every count since 2026-08-08."},
-    {"figure": "83", "wiki": "me", "wiki_page": "tankpitbot", "section": "Test discipline", "note": "Pages in that wiki, re-counted 2026-09-12; was 74 on 2026-08-26."}
+    {"figure": "6", "wiki": "me", "wiki_page": "tankpitbot", "section": "Test discipline", "note": "Hubs in the project's own wiki, unchanged since 2026-08-08; the same string is also the six mutation survivors named in that section, and both readings resolve there."},
+    {"figure": "83", "wiki": "me", "wiki_page": "tankpitbot", "section": "Test discipline", "note": "Pages in that wiki, re-counted 2026-09-14 and unchanged since 2026-09-12."},
+    {"figure": "37", "wiki": "me", "wiki_page": "tankpitbot", "section": "Test discipline", "note": "Invariant guards the interrupted mutation sweep got through before naming its six survivors."},
+    {"figure": "483", "wiki": "me", "wiki_page": "tankpitbot", "section": "Test discipline", "note": "Invariant guards in the project at the time of that sweep."},
+    {"figure": "100", "wiki": "me", "wiki_page": "tankpitbot", "section": "Test discipline", "note": "The coverage floor in pyproject.toml, fail_under = 100, quoted in the Sources list."}
   ],
   "allowed_non_figures": []
 }

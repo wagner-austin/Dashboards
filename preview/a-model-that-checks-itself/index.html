@@ -32,8 +32,8 @@
                conclusions being wrong</strong>, including the ending of its best result.</p>
             <dl class="facts">
                 <dt>Problem</dt>
-                <dd>No documentation, an encrypted wire, and a subtype byte that is
-                    scrambled per session so it cannot be trusted.</dd>
+                <dd>No documentation and an encrypted wire, with a key table derived per
+                    session from a value the server injects into the page.</dd>
                 <dt>Result</dt>
                 <dd><strong>32</strong> message types decoded, each pinned to a signature,
                     driving an autonomous bot that plays full sessions.</dd>
@@ -44,24 +44,34 @@
                 <dd>Python, Playwright and the Chrome DevTools Protocol, a hierarchical
                     state machine, a simulated server.</dd>
                 <dt>Gate</dt>
-                <dd><strong>6,879</strong> tests at full statement and branch coverage, no
-                    mocks, mutation testing on top.</dd>
+                <dd><strong>7,007</strong> tests at full statement and branch coverage, no
+                    mocks. A partial mutation sweep on top, not a standing check.</dd>
             </dl>
         </div>
     </div>
 
     <div class="block">
-        <h2 class="section">The byte that cannot be trusted</h2>
+        <h2 class="section">One decoder per wire byte</h2>
         <div class="panel prose">
             <p>Traffic is captured through the browser's own socket, because synthetic
                events do not work: commands have to travel the real connection. The codec is
                XOR with a static key and a per-session magic key, and I reversed both
                directions, encode and decode.</p>
-            <p>One container is the detail worth an interview. Its payloads cannot be
-               identified by their subtype byte, because that byte is scrambled per session.
-               So the decoder identifies them <em>structurally</em>, by length and byte
-               pattern. The obvious approach fails, and it fails because of a property of the
-               system rather than a mistake in the code.</p>
+            <p>The container envelope has one dispatcher: subtype-first for everything it
+               tunnels, structural for the few shapes that carry no unique subtype byte. The
+               detail worth an interview is what a corpus did to it. Six length-based
+               fallbacks were deleted after a sweep of <strong>150</strong> sessions and
+               <strong>48,304</strong> container bodies showed zero production fires for any
+               of them. Decoders are removed on evidence, not kept in case.</p>
+<pre><code>def decode_0x2e_message(data: bytes) -&gt; BinaryMessage:
+    """Decode a 0x2E container body - single source of truth.
+
+    Subtype-first dispatch covers every protocol-tunneled type (handed
+    to the protocol decoder for that subtype). Container-only subtypes
+    with length-based variants (...) and container types without a unique
+    subtype byte (...) are handled by `decode_container_message`, called
+    as a fallback.</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/wagner-austin/API/blob/d89684561/clients/TankpitBot/src/tankpit_bot/protocol/decoders/tank.py">clients/TankpitBot/src/tankpit_bot/protocol/decoders/tank.py</a>, the dispatcher's docstring, two parenthetical lists elided.</p>
         </div>
     </div>
 
@@ -81,12 +91,11 @@
                already quit. What degraded was latency, not the wire.</p>
             <p>The same disease then turned up a third time, in a different subsystem: every
                reported movement stall was fuel-starved latency crossing a fixed local
-               deadline. The over-budget tail counts matched the stall counts exactly,
-               <strong>102</strong> to <strong>102</strong>. The stalls were never stalls.</p>
-            <div class="callout">
-                <p>One mechanism, three disguises: a slow answer crossing a fixed deadline,
-                   minting evidence that something downstream then believes.</p>
-            </div>
+               deadline. In the larger run the over-budget tail count matched the stall count
+               exactly, <strong>102</strong> to <strong>102</strong>. The stalls were never
+               stalls.</p>
+            <p>One mechanism, three disguises: a slow answer crossing a fixed deadline,
+               minting evidence that something downstream then believes.</p>
         </div>
     </div>
 
@@ -99,9 +108,10 @@
                re-encode unchanged. Invariants raise where they are violated rather than
                after several observations of the consequence.</p>
             <p>The part I would keep in any project: each machine-checked claim about the
-               game's physics is one executable symbol, re-derived from the run archive on
-               every build. <strong>A measured claim that stops holding fails the build
-               instead of quietly rotting.</strong></p>
+               game's physics is one executable symbol, verified against the value or probe
+               grid its wiki claim records on every build, and re-derived from the run
+               archive by a separate audit. <strong>A measured claim that stops holding
+               fails the build instead of quietly rotting.</strong></p>
             <p>It earned that discipline. An optimisation probed ten clean runs out of ten,
                so I built and gated it; a second probe minutes later dropped <strong>7</strong>
                of 10, and it was reverted the same night, before it ever ran live. Round one
@@ -118,14 +128,28 @@
             <p>Every figure above is bound to a named section of the wiki page
                <code>tankpitbot</code> and checked mechanically before this page can deploy.
                The project keeps its own wiki of 6 hubs and <strong>83</strong> pages as the
-               source of truth for wire protocol and mechanics, and its README defers to that
-               wiki when the two disagree.</p>
-            <p><strong>Known limits.</strong> The session figures are one session, recorded
-               with its artifact id, not an average over many. The line counts move and are
-               dated: re-measuring for this article found the probe suite had moved
-               directories entirely, so the reproduction command recorded on the source page
-               returned a count of zero rather than an error, which is the failure mode a
-               dated figure is supposed to prevent and did.</p>
+               source of truth for wire protocol and mechanics; the session figures are in
+               its log with their artifact ids.</p>
+            <p><strong>Known limits.</strong> The session figures are one session, not an
+               average over many. The mutation sweep covered <strong>37</strong> of
+               <strong>483</strong> invariant guards once, found <strong>6</strong> survivors,
+               and killed them; it is not run on every build. Until 2026-09-14 this page said
+               the container's subtype byte was scrambled per session and could not be
+               trusted, a claim the decoder and the project's cipher page do not make;
+               re-measuring the numbers twice had not caught a wrong sentence.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The project: <a href="https://github.com/wagner-austin/API/tree/d89684561/clients/TankpitBot">API/clients/TankpitBot</a> at <code>d896845</code>.</li>
+                <li>The 32 signatures: <code>MSG_MIN_LENGTHS</code> in <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/TankpitBot/src/tankpit_bot/sniffer/constants.py">sniffer/constants.py</a>.</li>
+                <li>The cipher and the decoder inventory, with the corpus sweep: <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/TankpitBot/wiki/pages/xor-cipher.md">wiki/pages/xor-cipher.md</a> and <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/TankpitBot/wiki/pages/decode-coverage.md">wiki/pages/decode-coverage.md</a>.</li>
+                <li>The marathon, the two refutations and the reverted burst: <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/TankpitBot/wiki/log.md">wiki/log.md</a>, entries dated 2026-08-25 and 2026-08-26, artifact <code>bot-20260825-212920</code>.</li>
+                <li>The gate: <code>fail_under = 100</code> and <code>branch = true</code> in <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/TankpitBot/pyproject.toml">pyproject.toml</a>.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/a-model-that-checks-itself/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
