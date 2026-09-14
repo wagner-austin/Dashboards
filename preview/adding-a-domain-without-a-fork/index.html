@@ -28,15 +28,17 @@
         <div class="panel">
             <p class="result">I built a risk-prediction service for loan covenants, then
                generalised it so a new subject is a registration rather than a fork. Two more
-               domains have since been added <strong>without editing the shared training,
-               explainability or streaming machinery at all</strong>.</p>
+               domains have since been added <strong>without touching the shared training or
+               explanation libraries</strong>; what they did change was the seam they plug
+               into, and that is the honest shape of generalising something that exists.</p>
             <dl class="facts">
                 <dt>Problem</dt>
                 <dd>A model service written for one subject usually has that subject's
                     assumptions baked through it, so the second subject means a copy.</dd>
                 <dt>Result</dt>
-                <dd>Weather and esports added behind one protocol, reusing the original
-                    machinery unchanged. Covenant, the original, is still served directly.</dd>
+                <dd>Weather and esports added behind one protocol; <strong>0</strong> files
+                    changed in the two shared libraries by either addition. Covenant, the
+                    original, is still served directly.</dd>
                 <dt>Models</dt>
                 <dd><strong>12</strong> backends behind one interface: <strong>7</strong>
                     classifiers and <strong>5</strong> regressors, swappable per request.</dd>
@@ -51,14 +53,32 @@
     <div class="block">
         <h2 class="section">The claim, stated exactly</h2>
         <div class="panel prose">
-            <p>Pluggability is easy to assert and the assertion is usually worth nothing,
-               so here is the testable version: <strong>the second and third domains
-               required no edits to the shared machinery.</strong> Weather and esports each
-               implement one protocol and register. Covenant, being first, is served by the
-               service directly and is not itself a plug-in.</p>
-            <p>That distinction matters because the interesting evidence is not "three
-               things exist". It is that generalising an existing system did not require
-               rewriting it, which only the two added afterwards can demonstrate.</p>
+            <p>Pluggability is easy to assert and the assertion is usually worth nothing, so
+               here is the version git can check. Weather and esports each implement one
+               protocol and register. Covenant, being first, is served by the service
+               directly and is not itself a plug-in.</p>
+            <div class="tablewrap">
+            <table>
+                <thead><tr><th>Domain added</th><th>Shared libraries touched</th><th>Plug-in seam touched</th></tr></thead>
+                <tbody>
+                    <tr><td>weather</td><td class="num">0 files</td><td><code>DomainProtocol</code> reshaped (<strong>37</strong> lines added, <strong>62</strong> removed) and the generic worker's call into it (<strong>4</strong> added, <strong>6</strong> removed)</td></tr>
+                    <tr><td>esports</td><td class="num">0 files</td><td>the registry moved from instances to factories (<strong>40</strong> added, <strong>17</strong> removed) and the entry point with it (<strong>38</strong> added, 17 removed)</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p>So the training and explanation code never learned that weather or esports
+               exist. The protocol did: the second domain is where decode-and-extract became
+               one call the domain owns, and the third is where construction was deferred so
+               a deployment running only esports never loads weather's fitted state. That is
+               what the second and third implementations are for.</p>
+<pre><code>class DomainProtocol(Protocol):
+    """Protocol that all domain implementations must satisfy.
+
+    A domain provides event codecs, feature extraction, alert context
+    generation, and Kafka topic configuration. The GenericStreamingWorker
+    delegates all domain-specific logic through this protocol.
+    """</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/wagner-austin/API/blob/d89684561/services/covenant-radar-api/src/covenant_radar_api/domains/protocols.py">services/covenant-radar-api/src/covenant_radar_api/domains/protocols.py</a>, the protocol both plug-ins implement.</p>
         </div>
     </div>
 
@@ -83,14 +103,12 @@
                scratch competing against the production libraries in the same harness, and
                they are selectable per request.</p>
             <p>Explainability follows the model rather than the endpoint: permutation
-               importance for anything, tree explanations for tree models, gradient-based
-               attribution for the neural ones. One contract, three strategies, chosen by
-               what is actually loaded.</p>
-            <div class="callout">
-                <p>Training on <strong>40</strong> real public credit, loan, default and
-                   bankruptcy datasets rather than generated data is the unglamorous half.
-                   Synthetic data is the usual shortcut, and it flatters everything.</p>
-            </div>
+               importance for anything, SHAP tree explanations for tree models, plain and
+               integrated gradients for the neural ones. One contract, three strategies,
+               chosen by what is actually loaded.</p>
+            <p>Training on <strong>40</strong> real public credit, loan, default and
+               bankruptcy datasets rather than generated data is the unglamorous half.
+               Synthetic data is the usual shortcut, and it flatters everything.</p>
         </div>
     </div>
 
@@ -106,10 +124,24 @@
                getting it wrong, including one met while re-checking for this article.</p>
             <p><strong>Known limits.</strong> No accuracy figures are claimed here: this is
                a statement about architecture, not about how well the models score. The
-               headline was also corrected while writing it. The source page had said all
-               three domains were plug-ins behind a shared protocol, and exactly two are, so
-               it now says that instead. A reviewer would have found it by listing one
-               directory.</p>
+               headline has been corrected twice. The source page first said all three
+               domains were plug-ins, and two are. Then, until 2026-09-14, this page said the
+               two additions touched the shared machinery "not at all"; the commits that
+               added them show the protocol, worker and registry edited, and only the
+               libraries untouched, so it now says that.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The service: <a href="https://github.com/wagner-austin/API/tree/d89684561/services/covenant-radar-api">API/services/covenant-radar-api</a>; the two plug-ins under <a href="https://github.com/wagner-austin/API/tree/d89684561/services/covenant-radar-api/src/covenant_radar_api/domains">domains/</a>.</li>
+                <li>The two commits the table is read from: <a href="https://github.com/wagner-austin/API/commit/71da28c30">71da28c30</a> (weather) and <a href="https://github.com/wagner-austin/API/commit/c3d9ad8e5">c3d9ad8e5</a> (esports).</li>
+                <li>The 7 classifiers: <code>BackendName</code> in <a href="https://github.com/wagner-austin/API/blob/d89684561/libs/covenant_ml/src/covenant_ml/types.py">libs/covenant_ml/src/covenant_ml/types.py</a>; the 5 regressors: <code>RegressorBackendName</code> in <a href="https://github.com/wagner-austin/API/blob/d89684561/libs/covenant_ml/src/covenant_ml/types_regression.py">types_regression.py</a>.</li>
+                <li>The explainer registry and which backends each supports: <a href="https://github.com/wagner-austin/API/blob/d89684561/libs/covenant_ml/src/covenant_ml/explainers/__init__.py">explainers/__init__.py</a>.</li>
+                <li>The 40 datasets: <a href="https://github.com/wagner-austin/API/tree/d89684561/services/covenant-radar-api/data/external">data/external/</a>, one directory each.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/adding-a-domain-without-a-fork/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
