@@ -59,8 +59,8 @@
                number interpretable. Surrounding prose constrains a masked value far more than
                the chance baseline suggests, so an intervention that lifts raw accuracy to
                sixty percent has done almost nothing.</p>
-            <p>Doing that before reading any result is the part that matters. A floor
-               established afterwards is a floor chosen with knowledge of the answer.</p>
+            <p>A floor established after the results is a floor chosen with knowledge of the
+               answer.</p>
         </div>
     </div>
 
@@ -82,7 +82,7 @@
             <p>The marker intervention is inert here under all three conditions its source
                specifies, supplied individually and together. That is a published result
                failing to replicate on a different corpus type, and reporting it plainly is
-               the point rather than an embarrassment.</p>
+               the point.</p>
         </div>
     </div>
 
@@ -116,9 +116,17 @@
                fixtures deep.</p>
             <p>The published results are unaffected, and that is checkable rather than
                asserted: no arm uses validation loss for anything, and the cloze set is the
-               only cross-arm metric. It is why the controls section names the metric it does
-               <em>not</em> use. The defect was pinned with a test that declares it known, so
-               a fix turns the test red.</p>
+               only cross-arm metric. The defect was pinned with a test that declared it known, so
+               a fix would turn the test red; the fix landed three days later, splitting a
+               one-file corpus by line, and that test became the fix's own:</p>
+<pre><code>def test_split_corpus_single_file_partitions_its_lines_disjointly(tmp_path: Path) -&gt; None:
+    """The headline fix: one file yields a real holdout, not itself three times.
+
+    (...) Asserted as the exact three tuples, because the defect
+    this replaces -- returning the whole corpus as all three partitions -- also
+    satisfies "validation is non-empty".
+    """</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/tests/test_corpus_and_dataset_edges.py">services/Model-Trainer/tests/test_corpus_and_dataset_edges.py</a>, one sentence elided; the fix is commit <a href="https://github.com/wagner-austin/API/commit/3ce75c2f0">3ce75c2f0</a>.</p>
         </div>
     </div>
 
@@ -143,7 +151,20 @@
                reported as a lower bound rather than as the intervention, because coverage was
                measured rather than assumed: of the prose sentences available, only
                <strong>6.21%</strong> admit a deterministic rewrite. There is no public
-               repository to link for the corpus, which is the author's own wiki.</p>
+               repository to link for the corpus, which is the author's own wiki. Until
+               2026-09-14 this page described the split defect as pinned and open; it had been
+               fixed on 2026-08-20.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The corpus, the generator and the per-item outcome files are in the author's private research wiki; every accuracy and contrast above was recomputed from those files on 2026-09-14 and matched to two decimals.</li>
+                <li>The training and scoring service: <a href="https://github.com/wagner-austin/API/tree/d89684561/services/Model-Trainer">API/services/Model-Trainer</a>; the splitter, <a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/src/model_trainer/core/services/training/dataset_builder.py">dataset_builder.py</a>; the defect's pin, <a href="https://github.com/wagner-austin/API/commit/1278c605">1278c605</a>.</li>
+                <li>The interventions tested: metadata conditioning, <a href="https://arxiv.org/abs/2501.01956">Gao et al. 2025</a>; the extraction-versus-memorisation result the instrument rests on, <a href="https://arxiv.org/abs/2309.14316">Allen-Zhu and Li 2024</a>.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/measuring-what-a-corpus-installs/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
