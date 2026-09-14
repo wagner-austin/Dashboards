@@ -27,8 +27,8 @@
     <div class="block">
         <div class="panel">
             <p class="result">One model and one set of weights produced byte-identical output on
-               nine NVIDIA GPUs across five architecture generations, two operating systems and two
-               CUDA toolchains.</p>
+               <strong>8</strong> NVIDIA GPU models across <strong>6</strong> architecture
+               families, two operating systems and two CUDA toolchains.</p>
             <dl class="facts">
                 <dt>Problem</dt>
                 <dd>PyTorch's determinism settings make one card reproduce <em>itself</em>. Nothing
@@ -41,8 +41,6 @@
                 <dt>Stack</dt>
                 <dd>PyTorch, CUDA, cuBLASLt, GPT-2; V100, A30, A100, L40S, RTX 3090&nbsp;Ti,
                     3070&nbsp;Ti, GTX&nbsp;1630, RTX PRO 6000.</dd>
-                <dt>Full record</dt>
-                <dd>Per-figure citations, job IDs and image digests in the research wiki.</dd>
             </dl>
         </div>
     </div>
@@ -77,7 +75,17 @@
             </div>
             <p>The first two are configuration. The third is not: it stops asking the vendor library
                for the sum and accumulates in a fixed order, so the arithmetic is the program's
-               rather than the device's.</p>
+               rather than the device's. The kernel package states the contract:</p>
+<pre><code>THE ORDER CONTRACT, WHICH IS THE WHOLE PACKAGE. Every output element is
+produced by ONE thread as a strictly ascending-k sequence of
+``acc = acc + x*w`` -- separate multiply, separate add, two roundings --
+(...) Compiled with ``--fmad=false`` so the
+compiler cannot contract the pair into one fused rounding, and with no
+fast-math anywhere so it cannot reassociate. Parallelism lives ACROSS
+output elements; within one element nothing is parallel, which is why SM
+count, tile scheduling and occupancy -- everything that differs between
+cards -- cannot touch the bits.</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/wagner-austin/API/blob/d89684561/clients/OrderedKernels/src/ordered_kernels/kernels.py">clients/OrderedKernels/src/ordered_kernels/kernels.py</a>, module docstring, one clause elided.</p>
             <p>A GTX 1630 then broke the identity at <strong>147 of 150</strong>, the only card ever
                to. The three divergent items were not the long ones; one was the shortest in the set.
                A stage probe at those exact sequence lengths named the operation: the value product
@@ -124,7 +132,22 @@
             <p><strong>Known limits.</strong> Timing figures are per-GEMM, not end-to-end; nothing
                here times a full forward pass or a training step. The isolated-matmul campaign
                records its container as content-addressed but does not carry that image's digest, so
-               those runs are checkable by date, driver and card rather than by digest.</p>
+               those runs are checkable by date, driver and card rather than by digest. Until
+               2026-09-14 this page said nine GPUs across five generations; the source page's
+               own roster names eight models across six families, and it had miscounted the
+               cards while this page had miscounted the families.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The two wiki pages carrying every footnote, job id and image digest are in the author's private research wiki.</li>
+                <li>The fixed-order kernels are public: <a href="https://github.com/wagner-austin/API/tree/d89684561/clients/OrderedKernels">API/clients/OrderedKernels</a>, with the contract quoted above in <a href="https://github.com/wagner-austin/API/blob/d89684561/clients/OrderedKernels/src/ordered_kernels/kernels.py">kernels.py</a>.</li>
+                <li>The isolated-matmul and forward-trace probes: <a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/src/model_trainer/cli/gemm_benchmark.py">gemm_benchmark.py</a> and <a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/src/model_trainer/cli/probe_trace.py">probe_trace.py</a> in Model-Trainer; the rank-one reduction instrument the kernels match is <a href="https://github.com/wagner-austin/API/blob/d89684561/services/Model-Trainer/src/model_trainer/core/services/model/deterministic_gemm.py">deterministic_gemm.py</a>.</li>
+                <li>The cluster runs were submitted through <a href="/preview/research-cluster-submission/">the submission tool described on this site</a>, whose ledger carries each job id named in the wiki.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/reproducible-gpu-inference/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
