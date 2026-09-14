@@ -13,7 +13,12 @@
     {"figure": "0", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "task_events audit rows carrying an agent label: none, because the read took no identity until mig 493."},
     {"figure": "21", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Total task_events audit rows in that measurement, all unattributed."},
     {"figure": "1440", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Minutes in the audit's first scheduled window, reaching well past the point at which any receipt could exist."},
-    {"figure": "75", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Age in minutes of the receipt table when that window was applied to it, which is how eleven findings came from five rows."}
+    {"figure": "75", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Age in minutes of the receipt table when that window was applied to it, which is how eleven findings came from five rows."},
+    {"figure": "48", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "The mention queue is a PULL, and mig 493 made that measurable (2026-09-10)", "note": "Hours in the trailing window that reproduces the 735-of-736 and 0-of-21 census exactly from audit_log, re-run 2026-09-14."},
+
+    {"figure": "78", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "Scale, measured 2026-09-14", "note": "Distinct agent labels that wrote to the trail in the seven days before 2026-09-14, excluding the service publishers."},
+    {"figure": "12", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "Scale, measured 2026-09-14", "note": "Typed refusals recorded in audit_log since it began carrying the refusal code on 2026-09-12; none from either identity guard."},
+    {"figure": "448", "wiki": "mcps-codebase", "wiki_page": "agent-task-board-service", "section": "Scale, measured 2026-09-14", "note": "Board refusals before 2026-09-12 whose result_summary is the bare word error, so their rule cannot be read."}
   ],
-  "allowed_non_figures": []
+  "allowed_non_figures": ["187", "188"]
 }

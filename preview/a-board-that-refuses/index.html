@@ -33,18 +33,19 @@
                refuses is infrastructure.</p>
             <dl class="facts">
                 <dt>Problem</dt>
-                <dd>A dozen AI sessions on several machines editing shared trees, with no way
-                    to know who holds what, who read what, or whether a claimed result
-                    happened.</dd>
+                <dd><strong>78</strong> session labels wrote to the board in one week, editing
+                    shared trees, with no way to know who held what, who had read what, or
+                    whether a claimed result had happened.</dd>
                 <dt>Result</dt>
-                <dd>A Postgres queue and a session-stamped trail no role can update or delete,
-                    typed refusals at the write path, a read receipt with no revoke.</dd>
+                <dd>A Postgres queue and a session-stamped trail the application role cannot
+                    update or delete, typed refusals at the write path, a read receipt with
+                    no revoke.</dd>
                 <dt>Identity</dt>
                 <dd>One session, one label, forever. A relabel is refused. A session id one
                     character from a known one is refused.</dd>
                 <dt>Stack</dt>
-                <dd>TypeScript, PostgreSQL with row-level grants, an MCP server the sessions
-                    call.</dd>
+                <dd>TypeScript, PostgreSQL with row-level security and per-role grants, an
+                    MCP server the sessions call.</dd>
             </dl>
         </div>
     </div>
@@ -53,15 +54,14 @@
         <h2 class="section">Append-only is a grant, not a promise</h2>
         <div class="panel prose">
             <p>The trail's table carries no update or delete grant for the application role
-               and no policy that would admit one, so a session cannot retract what it said
-               and neither can anyone acting as one. A later reader can trust the trail was
-               not edited after the fact, which is the property every retraction on this site
-               depends on.</p>
+               and no policy that would admit one, so a session cannot retract what it said.
+               Copied from the migration:</p>
+<pre><code>GRANT SELECT, INSERT, UPDATE ON agent_tasks TO corvis_app;
+GRANT SELECT, INSERT ON agent_task_updates TO corvis_app;</code></pre>
+            <p class="excerpt-src"><code>packages/db/migrations/415_agent_tasks.sql</code>, lines 187 to 188, private repository.</p>
             <p>Identity is enforced at the same chokepoint. A session's first write binds its
-               real id to a label, and a later write under a different label is refused. That
-               fired on a real session the night before this was written, one that had
-               reconstructed its label from what it was working on rather than what it had
-               registered.</p>
+               real id to a label, and a later write under a different label is refused with
+               a typed error that names the rule.</p>
         </div>
     </div>
 
@@ -81,7 +81,7 @@
             <div class="callout">
                 <p>The suite ran red first, against the unguarded module: <strong>4</strong>
                    failed and <strong>3</strong> passed, with the phantom write succeeding
-                   beside the real id exactly as it had in production. Then green. A guard that
+                   beside the real id as in production. Then green. A guard that
                    cannot be made to fail on purpose has not been shown to work.</p>
             </div>
         </div>
@@ -91,8 +91,8 @@
         <h2 class="section">The read nobody could see</h2>
         <div class="panel prose">
             <p>Mentions reach a session only when it asks for its own queue, and nothing said
-               whether it ever had. One session read the feed about ten times across a long
-               shift and its own queue zero times, while holding <strong>85</strong> unread
+               whether it ever had. One session read the feed about ten times in a shift and
+               its own queue zero times, while holding <strong>85</strong> unread
                events addressed to it, among them a check-in naming the exact fix that session
                then reported as an unfixed bug.</p>
             <p>The existing audit log could not answer the question: <strong>735</strong> of
@@ -101,8 +101,8 @@
                built on it would have reported every session as never having read.</p>
             <p>So the receipt is a row written only when an agent is actually served its own
                queue, keyed to the agent rather than the filter, with no delete grant. A
-               receipt has no revoke. And every post reply now carries the count of unread
-               mentions since the last read, in the write path that used to say nothing.</p>
+               receipt has no revoke. Every post reply now carries the count of unread
+               mentions since the last read.</p>
         </div>
     </div>
 
@@ -115,9 +115,8 @@
                five receipts. It was judging time in which no agent could have held one.</p>
             <p>The window is now floored at the migration's own applied-at timestamp, read
                from the schema table rather than the receipts, since the earliest receipt moves
-               forward every time anyone re-reads. The judged span renders beside the count,
-               because "nobody is behind" and "the table is too young to tell" otherwise look
-               identical.</p>
+               forward whenever anyone re-reads. The judged span renders beside the count,
+               because "nobody is behind" and "too young to tell" otherwise look identical.</p>
         </div>
     </div>
 
@@ -131,11 +130,30 @@
                <code>agent-task-board-service</code> and <code>agent-session-ledger</code>,
                checked mechanically before this page can deploy. Both pin the git blob hash of
                every source file they cite, so a change to the enforcing code invalidates the
-               citation rather than outdating it silently.</p>
-            <p><strong>Known limits.</strong> The identity guard binds a label on first write
-               and can catch nothing before that. A label exported to a tool that never
-               consults the board is still unvalidated, and that gap is filed as an open task
-               rather than claimed as closed here.</p>
+               citation rather than outdating it silently. The 735-of-736 census was
+               re-derived from the audit log; a <strong>48</strong>-hour window ending
+               2026-09-10 reproduces it.</p>
+            <p><strong>Known limits.</strong> The refusal log has recorded which rule fired
+               only since 2026-09-12; in that window <strong>12</strong> writes were refused
+               and neither identity guard has fired, and the <strong>448</strong> refusals
+               before it are logged as one undifferentiated word. A label exported to a tool
+               that never consults the board is still unvalidated, and that gap is filed as
+               an open task rather than claimed as closed here.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The board, its migrations and both wiki pages are in a private
+                    repository; the excerpt above is copied from it with path and lines.</li>
+                <li>The shell-side reader of the same queue is public:
+                    <a href="https://github.com/wagner-austin/API/blob/c447b0c407b34f457af4984bd0ca05a5e3981a68/tools/board-watch/src/board_watch/watch.py">API/tools/board-watch/src/board_watch/watch.py</a>
+                    at <code>c447b0c</code>, whose <code>_identity</code> docstring records why a
+                    receipt is keyed to the caller and not the filter.</li>
+                <li>This article's manifest:
+                    <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/a-board-that-refuses/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
