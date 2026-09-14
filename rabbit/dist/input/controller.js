@@ -37,7 +37,6 @@ export function createAutopilotController(deps) {
                 deltaTime,
                 idleSeconds: deps.activity.idleSeconds(),
                 facingRight: deps.state.bunny.facingRight,
-                awareness: deps.sense(),
             }, deps.config, deps.random);
             phase = output.state;
             if (output.jump) {

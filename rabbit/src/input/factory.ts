@@ -30,7 +30,6 @@ import {
   type TouchState,
 } from "./Touch.js";
 import type { AutorunConfig } from "./validation.js";
-import type { Awareness } from "./Awareness.js";
 
 /**
  * Dependencies required to build the input system.
@@ -46,7 +45,6 @@ import type { Awareness } from "./Awareness.js";
  * speeds: Camera pan and depth speeds, in world units per second.
  */
 export interface InputSystemDeps {
-  readonly sense: () => Awareness;
   readonly state: InputState;
   readonly frames: BunnyFrames;
   readonly timers: BunnyTimers;
@@ -96,7 +94,6 @@ export function createInputSystem(deps: InputSystemDeps): InputSystem {
   const activity = createActivityTracker();
 
   const autopilot = createAutopilotController({
-    sense: deps.sense,
     arbiter,
     activity,
     state: deps.state,
@@ -127,7 +124,7 @@ export function createInputSystem(deps: InputSystemDeps): InputSystem {
     update(deltaTime: number): void {
       autopilot.update(deltaTime);
       processDepthMovement(deps.state, deltaTime, deps.speeds.depth);
-      processHorizontalMovement(deps.state, deltaTime, deps.speeds.horizontal * (keys.sprinting ? 1.8 : 1));
+      processHorizontalMovement(deps.state, deltaTime, deps.speeds.horizontal);
     },
   };
 }

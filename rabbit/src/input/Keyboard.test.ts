@@ -36,19 +36,19 @@ const {
 
 describe("createKeyboardKeys", () => {
   it("starts with nothing held", () => {
-    expect(createKeyboardKeys()).toStrictEqual({ horizontal: null, vertical: null, sprinting: false });
+    expect(createKeyboardKeys()).toStrictEqual({ horizontal: null, vertical: null });
   });
 });
 
 describe("intentFromKeys", () => {
   it("mirrors the held keys onto both axes", () => {
-    expect(intentFromKeys({ horizontal: "left", vertical: "down", sprinting: false })).toStrictEqual(
+    expect(intentFromKeys({ horizontal: "left", vertical: "down" })).toStrictEqual(
       createIntent("left", "down")
     );
   });
 
   it("is neutral when nothing is held", () => {
-    expect(intentFromKeys({ horizontal: null, vertical: null, sprinting: false })).toStrictEqual(NEUTRAL_INTENT);
+    expect(intentFromKeys({ horizontal: null, vertical: null })).toStrictEqual(NEUTRAL_INTENT);
   });
 });
 
@@ -71,19 +71,19 @@ describe("KEY_BINDINGS", () => {
 
 describe("pressBinding", () => {
   it("sets the horizontal axis", () => {
-    const keys: KeyboardKeys = { horizontal: null, vertical: null, sprinting: false };
+    const keys: KeyboardKeys = { horizontal: null, vertical: null };
     pressBinding(keys, { axis: "horizontal", value: "right" });
-    expect(keys).toStrictEqual({ horizontal: "right", vertical: null, sprinting: false });
+    expect(keys).toStrictEqual({ horizontal: "right", vertical: null });
   });
 
   it("sets the vertical axis", () => {
-    const keys: KeyboardKeys = { horizontal: null, vertical: null, sprinting: false };
+    const keys: KeyboardKeys = { horizontal: null, vertical: null };
     pressBinding(keys, { axis: "vertical", value: "down" });
-    expect(keys).toStrictEqual({ horizontal: null, vertical: "down", sprinting: false });
+    expect(keys).toStrictEqual({ horizontal: null, vertical: "down" });
   });
 
   it("replaces the direction already held on an axis", () => {
-    const keys: KeyboardKeys = { horizontal: "left", vertical: null, sprinting: false };
+    const keys: KeyboardKeys = { horizontal: "left", vertical: null };
     pressBinding(keys, { axis: "horizontal", value: "right" });
     expect(keys.horizontal).toBe("right");
   });
@@ -91,25 +91,25 @@ describe("pressBinding", () => {
 
 describe("releaseBinding", () => {
   it("clears the horizontal axis when the held direction is released", () => {
-    const keys: KeyboardKeys = { horizontal: "left", vertical: null, sprinting: false };
+    const keys: KeyboardKeys = { horizontal: "left", vertical: null };
     expect(releaseBinding(keys, { axis: "horizontal", value: "left" })).toBe(true);
     expect(keys.horizontal).toBeNull();
   });
 
   it("ignores release of a horizontal direction that was overridden", () => {
-    const keys: KeyboardKeys = { horizontal: "right", vertical: null, sprinting: false };
+    const keys: KeyboardKeys = { horizontal: "right", vertical: null };
     expect(releaseBinding(keys, { axis: "horizontal", value: "left" })).toBe(false);
     expect(keys.horizontal).toBe("right");
   });
 
   it("clears the vertical axis when the held direction is released", () => {
-    const keys: KeyboardKeys = { horizontal: null, vertical: "up", sprinting: false };
+    const keys: KeyboardKeys = { horizontal: null, vertical: "up" };
     expect(releaseBinding(keys, { axis: "vertical", value: "up" })).toBe(true);
     expect(keys.vertical).toBeNull();
   });
 
   it("ignores release of a vertical direction that was overridden", () => {
-    const keys: KeyboardKeys = { horizontal: null, vertical: "down", sprinting: false };
+    const keys: KeyboardKeys = { horizontal: null, vertical: "down" };
     expect(releaseBinding(keys, { axis: "vertical", value: "up" })).toBe(false);
     expect(keys.vertical).toBe("down");
   });
@@ -295,7 +295,7 @@ describe("keyboard source", () => {
     });
 
     it("handleKeyUp updates the supplied key model", () => {
-      const keys: KeyboardKeys = { horizontal: "left", vertical: null, sprinting: false };
+      const keys: KeyboardKeys = { horizontal: "left", vertical: null };
       handleKeyUp(new KeyboardEvent("keyup", { key: "a" }), keys, deps);
 
       expect(keys.horizontal).toBeNull();

@@ -17,7 +17,6 @@ import {
 import { isNeutralIntent } from "./intent.js";
 import type { InputState } from "./state.js";
 import type { AutorunConfig } from "./validation.js";
-import type { Awareness } from "./Awareness.js";
 
 /**
  * Dependencies required to drive the autopilot each frame.
@@ -29,7 +28,6 @@ import type { Awareness } from "./Awareness.js";
  * random: Source of draws in [0, 1) shaping the wander.
  */
 export interface AutopilotDeps {
-  readonly sense: () => Awareness;
   readonly arbiter: InputArbiter;
   readonly activity: ActivityTracker;
   readonly state: InputState;
@@ -80,7 +78,6 @@ export function createAutopilotController(deps: AutopilotDeps): AutopilotControl
           deltaTime,
           idleSeconds: deps.activity.idleSeconds(),
           facingRight: deps.state.bunny.facingRight,
-          awareness: deps.sense(),
         },
         deps.config,
         deps.random

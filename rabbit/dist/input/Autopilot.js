@@ -184,13 +184,6 @@ export function stepAutopilot(state, input, config, random) {
     if (!config.enabled || input.idleSeconds < config.idleDelay) {
         return outputOf(DORMANT_STATE);
     }
-    if (input.awareness.wait) {
-        return outputOf({ kind: "pause", remaining: config.minPause });
-    }
-    if (input.awareness.blocked && state.kind !== "hop") {
-        return outputOf({ kind: "walk", direction: input.awareness.direction,
-            remaining: config.minLeg, jumpAt: null });
-    }
     if (state.kind === "dormant") {
         return outputOf(beginLeg(input.facingRight, config, random));
     }

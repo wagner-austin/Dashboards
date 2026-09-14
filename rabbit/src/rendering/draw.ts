@@ -75,7 +75,7 @@ function getFadedChar(ch: string, visibility: number): string {
 
 export function drawSprite(
   buffer: string[][],
-  lines: readonly string[],
+  lines: string[],
   x: number,
   y: number,
   width: number,
@@ -105,7 +105,7 @@ export function drawSprite(
  * Coordinates are relative to bottom-center anchor (0,0 = center-bottom).
  */
 function sampleSprite(
-  lines: readonly string[],
+  lines: string[],
   spriteWidth: number,
   normX: number, // -0.5 to 0.5 (left to right)
   normY: number  // -1 to 0 (top to bottom)

@@ -12,10 +12,6 @@ import type { LayerColors } from "./colors.js";
 import { getBunnyFrame, type BunnyFrames, type BunnyState } from "../entities/Bunny.js";
 import { renderAllLayers, renderForegroundLayers, type SceneState } from "../layers/index.js";
 import type { ProjectionConfig } from "../world/Projection.js";
-import { project } from "../world/Projection.js";
-import type { AdventureVisual } from "../entities/Adventure.js";
-import { companionFrame } from "../entities/Companion.js";
-import { blankCoveredCells } from "./occlusion.js";
 
 /**
  * Render state for a single frame.
@@ -27,7 +23,6 @@ import { blankCoveredCells } from "./occlusion.js";
  * projectionConfig: 3D projection settings for layers.
  */
 export interface RenderState {
-  readonly adventure: AdventureVisual | null;
   bunnyState: BunnyState;
   sceneState: SceneState;
   viewport: ViewportState;
@@ -54,7 +49,6 @@ export interface RenderState {
  * foreground: Layers drawn in front of the actor.
  */
 export interface ScreenLayers {
-  readonly companion: HTMLPreElement;
   readonly world: HTMLPreElement;
   readonly actor: HTMLPreElement;
   readonly foreground: HTMLPreElement;
@@ -78,8 +72,7 @@ function drawBunny(
   height: number
 ): void {
   const bunny = getBunnyFrame(bunnyState, bunnyFrames);
-  const spriteWidth = Math.max(0, ...bunny.lines.map((line) => line.length));
-  const bunnyX = Math.floor((width - spriteWidth) / 2);
+  const bunnyX = Math.floor(width / 2) - 20;
   const bunnyY = height - bunny.lines.length - 2;
   drawSprite(buffer, bunny.lines, bunnyX, bunnyY, width, height);
 }
@@ -123,7 +116,6 @@ export function renderFrame(
     actor: createBuffer(width, height),
     foreground: createBuffer(width, height),
   };
-  const companionBuffer = createBuffer(width, height);
 
   // Render background layers (includes trees via 3D projection)
   renderAllLayers(buffers.world, state.sceneState, width, height, config);
@@ -132,28 +124,7 @@ export function renderFrame(
   drawGround(buffers.world, -Math.floor(state.sceneState.camera.x), width, height);
 
   // Draw bunny at fixed screen position, alone on its own layer
-  if (state.adventure !== null && state.adventure.alert !== null) {
-    const lines = state.adventure.alert;
-    const spriteWidth = Math.max(...lines.map((line) => line.length));
-    drawSprite(buffers.actor, lines, Math.floor((width - spriteWidth) / 2), height - lines.length - 2, width, height);
-  } else {
-    drawBunny(buffers.actor, state.bunnyState, bunnyFrames, width, height);
-  }
-  if (state.adventure !== null) {
-    const visual = state.adventure;
-    const camera = state.sceneState.camera;
-    const position = project(camera.x + visual.companion.x,
-      camera.z + config.nearZ + Math.max(0, visual.companion.z), camera, width, height, config);
-    if (position.visible) {
-      const lines = companionFrame(visual.companion, visual.assets.companion, visual.companionSprint);
-      const scaled = scaleCharacter(lines, position.scale / (config.focalLength / config.nearZ));
-      const baseline = project(camera.x, camera.z + config.nearZ, camera, width, height, config);
-      const spriteWidth = Math.max(...scaled.map((line) => line.length));
-      drawSprite(companionBuffer, scaled, position.x - Math.floor(spriteWidth / 2),
-        height - scaled.length - 2 + position.y - baseline.y, width, height);
-    }
-    layers.companion.style.color = visual.companionColor;
-  }
+  drawBunny(buffers.actor, state.bunnyState, bunnyFrames, width, height);
 
   // Render foreground layers
   renderForegroundLayers(buffers.foreground, state.sceneState, width, height, config);
@@ -162,30 +133,13 @@ export function renderFrame(
   // the one behind it, which a shared buffer got from overwriting and stacked
   // transparent elements do not get at all.
   occludeStackedBuffers(buffers);
-  blankCoveredCells(companionBuffer, buffers.foreground);
-  blankCoveredCells(companionBuffer, buffers.actor);
-  blankCoveredCells(buffers.world, companionBuffer);
 
   // Render to screen
   layers.world.textContent = renderBuffer(buffers.world);
   layers.actor.textContent = renderBuffer(buffers.actor);
   layers.foreground.textContent = renderBuffer(buffers.foreground);
-  layers.companion.textContent = renderBuffer(companionBuffer);
 
   return { lastTime: currentTime };
-}
-
-/** Resample a rectangular character canvas while preserving its margins. */
-function scaleCharacter(lines: readonly string[], scale: number): readonly string[] {
-  const sourceWidth = Math.max(...lines.map((line) => line.length));
-  const targetWidth = Math.max(1, Math.round(sourceWidth * scale));
-  const targetHeight = Math.max(1, Math.round(lines.length * scale));
-  return Array.from({ length: targetHeight }, (_, row) => {
-    const source = lines[Math.floor(row * lines.length / targetHeight)];
-    if (source === undefined) throw new Error("RABBIT_SPRITE_EMPTY: Character canvas has no rows.");
-    const padded = source.padEnd(sourceWidth, " ");
-    return Array.from({ length: targetWidth }, (_, col) => padded.charAt(Math.floor(col * sourceWidth / targetWidth))).join("");
-  });
 }
 
 /**
@@ -206,7 +160,6 @@ export function applyLayerColors(layers: ScreenLayers, colors: LayerColors): voi
 
 /** Test hooks for internal functions */
 export const _test_hooks = {
-  scaleCharacter,
   drawBunny,
   renderFrame,
   applyLayerColors,

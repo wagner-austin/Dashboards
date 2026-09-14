@@ -96,7 +96,6 @@ function validateConfig(data: unknown): Config {
     layers: layers as Config["layers"],
     settings,
     autorun,
-    ...(data.character !== undefined ? { character: data.character } : {}),
     // Passed through raw; validateColorsConfig decodes it once at startup.
     ...(data.colors !== undefined ? { colors: data.colors } : {}),
     ...(audio !== undefined ? { audio } : {}),

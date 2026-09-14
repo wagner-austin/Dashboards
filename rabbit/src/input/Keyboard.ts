@@ -48,7 +48,6 @@ export type AxisBinding =
  * vertical: Held depth direction, or null.
  */
 export interface KeyboardKeys {
-  sprinting: boolean;
   horizontal: HorizontalInput;
   vertical: VerticalInput;
 }
@@ -93,7 +92,7 @@ const KEY_BINDINGS: ReadonlyMap<string, AxisBinding> = new Map<string, AxisBindi
  *     KeyboardKeys with both axes released.
  */
 export function createKeyboardKeys(): KeyboardKeys {
-  return { horizontal: null, vertical: null, sprinting: false };
+  return { horizontal: null, vertical: null };
 }
 
 /**
@@ -172,7 +171,6 @@ export function handleKeyDown(
   }
 
   const key = event.key.toLowerCase();
-  if (key === "shift") { keys.sprinting = true; return; }
 
   if (key === JUMP_KEY) {
     deps.arbiter.requestJump("user");
@@ -207,7 +205,6 @@ export function handleKeyUp(
   keys: KeyboardKeys,
   deps: KeyboardDeps
 ): void {
-  if (event.key.toLowerCase() === "shift") { keys.sprinting = false; return; }
   const binding = KEY_BINDINGS.get(event.key.toLowerCase());
   if (binding === undefined) {
     return;

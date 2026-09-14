@@ -46,7 +46,7 @@ export interface LayerBuffers {
  *     lower: Buffer of the layer further from the camera. Mutated.
  *     upper: Buffer of the layer nearer the camera. Read only.
  */
-export declare function blankCoveredCells(lower: string[][], upper: readonly (readonly string[])[]): void;
+declare function blankCoveredCells(lower: string[][], upper: readonly (readonly string[])[]): void;
 /**
  * Resolve the overlap between the stacked buffers, front to back.
  *
@@ -70,4 +70,5 @@ export declare const _test_hooks: {
     blankCoveredCells: typeof blankCoveredCells;
     occludeStackedBuffers: typeof occludeStackedBuffers;
 };
+export {};
 //# sourceMappingURL=occlusion.d.ts.map

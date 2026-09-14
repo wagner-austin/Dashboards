@@ -44,8 +44,7 @@ def generate_sprite_module(
 
     cmd = [
         sys.executable,
-        "-m",
-        "tools.gif_to_ascii",
+        "tools/gif_to_ascii.py",
         source,
         "--width",
         str(width),

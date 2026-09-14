@@ -24,7 +24,6 @@ import {
   type VerticalDirection,
 } from "./intent.js";
 import type { AutorunConfig } from "./validation.js";
-import type { Awareness } from "./Awareness.js";
 
 /** Autopilot is standing down because the user is present. */
 export interface DormantState {
@@ -79,7 +78,6 @@ export interface AutopilotInput {
   readonly deltaTime: number;
   readonly idleSeconds: number;
   readonly facingRight: boolean;
-  readonly awareness: Awareness;
 }
 
 /**
@@ -290,14 +288,6 @@ export function stepAutopilot(
 ): AutopilotOutput {
   if (!config.enabled || input.idleSeconds < config.idleDelay) {
     return outputOf(DORMANT_STATE);
-  }
-
-  if (input.awareness.wait) {
-    return outputOf({ kind: "pause", remaining: config.minPause });
-  }
-  if (input.awareness.blocked && state.kind !== "hop") {
-    return outputOf({ kind: "walk", direction: input.awareness.direction,
-      remaining: config.minLeg, jumpAt: null });
   }
 
   if (state.kind === "dormant") {

@@ -36,7 +36,6 @@ export type AxisBinding = {
  * vertical: Held depth direction, or null.
  */
 export interface KeyboardKeys {
-    sprinting: boolean;
     horizontal: HorizontalInput;
     vertical: VerticalInput;
 }

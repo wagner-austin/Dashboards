@@ -31,7 +31,7 @@
  *     lower: Buffer of the layer further from the camera. Mutated.
  *     upper: Buffer of the layer nearer the camera. Read only.
  */
-export function blankCoveredCells(lower, upper) {
+function blankCoveredCells(lower, upper) {
     for (let row = 0; row < lower.length; row++) {
         const lowerCells = lower[row];
         if (lowerCells === undefined) {

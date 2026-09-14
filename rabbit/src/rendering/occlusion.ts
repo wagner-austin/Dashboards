@@ -48,7 +48,7 @@ export interface LayerBuffers {
  *     lower: Buffer of the layer further from the camera. Mutated.
  *     upper: Buffer of the layer nearer the camera. Read only.
  */
-export function blankCoveredCells(
+function blankCoveredCells(
   lower: string[][],
   upper: readonly (readonly string[])[]
 ): void {

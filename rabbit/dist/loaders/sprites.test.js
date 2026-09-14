@@ -4,12 +4,8 @@
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { createAnimationTimer, _test_hooks } from "./sprites.js";
-import { createTestConfig } from "../testing/io-fixtures.js";
 const { isRecord, isStringArray, isAnimationIntervals, isSettings, validateSpriteModule, validateOptionalAudio, validateConfig } = _test_hooks;
 describe("isRecord", () => {
-    it("preserves the selected character through configuration decoding", () => {
-        expect(_test_hooks.validateConfig({ ...createTestConfig(), character: "lion" }).character).toBe("lion");
-    });
     it("returns true for plain objects", () => {
         expect(isRecord({})).toBe(true);
         expect(isRecord({ key: "value" })).toBe(true);

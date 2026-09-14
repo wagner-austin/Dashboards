@@ -15,7 +15,6 @@
  */
 import { type HorizontalDirection, type MovementIntent, type VerticalDirection } from "./intent.js";
 import type { AutorunConfig } from "./validation.js";
-import type { Awareness } from "./Awareness.js";
 /** Autopilot is standing down because the user is present. */
 export interface DormantState {
     readonly kind: "dormant";
@@ -62,7 +61,6 @@ export interface AutopilotInput {
     readonly deltaTime: number;
     readonly idleSeconds: number;
     readonly facingRight: boolean;
-    readonly awareness: Awareness;
 }
 /**
  * Result of stepping the autopilot one frame.

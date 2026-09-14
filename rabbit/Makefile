@@ -24,7 +24,7 @@ test:
 check: lint test
 
 build:
-	poetry run python -m scripts.generate_sprites
+	poetry run python scripts/generate_sprites.py
 	npm run bundle
 
 clean:

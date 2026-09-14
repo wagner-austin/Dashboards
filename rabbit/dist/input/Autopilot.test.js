@@ -33,18 +33,9 @@ const BASE = {
  *     AutopilotInput for stepAutopilot.
  */
 function input(deltaTime, idleSeconds, facingRight = false) {
-    return { deltaTime, idleSeconds, facingRight, awareness: { wait: false, blocked: false, direction: "left" } };
+    return { deltaTime, idleSeconds, facingRight };
 }
 describe("randomRange", () => {
-    it("waits for a distant companion and turns away from obstacles", () => {
-        const waiting = stepAutopilot(DORMANT_STATE, { ...input(0.1, 10), awareness: { wait: true, blocked: false, direction: "left" } }, BASE, createConstantRandom(0));
-        expect(waiting).toStrictEqual({ state: { kind: "pause", remaining: 1 }, intent: { horizontal: null, vertical: null }, jump: false });
-        const obstacle = { ...input(0.1, 10), awareness: { wait: false, blocked: true, direction: "right" } };
-        const turning = stepAutopilot(DORMANT_STATE, obstacle, BASE, createConstantRandom(0));
-        expect(turning).toStrictEqual({ state: { kind: "walk", direction: "right", remaining: 2, jumpAt: null }, intent: { horizontal: "right", vertical: null }, jump: false });
-        const hopping = stepAutopilot({ kind: "hop", direction: "up", remaining: 1 }, obstacle, BASE, createConstantRandom(0));
-        expect(hopping).toStrictEqual({ state: { kind: "hop", direction: "up", remaining: 0.9 }, intent: { horizontal: null, vertical: "up" }, jump: false });
-    });
     it("returns the minimum for a zero draw", () => {
         expect(randomRange(createConstantRandom(0), 2, 6)).toBe(2);
     });
