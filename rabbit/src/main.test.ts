@@ -174,6 +174,7 @@ describe("init", () => {
       world: createLayerElement("screen"),
       actor: createLayerElement("screen-actor"),
       foreground: createLayerElement("screen-foreground"),
+      companion: createLayerElement("screen-companion"),
     };
     rafCallbacks = [];
   });
@@ -182,8 +183,42 @@ describe("init", () => {
     document.body.replaceChildren();
   });
 
+  it("starts the lion scene and advances perception before and after companion loading", async () => {
+    const frames = createTestBunnyFrames();
+    const config = createTestConfig();
+    const sprites = { ...config.sprites, lion: { animations: {
+      walk: testAnimation(true, 50), jump: testAnimation(true, 50), idle: testAnimation(true, 40),
+      walk_to_idle: testAnimation(true, 40), walk_to_turn_away: testAnimation(true, 40),
+      walk_to_turn_toward: testAnimation(true, 40), hop_away: testAnimation(false, 40), hop_toward: testAnimation(false, 40),
+    } } };
+    const callbacks: ((time: number) => void)[] = [];
+    const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ companion: frames, alertLeft: ["alert"], alertRight: ["alert"], lionSprint: { left: ["runL"], right: ["runR"] } }),
+      getScreenLayers: () => layers, getCharacterOverride: () => "lion",
+      loadConfigFn: () => Promise.resolve({ ...config, sprites }),
+      runProgressiveLoadFn: (_config, _character, _registry, _progress, loaded) => {
+        loaded(frames);
+        const first = callbacks[0];
+        if (first === undefined) throw new Error("Expected queued render");
+        first(1000);
+        return Promise.resolve();
+      },
+      requestAnimationFrameFn: (callback) => callbacks.push(callback),
+      audioDeps: createTestAudioDeps(), random: createConstantRandom(0.5),
+      keyboardEvents: createTestKeyboardSource(), touchEvents: createTestTouchSource(),
+    };
+    await init(deps);
+    expect(layers.actor.style.color).toBe("rgb(88, 186, 255)");
+    const render = callbacks[0];
+    if (render === undefined) throw new Error("Expected queued render");
+    render(1100);
+    render(1200);
+    expect(layers.companion.style.color).toBe("rgb(255, 255, 255)");
+  });
+
   it("throws when screen element not found", async () => {
     const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ lionSprint: { left: ["run_l"], right: ["run_r"] }, companion: createTestBunnyFrames(), alertLeft: ["alert_l"], alertRight: ["alert_r"] }),
       getScreenLayers: () => null,
       getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
@@ -208,6 +243,7 @@ describe("init", () => {
     };
 
     const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ lionSprint: { left: ["run_l"], right: ["run_r"] }, companion: createTestBunnyFrames(), alertLeft: ["alert_l"], alertRight: ["alert_r"] }),
       getScreenLayers: () => layers,
       getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(configWithoutAutoLayers),
@@ -224,6 +260,7 @@ describe("init", () => {
 
   it("initializes and starts render loop", async () => {
     const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ lionSprint: { left: ["run_l"], right: ["run_r"] }, companion: createTestBunnyFrames(), alertLeft: ["alert_l"], alertRight: ["alert_r"] }),
       getScreenLayers: () => layers,
       getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
@@ -263,6 +300,7 @@ describe("init", () => {
     });
 
     const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ lionSprint: { left: ["run_l"], right: ["run_r"] }, companion: createTestBunnyFrames(), alertLeft: ["alert_l"], alertRight: ["alert_r"] }),
       getScreenLayers: () => layers,
       getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
@@ -329,6 +367,7 @@ describe("init", () => {
 
   it("handles resize event", async () => {
     const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ lionSprint: { left: ["run_l"], right: ["run_r"] }, companion: createTestBunnyFrames(), alertLeft: ["alert_l"], alertRight: ["alert_r"] }),
       getScreenLayers: () => layers,
       getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
@@ -358,6 +397,7 @@ describe("init", () => {
     };
 
     const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ lionSprint: { left: ["run_l"], right: ["run_r"] }, companion: createTestBunnyFrames(), alertLeft: ["alert_l"], alertRight: ["alert_r"] }),
       getScreenLayers: () => layers,
       getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(configWithAudio),
@@ -389,6 +429,7 @@ describe("init", () => {
     };
 
     const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ lionSprint: { left: ["run_l"], right: ["run_r"] }, companion: createTestBunnyFrames(), alertLeft: ["alert_l"], alertRight: ["alert_r"] }),
       getScreenLayers: () => layers,
       getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(configWithDisabledAudio),
@@ -421,6 +462,7 @@ describe("init", () => {
     };
 
     const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ lionSprint: { left: ["run_l"], right: ["run_r"] }, companion: createTestBunnyFrames(), alertLeft: ["alert_l"], alertRight: ["alert_r"] }),
       getScreenLayers: () => layers,
       getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(configWithAudio),
@@ -442,6 +484,7 @@ describe("init", () => {
     vi.useFakeTimers();
 
     const deps: MainDependencies = {
+      loadAdventureFn: () => Promise.resolve({ lionSprint: { left: ["run_l"], right: ["run_r"] }, companion: createTestBunnyFrames(), alertLeft: ["alert_l"], alertRight: ["alert_r"] }),
       getScreenLayers: () => layers,
       getCharacterOverride: () => null,
       loadConfigFn: () => Promise.resolve(createTestConfig()),
@@ -588,10 +631,11 @@ describe("_test_hooks", () => {
     const world = createLayerElement("screen");
     const actor = createLayerElement("screen-actor");
     const foreground = createLayerElement("screen-foreground");
+    const companion = createLayerElement("screen-companion");
 
     const deps = _test_hooks.createDefaultDependencies();
     const result = deps.getScreenLayers();
-    expect(result).toEqual({ world, actor, foreground });
+    expect(result).toEqual({ world, actor, foreground, companion });
 
     document.body.replaceChildren();
   });
