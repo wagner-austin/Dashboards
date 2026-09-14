@@ -9,8 +9,8 @@
     {"figure": "2", "wiki": "mcps-codebase", "wiki_page": "wiki-check-audit-chain", "section": "Registered-wiki triangle", "note": "Wikis under the html-sha256 contract: tech and legal."},
     {"figure": "1", "wiki": "mcps-codebase", "wiki_page": "wiki-check-audit-chain", "section": "Registered-wiki triangle", "note": "One wiki each under pdf-corvis (personal) and vault-corvis (civic)."},
 
-    {"figure": "14", "wiki": "me", "wiki_page": "public-dashboards", "section": "Research write-ups — `/preview/`, from 2026-09-11", "note": "Articles on the site when the source pages were tallied, 2026-09-14."},
-    {"figure": "8", "wiki": "me", "wiki_page": "public-dashboards", "section": "Research write-ups — `/preview/`, from 2026-09-11", "note": "Source pages backing those articles that were found wrong and corrected between 2026-09-11 and 2026-09-14, each listed with its fixing commit."},
+    {"figure": "14", "wiki": "me", "wiki_page": "public-dashboards", "section": "Research write-ups — `/preview/`, from 2026-09-11", "note": "Articles on the site when the source pages were tallied, 2026-09-14; the same string is also the count of source pages found wrong, in the same section."},
+    {"figure": "20", "wiki": "me", "wiki_page": "public-dashboards", "section": "Research write-ups — `/preview/`, from 2026-09-11", "note": "Distinct wiki pages the fourteen manifests bind to, across four wikis."},
     {"figure": "15", "wiki": "me", "wiki_page": "hpc3-cli", "section": "Shape", "note": "The real command count of the hpc3 CLI, against a page that had said eight while naming seven."},
 
     {"figure": "858", "wiki": "mcps-codebase", "wiki_page": "wiki-structure-guards", "section": "A page that moved between two wikis, and the four counts that did not", "note": "Personal wiki total declared in index.md after one page left it."},
