@@ -175,6 +175,34 @@ code {
     padding: 0.08em 0.34em;
 }
 
+/* A code excerpt copied from a public repository, never paraphrased, with its
+   path and line range in the caption beneath so a reader can diff it against
+   the file. The box takes the same translucent ground as inline code, so the
+   two read as one kind of thing at two sizes. */
+pre {
+    margin-top: 1.1rem;
+    padding: 0.9rem 1.1rem;
+    background: rgba(255, 255, 255, 0.66);
+    border: 1px solid var(--gray-200);
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: #000;
+}
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+}
+.excerpt-src {
+    font-size: 0.86rem;
+    color: var(--gray-600);
+    margin-top: 0.45rem;
+}
+.excerpt-src a { color: var(--primary-dark); }
+
 .callout {
     border-left: 3px solid var(--primary);
     padding-left: 1.1rem;
@@ -197,6 +225,11 @@ code {
    reader consults rather than reads through. Size is the only thing separating
    it, because size does not depend on what is behind it. */
 .sources .prose p { font-size: 1.02rem; }
+/* The Sources list: one line per thing a reader can open, a repository file
+   at a pinned commit, a paper, a captured page. Same step-down as the Record
+   prose, and links in the site's dark primary so they read on light ground. */
+.sources .prose li { font-size: 1.02rem; line-height: 1.5; margin-bottom: 0.4rem; }
+.sources .prose a { color: var(--primary-dark); }
 
 /* site.css opens the footer tight against the index's forest caption; an
    article needs air above it instead. Colour is set here for the same reason
