@@ -41,9 +41,6 @@
                     strict typing and full branch coverage.</dd>
                 <dt>Stack</dt>
                 <dd>Python, FastAPI, Rust, Redis, RQ, Kafka, PostgreSQL.</dd>
-                <dt>Verify</dt>
-                <dd><a href="https://github.com/wagner-austin/API" target="_blank" rel="noopener noreferrer">The repository</a>
-                    (its README opens with the three things worth fifteen minutes).</dd>
             </dl>
         </div>
     </div>
@@ -59,7 +56,19 @@
                that holds in the Python half and not the Rust half is not an invariant. Forty-six
                rules always run; the forty-seventh registers only when the config segment it
                polices is set, which is stated rather than hidden because a conditional rule
-               is a rule that can silently not exist.</p>
+               is a rule that can silently not exist. The registration, copied, with the
+               forty-two entries between elided:</p>
+<pre><code>    rules: list[Rule] = [
+        ConfigRule(),
+        TypingRule(),
+        PassthroughRule(),
+        ...
+        RustProptestRule(config),
+        RustExplicitMatchRule(config),
+    ]
+    if config.dataclass_ban_segments:
+        rules.append(DataclassRule(config))</code></pre>
+            <p class="excerpt-src"><a href="https://github.com/wagner-austin/API/blob/d89684561/libs/monorepo_guards/src/monorepo_guards/orchestrator.py">libs/monorepo_guards/src/monorepo_guards/orchestrator.py</a>, <code>_run_with_config</code>; the count is the literal's entries plus that one append.</p>
         </div>
     </div>
 
@@ -112,7 +121,23 @@
                re-derived by parsing the registration literal rather than by text search,
                which over-counts by also matching constructor names that merely end in the
                same word. Services and libraries are directory counts: they say how the
-               repository is divided, not how much of each division carries weight.</p>
+               repository is divided, not how much of each division carries weight. Every
+               count was re-derived on 2026-09-14 and none had moved in the three days since
+               the previous reading.</p>
+        </div>
+    </div>
+    <div class="block">
+        <h2 class="section">Sources</h2>
+        <div class="panel prose">
+            <ul>
+                <li>The repository: <a href="https://github.com/wagner-austin/API/tree/d89684561">wagner-austin/API</a> at <code>d896845</code>; its <a href="https://github.com/wagner-austin/API/blob/d89684561/README.md">README</a> opens with the three things worth fifteen minutes.</li>
+                <li>The rule framework: <a href="https://github.com/wagner-austin/API/tree/d89684561/libs/monorepo_guards">libs/monorepo_guards</a>; the registration literal quoted above is in <a href="https://github.com/wagner-austin/API/blob/d89684561/libs/monorepo_guards/src/monorepo_guards/orchestrator.py">orchestrator.py</a>.</li>
+                <li>The 13 services and 22 libraries are the directories under <a href="https://github.com/wagner-austin/API/tree/d89684561/services">services/</a> and <a href="https://github.com/wagner-austin/API/tree/d89684561/libs">libs/</a>.</li>
+                <li>ClearGBM, both layers: <a href="https://github.com/wagner-austin/API/tree/d89684561/libs/cleargbm">libs/cleargbm</a> and <a href="https://github.com/wagner-austin/API/tree/d89684561/libs/cleargbm_rs">libs/cleargbm_rs</a>.</li>
+                <li>The 57 input languages: the table in the speech service's <a href="https://github.com/wagner-austin/API/blob/d89684561/services/grandma-api/README.md">README</a>.</li>
+                <li>The deleted service: <a href="https://github.com/wagner-austin/API/commit/b02c25d3a">b02c25d3a</a>, 2026-08-01.</li>
+                <li>This article's manifest: <a href="https://github.com/wagner-austin/Dashboards/blob/main/preview/architecture-as-code/provenance.json">provenance.json</a>.</li>
+            </ul>
         </div>
     </div>
 </div>
