@@ -11,6 +11,7 @@
 
 import { DEFAULT_CAMERA_Z, wrapDepth } from "../world/Projection.js";
 import type { InputState } from "./state.js";
+import { RUN_SPEED_MULTIPLIER } from "./intent.js";
 
 /**
  * Camera speeds, in world units per second.
@@ -79,7 +80,8 @@ export function processHorizontalMovement(
   }
 
   const direction = horizontal === "left" ? -1 : 1;
-  state.camera = { ...state.camera, x: state.camera.x + speed * deltaTime * direction };
+  const multiplier = state.intent.running === true ? RUN_SPEED_MULTIPLIER : 1;
+  state.camera = { ...state.camera, x: state.camera.x + speed * multiplier * deltaTime * direction };
 }
 
 /**

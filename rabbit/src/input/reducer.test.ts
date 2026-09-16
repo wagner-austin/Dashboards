@@ -68,6 +68,16 @@ describe("applyIntentChange", () => {
   });
 
   describe("horizontal intent on the ground", () => {
+    it("speeds up the walk cycle without skipping poses, then restores it", () => {
+      setAnimation({ kind: "walk", frameIdx: 0 });
+      timers.walk.start();
+      apply(createIntent("right", null), createIntent("right", null, true));
+      vi.advanceTimersByTime(70);
+      expect(bunny.animation.frameIdx).toBe(1);
+      apply(createIntent("right", null, true), createIntent("right", null));
+      vi.advanceTimersByTime(70);
+      expect(bunny.animation.frameIdx).toBe(1);
+    });
     it("starts a transition toward walking left", () => {
       apply(NEUTRAL_INTENT, createIntent("left", null));
 

@@ -62,6 +62,12 @@ describe("processDepthMovement", () => {
     });
 });
 describe("processHorizontalMovement", () => {
+    it.each(["walk", "jump"])("runs faster during %s", (kind) => {
+        const state = stateIn({ kind, frameIdx: 0 }, "right");
+        state.intent = { horizontal: "right", vertical: null, running: true };
+        processHorizontalMovement(state, 0.5, PAN_SPEED);
+        expect(state.camera.x).toBeCloseTo(PAN_SPEED * 1.8 * 0.5);
+    });
     it("leaves the camera alone when idle", () => {
         const state = stateIn({ kind: "idle", frameIdx: 0 }, "right");
         processHorizontalMovement(state, 1, PAN_SPEED);

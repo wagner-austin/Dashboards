@@ -7,7 +7,7 @@ import { createBuffer, renderBuffer } from "./Viewport.js";
 import { drawSprite } from "./draw.js";
 import { drawGround } from "./Ground.js";
 import { occludeStackedBuffers } from "./occlusion.js";
-import { getBunnyFrame } from "../entities/Bunny.js";
+import { getBunnyFrame, getJumpLift } from "../entities/Bunny.js";
 import { renderAllLayers, renderForegroundLayers } from "../layers/index.js";
 /**
  * Draw the bunny entity to buffer.
@@ -19,10 +19,11 @@ import { renderAllLayers, renderForegroundLayers } from "../layers/index.js";
  *     width: Buffer width.
  *     height: Buffer height.
  */
-function drawBunny(buffer, bunnyState, bunnyFrames, width, height) {
+function drawBunny(buffer, bunnyState, bunnyFrames, width, height, currentTime = 0) {
     const bunny = getBunnyFrame(bunnyState, bunnyFrames);
     const bunnyX = Math.floor(width / 2) - 20;
-    const bunnyY = height - bunny.lines.length - 2;
+    const lift = Math.round(getJumpLift(bunnyState, bunnyFrames, currentTime));
+    const bunnyY = height - bunny.lines.length - 2 - lift;
     drawSprite(buffer, bunny.lines, bunnyX, bunnyY, width, height);
 }
 /**
@@ -63,7 +64,7 @@ export function renderFrame(state, bunnyFrames, layers, currentTime) {
     // Draw ground using camera position
     drawGround(buffers.world, -Math.floor(state.sceneState.camera.x), width, height);
     // Draw bunny at fixed screen position, alone on its own layer
-    drawBunny(buffers.actor, state.bunnyState, bunnyFrames, width, height);
+    drawBunny(buffers.actor, state.bunnyState, bunnyFrames, width, height, currentTime);
     // Render foreground layers
     renderForegroundLayers(buffers.foreground, state.sceneState, width, height, config);
     // Resolve the overlap the split created: a nearer layer's glyph must erase

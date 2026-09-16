@@ -61,6 +61,7 @@
       }
     },
     "lion": {
+      "jumpMotion": { "durationMs": 720, "heightRows": 8 },
       "animations": {
         "walk": {
           "source": "originals/lion/lion_walk_animation/walk.gif",

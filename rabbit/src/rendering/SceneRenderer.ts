@@ -9,7 +9,7 @@ import { drawSprite } from "./draw.js";
 import { drawGround } from "./Ground.js";
 import { occludeStackedBuffers, type LayerBuffers } from "./occlusion.js";
 import type { LayerColors } from "./colors.js";
-import { getBunnyFrame, type BunnyFrames, type BunnyState } from "../entities/Bunny.js";
+import { getBunnyFrame, getJumpLift, type BunnyFrames, type BunnyState } from "../entities/Bunny.js";
 import { renderAllLayers, renderForegroundLayers, type SceneState } from "../layers/index.js";
 import type { ProjectionConfig } from "../world/Projection.js";
 
@@ -69,11 +69,13 @@ function drawBunny(
   bunnyState: BunnyState,
   bunnyFrames: BunnyFrames,
   width: number,
-  height: number
+  height: number,
+  currentTime = 0
 ): void {
   const bunny = getBunnyFrame(bunnyState, bunnyFrames);
   const bunnyX = Math.floor(width / 2) - 20;
-  const bunnyY = height - bunny.lines.length - 2;
+  const lift = Math.round(getJumpLift(bunnyState, bunnyFrames, currentTime));
+  const bunnyY = height - bunny.lines.length - 2 - lift;
   drawSprite(buffer, bunny.lines, bunnyX, bunnyY, width, height);
 }
 
@@ -124,7 +126,7 @@ export function renderFrame(
   drawGround(buffers.world, -Math.floor(state.sceneState.camera.x), width, height);
 
   // Draw bunny at fixed screen position, alone on its own layer
-  drawBunny(buffers.actor, state.bunnyState, bunnyFrames, width, height);
+  drawBunny(buffers.actor, state.bunnyState, bunnyFrames, width, height, currentTime);
 
   // Render foreground layers
   renderForegroundLayers(buffers.foreground, state.sceneState, width, height, config);

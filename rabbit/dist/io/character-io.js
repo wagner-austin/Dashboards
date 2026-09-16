@@ -7,6 +7,13 @@
  */
 import { resolveCharacterAnimations, } from "../loaders/character.js";
 import { loadSpriteFrames } from "./transport.js";
+function isJumpMotion(value) {
+    return value !== null && typeof value === "object" &&
+        "durationMs" in value && typeof value.durationMs === "number" &&
+        Number.isFinite(value.durationMs) && value.durationMs > 0 &&
+        "heightRows" in value && typeof value.heightRows === "number" &&
+        Number.isFinite(value.heightRows) && value.heightRows >= 0;
+}
 /**
  * Load one animation's frames, directional or not.
  *
@@ -46,6 +53,10 @@ async function loadAnimation(character, source) {
  */
 export async function loadCharacterFrames(config, character) {
     const sources = resolveCharacterAnimations(config, character);
+    const jumpMotion = config.sprites[character]?.jumpMotion;
+    if (jumpMotion !== undefined && !isJumpMotion(jumpMotion)) {
+        throw new Error(`character "${character}" has invalid jumpMotion`);
+    }
     const [walk, jump, idle, walkToIdle, walkToTurnAway, walkToTurnToward, hopAway, hopToward,] = await Promise.all([
         loadAnimation(character, sources.walk),
         loadAnimation(character, sources.jump),
@@ -57,6 +68,7 @@ export async function loadCharacterFrames(config, character) {
         loadAnimation(character, sources.hopToward),
     ]);
     return {
+        ...(jumpMotion === undefined ? {} : { jumpMotion }),
         walkLeft: walk.left,
         walkRight: walk.right,
         jumpLeft: jump.left,

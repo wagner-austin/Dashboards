@@ -137,6 +137,7 @@ export interface TreeZoomConfig {
 
 /** Sprite definition with animations */
 export interface SpriteConfig {
+  readonly jumpMotion?: { readonly durationMs: number; readonly heightRows: number };
   readonly animations?: Record<string, SpriteAnimationConfig>;
   readonly source?: string;
   readonly widths?: readonly number[];

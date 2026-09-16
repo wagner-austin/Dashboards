@@ -9,6 +9,7 @@
  * won arbitration, so keyboard, touch, and autopilot all scroll identically.
  */
 import { DEFAULT_CAMERA_Z, wrapDepth } from "../world/Projection.js";
+import { RUN_SPEED_MULTIPLIER } from "./intent.js";
 /**
  * Move the camera through depth while the bunny is hopping.
  *
@@ -48,7 +49,8 @@ export function processHorizontalMovement(state, deltaTime, speed) {
         return;
     }
     const direction = horizontal === "left" ? -1 : 1;
-    state.camera = { ...state.camera, x: state.camera.x + speed * deltaTime * direction };
+    const multiplier = state.intent.running === true ? RUN_SPEED_MULTIPLIER : 1;
+    state.camera = { ...state.camera, x: state.camera.x + speed * multiplier * deltaTime * direction };
 }
 /**
  * Return the camera to its starting position.

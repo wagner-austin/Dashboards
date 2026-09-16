@@ -38,6 +38,11 @@ export type AxisBinding = {
 export interface KeyboardKeys {
     horizontal: HorizontalInput;
     vertical: VerticalInput;
+    running?: boolean;
+    lastPress?: {
+        direction: HorizontalDirection;
+        time: number;
+    };
 }
 /**
  * Dependencies required to run the keyboard source.

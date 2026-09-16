@@ -90,7 +90,9 @@ export function createBunnyTimers(state, frames, intervals, isHorizontalHeld) {
         const idleFrames = state.facingRight ? frames.idleRight : frames.idleLeft;
         state.animation.frameIdx = (state.animation.frameIdx + 1) % idleFrames.length;
     });
-    const jumpTimer = createAnimationTimer(intervals.jump, () => {
+    const jumpInterval = frames.jumpMotion === undefined ? intervals.jump :
+        frames.jumpMotion.durationMs / frames.jumpLeft.length;
+    const jumpTimer = createAnimationTimer(jumpInterval, () => {
         if (state.animation.kind !== "jump")
             return;
         const jumpFrames = state.facingRight ? frames.jumpRight : frames.jumpLeft;
@@ -168,7 +170,25 @@ export function createBunnyTimers(state, frames, intervals, isHorizontalHeld) {
         const hopFrames = state.animation.direction === "away" ? frames.hopAway : frames.hopToward;
         state.animation.frameIdx = (state.animation.frameIdx + 1) % hopFrames.length;
     });
-    return { walk: walkTimer, idle: idleTimer, jump: jumpTimer, transition: transitionTimer, hop: hopTimer };
+    const jump = {
+        ...jumpTimer,
+        start() {
+            if (!jumpTimer.isRunning() && state.animation.kind === "jump" && frames.jumpMotion !== undefined) {
+                state.animation.startedAt = performance.now();
+            }
+            jumpTimer.start();
+        },
+    };
+    return { walk: walkTimer, idle: idleTimer, jump, transition: transitionTimer, hop: hopTimer };
+}
+export function getJumpLift(state, frames, now) {
+    const animation = state.animation;
+    const motion = frames.jumpMotion;
+    if (animation.kind !== "jump" || motion === undefined || animation.startedAt === undefined)
+        return 0;
+    const progress = (now - animation.startedAt) / motion.durationMs;
+    const flight = Math.max(0, Math.min(1, (progress - 1 / 3) / 0.5));
+    return 4 * motion.heightRows * flight * (1 - flight);
 }
 /**
  * Get current bunny frame to render.

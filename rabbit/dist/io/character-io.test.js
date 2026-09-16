@@ -22,6 +22,21 @@ afterEach(() => {
     transportHooks.clearSpriteModuleCache();
 });
 describe("loadCharacterFrames", () => {
+    it("loads per-character jump motion without affecting other characters", async () => {
+        const config = createTestConfig(["lion", "bunny"]);
+        config.sprites.lion = { ...config.sprites.lion, jumpMotion: { durationMs: 720, heightRows: 8 } };
+        expect((await loadCharacterFrames(config, "lion")).jumpMotion).toEqual({ durationMs: 720, heightRows: 8 });
+        expect((await loadCharacterFrames(config, "bunny")).jumpMotion).toBeUndefined();
+    });
+    it.each([
+        { durationMs: 0, heightRows: 8 },
+        { durationMs: 720, heightRows: -1 },
+        { durationMs: NaN, heightRows: 8 },
+    ])("rejects invalid jump motion %j", async (jumpMotion) => {
+        const config = createTestConfig(["lion"]);
+        config.sprites.lion = { ...config.sprites.lion, jumpMotion };
+        await expect(loadCharacterFrames(config, "lion")).rejects.toThrow("invalid jumpMotion");
+    });
     it("loads every animation at the width config declares", async () => {
         await loadCharacterFrames(createTestConfig(), "bunny");
         expect(requested.some((u) => u.includes("/walk/w50_left.js"))).toBe(true);

@@ -13,7 +13,7 @@
 
 import { isHopping, isJumping, type BunnyFrames, type BunnyTimers } from "../entities/Bunny.js";
 import { handleWalkKeyDown, handleWalkKeyUp, handleHopInput, handleHopRelease } from "./handlers.js";
-import type { MovementIntent } from "./intent.js";
+import { RUN_SPEED_MULTIPLIER, type MovementIntent } from "./intent.js";
 import { isHorizontalRequested, type InputState } from "./state.js";
 
 /**
@@ -105,6 +105,7 @@ export function applyIntentChange(
   frames: BunnyFrames,
   timers: BunnyTimers
 ): void {
+  timers.walk.setRate?.(next.running === true ? RUN_SPEED_MULTIPLIER : 1);
   applyVerticalChange(previous, next, state, timers);
   applyHorizontalChange(previous, next, state, frames, timers);
 }

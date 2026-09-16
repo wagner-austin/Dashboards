@@ -120,17 +120,24 @@ The bunny uses a discriminated union with 5 animation states:
 Transitions are first-class -- walk-to-idle, idle-to-walk, walk-to-turn-away, walk-to-turn-toward -- with pending actions so inputs during transitions queue correctly.
 
 Each animation runs on an independent timer, decoupled from the render loop.
+The lion opts into `sprites.lion.jumpMotion`: a 720ms jump with an additional
+eight-row parabolic lift during takeoff and landing. It jumps directly from
+idle without playing the walk-start clip. The rabbit keeps its original
+baked-in jump motion. Running speeds up the existing gait by 1.8× without
+skipping frames; there is not a separate sprint-art cycle yet.
 The intervals come from `settings.animation` in `config.json` — see Movement
 Speed below. Scene sprites animate on their own fixed 400ms timer.
 
 ## Controls
 
 - **A/D or Left/Right arrows**: Walk (camera scrolls with bunny)
+- **Double-tap A/D or Left/Right, holding the second press**: Run at 1.8× walking speed. Release to stop; Space also works while running.
 - **W/S or Up/Down arrows**: Hop into/out of depth (moves camera along Z axis)
 - **Spacebar**: Jump
 - **N**: Switch music track
 - **R**: Reset camera position
 - **Touch**: Invisible joystick (drag for 8-way movement, tap to jump)
+- **Touch running**: Tap, then quickly touch again in the same spot and drag without lifting. Release to stop. Single-tap jump waits 280ms to distinguish it from a double tap.
 
 Leave the page alone and the bunny takes over by itself — see Autorun below.
 

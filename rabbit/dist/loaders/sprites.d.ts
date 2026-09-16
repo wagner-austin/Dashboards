@@ -25,6 +25,7 @@ export interface AnimationTimer {
     start: () => void;
     stop: () => void;
     isRunning: () => boolean;
+    setRate?: (rate: number) => void;
 }
 export declare function createAnimationTimer(intervalMs: number, onTick: () => void): AnimationTimer;
 /** Test hooks for internal functions - only exported for testing */

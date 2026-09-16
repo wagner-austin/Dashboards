@@ -14,6 +14,14 @@ import {
 } from "../loaders/character.js";
 import { loadSpriteFrames } from "./transport.js";
 
+function isJumpMotion(value: unknown): value is NonNullable<BunnyFrames["jumpMotion"]> {
+  return value !== null && typeof value === "object" &&
+    "durationMs" in value && typeof value.durationMs === "number" &&
+    Number.isFinite(value.durationMs) && value.durationMs > 0 &&
+    "heightRows" in value && typeof value.heightRows === "number" &&
+    Number.isFinite(value.heightRows) && value.heightRows >= 0;
+}
+
 /**
  * Load one animation's frames, directional or not.
  *
@@ -60,6 +68,10 @@ export async function loadCharacterFrames(
   character: string
 ): Promise<BunnyFrames> {
   const sources = resolveCharacterAnimations(config, character);
+  const jumpMotion: unknown = config.sprites[character]?.jumpMotion;
+  if (jumpMotion !== undefined && !isJumpMotion(jumpMotion)) {
+    throw new Error(`character "${character}" has invalid jumpMotion`);
+  }
   const [
     walk,
     jump,
@@ -81,6 +93,7 @@ export async function loadCharacterFrames(
   ]);
 
   return {
+    ...(jumpMotion === undefined ? {} : { jumpMotion }),
     walkLeft: walk.left,
     walkRight: walk.right,
     jumpLeft: jump.left,

@@ -279,6 +279,26 @@ describe("touch source", () => {
   });
 
   describe("handleTouchEnd", () => {
+    it("double tap and drag runs without triggering a jump", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+      handleTouchEnd(touchState, deps, 50);
+      handleTouchStart(touchState, [point(1, 100, 100)], 150);
+      handleTouchMove(touchState, deps, [point(1, 200, 100)]);
+      expect(state.intent).toEqual(createIntent("right", null, true));
+      vi.advanceTimersByTime(600);
+      expect(bunny.animation.kind).toBe("walk");
+      handleTouchEnd(touchState, deps, 800);
+      expect(state.intent).toEqual(NEUTRAL_INTENT);
+    });
+
+    it("does not treat a distant second touch as a double tap", () => {
+      handleTouchStart(touchState, [point(1, 100, 100)], 0);
+      handleTouchEnd(touchState, deps, 50);
+      handleTouchStart(touchState, [point(1, 300, 100)], 150);
+      handleTouchMove(touchState, deps, [point(1, 400, 100)]);
+      expect(state.intent.running).not.toBe(true);
+    });
+
     it("does nothing without an active joystick", () => {
       handleTouchEnd(touchState, deps, 100);
 
@@ -289,7 +309,7 @@ describe("touch source", () => {
       handleTouchStart(touchState, [point(1, 100, 100)], 0);
       handleTouchEnd(touchState, deps, 50);
       // Jumping from idle runs the transition first, then a single jump frame.
-      vi.advanceTimersByTime(250);
+      vi.advanceTimersByTime(530);
 
       expect(bunny.animation.kind).toBe("jump");
       expect(touchState.joystick).toBeNull();
@@ -336,6 +356,16 @@ describe("touch source", () => {
   });
 
   describe("setupTouchControls", () => {
+    it("cancels a pending tap jump when the browser cancels touch", () => {
+      setupTouchControls(deps);
+      events.emit("touchstart", [point(1, 100, 100)]);
+      events.emit("touchend", []);
+      events.emit("touchcancel", []);
+      vi.advanceTimersByTime(600);
+      expect(bunny.animation.kind).toBe("idle");
+      expect(state.intent).toEqual(NEUTRAL_INTENT);
+    });
+
     it("binds all four touch events", () => {
       setupTouchControls(deps);
 

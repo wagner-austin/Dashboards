@@ -38,7 +38,11 @@ export type IntentSource = "user" | "autopilot";
 export interface MovementIntent {
   readonly horizontal: HorizontalInput;
   readonly vertical: VerticalInput;
+  readonly running?: boolean;
 }
+
+export const RUN_SPEED_MULTIPLIER = 1.8;
+export const DOUBLE_TAP_MS = 280;
 
 /** Intent requesting no movement at all. */
 export const NEUTRAL_INTENT: MovementIntent = { horizontal: null, vertical: null };
@@ -55,9 +59,10 @@ export const NEUTRAL_INTENT: MovementIntent = { horizontal: null, vertical: null
  */
 export function createIntent(
   horizontal: HorizontalInput,
-  vertical: VerticalInput
+  vertical: VerticalInput,
+  running = false
 ): MovementIntent {
-  return { horizontal, vertical };
+  return running && horizontal !== null ? { horizontal, vertical, running: true } : { horizontal, vertical };
 }
 
 /**
@@ -71,7 +76,7 @@ export function createIntent(
  *     True if both axes match.
  */
 export function intentsEqual(a: MovementIntent, b: MovementIntent): boolean {
-  return a.horizontal === b.horizontal && a.vertical === b.vertical;
+  return a.horizontal === b.horizontal && a.vertical === b.vertical && (a.running === true) === (b.running === true);
 }
 
 /**

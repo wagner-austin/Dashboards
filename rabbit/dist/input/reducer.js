@@ -12,6 +12,7 @@
  */
 import { isHopping, isJumping } from "../entities/Bunny.js";
 import { handleWalkKeyDown, handleWalkKeyUp, handleHopInput, handleHopRelease } from "./handlers.js";
+import { RUN_SPEED_MULTIPLIER } from "./intent.js";
 import { isHorizontalRequested } from "./state.js";
 /**
  * Apply the depth (vertical) portion of an intent change.
@@ -86,6 +87,7 @@ function applyHorizontalChange(previous, next, state, frames, timers) {
  *     timers: Bunny animation timers.
  */
 export function applyIntentChange(previous, next, state, frames, timers) {
+    timers.walk.setRate?.(next.running === true ? RUN_SPEED_MULTIPLIER : 1);
     applyVerticalChange(previous, next, state, timers);
     applyHorizontalChange(previous, next, state, frames, timers);
 }

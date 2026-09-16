@@ -11,6 +11,7 @@ import type { ActivityTracker } from "./activity.js";
 import type { InputArbiter } from "./arbiter.js";
 import {
   createIntent,
+  DOUBLE_TAP_MS,
   type HorizontalDirection,
   type HorizontalInput,
   type MovementIntent,
@@ -50,6 +51,8 @@ export type AxisBinding =
 export interface KeyboardKeys {
   horizontal: HorizontalInput;
   vertical: VerticalInput;
+  running?: boolean;
+  lastPress?: { direction: HorizontalDirection; time: number };
 }
 
 /**
@@ -105,7 +108,7 @@ export function createKeyboardKeys(): KeyboardKeys {
  *     The intent those keys request.
  */
 function intentFromKeys(keys: KeyboardKeys): MovementIntent {
-  return createIntent(keys.horizontal, keys.vertical);
+  return createIntent(keys.horizontal, keys.vertical, keys.running);
 }
 
 /**
@@ -142,6 +145,7 @@ function releaseBinding(keys: KeyboardKeys, binding: AxisBinding): boolean {
       return false;
     }
     keys.horizontal = null;
+    keys.running = false;
     return true;
   }
   if (keys.vertical !== binding.value) {
@@ -188,6 +192,12 @@ export function handleKeyDown(
     return;
   }
 
+  if (binding.axis === "horizontal" && keys.horizontal !== binding.value) {
+    const elapsed = event.timeStamp - (keys.lastPress?.time ?? -Infinity);
+    keys.running = keys.horizontal === null && keys.lastPress?.direction === binding.value &&
+      elapsed >= 0 && elapsed <= DOUBLE_TAP_MS;
+    keys.lastPress = { direction: binding.value, time: event.timeStamp };
+  }
   pressBinding(keys, binding);
   deps.arbiter.submit("user", intentFromKeys(keys));
 }

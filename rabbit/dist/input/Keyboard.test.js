@@ -109,6 +109,55 @@ describe("keyboard source", () => {
         expect(events.boundCount("keyup")).toBe(1);
     });
     describe("movement keys", () => {
+        function timedKey(type, key, time, keys, repeat = false) {
+            const event = new KeyboardEvent(type, { key, repeat });
+            Object.defineProperty(event, "timeStamp", { value: time });
+            if (type === "keydown")
+                handleKeyDown(event, keys, deps);
+            else
+                handleKeyUp(event, keys, deps);
+        }
+        it("runs after a quick second press and stops running on release", () => {
+            const keys = createKeyboardKeys();
+            timedKey("keydown", "d", 100, keys);
+            timedKey("keyup", "d", 160, keys);
+            timedKey("keydown", "d", 250, keys);
+            expect(state.intent).toEqual(createIntent("right", null, true));
+            timedKey("keyup", "d", 400, keys);
+            expect(state.intent).toEqual(NEUTRAL_INTENT);
+            expect(keys.running).toBe(false);
+        });
+        it.each(["a", "ArrowLeft", "d", "ArrowRight"])("recognizes double tapping %s", (key) => {
+            const keys = createKeyboardKeys();
+            timedKey("keydown", key, 100, keys);
+            timedKey("keyup", key, 130, keys);
+            timedKey("keydown", key, 200, keys);
+            expect(state.intent.running).toBe(true);
+        });
+        it("does not run for a late press, opposite direction, held alias, or repeat", () => {
+            const keys = createKeyboardKeys();
+            timedKey("keydown", "d", 100, keys);
+            timedKey("keydown", "ArrowRight", 120, keys);
+            expect(state.intent.running).not.toBe(true);
+            timedKey("keydown", "d", 150, keys, true);
+            expect(state.intent.running).not.toBe(true);
+            timedKey("keyup", "d", 160, keys);
+            timedKey("keydown", "d", 500, keys);
+            expect(state.intent.running).not.toBe(true);
+            timedKey("keyup", "d", 520, keys);
+            timedKey("keydown", "a", 550, keys);
+            expect(state.intent.running).not.toBe(true);
+        });
+        it("keeps running while requesting a jump", () => {
+            const keys = createKeyboardKeys();
+            timedKey("keydown", "d", 100, keys);
+            timedKey("keyup", "d", 130, keys);
+            timedKey("keydown", "d", 200, keys);
+            vi.advanceTimersByTime(400);
+            timedKey("keydown", " ", 600, keys);
+            expect(bunny.animation.kind).toBe("jump");
+            expect(state.intent.running).toBe(true);
+        });
         it("submits a left intent for ArrowLeft", () => {
             events.press("ArrowLeft");
             expect(state.intent).toStrictEqual(createIntent("left", null));

@@ -33,6 +33,14 @@ export function isPendingJump(bunny) {
  */
 export function handleJumpInput(bunny, frames, timers) {
     const anim = bunny.animation;
+    if (frames.jumpMotion !== undefined && (anim.kind === "idle" || anim.kind === "walk" || anim.kind === "transition")) {
+        timers.idle.stop();
+        timers.walk.stop();
+        timers.transition.stop();
+        bunny.animation = { kind: "jump", frameIdx: 0 };
+        timers.jump.start();
+        return;
+    }
     if (anim.kind === "idle") {
         timers.idle.stop();
         const transitionFrames = bunny.facingRight

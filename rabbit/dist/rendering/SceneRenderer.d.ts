@@ -57,7 +57,7 @@ export interface ScreenLayers {
  *     width: Buffer width.
  *     height: Buffer height.
  */
-declare function drawBunny(buffer: string[][], bunnyState: BunnyState, bunnyFrames: BunnyFrames, width: number, height: number): void;
+declare function drawBunny(buffer: string[][], bunnyState: BunnyState, bunnyFrames: BunnyFrames, width: number, height: number, currentTime?: number): void;
 /**
  * Render a single frame.
  *

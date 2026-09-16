@@ -19,6 +19,10 @@ describe("createIntent", () => {
     });
 });
 describe("intentsEqual", () => {
+    it("distinguishes walking from running in the same direction", () => {
+        expect(intentsEqual(createIntent("right", null), createIntent("right", null, true))).toBe(false);
+        expect(createIntent(null, null, true)).toEqual(NEUTRAL_INTENT);
+    });
     it("is true for matching axes", () => {
         expect(intentsEqual(createIntent("right", "down"), createIntent("right", "down"))).toBe(true);
     });

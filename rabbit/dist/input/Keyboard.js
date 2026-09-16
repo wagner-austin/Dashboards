@@ -6,7 +6,7 @@
  * so it cannot disagree with the touch or autopilot sources about what the
  * bunny is currently being told to do.
  */
-import { createIntent, } from "./intent.js";
+import { createIntent, DOUBLE_TAP_MS, } from "./intent.js";
 import { resetCamera } from "./movement.js";
 /** Key that triggers a jump. */
 const JUMP_KEY = " ";
@@ -42,7 +42,7 @@ export function createKeyboardKeys() {
  *     The intent those keys request.
  */
 function intentFromKeys(keys) {
-    return createIntent(keys.horizontal, keys.vertical);
+    return createIntent(keys.horizontal, keys.vertical, keys.running);
 }
 /**
  * Record a key press against the held-key model.
@@ -77,6 +77,7 @@ function releaseBinding(keys, binding) {
             return false;
         }
         keys.horizontal = null;
+        keys.running = false;
         return true;
     }
     if (keys.vertical !== binding.value) {
@@ -111,6 +112,12 @@ export function handleKeyDown(event, keys, deps) {
     const binding = KEY_BINDINGS.get(key);
     if (binding === undefined) {
         return;
+    }
+    if (binding.axis === "horizontal" && keys.horizontal !== binding.value) {
+        const elapsed = event.timeStamp - (keys.lastPress?.time ?? -Infinity);
+        keys.running = keys.horizontal === null && keys.lastPress?.direction === binding.value &&
+            elapsed >= 0 && elapsed <= DOUBLE_TAP_MS;
+        keys.lastPress = { direction: binding.value, time: event.timeStamp };
     }
     pressBinding(keys, binding);
     deps.arbiter.submit("user", intentFromKeys(keys));

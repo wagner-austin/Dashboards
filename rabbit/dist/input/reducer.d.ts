@@ -11,7 +11,7 @@
  * whether to settle into idle or resume walking.
  */
 import { type BunnyFrames, type BunnyTimers } from "../entities/Bunny.js";
-import type { MovementIntent } from "./intent.js";
+import { type MovementIntent } from "./intent.js";
 import { type InputState } from "./state.js";
 /**
  * Apply the depth (vertical) portion of an intent change.

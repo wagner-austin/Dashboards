@@ -111,6 +111,7 @@ export interface AnimationTimer {
   start: () => void;
   stop: () => void;
   isRunning: () => boolean;
+  setRate?: (rate: number) => void;
 }
 
 export function createAnimationTimer(
@@ -118,11 +119,12 @@ export function createAnimationTimer(
   onTick: () => void
 ): AnimationTimer {
   let id: ReturnType<typeof setInterval> | null = null;
+  let rate = 1;
 
   return {
     start(): void {
       if (id !== null) return;
-      id = setInterval(onTick, intervalMs);
+      id = setInterval(onTick, intervalMs / rate);
     },
     stop(): void {
       if (id !== null) {
@@ -132,6 +134,14 @@ export function createAnimationTimer(
     },
     isRunning(): boolean {
       return id !== null;
+    },
+    setRate(next: number): void {
+      if (!Number.isFinite(next) || next <= 0 || next === rate) return;
+      rate = next;
+      if (id !== null) {
+        clearInterval(id);
+        id = setInterval(onTick, intervalMs / rate);
+      }
     },
   };
 }

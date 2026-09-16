@@ -91,11 +91,12 @@ function validateConfig(data) {
 }
 export function createAnimationTimer(intervalMs, onTick) {
     let id = null;
+    let rate = 1;
     return {
         start() {
             if (id !== null)
                 return;
-            id = setInterval(onTick, intervalMs);
+            id = setInterval(onTick, intervalMs / rate);
         },
         stop() {
             if (id !== null) {
@@ -105,6 +106,15 @@ export function createAnimationTimer(intervalMs, onTick) {
         },
         isRunning() {
             return id !== null;
+        },
+        setRate(next) {
+            if (!Number.isFinite(next) || next <= 0 || next === rate)
+                return;
+            rate = next;
+            if (id !== null) {
+                clearInterval(id);
+                id = setInterval(onTick, intervalMs / rate);
+            }
         },
     };
 }

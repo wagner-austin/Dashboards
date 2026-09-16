@@ -9,6 +9,8 @@
  * This module is a leaf: it imports nothing, so configuration validation and
  * the autopilot state machine can depend on it without creating cycles.
  */
+export const RUN_SPEED_MULTIPLIER = 1.8;
+export const DOUBLE_TAP_MS = 280;
 /** Intent requesting no movement at all. */
 export const NEUTRAL_INTENT = { horizontal: null, vertical: null };
 /**
@@ -21,8 +23,8 @@ export const NEUTRAL_INTENT = { horizontal: null, vertical: null };
  * Returns:
  *     A new immutable MovementIntent.
  */
-export function createIntent(horizontal, vertical) {
-    return { horizontal, vertical };
+export function createIntent(horizontal, vertical, running = false) {
+    return running && horizontal !== null ? { horizontal, vertical, running: true } : { horizontal, vertical };
 }
 /**
  * Compare two intents by value.
@@ -35,7 +37,7 @@ export function createIntent(horizontal, vertical) {
  *     True if both axes match.
  */
 export function intentsEqual(a, b) {
-    return a.horizontal === b.horizontal && a.vertical === b.vertical;
+    return a.horizontal === b.horizontal && a.vertical === b.vertical && (a.running === true) === (b.running === true);
 }
 /**
  * Check whether an intent requests no movement.

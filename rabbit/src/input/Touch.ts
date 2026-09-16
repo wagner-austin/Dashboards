@@ -11,6 +11,7 @@ import type { InputArbiter } from "./arbiter.js";
 import {
   NEUTRAL_INTENT,
   createIntent,
+  DOUBLE_TAP_MS,
   type HorizontalInput,
   type MovementIntent,
   type VerticalInput,
@@ -44,6 +45,9 @@ export interface JoystickState {
 export interface TouchState {
   joystick: JoystickState | null;
   currentDirection: TouchDirection;
+  running?: boolean;
+  lastTap?: { time: number; x: number; y: number };
+  pendingJump?: ReturnType<typeof setTimeout>;
 }
 
 /**
@@ -278,7 +282,8 @@ export function processDirectionChange(
   deps: TouchDeps
 ): void {
   deps.activity.record();
-  deps.arbiter.submit("user", directionToIntent(newDirection));
+  const intent = directionToIntent(newDirection);
+  deps.arbiter.submit("user", createIntent(intent.horizontal, intent.vertical, touchState.running));
   touchState.currentDirection = newDirection;
 }
 
@@ -300,12 +305,18 @@ export function handleTouchEnd(
 
   deps.activity.record();
 
-  if (isTap(joystick, releaseTime, deps.config)) {
-    deps.arbiter.requestJump("user");
-  } else {
-    deps.arbiter.submit("user", NEUTRAL_INTENT);
+  deps.arbiter.submit("user", NEUTRAL_INTENT);
+  if (touchState.running !== true && isTap(joystick, releaseTime, deps.config)) {
+    touchState.lastTap = { time: releaseTime, x: joystick.anchorX, y: joystick.anchorY };
+    touchState.pendingJump = setTimeout(() => {
+      delete touchState.pendingJump;
+      delete touchState.lastTap;
+      deps.activity.record();
+      deps.arbiter.requestJump("user");
+    }, DOUBLE_TAP_MS);
   }
 
+  touchState.running = false;
   touchState.joystick = null;
   touchState.currentDirection = null;
 }
@@ -352,6 +363,16 @@ export function handleTouchStart(
 
   const touch = points[0];
   if (touch === undefined) return false;
+
+  const previous = touchState.lastTap;
+  touchState.running = previous !== undefined && now >= previous.time &&
+    now - previous.time <= DOUBLE_TAP_MS &&
+    Math.hypot(touch.clientX - previous.x, touch.clientY - previous.y) <= 40;
+  if (touchState.running && touchState.pendingJump !== undefined) {
+    clearTimeout(touchState.pendingJump);
+    delete touchState.pendingJump;
+    delete touchState.lastTap;
+  }
 
   touchState.joystick = {
     anchorX: touch.clientX,
@@ -458,7 +479,16 @@ export function setupTouchControls(deps: TouchDeps): TouchState {
   };
 
   deps.events.addTouchListener("touchend", onEnd, true);
-  deps.events.addTouchListener("touchcancel", onEnd, true);
+  deps.events.addTouchListener("touchcancel", (): boolean => {
+    if (touchState.pendingJump !== undefined) clearTimeout(touchState.pendingJump);
+    delete touchState.pendingJump;
+    delete touchState.lastTap;
+    touchState.joystick = null;
+    touchState.currentDirection = null;
+    touchState.running = false;
+    deps.arbiter.submit("user", NEUTRAL_INTENT);
+    return false;
+  }, true);
 
   return touchState;
 }

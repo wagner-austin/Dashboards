@@ -22,6 +22,7 @@ export interface WalkState {
 export interface JumpState {
     readonly kind: "jump";
     frameIdx: number;
+    startedAt?: number;
 }
 /** Bunny is hopping away or toward camera. */
 export interface HopState {
@@ -52,6 +53,10 @@ export interface BunnyState {
  * Bunny animation frames organized by animation type.
  */
 export interface BunnyFrames {
+    readonly jumpMotion?: {
+        readonly durationMs: number;
+        readonly heightRows: number;
+    };
     readonly walkLeft: readonly string[];
     readonly walkRight: readonly string[];
     readonly jumpLeft: readonly string[];
@@ -150,6 +155,7 @@ export declare function createBunnyTimers(state: BunnyState, frames: BunnyFrames
     transition: number;
     hop: number;
 }, isHorizontalHeld: IsHorizontalHeld): BunnyTimers;
+export declare function getJumpLift(state: BunnyState, frames: BunnyFrames, now: number): number;
 /**
  * Get current bunny frame to render.
  *

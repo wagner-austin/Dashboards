@@ -32,7 +32,10 @@ export type IntentSource = "user" | "autopilot";
 export interface MovementIntent {
     readonly horizontal: HorizontalInput;
     readonly vertical: VerticalInput;
+    readonly running?: boolean;
 }
+export declare const RUN_SPEED_MULTIPLIER = 1.8;
+export declare const DOUBLE_TAP_MS = 280;
 /** Intent requesting no movement at all. */
 export declare const NEUTRAL_INTENT: MovementIntent;
 /**
@@ -45,7 +48,7 @@ export declare const NEUTRAL_INTENT: MovementIntent;
  * Returns:
  *     A new immutable MovementIntent.
  */
-export declare function createIntent(horizontal: HorizontalInput, vertical: VerticalInput): MovementIntent;
+export declare function createIntent(horizontal: HorizontalInput, vertical: VerticalInput, running?: boolean): MovementIntent;
 /**
  * Compare two intents by value.
  *

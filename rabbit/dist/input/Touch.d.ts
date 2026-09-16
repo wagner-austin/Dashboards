@@ -35,6 +35,13 @@ export interface JoystickState {
 export interface TouchState {
     joystick: JoystickState | null;
     currentDirection: TouchDirection;
+    running?: boolean;
+    lastTap?: {
+        time: number;
+        x: number;
+        y: number;
+    };
+    pendingJump?: ReturnType<typeof setTimeout>;
 }
 /**
  * Direction calculated from the touch joystick angle.
