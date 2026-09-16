@@ -8,6 +8,8 @@ The walking cycle was subsequently replaced by eight joint-driven poses. Four te
 
 ## Registration and size
 
+The walk-to-idle transition reuses current walk frames 0 and 7, followed by idle frame 0. The engine reverses this clip for idle-to-walk, so startup now leads from idle through walk frame 7 into frame 0 without flashing the superseded gait poses. Rebuild these transition sources whenever the walk art changes.
+
 - Every source frame is 640 × 400 on white, with a shared ground baseline near pixel 370.
 - Standing poses share an approximately 300-pixel anatomical height. Gait phases use a shared cycle scale; front/rear views retain their naturally narrower bodies.
 - Subjects were isolated as connected components, preventing a neighboring tail from entering a rectangular crop.
