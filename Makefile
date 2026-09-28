@@ -12,6 +12,7 @@ lint:
 
 test:
 	poetry install --with dev --no-interaction --no-root
+	poetry run python -m playwright install chromium
 	poetry run pytest --cov --cov-branch --cov-report=term-missing
 
 # Every article under preview/ must bind its figures to the wiki sections they
