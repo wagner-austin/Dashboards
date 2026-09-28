@@ -1,0 +1,74 @@
+/* Homepage layout only; shared colors and components live in site.css. */
+body.home { min-width: 0; }
+.home .page { background: var(--gray-100); }
+.home .upper { position: relative; padding-bottom: 2rem; }
+.home .container { max-width: 1080px; padding: 1.5rem 2rem 0; }
+.home .header { max-width: 1200px; margin: 0 auto; }
+.home .hero-text { min-width: 0; padding-right: 1rem; }
+.home .block { margin-bottom: 3rem; }
+.home .work, .home .dashboards { list-style: none; display: grid; gap: 1rem; }
+.home .dashboards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.home .panel, .home .worklead-panel, .home details.workcat > summary {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    padding: 1.25rem 1.5rem;
+}
+.home .panel .links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+.home .panel p { color: var(--gray-800); font-size: 1rem; line-height: 1.65; }
+.home .work p { max-width: 70ch; }
+.home .work h3, .home .dashboards h3 {
+    font-size: 1.15rem; font-weight: 600; margin-bottom: .5rem; line-height: 1.4;
+}
+.home a.panel {
+    display: block; height: 100%; text-decoration: none;
+    color: var(--gray-800); transition: border-color .2s;
+}
+.home a.panel h3::after { content: " \2197"; color: var(--primary-dark); }
+.home a.panel:hover { border-color: var(--primary); }
+.home a.panel:hover h3 { text-decoration: underline; text-underline-offset: .15em; }
+.home a:focus-visible, .home summary:focus-visible {
+    outline: 3px solid var(--primary); outline-offset: 3px;
+}
+.home .worklead-panel { margin-bottom: 1rem; }
+.home .worklead-panel h2 { margin-bottom: .5rem; }
+.home .worklead { color: var(--gray-800); font-size: 1rem; line-height: 1.65; }
+.home details.workcat { margin-top: .75rem; }
+.home details.workcat > summary {
+    cursor: pointer; list-style: none; color: var(--gray-800);
+    font-size: 1rem; font-weight: 600; line-height: 1.5;
+}
+.home details.workcat > summary::-webkit-details-marker { display: none; }
+.home details.workcat > summary::before { content: "\25B8"; display: inline-block; width: 1.2em; }
+.home details.workcat[open] > summary::before { transform: rotate(90deg); }
+.home details.workcat > summary:hover { border-color: var(--primary); }
+.home .count { color: var(--gray-600); font-weight: 400; margin-left: .5rem; }
+.home details.workcat > ul.work { margin-top: .75rem; }
+/* The interactive forest occupies its own band below the reading area. */
+.home #forest-band {
+    position: relative; height: 420px; overflow: hidden;
+    background: linear-gradient(var(--gray-100), #0a0a0a 45%);
+}
+.home #backdrop {
+    display: block; width: 100%; height: 100%; border: 0;
+    mask-image: linear-gradient(transparent, #000 45%);
+    -webkit-mask-image: linear-gradient(transparent, #000 45%);
+}
+.home .forest-caption {
+    text-align: center; font-size: .85rem; line-height: 1.6;
+    color: #b9c7d4; background: #0a0a0a; padding: 1rem;
+}
+.home .forest-caption a { color: inherit; }
+@media (max-width: 700px) {
+    .home .header { gap: .75rem; padding-top: 1.25rem; align-items: flex-start; }
+    .home .hero-bird { width: 92px; margin-left: 0; }
+    .home .header h1 { font-size: clamp(1.6rem, 6vw, 2.4rem); line-height: 1.2; }
+    .home .header p.role { font-size: .9rem; line-height: 1.5; }
+    .home .container { padding: 1.5rem 1rem 0; }
+    .home .block { margin-bottom: 2rem; }
+    .home .dashboards { grid-template-columns: minmax(0, 1fr); }
+    .home .panel, .home .worklead-panel, .home details.workcat > summary { padding: 1rem; }
+    .home #forest-band { height: 320px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .home a.panel { transition: none; }
+}
