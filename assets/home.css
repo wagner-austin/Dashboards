@@ -1,7 +1,14 @@
 /* Homepage layout only; shared colors and components live in site.css. */
-body.home { min-width: 0; }
-.home .page { background: var(--gray-100); }
-.home .upper { position: relative; padding-bottom: 2rem; }
+.home .page {
+    position: relative;
+    background: linear-gradient(
+        to bottom,
+        var(--gray-100) 0%, var(--gray-100) 8%, #e6e9ed 15%,
+        #cdd3da 22%, #aeb6c0 29%, #8b939f 37%, #6a727e 45%,
+        #4c535d 53%, #333941 61%, #1e232a 69%, #0a0a0a 79%
+    );
+}
+.home .upper { position: relative; z-index: 2; padding-bottom: 2rem; }
 .home .container { max-width: 1080px; padding: 1.5rem 2rem 0; }
 .home .header { max-width: 1200px; margin: 0 auto; }
 .home .hero-text { min-width: 0; padding-right: 1rem; }
@@ -9,8 +16,6 @@ body.home { min-width: 0; }
 .home .work, .home .dashboards { list-style: none; display: grid; gap: 1rem; }
 .home .dashboards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .home .panel, .home .worklead-panel, .home details.workcat > summary {
-    background: #fff;
-    border: 1px solid var(--gray-200);
     padding: 1.25rem 1.5rem;
 }
 .home .panel .links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
@@ -43,32 +48,29 @@ body.home { min-width: 0; }
 .home details.workcat > summary:hover { border-color: var(--primary); }
 .home .count { color: var(--gray-600); font-weight: 400; margin-left: .5rem; }
 .home details.workcat > ul.work { margin-top: .75rem; }
-/* The interactive forest occupies its own band below the reading area. */
+/* Restore the original forest overhang behind the translucent reading panels.
+ * The upper stacking context keeps those panels interactive above the scene. */
 .home #forest-band {
-    position: relative; height: 420px; overflow: hidden;
-    background: linear-gradient(var(--gray-100), #0a0a0a 45%);
+    position: relative; z-index: 1; margin-top: -40px;
+    height: 520px; overflow: visible;
 }
 .home #backdrop {
-    display: block; width: 100%; height: 100%; border: 0;
-    mask-image: linear-gradient(transparent, #000 45%);
-    -webkit-mask-image: linear-gradient(transparent, #000 45%);
+    position: absolute; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 1360px; border: 0;
+    mask-image: linear-gradient(
+        to bottom, transparent 0%, rgba(0, 0, 0, .12) 40%,
+        rgba(0, 0, 0, .42) 64%, rgba(0, 0, 0, .80) 82%, #000 92%, #000 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom, transparent 0%, rgba(0, 0, 0, .12) 40%,
+        rgba(0, 0, 0, .42) 64%, rgba(0, 0, 0, .80) 82%, #000 92%, #000 100%
+    );
 }
 .home .forest-caption {
     text-align: center; font-size: .85rem; line-height: 1.6;
-    color: #b9c7d4; background: #0a0a0a; padding: 1rem;
+    color: #8b8b8b; padding: .9rem 2rem 1.2rem;
 }
-.home .forest-caption a { color: inherit; }
-@media (max-width: 700px) {
-    .home .header { gap: .75rem; padding-top: 1.25rem; align-items: flex-start; }
-    .home .hero-bird { width: 92px; margin-left: 0; }
-    .home .header h1 { font-size: clamp(1.6rem, 6vw, 2.4rem); line-height: 1.2; }
-    .home .header p.role { font-size: .9rem; line-height: 1.5; }
-    .home .container { padding: 1.5rem 1rem 0; }
-    .home .block { margin-bottom: 2rem; }
-    .home .dashboards { grid-template-columns: minmax(0, 1fr); }
-    .home .panel, .home .worklead-panel, .home details.workcat > summary { padding: 1rem; }
-    .home #forest-band { height: 320px; }
-}
+.home .forest-caption a { color: #b9c7d4; }
 @media (prefers-reduced-motion: reduce) {
     .home a.panel { transition: none; }
 }
