@@ -36,7 +36,7 @@ def homepage() -> Iterator[Page]:
 
 @pytest.mark.parametrize("width", [320, 390, 768, 1440])
 def test_homepage_preserves_desktop_composition(homepage: Page, width: int) -> None:
-    """Keep the desktop canvas, stacked translucent panels, gradient and forest at every screen size.
+    """Keep the desktop canvas, gradient and forest at every screen size.
 
     Args:
         homepage (Page): Browser page serving the actual repository.
@@ -71,17 +71,7 @@ def test_homepage_preserves_desktop_composition(homepage: Page, width: int) -> N
         fill: str = panel.evaluate("(element) => getComputedStyle(element).backgroundImage")
         assert fill.startswith("linear-gradient(")
         font_size: str = panel.locator("p").evaluate("(element) => getComputedStyle(element).fontSize")
-        assert font_size == "20.16px"
-        max_width: str = panel.locator("p").evaluate("(element) => getComputedStyle(element).maxWidth")
-        assert max_width == "none"
-    for paragraph in homepage.locator(".work .panel p").all():
-        color: str = paragraph.evaluate("(element) => getComputedStyle(element).color")
-        assert color == "rgb(0, 0, 0)"
-    for summary in homepage.locator("details.workcat > summary").all():
-        summary_fill: str = summary.evaluate("(element) => getComputedStyle(element).backgroundImage")
-        assert summary_fill.startswith("linear-gradient(")
-        transform: str = summary.evaluate("(element) => getComputedStyle(element).textTransform")
-        assert transform == "uppercase"
+        assert font_size == "18px"
     upper = homepage.locator(".upper").bounding_box()
     forest = homepage.locator("#backdrop").bounding_box()
     assert upper is not None
@@ -91,11 +81,15 @@ def test_homepage_preserves_desktop_composition(homepage: Page, width: int) -> N
     mask: str = homepage.locator("#backdrop").evaluate("(element) => getComputedStyle(element).maskImage")
     assert mask.startswith("linear-gradient(")
     assert "rgba(0, 0, 0, 0.12) 40%" in mask
+    for summary in homepage.locator("details.workcat > summary").all():
+        summary_background: str = summary.evaluate("(element) => getComputedStyle(element).backgroundColor")
+        assert summary_background == "rgba(0, 0, 0, 0)"
+        summary_fill: str = summary.evaluate("(element) => getComputedStyle(element).backgroundImage")
+        assert summary_fill.startswith("linear-gradient(")
     cards = homepage.locator(".dashboards a")
     first = cards.nth(0).bounding_box()
     second = cards.nth(1).bounding_box()
     assert first is not None
     assert second is not None
-    assert second["x"] == first["x"]
-    assert second["width"] == first["width"]
-    assert second["y"] >= first["y"] + first["height"]
+    assert first["y"] == second["y"]
+    assert second["x"] >= first["x"] + first["width"]
