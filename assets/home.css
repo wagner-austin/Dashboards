@@ -1,216 +1,76 @@
-/* The homepage's own layer, linked only by preview/index.html. The palette,
-   reset, .container, h2.section, .block, .panel, .badge, .chip and footer live
-   in /assets/site.css, shared with every article page. */
-
-/* ONE continuous ground for the entire document. A block element, so its
-   box is exactly the content width and the full content height, with no canvas
-   or viewport measurement to resolve, which is what made the earlier body
-   and html versions break in mobile desktop mode. Everything else on the
-   page is transparent and simply sits on this. */
-.page {
+/* Homepage layout only; shared colors and components live in site.css. */
+.home .page {
     position: relative;
     background: linear-gradient(
         to bottom,
-        var(--gray-100) 0%,
-        var(--gray-100) 8%,
-        #e6e9ed 15%,
-        #cdd3da 22%,
-        #aeb6c0 29%,
-        #8b939f 37%,
-        #6a727e 45%,
-        #4c535d 53%,
-        #333941 61%,
-        #1e232a 69%,
-        #0a0a0a 79%
+        var(--gray-100) 0%, var(--gray-100) 8%, #e6e9ed 15%,
+        #cdd3da 22%, #aeb6c0 29%, #8b939f 37%, #6a727e 45%,
+        #4c535d 53%, #333941 61%, #1e232a 69%, #0a0a0a 79%
     );
 }
-
-/* Transparent: the .page gradient is the only ground. Text sits above the
-   forest, which is why this needs a stacking context above the iframe. */
-.upper {
-    position: relative;
-    z-index: 2;
-    padding-bottom: 2rem;
+.home .upper { position: relative; z-index: 2; padding-bottom: 2rem; }
+.home .container { max-width: 1080px; padding: 1.5rem 2rem 0; }
+.home .header { max-width: 1200px; margin: 0 auto; }
+.home .hero-text { min-width: 0; padding-right: 1rem; }
+.home .block { margin-bottom: 3rem; }
+.home .work, .home .dashboards { list-style: none; display: grid; gap: 1rem; }
+.home .dashboards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.home .panel, .home .worklead-panel, .home details.workcat > summary {
+    padding: 1.25rem 1.5rem;
 }
-
-/* Layout of the link row only. The buttons are .chip from site.css, which
-   an article's back-link uses too. */
-.panel .links { margin-top: 1rem; display: flex; gap: 0.6rem; }
-
-/* One column of stacked panels in both lists: each panel's fill fades to the
-   gradient below it, and that layering is the composition. */
-.work, .dashboards { list-style: none; display: grid; gap: 0.8rem; }
-
-/* ---- collapsible categories in "What I work on" ----
-   Each group is a native <details>, closed by default: no script, keyboard and
-   screen-reader behaviour for free.
-
-   EVERYTHING HERE SITS ON ITS OWN LIGHT GROUND, NOT BARE ON THE GRADIENT.
-   The lead and each summary row carry the shared .panel fill in the markup,
-   the text is black, and the gradient underneath is decoration rather than a
-   dependency, because the page height (and so where a section falls on the
-   gradient) changes whenever a group opens or an article is added.
-
-   Written `details.workcat` / `p.worklead` rather than bare classes so they
-   outrank .panel at (0,1,0) and `.work h3` at (0,1,1). */
-.worklead-panel { margin-bottom: 0.8rem; }
-.worklead-panel h2.section { margin-bottom: 0.5rem; color: #000; }
-p.worklead {
-    color: #000;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    max-width: 68ch;
+.home .panel .links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+.home .panel p { color: var(--gray-800); font-size: 1rem; line-height: 1.65; }
+.home .work p { max-width: 70ch; }
+.home .work h3, .home .dashboards h3 {
+    font-size: 1.15rem; font-weight: 600; margin-bottom: .5rem; line-height: 1.4;
 }
-details.workcat { margin-top: 0.8rem; }
-details.workcat > summary {
-    cursor: pointer;
-    list-style: none;
-    padding: 0.85rem 1.75rem;
-    color: #000;
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: background 0.2s;
+.home a.panel {
+    display: block; height: 100%; text-decoration: none;
+    color: var(--gray-800); transition: border-color .2s;
 }
-details.workcat > summary::-webkit-details-marker { display: none; }
-/* A disclosure triangle drawn by us so it is the same in every browser and
-   rotates when open, which the default marker does not do consistently. */
-details.workcat > summary::before {
-    content: "\25B8";
-    display: inline-block;
-    width: 1.2em;
-    transition: transform 0.15s;
+.home a.panel h3::after { content: " \2197"; color: var(--primary-dark); }
+.home a.panel:hover { border-color: var(--primary); }
+.home a.panel:hover h3 { text-decoration: underline; text-underline-offset: .15em; }
+.home a:focus-visible, .home summary:focus-visible {
+    outline: 3px solid var(--primary); outline-offset: 3px;
 }
-details.workcat[open] > summary::before { transform: rotate(90deg); }
-details.workcat > summary:hover { background: rgba(255, 255, 255, 0.98); }
-details.workcat > summary .count {
-    font-weight: 400;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--gray-600);
-    margin-left: 0.5rem;
+.home .worklead-panel { margin-bottom: 1rem; }
+.home .worklead-panel h2 { margin-bottom: .5rem; }
+.home .worklead { color: var(--gray-800); font-size: 1rem; line-height: 1.65; }
+.home details.workcat { margin-top: .75rem; }
+.home details.workcat > summary {
+    cursor: pointer; list-style: none; color: var(--gray-800);
+    font-size: 1rem; font-weight: 600; line-height: 1.5;
 }
-/* The card list inside an open group sits directly under its summary. */
-details.workcat > ul.work { margin-top: 0.8rem; }
-
-.work h3, .dashboards h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.28rem;
+.home details.workcat > summary::-webkit-details-marker { display: none; }
+.home details.workcat > summary::before { content: "\25B8"; display: inline-block; width: 1.2em; }
+.home details.workcat[open] > summary::before { transform: rotate(90deg); }
+.home details.workcat > summary:hover { border-color: var(--primary); }
+.home .count { color: var(--gray-600); font-weight: 400; margin-left: .5rem; }
+.home details.workcat > ul.work { margin-top: .75rem; }
+/* Restore the original forest overhang behind the translucent reading panels.
+ * The upper stacking context keeps those panels interactive above the scene. */
+.home #forest-band {
+    position: relative; z-index: 1; margin-top: -40px;
+    height: 520px; overflow: visible;
 }
-.dashboards h3 { color: var(--gray-800); }
-.work h3 { color: #000; }
-
-.dashboards p { color: var(--gray-600); }
-.work p { color: #000; }
-/* No max-width. The panel already bounds the line, so a character cap on
-   top of it only stops the text short of the panel edge and leaves a gutter
-   down the right of every card. Here the card is the column. */
-.work p, .dashboards p {
-    font-size: 1.12rem;
-    line-height: 1.6;
-}
-.dashboards p strong { color: var(--gray-800); font-weight: 600; }
-.work p strong { color: #000; font-weight: 600; }
-
-/* Written against a.panel rather than .dashboards a.panel: the affordance
-   follows the anchor rather than the section. A panel that is not an anchor
-   gets nothing. */
-a.panel {
-    display: block;
-    text-decoration: none;
-    color: var(--gray-800);
-    transition: background 0.2s, border-color 0.2s;
-    position: relative;
-}
-/* The marker is what distinguishes a clickable panel from a static one. */
-a.panel h3::after {
-    content: " 🔗";
-    font-size: 0.8em;
-    opacity: 0.75;
-}
-a.panel:hover h3::after { opacity: 1; }
-a.panel:hover {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.98) 0%,
-        rgba(255, 255, 255, 0.82) 40%,
-        rgba(255, 255, 255, 0.60) 72%,
-        rgba(255, 255, 255, 0.40) 100%
-    );
-    border-top-color: var(--primary);
-}
-a:focus-visible, summary:focus-visible {
-    outline: 3px solid var(--primary);
-    outline-offset: 3px;
-}
-
-/* ---- the ASCII forest ----
-   The band reserves layout space; the iframe inside it is TALLER and
-   anchored to the band's bottom, so it overhangs upward into the content
-   area. Those extra rows are real scene the engine draws. It sits ON the
-   .page gradient at z-index 1, with the text above it at z-index 2. */
-#forest-band {
-    position: relative;
-    z-index: 1;
-    /* Negative margin pulls the band up over the content above it. The
-       scene's trees sit at the ground line near the iframe's bottom, so
-       this, not iframe height, is what raises the forest on the page. */
-    margin-top: -40px;
-    /* Fixed px, in the same 1200px design space as the rest of the
-       layout. vh is unreliable here: with <meta viewport width=1200>
-       it resolves against the layout viewport, which a phone inflates
-       when it scales the page down. */
-    height: 520px;
-    overflow: visible;
-}
-#backdrop {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1360px;
-    border: 0;
-    /* No pointer-events:none here. The overhang reaches up behind .upper,
-       but .upper is a real element at z-index 2 and captures events across
-       its whole box even with a transparent background, so the hidden
-       part is already shielded, and disabling the iframe would only kill
-       interaction on the visible band as well. */
-    /* Fade the iframe's own pixels out at the top so tree crowns dissolve
-       instead of being cut off by the frame edge. Transparent here reveals
-       the page, which is the same #0a0a0a the scene paints, so the trees
-       read as fading into the dark rather than into a different colour. */
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(0, 0, 0, 0.12) 40%,
-        rgba(0, 0, 0, 0.42) 64%,
-        rgba(0, 0, 0, 0.80) 82%,
-        #000 92%,
-        #000 100%
-    );
+.home #backdrop {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 1360px; border: 0;
     mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(0, 0, 0, 0.12) 40%,
-        rgba(0, 0, 0, 0.42) 64%,
-        rgba(0, 0, 0, 0.80) 82%,
-        #000 92%,
-        #000 100%
+        to bottom, transparent 0%, rgba(0, 0, 0, .12) 40%,
+        rgba(0, 0, 0, .42) 64%, rgba(0, 0, 0, .80) 82%, #000 92%, #000 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom, transparent 0%, rgba(0, 0, 0, .12) 40%,
+        rgba(0, 0, 0, .42) 64%, rgba(0, 0, 0, .80) 82%, #000 92%, #000 100%
     );
 }
-/* Caption sits BELOW the band in normal flow, so nothing overlaps the scene,
-   because the engine draws the ground and the rabbit at the very bottom. */
-.forest-caption {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #8b8b8b;
-    padding: 0.9rem 2rem 1.2rem;
+.home .forest-caption {
+    text-align: center; font-size: .85rem; line-height: 1.6;
+    color: #8b8b8b; padding: .9rem 2rem 1.2rem;
 }
-.forest-caption a { color: #b9c7d4; }
-
+.home .forest-caption a { color: #b9c7d4; }
 @media (prefers-reduced-motion: reduce) {
-    a.panel, details.workcat > summary, details.workcat > summary::before { transition: none; }
+    .home a.panel { transition: none; }
 }
