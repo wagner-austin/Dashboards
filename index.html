@@ -1,99 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboards | Austin Wagner</title>
-    <link rel="stylesheet" href="/assets/tokens.css">
-    <style>
-        /* Palette from /assets/tokens.css. This page's .header and .container
-           are its own -- a centred gradient banner and an 800px column, not the
-           preview hero -- so it links the token layer only. */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: var(--gray-100);
-            color: var(--gray-800);
-            min-height: 100vh;
-        }
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-        .header h1 { font-size: 1.75rem; font-weight: 600; }
-        .header p { opacity: 0.9; margin-top: 0.5rem; font-size: 0.95rem; }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .dashboard-grid {
-            display: grid;
-            gap: 1rem;
-        }
-        .dashboard-card {
-            background: white;
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-decoration: none;
-            color: var(--gray-800);
-            transition: all 0.2s;
-            display: block;
-        }
-        .dashboard-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(0,100,164,0.15);
-            transform: translateY(-2px);
-        }
-        .dashboard-card h2 {
-            color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .dashboard-card p {
-            color: var(--gray-600);
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        .badge {
-            display: inline-block;
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            margin-top: 0.75rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="description" content="Austin Wagner, software engineer: MCP and agent infrastructure, document ingestion pipelines and machine-learning evaluation harnesses.">
+<title>Austin Wagner</title>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/home.css">
 </head>
-<body>
-    <div class="header">
-        <h1>Dashboards</h1>
-        <p>Data aggregation and visualization tools</p>
+<body class="home">
+
+<div class="page">
+
+<div class="upper">
+
+<div class="header">
+    <img class="hero-bird" src="/assets/hero.webp" alt="" aria-hidden="true">
+    <div class="hero-text">
+        <h1>Austin Wagner</h1>
+        <p class="role">Software engineer &middot; MCP &amp; agent infrastructure &middot; Irvine, California</p>
     </div>
-    <div class="container">
-        <div class="dashboard-grid">
-            <a href="/irvine-city-council/" class="dashboard-card">
-                <h2>Irvine City Council</h2>
+</div>
+
+<div class="container">
+
+    <div class="block">
+        <h2 class="section">About me</h2>
+        <ul class="work">
+            <li class="panel">
+                <p>Backend and ML infrastructure: MCP servers and agent tool-routing,
+                   document ingestion pipelines, typed clients for undocumented APIs, and
+                   evaluation harnesses for machine-learning experiments. TypeScript, Python,
+                   Rust, PostgreSQL.</p>
+                <div class="links">
+                    <a class="chip" href="https://www.linkedin.com/in/the-austin-wagner" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a class="chip" href="https://github.com/wagner-austin" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <h2 class="section">Tools and dashboards</h2>
+        <ul class="dashboards">
+            <li><a class="panel" href="https://search.austinwagner.org">
+                <h3>Public records search</h3>
+                <p>Find agendas, minutes, and staff reports from California public agencies.</p>
+                <span class="badge">In development</span>
+            </a></li>
+            <li><a class="panel" href="https://corvis.austinwagner.org/dashboard">
+                <h3>Corvis</h3>
+                <p>My research and operations platform for tools, knowledge, and AI agents.</p>
+                <span class="badge">Sign-in required</span>
+            </a></li>
+            <li><a class="panel" href="/irvine-city-council/">
+                <h3>Irvine City Council</h3>
                 <p>City of Irvine meetings, agendas, minutes, videos, and council member profiles</p>
-            </a>
-            <a href="/oc-city-councils/" class="dashboard-card">
-                <h2>OC City Councils</h2>
+            </a></li>
+            <li><a class="panel" href="/oc-city-councils/">
+                <h3>OC City Councils</h3>
                 <p>Contact info and public comment details for all 34 Orange County city councils</p>
                 <span class="badge">34 cities</span>
-            </a>
-            <a href="/asuci/" class="dashboard-card">
-                <h2>ASUCI Senate</h2>
+            </a></li>
+            <li><a class="panel" href="/asuci/">
+                <h3>ASUCI Senate</h3>
                 <p>UC Irvine student government meetings, attendance, and voting records</p>
-            </a>
-            <a href="/metabolomics/" class="dashboard-card">
-                <h2>Metabolomics Analysis</h2>
+            </a></li>
+            <li><a class="panel" href="/metabolomics/">
+                <h3>Metabolomics Analysis</h3>
                 <p>Tree metabolomics data filtering and analysis report</p>
-            </a>
-        </div>
+            </a></li>
+        </ul>
     </div>
+
+    <div class="block">
+        <div class="worklead-panel panel">
+            <h2 class="section">What I work on</h2>
+            <p class="worklead">Research and engineering write-ups, grouped by topic.
+               Open a group to explore.</p>
+        </div>
+
+        <details class="workcat">
+            <summary class="panel">Machine learning research <span class="count">2</span></summary>
+        <ul class="work">
+            <li><a class="panel" href="/preview/measuring-what-a-corpus-installs/">
+                <h3>Measuring what a corpus installs</h3>
+                <p>A seven-arm ablation on two published corpus-design interventions, run
+                   against real cited prose. One survived, one was <strong>inert under every
+                   condition its source specifies</strong>. Three of five results are nulls,
+                   and they are the reason the other two mean anything.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/composite-model-compartments/">
+                <h3>Composing one model out of several</h3>
+                <p>A serving design assumed several separately trained compartments could be wired
+                   into one request. Measuring it first put the naive limit at two, and the run's
+                   own controls caught a result that read the right way and was not. A
+                   composition-aware recipe then moved four-compartment retention
+                   <strong>from &minus;45.4% to +44.6%</strong>.</p>
+            </a></li>
+        </ul>
+        </details>
+
+        <details class="workcat">
+            <summary class="panel">Reproducibility and research infrastructure <span class="count">4</span></summary>
+        <ul class="work">
+            <li><a class="panel" href="/preview/reproducible-gpu-inference/">
+                <h3>Reproducible GPU inference</h3>
+                <p>One model and one set of weights produced a different answer on every NVIDIA card
+                   I ran it on. Owning the arithmetic order instead of the vendor library's made the
+                   output <strong>byte-identical across all nine</strong>: five architecture
+                   generations, two operating systems, one SHA-256.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/scoring-a-model-you-do-not-ship/">
+                <h3>Scoring a model you do not ship</h3>
+                <p>Three ordinary training decisions compose into publishing a test score for
+                   a model that never leaves the machine. The manifest carried
+                   <strong>a validation loss from epoch 17 beside a test loss from epoch
+                   20</strong>, neither labelled, and nothing errored. Measured, fixed, and
+                   confirmed on the cluster with both branches exercised.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/research-cluster-submission/">
+                <h3>Research cluster infrastructure</h3>
+                <p>Eight research projects run on a shared university GPU cluster through one tool
+                   that will not let a job be built if it would fail, and can answer afterwards
+                   <strong>which job produced which artifact</strong>. Preflight that cannot be
+                   skipped, a budget the cluster itself does not enforce, and three failure
+                   conditions that look like health.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/citations-that-check-themselves/">
+                <h3>Research wikis that audit themselves</h3>
+                <p>My seventeen research wikis share one audit engine, and each declares
+                   <strong>which kind of proof its citations owe</strong>: a PDF hash, a
+                   captured-page hash, a resolving vault query, or a git blob. A claim that
+                   cannot be checked that way fails the write, in the transaction and in the
+                   tool an agent calls.</p>
+            </a></li>
+        </ul>
+        </details>
+
+        <details class="workcat">
+            <summary class="panel">Reverse engineering and system identification <span class="count">2</span></summary>
+        <ul class="work">
+            <li><a class="panel" href="/preview/a-model-that-checks-itself/">
+                <h3>A model that checks itself</h3>
+                <p>I reverse-engineered the private protocol of an online game that publishes
+                   no documentation, then built an instrument that keeps proving the model is
+                   still right. It has since <strong>caught three of its own conclusions being
+                   wrong</strong>, including the ending of its best session: 84 kills, 0
+                   deaths, 149 minutes.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/inferring-an-engine-from-inside/">
+                <h3>Inferring an engine from the inside</h3>
+                <p>A game ships as an obfuscated Java binary whose class names change between
+                   releases. I inject code into its running JVM to read real state and issue
+                   real orders, with <strong>no pixels and no synthetic input</strong>, and I
+                   made runs bit-identical per seed so a better strategy can be told apart from
+                   a lucky map.</p>
+            </a></li>
+        </ul>
+        </details>
+
+        <details class="workcat">
+            <summary class="panel">Coordinating AI sessions <span class="count">2</span></summary>
+        <ul class="work">
+            <li><a class="panel" href="/preview/a-board-that-refuses/">
+                <h3>A board that refuses</h3>
+                <p>Many AI sessions coordinate through one append-only board, and the board
+                   <strong>refuses what it cannot trust</strong>: a label that is not yours, a
+                   closure with no result, a delivery claim with no commit, a session id one
+                   keystroke from a real one. A surface that records is a log. One that
+                   refuses is infrastructure.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/a-page-inside-a-proxy/">
+                <h3>A page inside a proxy</h3>
+                <p>A proxy that had only ever spoken to machines now renders a page for a
+                   person, on its own hostname, and every safety question it answers has
+                   <strong>exactly one implementation</strong>. The question that briefly had
+                   two answers cost a 403 naming no cause, and the fix is a guard that is
+                   itself guarded against gaining an unchecked fourth input.</p>
+            </a></li>
+        </ul>
+        </details>
+
+        <details class="workcat">
+            <summary class="panel">Architecture and open source <span class="count">4</span></summary>
+        <ul class="work">
+            <li><a class="panel" href="/preview/architecture-as-code/">
+                <h3>MCP &amp; agent infrastructure</h3>
+                <p>Thirteen services and twenty-two shared libraries in one repository, held
+                   together by <strong>47 architecture rules that fail the build</strong>, so
+                   my design decisions are enforced by CI rather than remembered in review. I
+                   wrote them across Python and Rust, because an invariant that holds in one
+                   language is not one.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/adding-a-domain-without-a-fork/">
+                <h3>Covenant Radar</h3>
+                <p>I built a risk-prediction service for loan covenants, then generalised it
+                   so a new subject is a registration rather than a fork. Two more domains
+                   have since been added <strong>without editing the shared training,
+                   explainability or streaming machinery at all</strong>. Twelve model
+                   backends behind one interface, trained on 40 real public datasets.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/gradient-boosting-twice/">
+                <h3>ClearGBM</h3>
+                <p>I wrote gradient boosting from scratch in numpy, ported it to a Rust core, and
+                   then <strong>deleted the numpy version</strong>, roughly 10k lines, because two
+                   implementations can disagree. The first one was the oracle I checked the port
+                   against; scaffolding comes down.</p>
+            </a></li>
+            <li><a class="panel" href="/preview/lightgbm-contributions/">
+                <h3>LightGBM</h3>
+                <p><strong>Nine merged pull requests</strong>: Python type annotations, a POSIX
+                   socket-timeout fix, and test coverage. Nine of twelve attempted, with the three
+                   that did not land in the distributed-training path.</p>
+            </a></li>
+        </ul>
+        </details>
+    </div>
+
+</div>
+
+</div><!-- /.upper -->
+
+<div id="forest-band">
+    <iframe id="backdrop" src="/rabbit/" title="ASCII forest" scrolling="no"></iframe>
+</div>
+<div class="forest-caption">
+    ASCII engine &middot; touch drag / WASD to move around &middot; <a href="/rabbit/">full screen</a>
+</div>
+
+</div><!-- /.page -->
+
 </body>
 </html>

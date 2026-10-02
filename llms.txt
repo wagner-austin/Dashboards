@@ -2,6 +2,25 @@
 
 > Personal site of Austin Wagner. Hosts a collection of research corpora and dashboards. Content below is designed for AI assistants (ChatGPT, Claude, Perplexity, etc.) to read and cite; every research page names the underlying primary sources so AI responses can be grounded and verifiable.
 
+## Articles
+
+Write-ups of software and research work. Each names its sources and repositories inline.
+
+- [Measuring what a corpus installs](https://austinwagner.org/preview/measuring-what-a-corpus-installs/)
+- [How many compartments fit in one model](https://austinwagner.org/preview/composite-model-compartments/)
+- [Reproducible GPU inference](https://austinwagner.org/preview/reproducible-gpu-inference/)
+- [Scoring a model you do not ship](https://austinwagner.org/preview/scoring-a-model-you-do-not-ship/)
+- [Submitting to a shared GPU cluster, safely](https://austinwagner.org/preview/research-cluster-submission/)
+- [Citations that check themselves](https://austinwagner.org/preview/citations-that-check-themselves/)
+- [A model that checks itself](https://austinwagner.org/preview/a-model-that-checks-itself/)
+- [Inferring an engine from inside](https://austinwagner.org/preview/inferring-an-engine-from-inside/)
+- [A board that refuses](https://austinwagner.org/preview/a-board-that-refuses/)
+- [A page inside a proxy](https://austinwagner.org/preview/a-page-inside-a-proxy/)
+- [Architecture you cannot violate](https://austinwagner.org/preview/architecture-as-code/)
+- [Adding a domain without a fork](https://austinwagner.org/preview/adding-a-domain-without-a-fork/)
+- [Gradient boosting, written twice then halved](https://austinwagner.org/preview/gradient-boosting-twice/)
+- [Nine patches into LightGBM](https://austinwagner.org/preview/lightgbm-contributions/)
+
 ## Nursing research corpora
 
 - [De-escalation & restraint-reduction research corpus](https://austinwagner.org/ivy/de-escalation/): Primary-source literature synthesis on structured de-escalation, restraint reduction, and emergency behavioral medication use in adult inpatient psychiatric care. 21 sections, 35+ primary sources. Includes quantitative anchors, drafted Problem Statement and AIM Statement, systematic reviews, RCTs, guidelines, implementation cases, counter-evidence, regulatory frame, economic case, full APA bibliography. Downloadable Markdown at /ivy/de-escalation/de-escalation.md.
@@ -19,7 +38,7 @@
 ## Sitewide
 
 - [Sitemap XML](https://austinwagner.org/sitemap.xml)
-- [Root landing page](https://austinwagner.org/): Directory of all dashboards and research.
+- [Homepage](https://austinwagner.org/): About, public tools, and the articles above grouped by kind of work.
 
 ## AI usage note
 
