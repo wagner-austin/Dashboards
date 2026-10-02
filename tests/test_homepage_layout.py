@@ -25,7 +25,7 @@ def homepage() -> Iterator[Page]:
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch()
             page = browser.new_page()
-            page.goto(f"http://127.0.0.1:{server.server_port}/preview/")
+            page.goto(f"http://127.0.0.1:{server.server_port}/")
             yield page
             browser.close()
     finally:
@@ -77,7 +77,7 @@ def test_homepage_preserves_desktop_composition(homepage: Page, width: int) -> N
     assert upper is not None
     assert forest is not None
     assert forest["height"] == 1360
-    assert forest["y"] == pytest.approx(upper["y"] + upper["height"] - 880, abs=0.01)
+    assert forest["y"] == pytest.approx(upper["y"] + upper["height"] - 892, abs=0.01)
     mask: str = homepage.locator("#backdrop").evaluate("(element) => getComputedStyle(element).maskImage")
     assert mask.startswith("linear-gradient(")
     assert "rgba(0, 0, 0, 0.12) 40%" in mask
@@ -93,3 +93,22 @@ def test_homepage_preserves_desktop_composition(homepage: Page, width: int) -> N
     assert second is not None
     assert first["y"] == second["y"]
     assert second["x"] >= first["x"] + first["width"]
+
+
+def test_homepage_is_promoted_to_the_site_root(homepage: Page) -> None:
+    """Serve the homepage indexable at /, redirect /preview/ to it, and link articles home.
+
+    Args:
+        homepage (Page): Browser page serving the actual repository.
+    """
+    assert homepage.locator('meta[name="robots"]').count() == 0
+    root = homepage.url
+    homepage.goto(f"{root}preview/")
+    homepage.wait_for_url(root)
+    assert homepage.locator("h1").inner_text() == "Austin Wagner"
+    article_href = homepage.locator("details a").first.get_attribute("href")
+    assert article_href == "/preview/measuring-what-a-corpus-installs/"
+    homepage.goto(f"{root}preview/measuring-what-a-corpus-installs/")
+    assert homepage.locator('meta[name="robots"]').count() == 0
+    assert homepage.locator('a[href="/preview/"]').count() == 0
+    assert homepage.locator('a[href="/"]').count() == 3
