@@ -52,7 +52,7 @@
  * The upper stacking context keeps those panels interactive above the scene. */
 .home #forest-band {
     position: relative; z-index: 1; margin-top: -40px;
-    height: 508px; overflow: visible;
+    height: 470px; overflow: visible;
 }
 .home #backdrop {
     position: absolute; left: 0; right: 0; bottom: 0;
