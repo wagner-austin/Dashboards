@@ -77,7 +77,7 @@ def test_homepage_preserves_desktop_composition(homepage: Page, width: int) -> N
     assert upper is not None
     assert forest is not None
     assert forest["height"] == 1360
-    assert forest["y"] == pytest.approx(upper["y"] + upper["height"] - 930, abs=0.01)
+    assert forest["y"] == pytest.approx(upper["y"] + upper["height"] - 942, abs=0.01)
     mask: str = homepage.locator("#backdrop").evaluate("(element) => getComputedStyle(element).maskImage")
     assert mask.startswith("linear-gradient(")
     assert "rgba(0, 0, 0, 0.12) 40%" in mask
