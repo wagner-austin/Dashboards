@@ -73,10 +73,15 @@ def test_homepage_preserves_desktop_composition(homepage: Page, width: int) -> N
         font_size: str = panel.locator("p").evaluate("(element) => getComputedStyle(element).fontSize")
         assert font_size == "18px"
     upper = homepage.locator(".upper").bounding_box()
+    band = homepage.locator("#forest-band").bounding_box()
     forest = homepage.locator("#backdrop").bounding_box()
     assert upper is not None
+    assert band is not None
     assert forest is not None
+    assert band["height"] == 458
+    assert band["y"] == pytest.approx(upper["y"] + upper["height"] - 40, abs=0.01)
     assert forest["height"] == 1360
+    assert forest["y"] + forest["height"] == pytest.approx(band["y"] + band["height"], abs=0.01)
     assert forest["y"] == pytest.approx(upper["y"] + upper["height"] - 942, abs=0.01)
     mask: str = homepage.locator("#backdrop").evaluate("(element) => getComputedStyle(element).maskImage")
     assert mask.startswith("linear-gradient(")
