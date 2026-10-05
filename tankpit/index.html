@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TankPit Bots</title>
-<meta name="description" content="Start a bot and watch it play TankPit. The tank is driven by a reverse-engineered binary protocol; the picture is a live video stream of the bot's own screen.">
+<meta name="description" content="Start a bot and watch it play TankPit, the multiplayer browser tank game, in the practice room. Each window is a live video stream of the bot's own screen with the game's sound, and a caption says what the bot is doing and why.">
 <link rel="stylesheet" href="/assets/tokens.css">
 <style>
   /* The panel treatment and type scale are the ones austinwagner.org/preview
@@ -180,6 +180,32 @@
   .tile .cap b { color: var(--gray-800); font-weight: 600; }
   .tile .cap .up { font-variant-numeric: tabular-nums; text-transform: none; letter-spacing: 0; }
 
+  /* The picture's frame: the video, and over its corner the sound toggle. */
+  .tile .frame { position: relative; }
+  .tile .sound {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.8rem;
+    background: rgba(0, 0, 0, 0.62);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+  .tile .sound:hover:not(:disabled) { background: rgba(0, 0, 0, 0.85); }
+  .tile .sound[aria-pressed="true"] { background: var(--primary); border-color: var(--primary-dark); }
+
+  /* The caption: what the bot is doing, in a phrase, and why, in a sentence.
+     It is the bot's own decision, timed to the frame being shown. */
+  .tile .say { padding: 0.75rem 0.9rem 0.1rem; min-height: 4.6rem; }
+  .tile .say .doing { font-size: 1.02rem; font-weight: 600; color: var(--gray-800); }
+  .tile .say .why { margin-top: 0.2rem; font-size: 0.92rem; line-height: 1.45; color: var(--gray-600); }
+  .tile .say .fuel { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* The explanation for someone who has never played. */
+  .about { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .about h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .about p { font-size: 0.95rem; line-height: 1.55; color: var(--gray-600); }
+
   .empty {
     color: #fff;
     opacity: 0.72;
@@ -202,9 +228,47 @@
       <p class="role">
         Press the button and a tank joins the practice room, plays on its own,
         and stops after fifteen minutes. Each window is a live video stream of
-        the bot's own screen — no replay, a few seconds behind the game.
+        the bot's own screen with the game's sound — no replay, a few seconds
+        behind the game — and the caption under it says what the bot is doing
+        and why.
       </p>
     </header>
+
+    <section class="block" id="about">
+      <h2 class="section">What you are watching</h2>
+      <div class="panel about">
+        <div>
+          <h3>TankPit</h3>
+          <p>
+            TankPit is a multiplayer tank game played in the web browser at
+            tankpit.com. Each player drives one tank around a large map: it
+            drives or teleports, picks up fuel so it never runs dry, collects
+            equipment such as armour, extra radars and special shots, and
+            fights other players' tanks. Fights go in rounds, with every tank
+            acting about once every two seconds.
+          </p>
+        </div>
+        <div>
+          <h3>The bot</h3>
+          <p>
+            Each tank here is driven by a program, not a person. It reads the
+            game's own messages, decides what to do from what the game tells
+            it (where it is, its fuel, what its radar found, where the other
+            tanks are) and sends its moves back the same way. The caption under
+            each picture is that decision, put into words; sound is off until
+            you turn it on.
+          </p>
+        </div>
+        <div>
+          <h3>Practice room only</h3>
+          <p>
+            The bots play only in TankPit's practice room, where nothing a tank
+            wins or loses counts toward anyone's rank. They never join the
+            ranked rooms, and each one leaves after fifteen minutes.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <section class="block">
       <h2 class="section light">Control</h2>
@@ -239,6 +303,8 @@
 
 <script src="hls.min.js"></script>
 <script type="module">
+import { captionAt, frameMomentMs } from "./captions.js";
+
 // The fleet manager runs on the machine the bots run on, behind a proxy that
 // publishes ONLY these three routes. Everything else it serves — accounts,
 // process ids, stop, remove, shutdown — stays on the loopback surface and is
@@ -252,6 +318,14 @@ const POLL_MS = 2000;
 // fifteen seconds. Three-second retries cover that without hammering a
 // slot whose bot has ended.
 const VIDEO_RETRY_MS = 3000;
+
+// What a tile says before its bot has decided anything at the frame shown:
+// the browser is starting, logging in and joining the room.
+const STARTING = {
+  doing: "Getting ready",
+  why: "It is logging in and joining the practice room.",
+  fuel: -1,
+};
 
 // Every live tile's stream, keyed by slot. Needed because the streams
 // have to be revived from OUTSIDE the tile: a backgrounded tab is the
@@ -300,6 +374,40 @@ function tile(bot) {
   const source = `${API}/demo/video/${encodeURIComponent(bot.slot)}/index.m3u8`;
   picture.setAttribute("aria-label", `Live view of ${bot.slot}`);
 
+  // Sound starts off: an unmuted autoplay is blocked outright, and a page
+  // that starts making noise unasked is a page people close. The press is
+  // the user gesture that lets the browser play it.
+  const sound = document.createElement("button");
+  sound.type = "button";
+  sound.className = "sound";
+  const showSound = () => {
+    sound.textContent = picture.muted ? "Sound off" : "Sound on";
+    sound.setAttribute("aria-pressed", String(!picture.muted));
+    sound.setAttribute("aria-label", picture.muted ? `Turn on sound for ${bot.slot}` : `Turn off sound for ${bot.slot}`);
+  };
+  sound.addEventListener("click", () => {
+    picture.muted = !picture.muted;
+    showSound();
+    if (!picture.muted) {
+      void picture.play();
+    }
+  });
+  showSound();
+  const frame = document.createElement("div");
+  frame.className = "frame";
+  frame.append(picture, sound);
+
+  // The bot's own decision at the frame on screen, in words. aria-live so a
+  // screen reader hears the bot change what it is doing.
+  const say = document.createElement("div");
+  say.className = "say";
+  say.setAttribute("aria-live", "polite");
+  const doing = document.createElement("div");
+  doing.className = "doing";
+  const why = document.createElement("div");
+  why.className = "why";
+  say.append(doing, why);
+
   const caption = document.createElement("div");
   caption.className = "cap";
   const name = document.createElement("b");
@@ -317,9 +425,34 @@ function tile(bot) {
     reconnects: 0,
     state: "connecting",
     uptime: bot.uptime_seconds,
+    // The bot's recent captions, oldest first, replaced on every poll.
+    captions: bot.captions,
+    // The caption on screen, so an unchanged one is not rewritten (which
+    // would re-announce it to a screen reader on every frame).
+    said: null,
     stat,
     item,
     picture,
+    say() {
+      const moment = frameMomentMs(picture, this.hls);
+      const current = moment === null ? null : captionAt(this.captions, moment);
+      const shown = current === null ? STARTING : current;
+      // By content: every poll decodes fresh objects for the same captions.
+      const key = `${shown.doing}|${shown.why}|${shown.fuel}`;
+      if (this.said === key) {
+        return;
+      }
+      this.said = key;
+      doing.textContent = shown.doing;
+      why.textContent = "";
+      why.append(shown.why);
+      if (shown.fuel >= 0) {
+        const fuel = document.createElement("span");
+        fuel.className = "fuel";
+        fuel.textContent = ` Fuel ${shown.fuel}.`;
+        why.append(fuel);
+      }
+    },
     // The hls.js instance driving the <video>, when this browser has
     // Media Source Extensions; null on native-HLS players (iOS
     // Safari), which take the playlist as a plain src instead. BOTH
@@ -397,6 +530,9 @@ function tile(bot) {
     feed.state = "live";
     render(feed);
   });
+  // The frame on screen moves on every timeupdate (several times a second),
+  // and the caption follows it rather than the newest thing the bot did.
+  picture.addEventListener("timeupdate", () => feed.say());
   // Native-path failures (the hls.js path reports through its own
   // ERROR event above). A live stream also has no end, so `ended`
   // means the source dropped.
@@ -405,8 +541,9 @@ function tile(bot) {
 
   streams.set(bot.slot, feed);
   feed.reload();
+  feed.say();
 
-  item.append(picture, caption);
+  item.append(frame, say, caption);
   return feed;
 }
 
@@ -457,7 +594,9 @@ function draw(fleet) {
       views.append(feed.item);
     }
     feed.uptime = bot.uptime_seconds;
+    feed.captions = bot.captions;
     render(feed);
+    feed.say();
   }
   drawn = slots;
 
