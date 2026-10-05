@@ -196,9 +196,16 @@
 
   /* The caption: what the bot is doing, in a phrase, and why, in a sentence.
      It is the bot's own decision, timed to the frame being shown. */
-  .tile .say { padding: 0.75rem 0.9rem 0.1rem; min-height: 4.6rem; }
+  /* Solid, not the panel's fading gradient: the tiles sit low on the page,
+     where that gradient is over the dark ground and grey text on it reads
+     weakly, and this is the line a newcomer reads the game by. */
+  .tile .say {
+    padding: 0.75rem 0.9rem 0.7rem;
+    min-height: 5.2rem;
+    background: rgba(255, 255, 255, 0.94);
+  }
   .tile .say .doing { font-size: 1.02rem; font-weight: 600; color: var(--gray-800); }
-  .tile .say .why { margin-top: 0.2rem; font-size: 0.92rem; line-height: 1.45; color: var(--gray-600); }
+  .tile .say .why { margin-top: 0.2rem; font-size: 0.92rem; line-height: 1.45; color: var(--gray-800); }
   .tile .say .fuel { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
   /* The explanation for someone who has never played. */
