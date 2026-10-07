@@ -46,7 +46,8 @@ files = [
     "asuci/models.py",
     "asuci/parse.py",
     "asuci/client.py",
-    "shared/utils/meeting_schedule.py",
+    "asuci/generate.py",
+    "shared",
     "scripts",
     "tests",
 ]
@@ -68,14 +69,10 @@ exclude = [
     "rabbit",
     "flock-investigation",
     "oc-city-councils",
-    "shared/scrapers",
 ]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "BLE", "UP", "N", "C4", "SIM", "RET", "C90", "RUF", "ANN"]
-
-[tool.ruff.lint.per-file-ignores]
-"asuci/generate.py" = ["ANN", "E501", "C901", "RUF", "SIM", "RET", "B", "N", "UP"]
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]
 "typing.cast" = { msg = "Do not use typing.cast; prefer adapters or precise types." }
@@ -83,15 +80,14 @@ select = ["E", "F", "I", "B", "BLE", "UP", "N", "C4", "SIM", "RET", "C90", "RUF"
 
 [tool.coverage.run]
 source = ["asuci", "scripts", "shared"]
-# The legacy HTML generator predates this standard; it is exercised end to end
-# by `make generate`, not by unit tests. Remove this once it is migrated.
-omit = [
-    "asuci/generate.py",
-    # Predate this standard; exercised end to end by `make generate`.
-    "shared/scrapers/*",
-    "shared/utils/__init__.py",
-]
+# Nothing under a source directory is left out of the measurement: with
+# fail_under = 100 an omitted file would be uncounted rather than uncovered,
+# and the 100 would describe only what survived the list.
+omit = []
 branch = true
+# Playwright's sync API runs the caller between greenlet switches; without
+# greenlet support the tracer loses those lines and reports them unexecuted.
+concurrency = ["thread", "greenlet"]
 
 [tool.coverage.report]
 precision = 2
