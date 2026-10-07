@@ -96,6 +96,12 @@ _SECTION_RE = re.compile(r'<h2 class="section"')
 # Hash the FILE, not a shell redirect of it: `git show ... > file` in PowerShell
 # rewrites LF as CRLF and inflates a 4713-byte stylesheet to 4851, which fails
 # this check for a reason that reads as corruption.
+#
+# The hash is of the content with CRLF read as LF, which is how git stores
+# both files. A checkout's line endings are the machine's setting, not the
+# stylesheet's: the fleet's export of this repository reaches a Windows node
+# with CRLF, and Dashboards job 95fd11a5 failed here on loki with both
+# stylesheets unchanged (board task ddd25310).
 MIRRORED_STYLESHEETS = {
     "assets/tokens.css": "bd9f6a968bba1ef07b0e49a060ee2e12201946de5372443dc1c82217b6a648ec",
     "assets/site.css": "1d1cef4677e08b62e55e0be1b21156feb68c1685730b93176b555f47067c764e",
@@ -224,7 +230,7 @@ def check_mirrored_stylesheets_are_pinned(base: Path | None = None) -> list[str]
         if not path.is_file():
             errors.append(f"Mirrored stylesheet missing: {relative}")
             continue
-        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+        actual = hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
         if actual != recorded:
             errors.append(
                 f"{relative} changed: recorded {recorded}, now {actual}. "
