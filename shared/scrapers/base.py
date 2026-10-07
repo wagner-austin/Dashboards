@@ -1,57 +1,69 @@
-"""Base scraper interface for city council meeting systems."""
+"""Shared types for city council meeting scrapers.
 
-from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from typing import Optional
+Each scraper reads one vendor's meeting system and returns the same shapes, so
+a dashboard can list meetings and agenda items without knowing which vendor a
+city uses.
+"""
+
+from typing import Protocol, TypedDict
 
 
-@dataclass
-class Meeting:
-    """Represents a city council meeting."""
+class ScraperDecodeError(ValueError):
+    """Raised when a meeting system returns data without the expected shape."""
+
+
+class Meeting(TypedDict):
+    """One meeting as a meeting system lists it.
+
+    name: The meeting's title, e.g. "City Council Regular Meeting".
+    date: The meeting date written as "January 27, 2026".
+    agenda_url: Absolute URL of the agenda, None when none is published.
+    minutes_url: Absolute URL of the minutes, None when none are published.
+    video_url: Absolute URL of the recording, None when there is none.
+    event_id: The system's identifier for fetching agenda items, None when absent.
+    """
 
     name: str
     date: str
-    agenda_url: Optional[str] = None
-    minutes_url: Optional[str] = None
-    video_url: Optional[str] = None
-    event_id: Optional[str] = None
-
-    def to_dict(self) -> dict:
-        return {
-            "name": self.name,
-            "date": self.date,
-            "agenda_url": self.agenda_url,
-            "minutes_url": self.minutes_url,
-            "video_url": self.video_url,
-            "event_id": self.event_id,
-        }
+    agenda_url: str | None
+    minutes_url: str | None
+    video_url: str | None
+    event_id: str | None
 
 
-class BaseScraper(ABC):
-    """Abstract base class for meeting scrapers."""
+class AgendaItem(TypedDict):
+    """One numbered item on a meeting agenda.
 
-    def __init__(self, config: dict):
-        """Initialize scraper with city configuration."""
-        self.config = config
-        self.city_name = config.get("city", {}).get("name", "Unknown City")
+    number: The item number as printed, e.g. "3.1".
+    title: The item title, cut to 200 characters.
+    section: The agenda section the item sits under, None before the first one.
+    """
 
-    @abstractmethod
+    number: str
+    title: str
+    section: str | None
+
+
+class MeetingScraper(Protocol):
+    """A city's meeting system, read into the shared shapes."""
+
+    city_name: str
+
     def fetch_meetings(self) -> list[Meeting]:
-        """Fetch meetings from the city's meeting system.
+        """Fetch the city's meetings.
 
         Returns:
-            List of Meeting objects, sorted by date (newest first).
+            list[Meeting]: Meetings sorted by date, newest first.
         """
-        pass
+        ...
 
-    @abstractmethod
-    def fetch_agenda_items(self, event_id: str) -> list[dict]:
-        """Fetch agenda items for a specific meeting.
+    def fetch_agenda_items(self, event_id: str) -> list[AgendaItem]:
+        """Fetch the agenda items of one meeting.
 
         Args:
-            event_id: The meeting/event identifier.
+            event_id: The meeting's identifier in the system.
 
         Returns:
-            List of agenda item dicts with 'number', 'title', 'section' keys.
+            list[AgendaItem]: The items in agenda order.
         """
-        pass
+        ...

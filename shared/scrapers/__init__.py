@@ -1,5 +1,14 @@
-from .base import BaseScraper
-from .granicus import GranicusScraper
-from .legistar import LegistarClient
+from .base import AgendaItem, Meeting, MeetingScraper, ScraperDecodeError
+from .granicus import GranicusScraper, granicus_origin
+from .legistar import LegistarClient, Person
 
-__all__ = ["BaseScraper", "GranicusScraper", "LegistarClient"]
+__all__ = [
+    "AgendaItem",
+    "GranicusScraper",
+    "LegistarClient",
+    "Meeting",
+    "MeetingScraper",
+    "Person",
+    "ScraperDecodeError",
+    "granicus_origin",
+]

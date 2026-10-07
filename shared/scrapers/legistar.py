@@ -4,129 +4,207 @@ Legistar provides a REST API for some cities:
 - Costa Mesa, Newport Beach, Huntington Beach, Fullerton, City of Orange
 
 API endpoint: https://webapi.legistar.com/v1/{client}/
+
+Every response is decoded field by field: a missing or mistyped field raises
+ScraperDecodeError naming it, and a failed request raises requests' own error.
+Nothing is turned into an empty result.
 """
 
 from datetime import datetime
-from typing import Optional
+from typing import TypedDict
 
 import requests
 
-from .base import BaseScraper, Meeting
+from .base import AgendaItem, Meeting, ScraperDecodeError
+
+LEGISTAR_API_ROOT = "https://webapi.legistar.com/v1"
+REQUEST_TIMEOUT_SEC = 30
 
 
-class LegistarClient(BaseScraper):
-    """Client for cities using Legistar API."""
+class Person(TypedDict):
+    """An active person in the city's Legistar roster.
 
-    BASE_URL = "https://webapi.legistar.com/v1"
+    name: First and last name joined by a space.
+    email: Email address, None when unlisted.
+    phone: Phone number, None when unlisted.
+    website: Personal page URL, None when unlisted.
+    """
 
-    def __init__(self, config: dict):
-        super().__init__(config)
-        scraping = config.get("scraping", {}).get("legistar", {})
-        self.client_name = scraping.get("client_name")
-        self.body_name = scraping.get("body_name", "City Council")
+    name: str
+    email: str | None
+    phone: str | None
+    website: str | None
 
-        if not self.client_name:
-            raise ValueError(
-                f"Legistar config requires 'client_name' for {self.city_name}"
+
+def _require_records(payload: object, what: str) -> list[dict[str, object]]:
+    """Decode a Legistar list response into its records.
+
+    Raises:
+        ScraperDecodeError: When the payload is not a list of objects.
+    """
+    if not isinstance(payload, list):
+        raise ScraperDecodeError(
+            f"LEGISTAR_NOT_LIST: the {what} response is {type(payload).__name__}, not a list"
+        )
+    records: list[dict[str, object]] = []
+    for entry in payload:
+        if not isinstance(entry, dict):
+            raise ScraperDecodeError(
+                f"LEGISTAR_NOT_OBJECT: a {what} entry is {type(entry).__name__}, not an object"
             )
+        records.append({str(key): value for key, value in entry.items()})
+    return records
 
-    @property
-    def api_base(self) -> str:
-        return f"{self.BASE_URL}/{self.client_name}"
 
-    def _get(self, endpoint: str, params: Optional[dict] = None) -> dict | list:
-        """Make a GET request to the Legistar API."""
-        url = f"{self.api_base}/{endpoint}"
-        response = requests.get(url, params=params, timeout=30)
+def _optional_str(record: dict[str, object], field: str) -> str | None:
+    value = record.get(field)
+    if value is None or isinstance(value, str):
+        return value
+    raise ScraperDecodeError(f"LEGISTAR_FIELD_TYPE: {field} is {type(value).__name__}, not a string")
+
+
+def _require_str(record: dict[str, object], field: str) -> str:
+    value = _optional_str(record, field)
+    if value is None:
+        raise ScraperDecodeError(f"LEGISTAR_FIELD_MISSING: {field} is absent or null")
+    return value
+
+
+def _optional_int(record: dict[str, object], field: str) -> int | None:
+    value = record.get(field)
+    if value is None or isinstance(value, int):
+        return value
+    raise ScraperDecodeError(f"LEGISTAR_FIELD_TYPE: {field} is {type(value).__name__}, not an integer")
+
+
+def _display_date(event_date: str) -> str:
+    """Rewrite an ISO timestamp as "January 07, 2026".
+
+    Raises:
+        ValueError: When the timestamp is not ISO 8601.
+    """
+    return datetime.fromisoformat(event_date.replace("Z", "+00:00")).strftime("%B %d, %Y")
+
+
+class LegistarClient:
+    """Client for cities using the Legistar API."""
+
+    def __init__(
+        self,
+        city_name: str,
+        client_name: str,
+        body_name: str = "City Council",
+        *,
+        api_root: str = LEGISTAR_API_ROOT,
+    ) -> None:
+        """Bind the client to one city's Legistar tenant.
+
+        Args:
+            city_name: The city, for display.
+            client_name: The city's Legistar client slug, e.g. "costamesa".
+            body_name: Only events whose body name contains this are listed;
+                an empty string lists every body.
+            api_root: The API root, without the client slug.
+        """
+        self.city_name = city_name
+        self.client_name = client_name
+        self.body_name = body_name
+        self.api_base = f"{api_root}/{client_name}"
+
+    def _get(self, endpoint: str, params: dict[str, str]) -> object:
+        """GET one endpoint and return its decoded JSON body.
+
+        Raises:
+            requests.RequestException: When the request fails or returns an error status.
+        """
+        response = requests.get(f"{self.api_base}/{endpoint}", params=params, timeout=REQUEST_TIMEOUT_SEC)
         response.raise_for_status()
-        return response.json()
+        payload: object = response.json()
+        return payload
 
     def fetch_meetings(self) -> list[Meeting]:
-        """Fetch meetings from Legistar API."""
-        meetings = []
+        """Fetch the latest 100 events of the configured body.
 
-        try:
-            # Get all events
-            events = self._get("events", {"$orderby": "EventDate desc", "$top": 100})
+        Returns:
+            list[Meeting]: The body's meetings, newest first as the API orders them.
 
-            for event in events:
-                # Filter by body name if specified
-                body_name = event.get("EventBodyName", "")
-                if self.body_name and self.body_name.upper() not in body_name.upper():
-                    continue
-
-                # Parse date
-                event_date = event.get("EventDate", "")
-                if event_date:
-                    try:
-                        dt = datetime.fromisoformat(event_date.replace("Z", "+00:00"))
-                        date_str = dt.strftime("%B %d, %Y")
-                    except ValueError:
-                        date_str = event_date
-                else:
-                    continue
-
-                # Build URLs
-                event_id = event.get("EventId")
-                agenda_url = event.get("EventAgendaFile")
-                minutes_url = event.get("EventMinutesFile")
-                video_url = event.get("EventVideoPath")
-
-                meetings.append(Meeting(
-                    name=body_name or "City Council Meeting",
-                    date=date_str,
-                    agenda_url=agenda_url,
-                    minutes_url=minutes_url,
-                    video_url=video_url,
-                    event_id=str(event_id) if event_id else None,
-                ))
-
-        except requests.RequestException as e:
-            print(f"Error fetching Legistar events: {e}")
-
+        Raises:
+            requests.RequestException: When the request fails.
+            ScraperDecodeError: When an event lacks a field or has one mistyped.
+            ValueError: When an EventDate is not ISO 8601.
+        """
+        payload = self._get("events", {"$orderby": "EventDate desc", "$top": "100"})
+        meetings: list[Meeting] = []
+        for event in _require_records(payload, "events"):
+            body_name = _require_str(event, "EventBodyName")
+            if self.body_name.upper() not in body_name.upper():
+                continue
+            event_id = _optional_int(event, "EventId")
+            meetings.append(
+                Meeting(
+                    name=body_name,
+                    date=_display_date(_require_str(event, "EventDate")),
+                    agenda_url=_optional_str(event, "EventAgendaFile"),
+                    minutes_url=_optional_str(event, "EventMinutesFile"),
+                    video_url=_optional_str(event, "EventVideoPath"),
+                    event_id=None if event_id is None else str(event_id),
+                )
+            )
         return meetings
 
-    def fetch_agenda_items(self, event_id: str) -> list[dict]:
-        """Fetch agenda items for a specific meeting."""
-        agenda_items = []
+    def fetch_agenda_items(self, event_id: str) -> list[AgendaItem]:
+        """Fetch the agenda items of one event.
 
-        try:
-            items = self._get(f"events/{event_id}/eventitems")
+        Args:
+            event_id: The Legistar EventId.
 
-            for item in items:
-                number = item.get("EventItemAgendaNumber", "")
-                title = item.get("EventItemTitle", "")[:200]
-                section = item.get("EventItemAgendaSequence", "")
+        Returns:
+            list[AgendaItem]: Items carrying a number or a title, in API order.
 
-                if number or title:
-                    agenda_items.append({
-                        "number": str(number),
-                        "title": title,
-                        "section": str(section),
-                    })
+        Raises:
+            requests.RequestException: When the request fails.
+            ScraperDecodeError: When an item has a field mistyped.
+        """
+        payload = self._get(f"events/{event_id}/eventitems", {})
+        items: list[AgendaItem] = []
+        for record in _require_records(payload, "event items"):
+            number = _optional_str(record, "EventItemAgendaNumber")
+            title = _optional_str(record, "EventItemTitle")
+            sequence = _optional_int(record, "EventItemAgendaSequence")
+            if number or title:
+                items.append(
+                    AgendaItem(
+                        number=number or "",
+                        title=(title or "")[:200],
+                        section=None if sequence is None else str(sequence),
+                    )
+                )
+        return items
 
-        except requests.RequestException as e:
-            print(f"Error fetching Legistar agenda items: {e}")
+    def fetch_persons(self) -> list[Person]:
+        """Fetch the city's active people.
 
-        return agenda_items
+        Returns:
+            list[Person]: Every active person, in API order.
 
-    def fetch_persons(self) -> list[dict]:
-        """Fetch council members from Legistar API."""
-        persons = []
-
-        try:
-            # Get active persons who are part of a body
-            data = self._get("persons", {"$filter": "PersonActiveFlag eq 1"})
-
-            for person in data:
-                persons.append({
-                    "name": f"{person.get('PersonFirstName', '')} {person.get('PersonLastName', '')}".strip(),
-                    "email": person.get("PersonEmail"),
-                    "phone": person.get("PersonPhone"),
-                    "website": person.get("PersonWWW"),
-                })
-
-        except requests.RequestException as e:
-            print(f"Error fetching Legistar persons: {e}")
-
-        return persons
+        Raises:
+            requests.RequestException: When the request fails.
+            ScraperDecodeError: When a person has a field mistyped.
+        """
+        payload = self._get("persons", {"$filter": "PersonActiveFlag eq 1"})
+        return [
+            Person(
+                name=" ".join(
+                    part
+                    for part in (
+                        _optional_str(record, "PersonFirstName"),
+                        _optional_str(record, "PersonLastName"),
+                    )
+                    if part
+                ),
+                email=_optional_str(record, "PersonEmail"),
+                phone=_optional_str(record, "PersonPhone"),
+                website=_optional_str(record, "PersonWWW"),
+            )
+            for record in _require_records(payload, "persons")
+        ]
