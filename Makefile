@@ -21,7 +21,10 @@ test:
 provenance:
 	poetry run python -m scripts.provenance_gate; if ($$LASTEXITCODE -ne 0) { exit $$LASTEXITCODE }
 
+# The banner is the last line a passing check prints, and the only one the
+# fleet verdict (API tools/fleet/src/fleet/core/verdict.py) reads as a pass.
 check: lint test provenance
+	Write-Output "=== ALL CHECKS PASSED ==="
 
 generate:
 	poetry run python generate_all.py

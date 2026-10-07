@@ -4,6 +4,10 @@ version = "1.0.0"
 description = "Personal dashboard collection - Auto-updating static sites"
 authors = ["Austin Wagner"]
 readme = "README.md"
+# The repository is a set of static sites and their generators, not an
+# installable package: there is no dashboards/ directory to install, so a bare
+# `poetry install` failed with "No file/folder found for package dashboards".
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
