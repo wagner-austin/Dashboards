@@ -47,6 +47,7 @@ class Recorder:
         self.exit_codes = exit_codes
         self.dirs = {provenance_gate.PREVIEW_ROOT} if dirs is None else dirs
         self.validator_calls: list[str] = []
+        self.validator_roots: list[tuple[str, str, str]] = []
 
     def dir_exists(self, path: str) -> bool:
         """Return whether the path was scripted as an existing directory.
@@ -89,21 +90,27 @@ class Recorder:
         """
         return path in self.existing
 
-    def run_validator(self, deliverable_path: str, validator_script: str) -> int:
+    def run_validator(
+        self, deliverable_path: str, validator_script: str, projects_root: str, repo_root: str
+    ) -> int:
         """Return the scripted exit code and record the call.
 
         Args:
             deliverable_path: The deliverable being validated.
-            validator_script: Ignored; recorded by the caller's scripting.
+            validator_script: The validator the gate resolved.
+            projects_root: The projects root the gate passed on.
+            repo_root: The repository root the gate passed on.
 
         Returns:
             The scripted exit code, defaulting to 0.
         """
         self.validator_calls.append(deliverable_path)
+        self.validator_roots.append((validator_script, projects_root, repo_root))
         return self.exit_codes.get(deliverable_path, 0)
 
 
-_VALIDATOR = provenance_gate.DEFAULT_VALIDATOR
+_REPO = "/projects/Dashboards"
+_VALIDATOR = "/projects/deliverable-write/scripts/validate-deliverable.sh"
 
 
 def _install(recorder: Recorder) -> None:
@@ -138,8 +145,9 @@ def test_gate_passes_when_every_article_has_a_passing_manifest() -> None:
         exit_codes={},
     )
     _install(recorder)
-    assert provenance_gate.gate() == 0
+    assert provenance_gate.gate(_REPO) == 0
     assert recorder.validator_calls == ["preview/a/index.html"]
+    assert recorder.validator_roots == [(_VALIDATOR, "/projects", _REPO)]
     assert "PROVENANCE GATE PASSED" in recorder.lines
 
 
@@ -147,7 +155,7 @@ def test_gate_fails_an_article_with_no_manifest() -> None:
     """A missing manifest is a refusal, not a skip."""
     recorder = Recorder(articles=["preview/a"], existing={_VALIDATOR}, exit_codes={})
     _install(recorder)
-    assert provenance_gate.gate() == 1
+    assert provenance_gate.gate(_REPO) == 1
     assert recorder.validator_calls == []
     assert any("no provenance.json" in line for line in recorder.lines)
 
@@ -160,7 +168,7 @@ def test_gate_fails_when_the_validator_rejects_an_article() -> None:
         exit_codes={"preview/a/index.html": 1},
     )
     _install(recorder)
-    assert provenance_gate.gate() == 1
+    assert provenance_gate.gate(_REPO) == 1
     assert any("validator exit 1" in line for line in recorder.lines)
 
 
@@ -172,7 +180,7 @@ def test_gate_reports_every_failing_article() -> None:
         exit_codes={"preview/b/index.html": 1},
     )
     _install(recorder)
-    assert provenance_gate.gate() == 1
+    assert provenance_gate.gate(_REPO) == 1
     assert "PROVENANCE GATE FAILED: 2 of 3" in recorder.lines
 
 
@@ -180,15 +188,16 @@ def test_gate_fails_when_the_validator_is_absent() -> None:
     """Without the validator the gate refuses rather than passing vacuously."""
     recorder = Recorder(articles=["preview/a"], existing=set(), exit_codes={})
     _install(recorder)
-    assert provenance_gate.gate() == 1
-    assert any("validator not found" in line for line in recorder.lines)
+    assert provenance_gate.gate(_REPO) == 1
+    assert recorder.lines[0] == f"PROVENANCE GATE: validator not found at {_VALIDATOR}"
+    assert "~/PROJECTS/deliverable-write as a junction" in recorder.lines[1]
 
 
 def test_gate_passes_when_there_are_no_articles() -> None:
     """An empty preview tree is not a failure."""
     recorder = Recorder(articles=[], existing={_VALIDATOR}, exit_codes={})
     _install(recorder)
-    assert provenance_gate.gate() == 0
+    assert provenance_gate.gate(_REPO) == 0
     assert any("no articles under" in line for line in recorder.lines)
 
 
@@ -200,39 +209,34 @@ def test_gate_fails_when_the_preview_root_is_missing() -> None:
     """
     recorder = Recorder(articles=[], existing={_VALIDATOR}, exit_codes={}, dirs=set())
     _install(recorder)
-    assert provenance_gate.gate() == 1
+    assert provenance_gate.gate(_REPO) == 1
     assert any("does not exist" in line for line in recorder.lines)
 
 
-def test_resolve_validator_prefers_the_environment(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """DELIVERABLE_VALIDATOR overrides the default location.
-
-    Args:
-        monkeypatch: Used to set the environment variable.
-    """
-    monkeypatch.setenv("DELIVERABLE_VALIDATOR", "/custom/validate.sh")
-    assert provenance_gate.resolve_validator() == "/custom/validate.sh"
+def test_projects_root_is_the_repositorys_parent() -> None:
+    """The siblings the gate reads sit in the directory above the repository."""
+    assert provenance_gate.projects_root(_REPO) == "/projects"
 
 
-def test_resolve_validator_falls_back_to_the_skill_path(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """Without the variable, the skills directory is used.
-
-    Args:
-        monkeypatch: Used to clear the environment variable.
-    """
-    monkeypatch.delenv("DELIVERABLE_VALIDATOR", raising=False)
-    assert provenance_gate.resolve_validator().endswith("validate-deliverable.sh")
+def test_validator_path_sits_below_the_projects_root() -> None:
+    """The validator is the deliverable-write checkout's script, nowhere else."""
+    assert provenance_gate.validator_path("/projects") == _VALIDATOR
 
 
-def test_main_delegates_to_gate() -> None:
-    """The module entry point returns the gate's code."""
-    recorder = Recorder(articles=[], existing={_VALIDATOR}, exit_codes={})
+def test_repo_root_is_the_directory_holding_scripts() -> None:
+    """REPO_ROOT names this repository, so its parent is the projects root."""
+    repo = Path(provenance_gate.REPO_ROOT)
+    assert (repo / "scripts" / "provenance_gate.py").is_file()
+    assert (repo / "pyproject.toml").is_file()
+
+
+def test_main_runs_the_gate_from_this_repository() -> None:
+    """The entry point resolves the validator beside this repository."""
+    validator = provenance_gate.validator_path(provenance_gate.projects_root(provenance_gate.REPO_ROOT))
+    recorder = Recorder(articles=[], existing={validator}, exit_codes={})
     _install(recorder)
     assert provenance_gate.main() == 0
+    assert recorder.lines == [f"PROVENANCE GATE: no articles under {provenance_gate.PREVIEW_ROOT}/"]
 
 
 # --------------------------------------------------------------------------
@@ -353,12 +357,35 @@ def test_to_bash_path_leaves_a_relative_path_alone() -> None:
     assert hooks.to_bash_path("preview/a/index.html") == "preview/a/index.html"
 
 
-def test_real_run_validator_returns_the_scripts_exit_code(tmp_path: Path) -> None:
-    """The validator's exit code is propagated, not swallowed.
+def test_real_run_validator_passes_the_roots_and_returns_the_exit_code(tmp_path: Path) -> None:
+    """The roots reach the validator's environment and its exit code comes back.
+
+    The script stands in for validate-deliverable.sh and is run by the real
+    hook under the real bash: it writes what it received to a file and exits
+    7, so both the environment the hook builds and the propagation of a
+    failing code are observed rather than assumed.
 
     Args:
         tmp_path: Temporary directory root.
     """
-    script = tmp_path / "fake-validator.sh"
-    script.write_text("#!/usr/bin/env bash\nexit 7\n", encoding="utf-8", newline="\n")
-    assert hooks._real_run_validator("ignored.html", str(script)) == 7
+    received = tmp_path / "received.txt"
+    script = tmp_path / "validator.sh"
+    script.write_text(
+        "#!/usr/bin/env bash\n"
+        'printf "%s\\n" "$ALLOW_NO_FIDELITY" "$PROJECTS_ROOT" "$WIKI_ROOT" "$REPO_ROOT" "$1"'
+        f' > "{hooks.to_bash_path(str(received))}"\n'
+        "exit 7\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    code = hooks._real_run_validator(
+        "preview/a/index.html", str(script), "C:/projects", "C:/projects/Dashboards"
+    )
+    assert code == 7
+    assert received.read_text(encoding="utf-8").splitlines() == [
+        "1",
+        "C:/projects",
+        "C:/projects/wiki",
+        "C:/projects/Dashboards",
+        "preview/a/index.html",
+    ]

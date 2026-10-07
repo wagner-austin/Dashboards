@@ -16,8 +16,11 @@ test:
 	poetry run pytest --cov --cov-branch --cov-report=term-missing
 
 # Every article under preview/ must bind its figures to the wiki sections they
-# came from. Needs the wiki tree and the deliverable-write skill, so it runs
-# here rather than in GitHub Actions, which has neither.
+# came from. Needs the deliverable-write validator and the wikis it reads
+# checked out beside this repository: ~/PROJECTS on a workstation, the stage
+# root on the fleet, where API tools/fleet/fleet.json declares them as the
+# Dashboards project's companions. GitHub Actions has neither, so it never
+# runs there.
 provenance:
 	poetry run python -m scripts.provenance_gate; if ($$LASTEXITCODE -ne 0) { exit $$LASTEXITCODE }
 

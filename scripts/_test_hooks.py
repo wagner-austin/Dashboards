@@ -166,12 +166,19 @@ def to_bash_path(path: str) -> str:
     return forward
 
 
-def _real_run_validator(deliverable_path: str, validator_script: str) -> int:
+def _real_run_validator(
+    deliverable_path: str, validator_script: str, projects_root: str, repo_root: str
+) -> int:
     """Run the deliverable validator against one file.
 
     Args:
         deliverable_path: Path to the article's ``index.html``.
         validator_script: Path to ``validate-deliverable.sh``.
+        projects_root: The directory holding the wiki checkouts side by side,
+            passed as the validator's ``PROJECTS_ROOT``, with ``WIKI_ROOT``
+            set to its ``wiki`` so an inherited value cannot point elsewhere.
+        repo_root: This repository's root, passed as ``REPO_ROOT``, which the
+            manifest's ``deliverable`` path is relative to.
 
     Returns:
         The validator's exit code. Output is inherited so the caller sees
@@ -180,8 +187,17 @@ def _real_run_validator(deliverable_path: str, validator_script: str) -> int:
     # ALLOW_NO_FIDELITY marks the wiki-check fidelity audit as not applicable
     # here: it verifies a wiki deliverable's CSL sources, and a website page
     # has none. It does NOT waive the provenance manifest, which the validator
-    # treats as unconditionally required.
-    environment = dict(os.environ, ALLOW_NO_FIDELITY="1")
+    # treats as unconditionally required. The roots go as forward-slash paths
+    # rather than through to_bash_path, because the validator hands them on to
+    # Python as --wiki-root and --repo-root, and Git Bash and Python both read
+    # C:/Users/... where only bash reads /c/Users/...
+    environment = dict(
+        os.environ,
+        ALLOW_NO_FIDELITY="1",
+        PROJECTS_ROOT=projects_root,
+        WIKI_ROOT=f"{projects_root}/wiki",
+        REPO_ROOT=repo_root,
+    )
     return subprocess.run(
         [
             resolve_bash(),
