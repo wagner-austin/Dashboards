@@ -82,10 +82,6 @@ fail_under = 100
 exclude_lines = [
     'if __name__ == "__main__":',
     "sys.exit\\(main\\(\\)\\)",
-    # Defensive checks for edge cases that can't occur through normal code paths
-    "if stdout is None:",
-    "if not line:",
-    "if first_frames:",
 ]
 
 [tool.pytest.ini_options]

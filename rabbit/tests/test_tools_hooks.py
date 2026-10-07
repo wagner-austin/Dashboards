@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import subprocess
+import sys
 from collections.abc import Iterator
 from pathlib import Path
 
@@ -10,7 +12,9 @@ from PIL import Image
 from tools import _test_hooks as hooks
 from tools._test_hooks import (
     VideoFrameData,
+    VideoFrameStreamError,
     VideoProps,
+    _decode_frame_stream,
     _real_get_video_props,
     _real_iter_gif_frames,
     _real_iter_video_frames,
@@ -110,9 +114,6 @@ def test_reset_hooks() -> None:
 def _create_test_video(video_path: Path) -> None:
     """Create a simple test video file using imageio-ffmpeg."""
     # Use imageio directly in subprocess to create video
-    import subprocess
-    import sys
-
     script = """
 import imageio.v3 as iio
 import sys
@@ -163,3 +164,43 @@ def test_real_iter_video_frames(tmp_path: Path) -> None:
         # Size may be slightly different due to video codec constraints
         assert frame.width >= 10
         assert frame.height >= 10
+
+
+def _start_python(script: str, *, pipe_stdout: bool) -> subprocess.Popen[str]:
+    """Start a real Python subprocess running ``script``, piping stdout if asked."""
+    if pipe_stdout:
+        return subprocess.Popen([sys.executable, "-c", script], stdout=subprocess.PIPE, text=True)
+    return subprocess.Popen([sys.executable, "-c", script], text=True)
+
+
+def test_decode_frame_stream_skips_blank_lines() -> None:
+    """A blank line between frames carries no frame and is skipped, not decoded."""
+    script = (
+        "import base64, json\n"
+        "print('')\n"
+        "print(json.dumps({'width': 1, 'height': 1,"
+        " 'data': base64.b64encode(bytes([7, 8, 9])).decode('ascii')}))\n"
+        "print('   ')\n"
+    )
+    proc = _start_python(script, pipe_stdout=True)
+
+    frames = list(_decode_frame_stream(proc))
+
+    assert frames == [VideoFrameData(width=1, height=1, data=bytes([7, 8, 9]))]
+
+
+def test_decode_frame_stream_without_stdout_pipe_raises() -> None:
+    """A process started without stdout=PIPE has no stream to read, and says so."""
+    proc = _start_python("pass", pipe_stdout=False)
+
+    with pytest.raises(VideoFrameStreamError, match=r"^VIDEO_FRAMES_NO_STDOUT: "):
+        list(_decode_frame_stream(proc))
+    assert proc.wait() == 0
+
+
+def test_decode_frame_stream_nonzero_exit_raises() -> None:
+    """An extractor that exits non-zero fails the iteration with its status."""
+    proc = _start_python("import sys; sys.exit(3)", pipe_stdout=True)
+
+    with pytest.raises(VideoFrameStreamError, match=r"^VIDEO_FRAMES_EXIT: .* status 3$"):
+        list(_decode_frame_stream(proc))

@@ -544,6 +544,19 @@ def test_main_with_preview(tmp_path: Path) -> None:
         assert len(preview_messages) > 0
 
 
+def test_main_preview_of_video_with_no_frames(tmp_path: Path) -> None:
+    """A video that decodes to no frames previews its header and no frame body."""
+    with fake_hooks_context() as fakes:
+        fakes.video_frames = []
+        video_path = tmp_path / "empty.mp4"
+        result = main([str(video_path), "--preview", "--widths", "20"])
+        assert result == 0
+        assert fakes.messages == [
+            f"Extracted 0 frames from {video_path}",
+            "\n--- Preview (w20, frame 0) ---\n",
+        ]
+
+
 def test_main_with_output(tmp_path: Path) -> None:
     """Test main function with output option."""
     test_image = create_test_image()
