@@ -47,6 +47,32 @@ describe("character jump motion", () => {
     expect(getJumpLift(state, frames, 400)).toBe(0);
   });
 
+  it("interrupts a transition to jump straight away", () => {
+    const state = createTestBunnyState({
+      kind: "transition",
+      type: "walk_to_idle",
+      frameIdx: 1,
+      pendingAction: null,
+      returnTo: "idle",
+    });
+    const frames = jumpFrames();
+    const timers = createBunnyTimers(state, frames, intervals, () => false);
+    timers.transition.start();
+    handleJumpInput(state, frames, timers);
+    expect(state.animation).toMatchObject({ kind: "jump", frameIdx: 0 });
+    expect(timers.transition.isRunning()).toBe(false);
+    expect(timers.jump.isRunning()).toBe(true);
+  });
+
+  it("ignores jump input mid-hop even with a jump motion", () => {
+    const state = createTestBunnyState({ kind: "hop", direction: "away", frameIdx: 2 });
+    const frames = jumpFrames();
+    const timers = createBunnyTimers(state, frames, intervals, () => false);
+    handleJumpInput(state, frames, timers);
+    expect(state.animation).toEqual({ kind: "hop", direction: "away", frameIdx: 2 });
+    expect(timers.jump.isRunning()).toBe(false);
+  });
+
   it("never displaces a jump with no start time or a grounded state", () => {
     const frames = jumpFrames();
     expect(getJumpLift(createTestBunnyState({ kind: "jump", frameIdx: 0 }), frames, 400)).toBe(0);
