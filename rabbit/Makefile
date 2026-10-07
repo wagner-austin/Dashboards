@@ -21,7 +21,10 @@ test:
 	$$covArgs = @("--cov-branch","--cov-report=term-missing","--cov=scripts","--cov=tools"); poetry run pytest -n auto -v @covArgs
 	npm run test:coverage
 
+# The banner is the last line a passing check prints, and the only one the
+# fleet verdict (API tools/fleet/src/fleet/core/verdict.py) reads as a pass.
 check: lint test
+	Write-Output "=== ALL CHECKS PASSED ==="
 
 build:
 	poetry run python scripts/generate_sprites.py
