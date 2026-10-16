@@ -79,13 +79,23 @@ def test_the_page_explains_the_game_the_bot_and_the_practice_room(site: tuple[Pa
     page, root = site
     page.set_viewport_size({"width": width, "height": 900})
     page.goto(f"{root}tankpit/")
-    headings = page.locator("#about h3").all_inner_texts()
-    assert headings == ["TankPit", "The bot", "Practice room only"]
+    start = page.locator("#start").bounding_box()
+    assert start is not None
+    assert start["y"] + start["height"] < 600
+    architecture = page.locator("#architecture")
+    assert architecture.get_attribute("open") is None
+    assert not architecture.locator(".modes").is_visible()
+    architecture.locator("summary").click()
+    assert architecture.locator(".modes").is_visible()
+    assert architecture.locator("h2").all_inner_texts() == ["Collect supplies", "Hunt an opponent"]
+    assert "hierarchical finite-state machine" in architecture.inner_text()
+    assert page.locator("#about").get_attribute("open") is None
+    page.locator("#about summary").click()
     about = page.locator("#about").inner_text()
-    assert "multiplayer tank game played in the web browser" in about
-    assert "driven by a program, not a person" in about
-    assert "The bots play only in TankPit's practice room" in about
-    assert "sound is off until you turn it on" in about
+    assert "multiplayer tank game" in about
+    assert "reads the game's messages and sends its own commands" in about
+    assert "practice room" in about
+    assert "Sound starts off" in page.locator(".session-note").inner_text()
     page.locator("#state").filter(has_text="offline").wait_for()
     scroll_width: int = page.evaluate("document.documentElement.scrollWidth")
     assert scroll_width == width
