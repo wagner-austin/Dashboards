@@ -3,310 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TankPit Bots</title>
-<meta name="description" content="Start a bot and watch it play TankPit, the multiplayer browser tank game, in the practice room. Each window is a live video stream of the bot's own screen with the game's sound, and a caption says what the bot is doing and why.">
+<title>TankPit — Watch an autonomous tank play</title>
+<meta name="description" content="Watch an autonomous TankPit bot explore, collect supplies and fight. Live gameplay with captions explaining its decisions.">
 <link rel="stylesheet" href="/assets/tokens.css">
-<style>
-  /* The panel treatment and type scale are the ones austinwagner.org/preview
-     uses — one light-to-dark ground, translucent white panels with a white top
-     rule, square corners, system sans. This page adds exactly one saturated
-     element, the status light, because it is the only thing here whose colour
-     carries meaning. */
-  /* The palette is /assets/tokens.css, linked above, which is the same one
-     austinwagner.org/preview uses -- it is not restated here. Only --ground
-     is this page's own. */
-  :root {
-    --ground: #0a0a0a;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html, body { background: var(--ground); }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-    color: var(--gray-800);
-    min-height: 100%;
-  }
-
-  /* One continuous ground for the whole document, as a block element so its
-     box is the content height — no viewport measurement to resolve. */
-  .page {
-    min-height: 100vh;
-    background: linear-gradient(
-      to bottom,
-      var(--gray-100) 0%,
-      var(--gray-100) 6%,
-      #e6e9ed 13%,
-      #cdd3da 21%,
-      #aeb6c0 30%,
-      #8b939f 40%,
-      #6a727e 50%,
-      #4c535d 60%,
-      #333941 70%,
-      #1e232a 80%,
-      var(--ground) 92%
-    );
-  }
-
-  .container { max-width: 1140px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
-
-  header h1 {
-    font-size: 2.8rem;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-  }
-  header p.role {
-    color: var(--gray-600);
-    margin-top: 0.4rem;
-    font-size: 1.1rem;
-    max-width: 62ch;
-    line-height: 1.55;
-  }
-
-  h2.section {
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin: 0 0 1rem;
-  }
-  h2.section.light { color: #fff; }
-
-  .block { margin-top: 2.25rem; }
-
-  /* The one panel style, defined once. Two near-identical card styles is
-     how a page drifts apart. */
-  .panel {
-    border-top: 1px solid rgba(255, 255, 255, 0.85);
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.88) 0%,
-      rgba(255, 255, 255, 0.68) 40%,
-      rgba(255, 255, 255, 0.45) 72%,
-      rgba(255, 255, 255, 0.26) 100%
-    );
-    padding: 1.1rem 1.75rem 1.25rem;
-  }
-
-  /* ---- the control row ---- */
-  .control { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
-
-  button {
-    font: 600 0.95rem/1 inherit;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #fff;
-    background: var(--primary);
-    border: 1px solid var(--primary-dark);
-    padding: 0.85rem 1.6rem;
-    cursor: pointer;
-    transition: background 0.15s, opacity 0.15s;
-  }
-  button:hover:not(:disabled) { background: var(--primary-dark); }
-  button:disabled { opacity: 0.42; cursor: default; }
-  button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-
-  .count {
-    font-size: 1.05rem;
-    color: var(--gray-600);
-    font-variant-numeric: tabular-nums;
-  }
-  .count b { color: var(--gray-800); font-weight: 600; }
-
-  /* The status light. Three states and each is a fact about the fleet, not
-     decoration: reachable and idle, reachable and playing, unreachable. */
-  .status { display: flex; align-items: center; gap: 0.55rem; margin-left: auto; }
-  .status .label {
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray-600);
-  }
-  .led {
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 50%;
-    background: var(--gray-400);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
-    flex: none;
-  }
-  .led.up { background: var(--primary); box-shadow: 0 0 8px var(--primary); }
-  .led.busy { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-  /* The pulse says "waiting on the network", which is a different state from
-     both up and down; reduced-motion users get the colour alone. */
-  .led.wait { background: var(--gold); animation: pulse 1.1s ease-in-out infinite; }
-  @keyframes pulse { 50% { opacity: 0.28; } }
-  @media (prefers-reduced-motion: reduce) { .led.wait { animation: none; } }
-
-  .note {
-    margin-top: 0.85rem;
-    font-size: 0.95rem;
-    color: var(--gray-600);
-    line-height: 1.5;
-  }
-  .note.bad { color: #7f1d1d; }
-
-  /* ---- the tiles ---- */
-  #views {
-    list-style: none;
-    display: grid;
-    gap: 1.1rem;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  }
-  .tile { padding: 0; }
-  /* The capture screen is 1280x768 — the game client at a forced
-     device scale of 2, filling its own fullscreen with working
-     margin. The box carries the source's ratio, and `contain` means
-     a future change in capture geometry letterboxes rather than
-     silently cropping (the 4:3 + cover version of this box read as
-     zoomed in, because it was). */
-  .tile video {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1280 / 768;
-    object-fit: contain;
-    background: #000;
-  }
-  .tile .cap {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0.6rem 0.9rem 0.7rem;
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gray-600);
-  }
-  .tile .cap b { color: var(--gray-800); font-weight: 600; }
-  .tile .cap .up { font-variant-numeric: tabular-nums; text-transform: none; letter-spacing: 0; }
-
-  /* The picture's frame: the video, and over its corner the sound toggle. */
-  .tile .frame { position: relative; }
-  .tile .sound {
-    position: absolute;
-    right: 0.6rem;
-    bottom: 0.6rem;
-    font-size: 0.75rem;
-    padding: 0.5rem 0.8rem;
-    background: rgba(0, 0, 0, 0.62);
-    border-color: rgba(255, 255, 255, 0.35);
-  }
-  .tile .sound:hover:not(:disabled) { background: rgba(0, 0, 0, 0.85); }
-  .tile .sound[aria-pressed="true"] { background: var(--primary); border-color: var(--primary-dark); }
-
-  /* The caption: what the bot is doing, in a phrase, and why, in a sentence.
-     It is the bot's own decision, timed to the frame being shown. */
-  /* Solid, not the panel's fading gradient: the tiles sit low on the page,
-     where that gradient is over the dark ground and grey text on it reads
-     weakly, and this is the line a newcomer reads the game by. */
-  .tile .say {
-    padding: 0.75rem 0.9rem 0.7rem;
-    min-height: 5.2rem;
-    background: rgba(255, 255, 255, 0.94);
-  }
-  .tile .say .doing { font-size: 1.02rem; font-weight: 600; color: var(--gray-800); }
-  .tile .say .why { margin-top: 0.2rem; font-size: 0.92rem; line-height: 1.45; color: var(--gray-800); }
-  .tile .say .fuel { font-variant-numeric: tabular-nums; white-space: nowrap; }
-
-  /* The explanation for someone who has never played. */
-  .about { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-  .about h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
-  .about p { font-size: 0.95rem; line-height: 1.55; color: var(--gray-600); }
-
-  .empty {
-    color: #fff;
-    opacity: 0.72;
-    font-size: 1.02rem;
-    line-height: 1.6;
-    max-width: 60ch;
-  }
-
-  footer { margin-top: 3rem; }
-  footer p { color: #fff; opacity: 0.6; font-size: 0.9rem; line-height: 1.6; max-width: 74ch; }
-  footer a { color: #fff; }
-</style>
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<div class="page">
-  <div class="container">
+<main class="container">
+  <header>
+    <p class="eyebrow">Austin Wagner · Autonomous game agent</p>
+    <h1>Watch a tank play on its own.</h1>
+    <p class="intro">It explores, gathers supplies and picks its fights. Follow its decisions as it plays TankPit live.</p>
+  </header>
 
-    <header>
-      <h1>TankPit Bots</h1>
-      <p class="role">
-        Press the button and a tank joins the practice room, plays on its own,
-        and stops after fifteen minutes. Each window is a live video stream of
-        the bot's own screen with the game's sound — no replay, a few seconds
-        behind the game — and the caption under it says what the bot is doing
-        and why.
-      </p>
-    </header>
+  <section class="watch" aria-label="Live demo">
+    <div class="control">
+      <button id="start" type="button" disabled>Start a bot</button>
+      <span class="count"><b id="running">—</b> of <b id="capacity">—</b> playing</span>
+      <span class="status"><span class="led wait" id="led"></span><span id="state">connecting</span></span>
+    </div>
+    <p class="session-note">Practice room only · Up to 15 minutes · Sound starts off</p>
+    <p class="note" id="note" role="status"></p>
+    <ul id="views" aria-label="Live bot views"></ul>
+    <p class="empty" id="idle">Start a bot to watch it play. The stream takes a few seconds to arrive.</p>
+    <p class="watch-hint">Each view follows one bot. The caption below it explains what it is doing and why.</p>
+  </section>
 
-    <section class="block" id="about">
-      <h2 class="section">What you are watching</h2>
-      <div class="panel about">
-        <div>
-          <h3>TankPit</h3>
-          <p>
-            TankPit is a multiplayer tank game played in the web browser at
-            tankpit.com. Each player drives one tank around a large map: it
-            drives or teleports, picks up fuel so it never runs dry, collects
-            equipment such as armour, extra radars and special shots, and
-            fights other players' tanks. Fights go in rounds, with every tank
-            acting about once every two seconds.
-          </p>
-        </div>
-        <div>
-          <h3>The bot</h3>
-          <p>
-            Each tank here is driven by a program, not a person. It reads the
-            game's own messages, decides what to do from what the game tells
-            it (where it is, its fuel, what its radar found, where the other
-            tanks are) and sends its moves back the same way. The caption under
-            each picture is that decision, put into words; sound is off until
-            you turn it on.
-          </p>
-        </div>
-        <div>
-          <h3>Practice room only</h3>
-          <p>
-            The bots play only in TankPit's practice room, where nothing a tank
-            wins or loses counts toward anyone's rank. They never join the
-            ranked rooms, and each one leaves after fifteen minutes.
-          </p>
-        </div>
-      </div>
-    </section>
+  <details id="architecture">
+    <summary>How does it decide what to do?</summary>
+    <p>A hierarchical finite-state machine separates the bot’s goal from the steps needed to carry it out.</p>
+    <div class="modes">
+      <section>
+        <h2>Collect supplies</h2>
+        <p>Sense → Search → Approach → Pick up</p>
+        <p>Scan for fuel and equipment, choose a route, then collect what it needs.</p>
+      </section>
+      <section>
+        <h2>Hunt an opponent</h2>
+        <p>Find → Approach → Engage → Confirm</p>
+        <p>Track an enemy, get into range, fight and check the outcome.</p>
+      </section>
+    </div>
+    <p>Fuel and equipment determine when it switches goals. It remembers targets between turns and waits for the game to confirm its commands.</p>
+    <a href="https://github.com/wagner-austin/API/tree/main/clients/TankpitBot">Explore the code →</a>
+  </details>
 
-    <section class="block">
-      <h2 class="section light">Control</h2>
-      <div class="panel control">
-        <button id="start" type="button" disabled>Start a bot</button>
-        <span class="count"><b id="running">—</b> of <b id="capacity">—</b> playing</span>
-        <span class="status">
-          <span class="led wait" id="led"></span>
-          <span class="label" id="state">connecting</span>
-        </span>
-      </div>
-      <p class="note" id="note"></p>
-    </section>
-
-    <section class="block">
-      <h2 class="section light">Live</h2>
-      <ul id="views"></ul>
-      <p class="empty" id="idle">Nothing is playing yet.</p>
-    </section>
-
-    <footer>
-      <p>
-        The tank is driven by a bot that speaks TankPit's binary protocol
-        directly — the game's own messages, decoded and re-encoded, with the
-        browser along only to hold the socket and paint the picture you are
-        watching. Practice room only.
-      </p>
-    </footer>
-
-  </div>
-</div>
+  <details id="about">
+    <summary>New to TankPit?</summary>
+    <p>TankPit is a multiplayer tank game. The goal is to keep your tank supplied while fighting other tanks.</p>
+    <ul>
+      <li><strong>Fuel</strong> keeps the tank alive and pays for teleports.</li>
+      <li><strong>Radar</strong> reveals nearby supplies and mines.</li>
+      <li><strong>Equipment</strong> includes armour and special shots.</li>
+    </ul>
+    <p>This bot reads the game's messages and sends its own commands. The browser shows you the result. These demos stay in the practice room and do not affect ranked play.</p>
+  </details>
+  <footer><a href="/">More projects by Austin Wagner</a></footer>
+</main>
 
 <script src="hls.min.js"></script>
 <script type="module">
