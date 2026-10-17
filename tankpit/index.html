@@ -26,7 +26,7 @@
     <p class="note" id="note" role="status"></p>
     <ul id="views" aria-label="Live bot views"></ul>
     <p class="empty" id="idle">Start a bot to watch it play. The stream takes a few seconds to arrive.</p>
-    <p class="watch-hint">Each view follows one bot. The caption below it explains what it is doing and why.</p>
+    <p class="watch-hint">Each view follows one bot. Its in-game status panel explains what it is doing and why.</p>
   </section>
 
   <details id="architecture">
@@ -63,8 +63,6 @@
 
 <script src="hls.min.js"></script>
 <script type="module">
-import { captionAt, frameMomentMs } from "./captions.js";
-
 // The fleet manager runs on the machine the bots run on, behind a proxy that
 // publishes ONLY these three routes. Everything else it serves — accounts,
 // process ids, stop, remove, shutdown — stays on the loopback surface and is
@@ -78,14 +76,6 @@ const POLL_MS = 2000;
 // fifteen seconds. Three-second retries cover that without hammering a
 // slot whose bot has ended.
 const VIDEO_RETRY_MS = 3000;
-
-// What a tile says before its bot has decided anything at the frame shown:
-// the browser is starting, logging in and joining the room.
-const STARTING = {
-  doing: "Getting ready",
-  why: "It is logging in and joining the practice room.",
-  fuel: -1,
-};
 
 // Every live tile's stream, keyed by slot. Needed because the streams
 // have to be revived from OUTSIDE the tile: a backgrounded tab is the
@@ -157,17 +147,6 @@ function tile(bot) {
   frame.className = "frame";
   frame.append(picture, sound);
 
-  // The bot's own decision at the frame on screen, in words. aria-live so a
-  // screen reader hears the bot change what it is doing.
-  const say = document.createElement("div");
-  say.className = "say";
-  say.setAttribute("aria-live", "polite");
-  const doing = document.createElement("div");
-  doing.className = "doing";
-  const why = document.createElement("div");
-  why.className = "why";
-  say.append(doing, why);
-
   const caption = document.createElement("div");
   caption.className = "cap";
   const name = document.createElement("b");
@@ -185,34 +164,9 @@ function tile(bot) {
     reconnects: 0,
     state: "connecting",
     uptime: bot.uptime_seconds,
-    // The bot's recent captions, oldest first, replaced on every poll.
-    captions: bot.captions,
-    // The caption on screen, so an unchanged one is not rewritten (which
-    // would re-announce it to a screen reader on every frame).
-    said: null,
     stat,
     item,
     picture,
-    say() {
-      const moment = frameMomentMs(picture, this.hls);
-      const current = moment === null ? null : captionAt(this.captions, moment);
-      const shown = current === null ? STARTING : current;
-      // By content: every poll decodes fresh objects for the same captions.
-      const key = `${shown.doing}|${shown.why}|${shown.fuel}`;
-      if (this.said === key) {
-        return;
-      }
-      this.said = key;
-      doing.textContent = shown.doing;
-      why.textContent = "";
-      why.append(shown.why);
-      if (shown.fuel >= 0) {
-        const fuel = document.createElement("span");
-        fuel.className = "fuel";
-        fuel.textContent = ` Fuel ${shown.fuel}.`;
-        why.append(fuel);
-      }
-    },
     // The hls.js instance driving the <video>, when this browser has
     // Media Source Extensions; null on native-HLS players (iOS
     // Safari), which take the playlist as a plain src instead. BOTH
@@ -290,9 +244,6 @@ function tile(bot) {
     feed.state = "live";
     render(feed);
   });
-  // The frame on screen moves on every timeupdate (several times a second),
-  // and the caption follows it rather than the newest thing the bot did.
-  picture.addEventListener("timeupdate", () => feed.say());
   // Native-path failures (the hls.js path reports through its own
   // ERROR event above). A live stream also has no end, so `ended`
   // means the source dropped.
@@ -301,9 +252,7 @@ function tile(bot) {
 
   streams.set(bot.slot, feed);
   feed.reload();
-  feed.say();
-
-  item.append(frame, say, caption);
+  item.append(frame, caption);
   return feed;
 }
 
@@ -354,9 +303,7 @@ function draw(fleet) {
       views.append(feed.item);
     }
     feed.uptime = bot.uptime_seconds;
-    feed.captions = bot.captions;
     render(feed);
-    feed.say();
   }
   drawn = slots;
 

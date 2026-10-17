@@ -44,10 +44,6 @@ button:focus-visible, summary:focus-visible, a:focus-visible {
 .tile video { display: block; width: 100%; aspect-ratio: 1280 / 768; object-fit: contain; }
 .sound { position: absolute; right: .6rem; bottom: .6rem; padding: .4rem .7rem; font-size: .8rem; background: #111d; border-color: #fff8; }
 .sound[aria-pressed="true"] { background: var(--primary); }
-.say { padding: .8rem 1rem; min-height: 5rem; }
-.doing { font-size: 1.1rem; font-weight: 650; }
-.why { margin-top: .2rem; }
-.fuel { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; padding: .5rem 1rem; border-top: 1px solid var(--gray-200); color: var(--gray-600); font-size: .8rem; }
 .empty { padding: 2.5rem 1.5rem; background: var(--gray-200); border-radius: .4rem; text-align: center; }
 details { padding: 1rem 0; border-top: 1px solid var(--gray-300); }
