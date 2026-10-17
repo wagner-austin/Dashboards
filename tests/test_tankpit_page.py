@@ -125,4 +125,7 @@ def test_status_is_in_the_video_without_a_second_caption_panel(site: tuple[Page,
     assert page.locator("#views .sound").inner_text() == "Sound off"
     assert page.locator("#views .say").count() == 0
     assert page.locator("#views .cap b").inner_text() == "demo-1"
-    assert "in-game status panel" in page.locator(".watch-hint").inner_text()
+    assert page.locator(".watch-hint").inner_text() == (
+        "Each view follows one bot. “Next” in its in-game status panel previews its planned "
+        "move and why, before the action appears."
+    )
