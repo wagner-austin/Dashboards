@@ -145,7 +145,7 @@ function tile(bot) {
   showSound();
   const frame = document.createElement("div");
   frame.className = "frame";
-  frame.append(picture, sound);
+  frame.append(picture);
 
   const caption = document.createElement("div");
   caption.className = "cap";
@@ -154,7 +154,7 @@ function tile(bot) {
   const stat = document.createElement("span");
   stat.className = "up";
   stat.dataset.slot = bot.slot;
-  caption.append(name, stat);
+  caption.append(name, stat, sound);
 
   // Telemetry, because a black rectangle that explains nothing is the
   // whole complaint this exists to answer. Every tile says what its

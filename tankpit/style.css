@@ -42,9 +42,9 @@ button:focus-visible, summary:focus-visible, a:focus-visible {
 .tile { min-width: 0; border: 1px solid var(--gray-300); border-radius: .4rem; overflow: hidden; background: #fff; }
 .frame { position: relative; background: #000; }
 .tile video { display: block; width: 100%; aspect-ratio: 1280 / 768; object-fit: contain; }
-.sound { position: absolute; right: .6rem; bottom: .6rem; padding: .4rem .7rem; font-size: .8rem; background: #111d; border-color: #fff8; }
+.sound { padding: .4rem .7rem; font-size: .8rem; background: #111d; border-color: #fff8; }
 .sound[aria-pressed="true"] { background: var(--primary); }
-.cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; padding: .5rem 1rem; border-top: 1px solid var(--gray-200); color: var(--gray-600); font-size: .8rem; }
+.cap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; padding: .5rem 1rem; border-top: 1px solid var(--gray-200); color: var(--gray-600); font-size: .8rem; }
 .empty { padding: 2.5rem 1.5rem; background: var(--gray-200); border-radius: .4rem; text-align: center; }
 details { padding: 1rem 0; border-top: 1px solid var(--gray-300); }
 summary { cursor: pointer; font-weight: 600; }
