@@ -1,4 +1,4 @@
-"""Exercise the TankPit bots page and its caption timing in real Chromium."""
+"""Exercise the TankPit video page in real Chromium."""
 
 from collections.abc import Iterator
 from functools import partial
@@ -101,58 +101,28 @@ def test_the_page_explains_the_game_the_bot_and_the_practice_room(site: tuple[Pa
     assert scroll_width == width
 
 
-def test_the_caption_shown_is_the_one_in_force_at_the_frame(site: tuple[Page, str]) -> None:
-    """The caption follows the frame on screen, not the bot's newest decision.
+def test_status_is_in_the_video_without_a_second_caption_panel(site: tuple[Page, str]) -> None:
+    """A listed bot keeps video and sound controls without external captions.
 
     Args:
         site (tuple[Page, str]): Browser page and the local site root.
     """
     page, root = site
-    page.goto(f"{root}tankpit/")
-    picks: list[str | None] = page.evaluate(
-        """async () => {
-            const { captionAt } = await import("./captions.js");
-            const captions = [
-                { at_ms: 1000, doing: "Searching for enemies" },
-                { at_ms: 4000, doing: "Teleporting to an enemy" },
-                { at_ms: 9000, doing: "Shooting at an enemy" },
-            ];
-            return [500, 1000, 3999, 4000, 8999, 20000].map(
-                (moment) => captionAt(captions, moment)?.doing ?? null
-            );
-        }"""
+    page.route(
+        f"{FLEET_ORIGIN}/demo/fleet",
+        lambda route: route.fulfill(
+            json={
+                "running": 1,
+                "capacity": 5,
+                "draining": False,
+                "bots": [{"slot": "demo-1", "alive": True, "uptime_seconds": 12}],
+            }
+        ),
     )
-    assert picks == [
-        None,
-        "Searching for enemies",
-        "Searching for enemies",
-        "Teleporting to an enemy",
-        "Teleporting to an enemy",
-        "Shooting at an enemy",
-    ]
-
-
-def test_the_frame_moment_comes_from_whichever_player_is_playing(site: tuple[Page, str]) -> None:
-    """hls.js reports a playing date; a native player its start date plus position.
-
-    Args:
-        site (tuple[Page, str]): Browser page and the local site root.
-    """
-    page, root = site
     page.goto(f"{root}tankpit/")
-    moments: list[float | None] = page.evaluate(
-        """async () => {
-            const { frameMomentMs } = await import("./captions.js");
-            const video = document.createElement("video");
-            const dated = { getStartDate: () => new Date(50000), currentTime: 2.5 };
-            const undated = { getStartDate: () => new Date(NaN), currentTime: 0 };
-            return [
-                frameMomentMs(video, { playingDate: new Date(7000) }),
-                frameMomentMs(video, { playingDate: null }),
-                frameMomentMs(dated, null),
-                frameMomentMs(undated, null),
-                frameMomentMs({ currentTime: 1 }, null),
-            ];
-        }"""
-    )
-    assert moments == [7000, None, 52500, None, None]
+    page.locator("#views video").wait_for()
+    assert page.locator("#views video").get_attribute("aria-label") == "Live view of demo-1"
+    assert page.locator("#views .sound").inner_text() == "Sound off"
+    assert page.locator("#views .say").count() == 0
+    assert page.locator("#views .cap b").inner_text() == "demo-1"
+    assert "in-game status panel" in page.locator(".watch-hint").inner_text()
