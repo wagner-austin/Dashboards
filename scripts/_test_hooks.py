@@ -6,7 +6,7 @@ them with fakes so guard output can be asserted without capturing stdout.
 
 import os
 import subprocess
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 
 def _real_print(message: str) -> None:
@@ -153,6 +153,12 @@ def to_bash_path(path: str) -> str:
     failures present identically as exit 127, which reads as a missing
     validator rather than a mangled path.
 
+    The separators are read as Windows reads them on every platform:
+    ``Path.as_posix`` flips a backslash only where ``Path`` is a
+    ``WindowsPath``, so on a Linux fleet node ``C:\\Users\\Test\\x.sh``
+    came back ``/c\\Users\\Test\\x.sh`` (API board task e35812cc), while a
+    forward-slash path reads the same under either flavour.
+
     Args:
         path: A filesystem path, in Windows or POSIX form.
 
@@ -160,7 +166,7 @@ def to_bash_path(path: str) -> str:
         The path as bash should receive it. POSIX paths pass through
         unchanged.
     """
-    forward = Path(path).as_posix()
+    forward = PureWindowsPath(path).as_posix()
     if len(forward) >= 2 and forward[1] == ":" and forward[0].isalpha():
         return f"/{forward[0].lower()}{forward[2:]}"
     return forward
