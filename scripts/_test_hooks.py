@@ -100,6 +100,8 @@ def _real_file_exists(path: str) -> bool:
 BASH_CANDIDATES = (
     r"C:\Program Files\Git\bin\bash.exe",
     r"C:\Program Files\Git\usr\bin\bash.exe",
+    # NixOS keeps no /bin/bash or /usr/bin/bash; its system profile holds it.
+    "/run/current-system/sw/bin/bash",
     "/bin/bash",
     "/usr/bin/bash",
 )
