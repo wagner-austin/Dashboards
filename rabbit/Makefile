@@ -17,7 +17,7 @@ endif
 
 lint:
 	poetry lock
-	poetry install --with dev
+	poetry install --no-cache --with dev
 	poetry run python -m scripts.guard
 	poetry run ruff check scripts tests tools --fix
 	poetry run ruff format scripts tests tools
@@ -28,7 +28,7 @@ lint:
 
 test:
 	poetry lock
-	poetry install --with dev
+	poetry install --no-cache --with dev
 	poetry run pytest -n auto -v --cov-branch --cov-report=term-missing --cov=scripts --cov=tools
 	npm run test:coverage
 
