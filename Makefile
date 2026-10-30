@@ -17,14 +17,14 @@ endif
 .PHONY: lint test check generate provenance
 
 lint:
-	poetry install --with dev --no-interaction --no-root
+	poetry install --no-cache --with dev --no-interaction --no-root
 	poetry run python -m scripts.guard
 	poetry run ruff check asuci shared scripts tests --fix
 	poetry run ruff format asuci shared scripts tests
 	poetry run mypy
 
 test:
-	poetry install --with dev --no-interaction --no-root
+	poetry install --no-cache --with dev --no-interaction --no-root
 	poetry run python -m playwright install chromium
 	poetry run pytest --cov --cov-branch --cov-report=term-missing
 
