@@ -1,17 +1,8 @@
-# Each platform keeps its native shell, and every recipe below is written in
-# the intersection the two read alike: one plain command per line and make's
-# own $(VAR) for substitution. The parent's Makefile says why (API board task
-# e35812cc): a SHELL of powershell.exe alone ran only on the fleet's one
-# Windows node.
-ifeq ($(OS),Windows_NT)
-SHELL := powershell.exe
-.SHELLFLAGS := -NoProfile -ExecutionPolicy Bypass -Command
-PYTHON := python
-else
+# Recipes run under sh: `-eu -c` makes a failing command fail its line, and
+# PYTHON is the system interpreter every Linux host names python3.
 SHELL := /bin/sh
 .SHELLFLAGS := -eu -c
 PYTHON := python3
-endif
 
 .PHONY: lint test check build clean dev
 
