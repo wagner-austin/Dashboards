@@ -1,18 +1,8 @@
-# Each platform keeps its native shell, and every recipe below is written in
-# the intersection the two read alike: one plain command per line, make's own
-# $(VAR) for substitution, and a script by path for anything with logic. On
-# Windows a PowerShell-launched make finds no sh; on Linux there is no
-# PowerShell, so a Makefile that set SHELL to powershell.exe alone could run
-# only on the fleet's one Windows node (API board task e35812cc). The same
-# block is API scripts/make/shell.mk's; `-eu -c` makes a failing command fail
-# its line, which PowerShell's native exit propagation gives on Windows.
-ifeq ($(OS),Windows_NT)
-SHELL := powershell.exe
-.SHELLFLAGS := -NoProfile -ExecutionPolicy Bypass -Command
-else
+# Recipes run under sh: one plain command per line, make's own $(VAR) for
+# substitution, and a script by path for anything with logic. `-eu -c` makes
+# a failing command fail its line.
 SHELL := /bin/sh
 .SHELLFLAGS := -eu -c
-endif
 
 .PHONY: lint test check generate provenance
 
